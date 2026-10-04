@@ -1,0 +1,114 @@
+{
+  "status": "LEDGER_APPLIED_POST_COMMIT_RUNTIME_PENDING",
+  "baseHead": "90d9b5865bee4dc012f49f6eded135ac85975e78",
+  "taskCommit": null,
+  "postLedgerCaptureRun": null,
+  "ledgerBeforeSha256": "759a143aec97da6ba455c2f4b655f4949e8e50d44e5df35d5ee7e2c215a8052b",
+  "ledgerAfterSha256": "162d4ad7001a8f522d614112a78f369be08a19181e67eda5906980a729fd3d12",
+  "recordCount": 6122,
+  "CRLFCount": 6123,
+  "changedColumn": "installed_by",
+  "changedRows": [
+    {
+      "file": "wave37/candidates-20260930/assets/condition_newcomer_cart_a.png",
+      "physicalLine": 4774,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/condition_ordinary_bench.png",
+      "physicalLine": 4776,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/condition_prosperous_pots.png",
+      "physicalLine": 4779,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/condition_strained_barrel.png",
+      "physicalLine": 4780,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_ale_a.png",
+      "physicalLine": 4782,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_baker_a.png",
+      "physicalLine": 4784,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_baker_b.png",
+      "physicalLine": 4785,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_dyer_a.png",
+      "physicalLine": 4788,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_dyer_b.png",
+      "physicalLine": 4789,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_inn_a.png",
+      "physicalLine": 4792,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_tanner_a.png",
+      "physicalLine": 4802,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_tanner_b.png",
+      "physicalLine": 4803,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_weaver_a.png",
+      "physicalLine": 4804,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/candidates-20260930/assets/trade_weaver_b.png",
+      "physicalLine": 4805,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/rework-v2/assets/trade_carpenter_a.png",
+      "physicalLine": 4838,
+      "before": "",
+      "after": "RENDER-B-W37"
+    },
+    {
+      "file": "wave37/rework-v2/assets/trade_miller_b.png",
+      "physicalLine": 4840,
+      "before": "",
+      "after": "RENDER-B-W37"
+    }
+  ],
+  "preservedLMR1": 12,
+  "preservedUnsupportedBlank": 4,
+  "sourcePublicProvenanceChanges": 0,
+  "historicalReferenceAfter": "astra-W37-after-reference-d6776f2",
+  "historicalReferenceIsPostLedgerProof": false
+}

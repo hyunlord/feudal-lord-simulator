@@ -1,0 +1,2851 @@
+{
+  "status": "PROPOSED_RECONCILIATION_NOT_APPLIED_VISUAL_REVIEW_COMPLETE_WITH_NOTES",
+  "preparedHead": "d6776f2ffeb8c88ee5c3b7402f4a708d4c04ed73",
+  "proposedInstalledBy": "RENDER-B-W37",
+  "counts": {
+    "targets": 16,
+    "preserveExistingLMR1Marked": 12,
+    "retainUnsupportedEmpty": 4,
+    "current425": {
+      "marked": 134,
+      "byteCopiedUnmarked": 20,
+      "activeUnproved": 255,
+      "retired": 16
+    },
+    "projected425NotApplied": {
+      "marked": 150,
+      "byteCopiedUnmarked": 4,
+      "activeUnproved": 255,
+      "retired": 16
+    },
+    "byteproofUnchanged": 154
+  },
+  "inputs": {
+    "assets-inbox/INBOX_LEDGER.csv": "759a143aec97da6ba455c2f4b655f4949e8e50d44e5df35d5ee7e2c215a8052b",
+    "docs/provenance/assets.csv": "c1f2ec247b85ed3219c630afad3d614db0f0d5bea7ddbbdc745e12a2dba6cb58",
+    "docs/verification/asset-architecture/recount-425.csv": "77047709645a8e688fe00a0d20ade78760152c1685bb64ca9d82b7281f7f468c",
+    "src/render/doorSigns.ts": "1b80b22bca218c747c844b78abd6e893e8233b989c6c2caab0d065d287eb03b9",
+    "src/render/wave37DoorSignManifest.generated.ts": "3106eb317322e025bdd3340ae611dd7b5f09f99c17f9b6ffde476dbc4c7c8b58"
+  },
+  "runs": {
+    "before": {
+      "path": "output/art-architecture/wave37-before-v2/captures.json",
+      "sha256": "81b6fb4198a78f8b2987777a1578be05426c75a0ea857138a2e89e7e488b9a72",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "pass_": true,
+      "viewCount": 21,
+      "errors": []
+    },
+    "afterReference": {
+      "path": "output/art-architecture/wave37-after-reference/captures.json",
+      "sha256": "20904018bb0e1bf950a8cce0da93fb8f8d8690a9eb909fef7d3fe532cdfafa2a",
+      "commit": "d6776f2ffeb8c88ee5c3b7402f4a708d4c04ed73",
+      "pass_": true,
+      "viewCount": 4,
+      "errors": []
+    }
+  },
+  "snapshotEvidence": {
+    ".omo/evidence/wave37-before-v2-remote-freeze.json": {
+      "run": "astra-W37-before-v2-ab67dcb",
+      "count": 1126,
+      "differences": [],
+      "pass": true
+    },
+    ".omo/evidence/wave37-after-remote-freeze.json": {
+      "run": "astra-W37-after-reference-d6776f2",
+      "count": 1126,
+      "differences": [],
+      "pass": true
+    },
+    ".omo/evidence/wave37-after-preflight.json": {
+      "head": "d6776f2ffeb8c88ee5c3b7402f4a708d4c04ed73",
+      "dirty": "",
+      "productCount": 1073,
+      "fixtureCount": 53,
+      "differences": [],
+      "validator": "PASS 21 before + 4 exact references"
+    }
+  },
+  "beforeDirty": "Only tracked docs/verification/uiaudit1/geometry.json in recorded retry snapshot; before ab67 artifact differs from clean d677 after-reference commit identity.",
+  "productCodeCount": 1073,
+  "remoteFreezeCountIncludingFixtures": 1126,
+  "referenceComparisons": [
+    {
+      "name": "trade_baker_a-summer-z1",
+      "sameIdentity": true,
+      "sameRgbaSHA": true,
+      "beforePngSha256": "cd6ec80904e801049519acfbbfb53a01362fa34c04994579e241853d6f488fac",
+      "afterPngSha256": "cd6ec80904e801049519acfbbfb53a01362fa34c04994579e241853d6f488fac",
+      "sameJpeg": true
+    },
+    {
+      "name": "trade_baker_a-summer-z06",
+      "sameIdentity": true,
+      "sameRgbaSHA": true,
+      "beforePngSha256": "f40349778ca84b4b8f84a4a4084fc3e95228bb92bf0eae6491f6add19d0615d3",
+      "afterPngSha256": "f40349778ca84b4b8f84a4a4084fc3e95228bb92bf0eae6491f6add19d0615d3",
+      "sameJpeg": true
+    },
+    {
+      "name": "trade_baker_a-winter-z1",
+      "sameIdentity": true,
+      "sameRgbaSHA": true,
+      "beforePngSha256": "db1ac6f189bf494310cbe32bcdf38c1ce71cdfbde4bfc0aefe4e6c2e6094fe3d",
+      "afterPngSha256": "db1ac6f189bf494310cbe32bcdf38c1ce71cdfbde4bfc0aefe4e6c2e6094fe3d",
+      "sameJpeg": true
+    },
+    {
+      "name": "trade_baker_a-winter-z06",
+      "sameIdentity": true,
+      "sameRgbaSHA": true,
+      "beforePngSha256": "af19b597c21172452d15bc7370e42107e468d63fb483a13fbf046c2f87bce9f0",
+      "afterPngSha256": "af19b597c21172452d15bc7370e42107e468d63fb483a13fbf046c2f87bce9f0",
+      "sameJpeg": true
+    }
+  ],
+  "rows": [
+    {
+      "original425Id": "N0267",
+      "baselineRow1Based": 267,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/condition_newcomer_cart_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_newcomer_cart_a.png",
+      "sourceSha256": "c19982c9161b8cf7eccb3f81184c78be0bb70f194bfe2e0697da64ea297237a7",
+      "runtimePath": "public/assets/wave37/condition_newcomer_cart_a.png",
+      "runtimeUrl": "/assets/wave37/condition_newcomer_cart_a.png",
+      "runtimeSha256": "c19982c9161b8cf7eccb3f81184c78be0bb70f194bfe2e0697da64ea297237a7",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/condition_newcomer_cart_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/condition_newcomer_cart_a.png",
+          "runtimeSha256": "c19982c9161b8cf7eccb3f81184c78be0bb70f194bfe2e0697da64ea297237a7",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_newcomer_cart_a.png",
+          "sourceSha256": "c19982c9161b8cf7eccb3f81184c78be0bb70f194bfe2e0697da64ea297237a7",
+          "tool": "builtin image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/condition_newcomer_cart_a-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":328,\"top\":72,\"width\":1116,\"height\":735},\"resize\":[120,79],\"offset\":[4,12],\"aspect_preserved\":true,\"mirror\":false}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 condition_newcomer_cart_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (22.49, 89.93) from rework-v2/records/assets.csv (Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/conditions.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2379
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "Latest history person.move_in/person.resettled record.place.buildingId equals house buildingId; state.tick-record.tick < YARD_RULES.newcomerTicks; no foodShortSinceTick/leavingSinceTick.",
+      "captureCondition": "Common gates; final doorSigns(state) must select condition_newcomer_cart_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "condition_newcomer_cart_a-summer-z1",
+          "observationIndex": 0
+        },
+        {
+          "phase": "before",
+          "name": "condition_newcomer_cart_a-summer-z14",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0269",
+      "baselineRow1Based": 269,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/condition_ordinary_bench.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_ordinary_bench.png",
+      "sourceSha256": "dba243e20097ba22551f3025bfa5fdb822a20194da9ff56b00b1db26798822b2",
+      "runtimePath": "public/assets/wave37/condition_ordinary_bench.png",
+      "runtimeUrl": "/assets/wave37/condition_ordinary_bench.png",
+      "runtimeSha256": "dba243e20097ba22551f3025bfa5fdb822a20194da9ff56b00b1db26798822b2",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/condition_ordinary_bench",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/condition_ordinary_bench.png",
+          "runtimeSha256": "dba243e20097ba22551f3025bfa5fdb822a20194da9ff56b00b1db26798822b2",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_ordinary_bench.png",
+          "sourceSha256": "dba243e20097ba22551f3025bfa5fdb822a20194da9ff56b00b1db26798822b2",
+          "tool": "builtin image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/condition_ordinary_bench-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":463,\"top\":183,\"width\":843,\"height\":584},\"resize\":[88,61],\"offset\":[4,30],\"aspect_preserved\":true,\"mirror\":false}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 condition_ordinary_bench (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (71.85, 90.27) from rework-v2/records/assets.csv (Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/conditions.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2375
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "No strain/recent move-in; no mapped LM-E6a trade or yard craft/member occupation; house.level < 3.",
+      "captureCondition": "Common gates; final doorSigns(state) must select condition_ordinary_bench (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "condition_ordinary_bench-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0271",
+      "baselineRow1Based": 271,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/condition_prosperous_pots.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_prosperous_pots.png",
+      "sourceSha256": "7fbb7a481735ec7258e2d09e38c262f70bba99cf0b29855d1eb5bd8da1685a07",
+      "runtimePath": "public/assets/wave37/condition_prosperous_pots.png",
+      "runtimeUrl": "/assets/wave37/condition_prosperous_pots.png",
+      "runtimeSha256": "7fbb7a481735ec7258e2d09e38c262f70bba99cf0b29855d1eb5bd8da1685a07",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/condition_prosperous_pots",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/condition_prosperous_pots.png",
+          "runtimeSha256": "7fbb7a481735ec7258e2d09e38c262f70bba99cf0b29855d1eb5bd8da1685a07",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_prosperous_pots.png",
+          "sourceSha256": "7fbb7a481735ec7258e2d09e38c262f70bba99cf0b29855d1eb5bd8da1685a07",
+          "tool": "builtin image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/condition_prosperous_pots-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":478,\"top\":192,\"width\":811,\"height\":533},\"resize\":[88,58],\"offset\":[4,34],\"aspect_preserved\":true,\"mirror\":false}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 condition_prosperous_pots (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (74.75, 89.28) from rework-v2/records/assets.csv (Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/conditions.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2373
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "No strain/recent move-in; no mapped LM-E6a trade or yard craft/member occupation; house.level >= 3; non-winter required for pots.",
+      "captureCondition": "Common gates; final doorSigns(state) must select condition_prosperous_pots (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "condition_prosperous_pots-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0272",
+      "baselineRow1Based": 272,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/condition_strained_barrel.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_strained_barrel.png",
+      "sourceSha256": "37c728fff7a3831d1e812143c6aa1607a468f7e07d341449fa6f8470cf386fe6",
+      "runtimePath": "public/assets/wave37/condition_strained_barrel.png",
+      "runtimeUrl": "/assets/wave37/condition_strained_barrel.png",
+      "runtimeSha256": "37c728fff7a3831d1e812143c6aa1607a468f7e07d341449fa6f8470cf386fe6",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/condition_strained_barrel",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/condition_strained_barrel.png",
+          "runtimeSha256": "37c728fff7a3831d1e812143c6aa1607a468f7e07d341449fa6f8470cf386fe6",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/condition_strained_barrel.png",
+          "sourceSha256": "37c728fff7a3831d1e812143c6aa1607a468f7e07d341449fa6f8470cf386fe6",
+          "tool": "builtin image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/condition_strained_barrel-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"left\":593,\"top\":83,\"width\":590,\"height\":719},\"resize\":[44,54],\"offset\":[10,5],\"aspect_preserved\":true,\"mirror\":false}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 condition_strained_barrel (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (24.69, 57.72) from rework-v2/records/assets.csv (Visual raw-image selection of lowest physical pot base, bench leg, bucket base, stave/log ground contact, cart shaft ground contact or wheel contact; shadow excluded. Transformed through actual crop/resize.; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/conditions.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2377
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "house.foodShortSinceTick or house.leavingSinceTick is defined (takes precedence over trade/newcomer).",
+      "captureCondition": "Common gates; final doorSigns(state) must select condition_strained_barrel (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "condition_strained_barrel-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0274",
+      "baselineRow1Based": 274,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_ale_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_ale_a.png",
+      "sourceSha256": "76d37a02795c76f7e8c668fa5acc86d4d6cdb53de7b06bcc002ebe2998809b18",
+      "runtimePath": "public/assets/wave37/trade_ale_a.png",
+      "runtimeUrl": "/assets/wave37/trade_ale_a.png",
+      "runtimeSha256": "76d37a02795c76f7e8c668fa5acc86d4d6cdb53de7b06bcc002ebe2998809b18",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_ale_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_ale_a.png",
+          "runtimeSha256": "76d37a02795c76f7e8c668fa5acc86d4d6cdb53de7b06bcc002ebe2998809b18",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_ale_a.png",
+          "sourceSha256": "76d37a02795c76f7e8c668fa5acc86d4d6cdb53de7b06bcc002ebe2998809b18",
+          "tool": "builtin image_gen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_ale_a-wave37.txt",
+          "referenceInputs": "trade_ale_a.png",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":311,\"y\":81,\"width\":735,\"height\":1045},\"resize\":{\"width\":61,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":17,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_ale_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (50, 90) from rework-v2/records/assets.csv (Visual review of v2 normalized 4x contact sheet: front-right cross-foot timber end. Excludes shadow; opaque row89 pixel check corroborates.; uncertainty 1 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-b.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2359
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId brewer; alternative craft brew_ale if no higher pictured trade.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_ale_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_ale_a-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0276",
+      "baselineRow1Based": 276,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_baker_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_baker_a.png",
+      "sourceSha256": "40266fd8f5bb0f1cc17f92538254d281f3a2eed62c5ce6a889d36fcb54de70b8",
+      "runtimePath": "public/assets/wave37/trade_baker_a.png",
+      "runtimeUrl": "/assets/wave37/trade_baker_a.png",
+      "runtimeSha256": "40266fd8f5bb0f1cc17f92538254d281f3a2eed62c5ce6a889d36fcb54de70b8",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_baker_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_baker_a.png",
+          "runtimeSha256": "40266fd8f5bb0f1cc17f92538254d281f3a2eed62c5ce6a889d36fcb54de70b8",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_baker_a.png",
+          "sourceSha256": "40266fd8f5bb0f1cc17f92538254d281f3a2eed62c5ce6a889d36fcb54de70b8",
+          "tool": "image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_baker_a-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"alpha_threshold\":8,\"crop\":{\"left\":549,\"top\":196,\"width\":676,\"height\":549},\"scale\":0.15846994535519127,\"resized\":{\"width\":107,\"height\":87},\"placement\":{\"left\":11,\"top\":4},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_baker_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (57, 89) from rework-v2/records/assets.csv (Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-a.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2349
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId baker.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_baker_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_baker_a-summer-z1",
+          "observationIndex": 0
+        },
+        {
+          "phase": "before",
+          "name": "trade_baker_a-summer-z06",
+          "observationIndex": 0
+        },
+        {
+          "phase": "before",
+          "name": "trade_baker_a-winter-z1",
+          "observationIndex": 0
+        },
+        {
+          "phase": "before",
+          "name": "trade_baker_a-winter-z06",
+          "observationIndex": 0
+        },
+        {
+          "phase": "afterReference",
+          "name": "trade_baker_a-summer-z1",
+          "observationIndex": 0
+        },
+        {
+          "phase": "afterReference",
+          "name": "trade_baker_a-summer-z06",
+          "observationIndex": 0
+        },
+        {
+          "phase": "afterReference",
+          "name": "trade_baker_a-winter-z1",
+          "observationIndex": 0
+        },
+        {
+          "phase": "afterReference",
+          "name": "trade_baker_a-winter-z06",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0277",
+      "baselineRow1Based": 277,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_baker_b.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_baker_b.png",
+      "sourceSha256": "486f4dcbf479a17ec2582be82e6f3d36b289d6326f3cbf54f1d5df41fd6c3e0a",
+      "runtimePath": "public/assets/wave37/trade_baker_b.png",
+      "runtimeUrl": "/assets/wave37/trade_baker_b.png",
+      "runtimeSha256": "486f4dcbf479a17ec2582be82e6f3d36b289d6326f3cbf54f1d5df41fd6c3e0a",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_baker_b",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_baker_b.png",
+          "runtimeSha256": "486f4dcbf479a17ec2582be82e6f3d36b289d6326f3cbf54f1d5df41fd6c3e0a",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_baker_b.png",
+          "sourceSha256": "486f4dcbf479a17ec2582be82e6f3d36b289d6326f3cbf54f1d5df41fd6c3e0a",
+          "tool": "image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_baker_b-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"alpha_threshold\":8,\"crop\":{\"left\":385,\"top\":177,\"width\":803,\"height\":695},\"scale\":0.1251798561151079,\"resized\":{\"width\":100,\"height\":86},\"placement\":{\"left\":14,\"top\":5},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_baker_b (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (75, 89) from rework-v2/records/assets.csv (Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-a.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2350
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId baker.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_baker_b (variant b); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_baker_b-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0279",
+      "baselineRow1Based": 279,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_dyer_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_dyer_a.png",
+      "sourceSha256": "ba19e54b6b442fa0bde294e55094883f1f01ffb3193914a4e08ab2978cb9a0a1",
+      "runtimePath": "public/assets/wave37/trade_dyer_a.png",
+      "runtimeUrl": "/assets/wave37/trade_dyer_a.png",
+      "runtimeSha256": "ba19e54b6b442fa0bde294e55094883f1f01ffb3193914a4e08ab2978cb9a0a1",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_dyer_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_dyer_a.png",
+          "runtimeSha256": "ba19e54b6b442fa0bde294e55094883f1f01ffb3193914a4e08ab2978cb9a0a1",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_dyer_a.png",
+          "sourceSha256": "ba19e54b6b442fa0bde294e55094883f1f01ffb3193914a4e08ab2978cb9a0a1",
+          "tool": "image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_dyer_a-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"alpha_threshold\":8,\"crop\":{\"left\":445,\"top\":123,\"width\":954,\"height\":647},\"scale\":0.09224318658280922,\"resized\":{\"width\":88,\"height\":59},\"placement\":{\"left\":4,\"top\":32},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_dyer_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (22, 90) from rework-v2/records/assets.csv (Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-a.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2355
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId dyer.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_dyer_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_dyer_a-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0280",
+      "baselineRow1Based": 280,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_dyer_b.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_dyer_b.png",
+      "sourceSha256": "3076470d32b37b44affdd9255948707a62017088359a11edc9107635a3fb18fd",
+      "runtimePath": "public/assets/wave37/trade_dyer_b.png",
+      "runtimeUrl": "/assets/wave37/trade_dyer_b.png",
+      "runtimeSha256": "3076470d32b37b44affdd9255948707a62017088359a11edc9107635a3fb18fd",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_dyer_b",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_dyer_b.png",
+          "runtimeSha256": "3076470d32b37b44affdd9255948707a62017088359a11edc9107635a3fb18fd",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_dyer_b.png",
+          "sourceSha256": "3076470d32b37b44affdd9255948707a62017088359a11edc9107635a3fb18fd",
+          "tool": "image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_dyer_b-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"alpha_threshold\":8,\"crop\":{\"left\":403,\"top\":81,\"width\":894,\"height\":700},\"scale\":0.09843400447427293,\"resized\":{\"width\":88,\"height\":68},\"placement\":{\"left\":4,\"top\":23},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_dyer_b (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (69, 89) from rework-v2/records/assets.csv (Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-a.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2356
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId dyer.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_dyer_b (variant b); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_dyer_b-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0283",
+      "baselineRow1Based": 283,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_inn_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_inn_a.png",
+      "sourceSha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+      "runtimePath": "public/assets/wave37/trade_inn_a.png",
+      "runtimeUrl": "/assets/wave37/trade_inn_a.png",
+      "runtimeSha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_inn_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_inn_a.png",
+          "runtimeSha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_inn_a.png",
+          "sourceSha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+          "tool": "image_gen__imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_inn_a-wave37.txt",
+          "referenceInputs": "trade_inn_a.png; reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_inn_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (8, 88) from rework-v2/records/assets.csv (Visually selected front-left cruciform wooden foot tip, excluding hanging panel and shadow; 4x nearest-neighbor inspection; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-c.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2371
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId innkeeper.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_inn_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_inn_a-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0291",
+      "baselineRow1Based": 291,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_tanner_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_tanner_a.png",
+      "sourceSha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+      "runtimePath": "public/assets/wave37/trade_tanner_a.png",
+      "runtimeUrl": "/assets/wave37/trade_tanner_a.png",
+      "runtimeSha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_tanner_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_tanner_a.png",
+          "runtimeSha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_tanner_a.png",
+          "sourceSha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+          "tool": "builtin image_gen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_tanner_a-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":368,\"y\":40,\"width\":786,\"height\":937},\"resize\":{\"width\":73,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":11,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_tanner_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (58, 90) from rework-v2/records/assets.csv (Visual inspection of raw and 3x normalized contact sheet: front transverse timber foot lower-left tip. Excludes shadow; corroborated by opaque pixels on row 89.; uncertainty 1 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-b.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2357
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId tanner.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_tanner_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_tanner_a-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0292",
+      "baselineRow1Based": 292,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_tanner_b.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_tanner_b.png",
+      "sourceSha256": "ba1d2f1661c6d08a5a8e000d8d521fbb954a9ce08a4a091de86c77642f74a472",
+      "runtimePath": "public/assets/wave37/trade_tanner_b.png",
+      "runtimeUrl": "/assets/wave37/trade_tanner_b.png",
+      "runtimeSha256": "ba1d2f1661c6d08a5a8e000d8d521fbb954a9ce08a4a091de86c77642f74a472",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_tanner_b",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_tanner_b.png",
+          "runtimeSha256": "ba1d2f1661c6d08a5a8e000d8d521fbb954a9ce08a4a091de86c77642f74a472",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_tanner_b.png",
+          "sourceSha256": "ba1d2f1661c6d08a5a8e000d8d521fbb954a9ce08a4a091de86c77642f74a472",
+          "tool": "builtin image_gen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_tanner_b-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"tool\":\"Sharp\",\"alpha_bbox_threshold\":8,\"crop\":{\"x\":294,\"y\":16,\"width\":960,\"height\":950},\"resize\":{\"width\":88,\"height\":87,\"fit\":\"aspect-preserved\"},\"placement\":{\"left\":20,\"top\":4},\"rotation\":0,\"mirror\":false,\"alpha_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_tanner_b (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (73, 90) from rework-v2/records/assets.csv (Visual inspection of raw and 3x normalized contact sheet: front upright foot. Excludes shadow; corroborated by opaque pixels on row 89.; uncertainty 1 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-b.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2358
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId tanner.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_tanner_b (variant b); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_tanner_b-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0293",
+      "baselineRow1Based": 293,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_weaver_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_weaver_a.png",
+      "sourceSha256": "f90010dc7def67b3287bae84a6e998b5b5ee5542643b03aa7f0b1f27675a390f",
+      "runtimePath": "public/assets/wave37/trade_weaver_a.png",
+      "runtimeUrl": "/assets/wave37/trade_weaver_a.png",
+      "runtimeSha256": "f90010dc7def67b3287bae84a6e998b5b5ee5542643b03aa7f0b1f27675a390f",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_weaver_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_weaver_a.png",
+          "runtimeSha256": "f90010dc7def67b3287bae84a6e998b5b5ee5542643b03aa7f0b1f27675a390f",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_weaver_a.png",
+          "sourceSha256": "f90010dc7def67b3287bae84a6e998b5b5ee5542643b03aa7f0b1f27675a390f",
+          "tool": "image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_weaver_a-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"alpha_threshold\":8,\"crop\":{\"left\":515,\"top\":116,\"width\":779,\"height\":663},\"scale\":0.13122171945701358,\"resized\":{\"width\":102,\"height\":87},\"placement\":{\"left\":13,\"top\":4},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_weaver_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (88, 89) from rework-v2/records/assets.csv (Visual reading of nearest visible wooden ground-contact foot, rechecked at 4x and corroborated by alpha; excludes shadow; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-a.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2353
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId weaver; alternative craft spin_yarn if no higher pictured trade.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_weaver_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_weaver_a-summer-z1",
+          "observationIndex": 0
+        },
+        {
+          "phase": "before",
+          "name": "trade_weaver_a-summer-z14",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0294",
+      "baselineRow1Based": 294,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_weaver_b.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_weaver_b.png",
+      "sourceSha256": "dee42edfe7d6b8abcdb3633ac9b4da5da5518f285b54df8a903c47572a14e12a",
+      "runtimePath": "public/assets/wave37/trade_weaver_b.png",
+      "runtimeUrl": "/assets/wave37/trade_weaver_b.png",
+      "runtimeSha256": "dee42edfe7d6b8abcdb3633ac9b4da5da5518f285b54df8a903c47572a14e12a",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_weaver_b",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_weaver_b.png",
+          "runtimeSha256": "dee42edfe7d6b8abcdb3633ac9b4da5da5518f285b54df8a903c47572a14e12a",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_weaver_b.png",
+          "sourceSha256": "dee42edfe7d6b8abcdb3633ac9b4da5da5518f285b54df8a903c47572a14e12a",
+          "tool": "image_gen.imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_weaver_b-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"alpha_threshold\":8,\"crop\":{\"left\":425,\"top\":78,\"width\":729,\"height\":845},\"scale\":0.10295857988165681,\"resized\":{\"width\":75,\"height\":87},\"placement\":{\"left\":27,\"top\":4},\"baseline_target_y\":90,\"mirror\":false,\"aspect_ratio_preserved\":true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_weaver_b (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (76, 89) from rework-v2/records/assets.csv (Visual reading of nearest visible wooden ground-contact foot on final 96px-high sprite, shadow excluded; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-a.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2354
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "tradesOf(state).households matching houseId has tradeId weaver; alternative craft spin_yarn if no higher pictured trade.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_weaver_b (variant b); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_weaver_b-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0296",
+      "baselineRow1Based": 296,
+      "originalLedgerFile": "wave37/rework-v2/assets/trade_carpenter_a.png",
+      "sourcePath": "assets-inbox/wave37/rework-v2/assets/trade_carpenter_a.png",
+      "sourceSha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+      "runtimePath": "public/assets/wave37/trade_carpenter_a.png",
+      "runtimeUrl": "/assets/wave37/trade_carpenter_a.png",
+      "runtimeSha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_carpenter_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_carpenter_a.png",
+          "runtimeSha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+          "sourcePath": "assets-inbox/wave37/rework-v2/assets/trade_carpenter_a.png",
+          "sourceSha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+          "tool": "builtin image_gen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_carpenter_a-wave37.txt",
+          "referenceInputs": "trade_carpenter_a-first.png",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "{\"crop\": {\"left\": 25, \"top\": 21, \"width\": 1389, \"height\": 1041}, \"scale\": 0.0845341018251681, \"resized_width\": 117, \"resized_height\": 88, \"paste_left\": 5, \"paste_top\": 4, \"canvas_margin_px\": 4, \"flip\": false, \"alpha_preserved\": true}",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_carpenter_a (rework-v2, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (97, 89) from rework-v2/records/assets.csv (Visual reading of foremost physical wooden support ground contact on final native and 6x nearest-neighbor inspection; not image midpoint; uncertainty 2 px). Generation record assets-inbox/wave37/rework-v2/records/furniture.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2363
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "matching TradeHousehold.tradeId carpenter; alternative live resident Person.occupation sawyer/woodward, absent higher pictured trade/craft.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_carpenter_a (variant a); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_carpenter_a-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    },
+    {
+      "original425Id": "N0298",
+      "baselineRow1Based": 298,
+      "originalLedgerFile": "wave37/rework-v2/assets/trade_miller_b.png",
+      "sourcePath": "assets-inbox/wave37/rework-v2/assets/trade_miller_b.png",
+      "sourceSha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+      "runtimePath": "public/assets/wave37/trade_miller_b.png",
+      "runtimeUrl": "/assets/wave37/trade_miller_b.png",
+      "runtimeSha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_miller_b",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_miller_b.png",
+          "runtimeSha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+          "sourcePath": "assets-inbox/wave37/rework-v2/assets/trade_miller_b.png",
+          "sourceSha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+          "tool": "image_gen (not exposed)",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_miller_b-wave37.txt",
+          "referenceInputs": "trade_miller_b-original.png; style.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "\"see record\"",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_miller_b (rework-v2, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (65, 79) from rework-v2/records/assets.csv (Visual midpoint of grounded group front: sieve lower edge (55,82) and front sack base (75,76); estimated from native sprite and 6x nearest-neighbor inspection.; uncertainty 2 px). Generation record assets-inbox/wave37/rework-v2/records/miller.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2362
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "matching TradeHousehold.tradeId miller; alternative live resident Person.occupation miller/granger, absent higher pictured trade/craft.",
+      "captureCondition": "Common gates; final doorSigns(state) must select trade_miller_b (variant b); preserve actual household facts; record buildingId/state seed/tick/trade-or-pressure/history and screenshot.",
+      "receipts": [
+        {
+          "phase": "before",
+          "name": "trade_miller_b-summer-z1",
+          "observationIndex": 0
+        }
+      ],
+      "proposedInstalledBy": "RENDER-B-W37"
+    }
+  ],
+  "preservedMarkedRows": [
+    {
+      "baselineRow1Based": 268,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/condition_newcomer_cart_b.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 270,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/condition_ordinary_water.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 273,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/condition_strained_firewood.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 275,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_ale_b.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 278,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_carpenter_b.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 284,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_inn_b.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 285,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_merchant_a.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 286,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_merchant_b.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 289,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_smith_a.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 290,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_smith_b.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 295,
+      "originalLedgerFile": "wave37/rework-v2/assets/condition_prosperous_bench.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    },
+    {
+      "baselineRow1Based": 297,
+      "originalLedgerFile": "wave37/rework-v2/assets/trade_miller_a.png",
+      "installedBy": "LM-R1",
+      "currentInstalledBy": "LM-R1"
+    }
+  ],
+  "unsupportedUnmarkedRows": [
+    {
+      "original425Id": "N0281",
+      "baselineRow1Based": 281,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_fisher_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_fisher_a.png",
+      "sourceSha256": "a79a77aa9594f206980a41821f0574154e775c277f8dac868f9e093c8e69e2c6",
+      "runtimePath": "public/assets/wave37/trade_fisher_a.png",
+      "runtimeUrl": "/assets/wave37/trade_fisher_a.png",
+      "runtimeSha256": "a79a77aa9594f206980a41821f0574154e775c277f8dac868f9e093c8e69e2c6",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_fisher_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_fisher_a.png",
+          "runtimeSha256": "a79a77aa9594f206980a41821f0574154e775c277f8dac868f9e093c8e69e2c6",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_fisher_a.png",
+          "sourceSha256": "a79a77aa9594f206980a41821f0574154e775c277f8dac868f9e093c8e69e2c6",
+          "tool": "image_gen__imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_fisher_a-wave37.txt",
+          "referenceInputs": "trade_fisher_a.png; reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_fisher_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (86, 90) from rework-v2/records/assets.csv (Visually selected front bottom of fish hamper, excluding rear rack and shadow; 4x nearest-neighbor inspection; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-c.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2369
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "No current producing mapping: SIGN_BY_TRADE lacks fisher; YARD_OCCUPATION_BY_CRAFT and YARD_OCCUPATION_BY_TRADE have no fisher result.",
+      "captureCondition": "No truthful existing-state capture route. Do not forge occupation/tradeId or force sign key; source/loader mock proof does not close installation.",
+      "receipts": [],
+      "proposedInstalledBy": "",
+      "blockReason": "unbound-current-fact-mapping"
+    },
+    {
+      "original425Id": "N0282",
+      "baselineRow1Based": 282,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_fisher_b.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_fisher_b.png",
+      "sourceSha256": "4fb554b9138afd596c78210592f137c1aec72b731462f06e29f5eef83d5ee79b",
+      "runtimePath": "public/assets/wave37/trade_fisher_b.png",
+      "runtimeUrl": "/assets/wave37/trade_fisher_b.png",
+      "runtimeSha256": "4fb554b9138afd596c78210592f137c1aec72b731462f06e29f5eef83d5ee79b",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_fisher_b",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_fisher_b.png",
+          "runtimeSha256": "4fb554b9138afd596c78210592f137c1aec72b731462f06e29f5eef83d5ee79b",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_fisher_b.png",
+          "sourceSha256": "4fb554b9138afd596c78210592f137c1aec72b731462f06e29f5eef83d5ee79b",
+          "tool": "image_gen__imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_fisher_b-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_fisher_b (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (34, 90) from rework-v2/records/assets.csv (Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front ground-contact foot of left A-frame support; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-c.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2370
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "No current producing mapping: SIGN_BY_TRADE lacks fisher; YARD_OCCUPATION_BY_CRAFT and YARD_OCCUPATION_BY_TRADE have no fisher result.",
+      "captureCondition": "No truthful existing-state capture route. Do not forge occupation/tradeId or force sign key; source/loader mock proof does not close installation.",
+      "receipts": [],
+      "proposedInstalledBy": "",
+      "blockReason": "unbound-current-fact-mapping"
+    },
+    {
+      "original425Id": "N0287",
+      "baselineRow1Based": 287,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_shepherd_a.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_shepherd_a.png",
+      "sourceSha256": "caf5dcf6f8ac727c660a0f17ac25b534dd9fbf9b74aad12ab7227562688a3879",
+      "runtimePath": "public/assets/wave37/trade_shepherd_a.png",
+      "runtimeUrl": "/assets/wave37/trade_shepherd_a.png",
+      "runtimeSha256": "caf5dcf6f8ac727c660a0f17ac25b534dd9fbf9b74aad12ab7227562688a3879",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_shepherd_a",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_shepherd_a.png",
+          "runtimeSha256": "caf5dcf6f8ac727c660a0f17ac25b534dd9fbf9b74aad12ab7227562688a3879",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_shepherd_a.png",
+          "sourceSha256": "caf5dcf6f8ac727c660a0f17ac25b534dd9fbf9b74aad12ab7227562688a3879",
+          "tool": "image_gen__imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_shepherd_a-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_shepherd_a (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (98, 90) from rework-v2/records/assets.csv (Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front base of small fleece basket; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-c.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2367
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "No current producing mapping: SIGN_BY_TRADE lacks shepherd; YARD_OCCUPATION_BY_CRAFT and YARD_OCCUPATION_BY_TRADE have no shepherd result.",
+      "captureCondition": "No truthful existing-state capture route. Do not forge occupation/tradeId or force sign key; source/loader mock proof does not close installation.",
+      "receipts": [],
+      "proposedInstalledBy": "",
+      "blockReason": "unbound-current-fact-mapping"
+    },
+    {
+      "original425Id": "N0288",
+      "baselineRow1Based": 288,
+      "originalLedgerFile": "wave37/candidates-20260930/assets/trade_shepherd_b.png",
+      "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_shepherd_b.png",
+      "sourceSha256": "d6e8717f3be385301f5ea5c805b5f381acf1713c4bcb3fa5b225242c300055fa",
+      "runtimePath": "public/assets/wave37/trade_shepherd_b.png",
+      "runtimeUrl": "/assets/wave37/trade_shepherd_b.png",
+      "runtimeSha256": "d6e8717f3be385301f5ea5c805b5f381acf1713c4bcb3fa5b225242c300055fa",
+      "currentLedgerStatus": "confirmed",
+      "currentInstalledBy": "",
+      "provenance": [
+        {
+          "assetId": "wave37/trade_shepherd_b",
+          "version": "1",
+          "runtimePath": "public/assets/wave37/trade_shepherd_b.png",
+          "runtimeSha256": "d6e8717f3be385301f5ea5c805b5f381acf1713c4bcb3fa5b225242c300055fa",
+          "sourcePath": "assets-inbox/wave37/candidates-20260930/assets/trade_shepherd_b.png",
+          "sourceSha256": "d6e8717f3be385301f5ea5c805b5f381acf1713c4bcb3fa5b225242c300055fa",
+          "tool": "image_gen__imagegen",
+          "model": "not exposed",
+          "generatedAt": "2026-09-30",
+          "prompt": "docs/provenance/prompts/trade_shepherd_b-wave37.txt",
+          "referenceInputs": "reference-3.jpg; reference-0.jpg",
+          "seed": "not exposed",
+          "candidates": "1",
+          "manualEdits": "Sharp alpha>8 crop, proportional Lanczos3 resize, transparent canvas; no mirror or rotation",
+          "artBible": "ART_BIBLE_v2",
+          "historicalProfile": "S_England_1300_1450_v1",
+          "owner": "Astra",
+          "usedIn": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+          "status": "runtime",
+          "notes": "Astra Wave 37 trade_shepherd_b (candidates-20260930, confirmed in assets-inbox/INBOX_LEDGER.csv, verdict 2026-09-30) installed by LM-R1 on 2026-10-03; no C2PA chunk, received bytes = runtime bytes, not mirrored. Pivot = Astra's foot (49, 90) from rework-v2/records/assets.csv (Visual inspection of 3x nearest-neighbor proof, actual solid ground contact excluding shadow: Front base of shallow fleece hamper; uncertainty 2 px). Generation record assets-inbox/wave37/candidates-20260930/records/trades-c.json. The batch records give the delivery date, not a generation time.",
+          "provenanceRow1Based": 2368
+        }
+      ],
+      "consumer": "doorSigns.ts doorSignKind -> doorSignKey -> doorSigns -> withDoorSigns; renderObjectFrameCache.ts:51 -> drawObjectRenderItems.ts:120 -> drawDoorSign -> manifestArt.draw",
+      "realStateFact": "No current producing mapping: SIGN_BY_TRADE lacks shepherd; YARD_OCCUPATION_BY_CRAFT and YARD_OCCUPATION_BY_TRADE have no shepherd result.",
+      "captureCondition": "No truthful existing-state capture route. Do not forge occupation/tradeId or force sign key; source/loader mock proof does not close installation.",
+      "receipts": [],
+      "proposedInstalledBy": "",
+      "blockReason": "unbound-current-fact-mapping"
+    }
+  ],
+  "viewReceipts": [
+    {
+      "phase": "before",
+      "name": "condition_newcomer_cart_a-summer-z1",
+      "identity": {
+        "state": "condition_newcomer_cart_a-summer",
+        "savedStateSHA": "6d892fbab8cc2c2fabb16f3d3ceb8550cbba61d347bdea7a9b72aba42b650104",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/condition_newcomer_cart_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "df8e9ec9065bfe7346e26f29aa6d37d50e1f742195c98d9aa4d8b1d78ac8a3ed",
+      "repeatRgbaSHA": "df8e9ec9065bfe7346e26f29aa6d37d50e1f742195c98d9aa4d8b1d78ac8a3ed",
+      "sourcePng": "output/art-architecture/wave37-before-v2/condition_newcomer_cart_a-summer-z1.png",
+      "sourcePngSha256": "20f6d608cf9b366aa12bc2e919514f8f3b8d5527932b41a1699f43dcc08d1758",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/condition_newcomer_cart_a-summer-z1.jpg",
+      "sourceJpegSha256": "a80c497dbc81df3f3137b24430de014a4a36110f54d430a13d916fb59c7ce6d6",
+      "sourceJpegBytes": 173976,
+      "observations": [
+        {
+          "url": "/assets/wave37/condition_newcomer_cart_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/condition_newcomer_cart_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "condition_ordinary_bench-summer-z1",
+      "identity": {
+        "state": "condition_ordinary_bench-summer",
+        "savedStateSHA": "88d5c89dc5865600444d80f3842d208941631dd726b9f5b5020e9884b750fa51",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/condition_ordinary_bench.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "86971c3b9ade25026f8b93df57e049e246eef8f3a21b0c0403e1e3f10c938c2c",
+      "repeatRgbaSHA": "86971c3b9ade25026f8b93df57e049e246eef8f3a21b0c0403e1e3f10c938c2c",
+      "sourcePng": "output/art-architecture/wave37-before-v2/condition_ordinary_bench-summer-z1.png",
+      "sourcePngSha256": "325635b6ab4258d8392749292c8d02f05dabb13a8de16ad29b7002ab3e01247e",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/condition_ordinary_bench-summer-z1.jpg",
+      "sourceJpegSha256": "572329d7c05ab2b24a2f2349056decb563c9c51ea7b51deb7a17f5a10e043c9a",
+      "sourceJpegBytes": 180607,
+      "observations": [
+        {
+          "url": "/assets/wave37/condition_ordinary_bench.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/condition_ordinary_bench.png",
+              "decoded": true,
+              "width": 96,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "condition_prosperous_pots-summer-z1",
+      "identity": {
+        "state": "condition_prosperous_pots-summer",
+        "savedStateSHA": "d8e399322274c6336200df6b55948089b1b8a25ba9a4e18ec2f6e5dde3dbd305",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/condition_prosperous_pots.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "3372c6aa665a0d5a2c36ef83b0a509954fca38f38bbed10337fa3e4788a7972f",
+      "repeatRgbaSHA": "3372c6aa665a0d5a2c36ef83b0a509954fca38f38bbed10337fa3e4788a7972f",
+      "sourcePng": "output/art-architecture/wave37-before-v2/condition_prosperous_pots-summer-z1.png",
+      "sourcePngSha256": "eeced665512b730784a5adc026c915ecce577662076dc135b765827a35ce20f6",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/condition_prosperous_pots-summer-z1.jpg",
+      "sourceJpegSha256": "da219f3e66ae42b41326536d803c07df6f0e531ac8d00b2805cb6b178a3638ea",
+      "sourceJpegBytes": 176099,
+      "observations": [
+        {
+          "url": "/assets/wave37/condition_prosperous_pots.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/condition_prosperous_pots.png",
+              "decoded": true,
+              "width": 96,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "condition_strained_barrel-summer-z1",
+      "identity": {
+        "state": "condition_strained_barrel-summer",
+        "savedStateSHA": "acb0637618f27d86c74fd803f08d2ea6e3ab5615cac1d28d605eb74947d9da9a",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          48.7,
+          40.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/condition_strained_barrel.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "e78e9ce3b11df435a796714d24ba2c83937922acaea1956185d4518a20588672",
+      "repeatRgbaSHA": "e78e9ce3b11df435a796714d24ba2c83937922acaea1956185d4518a20588672",
+      "sourcePng": "output/art-architecture/wave37-before-v2/condition_strained_barrel-summer-z1.png",
+      "sourcePngSha256": "745af571d269127673ce22d10a85faf7804af7f247cba6fbf39d07c4a3e95066",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/condition_strained_barrel-summer-z1.jpg",
+      "sourceJpegSha256": "edf9d83dae07862094516f3411ee84b1a9be7414630b5c40d88ce49d7ca97dba",
+      "sourceJpegBytes": 168794,
+      "observations": [
+        {
+          "url": "/assets/wave37/condition_strained_barrel.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/condition_strained_barrel.png",
+              "decoded": true,
+              "width": 64,
+              "height": 64
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_ale_a-summer-z1",
+      "identity": {
+        "state": "trade_ale_a-summer",
+        "savedStateSHA": "667ca5dcef69fc110df53cc8d50af08167551cd59717995719af877d561f064f",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_ale_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "e536cee82140af37aa6cb4a1956049e00c1d4cd90f193fda7fe8cf0260917378",
+      "repeatRgbaSHA": "e536cee82140af37aa6cb4a1956049e00c1d4cd90f193fda7fe8cf0260917378",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_ale_a-summer-z1.png",
+      "sourcePngSha256": "0e30ce9f1a087a64e068c127815c357a06b0253e68f4f4a2b8491a3a46afcd67",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_ale_a-summer-z1.jpg",
+      "sourceJpegSha256": "957aabc6ed7d5eb615b0bf31d6135c4a9c514e984abb4d95be1eef7130755b27",
+      "sourceJpegBytes": 174697,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_ale_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_ale_a.png",
+              "decoded": true,
+              "width": 96,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_a-summer-z1",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "15b0f70d2b017a9f7fb4ae3b72405268d62f2f4ec60737294fe2d6e530ae4d29",
+      "repeatRgbaSHA": "15b0f70d2b017a9f7fb4ae3b72405268d62f2f4ec60737294fe2d6e530ae4d29",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z1.png",
+      "sourcePngSha256": "cd6ec80904e801049519acfbbfb53a01362fa34c04994579e241853d6f488fac",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z1.jpg",
+      "sourceJpegSha256": "42ca3ece02e320dd885d8f9bf1cd28816ee684d9892a4267a25161137048681a",
+      "sourceJpegBytes": 180702,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_b-summer-z1",
+      "identity": {
+        "state": "trade_baker_b-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_b.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "f769f9562f2d2127d5a0c5a6e122d4ced2eda9442a0b8c6e44df7605a7c86f80",
+      "repeatRgbaSHA": "f769f9562f2d2127d5a0c5a6e122d4ced2eda9442a0b8c6e44df7605a7c86f80",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_b-summer-z1.png",
+      "sourcePngSha256": "0c0ca42721a8117a36aa01391d69bf94cbae20ba13aac2a4e4eb3265953c3dc3",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_baker_b-summer-z1.jpg",
+      "sourceJpegSha256": "948b21b8b1b068db76112c5a5d387533033a2ff6d714f29b1066884af020fd7b",
+      "sourceJpegBytes": 174802,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_b.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_b.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_dyer_a-summer-z1",
+      "identity": {
+        "state": "trade_dyer_a-summer",
+        "savedStateSHA": "3b043506c6ec3a0ddf7ed4d0f2b357ca37607e297b31b70ab25f752a6c71238d",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_dyer_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "62e8cef30222604247fb606972fb2ce119d9f983ec825c2aa80830078a7e4a3b",
+      "repeatRgbaSHA": "62e8cef30222604247fb606972fb2ce119d9f983ec825c2aa80830078a7e4a3b",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_dyer_a-summer-z1.png",
+      "sourcePngSha256": "731b8e53c8daaa98c989b8a1f5389f486ecd40b85c02b23e9b8da9e3bbf92092",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_dyer_a-summer-z1.jpg",
+      "sourceJpegSha256": "42d3d7aa8061e1c86b61fe76ef867f4d4d4350cf6492c8bcc1772a935b37d894",
+      "sourceJpegBytes": 174700,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_dyer_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_dyer_a.png",
+              "decoded": true,
+              "width": 96,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_dyer_b-summer-z1",
+      "identity": {
+        "state": "trade_dyer_b-summer",
+        "savedStateSHA": "3b043506c6ec3a0ddf7ed4d0f2b357ca37607e297b31b70ab25f752a6c71238d",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_dyer_b.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "8b4e8bfebc32e212c66c697863ac532291e5cb8dee20b6819fecfc3d66d021cc",
+      "repeatRgbaSHA": "8b4e8bfebc32e212c66c697863ac532291e5cb8dee20b6819fecfc3d66d021cc",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_dyer_b-summer-z1.png",
+      "sourcePngSha256": "45fb48f2c5efba52efa2b70290bcf195970ae513e3399ed15652ec81d7b94b52",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_dyer_b-summer-z1.jpg",
+      "sourceJpegSha256": "62b91260f40a5f68583d635d49e719681412f5ed440b1bfad8bef000b329beb3",
+      "sourceJpegBytes": 180537,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_dyer_b.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_dyer_b.png",
+              "decoded": true,
+              "width": 96,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_inn_a-summer-z1",
+      "identity": {
+        "state": "trade_inn_a-summer",
+        "savedStateSHA": "e56de822aaf61f63b76b82013463dbd14af8a1a4c316af193f3027ec91a94ca4",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_inn_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "227ef1b150832ded917dde829bf1aceb2c4ed68e8b210d5553acd064774e4d20",
+      "repeatRgbaSHA": "227ef1b150832ded917dde829bf1aceb2c4ed68e8b210d5553acd064774e4d20",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_inn_a-summer-z1.png",
+      "sourcePngSha256": "cc339a3eadf56fb3c069f93111146b0642b9231e73ff3e666310105e4ed50842",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_inn_a-summer-z1.jpg",
+      "sourceJpegSha256": "9fa709d416c7eacdd83fc4bf19727ac33e528af3169053a7ddf8e32141cb15c6",
+      "sourceJpegBytes": 174769,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_inn_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_inn_a.png",
+              "decoded": true,
+              "width": 96,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_tanner_a-summer-z1",
+      "identity": {
+        "state": "trade_tanner_a-summer",
+        "savedStateSHA": "c5909c416f25fcced93bddbedca231b4c0541e0299d1e1fb2a2bb9da88067f4c",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_tanner_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "98661395c44ed0054743153bdede2baf233c2bf407725d7945df9a7940e8dcc3",
+      "repeatRgbaSHA": "98661395c44ed0054743153bdede2baf233c2bf407725d7945df9a7940e8dcc3",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_tanner_a-summer-z1.png",
+      "sourcePngSha256": "b17616d3c96865126ae43bdb4f32437d038c1b07772f5db87623d2fd6485849e",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_tanner_a-summer-z1.jpg",
+      "sourceJpegSha256": "3c8915523d7439909ac929f5860b1b91557628513728a17c614a707ef197ffae",
+      "sourceJpegBytes": 180625,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_tanner_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_tanner_a.png",
+              "decoded": true,
+              "width": 96,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_tanner_b-summer-z1",
+      "identity": {
+        "state": "trade_tanner_b-summer",
+        "savedStateSHA": "c5909c416f25fcced93bddbedca231b4c0541e0299d1e1fb2a2bb9da88067f4c",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_tanner_b.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "7001803e90895b445b77441e792136b9b7d5e264ec5ec0cb313626a44d586dab",
+      "repeatRgbaSHA": "7001803e90895b445b77441e792136b9b7d5e264ec5ec0cb313626a44d586dab",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_tanner_b-summer-z1.png",
+      "sourcePngSha256": "a7717d2dd469f0e5407ec512c3c033e9e15f4cc42a5341f1898142448fbf1a14",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_tanner_b-summer-z1.jpg",
+      "sourceJpegSha256": "82d892037e7ba36d12e7f186638a4553cd7926031d16a2e5d1346d5e3ca5d679",
+      "sourceJpegBytes": 174775,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_tanner_b.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_tanner_b.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_weaver_a-summer-z1",
+      "identity": {
+        "state": "trade_weaver_a-summer",
+        "savedStateSHA": "0257adcd75f0b4ed3c7e6d2d4f7b59b483a2d1d82215f6d4a3700d06e0d781d2",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_weaver_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "29cf5e85a202e94070b8a7c02f06c26e43631ed0e7102a42a8e0a3e072443f9c",
+      "repeatRgbaSHA": "29cf5e85a202e94070b8a7c02f06c26e43631ed0e7102a42a8e0a3e072443f9c",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_weaver_a-summer-z1.png",
+      "sourcePngSha256": "f8f7a7a7205ecea009bc9e1e7c42fbde75b059af90a26f08f754d3538a759530",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_weaver_a-summer-z1.jpg",
+      "sourceJpegSha256": "ff11a44eda357df23f92a48957978667d0e00adb65e7539983c0b5d5d36814af",
+      "sourceJpegBytes": 174810,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_weaver_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_weaver_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_weaver_b-summer-z1",
+      "identity": {
+        "state": "trade_weaver_b-summer",
+        "savedStateSHA": "0257adcd75f0b4ed3c7e6d2d4f7b59b483a2d1d82215f6d4a3700d06e0d781d2",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_weaver_b.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "dbf793d49b5aa06979e52504de10be2606e3ed7f82a32cb9c2f6c9bf7f47c026",
+      "repeatRgbaSHA": "dbf793d49b5aa06979e52504de10be2606e3ed7f82a32cb9c2f6c9bf7f47c026",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_weaver_b-summer-z1.png",
+      "sourcePngSha256": "61951569acd7462824107965624c217dce6bffaa7816dd1c1ba17358697a2c7e",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_weaver_b-summer-z1.jpg",
+      "sourceJpegSha256": "3a9655b3b471fb03063b63e413a2229eca824c5135200a7531df017edf8455d9",
+      "sourceJpegBytes": 173523,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_weaver_b.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_weaver_b.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_carpenter_a-summer-z1",
+      "identity": {
+        "state": "trade_carpenter_a-summer",
+        "savedStateSHA": "d8c96798c47aa364d6b7ace4fac33bb31218b795670c43a49470b29c985f21fb",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_carpenter_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "bed4adc120b5a6ab48348865e85dc8f8b2b686b99b829613043dc729c03ee2b2",
+      "repeatRgbaSHA": "bed4adc120b5a6ab48348865e85dc8f8b2b686b99b829613043dc729c03ee2b2",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_carpenter_a-summer-z1.png",
+      "sourcePngSha256": "8f528cf1566058e9aca568fd9efb909f41ff3fdec1e0930f93fbaffa70f74e6b",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_carpenter_a-summer-z1.jpg",
+      "sourceJpegSha256": "5bd24a7030b20dee81f2e4007867927a6ba283b6edda7567934222ecca5fcee7",
+      "sourceJpegBytes": 180631,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_carpenter_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_carpenter_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_miller_b-summer-z1",
+      "identity": {
+        "state": "trade_miller_b-summer",
+        "savedStateSHA": "c1b2047a7b02962e004740a0c15168670a99e352762c0b633f4946df356d0137",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          48.7,
+          40.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_miller_b.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "d86fac9618f7b458d99031a29f80a040f78ed972596d3330bf9b1630dd2250f4",
+      "repeatRgbaSHA": "d86fac9618f7b458d99031a29f80a040f78ed972596d3330bf9b1630dd2250f4",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_miller_b-summer-z1.png",
+      "sourcePngSha256": "20f60c801c414aedc74d49e52def83607615df46144603e268d70169984a47eb",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_miller_b-summer-z1.jpg",
+      "sourceJpegSha256": "a41c7e0836de650b28f382f160f42a0a5e048cbef65006d115041f5e0a7146bb",
+      "sourceJpegBytes": 169028,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_miller_b.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_miller_b.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_a-summer-z06",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "14e3b1489936db36ad0dc8d186d0f449b69023049bc45ebb18c37ab0163a8973",
+      "repeatRgbaSHA": "14e3b1489936db36ad0dc8d186d0f449b69023049bc45ebb18c37ab0163a8973",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z06.png",
+      "sourcePngSha256": "f40349778ca84b4b8f84a4a4084fc3e95228bb92bf0eae6491f6add19d0615d3",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z06.jpg",
+      "sourceJpegSha256": "c4d8b390ed3730e175c97bcc2fdbfa9fe7c50db1c798de051be5cb17e378ac48",
+      "sourceJpegBytes": 160851,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_a-winter-z1",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "11ccbed5b20635122b0a8c800b7ace28d744f856b1193a2e62b7fd3b963df2a1",
+      "repeatRgbaSHA": "11ccbed5b20635122b0a8c800b7ace28d744f856b1193a2e62b7fd3b963df2a1",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z1.png",
+      "sourcePngSha256": "db1ac6f189bf494310cbe32bcdf38c1ce71cdfbde4bfc0aefe4e6c2e6094fe3d",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z1.jpg",
+      "sourceJpegSha256": "7105c2c2da155cc5b9f4ab01f1a0f9753adc732dcf392f2d54ac895ff63e771a",
+      "sourceJpegBytes": 168751,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_a-winter-z06",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "7c6ca2cab125d20cdc8103d5934292ede34e5a2c773ec43de79e982c7e7a92f7",
+      "repeatRgbaSHA": "7c6ca2cab125d20cdc8103d5934292ede34e5a2c773ec43de79e982c7e7a92f7",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z06.png",
+      "sourcePngSha256": "af19b597c21172452d15bc7370e42107e468d63fb483a13fbf046c2f87bce9f0",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z06.jpg",
+      "sourceJpegSha256": "8d0aa07d3bc1c29b6a17900bf43ef7444140bd01975c1c72532191bdee68af7a",
+      "sourceJpegBytes": 143921,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "condition_newcomer_cart_a-summer-z14",
+      "identity": {
+        "state": "condition_newcomer_cart_a-summer",
+        "savedStateSHA": "6d892fbab8cc2c2fabb16f3d3ceb8550cbba61d347bdea7a9b72aba42b650104",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          35.6
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/condition_newcomer_cart_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "9a923d94181755a1b4c9c632aa68a96eceb5c931d7474bab4ef541a4a10488c0",
+      "repeatRgbaSHA": "9a923d94181755a1b4c9c632aa68a96eceb5c931d7474bab4ef541a4a10488c0",
+      "sourcePng": "output/art-architecture/wave37-before-v2/condition_newcomer_cart_a-summer-z14.png",
+      "sourcePngSha256": "eebd0758b81cae34fc192101326cf955435ded77924fc83957a15bdceecbb1a8",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/condition_newcomer_cart_a-summer-z14.jpg",
+      "sourceJpegSha256": "35042f7e3cfb8e2a9ccace44fd8b3b00f3c1917655e9c04063461694526b31a0",
+      "sourceJpegBytes": 191898,
+      "observations": [
+        {
+          "url": "/assets/wave37/condition_newcomer_cart_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/condition_newcomer_cart_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "before",
+      "name": "trade_weaver_a-summer-z14",
+      "identity": {
+        "state": "trade_weaver_a-summer",
+        "savedStateSHA": "0257adcd75f0b4ed3c7e6d2d4f7b59b483a2d1d82215f6d4a3700d06e0d781d2",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_weaver_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "3880ad5ef9cb58564481f8b4ea58035df9dbc131200d4303e301dd073350da8d",
+      "repeatRgbaSHA": "3880ad5ef9cb58564481f8b4ea58035df9dbc131200d4303e301dd073350da8d",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_weaver_a-summer-z14.png",
+      "sourcePngSha256": "6144abce9272b820930c17c9a030de3d2d5992bab1d7f72b9f48e5dd30bd2fb3",
+      "sourceJpeg": "output/art-architecture/wave37-before-v2/trade_weaver_a-summer-z14.jpg",
+      "sourceJpegSha256": "816b92f3bd5448320225e33d75abeb14ca5991b11837eba6a7e5b691259c502c",
+      "sourceJpegBytes": 192531,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_weaver_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_weaver_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "afterReference",
+      "name": "trade_baker_a-summer-z1",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "15b0f70d2b017a9f7fb4ae3b72405268d62f2f4ec60737294fe2d6e530ae4d29",
+      "repeatRgbaSHA": "15b0f70d2b017a9f7fb4ae3b72405268d62f2f4ec60737294fe2d6e530ae4d29",
+      "sourcePng": "output/art-architecture/wave37-after-reference/trade_baker_a-summer-z1.png",
+      "sourcePngSha256": "cd6ec80904e801049519acfbbfb53a01362fa34c04994579e241853d6f488fac",
+      "sourceJpeg": "output/art-architecture/wave37-after-reference/trade_baker_a-summer-z1.jpg",
+      "sourceJpegSha256": "42ca3ece02e320dd885d8f9bf1cd28816ee684d9892a4267a25161137048681a",
+      "sourceJpegBytes": 180702,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "afterReference",
+      "name": "trade_baker_a-summer-z06",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "14e3b1489936db36ad0dc8d186d0f449b69023049bc45ebb18c37ab0163a8973",
+      "repeatRgbaSHA": "14e3b1489936db36ad0dc8d186d0f449b69023049bc45ebb18c37ab0163a8973",
+      "sourcePng": "output/art-architecture/wave37-after-reference/trade_baker_a-summer-z06.png",
+      "sourcePngSha256": "f40349778ca84b4b8f84a4a4084fc3e95228bb92bf0eae6491f6add19d0615d3",
+      "sourceJpeg": "output/art-architecture/wave37-after-reference/trade_baker_a-summer-z06.jpg",
+      "sourceJpegSha256": "c4d8b390ed3730e175c97bcc2fdbfa9fe7c50db1c798de051be5cb17e378ac48",
+      "sourceJpegBytes": 160851,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "afterReference",
+      "name": "trade_baker_a-winter-z1",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "11ccbed5b20635122b0a8c800b7ace28d744f856b1193a2e62b7fd3b963df2a1",
+      "repeatRgbaSHA": "11ccbed5b20635122b0a8c800b7ace28d744f856b1193a2e62b7fd3b963df2a1",
+      "sourcePng": "output/art-architecture/wave37-after-reference/trade_baker_a-winter-z1.png",
+      "sourcePngSha256": "db1ac6f189bf494310cbe32bcdf38c1ce71cdfbde4bfc0aefe4e6c2e6094fe3d",
+      "sourceJpeg": "output/art-architecture/wave37-after-reference/trade_baker_a-winter-z1.jpg",
+      "sourceJpegSha256": "7105c2c2da155cc5b9f4ab01f1a0f9753adc732dcf392f2d54ac895ff63e771a",
+      "sourceJpegBytes": 168751,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    },
+    {
+      "phase": "afterReference",
+      "name": "trade_baker_a-winter-z06",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "7c6ca2cab125d20cdc8103d5934292ede34e5a2c773ec43de79e982c7e7a92f7",
+      "repeatRgbaSHA": "7c6ca2cab125d20cdc8103d5934292ede34e5a2c773ec43de79e982c7e7a92f7",
+      "sourcePng": "output/art-architecture/wave37-after-reference/trade_baker_a-winter-z06.png",
+      "sourcePngSha256": "af19b597c21172452d15bc7370e42107e468d63fb483a13fbf046c2f87bce9f0",
+      "sourceJpeg": "output/art-architecture/wave37-after-reference/trade_baker_a-winter-z06.jpg",
+      "sourceJpegSha256": "8d0aa07d3bc1c29b6a17900bf43ef7444140bd01975c1c72532191bdee68af7a",
+      "sourceJpegBytes": 143921,
+      "observations": [
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedPaintLineage": true
+        }
+      ]
+    }
+  ],
+  "unrunWinterTargets": [
+    "condition_newcomer_cart_a",
+    "condition_ordinary_bench",
+    "condition_prosperous_pots",
+    "condition_strained_barrel",
+    "trade_ale_a",
+    "trade_baker_b",
+    "trade_carpenter_a",
+    "trade_dyer_a",
+    "trade_dyer_b",
+    "trade_inn_a",
+    "trade_miller_b",
+    "trade_tanner_a",
+    "trade_tanner_b",
+    "trade_weaver_a",
+    "trade_weaver_b"
+  ],
+  "evidencePlan": {
+    "selectedJpegs": [
+      {
+        "phase": "afterReference",
+        "path": "output/art-architecture/wave37-after-reference/trade_baker_a-summer-z1.jpg",
+        "sha256": "42ca3ece02e320dd885d8f9bf1cd28816ee684d9892a4267a25161137048681a",
+        "bytes": 180702
+      },
+      {
+        "phase": "afterReference",
+        "path": "output/art-architecture/wave37-after-reference/trade_baker_a-summer-z06.jpg",
+        "sha256": "c4d8b390ed3730e175c97bcc2fdbfa9fe7c50db1c798de051be5cb17e378ac48",
+        "bytes": 160851
+      },
+      {
+        "phase": "afterReference",
+        "path": "output/art-architecture/wave37-after-reference/trade_baker_a-winter-z1.jpg",
+        "sha256": "7105c2c2da155cc5b9f4ab01f1a0f9753adc732dcf392f2d54ac895ff63e771a",
+        "bytes": 168751
+      },
+      {
+        "phase": "afterReference",
+        "path": "output/art-architecture/wave37-after-reference/trade_baker_a-winter-z06.jpg",
+        "sha256": "8d0aa07d3bc1c29b6a17900bf43ef7444140bd01975c1c72532191bdee68af7a",
+        "bytes": 143921
+      },
+      {
+        "phase": "before",
+        "path": "output/art-architecture/wave37-before-v2/condition_newcomer_cart_a-summer-z14.jpg",
+        "sha256": "35042f7e3cfb8e2a9ccace44fd8b3b00f3c1917655e9c04063461694526b31a0",
+        "bytes": 191898
+      },
+      {
+        "phase": "before",
+        "path": "output/art-architecture/wave37-before-v2/trade_weaver_a-summer-z14.jpg",
+        "sha256": "816b92f3bd5448320225e33d75abeb14ca5991b11837eba6a7e5b691259c502c",
+        "bytes": 192531
+      }
+    ],
+    "selectedJpegBytes": 1038654,
+    "maxFolderBytes": 3145728,
+    "rawAll21RetainedOutsideOfficialFolder": "output/art-architecture/wave37-before-v2/captures.json",
+    "noOfficialCopiesYet": true
+  },
+  "limitations": [
+    "Independent visual review complete:25 native PNGs individually opened, no obvious blocker; grounding/occlusion/glyph NOTE retained. Ledger reconciliation remains unapplied.",
+    "Actual d677 after-reference captures precede future ledger-tag commit; not evidence of post-ledger-commit capture. Retain required4 actual after images for that task commit.",
+    "Prepared valid state facts are not naturally evolved careers.",
+    "All16 summer zoom1 request/decode/paint lineage verified;15 target winter variants not captured.",
+    "Condition pots summer-only; condition props omitted below zoom0.8.",
+    "Draw lineage does not prove every pixel visible, glyph readability, or all occlusion.",
+    "Existing LM-R1 provenance aliases already register exact bytes; proposed mark adds no new PNG, contract, consumer, or source/provenance row."
+  ],
+  "visualReview": {
+    "path": ".omo/drafts/wave37-visual-review.md",
+    "sha256": "feda08c5153390553b2111b6c14cf7935e842e2e2a08acb38ab3baec1e055d9c",
+    "individualNativePngsOpened": 25,
+    "before": 21,
+    "afterReference": 4,
+    "verdict": "No obvious blocking placement defect in prepared scenes; NOTE for precise grounding, occlusion and glyph readability. Not unconditional all16 visual PASS.",
+    "reviewerIndependent": true
+  }
+}

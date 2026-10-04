@@ -1,0 +1,149 @@
+{
+  "status": "PUBLISHED_ARCH1_RENDERB_COMPLETE",
+  "head": "90d9b5865bee4dc012f49f6eded135ac85975e78",
+  "base": "bba59ece677351d4a0ef6ea08363aebae3079722",
+  "clone": {
+    "run": "astra-ARCH1-final-clone-90d9b58",
+    "head": "90d9b5865bee4dc012f49f6eded135ac85975e78",
+    "dirty": false,
+    "innerTrackedClean": true,
+    "innerHeadEvidence": ".omo/evidence/final90-inner-head.txt",
+    "remoteExit": 0,
+    "fetchExit": 0,
+    "pass": true,
+    "steps": {
+      "clone": {
+        "exit": 0,
+        "seconds": 315
+      },
+      "npmCi": {
+        "exit": 0,
+        "seconds": 1
+      },
+      "typecheck": {
+        "exit": 0,
+        "seconds": 1
+      },
+      "test": {
+        "exit": 0,
+        "seconds": 966
+      },
+      "build": {
+        "exit": 0,
+        "seconds": 9
+      }
+    },
+    "tests": 4820,
+    "suites": 18,
+    "passed": 4820,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "durationMs": 965232.745882,
+    "logs": ".remote-runs/astra-ARCH1-final-clone-90d9b58/"
+  },
+  "merge": {
+    "run": "astra-ARCH1-final-merge-90d9b58",
+    "head": "90d9b5865bee4dc012f49f6eded135ac85975e78",
+    "dirty": false,
+    "remoteExit": 0,
+    "fetchExit": 0,
+    "pass": true,
+    "base": "bba59ece677351d4a0ef6ea08363aebae3079722",
+    "typecheck": "PASS",
+    "eslint": "37 changed files, no new violation",
+    "buildSeconds": 19.1,
+    "budgetMB": 94.04,
+    "budgetLimitMB": 150,
+    "evidence": "asset-architecture2.86MB/uiaudit1 1.66MB within3MiB each",
+    "geometry": "0 failures,0baseline,0exceptions,0overrides",
+    "nonblocking": [
+      "perf trend102commits stale"
+    ],
+    "log": ".remote-runs/astra-ARCH1-final-merge-90d9b58/run.log"
+  },
+  "publication": {
+    "head": "90d9b5865bee4dc012f49f6eded135ac85975e78",
+    "base": "bba59ece677351d4a0ef6ea08363aebae3079722",
+    "run": "astra-ARCH1-trunk-push-90d9b58",
+    "exit": 0,
+    "protectedHooks": true,
+    "remoteVerifiedBy": "explicit git fetch origin codex/phase15-organic-ground:refs/remotes/origin/codex/phase15-organic-ground; exact rev-parse match",
+    "workbranchDeleted": true,
+    "credentialCacheCleanupExit": 0,
+    "cloneReceipt": ".omo/evidence/final90-clone-summary.json",
+    "mergeReceipt": ".omo/evidence/final90-merge-summary.json",
+    "trendRun": "infra-TREND-90d9b586-90d9b58"
+  },
+  "rawEvidence": [
+    {
+      "path": ".remote-runs/astra-ARCH1-final-clone-90d9b58/run.log",
+      "sha256": "4bcd256985a8abc35f87291873d34ced57ad4aa9b66afd016da2e2b8438fe12a",
+      "bytes": 1036
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-clone-90d9b58/clone-clone.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-clone-90d9b58/clone-npm-ci.log",
+      "sha256": "e1bd021d77a755933c47d3bbb0fd61e2100238d62b95532589d88c833ef557a9",
+      "bytes": 548
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-clone-90d9b58/clone-typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-clone-90d9b58/clone-test.log",
+      "sha256": "3913426d7835f674d382119bf0cd8cc106493f7862da6fe0e2d75b3cf0979873",
+      "bytes": 541053
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-clone-90d9b58/clone-build.log",
+      "sha256": "b8bfe9bb8fc37ef2591ee4fc71f9a94e65c45303556b69d6f5d57a11a949eeb9",
+      "bytes": 148826
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-clone-90d9b58/exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-merge-90d9b58/run.log",
+      "sha256": "d2e5406047880b2fa5493c048368621032673fc157252cdfa9ef0ce8b71a9acc",
+      "bytes": 9446
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-final-merge-90d9b58/exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-trunk-push-90d9b58/run.log",
+      "sha256": "355c4a8737835eef3a9fd122cea824203b7e15ef54958d982f6fd6fbb582bdbd",
+      "bytes": 10225
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-trunk-push-90d9b58/exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    },
+    {
+      "path": ".remote-runs/astra-ARCH1-trunk-push-90d9b58/timing.env",
+      "sha256": "2e8afafab6eb798f3d2864c371d65ab93cbbfa57e968633f24888aca0464f0db",
+      "bytes": 77
+    }
+  ],
+  "historicalFailurePreserved": {
+    "head": "d6776f2ffeb8c88ee5c3b7402f4a708d4c04ed73",
+    "passed": 4819,
+    "failed": 1,
+    "build": "NOT_RUN",
+    "followupFix": "92a566d7"
+  },
+  "scope": "ARCH1/RENDER-B published90d9 only. W37 post-ledger after4 and later season/field tasks are not covered."
+}

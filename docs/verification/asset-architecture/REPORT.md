@@ -1,5 +1,8 @@
 # ASSET-ARCH-1 검증 기록
 
+> 최종 상태: ARCH1·RENDER-B는 본선 `90d9b586` 게시 완료다. 아래 중간 단계의 미완료·대기 문장은 당시 이력이며, 문서 끝 최종 게시 절과 [영수증](final-publication.json)이 해당 관문을 닫는다. d677 clone 실패는 그대로 보존한다.
+
+
 상태: **코어·분리 데이터 런타임 검증 통과, 데이터 설치 반영, QA003 통합 기하·smoke 통과, 최종 회귀·병합 대기**. 기준 본선 `d4973e85d3d4039cf6f8091c33c1047239e443ee`, 작업 가지 `astra/renderB-asset-arch-1`. 실행기는 DGX이며 무거운 실행은 현재 실행기의 동시 2개 대기열을 사용한다. 이 문서는 완료 보고서가 아니다.
 
 ## 구현 범위와 판단
@@ -107,3 +110,11 @@ QA003 통합 smoke 첫 실행 `astra-ARCH1-qa003-smoke-ab67dcb`는 `--states` �
 `astra-ARCH1-merge-check-d6776f2`는 이미 통과한 역사적 관문이다. 이 수정 뒤 최종 commit의 check:merge·깨끗한 clone 전체시험/빌드·보호된 본선push는 다시 필요하며, 첫 clone 실패를 통과로 고쳐 기록하지 않는다.
 
 수정 커밋 `92a566d7`의 별도 DGX 실제 재촬영 `astra-ARCH1-provenance-smoke-92a566d`는4/4·A/A4/4·오류0이며 QA003 화면과 전체 identity 및 RGBA 차이0이다. 부모가 새 원본PNG4장을 각각 열어 새 회귀 없음을 확인했다. 기존 경고 배지·금색 고리 가림, 작은 줌 글자와 영주관 지붕 눈 부재는 남는다. [수정 뒤 실제 화면 영수증](provenance-smoke.json)에 조건과 원본 해시를 기록했다. 동일 바이트 JPEG만 기존 물리 파일을 공유하여 논리28캡처/물리16JPEG이며, 새 촬영을 과거 촬영으로 대체하지 않았다. 마지막 증거 커밋의 전체 clone 관문과 본선 push는 여전히 대기다.
+
+## 최종 90d9 본선 게시 — ARCH1·RENDER-B 완료
+
+정확한 clean HEAD `90d9b5865bee4dc012f49f6eded135ac85975e78`의 `astra-ARCH1-final-clone-90d9b58`은 clone·npm ci·typecheck·전체시험 **4820/4820(실패0·skip0)**·build 모두 exit0이다. `astra-ARCH1-final-merge-90d9b58`도 check:merge PASS, 변경37파일 ESLint 신규위반0, 기하 실패/기준선/예외/override0, build PASS다. perf-trend102commits stale 경고는 비차단으로 보존한다.
+
+`astra-ARCH1-trunk-push-90d9b58`은 보호된 pre-push check:merge를 거쳐 exit0으로 `bba59ece → 90d9b586`을 `codex/phase15-organic-ground`에 게시했다. 부모가 해당 remote ref를 명시적으로 fetch/rev-parse하여 exact SHA를 확인했다. [final-publication.json](final-publication.json)에 clone/merge 요약, 게시 확인과 원본 로그 경로·SHA256을 저장했다. 과거 d677 clone4819/4820·build 미실행 기록을 성공으로 고쳐 쓰지 않는다. 수정92a566d7와 그 뒤 smoke4의 증거도 각각 유지한다.
+
+따라서 앞 절의 최종 clone/build/push 대기는 이90d9 관문으로 해소됐으며 ASSET-ARCH-1과 RENDER-B 출범 관문을 완료했다. UI 전체 연결·잔여425 전체·추가 계절/밭 작업은 포함하지 않는다. 별도 [W37 장부 조정](../wave37-reconcile/REPORT.md)은 후속 working-tree16표시 적용이며 그 작업 commit 뒤 실제 after4는 아직 대기다. ARCH1 완료로 W37의 새 runtime 관문을 대체하지 않는다.
