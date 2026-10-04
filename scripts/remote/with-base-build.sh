@@ -13,11 +13,12 @@ git worktree add -q --detach "$dir" "$base_sha"
 ln -sfn "$PWD/node_modules" "$dir/node_modules"
 # No file watching (viteNoWatch.config.ts): this folder's server would also watch the base worktree under .remote/, and
 # two watched trees ran the DGX out of inotify watches (ENOSPC, NAT-4).
-node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$port" --strictPort > .remote/vite-this.log 2>&1 &
-this=$!
-(cd "$dir" && exec node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$base_port" --strictPort) > .remote/vite-base.log 2>&1 &
-base=$!
-trap 'kill $this $base 2>/dev/null; git worktree remove --force "$dir" 2>/dev/null || true' EXIT
+. scripts/remote/devServers.sh   # both servers stop on any exit, failures and a stopped run included
+fls_serve .remote/vite-this.log --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$port" --strictPort
+this=$FLS_SERVE_PID
+fls_serve .remote/vite-base.log --in "$dir" --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$base_port" --strictPort
+base=$FLS_SERVE_PID
+fls_on_exit 'git worktree remove --force "$dir" 2>/dev/null || true'
 export URL="http://127.0.0.1:$port/" BASE_URL="http://127.0.0.1:$base_port/"
 for url in "$URL" "$BASE_URL"; do
   for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done

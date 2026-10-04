@@ -11,19 +11,20 @@ out=${2:-docs/verification/uiaudit1/fixb}
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
 base_port=$((port + 50))
 dir=${TMPDIR:-/tmp}/fls-base-$port
-node_modules/.bin/vite --host 127.0.0.1 --port "$port" --strictPort > .remote/vite-this.log 2>&1 &
-this=$!
+. scripts/remote/devServers.sh   # both servers stop on any exit, failures and a stopped run included
+fls_serve .remote/vite-this.log --host 127.0.0.1 --port "$port" --strictPort
+this=$FLS_SERVE_PID
 base=""
 urls="http://127.0.0.1:$port/"
 if [ "$base_sha" != none ]; then
   git worktree remove --force "$dir" 2>/dev/null || true
   git worktree add -q --detach "$dir" "$base_sha"
   ln -sfn "$PWD/node_modules" "$dir/node_modules"
-  (cd "$dir" && exec node_modules/.bin/vite --host 127.0.0.1 --port "$base_port" --strictPort) > .remote/vite-base.log 2>&1 &
-  base=$!
+  fls_serve .remote/vite-base.log --in "$dir" --host 127.0.0.1 --port "$base_port" --strictPort
+  base=$FLS_SERVE_PID
   urls="$urls http://127.0.0.1:$base_port/"
 fi
-trap 'kill $this $base 2>/dev/null; [ -n "$base" ] && git worktree remove --force "$dir" 2>/dev/null || true' EXIT
+fls_on_exit '[ -n "$base" ] && git worktree remove --force "$dir" 2>/dev/null || true'
 for url in $urls; do
   for _ in $(seq 1 90); do curl -sf "$url" > /dev/null && break; sleep 1; done
   curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; exit 1; }

@@ -7,9 +7,8 @@
 #   scripts/remote/run.sh render-UIAUDIT-hud3-<sha7> --detach -- bash scripts/uiaudit1HudThrice.sh
 set -u
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
-node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$port" --strictPort > .remote/vite.log 2>&1 &
-vite=$!
-trap 'kill $vite 2>/dev/null' EXIT INT TERM HUP
+. scripts/remote/devServers.sh   # the server stops on any exit, failures and a stopped run included
+fls_serve .remote/vite.log --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$port" --strictPort
 export URL="http://127.0.0.1:$port/"
 for _ in $(seq 1 120); do curl -sf "$URL" > /dev/null && break; sleep 1; done
 out=docs/verification/uiaudit1/hud

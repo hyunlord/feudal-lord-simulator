@@ -14,6 +14,7 @@
 //   --confirm-only   do not measure; confirm --commits against their stored comparison commits
 //   --force          run the A-B for every trend scene, suspicion or not (to check the rule)
 import { spawn, spawnSync } from "node:child_process";
+import { spawnServer } from "../serverProcess";
 import { existsSync, mkdirSync, mkdtempSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { homedir, hostname, tmpdir } from "node:os";
 import { join } from "node:path";
@@ -40,7 +41,7 @@ async function measure(commit: string, tree: string) {
   const work = mkdtempSync(join(tmpdir(), "fls-trend-")); const build = join(work, "build");
   const built = spawnSync(join(tree, "node_modules/.bin/vite"), ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"], { cwd: tree, encoding: "utf8" });
   if (built.status !== 0) throw new Error(`${commit}: build failed ${built.stderr.slice(-300)}`);
-  const preview = spawn("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
+  const preview = spawnServer("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
   const url = `http://127.0.0.1:${port}/`;
   const scenes: Record<string, { runs: number; medians: Record<string, number | null>; values: Record<string, number[]> }> = {};
   try {
