@@ -53,3 +53,51 @@
 
 ## ER-12 저장
 - `GameState.registry`(저장 v47): 발생 원장, 기간 있는 조건, 가문 이름·문장. 영주 모드가 아니면 없다.
+
+---
+
+# LM-E9b — v4 정본 들이기(R1~R5)
+
+근거: 콘텐츠 정본 [v4](content-drafts-20261002/v4/README.md)(사용자 판정 2026-10-04: 앞선 판은 기록용), 그 [REMAINING](content-drafts-20261002/v4/REMAINING.md) R1~R5, READ_MODEL·ADAPTER_CONTRACTS·COMMAND_CONTRACT. 기초 원칙: 엔진이 진실, 렌더는 읽기 모델 API로만, 콘텐츠는 등록기 데이터.
+
+## ER-13 v4 들이기
+- `scripts/buildRegistryV4.ts`가 `registry-v4.json`·`events-v4.json`에서 실행부만 뽑아 `src/content/registry/v4Entries.generated.ts`(항목)와 `src/content/registry/v4Copy.generated.ts`(제목·본문·선택 문구·원장 줄)를 쓴다. 사건마다 코드를 쓰지 않는다.
+- v4가 정본이다. LM-E9의 초안 11개(`draftEvents.ts`)는 같은 id의 v4 항목으로 바뀐다. 홈 청원 열둘(ER-5)은 그대로다.
+- 종류:
+  - `new_event_draft`(172): 계절 후보로 새 발생을 만든다(새 콘텐츠 예산: 한 계절 1, 한 해 2).
+  - `existing_petition_variant`(19)·`existing_event_copy_revision`(9): 새 발생을 만들지 않는다. 원래 엔진의 같은 발생에 붙는 문구를 고른다(`registryVariantFor` 읽기 API). 원래 발생의 기한·선택·효과는 그대로다.
+
+## ER-14 식 평가(READ_MODEL DSL)
+- 노드: `field`(경로), `literal`, `compare`(eq·neq·gt·gte·lt·lte·in·contains·contains_all·none_in·not_contains·has_year_inclusive), `all`·`any`·`not`, `exists`, `call`(허용 목록의 엔진 읽기 함수만), `derived`(READ_MODEL의 파생 값), 연산(add·subtract·multiply·divide·floor·max·min·coalesce·count·sum·project·mapGet·first·findBy·filter·every).
+- 경로의 뿌리: `state`, `bound.<이름>`, 항목 이름(`item`, `as`로 정한 이름), `selectors.<셀렉터>`(stateCalendar·estatesOf·attention·autoplayBuildAction.<kind>).
+- **결측**: 결측과의 비교는 neq까지 모두 거짓이다. 결측은 `exists`·`not exists`로만 본다. null은 결측과 다르다. mapGet·findBy가 못 찾으면 null이다.
+- 반사·eval은 없다. 허용 목록 밖의 호출·파생·노드는 그 항목을 읽을 때 막는다(ER-18).
+
+## ER-15 대상 바인딩
+- 바인딩은 의존 순서로 푼다(순환은 읽을 때 오류). 각 바인딩은 `from` 컬렉션에서 `where`로 거르고 `order`(codepoint 정렬)로 늘어놓는다.
+- **조건이 맞는 첫 조합(R2)**: `select: first`라도 첫 항목에 고정하지 않는다. 바인딩 후보 조합을 정해진 순서로 시도해 항목 조건이 맞는 첫 조합을 고른다(`stable_first_after_required_predicates`). 예: 첫 소송에 낼 증거가 없으면 증거를 낼 수 있는 다음 소송을 고른다.
+- `missing: invalidate`인 바인딩이 비면 그 범위를 무효로 한다. `requiredForChoices`가 있으면 그 선택만 끄고, 없으면 항목을 막는다.
+
+## ER-16 명령
+- 선택의 명령 인자 안의 `{binding: 경로}`를 한 번 풀어 엔진 명령으로 보낸다. 초안의 예상 효과(parameters)는 인자가 아니다.
+- 명령마다 요청대로 됐는지 본다(FX17-3를 COMMAND_CONTRACT의 모든 명령으로 넓힘). 하나라도 아니면 선택 전체가 들어가지 않는다.
+- 답할 때 바인딩과 조건을 다시 본다(`revalidate`).
+
+## ER-17 켜짐과 실효 선택
+- 항목을 읽을 때 지원 여부를 판정한다: `unsupportedFilters`가 있거나, 허용 목록 밖의 호출·파생·셀렉터를 쓰면 그 항목을 막고 이유를 남긴다.
+- 선택은 `blocked_unsupported_effect`(새 효과, R5)·`blocked_until_atomic_adapter`(R4)면 꺼진다.
+- 켜진 실효 선택이 둘 이상일 때만 낸다. 명령 없는 선택(보류)은 ER-19의 시간의 대가가 있을 때만 실효로 센다.
+
+## ER-18 집계
+- `registryV4Support()`: 항목마다 켜짐/막힘과 이유, 선택마다 켜짐/꺼짐과 이유. 보고서와 관문이 이것으로 "켜진 사건 수"를 센다.
+
+## ER-19 보류의 시간의 대가(R3, 사용자 판정 2026-10-04)
+- 보류는 명령이 없어도 시간이 대가를 치르게 할 때만 진짜 선택이다. 대가가 없으면 숨긴다.
+- 대가(묶인 대상에 따라):
+  - 소송·청구: 기한이 지날수록 청구가 약해진다(보류한 청구의 힘이 철마다 준다).
+  - 상대가 있는 일: 상대가 움직인다(소송이면 피고의 후원이 는다).
+  - 보내는 세력: 관계가 준다.
+- 수치는 [R3 절](#er-19-수치)에 둔다(구현 때 채움).
+
+## ER-20 새 효과·새 청원(R5)
+- `EFFECT_CATALOG`의 새 효과를 막힌 선택 수가 많은 것부터 만든다. 새 청원 정의(057·058)는 청원 수명주기와 함께 만든다.

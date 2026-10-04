@@ -13,6 +13,7 @@ import { estatesOf } from "../src/engine/estates";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { hashSeed } from "../src/engine/prng";
 import { boundTargets, conditionHolds, registryEntries, registryOf } from "../src/engine/registry";
+import { bindEntry, registryV4Support, v4Entry } from "../src/engine/registryV4";
 import { stateCalendar } from "../src/engine/scenarioState";
 import { pendingAudits, stewardshipOf } from "../src/engine/stewardship";
 import { advanceTick } from "../src/engine/tick";
@@ -49,6 +50,16 @@ export function registryEntryDiagnosis(seed: number, years: number, out?: string
       const held = targets.filter(boundId => conditionHolds(state, entry.conditions, boundId));
       if (held.length > 0) { count.conditionsHeld += 1; count.firstHeldYear ??= year; }
       if (held.some(boundId => hashSeed(state.seed, `registry:${entry.id}:${boundId}`, index) % 1000 < entry.frequency.chancePermille)) count.drawPassed += 1;
+      if (registryOf(state).occurrences.some(occurrence => occurrence.entryId === entry.id && occurrence.offeredTick === state.tick)) count.offered += 1;
+    }
+    // LM-E9b: the canon v4's running entries — in their window, bound (conditions held), drawn under their chance, offered.
+    for (const support of registryV4Support().filter(item => item.runs)) {
+      const entry = v4Entry(support.id)!;
+      if (year < entry.calendar.yearMinInclusive || year > entry.calendar.yearMaxInclusive) continue;
+      const count = counts[entry.id] ??= { inYears: 0, withTarget: 0, conditionsHeld: 0, drawPassed: 0, offered: 0, firstHeldYear: null };
+      count.inYears += 1;
+      if (bindEntry(state, entry) !== null) { count.conditionsHeld += 1; count.firstHeldYear ??= year; }
+      if (hashSeed(state.seed, `registry-v4:${entry.id}`, index) % 1000 < entry.frequency.chancePermille) count.drawPassed += 1;
       if (registryOf(state).occurrences.some(occurrence => occurrence.entryId === entry.id && occurrence.offeredTick === state.tick)) count.offered += 1;
     }
     const estates = estatesOf(state);
