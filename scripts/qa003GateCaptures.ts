@@ -50,7 +50,7 @@ const SEASONS: Readonly<Record<string, Readonly<Record<"summer" | "winter", numb
 type RockScene = { readonly name: string; readonly land: string; readonly seed: number; readonly ticks: Readonly<Record<"summer" | "winter", number>>;
   readonly centre: readonly [number, number]; readonly rock: readonly [number, number] };
 const ROCKS: readonly RockScene[] = [
-  { name: "rock-river", land: "core:open_field", seed: 5, ticks: { summer: 1003, winter: 3002 }, centre: [-256, 1408], rock: [0, 0] },
+  { name: "rock-river", land: "core:open_field", seed: 5, ticks: { summer: 1003, winter: 3002 }, centre: [-256, 1408], rock: [-330, 110] },
   { name: "rock-chalk", land: "core:chalk_downs", seed: 1, ticks: { summer: 1004, winter: 3002 }, centre: [673, 1302], rock: [285, 55] },
 ];
 const ROCK_VIEW = { width: 1600, height: 1100 };
