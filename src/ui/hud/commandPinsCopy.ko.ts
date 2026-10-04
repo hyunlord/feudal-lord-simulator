@@ -11,6 +11,10 @@ export const COMMAND_PINS_COPY = {
   locked: (stage: string) => `${stage} 이후`,
   zone: "장려 구역",
   zoneNote: "구역을 칠하면 마을이 그 안에 짓습니다",
+  /** Astra B02: the direction layer — the lord's conditions in the ledger's lord tab. */
+  direction: "방향",
+  directionNote: "방침·장려금·시장 부담",
+  directionLocked: "첫 청원에 답한 뒤",
   /** The town builds the rest (the drawer's catalogue is the sandbox's). */
   townBuilds: "다른 건물은 마을이 스스로 짓습니다",
   close: "닫기",

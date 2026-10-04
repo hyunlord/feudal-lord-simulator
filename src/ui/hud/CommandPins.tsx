@@ -29,12 +29,14 @@ export function publicWorkPins(state: GameState): readonly CommandPin[] {
   });
 }
 
-export function CommandPins({ state, onPublicWork, onZone, children = null }: {
+export function CommandPins({ state, onPublicWork, onZone, direction = null, children = null }: {
   readonly state: GameState;
   /** Arms the public work's placement tool. */
   readonly onPublicWork: (kind: BuildingKind) => void;
   /** Opens the zone layer (the encouragement zones). */
   readonly onZone: () => void;
+  /** Astra B02: the direction layer's pin — the lord's conditions, open after his first answer (`directionAccess`). */
+  readonly direction?: Readonly<{ open: boolean; onOpen: () => void }> | null;
   /** Other lord-mode commands' pins (LM-R1's other screens add theirs here). */
   readonly children?: ReactNode;
 }): ReactElement {
@@ -50,6 +52,11 @@ export function CommandPins({ state, onPublicWork, onZone, children = null }: {
         <Button type="button" className="command-pin" data-command-pin="zone" onPress={() => onZone()} variant="secondary">
           <UiIcon sheet="layer" cell="zone" /><span className="command-pin-text"><strong>{COPY.zone}</strong><small>{COPY.zoneNote}</small></span>
         </Button>
+        {direction === null ? null : <Button type="button" className="command-pin" data-command-pin="direction" aria-disabled={!direction.open}
+          onPress={() => { if (direction.open) direction.onOpen(); }} variant="secondary">
+          <UiIcon sheet="layer" cell="direction" /><span className="command-pin-text"><strong>{COPY.direction}</strong>
+            <small>{direction.open ? COPY.directionNote : COPY.directionLocked}</small></span>
+        </Button>}
         {children}
       </div>
       <p className="command-pins-note">{COPY.townBuilds}</p>

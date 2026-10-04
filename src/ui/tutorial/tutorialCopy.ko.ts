@@ -48,7 +48,7 @@ export const TUTORIAL_COPY = {
     defense: "목책 단계에서 열립니다",
   },
   lockedTool: "첫 안내를 마치면 열립니다",
-  lockedLayer: { zone: "첫 생산 뒤에 열립니다", direction: "첫 청원 뒤에 열립니다" },
+  lockedLayer: { zone: "첫 생산 뒤에 열립니다", direction: "첫 청원에 답한 뒤에 열립니다", directionLordMode: "영주 모드에서 열립니다" },
   layers: { direct: "직접", zone: "구역", direction: "방향" },
   layerGroup: "조작 층위",
   progress: (current: number, target: number) => `${current}/${target}`,

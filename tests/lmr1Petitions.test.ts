@@ -29,6 +29,11 @@ import { WAVE44_IMAGES } from "../src/ui/wave44ArtManifest.generated";
 import { LORD_SLICE_FACTIONS } from "../src/content/lordSliceConfig";
 import { lordSliceFactionsMet } from "../src/engine/lordSlice";
 import { factionRows } from "../src/ui/chronicle/factionTabModel";
+import { directionAccess, tutorialAccess } from "../src/ui/tutorial/tutorialModel";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { CommandPins } from "../src/ui/hud/CommandPins";
+import { DEFAULT_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 
 const SEASON = 1_000;
 const inbox = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8");
@@ -214,4 +219,24 @@ test("LM-R1 the chronicle's factions in lord mode: the five the start introduces
   // Outside lord mode (no agency) every faction is listed, as before.
   const { agency: _agency, ...sandbox } = firstPetition;
   assert.equal(factionRows(sandbox as GameState).length, firstPetition.factions?.factions.length);
+});
+
+test("LM-R1 (Astra B02): the direction layer opens with the lord's first answer, and its pin opens the lord's conditions", () => {
+  const before = directionAccess(firstPetition);
+  assert.deepEqual(before, { open: false, lock: "petition" });
+  const petition = open(firstPetition);
+  const answered = gameReducer(firstPetition, { type: "answer_estate_petition", petitionId: petition.id, grant: true });
+  assert.deepEqual(directionAccess(answered), { open: true, lock: "petition" });
+  // The tutorial's access carries it in every branch (off, running, finished).
+  for (const [enabled, index] of [[false, 0], [true, 0], [true, 999]] as const) {
+    assert.equal(tutorialAccess(enabled, index, false, directionAccess(answered)).layers.direction, true);
+    assert.equal(tutorialAccess(enabled, index, false, before).layers.direction, false);
+  }
+  const pins = (state: GameState) => renderToStaticMarkup(createElement(CommandPins, { state, onPublicWork: () => undefined, onZone: () => undefined,
+    direction: { open: directionAccess(state).open, onOpen: () => undefined } }));
+  assert.match(pins(firstPetition), /data-command-pin="direction" aria-disabled="true"/);
+  assert.doesNotMatch(pins(answered), /data-command-pin="direction" aria-disabled="true"/);
+  // Outside lord mode there are no conditions to set: shut, and it says lord mode.
+  const campaign = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, seed: 1 })!;
+  assert.deepEqual(directionAccess(campaign), { open: false, lock: "lord_mode" });
 });

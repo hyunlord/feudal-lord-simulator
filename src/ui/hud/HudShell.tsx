@@ -102,7 +102,10 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
             aria-pressed={layer === item} aria-disabled={!open} data-layer={item}
             data-pulse={pulse !== null && pulse.key === `layer:${item}` ? `${pulse.key}#${pulse.nonce}` : undefined}
             onPress={() => {
-              if (!open) { setNote(HUD_COPY.layerLocked(TUTORIAL_COPY.layers[item], TUTORIAL_COPY.lockedLayer[item === "direction" ? "direction" : "zone"])); return; }
+              if (!open) {
+                const lock = item !== "direction" ? "zone" : access.directionLock === "petition" ? "direction" : "directionLordMode";
+                setNote(HUD_COPY.layerLocked(TUTORIAL_COPY.layers[item], TUTORIAL_COPY.lockedLayer[lock])); return;
+              }
               setNote(null); onChange(item);
             }} variant="toggle">
             <UiIcon sheet="layer" cell={item} />{TUTORIAL_COPY.layers[item]}{open ? null : <UiIcon sheet="lock" cell="locked" className="control-layer-lock" />}
@@ -189,7 +192,7 @@ export function CrisisIcons({ rows: all, onInspect, lead = null }: { readonly ro
   );
 }
 
-type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map" | "lord";
+export type LedgerTab = "stock" | "alerts" | "rights" | "view" | "map" | "lord";
 /**
  * Ledger drawer (S-26): resource x storage with the total, this week's change and (for food) how long it lasts; a
  * row lights the buildings holding it on the map, a column head opens that store's inspector (UX-3R2). Alerts,
@@ -247,8 +250,10 @@ export function RightsRegister({ view, onPerson }: { readonly view: LordshipView
   );
 }
 
-export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle, onPerson }: {
+export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, history = null, food = { days: null }, highlighted = [], onHighlight, onOpenChronicle, onPerson, initialTab = "stock" }: {
   readonly state: GameState; readonly onInspect: (id: string) => void; readonly onClose: () => void;
+  /** LM-R1 (Astra B02): the tab it opens on (the direction layer opens it on the lord's conditions). */
+  readonly initialTab?: LedgerTab;
   readonly viewTab: ReactNode; readonly mapTab: ReactNode;
   /** CHRON-1: the [연대기] tab opens the chronicle screen (a modal: time stops). */
   readonly onOpenChronicle?: () => void;
@@ -257,7 +262,7 @@ export function LedgerDrawer({ state, onInspect, onClose, viewTab, mapTab, histo
   readonly history?: StoreStockHistory | null; readonly food?: { readonly days: number | null };
   readonly highlighted?: readonly string[]; readonly onHighlight?: (ids: readonly string[]) => void;
 }) {
-  const [tab, setTab] = useState<LedgerTab>("stock");
+  const [tab, setTab] = useState<LedgerTab>(initialTab);
   const matrix = ledgerMatrix(state);
   const alerts = alertStackRows(state);
   const townAle = townAleView(state);

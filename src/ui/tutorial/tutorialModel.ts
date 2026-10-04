@@ -1,5 +1,7 @@
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../content/buildingConfig";
 import type { GameState } from "../../engine/engine.types";
+import { stewardshipOf } from "../../engine/stewardship";
+import { lordMode } from "../../engine/townAgency";
 import type { PlacementTool } from "../../render/renderer";
 import type { ZoneBrushTarget } from "../../render/zoneBrushInteraction";
 import { applyOpeningVillageToTile, OPENING_VILLAGE_CENTER, openingVillageBuildings } from "../../state/openingVillage";
@@ -154,6 +156,8 @@ export type TutorialAccess = {
   readonly zoneTargets: (target: TutorialZoneTarget) => boolean;
   /** Arable brush card in the trade (생업) category (direct layer). */
   readonly arableCard: boolean;
+  /** LM-R1 (Astra B02): why the direction layer is shut — before the lord's first answer, or outside lord mode. */
+  readonly directionLock: "petition" | "lord_mode";
 };
 
 const ALL_OPEN: TutorialAccess = {
@@ -162,6 +166,7 @@ const ALL_OPEN: TutorialAccess = {
   layers: { direct: true, zone: true, direction: false },
   zoneTargets: () => true,
   arableCard: true,
+  directionLock: "lord_mode",
 };
 
 const stepAt = (id: TutorialStepId): number => TUTORIAL_STEP_IDS.indexOf(id);
@@ -171,12 +176,13 @@ const stepAt = (id: TutorialStepId): number => TUTORIAL_STEP_IDS.indexOf(id);
  * category (the arable brush, then the barn and mill) at the food step; the sawmill at its step; storage (the granary)
  * and the zone layer, with plots only, at the zone step; public buildings and the other trade and storage tools when
  * the tutorial ends. Defence opens with the palisade stage (`defenseOpen`: the proclamation is possible or done); the
- * direction layer stays closed (petitions, P2).
+ * direction layer with the lord's first answer in lord mode (`directionAccess`).
  */
-export function tutorialAccess(enabled: boolean, index: number, defenseOpen = false): TutorialAccess {
-  if (!enabled) return ALL_OPEN;
+export function tutorialAccess(enabled: boolean, index: number, defenseOpen = false, direction: DirectionAccess = SHUT): TutorialAccess {
+  const open = { ...ALL_OPEN, layers: { ...ALL_OPEN.layers, direction: direction.open }, directionLock: direction.lock };
+  if (!enabled) return open;
   // Finished: everything is open but defence, which waits for the palisade stage (research E: "방어·권리 계속 숨김").
-  if (index >= TUTORIAL_STEP_IDS.length) return defenseOpen ? ALL_OPEN : { ...ALL_OPEN, categories: { ...ALL_OPEN.categories, defense: false } };
+  if (index >= TUTORIAL_STEP_IDS.length) return defenseOpen ? open : { ...open, categories: { ...open.categories, defense: false } };
   const reached = (id: TutorialStepId) => index >= stepAt(id);
   const trade = reached("arable"); const chain = reached("food_chain"); const zone = reached("zone_unlock");
   const storage = zone;
@@ -187,10 +193,26 @@ export function tutorialAccess(enabled: boolean, index: number, defenseOpen = fa
   return {
     categories: { living: true, paths: true, trade, storage, public: false, defense: false },
     tools: tool => openTools.has(tool),
-    layers: { direct: true, zone, direction: false },
+    layers: { direct: true, zone, direction: direction.open },
     zoneTargets: target => zone && target === "burgage",
     arableCard: trade,
+    directionLock: direction.lock,
   };
+}
+
+export type DirectionAccess = Readonly<{ open: boolean; lock: TutorialAccess["directionLock"] }>;
+const SHUT: DirectionAccess = { open: false, lock: "lord_mode" };
+
+/**
+ * LM-R1 (Astra B02): the direction layer — the lord's conditions (policy, subsidies, market dues) — opens in lord mode
+ * once the lord has answered a petition: a political one (any answer but lapsing) or an estate's he decided himself.
+ * Outside lord mode there are no conditions to set, and it says so.
+ */
+export function directionAccess(state: GameState): DirectionAccess {
+  if (!lordMode(state)) return SHUT;
+  const political = (state.politics?.petitions ?? []).some(petition => petition.response !== undefined && petition.response !== "expired");
+  const estate = stewardshipOf(state).petitions.some(petition => petition.decidedBy === "lord" && (petition.status === "granted" || petition.status === "refused"));
+  return { open: political || estate, lock: "petition" };
 }
 
 // ---- Suggested spots -------------------------------------------------------------------------------------------

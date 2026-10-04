@@ -18,7 +18,7 @@ import { humanizeTicks } from "../gameTimeCopy.ko";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
 import type { StewardTone } from "../uiArt";
 import {
-  currentStepIndex, newCount, placedCount, stepAction, stepProgress, stepTarget, suggestedBuildingSpot, tutorialAccess,
+  currentStepIndex, newCount, placedCount, stepAction, stepProgress, stepTarget, suggestedBuildingSpot, tutorialAccess, directionAccess,
   TUTORIAL_STEP_IDS, type BuildCategoryKey, type ControlLayer, type TutorialAccess, type TutorialAction, type TutorialStepId,
 } from "./tutorialModel";
 import { readTutorialRecord, writeTutorialRecord, type TutorialRecord } from "./tutorialStore";
@@ -138,7 +138,9 @@ export function useTutorialController(input: {
   const index = enabled ? currentStepIndex(state, acks) : TUTORIAL_STEP_IDS.length;
   const running = enabled && index < TUTORIAL_STEP_IDS.length;
   const defenseOpen = state.era !== "hamlet" || canProclaimPalisadeEra(state);
-  const access = useMemo(() => tutorialAccess(enabled, index, defenseOpen), [enabled, index, defenseOpen]);
+  const direction = directionAccess(state);
+  // why: the two fields, not the object (it is new every render)
+  const access = useMemo(() => tutorialAccess(enabled, index, defenseOpen, direction), [enabled, index, defenseOpen, direction.open, direction.lock]); // eslint-disable-line react-hooks/exhaustive-deps
   const stepId = running ? TUTORIAL_STEP_IDS[index]! : null;
   const zoneRadius = input.zoneTool?.radius ?? 2;
   const armed = { tool: input.selectedTool, zone: input.zoneTool?.target ?? null, layer: input.layer };

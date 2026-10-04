@@ -79,7 +79,7 @@ import { Inspector } from "./ui/InspectorView";
 import { QaOverlay } from "./ui/qa/QaOverlay";
 import { hudVisibility, reduceUi, topModal } from "./ui/stateMachine/uiStateMachine";
 import { useUiStateMachine } from "./ui/stateMachine/useUiStateMachine";
-import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill } from "./ui/hud/HudShell";
+import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill, type LedgerTab } from "./ui/hud/HudShell";
 import { StuckGoodsChip, stuckGoodsChipView } from "./ui/hud/StuckGoodsChip";
 import { hudStuckRows } from "./ui/hud/stuckStockView";
 import { chapterFlow, goalPin, type GoalPinAction } from "./ui/hud/goalPinModel";
@@ -140,6 +140,8 @@ export function App() {
   const [drainTool, setDrainTool] = useState(false);
   // UX-1: the control layer (직접 / 구역 / 방향) and the goal drawer.
   const [layer, setLayer] = useState<ControlLayer>("direct");
+  // LM-R1 (Astra B02): the direction layer is the lord's conditions — the ledger opened on its lord tab.
+  const [ledgerStart, setLedgerStart] = useState<LedgerTab>("stock");
   // UX-1: the left inspector (a warning's `[보기]`: cause and action of that building).
   const [inspectedId, setInspectedId] = useState<string | null>(null);
   // UI-5: the person card on screen (a modal) and the person a chronicle opens on.
@@ -151,6 +153,8 @@ export function App() {
   const [chapterGoalsView, setChapterGoalsView] = useState(false);
   useEffect(() => { if (topModal(ui) !== "chapter_preview") setChapterGoalsView(false); }, [ui]);
   const openInspector = useCallback((id: string) => { setInspectedId(id); sendUi({ type: "select" }); }, [sendUi]);
+  const openConditions = useCallback(() => { setLedgerStart("lord"); if (uiRef.current.mode !== "ledger") sendUi({ type: "toggle_ledger" }); }, [sendUi, uiRef]);
+  useEffect(() => { if (ui.mode !== "ledger") setLedgerStart("stock"); }, [ui.mode]);
   // The map's own selection card (GameCanvas) takes the same slot; closing it there leaves the selection state.
   const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi, uiRef]);
   const palisadeDraftRef = useRef(palisadeDraft);
@@ -550,7 +554,7 @@ export function App() {
         ) : null}
         {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot" data-frame="slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} stuck={stuck} onClose={() => sendUi({ type: "deselect" })}
           onPerson={openPerson} onInspect={openInspector} onRebuild={buildingId => dispatch({ type: "rebuild_house", buildingId })} /></div> : null}
-        {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
+        {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })} key={ledgerStart} initialTab={ledgerStart}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
           mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} onPerson={openPerson} /> : null}
@@ -570,7 +574,7 @@ export function App() {
           onRadius={radius => setZoneTool(current => current === null ? current : { ...current, radius })} /> : null}
         {/* Mounted in every state (their locks stay readable), hidden where the state clears them from the screen. */}
         <LayerSwitch layer={layer} access={tutorial.access} pulse={tutorial.pulse} hidden={!visibility.layers || (lord && ui.mode !== "zone")}
-          onChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }} />
+          onChange={next => { if (next === "direction") { openConditions(); return; } setLayer(next); if (next === "direct") setZoneTool(null); }} />
         <ActionDock hidden={!visibility.dock} buildOpen={ui.mode === "build"} ledgerOpen={ui.mode === "ledger"}
           onBuild={() => sendUi({ type: "toggle_build" })} onLedger={() => sendUi({ type: "toggle_ledger" })}
           advisor={tutorial.advisor} onDismissAdvisor={tutorial.dismissAdvisor}
@@ -579,7 +583,7 @@ export function App() {
         {/* S-21 build drawer (and the zone bar in S-24): the catalogue stays mounted so a goal card can open it. */}
         {/* UX-3R2: in the zone state the left zone panel holds the kinds and tools; the drawer stays closed. */}
         {lord ? ui.mode === "build" ? <CommandPins state={state} onPublicWork={kind => platformServices().input.emit({ kind: "toolSelect", toolId: kind })}
-          onZone={() => setLayer("zone")} /> : null
+          onZone={() => setLayer("zone")} direction={{ open: tutorial.access.layers.direction, onOpen: openConditions }} /> : null
         : <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" ? "true" : undefined} data-frame="strip-bottom">
           <BuildSeals
             selectedTool={selectedTool}
@@ -597,7 +601,7 @@ export function App() {
             drainTool={drainTool} onDrainToolChange={selectDrainTool}
             access={tutorial.access}
             layer={layer}
-            onLayerChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }}
+            onLayerChange={next => { if (next === "direction") { openConditions(); return; } setLayer(next); if (next === "direct") setZoneTool(null); }}
             pulse={tutorial.pulse}
             openRequest={menuRequest ?? tutorial.openRequest}
             showLayers={false}
