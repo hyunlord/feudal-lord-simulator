@@ -373,7 +373,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.history.tree-node", extends: "modal.history.tree-generation", root: ".family-tree-node", frame: "css", scene: TOWN_CLOSE, open: [], data: "the first person node" },
   { id: "modal.history.factions", root: ".chronicle-factions", frame: "flat", scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },
     open: [{ pause: 1000 }, DISMISS, ...CHRONICLE, { click: ".chronicle-tabs:not(.chronicle-person-tabs) .chronicle-tab:nth-child(2)" }, { pause: 900 }],
-    siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
+    // The world strip is a sideways scroller by design (overflow-x auto, focusable, its focus ring).
+    scrollParts: [".chronicle-world-strip"], siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
   { id: "modal.history.faction-page", extends: "modal.history.factions", root: ".chronicle-faction", frame: "painting", painting: FACTION_PAGE_ART,
     frameSlots: [".chronicle-faction-band"], scrollParts: [".chronicle-faction-box > ul", ".chronicle-faction-pressure-body"],
     scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },

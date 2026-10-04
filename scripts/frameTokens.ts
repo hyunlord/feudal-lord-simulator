@@ -132,6 +132,10 @@ const BUTTONS = {
     disabled: w38("button_primary_disabled") }, scale: 1, safe: sides(7, 5, 5, 5), fallback: art("button_primary_base") },
   secondary: { states: { normal: w38("button_secondary_normal"), hover: w38("button_secondary_hover"), pressed: w38("button_secondary_pressed"),
     disabled: w38("button_secondary_disabled") }, scale: 1, safe: sides(8, 5, 6, 5), fallback: art("button_secondary_base") },
+  // LM-R1: the same pictures with a 6 px band (P0's), for a 44 px HUD row whose 16 px content the 10 px band leaves no room
+  // for (the stuck-goods chip: 44 − 2 × (6 + the 8 px gap) = 16).
+  "secondary-compact": { states: { normal: w38("button_secondary_normal"), hover: w38("button_secondary_hover"), pressed: w38("button_secondary_pressed"),
+    disabled: w38("button_secondary_disabled") }, scale: 0.6, safe: sides(8, 5, 6, 5), fallback: art("button_secondary_base") },
   danger: { states: { normal: w38("button_danger_normal"), hover: w38("button_danger_hover"), pressed: w38("button_danger_pressed"),
     disabled: w38("button_danger_disabled") }, scale: 1, safe: sides(7, 4, 6, 4), fallback: art("button_secondary_base") },
   icon: { states: { normal: w38("button_icon_normal"), hover: w38("button_icon_hover"), pressed: w38("button_icon_pressed"),

@@ -308,6 +308,12 @@
   --button-secondary-pressed-art: url("/assets/wave38/button_secondary_pressed.png") 10 fill / var(--button-secondary-width) / 0 stretch;
   --button-secondary-disabled-art: url("/assets/wave38/button_secondary_disabled.png") 10 fill / var(--button-secondary-width) / 0 stretch;
   --button-secondary-safe: 8px 5px 6px 5px;
+  --button-secondary-compact-width: 6px;
+  --button-secondary-compact-art: url("/assets/wave38/button_secondary_normal.png") 10 fill / var(--button-secondary-compact-width) / 0 stretch;
+  --button-secondary-compact-hover-art: url("/assets/wave38/button_secondary_hover.png") 10 fill / var(--button-secondary-compact-width) / 0 stretch;
+  --button-secondary-compact-pressed-art: url("/assets/wave38/button_secondary_pressed.png") 10 fill / var(--button-secondary-compact-width) / 0 stretch;
+  --button-secondary-compact-disabled-art: url("/assets/wave38/button_secondary_disabled.png") 10 fill / var(--button-secondary-compact-width) / 0 stretch;
+  --button-secondary-compact-safe: 5px 3px 4px 3px;
   --button-danger-width: 10px;
   --button-danger-art: url("/assets/wave38/button_danger_normal.png") 10 fill / var(--button-danger-width) / 0 stretch;
   --button-danger-hover-art: url("/assets/wave38/button_danger_hover.png") 10 fill / var(--button-danger-width) / 0 stretch;
@@ -415,6 +421,11 @@
   --button-secondary-hover-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
   --button-secondary-pressed-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
   --button-secondary-disabled-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-width) / 0 stretch;
+  --button-secondary-compact-width: 6px;
+  --button-secondary-compact-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-compact-width) / 0 stretch;
+  --button-secondary-compact-hover-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-compact-width) / 0 stretch;
+  --button-secondary-compact-pressed-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-compact-width) / 0 stretch;
+  --button-secondary-compact-disabled-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-secondary-compact-width) / 0 stretch;
   --button-danger-width: 6px;
   --button-danger-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-danger-width) / 0 stretch;
   --button-danger-hover-art: url("/assets/ui-p0/button_secondary_base.png") 12 fill / var(--button-danger-width) / 0 stretch;

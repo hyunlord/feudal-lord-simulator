@@ -9,10 +9,11 @@
    the card (the card's position box is its containing block; the card's own scroll does not clip it), as tall as its
    lines, its body scrolling when the screen is short. Without the frame art the padding box keeps a plain parchment. */
 .app-shell .lord-receipt {
-  position: absolute; top: 0; right: calc(100% + 8px); z-index: 1;
+  /* Below the crisis bells' row (the stuck-goods chip runs left from them into the receipt's column). */
+  position: absolute; top: calc(var(--hud-target) + var(--hud-row-gap)); right: calc(100% + 8px); z-index: 1;
   display: flex; flex-direction: column; box-sizing: border-box;
   width: 336px; min-height: 301px;
-  max-height: calc(100vh - var(--hud-right-top) - var(--hud-right-bottom));
+  max-height: calc(100vh - var(--hud-right-top) - var(--hud-target) - var(--hud-row-gap) - var(--hud-right-bottom));
   pointer-events: auto;
   background: var(--palette-vellum); background-clip: padding-box;
   color: var(--palette-ink); font-family: var(--ui-body-font);
