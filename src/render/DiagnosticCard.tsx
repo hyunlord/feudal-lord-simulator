@@ -271,6 +271,7 @@ export function DiagnosticCard({
   reachLine = null,
   farmsteadCrop,
   lordReceipt = null,
+  extra = null,
 }: Readonly<{
   model: DiagnosticCardModel;
   /** The hover tooltip's cause line for a selected building (same text, UI-1 / B9). */
@@ -293,6 +294,8 @@ export function DiagnosticCard({
   farmsteadCrop?: { readonly model: FarmsteadCropModel; readonly onChange: (crop: FieldCrop) => void };
   /** LM-R1: lord mode's "왜 여기?" button and the receipt it opens beside the card (absent elsewhere). */
   lordReceipt?: ReactNode;
+  /** LM-R1: sections above the card's own body (a burnt house's rebuild, the jump to the full store a pile waits on). */
+  extra?: ReactNode;
 }>): ReactElement {
   const identity = cardIdentity(model, walkerHeadline);
   const aleLine = causeSummary == null ? null : houseAleProgressLine(causeSummary);
@@ -321,6 +324,7 @@ export function DiagnosticCard({
             : <p className="inspector-ale-line" data-ale={causeSummary.ale?.served === true ? "served" : "unserved"}>{aleLine}</p>}
         </div>}
         <div className="inspector-body">
+          {extra}
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} members={houseMembers} onPerson={onPerson} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}

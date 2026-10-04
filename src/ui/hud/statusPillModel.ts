@@ -5,6 +5,7 @@ import type { GameState } from "../../engine/engine.types";
 import { BUILDING_CONFIG_BY_KIND, operationSuspended } from "../../content/buildingConfig";
 import { HOUSE_FOOD_INTERVAL, houseFoodRation } from "../../content/houseFoodConfig";
 import { economyStockTotals } from "../ledgerModel";
+import { starvingHouseholds } from "../../engine/foodShortage";
 
 // UX-3 status pill (research 15 C, S-42): four numbers always on screen — the date and season, the population, how many
 // calendar days the stored food lasts, and the money (pennies, "d"). Everything else is in the ledger.
@@ -46,7 +47,9 @@ export function foodDays(state: Pick<GameState, "houses" | "buildings">): number
 export function statusPillModel(state: GameState) {
   const ticks = storedFoodTicks(state);
   return { population: state.population, foodDays: foodDays(state), foodUntilTick: ticks === null ? null : state.tick + ticks,
-    coin: Math.floor(economyStockTotals(state).coin) };
+    coin: Math.floor(economyStockTotals(state).coin),
+    // LM-R1 (playtest #5): the households going hungry beside the days (FIX-16), so the days are not read as safety.
+    starving: starvingHouseholds(state) };
 }
 
 /** Ledger drawer (S-26): resource x storage — every building that holds goods, its stock per resource, and totals. */

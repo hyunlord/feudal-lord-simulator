@@ -71,14 +71,13 @@ export const INSPECTOR_COPY = {
     siteDeadlock: CONSTRUCTION_DEADLOCK_COPY.action,
     /**
      * UI-AUDIT-1: stock piled here that cannot leave (the HUD's stuck-goods chip, same reason); `store` is the good's
-     * store (곡창, 창고).
+     * store (곡창, 창고). LM-R1: the engine's reasons; `no_receiver` is its `receiver_full` with no such store at all.
      */
     stuck: {
       no_road: (store: string) => `${withWord(store)} 이 건물을 도로로 이어 주세요`,
       no_receiver: (store: string) => `${object(store)} 지으세요`,
       receiver_full: (store: string) => `${object(store)} 하나 더 지으세요`,
       no_carrier: (store: string) => `이 건물 가까이에 ${object(store)} 지어 수레 길을 줄이세요`,
-      unknown: (store: string) => `${store}까지 가는 길과 ${store}의 빈 자리를 확인하세요`,
     },
     /** Wheat also leaves by a mill's own cart (AF-9). */
     stuckWheatMill: "방앗간을 가까이 지으면 방앗간 수레가 밀을 가져갑니다",

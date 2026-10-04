@@ -11,9 +11,11 @@ import { ResourceGlyph } from "../ResourceArtwork";
 // title (no hover-only meaning), then the numbers, what happened and the next objective.
 const SCENE_ICON_PX = 30;
 
-export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }: {
+export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange, first = false }: {
   readonly model: SeasonLedgerCardModel; readonly onResume: () => void; readonly onHint: () => void;
   readonly auto: boolean; readonly onAutoChange: (auto: boolean) => void;
+  /** LM-R1 (playtest #7): the first card that opened by itself — it asks how later seasons come (the toggle's place). */
+  readonly first?: boolean;
 }) {
   return (
     <div className="season-ledger-backdrop" role="presentation">
@@ -46,10 +48,15 @@ export function SeasonLedgerCard({ model, onResume, onHint, auto, onAutoChange }
             {model.hint === null ? null : <Button type="button" className="season-ledger-hint" onPress={() => onHint()} variant="secondary">
               <UiIcon sheet="action" cell="open" />{model.hint.text}</Button>}
           </div>
+          {first ? <div className="season-ledger-first" role="group" aria-label={SEASON_LEDGER_COPY.firstAsk}>
+            <span>{SEASON_LEDGER_COPY.firstAsk}</span>
+            <Button type="button" className="season-ledger-first-auto" aria-pressed={auto} onPress={() => onAutoChange(true)} variant="toggle">{SEASON_LEDGER_COPY.firstAuto}</Button>
+            <Button type="button" className="season-ledger-first-notice" aria-pressed={!auto} onPress={() => onAutoChange(false)} variant="toggle">{SEASON_LEDGER_COPY.firstNotice}</Button>
+          </div> : null}
           <div className="season-ledger-actions">
             <Button type="button" className="season-ledger-resume" onPress={() => onResume()} variant="primary"><UiIcon sheet="time" cell="play" />{SEASON_LEDGER_COPY.resume}</Button>
-            <Button type="button" className="season-ledger-auto" aria-pressed={auto} onPress={() => onAutoChange(!auto)} variant="toggle">
-              {auto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button>
+            {first ? null : <Button type="button" className="season-ledger-auto" aria-pressed={auto} onPress={() => onAutoChange(!auto)} variant="toggle">
+              {auto ? SEASON_LEDGER_COPY.autoOn : SEASON_LEDGER_COPY.autoOff}</Button>}
           </div>
         </div>
       </section>

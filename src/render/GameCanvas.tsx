@@ -34,6 +34,8 @@ import { PlacementConfirmBar } from "../ui/hud/PlacementConfirmBar";
 import type { TileCoordinate } from "../world/grid";
 import { getTile } from '../world/grid';
 import { LordWhyHere } from "../ui/lord/ReceiptPanel";
+import { MapCardExtras } from "../ui/MapCardExtras";
+import { platformServices } from "../platform/platform";
 
 type GameCanvasProps = {
   readonly selectedTool?: PlacementTool | null;
@@ -176,6 +178,11 @@ export function GameCanvas({
     setHoveredBuilding(null);
   };
 
+  // LM-R1: the card's jump to another building (a full store a pile waits on) keeps the card where it stands.
+  const jumpTo = (buildingId: string) => { const target = state.buildings.find(building => building.id === buildingId);
+    if (target === undefined || selection === null) return;
+    platformServices().input.emit({ kind: "lookAt", tile: { tx: target.tx, ty: target.ty } }); setSelection({ kind: "building", buildingId, position: selection.position }); };
+
   const cancelConstruction = (siteId: string) => {
     dispatch({ type: "cancel_construction", siteId });
     setSelection(null);
@@ -217,6 +224,7 @@ export function GameCanvas({
           {...(selection.kind !== 'building' || cardModel.kind !== 'building' ? {} : cropChoice(selection.buildingId))}
           {...(onPerson === undefined ? {} : { onPerson })}
           lordReceipt={<LordWhyHere state={state} targetId={selection.kind === 'building' ? selection.buildingId : selection.kind === 'construction_site' ? selection.siteId : null} />}
+          extra={selection.kind === 'building' ? <MapCardExtras state={state} buildingId={selection.buildingId} onJump={jumpTo} onRebuild={buildingId => dispatch({ type: "rebuild_house", buildingId })} /> : null}
         />
       ) : null}
     </>

@@ -14,6 +14,9 @@ import type { ControlLayer } from "../tutorial/tutorialModel";
 import { HUD_COPY } from "./hudCopy.ko";
 import { SeasonStripMini, SeasonStripPanel } from "./SeasonStrip";
 import { SEASON_STRIP_COPY } from "../seasonStripCopy.ko";
+import { FoodBreakdownPanel } from "./FoodBreakdown";
+import { FOOD_BREAKDOWN_COPY } from "./foodBreakdownCopy.ko";
+import { COMMAND_PINS_COPY } from "./commandPinsCopy.ko";
 import { wave8ImageStyle } from "../wave8Art";
 import { ledgerMatrix, statusPillModel } from "./statusPillModel";
 import { economyStockTotals } from "../ledgerModel";
@@ -49,15 +52,20 @@ import { FACTION_INFLUENCE_COPY as INFLUENCE } from "../chronicle/factionInfluen
 const STEWARD_LINE_MS = 8_000;
 const SEASON_ICON = ["spring", "summer", "autumn", "winter"] as const;
 
-export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
+export function StatusPill({ state, model, onOpenLedger, onOpenPopulation, onInspect }: {
   readonly state: GameState; readonly model: ReturnType<typeof statusPillModel>;
   readonly onOpenLedger: () => void; readonly onOpenPopulation: () => void;
+  /** LM-R1: the food breakdown's "가장 급한 곳" opens that building's inspector. */
+  readonly onInspect: (buildingId: string) => void;
 }) {
   const [stripOpen, setStripOpen] = useState(false);
+  // LM-R1 (playtest #5): the food cell opens its breakdown (the ledger stays one press away inside it).
+  const [foodOpen, setFoodOpen] = useState(false);
+  const foodLabel = model.foodDays === null ? HUD_COPY.foodNone : HUD_COPY.foodDays(model.foodDays);
   return (
     <nav className="status-pill" aria-label={HUD_COPY.pill} data-frame="tooltip">
       <Button type="button" className="status-pill-cell status-pill-date" data-testid="hud-calendar" aria-label={SEASON_STRIP_COPY.label}
-        aria-expanded={stripOpen} onPress={() => setStripOpen(open => !open)} variant="surface">
+        aria-expanded={stripOpen} onPress={() => { setFoodOpen(false); setStripOpen(open => !open); }} variant="surface">
         <span className="status-pill-date-text"><UiIcon sheet="resource" cell={SEASON_ICON[stateCalendar(state).season]} />{calendarLabel(state)}</span>
         <SeasonStripMini tick={state.tick} />
       </Button>
@@ -65,10 +73,13 @@ export function StatusPill({ state, model, onOpenLedger, onOpenPopulation }: {
       <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.populationOpens} onPress={() => onOpenPopulation()} variant="surface">
         <UiIcon sheet="resource" cell="population" />{HUD_COPY.population(model.population)}
       </Button>
-      <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} data-food-days={model.foodDays ?? ""} onPress={() => onOpenLedger()}
-        data-short={model.foodDays !== null && model.foodDays < 14 ? "true" : undefined} variant="surface">
-        <UiIcon sheet="resource" cell="bread" />{model.foodDays === null ? HUD_COPY.foodNone : HUD_COPY.foodDays(model.foodDays)}
+      <Button type="button" className="status-pill-cell" aria-label={FOOD_BREAKDOWN_COPY.pillLabel(foodLabel, model.starving)} data-food-days={model.foodDays ?? ""}
+        aria-expanded={foodOpen} onPress={() => { setStripOpen(false); setFoodOpen(open => !open); }}
+        data-short={(model.foodDays !== null && model.foodDays < 14) || model.starving > 0 ? "true" : undefined} variant="surface">
+        <UiIcon sheet="resource" cell="bread" />{foodLabel}
+        {model.starving > 0 ? <span className="status-pill-starving" data-starving={model.starving}>{FOOD_BREAKDOWN_COPY.pillStarving(model.starving)}</span> : null}
       </Button>
+      {foodOpen ? <FoodBreakdownPanel state={state} onInspect={onInspect} onOpenLedger={onOpenLedger} onClose={() => setFoodOpen(false)} /> : null}
       <Button type="button" className="status-pill-cell" aria-label={HUD_COPY.pillOpensLedger} onPress={() => onOpenLedger()} variant="surface">
         <UiIcon sheet="resource" cell="coin" />{HUD_COPY.money(model.coin)}
       </Button>
@@ -103,8 +114,10 @@ export function LayerSwitch({ layer, access, onChange, pulse, hidden = false }: 
   );
 }
 
-export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, onDismissAdvisor, undo, hidden = false, stewardName = null }: {
+export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, onDismissAdvisor, undo, hidden = false, stewardName = null, commands = false }: {
   readonly hidden?: boolean;
+  /** LM-R1: lord mode — the build button opens the lord's command pins ("명령") instead of the build drawer. */
+  readonly commands?: boolean;
   /** UI-5: the steward is a person (PERSON-0): his name beside the P0 portrait's three expressions. */
   readonly stewardName?: string | null;
   readonly buildOpen: boolean; readonly ledgerOpen: boolean; readonly onBuild: () => void; readonly onLedger: () => void;
@@ -133,7 +146,7 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
       {undo.enabled ? <Button type="button" className="hud-undo action-dock-small" aria-label={undo.label} data-attention={undo.attention ? "true" : undefined}
         onPress={() => undo.onUndo()} variant="secondary"><UiIcon sheet="action" cell="up" />{HUD_COPY.undo}</Button> : null}
       <Button type="button" className="action-dock-button" aria-expanded={buildOpen} data-dock="build" onPress={() => onBuild()} variant="secondary">
-        <UiIcon sheet="category" cell="living" size={32} />{HUD_COPY.build}
+        <UiIcon sheet="category" cell={commands ? "public" : "living"} size={32} />{commands ? COMMAND_PINS_COPY.dock : HUD_COPY.build}
       </Button>
       <Button type="button" className="action-dock-button" aria-expanded={ledgerOpen} data-dock="ledger" onPress={() => onLedger()} variant="secondary">
         <UiIcon sheet="action" cell="log" size={32} />{HUD_COPY.ledger}

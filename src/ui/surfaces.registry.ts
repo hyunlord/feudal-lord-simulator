@@ -447,6 +447,12 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "slot.ledger.lord-refusal", extends: "slot.ledger.lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, numbers: false, scroll: "y",
     open: [{ repeat: "[data-step='more']", until: ".lord-policy-refusal[data-refused='true']", max: 15 }, { pause: 300 }],
     requires: [".lord-policy-refusal"], data: "a subsidy draft past a quarter of the treasury: the reason written, the set button shut" },
+  // Playtest 2026-10-02 #5: the food cell's breakdown under the pill (total, milling, carrying, access, hunger).
+  { id: "hud.food-breakdown", root: ".food-breakdown", frame: "css", scene: TOWN, open: [{ click: ".status-pill-cell[data-food-days]" }, { pause: 500 }],
+    requires: [".food-breakdown-row", ".food-breakdown-ledger"], data: "the town's food split five ways, the ledger and close buttons" },
+  // Lord mode's command pins in the build drawer's place, on the receipt's lord-mode state (scripts/lmr1LordStates.ts).
+  { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: LORD_TOWN, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
+    requires: [".command-pin"], data: "the lord's public work (the keep, locked until the fortified town) and encouragement-zone pins" },
 ];
 
 /**
