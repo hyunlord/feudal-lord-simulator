@@ -95,22 +95,34 @@ export function expectedArtIssues(expectedRequests, evidence) {
   return issues;
 }
 
+const CAPTURE_SEASONS = ['spring', 'summer', 'autumn', 'winter'];
+
+export function validateCaptureViews(views) {
+  const safeName = value => typeof value === 'string' && /^[a-zA-Z0-9_-]+$/.test(value);
+  if (!Array.isArray(views) || views.length === 0 || new Set(views.map(view => view.name)).size !== views.length) throw new Error('Views must be nonempty with unique names');
+  for (const view of views) {
+    if (!safeName(view.name) || !safeName(view.state) || !CAPTURE_SEASONS.includes(view.season)
+      || !Array.isArray(view.tile) || view.tile.length !== 2 || !view.tile.every(Number.isFinite)
+      || ![1, 0.6, 1.4].includes(view.zoom) || ![view.width, view.height].every(value => Number.isInteger(value) && value > 0)
+      || !Number.isFinite(view.dpr ?? 1) || (view.dpr ?? 1) <= 0
+      || !Array.isArray(view.expectedRequests) || view.expectedRequests.length === 0
+      || !view.expectedRequests.every(url => typeof url === 'string' && url.startsWith('/assets/') && !url.includes('..') && !url.includes('?'))) throw new Error(`Invalid view: ${view.name}`);
+    for (const url of view.expectedRequests) if (!existsSync(join('public', url))) throw new Error(`Expected asset absent: ${url}`);
+  }
+}
+
+export function captureSeasonIndex(season) {
+  const index = CAPTURE_SEASONS.indexOf(season);
+  if (index < 0) throw new Error(`Invalid capture season: ${season}`);
+  return index;
+}
+
 async function main() {
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const flags = Object.fromEntries(process.argv.slice(3).reduce((pairs, value, i, all) => value.startsWith('--') ? [...pairs, [value.slice(2), all[i + 1]]] : pairs, []));
 if (process.argv[2] !== 'capture' || !flags.states || !flags.views || !flags.out) throw new Error('Usage: tsx scripts/artContractCaptures.mjs capture --states DIR --views JSON --out DIR');
 const views = JSON.parse(readFileSync(flags.views, 'utf8'));
-const safeName = value => typeof value === 'string' && /^[a-zA-Z0-9_-]+$/.test(value);
-if (!Array.isArray(views) || views.length === 0 || new Set(views.map(view => view.name)).size !== views.length) throw new Error('Views must be nonempty with unique names');
-for (const view of views) {
-  if (!safeName(view.name) || !safeName(view.state) || !['summer', 'winter'].includes(view.season)
-    || !Array.isArray(view.tile) || view.tile.length !== 2 || !view.tile.every(Number.isFinite)
-    || ![1, 0.6].includes(view.zoom) || ![view.width, view.height].every(value => Number.isInteger(value) && value > 0)
-    || !Number.isFinite(view.dpr ?? 1) || (view.dpr ?? 1) <= 0
-    || !Array.isArray(view.expectedRequests) || view.expectedRequests.length === 0
-    || !view.expectedRequests.every(url => typeof url === 'string' && url.startsWith('/assets/') && !url.includes('..') && !url.includes('?'))) throw new Error(`Invalid view: ${view.name}`);
-  for (const url of view.expectedRequests) if (!existsSync(join('public', url))) throw new Error(`Expected asset absent: ${url}`);
-}
+validateCaptureViews(views);
 const port = Number(flags.port ?? process.env.FLS_REMOTE_PORT ?? 4391);
 if (!Number.isInteger(port) || port < 4300 || port > 4399) throw new Error('Capture port must be 4300..4399');
 const out = resolve(flags.out);
@@ -192,7 +204,7 @@ async function capture(browser, view, repetition) {
       const module = await import('/src/engine/scenarioState.ts');
       return module.stateCalendar(window.__FEUDAL_PHASE10_PROOF__.state()).season;
     }));
-    if (season !== (view.season === 'summer' ? 1 : 3)) errors.push(`State season ${season} differs from ${view.season}`);
+    if (season !== captureSeasonIndex(view.season)) errors.push(`State season ${season} differs from ${view.season}`);
     const identity = { state: view.state, savedStateSHA: hash(raw), tick: current.tick, season: view.season, tile: view.tile, zoom: view.zoom,
       width: view.width, height: view.height, dpr: view.dpr ?? 1, browser: browser.version(), renderer: 'headless-disable-gpu', visualTime: FROZEN, captureProtocol: 3, expectedRequests: [...view.expectedRequests].sort() };
     const jpeg = await step('jpeg', () => page.screenshot({ type: 'jpeg', quality: 72, timeout: 60000 }));

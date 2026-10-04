@@ -124,3 +124,30 @@ for (const action of ['offscreen-only', 'paint-to-main', 'full-clear', 'resize']
     assert.deepEqual(Array.from(observed), action === 'paint-to-main' ? ['/assets/wave42/paths/path_clear_ne_summer.png'] : []);
   });
 }
+
+const captureView = { name: 'prepared-season-spring-z1', state: 'prepared-season-spring', season: 'spring',
+  tile: [34, 34], zoom: 1, width: 1280, height: 800, dpr: 1,
+  expectedRequests: ['/assets/foliage/tree_dead.png'] };
+
+test('accepts all calendar seasons and planned capture zooms before opening a browser', async () => {
+  const { validateCaptureViews, captureSeasonIndex } = await import(modulePath);
+  for (const [index, season] of ['spring', 'summer', 'autumn', 'winter'].entries()) {
+    assert.equal(captureSeasonIndex(season), index);
+    for (const zoom of [0.6, 1, 1.4]) {
+      assert.doesNotThrow(() => validateCaptureViews([{ ...captureView, season, zoom }]));
+    }
+  }
+});
+
+test('capture view validation still rejects malformed views, unsafe URLs and unsupported zooms', async () => {
+  const { validateCaptureViews, captureSeasonIndex } = await import(modulePath);
+  assert.throws(() => captureSeasonIndex('winter_snow'));
+  for (const invalid of [null, [], [null], [captureView, captureView],
+    ...[{ season: 'winter_snow' }, { season: 0 }, { zoom: 2 }, { zoom: '1.4' }, { tile: [0, Infinity] },
+      { tile: [1] }, { name: '../escape' }, { state: '../escape' }, { width: 0 }, { height: 1.5 },
+      { dpr: 0 }, { expectedRequests: [] }, { expectedRequests: ['//assets/foliage/tree_dead.png'] },
+      { expectedRequests: ['/assets/../tree.png'] }, { expectedRequests: ['/assets/tree.png?x=1'] },
+      { expectedRequests: ['/assets/definitely-absent-fixture.png'] }].map(patch => [{ ...captureView, ...patch }])]) {
+    assert.throws(() => validateCaptureViews(invalid));
+  }
+});
