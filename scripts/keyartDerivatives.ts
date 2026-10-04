@@ -23,6 +23,7 @@ import { WAVE17_IMAGES } from "../src/ui/wave17ArtManifest.generated";
 import { WAVE21_IMAGES } from "../src/ui/wave21ArtManifest.generated";
 import { WAVE33_IMAGES } from "../src/ui/wave33ArtManifest.generated";
 import { ENDING_IMAGES } from "../src/ui/endingArtManifest.generated";
+import { WAVE44_IMAGES } from "../src/ui/wave44ArtManifest.generated";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 const ENCODER_VERSION = 1;
@@ -77,15 +78,18 @@ export const WAVE33_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WA
 export const ENDING_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(ENDING_IMAGES)
   .map(([id, image]) => ({ id, source: image.source, url: image.url, format: "jpeg-received" as const }));
 
+/** LM-R1: the Wave 44 home-petition illustrations (960 × 540 JPEGs, q86 as received; copied as they came). */
+export const WAVE44_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE44_IMAGES)
+  .map(([id, image]) => ({ id: `wave44_${id}`, source: image.source, url: image.url, format: "jpeg-received" as const }));
 /** CHRON-1: each pool portrait twice — at 256 px (biography) and 96 px (cards, lists). */
 export const PORTRAIT_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(PORTRAIT_IMAGES).flatMap(([id, image]) => [
   { id, source: image.source, url: image.url, format: "portrait" as const },
   { id: `${id}-96`, source: image.source, url: image.url96, format: "portrait-96" as const },
 ]);
 
-/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17, 21 and 33 illustrations, the ending paintings, the portrait pool). */
+/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17, 21 and 33 illustrations, the ending paintings, Wave 44, the portrait pool). */
 export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES, ...WAVE17_DERIVATIVES, ...WAVE21_DERIVATIVES, ...WAVE33_DERIVATIVES,
-  ...ENDING_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
+  ...ENDING_DERIVATIVES, ...WAVE44_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
 
 export const KEYART_DERIVATIVE_BY_URL: ReadonlyMap<string, KeyartDerivative> = new Map(WEB_ART_DERIVATIVES.map(item => [item.url, item]));
 

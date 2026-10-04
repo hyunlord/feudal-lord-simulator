@@ -8,6 +8,7 @@ import { Button, Disclosure } from "../kit";
 import { PAD_HINT_COPY } from "../inputHintCopy.ko";
 import { PadHint } from "../PadGlyph";
 import { useInputDevice } from "../useInputDevice";
+import { GOAL_PIN_COPY } from "../hud/goalPinCopy.ko";
 
 // UX-1 shell pieces (research E "Objective card / Advisor / Highlight"): goal cards (title 18 px, progress and bar, a
 // reason of at most two lines, one button, `?` help; at most two on screen), the steward (96 px portrait slot, one
@@ -131,11 +132,18 @@ export function PauseVeil({ paused }: { readonly paused: boolean }) {
       {device === "gamepad" ? <PadHint parts={PAD_HINT_COPY.paused} /> : TUTORIAL_COPY.paused}</span></div>;
 }
 
-export function GoalDrawer({ open, log, children }: { readonly open: boolean; readonly log: TutorialController["log"]; readonly children?: ReactNode }) {
+/**
+ * The goal log. LM-R1 (playtest 2026-10-02 #1): `pin` (the current goal and its next action) comes first and the
+ * finished goals fold under it, closed by default — the answer to "what now?" stood behind the finished tutorial.
+ */
+export function GoalDrawer({ open, log, pin = null, children }: { readonly open: boolean; readonly log: TutorialController["log"]; readonly pin?: ReactNode; readonly children?: ReactNode }) {
   return (
     <section className="goal-drawer" data-frame="light" hidden={!open} aria-label={TUTORIAL_COPY.drawer}>
+      {pin}
       {log.length === 0 ? <p className="goal-drawer-empty">{TUTORIAL_COPY.drawerEmpty}</p>
-        : <ol className="goal-drawer-log">{log.map(item => <li key={item.id}>{item.title} <span><UiIcon sheet="prediction" cell="ok" />{item.already ? TUTORIAL_COPY.alreadyDone : TUTORIAL_COPY.done}</span></li>)}</ol>}
+        : <Disclosure className="goal-drawer-done" variant="quiet" summary={GOAL_PIN_COPY.doneList(log.length)}>
+          <ol className="goal-drawer-log">{log.map(item => <li key={item.id}>{item.title} <span><UiIcon sheet="prediction" cell="ok" />{item.already ? TUTORIAL_COPY.alreadyDone : TUTORIAL_COPY.done}</span></li>)}</ol>
+        </Disclosure>}
       {children}
     </section>
   );

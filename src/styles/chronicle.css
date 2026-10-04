@@ -161,7 +161,7 @@
 
 /* UI-6: the records / factions tabs in the header. */
 .chronicle-tabs { display: flex; gap: 4px; }
-.chronicle-screen .chronicle-tab { min-width: 72px; min-height: 44px; padding: 0 14px; font-weight: 700; font-size: 14px; color: var(--parchment-light); }
+.chronicle-screen .chronicle-tab { min-width: 72px; min-height: 44px; padding: 0 14px; font-weight: 700; font-size: 14px; color: var(--ink); } /* LM-R1: ink on the Wave 38 parchment tabs (was light on the oak P0 tab) */
 .chronicle-screen:is([data-view="factions"], [data-view="faction"]) { grid-template-rows: auto minmax(0, 1fr); }
 
 /* UI-6 faction tab: nine rows (kit buttons) and the world strip under them. */

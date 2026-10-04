@@ -41,11 +41,21 @@ KINDS: dict[str, tuple[str, tuple[int, int, int, int] | None, float]] = {
     "strip-top": ("ui-p0/frame_hud_strip_top.png", (24, 24, 24, 24), 0.5),
     "strip-bottom": ("ui-p0/frame_hud_strip_bottom.png", (24, 24, 24, 24), 0.5),
     "banner": ("ui-p0/banner_unlock.png", (48, 48, 48, 48), 0.5),
-    "button-primary": ("ui-p0/button_primary_base.png", (12, 12, 12, 12), 0.5),
-    "button-secondary": ("ui-p0/button_secondary_base.png", (12, 12, 12, 12), 0.5),
-    "button-icon": ("ui-p0/button_icon_square_base.png", (10, 10, 10, 10), 0.5),
-    "button-tab": ("ui-p0/tab_build_base.png", (12, 12, 12, 12), 0.5),
+    # LM-R1: the Wave 38 buttons and controls, every state (scripts/frameTokens.ts takes each family's largest).
+    **{f"button-{family}-{state}": (f"wave38/button_{family}_{state}.png", (10, 10, 10, 10), 1)
+       for family in ("primary", "secondary", "danger", "icon") for state in ("normal", "hover", "pressed", "disabled")},
+    **{f"button-tab-{state}": (f"wave38/tab_{state}.png", (10, 10, 10, 10), 1) for state in ("unselected", "hover", "selected")},
     "button-chip": ("ui-p0/chip_condition_base.png", (8, 8, 8, 8), 0.5),
+    "control-input-normal": ("wave38/input_normal.png", (10, 10, 10, 10), 1),
+    "control-input-focus": ("wave38/input_focus.png", (10, 10, 10, 10), 1),
+    "control-select": ("wave38/select_closed.png", (10, 26, 10, 10), 1),
+    "control-select-row": ("wave38/select_row_hover.png", (6, 6, 6, 6), 1),
+    "control-chip-normal": ("wave38/chip_normal.png", (8, 8, 8, 8), 1),
+    "control-chip-selected": ("wave38/chip_selected.png", (8, 8, 8, 8), 1),
+    "control-slider-track": ("wave38/slider_track.png", (4, 5, 4, 5), 1),
+    "control-scrollbar-track": ("wave38/scrollbar_track.png", (5, 4, 5, 4), 1),
+    "control-scrollbar-thumb": ("wave38/scrollbar_thumb.png", (5, 4, 5, 4), 1),
+    "select-list": ("wave38/select_open_list.png", (10, 10, 10, 10), 1),
     "ledger": ("wave19/cards/frame_record_ledger.png", (30, 40, 40, 32), 0.7),
     "record-decision": ("wave19/cards/frame_record_decision.png", (90, 32, 55, 50), 0.7),
     "record-era": ("wave19/cards/frame_record_era.png", (38, 30, 30, 30), 0.7),
@@ -64,6 +74,7 @@ KINDS: dict[str, tuple[str, tuple[int, int, int, int] | None, float]] = {
     "biography": ("wave19/pages/frame_biography.png", None, 1),
     "faction-page": ("wave19/pages/frame_faction_page.png", None, 1),
     "pause-badge": ("wave8/time/pause_badge.png", None, 1),
+    "receipt": ("wave35-receipts/E_receipts/receipt_frame.png", (190, 40, 110, 40), 0.875),
 }
 
 

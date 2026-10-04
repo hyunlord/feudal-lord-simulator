@@ -5,8 +5,8 @@ import { Button } from "./Button";
 import { kitClass } from "./kitProps";
 
 /**
- * UI-KIT-1 on/off controls, slider, tabs, chips, tooltip and divider. Frames are the P0 art named by the tokens in
- * uiSkin.css; the states are drawn in code (kit.css).
+ * UI-KIT-1 on/off controls, radio, slider, tabs, chips, tooltip and divider. LM-R1: the Wave 38 pictures (uiKit.css,
+ * frameTokens.generated.css); the drawn seal, tick and dot under them show when a picture did not load.
  */
 
 /** An on/off switch: a parchment track with a wax seal that slides to the right when on (`role="switch"`). */
@@ -44,6 +44,45 @@ export function Checkbox(props: {
       <span className="ui-checkbox-box" aria-hidden="true">{checked ? <UiIcon sheet="prediction" cell="ok" size={24} /> : null}</span>
       <span className="ui-checkbox-label">{label}</span>
     </Button>
+  );
+}
+
+export type RadioOption<V extends string> = { readonly value: V; readonly label: ReactNode; readonly disabled?: boolean };
+
+/** One-of-N choice (LM-R1, Wave 38 radio_empty / radio_selected): a `radiogroup` of `radio`s; ArrowUp / ArrowDown and
+ * ArrowLeft / ArrowRight move the choice, only the chosen one is in the tab order. */
+export function Radio<V extends string>(props: {
+  readonly options: readonly RadioOption<V>[];
+  readonly value: V;
+  readonly onChange: (value: V) => void;
+  readonly label: string;
+  readonly className?: string | undefined;
+}) {
+  const { options, value, onChange, label, className } = props;
+  const index = options.findIndex(option => option.value === value);
+  const step = (delta: number) => {
+    for (let move = 1; move <= options.length; move += 1) {
+      const next = options[(index + delta * move + options.length * move) % options.length];
+      if (next !== undefined && next.disabled !== true) { onChange(next.value); return; }
+    }
+  };
+  return (
+    <div role="radiogroup" aria-label={label} className={className === undefined ? "ui-radio-group" : `${className} ui-radio-group`}
+      onKeyDown={event => {
+        const delta = event.key === "ArrowDown" || event.key === "ArrowRight" ? 1 : event.key === "ArrowUp" || event.key === "ArrowLeft" ? -1 : 0;
+        if (delta === 0) return;
+        event.preventDefault();
+        event.stopPropagation();
+        step(delta);
+      }}>
+      {options.map(option => (
+        <Button key={option.value} className="ui-radio" variant="quiet" role="radio" aria-checked={option.value === value}
+          tabIndex={option.value === value ? 0 : -1} disabled={option.disabled} onPress={() => onChange(option.value)}>
+          <span className="ui-radio-box" aria-hidden="true">{option.value === value ? <span className="ui-radio-dot" /> : null}</span>
+          <span className="ui-radio-label">{option.label}</span>
+        </Button>
+      ))}
+    </div>
   );
 }
 
@@ -104,10 +143,11 @@ export function Tabs<K extends string>(props: {
   );
 }
 
-/** A chip (P0 `chip_condition_base`): a condition, count or tag. `tone` colours the text by status. */
-export function Chip(props: { readonly children: ReactNode; readonly tone?: "ok" | "warn" | "block" | "info"; readonly className?: string | undefined }) {
-  const { children, tone, className } = props;
-  const classes = kitClass("ui-chip", [tone]);
+/** A chip (LM-R1: Wave 38 `chip_normal`, `chip_selected` when `selected`; 28 px tall): a condition, count or tag. `tone`
+ * colours the text by status. */
+export function Chip(props: { readonly children: ReactNode; readonly tone?: "ok" | "warn" | "block" | "info"; readonly selected?: boolean; readonly className?: string | undefined }) {
+  const { children, tone, selected = false, className } = props;
+  const classes = kitClass("ui-chip", [tone, selected ? "selected" : undefined]);
   return <span className={className === undefined ? classes : `${className} ${classes}`}>{children}</span>;
 }
 

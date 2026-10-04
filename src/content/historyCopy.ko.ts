@@ -20,8 +20,8 @@ const estateWord = (house: string) => `${SURNAMES_KO[house] ?? house} 영지`;
 const ESTATE_PETITION_KO: Readonly<Record<string, string>> = { rent_relief: "소작인의 지대 감면 청원", market_dues: "상인의 장세 인하 청원", repair: "제방·헛간 수리 청원",
   common_dispute: "공유지 다툼", charter_request: "상인의 특허 청원", marriage_licence: "소작인 딸의 혼인 허가",
   // FIX-14 (SW-11): the home estate's petitions.
-  boundary_dispute: "이웃 영지와의 경계 다툼", mill_suit: "방앗간 강제를 풀어 달라는 청원", heriot: "과부의 사망세(가장 좋은 짐승) 감면 청원",
-  merchet: "딸을 장원 밖으로 시집보내는 혼인세 청원", ale_fines: "에일 검정 벌금을 덜어 달라는 청원", road_bridge: "길과 다리 수리를 나눠 맡아 달라는 청원",
+  boundary_dispute: "이웃 영지와의 경계 다툼", mill_suit: "방앗간 강제를 풀어 달라는 청원", heriot: "과부의 사망 부과금(헤리엇, 가장 좋은 짐승) 감면 청원",
+  merchet: "딸을 장원 밖으로 시집보내는 혼인 부담금(머쳇) 청원", ale_fines: "에일 검정 벌금을 덜어 달라는 청원", road_bridge: "길과 다리 수리를 나눠 맡아 달라는 청원",
   stall_dispute: "두 상인 가문의 좌판 다툼", wardship: "미성년 상속자의 후견을 친족에게 달라는 청원", common_pasture: "공유지 방목 한도를 정해 달라는 청원",
   newcomer: "이주민의 정착 청원", pannage: "영주의 숲에 돼지를 놓게 해 달라는 청원", chancel_repair: "교회 성단 수리를 맡아 달라는 주교의 청원" };
 const MANOR_ANSWER_KO: Readonly<Record<string, readonly [string, string]>> = {
@@ -97,7 +97,7 @@ export const PETITION_SUBJECTS: Readonly<Record<string, string>> = {
   wool_payment: "양모 공납 칙령", levy_response: "징집 명령", war_funding: "전쟁 보조세 요구", refugee_admission: "피란민의 청원", wall_or_market: "석벽과 시장 사이의 선택",
   vacant_priest: "빈 사제 자리", wages: "일꾼들의 임금 요구", land_redistribution: "빈 필지의 주인", cash_rent: "부역을 돈으로 바꾸자는 청원",
   guild_charter: "길드 인가 청원", tax_collection: "인두세 징수 방식", cloth_or_grain: "직물 대 곡물", borough_charter: "자치 특허 협상",
-  royal_tax: "왕실 보조세 요구", heir_choice: "늙은 영주의 후계자", borough_autonomy: "자치 특허의 인장", legacy_choice: "남길 유산 하나",
+  royal_tax: "왕실 보조세 요구", heir_choice: "영주의 후계자", borough_autonomy: "자치 특허의 인장", legacy_choice: "남길 유산 하나",
   guild_dispute: "길드와 상인 사이의 다툼", church_rebuilding: "교구 교회 증축 청원",
 };
 /** The chapters' petitions, each answer's meaning (`petitionChoices.ko.ts`; the name kept for the screens that read it). */

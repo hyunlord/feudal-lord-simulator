@@ -12,7 +12,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import type { GameState } from "../src/engine/engine.types";
 import { buildingRoadAccessTiles } from "../src/engine/routing";
-import { EMPTY_STUCK_MEMORY, observeStuckGoods, stuckGoods } from "../src/ui/stuckGoodsModel";
+import { stuckRows } from "../src/ui/hud/stuckStockView";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
 
 type Locator = { count: () => Promise<number>; first: () => Locator; click: () => Promise<void>; textContent: () => Promise<string | null>;
@@ -25,7 +25,8 @@ const url = flag("url")!; const statesDir = flag("states")!;
 mkdirSync(out!, { recursive: true });
 const TUTORIAL_OFF = `try { localStorage.setItem('feudal-lord-simulator:tutorial:v1', JSON.stringify({ enabled: false, acks: [], pulsed: [], log: [] })); } catch (error) { void error; }`;
 const load = (file: string) => JSON.parse(readFileSync(join(statesDir, file), "utf8")) as GameState;
-const rowsOf = (state: GameState) => stuckGoods(state, observeStuckGoods(state, EMPTY_STUCK_MEMORY));
+// LM-R1: the chip reads the engine's stuck stock (FIX-11 `stuckStock`), not the UI-AUDIT-1 screen-side guess.
+const rowsOf = (state: GameState) => stuckRows(state);
 
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: "chrome", headless: true });

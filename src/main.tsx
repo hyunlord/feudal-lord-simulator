@@ -14,9 +14,12 @@ import "./styles/tutorial.css";
 import "./styles/alertStack.css";
 import "./styles/uiInspector.css";
 import "./styles/hudShell.css";
+import "./styles/lmr1Hud.css";
 import "./styles/stuckGoods.css";
 import "./styles/chronicle.css";
 import "./styles/legacy.css";
+import "./styles/lordCards.css";
+import "./styles/lordMode.css";
 // UX-2: bundled OFL fonts (body sans 400/700, titles and the steward serif 600) and the UI art skin, loaded last.
 import "@fontsource/noto-sans-kr/400.css";
 import "@fontsource/noto-sans-kr/700.css";
@@ -24,6 +27,10 @@ import "@fontsource/noto-serif-kr/600.css";
 import "./styles/uiSkin.css";
 // UI-KIT-1: the shared controls and frames, after the skin tokens.
 import "./styles/uiKit.css";
+// LM-R1: the Wave 38 control pictures, loaded once; a failure swaps the P0 pictures back (src/ui/wave38Art.ts).
+import { preloadWave38Art } from "./ui/wave38Art";
+
+preloadWave38Art();
 
 const rootElement = document.getElementById("root");
 

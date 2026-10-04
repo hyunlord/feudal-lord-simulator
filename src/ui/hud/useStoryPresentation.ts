@@ -7,6 +7,7 @@ import { presentationPreference } from "../../render/presentationPreferences";
 import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
 import type { UiModal } from "../stateMachine/uiStateMachine";
 import { latestChapterEnd } from "../chronicleModel";
+import { openHomePetitions } from "../lordCardsModel";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a
@@ -79,6 +80,8 @@ export function useStoryPresentation(input: {
   }, [visibleKey]); // eslint-disable-line react-hooks/exhaustive-deps
   // Decisions and the chronicle open once, after the world first.
   const famine = famineStatus(state); const petition = openPetitions(state)[0];
+  // LM-R1 (lord mode): a home estate's petition opens its card once, after the world, as a political petition does.
+  const home = openHomePetitions(state)[0];
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };
   useEffect(() => {
     if (blocked || topModal !== null) return;
@@ -87,6 +90,9 @@ export function useStoryPresentation(input: {
     }
     if (petition !== undefined && !openedRef.current.has(petition.id) && ready(`petition:${petition.id}`)) {
       openedRef.current.add(petition.id); pushModal("petition"); return;
+    }
+    if (home !== undefined && !openedRef.current.has(home.id) && ready(`home-petition:${home.id}`)) {
+      openedRef.current.add(home.id); pushModal("estate_petition"); return;
     }
     const chapterKey = end === null ? null : `chapter:${end.chapter}`;
     const since = chapterKey === null || openedRef.current.has(chapterKey) ? undefined : chapterSeenRef.current.get(chapterKey);

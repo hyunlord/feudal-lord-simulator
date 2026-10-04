@@ -289,6 +289,17 @@ export function brewingDoor(state: GameState, buildingId: string): { readonly x:
   return cachedTown(state).brewDoors.get(buildingId) ?? null;
 }
 
+// LM-R1: the cells the town's village life candidates stand on (door and yard props, animals, the brewing doors' ale),
+// by cell index, so a house-front sign (doorSigns.ts) takes none of them. Cached with the town it is read from.
+const cellsOfTown = new WeakMap<Town, ReadonlySet<number>>();
+export function villageLifeCells(state: GameState): ReadonlySet<number> {
+  const town = cachedTown(state);
+  const at = (x: number, y: number) => Math.round(y) * state.width + Math.round(x);
+  const cells = cellsOfTown.get(town) ?? new Set([...town.props, ...town.animals].map(spot => at(spot.tx, spot.ty)).concat([...town.brewDoors.values()].map(spot => at(spot.x, spot.y))));
+  cellsOfTown.set(town, cells);
+  return cells;
+}
+
 /** The on-screen animal count of a village life list (each hen of a flock counts). */
 export function villageLifeAnimalCount(items: readonly VillageLifeItem[]): number {
   return items.reduce((sum, entry) => sum + entry.animals, 0);

@@ -42,7 +42,7 @@ async function open(name, state, tile, zoom = 1.1) {
   });
   await page.goto(`${url}?phase10-proof=1`);
   await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-  if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
+  if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
   await page.keyboard.press('Escape'); // an input intent: the audio starts
   if (await page.locator('.pause-menu').count()) await page.keyboard.press('Escape');
   for (const selector of ['.chronicle-page .chronicle-keep', '.famine-decision .story-modal-later', '.petition-card .story-modal-later']) {

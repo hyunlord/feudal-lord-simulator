@@ -101,6 +101,14 @@ export type ObjectRenderItem =
       readonly depth: number;
       readonly anchorTx: number;
     }
+  | {
+      /** LM-R1 Wave 37 house-front signs (doorSigns.ts): a household's trade or circumstance on its road side, lord mode only. */
+      readonly kind: "door_sign";
+      readonly id: string;
+      readonly sign: import("./doorSigns").DoorSign;
+      readonly depth: number;
+      readonly anchorTx: number;
+    }
   /** NAT-2 the alehouse crowd (alehouseCrowd.ts): one drinker's place, placed among the objects by the walkers' box rule. */
   | import("./alehouseCrowd").AleDrinkerItem;
 

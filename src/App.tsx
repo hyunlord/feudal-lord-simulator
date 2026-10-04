@@ -43,7 +43,7 @@ import { stateCalendar } from "./engine/scenarioState";
 import { TITLE_COPY } from "./ui/titleCopy.ko";
 import { wave8Url } from "./ui/wave8Art";
 import { seasonJustClosed } from "./ui/seasonLedgerCard";
-import { seasonLedgerAuto, setSeasonLedgerAuto } from "./ui/seasonLedgerPreference";
+import { seasonLedgerChoice, setSeasonLedgerAuto, type SeasonLedgerChoice } from "./ui/seasonLedgerPreference";
 import type { BuildCategory } from "./ui/buildMenuPresentation";
 import { autoPlacementOverlay } from "./ui/placementAutoOverlay";
 import { SpeedSeals } from "./ui/SpeedControls";
@@ -79,13 +79,20 @@ import { Inspector } from "./ui/InspectorView";
 import { QaOverlay } from "./ui/qa/QaOverlay";
 import { hudVisibility, reduceUi, topModal } from "./ui/stateMachine/uiStateMachine";
 import { useUiStateMachine } from "./ui/stateMachine/useUiStateMachine";
-import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill } from "./ui/hud/HudShell";
-import { StuckGoodsChip, stuckGoodsChipView, useStuckGoods } from "./ui/hud/StuckGoodsChip";
+import { ActionDock, CrisisIcons, LayerSwitch, LedgerDrawer, StatusPill, type LedgerTab } from "./ui/hud/HudShell";
+import { StuckGoodsChip, stuckGoodsChipView } from "./ui/hud/StuckGoodsChip";
+import { hudStuckRows } from "./ui/hud/stuckStockView";
+import { chapterFlow, goalPin, type GoalPinAction } from "./ui/hud/goalPinModel";
+import { GoalPinBlock } from "./ui/hud/GoalPinBlock";
+import { SeasonNotice } from "./ui/hud/SeasonNotice";
+import { CommandPins } from "./ui/hud/CommandPins";
+import { LORD_PUBLIC_WORKS, lordMode } from "./engine/townAgency";
 import { statusPillModel } from "./ui/hud/statusPillModel";
 import { ZoneToolbar } from "./ui/hud/ZoneToolbar";
 import { zoneEditHistory } from "./render/zoneEditHistory";
 import type { ZoneKind } from "./zones/zone.types";
 import { EventCards } from "./ui/hud/EventCards";
+import { decisionModal } from "./ui/eventStory";
 import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { guidanceSampleKey } from "./ui/hud/guidanceSample";
@@ -133,6 +140,8 @@ export function App() {
   const [drainTool, setDrainTool] = useState(false);
   // UX-1: the control layer (직접 / 구역 / 방향) and the goal drawer.
   const [layer, setLayer] = useState<ControlLayer>("direct");
+  // LM-R1 (Astra B02): the direction layer is the lord's conditions — the ledger opened on its lord tab.
+  const [ledgerStart, setLedgerStart] = useState<LedgerTab>("stock");
   // UX-1: the left inspector (a warning's `[보기]`: cause and action of that building).
   const [inspectedId, setInspectedId] = useState<string | null>(null);
   // UI-5: the person card on screen (a modal) and the person a chronicle opens on.
@@ -144,6 +153,8 @@ export function App() {
   const [chapterGoalsView, setChapterGoalsView] = useState(false);
   useEffect(() => { if (topModal(ui) !== "chapter_preview") setChapterGoalsView(false); }, [ui]);
   const openInspector = useCallback((id: string) => { setInspectedId(id); sendUi({ type: "select" }); }, [sendUi]);
+  const openConditions = useCallback(() => { setLedgerStart("lord"); if (uiRef.current.mode !== "ledger") sendUi({ type: "toggle_ledger" }); }, [sendUi, uiRef]);
+  useEffect(() => { if (ui.mode !== "ledger") setLedgerStart("stock"); }, [ui.mode]);
   // The map's own selection card (GameCanvas) takes the same slot; closing it there leaves the selection state.
   const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi, uiRef]);
   const palisadeDraftRef = useRef(palisadeDraft);
@@ -204,13 +215,24 @@ export function App() {
     );
   }, [presentationNowMs, state.era]);
 
+  // LM-R1 (playtest #1): the pinned goal's button — the store holding the goal back, the stock ledger, or the goal log.
+  const runGoalAction = (action: GoalPinAction) => {
+    if (action.kind === "inspect") { platformServices().input.emit({ kind: "lookAt", tile: action.tile }); openInspector(action.buildingId); return; }
+    if (action.kind === "ledger") { if (uiRef.current.mode !== "ledger") sendUi({ type: "toggle_ledger" }); return; }
+    sendUi({ type: "open_goals" });
+  };
   const tutorial = useTutorialController({ state, paused: speed === 0, selectedTool, zoneTool, layer, setLayer, nowMs: presentationNowMs,
-    onOpenDrawer: () => sendUi({ type: "open_goals" }), onOpenChapterGoals: () => { setChapterGoalsView(true); sendUi({ type: "push_modal", modal: "chapter_preview" }); } });
+    onOpenDrawer: () => sendUi({ type: "open_goals" }), onOpenChapterGoals: () => { setChapterGoalsView(true); sendUi({ type: "push_modal", modal: "chapter_preview" }); },
+    onGoalAction: runGoalAction });
   // Tool intents obey the tutorial's unlocks (menu, Q / E, controller X alike).
   const accessRef = useRef(tutorial.access);
   accessRef.current = tutorial.access;
+  // LM-R1: in lord mode the lord places only the public works (the engine refuses the rest); Q / E and the pad step past
+  // the town's kinds instead of arming a tool that cannot place.
+  const lordRef = useRef(false);
   const selectPlacementTool = (tool: PlacementTool | null) => {
     if (tool !== null && !accessRef.current.tools(tool)) return;
+    if (tool !== null && lordRef.current && (tool === "road" || !LORD_PUBLIC_WORKS.includes(tool))) return;
     setPalisadeDraft(null); setSelectedTool(tool); setDrainTool(false); if (tool !== null) { setZoneTool(null); setLayer("direct"); }
   };
   const selectDrainTool = (armed: boolean) => {
@@ -253,7 +275,13 @@ export function App() {
   // unless the player turned it off. A jump of more than one closed season (a load) opens nothing. UI-4b: keyed on
   // the last closed season's end, not the count (the engine keeps eight, so after two years the count stood still and
   // the card never opened again): it opens when the season before the new one is the one last seen.
-  const [ledgerAuto, setLedgerAuto] = useState(seasonLedgerAuto);
+  // LM-R1 (playtest #7): it opens by itself only the first time, and asks there; after that a season stacks as a
+  // notice (the event chips' row) unless the player chose "매번 띄우기".
+  const [ledgerChoice, setLedgerChoice] = useState<SeasonLedgerChoice>(seasonLedgerChoice);
+  const [ledgerFirst, setLedgerFirst] = useState(false);
+  const [ledgerNotices, setLedgerNotices] = useState(0);
+  const ledgerAuto = ledgerChoice === "auto";
+  const chooseLedgerAuto = (next: boolean) => { setLedgerChoice(next ? "auto" : "notice"); setSeasonLedgerAuto(next); };
   const lastClosedEnd = state.seasons?.history.at(-1)?.endTick ?? null;
   const priorClosedEnd = state.seasons?.history.at(-2)?.endTick ?? null;
   const lastClosedEndRef = useRef(lastClosedEnd);
@@ -263,13 +291,21 @@ export function App() {
   useEffect(() => {
     const previous = lastClosedEndRef.current;
     lastClosedEndRef.current = lastClosedEnd;
-    if (!seasonJustClosed(previous, lastClosedEnd, priorClosedEnd) || !ledgerAuto || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
-    const open = () => setUi(current => topModal(current) === "season_ledger" ? current : reduceUi(current, { type: "push_modal", modal: "season_ledger" }));
+    if (!seasonJustClosed(previous, lastClosedEnd, priorClosedEnd) || welcomeVisible || topModal(uiRef.current) === "season_ledger") return;
+    if (ledgerChoice === "notice") { setLedgerNotices(count => count + 1); return; }
+    const first = ledgerChoice === "unset";
+    const open = () => {
+      // The first card that opens by itself sets the default for the next ones (a notice) until the player chooses.
+      if (first) { setLedgerFirst(true); setLedgerChoice("notice"); setSeasonLedgerAuto(false); }
+      setUi(current => topModal(current) === "season_ledger" ? current : reduceUi(current, { type: "push_modal", modal: "season_ledger" }));
+    };
     const wait = LEDGER_PRESS_GRACE_MS - (performance.now() - lastPressAt());
     if (wait <= 0) { open(); return; }
     const timer = window.setTimeout(open, wait);
     return () => window.clearTimeout(timer);
-  }, [lastClosedEnd, priorClosedEnd, ledgerAuto, welcomeVisible, setUi, uiRef]);
+  }, [lastClosedEnd, priorClosedEnd, ledgerChoice, welcomeVisible, setUi, uiRef]);
+  useEffect(() => { if (topModal(ui) !== "season_ledger") setLedgerFirst(false); }, [ui]);
+  const openSeasonNotice = () => { setLedgerNotices(0); sendUi({ type: "push_modal", modal: "season_ledger" }); };
   // The card's next objective opens the build drawer at its category (the tutorial's request path, its own nonce).
   const [menuRequest, setMenuRequest] = useState<{ readonly category: BuildCategory; readonly nonce: number } | null>(null);
   useEffect(() => { setMenuRequest(null); }, [tutorial.openRequest]);
@@ -300,8 +336,19 @@ export function App() {
   const guidanceState = guidanceSnapshotRef.current.state;
   const alertRows = useMemo(() => alertStackRows(guidanceState), [guidanceState]);
   // UI-AUDIT-1: stock piled in one building that cannot leave (the HUD's totals hide it), beside the crisis bells.
-  const stuckRows = useStuckGoods(guidanceState);
-  const stuckChip = useMemo(() => stuckGoodsChipView(guidanceState, stuckRows), [guidanceState, stuckRows]);
+  // LM-R1 cache (AGENTS rule 10): the engine's stuck stock the HUD raises (`stuckStock`, every producer against every
+  // receiver) — key: the sampled guidance state (a new object every 60 ticks), nothing else enters; reason: App renders
+  // every tick.
+  const stuck = useMemo(() => hudStuckRows(guidanceState), [guidanceState]);
+  const stuckChip = useMemo(() => stuckGoodsChipView(guidanceState, stuck), [guidanceState, stuck]);
+  // LM-R1 cache (AGENTS rule 10): the goal log's pin — key: the sampled guidance state and whether the log is open (it
+  // is built only then); reason: the era rows and the stuck stock it reads walk the town.
+  const goalsOpen = ui.mode === "goals";
+  const pinned = useMemo(() => goalsOpen ? { pin: goalPin(guidanceState), chapter: chapterFlow(guidanceState) } : null, [guidanceState, goalsOpen]);
+  // LM-R1 (lord-mode design §4): in lord mode the build drawer is the lord's command pins and the layer switch shows
+  // only in the zone layer (to leave it); the sandbox and the campaign keep both.
+  const lord = lordMode(state);
+  lordRef.current = lord;
   const immediateWarning = alertRows.some(row => row.severity === "immediate");
   // UX-3 cache (AGENTS rule 10): the status pill's numbers (food days walk every store, money the ledger totals) —
   // key: the sampled guidance state, reason: App renders every tick and the pill's numbers change slowly; measured on
@@ -445,7 +492,7 @@ export function App() {
       >
         <h1 className="visually-hidden">{KO_UI.appName}</h1>
         {/* UX-3: the only UI always on screen — status pill, speed, layer switch, action dock, crisis icons (at most 3). */}
-        {visibility.statusPill ? <StatusPill state={state} model={pillModel} onOpenLedger={() => sendUi({ type: "toggle_ledger" })} onOpenPopulation={() => sendUi({ type: "open_population" })} /> : null}
+        {visibility.statusPill ? <StatusPill state={state} model={pillModel} onOpenLedger={() => sendUi({ type: "toggle_ledger" })} onOpenPopulation={() => sendUi({ type: "open_population" })} onInspect={openInspector} /> : null}
         <GameCanvas
           selectedTool={selectedTool}
           overlayMode={overlayMode}
@@ -473,13 +520,14 @@ export function App() {
         {visibility.crisis ? <CrisisIcons rows={alertRows} onInspect={openInspector}
           lead={stuckChip === null ? null : <StuckGoodsChip view={stuckChip} onInspect={openInspector} />} /> : null}
         {visibility.crisis ? <EventCards beats={story.visible} onDismiss={story.dismiss}
-          onDecide={beat => sendUi({ type: "push_modal", modal: beat.decision === "famine" ? "decision" : "petition" })} /> : null}
+          onDecide={beat => { if (beat.decision !== null) sendUi({ type: "push_modal", modal: decisionModal(beat.decision) }); }}
+          notice={ledgerNotices > 0 ? <SeasonNotice count={ledgerNotices} onOpen={openSeasonNotice} /> : null} /> : null}
         {visibility.goalCard ? <aside ref={railRef} className={`goal-chip-rail${railSeeThrough ? " right-info-rail--see-through" : ""}`} aria-label={KO_UI.informationRail} data-placing={ui.mode === "placement" || ui.mode === "line" ? "true" : undefined}>
           <GoalCards tutorial={tutorial} maxActive={1} drawerOpen={ui.mode === "goals"} warn={immediateWarning} onToggleDrawer={() => sendUi({ type: "toggle_goals" })} />
         </aside> : null}
         {/* S-30: one panel slot — the goal log, the population log, the inspector or the ledger (the build drawer is below). */}
         {ui.mode === "goals" ? <aside className="slot-panel goal-slot" data-frame="slot" aria-label={KO_UI.informationRail}>
-          <GoalDrawer open log={tutorial.log}>
+          <GoalDrawer open log={tutorial.log} pin={pinned === null ? null : <GoalPinBlock pin={pinned.pin} chapter={pinned.chapter} onAction={runGoalAction} />}>
             <SettlementStatusLine state={guidanceSnapshotRef.current.state} selectedTool={selectedTool} />
             <SettlementPanel state={state} onRestart={() => dispatch({ type: "restart_settlement" })} developmentContent={
               eraModel === null ? null : <EraConsole
@@ -504,9 +552,9 @@ export function App() {
             <PopulationEventPanel events={populationEvents} onSelectHouseIds={setHighlightedHouseIds} note={menAwayLine(state)} />
           </div>
         ) : null}
-        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot" data-frame="slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} stuck={stuckRows} onClose={() => sendUi({ type: "deselect" })}
-          onPerson={openPerson} /></div> : null}
-        {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })}
+        {ui.mode === "selection" && inspectedId !== null ? <div className="slot-panel inspector-slot" data-frame="slot"><Inspector state={state} buildingId={inspectedId} storeHistory={storeHistoryRef.current} stuck={stuck} onClose={() => sendUi({ type: "deselect" })}
+          onPerson={openPerson} onInspect={openInspector} onRebuild={buildingId => dispatch({ type: "rebuild_house", buildingId })} /></div> : null}
+        {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })} key={ledgerStart} initialTab={ledgerStart}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
           mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} onPerson={openPerson} /> : null}
@@ -525,16 +573,18 @@ export function App() {
           eraserOpen={tutorial.access.zoneTargets("erase")} kindOpen={kind => tutorial.access.zoneTargets(kind)} pulse={tutorial.pulse} onPick={pickZoneMode}
           onRadius={radius => setZoneTool(current => current === null ? current : { ...current, radius })} /> : null}
         {/* Mounted in every state (their locks stay readable), hidden where the state clears them from the screen. */}
-        <LayerSwitch layer={layer} access={tutorial.access} pulse={tutorial.pulse} hidden={!visibility.layers}
-          onChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }} />
+        <LayerSwitch layer={layer} access={tutorial.access} pulse={tutorial.pulse} hidden={!visibility.layers || (lord && ui.mode !== "zone")}
+          onChange={next => { if (next === "direction") { openConditions(); return; } setLayer(next); if (next === "direct") setZoneTool(null); }} />
         <ActionDock hidden={!visibility.dock} buildOpen={ui.mode === "build"} ledgerOpen={ui.mode === "ledger"}
           onBuild={() => sendUi({ type: "toggle_build" })} onLedger={() => sendUi({ type: "toggle_ledger" })}
           advisor={tutorial.advisor} onDismissAdvisor={tutorial.dismissAdvisor}
           undo={{ enabled: newestSite !== undefined, attention: tutorial.cards.some(card => card.key === "well_done"), label: BUILD_MENU_COPY.undoHint, onUndo: undoLastSite }}
-          stewardName={steward === null ? null : steward.name} />
+          stewardName={steward === null ? null : steward.name} commands={lord} />
         {/* S-21 build drawer (and the zone bar in S-24): the catalogue stays mounted so a goal card can open it. */}
         {/* UX-3R2: in the zone state the left zone panel holds the kinds and tools; the drawer stays closed. */}
-        <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" ? "true" : undefined} data-frame="strip-bottom">
+        {lord ? ui.mode === "build" ? <CommandPins state={state} onPublicWork={kind => platformServices().input.emit({ kind: "toolSelect", toolId: kind })}
+          onZone={() => setLayer("zone")} direction={{ open: tutorial.access.layers.direction, onOpen: openConditions }} /> : null
+        : <aside className="court-console build-drawer" aria-label={KO_UI.courtConsole} data-open={ui.mode === "build" ? "true" : undefined} data-frame="strip-bottom">
           <BuildSeals
             selectedTool={selectedTool}
             state={state}
@@ -551,7 +601,7 @@ export function App() {
             drainTool={drainTool} onDrainToolChange={selectDrainTool}
             access={tutorial.access}
             layer={layer}
-            onLayerChange={next => { setLayer(next); if (next === "direct") setZoneTool(null); }}
+            onLayerChange={next => { if (next === "direction") { openConditions(); return; } setLayer(next); if (next === "direct") setZoneTool(null); }}
             pulse={tutorial.pulse}
             openRequest={menuRequest ?? tutorial.openRequest}
             showLayers={false}
@@ -561,11 +611,11 @@ export function App() {
               if (!next && uiRef.current.mode === "build") sendUi({ type: "toggle_build" });
             }}
           />
-        </aside>
+        </aside>}
       </div>
       {/* CODE-1c: the modal screens (ui/screens/AppModals), reading the game themselves while one is up. */}
       <AppModals ui={ui} sendUi={sendUi} personCardId={personCardId} chroniclePersonId={chroniclePersonId} onChroniclePerson={setChroniclePersonId}
-        steward={steward} onPerson={openPerson} ledgerAuto={ledgerAuto} onLedgerAuto={next => { setLedgerAuto(next); setSeasonLedgerAuto(next); }}
+        steward={steward} onPerson={openPerson} ledgerAuto={ledgerAuto} onLedgerAuto={chooseLedgerAuto} ledgerFirst={ledgerFirst}
         onMenuRequest={setMenuRequest} tutorial={tutorial} chapterGoalsView={chapterGoalsView} />
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}

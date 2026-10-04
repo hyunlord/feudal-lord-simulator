@@ -104,6 +104,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/walkerSheetManifest.generated.ts",
     "src/ui/uiArtManifest.generated.ts",
     "src/ui/wave25ArtManifest.generated.ts",
+    "src/ui/wave38ArtManifest.generated.ts", // LM-R1 the Wave 38 UI controls (buttons, tabs, checkbox, radio, select, slider, scrollbars)
     "src/render/visibilityArtManifest.ts",
     "src/render/wave7ArtManifest.generated.ts",
     "src/render/wave11ArtManifest.generated.ts",
@@ -117,6 +118,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/ui/wave31ArtManifest.generated.ts",
     "src/ui/wave33ArtManifest.generated.ts", // UI-10 chapter 5 interlude events
     "src/ui/endingArtManifest.generated.ts", // INSTALL-33 the six campaign ending paintings
+    "src/ui/wave44ArtManifest.generated.ts", // LM-R1 the home-petition illustrations (Wave 44)
     "src/ui/portraitArtManifest.generated.ts",
     "src/ui/wave14ArtManifest.generated.ts",
     "src/render/seasonArtManifest.generated.ts",
@@ -133,6 +135,9 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/render/storehouseSnowManifest.generated.ts", // NAT-5 RUN-02 the storehouse roof snow layers
     "src/render/wave12GuildhallManifest.generated.ts", // UI-9 chapter 4 guildhall world prop
     "src/render/wave17WalkerManifest.generated.ts", // UI-9b the lord's tax collector
+    "src/ui/lord/receiptArt.ts", // LM-R1 the lord mode's receipt frame, reason caps and decision ribbon (Wave 35)
+    "src/render/wave37DoorSignManifest.generated.ts", // LM-R1 the lord-mode house-front signs (Wave 37)
+    "src/render/manorHouseManifest.generated.ts", // LM-R1 RUN-01 the manor house (Wave 12 A / B, activity, empty A / B v2)
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) {

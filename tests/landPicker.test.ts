@@ -10,7 +10,8 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { CANONICAL_PALETTE, PALETTE, RAMPS } from "../src/content/palette";
 import { FEN_ARCHETYPE_ID, MAP_ARCHETYPE_IDS, RIVERSIDE_ARCHETYPE_ID } from "../src/content/scenario/archetypes";
-import { DEFAULT_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
+import { DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
+import { lordMode } from "../src/engine/townAgency";
 import { SCENARIO_COPY } from "../src/content/scenario/scenarioCopy.ko";
 import { gameReducer, DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { NEW_GAME_SEED_MAX, newGameState } from "../src/state/newGame";
@@ -167,7 +168,7 @@ test("the welcome offers the five lands above the mode buttons; the mode buttons
     assert.ok(markup.includes(land.name));
     assert.ok(markup.includes(land.description));
   }
-  assert.deepEqual([...markup.matchAll(/data-scenario="([^"]+)"/g)].map(match => match[1]), [DEFAULT_SCENARIO_ID, SANDBOX_SCENARIO_ID]);
+  assert.deepEqual([...markup.matchAll(/data-scenario="([^"]+)"/g)].map(match => match[1]), [DEFAULT_SCENARIO_ID, SANDBOX_SCENARIO_ID, LORD_SLICE_SCENARIO_ID]);
   assert.match(markup, /목표형으로 시작/);
   assert.match(markup, /class="welcome-parchment welcome-parchment--lands"/);
   // NAT-4: the number is the kit field (digits, six at most, numeric keypad) beside "무작위"; no −/+ any more.
@@ -179,7 +180,7 @@ test("the welcome offers the five lands above the mode buttons; the mode buttons
   assert.doesNotMatch(field, /aria-invalid/);
   assert.match(markup, new RegExp(`<button class="welcome-seed-random[^"]*"[^>]*>${LAND_PICKER_COPY.random}</button>`));
   assert.doesNotMatch(markup, /welcome-seed-step|welcome-seed-value|welcome-seed-problem/);
-  assert.ok(modeButtons(markup).length === 2 && modeButtons(markup).every(button => !button.includes("aria-disabled")));
+  assert.ok(modeButtons(markup).length === 3 && modeButtons(markup).every(button => !button.includes("aria-disabled")));
 });
 
 test("a number that cannot start shows why under the field and turns the mode buttons off", () => {
@@ -192,7 +193,7 @@ test("a number that cannot start shows why under the field and turns the mode bu
     assert.ok(described !== undefined, problem);
     assert.ok(markup.includes(`<p id="${described}" class="welcome-seed-problem" role="status">${LAND_PICKER_COPY.problems[problem]}</p>`), problem);
     // aria-disabled, not disabled: an enabled, isolated button never lets the press fall through to the dismiss layer.
-    assert.ok(modeButtons(markup).length === 2 && modeButtons(markup).every(button => button.includes('aria-disabled="true"') && !/\sdisabled=""/.test(button)), problem);
+    assert.ok(modeButtons(markup).length === 3 && modeButtons(markup).every(button => button.includes('aria-disabled="true"') && !/\sdisabled=""/.test(button)), problem);
   }
 });
 
@@ -200,4 +201,14 @@ test("without a query the welcome's first number is drawn at random and has a ga
   const value = welcome().match(/<input[^>]*value="([0-9]*)"/)?.[1] ?? "";
   const seed = parseLandSeed(value);
   assert.ok(seed !== null && landPlayable({ archetypeId: RIVERSIDE_ARCHETYPE_ID, seed }), value);
+});
+
+test("LM-R1 (Astra B01): the start screen's lord mode starts the lord's slice on the chosen number, the riverside land", () => {
+  assert.match(welcome(), new RegExp(SCENARIO_COPY.modeButtons.lord_slice));
+  const command = landStartCommand(LORD_SLICE_SCENARIO_ID, { archetypeId: FEN_ARCHETYPE_ID, seed: 4242 }, false);
+  assert.deepEqual(command, { type: "start_new_game", scenarioId: LORD_SLICE_SCENARIO_ID, seed: 4242 });
+  const state = gameReducer(DEFAULT_GAME_STATE, command!);
+  assert.equal(state.scenarioId, LORD_SLICE_SCENARIO_ID);
+  assert.equal(state.seed, 4242);
+  assert.ok(lordMode(state), "the slice is always lord mode");
 });
