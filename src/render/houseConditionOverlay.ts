@@ -1,3 +1,4 @@
+import type { ContractHouseDraw } from './art/contractHouseArt';
 import { houseConditionArt } from "./houseConditionArt";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import type { CanvasTransform } from "./style";
@@ -41,8 +42,10 @@ export function drawHouseCondition(
   building: Building,
   builtLevel: number,
   condition: HouseCondition,
+  contract: ContractHouseDraw | null = null,
 ): void {
   if (building.kind !== "house" || condition === "maintained") return;
+  if (contract !== null) return;
   // INSTALL-26: the wear marks are painted on the approved house; a Wave 26 painting shows its own weathered layer.
   if (shownHouseVariant(building, builtLevel) !== null) return;
   const frame = conditionFrame(building, builtLevel);

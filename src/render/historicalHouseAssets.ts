@@ -1,3 +1,4 @@
+import { contractHouseArt, type ContractHouseDraw, type ContractHouseInput } from './art/contractHouseArt';
 import { registerRuntimeAsset } from "./runtimeAssetCoordinates";
 import type { Building } from "../content/buildingConfig";
 import { assetUrlForBase } from "./worldAssets";
@@ -7,7 +8,6 @@ import { tileToScreen, TILE_W, TILE_H } from "./iso";
 import { historicalHouseAssetManifest } from "./historicalHouseAssetManifest.generated";
 import { frameBuildingVariant } from "./buildingVariants";
 import { variantSprite } from "./buildingVariantAssets";
-import type { GameState } from "../engine/engine.types";
 import { alehouseArt } from "./aleWorldArt";
 import { WAVE3_ALE_IMAGES } from "./wave3AleManifest.generated";
 import { drawWave26House, shownHouseVariant } from "./wave26HouseArt";
@@ -87,8 +87,8 @@ export function historicalHouseSpriteRect(building: Pick<Building, "tx" | "ty">,
  * through the same variant path (its coordinates are the L2 frame's). INSTALL-26: or the household's Wave 26 painting
  * (houseVariantChoice.ts; never on an alehouse under its stake), through its own crop in the same frame.
  */
-export function drawHistoricalHouse(context: CanvasRenderingContext2D, building: Building, builtLevel: number,
-  state?: Pick<GameState, "houses" | "seed">): boolean {
+function drawLegacyHistoricalHouse(context: CanvasRenderingContext2D, building: Building, builtLevel: number,
+  state?: ContractHouseInput['state']): boolean {
   if (building.kind !== "house" || building.houseLot !== undefined) return false;
   void preloadHistoricalHouseAssets();
   const record = records.find(candidate => candidate.meta.level === builtLevel);
@@ -102,4 +102,17 @@ export function drawHistoricalHouse(context: CanvasRenderingContext2D, building:
   drawCroppedWorldSprite(context, variant?.image ?? record.raster?.image ?? record.image,
     variant?.source ?? record.raster?.source ?? record.meta.alphaBounds, rect, false, true);
   return true;
+}
+
+
+/** Preserve the existing boolean API for ghosts and direct callers without discarding the frame receipt in the world pass. */
+export function drawHistoricalHouse(context: CanvasRenderingContext2D, building: Building, builtLevel: number,
+  state?: ContractHouseInput['state']): boolean {
+  return drawHistoricalHouseBody(context, building, builtLevel, state).drawn;
+}
+
+export function drawHistoricalHouseBody(context: CanvasRenderingContext2D, building: Building, builtLevel: number,
+  state?: ContractHouseInput['state']): { readonly drawn: boolean; readonly contract: ContractHouseDraw | null } {
+  const contract = contractHouseArt.drawBody(context, { state, building, level: builtLevel });
+  return { drawn: contract !== null || drawLegacyHistoricalHouse(context, building, builtLevel, state), contract };
 }

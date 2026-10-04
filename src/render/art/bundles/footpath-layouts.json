@@ -1,0 +1,131 @@
+[
+  {
+    "ports": "",
+    "shape": "dot",
+    "connector": null,
+    "halves": []
+  },
+  {
+    "ports": "NE",
+    "shape": "end",
+    "connector": null,
+    "halves": [
+      "NE"
+    ]
+  },
+  {
+    "ports": "SE",
+    "shape": "end",
+    "connector": null,
+    "halves": [
+      "SE"
+    ]
+  },
+  {
+    "ports": "SW",
+    "shape": "end",
+    "connector": null,
+    "halves": [
+      "SW"
+    ]
+  },
+  {
+    "ports": "NW",
+    "shape": "end",
+    "connector": null,
+    "halves": [
+      "NW"
+    ]
+  },
+  {
+    "ports": "NE+SW",
+    "shape": "straight_ne",
+    "connector": null,
+    "halves": [
+      "NE",
+      "SW"
+    ]
+  },
+  {
+    "ports": "SE+NW",
+    "shape": "straight_nw",
+    "connector": null,
+    "halves": [
+      "SE",
+      "NW"
+    ]
+  },
+  {
+    "ports": "SW+NW",
+    "shape": "corner_ne",
+    "connector": "path_clear_corner_ne",
+    "halves": []
+  },
+  {
+    "ports": "NE+SE",
+    "shape": "corner_nw",
+    "connector": "path_clear_corner_nw",
+    "halves": []
+  },
+  {
+    "ports": "NE+NW",
+    "shape": "corner_n",
+    "connector": null,
+    "halves": [
+      "NE",
+      "NW"
+    ]
+  },
+  {
+    "ports": "SE+SW",
+    "shape": "corner_s",
+    "connector": null,
+    "halves": [
+      "SE",
+      "SW"
+    ]
+  },
+  {
+    "ports": "NE+SW+NW",
+    "shape": "fork_ne",
+    "connector": "path_clear_fork_ne",
+    "halves": []
+  },
+  {
+    "ports": "NE+SE+NW",
+    "shape": "fork_nw",
+    "connector": "path_clear_fork_nw",
+    "halves": []
+  },
+  {
+    "ports": "NE+SE+SW",
+    "shape": "fork_se",
+    "connector": null,
+    "halves": [
+      "NE",
+      "SE",
+      "SW"
+    ]
+  },
+  {
+    "ports": "SE+SW+NW",
+    "shape": "fork_sw",
+    "connector": null,
+    "halves": [
+      "SE",
+      "SW",
+      "NW"
+    ]
+  },
+  {
+    "ports": "NE+SE+SW+NW",
+    "shape": "cross",
+    "connector": null,
+    "halves": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ]
+  }
+]

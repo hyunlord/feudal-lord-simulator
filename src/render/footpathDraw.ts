@@ -1,3 +1,4 @@
+import { ART_REGISTRY, selectLandArt } from './art/wave42Registry';
 import { SEMANTIC_PALETTE } from "../content/palette";
 import type { GameState } from "../engine/engine.types";
 import { chunkFootpaths, type FootpathPiece, type Port } from "./footpathModel";
@@ -28,8 +29,8 @@ const STRIP_V = 64;
 const OVERLAP_UV = 8;
 const TAIL_UV = 40;
 const DOT_UV = 16;
-const PATH_BASES = ["path_clear_ne", "path_clear_nw", "path_clear_corner_ne", "path_clear_corner_nw", "path_clear_fork_ne", "path_clear_fork_nw"];
-const PATH_KEYS: readonly Wave42StageKey[] = (["summer", "winter"] as const).flatMap(season => PATH_BASES.map(base => stageKey(base, season)));
+const PATH_KEYS: readonly Wave42StageKey[] = ART_REGISTRY.entries('land-stage')
+  .filter(entry => entry.kind === 'land-stage' && entry.family === 'path').map(entry => entry.id);
 let pathArtReady = false;
 
 /**
@@ -108,7 +109,7 @@ export function stripTransform(axis: Axis, line: number, from: number): readonly
 let scratch: (OffscreenCanvas | HTMLCanvasElement) | null = null;
 
 function drawRun(context: CanvasRenderingContext2D, run: FootpathRun, file: StageSeason): void {
-  const image = stageArt(stageKey(run.axis === "ne" ? "path_clear_ne" : "path_clear_nw", file));
+  const image = stageArt(selectLandArt('path-strip', { family: 'path', stage: run.axis, season: file }).id);
   if (image === null) return;
   const from = run.from - (run.fadeFrom ? TAIL_UV : OVERLAP_UV);
   const to = run.to + (run.fadeTo ? TAIL_UV : OVERLAP_UV);

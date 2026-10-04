@@ -1,3 +1,7 @@
+import layouts from './art/bundles/footpath-layouts.json';
+import { validateArtSchema } from './art/schemaValidation';
+import { ArtRegistryError, type ArtRegistry } from './art/artRegistry';
+import { ART_REGISTRY } from './art/wave42Registry';
 import type { GameState } from "../engine/engine.types";
 import { landOf } from "../engine/land";
 
@@ -30,7 +34,7 @@ const OPPOSITE: Readonly<Record<Port, Port>> = { NE: "SW", SW: "NE", SE: "NW", N
 
 export type FootpathShape = "dot" | "end" | "straight_ne" | "straight_nw" | "corner_ne" | "corner_nw" | "corner_n" | "corner_s"
   | "fork_ne" | "fork_nw" | "fork_se" | "fork_sw" | "cross";
-export type ConnectorBase = "path_clear_corner_ne" | "path_clear_corner_nw" | "path_clear_fork_ne" | "path_clear_fork_nw";
+export type ConnectorBase = string;
 export type FootpathRule = {
   readonly shape: FootpathShape;
   /** The pack's join drawn on the cell (null: strips only). */
@@ -39,23 +43,68 @@ export type FootpathRule = {
   readonly halves: readonly Port[];
 };
 
-const rule = (shape: FootpathShape, connector: ConnectorBase | null, halves: readonly Port[] = []): FootpathRule => ({ shape, connector, halves });
-/** The connection rule table, keyed by the joined ports in PORTS order joined with "+" ("" for a lone cell). */
-export const FOOTPATH_RULES: Readonly<Record<string, FootpathRule>> = {
-  "": rule("dot", null),
-  NE: rule("end", null, ["NE"]), SE: rule("end", null, ["SE"]), SW: rule("end", null, ["SW"]), NW: rule("end", null, ["NW"]),
-  "NE+SW": rule("straight_ne", null, ["NE", "SW"]),
-  "SE+NW": rule("straight_nw", null, ["SE", "NW"]),
-  "SW+NW": rule("corner_ne", "path_clear_corner_ne"),
-  "NE+SE": rule("corner_nw", "path_clear_corner_nw"),
-  "NE+NW": rule("corner_n", null, ["NE", "NW"]),
-  "SE+SW": rule("corner_s", null, ["SE", "SW"]),
-  "NE+SW+NW": rule("fork_ne", "path_clear_fork_ne"),
-  "NE+SE+NW": rule("fork_nw", "path_clear_fork_nw"),
-  "NE+SE+SW": rule("fork_se", null, ["NE", "SE", "SW"]),
-  "SE+SW+NW": rule("fork_sw", null, ["SE", "SW", "NW"]),
-  "NE+SE+SW+NW": rule("cross", null, ["NE", "SE", "SW", "NW"]),
-};
+const LAYOUT_SCHEMA = {
+  type: 'array', minItems: 16, maxItems: 16,
+  items: {
+    type: 'object', required: ['ports', 'shape', 'connector', 'halves'], additionalProperties: false,
+    properties: {
+      ports: { type: 'string' },
+      shape: { enum: ['dot', 'end', 'straight_ne', 'straight_nw', 'corner_ne', 'corner_nw', 'corner_n', 'corner_s', 'fork_ne', 'fork_nw', 'fork_se', 'fork_sw', 'cross'] },
+      connector: { type: ['null', 'string'], minLength: 1 },
+      halves: { type: 'array', uniqueItems: true, items: { enum: PORTS } },
+    },
+  },
+} as const;
+
+type AuthoredLayout = FootpathRule & { readonly ports: string };
+function isLayouts(value: unknown): value is readonly AuthoredLayout[] {
+  return validateArtSchema(value, LAYOUT_SCHEMA).length === 0;
+}
+
+/** Reject the entire topology table before publishing any layout. Geometry algorithms stay below. */
+export function parseFootpathLayouts(value: unknown, registry: ArtRegistry = ART_REGISTRY): Readonly<Record<string, FootpathRule>> {
+  if (!isLayouts(value)) throw new ArtRegistryError([{ path: '$/footpath-layouts', message: 'Invalid footpath topology structure' }]);
+  const expected = new Set(Array.from({ length: 16 }, (_, mask) => portsKey(PORTS.filter((_, bit) => (mask & (1 << bit)) !== 0))));
+  const shapePorts: Readonly<Record<Exclude<FootpathShape, 'end'>, string>> = {
+    dot: '', straight_ne: 'NE+SW', straight_nw: 'SE+NW',
+    corner_ne: 'SW+NW', corner_nw: 'NE+SE', corner_n: 'NE+NW', corner_s: 'SE+SW',
+    fork_ne: 'NE+SW+NW', fork_nw: 'NE+SE+NW', fork_se: 'NE+SE+SW', fork_sw: 'SE+SW+NW',
+    cross: 'NE+SE+SW+NW',
+  };
+  const entries: [string, FootpathRule][] = [];
+  for (const row of value) {
+    if (!expected.delete(row.ports)) throw new ArtRegistryError([{ path: '$/footpath-layouts', message: `Duplicate or unknown footpath topology ${row.ports}` }]);
+    const ports = row.ports === '' ? [] : row.ports.split('+');
+    if (row.shape === 'end' ? ports.length !== 1 : shapePorts[row.shape] !== row.ports) {
+      throw new ArtRegistryError([{ path: '$/footpath-layouts', message: `Shape ${row.shape} contradicts topology ${row.ports}` }]);
+    }
+    const checkCoverage = (connectorPorts: readonly string[]): void => {
+      const represented = [...connectorPorts, ...row.halves];
+      if (represented.length !== new Set(represented).size || represented.length !== ports.length
+        || represented.some(port => !ports.includes(port))) {
+        throw new ArtRegistryError([{ path: '$/footpath-layouts', message: `Connector and strip halves must represent each port exactly once for ${row.ports}` }]);
+      }
+    };
+    if (row.connector !== null) {
+      for (const season of ['summer', 'winter']) {
+        const selected = registry.select('land-stage', 'path', { family: 'path', stage: row.connector, season }, 0);
+        const matches = selected === null
+          ? registry.entries('land-stage').filter(entry => entry.kind === 'land-stage' && entry.family === 'path' && entry.stage === row.connector && entry.season === season)
+          : [selected];
+        const entry = matches[0];
+        if (matches.length !== 1 || entry?.kind !== 'land-stage' || entry.family !== 'path' || entry.layout !== 'connector') {
+          throw new ArtRegistryError([{ path: '$/footpath-layouts', message: `Connector ${row.connector} lacks selected ${season} geometry for ${row.ports}` }]);
+        }
+        checkCoverage(Object.keys(entry.ports));
+      }
+    } else checkCoverage([]);
+    entries.push([row.ports, Object.freeze({ shape: row.shape, connector: row.connector, halves: Object.freeze([...row.halves]) })]);
+  }
+  return Object.freeze(Object.fromEntries(entries));
+}
+
+/** Authored connection choices; the existing thinning, bridge and strip geometry are unchanged. */
+export const FOOTPATH_RULES = parseFootpathLayouts(layouts);
 
 export function portsKey(ports: Iterable<Port>): string {
   const set = new Set(ports);

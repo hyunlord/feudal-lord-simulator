@@ -1,3 +1,4 @@
+import { contractHouseArt, type ContractHouseDraw } from './art/contractHouseArt';
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { plagueVacantPlots } from "../engine/plague";
@@ -47,11 +48,12 @@ export function vacantHouseBoards(level: number, variant: boolean, plagueVacant:
   return plagueVacant && level >= 1 && level <= 3 ? "plague_shut" : "boarded";
 }
 /** `props` false (NAT-2: the zoomed-out status view) leaves out the door piles and story props, a speck there. */
-export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building, props = true): void {
+export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building, props = true, drawn: ContractHouseDraw | null = null): void {
   if (building.kind === "house") drawHouseEventOverlays(context, state, building);
   if (building.kind === "house" && building.houseLot === undefined) {
     const level = buildBuildingVisualState(building, state.houses).houseLevel;
-    const meta = historicalHouseReady(level) ? historicalHouseAssetMeta(level) : null;
+    const contract = contractHouseArt.drawLayers(context, drawn);
+    const meta = !contract && historicalHouseReady(level) ? historicalHouseAssetMeta(level) : null;
     if (meta !== null) {
       const rect = historicalHouseSpriteRect(building, meta);
       const clamped = Math.max(0, Math.min(4, level));

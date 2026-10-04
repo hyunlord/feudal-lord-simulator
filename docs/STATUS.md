@@ -9,6 +9,8 @@
 
 ## 현재 단계
 
+- **렌더 B · ASSET-ARCH-1 — 진행, 미병합**(Astra): [그림 계약](design/art-contract.md)과 [선택 경로 조사](verification/asset-architecture/SELECTOR_AUDIT.md). 열 종류 구조·참조 검증과 재사용 그리기 장치, 기존 Wave42 36장 이전은 DGX 28쌍 전체 RGBA 차이 0, 신규 시대 집 32장(기존 층 4장 재사용)은 8장면 실제 요청·디코드·그리기와 독립 시각 검토를 통과했다. 코어와 데이터의 제품 코드 1,039파일 SHA도 동일하다. 최종 커밋의 전체 회귀·기하 감사·클론·병합은 진행 중이다. UI 3종은 Render A 인계 descriptor이며 실제 UI 연결·설치를 주장하지 않는다. 본선 `d4973e85`의 레인·동시 2개 실행 규칙 반영. 설치 장부는 실제 사용 확인 뒤에만 갱신한다.
+
 - **기초 설계서 확정(FND) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): [기초 설계서](design/foundation.md)·[시각·에셋 아키텍처](design/visual-architecture.md)를 받은 그대로 넣고 결정 FND-1~5(1~3부 채택·렌더 B 권한·사람 키 17.6px·UI 그림과 계약 장치 먼저·0~4단계). 헌장(CHARTER·AGENTS 0절·CLAUDE.md)을 고쳤다: 정체성 아홉(8 이유가 보인다·9 과장하지 않는다), 금지 목록의 담비·굴뚝, 레인(렌더 A·렌더 B), 실행기·상시 계측·A-B, 그림 계약·장면 합성 판정. AGENTS.md에 레인 표와 렌더 A/B 파일 경계. 로드맵은 0~4단계로, 장부에 렌더 B 절.
 - **DGX 무거운 실행 상한(HEAVY-CAP) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 전체 회귀·가드레일·화면 기하 감사·깨끗한 클론과 `--heavy`·`--detach` 명령은 DGX에서 동시에 2개까지, 나머지는 줄을 서며 몇 번째인지·앞에 무엇이 도는지 기록한다(결정 RR14, `run.sh --status`). 짧은 실행은 `--light`. 둘째 서버 포트는 `FLS_REMOTE_BASE_PORT`(4300~4399 안). 본선을 합쳐야 그 세션의 실행이 상한에 든다.
 - **남는 개발 서버 막기(DEV-SERVERS) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 캡처·감사 스크립트가 서버를 `scripts/remote/devServers.sh`(셸)·`scripts/serverProcess.ts`(TS)로 띄워 실패·중지에도 끈다. DGX는 실행이 끝날 때 끝난 실행의 남은 vite를 찾아 멈춘다(결정 RR12). 끝난 팀원 에이전트를 OMC SubagentStop 훅이 다시 깨우던 문제는 이 저장소에서 OMC 플러그인을 꺼서 막았다(결정 RR13, AGENTS 규칙 20; 각 세션은 본선을 합친 뒤 새 세션부터).

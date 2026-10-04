@@ -1,8 +1,9 @@
+import type { ContractHouseDraw } from './art/contractHouseArt';
 import { outlinesOccludingBuilding } from "./selectionOcclusion";
 import { drawBuildingContactShadowV2 } from "./buildingContactShadow";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
 import { drawHouseCompoundSprite } from "./houseCompoundAssets";
-import { drawHistoricalHouse } from "./historicalHouseAssets";
+import { drawHistoricalHouseBody } from "./historicalHouseAssets";
 import { drawHistoricalFacility } from "./historicalFacilityAssets";
 import { drawHouseCondition } from "./houseConditionOverlay";
 import { drawHouseCompound } from "./houseCompound";
@@ -120,11 +121,11 @@ function drawBuilding(
   }
   // Curved ground (C1d): the contact shadow sits directly under the body, drawn here rather than baked into the ground.
   if (boundaryV2Enabled()) drawBuildingContactShadowV2(context, building);
-  drawBuildingDetail(context, input, building, spriteOptions);
+  const contract = drawBuildingDetail(context, input, building, spriteOptions);
   // INSTALL-7 snow, boards, piles; NAT-2: the snow, boards and fire on the painted houses of the status view too (the
   // boards are a state), without the door piles and story props (a speck there; the piles were ~0.37 ms a frame in
   // the 1380 town at zoom 0.6, 5x: CPU profile, 20 ms/s at ~55 frames/s).
-  const detail = renderDetailLevel(input.zoom); if (detail !== "blocks") drawBuildingOverlays(context, input.state, building, detail === "full");
+  const detail = renderDetailLevel(input.zoom); if (detail !== "blocks") drawBuildingOverlays(context, input.state, building, detail === "full", contract);
 }
 
 function drawBuildingDetail(
@@ -132,7 +133,7 @@ function drawBuildingDetail(
   input: ObjectRenderInput,
   building: Building,
   spriteOptions: WorldSpriteOptions,
-): void {
+): ContractHouseDraw | null {
   const center = buildingCenter(building);
   const visualState = buildBuildingVisualState(building, input.state.houses, {
     era: houseMaterialEraFromEra(input.state.era),
@@ -143,31 +144,31 @@ function drawBuildingDetail(
   const detailLevel = renderDetailLevel(input.zoom); const painted = detailLevel !== "blocks";
   // The 2x2 wheat farm is retired (C1c-2: v9 -> v10 saves turn farms into arable fields and a farmstead; C1f: its art
   // left the runtime). Only an unmigrated test state can still hold one, and it draws nothing.
-  if (building.kind === "wheat_farm") return;
+  if (building.kind === "wheat_farm") return null;
   if (building.kind === "house" && building.houseLot !== undefined) {
     if (!painted || !drawHouseCompoundSprite(context, building, visualState.houseLevel)) {
       drawHouseCompound(context, building, visualState.houseLevel, detailLevel);
     } else drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
     if (detailLevel === "full") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, smokeTimeMs(input));
     drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
-    return;
+    return null;
   }
   if (painted && building.kind === "farmstead" && drawFarmsteadSprite(context, building, input.state, spriteOptions)) {
     drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center, kind: building.kind, zoom: input.zoom, visualState });
-    return;
+    return null;
   }
   if (painted) {
     const historical = building.kind === "house"
-      ? drawHistoricalHouse(context, building, visualState.houseLevel, input.state)
-      : drawHistoricalFacility(context, building, input.state);
-    if (historical) {
-      if (building.kind === "house") drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition);
+      ? drawHistoricalHouseBody(context, building, visualState.houseLevel, input.state)
+      : { drawn: drawHistoricalFacility(context, building, input.state), contract: null };
+    if (historical.drawn) {
+      if (building.kind === "house") drawHouseCondition(context, building, visualState.houseLevel, visualState.houseCondition, historical.contract);
       // F0-V: roof smoke of a lived-in house, the mill oven's smoke while it runs.
       if (building.kind === "house" && detailLevel === "full") drawHouseRoofSmoke(context, input.state, building, visualState.houseLevel, smokeTimeMs(input));
       if (detailLevel === "full") drawWorkFireSmoke(context, building, input.state, smokeTimeMs(input)); // the mill's oven, the kiln's flue (INSTALL-3)
       drawKindDetail(context, { hideProblemMarker: true, architecture: "baked", tick: input.state.tick, center,
         kind: building.kind, zoom: input.zoom, visualState });
-      return;
+      return historical.contract;
     }
     const spriteKey = buildingSpriteKey(building, visualState.houseLevel);
     const spriteDrawn = drawBuildingSprite(context, building, spriteKey, spriteOptions);
@@ -180,7 +181,7 @@ function drawBuildingDetail(
         zoom: input.zoom,
         visualState,
       });
-      return;
+      return null;
     }
   }
   const shape = {
@@ -191,7 +192,7 @@ function drawBuildingDetail(
   };
   if (detailLevel === "blocks") {
     drawLodBlock(context, shape);
-    return;
+    return null;
   }
   drawBody(context, shape);
   drawRoof(context, shape);
@@ -204,6 +205,7 @@ function drawBuildingDetail(
       visualState,
     });
   }
+  return null;
 }
 
 function drawBuildingSilhouette(
