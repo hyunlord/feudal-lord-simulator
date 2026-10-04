@@ -55,3 +55,59 @@
 | 여관 | L4 집의 inn 외형 변형 | 실제 여관 영업/건물 정체성과 3단계 완료. alehouse나 임의 L4를 여관으로 치환하지 않음 |
 
 엔진은 그림 이름·픽셀 좌표를 저장할 필요가 없다. 안정된 대상 ID, 승인·공사 완료 상태, 점유/통행 변화를 공급하면 렌더 B가 단계 그림·계절·등록 피벗을 연결한다. 현재 generic landmark 계약의 growthStage 필드만으로 이런 게임 사실이 생기는 것은 아니다. 전체 44장 연결·실제 통행·가림·계절 검증은 아직 완료하지 않았다.
+
+## 목축 시설·손도구·작업자의 실제 대상: 31장
+
+2026-10-05 Render B. 감사 기준 `90d9b586`; `70c15321`에서도 31개 원본의 설치 표시·예정 public·provenance alias가 모두 없음을 재확인했다. 엔진 기능 구현 지시나 설치 기록이 아니다. 근거는 [목축 시설 명세](../ops/install-plan-20261003/SPECS/wave3-pasture.md), [손도구 명세](../ops/install-plan-20261003/SPECS/wave3-tools.md), [목축 작업자 명세](../ops/install-plan-20261003/SPECS/wave13-workers.md), [원425 회계](../verification/asset-architecture/recount-425.csv)다. 기존 요청 묶음과 별도31개 원본이며 중복 집계하지 않는다.
+
+### 요청 범위와 정확한 원본 ID
+
+N번호는 기존 `docs/verification/asset-architecture/recount-425.csv`의 1-based 원래 행 번호다. 정확한 원본 경로와 sourceSHA는 위 추적되는 회계 CSV에서 대조한다. 방향 순서는 모든4장 묶음에서 **NE, NW, SE, SW**다.
+
+| 묶음 | 원래 ID와 그림 | 수량 |
+|---|---|---:|
+| wave3-pasture | N0244 shearing_pen, N0245 sheepfold, N0246 wash_pool | 3 |
+| wave3-tools | N0247–N0250 work_distaff; N0251–N0254 work_dye_paddle; N0255–N0258 work_shears; N0259–N0262 work_shepherd_crook | 16 |
+| wave13-workers | N0116–N0119 work_goad; N0120–N0123 work_whip; N0124 wk_drover_m; N0125 wk_goosegirl_f; N0126 wk_packhorse_leader; N0127 wk_swineherd_m | 12 |
+
+### 1. 목축 시설3: 실제 대상과 사용 가능한 공간
+
+**현재 사실:** `src/engine/cloth.ts:42–76`의 pasture zone membership, pastoral_farm 위치와 담당 셀 수, `src/content/buildingConfig.ts:398–400`의 2×1 footprint 및 fleece 보관 기능은 존재한다. `pastureTending`은 농장별 **개수**를 반환한다. 담당 pasture와 보유 마당은 같은 개념이 아니며 이 함수가 마당 소유권을 제공하지 않는다. 실제 물 terrain도 읽을 수 있으나 물 인접은 양 씻기 활동의 증거가 아니다.
+
+**엔진 담당자에게 필요한 최소 응답:** 이미 제공 가능한 selector가 있다면 그 경로와 의미만 알려주면 된다. 아래 명칭은 요청하는 의미이며 신규 저장 필드나 API 형식을 확정한 것이 아니다.
+
+| 필요한 조회 의미 | 최소 내용 | 부재 시 처리 |
+|---|---|---|
+| 목축 시설 대상 | 안정된 실제 farm/building ID, 해당 농장과 목축 공간의 관계 | 적격 농장 없이 그림 생성 금지 |
+| 시설을 둘 수 있는 범위 | 대상 ID에 귀속되는 유효 영역/셀 또는 기존 규칙으로 판정하는 질의, 그것이 소유 마당인지 사용 허용 공간인지의 명시 | nearest farm·빈 grass·담당 셀 수로 소유권 추정 금지. 원래 “보유 마당” 계약을 충족 못하면 미연결 유지 |
+| 전모 시설에 그려진 fleece의 의미 | 기존 `building.inventory.fleece`로 보관 중 양털을 표현해도 되는지 확인. 실제 전모 진행을 의미해야 한다면 실제 대상에 귀속되는 활동 상태가 필요 | 달력 여름만으로 진행 중 전모나 fleece 보유를 생성하지 않음 |
+
+빈 sheepfold와 wash_pool은 정적 시설로 연결할 수 있다면 새 동물 actor가 필수는 아니다. 모든 시설에 새 활동 read-model을 일괄 요구하지 않는다. shearing_pen에 포함된 양털 더미의 의미만 기존 재고와 맞춰 확인한다. 보유 공간 자체가 게임에 없다면 이를 읽기 정보만으로 생성할 수 없으므로 엔진 사실 추가와 원본 사용 의미 변경 중 어느 것도 렌더에서 임의 결정하지 않는다.
+
+**Render B 책임:** 적격 공간 내 실제 빈자리 선정, 도로/건물/공사/벽/물 및 다른 소품 충돌 제외, 문·진입 gap 비움, wash_pool의 실제 물 인접 확인, native pivot/scale/depth/clip 등록. 기존 `backyardDecals.ts:124–180`의 기하 규칙을 참고할 수 있지만 현재 house-only이며 비burgage zone을 제외하므로 farm 마당 구현이라고 간주하지 않는다. 현재 농장 fit art (`historicalFacilityManifest.ts:278–307`, 272×136, displayWidth107/108)와 맞춰 교정하고 임의0.5배를 적용하지 않는다.
+
+### 2. 직물 손도구16: 누가 지금 어떤 작업을 하는가
+
+**현재 사실:** `clothWorkerSheet.ts:21–30`은 homeBuildingId가 pastoral_farm인 **carter의 외형**을 wk_shepherd로 선택한다. `walkerComposer.ts:205–210`도 외형만 바꾸며 기존 held-prop 선택을 사용한다. `walker.types.ts:3–36`의 actor ID·위치·cargo·출발 건물 및 운반 mission/phase가 존재하지만 전모/실잣기/염색/양 관리 작업 상태는 이 경로에 없다. `walkerLook.ts:166–202`에 해당4종 작업 selector가 없고, cloth 총량 생산이나 house spinningSlot을 개인 손 작업으로 읽을 수 없다.
+
+**필요한 최소 조회 의미:** 기존의 실제 world actor ID에 연결되는 작업 종류(양 관리/전모/실잣기/염색 중 실제 지원되는 것), 작업 대상 ID 또는 장소, 현재 그 작업에 종사 중인지와 종료/중단 여부. actor가 실제로 개인과 연결돼 있다면 그 관계를 공급하되 가상의 person ID를 요구하지 않는다. 기존 운반·건설 등과 작업 상태가 충돌하지 않는 의미/우선순위도 필요하다. 양 관리와 전모는 구별하며 crook와 shears를 한 직업의 무작위 소품으로 섞지 않는다.
+
+기존 기능이 이 사실을 공급하지 않는다면 “지원 없음”이라는 명시적 응답이면 충분하다. 이름만 있는 occupation 문자열이나 새 enum으로 도달성을 꾸미지 않는다. 엔진이 그림 종류·손 좌표·프레임을 저장할 필요는 없다.
+
+**Render B 책임:** 현재 작업이 허용하는 도구 선택, cargo/이미 도구를 든 body와의 중복 방지, 방향4×보행2frame 손점 등록, 앞/뒤 hand layer, 32×32 grip(16,20), noMirror, 로더 준비·실패 시 생략. 실제 작업자 생산이 없는 상태에서 장식 인구를 만들어16장을 보여주지 않는다.
+
+### 3. 목축 작업자12: 세부 역할과 실제 동물 유도 관계
+
+**현재 사실:** `farmProps.ts:43–69` 등의 양/소/돼지는 zone 기반 정적 렌더 표현이다. 실제 drover/goosegirl/swineherd/packhorse leader의 임무 actor나 동물 유도 관계로 볼 수 없다. `persons.types.ts:45–57`은 실제 person ID·householdId·occupation을 갖지만 `persons.ts:65–70,493–505`의 건물 관리인 연결이 이 네 역할을 생산하지 않는다. 문자열 타입의 허용 범위를 현재 게임 직업의 존재와 혼동하지 않는다.
+
+**필요한 최소 조회 의미:** 실제 화면 actor의 안정 ID, 현재 담당 역할/임무, 동물 종류와 관련된 실제 대상 또는 무리·운송 임무 참조, 활동의 시작/종료·유효성. 개별 동물 ID가 원래 모델에 없다면 만들어 달라는 요청이 아니다. 기존 집합/무리 임무가 있다면 그 실제 참조로 충분하다. goad/whip은 단지 직업이나 동물이 근처에 있다는 이유가 아니라 현재 유도 작업이 해당 도구 표현을 허용하는지 판단 가능한 의미가 필요하다. 몸 외형에 필요한 실제 성별 정보도 기존 actor/person 관계가 있으면 그것을 따른다.
+
+**Render B 책임:** 승인4body의 실제 역할 한정 선택, 남녀 template·74×74×8cell foot/hand 등록, goad/whip48×48 pivot(24,24)의 실제 손접점 검증, 방향·프레임·layer·scale·noMirror. 기존 farmer 풀에4명을 무조건 섞거나 기존 sheep carter를 drover로 재명명하지 않는다.
+
+### 응답·검수와 회계 경계
+
+엔진 담당 응답은 각 묶음에 **현재 공급 가능한 selector/실제 producer 경로, 값의 의미, 미지원 항목**을 적어 주면 된다. 신규 엔진 구현 방식·저장 버전·스케줄러를 이 요청에서 제안하지 않는다. 장소·역할·행동을 명시적으로 지원하지 않으면 해당 조건은 false/없음으로 처리하며 렌더 fallback이 사실을 생성하지 않는다.
+
+검수는 같은 저장 상태 재개 시 대상/작업 의미 유지, 작업 종료·취소·화물 운반 시 거짓 도구 표시 없음, 물/유효 공간 없는 시설 생략, 기존 인구·생산·이동 변경 없음이 기준이다. 이후 Render B가 실제 selector→loader→paint와 계절/줌별 before/after를 따로 증명한다. 준비 fixture의 임의 occupation/action 주입은 실제 producer 증거를 대신하지 않는다.
+
+**우선순위:** pasture3의 공간 의미 확인 및 렌더 배치 preflight → 가능할 때3 전체 계약 구현. tools16/workers12는 실제 작업/역할 공급 전 보류. 3+16+12=31을 그대로 유지하며 일부 방향·body만 보여도 전체 완료로 계산하지 않는다. 기존 cargo40·Wave37표지4와 의미가 겹쳐도 동일 원본으로 중복 계산하지 않는다. 이 항목은 읽기 정보 요청이며 제품 구현·설치·장부 승격이 아니다.

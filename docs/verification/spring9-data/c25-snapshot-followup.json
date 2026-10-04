@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "scope": "Spring9 expected Node call-stream snapshot followup; no executable change",
+  "test": "node_modules/.bin/tsx --test tests/c25Board.test.ts",
+  "tests": 1,
+  "pass": 1,
+  "fail": 0,
+  "duration_ms": 3796.559709,
+  "fixture": "tests/fixtures/boundary/c25-board.json",
+  "fixtureSHA256": "64ac7b16207c421d25a565e93f4ccce6876d25ea9eab8a85d2b002c4f87c2c59",
+  "changedKey": "season-spring-z1.00-dpr1",
+  "old": "cf0bf5363d9a3b92d455d928f79321dc244d04af4475f34ce1db5de3072be734",
+  "new": "24e8052c8e937f0ca936275b55e981fcca88d3cebbf5377073f102c22ce8bba5",
+  "preservedHashes": 15,
+  "causeReport": "/Users/rexxa/fls-astra-renderB-field-integration/.omo/evidence/field-c25-cause.json",
+  "cause": "Six spring replacements preserve draw arguments/order after label normalization; new three pine/dead seasonal stand-ins replace procedural fallback. Main70c and isolatedFIELD share change; core208 catalog toggle restores baseline. 64 chunk rasters unchanged. Node hash is not pixel evidence."
+}

@@ -1,4 +1,4 @@
-# 옛6 퇴역과 새9 후보
+# 옛6 퇴역과 새9 후보 — 70c 후보 커밋 시점 기록
 
 V1 후보에서 남아 있던 옛 Wave15 봄 public 중복6을 승인 v2처럼 제거했다. 원본 inbox6은 삭제·수정하지 않는다. 해당 provenance6의 runtimePath는 보존 원본으로, status는 retired로 바뀌며 새9는 candidate다. 나머지2412 CSV레코드는 literal bytes가 같다. 정확한 전후 행은 retirement.json이다.
 
