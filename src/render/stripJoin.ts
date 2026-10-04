@@ -7,24 +7,51 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 // over `fade` source px either side (summed in premultiplied space, "lighter"). Browser only (needs a canvas).
 // featherStripRows (LU-D11, the land edge bands): a strip's alpha multiplied row by row, once per strip family.
 
-export function joinStripImages(images: readonly CanvasImageSource[], stripWidth: number, stripHeight: number, fade: number): CanvasImageSource | null {
+function errorText(error: unknown): string {
+  try { return String(error); }
+  catch { return "Unprintable thrown value"; }
+}
+
+/** Failure reporting runs once outside composition; a reporting callback exception propagates to its caller. */
+export type StripJoinCompletion = { readonly mode: "strict"; readonly onFailure: (reason: string) => void };
+
+// The existing four positional arguments remain compatible; only the atomic consumer opts into completion policy.
+export function joinStripImages(images: readonly CanvasImageSource[], stripWidth: number, stripHeight: number, fade: number, completion?: StripJoinCompletion): CanvasImageSource | null {
+  let result: CanvasImageSource | null = null;
+  let failure: string | null = null;
+  const policy: StripJoinCompletion | undefined = completion === undefined ? undefined : { mode: "strict", onFailure: reason => { failure = reason; } };
+  try { result = joinStrips(images, { width: stripWidth, height: stripHeight, fade }, policy); }
+  catch (error) {
+    if (completion === undefined) throw error;
+    failure = `Strip processing failed: ${errorText(error)}`;
+  }
+  if (failure !== null) completion?.onFailure(failure);
+  return result;
+}
+function joinStrips(images: readonly CanvasImageSource[], size: { readonly width: number; readonly height: number; readonly fade: number }, completion?: StripJoinCompletion): CanvasImageSource | null {
+  const { width: stripWidth, height: stripHeight, fade } = size;
+  const failed = (reason: string): null => { completion?.onFailure(reason); return null; };
   const width = stripWidth * images.length;
   const joined = canvas2d(width, stripHeight);
-  if (joined === null) return images[0] ?? null;
+  if (joined === null) return completion === undefined ? images[0] ?? null : failed("Main strip canvas/context unavailable");
   images.forEach((image, index) => blit(joined.context, image, 0, 0, stripWidth, stripHeight, index * stripWidth, 0));
-  images.forEach((left, index) => {
+  for (const [index, left] of images.entries()) {
     const right = images[(index + 1) % images.length] as CanvasImageSource;
     const join = ((index + 1) * stripWidth) % width;
     const outgoing = canvas2d(fade * 2, stripHeight); const incoming = canvas2d(fade * 2, stripHeight);
-    if (outgoing === null || incoming === null) return;
+    if (outgoing === null || incoming === null) {
+      if (completion !== undefined) return failed(`Seam ${index} scratch canvas/context unavailable`);
+      continue;
+    }
     // Each image continued across the join (both wrap on their own), weighted 1 -> 0 and 0 -> 1: summed in
     // premultiplied space ("lighter") that is a straight crossfade.
     for (const [target, image] of [[outgoing, left], [incoming, right]] as const) {
       blit(target.context, image, stripWidth - fade, 0, fade, stripHeight, 0, 0);
       blit(target.context, image, 0, 0, fade, stripHeight, fade, 0);
     }
-    maskX(outgoing.context, fade * 2, stripHeight, 1, 0);
-    maskX(incoming.context, fade * 2, stripHeight, 0, 1);
+    const outgoingMask = maskX(outgoing.context, fade * 2, stripHeight, 1, 0);
+    const incomingMask = maskX(incoming.context, fade * 2, stripHeight, 0, 1);
+    if (completion !== undefined && (!outgoingMask || !incomingMask)) return failed(`Seam ${index} mask canvas/context unavailable`);
     for (const offset of join === 0 ? [width - fade, -fade] : [join - fade]) {
       joined.context.clearRect(offset, 0, fade * 2, stripHeight);
       joined.context.globalCompositeOperation = "lighter";
@@ -32,7 +59,7 @@ export function joinStripImages(images: readonly CanvasImageSource[], stripWidth
       blit(joined.context, incoming.canvas, 0, 0, fade * 2, stripHeight, offset, 0);
       joined.context.globalCompositeOperation = "source-over";
     }
-  });
+  }
   return joined.canvas;
 }
 
@@ -68,9 +95,9 @@ function blit(context: CanvasRenderingContext2D, image: CanvasImageSource, sx: n
  * own canvas one texel column at a time and applied once with destination-in: destination-in clears everything outside
  * the shape being drawn, so applying it column by column would leave only the last column.
  */
-function maskX(context: CanvasRenderingContext2D, width: number, height: number, from: number, to: number): void {
+function maskX(context: CanvasRenderingContext2D, width: number, height: number, from: number, to: number): boolean {
   const ramp = canvas2d(width, height);
-  if (ramp === null) return;
+  if (ramp === null) return false;
   for (let column = 0; column < width; column += 1) {
     ramp.context.fillStyle = withAlpha(PALETTE.ink, from + (to - from) * (column + 0.5) / width);
     ramp.context.beginPath(); ramp.context.rect(column, 0, 1, height); ramp.context.fill();
@@ -78,4 +105,5 @@ function maskX(context: CanvasRenderingContext2D, width: number, height: number,
   context.globalCompositeOperation = "destination-in";
   blit(context, ramp.canvas, 0, 0, width, height, 0, 0);
   context.globalCompositeOperation = "source-over";
+  return true;
 }

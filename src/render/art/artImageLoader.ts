@@ -7,10 +7,11 @@ export type ArtImageEnvironment = {
   readonly createImage: (() => HTMLImageElement) | null;
   readonly baseUrl: string;
 };
-type LoadedImage = { readonly image: HTMLImageElement; state: ArtImageState };
+type LoadedImage = { image: HTMLImageElement | null; state: ArtImageState;
+  readonly settled: Promise<ArtImageState>; readonly resolve: (state: ArtImageState) => void };
 
-/** Thrown callback values can themselves fail string conversion. */
-function readinessErrorText(error: unknown): string {
+/** Thrown values need not be Errors or even safely string-convertible. */
+function errorText(error: unknown): string {
   try { return String(error); }
   catch { return 'Unprintable thrown value'; }
 }
@@ -32,7 +33,7 @@ export function createArtImageLoader(registry: ArtRegistry, environment: ArtImag
       sent.add(callback);
       try { callback(image); }
       catch (error) {
-        const failure = error instanceof Error ? error : new Error(`Readiness callback failed: ${readinessErrorText(error)}`);
+        const failure = error instanceof Error ? error : new Error(`Readiness callback failed: ${errorText(error)}`);
         const errors = callbackErrors.get(id) ?? []; errors.push(failure); callbackErrors.set(id, errors);
       }
     }
@@ -41,35 +42,53 @@ export function createArtImageLoader(registry: ArtRegistry, environment: ArtImag
     const callbacks = listeners.get(id) ?? new Set<(image: HTMLImageElement) => void>();
     callbacks.add(callback); listeners.set(id, callbacks);
     const cached = images.get(id);
-    if (cached?.state.status === 'ready') notify(id, cached.image);
+    if (cached?.state.status === 'ready' && cached.image !== null) notify(id, cached.image);
   };
   const status = (id: string): ArtImageState => {
     if (registry.entry(id) === null) return { status: 'unavailable', reason: 'Unknown asset ID' };
     if (environment.createImage === null) return { status: 'unavailable', reason: 'Image API unavailable' };
     return images.get(id)?.state ?? { status: 'idle', reason: null };
   };
-  const image = (id: string): HTMLImageElement | null => {
+  const settle = (cached: LoadedImage, state: ArtImageState): void => {
+    if (cached.state.status !== 'loading') return;
+    cached.state = state; cached.resolve(state);
+  };
+  const start = (id: string): LoadedImage => {
+    const cached = images.get(id);
+    if (cached !== undefined) return cached;
+    let resolve: (state: ArtImageState) => void = () => { throw new Error('Image settlement not initialized'); };
+    const settled = new Promise<ArtImageState>(done => { resolve = done; });
+    const created: LoadedImage = { image: null, state: { status: 'loading', reason: null }, settled, resolve };
+    images.set(id, created);
     const entry = registry.entry(id);
-    if (entry === null || environment.createImage === null) return null;
-    let cached = images.get(id);
-    if (cached === undefined) {
-      const element = environment.createImage();
-      const created: LoadedImage = { image: element, state: { status: 'loading', reason: null } };
-      images.set(id, created);
-      element.onload = () => {
-        void element.decode().then(() => {
-          if (created.state.status !== 'loading') return;
-          created.state = element.naturalWidth === entry.image.width && element.naturalHeight === entry.image.height
-            ? { status: 'ready', reason: null }
-            : { status: 'missing', reason: `Decoded size ${element.naturalWidth}x${element.naturalHeight} differs from ${entry.image.width}x${entry.image.height}` };
-          if (created.state.status === 'ready') notify(id, element);
-        }, error => { created.state = { status: 'missing', reason: `Image decode failed: ${String(error)}` }; });
-      };
-      element.onerror = () => { created.state = { status: 'missing', reason: 'Image request failed' }; };
-      element.src = assetUrlForBase(entry.image.url, environment.baseUrl);
-      cached = created;
+    if (entry === null || environment.createImage === null) {
+      settle(created, { status: 'unavailable', reason: entry === null ? 'Unknown asset ID' : 'Image API unavailable' });
+      return created;
     }
+    try {
+      const element = environment.createImage(); created.image = element;
+      element.onload = () => {
+        if (created.state.status !== 'loading') return;
+        try {
+          void element.decode().then(() => {
+            if (created.state.status !== 'loading') return;
+            const dimensionsMatch = element.naturalWidth === entry.image.width && element.naturalHeight === entry.image.height;
+            settle(created, dimensionsMatch
+              ? { status: 'ready', reason: null }
+              : { status: 'missing', reason: `Decoded size ${element.naturalWidth}x${element.naturalHeight} differs from ${entry.image.width}x${entry.image.height}` });
+            if (dimensionsMatch) notify(id, element);
+          }, error => { settle(created, { status: 'missing', reason: `Image decode failed: ${errorText(error)}` }); });
+        } catch (error) { settle(created, { status: 'missing', reason: `Image decode failed: ${errorText(error)}` }); }
+      };
+      element.onerror = () => { settle(created, { status: 'missing', reason: 'Image request failed' }); };
+      element.src = assetUrlForBase(entry.image.url, environment.baseUrl);
+    } catch (error) { settle(created, { status: 'missing', reason: `Image request setup failed: ${errorText(error)}` }); }
+    return created;
+  };
+  const image = (id: string): HTMLImageElement | null => {
+    const cached = start(id);
     return cached.state.status === 'ready' ? cached.image : null;
   };
-  return { image, status, onReady, readinessErrors: (id: string): readonly Error[] => [...(callbackErrors.get(id) ?? [])] };
+  const loadSettled = (id: string): Promise<ArtImageState> => start(id).settled;
+  return { image, status, onReady, loadSettled, readinessErrors: (id: string): readonly Error[] => [...(callbackErrors.get(id) ?? [])] };
 }

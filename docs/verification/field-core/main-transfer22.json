@@ -1,0 +1,183 @@
+{
+  "status": "APPLIED_GUARDED22_AFTER_ACTUAL_MAIN_BEFORE20_PASS",
+  "predecessor": "3e722109194cfea10e9fd53a1b870ebfc26a2dfe",
+  "operations": [
+    {
+      "path": "scripts/c25Board.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/scripts/c25Board.ts",
+      "beforeSHA256": "a45a0932f01a2bf202313aa7f68e3e22ba450447d8eaf53464b39cf4e852eb72",
+      "afterSHA256": "59ebf4e149dba7fe6aaeb6f1487e3ec11d2b534ec6ed9e98b68f1c9df966d61f",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/artAdapters.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/artAdapters.ts",
+      "beforeSHA256": "d746c43d00414cdf27f77b00cf62d5c4fc4e364c6979493c30342937da3d6502",
+      "afterSHA256": "4c711bd0ffb4b42cd25e632bb6a6b72819a468e94fe9c913951d192d0d38177a",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/artContract.schema.json",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/artContract.schema.json",
+      "beforeSHA256": "085b0f1209cdb5b0c2f097ee01da48e6312f8b3fca6ec741c975aeecd97b86a6",
+      "afterSHA256": "b1b79e9a9d8b1e9642b2ded52aa7e93c5c54f5df18755c6db88b4cd5baf22bd6",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/artContract.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/artContract.ts",
+      "beforeSHA256": "b06590997af477f79f793b872332b07823894a7dfe41eeedf1e766c70694f428",
+      "afterSHA256": "4bb7b10bd6d74b17adacf17f07ee05d3b2d82b16c5d35edaf1817c03c50acc00",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/artImageLoader.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/artImageLoader.ts",
+      "beforeSHA256": "24d4a14c5d9be9fcf7e86585d866ec764c5ff7bd8a4fb33ee5529f2380bcade7",
+      "afterSHA256": "0bd56c7178129cda3595cf0561c59c020c97b504e9f25c47e704548cc5d318a6",
+      "action": "GUARDED_FIELD_SUPERSET"
+    },
+    {
+      "path": "src/render/art/artRegistryValidation.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/artRegistryValidation.ts",
+      "beforeSHA256": "6f38c53fd8243b350044fb7017193ddab5649e88f2d35ef361969bc65a9e8c22",
+      "afterSHA256": "3218b0b412ee9c3988a693c9bddfc246a2ac8cdba476426aa42f9f710ed1a7c7",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/artSelection.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/artSelection.ts",
+      "beforeSHA256": "56102a477d0d0251494ccb38473d12b6ba9170f10eae117cb4a16d5ce420a2c7",
+      "afterSHA256": "5f0e279d9b55b370dddeb2eca7beb8b4c83d2c1a708305cc9f3bbb012989575f",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/catalog.json",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/catalog.json",
+      "beforeSHA256": "395ed16ecaa0bc76b18d2ec72dd9e089b16ff23a0c8a45fb5e1785254614b84d",
+      "afterSHA256": "0c67d9592a295a83ab7f2cde374c10937fd6f915d3824b619c96f6ca5600cc46",
+      "action": "SEMANTIC_CATALOG_APPEND"
+    },
+    {
+      "path": "src/render/art/fieldTextureArt.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/fieldTextureArt.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "81a61d9edc8c1d33088adf29d966784bcdd8665e78fb2b2c81ce9b75106ed048",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/fieldTextureValidation.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/fieldTextureValidation.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "05f61d8cbf571bd0f20c6b4b78af48acecfca5c4fbf7f4dc49e26c48817b6f41",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/art/fieldTextures.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/art/fieldTextures.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "ed6c8baffddc571fc797a5761761d8fe9b5b30de6f9010da34772397de3a63d5",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/drawArableFields.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/drawArableFields.ts",
+      "beforeSHA256": "aa0fd832148a0159d7030b1901a520033cb4e0f90133ae02105f84331aa80e3c",
+      "afterSHA256": "623bee004e18301a0fbffe98fe343fb69da627874286a9923957250b55d37691",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/drawTerrainBoundaryV2.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/drawTerrainBoundaryV2.ts",
+      "beforeSHA256": "017c2a0ad9316ad700d37b53a7d5e93649666dc4a17a949ce5539c4c5df322eb",
+      "afterSHA256": "854f014c6a0366919ef86a192d5d26989d878098540135c652a308612f5e99d0",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/stripJoin.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/stripJoin.ts",
+      "beforeSHA256": "1cdc1e34a115ae6497612d1d718364d37fc870ef07a81082a06a2edcb62f1d57",
+      "afterSHA256": "98dd2f6cca9c3aa73f370a21ca44dc53d365bef9e7c9d48dde423695d2f9554e",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "src/render/zoneAssets.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/src/render/zoneAssets.ts",
+      "beforeSHA256": "040baa94c871d763fe7cce99857afa527b7574735dd899a81b711291b60c701e",
+      "afterSHA256": "4e2a1df0ca0719537e732c15fedd2fc65f4bf433beb43c44ec27c8f82b619475",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "tests/artImageLoader.test.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/tests/artImageLoader.test.ts",
+      "beforeSHA256": "674d56ad78333f71c804d2e6bdbd294a051de8e0b65e1c29e708ac136111d525",
+      "afterSHA256": "56ccc52faf9e6340163f443073ae1c85165a0d2f852509778b24cfc964752fbc",
+      "action": "SEMANTIC_TEST_UNION"
+    },
+    {
+      "path": "tests/fieldTextureArt.test.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/tests/fieldTextureArt.test.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "b9382ad02eb85a2b8c87a19ffb4c75fcce9559292d4e34d5b80880b59d3bbd6f",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "tests/fieldTextureConsumers.test.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/tests/fieldTextureConsumers.test.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "ff9347ff165a72d1af9d558d2b017b81ef421a885acafcd59fa37c0b24de5341",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "tests/fieldTextureContract.test.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/tests/fieldTextureContract.test.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "812e8430d70d243cb8a193ead458cee2d260f3b1e330485504e84eb682cd45e0",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "tests/fieldTextureZoneBridge.test.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/tests/fieldTextureZoneBridge.test.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "c146a93a302efefc97851c067f7b6addd5e0bcf37068b060ad92c643d2122b56",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "tests/fixtures/field-texture-migration.json",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/tests/fixtures/field-texture-migration.json",
+      "beforeSHA256": null,
+      "afterSHA256": "712633f372f375478947b7c8b135877c070e93bda9e5a830c5b4af4636a7a18d",
+      "action": "GUARDED_FIELD_DELTA"
+    },
+    {
+      "path": "tests/stripJoinCompletion.test.ts",
+      "source": "/Users/rexxa/fls-astra-renderB-field-integration/tests/stripJoinCompletion.test.ts",
+      "beforeSHA256": null,
+      "afterSHA256": "50f2746d14a454e7ba213ee47aec343e0c6cfc54a21d309dd9ba43c2719b5c8a",
+      "action": "GUARDED_FIELD_DELTA"
+    }
+  ],
+  "protectedCount": 1622,
+  "newImages": 0,
+  "newLedgerMarks": 0,
+  "catalogEntries": 99,
+  "mainCoreRuntime": "NOT_RUN",
+  "beforeSummarySHA256": "c9a3d70d822aadc42cfec5f4638db0792f78fc6d0fc85b83d01f7248f43ab1e4",
+  "checks": {
+    "focused": {
+      "tests": 196,
+      "pass": 196,
+      "fail": 0,
+      "durationMs": 4100.195208,
+      "log": ".omo/evidence/field-main-focus.log"
+    },
+    "typecheckExit": 0,
+    "lintExit": 0,
+    "lintFiles": 19,
+    "catalog": {
+      "pass": true,
+      "count": 99,
+      "report": ".omo/evidence/field-main-catalog.json"
+    }
+  }
+}

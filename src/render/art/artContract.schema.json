@@ -1429,6 +1429,9 @@
         },
         {
           "$ref": "#/$defs/season-variant"
+        },
+        {
+          "$ref": "#/$defs/ground-texture"
         }
       ]
     },
@@ -1452,7 +1455,8 @@
             "event-illustration",
             "portrait",
             "regional-map",
-            "season-variant"
+            "season-variant",
+            "ground-texture"
           ]
         },
         "slot": {
@@ -1584,6 +1588,107 @@
         "geometry"
       ],
       "additionalProperties": false
+    },
+    "ground-texture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "image",
+        "provenance",
+        "mapping",
+        "composition",
+        "allowMirror"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "ground-texture"
+        },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "url",
+            "width",
+            "height"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "pattern": "^assets/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$"
+            },
+            "width": {
+              "const": 512
+            },
+            "height": {
+              "const": 64
+            }
+          }
+        },
+        "mapping": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repeat",
+            "sourcePixelsPerTile",
+            "origin"
+          ],
+          "properties": {
+            "repeat": {
+              "const": "x"
+            },
+            "sourcePixelsPerTile": {
+              "const": 128
+            },
+            "origin": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "x",
+                "y"
+              ],
+              "properties": {
+                "x": {
+                  "const": 0
+                },
+                "y": {
+                  "const": 0
+                }
+              }
+            }
+          }
+        },
+        "composition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "joinFadeSourcePx",
+            "wash"
+          ],
+          "properties": {
+            "joinFadeSourcePx": {
+              "const": 40
+            },
+            "wash": {
+              "enum": [
+                "legacy-stage",
+                "none"
+              ]
+            }
+          }
+        },
+        "allowMirror": {
+          "const": false
+        }
+      }
     }
   }
 }

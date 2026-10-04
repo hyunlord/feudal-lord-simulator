@@ -87,6 +87,76 @@ test('a failing readiness consumer cannot turn a decoded image into a decoder fa
   assert.equal(loader.status('image').status, 'ready'); assert.equal(otherCalled, true);
   assert.equal(loader.readinessErrors('image')[0]?.message, 'Readiness callback failed: raster consumer failed');
 });
+test('loadSettled shares one lifecycle and resolves ready after decode', async () => {
+  const fake = fakeImage(); let allocations = 0;
+  const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => { allocations++; return fake.image; } });
+  const first = loader.loadSettled('image'); const second = loader.loadSettled('image');
+  assert.equal(first, second); assert.equal(allocations, 1);
+  let settled = false; void first.then(() => { settled = true; });
+  fake.load(); await Promise.resolve(); assert.equal(settled, false);
+  fake.resolveDecode(); assert.deepEqual(await first, { status: 'ready', reason: null });
+  assert.equal(loader.loadSettled('image'), first); assert.equal(loader.image('image'), fake.image);
+  fake.fail(); assert.equal(loader.status('image').status, 'ready');
+});
+test('loadSettled resolves every failure without retries or rejected promises', async () => {
+  for (const mode of ['network', 'decode-reject', 'decode-throw', 'size', 'src', 'constructor'] as const) {
+    const fake = fakeImage(mode === 'size' ? 63 : 64); let allocations = 0;
+    if (mode === 'decode-throw') fake.image.decode = () => { throw new Error('synchronous decode'); };
+    if (mode === 'src') Object.defineProperty(fake.image, 'src', { set() { throw new Error('src assignment'); } });
+    const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => {
+      allocations++; if (mode === 'constructor') throw new Error('Image constructor'); return fake.image;
+    } });
+    const pending = loader.loadSettled('image');
+    if (mode === 'network') fake.fail();
+    if (mode === 'decode-reject') { fake.load(); fake.rejectDecode(new Error('bad decode')); }
+    if (mode === 'decode-throw') fake.load();
+    if (mode === 'size') { fake.load(); fake.resolveDecode(); }
+    const state = await pending;
+    assert.equal(state.status, 'missing', mode); assert.ok(state.reason, mode);
+    assert.equal(loader.image('image'), null); assert.equal(loader.loadSettled('image'), pending); assert.equal(allocations, 1);
+  }
+});
+test('loadSettled resolves unavailable for unknown IDs and no browser Image', async () => {
+  const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: null });
+  for (const id of ['image', 'unknown']) {
+    const first = loader.loadSettled(id);
+    assert.equal(loader.loadSettled(id), first); assert.equal((await first).status, 'unavailable');
+  }
+});
+test('settlement survives a readiness consumer failure and a late decode rejection', async () => {
+  const fake = fakeImage(); const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => fake.image });
+  loader.onReady('image', () => { throw 'consumer failure'; });
+  const pending = loader.loadSettled('image'); fake.load(); fake.resolveDecode();
+  assert.equal((await pending).status, 'ready'); assert.equal(loader.readinessErrors('image').length, 1);
+  const late = fakeImage(); const other = createArtImageLoader(registry, { baseUrl: '/', createImage: () => late.image });
+  const failed = other.loadSettled('image'); late.load(); late.fail(); late.rejectDecode(new Error('late'));
+  const result = await failed; await Promise.resolve();
+  assert.equal(result.reason, 'Image request failed'); assert.deepEqual(other.status('image'), result);
+});
+test('unprintable thrown values settle failures and cannot interrupt readiness listeners', async () => {
+  const unprintable: unknown[] = [Object.create(null), { toString() { throw new Error('formatting failure'); } }];
+  for (const error of unprintable) {
+    const constructor = createArtImageLoader(registry, { baseUrl: '/', createImage: () => { throw error; } });
+    const constructorState = await constructor.loadSettled('image');
+    assert.equal(constructorState.status, 'missing'); assert.match(constructorState.reason ?? '', /Unprintable thrown value/);
+    for (const mode of ['sync-decode', 'async-decode', 'src'] as const) {
+      const fake = fakeImage();
+      if (mode === 'sync-decode') fake.image.decode = () => { throw error; };
+      if (mode === 'async-decode') fake.image.decode = () => Promise.reject(error);
+      if (mode === 'src') Object.defineProperty(fake.image, 'src', { set() { throw error; } });
+      const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => fake.image });
+      const pending = loader.loadSettled('image');
+      if (mode !== 'src') fake.load();
+      const state = await pending; assert.equal(state.status, 'missing'); assert.match(state.reason ?? '', /Unprintable thrown value/);
+    }
+    const fake = fakeImage(); const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => fake.image });
+    let later = 0;
+    loader.onReady('image', () => { throw error; }); loader.onReady('image', () => { later++; });
+    const pending = loader.loadSettled('image'); fake.load(); fake.resolveDecode();
+    assert.equal((await pending).status, 'ready'); assert.equal(later, 1);
+    assert.match(loader.readinessErrors('image')[0]?.message ?? '', /Unprintable thrown value/);
+  }
+});
 
 for (const [label, thrown] of [
   ['null prototype', Object.create(null)],

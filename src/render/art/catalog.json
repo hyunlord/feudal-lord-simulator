@@ -6097,5 +6097,201 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "field-ridge-baseline",
+    "entries": [
+      {
+        "id": "ridge_ploughed_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_ploughed_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_ploughed_a-v1.png",
+          "sourceSha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829",
+          "runtimeSha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "ridge_ploughed_b",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_ploughed_b-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_ploughed_b-v1.png",
+          "sourceSha256": "80eda18980bfc507dc30568f938ef7cb53f4c7c8d1c5097a659de1bc7168f257",
+          "runtimeSha256": "80eda18980bfc507dc30568f938ef7cb53f4c7c8d1c5097a659de1bc7168f257"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "ridge_seedling_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_seedling_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_seedling_a-v1.png",
+          "sourceSha256": "37a43cb4b850df354e217aab065cd0dfb20147891c65afd4c0e165ee1170e44e",
+          "runtimeSha256": "37a43cb4b850df354e217aab065cd0dfb20147891c65afd4c0e165ee1170e44e"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "ridge_seedling_b",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_seedling_b-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_seedling_b-v1.png",
+          "sourceSha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf",
+          "runtimeSha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "field-ploughed-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_ploughed_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "field-ploughed-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_ploughed_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "field-seedling-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_seedling_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "field-seedling-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_seedling_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]

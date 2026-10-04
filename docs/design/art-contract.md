@@ -8,7 +8,7 @@
 
 세계 그림의 `geometry`는 `pivot`, 양수 균일 `scale`, 선택 `crop`/논리 타일 `footprint`, `allowMirror:false`다. `pivot`과 `crop`은 원본 이미지 픽셀 좌표이며 `footprint`는 타일 단위다. 축별 임의 늘이기와 미승인 반전을 허용하지 않는다. 프레임의 `sourceRect`는 이미지 기준, `pivot`은 프레임 내부 좌표, `durationMs`는 시각 프레임 기간이다. UI 3종에는 가짜 세계 scale/발판/발 피벗을 채우지 않는다. 워커의 foot과 짐의 grip도 서로 다른 attachment다.
 
-## 2. 열한 종류
+## 2. 열두 종류
 
 | kind | 실제 종류 필드 | 배치 및 지원 경계 |
 |---|---|---|
@@ -23,6 +23,7 @@
 | `portrait` | `pool`, 선택 `personIds[]`,`lineage`, `ageStage`, `era`, `derivatives[{size:96|256,assetId}]` | 완성 초상·노화 사슬. derivative는 portrait 참조와 실제 선언 크기 검증. 얼굴 부품 합성 금지 |
 | `regional-map` | `mapId`, `landTypes[]`, `coordinateSpace{width,height}`, `slots[{id,x,y,landType}]` | 완성 지도+명명 슬롯. 슬롯 ID/범위/landType 확인; 영지 생성·클릭·경로 탐색을 대신하지 않음 |
 | `season-variant` | `base:{namespace:world-sprite\|zone-prop,key}`, `season`, `geometry:{pivot,scale,allowMirror:false}` | 실제 base와 canvas/pivot/scale을 일치시킨 완성 이미지 교체. 기존 소비자의 기하 유지 |
+| `ground-texture` | native `image:512×64`, `mapping:{repeat:'x',sourcePixelsPerTile:128,origin:{x:0,y:0}}`, `composition:{joinFadeSourcePx:40,wash:'legacy-stage'\|'none'}`, `allowMirror:false` | 밭 띠의 반복 재료. 세계 sprite geometry·foot pivot·crop·footprint 없이 기존 x/y affine·row clip 유지 |
 
 정확한 union은 `artContract.ts:2`의 ArtKind와 `:28` 이후 각 Entry, `:93` 이후 ArtRule/ArtBundle을 따른다. 표의 선택 필드는 schema에서 허용되는 생략을 뜻한다. schema와 TypeScript가 바뀌면 유효/무효 fixture로 둘의 일치를 함께 확인해야 한다.
 
@@ -86,7 +87,38 @@ selector 입력은 `baseKey`, `season`뿐이다. rule은 `slot:season-replacemen
 
 검증은 역사 INSTALL-15의65 source/receipt/hash와 현재 active manifest의 exact provenance/runtime/source hash를 분리한다. 역사 detached `astra-season-core-notify-v3-ab67dcb`는10뷰 RGBA/identity/A-A 보존과 오류0·20 URL 도달을 확인했다. 뒤의 test-only 보강은 같은 런타임 입력으로 소급하지 않는다. 현재 단계의 최종 committed-head 캡처·병합 검사는 아직 미실행이다. 준비 JPEG는 무손실 비교 원본이 아니며 원PNG/입력freeze/receipt가 근거다.
 
-## 6. JSON Schema 방언과 data-only 설치 경계
+## 6. FIELD 반복 텍스처 계약 — core 후보
+
+512×64는 각 source의 native 치수이며 A/B pair의 합성 결과는 1024×64다. 128은 타일당 source 픽셀이지 sprite world scale이 아니다. `repeat:'x'`는 source의 이음 축이며 실제 소비자는 기존 CanvasPattern 반복과 행 clip을 유지한다. `allowMirror:false`는 자산의 무작위 좌우 반전을 금지하며, 기존 x/y 밭 affine 방향을 제거한다는 뜻은 아니다.
+
+### 제한 selector와 startup 검증
+
+`ground-texture`는 `fieldState`와 `season`만 공급한다. 지원 상태는 기존 실제 strip 결과 `ploughed|seedling`, 계절은 `spring|summer|autumn|winter`다. 엔진 상태·crop 성장 단계는 새로 만들지 않는다. `field-ridge-base-a`, `field-ridge-base-b`, `field-ridge-season-a`, `field-ridge-season-b` 네 slot을 사용한다.
+
+각 rule은 priority0·variant1개·weight1만 허용한다. base는 fieldState eq 조건 하나, seasonal은 fieldState eq와 season eq 둘만 허용한다. 전체2상태×4계절에서 base A/B 각각 정확히 하나, seasonal은 둘 다 없거나 각각 정확히 하나여야 한다. 존재하지 않거나 다른 kind를 가리키는 source, 불완전 pair, 중복 역할, 잘못된 wash 및 제한 밖 조건을 registry 공개·이미지 요청 전에 거부한다. 모든 source의 치수/mapping은 schema 상수로 고정한다. base는 `legacy-stage`, seasonal은 `none` wash를 요구한다. 두 source 중 하나를 무작위 선택하는 구조가 아니다.
+
+### 로딩·strict pair·frame snapshot
+
+`fieldTextures.ts`의 단일 production facade가 loader 하나와 성공 pair cache 하나를 소유한다. 기존 zone alias4의 image/readiness/preload도 이 facade를 사용하여 중복 decoder 소유를 피한다. 새 source는 registry에서 열거한다.
+
+`loadSettled(id)`는 동일 ID의 공유 promise를 반환하며 ready/missing/unavailable terminal에서 한 번 완료한다. ready는 decode 성공과 정확한 native 치수 일치를 요구한다. unknown ID/no Image는 unavailable, 생성·src 설정·요청·decode·크기 실패는 reason을 보존한 missing이다. 실패 terminal을 성공으로 표시하거나 요청을 자동 재시도하지 않는다. 미완료 네트워크 요청의 timeout 성공을 발명하지 않는다. 중복·늦은 이벤트가 terminal을 덮지 않으며 settlement 후 ready callback을 알린다. 콜백은 ID별 동일 함수에 한 번만 호출하고, 초기/late callback 예외를 진단 목록에 남겨 다른 알림과 terminal 완료를 막지 않는다. 문자열 변환 자체가 실패하는 thrown value도 안전한 reason으로 정규화한다.
+
+FIELD는 `joinStripImages`의 선택적 strict completion을 사용한다. main canvas/context, seam scratch와 mask allocation 또는 처리 중 하나라도 실패하면 pair 전체가 실패한다. 기존 네 인자 caller의 fallback·partial 동작은 유지한다. strict failure의 reason은 pair별 최신 진단으로 보존하며, 성공 이후에도 이전 진단을 지우지 않는다. 진단 콜백 자체의 예외를 삼키는 일반 sandbox는 아니다.
+
+seasonal A/B가 모두 decoded-ready이고 strict join에 성공해야 seasonal pair를 공개한다. 실패하면 base A/B 전체로 fallback하며, base도 준비되지 않으면 null이다. 새 A와 옛 B를 섞거나 partial canvas를 성공 cache에 넣지 않는다. 동일 A|A 선택도 하나의 source를 두 번 배치한 pair 합성이 필요하다. 한 prepare 내 동일 pair 시도는 중복하지 않으며 실패한 composition은 다음 prepare에서 재시도할 수 있다. 성공 결과만 cache한다. CanvasPattern 생성 실패는 pair 합성 실패와 별도로 처리한다.
+
+`prepareArableFieldTextures`는 현재 crop-state snapshot과 현재/다음 계절 요청으로 cache hit 전에 frame-local 불변 descriptor를 만든다. chunk token과 즉시·staging·prefetch draw는 같은 snapshot을 사용한다. getter/token 조회는 load나 composition 재시도를 일으키지 않는다. token은 실제 사용되는 ordered source IDs와 mapping/join/wash를 표현하며, 아직 사용할 수 없는 seasonal 요청 상태만 바뀌었다고 output token을 바꾸지 않는다. 다음 frame의 성공 준비가 바뀐 token을 제공한다. 도로·밭이 없는 chunk에는 FIELD token을 추가하지 않는다. 기존 affine, clip, wet summer, barley, fallow 및 기타 미지원 상태 경로는 보존한다.
+
+### 보존 및 단계 경계
+
+현재 후보 core는 기존 ploughed/seedling×A/B4개를 `field-ridge-baseline`4entry/4rule로 이전한다. FIELD spring3 신규 PNG·provenance·ledger 설치가 아니다. 기존4 bundle95entry를 그대로 보존하고 baseline4를 append해99entry가 된다. main의 spring9 및 retired6의 source/runtime 정책을 되돌리지 않으며 legacy seasonal45와 현재 provenance enumerator를 보존한다. 새 FIELD3는 core가 실제 main runtime에서 검증된 뒤 별도 data-only 단계다.
+
+C25 봄 기대값 하나는 spring9 predecessor가 바꾼 실제 선택 결과에 대한 별도 승인 overlay다. 나머지15 기대값·메타데이터와 현재 fixture를 보존한다. FIELD가 matcher를 완화하거나 예전 fixture를 복원하는 변경으로 포함하지 않는다.
+
+
+실제 main `3e722109` before20·A/A20·오류0이 통과했고 원격 입력4150개와 별도 보완 시험1개 해시가 일치했다. 이후22파일 core를 보호된 이관으로 반영했다. 실제 main 집중196/196·타입·19파일 린트·catalog99/99가 통과했고, 적용본 독립 검토에서22/22 이관 SHA와 보호1622/1622 일치로 PASS를 확인했다. **core 커밋·실제 after20 및 새 FIELD3 설치는 아직 미완료**다. detached oldseason20의 이전20뷰 RGBA0은 역사 증거이며 현재 main 비교를 대신하지 않는다. [FIELD 보고서](../verification/field-core/REPORT.md)가 최신 실행 상태를 소유한다.
+
+## 7. JSON Schema 방언과 data-only 설치 경계
 
 `schemaValidation.ts`는 **제한된 JSON Schema 컴파일러**다. 전체 표준 구현이 아니다. `$defs`/루트 로컬 `$ref`, type/required/properties/additionalProperties, const/enum, oneOf/anyOf, items/배열 수·유일성, 문자열 길이/pattern, 숫자 경계를 지원한다. schema 메타데이터 `$schema/$id/title/description`은 문자열로 검사한다. 미지원 keyword, 원격/cyclic ref, 잘못된 schema는 `ArtSchemaDefinitionError`; 데이터 위반은 path/message issue다. 사용되지 않는 정의/선택되지 않는 alternative도 compile한다. non-JSON 객체/accessor/symbol/sparse/cyclic/nonfinite 값은 계약 밖이며 거부한다. 임의 Proxy trap에 대한 sandbox 구현은 아니다.
 
@@ -104,8 +136,8 @@ selector 입력은 `baseKey`, `season`뿐이다. rule은 `slot:season-replacemen
 4. startup-only 계약에 따라 전체 reload 후 실제 입력 또는 명시된 준비 fixture로 선택 ID → 요청/decoded-ready → draw → 캡처를 확인한다. 모든 32개가 필요한 범위이면 각 행의 증거를 기록하고 미도달 행을 숨기지 않는다. fixture 도달과 자연 플레이 도달은 별도다.
 5. data-only 단계의 제품 실행 TS diff 0, 경계 조건/오류 검증, runtime 증거가 모인 뒤에만 provenance/설치 장부 판정을 갱신한다. 등록 수나 빈 installed_by로 완료 수량을 계산하지 않는다.
 
-## 7. 검증의 범위
+## 8. 검증의 범위
 
-문서 작성 자체는 검증 실행을 뜻하지 않으며 최종 결과는 verification 보고서가 소유한다. 유지해야 하는 검증 항목은 전체 bundle 거부의 원자성, 기존10종과 season-variant의 유효/무효 구조, Wave42 36 ID와 16 mask의 선택·기하·시간 경계 회귀, lazy/decode 수명, 여름/겨울×줌1.0/0.6의 A/A 안정성 후 A/B RGBA 동일, 새 묶음의 제품 실행 코드 diff0, 실제 선택→load→draw coverage다. 자연 플레이와 준비 fixture는 구별한다. 장부 공란·카탈로그 행·unit 통과만으로 installed 수량을 늘리지 않는다.
+문서 작성 자체는 검증 실행을 뜻하지 않으며 최종 결과는 verification 보고서가 소유한다. 유지해야 하는 검증 항목은 전체 bundle 거부의 원자성, 기존10종과 season-variant·ground-texture의 유효/무효 구조, Wave42 36 ID와 16 mask의 선택·기하·시간 경계 회귀, lazy/decode 수명, 여름/겨울×줌1.0/0.6의 A/A 안정성 후 A/B RGBA 동일, 새 묶음의 제품 실행 코드 diff0, 실제 선택→load→draw coverage다. 자연 플레이와 준비 fixture는 구별한다. 장부 공란·카탈로그 행·unit 통과만으로 installed 수량을 늘리지 않는다.
 
 무거운 회귀·브라우저·캡처는 최신 [CHARTER](../CHARTER.md)의 실행기 규약을 따른다(`d4973e85`, 32행): `scripts/remote/run.sh`의 동시 2개 slot과 대기열을 사용하며 작업 Mac은 단위 시험·린트·개발 서버 범위다. DGX 기존 이전은 전후28쌍 RGBA 동일, 신규 데이터8장면은 A/A 안정성·오류0·실제사용을 통과했다. 본선 통합 뒤 UI 기하·전체 회귀·깨끗한 클론은 별도 관문이며, 미래의 모든 묶음이나 자연 플레이 도달까지 이 결과를 일반화하지 않는다.

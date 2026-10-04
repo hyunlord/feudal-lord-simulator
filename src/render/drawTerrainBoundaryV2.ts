@@ -7,7 +7,8 @@ import { drawRoadRibbons } from "./drawRoadRibbons";
 import { drawZoneFills, drawZoneLines } from "./drawZones";
 import { clipOutYards, drawAprons, drawYards } from "./drawBuildingGrounds";
 import { preloadZoneAssets, zoneAssetReadiness } from "./zoneAssets";
-import { arableStripStateLookup, drawArableFields, stripStateKey } from "./drawArableFields";
+import { arableStripStateLookup, drawArableFields, stripStateKey, prepareArableFieldTextures, fieldTextureChunkToken, type StateLookup } from "./drawArableFields";
+import type { FieldTextureSnapshot } from "./art/fieldTextureArt";
 import { drawCroftBeds } from "./drawYardProps";
 import { ZONE_VARIANTS } from "./zoneAssetManifest";
 import { drawGroundDecalDetail } from "./drawTerrainDetails";
@@ -130,18 +131,20 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   // Shore art only in chunks that draw water; with wall strips on, the shore strip stops under walls on the water.
   const shoreReadiness = scene.shore.loops.length > 0 ? `:w${shoreAssetReadiness()}${wallStripsEnabled() ? ":ws" : ""}${waterChunkToken(zoom, input.state)}` : "";
   const cropStates = scene.zones.arableBands.length > 0 ? arableStripStateLookup(input.state) : null;
-  const groundReadiness = (plan: GroundChunkPlan): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
-    + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}` : "") + landWorksChunkToken(input.state, plan) + footpathChunkToken(input.state, plan);
+  const groundReadiness = (plan: GroundChunkPlan, at: SeasonIndex): string => (plan.zoneIndexes.length > 0 ? readiness + zoneReadiness : readiness)
+    + (plan.beds.length > 0 ? bedReadiness : "") + (plan.waterLoops.length > 0 || plan.waterParity ? shoreReadiness : "") + (plan.arableBands.length > 0 && cropStates !== null ? `:a${stripStateKey(scene.zones, plan.arableBands, cropStates)}${fieldTextureChunkToken(scene.zones, plan.arableBands, cropStates, at, fieldTextures)}` : "") + landWorksChunkToken(input.state, plan) + footpathChunkToken(input.state, plan);
   const visible = visibleChunks(scene, input.range);
   // INSTALL-15: the season (and its art's readiness) is in both chunk keys but not in their deferKeys, so the season's
   // re-rasters may spread over a few frames; SMOOTH-2R: each chunk turns at its own moment (turn token = the season).
   const season = seasonOf(input.state);
+  const next = input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS ? ((season + 1) % 4) as SeasonIndex : null;
+  const fieldTextures = prepareArableFieldTextures(cropStates, next === null ? [season] : [season, next]);
   const seasonToken = seasonChunkToken(season);
   const fade = { token: `s${season}`, ms: seasonFadeMs() };
   const land = landGroundOf(input.state);
   const landToken = (plan: GroundChunkPlan, at: SeasonIndex): string => (land === null ? "" : landChunkToken(land, plan, scene.shore, at)) + rockChunkToken(rockGroundOf(input.state), plan);
   const groundRequest = (plan: GroundChunkPlan): ChunkRasterRequest => ({
-    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan)}${landToken(plan, season)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
+    id: `ground:${plan.cx},${plan.cy}`, contentKey: `${plan.groundKey}|${groundReadiness(plan, season)}${landToken(plan, season)}${seasonToken}|${zoom.toFixed(2)}${scaleKey}`, scale, diamond: chunkDiamond(plan),
     // Same local ground = the chunk only changed its zones, or a water loop changed elsewhere: its old raster may stand
     // in until the frame budget allows (groundSceneParts.ts groundLocalKey).
     deferKey: `${plan.groundLocalKey}|${readiness}|${zoom.toFixed(2)}${scaleKey}`, fade,
@@ -152,26 +155,25 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   });
   const paintRoads = (plan: GroundChunkPlan) => (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, season);
   for (const plan of visible) {
-    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season), transform);
+    cache.draw(context, groundRequest(plan), paint => drawGroundChunk(paint, input, scene, plan, zoom, parts, season, cropStates, fieldTextures), transform);
   }
   probe?.enter("terrain.water"); // INSTALL-29: the water motion, live over the chunks' still water (drawWaterMotion.ts)
   drawWaterMotion(context, { state: input.state, shore: scene.shore, chunks: visible, range: input.range, zoom: input.zoom, chunkZoom: zoom, nowMs: input.nowMs ?? 0, season }); probe?.enter("terrain.fill");
   // INSTALL-15 staging: in the season's last STAGE_TICKS the visible chunks' next-season rasters are made in idle time
   // while the canvas budget has room, so at its moment in the turn a chunk only swaps (groundChunkCache header (d);
   // SMOOTH-2R: at every speed). Same keys as the turn's requests will carry.
-  if (input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS) {
-    const next = ((season + 1) % 4) as SeasonIndex;
+  if (next !== null) {
     const nextToken = seasonChunkToken(next);
     const nextFade = { token: `s${next}`, ms: fade.ms };
     scheduleStaging(context, cache, visible.flatMap(plan => [
-      { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan)}${landToken(plan, next)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
-        paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, next) },
+      { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan, next)}${landToken(plan, next)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
+        paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, next, cropStates, fieldTextures) },
       ...(plan.hasRoads ? [{ request: { ...roadRequest(plan), contentKey: `${plan.roadKey}|${readiness}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
         paint: (paint: CanvasRenderingContext2D) => drawRoadRibbons(paint, scene.roads, scene.ribbons, plan, next) }] : []),
     ]));
   }
   schedulePrefetch(context, cache, ringChunks(scene, input.range, visible).flatMap(plan => [
-    { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, season) },
+    { request: groundRequest(plan), paint: (paint: CanvasRenderingContext2D) => drawGroundChunk(paint, input, scene, plan, zoom, parts, season, cropStates, fieldTextures) },
     ...(plan.hasRoads ? [{ request: roadRequest(plan), paint: paintRoads(plan) }] : []),
   ]));
   probe?.enter("terrain.landscape");
@@ -194,6 +196,8 @@ function drawGroundChunk(
   zoom: number,
   parts: TerrainV2Parts,
   season: SeasonIndex,
+  cropStates: StateLookup | null,
+  fieldTextures: FieldTextureSnapshot,
 ): void {
   const tiles = chunkTiles(input.state, plan, 1);
   const land = landGroundOf(input.state);
@@ -227,7 +231,7 @@ function drawGroundChunk(
       { x: bounds.right + 4, y: bounds.bottom + 4 }, { x: bounds.left - 4, y: bounds.bottom + 4 }]);
     drawZoneFills(context, scene.zones, plan.zoneIndexes, season);
     context.restore();
-    if (plan.arableBands.length > 0) drawArableFields(context, scene.zones, plan.zoneIndexes, arableStripStateLookup(input.state), season);
+    if (plan.arableBands.length > 0 && cropStates !== null) drawArableFields(context, scene.zones, plan.zoneIndexes, cropStates, season, fieldTextures);
   }
   drawFootpathsInChunk(context, input.state, plan, season); // NAT-5 Wave 42: the engine's footpaths (footpathDraw.ts)
   drawYards(context, scene.grounds, plan.yards, input.state.seed);

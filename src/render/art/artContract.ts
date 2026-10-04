@@ -1,6 +1,6 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
 export type ArtKind = 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
-  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant';
+  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
 export type ArtImage = { readonly url: string; readonly width: number; readonly height: number };
@@ -86,8 +86,14 @@ export type SeasonVariantEntry = EntryBase & {
   readonly base: { readonly namespace: 'world-sprite' | 'zone-prop'; readonly key: string };
   readonly season: ArtSeason; readonly geometry: Pick<ArtGeometry, 'pivot' | 'scale' | 'allowMirror'>;
 };
+export type GroundTextureEntry = EntryBase & {
+  readonly kind: 'ground-texture';
+  readonly mapping: { readonly repeat: 'x'; readonly sourcePixelsPerTile: 128; readonly origin: { readonly x: 0; readonly y: 0 } };
+  readonly composition: { readonly joinFadeSourcePx: 40; readonly wash: 'legacy-stage' | 'none' };
+  readonly allowMirror: false;
+};
 export type ArtEntry = BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
-  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry;
+  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =
   | { readonly op: 'eq'; readonly field: string; readonly value: ArtScalar }

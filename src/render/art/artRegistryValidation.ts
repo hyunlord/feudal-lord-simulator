@@ -1,10 +1,11 @@
+import { validateFieldTextures } from './fieldTextureValidation';
 import { validateSeasonVariants } from './seasonVariantValidation';
 import type { ArtBundle, ArtPoint, ArtRect } from './artContract';
 import type { ArtSchemaIssue } from './schemaValidation';
 
 /** Semantic checks require the complete bundle set so references can cross bundle boundaries. */
 export function validateRegistryData(bundles: readonly ArtBundle[]): readonly ArtSchemaIssue[] {
-  const issues: ArtSchemaIssue[] = [...validateSeasonVariants(bundles)];
+  const issues: ArtSchemaIssue[] = [...validateSeasonVariants(bundles), ...validateFieldTextures(bundles)];
   const identities = new Set<string>();
   const entries = bundles.flatMap(bundle => bundle.entries);
   const byId = new Map(entries.map(entry => [entry.id, entry]));
