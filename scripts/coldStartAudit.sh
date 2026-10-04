@@ -2,7 +2,7 @@
 # UX-0b cold start audit browser on the DGX (method: docs/verification/ux0b/REPORT.md):
 #   scripts/remote/run.sh render-UX0b --detach -- bash scripts/coldStartAudit.sh <out-dir> [states]
 # Serves this tree with Vite on FLS_REMOTE_PORT and the step driver (scripts/coldStartDriver.mjs) on
-# FLS_REMOTE_PORT + 50, both on 127.0.0.1; the auditor reaches the driver through an ssh tunnel. With "states", the
+# FLS_REMOTE_BASE_PORT (run.sh's second port), both on 127.0.0.1; the auditor reaches the driver through an ssh tunnel. With "states", the
 # seed 2 chapter 1 moments (scripts/ui4ChapterStates.ts, the bot) are written first for the driver's "scene" op.
 # Ends on "quit".
 set -euo pipefail
@@ -13,5 +13,5 @@ if [ "${2:-}" = "states" ]; then npx tsx scripts/ui4ChapterStates.ts 2 90000 .re
 fls_serve .remote/vite.log --host 127.0.0.1 --port "$port" --strictPort
 for _ in $(seq 1 90); do curl -sf "http://127.0.0.1:$port/" > /dev/null && break; sleep 1; done
 curl -sf "http://127.0.0.1:$port/" > /dev/null || { echo "vite did not come up on $port"; exit 1; }
-echo "driver port $((port + 50))"
-node scripts/coldStartDriver.mjs "$out" --url "http://127.0.0.1:$port/" --port $((port + 50)) --states .remote/states
+echo "driver port $FLS_REMOTE_BASE_PORT"
+node scripts/coldStartDriver.mjs "$out" --url "http://127.0.0.1:$port/" --port "$FLS_REMOTE_BASE_PORT" --states .remote/states

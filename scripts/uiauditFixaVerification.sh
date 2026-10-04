@@ -8,7 +8,7 @@ set -u
 base_sha=${1:?base sha}
 what=${2:?hud or shots}
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
-base_port=$((port + 50))
+base_port=${FLS_REMOTE_BASE_PORT:?run through scripts/remote/run.sh (its second port)}
 dir=${TMPDIR:-/tmp}/fls-base-$port
 out=docs/verification/uiaudit1/fixa
 mkdir -p "$out"

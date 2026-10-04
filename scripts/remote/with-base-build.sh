@@ -6,7 +6,7 @@
 set -euo pipefail
 base_sha=$1; shift; [ "${1:-}" = "--" ] && shift
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
-base_port=$((port + 50))
+base_port=${FLS_REMOTE_BASE_PORT:?run through scripts/remote/run.sh (its second port)}
 dir=.remote/base-build
 git worktree remove --force "$dir" 2>/dev/null || true
 git worktree add -q --detach "$dir" "$base_sha"
