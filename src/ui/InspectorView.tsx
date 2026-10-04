@@ -15,6 +15,7 @@ import { householdRows } from "./persons/personModels";
 import { PersonList } from "./persons/PersonViews";
 import { PERSONS_COPY } from "./persons/personsCopy.ko";
 import { Button } from "./kit";
+import { LordWhyHere } from "./lord/ReceiptPanel";
 
 export type InspectorProps = Readonly<{
   state: GameState;
@@ -52,6 +53,8 @@ export function Inspector({ state, buildingId, onClose, storeHistory = null, onP
           <UiIcon sheet="prediction" cell="block" />
         </Button>
       </header>
+      {/* LM-R1 (Astra B03): lord mode's "왜 여기?" here too — a store opened from the ledger lands in this inspector. */}
+      <LordWhyHere state={state} targetId={buildingId} beside="slot" />
       {store !== null ? <div className="left-inspector-body"><StoreInspectorBody model={store} /></div> : <div className="left-inspector-body">
         {burnt === null ? null : <BurntHouseSection view={burnt} onRebuild={id => onRebuild?.(id)} />}
         {house === null ? null : <section className="left-inspector-members" aria-label={PERSONS_COPY.membersHeading}>

@@ -441,6 +441,10 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "lord.receipt-none", root: ".lord-receipt", ...RECEIPT, scene: { ...LORD_TOWN, focus: { building: ["well"] } },
     open: [{ map: { building: ["well"] }, action: "click" }, { pause: 800 }, { click: ".lord-why-here" }, { pause: 600 }],
     requires: ["h2", ".lord-receipt-none"], data: "the opening well: no receipt, the reason instead of an empty frame" },
+  // Astra B03: a store opened from the ledger's stock (the left inspector) — its receipt on the shell, left of the slot.
+  { id: "lord.receipt-inspector", root: ".lord-receipt.lord-receipt--slot", ...RECEIPT, scene: LORD_TOWN,
+    open: [LEDGER, { click: ".ledger-held-toggle" }, { click: ".ledger-store" }, { pause: 700 }, { click: ".left-inspector .lord-why-here" }, { pause: 600 }],
+    requires: ["h2"], data: "the first store's receipt (or why it has none) from the left inspector" },
   { id: "slot.ledger.lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, open: [LEDGER, { click: "[data-ledger-tab='lord']" }, { pause: 500 }], scroll: "y",
     requires: [".lord-policy-option", ".lord-policy-kind", ".lord-policy-set", "[data-dues='raise']"], siblingsNoOverlap: [".lord-policy-option"],
     data: "the lord tab: the four policies (stability), the 10d farmstead subsidy, the draft and the dues at 80%" },

@@ -22,6 +22,7 @@ import { LordWhyHere, ReceiptPanel } from "../src/ui/lord/ReceiptPanel";
 import { RECEIPT_COPY } from "../src/ui/lord/receiptCopy.ko";
 import { receiptView } from "../src/ui/lord/receiptModel";
 import { decisionCompare } from "../src/ui/chronicle/chronicleScreenModel";
+import { Inspector } from "../src/ui/InspectorView";
 import { moneyFull } from "../src/ui/money.ko";
 
 function funded(state: GameState, amount: number): GameState {
@@ -195,4 +196,15 @@ test("LM-R1 the chronicle names the lord's conditions in the lord tab's words, n
   assert.deepEqual(shown("estate_policy"), ["안정", "성장", "세입", "방어"]);
   assert.deepEqual(shown("market_dues"), [POLICY_COPY.duesNow(800), POLICY_COPY.duesNow(1000)]);
   assert.deepEqual(shown("project_subsidy"), [POLICY_COPY.choiceSubsidy("헛간", moneyFull(10)), POLICY_COPY.choiceSubsidyNone("헛간")]);
+});
+
+test("LM-R1 (Astra B03): a store opened in the left inspector carries the lord's \"왜 여기?\" too; the sandbox's does not", () => {
+  const state = lordTown();
+  const store = [...state.buildings, ...state.constructionSites].find(entry => entry.kind === "storehouse" && whyHere(state, entry.id) !== null)
+    ?? receiptTarget(state);
+  const markup = renderToStaticMarkup(createElement(Inspector, { state, buildingId: store.id, onClose: () => undefined }));
+  assert.match(markup, /class="[^"]*lord-why-here/);
+  const { agency: _agency, ...sandbox } = state;
+  const plain = renderToStaticMarkup(createElement(Inspector, { state: sandbox as GameState, buildingId: store.id, onClose: () => undefined }));
+  assert.doesNotMatch(plain, /lord-why-here/);
 });

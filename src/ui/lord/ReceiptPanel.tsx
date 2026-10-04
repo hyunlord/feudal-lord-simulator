@@ -1,4 +1,5 @@
 import { useEffect, useState, type CSSProperties, type ReactElement } from "react";
+import { createPortal } from "react-dom";
 
 import type { GameState } from "../../engine/engine.types";
 import { lordMode } from "../../engine/townAgency";
@@ -17,7 +18,12 @@ import { receiptView, type ReceiptView } from "./receiptModel";
 // that open their ledger records, and the money in the lower field. A building without a receipt says why instead.
 
 /** The selection the card shows: a building or construction site id (null: a walker, a wall). */
-export function LordWhyHere({ state, targetId }: { readonly state: GameState; readonly targetId: string | null }): ReactElement | null {
+export function LordWhyHere({ state, targetId, beside = "card" }: {
+  readonly state: GameState; readonly targetId: string | null;
+  /** Where the receipt opens: beside the map card (inside its position box), or beside the panel slot (the left
+   * inspector scrolls inside the slot, so its receipt is placed on the shell, left of the slot: Astra B03). */
+  readonly beside?: "card" | "slot";
+}): ReactElement | null {
   const [open, setOpen] = useState(false);
   const lord = lordMode(state);
   useEffect(() => { setOpen(false); }, [targetId]);
@@ -29,7 +35,8 @@ export function LordWhyHere({ state, targetId }: { readonly state: GameState; re
     <>
       <Button type="button" className="lord-why-here" data-lord-receipt={view.kind} aria-expanded={open} aria-label={COPY.openLabel(view.name)}
         onPress={() => setOpen(current => !current)} variant="secondary">{COPY.open}</Button>
-      {open ? <ReceiptPanel view={view} onClose={() => setOpen(false)} /> : null}
+      {!open ? null : beside === "card" ? <ReceiptPanel view={view} onClose={() => setOpen(false)} />
+        : shell() === null ? null : createPortal(<ReceiptPanel view={view} onClose={() => setOpen(false)} placement="slot" />, shell()!)}
     </>
   );
 }
@@ -43,9 +50,13 @@ function ReceiptPicture({ view }: { readonly view: ReceiptView }) {
   );
 }
 
-export function ReceiptPanel({ view, onClose }: { readonly view: ReceiptView; readonly onClose: () => void }): ReactElement {
+const shell = (): Element | null => typeof document === "undefined" ? null : document.querySelector(".app-shell");
+
+export function ReceiptPanel({ view, onClose, placement = "card" }: {
+  readonly view: ReceiptView; readonly onClose: () => void; readonly placement?: "card" | "slot";
+}): ReactElement {
   return (
-    <aside className="lord-receipt" data-frame="receipt" data-receipt={view.kind} aria-label={COPY.regionLabel(view.name)}>
+    <aside className={placement === "slot" ? "lord-receipt lord-receipt--slot" : "lord-receipt"} data-frame="receipt" data-receipt={view.kind} aria-label={COPY.regionLabel(view.name)}>
       <span className="lord-receipt-frame" aria-hidden="true" style={frameLayerStyle("receipt")} />
       <div className="lord-receipt-slots" style={frameArtSpaceStyle("receipt")}>
         <ReceiptPicture view={view} />
