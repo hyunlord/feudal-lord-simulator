@@ -6293,5 +6293,194 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave43-field-spring3",
+    "entries": [
+      {
+        "id": "wave43-ridge_ploughed_spring_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/ridge_ploughed_spring_a-v1.png",
+          "sourceSha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9",
+          "runtimeSha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave43-ridge_seedling_spring_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/ridge_seedling_spring_a-v1.png",
+          "sourceSha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045",
+          "runtimeSha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave43-ridge_seedling_spring_b",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/ridge_seedling_spring_b-v1.png",
+          "sourceSha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2",
+          "runtimeSha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "none"
+        },
+        "allowMirror": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave43-field-ploughed-spring-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_ploughed_spring_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-field-ploughed-spring-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_ploughed_spring_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-field-seedling-spring-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_seedling_spring_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-field-seedling-spring-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_seedling_spring_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]
