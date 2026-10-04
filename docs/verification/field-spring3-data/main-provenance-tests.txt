@@ -1,0 +1,13 @@
+✔ parses docs/provenance/assets.csv and reports zero missing rows (700.858042ms)
+✔ reports zero hash mismatches against the current tree (734.902667ms)
+✔ reports zero rows pointing at non-existent files (741.74625ms)
+✔ enumerates every runtime asset the CSV expects to cover (677.3765ms)
+✔ keeps retired rows off the runtime: each lives outside public/ and is no runtime asset any more (709.618791ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 3719.71525

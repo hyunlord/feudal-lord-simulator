@@ -2,8 +2,8 @@
   "files": [
     {
       "path": "REPORT.md",
-      "bytes": 10810,
-      "sha256": "5c3244774e78a637661beeacc4cfaccc8ea14dc5176cc8364660c296c9050f1b"
+      "bytes": 11196,
+      "sha256": "2149c4e2742183d2dc1275d1b30ad7c959a42d8316a8ed0f20ccf589acb9132f"
     },
     {
       "path": "images/field-x-spring-z06-after.jpg",
@@ -126,7 +126,7 @@
       "sha256": "67b0aa4b5e5f729609e9c5ac097fbc9db7b39678f80081cd2b0e7df8fda22de1"
     },
     {
-      "path": "main-provenance-tests.log",
+      "path": "main-provenance-tests.txt",
       "bytes": 526,
       "sha256": "654b804878c9203dbbabe3a3760b5fe8a354e68693be8cb531776bc44e74d6a7"
     },
@@ -167,5 +167,9 @@
     }
   ],
   "selfExcluded": true,
-  "limitBytes": 3145728
+  "limitBytes": 3145728,
+  "excludedLocalHistory": [
+    "main-provenance-tests.log"
+  ],
+  "publishedFileCountIncludingIndex": 34
 }

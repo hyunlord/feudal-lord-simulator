@@ -1,6 +1,6 @@
-# HEATH core — 실제 before30 통과·core16 적용, after 미실행
+# HEATH core — 실제 core30 수치 통과·독립 시각 대기
 
-**MAIN CORE16 APPLIED / BEFORE30 PASS / MAIN LOCAL305 PASS / CORE RUNTIME NOT_RUN.** 실제 기준선은 FIELD3 승격/reference4 뒤 `d367382392a4806e683b91463f3996b7654704d6`. 옛 detached before/core/data30을 이번 main 증거로 쓰지 않는다.
+**MAIN CORE16 APPLIED / BEFORE30 PASS / MAIN LOCAL305 PASS / CORE30 NUMERIC PASS / VISUAL PENDING.** 실제 기준선은 FIELD3 승격/reference4 뒤 `d367382392a4806e683b91463f3996b7654704d6`. 옛 detached before/core/data30을 이번 main 증거로 쓰지 않는다.
 
 ## 실제 fresh main 기준선
 
@@ -14,7 +14,7 @@
 
 [격리305/305 준비](isolated-preparation.json)와 [독립 소스 검토](independent-preparation-review.md)는 보존하되 [실제 main24파일305/305·fail0/skipped0·typecheck0·TS13 lint0·catalog103·diff0](main-core-static.json)도 별도로 확인했다. 원로그 SHA를 직접 재대조했다. FIELD current/next snapshots·latest loader/C25/season/new9/FIELD3/retired6을 보존한다. terrain 차이는 요청season 전달이며 engine/content/world pool/density를 바꾸지 않는다.
 
-실제 main core commit 뒤 같은30 identity와 equal readiness의 RGBA0/A/A/errors 및 독립 원본 검토가 필요하다. 그 전 core runtime PASS나 B/C2 설치를 선언하지 않는다. 자연플레이·가림·미저장 repeat 부재는 별도 한계다. [현재 판정](proof-status.json).
+실제931 core30은 같은 identity30·RGBA0·A/A30·오류0 수치를 통과했고 독립 원본 검토가 남아 있다. 그 전 최종 core runtime PASS나 B/C2 설치를 선언하지 않는다. 자연플레이·가림·미저장 repeat 부재는 별도 한계다. [현재 판정](proof-status.json).
 
 ## 실제 before JPEG 선택7장
 
@@ -31,3 +31,21 @@
 | heath-negative-coastal_port-summer | [원본 JPEG](images/heath-negative-coastal_port-summer-before.jpg) |
 
 [역사 detached index 참조](historical-reference.json)는 보조 준비 자료일 뿐이다. 최종 가지 관문/게시와 B/C2 data-only/runtime30/승격은 후속이다.
+
+## 실제931 core30 수치 결과와 export 경계
+
+`931d780e37307a7dd2f85a697b122656cb29359d` / `astra-heath-main-core-931d780`: [수치 영수증](main-core-summary.json), [watch](main-core-watch.json), [부모 재검산](main-core-parent-check.json). 실제d367 before와 full identity30·RGBA30 동일, A/A30·오류0. before/core/repeat PNG90장을 직접 디코딩한 실행자 검산이며 원본 시각 판정을 대체하지 않는다. 양성/edge14·음성16 first-open 부재 PASS; repeat 요청/draw 부재는 여전히 UNPROVED다.
+
+[실제30쌍 identity·PNG/JPEG raw경로와 해시](main-before-core-identities30.json)를 보존했다. JPEG30쌍도 동일SHA이며 선택7장은 기존 물리파일을 공유한다. coreJPEG를 재저장하거나 옛 detached 그림으로 대체하지 않았다. 실행/수집 exit0, 명령317초·대기0초.
+
+**전체 export가 깨끗했다는 주장은 금지한다.** 시작 metadata dirty=false였지만 실제 trackedDirty=true이며 분류는 **NON_RUNTIME_DOCUMENT_DRIFT**다. [분류 원영수증](main-core-export-classification.json), [실제 tracked diff](main-core-tracked-race-check.txt), [독립 drift 판정](main-core-doc-drift-review.md)을 보존한다. FIELD3 REPORT와 SHA256SUMS 정확2문서가 전송 중 달라졌고 HEAD/export SHA를 그대로 기록했다. 그 외 tracked 경로는931과 같지만 모든 임의 untracked/전체 .omo까지 같은 것으로 확대하지 않는다.
+
+[제품/fixture 동결4308 참조](main-core-source-freeze-reference.json)와 [원격 대조](main-core-remote-freeze.json), [추가 제품 대조 원문](main-core-doc-race-check.txt)은 실제931 런타임 입력4308/부재8 일치를 보여준다. [driver2 별도 대조](main-core-driver-attestation.json)와 [원문](main-core-driver-hashes.txt)은 별도 supplemental 검사이며4308에 합쳐 시작동결처럼 표시하지 않는다. 독립 판정은 이 문서차이만으로 동일제품 재촬영을 요구하지 않지만 최종 전체cleanclone 관문을 충족시키지 않는다.
+
+독립 core30 native 시각 검토는 PENDING. 새 B/C2 데이터·설치·승격, 최종 게시 역시 별도다.
+
+## 이후 독립 core30 시각 판정 — PASS WITH LIMITS
+
+위 숫자 수집 당시의 VISUAL PENDING은 역사 상태로 보존한다. 이후 [독립 core 원본 검토](main-core-visual-review.md)와 [감사 JSON](main-core-visual-audit.json)이 도착해 실제931 core30을 **PASS WITH LIMITS**로 닫았다. 자세한 개별 장면·열람 범위·원본 대조 결과·가림/작은 배율 한계는 해당 원보고서를 따른다. 원래 summary/watch와 문서 drift 분류를 성공에 맞춰 다시 쓰지 않았다.
+
+수락은 actual committed-product runtime4308 동일입력과30쌍 수치/시각 증거에 한정한다. **NON_RUNTIME_DOCUMENT_DRIFT / actual trackedDirty=true / 시작 metadata dirty=false**는 그대로이며 전체clean export 승인으로 바뀌지 않는다. repeat source absence·자연플레이·모든 occlusion·최종cleanclone/게시를 증명하지 않는다. 새 B/C2 데이터/runtime는 이 core 판정과 별도이며 이 패키지가 설치 완료로 소급하지 않는다.

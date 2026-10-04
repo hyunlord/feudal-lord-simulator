@@ -36,7 +36,7 @@
 
 20뷰 A/A 통과·오류0. 비봄12 full identity/RGBA 정확 동일; 봄8은 expectedRequests만 다른 identity이며8개 모두 실제 픽셀 변화가 있다. 봄 각8뷰에서 새3 URL의 요청·정상 decode·성공 image/canvas/pattern paint lineage를 확인했다. 이는 각 소스의 최종 가시 픽셀·모든 가림·자연플레이를 보증하지 않는다. [전체20쌍 identity·원본 PNG/JPEG 경로와 SHA](main-before-after-identities20.json)는 봄8 각각의 전후를 구분한다.
 
-[출처시험5/5](main-provenance-tests.log), [실제 CLI runtime2,387/CSV2,387](main-provenance-cli.txt), missing/orphan/hash/nonexistent 모두0. CLI의 비열거 public49 목록은 원로그에 보존하며 이 숫자를 orphan으로 바꾸어 해석하지 않는다. [main 정적196/196·타입·catalog102](main-static.json)도 보존했다.
+[출처시험5/5](main-provenance-tests.txt), [실제 CLI runtime2,387/CSV2,387](main-provenance-cli.txt), missing/orphan/hash/nonexistent 모두0. CLI의 비열거 public49 목록은 원로그에 보존하며 이 숫자를 orphan으로 바꾸어 해석하지 않는다. [main 정적196/196·타입·catalog102](main-static.json)도 보존했다.
 
 ### 원본 JPEG 선택본
 
@@ -70,3 +70,5 @@
 여름/겨울 ×1/.6 네 장면 full identity4·RGBA 차이0·A/A4·오류0. 요구 source 요청·정상 decode·paint lineage 확인. 실행자가 native PNG4개를 각각 열어 PASS_EXECUTOR4로 기록했으며 독립 검토로 이름을 바꾸지 않는다. 이전 장식/반복 지면/작은 crop 세부 한계는 유지한다.
 
 [before/after 실제 PNG/JPEG 별도 경로·SHA·identity](post-promotion-reference4-raw-index.json)를 확인했다. JPEG4개는 기존 패키지의 동일 바이트4개와 일치하여 추가 물리 이미지 없이 공유한다. 다시 저장하거나 리샘플링하지 않았다. 이 네 장면에는 봄이 없으므로 **cd399 실제20뷰 중 봄8의 새3 소비·독립 시각 증거를 대체하지 않는다**. 원래 data20, 승격, 독립 시각 영수증은 바이트 그대로 보존했다. 장시간 자연플레이·가림·저장되지 않은 repeat 요청/paint 부재나 최종 게시를 새로 주장하지 않는다.
+
+출처시험 원로그의 기존 `.log` 사본은 ignored 파일이어서 과거 커밋에 포함되지 않았다. 현재 게시본은 동일 바이트의 [main-provenance-tests.txt](main-provenance-tests.txt)이며 SHA256 `654b804878c9203dbbabe3a3760b5fe8a354e68693be8cb531776bc44e74d6a7`이다. 로컬 `.log` 원본은 보존하되 현재 게시 해시 목록에서는 제외했다.

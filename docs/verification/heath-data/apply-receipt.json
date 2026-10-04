@@ -1,0 +1,75 @@
+{
+  "status": "APPLIED_CANDIDATE_ONLY_DATA_RUNTIME_PENDING",
+  "head": "931d780e37307a7dd2f85a697b122656cb29359d",
+  "recipeSHA256": "6976abd0cfcf8ac5709a19f6cf39b904151454cc53bf57515db40a5a0c114470",
+  "outputs": [
+    {
+      "path": "public/assets/wave22/decals/heath_patch_b.png",
+      "prepared": ".omo/prepared-delivery/heath-main-data/public/assets/wave22/decals/heath_patch_b.png",
+      "sha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+      "bytes": 6002
+    },
+    {
+      "path": "public/assets/wave22/decals/heath_patch_c.png",
+      "prepared": ".omo/prepared-delivery/heath-main-data/public/assets/wave22/decals/heath_patch_c.png",
+      "sha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+      "bytes": 17017
+    },
+    {
+      "path": "docs/provenance/assets.csv",
+      "prepared": ".omo/prepared-delivery/heath-main-data/docs/provenance/assets.csv",
+      "sha256": "5ad1ecac51d02b5915b059b9c8f9dbd7e405f525df2e34335ba9f37a4a387a2e",
+      "bytes": 3137769
+    },
+    {
+      "path": "src/render/art/catalog.json",
+      "prepared": ".omo/prepared-delivery/heath-main-data/src/render/art/catalog.json",
+      "sha256": "b05ce0d127d1b2e8067c66fb90b4ddd0467d56b309a97911b0c173c39f92d282",
+      "bytes": 176164
+    }
+  ],
+  "codeChanges": 0,
+  "ledgerChanges": 0,
+  "coreGate": {
+    "head": "931d780e37307a7dd2f85a697b122656cb29359d",
+    "beforeHead": "d367382392a4806e683b91463f3996b7654704d6",
+    "parentAcceptedIndependentVisual": true,
+    "remoteExit": 0,
+    "fetchExit": 0,
+    "beforeCaptures": {
+      "path": "output/art-architecture/heath-main-before-d3673823/captures.json",
+      "sha256": "5014a14a36ee9918afb2e3505e87b2fbb255d660c4aad5c276d3d6d1376571f4"
+    },
+    "afterCaptures": {
+      "path": "output/art-architecture/heath-main-core-931d780e/captures.json",
+      "sha256": "9caf7cd0664547e28fbd498c5cde48e4ca8fc30b7e74f683b2ef16c1382560e3"
+    },
+    "independentVisualReview": {
+      "path": ".omo/drafts/heath-main-core-visual-review.md",
+      "sha256": "0c9d3a7a3a1effb25f448b39497a967f84b77be5f5f1f9689b8e2ab5b3c34d46"
+    },
+    "remoteReceipt": {
+      "path": ".omo/evidence/heath-main-core-summary.json",
+      "sha256": "2fd772457dea27278363e7b91234ea69177582a02f6618652095123b360cfaab"
+    },
+    "firstOpenNegative": {
+      "pass": true,
+      "count": 16,
+      "evidence": {
+        "path": ".omo/drafts/heath-main-core-visual-review.json",
+        "sha256": "5aff7b74ca4fd4032b97997a46a278eb3116459b1e1a5bc4c855641569df7983"
+      }
+    },
+    "exportClassification": "NON_RUNTIME_DOCUMENT_DRIFT",
+    "actualTrackedDirty": true,
+    "exportEvidence": {
+      "path": ".omo/evidence/heath-main-core-export-classification.json",
+      "sha256": "532fc06eca132634e6289ae4cc45217777d327fc5edc4e7fdd980a60799d2408"
+    },
+    "exportIndependentReview": {
+      "path": ".omo/drafts/heath-core-doc-drift-review.md",
+      "sha256": "c633a6b155d98f69f7d3b92ccabec5ef3eb70ade2bfb419a9fa3d4d70f0eec75"
+    },
+    "parentAcceptanceScope": "Exactcommittedruntimeproduct4308 inputs; no wholeexportcleanclaim. Core30 identity/RGBA0/A-A30/native30/firstopennegative16 PASS, repeatabsenceunproved."
+  }
+}
