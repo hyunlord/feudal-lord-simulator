@@ -79,6 +79,9 @@ def legacy_records(records: list[dict[str, str]], named: set[str]) -> list[dict[
     # The actual TS registry validates every archetype/season fallback before any copy or ledger write.
     output = subprocess.check_output([str(TSX), str(OWNERSHIP_CHECK), str(ROOT / "src/render/art/catalog.json")], text=True)
     owned = set(json.loads(output)) & keys
+    terrain_owned = {key for key in owned if key.startswith("terrain/")}
+    if terrain_owned:
+        assert len(terrain_owned) == 30 and len(owned) == 31, owned
     selected = [row for row in canonical if record_key(row["assetId"]) not in owned]
     assert {record_key(row["assetId"]) for row in selected} == keys - owned
     return selected

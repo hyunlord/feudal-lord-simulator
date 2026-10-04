@@ -1651,105 +1651,226 @@
       "additionalProperties": false
     },
     "ground-texture": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "kind",
-        "image",
-        "provenance",
-        "mapping",
-        "composition",
-        "allowMirror"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "provenance": {
-          "$ref": "#/$defs/provenance"
-        },
-        "kind": {
-          "const": "ground-texture"
-        },
-        "image": {
+      "oneOf": [
+        {
           "type": "object",
           "additionalProperties": false,
           "required": [
-            "url",
-            "width",
-            "height"
+            "id",
+            "kind",
+            "image",
+            "provenance",
+            "mapping",
+            "composition",
+            "allowMirror"
           ],
           "properties": {
-            "url": {
+            "id": {
               "type": "string",
-              "pattern": "^assets/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$"
+              "minLength": 1
             },
-            "width": {
-              "const": 512
+            "provenance": {
+              "$ref": "#/$defs/provenance"
             },
-            "height": {
-              "const": 64
-            }
-          }
-        },
-        "mapping": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "repeat",
-            "sourcePixelsPerTile",
-            "origin"
-          ],
-          "properties": {
-            "repeat": {
-              "const": "x"
+            "kind": {
+              "const": "ground-texture"
             },
-            "sourcePixelsPerTile": {
-              "const": 128
-            },
-            "origin": {
+            "image": {
               "type": "object",
               "additionalProperties": false,
               "required": [
-                "x",
-                "y"
+                "url",
+                "width",
+                "height"
               ],
               "properties": {
-                "x": {
-                  "const": 0
+                "url": {
+                  "type": "string",
+                  "pattern": "^assets/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$"
                 },
-                "y": {
-                  "const": 0
+                "width": {
+                  "const": 512
+                },
+                "height": {
+                  "const": 64
                 }
               }
+            },
+            "mapping": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "repeat",
+                "sourcePixelsPerTile",
+                "origin"
+              ],
+              "properties": {
+                "repeat": {
+                  "const": "x"
+                },
+                "sourcePixelsPerTile": {
+                  "const": 128
+                },
+                "origin": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "x",
+                    "y"
+                  ],
+                  "properties": {
+                    "x": {
+                      "const": 0
+                    },
+                    "y": {
+                      "const": 0
+                    }
+                  }
+                }
+              }
+            },
+            "composition": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "joinFadeSourcePx",
+                "wash"
+              ],
+              "properties": {
+                "joinFadeSourcePx": {
+                  "const": 40
+                },
+                "wash": {
+                  "enum": [
+                    "legacy-stage",
+                    "none"
+                  ]
+                }
+              }
+            },
+            "allowMirror": {
+              "const": false
             }
           }
         },
-        "composition": {
+        {
           "type": "object",
           "additionalProperties": false,
           "required": [
-            "joinFadeSourcePx",
-            "wash"
+            "id",
+            "kind",
+            "image",
+            "provenance",
+            "mapping",
+            "composition",
+            "allowMirror",
+            "baseId"
           ],
           "properties": {
-            "joinFadeSourcePx": {
-              "const": 40
+            "id": {
+              "type": "string",
+              "minLength": 1
             },
-            "wash": {
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "ground-texture"
+            },
+            "image": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "url",
+                "width",
+                "height"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string",
+                  "pattern": "^assets/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$"
+                },
+                "width": {
+                  "const": 256
+                },
+                "height": {
+                  "const": 128
+                }
+              }
+            },
+            "mapping": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "repeat",
+                "sourcePixelsPerTile",
+                "origin"
+              ],
+              "properties": {
+                "repeat": {
+                  "const": "xy"
+                },
+                "sourcePixelsPerTile": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "u",
+                    "v"
+                  ],
+                  "properties": {
+                    "u": {
+                      "const": 128
+                    },
+                    "v": {
+                      "const": 64
+                    }
+                  }
+                },
+                "origin": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "x",
+                    "y"
+                  ],
+                  "properties": {
+                    "x": {
+                      "const": 0
+                    },
+                    "y": {
+                      "const": 0
+                    }
+                  }
+                }
+              }
+            },
+            "composition": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "wash"
+              ],
+              "properties": {
+                "wash": {
+                  "const": "none"
+                }
+              }
+            },
+            "allowMirror": {
+              "const": false
+            },
+            "baseId": {
               "enum": [
-                "legacy-stage",
-                "none"
+                "chalk_down",
+                "coastal_grass",
+                "fen",
+                "heath",
+                "woodland_floor"
               ]
             }
           }
-        },
-        "allowMirror": {
-          "const": false
         }
-      }
+      ]
     }
   }
 }

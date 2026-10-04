@@ -6639,5 +6639,1913 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave22-region-textures",
+    "entries": [
+      {
+        "id": "wave22-region-chalk-down-autumn-a",
+        "kind": "ground-texture",
+        "baseId": "chalk_down",
+        "image": {
+          "url": "assets/wave22/terrain/chalk_down_autumn_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/chalk_down_autumn_a-v2.png",
+          "sourceSha256": "32ae2bd572fb65e68c4588a437de8d5b7d023dd3d28f091afc15aa5ab9a4b1bc",
+          "runtimeSha256": "32ae2bd572fb65e68c4588a437de8d5b7d023dd3d28f091afc15aa5ab9a4b1bc"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-chalk-down-autumn-b",
+        "kind": "ground-texture",
+        "baseId": "chalk_down",
+        "image": {
+          "url": "assets/wave22/terrain/chalk_down_autumn_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/chalk_down_autumn_b-v2.png",
+          "sourceSha256": "ced98bf4c40c7073950aebb0ad5fe14dfea41600bafd8083bf6dbd8f717a4a26",
+          "runtimeSha256": "ced98bf4c40c7073950aebb0ad5fe14dfea41600bafd8083bf6dbd8f717a4a26"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-chalk-down-summer-a",
+        "kind": "ground-texture",
+        "baseId": "chalk_down",
+        "image": {
+          "url": "assets/wave22/terrain/chalk_down_summer_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/chalk_down_summer_a-v2.png",
+          "sourceSha256": "43a00762d9289baec34a66113af18bf7e7570738ed11009ea8168ca493fc63c1",
+          "runtimeSha256": "43a00762d9289baec34a66113af18bf7e7570738ed11009ea8168ca493fc63c1"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-chalk-down-summer-b",
+        "kind": "ground-texture",
+        "baseId": "chalk_down",
+        "image": {
+          "url": "assets/wave22/terrain/chalk_down_summer_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/chalk_down_summer_b-v2.png",
+          "sourceSha256": "0bf229302256bad00389a9cf061ecbe238edae725a1479918b3abcf085d0dc2d",
+          "runtimeSha256": "0bf229302256bad00389a9cf061ecbe238edae725a1479918b3abcf085d0dc2d"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-chalk-down-winter-a",
+        "kind": "ground-texture",
+        "baseId": "chalk_down",
+        "image": {
+          "url": "assets/wave22/terrain/chalk_down_winter_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/chalk_down_winter_a-v2.png",
+          "sourceSha256": "868fe4645be8dd9ef1eb90183c78a2db37b8fa71f4f0b8bf51af04240980dfca",
+          "runtimeSha256": "868fe4645be8dd9ef1eb90183c78a2db37b8fa71f4f0b8bf51af04240980dfca"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-chalk-down-winter-b",
+        "kind": "ground-texture",
+        "baseId": "chalk_down",
+        "image": {
+          "url": "assets/wave22/terrain/chalk_down_winter_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/chalk_down_winter_b-v2.png",
+          "sourceSha256": "1dd9a28893ab5e1eba303d75ce0cc0bc091e161578a5eadfe5a4aef8859e3f23",
+          "runtimeSha256": "1dd9a28893ab5e1eba303d75ce0cc0bc091e161578a5eadfe5a4aef8859e3f23"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-coastal-grass-autumn-a",
+        "kind": "ground-texture",
+        "baseId": "coastal_grass",
+        "image": {
+          "url": "assets/wave22/terrain/coastal_grass_autumn_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/coastal_grass_autumn_a-v2.png",
+          "sourceSha256": "67d3f3eb93bb5cbac257f5770d358044984c99c3d4dfb424d0ba47371eaaa095",
+          "runtimeSha256": "67d3f3eb93bb5cbac257f5770d358044984c99c3d4dfb424d0ba47371eaaa095"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-coastal-grass-autumn-b",
+        "kind": "ground-texture",
+        "baseId": "coastal_grass",
+        "image": {
+          "url": "assets/wave22/terrain/coastal_grass_autumn_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/coastal_grass_autumn_b-v2.png",
+          "sourceSha256": "0c5007c58400f5ecceef930c7610aea03f290c6ffb16d0ef6f575b1517281d94",
+          "runtimeSha256": "0c5007c58400f5ecceef930c7610aea03f290c6ffb16d0ef6f575b1517281d94"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-coastal-grass-summer-a",
+        "kind": "ground-texture",
+        "baseId": "coastal_grass",
+        "image": {
+          "url": "assets/wave22/terrain/coastal_grass_summer_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/coastal_grass_summer_a-v2.png",
+          "sourceSha256": "ce5b7302f4c05d74a17e0131f232ccc6270eb442df42abf8c3e7e945233cb4c7",
+          "runtimeSha256": "ce5b7302f4c05d74a17e0131f232ccc6270eb442df42abf8c3e7e945233cb4c7"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-coastal-grass-summer-b",
+        "kind": "ground-texture",
+        "baseId": "coastal_grass",
+        "image": {
+          "url": "assets/wave22/terrain/coastal_grass_summer_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/coastal_grass_summer_b-v2.png",
+          "sourceSha256": "ebe1ed3b37adda660effdbb4b77e01a452717b258fbc8fe80ec0df832d837f45",
+          "runtimeSha256": "ebe1ed3b37adda660effdbb4b77e01a452717b258fbc8fe80ec0df832d837f45"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-coastal-grass-winter-a",
+        "kind": "ground-texture",
+        "baseId": "coastal_grass",
+        "image": {
+          "url": "assets/wave22/terrain/coastal_grass_winter_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/coastal_grass_winter_a-v2.png",
+          "sourceSha256": "a10ca3299e081f9bc6ffb054702a10e8181dcdd7b4a0627d766f42d20ee5a0f7",
+          "runtimeSha256": "a10ca3299e081f9bc6ffb054702a10e8181dcdd7b4a0627d766f42d20ee5a0f7"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-coastal-grass-winter-b",
+        "kind": "ground-texture",
+        "baseId": "coastal_grass",
+        "image": {
+          "url": "assets/wave22/terrain/coastal_grass_winter_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/coastal_grass_winter_b-v2.png",
+          "sourceSha256": "799c4e9da2c1efd7fce40932681afe154f54082c62ab1843f7e258abe4238ca4",
+          "runtimeSha256": "799c4e9da2c1efd7fce40932681afe154f54082c62ab1843f7e258abe4238ca4"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-fen-autumn-a",
+        "kind": "ground-texture",
+        "baseId": "fen",
+        "image": {
+          "url": "assets/wave22/terrain/fen_autumn_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/fen_autumn_a-v2.png",
+          "sourceSha256": "7c879ba998d2ae409605b85b6904a55ccbeb37706fb02ba7ea36f08c65202d14",
+          "runtimeSha256": "7c879ba998d2ae409605b85b6904a55ccbeb37706fb02ba7ea36f08c65202d14"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-fen-autumn-b",
+        "kind": "ground-texture",
+        "baseId": "fen",
+        "image": {
+          "url": "assets/wave22/terrain/fen_autumn_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/fen_autumn_b-v2.png",
+          "sourceSha256": "485ad555c5b64f810d221781a12b4fd5dc5930fb24c0447bcd09edf0231ff679",
+          "runtimeSha256": "485ad555c5b64f810d221781a12b4fd5dc5930fb24c0447bcd09edf0231ff679"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-fen-summer-a",
+        "kind": "ground-texture",
+        "baseId": "fen",
+        "image": {
+          "url": "assets/wave22/terrain/fen_summer_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_a-v2.png",
+          "sourceSha256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8",
+          "runtimeSha256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-fen-summer-b",
+        "kind": "ground-texture",
+        "baseId": "fen",
+        "image": {
+          "url": "assets/wave22/terrain/fen_summer_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/fen_summer_b-v2.png",
+          "sourceSha256": "6788977b77d0cab48f166d437ebf7295a70ae61a4dc7b6c22f782bd7f23fef5e",
+          "runtimeSha256": "6788977b77d0cab48f166d437ebf7295a70ae61a4dc7b6c22f782bd7f23fef5e"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-fen-winter-a",
+        "kind": "ground-texture",
+        "baseId": "fen",
+        "image": {
+          "url": "assets/wave22/terrain/fen_winter_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_a-v2.png",
+          "sourceSha256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc",
+          "runtimeSha256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-fen-winter-b",
+        "kind": "ground-texture",
+        "baseId": "fen",
+        "image": {
+          "url": "assets/wave22/terrain/fen_winter_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/fen_winter_b-v2.png",
+          "sourceSha256": "2f0f886a15109418746645218ebc6896b78e1d7094ee6a64fcb17b06db8a346f",
+          "runtimeSha256": "2f0f886a15109418746645218ebc6896b78e1d7094ee6a64fcb17b06db8a346f"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-heath-autumn-a",
+        "kind": "ground-texture",
+        "baseId": "heath",
+        "image": {
+          "url": "assets/wave22/terrain/heath_autumn_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/heath_autumn_a-v2.png",
+          "sourceSha256": "79ddb9a7eba3d981d8b3ce4e4e6e04635ee79f9199631f62e67e2a9f2524d4bd",
+          "runtimeSha256": "79ddb9a7eba3d981d8b3ce4e4e6e04635ee79f9199631f62e67e2a9f2524d4bd"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-heath-autumn-b",
+        "kind": "ground-texture",
+        "baseId": "heath",
+        "image": {
+          "url": "assets/wave22/terrain/heath_autumn_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/heath_autumn_b-v2.png",
+          "sourceSha256": "83d771544cee18ddce659b56f012f43c2919ee8df244813083c532145459ff7c",
+          "runtimeSha256": "83d771544cee18ddce659b56f012f43c2919ee8df244813083c532145459ff7c"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-heath-summer-a",
+        "kind": "ground-texture",
+        "baseId": "heath",
+        "image": {
+          "url": "assets/wave22/terrain/heath_summer_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/heath_summer_a-v2.png",
+          "sourceSha256": "c3819dd703c927893e8e4fdeeae10e070fc9e3720caab4435d26367e5215a86f",
+          "runtimeSha256": "c3819dd703c927893e8e4fdeeae10e070fc9e3720caab4435d26367e5215a86f"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-heath-summer-b",
+        "kind": "ground-texture",
+        "baseId": "heath",
+        "image": {
+          "url": "assets/wave22/terrain/heath_summer_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/heath_summer_b-v2.png",
+          "sourceSha256": "8f6493dae1fb10ee898c88c23a64ec080fc189a854d6360a0bb06ab37a8dd7db",
+          "runtimeSha256": "8f6493dae1fb10ee898c88c23a64ec080fc189a854d6360a0bb06ab37a8dd7db"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-heath-winter-a",
+        "kind": "ground-texture",
+        "baseId": "heath",
+        "image": {
+          "url": "assets/wave22/terrain/heath_winter_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/heath_winter_a-v2.png",
+          "sourceSha256": "292c05d1e6552ccdc37a93952de7b42e8e9e04a7ad44f8d5e330c36571280f0b",
+          "runtimeSha256": "292c05d1e6552ccdc37a93952de7b42e8e9e04a7ad44f8d5e330c36571280f0b"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-heath-winter-b",
+        "kind": "ground-texture",
+        "baseId": "heath",
+        "image": {
+          "url": "assets/wave22/terrain/heath_winter_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/heath_winter_b-v2.png",
+          "sourceSha256": "2fd5ba349c6609b617d89db3408bd89ac09ec4893e86ea9d3acff74b7edd4153",
+          "runtimeSha256": "2fd5ba349c6609b617d89db3408bd89ac09ec4893e86ea9d3acff74b7edd4153"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-woodland-floor-autumn-a",
+        "kind": "ground-texture",
+        "baseId": "woodland_floor",
+        "image": {
+          "url": "assets/wave22/terrain/woodland_floor_autumn_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/woodland_floor_autumn_a-v2.png",
+          "sourceSha256": "a58733faa04df765ac3d8c36e8361099482ec8e756563e9ba27f519b26727481",
+          "runtimeSha256": "a58733faa04df765ac3d8c36e8361099482ec8e756563e9ba27f519b26727481"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-woodland-floor-autumn-b",
+        "kind": "ground-texture",
+        "baseId": "woodland_floor",
+        "image": {
+          "url": "assets/wave22/terrain/woodland_floor_autumn_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/woodland_floor_autumn_b-v2.png",
+          "sourceSha256": "5a427f7e440df12714cd9fbf22f58b8b98feaaa691f54f07ae2bf953edd7b9ed",
+          "runtimeSha256": "5a427f7e440df12714cd9fbf22f58b8b98feaaa691f54f07ae2bf953edd7b9ed"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-woodland-floor-summer-a",
+        "kind": "ground-texture",
+        "baseId": "woodland_floor",
+        "image": {
+          "url": "assets/wave22/terrain/woodland_floor_summer_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/woodland_floor_summer_a-v2.png",
+          "sourceSha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36",
+          "runtimeSha256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-woodland-floor-summer-b",
+        "kind": "ground-texture",
+        "baseId": "woodland_floor",
+        "image": {
+          "url": "assets/wave22/terrain/woodland_floor_summer_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/woodland_floor_summer_b-v2.png",
+          "sourceSha256": "d6f727456bff3f059e33b36d528613b0623b4fafd2af43fdecb031cf58d9fa61",
+          "runtimeSha256": "d6f727456bff3f059e33b36d528613b0623b4fafd2af43fdecb031cf58d9fa61"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-woodland-floor-winter-a",
+        "kind": "ground-texture",
+        "baseId": "woodland_floor",
+        "image": {
+          "url": "assets/wave22/terrain/woodland_floor_winter_a.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/woodland_floor_winter_a-v2.png",
+          "sourceSha256": "db73565fdb3c0ea1900a394ead017898201e88054cdde37f20d5d7506d79b673",
+          "runtimeSha256": "db73565fdb3c0ea1900a394ead017898201e88054cdde37f20d5d7506d79b673"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave22-region-woodland-floor-winter-b",
+        "kind": "ground-texture",
+        "baseId": "woodland_floor",
+        "image": {
+          "url": "assets/wave22/terrain/woodland_floor_winter_b.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/terrain/woodland_floor_winter_b-v2.png",
+          "sourceSha256": "4966004d404c0a316485077bc46a3acfc4c15855c795b7bb8e5a7ce59121ee22",
+          "runtimeSha256": "4966004d404c0a316485077bc46a3acfc4c15855c795b7bb8e5a7ce59121ee22"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "region-chalk_down-spring-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-chalk_down-spring-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-chalk_down-summer-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-chalk_down-summer-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-chalk_down-autumn-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-autumn-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-chalk_down-autumn-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-autumn-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-chalk_down-winter-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-winter-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-chalk_down-winter-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-chalk-down-winter-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-spring-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-spring-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-summer-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-summer-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-autumn-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-autumn-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-autumn-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-autumn-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-winter-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-winter-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-coastal_grass-winter-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-coastal-grass-winter-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-spring-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-spring-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-summer-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-summer-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-autumn-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-autumn-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-autumn-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-autumn-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-winter-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-winter-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-fen-winter-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-fen-winter-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-spring-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-spring-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-summer-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-summer-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-autumn-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-autumn-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-autumn-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-autumn-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-winter-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-winter-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-heath-winter-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "heath"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-heath-winter-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-spring-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-spring-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-summer-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-summer-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-summer-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-summer-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-autumn-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-autumn-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-autumn-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-autumn-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-winter-a",
+        "kind": "ground-texture",
+        "slot": "land-region-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-winter-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-woodland_floor-winter-b",
+        "kind": "ground-texture",
+        "slot": "land-region-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-region-woodland-floor-winter-b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]
