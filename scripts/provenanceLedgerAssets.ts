@@ -89,7 +89,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
   const worldManifest = readJson<WorldAssetManifest>("public/assets/world_asset_manifest.json");
   for (const asset of worldManifest.assets) add(asset.path, "public/assets/world_asset_manifest.json");
 
-  // 2) Static "url" literals inside src/render/*Manifest*.ts and *.generated.ts files.
+  // 2) Static "url" literals in renderer/UI manifests and the shared art catalog.
   const manifestFiles = [
     "src/render/historicalFacilityManifest.ts",
     "src/render/historicalHouseAssetManifest.generated.ts",
@@ -138,6 +138,7 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
     "src/ui/lord/receiptArt.ts", // LM-R1 the lord mode's receipt frame, reason caps and decision ribbon (Wave 35)
     "src/render/wave37DoorSignManifest.generated.ts", // LM-R1 the lord-mode house-front signs (Wave 37)
     "src/render/manorHouseManifest.generated.ts", // LM-R1 RUN-01 the manor house (Wave 12 A / B, activity, empty A / B v2)
+    "src/render/art/catalog.json",
   ];
   for (const file of manifestFiles) {
     for (const url of extractUrlLiterals(readText(file))) {

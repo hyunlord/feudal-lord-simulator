@@ -1,0 +1,42 @@
+{
+  "failedRun": "astra-ARCH1-final-clone-d6776f2",
+  "failedHead": "d6776f2ffeb8c88ee5c3b7402f4a708d4c04ed73",
+  "fullSuite": {
+    "tests": 4820,
+    "pass": 4819,
+    "fail": 1,
+    "durationMs": 957823.96498,
+    "build": "NOT_RUN"
+  },
+  "failure": "verifyProvenance.test.ts:23 totalCsvRows2381 != totalRuntimeAssets2313",
+  "cause": {
+    "csvDuplicates": 0,
+    "orphanPaths": 68,
+    "allOrphansInCatalog": true,
+    "catalogUniqueUrls": 72,
+    "legacyOverlap": 4,
+    "missingFiles": 0,
+    "hashMismatches": 0
+  },
+  "fix": "Add src/render/art/catalog.json to existing manifest URL enumeration; preserve dedup and derivative handling. No test/PNG/provenance row changed.",
+  "localRetest": {
+    "tests": 11,
+    "pass": 11,
+    "fail": 0,
+    "typecheck": 0,
+    "eslint": 0,
+    "diffCheck": 0,
+    "actualCli": "verifyProvenance.ts executed"
+  },
+  "currentReport": {
+    "totalRuntimeAssets": 2381,
+    "totalCsvRows": 2381,
+    "missingRows": 0,
+    "orphanRows": 0,
+    "hashMismatches": 0,
+    "missingFiles": 0,
+    "retiredStillRuntime": 0
+  },
+  "boundaryOwner": "39b1d55c kwanhyeonpark-ctrl",
+  "remaining": "Commit-after actual4-view capture, last-HEAD clean clone fullsuite/build, protected push; no current fullsuite PASS claim."
+}

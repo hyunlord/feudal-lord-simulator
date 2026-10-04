@@ -82,7 +82,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 ---
 ## B′. 렌더 B — Astra (결정 FND-2, 2026-10-04 출범)
 세계 그리기 장치·그림 계약(manifest)·그림 설치. 자기 가지에 커밋하고 `check:merge`·깨끗한 클론을 통과한 뒤 본선에 푸시한다. 파일 경계는 AGENTS.md "레인과 파일 경계"(UI·영주 화면은 렌더 A). 판정은 실제 게임 장면 합성으로.
-- [ ] **ASSET-ARCH-1** 그림 계약과 데이터 주도 그리기 장치(visual-architecture 4절) — 끝 기준: **그림 한 종류가 코드 없이 데이터로 설치됨**(0단계 끝). UI 그림부터(결정 FND-4). 10종 계약·UI descriptor, Wave42 36장28쌍 RGBA 동일, 시대 집 신규32+재사용4의8장면 데이터 증명(코어 `d60ababf`, 데이터 `541a0811`). QA003 통합 smoke4/4·A/A0차이·오류0 및 clean `1da2327e` 기하122행/2202조건 실패0 확인(도달불가4·경고693 보존). 최종 check:merge·마지막 HEAD clone 회귀/빌드·본선 push 대기. [보고서](../verification/asset-architecture/REPORT.md).
+- [ ] **ASSET-ARCH-1** 그림 계약과 데이터 주도 그리기 장치(visual-architecture 4절) — 끝 기준: **그림 한 종류가 코드 없이 데이터로 설치됨**(0단계 끝). UI 그림부터(결정 FND-4). 10종 계약·UI descriptor, Wave42 36장28쌍 RGBA 동일, 시대 집 신규32+재사용4의8장면 데이터 증명(코어 `d60ababf`, 데이터 `541a0811`). QA003 통합 smoke4/4·A/A0차이·오류0 및 clean `1da2327e` 기하122행/2202조건 실패0 확인(도달불가4·경고693 보존). d677 check:merge 통과; 같은 HEAD clone 4819/4820으로 출처 열거68누락을 찾고 수정(관련11시험 통과). 수정 뒤 마지막 HEAD clone/빌드·본선 push 대기. [보고서](../verification/asset-architecture/REPORT.md).
 - [ ] 설치 1단계: 영주 모드 수직 조각용 그림(`docs/ops/install-plan-20261003` ORDER 1절) — 데이터 커밋 + 실제 장면 캡처
 - [ ] 설치 2단계: NAT-5·NAT-3 자연스러움(ORDER 2절)
 - [ ] 설치 3단계: 나머지 기존 기능 연결과 새 기능(ORDER 3절)

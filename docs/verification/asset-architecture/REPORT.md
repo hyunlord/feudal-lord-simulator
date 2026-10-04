@@ -95,3 +95,13 @@ QA003 통합 smoke 첫 실행 `astra-ARCH1-qa003-smoke-ab67dcb`는 `--states` �
 최신 작업 트리의1969개 기하 입력은 위 보고서 inputHash와 일치했다. 기존 관문의 `compareBaseline`에서 이미 실패가 사라진 예외 `modal.history.factions|overflow|chronicle-world-strip` 한 건이 stale로 확인되어, 부모가 기존 축소 규칙에 따라 그 항목만 삭제했다(최근 소유 `e67553b9`, kwanhyeonpark-ctrl). 새 면제는 추가하지 않았다. 원 측정 보고서의 역사적 exceptions1은 수정하지 않았으며, 삭제 뒤 현재 정적 비교는 exceptions/new/fixed/stale 모두0이다. 이는 작업 트리 입력/기준선 대조이며 커밋 후 정식 check:merge를 대신하지 않는다. [요약의 현재 대조 영수증](geometry-final.json)을 참고한다.
 
 [독립 QA003 시각 검토](qa003-visual.md)는 새 원본4장을 각각 열어 제한된 준비 장면에서 PASS with notes를 기록했다. 간판 glyph, 가려진 면, 자연 플레이, 전체 변형/가림 조합 및 성능은 승인 범위 밖이다.
+
+## 마지막 클론에서 찾은 출처 집계 누락
+
+`astra-ARCH1-final-clone-d6776f2`는 exact clean `d6776f2`에서 clone/LFS·npm ci·타입검사를 통과했으나 전체 시험4820개 중4819통과/1실패로 종료1이었다(957823.96498ms). 빌드는 실행하지 않았다. 실패는 기존 `verifyProvenance.test.ts:23`의 CSV2381 대 runtime2313 비교였다. 실제68 orphan은 전부 새 catalog의72 URL 중 legacy와 중복된4개를 제외한 집합이며, 중복CSV·실제없는파일·해시불일치는0이었다.
+
+그림 출처 검사기의 기존 manifest URL 탐색 목록에 실제 `src/render/art/catalog.json`을 추가했다. 기존 중복 제거와 keyart derivative 처리를 유지하고 기존 시험·CSV·PNG는 바꾸지 않았다. Mac의 동일 실패 재현 뒤 기존 관련11시험·타입검사·명시적 설정의ESLint·diff check가 통과했다. 실제 provenance CLI는 runtime2381/CSV2381,missing/orphan/hash/missingFiles/retiredStillRuntime 모두0을 보고했다. [실패와 수정 영수증](provenance-enumeration-fix.json)을 보존한다.
+
+경계 파일 수정: `scripts/provenanceLedgerAssets.ts`의 최근 소유는 `39b1d55c` kwanhyeonpark-ctrl이며, 새 계약 목록을 기존 설치 감사에서 빠뜨리지 않기 위한1행 목록 추가다. 렌더·엔진·UI·그림 바이트는 변경하지 않았다. 독립 검토는72/4/68 집합과 기존 경로 정규화/중복/파생그림 처리 보존에 blocker0을 기록했다.
+
+`astra-ARCH1-merge-check-d6776f2`는 이미 통과한 역사적 관문이다. 이 수정 뒤 최종 commit의 check:merge·깨끗한 clone 전체시험/빌드·보호된 본선push는 다시 필요하며, 첫 clone 실패를 통과로 고쳐 기록하지 않는다.
