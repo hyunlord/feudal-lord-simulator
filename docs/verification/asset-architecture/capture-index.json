@@ -134,6 +134,40 @@
       "kind": "authored saved-state fixture; actual DGX browser screenshot"
     },
     {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-summer-occupied-z06",
+      "file": "captures/integrated-summer-occupied-z06.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-summer-occupied-z06.jpg",
+      "sha256": "66c3694efc1728dbb43cab652e3042cd2d2941c5ec5dadd5c496ec4349dc30e0",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    },
+    {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-summer-occupied-z1",
+      "file": "captures/integrated-summer-occupied-z1.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-summer-occupied-z1.jpg",
+      "sha256": "a80843f2f9f94dc575594d7ec3b9b389a79e85387c8997f0ba13fdaa6988df7f",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    },
+    {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-winter-empty-z06",
+      "file": "captures/integrated-winter-empty-z06.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-winter-empty-z06.jpg",
+      "sha256": "33afb0c2779a1f49477994149a2486c9672c998b08b7aa3294e4ab36d79d6971",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    },
+    {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-winter-empty-z1",
+      "file": "captures/integrated-winter-empty-z1.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-winter-empty-z1.jpg",
+      "sha256": "6b8a063339ea6ddd8a9b7dd77864260177fe1611fb5c41345fcc2e299112a598",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    }
+  ],
+  "previewsRetainedOutsideTaskFolder": [
+    {
       "phase": "data-v3",
       "scene": "prepared-houses-1400-summer-gallery-z1",
       "file": "captures/data-v3-prepared-houses-1400-summer-gallery-z1.jpg",
