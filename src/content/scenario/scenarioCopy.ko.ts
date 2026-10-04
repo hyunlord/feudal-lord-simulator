@@ -11,6 +11,8 @@ export const SCENARIO_COPY = {
   modeButtons: {
     campaign_market_town: "목표형으로 시작",
     sandbox: "샌드박스로 시작",
+    // LM-R1 (Astra B01): the lord's slice from the start screen, before LM-R3's own start.
+    lord_slice: "영주 모드로 시작",
   },
   modePrompt: "새 게임 방식을 고르세요",
   /** ARCH-1 (MA-6): the lands the start screen offers (render's picker). */

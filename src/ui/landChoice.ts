@@ -4,7 +4,7 @@
 // (randomNewGameSeed), shown, which the player can type over or draw again. A number with no game (newGameState → null:
 // on the riverside, a map with no legal site for the village) cannot be started. The riverside on map 1 is today's map
 // exactly: it sends no command for the campaign (the tutorial gets the current state), as before.
-import { DEFAULT_SCENARIO_ID } from "../content/scenario/coreScenarios";
+import { DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID } from "../content/scenario/coreScenarios";
 import { SCENARIOS } from "../content/scenario/registry";
 import { NEW_GAME_SEED_MAX, mapArchetypes, newGameState, randomNewGameSeed } from "../state/newGame";
 
@@ -107,6 +107,8 @@ export function isDefaultLand(choice: LandChoice): boolean {
  * choice is started (the welcome refuses the others: landPlayable).
  */
 export function landStartCommand(scenarioId: string, choice: LandChoice, overSave: boolean): LandStartCommand | null {
+  // LM-R1: the lord's slice is the riverside market town (LS-1); the chosen map number is kept, the land is not.
+  if (scenarioId === LORD_SLICE_SCENARIO_ID) return { type: "start_new_game", scenarioId, ...(choice.seed === null ? {} : { seed: choice.seed }) };
   if (isDefaultLand(choice)) return overSave || scenarioId !== DEFAULT_SCENARIO_ID ? { type: "start_new_game", scenarioId } : null;
   return { type: "start_new_game", scenarioId, archetypeId: choice.archetypeId, ...(choice.seed === null ? {} : { seed: choice.seed }) };
 }
