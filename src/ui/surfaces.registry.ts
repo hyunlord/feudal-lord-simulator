@@ -14,8 +14,9 @@
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
-/** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands";
+/** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
+ * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice). */
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -149,6 +150,13 @@ const PERSON_CARD_ART = { art: { w: 320, h: 200 }, safe: { x: 15, y: 22, w: 290,
 /** frame_biography.png / frame_faction_page.png 640×800: the plain parchment inside the border (PIL). */
 const BIOGRAPHY_ART = { art: { w: 640, h: 800 }, safe: { x: 26, y: 29, w: 586, h: 741 } } as const;
 const FACTION_PAGE_ART = { art: { w: 640, h: 800 }, safe: { x: 28, y: 29, w: 582, h: 740 } } as const;
+
+// LM-R1 receipt: the lord's slice, the camera on its first farmstead (town-built: its receipt); the frame layer's slots
+// are the picture recess, the lower field (the money) and the close seal.
+const LORD_TOWN = { kind: "state", set: "lord", name: "lord-receipts", focus: { building: ["farmstead"] }, zoom: 1.4, query: QUIET } as const;
+const LORD_PICK: OpenStep = { map: { building: ["farmstead"] }, action: "click" };
+const RECEIPT = { frame: "layer", frameLayer: ".lord-receipt-frame", contentSlot: ".lord-receipt-body",
+  frameSlots: [".lord-receipt-window", ".lord-receipt-foot", ".lord-receipt-close"], scrollParts: [".lord-receipt-body"] } as const;
 
 export const SURFACES: readonly SurfaceRow[] = [
   // --- The always-on HUD, its strips and small floating boxes (survey §2.1).
@@ -365,7 +373,8 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.history.tree-node", extends: "modal.history.tree-generation", root: ".family-tree-node", frame: "css", scene: TOWN_CLOSE, open: [], data: "the first person node" },
   { id: "modal.history.factions", root: ".chronicle-factions", frame: "flat", scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },
     open: [{ pause: 1000 }, DISMISS, ...CHRONICLE, { click: ".chronicle-tabs:not(.chronicle-person-tabs) .chronicle-tab:nth-child(2)" }, { pause: 900 }],
-    siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
+    // The world strip is a sideways scroller by design (overflow-x auto, focusable, its focus ring).
+    scrollParts: [".chronicle-world-strip"], siblingsNoOverlap: [".chronicle-factions-row"], data: "chapter 4's factions: influence, tug of war, relations" },
   { id: "modal.history.faction-page", extends: "modal.history.factions", root: ".chronicle-faction", frame: "painting", painting: FACTION_PAGE_ART,
     frameSlots: [".chronicle-faction-band"], scrollParts: [".chronicle-faction-box > ul", ".chronicle-faction-pressure-body"],
     scene: { kind: "state", set: "ui9", name: "rumour-chased", tile: "house", zoom: 1.1, query: QUIET },
@@ -400,6 +409,55 @@ export const SURFACES: readonly SurfaceRow[] = [
   // NAT-4 (LU-D7): the kit NumberField's row in the gallery (the land agent's NumberField; screen.welcome holds the map number one).
   { id: "dev.ui-kit.number", extends: "dev.ui-kit", root: "[data-states='number']", frame: "flat", scene: { kind: "route", path: "dev/ui-kit" }, numbers: false, open: [],
     data: "the kit NumberField's states in the gallery" },
+  // LM-R1 petitions: the lord's cards in lord mode (src/ui/hud/LordCards.tsx) on scripts/lmr1PetitionStates.ts's states — a
+  // home estate's petition with its Wave 44 picture (opens by itself), one without a picture, a minor lord's court line,
+  // the steward's precedents and the town's request (from their chips).
+  // The picture is not a required element: the content check proves paint by text and controls changing between its two
+  // captures, which a picture never does (scripts/lmr1PetitionCaptures.mjs checks each picture loads at 960 × 540).
+  { id: "modal.lord.home-petition", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".lord-card-recurring", ".story-modal-later"],
+    scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01), both answers' numbers" },
+  { id: "modal.lord.home-petition.no-art", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".story-modal-later"],
+    scene: petitionScene("petitions", "home-chancel_repair", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the chancel's repair (no picture)" },
+  { id: "modal.lord.home-petition.guardian", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-option", ".story-modal-later"],
+    scene: petitionScene("petitions", "guardian", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "a minor lord's wardship petition (the court line with his guardian)" },
+  { id: "modal.lord.precedent", ...PETITION, root: ".story-modal.petition-card.lord-card[data-precedent]", frameSlots: [], siblingsNoOverlap: [".lord-card-recurring", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".lord-card-precedents li", ".lord-card-recurring", ".story-modal-later"],
+    scene: petitionScene("petitions", "precedent", 1500), open: [{ story: ".lord-card[data-precedent]" }, { pause: 600 }], data: "the steward's answers by precedent (Wave 44 13)" },
+  { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.lord-card[data-lord-request]", frameSlots: [],
+    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".story-modal-later"],
+    scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }], data: "the town's request (a proclamation waiting)" },
+  // LM-R1 receipt: lord mode's "왜 여기?" receipt beside a selected building's card, and the ledger drawer's lord tab
+  // (scripts/lmr1LordStates.ts: the lord's slice with the stability policy, dues 80% and a 10d farmstead subsidy).
+  { id: "map.selection.lord-farmstead", root: ".diagnostic-card", frame: "css", scene: LORD_TOWN, open: [LORD_PICK], scroll: "y",
+    expect: ".lord-why-here", data: "the lord's slice: a town-built farmstead's card with its why-here button" },
+  { id: "lord.receipt", root: ".lord-receipt", ...RECEIPT, scene: LORD_TOWN, open: [LORD_PICK, { click: ".lord-why-here" }, { pause: 600 }],
+    requires: ["h2", ".lord-receipt-reason", ".lord-receipt-value", ".lord-receipt-ribbon", ".lord-receipt-foot"],
+    data: "a town-built farmstead's receipt: five reasons, the next best site, the chance, the 10d subsidy and its decisions" },
+  { id: "lord.receipt-old", root: ".lord-receipt", ...RECEIPT, scene: { ...LORD_TOWN, name: "lord-receipts-old" }, open: [LORD_PICK, { click: ".lord-why-here" }, { pause: 600 }],
+    requires: ["h2", ".lord-receipt-reason", "[data-chance='none']"], data: "the same receipt from a save before the chance was kept" },
+  { id: "lord.receipt-none", root: ".lord-receipt", ...RECEIPT, scene: { ...LORD_TOWN, focus: { building: ["well"] } },
+    open: [{ map: { building: ["well"] }, action: "click" }, { pause: 800 }, { click: ".lord-why-here" }, { pause: 600 }],
+    requires: ["h2", ".lord-receipt-none"], data: "the opening well: no receipt, the reason instead of an empty frame" },
+  // Astra B03: a store opened from the ledger's stock (the left inspector) — its receipt on the shell, left of the slot.
+  { id: "lord.receipt-inspector", root: ".lord-receipt.lord-receipt--slot", ...RECEIPT, scene: LORD_TOWN,
+    open: [LEDGER, { click: ".ledger-held-toggle" }, { click: ".ledger-store" }, { pause: 700 }, { click: ".left-inspector .lord-why-here" }, { pause: 600 }],
+    requires: ["h2"], data: "the first store's receipt (or why it has none) from the left inspector" },
+  { id: "slot.ledger.lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, open: [LEDGER, { click: "[data-ledger-tab='lord']" }, { pause: 500 }], scroll: "y",
+    requires: [".lord-policy-option", ".lord-policy-kind", ".lord-policy-set", "[data-dues='raise']"], siblingsNoOverlap: [".lord-policy-option"],
+    data: "the lord tab: the four policies (stability), the 10d farmstead subsidy, the draft and the dues at 80%" },
+  // The quarter-of-the-treasury refusal: the draft raised until the engine refuses it (the extreme treasury never does).
+  { id: "slot.ledger.lord-refusal", extends: "slot.ledger.lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, numbers: false, scroll: "y",
+    open: [{ repeat: "[data-step='more']", until: ".lord-policy-refusal[data-refused='true']", max: 15 }, { pause: 300 }],
+    requires: [".lord-policy-refusal"], data: "a subsidy draft past a quarter of the treasury: the reason written, the set button shut" },
+  // Playtest 2026-10-02 #5: the food cell's breakdown under the pill (total, milling, carrying, access, hunger).
+  { id: "hud.food-breakdown", root: ".food-breakdown", frame: "css", scene: TOWN, open: [{ click: ".status-pill-cell[data-food-days]" }, { pause: 500 }],
+    requires: [".food-breakdown-row", ".food-breakdown-ledger"], data: "the town's food split five ways, the ledger and close buttons" },
+  // Lord mode's command pins in the build drawer's place, on the receipt's lord-mode state (scripts/lmr1LordStates.ts).
+  { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: LORD_TOWN, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
+    requires: [".command-pin"], data: "the lord's public work (the keep, locked until the fortified town) and encouragement-zone pins" },
 ];
 
 /**
@@ -436,4 +494,8 @@ export const NOT_SURFACES: Readonly<Record<string, string>> = {
   "ui-number": "the kit NumberField (a control; measured inside screen.welcome and the gallery)",
   "resource-bar": "ResourceBar is not mounted (survey §2)", "ledger-panel": "LedgerPanel is not mounted (survey §2)",
   "resource-bar__coin-detail": "part of the unmounted ResourceBar", "alert-stack-row": "AlertStack is not mounted (survey §2)",
+  // LM-R1 buttons: Wave 38 control pictures on parts of kit controls (the controls check covers the controls themselves).
+  "ui-select-option": "the kit select's active row (Wave 38 select_row_hover; inside modal.select-list)",
+  "ui-slider": "the kit slider's groove (Wave 38 slider_track; a control measured in hud.settings-popover and the gallery)",
+  "app-shell": "the Wave 38 scrollbar track and thumb (::-webkit-scrollbar of every scroller in the app shell; not a box)",
 };

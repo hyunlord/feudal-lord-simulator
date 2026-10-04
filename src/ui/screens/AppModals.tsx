@@ -14,6 +14,10 @@ import { famineDecisionView, petitionDecisionView } from "../decisionModels";
 import { PauseMenu } from "../hud/HudShell";
 import { SeasonLedgerCard } from "../hud/SeasonLedgerCard";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "../hud/StoryModals";
+import { HomePetitionModal, LordRequestModal, PrecedentModal } from "../hud/LordCards";
+import { homePetitionView, lordRequestView, precedentView } from "../lordCardsModel";
+import { requestArt } from "../lordStoryBeats";
+import { stewardshipOf } from "../../engine/stewardship";
 import { Button } from "../kit";
 import { ChronicleBook } from "../legacy/ChronicleBook";
 import { LegacyEndingScreen } from "../legacy/LegacyEndingScreen";
@@ -40,7 +44,7 @@ import { chapterStartYear, latestChapterEnd } from "../chronicleModel";
  * any time, and the ending again from the chronicle screen once it is written.
  */
 export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChroniclePerson, steward, onPerson, ledgerAuto, onLedgerAuto,
-  onMenuRequest, tutorial, chapterGoalsView = false }: {
+  ledgerFirst = false, onMenuRequest, tutorial, chapterGoalsView = false }: {
   readonly ui: UiState;
   readonly sendUi: (event: UiEvent) => void;
   readonly personCardId: string | null;
@@ -50,6 +54,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   readonly onPerson: (id: string) => void;
   readonly ledgerAuto: boolean;
   readonly onLedgerAuto: (next: boolean) => void;
+  /** LM-R1: the season card up is the first that opened by itself (it asks how later seasons come). */
+  readonly ledgerFirst?: boolean;
   readonly onMenuRequest: (request: { readonly category: BuildCategory; readonly nonce: number }) => void;
   readonly tutorial: Pick<TutorialController, "enabled" | "setEnabled">;
   /** QA-025: the preview was opened from the chapter's card ("목표 보기"): the current chapter's goals, a close button. */
@@ -65,16 +71,23 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const chronicle = top === "chronicle" ? chronicleView(state) : null;
   const personCard = top === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
   const legacyView = top === "legacy_ending" ? legacyVerdictView(state) : null;
+  // LM-R1 (lord mode): the home estate's petition, the steward's precedents, the town's request.
+  const homeView = top === "estate_petition" ? homePetitionView(state) : null;
+  const precedent = top === "precedent" ? precedentView(state) : null;
+  const asked = top === "lord_request" ? lordRequestView(state) : null;
+  const request = asked?.command === null ? null : asked;
+  const lordGone = (top === "estate_petition" && homeView === null) || (top === "precedent" && precedent === null) || (top === "lord_request" && request === null);
+  const setRecurring = (recurring: boolean) => dispatch({ type: "set_exception_rules", rules: { ...stewardshipOf(state).rules, recurring } });
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
   const famineGone = famineView === null; const petitionGone = petitionView === null;
   const chronicleGone = chronicle === null; const personCardGone = personCard === null; const legacyGone = legacyView === null;
   useEffect(() => {
     if ((topModal(ui) === "decision" && famineGone) || (topModal(ui) === "petition" && petitionGone) || (topModal(ui) === "chronicle" && chronicleGone)
-      || (topModal(ui) === "person_card" && personCardGone) || (topModal(ui) === "legacy_ending" && legacyGone)) sendUi({ type: "pop_modal" });
-  }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, legacyGone, sendUi]);
+      || (topModal(ui) === "person_card" && personCardGone) || (topModal(ui) === "legacy_ending" && legacyGone) || lordGone) sendUi({ type: "pop_modal" });
+  }, [ui, famineGone, petitionGone, chronicleGone, personCardGone, legacyGone, lordGone, sendUi]);
   return <>
-    {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto}
+    {seasonCard === null ? null : <SeasonLedgerCard model={seasonCard} auto={ledgerAuto} first={ledgerFirst}
       onAutoChange={onLedgerAuto}
       onResume={() => sendUi({ type: "pop_modal" })}
       onHint={() => { const hint = seasonCard.hint; sendUi({ type: "pop_modal" }); if (hint !== null) onMenuRequest({ category: hint.category, nonce: Date.now() }); }} />}
@@ -83,6 +96,11 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })} onPerson={onPerson}
       petitioners={petitionerRows(state, state.politics?.petitions.find(petition => petition.id === petitionView.petitionId) ?? {})}
       onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
+    {homeView === null ? null : <HomePetitionModal view={homeView} onLater={() => sendUi({ type: "pop_modal" })} onRecurring={setRecurring}
+      onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
+    {precedent === null ? null : <PrecedentModal view={precedent} onRecurring={setRecurring} onClose={() => sendUi({ type: "pop_modal" })} />}
+    {request === null ? null : <LordRequestModal view={request} art={requestArt(request.kind)} onLater={() => sendUi({ type: "pop_modal" })}
+      onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
       // UI-10 (LG-8): chapter 5's end is the campaign's — its page leads to the legacy verdict, not to a chapter 6.
       {...(chronicle.chapter === CHAPTER_FIVE.chapter ? { nextLabel: LEGACY_SCREEN_COPY.toVerdict } : {})}

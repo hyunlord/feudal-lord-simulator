@@ -68,7 +68,7 @@ export function buildingSpriteOverlapsCursorTile(input: {
   const fullDetail = (input.camera?.zoom ?? 1) > 0.7;
   const houseMeta = fullDetail && input.building.kind === "house" && historicalHouseReady(input.houseLevel) ? historicalHouseAssetMeta(input.houseLevel) : null;
   const spriteKey = buildingSpriteKey(input.building, input.houseLevel);
-  const historicalRect = houseMeta === null ? (fullDetail && historicalFacilityReady(input.building, input.state) ? historicalFacilitySpriteRect(input.building)
+  const historicalRect = houseMeta === null ? (fullDetail && historicalFacilityReady(input.building, input.state) ? historicalFacilitySpriteRect(input.building, input.state)
     : isFittedSpriteKey(spriteKey) ? fittedBuildingSpriteRect(spriteKey, input.building) : null) // R0-2: fitted sprites
     : historicalHouseSpriteRect(input.building, houseMeta);
   if (historicalRect !== null) {

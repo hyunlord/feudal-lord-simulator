@@ -6,17 +6,19 @@ import { kitClass, orderedHostProps } from "./kitProps";
  * UI-KIT-1 button. Every clickable control in src/ui is one of these (or a kit part built on it); the ESLint rule
  * `no-restricted-syntax` forbids a bare `<button>` outside src/ui/kit.
  *
- * - `variant` picks the P0 art (uiSkin.css tokens): primary · secondary · quiet · danger · icon (square) · toggle
- *   (secondary art, `aria-pressed` shows the pressed state) · tab (oak) · surface (a cell, row or card of a framed
- *   strip or panel: the frame around it is its skin, the kit only adds the states).
+ * - `variant` picks the art (LM-R1: Wave 38, uiKit.css): primary (dark oak, light text) · secondary · quiet · danger ·
+ *   icon (square) · close (the fixed close picture; its child glyph shows only in the P0 fallback) · toggle (secondary
+ *   art, `aria-pressed` shows the pressed state) · tab · surface (a cell, row or card of a framed strip or panel: the
+ *   frame around it is its skin, the kit only adds the states).
  * - `size` sets padding and type (sm · md · lg); without it the screen's own layout rules keep their sizes.
- * - States are code, not art: hover brightness, pressed 1 px, the focus ring, disabled grey (kit.css).
+ * - States (LM-R1): each family's own picture for hover (a hovering pointer only), pressed (held, and 1 px down) and
+ *   disabled (first); the keyboard focus ring apart from them (uiKit.css).
  * - Input rules R2–R4 (scripts/inputIntentBoundary.ts): the handlers take no event. `onPress()` is a press;
  *   `onPressAt(at)` also gets where it landed (for strips and maps: the point and the button's box, `keyboard` for an
  *   Enter or Space press). `isolate` stops the press reaching the elements behind (a modal over the map).
  * - The caller's attributes render in the caller's order, its class first, so markup contracts in tests still hold.
  */
-export type ButtonVariant = "primary" | "secondary" | "quiet" | "danger" | "icon" | "toggle" | "tab" | "surface";
+export type ButtonVariant = "primary" | "secondary" | "quiet" | "danger" | "icon" | "close" | "toggle" | "tab" | "surface";
 export type ButtonSize = "sm" | "md" | "lg";
 export type PressPoint = { readonly clientX: number; readonly clientY: number; readonly rect: DOMRect; readonly keyboard: boolean };
 
@@ -66,4 +68,11 @@ export function Button(props: ButtonProps) {
 export function IconButton(props: Omit<ButtonProps, "variant" | "aria-label"> & { readonly label: string }) {
   const { label, ...rest } = props;
   return <Button aria-label={label} {...rest} variant="icon" />;
+}
+
+/** A close button (LM-R1: Wave 38 close_normal / hover / pressed, 32 px in a 44 px target); `children` is the glyph the P0
+ * fallback shows, `label` its accessible name. */
+export function CloseButton(props: Omit<ButtonProps, "variant" | "aria-label"> & { readonly label: string }) {
+  const { label, ...rest } = props;
+  return <Button aria-label={label} {...rest} variant="close" />;
 }

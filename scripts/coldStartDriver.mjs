@@ -102,7 +102,7 @@ async function run(op) {
       await session.page.goto(`${url}${url.includes('?') ? '&' : '?'}new-game-seed=1`, { waitUntil: 'load' });
       await session.page.waitForSelector('canvas', { timeout: 90_000 });
       await session.page.waitForTimeout(4000);
-      if (await session.page.locator('.welcome-dismiss-layer').count()) await session.page.locator('.welcome-dismiss-layer').click();
+      if (await session.page.locator('.welcome-dismiss-layer').count()) await session.page.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
       await session.page.waitForTimeout(500);
       await pauseClock(session.page);
       session.human = op.human ?? 0;

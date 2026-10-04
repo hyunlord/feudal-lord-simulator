@@ -64,7 +64,9 @@ function auditFloatingBoxes() {
 function auditPage() {
   const SELECTOR = 'button, summary, [role="button"], [role="tab"], [role="option"], [role="switch"], [role="checkbox"], [role="slider"], a[href], input:not([type="hidden"]), select, textarea';
   const ART = /url\("?[^")]*\/assets\/(ui-p0|wave\d+[a-z]?)\//i;
-  const art = element => { const style = getComputedStyle(element); return ART.test(style.borderImageSource) || ART.test(style.backgroundImage); };
+  // LM-R1: or a fixed-height face on its ::before (the kit select's 40 px Wave 38 face inside its 44 px target).
+  const art = element => { const style = getComputedStyle(element); return ART.test(style.borderImageSource) || ART.test(style.backgroundImage)
+    || ART.test(getComputedStyle(element, '::before').borderImageSource); };
   const visible = element => { const box = element.getBoundingClientRect(); const style = getComputedStyle(element);
     return box.width > 0 && box.height > 0 && style.visibility !== 'hidden' && (element.checkVisibility?.({ opacityProperty: false }) ?? true); };
   // A framed ancestor, or a frame layer beside it that covers it (a chronicle card's Wave 19 frame is a sibling overlay).

@@ -29,7 +29,7 @@ export const SEASON_STRIP_COPY = {
     overlord_warning: "백작의 경고", poll_tax: "인두세 징수",
     rebellion_rumour: "1381년 농민 반란 소문", autonomy_request: "자치 특허 협상", end: "4장 종료" } satisfies Record<ReorganisationMark["id"], string>,
   /** UI-10: chapter 5's coming steps (F5-A `legacyForecast`), named as their cards and events are. */
-  legacy: { mayor_demand: "시장 선출 요구", royal_tax_envoy: "국왕의 과세 사절", succession: "늙은 영주의 후계자",
+  legacy: { mayor_demand: "시장 선출 요구", royal_tax_envoy: "국왕의 과세 사절", succession: "영주의 후계자",
     city_seal: "도시 인장", charter_sealing: "자치 특허의 인장", family_departure: "가문의 거처",
     legacy_record: "남길 유산 하나", last_market: "1450년 마지막 장날" } satisfies Record<LegacyStepId, string>,
   /** UI-10: the 1384–1400 interlude's coming events (FIX-9 LG-13 `legacyInterludes`). */

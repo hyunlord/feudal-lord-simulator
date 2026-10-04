@@ -1,3 +1,4 @@
+import { LEGACY_BALANCE } from "../content/legacyConfig";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { HISTORY_CHOICE_LABELS, LORD_HOUSE_NAMES_KO } from "../content/historyCopy.ko";
 import type { GameState } from "../engine/engine.types";
@@ -195,9 +196,10 @@ export const EVENT_STORY_COPY = {
       advice: "감면을 청원했다면, 나중에 자치 특허를 내줄 때 국왕의 확인금을 냅니다",
       paid: (amount: string) => `국왕에게 낸 돈 ${amount}`, petitioned: "내지 않고 감면을 청원했습니다" },
     /** LG-3: the old lord names his heir. */
-    succession: { title: "늙은 영주의 후계자", line: "영주가 늙었습니다. 가문을 이을 사람을 정해야 합니다",
+    // LM-R1 (FIX-11 handoff, glossary "영주의 후계자"): the title whatever the lord's age; "늙은" only from the engine's old age.
+    succession: { title: "영주의 후계자", line: "영주의 뒤를 이을 사람을 정해야 합니다",
       advice: "고른 후계자가 영주관의 가장이 되고, 상위 영주에게 상속세를 냅니다",
-      lord: (name: string, age: number) => `늙은 영주 — ${name} (${age}세)`, candidates: (n: number) => `후보 ${n}명`,
+      lord: (name: string, age: number) => `${age >= LEGACY_BALANCE.lordOldAge ? "늙은 영주" : "영주"} — ${name} (${age}세)`, candidates: (n: number) => `후보 ${n}명`,
       heir: (name: string, relation: string) => `후계자 — ${name} (${relation})` },
     /** LG-1: the town makes its own seal. */
     citySeal: { title: "도시의 인장", line: "도시가 제 인장을 새겼습니다. 이제 특허에 찍을 인장이 있습니다",

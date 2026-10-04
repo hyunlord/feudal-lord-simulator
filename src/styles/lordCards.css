@@ -1,0 +1,13 @@
+/* LM-R1 (petitions) the lord's cards in lord mode (src/ui/hud/LordCards.tsx): the petition card's frame and body
+   (hudShell.css .petition-card), with the court line over the picture, the answer's numbers under its label, the
+   steward's precedent line and a row for the exception switch and [나중에 정하기]. */
+.lord-card[data-answers="1"] { min-height: 480px; }
+.lord-card-court { font-size: 12px; color: var(--palette-ink-muted); }
+.story-modal .lord-card-court, .story-modal .lord-card-kicker, .story-modal .lord-card-precedent { font-size: 12px; line-height: 1.4; }
+.lord-card-kicker { font-weight: 600; color: var(--palette-ink-muted); }
+.lord-card-art { background-color: var(--palette-vellum); }
+.lord-card-forecast { font-size: 12px; font-weight: 600; overflow-wrap: anywhere; }
+.lord-card-precedents { display: grid; gap: 2px; margin: 0; padding-left: 18px; font-size: 13px; }
+.lord-card-actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; justify-content: space-between; }
+.lord-card-actions > .ui-btn { min-height: 44px; }
+.lord-card-actions > .story-modal-later { margin-left: auto; }

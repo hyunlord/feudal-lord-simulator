@@ -24,6 +24,8 @@
   --ink-soft: #5c4a36;
   --seal-red: #a85038;
   --seal-red-deep: #7e3826;
+  /* LM-R1 (UI-01): the text on the reworked dark-oak primary button (Wave 38 records: light parchment on dark oak). */
+  --primary-ink: #f1e4c6;
   --gold-rule: #b8883c;
   --status-ok: #687040;
   --status-warn: #b8883c;
@@ -122,8 +124,9 @@
   filter: brightness(1.08);
   box-shadow: inset 0 0 0 2px var(--seal-red);
 }
-.app-shell :is(button, summary):not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); }
-.app-shell :is(button, summary):not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); filter: brightness(0.96); }
+.app-shell :is(button, summary):not(.ui-btn):not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); }
+.app-shell :is(button, summary):not(.ui-btn):not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); filter: brightness(0.96); }
+/* LM-R1: kit buttons (.ui-btn) take their hover / pressed pictures from uiKit.css (Wave 38), not a brightness filter. */
 .app-shell :is(button, summary):focus-visible, .welcome-parchment :is(button, summary):focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
 .app-shell .hud-undo:disabled { filter: grayscale(0.6); opacity: 0.6; }
 
@@ -134,16 +137,15 @@
   display: inline-flex;
   gap: var(--space-half);
   align-items: center;
-  color: var(--parchment-light);
+  color: var(--ink);
   background: none;
   border: 0;
   border-image: var(--button-tab-art);
 }
 .app-shell .build-menu-category:hover { background: none; }
 .app-shell .build-menu-category[aria-pressed="true"] {
-  color: var(--parchment-light);
+  color: var(--ink);
   background: none;
-  filter: brightness(1.45);
   box-shadow: inset 0 -3px 0 var(--status-warn);
 }
 .app-shell .build-menu-category--locked { filter: grayscale(0.7); opacity: 0.6; }
@@ -168,7 +170,7 @@
   border-image: var(--button-chip-art);
 }
 .app-shell .build-tool-shortfall { color: var(--status-block); font-weight: 700; }
-.app-shell .build-menu .build-seal-label { color: var(--ink); }
+.app-shell .build-menu .build-seal-label { color: inherit; } /* LM-R1: the card's own colour (light on the dark primary) */
 
 /* ---- Panels ---- */
 /* The build menu's body sits inside the drawer's strip frame (hudShell.css: no frame of its own). */

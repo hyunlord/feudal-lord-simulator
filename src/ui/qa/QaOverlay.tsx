@@ -52,7 +52,7 @@ function QaOverlayBox({ store }: { readonly store: Pick<GameStoreApi, "getState"
       <div className="qa-overlay-actions">
         {clipboard === undefined ? null : <Button type="button" className="qa-overlay-copy" aria-label={COPY.copyLabel} variant="secondary"
           onPress={() => { void clipboard.writeText(qaOverlayText(lines)).then(() => { setCopied(true); window.setTimeout(() => setCopied(false), COPIED_MS); }, () => setCopied(false)); }}>{copied ? COPY.copied : COPY.copy}</Button>}
-        <Button type="button" className="qa-overlay-close" aria-label={COPY.close} variant="icon" onPress={() => setPresentationPreference("qaOverlay", false)}>{COPY.closeMark}</Button>
+        <Button type="button" className="qa-overlay-close" aria-label={COPY.close} variant="close" onPress={() => setPresentationPreference("qaOverlay", false)}>{COPY.closeMark}</Button>
       </div>
     </section>
   );
