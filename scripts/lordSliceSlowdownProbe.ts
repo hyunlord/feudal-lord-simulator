@@ -9,6 +9,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
+import { AGENCY_WEEK_TICKS } from "../src/content/townAgencyConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
@@ -66,8 +67,20 @@ if (process.argv[1] !== undefined && resolve(process.argv[1]) === fileURLToPath(
     let state = decodeSave(new Uint8Array(readFileSync(args[1]!))).envelope.state as GameState;
     const ticks = Number(args[2] ?? 1000);
     const started = performance.now();
-    for (let tick = 0; tick < ticks; tick += 1) state = step(state);
-    process.stdout.write(`${JSON.stringify({ ticks, ms: Math.round(performance.now() - started), ...sizes(state) })}\n`);
+    // TA-13: the weeks walked, reused and that started something (a week is the agency's tick).
+    const weeks = { walked: 0, reused: 0, started: 0 };
+    let slowest = 0;
+    for (let tick = 0; tick < ticks; tick += 1) {
+      const before = performance.now();
+      const receipts = state.agency?.nextReceipt ?? 0;
+      state = step(state);
+      slowest = Math.max(slowest, performance.now() - before);
+      if (state.tick % AGENCY_WEEK_TICKS !== 0 || state.agency === undefined) continue;
+      if ((state.agency.nextReceipt ?? 0) > receipts) weeks.started += 1;
+      else if (state.agency.lastWalk !== undefined && state.agency.lastWalk.tick < state.tick) weeks.reused += 1;
+      else weeks.walked += 1;
+    }
+    process.stdout.write(`${JSON.stringify({ ticks, ms: Math.round(performance.now() - started), slowestTickMs: Math.round(slowest), weeks, ...sizes(state) })}\n`);
   } else {
     const [seed, years, out, saveYear, savePath] = args;
     slowdownProbe(Number(seed ?? 2), Number(years ?? 50), out!, saveYear === undefined ? undefined : Number(saveYear), savePath);

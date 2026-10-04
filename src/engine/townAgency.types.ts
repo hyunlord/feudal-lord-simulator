@@ -69,6 +69,8 @@ export interface ProjectReceipt {
   readonly sites?: ReceiptSites;
   /** LM-E5 (LG-2): chosen by chance — the project among the week's, and its site among its sites (absent before v43). */
   readonly chance?: { readonly project: ChoiceChance; readonly site?: ChoiceChance };
+  /** TA-13 (LM-E9b): started from a reused week's judgement — the tick of the walk reused (absent when walked this week). */
+  readonly reusedWalk?: number;
 }
 
 /** TA-10: the candidate sites of a building project — how many, the plan's own, the chosen one's and the next best's. */
@@ -116,4 +118,21 @@ export interface AgencyState {
   readonly charterSince?: number;
   /** TA-6 ②: the last subsidy refused, with its reason (absent when none was). */
   readonly lastRefusal?: SubsidyRefusal;
+  /** TA-13 (LM-E9b, save v48): the last week's walk, kept while it started nothing (absent otherwise and before v48). */
+  readonly lastWalk?: AgencyWalk;
+}
+
+/** TA-13: a week's walk kept for the next weeks while nothing changes — its needs, proposals and requests. */
+export interface AgencyWalk {
+  /** The tick the walk ran (a reused walk keeps it). */
+  readonly tick: number;
+  /** The layout and the lord's conditions it ran on (`walkKey`). */
+  readonly key: string;
+  readonly needs: readonly import("./autoplay").PlanningNeed[];
+  readonly proposals: readonly import("./townAgency").Proposal[];
+  readonly requests: readonly LordRequest[];
+  /** The least subsidy the treasury could not pay in full at the walk (null when none): reaching it walks again. */
+  readonly fundThreshold: number | null;
+  /** The TA-11 charter wall record the walk left. */
+  readonly charterWallTried?: string;
 }

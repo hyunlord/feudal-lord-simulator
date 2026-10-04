@@ -124,3 +124,5 @@ export const SUBSIDY_TREASURY_PERMILLE = 250;
 // Houses come only as needs (a burgage plot, the housing step): a house on the first legal tile would break the lots' plan.
 export const OPPORTUNITY_KINDS: readonly BuildingKind[] = ["market", "granary", "storehouse", "well", "mill", "malt_kiln", "chapel",
   "sawmill", "masonry", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard", "farmstead", "logging_camp", "quarry"];
+/** TA-13 (LM-E9b): a walk that started nothing is reused at most a season (1,000 ticks) from the tick it ran. */
+export const WALK_REUSE_TICKS = 1_000;
