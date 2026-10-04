@@ -1,0 +1,287 @@
+{
+  "review_type": "R09_source_based_composition_preflight",
+  "sources": [
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/remaining26-source.json",
+      "sha256": "de2ecca6557fb009fb179c8381d8cffd9c16dd97a6593e61eedae084916f0f80"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/records/composition-semanticfix.json",
+      "sha256": "e7e922c1c72f2b30e3ca535baf1b099d80650dec7915fbae91c6990c6de480c9"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/records/source-events.json",
+      "sha256": "5768c312c5a73338bf2bcd7f860e69b30941352212511a8458aab6e1c0bb2fc4"
+    }
+  ],
+  "baseline": {
+    "total": 194,
+    "groups": 86,
+    "max": 3,
+    "indoor_document": 19
+  },
+  "actual_images_viewed": [
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_061.jpg",
+      "sha256": "ba44f036fa8f215c146f3c8012006cf069aeb2aa178cfc5656d847768a5c8047"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch5_records/ch5_decision_legacy.png",
+      "sha256": "1612d7eddb3c0fbf40b35e419dabbe3daff72952d1bd878cb1e12e46ac60b42c"
+    }
+  ],
+  "new_scene_plans": [
+    {
+      "id": "054",
+      "place": "지붕 없는 영지 건초밭 가장자리",
+      "period": "1382–1450",
+      "season": "summer",
+      "time": "비 갠 흐린 늦은 오후",
+      "people": 2,
+      "subject": "비에 눌려 젖은 건초와 지대 감면 청원",
+      "camera": "눈높이보다 약간 낮은 넓은 측면. 낮고 가로로 긴 젖은 건초더미 왼쪽에서 소작인 한 명이 무릎 꿇어 검고 눅눅한 건초를 들어 보여주고, 더미 오른쪽 청지기는 전신으로 서서 닫힌 납부기록을 내려다본다. 둘의 머리 높이가 다르며 물건을 사이에 둔 가까운 얼굴 쌍이 아니다.",
+      "anchor": "146",
+      "guardrails": [
+        "전경왼쪽거대용기/오른쪽붙은두사람 금지.",
+        "두사람이같은탁자뒤에나란히숙이지않음.",
+        "청지기는돈을주거나장부를지우지않고듣는중.",
+        "젖은건초는썩은곡물자루나수확완료축제로바꾸지않음."
+      ],
+      "source_adaptation": "원문복수소작인을대표한명으로집약하되손상건초/부담장부/청원관계보존.두단독상호작용이므로계획인원2명명시.",
+      "indoor_document_addition": 0,
+      "source": {
+        "title": "늦은 건초, 늦은 지대",
+        "body": "소작인들이 비에 젖은 건초와 밀린 지대를 함께 이야기합니다. 지도 밖 영지의 청지기는 이번 요구액을 덜어 줄지 장부대로 받을지 판결을 청합니다.",
+        "illustration": "젖은 건초 더미 앞에서 지대 납부 장부를 접어 청지기에게 내미는 소작인들."
+      },
+      "existing_group": {
+        "name": "낮은 수평 자재더미 양쪽 높이가 다른 전신 인물",
+        "frozen_ids": [
+          "146",
+          "190"
+        ],
+        "before": 2,
+        "after_if_actual_match": 3
+      },
+      "status": "plan_only_actual_image_required",
+      "prompt_scene_en": "Southern England 1420s, a roofless hayfield margin after summer rain, overcast late afternoon. Wide slightly low SIDE view. A LOW HORIZONTAL heap of visibly soaked, flattened dark hay lies between TWO people at unequal heights: a tenant kneels at its LEFT end lifting a dripping handful; the steward stands full-length at its RIGHT end holding a small CLOSED rent-account booklet at his side, listening. Wet ground, spoiled fodder texture unmistakable. Both are considering a request to reduce overdue rent; no money changes hands and no decision has been made. Keep both bodies visible and separated by the low heap. No desk, no open ledger, no giant left container, no close opposing face pair, no third person. No readable text, ordinary cottage chimneys, modern props or heraldic banners.",
+      "source_body": "소작인들이 비에 젖은 건초와 밀린 지대를 함께 이야기합니다. 지도 밖 영지의 청지기는 이번 요구액을 덜어 줄지 장부대로 받을지 판결을 청합니다.",
+      "source_illustration": "젖은 건초 더미 앞에서 지대 납부 장부를 접어 청지기에게 내미는 소작인들."
+    },
+    {
+      "id": "055",
+      "place": "작은 장원 장터의 지붕 없는 저울 자리",
+      "period": "1382–1450",
+      "season": "spring",
+      "time": "차가운 아침",
+      "people": 3,
+      "subject": "장날 수레를 모은 상인들의 이번 부담 감면 요청",
+      "camera": "중앙 가까운 전경에 매달린 양팔저울과 빈 접시가 프레임을 차지하고, 저울 뒤 중경에 상인 대표·다른 장사꾼·청지기 세 명. 대표는 작고 닫힌 부담 장부를 가슴 아래에 내밀고 청지기는 듣는다. 배경에는 멈춘 작은 수레 두 대.",
+      "anchor": "113",
+      "guardrails": [
+        "저울눈금판/아라비아숫자/현대스프링저울금지.",
+        "중앙청지기가좌우사람에게양손을내미는중재대칭금지;저울주축유지.",
+        "빈저울은상품무게검사행동으로사용하지않고청원장부와상인/수레가동시에보이게.",
+        "징수완료동전교환/정식감세공표없음."
+      ],
+      "source_adaptation": "원문저울·장부·상인대표·청지기보존;수레기여를배경에추가.시장부담과상품가격협상구분은독립판독필요.",
+      "indoor_document_addition": 0,
+      "source": {
+        "title": "장원의 장날 부담을 나누어 주십시오",
+        "body": "지도 밖 영지의 장사꾼들이 이번 장날 부담을 덜어 달라고 모였습니다. 영지의 청지기는 수레를 모아 장을 유지한 이들의 사정과, 금고에 들어올 돈을 함께 살펴 달라고 합니다.",
+        "illustration": "작은 장원 장터의 저울 옆, 이번 부담액이 적힌 장부를 두고 상인 대표와 청지기가 협의하는 장면."
+      },
+      "existing_group": {
+        "name": "근접 중앙 매달린 저울과 뒤쪽 세 사람",
+        "frozen_ids": [
+          "113"
+        ],
+        "before": 1,
+        "after_if_actual_match": 2
+      },
+      "status": "plan_only_actual_image_required",
+      "prompt_scene_en": "Southern England 1420s, a small manor market in cool spring morning light, entirely roofless. A large old wooden-and-metal BALANCE with two simple EMPTY hanging pans fills the central near foreground. BEHIND the balance at middle distance are exactly THREE people: a merchant representative at left holding a small CLOSED account booklet against his lower chest, another modest trader offset farther back, and a listening steward at right. Two modest parked loaded carts remain small in the background, showing those who keep the market running. The representative asks relief from this market-day burden. Nobody weighs merchandise or pays money; no remission is granted yet. Balance and depth separation dominate, not a central authority mediating a symmetric row. No numbers, lettering, spring scale, clock-like dial, prominent indoor desk, ordinary-house chimneys or heraldic flags.",
+      "source_body": "지도 밖 영지의 장사꾼들이 이번 장날 부담을 덜어 달라고 모였습니다. 영지의 청지기는 수레를 모아 장을 유지한 이들의 사정과, 금고에 들어올 돈을 함께 살펴 달라고 합니다.",
+      "source_illustration": "작은 장원 장터의 저울 옆, 이번 부담액이 적힌 장부를 두고 상인 대표와 청지기가 협의하는 장면."
+    },
+    {
+      "id": "056",
+      "place": "시장 진입로의 깊은 진흙 바퀴고랑",
+      "period": "1382–1450",
+      "season": "autumn",
+      "time": "비 직후 흐린 정오",
+      "people": 1,
+      "subject": "깊은 고랑에 빠진 짐수레바퀴와 수선 분담 청원",
+      "camera": "화면 왼쪽 높이 대부분을 차지하는 큰 수직 목제 수레바퀴의 옆면. 오른쪽 아래 단독 리브가 무릎 꿇어 바퀴가 빠진 고랑 벽을 손가락으로 짚고, 다른 손에는 작은 닫힌 분담기록. 수레 몸통은 화면 위/왼쪽 밖으로 잘리고 바퀴와 땅 접합이 주축.",
+      "anchor": "096",
+      "guardrails": [
+        "손만자른극근접은075/140/044포화이므로리브몸전체와수직바퀴를보임.",
+        "고랑바닥에서여러사람가로열을올려다보는073/143/036금지.",
+        "수레전체가옆으로화면횡단하는018군금지.",
+        "리브는망치/새판자없이손상검사만.도로포장공사/수선완료없음."
+      ],
+      "source_adaptation": "원문의수레바퀴/고랑/대표/분담기록보존.단독검사자구도로집약하며도로수선비요청의구체내용은본문도움.",
+      "indoor_document_addition": 0,
+      "source": {
+        "title": "장날 수레가 빠지는 길",
+        "body": "장날 짐수레가 지나는 길을 손보자는 청원이 왔습니다. 마을 대표는 바퀴 자국이 깊어진 곳을 짚으며 도시도 부담을 나눠 달라고 합니다.",
+        "illustration": "시장 진입로의 깊은 바퀴 자국 앞에서 수레바퀴와 수선 분담 장부를 가리키는 마을 대표."
+      },
+      "existing_group": {
+        "name": "큰 수직 기계 옆 낮게 앉은 단독 수리자",
+        "frozen_ids": [
+          "096",
+          "003"
+        ],
+        "before": 2,
+        "after_if_actual_match": 3
+      },
+      "status": "plan_only_actual_image_required",
+      "prompt_scene_en": "Southern England around 1430, wet autumn market approach, grey midday after rain. Side-on view of one LARGE UPRIGHT WOODEN CART WHEEL dominating the LEFT height of the frame, visibly sunk into a deep old muddy wagon rut. Cart body exits the upper-left crop; do NOT show the whole cart broadside. Exactly ONE reeve kneels at the LOWER RIGHT, full crouched body visible, touching the eroded rut wall beside the wheel with one hand and holding a small CLOSED repair-contribution booklet low in the other. His task is inspecting road damage before requesting shared repair costs. No repair has started: no paving stones being laid, no hammer, no repair crew. This is a tall vertical wheel beside a low solitary inspector, not a hands-only macro, not a row of people seen from the rut. No modern tires, machinery, writing, ordinary-house chimneys or invented banners.",
+      "source_body": "장날 짐수레가 지나는 길을 손보자는 청원이 왔습니다. 마을 대표는 바퀴 자국이 깊어진 곳을 짚으며 도시도 부담을 나눠 달라고 합니다.",
+      "source_illustration": "시장 진입로의 깊은 바퀴 자국 앞에서 수레바퀴와 수선 분담 장부를 가리키는 마을 대표."
+    },
+    {
+      "id": "059",
+      "place": "영주관 밖 지붕 없는 감사 마당",
+      "period": "1382–1450",
+      "season": "winter",
+      "time": "맑고 차가운 오전",
+      "people": 4,
+      "subject": "직접 감독 유지와 능력/충성도가 교차하는 두 청지기 후보 비교",
+      "camera": "중고도 사선에서 네 사람이 작은 사각 작업판의 네 면을 각각 차지.영주 한 면, 마을대표 반대 면, 두 후보는 나머지 양옆.미개봉 장부와 열쇠묶음은 판 가운데 손 닿지 않은 채 놓인다.한후보는가지런한막대기록을참고하고다른후보는영주를보며손을가슴에얹는다.영주는두사람모두보며손을거둔다.",
+      "anchor": "050",
+      "guardrails": [
+        "중앙권한자좌우후보가일렬로선004/019/047금지.",
+        "영주열쇠를누군가에게넘기거나한후보만앞에세우지않음.",
+        "능력/충성도가옷의빈부·인종·얼굴선악으로판정되는것처럼그리지않음.",
+        "숫자능력치/가독텍스트/확정임명문서없음.",
+        "실내로옮기거나큰펼친장부를그림의주제로확대하지않음."
+      ],
+      "source_adaptation": "후보2명과대표/영주를동시에보여선택전상태보존.외모만으로능력/충성차이를정확히표현할수없으므로본문필수.",
+      "indoor_document_addition": 0,
+      "source": {
+        "title": "직접 감독을 내려놓을 때",
+        "body": "영주가 직접 살피던 영지를 청지기에게 맡길지 정할 때가 왔습니다. 두 후보의 자질을 비교하니, 한 사람은 능력이 더 높고 다른 사람은 충성도가 더 높습니다. 소작인 친화·상인 친화라는 성향보다 능력과 충성도의 차이를 중심으로 고르되, 직접 감독을 계속할 수도 있습니다.",
+        "illustration": "지도 밖 영지의 장부와 열쇠를 앞에 두고 실제 청지기 후보를 소개하는 마을 대표."
+      },
+      "existing_group": {
+        "name": "탁자 네 면을 에워싼 네 사람의 숙의",
+        "frozen_ids": [
+          "050",
+          "039"
+        ],
+        "before": 2,
+        "after_if_actual_match": 3
+      },
+      "status": "plan_only_actual_image_required",
+      "prompt_scene_en": "Southern England 1430s, a ROOFLESS manor audit courtyard in crisp winter morning light. Exactly FOUR adults surround the FOUR SIDES of one modest square wooden workboard, seen from a moderately elevated oblique angle: the lord on one side, a village reeve opposite him, and TWO steward candidates on the remaining sides. An untouched closed account book and a key bundle remain in the CENTER of the board; nobody receives them. One candidate consults his neatly arranged wooden tally pieces, while the other looks toward the lord with a hand over his own breast. The reeve introduces both; the lord has withdrawn hands and is still considering delegation versus continuing his own oversight. No one has been selected or appointed. Do not encode virtue or competence through wealth, ugliness, ethnicity or villain expressions. Avoid a shallow row with a central mediator and flanking candidates. No readable ability labels or numbers, no open ledger filling the image, no roof enclosing the courtyard, no modern objects or ordinary-cottage chimneys.",
+      "source_body": "영주가 직접 살피던 영지를 청지기에게 맡길지 정할 때가 왔습니다. 두 후보의 자질을 비교하니, 한 사람은 능력이 더 높고 다른 사람은 충성도가 더 높습니다. 소작인 친화·상인 친화라는 성향보다 능력과 충성도의 차이를 중심으로 고르되, 직접 감독을 계속할 수도 있습니다.",
+      "source_illustration": "지도 밖 영지의 장부와 열쇠를 앞에 두고 실제 청지기 후보를 소개하는 마을 대표."
+    },
+    {
+      "id": "061",
+      "place": "장원 법정 바깥 마당에서 본 거친 목재 문설주 경계",
+      "period": "1300–1347",
+      "season": "autumn",
+      "time": "낮은 오후 빛",
+      "people": 3,
+      "subject": "소액 청원도 관습 문제이면 영주에게 직접 들어 달라는 주민 요청",
+      "camera": "법정 출입구의 서로 다른 두 기둥/문설주가 가까운 주민 두 명과 청지기 얼굴 일부를 실제로 가린다.중심 틈에는 주민의 작은 말린 청원 두루마리와 청지기의 받지 않은 손.얼굴은 기둥 양쪽에서 일부만 보이고 몸이 가림 뒤 분리된다.깊은 안쪽 옆벽에는 작은 비어 있는 평범한 판관 의자만 보이되전경을차지하지않는다.",
+      "anchor": "109",
+      "guardrails": [
+        "큰전경등뒤로청원행렬보는008군을완전히제거.",
+        "큰빈의자와서있는전신후보147/199/022포화구조금지;의자는먼작은배경단서뿐.",
+        "문설주가실제로얼굴을가려야함.그냥두얼굴과중앙손은013/030/067포화.",
+        "청원제출전멈춤;청지기가영주대신판결하는동작없음.",
+        "큰실내장부/책상/수납선반문서작업없음.주인물은지붕없는야외측에둠."
+      ],
+      "source_adaptation": "원문법정문앞주민/청지기/작은청원은보존하고영주빈자리는작은배경단서.소액과관습권쟁점자체는본문도움필요.",
+      "indoor_document_addition": 0,
+      "conservative_document_watch": "실물이실내기록전달중심으로수렴하면추가1장일수있음.199장단계에서는이경우20/199로실패하므로추가교정필요.",
+      "source": {
+        "title": "법정 날마다 빈 영주의 자리",
+        "body": "청원들이 작은 액수라는 이유로 영주에게 오지 않습니다. 주민들은 돈보다 관습을 건드리는 일만큼은 직접 들어 달라고 합니다.",
+        "illustration": "장원 법정 문 앞에서 작은 청원 두루마리를 든 주민과 청지기."
+      },
+      "existing_group": {
+        "name": "문설주 사이 부분가린 여러 얼굴과 중심 전달손",
+        "frozen_ids": [
+          "109",
+          "195"
+        ],
+        "before": 2,
+        "after_if_actual_match": 3
+      },
+      "status": "plan_only_actual_image_required",
+      "prompt_scene_en": "Southern England 1300–1347, late autumn afternoon OUTSIDE the manor court entrance. Close view through two rough vertical timber doorposts: exactly THREE adults, two resident petitioners and the listening steward. The posts PHYSICALLY OCCLUDE parts of their faces and separate their bodies at different depths, but leave each visible eye, mouth and gesturing hand legible. Through the central narrow gap one resident extends a SMALL ROLLED petition toward the steward; the steward has not taken it and has not ruled. The second resident points past the steward toward a SMALL VACANT judgment chair deep inside the court, asking for the absent lord to hear customary grievances personally even when their monetary value is small. The chair is a tiny secondary background clue, never a large foreground seat. Principal people and petition are on the ROOFLESS outdoor side. No giant foreground back-facing authority watching a row, no unobstructed close facing pair, no open ledgers or desk. This is a plea for the lord's personal hearing, NOT the transfer or appointment of an official. No completed verdict, no lettering, modern envelopes, heraldic flags or ordinary-house chimneys.",
+      "source_body": "청원들이 작은 액수라는 이유로 영주에게 오지 않습니다. 주민들은 돈보다 관습을 건드리는 일만큼은 직접 들어 달라고 합니다.",
+      "source_illustration": "장원 법정 문 앞에서 작은 청원 두루마리를 든 주민과 청지기."
+    }
+  ],
+  "reuse060": {
+    "source": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch5_records/ch5_decision_legacy.png",
+    "source_sha256": "1612d7eddb3c0fbf40b35e419dabbe3daff72952d1bd878cb1e12e46ac60b42c",
+    "actual_observation": "야외높은언덕에서오른쪽전경등진노년영주가왼쪽세대표(도시열쇠/가문방패/교회책)를본다.황혼,4명.선택/지급완료없음.",
+    "current_group": [
+      "008",
+      "031",
+      "061"
+    ],
+    "desired_after_actual061_recompose": [
+      "008",
+      "031",
+      "060"
+    ],
+    "change_dependency": "061실물재구성검수전에는060추가시4장으로실패.계획만으로061동결배정제거금지.",
+    "indoor_document_addition": 0,
+    "history_watch": "기존원본일반배경집의작은굴뚝/문장과고급의복은보존원본속성;새로추가한고증인증이아님."
+  },
+  "excluded026": {
+    "status": "user_response_pending_preservation_vs_group4",
+    "counted_in_proposal": false
+  },
+  "count_and_budget": {
+    "new_ids_without026": [
+      "054",
+      "055",
+      "056",
+      "059",
+      "060"
+    ],
+    "new_count": 5,
+    "recomposed_existing_ids": [
+      "061"
+    ],
+    "resulting_unique_count_without026": 199,
+    "target200_requires026_or_other_authorized_resolution": true,
+    "current19_over194": 0.0979381443298969,
+    "planned19_over199": 0.09547738693467336,
+    "maximum_integer_documents_at199": 19,
+    "hypothetical20_over199": 0.10050251256281408,
+    "hypothetical20_over200": 0.1,
+    "recommendation": "200장도달전20번째실내문서를허용하지않음.이번모든제안은야외/물건대상중심으로추가0장.061이실내문서로판정되면카메라/장소를실제로교정해야하며분류를바꿔통과시키지않는다."
+  },
+  "capacity_check": {
+    "proposed_new_group_count": 0,
+    "proposed_existing_groups_after": {
+      "054": 3,
+      "055": 2,
+      "056": 3,
+      "059": 3,
+      "061": 3
+    },
+    "all_proposed_at_most3": true,
+    "frozen_definitions_modified": false,
+    "only_authorized_future_membership_replacement": "061→recomposed109group;060takes008group slot"
+  },
+  "pending_decision_rule": "모든신규장면은검사/청원/후보비교이며기부·감면·수선·임명완료를그리지않음.",
+  "overall_status": "preflight_geometry_feasible_subject_to_actual_generation_and061_replacement",
+  "limits": [
+    "아직새그림이없어실제구도/역사/독립의미식별통과아님.",
+    "039최신본은050군유지하므로059추가후3.기존군을넓히거나쪼개지않음.",
+    "059과061정치적의미는작은소품으로완전히전달할수없으며독립판독과본문정합필수.",
+    "시대/계절/시간/인원은연출제안이며정본발동조건을바꾸지않음."
+  ],
+  "source061_intent_clarification": "061원문은책임이양/관리자임명이아니라소액관습청원도부재영주가직접들어달라는요청.빈자리를작게남기고청원인손과청지기의미수령손관계명료화."
+}

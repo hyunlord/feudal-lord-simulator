@@ -1,0 +1,133 @@
+{
+  "review_type": "R08_batch1_actual_visual_audit",
+  "frozen_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r07/records/composition-round07-after-final199.json",
+  "frozen_audit_sha256": "cca37739142a480676de79c7d97042246c777303741d74804665c6492cc36522",
+  "frozen_assignments_changed": false,
+  "reviewed_ids": [
+    "001",
+    "003",
+    "006",
+    "007"
+  ],
+  "new_image_reviews": [
+    {
+      "id": "001",
+      "group": "낮은 가축 다리 극전경과 서로 다른 깊이의 길목 당사자",
+      "new_group": true,
+      "composition_pass": true,
+      "evidence": "왼쪽 소는 다리/발굽만 화면밖으로 잘리고 몸통·머리는 없다. 왼쪽 중경 소몰이와 오른쪽 더 가까운 상인이 반대 길을 가리키며 중앙 뒤 여성이 짐수레 옆에 있다. 큰 왼쪽 말 몸통+오른쪽 가까운 두 남자029군과 다르고 수레가 화면 전체를 옆으로 횡단하는018군도 아니다.",
+      "source_fidelity": "소 통행/짐수레 길목 충돌이 보이며 실제 지출·판결 완료 없음.",
+      "people": 3,
+      "season": "summer_or_late_spring",
+      "season_note": "푸른 잎·꽃과 밝은 빛. 계획 여름에 크게 어긋나지 않으나 여름으로만 확정할 단서는 약함.",
+      "indoor_document": false,
+      "history_issues": [],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_001.jpg",
+      "sha256": "b8ddd0ff2ff6e0636daf04d6aaee7fcdca0cace8d401c372a2927a7d2fb97161",
+      "actually_viewed_fullsize": true
+    },
+    {
+      "id": "003",
+      "group": "큰 수직 기계 옆 낮게 앉은 단독 수리자",
+      "new_group": false,
+      "group_members_after": [
+        "096",
+        "003"
+      ],
+      "composition_pass": true,
+      "evidence": "처마까지 닿는 큰 수직 받침의 오른쪽 아래에 단독 청지기가 웅크려 밑동을 만지고 닫힌 돈주머니를 쥔다. 건물 전체 높이/아래 작은 검사자의096 구조2장. 넓은 바닥이 있으나 먼 문간 일행124구조가 아니다.",
+      "source_fidelity": "창고 처마 손상·임시 받침과 아직 지불하지 않은 주머니. 작업반이나 수리 완료 없음.",
+      "people": 1,
+      "season": "winter",
+      "indoor_document": false,
+      "history_issues": [
+        "창고 지붕 위 큰 석조 굴뚝과 왼쪽 배경 일반 주택들의 여러 외부 굴뚝이 보임. 현재 1300–1347 창고/보통집 예외 승인 근거 없으므로 제거 필요."
+      ],
+      "known_pending_parent_fix": "굴뚝 제거 생성 예정; 이 감사에서는 미해결",
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_003.jpg",
+      "sha256": "6f06c97419de7dd02722057b901bc9955740e3e9b77cfe0fc2b746cb790c238a",
+      "actually_viewed_fullsize": true
+    },
+    {
+      "id": "006",
+      "group": "양쪽 큰 용기 틈의 단독 청원자와 화면 위로 잘린 응답손",
+      "new_group": true,
+      "composition_pass": true,
+      "evidence": "양쪽 통이 큰 전경 프레임이고 사이의 여성 얼굴/상반신이 보이며 팔을 오른쪽 위로 뻗어 접힌 종이를 화면 밖 서기의 손에 내민다.084/178의 위아래 선반틀·양손 비교는 실제로 없어 그군에 강제 편입하지 않음.133와189 실제 재열람: 이들은 좌석/무릎 위 자기 돈을 보는 사람과 화면 옆을 크게 점유한 상대 몸통/다리다.006은 가까운 상대 몸통 없이 상단 손만, 양쪽 물체 가림과 위로 향한 청원동작이 주축이므로 다른 구도. 단지 양조장이라는 장소명으로 분리한 것이 아니다.",
+      "source_fidelity": "빈 그릇·에일통·접힌 기록을 올려 청원. 시음/품질검사/지불 완료는 없다. 정확히 벌금 감면인지 일반 청원인지는 본문 도움 필요.",
+      "people": {
+        "faces": 1,
+        "implied_cropped_clerk": 1
+      },
+      "season": "autumn",
+      "indoor_document": false,
+      "history_issues": [
+        "왼쪽 전경 바구니 및 오른쪽 뒤 바구니의 초록 솔방울 같은 송이는 홉처럼 읽힌다. 초기 에일 소재 규칙상 보리 낟알로 교정 필요.",
+        "중앙 뒤 주택 지붕의 외부 굴뚝이 뚜렷함."
+      ],
+      "known_pending_parent_fix": "식물송이→보리,굴뚝제거 생성 예정; 이 감사에서는 미해결",
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_006.jpg",
+      "sha256": "e5e279dd7c55c2e88965d998f10932f8ed20408cf40c3b609ac0a0be095d58ac",
+      "actually_viewed_fullsize": true
+    },
+    {
+      "id": "007",
+      "group": "큰 전경 사선 건축 버팀목 너머 한쪽 끝의 작은 인물쌍",
+      "new_group": true,
+      "composition_pass": true,
+      "evidence": "전경 대각 버팀목이 왼쪽 위에서 오른쪽 아래로 화면을 크게 가르고 먼 제단 오른쪽에 두 작은 인물만 붙어 있다. 긴 사선 시설물을 따라 여러 거리에서 일하는035/051/064 구조가 없음.124군의 텅 빈 바닥과 경계 일행과 달리 전경 거대 사선 구조물의 가림이 그림을 지배한다.105군의 아래에서 올려다보는 수직 구조/주변세인물도 아니다.",
+      "source_fidelity": "금간 지붕 들보·임시 버팀목·사제와 수입관리인/닫힌 작은 주머니가 연결됨. 수선 완료나 공사단 없음.",
+      "people": 2,
+      "season": "spring_or_undetermined_interior",
+      "indoor_document": false,
+      "history_issues": [],
+      "history_note": "교회 납틀/색유리는 일반 초가집 유리 금지와 구별. 건축 버팀의 실제 구조공학 인증은 하지 않음.",
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_007.jpg",
+      "sha256": "f0b7dcf339fa091ed61f003f99bb34a5a460f39384d2465f130f84611fb262d9",
+      "actually_viewed_fullsize": true
+    }
+  ],
+  "provisional_cumulative": {
+    "total": 178,
+    "groups": 82,
+    "max_group_count": 3,
+    "indoor_document_count": 17,
+    "indoor_document_fraction": 0.09550561797752809,
+    "scope": "동결174+이번실물4만.미생성계획과재사용3장은아직포함하지않음."
+  },
+  "composition_pass": true,
+  "history_pass": false,
+  "mandatory_history_fix_ids": [
+    "003",
+    "006"
+  ],
+  "mandatory_composition_redraw_ids": [],
+  "overall_complete": false,
+  "supplementary107_preflight": {
+    "plan_only": true,
+    "status": "capacity_plausible_actual_classification_required",
+    "proposed_group": [
+      "015",
+      "188"
+    ],
+    "count_if_actual_match": 3,
+    "alternative_actual_group": [
+      "165"
+    ],
+    "alternative_count_if_match": 2,
+    "recommendation": "곡물함 안쪽 바닥 시점이면165의빈수레내부/위쪽사람구조가더가깝다.015군을의도한다면카메라를함밖낮은사선에두어함의양쪽테두리/열린내용물을확실히보이고새관리인·수도사의손이테두리/곡물검사에직접붙게한다.옛관리인은먼왼쪽으로나가며새관리인은오른쪽,수도사는화면끝부분얼굴.중앙권한자좌우대등인물삼각을피한다.",
+    "document_budget": "실내곡물/장부막대두묶음회계검사라보수문서범주1장을예약하는것이안전.닫힌책이없다는이유만으로자동제외하지않음.022까지합치면기존17+2=19/194이므로017043기록제거유지가중요.",
+    "frozen107_removed_now": false,
+    "source_old107_preserved_required": true
+  },
+  "updated_plan017043_note": {
+    "actual_scene_plan_read": true,
+    "017": "높은사선구유/서로반대가장자리인물/문서없음은124충돌을해소한다.다만실제높은사선함검사라009/134군3번째후보가자연스럽고거의수직빈직사각형으로내려가면025/062/083포화위험.곡물함107을009군으로동시에추가하면충돌하므로실물상호검수필요.",
+    "043": "높은설교대에서아래왼쪽앞얼굴군/오른쪽큰기둥/책없음은이전등진관찰자및긴통로위험을해소할수있다.실물높은시점과짧은깊이유지필수."
+  },
+  "limits": [
+    "이번신규구도3군은실제4장기준잠정분류.앞으로001과041처럼유사가축전경은누적같은군여부다시판정한다.",
+    "003006교정본을실제다시보기전고증합격주장불가.",
+    "107아직계획만으로중앙중재군에서제거하지않음."
+  ]
+}

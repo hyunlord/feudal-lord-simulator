@@ -13,7 +13,7 @@ npm run remote:perf [-- --baseline perf/baseline-dgx-<sha>.json]   # 인자 없�
 npm run remote:clone-check                             # 커밋 깨끗한 클론(+LFS) → npm ci·typecheck·test·build
 npm run remote:trend [-- --commits a,b] [--rounds 3]  # 커밋마다 성능 추이(scripts/perf/trendRun.ts) → ~/fls-runs/_trend/<sha>.json
                                                        #   본선 푸시 때 pre-push가 뒤로 띄운다(FLS_TREND_OFF=1로 끔). 모으기: npm run perf:trend
-scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 명령>   # 임의 명령
+scripts/remote/run.sh <label> [--heavy|--light] [--detach] [--keep] -- <아무 명령>   # 임의 명령
 ```
 
 - **label**: `FLS_REMOTE_LABEL=<세션>-<작업ID>`(예: `render-F0V`, `engine-F0A`). 지정하지 않으면 브랜치 이름을 쓴다. 원격 폴더는 `~/fls-runs/<label>-<짧은 해시>/`이다.
@@ -24,7 +24,14 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   - `--fetch <run>`은 폴더가 없으면 `_kept/`에서 받는다.
   - 결과를 저장소에 옮긴 뒤 `scripts/remote/run.sh --release <run>`으로 놓아준다.
   - 까닭: FIX-10 때 습지 seed 1 캠페인의 결과를 정리가 지워 잃었다(2026-09-30).
-- **상태**: `scripts/remote/run.sh --status`로 도는 실행(스코프), 슬라이스 사용량, 폴더 목록, 붙잡아 둔 실행(`_kept`)을 본다.
+- **무거운 실행은 동시에 2개까지**(2026-10-04, 결정 RR14): 나머지는 줄을 서서 먼저 온 순서로 들어간다.
+  - 무거운 실행: `--task test|guardrail|ui-geometry|clone-check`, 그리고 임의 명령 가운데 `--heavy`를 붙였거나 `--detach`(20분 넘는 실행)이거나 알려진 무거운 스크립트(`uiGeometryAudit`·`efficientGrowthRun`)를 부르는 것. 옛 `--slot guardrail`도 무거운 실행이다.
+  - 상한 밖(가벼운 실행): `--task browser|perf|trend`(성능 측정은 기다리지 않는다, 결정 RR3), 단위 시험 파일·짧은 탐침. 무거워 보이는 임의 명령을 상한 밖에서 돌리려면 `--light`.
+  - 기다리는 동안 실행 기록(`--attach`로 보이는 `run.log`)에 몇 번째인지, 칸마다 무엇이 언제부터 도는지, 앞에 누가 줄 섰는지를 적는다. 처음, 바뀔 때, 그리고 10분마다다. 기다린 시간은 `slot wait`로 남는다.
+  - 원리(`scripts/remote/heavySlots.sh`): 칸은 `_slots/heavy.<n>.lock`이고, 실행이 명령 내내 쥔다. 줄은 `_slots/queue/<시각>-<run>` 표이고, 기다리는 실행이 잠가 쥔다. 주인이 사라진(잠금이 풀린, 1분 넘은) 표는 다음 실행이 지운다.
+  - 까닭: 렌더 LM-R1 감사가 엔진 FIX-17 클론과 겹쳐 부하 23에서 6.5시간에 3분의 1만 했다.
+  - 이 상한은 각 실행 폴더의 `remote-exec.sh`가 지킨다. 본선을 합치지 않은 브랜치의 실행은 아직 상한에 들지 않는다(옛 가드레일 칸만 지킴).
+- **상태**: `scripts/remote/run.sh --status`로 도는 실행(스코프), 슬라이스 사용량, 폴더 목록, 붙잡아 둔 실행(`_kept`), 무거운 실행 칸과 줄을 본다.
 - **종료 코드**는 원격 명령의 것이다. 요약은 `.remote-runs/<run>/summary.txt`(가드레일은 `guardrail/summary.json`)에 있다.
 - **가드레일의 사람 경로**(CODE-1a): seed 실행 옆에서 `tests/humanPath*.test.ts`(명령 재생, 봇 없음)가 함께 돈다. 결과는 `guardrail/human-path.json`·`human-path.log`이고, 실패하면 가드레일 실행도 실패한다.
 
@@ -57,7 +64,8 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
 2. **준비**(DGX, 스코프 안에서):
    - git: 실행 폴더는 공유 bare 미러(`_cache/repo.git`)를 alternates로 쓰는 `$FULL_SHA` 작업 트리가 된다. `git status`는 Mac의 커밋 안 한 변경을 그대로 보여 준다.
    - node_modules: `package-lock.json` 해시·Node 버전·arch별 캐시(`_cache/nm-<hash>`)에서 하드링크로 복사한다(`cp -al`). 캐시가 없을 때만 `npm ci`를 한 번 한다.
-   - 포트는 4300~4399 가운데 빈 것 하나(`FLS_REMOTE_PORT`)다. 가드레일은 슬롯을 잡는다(동시에 2개까지, 셋째는 기다린다).
+   - 포트는 4300~4399 가운데 빈 것 둘이다: `FLS_REMOTE_PORT`, 그리고 둘째 서버(옆에 띄우는 base 빌드·드라이버)용 `FLS_REMOTE_BASE_PORT`. 전에는 스크립트가 `FLS_REMOTE_PORT + 50`을 써서 4350 이상에서 범위를 벗어났다(2026-10-04).
+   - 무거운 실행은 무거운 실행 칸을 잡는다(동시에 2개까지, 나머지는 줄을 선다 — 위 "무거운 실행은 동시에 2개까지").
 3. **실행**: `bash -c "<명령>"`. 로그는 `.remote/run.log`에 남는다.
 4. **회수**:
    - 실행 폴더의 `.remote/`(로그·요약·가드레일/성능 원자료)는 Mac의 `.remote-runs/<run>/`으로 온다(git 무시).

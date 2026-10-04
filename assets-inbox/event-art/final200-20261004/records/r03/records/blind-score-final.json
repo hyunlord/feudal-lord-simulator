@@ -1,0 +1,193 @@
+{
+  "correct": 20,
+  "total": 20,
+  "accuracy": 1.0,
+  "matches": [
+    {
+      "image": "P01",
+      "title": "T19",
+      "confidence": "high",
+      "reason": "수확한 밭 앞 여성이 곡식 다발과 돈주머니를 나란히 들고 있어 수확물과 정액 지대의 선택을 보여준다.",
+      "event_id": "ck_evt_110",
+      "expected": "T19",
+      "correct": true
+    },
+    {
+      "image": "P02",
+      "title": "T16",
+      "confidence": "medium",
+      "reason": "곡물 창고에서 열쇠를 든 사람이 떠나고 다른 사람이 계수 막대 같은 물건을 들고 있으며 수도자가 중재한다. 담당자 교체는 보이지만 한 해와 두 장부 자체는 명시되지 않는다.",
+      "event_id": "ck_evt_107",
+      "expected": "T16",
+      "correct": true
+    },
+    {
+      "image": "P03",
+      "title": "T11",
+      "confidence": "medium",
+      "reason": "큰 장식 직물이 중심에 걸려 있고 성직자와 두 사람이 탁자 앞에서 의논한다. 덮개나 유산 물건을 둘러싼 논의로 읽히지만 유언은 직접 확인되지 않는다.",
+      "event_id": "ck_evt_119",
+      "expected": "T11",
+      "correct": true
+    },
+    {
+      "image": "P04",
+      "title": "T04",
+      "confidence": "medium",
+      "reason": "장터에서 여러 사람이 식품과 직물을 살피고 바구니를 들고 있다. 생활에 필요한 물품이 보이지만 품삯과 노동자 정착의 관계는 제목과 대조해 추론했다.",
+      "event_id": "ck_evt_115",
+      "expected": "T04",
+      "correct": true
+    },
+    {
+      "image": "P05",
+      "title": "T18",
+      "confidence": "high",
+      "reason": "초라한 다락의 짚 침상 옆에 성직자가 앉아 있고 십자가가 붙은 짐이 놓여 있어 미사를 맡을 사람의 숙소를 나타낸다.",
+      "event_id": "ck_evt_111",
+      "expected": "T18",
+      "correct": true
+    },
+    {
+      "image": "P06",
+      "title": "T14",
+      "confidence": "high",
+      "reason": "붉은 기와 더미, 기와를 올리는 지붕 작업자, 기와를 실은 수레가 한 장면에 함께 있다.",
+      "event_id": "ck_evt_112",
+      "expected": "T14",
+      "correct": true
+    },
+    {
+      "image": "P07",
+      "title": "T20",
+      "confidence": "high",
+      "reason": "교회 내부 벽에 인물 서사 밑그림이 있고 사람이 이를 가리키며 물감 그릇과 사다리가 곁에 있다.",
+      "event_id": "ck_evt_117",
+      "expected": "T20",
+      "correct": true
+    },
+    {
+      "image": "P08",
+      "title": "T07",
+      "confidence": "high",
+      "reason": "노동 도구 곁 임시 천막 아래 가족과 잠든 사람이 머물며 수도자와 대화하여 일손의 거처 문제를 보여준다.",
+      "event_id": "ck_evt_108",
+      "expected": "T07",
+      "correct": true
+    },
+    {
+      "image": "P09",
+      "title": "T17",
+      "confidence": "high",
+      "reason": "장원 쪽 문에서 세속 인물이 열쇠를 내보이고 담장 건너 교회 쪽 성직자가 마주 보고 있다.",
+      "event_id": "ck_evt_116",
+      "expected": "T17",
+      "correct": true
+    },
+    {
+      "image": "P10",
+      "title": "T13",
+      "confidence": "high",
+      "reason": "수도원 앞에서 주민 곁 자루 더미, 짐승에 실린 자루, 수도자 곁 수레 자루가 나뉘어 배치되어 있다.",
+      "event_id": "ck_evt_101",
+      "expected": "T13",
+      "correct": true
+    },
+    {
+      "image": "P11",
+      "title": "T06",
+      "confidence": "medium",
+      "reason": "곡식 자루를 지키듯 손바닥을 내보인 사람이 빈 그릇을 든 주민의 접근을 막는다. 비축 자루는 분명하지만 종자 용도는 그림만으로 확정하기 어렵다.",
+      "event_id": "ck_evt_114",
+      "expected": "T06",
+      "correct": true
+    },
+    {
+      "image": "P12",
+      "title": "T01",
+      "confidence": "high",
+      "reason": "한 사람이 두 권의 책과 열쇠를 한꺼번에 들고 장원에서 교회로 이어지는 계단을 오른다.",
+      "event_id": "ck_evt_120",
+      "expected": "T01",
+      "correct": true
+    },
+    {
+      "image": "P13",
+      "title": "T12",
+      "confidence": "high",
+      "reason": "갈림길의 두 성직자 중 앞쪽 인물이 봉인된 편지를 들고 있으며 다른 성직자는 반대쪽 길로 떠난다.",
+      "event_id": "ck_evt_104",
+      "expected": "T12",
+      "correct": true
+    },
+    {
+      "image": "P14",
+      "title": "T05",
+      "confidence": "high",
+      "reason": "교회 밖 성직자와 증인들 앞에서 한 사람이 손을 들어 맹세하는 모습이다.",
+      "event_id": "ck_evt_103",
+      "expected": "T05",
+      "correct": true
+    },
+    {
+      "image": "P15",
+      "title": "T02",
+      "confidence": "high",
+      "reason": "마당의 큰 저울 위에 양모가 놓이고 주민들이 무게를 재는 과정을 보고 있다.",
+      "event_id": "ck_evt_113",
+      "expected": "T02",
+      "correct": true
+    },
+    {
+      "image": "P16",
+      "title": "T08",
+      "confidence": "high",
+      "reason": "집 문턱에서 봉인된 문서를 전달하는 손과 받으려는 손, 이를 제지하거나 설명하는 인물이 보여 송달 대상 문제가 드러난다.",
+      "event_id": "ck_evt_109",
+      "expected": "T08",
+      "correct": true
+    },
+    {
+      "image": "P17",
+      "title": "T10",
+      "confidence": "high",
+      "reason": "눈 덮인 숲에 빈 목재 작업 받침대만 놓여 있고 뒤편 사람들이 기다리듯 서 있어 도착하지 않은 들보가 중심이다.",
+      "event_id": "ck_evt_102",
+      "expected": "T10",
+      "correct": true
+    },
+    {
+      "image": "P18",
+      "title": "T15",
+      "confidence": "high",
+      "reason": "풍차 앞 탁자에 곡물과 흰 밀가루가 각각 놓이고 사람들이 이를 두고 의논한다.",
+      "event_id": "ck_evt_105",
+      "expected": "T15",
+      "correct": true
+    },
+    {
+      "image": "P19",
+      "title": "T03",
+      "confidence": "high",
+      "reason": "석교 아래 석공이 수리하고 다리 위 관리자가 내려다보아 다리 유지 비용이나 몫을 둘러싼 장면으로 읽힌다.",
+      "event_id": "ck_evt_118",
+      "expected": "T03",
+      "correct": true
+    },
+    {
+      "image": "P20",
+      "title": "T09",
+      "confidence": "high",
+      "reason": "여성이 작은 나무 조각 묶음을 품에 들고 울타리와 교회 앞을 지나며 남은 목재 처분을 시각적으로 드러낸다.",
+      "event_id": "ck_evt_106",
+      "expected": "T09",
+      "correct": true
+    }
+  ],
+  "limitations": [
+    "익명 이미지 20장을 board-1부터 board-4까지 모두 시각 검사하고, P02/P09/P12/P13 원본을 확대 확인했다. titles.json 이외의 계획, 자산, 리뷰, 정답표는 읽지 않았다.",
+    "모든 제목을 한 번씩 써야 하는 일대일 조건을 적용했다. 일부 매칭은 물체와 행위가 직접 증명하는 의미보다 후보 제목 사이의 상대적 적합성에 의존한다.",
+    "P02의 한 해 및 두 장부, P03의 유언, P04의 품삯 조건, P11의 종자 용도는 이미지 자체만으로 명확히 읽히지 않는다.",
+    "이 결과는 제목 연상 가능성 검사이며 역사적 정확성, 해부학, 최종 게임 내 가독성이나 설치 검증이 아니다."
+  ]
+}

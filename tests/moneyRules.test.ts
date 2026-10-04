@@ -291,9 +291,15 @@ test("M-9 the current save (money state since v8) round-trips; a v7 save loads w
   const corrupt = (state: GameState) => encodeSave({ state, createdAt: envelope.createdAt, savedAt: envelope.savedAt, gameVersion: envelope.gameVersion }).bytes;
   const state = envelope.state;
   assert.throws(() => decodeSave(corrupt({ ...state, money: { ...moneyOf(state), arrears: moneyOf(state).arrears.slice(1) } })), /arrears|unpaid/);
-  assert.throws(() => decodeSave(corrupt({ ...state, buildings: state.buildings.map(candidate => {
+  // FIX-17 (SAVE01): an old debt stays queued on a building that paid this period, unmarked (FIX-4 E3) — the save loads.
+  const paidThisPeriod = { ...state, buildings: state.buildings.map(candidate => {
     const { upkeepUnpaid: _unpaid, ...rest } = candidate;
     return rest;
-  }) })), /unpaid buildings do not match/);
+  }) };
+  assert.deepEqual(decodeSave(corrupt(paidThisPeriod)).envelope.state.money, state.money);
+  // A mark on a building that owes nothing is still refused.
+  const owesNothing = state.buildings.find(candidate => candidate.upkeepUnpaid !== true && !moneyOf(state).arrears.some(arrear => arrear.facility.id === candidate.id))!;
+  assert.throws(() => decodeSave(corrupt({ ...state, buildings: state.buildings.map(candidate => candidate === owesNothing ? { ...candidate, upkeepUnpaid: true as const } : candidate) })),
+    /unpaid buildings do not match/);
   assert.throws(() => decodeSave(corrupt({ ...state, money: { ...moneyOf(state), crossings: { "gate:1,1": -1 } } })), /money must hold/);
 });

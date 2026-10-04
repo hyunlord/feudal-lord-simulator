@@ -3,7 +3,7 @@
 #   remote-exec.sh launch <run>        start the run detached inside a resource-limited systemd user scope, print its pid
 #   remote-exec.sh run <run> <unit>    (inside the scope) prepare the run folder, run the command, record results
 # Layout under ~/fls-runs: <run>/ (one per <label>-<shortsha>), _cache/{repo.git,nm-<hash>/}, _tools/ (setup-dgx.sh),
-# _locks/, _slots/, _ports/, _clones/, _kept/. Folders starting with "_" are never pruned.
+# _locks/, _slots/ (heavy-run slots and their queue), _ports/, _clones/, _kept/. Folders starting with "_" are never pruned.
 # A kept run (run.sh --keep) copies its .remote/ and result files to _kept/<run>/ and marks its folder .remote/keep:
 # the prune skips a marked folder and never touches _kept/, whichever branch's copy of this script prunes.
 set -uo pipefail
@@ -16,7 +16,6 @@ MEMORY_MAX=${FLS_REMOTE_MEMORY_MAX:-48G}
 CPU_QUOTA=${FLS_REMOTE_CPU_QUOTA:-1200%}
 KEEP_RUNS=${FLS_REMOTE_KEEP:-10}
 KEEP_NM_CACHES=4
-GUARDRAIL_SLOTS=2
 PORT_FIRST=4300
 PORT_LAST=4399
 PULL_DIRS="docs seeds perf output fixtures"
@@ -192,23 +191,18 @@ done
 echo "== node_modules: $NM_CACHE ($NM_KEY)"
 PREPARE_S=$(elapsed "$T_START")
 
-# 4. Guardrail slots: at most $GUARDRAIL_SLOTS guardrail runs at once across all sessions.
+# 4. Heavy slots: at most HEAVY_SLOTS (2) heavy runs at once across all sessions; the others wait in line
+#    (scripts/remote/heavySlots.sh). run.sh marks a run heavy (SLOT=heavy; the old SLOT=guardrail is the same).
 T_WAIT=$(date +%s.%N)
-if [ "$SLOT" = guardrail ]; then
-  mkdir -p "$BASE/_slots"; waited=0
-  while :; do
-    for n in $(seq 1 $GUARDRAIL_SLOTS); do
-      exec 5>"$BASE/_slots/guardrail.$n.lock"
-      if flock -n 5; then echo "== guardrail slot $n/$GUARDRAIL_SLOTS"; break 2; fi
-      exec 5>&-
-    done
-    [ "$waited" = 0 ] && echo "== waiting for a guardrail slot (both busy)"
-    waited=1; sleep 10
-  done
-fi
+case "$SLOT" in
+  heavy|guardrail)
+    # shellcheck disable=SC1091
+    . "$RUN_DIR/scripts/remote/heavySlots.sh"
+    heavy_take_slot "$BASE" "$RUN" "$LABEL: ${CMD:0:120}" ;;
+esac
 WAIT_S=$(elapsed "$T_WAIT")
 
-# 5. A port of our own in 4300-4399 (the play server keeps 4173).
+# 5. Two ports of our own in 4300-4399 (the play server keeps 4173).
 mkdir -p "$BASE/_ports"
 for port in $(seq $PORT_FIRST $PORT_LAST); do
   exec 4>"$BASE/_ports/$port.lock"
@@ -218,6 +212,17 @@ for port in $(seq $PORT_FIRST $PORT_LAST); do
   exec 4>&-
 done
 [ -n "${FLS_REMOTE_PORT:-}" ] || fail "no free port in $PORT_FIRST-$PORT_LAST"
+# A second port in the same range for a second server (a base build beside this one, a driver): scripts take
+# FLS_REMOTE_BASE_PORT instead of FLS_REMOTE_PORT + 50, which left 4300-4399 for ports over 4349 (2026-10-04).
+for port in $(seq $PORT_FIRST $PORT_LAST); do
+  [ "$port" = "$FLS_REMOTE_PORT" ] && continue
+  exec 3>"$BASE/_ports/$port.lock"
+  if flock -n 3; then
+    if ! ss -Hltn "sport = :$port" | grep -q .; then export FLS_REMOTE_BASE_PORT=$port; break; fi
+  fi
+  exec 3>&-
+done
+[ -n "${FLS_REMOTE_BASE_PORT:-}" ] || fail "no second free port in $PORT_FIRST-$PORT_LAST"
 
 # 6. Browser: Playwright's linux-arm64 Chromium (Chrome has no linux-arm64 build). CHROME_PATH stays unset so tests
 #    that assert the default path behave as on the Mac; the CDP proofs find Chromium at /usr/bin/google-chrome (a

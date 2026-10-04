@@ -171,3 +171,22 @@ test("SW-9 v42: a v41 save moves only its version (it holds no stewardship yet)"
   const migrated = migrateV41ToV42({ schemaVersion: 41, state: { tick: 1 } }) as { schemaVersion: number; state: unknown };
   assert.deepEqual(migrated, { schemaVersion: 42, state: { tick: 1 } });
 });
+
+test("FIX-17 (A02) a dead candidate is not offered, not appointed, and not chosen to succeed at an audit", () => {
+  const state = held();
+  const serving = stewardCandidates(state, ESTATE).find(entry => entry.record.status === "serving")!.record;
+  const [dead, alive] = stewardCandidates(state, ESTATE).filter(entry => entry.record.status === "candidate").map(entry => entry.record)
+    .sort((a, b) => b.ability - a.ability);
+  // The abler candidate died (by the table, off the map): their record keeps the status "candidate".
+  const estates = estatesOf(state);
+  const died: GameState = { ...state, estates: { ...estates, people: estates.people.map(person => person.id === dead!.personId ? { ...person, alive: false, deathYear: 1301 } : person) } };
+  assert.ok(!stewardCandidates(died, ESTATE).some(entry => entry.record.personId === dead!.personId), "not offered");
+  assert.equal(gameReducer(died, { type: "set_estate_oversight", estateId: ESTATE, mode: "steward", stewardId: dead!.personId }), died, "not appointed");
+  // A pending audit of the serving steward: the named dead successor is refused; the automatic one is the living.
+  const audit = { id: "audit-test", estateId: ESTATE, tick: died.tick, stewardId: serving.personId, mode: "accounts" as const, revealedKept: 50,
+    revealedErrors: 0, hidden: 0, status: "pending" as const, deadline: died.tick + 1_000 };
+  const auditing: GameState = { ...died, stewardship: { ...stewardshipOf(died), audits: [...stewardshipOf(died).audits, audit] } };
+  assert.equal(answerAudit(auditing, audit.id, "replace", false, dead!.personId), auditing, "a dead named successor is refused");
+  const replaced = answerAudit(auditing, audit.id, "replace");
+  assert.equal(stewardshipOf(replaced).oversight.find(entry => entry.estateId === ESTATE)!.stewardId, alive!.personId, "the living candidate succeeds");
+});

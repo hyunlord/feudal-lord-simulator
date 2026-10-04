@@ -1,0 +1,383 @@
+{
+  "review_type": "read_only_pre_generation_composition_plan_audit",
+  "scope": "r04 planned121-140 against frozen94",
+  "scene_plan": "/Users/rexxa/fls-astra-eventart200-delivery/r04/scene-plan.json",
+  "scene_plan_sha256": "0e5c28195fca3ac11938de5fbf384a49428ae0f99990e722b9a68276ed072ca8",
+  "frozen_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r03/records/composition-audit-final.json",
+  "frozen_audit_sha256": "c78cbb57d6e3b4fc47cc26da829eabe4f6a4f8dcb836f8f56c93edde30841461",
+  "evidence_limit": "Text-only preflight. No current R04 images inspected. Flags are risks implied by positive scene instructions, not observed generated-image failures. Final visual review determines actual grouping. Existing94 grouping not changed.",
+  "planned_total": 20,
+  "frozen_total": 94,
+  "projected_total": 114,
+  "excluded_held059": true,
+  "reviews": [
+    {
+      "id": "ck_evt_121",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [],
+      "planned_evidence": "Seated debtor in side profile with standing guarantor behind shoulder; off-frame creditor hand. Faces remain visible, no central arbiter or bilateral faceless money close-up.",
+      "minimal_revision": "",
+      "generation_guard": "Keep both faces and vertical seated/standing relationship; do not crop all faces around the purses. Compare133 for a possible shared seated-purse-pressure group of2."
+    },
+    {
+      "id": "ck_evt_122",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "104"
+      ],
+      "planned_evidence": "Nearly vertical S-shaped route with two tiny endpoint figures is spatial route imagery, not the saturated central empty rectangle with people around its perimeter.",
+      "minimal_revision": "",
+      "generation_guard": "Show actual curved route/offset wickets, not a rectangular enclosure surrounded by workers. Conservatively budget with104; revised138 can use third slot only if its final route-dominant image warrants this grouping."
+    },
+    {
+      "id": "ck_evt_123",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "011",
+        "020",
+        "052",
+        "096"
+      ],
+      "planned_evidence": "Low close camera, large opaque left timber block, smaller people beyond/right repeats the saturated low-left-mass/deeper-people structure risk; changing container to timber is not sufficient evidence of a new layout.",
+      "minimal_revision": "Raise camera to normal human eye height and show tall stack end-on as a FLAT vertical wall on left, kneeling buyer and standing seller at comparable depth on right. Remove distant porter; coins remain on ground beside buyer. This becomes vertical workpiece plus low worker, conservatively comparable with096 (projected2), not a low foreground block hiding a far scene.",
+      "generation_guard": "Do not instead use a high overhead two-object comparison:085/090 plus planned126 already consume3 conservatively."
+    },
+    {
+      "id": "ck_evt_124",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "011",
+        "020",
+        "052"
+      ],
+      "planned_evidence": "Large near judgment seat framing tiny people in distant bright doorway risks same low foreground opaque-mass/deep doorway arrangement, even mirrored right.",
+      "minimal_revision": "Use elevated SIDE view across empty court floor with judgment bench SMALL against far interior wall; doorway and party on right at mid-distance, officer physically crossing threshold. Empty court area dominates; no oversized foreground seat/chest. Keep dowry chest outside and small.",
+      "generation_guard": "Do not turn court floor into near-vertical central rectangle with people surrounding it, which would reuse025/062/083."
+    },
+    {
+      "id": "ck_evt_125",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "070"
+      ],
+      "planned_evidence": "Dead-center axial bridge deck, paired small figures at rail ends and front water/repair gap plausibly join frontal water-control structure070, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Strict frontal axis matters; diagonal long boards with people spaced along them would join035/051/064 already3."
+    },
+    {
+      "id": "ck_evt_126",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "085",
+        "090"
+      ],
+      "planned_evidence": "Oblique overhead view comparing two separated records with one kneeling person; conservatively budget against existing overhead two-object comparisons as third, despite smaller records and visible face.",
+      "minimal_revision": "",
+      "generation_guard": "This is indoor-document scene +1. No extra similar comparison in this round. Keep full face and clear separation of two records."
+    },
+    {
+      "id": "ck_evt_127",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "115"
+      ],
+      "planned_evidence": "Forward-moving full-body workers along market lane with side browsing/lodging continues115 street-procession arrangement, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Keep people walking/depth-staggered; avoid converting nearest figure into large back-facing observer."
+    },
+    {
+      "id": "ck_evt_128",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [],
+      "planned_evidence": "Canopy dominates upper frame; seated beneficiary low center, tiny heir far left outside gate. Not a large centered reverse observer or left-container scene.",
+      "minimal_revision": "",
+      "generation_guard": "Make seated face/profile and canopy clear; avoid moving large back of head into foreground."
+    },
+    {
+      "id": "ck_evt_129",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "029"
+      ],
+      "planned_evidence": "Large animal left profile and humans at right can conservatively share029 animal-left/two-people-right arrangement, projected2; latch creates scene-specific action without creating exemption.",
+      "minimal_revision": "",
+      "generation_guard": "Maintain visible human faces. If all faces cut and hands/latch dominate,058/068/077 would overflow."
+    },
+    {
+      "id": "ck_evt_130",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [],
+      "planned_evidence": "Separate doorways and lateral walking messenger can create threshold-routing layout. Three people alone do not automatically imply central mediator.",
+      "minimal_revision": "",
+      "generation_guard": "Messenger must cross in SIDE profile with walking feet, officials recessed at distinctly different depths. Three equal-size front-facing people gesturing across center would join004/019/107 already3."
+    },
+    {
+      "id": "ck_evt_131",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "033"
+      ],
+      "planned_evidence": "Large foreground father profile with key and much smaller distant pair resembles isolated foreground principal plus small witnesses; conservatively possible033 group projected2, not automatically observer-back group.",
+      "minimal_revision": "",
+      "generation_guard": "Require face visibly in side profile or three-quarter toward camera, not shoulder/back silhouette looking toward pair; that would join008/031/061 already3."
+    },
+    {
+      "id": "ck_evt_132",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "058",
+        "068",
+        "077",
+        "106",
+        "110"
+      ],
+      "planned_evidence": "Explicit faceless crop, apron goods and an entering receiving hand recreates the saturated faceless hands/central-object arrangement risk. Saying NOT close-up does not override these positive instructions.",
+      "minimal_revision": "Show gentlewoman full body WITH FACE in field, apron goods held at waist; broker a small full-body figure well behind the boundary, no disembodied entering hand. Conservatively combine with106/110 frontal solitary outdoor figure/goods, projected3.",
+      "generation_guard": "Feet/skirts alone are not enough to claim a new composition if central goods and receiving hands dominate."
+    },
+    {
+      "id": "ck_evt_133",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [],
+      "planned_evidence": "Seated central collector, off-frame pressure figure and purse/shadow reasonably share a new seated-purse-pressure family with121, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Keep collector face visible and canvas/empty-market surroundings; do not crop to two sets of hands and coins."
+    },
+    {
+      "id": "ck_evt_134",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "011",
+        "020",
+        "052",
+        "009"
+      ],
+      "planned_evidence": "Chest-hinge-height low camera, large closed foreground chest and small doorway rivals directly risk saturated low-container/deeper-people family. Also filled bags left beside a locked lid do not show secured deposits.",
+      "minimal_revision": "Move camera ABOVE chest to oblique high view with monk FACE and key close beside closed lid; chest and monk dominate, rivals small at side doorway. Conservatively compare to009 oblique-chest inspection, projected2. Remove filled bags outside locked chest; show empty slack purses in departing rivals hands or belts instead.",
+      "generation_guard": "Keep this single chest/one adjacent face rather than two separated objects for overhead comparison, since085/090/126 budget is3. No faceless key/hands close-up."
+    },
+    {
+      "id": "ck_evt_135",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "037",
+        "120"
+      ],
+      "planned_evidence": "Horizontal stair frieze differs from deep diagonal stairs, but conservatively reserve third slot in037/120 stair movement family rather than manufacture a new category.",
+      "minimal_revision": "",
+      "generation_guard": "No other stair movement this round; keep opposite-direction choices, no centered judge with stopped flanking litigants."
+    },
+    {
+      "id": "ck_evt_136",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "065"
+      ],
+      "planned_evidence": "Frontal arrivals and cargo at lower corners with central route can conservatively share065 frontal transport-to-storage arrangement, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Keep animal heads frontal, not horizontal side-profile transport (018/086/101 already3); tiny side bridge must remain background."
+    },
+    {
+      "id": "ck_evt_137",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "105"
+      ],
+      "planned_evidence": "Low upward view of huge central trunk/root structure and small people is comparable with105 monumental vertical structure/small people, projected2; oak versus windmill alone not used to declare uniqueness.",
+      "minimal_revision": "",
+      "generation_guard": "Do not crop all faces into exchange-like hands around axe/sapling; clearly frame trunk height and separated full or partial bodies."
+    },
+    {
+      "id": "ck_evt_138",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "018",
+        "086",
+        "101",
+        "104"
+      ],
+      "planned_evidence": "High SIDE view still explicitly requests complete cart side silhouettes, which likely repeats saturated horizontal transport018/086/101. U-shaped road behind broadside carts does not itself change camera/foreground relationship.",
+      "minimal_revision": "Change to STEEP overhead wide route view: both carts small, one seen front-oblique and one rear-oblique along U-bend; visibly different loads read from ABOVE. Route and separated carts dominate, not large broadside vehicle. Budget conservatively with104/122 route-dominant high views (projected3).",
+      "generation_guard": "People field says3 but prompt has3 drovers plus steward=4; choose2 drovers plus seated steward if keeping3."
+    },
+    {
+      "id": "ck_evt_139",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "078"
+      ],
+      "planned_evidence": "Separated left gift uncovering and right purse counting plausibly share078 parallel independent exchanges/actions, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Keep cloth small and partially folded; enormous vertical cloth blocking center could join091/119 as third instead, still within cap but a different observed grouping."
+    },
+    {
+      "id": "ck_evt_140",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "075"
+      ],
+      "planned_evidence": "Extreme near cropped boots/staff with tiny far witness/rider is comparable with075 near body-part/ground feature and distant people, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Only boots/staff in extreme foreground, not a large near back-facing observer. Journey cost and legal non-verdict still need body text."
+    }
+  ],
+  "revise_before_generation_ids": [
+    "ck_evt_123",
+    "ck_evt_124",
+    "ck_evt_132",
+    "ck_evt_134",
+    "ck_evt_138"
+  ],
+  "early_generation_attention": [
+    "ck_evt_123",
+    "ck_evt_124"
+  ],
+  "projected_indoor_document": {
+    "frozen_conservative_count": 8,
+    "planned_additions": [
+      "ck_evt_126"
+    ],
+    "projected_conservative_count": 9,
+    "denominator": 114,
+    "fraction": 0.07894736842105263,
+    "limit": 0.1,
+    "pass_if_plan_followed": true,
+    "remaining_allowance_at114": 2,
+    "basis": "Only126 explicitly indoor paper-centered.130 rights discussion has no paper;134 locks moneychest;139 open loggia gift/purses. Do not silently add legal desks/contracts to other scenes."
+  },
+  "saturated_frozen_groups": [
+    {
+      "ids": [
+        "004",
+        "019",
+        "107"
+      ],
+      "name": "눈높이의 중앙 중재자와 좌우 상대방"
+    },
+    {
+      "ids": [
+        "005",
+        "024",
+        "057"
+      ],
+      "name": "판매대 너머의 두 사람과 사이에 제시된 종이"
+    },
+    {
+      "ids": [
+        "002",
+        "049",
+        "053"
+      ],
+      "name": "전경 작업대 뒤에 나란히 몸을 숙이는 두 사람"
+    },
+    {
+      "ids": [
+        "008",
+        "031",
+        "061"
+      ],
+      "name": "중앙 전경 관찰자의 등 너머 작업 현장"
+    },
+    {
+      "ids": [
+        "013",
+        "030",
+        "067"
+      ],
+      "name": "가까운 두 사람 사이의 손과 직접 만지는 물건"
+    },
+    {
+      "ids": [
+        "025",
+        "062",
+        "083"
+      ],
+      "name": "거의 수직 부감의 직사각형 빈 공간과 둘레 작업자"
+    },
+    {
+      "ids": [
+        "018",
+        "086",
+        "101"
+      ],
+      "name": "측면의 소 수레가 화면을 가로지르는 운송 장면"
+    },
+    {
+      "ids": [
+        "011",
+        "020",
+        "052"
+      ],
+      "name": "낮은 시점의 왼쪽 큰 용기와 그 너머 인물"
+    },
+    {
+      "ids": [
+        "028",
+        "034",
+        "038"
+      ],
+      "name": "오른쪽 닫힌 문을 향한 바깥 접근자"
+    },
+    {
+      "ids": [
+        "035",
+        "051",
+        "064"
+      ],
+      "name": "긴 시설물의 사선을 따라 떨어져 일하는 인물들"
+    },
+    {
+      "ids": [
+        "058",
+        "068",
+        "077"
+      ],
+      "name": "얼굴이 잘린 양쪽 손과 중앙 돈 또는 물건의 근접"
+    }
+  ],
+  "conditional_projected_at_cap": [
+    {
+      "ids": [
+        "085",
+        "090",
+        "126"
+      ],
+      "basis": "High/oblique overhead comparison of two objects; avoid another such rewrite."
+    },
+    {
+      "ids": [
+        "106",
+        "110",
+        "132"
+      ],
+      "basis": "132 recommended full-face outdoor carrier rewrite."
+    },
+    {
+      "ids": [
+        "037",
+        "120",
+        "135"
+      ],
+      "basis": "Conservatively budget all stair movement here."
+    },
+    {
+      "ids": [
+        "104",
+        "122",
+        "138"
+      ],
+      "basis": "138 recommended steep overhead route-dominant rewrite."
+    }
+  ],
+  "history_and_subject_guards": [
+    "No ordinary-cottage chimney or chimney pots; explicit132 chimney-free oven building must not gain stack.",
+    "135 plain brown fur only, no spotted ermine. No real heraldry or readable modern writing in pennon.",
+    "138 flat peg tiles; not S/barrel tiles.",
+    "134 filled purses beside locked chest contradict secured deposits; use empty carried purses after deposit.",
+    "121 guarantee,126 renewed debt,128/131 lifetime/future rights and139 recurring duty cannot be fully proven by props alone; retain event text instead of fake writing."
+  ],
+  "approval_status": "plan_revision_required_before_unconditional_generation",
+  "unchanged_frozen_groups": true,
+  "write_scope": "Only r04/records/plan-audit.json",
+  "blind_data_accessed": false
+}

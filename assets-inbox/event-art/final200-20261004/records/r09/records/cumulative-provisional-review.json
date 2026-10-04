@@ -1,0 +1,149 @@
+{
+  "review_type": "199_candidate_provisional_cumulative_montage_review",
+  "status": "visual_review_only_not_delivery_completion",
+  "visual_basis": {
+    "all_nine_pages_actually_opened": true,
+    "proofs": [
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-01.jpg",
+        "sha256": "b793ba768861b27131b931e46af63c2d883f62c059c709a791f979ea80c5d0ed",
+        "count": 24,
+        "first_id": "001",
+        "last_id": "024"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-02.jpg",
+        "sha256": "5e1dab6b5d7538c992f5d10c45f50d02f9cc0419dc48d15e9ee8375f2ab4c2e5",
+        "count": 24,
+        "first_id": "025",
+        "last_id": "049"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-03.jpg",
+        "sha256": "ef86999de78a68717807c63f4dfbcd6b8a079e6844f06bd149ba38b08579603d",
+        "count": 24,
+        "first_id": "050",
+        "last_id": "073"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-04.jpg",
+        "sha256": "9a2ef55722f7413650aa71a0b413d03e77d1f4e9c3b7cba45156a2b475e93f4d",
+        "count": 24,
+        "first_id": "074",
+        "last_id": "097"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-05.jpg",
+        "sha256": "ef00e94b34f3a144b56bf9b964826118dd59c454b4c1c9b2e41caa8426e3faac",
+        "count": 24,
+        "first_id": "098",
+        "last_id": "121"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-06.jpg",
+        "sha256": "49bb91ac4a7d1384bea81009878d6a3ef84d9808841fec04a32ed1e0b9eda0ec",
+        "count": 24,
+        "first_id": "122",
+        "last_id": "145"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-07.jpg",
+        "sha256": "4f96c43e8ce866d33e2a30b193b3e1691ab91089d11763e7ab02e4547576c11d",
+        "count": 24,
+        "first_id": "146",
+        "last_id": "169"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-08.jpg",
+        "sha256": "c45ff9afb36eb8a5bc21a8c09c36e1181650f1281df07b62c8591bac3cef2ffd",
+        "count": 24,
+        "first_id": "170",
+        "last_id": "193"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/proofs/cumulative-provisional-09.jpg",
+        "sha256": "c64bb74d665ffd1402e169c3849f0d8c462533eaa476e7de7fbe023df542718e",
+        "count": 7,
+        "first_id": "194",
+        "last_id": "200"
+      }
+    ],
+    "prior_fullsize_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r09/records/composition-after-cleanup.json",
+    "prior_fullsize_audit_sha256": "4b421c7d28dff9abdfc18cf1d8237c61d3466e8c5439a7bc8ecbbb1aa8db9e58",
+    "scope": "9페이지전부에서총199이미지의구도/반복/전체화풍/교정반영확인.미세소품은이전fullsize검수재사용."
+  },
+  "csv_verification": {
+    "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/CUMULATIVE-PROVISIONAL.csv",
+    "sha256": "a5bcc43b41f80da703b065cce8b21953a3737066059ad6611ae570217169e677",
+    "rows": 199,
+    "unique_ids": 199,
+    "missing_ids_except026": [],
+    "duplicate_ids": [],
+    "all199_source_hashes_recomputed_this_review": true,
+    "source_hash_mismatches": [],
+    "group_mapping_mismatches": []
+  },
+  "composition": {
+    "group_count": 86,
+    "max_group_count": 3,
+    "over3": [],
+    "definitions_relaxed": false,
+    "assignments_changed_this_review": [],
+    "new_mandatory_composition_findings": []
+  },
+  "latest_versions_visually_confirmed": {
+    "039": "공동받침위옆면인장도구제시",
+    "107": "배낭없는관리인열쇠/탈리,오른쪽수도사부분몸,먼전임자",
+    "061": "문설주실제부분얼굴가림과주민의먼빈자리쪽지시",
+    "014": "선반원모/자루",
+    "022": "길쭉한접힌꾸러미",
+    "040": "문장없는깃발/의복",
+    "054": "배경굴뚝없는젖은건초",
+    "055": "호박/배경굴뚝없는저울",
+    "059": "탁자위미인도열쇠와거둔영주손"
+  },
+  "repetition_findings": [
+    "낮은접촉근접/큰수직대상옆낮은검사자/네면탁자숙의/큰등관찰등유형반복은있으나현재최대3유지.소품명차이로군분리하지않았다.",
+    "갈색곱슬머리청년·수염중년남성·붉은모자·흰두건여성의얼굴/의상유형이반복된다.동일얼굴복제를정량판정하지않음.",
+    "먼사각교회탑·석벽/목골조·담쟁이·수레배경이빈번해장소다양성제한이남음.동일배경픽셀복제를확정하지않음.",
+    "금빛오후조명이우세하지만겨울눈/앙상한나무,가을잎,봄꽃,여름들판,비/진흙,촛불실내가구분된다.계절이균등하다는주장이나전체정확계절통계는없음."
+  ],
+  "style_layout_review": [
+    "세밀한울·목재·돌질감의회화적사실주의화풍유지.인물대화뿐아니라큰풍경·부감·작업접촉장면도보임.",
+    "재사용045047060은장식성과세부선명도차이가있지만심각한화풍이탈로판정하지않음.",
+    "마지막페이지7장뒤빈칸은199장페이지분할결과.026만의도적제외이고다른누락없음."
+  ],
+  "history_review": {
+    "new_definite_mandatory_findings": [],
+    "pending045": "승인재사용045의기존깃발/문장과독립의미시험혼동에따른수정허용답변대기상태유지.이검수로임의수정/해결선언안함.",
+    "limits": [
+      "작은지붕돌출부를전부굴뚝으로단정하지않고일반주택/영주관·교회예외구별.",
+      "모아보기해상도로문자/인장/손가락/도구치수/복식고증전체를보증하지않음.기존fullsize근거우선.",
+      "새로운뚜렷한현대물/에르민무늬위반은관찰하지못했으나완전한사료검증인증아님."
+    ]
+  },
+  "indoor_document": {
+    "prior_count": 19,
+    "new_additions": [],
+    "count": 19,
+    "total": 199,
+    "fraction": 0.09547738693467336,
+    "maximum_integer_count": 19,
+    "remaining_capacity": 0,
+    "pass": true,
+    "note": "061야외부분가림청원,059야외닫힌기록.20번째실내문서는200장확정전허용안됨."
+  },
+  "semantic_test_status": {
+    "parent_reported": "R09신규5+061익명6장6/6",
+    "independently_read_or_rescored_here": false,
+    "not_claimed": "전체199개를한번에신규익명시험통과한결과가아님"
+  },
+  "outstanding": [
+    "026원본보존/포화군4충돌답변대기로제외.200장미완료.",
+    "045승인원본수정허용답변대기.현재199에포함됐어도별도미해결사항은남음.",
+    "모아보기시각검수와전체제작/채택/패키징/설치완료는별개."
+  ],
+  "visual_cumulative_check_pass": true,
+  "overall199_delivery_complete": false,
+  "overall200_goal_complete": false
+}
