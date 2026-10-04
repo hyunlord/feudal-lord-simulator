@@ -1,0 +1,194 @@
+{
+  "status": "PROMOTED_EXACT2_POST_REFERENCE_AND_PUBLICATION_PENDING",
+  "head": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "parentAuthorization": "Explicit parent authorization after DATA30 PASS and independent all30-after/14-before native PASS; RENDER-B-HEATH2 accepted",
+  "gates": {
+    ".omo/evidence/heath-main-data-summary.json": "80fa09f0feaa64b755cb995d7e6f00294ced353ee0cf68258c9aa297083697e5",
+    ".omo/drafts/heath-main-data-native-review.md": "c65e5131cd7e3316621d5c66ca0dd2ab7186459fe74f8bfd40ee7db8fa638bf0",
+    ".omo/drafts/heath-main-data-native-review.json": "44da83268edc0a0da142b3df01ed9bafc92417817f229b9b4a64921041563c55"
+  },
+  "preserved": {
+    "codeIncludingCatalog": 2601,
+    "public": 1665,
+    "sources": 2
+  },
+  "patches": [
+    {
+      "path": "docs/provenance/assets.csv",
+      "beforeSHA256": "5ad1ecac51d02b5915b059b9c8f9dbd7e405f525df2e34335ba9f37a4a387a2e",
+      "afterSHA256": "709432ed223f016f9554474aae380fe33dd18ca921fdaad99d92fe0b61954f53",
+      "literalRows": 2432,
+      "unchangedLiteralRows": 2430,
+      "changes": [
+        {
+          "rowIndex": 2430,
+          "identity": "public/assets/wave22/decals/heath_patch_b.png",
+          "changedColumns": [
+            "status",
+            "notes"
+          ],
+          "before": {
+            "assetId": "wave22/decals/heath_patch_b",
+            "version": "1",
+            "runtimePath": "public/assets/wave22/decals/heath_patch_b.png",
+            "runtimeSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+            "sourcePath": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_b-v1.png",
+            "sourceSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+            "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+            "model": "not displayed",
+            "generatedAt": "2026-09-27T05:25:34.809Z",
+            "prompt": "ATTEMPT 1\nUse case: stylized-concept. Create ONE transparent RGBA game ground decal heath_patch_b-v1. Project images are colour/paint style references only. Subject: two separate low heather cushions, one wide left cushion and small right crescent, dusty mauve-brown and olive, tiny restrained flower impression not bright flowers. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 96x64px with transparent8px margin all sides, bottom-centre ground anchor(48,56); artwork occupies at most 80x48. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+            "referenceInputs": "grass.png; forest_floor.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Alpha bounding-box crop (130,290,1285,433); one high-quality downsample into 96x64 at (8,29,80,27); bottom-center pivot 48,56; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave22 rework",
+            "usedIn": "src/render/art/catalog.json -> landDecalArt.ts; ground-prop placement land",
+            "status": "candidate",
+            "notes": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.; decal Main data-only preparation; actual main runtime pending. Received source copied byte-for-byte; historical normalization unchanged. Original record assets-inbox/wave22/rework-20260927/records/assets.csv; raw generation SHA c7d413d6b00013cfb7fe9a9165139b890a4846191b2c48b011ddb0121e950db5."
+          },
+          "after": {
+            "assetId": "wave22/decals/heath_patch_b",
+            "version": "1",
+            "runtimePath": "public/assets/wave22/decals/heath_patch_b.png",
+            "runtimeSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+            "sourcePath": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_b-v1.png",
+            "sourceSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+            "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+            "model": "not displayed",
+            "generatedAt": "2026-09-27T05:25:34.809Z",
+            "prompt": "ATTEMPT 1\nUse case: stylized-concept. Create ONE transparent RGBA game ground decal heath_patch_b-v1. Project images are colour/paint style references only. Subject: two separate low heather cushions, one wide left cushion and small right crescent, dusty mauve-brown and olive, tiny restrained flower impression not bright flowers. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 96x64px with transparent8px margin all sides, bottom-centre ground anchor(48,56); artwork occupies at most 80x48. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+            "referenceInputs": "grass.png; forest_floor.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Alpha bounding-box crop (130,290,1285,433); one high-quality downsample into 96x64 at (8,29,80,27); bottom-center pivot 48,56; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave22 rework",
+            "usedIn": "src/render/art/catalog.json -> landDecalArt.ts; ground-prop placement land",
+            "status": "runtime",
+            "notes": "Runtime verified on work-branch commit fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5 by astra-heath-main-data-fd68f12; DATA30 PASS; positive14 changed, negative16 RGBA unchanged, A/A30, errors0, B/C request/decode/paint in positive14. Independent native review PASS (all30 after and14 before originals): docs/verification/heath-data/data-independent-native-review.md. Prepared scenes only; no natural-play or universal visibility/occlusion claim. First-open negative16 only; repeat consumption absence unproved where arrays are not persisted. Received source bytes preserved; original normalization/provenance retained. Original record assets-inbox/wave22/rework-20260927/records/assets.csv; raw generation SHA c7d413d6b00013cfb7fe9a9165139b890a4846191b2c48b011ddb0121e950db5."
+          }
+        },
+        {
+          "rowIndex": 2431,
+          "identity": "public/assets/wave22/decals/heath_patch_c.png",
+          "changedColumns": [
+            "status",
+            "notes"
+          ],
+          "before": {
+            "assetId": "wave22/decals/heath_patch_c",
+            "version": "1",
+            "runtimePath": "public/assets/wave22/decals/heath_patch_c.png",
+            "runtimeSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+            "sourcePath": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_c-v1.png",
+            "sourceSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+            "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+            "model": "not displayed",
+            "generatedAt": "2026-09-27T05:26:18.121Z",
+            "prompt": "ATTEMPT 1\nUse case: stylized-concept. Create ONE transparent RGBA game ground decal heath_patch_c-v1. Project images are colour/paint style references only. Subject: low sprawling heather and bracken patch with a distinct open centre, three unequal lobes around exposed peat, olive and muted dusty mauve-brown, no tall bush. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 128x96px with transparent8px margin all sides, bottom-centre ground anchor(64,88); artwork occupies at most 112x80. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+            "referenceInputs": "grass.png; forest_floor.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Alpha bounding-box crop (96,162,1305,774); one high-quality downsample into 128x96 at (8,22,112,66); bottom-center pivot 64,88; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave22 rework",
+            "usedIn": "src/render/art/catalog.json -> landDecalArt.ts; ground-prop placement land",
+            "status": "candidate",
+            "notes": "One native candidate; large distinctive subject silhouette and restrained project palette; final scale reviewed in contact sheet.; decal Main data-only preparation; actual main runtime pending. Received source copied byte-for-byte; historical normalization unchanged. Original record assets-inbox/wave22/rework-20260927/records/assets.csv; raw generation SHA 64fd265ab693086704841d1cc9d4e13b9e14e042d5fb4ae5a41aa5c44233d18a."
+          },
+          "after": {
+            "assetId": "wave22/decals/heath_patch_c",
+            "version": "1",
+            "runtimePath": "public/assets/wave22/decals/heath_patch_c.png",
+            "runtimeSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+            "sourcePath": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_c-v1.png",
+            "sourceSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+            "tool": "Native image_gen; JS Canvas/PNG mechanical normalization",
+            "model": "not displayed",
+            "generatedAt": "2026-09-27T05:26:18.121Z",
+            "prompt": "ATTEMPT 1\nUse case: stylized-concept. Create ONE transparent RGBA game ground decal heath_patch_c-v1. Project images are colour/paint style references only. Subject: low sprawling heather and bracken patch with a distinct open centre, three unequal lobes around exposed peat, olive and muted dusty mauve-brown, no tall bush. Southern England medieval countryside natural ground feature. This decal is scattered over a separately rendered texture, therefore NOT a rectangular terrain tile, NOT a scene or enclosed island. 2:1 isometric ground plane with almost no height. Muted natural low saturation colours matching project references. Soft top-left daylight, no long shadow, no strong black outline. Hand painted concise broad masses that remain readable at tiny display scale, no photoreal grain or speckled dots. Target canvas 128x96px with transparent8px margin all sides, bottom-centre ground anchor(64,88); artwork occupies at most 112x80. True alpha transparency, no background fill, no text, labels, numbers, border or grid. One single unique composition, not a sprite sheet. No buildings, animals or people.",
+            "referenceInputs": "grass.png; forest_floor.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Alpha bounding-box crop (96,162,1305,774); one high-quality downsample into 128x96 at (8,22,112,66); bottom-center pivot 64,88; enforce 8px transparent margin; 2px transparent RGB bleed. No procedural art or recolor.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave22 rework",
+            "usedIn": "src/render/art/catalog.json -> landDecalArt.ts; ground-prop placement land",
+            "status": "runtime",
+            "notes": "Runtime verified on work-branch commit fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5 by astra-heath-main-data-fd68f12; DATA30 PASS; positive14 changed, negative16 RGBA unchanged, A/A30, errors0, B/C request/decode/paint in positive14. Independent native review PASS (all30 after and14 before originals): docs/verification/heath-data/data-independent-native-review.md. Prepared scenes only; no natural-play or universal visibility/occlusion claim. First-open negative16 only; repeat consumption absence unproved where arrays are not persisted. Received source bytes preserved; original normalization/provenance retained. Original record assets-inbox/wave22/rework-20260927/records/assets.csv; raw generation SHA 64fd265ab693086704841d1cc9d4e13b9e14e042d5fb4ae5a41aa5c44233d18a."
+          }
+        }
+      ]
+    },
+    {
+      "path": "assets-inbox/INBOX_LEDGER.csv",
+      "beforeSHA256": "ea61889f1afe6226b46092ff43b932a82faf6d43756a4d0cbe921931b6211e2a",
+      "afterSHA256": "d7727dce5de73c14e820eeccb088319d691bc90d4908f15774ed314453092317",
+      "literalRows": 6122,
+      "unchangedLiteralRows": 6120,
+      "changes": [
+        {
+          "rowIndex": 3953,
+          "identity": "wave22/rework-20260927/assets/decals/heath_patch_b-v1.png",
+          "changedColumns": [
+            "installed_by"
+          ],
+          "before": {
+            "wave": "wave22",
+            "file": "wave22/rework-20260927/assets/decals/heath_patch_b-v1.png",
+            "sha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+            "status": "confirmed",
+            "replaced_by": "",
+            "verdict_note": "Wave 22 재작업 확정(판정 2026-09-27)",
+            "installed_by": ""
+          },
+          "after": {
+            "wave": "wave22",
+            "file": "wave22/rework-20260927/assets/decals/heath_patch_b-v1.png",
+            "sha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+            "status": "confirmed",
+            "replaced_by": "",
+            "verdict_note": "Wave 22 재작업 확정(판정 2026-09-27)",
+            "installed_by": "RENDER-B-HEATH2"
+          }
+        },
+        {
+          "rowIndex": 3954,
+          "identity": "wave22/rework-20260927/assets/decals/heath_patch_c-v1.png",
+          "changedColumns": [
+            "installed_by"
+          ],
+          "before": {
+            "wave": "wave22",
+            "file": "wave22/rework-20260927/assets/decals/heath_patch_c-v1.png",
+            "sha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+            "status": "confirmed",
+            "replaced_by": "",
+            "verdict_note": "Wave 22 재작업 확정(판정 2026-09-27)",
+            "installed_by": ""
+          },
+          "after": {
+            "wave": "wave22",
+            "file": "wave22/rework-20260927/assets/decals/heath_patch_c-v1.png",
+            "sha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+            "status": "confirmed",
+            "replaced_by": "",
+            "verdict_note": "Wave 22 재작업 확정(판정 2026-09-27)",
+            "installed_by": "RENDER-B-HEATH2"
+          }
+        }
+      ]
+    }
+  ],
+  "pending": [
+    "post-promotion reference4",
+    "final geometry",
+    "final HEAD clean clone and publication"
+  ]
+}

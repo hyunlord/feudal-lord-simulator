@@ -1,0 +1,19 @@
+{
+  "head": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "trackedDirty": false,
+  "allTrackedPathsEqualHead": true,
+  "trackedDiff": [],
+  "scope": "Entire tracked export equality; runtime4310 freeze separate; arbitrary untracked artifacts not claimed git-clean",
+  "driverAttestation": [
+    {
+      "path": ".omo/evidence/heath-main-data-run.sh",
+      "remoteSHA": "40ab6d16a53ffd1bcf055984282e29d5da70637dccbcb077a98e4db278ac9423",
+      "localSHA": "40ab6d16a53ffd1bcf055984282e29d5da70637dccbcb077a98e4db278ac9423"
+    },
+    {
+      "path": ".omo/evidence/heath-main-data-negative-check.mjs",
+      "remoteSHA": "c5297452e6907c5ca77c252ad4adb9512a0c76b4ffd2757e9a7cbdb5810c8bf5",
+      "localSHA": "c5297452e6907c5ca77c252ad4adb9512a0c76b4ffd2757e9a7cbdb5810c8bf5"
+    }
+  ]
+}

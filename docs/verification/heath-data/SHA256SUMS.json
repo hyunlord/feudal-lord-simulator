@@ -1,105 +1,35 @@
 {
-  "scope": "Files in this candidate evidence package excluding this index; raw native source/capture paths referenced, not copied",
-  "files": [
-    {
-      "path": "CORE-BEFORE-heath-chalk-summer-z06.jpg",
-      "bytes": 131363,
-      "sha256": "dd6e8bfd669b2933a54c928371ce07b3513d5e627da2273fed4398f36fa7c7a1"
-    },
-    {
-      "path": "CORE-BEFORE-heath-chalk-summer-z1.jpg",
-      "bytes": 158445,
-      "sha256": "de8c1534e3160fd452dec7b6e1862e36c1681cc6cb365ffdf8326613e5d24e8c"
-    },
-    {
-      "path": "CORE-BEFORE-heath-chalk-winter-z06.jpg",
-      "bytes": 136221,
-      "sha256": "19951ee53235533d3c5acbb2029afc0400c991b3e32a2ed7631869d94a371726"
-    },
-    {
-      "path": "CORE-BEFORE-heath-chalk-winter-z1.jpg",
-      "bytes": 168303,
-      "sha256": "5c3ca9a6fad6f2289063f1debec84975a2971914da2047a6d29fe6c7c45a9402"
-    },
-    {
-      "path": "REPORT.md",
-      "bytes": 6476,
-      "sha256": "9558a8959d948d0572be9d0d3d048efc2023f1d71c04699d48a191ff1ccf8b19"
-    },
-    {
-      "path": "applied-independent-review.md",
-      "bytes": 2799,
-      "sha256": "added23e4cac81796a257884accaaf09c1661742c3740b42ed1c77addcb8a1dd"
-    },
-    {
-      "path": "apply-receipt.json",
-      "bytes": 3208,
-      "sha256": "17fb7725597c9e6462c342c0f147283acac8012163b6bd020dff4cc7a74b6f38"
-    },
-    {
-      "path": "candidate-application.json",
-      "bytes": 7081,
-      "sha256": "137196fc101eb29df2dcc85257e7650308a285be4963bfaa415bec10f77b9c40"
-    },
-    {
-      "path": "core-doc-drift-review.md",
-      "bytes": 3905,
-      "sha256": "c633a6b155d98f69f7d3b92ccabec5ef3eb70ade2bfb419a9fa3d4d70f0eec75"
-    },
-    {
-      "path": "core-export-classification.json",
-      "bytes": 1286,
-      "sha256": "532fc06eca132634e6289ae4cc45217777d327fc5edc4e7fdd980a60799d2408"
-    },
-    {
-      "path": "core-independent-visual-review.md",
-      "bytes": 4028,
-      "sha256": "0c9d3a7a3a1effb25f448b39497a967f84b77be5f5f1f9689b8e2ab5b3c34d46"
-    },
-    {
-      "path": "core-summary.json",
-      "bytes": 65967,
-      "sha256": "2fd772457dea27278363e7b91234ea69177582a02f6618652095123b360cfaab"
-    },
-    {
-      "path": "core-views.json",
-      "bytes": 33135,
-      "sha256": "d7eaea267014b7000881b98d568f9863f009c5b3fdab9a085025a1358182e59f"
-    },
-    {
-      "path": "focused.txt",
-      "bytes": 28702,
-      "sha256": "a1f5d69aad6f3108ff8cc4396747e1edfa31dffc61f911687e0ef3ee6e45fa05"
-    },
-    {
-      "path": "parent-check.json",
-      "bytes": 487,
-      "sha256": "0e199b6a80362ed0fb7610184ba1738331d8860973f42278c4c5211b9fc9f6b0"
-    },
-    {
-      "path": "provenance.txt",
-      "bytes": 2322,
-      "sha256": "90c0a99aa92cd8b25803d2dde8e535c6c5cb4adf8847d1e82c5f42a06623c42e"
-    },
-    {
-      "path": "source-candidates.csv",
-      "bytes": 4848,
-      "sha256": "3576fbcad465a8d90523f67f029de40b635f2f1e9f7e873fddfacfb1e369a7df"
-    },
-    {
-      "path": "source-visual-review.md",
-      "bytes": 331,
-      "sha256": "fda1b50ea7df87f586de2eb589bf6697faadc5ea0eb98c52548fb61beb8e9a09"
-    },
-    {
-      "path": "static.json",
-      "bytes": 1444,
-      "sha256": "5b6768c7471cd715491ea04bb2925496d6b79bd161d8a0a84542b25d78fdedc5"
-    },
-    {
-      "path": "typecheck.txt",
-      "bytes": 0,
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
-    }
-  ]
+  "algorithm": "sha256",
+  "files": {
+    "CORE-BEFORE-heath-chalk-summer-z06.jpg": "dd6e8bfd669b2933a54c928371ce07b3513d5e627da2273fed4398f36fa7c7a1",
+    "CORE-BEFORE-heath-chalk-summer-z1.jpg": "de8c1534e3160fd452dec7b6e1862e36c1681cc6cb365ffdf8326613e5d24e8c",
+    "CORE-BEFORE-heath-chalk-winter-z06.jpg": "19951ee53235533d3c5acbb2029afc0400c991b3e32a2ed7631869d94a371726",
+    "CORE-BEFORE-heath-chalk-winter-z1.jpg": "5c3ca9a6fad6f2289063f1debec84975a2971914da2047a6d29fe6c7c45a9402",
+    "DATA-AFTER-heath-chalk-summer-z06.jpg": "a934b96f41de2c9374bd7f3eaf2b5cb3fa7155886f13ab47ceb7d3250765c095",
+    "DATA-AFTER-heath-chalk-summer-z1.jpg": "c37fa6e401ac9fc585fad6025445443425d156da6ec48a7d936328bbe2d9f2bc",
+    "DATA-AFTER-heath-chalk-winter-z06.jpg": "b6f962b692e6f2765de2d40b65688a081d406ced07951cddb82140d1b415cc61",
+    "DATA-AFTER-heath-chalk-winter-z1.jpg": "6f4e045ab32a3ed733804010312a61a7d65bdb28311f9a931a0a804d76a58403",
+    "REPORT.md": "6c127500641eeab9cfd95f8740311368c20469e5b9eee62c35d7fd1001d11b5f",
+    "applied-independent-review.md": "added23e4cac81796a257884accaaf09c1661742c3740b42ed1c77addcb8a1dd",
+    "apply-receipt.json": "17fb7725597c9e6462c342c0f147283acac8012163b6bd020dff4cc7a74b6f38",
+    "candidate-application.json": "137196fc101eb29df2dcc85257e7650308a285be4963bfaa415bec10f77b9c40",
+    "core-doc-drift-review.md": "c633a6b155d98f69f7d3b92ccabec5ef3eb70ade2bfb419a9fa3d4d70f0eec75",
+    "core-export-classification.json": "532fc06eca132634e6289ae4cc45217777d327fc5edc4e7fdd980a60799d2408",
+    "core-independent-visual-review.md": "0c9d3a7a3a1effb25f448b39497a967f84b77be5f5f1f9689b8e2ab5b3c34d46",
+    "core-summary.json": "2fd772457dea27278363e7b91234ea69177582a02f6618652095123b360cfaab",
+    "core-views.json": "d7eaea267014b7000881b98d568f9863f009c5b3fdab9a085025a1358182e59f",
+    "data-export-attestation.json": "b848a8d4ee2208f93947ff72248d2c47bfc8f867c32f7a446de48ee592499327",
+    "data-independent-native-review.json": "44da83268edc0a0da142b3df01ed9bafc92417817f229b9b4a64921041563c55",
+    "data-independent-native-review.md": "c65e5131cd7e3316621d5c66ca0dd2ab7186459fe74f8bfd40ee7db8fa638bf0",
+    "data-parent-check.json": "2426d9465798da3290b068a0e020bd9b1506c8d534bc494772612af8206729df",
+    "data-summary.json": "80fa09f0feaa64b755cb995d7e6f00294ced353ee0cf68258c9aa297083697e5",
+    "focused.txt": "a1f5d69aad6f3108ff8cc4396747e1edfa31dffc61f911687e0ef3ee6e45fa05",
+    "parent-check.json": "0e199b6a80362ed0fb7610184ba1738331d8860973f42278c4c5211b9fc9f6b0",
+    "promotion.json": "e83a67c25d23b7375ba7da123c5b05d26a4f0551f775a2dd38f91ae004e2c51c",
+    "provenance.txt": "90c0a99aa92cd8b25803d2dde8e535c6c5cb4adf8847d1e82c5f42a06623c42e",
+    "source-candidates.csv": "3576fbcad465a8d90523f67f029de40b635f2f1e9f7e873fddfacfb1e369a7df",
+    "source-visual-review.md": "fda1b50ea7df87f586de2eb589bf6697faadc5ea0eb98c52548fb61beb8e9a09",
+    "static.json": "5b6768c7471cd715491ea04bb2925496d6b79bd161d8a0a84542b25d78fdedc5",
+    "typecheck.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
 }
