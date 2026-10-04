@@ -126,3 +126,8 @@ export const OPPORTUNITY_KINDS: readonly BuildingKind[] = ["market", "granary", 
   "sawmill", "masonry", "weaver_house", "fulling_mill", "dyehouse", "tenter_yard", "farmstead", "logging_camp", "quarry"];
 /** TA-13 (LM-E9b): a walk that started nothing is reused at most a season (1,000 ticks) from the tick it ran. */
 export const WALK_REUSE_TICKS = 1_000;
+/**
+ * TA-13: a walk is reused only after this many weeks in a row started nothing — a growing town that pauses a week or
+ * two walks every week (reused from the first idle week, seed 1 had 13 houses by 1305 against 18, seed 2 12 against 20).
+ */
+export const WALK_REUSE_IDLE_WEEKS = 4;

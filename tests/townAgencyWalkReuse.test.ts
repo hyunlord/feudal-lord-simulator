@@ -1,13 +1,13 @@
 /**
- * LM-E9b (spec docs/design/town-agency.md TA-13, the user's decision 2026-10-04): a week after one that started nothing
- * reuses that walk while nothing it read has changed; the lord's change, the households, the season and the fund
+ * LM-E9b (spec docs/design/town-agency.md TA-13, the user's decision 2026-10-04): after four weeks in a row that started
+ * nothing a week reuses the walk while nothing it read has changed; the lord's change, the households, the season and the fund
  * threshold walk again; a receipt from a reused walk says so; nothing outside lord mode.
  */
 import assert from "node:assert/strict";
 import test from "node:test";
 
 import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
-import { AGENCY_WEEK_TICKS, WALK_REUSE_TICKS } from "../src/content/townAgencyConfig";
+import { AGENCY_WEEK_TICKS, WALK_REUSE_IDLE_WEEKS, WALK_REUSE_TICKS } from "../src/content/townAgencyConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTownAgency, initialAgency, walkKey } from "../src/engine/townAgency";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
@@ -24,18 +24,31 @@ function stuckTown(): GameState {
 
 const week = (state: GameState, weeks = 1): GameState => advanceTownAgency({ ...state, tick: state.tick + weeks * AGENCY_WEEK_TICKS });
 
-test("TA-13 a week after one that started nothing reuses its walk: the same needs, proposals and requests", () => {
-  const first = advanceTownAgency(stuckTown());
+/** The stuck town after WALK_REUSE_IDLE_WEEKS weeks that started nothing, each one walked. */
+function idle(): GameState {
+  let state = advanceTownAgency(stuckTown());
+  for (let index = 1; index < WALK_REUSE_IDLE_WEEKS; index += 1) {
+    const next = week(state);
+    assert.equal(next.agency!.lastWalk!.tick, next.tick, `idle week ${index + 1} still walks`);
+    state = next;
+  }
+  return state;
+}
+
+test("TA-13 after four weeks that started nothing a week reuses the walk: the same needs, proposals and requests", () => {
+  const first = idle();
   const walk = first.agency!.lastWalk!;
-  assert.equal(walk.tick, WEEK, "the first week walked and kept its walk");
+  assert.equal(walk.idleWeeks, WALK_REUSE_IDLE_WEEKS);
   assert.equal(first.agency!.receipts.length, 0, "it started nothing");
   const second = week(first);
-  assert.equal(second.agency!.lastWalk, walk, "the next week reused the same walk");
+  assert.equal(second.agency!.lastWalk!.tick, walk.tick, "the next week reused the same walk");
+  assert.equal(second.agency!.lastWalk!.proposals, walk.proposals);
+  assert.equal(second.agency!.lastWalk!.idleWeeks, WALK_REUSE_IDLE_WEEKS + 1);
   assert.deepEqual(second.agency!.requests, first.agency!.requests);
 });
 
 test("TA-13 the lord's policy, subsidies or dues, and the households, walk again the next week", () => {
-  const first = advanceTownAgency(stuckTown());
+  const first = idle();
   const agency = first.agency!;
   const changes: Record<string, GameState> = {
     policy: { ...first, agency: { ...agency, policy: agency.policy === "growth" ? "stability" : "growth" } },
@@ -51,8 +64,8 @@ test("TA-13 the lord's policy, subsidies or dues, and the households, walk again
 });
 
 test("TA-13 a season after the walk, or a treasury that reaches the fund threshold, walks again", () => {
-  const first = advanceTownAgency(stuckTown());
-  const later = week(first, Math.ceil(WALK_REUSE_TICKS / AGENCY_WEEK_TICKS));
+  const first = idle();
+  const later = week(first, Math.ceil((first.agency!.lastWalk!.tick + WALK_REUSE_TICKS - first.tick) / AGENCY_WEEK_TICKS));
   assert.equal(later.agency!.lastWalk?.tick ?? later.tick, later.tick, "a season on: walked again");
   const threshold: GameState = { ...first, agency: { ...first.agency!, lastWalk: { ...first.agency!.lastWalk!, fundThreshold: 1 } } };
   const posted = postLedgerEntries(threshold, [{ account: "cash", category: "opening_balance", amount: 5, sourceRefs: [{ type: "scenario", id: "test" }] }]);
@@ -61,14 +74,14 @@ test("TA-13 a season after the walk, or a treasury that reaches the fund thresho
 });
 
 test("TA-13 a project started from a reused walk carries it on its receipt; a week that starts one keeps no walk", () => {
-  const first = advanceTownAgency(stuckTown());
+  const first = idle();
   assert.ok(first.agency!.lastWalk!.proposals.length > 0, "the stuck walk has proposals the actors could not pay");
   // The actors' purses are not in the key: with money in them the reused proposals start.
   const rich: GameState = { ...first, agency: { ...first.agency!, actors: first.agency!.actors.map(actor => ({ ...actor, funds: 10_000 })) } };
   const next = week(rich);
   const receipt = next.agency!.receipts.at(-1);
   assert.ok(receipt !== undefined, "a project started");
-  assert.equal(receipt.reusedWalk, WEEK);
+  assert.equal(receipt.reusedWalk, first.agency!.lastWalk!.tick);
   assert.equal(next.agency!.lastWalk, undefined, "a week that started something keeps no walk");
 });
 

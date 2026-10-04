@@ -11,7 +11,7 @@ import {
   FIRE_NEIGHBOUR_POINTS, LAND_REACH, LAND_STEP, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, PLAN_SITE_POINTS, policyWeight,
   LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
   START_SCORE, STARTS_PER_WEEK, TEMPERAMENT_SPREAD, CHOICE_SPAN, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
-  WALK_REUSE_TICKS,
+  WALK_REUSE_IDLE_WEEKS, WALK_REUSE_TICKS,
 } from "../content/townAgencyConfig";
 import { constructionSiteId, isBuildingConstructionSite } from "../economy/construction";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
@@ -516,11 +516,11 @@ export function advanceTownAgency(state: GameState): GameState {
   }
   // TA-11: a charter wall search that found no wall is not run again on the same layout (the walls and their service
   // space are read from it); any change to the layout searches again.
-  // TA-13 (LM-E9b): a week after one that started nothing, on the same layout and the lord's same conditions, within a
-  // season of that walk and below its fund threshold, reuses that walk's needs, proposals and requests.
+  // TA-13 (LM-E9b): after WALK_REUSE_IDLE_WEEKS weeks in a row that started nothing, on the same layout and the lord's
+  // same conditions, within a season of the walk and below its fund threshold, a week reuses that walk.
   const key = walkKey(week);
   const last = agency.lastWalk;
-  const reused = last !== undefined && last.key === key && week.tick - last.tick < WALK_REUSE_TICKS
+  const reused = last !== undefined && last.idleWeeks >= WALK_REUSE_IDLE_WEEKS && last.key === key && week.tick - last.tick < WALK_REUSE_TICKS
     && (last.fundThreshold === null || treasuryBalance(week) < last.fundThreshold) ? last : undefined;
   let needs: readonly PlanningNeed[];
   let tried: string | undefined;
@@ -585,8 +585,10 @@ export function advanceTownAgency(state: GameState): GameState {
   // TA-13: the walk is kept only while it starts nothing (a reused one keeps its own tick, key and threshold).
   const treasury = treasuryBalance(week);
   const short = proposals.filter(proposal => proposal.subsidy > treasury).map(proposal => proposal.subsidy);
-  const lastWalk: AgencyWalk | undefined = started > 0 ? undefined : reused ?? { tick: week.tick, key, needs, proposals, requests,
-    fundThreshold: short.length === 0 ? null : Math.min(...short), ...(tried === undefined ? {} : { charterWallTried: tried }) };
+  const idleWeeks = (last?.idleWeeks ?? 0) + 1;
+  const lastWalk: AgencyWalk | undefined = started > 0 ? undefined : reused !== undefined ? { ...reused, idleWeeks }
+    : { tick: week.tick, key, needs, proposals, requests, fundThreshold: short.length === 0 ? null : Math.min(...short),
+      ...(tried === undefined ? {} : { charterWallTried: tried }), idleWeeks };
   return { ...next, agency: { ...kept2, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }),
     ...(lastWalk === undefined ? {} : { lastWalk }) } };
 }

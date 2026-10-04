@@ -135,4 +135,6 @@ export interface AgencyWalk {
   readonly fundThreshold: number | null;
   /** The TA-11 charter wall record the walk left. */
   readonly charterWallTried?: string;
+  /** The weeks in a row that started nothing, this one included (a walk is reused only after WALK_REUSE_IDLE_WEEKS). */
+  readonly idleWeeks: number;
 }
