@@ -1,0 +1,1472 @@
+{
+  "pass": true,
+  "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+  "errors": [],
+  "views": [
+    {
+      "name": "integrated-summer-occupied-z1",
+      "identity": {
+        "state": "integrated-summer-occupied",
+        "savedStateSHA": "a3a6fdb8e7a509b5f6de4f28b0bf76d9af913384dc756655953de2d25f32d899",
+        "tick": 201500,
+        "season": "summer",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave12/bld/manor_house_b-v1.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_summer.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+          "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+          "/assets/wave42/paths/path_clear_ne_summer.png",
+          "/assets/wave42/paths/path_clear_nw_summer.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "e1f31bc58a23b50f5ec4da4f46e7d43a89ebe7b2651efbf89b91ca34aaa4cfea",
+      "repeatRgbaSHA": "e1f31bc58a23b50f5ec4da4f46e7d43a89ebe7b2651efbf89b91ca34aaa4cfea",
+      "shaEqual": true,
+      "expectedCount": 16,
+      "missing": [],
+      "sameIdentityAs4151": true,
+      "sameRgbaAs4151": true,
+      "expectedAssetObservations": [
+        {
+          "url": "/assets/wave12/bld/manor_house_b-v1.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave12/bld/manor_house_b-v1.png",
+              "decoded": true,
+              "width": 416,
+              "height": 328
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_weaver_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_weaver_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_grass_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_grass_summer.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+              "decoded": true,
+              "width": 128,
+              "height": 128
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_ne_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_ne_summer.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_nw_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_nw_summer.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            },
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        }
+      ],
+      "sourcePngSha256": "6d80f332d48a332e3214cf741f26abab7662530182d3aff57e6adcbc45b7d930",
+      "sourceJpegSha256": "a80843f2f9f94dc575594d7ec3b9b389a79e85387c8997f0ba13fdaa6988df7f"
+    },
+    {
+      "name": "integrated-summer-occupied-z06",
+      "identity": {
+        "state": "integrated-summer-occupied",
+        "savedStateSHA": "a3a6fdb8e7a509b5f6de4f28b0bf76d9af913384dc756655953de2d25f32d899",
+        "tick": 201500,
+        "season": "summer",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave12/bld/manor_house_b-v1.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_summer.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+          "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+          "/assets/wave42/paths/path_clear_ne_summer.png",
+          "/assets/wave42/paths/path_clear_nw_summer.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "6bea2af519985691e72074feb76123c2c5ba1e220c0555b47c7d27acacf9ef26",
+      "repeatRgbaSHA": "6bea2af519985691e72074feb76123c2c5ba1e220c0555b47c7d27acacf9ef26",
+      "shaEqual": true,
+      "expectedCount": 16,
+      "missing": [],
+      "sameIdentityAs4151": true,
+      "sameRgbaAs4151": true,
+      "expectedAssetObservations": [
+        {
+          "url": "/assets/wave12/bld/manor_house_b-v1.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave12/bld/manor_house_b-v1.png",
+              "decoded": true,
+              "width": 416,
+              "height": 328
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_weaver_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_weaver_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_grass_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_grass_summer.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+              "decoded": true,
+              "width": 128,
+              "height": 128
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_ne_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_ne_summer.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_nw_summer.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_nw_summer.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            },
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        }
+      ],
+      "sourcePngSha256": "0cb5ebca90d61cf216ca04a8190011e18a0107235f465410813949964855a205",
+      "sourceJpegSha256": "66c3694efc1728dbb43cab652e3042cd2d2941c5ec5dadd5c496ec4349dc30e0"
+    },
+    {
+      "name": "integrated-winter-empty-z1",
+      "identity": {
+        "state": "integrated-winter-empty",
+        "savedStateSHA": "116c7e200f1fd0469eb61087f220b5449ee16fe915e39967ab3638b2af0ee232",
+        "tick": 203500,
+        "season": "winter",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_winter.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+          "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+          "/assets/wave42/paths/path_clear_ne_winter.png",
+          "/assets/wave42/paths/path_clear_nw_winter.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png",
+          "/assets/wave7/season/roof_snow_l1-v2.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "5663a9ab48009d30eecb83f42d7a5b1aca6b62cc01fa1485d8c8836addbe8866",
+      "repeatRgbaSHA": "5663a9ab48009d30eecb83f42d7a5b1aca6b62cc01fa1485d8c8836addbe8866",
+      "shaEqual": true,
+      "expectedCount": 20,
+      "missing": [],
+      "sameIdentityAs4151": true,
+      "sameRgbaAs4151": true,
+      "expectedAssetObservations": [
+        {
+          "url": "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+              "decoded": true,
+              "width": 416,
+              "height": 328
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_weaver_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_weaver_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_grass_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_grass_winter.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+              "decoded": true,
+              "width": 128,
+              "height": 128
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_ne_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_ne_winter.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_nw_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_nw_winter.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            },
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave7/season/roof_snow_l1-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave7/season/roof_snow_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            },
+            {
+              "url": "/assets/wave7/season/roof_snow_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        }
+      ],
+      "sourcePngSha256": "592bf97f6cc1295886426b84c7ff2a5ac5bbcd88390f82f4a25868701ec778df",
+      "sourceJpegSha256": "6b8a063339ea6ddd8a9b7dd77864260177fe1611fb5c41345fcc2e299112a598"
+    },
+    {
+      "name": "integrated-winter-empty-z06",
+      "identity": {
+        "state": "integrated-winter-empty",
+        "savedStateSHA": "116c7e200f1fd0469eb61087f220b5449ee16fe915e39967ab3638b2af0ee232",
+        "tick": 203500,
+        "season": "winter",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_winter.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+          "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+          "/assets/wave42/paths/path_clear_ne_winter.png",
+          "/assets/wave42/paths/path_clear_nw_winter.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png",
+          "/assets/wave7/season/roof_snow_l1-v2.png"
+        ]
+      },
+      "stable": true,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "repeatErrors": [],
+      "rgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127",
+      "repeatRgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127",
+      "shaEqual": true,
+      "expectedCount": 20,
+      "missing": [],
+      "sameIdentityAs4151": true,
+      "sameRgbaAs4151": true,
+      "expectedAssetObservations": [
+        {
+          "url": "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+              "decoded": true,
+              "width": 416,
+              "height": 328
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+              "decoded": true,
+              "width": 137,
+              "height": 137
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+              "decoded": true,
+              "width": 142,
+              "height": 142
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+              "decoded": true,
+              "width": 161,
+              "height": 161
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_baker_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_baker_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave37/trade_weaver_a.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave37/trade_weaver_a.png",
+              "decoded": true,
+              "width": 128,
+              "height": 96
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_grass_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_grass_winter.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+              "decoded": true,
+              "width": 128,
+              "height": 160
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+              "decoded": true,
+              "width": 128,
+              "height": 128
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_ne_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_ne_winter.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave42/paths/path_clear_nw_winter.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave42/paths/path_clear_nw_winter.png",
+              "decoded": true,
+              "width": 512,
+              "height": 64
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            },
+            {
+              "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        },
+        {
+          "url": "/assets/wave7/season/roof_snow_l1-v2.png",
+          "requestCount": 1,
+          "responseStatuses": [
+            200
+          ],
+          "decoded": [
+            {
+              "url": "/assets/wave7/season/roof_snow_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            },
+            {
+              "url": "/assets/wave7/season/roof_snow_l1-v2.png",
+              "decoded": true,
+              "width": 139,
+              "height": 139
+            }
+          ],
+          "observedDraw": true
+        }
+      ],
+      "sourcePngSha256": "792b6658670122f202c6c2d82606af79eb2d7972e2dca6628025bcb31e0673fa",
+      "sourceJpegSha256": "33afb0c2779a1f49477994149a2486c9672c998b08b7aa3294e4ab36d79d6971"
+    }
+  ],
+  "source": {
+    "path": "output/art-architecture/qa003-smoke-v2/captures.json",
+    "sha256": "dfbf9c20f6564eb619b8ebb50181f4cf69b1f75ae718e2daa8cc3584fb12df10",
+    "run": "astra-ARCH1-qa003-smoke-v2-ab67dcb",
+    "coverageScope": "Expected URLs must be requested, decoded, and observed in drawImage lineage reaching the captured canvas; coverage set is explicit per view, not a claim of final visible pixels or occlusion."
+  },
+  "failedPredecessor": {
+    "run": "astra-ARCH1-qa003-smoke-ab67dcb",
+    "captureCount": 0,
+    "exitCode": 1,
+    "reason": "states argument omitted /states subdirectory; ENOENT; no product or visual verdict"
+  },
+  "review": "Parent opened all four source PNGs individually; see qa003-visual.md"
+}

@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "run": "astra-ARCH1-geometry-qa003-1da2327",
+  "commit": "1da2327e627c28172f3f3c7011102cb35b326013",
+  "dirty": false,
+  "inputs": 1969,
+  "inputHash": "97ce43004db357de1ab3756d85c558754164930179fe0f6fb994722682ebb4a1",
+  "measuredAt": "2026-10-04T17:52:24.382Z",
+  "report": "docs/verification/uiaudit1/geometry/astra-ARCH1-geometry-qa003-1da2327/geometry.json",
+  "axes": {
+    "viewports": [
+      "1280x800",
+      "1920x1080",
+      "tablet-1180x820",
+      "1024x768",
+      "1280x720"
+    ],
+    "copies": [
+      "normal",
+      "long"
+    ],
+    "numbers": [
+      "normal",
+      "extreme"
+    ]
+  },
+  "rows": 122,
+  "conditions": 2202,
+  "measured": 2202,
+  "failures": 0,
+  "unopened": 0,
+  "unreachable": [
+    "hud.goal-help",
+    "hud.unlock-banner",
+    "hud.era-ceremony",
+    "hud.build-details"
+  ],
+  "warnings": 693,
+  "byCheck": {
+    "outside": 0,
+    "overflow": 0,
+    "border": 0,
+    "portrait": 0,
+    "overlap": 0,
+    "empty": 0,
+    "controls": 0,
+    "content": 0,
+    "hud": 0,
+    "ornament": 0
+  },
+  "unregisteredFramed": 0,
+  "baseline": {
+    "entries": 0,
+    "counted": 0,
+    "excepted": 0,
+    "exceptions": 1,
+    "added": 0,
+    "fixed": 0
+  },
+  "failureKeys": [],
+  "pageErrors": [],
+  "sourceReportSha256": "96115f8d770ff1e02dee05996c9921635dca16f8ea816987a7e5ac182b1aeba3",
+  "status": "MEASURED_INPUT_PASS_FINAL_HEAD_GATES_PENDING",
+  "limitations": "693 warnings and4 declared unreachable are preserved; does not prove final HEAD check:merge, clean clone or trunk push.",
+  "currentWorkingTreeInputCheck": {
+    "head": "ab67dcb8",
+    "inputMatches": true,
+    "comparison": {
+      "failures": 0,
+      "excepted": 0,
+      "baseline": 0,
+      "exceptions": 0,
+      "counted": [],
+      "added": [],
+      "fixed": [],
+      "staleExceptions": []
+    },
+    "removedStaleException": "modal.history.factions|overflow|chronicle-world-strip",
+    "lastOwner": "e67553b9 kwanhyeonpark-ctrl",
+    "note": "Working tree static comparison only; official check:merge after evidence commit",
+    "sourceSha256": "945751aade534b02b304d56f774e86541fd8b03edee9b6cee9eeb0b5682d2329"
+  },
+  "historicalBaselineNote": "Raw measured report retains exceptions:1. Parent removed only stale exception after current1969 inputs matched; current static comparison exceptions/added/fixed/stale all0. Official check:merge remains pending."
+}

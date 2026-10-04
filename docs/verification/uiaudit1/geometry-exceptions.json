@@ -1,6 +1,4 @@
 {
  "note": "UI-AUDIT-1 geometry gate exceptions (scripts/checks/uiGeometry.mjs): each covers every condition of its row and check whose element path contains `match`. The list only shrinks; check:merge counts it.",
- "exceptions": [
-  { "row": "modal.history.factions", "check": "overflow", "match": "chronicle-world-strip", "detail": "overflow-x", "reason": "세력 띠는 가로로 넘겨 보도록 설계됨 — 가로 스크롤 없이 접는 안은 후속" }
- ]
+ "exceptions": []
 }

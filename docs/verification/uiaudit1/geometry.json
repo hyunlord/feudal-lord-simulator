@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "engine-LME9b-geo-3061ae2",
- "commit": "3061ae245cf744c974f1fe07af30d819be79c599",
+ "run": "astra-ARCH1-geometry-qa003-1da2327",
+ "commit": "1da2327e627c28172f3f3c7011102cb35b326013",
  "dirty": false,
- "inputs": 1822,
- "inputHash": "a7964f8bd415e9d5b4a225ad056e7b4e25906ce43b6f20ab0f11fd66b72f4fd7",
- "measuredAt": "2026-10-04T07:18:46.884Z",
- "report": "docs/verification/uiaudit1/geometry/engine-LME9b-geo-3061ae2/geometry.json",
+ "inputs": 1969,
+ "inputHash": "97ce43004db357de1ab3756d85c558754164930179fe0f6fb994722682ebb4a1",
+ "measuredAt": "2026-10-04T17:52:24.382Z",
+ "report": "docs/verification/uiaudit1/geometry/astra-ARCH1-geometry-qa003-1da2327/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,10 +24,10 @@
    "extreme"
   ]
  },
- "rows": 108,
- "conditions": 1942,
- "measured": 1942,
- "failures": 20,
+ "rows": 122,
+ "conditions": 2202,
+ "measured": 2202,
+ "failures": 0,
  "unopened": 0,
  "unreachable": [
   "hud.goal-help",
@@ -35,10 +35,10 @@
   "hud.era-ceremony",
   "hud.build-details"
  ],
- "warnings": 685,
+ "warnings": 693,
  "byCheck": {
   "outside": 0,
-  "overflow": 20,
+  "overflow": 0,
   "border": 0,
   "portrait": 0,
   "overlap": 0,
@@ -52,7 +52,7 @@
  "baseline": {
   "entries": 0,
   "counted": 0,
-  "excepted": 20,
+  "excepted": 0,
   "exceptions": 1,
   "added": 0,
   "fixed": 0
@@ -509,11 +509,9 @@
    "byCheck": {}
   },
   "modal.history.factions": {
-   "failures": 20,
+   "failures": 0,
    "unopened": 0,
-   "byCheck": {
-    "overflow": 20
-   }
+   "byCheck": {}
   },
   "modal.history.faction-page": {
    "failures": 0,
@@ -579,28 +577,77 @@
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
+  },
+  "modal.lord.home-petition": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.no-art": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.home-petition.guardian": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.precedent": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.request": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "map.selection.lord-farmstead": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt-old": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt-none": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "lord.receipt-inspector": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.lord": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "slot.ledger.lord-refusal": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.food-breakdown": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.command-pins": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
   }
  },
- "failureKeys": [
-  "modal.history.factions|1024x768/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1024x768/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1024x768/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1024x768/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x720/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x720/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x720/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x720/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x800/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x800/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x800/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1280x800/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1920x1080/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1920x1080/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1920x1080/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|1920x1080/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|tablet-1180x820/long/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|tablet-1180x820/long/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|tablet-1180x820/normal/extreme|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip",
-  "modal.history.factions|tablet-1180x820/normal/normal|overflow|div.chronicle-factions > section.chronicle-world > ol.chronicle-world-strip"
- ]
+ "failureKeys": []
 }
