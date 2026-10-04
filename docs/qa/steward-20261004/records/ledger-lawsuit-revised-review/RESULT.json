@@ -1,0 +1,21 @@
+{
+  "status": "4_CONDITIONAL_DRAFT_PASSES_0_REVIEW_HOLDS",
+  "draftApproved": 4,
+  "selectorFindingsResolved": [
+    "BLANK_CAMPAIGN_OR_CLAIM_ID",
+    "ZERO_LEDGER_ORDINAL"
+  ],
+  "originalFixtures": 57,
+  "originalPositive": 8,
+  "originalFallback": 49,
+  "regressionCases": 26,
+  "priorAdversarialCasesReplayed": 10,
+  "sourceFiles": 6,
+  "sourceSpans": 12,
+  "proposalByteIdentical": true,
+  "proposalSha256": "8a56de6ccc131c3b1bb123145276f478b6c244acac6f52d74c1767754b484b84",
+  "authorArtifactsUnchanged": true,
+  "runtimeExecuted": false,
+  "engineInstalled": false,
+  "moneyFormatterExecuted": false
+}

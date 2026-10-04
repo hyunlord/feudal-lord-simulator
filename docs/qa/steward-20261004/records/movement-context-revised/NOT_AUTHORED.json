@@ -1,0 +1,21 @@
+{
+  "assigned": 5,
+  "authored": 5,
+  "remaining": [
+
+  ],
+  "excluded": [
+    {
+      "template": "house.withdrew",
+      "reason": "No physical destination or voluntary move record; source replaces lordship not household travel."
+    },
+    {
+      "template": "agency.timber_ordered",
+      "reason": "Verified automatic producer has charter purpose only and requires old order0. Do not invent repairs/church purpose or extension of an existing order."
+    },
+    {
+      "template": "negotiation.rejected",
+      "reason": "No single rejection reason returned; source offer conditions can vary without inferring motive."
+    }
+  ]
+}

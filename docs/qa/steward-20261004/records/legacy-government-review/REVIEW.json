@@ -1,0 +1,26 @@
+{
+  "verdict": "PASS_OFFLINE_DRAFT_WITH_INTEGRATION_BLOCK",
+  "templates": 6,
+  "variants": 14,
+  "mandatoryCopyCorrections": [
+
+  ],
+  "factLineConflicts": [
+
+  ],
+  "authorSelectorChecksReproduced": 308,
+  "authorProposalNegativesReproduced": 4,
+  "additionalIndependentSchemaNegatives": 238,
+  "sourceFiles": 10,
+  "sourceSpans": 18,
+  "engineChanged": false,
+  "canonicalChanged": false,
+  "originalArtifactsChanged": false,
+  "runtimeExecuted": false,
+  "captureImplemented": false,
+  "conditions": [
+    "Verified emission snapshot adapter",
+    "Provenance binding and safe unknown fallback",
+    "Save roundtrip and runtime composition verification"
+  ]
+}

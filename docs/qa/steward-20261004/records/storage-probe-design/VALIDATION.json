@@ -1,0 +1,14 @@
+{
+  "sourceFiles": 14,
+  "sourceSpans": 19,
+  "horizon": {
+    "retainedMaxTargetRoute": 47,
+    "conservativeTicksPerEdge": 15,
+    "initialDrainTicks": 941,
+    "calculated": 3839,
+    "publicTickLimit": 3840,
+    "wallSecondsLimit": 180
+  },
+  "hypotheses": 4,
+  "scope": "source and JSON arithmetic only; no engine run/helper implementation"
+}

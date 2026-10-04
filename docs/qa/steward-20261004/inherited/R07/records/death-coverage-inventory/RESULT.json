@@ -1,0 +1,13 @@
+{
+  "status": "RECORDED_PERSON_DEATH_YEAR_CAUSE_COVERAGE_RECONSTRUCTIBLE",
+  "runs": 3,
+  "annualComparisons": 450,
+  "annualMismatches": 0,
+  "checkpointDeathLosses": 0,
+  "historyCountsAreNotTotalDeathCounts": true,
+  "exactTickCoverage": "famine/famine_year/plague all linked; some age deaths lack person.died",
+  "fullWorldDeathsCertified": false,
+  "newFullRunNeededForRecordedAnnualCounts": false,
+  "eventTapNeededForDeathTimeHouseholdCausality": "Only if that causal question is required; bound short event windows first",
+  "engineExecuted": false
+}

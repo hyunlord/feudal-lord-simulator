@@ -1,0 +1,88 @@
+[
+  {
+    "id": "departuresAtWageOpening",
+    "values": [
+      "none_recorded",
+      "departure_recorded"
+    ],
+    "templates": [
+      "reorg.wage_competition"
+    ],
+    "capture": "src/engine/reorganisation.ts:417-424",
+    "producer": "src/engine/history.ts:689-720",
+    "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+    "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+    "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Only wageCompetitionTick undefined->defined at after.tick. Compare before/after wageLeavers counters, safe nonnegative integers (undefined before reorganisation means source default0 only when creation proved). delta0 -> none_recorded; delta>0 -> departure_recorded. Counter captures this wage mechanism, not all town departures; no claim poorest person chose destination."
+  },
+  {
+    "id": "headAtGuildFoundation",
+    "values": [
+      "assigned",
+      "unassigned"
+    ],
+    "templates": [
+      "reorg.guild_founded"
+    ],
+    "capture": "src/engine/reorganisation.ts:214-220,238-240",
+    "producer": "src/engine/history.ts:689-720",
+    "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+    "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+    "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Only guild undefined->defined. after.guild.headId null -> unassigned; nonempty ID -> assigned only if exact selected ID exists uniquely in event-time persons.people. Current head at reading does not qualify. No class/occupation/blood relation inference; null proves no recorded appointee, not permanent headless guild."
+  },
+  {
+    "id": "guildAnswerAtDeparture",
+    "values": [
+      "refused",
+      "expired"
+    ],
+    "templates": [
+      "reorg.weavers_left"
+    ],
+    "capture": "src/engine/reorganisation.ts:189-211,469-476",
+    "producer": "src/engine/history.ts:689-720",
+    "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+    "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+    "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Only actual weaverLeavers increase. Capture after.answers.guild_charter exact refuse or expired. Do not derive occupation from nearest weaver_house sorting; count is cumulative and not this departure delta. Existing factual line calls all departing households weavers and gives a destination not modeled by leave; block composition until neutral fact reviewed."
+  },
+  {
+    "id": "guildAtWarning",
+    "values": [
+      "founded",
+      "not_founded"
+    ],
+    "templates": [
+      "reorg.overlord_warning"
+    ],
+    "capture": "src/engine/reorganisation.ts:438-446",
+    "producer": "src/engine/history.ts:689-720",
+    "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+    "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+    "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Only warningTick undefined->defined. after.guild exists foundedTick<=after.tick -> founded; absent -> not_founded. Invalid/future tick unknown. Condition documents coexistence only, not guild as sole warning cause; warning requires petition and influence threshold."
+  },
+  {
+    "id": "autonomyRouteAtRequest",
+    "values": [
+      "chased",
+      "guild_accepted",
+      "guild_not_accepted"
+    ],
+    "templates": [
+      "reorg.autonomy_request"
+    ],
+    "capture": "src/engine/reorganisation.ts:305-308,478-480",
+    "producer": "src/engine/history.ts:689-720",
+    "currentRecordStorage": "Context absent from existing record; snapshot proposed.",
+    "currentOtherStorage": "Mutable reorganisation/person state; never read current state to reconstruct a historical condition.",
+    "immutableReconstruction": "Unknown for older records unless exact immutable event-time capture verified; no nearest-record or present-person inference.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Capture actual autonomyDue branch at first autonomyTick. rebellion.outcome=chased with rebellion.tick<after.tick -> chased; else answers.guild_charter=accept -> guild_accepted; else -> guild_not_accepted. Require valid state and emission guard. Ordered first match; no cause inference beyond stored prior answer/event, no internal deadline historical story."
+  }
+]

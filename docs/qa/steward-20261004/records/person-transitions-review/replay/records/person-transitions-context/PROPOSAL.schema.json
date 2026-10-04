@@ -1,0 +1,322 @@
+{
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "status",
+    "sourceHead",
+    "baselineSha256",
+    "fields",
+    "fallback",
+    "additions"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": "person-transitions-context-v1"
+    },
+    "status": {
+      "const": "DRAFT_UNINSTALLED"
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "baselineSha256": {
+      "const": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf"
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          {
+            "id": "arrivalSize",
+            "templates": [
+              "person.move_in"
+            ],
+            "values": [
+              "one",
+              "several"
+            ],
+            "provenance": "emission_snapshot",
+            "currentRecordStorage": "absent: proposed context field, not installed",
+            "immutableReconstruction": "Do not use current people/houses to reconstruct old facts. Unavailable exact emission snapshots or ambiguous IDs -> unknown.",
+            "captureRule": "Same household building ID across before/after; old residents==0, after>0, old not abandoned. Mirror emitter early-continue for new burning/new abandonment. Household subject must be exact household with no head in before/after; person subject must equal emitter headOf (before heads then after heads overwrite), exactly one matching household actor. Count is household residentsAfter, never subject age. One versus >=2. Full normalized snapshot required; missing persons conservatively unknown although emitter may run without persons."
+          },
+          {
+            "id": "spouseHousehold",
+            "templates": [
+              "person.married"
+            ],
+            "values": [
+              "manor",
+              "town_house"
+            ],
+            "provenance": "emission_snapshot",
+            "currentRecordStorage": "absent: proposed context field, not installed",
+            "immutableReconstruction": "Do not use current people/houses to reconstruct old facts. Unavailable exact emission snapshots or ambiguous IDs -> unknown.",
+            "captureRule": "Exact new after.people person absent from before.people with role spouse, same record subject ID. Do not derive spouse identity from gender, surname or current read-time family. Proposed stricter scope: same sole head ID before/after, no prior spouse and exactly one after spouse. Household manor -> manor; otherwise require matching occupied unburnt unabandoned after house -> town_house. record actors absent for manor, exactly matching household otherwise. Event may create a spouse in an existing household: do not claim new dwelling, first marriage, love, remarriage, a new separate household, or a named partner."
+          },
+          {
+            "id": "householdPeopleAfter",
+            "templates": [
+              "person.left_town"
+            ],
+            "values": [
+              "present",
+              "absent"
+            ],
+            "provenance": "emission_snapshot",
+            "currentRecordStorage": "absent: proposed context field, not installed",
+            "immutableReconstruction": "Do not use current people/houses to reconstruct old facts. Unavailable exact emission snapshots or ambiguous IDs -> unknown.",
+            "captureRule": "Subject exists in before.people, absent after.people, appears alive in newly appended after.past slice with exact ID and unchanged householdId. before.past normalized prefix preserved; dead person must fallback. Count other after.people entries with that householdId in complete exact-event snapshot: >0 present, 0 absent. No assertion about all kin, household residents numeric count, death, motive, destination, or whether others departed simultaneously. manor actor rule as married."
+          }
+        ]
+      }
+    },
+    "fallback": {
+      "const": {
+        "unknown": "retain_original_fact_line",
+        "retainFactLine": true
+      }
+    },
+    "additions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "properties": {
+              "template": {
+                "const": "person.move_in"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "properties": {
+                        "field": {
+                          "const": "context.arrivalSize"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "one",
+                            "several"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "properties": {
+              "template": {
+                "const": "person.married"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "properties": {
+                        "field": {
+                          "const": "context.spouseHousehold"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "manor",
+                            "town_house"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "properties": {
+              "template": {
+                "const": "person.left_town"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "properties": {
+                        "field": {
+                          "const": "context.householdPeopleAfter"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "present",
+                            "absent"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1,
+                    "pattern": "\\S"
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            },
+            "additionalProperties": false
+          }
+        ]
+      }
+    }
+  },
+  "additionalProperties": false
+}

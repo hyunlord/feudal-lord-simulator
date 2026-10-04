@@ -1,0 +1,584 @@
+[
+  {
+    "id": "milestone.chapter_start.r06stage.second",
+    "selected": "milestone.chapter_start.r06stage.second",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.chapter_start",
+      "params": {
+        "chapter": 2
+      }
+    },
+    "capture": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.second.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last",
+    "selected": "milestone.chapter_start.r06stage.last",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.chapter_start",
+      "params": {
+        "chapter": 5
+      }
+    },
+    "capture": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_start.r06stage.last.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first",
+    "selected": "milestone.chapter_end.r06stage.first",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.chapter_end",
+      "params": {
+        "chapter": 1
+      }
+    },
+    "capture": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.first.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last",
+    "selected": "milestone.chapter_end.r06stage.last",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.chapter_end",
+      "params": {
+        "chapter": 5
+      }
+    },
+    "capture": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.chapter_end.r06stage.last.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market",
+    "selected": "milestone.market_town.r06stage.market",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.market_town",
+      "params": {
+        "era": "market_town"
+      }
+    },
+    "capture": {
+      "version": 1,
+      "recordId": "r",
+      "capturedAtTick": 100,
+      "source": "milestone_emitter_after",
+      "era": "market_town",
+      "l4Count": 1
+    }
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.missing.recordId",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.missing.capturedAtTick",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.missing.source",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.market.missing.version",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone",
+    "selected": "milestone.market_town.r06stage.stone",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.market_town",
+      "params": {
+        "era": "stone_town"
+      }
+    },
+    "capture": {
+      "version": 1,
+      "recordId": "r",
+      "capturedAtTick": 100,
+      "source": "milestone_emitter_after",
+      "era": "stone_town",
+      "l4Count": 1
+    }
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.missing.recordId",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.missing.capturedAtTick",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.missing.source",
+    "selected": null
+  },
+  {
+    "id": "milestone.market_town.r06stage.stone.missing.version",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one",
+    "selected": "milestone.first_l4.r06stage.one",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.first_l4",
+      "params": {
+        "l4Count": 1
+      }
+    },
+    "capture": {
+      "version": 1,
+      "recordId": "r",
+      "capturedAtTick": 100,
+      "source": "milestone_emitter_after",
+      "era": "market_town",
+      "l4Count": 1
+    }
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.missing.recordId",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.missing.capturedAtTick",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.missing.source",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.one.missing.version",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several",
+    "selected": "milestone.first_l4.r06stage.several",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "milestone.first_l4",
+      "params": {
+        "l4Count": 2
+      }
+    },
+    "capture": {
+      "version": 1,
+      "recordId": "r",
+      "capturedAtTick": 100,
+      "source": "milestone_emitter_after",
+      "era": "market_town",
+      "l4Count": 2
+    }
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.missing.recordId",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.missing.capturedAtTick",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.missing.source",
+    "selected": null
+  },
+  {
+    "id": "milestone.first_l4.r06stage.several.missing.version",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two",
+    "selected": "person.grew.r06stage.two",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "person.grew",
+      "params": {
+        "residents": 2
+      }
+    },
+    "capture": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.two.invalid.9007199254740992",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several",
+    "selected": "person.grew.r06stage.several",
+    "record": {
+      "id": "r",
+      "tick": 100,
+      "template": "person.grew",
+      "params": {
+        "residents": 3
+      }
+    },
+    "capture": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.nil",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.\"1\"",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.false",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.{}",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.[]",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.0",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.-1",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.1.5",
+    "selected": null
+  },
+  {
+    "id": "person.grew.r06stage.several.invalid.9007199254740992",
+    "selected": null
+  }
+]

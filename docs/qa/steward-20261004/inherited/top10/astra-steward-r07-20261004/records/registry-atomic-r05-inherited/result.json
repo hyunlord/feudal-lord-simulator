@@ -1,0 +1,436 @@
+{
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "helperSha256": "3fc5648d81fabc7e8274bfeb4a92e9f388881602266c0a79d7e1115d763c723d",
+  "fixture": "official newGameState seed1 lord + synthetic RegistryEntry only",
+  "sourceState": {
+    "hash": "ea0daf816774fa303d169756e2ef524d9dbd1726606cd0bfbed68c79e684e9cd",
+    "tick": 0,
+    "population": 12,
+    "treasury": 60,
+    "subsidies": [],
+    "nextSubsidy": 1,
+    "lastRefusal": null
+  },
+  "limit": 15,
+  "firstAmount": 7,
+  "fits": 8,
+  "exceedsAfterFirst": 9,
+  "trace": {
+    "firstRefusal": null,
+    "first": {
+      "hash": "8c1c5d41ea7dc3a52044059bc0464547201482fa7f682734860448809ebd9481",
+      "tick": 0,
+      "population": 12,
+      "treasury": 60,
+      "subsidies": [
+        {
+          "id": "subsidy-1",
+          "kind": "granary",
+          "amount": 7
+        }
+      ],
+      "nextSubsidy": 2,
+      "lastRefusal": null
+    },
+    "secondRefusal": {
+      "reason": "over_treasury_share",
+      "tick": 0,
+      "kind": "mill",
+      "amount": 9,
+      "total": 16,
+      "limit": 15
+    },
+    "second": {
+      "hash": "43611d29accdfa3b0b9b00dce4c060d2f8db3607676e94b296915c54c01c5eb8",
+      "tick": 0,
+      "population": 12,
+      "treasury": 60,
+      "subsidies": [
+        {
+          "id": "subsidy-1",
+          "kind": "granary",
+          "amount": 7
+        }
+      ],
+      "nextSubsidy": 2,
+      "lastRefusal": {
+        "reason": "over_treasury_share",
+        "tick": 0,
+        "kind": "mill",
+        "amount": 9,
+        "total": 16,
+        "limit": 15
+      }
+    },
+    "secondReferenceChanged": true,
+    "secondSubsidiesUnchanged": true,
+    "inputUnchanged": true,
+    "firstInputUnchanged": true
+  },
+  "cases": [
+    {
+      "id": "synthetic:atomic:second-refused",
+      "syntheticEntry": {
+        "id": "synthetic:atomic:second-refused",
+        "kind": "event",
+        "source": "probe-only-not-campaign",
+        "years": {
+          "fromYear": 1300,
+          "toYear": 1450
+        },
+        "sender": "probe",
+        "bind": "none",
+        "frequency": {
+          "chancePermille": 1000,
+          "weight": 1,
+          "minGapSeasons": 1,
+          "maxPerYear": 1
+        },
+        "recurrence": {
+          "mode": "once",
+          "cooldownSeasons": 0,
+          "maxOccurrences": 1
+        },
+        "choices": [
+          {
+            "id": "probe",
+            "effects": [
+              {
+                "command": "set_project_subsidy",
+                "kind": "granary",
+                "amount": 7
+              },
+              {
+                "command": "set_project_subsidy",
+                "kind": "mill",
+                "amount": 9
+              }
+            ]
+          },
+          {
+            "id": "leave",
+            "effects": [
+              {
+                "command": "none"
+              }
+            ]
+          }
+        ],
+        "precedent": false,
+        "artId": null
+      },
+      "before": {
+        "hash": "ea0daf816774fa303d169756e2ef524d9dbd1726606cd0bfbed68c79e684e9cd",
+        "tick": 0,
+        "population": 12,
+        "treasury": 60,
+        "subsidies": [],
+        "nextSubsidy": 1,
+        "lastRefusal": null
+      },
+      "result": {
+        "hash": "43611d29accdfa3b0b9b00dce4c060d2f8db3607676e94b296915c54c01c5eb8",
+        "tick": 0,
+        "population": 12,
+        "treasury": 60,
+        "subsidies": [
+          {
+            "id": "subsidy-1",
+            "kind": "granary",
+            "amount": 7
+          }
+        ],
+        "nextSubsidy": 2,
+        "lastRefusal": {
+          "reason": "over_treasury_share",
+          "tick": 0,
+          "kind": "mill",
+          "amount": 9,
+          "total": 16,
+          "limit": 15
+        }
+      },
+      "resultIsNull": false,
+      "enabled": [
+        "probe",
+        "leave"
+      ],
+      "probeEnabled": true,
+      "inputUnchanged": true,
+      "enabledInputUnchanged": true,
+      "resultTickUnchanged": true,
+      "resultTreasuryUnchanged": true,
+      "resultPopulationUnchanged": true
+    },
+    {
+      "id": "synthetic:atomic:both-succeed",
+      "syntheticEntry": {
+        "id": "synthetic:atomic:both-succeed",
+        "kind": "event",
+        "source": "probe-only-not-campaign",
+        "years": {
+          "fromYear": 1300,
+          "toYear": 1450
+        },
+        "sender": "probe",
+        "bind": "none",
+        "frequency": {
+          "chancePermille": 1000,
+          "weight": 1,
+          "minGapSeasons": 1,
+          "maxPerYear": 1
+        },
+        "recurrence": {
+          "mode": "once",
+          "cooldownSeasons": 0,
+          "maxOccurrences": 1
+        },
+        "choices": [
+          {
+            "id": "probe",
+            "effects": [
+              {
+                "command": "set_project_subsidy",
+                "kind": "granary",
+                "amount": 7
+              },
+              {
+                "command": "set_project_subsidy",
+                "kind": "mill",
+                "amount": 8
+              }
+            ]
+          },
+          {
+            "id": "leave",
+            "effects": [
+              {
+                "command": "none"
+              }
+            ]
+          }
+        ],
+        "precedent": false,
+        "artId": null
+      },
+      "before": {
+        "hash": "ea0daf816774fa303d169756e2ef524d9dbd1726606cd0bfbed68c79e684e9cd",
+        "tick": 0,
+        "population": 12,
+        "treasury": 60,
+        "subsidies": [],
+        "nextSubsidy": 1,
+        "lastRefusal": null
+      },
+      "result": {
+        "hash": "28781d8242157e99d4771b28b2a6ce22bea698835cc47f9386b0c650ba1f04b5",
+        "tick": 0,
+        "population": 12,
+        "treasury": 60,
+        "subsidies": [
+          {
+            "id": "subsidy-1",
+            "kind": "granary",
+            "amount": 7
+          },
+          {
+            "id": "subsidy-2",
+            "kind": "mill",
+            "amount": 8
+          }
+        ],
+        "nextSubsidy": 3,
+        "lastRefusal": null
+      },
+      "resultIsNull": false,
+      "enabled": [
+        "probe",
+        "leave"
+      ],
+      "probeEnabled": true,
+      "inputUnchanged": true,
+      "enabledInputUnchanged": true,
+      "resultTickUnchanged": true,
+      "resultTreasuryUnchanged": true,
+      "resultPopulationUnchanged": true
+    },
+    {
+      "id": "synthetic:atomic:first-refused",
+      "syntheticEntry": {
+        "id": "synthetic:atomic:first-refused",
+        "kind": "event",
+        "source": "probe-only-not-campaign",
+        "years": {
+          "fromYear": 1300,
+          "toYear": 1450
+        },
+        "sender": "probe",
+        "bind": "none",
+        "frequency": {
+          "chancePermille": 1000,
+          "weight": 1,
+          "minGapSeasons": 1,
+          "maxPerYear": 1
+        },
+        "recurrence": {
+          "mode": "once",
+          "cooldownSeasons": 0,
+          "maxOccurrences": 1
+        },
+        "choices": [
+          {
+            "id": "probe",
+            "effects": [
+              {
+                "command": "set_project_subsidy",
+                "kind": "granary",
+                "amount": 16
+              }
+            ]
+          },
+          {
+            "id": "leave",
+            "effects": [
+              {
+                "command": "none"
+              }
+            ]
+          }
+        ],
+        "precedent": false,
+        "artId": null
+      },
+      "before": {
+        "hash": "ea0daf816774fa303d169756e2ef524d9dbd1726606cd0bfbed68c79e684e9cd",
+        "tick": 0,
+        "population": 12,
+        "treasury": 60,
+        "subsidies": [],
+        "nextSubsidy": 1,
+        "lastRefusal": null
+      },
+      "result": {
+        "hash": "c49502e1e3d922973d0b4e693f4ad0c34c87209e26bfa2e230bd98cbeaa0b978",
+        "tick": 0,
+        "population": 12,
+        "treasury": 60,
+        "subsidies": [],
+        "nextSubsidy": 1,
+        "lastRefusal": {
+          "reason": "over_treasury_share",
+          "tick": 0,
+          "kind": "granary",
+          "amount": 16,
+          "total": 16,
+          "limit": 15
+        }
+      },
+      "resultIsNull": false,
+      "enabled": [
+        "probe",
+        "leave"
+      ],
+      "probeEnabled": true,
+      "inputUnchanged": true,
+      "enabledInputUnchanged": true,
+      "resultTickUnchanged": true,
+      "resultTreasuryUnchanged": true,
+      "resultPopulationUnchanged": true
+    },
+    {
+      "id": "synthetic:atomic:later-real-null",
+      "syntheticEntry": {
+        "id": "synthetic:atomic:later-real-null",
+        "kind": "event",
+        "source": "probe-only-not-campaign",
+        "years": {
+          "fromYear": 1300,
+          "toYear": 1450
+        },
+        "sender": "probe",
+        "bind": "none",
+        "frequency": {
+          "chancePermille": 1000,
+          "weight": 1,
+          "minGapSeasons": 1,
+          "maxPerYear": 1
+        },
+        "recurrence": {
+          "mode": "once",
+          "cooldownSeasons": 0,
+          "maxOccurrences": 1
+        },
+        "choices": [
+          {
+            "id": "probe",
+            "effects": [
+              {
+                "command": "set_project_subsidy",
+                "kind": "granary",
+                "amount": 7
+              },
+              {
+                "command": "treasury",
+                "amount": -61
+              }
+            ]
+          },
+          {
+            "id": "leave",
+            "effects": [
+              {
+                "command": "none"
+              }
+            ]
+          }
+        ],
+        "precedent": false,
+        "artId": null
+      },
+      "before": {
+        "hash": "ea0daf816774fa303d169756e2ef524d9dbd1726606cd0bfbed68c79e684e9cd",
+        "tick": 0,
+        "population": 12,
+        "treasury": 60,
+        "subsidies": [],
+        "nextSubsidy": 1,
+        "lastRefusal": null
+      },
+      "result": null,
+      "resultIsNull": true,
+      "enabled": [
+        "leave"
+      ],
+      "probeEnabled": false,
+      "inputUnchanged": true,
+      "enabledInputUnchanged": true,
+      "resultTickUnchanged": true,
+      "resultTreasuryUnchanged": true,
+      "resultPopulationUnchanged": true
+    }
+  ],
+  "checks": {
+    "originalUnchanged": true,
+    "allCallInputsUnchanged": true,
+    "noTimeOrPopulationAdvance": true,
+    "returnedTreasuryUnchanged": true,
+    "officialFirstAccepted": true,
+    "officialSecondRefused": true,
+    "successControl": true,
+    "realNullControl": true
+  },
+  "bugSignature": {
+    "partialAcceptedDespiteRefusal": true,
+    "firstRefusalAlsoEnabled": true
+  },
+  "controlsPassed": true,
+  "reproduced": true,
+  "expectedAtomicContract": "any refused effect -> applyChoice null and probe absent from enabledChoices",
+  "advanceCalls": 0,
+  "limitations": [
+    "Not an observed campaign event",
+    "No live long-run state used",
+    "No engine fix",
+    "No population causality"
+  ]
+}

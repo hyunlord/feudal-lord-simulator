@@ -1,0 +1,26 @@
+{
+  "status": "all_candidates_uninstalled",
+  "allVariantsRequireProvenanceAdapter": true,
+  "blocks": [
+
+  ],
+  "limitations": [
+    {
+      "template": "agency.timber_ordered",
+      "status": "REQUIRE_EXACT_AUTOMATIC_CHARTER_PRODUCER",
+      "reason": "History compares order amounts without carrying producer. Without source-operation provenance do not assert charter purpose or point; baseline itself assumes charter."
+    },
+    {
+      "template": "negotiation.rejected",
+      "status": "NO_REJECTION_REASON_CAPTURED",
+      "reason": "Terms classify proposal, not motive. Proposal creates no marriage contract or jointure/debt transfer."
+    },
+    {
+      "template": "house.resettled",
+      "status": "REQUIRE_ACTUAL_RESETTLE_FLOW",
+      "reason": "History only tests population crossing; bread allocation must come from exact resettleTown invocation, not coincident population change."
+    }
+  ],
+  "factLineReview": "No direct contradiction found in these 13 draft compositions under specified capture guards. Not independently reviewed.",
+  "completionBoundary": "Engine implementation not required to deliver draft."
+}

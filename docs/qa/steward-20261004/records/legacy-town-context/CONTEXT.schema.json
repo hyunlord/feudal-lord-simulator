@@ -1,0 +1,662 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.staple"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "weaversAtStaple"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "weaversAtStaple": {
+              "enum": [
+                "present",
+                "absent"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.staple"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.guild_dispute"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "guildHeadAtDispute"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "guildHeadAtDispute": {
+              "enum": [
+                "identified",
+                "unidentified"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.guild_dispute"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.market_fire"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "repairPaymentAtFire"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "repairPaymentAtFire": {
+              "enum": [
+                "full",
+                "partial",
+                "zero"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.market_fire"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.church_rebuilding"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "treasuryAtNaveRequest"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "treasuryAtNaveRequest": {
+              "enum": [
+                "covers_cost",
+                "below_cost"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.church_rebuilding"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.nave_rebuilt"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "navePaymentAtRecord"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "navePaymentAtRecord": {
+              "enum": [
+                "full",
+                "partial",
+                "zero"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.nave_rebuilt"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.deposition"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "crownResetAtDeposition"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "crownResetAtDeposition": {
+              "enum": [
+                "toward_closer",
+                "toward_distant",
+                "unchanged"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "legacy.deposition"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

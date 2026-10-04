@@ -1,0 +1,254 @@
+{
+  "checks": {
+    "manifest": 22,
+    "official_copies": 19,
+    "source_pins": 9,
+    "annual_rows": 150,
+    "codec_logs": 38,
+    "saved_files": 9,
+    "annual_death_reconstruction_mismatches": [
+
+    ],
+    "final_population": 640,
+    "final_cash": 521469,
+    "final_deaths": {
+      "age": 1840,
+      "fire": 13,
+      "famine_year": 14,
+      "famine": 27,
+      "plague": 342
+    },
+    "recorded_death_total": 2236,
+    "exit": 0,
+    "command_seconds": 969.9,
+    "summary_seconds": 967,
+    "final_tick": 600000,
+    "findings": [
+
+    ],
+    "pending": [
+
+    ]
+  },
+  "saves": [
+    {
+      "label": "final",
+      "tick": 600000,
+      "state_sha256": "dc0f5edfcff2c8a9e0b7823dfb2f40b5adb32c4ca4db2ca36c49cd768f71f3dc",
+      "population": 640,
+      "cash": 521469,
+      "deaths": {
+        "age": 1840,
+        "fire": 13,
+        "famine_year": 14,
+        "famine": 27,
+        "plague": 342
+      },
+      "annual_metrics_match": true
+    },
+    {
+      "label": "latest",
+      "tick": 600000,
+      "state_sha256": "dc0f5edfcff2c8a9e0b7823dfb2f40b5adb32c4ca4db2ca36c49cd768f71f3dc",
+      "population": 640,
+      "cash": 521469,
+      "deaths": {
+        "age": 1840,
+        "fire": 13,
+        "famine_year": 14,
+        "famine": 27,
+        "plague": 342
+      },
+      "annual_metrics_match": true
+    },
+    {
+      "label": "start",
+      "tick": 0,
+      "state_sha256": "68a0789740e4d40aa223bd1e34868606a763a79e2197925b198e703a248116ee",
+      "population": 12,
+      "cash": 60,
+      "deaths": {
+      },
+      "annual_metrics_match": false
+    },
+    {
+      "label": "year-1325",
+      "tick": 100000,
+      "state_sha256": "dca47da8b0a589903799d7f10450e91400481c025732020f1c075e3286225547",
+      "population": 400,
+      "cash": 43273,
+      "deaths": {
+        "age": 122,
+        "fire": 2,
+        "famine_year": 14,
+        "famine": 18
+      },
+      "annual_metrics_match": true
+    },
+    {
+      "label": "year-1350",
+      "tick": 200000,
+      "state_sha256": "48424d4bbf10ee9aa9d020bd3a02d920e6fdbc4ec3a7e67f16cc1398e605eb1c",
+      "population": 379,
+      "cash": 115398,
+      "deaths": {
+        "age": 408,
+        "fire": 8,
+        "famine_year": 14,
+        "famine": 27,
+        "plague": 274
+      },
+      "annual_metrics_match": true
+    },
+    {
+      "label": "year-1375",
+      "tick": 300000,
+      "state_sha256": "bcfa5f76e072895784d210686cedfa7fc4fe5cd697a07d1670573f7cdc84270a",
+      "population": 640,
+      "cash": 213996,
+      "deaths": {
+        "age": 715,
+        "fire": 9,
+        "famine_year": 14,
+        "famine": 27,
+        "plague": 342
+      },
+      "annual_metrics_match": true
+    },
+    {
+      "label": "year-1400",
+      "tick": 400000,
+      "state_sha256": "84432503d02acb343731e6ee1c922dbe8ef02c1c8b5092ff39e228f017e79f4d",
+      "population": 640,
+      "cash": 316472,
+      "deaths": {
+        "age": 1058,
+        "fire": 13,
+        "famine_year": 14,
+        "famine": 27,
+        "plague": 342
+      },
+      "annual_metrics_match": true
+    },
+    {
+      "label": "year-1425",
+      "tick": 500000,
+      "state_sha256": "21f70e427073bbd45936de99629afcbd65acb28817359869477c7a2cf22e7703",
+      "population": 640,
+      "cash": 422846,
+      "deaths": {
+        "age": 1447,
+        "fire": 13,
+        "famine_year": 14,
+        "famine": 27,
+        "plague": 342
+      },
+      "annual_metrics_match": true
+    },
+    {
+      "label": "year-1450",
+      "tick": 600000,
+      "state_sha256": "dc0f5edfcff2c8a9e0b7823dfb2f40b5adb32c4ca4db2ca36c49cd768f71f3dc",
+      "population": 640,
+      "cash": 521469,
+      "deaths": {
+        "age": 1840,
+        "fire": 13,
+        "famine_year": 14,
+        "famine": 27,
+        "plague": 342
+      },
+      "annual_metrics_match": true
+    }
+  ],
+  "pins": [
+    {
+      "file": "commands.jsonl",
+      "sha256": "07eb97d788ddd81d786c8da50d71116040c03d8d6860be147c3bd8b386365eb4"
+    },
+    {
+      "file": "controls.json",
+      "sha256": "0562e43105e3368cdc333a8114c7469a161e9c5fa26398543bd41af09d19b250"
+    },
+    {
+      "file": "final.fls.json",
+      "sha256": "1ebcbe52a8b5641024480b553661f07298e6119ed60f1c6264e9f1b2b3dccb5c"
+    },
+    {
+      "file": "latest.fls.json",
+      "sha256": "d1596f64f670db23ae5ff07e55cb96c9987d534e4bf680b42ca088cdfb73714b"
+    },
+    {
+      "file": "metadata.json",
+      "sha256": "96927accb3546f74f3da77c3946687b91d72df41df56068631025069b91a7578"
+    },
+    {
+      "file": "progress.json",
+      "sha256": "8269bdd451f7586a4f2fb8290f08e95deff4e366b10706f8796a447467b2a03b"
+    },
+    {
+      "file": "registry-selections.jsonl",
+      "sha256": "77fc99edfd4a6251c154b95fa176aed132f84238e9435bbb18e81cb1c3d03a63"
+    },
+    {
+      "file": "registry-wait-outcomes.jsonl",
+      "sha256": "ea4a3390bdc1ab76ead1254441ef58db66fb6bf431d1cbf1f6f6009d77466760"
+    },
+    {
+      "file": "registry-waits.jsonl",
+      "sha256": "b62e0fa3bbbc4a1a3bc8f053dfe645d42255b60e4fbabffe7af5f6452fec70dd"
+    },
+    {
+      "file": "runner-exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa"
+    },
+    {
+      "file": "runner-timing.env",
+      "sha256": "7331126cc846f71ca47fac54ed0345e48bce28f37d998ae1caf087c59e63331d"
+    },
+    {
+      "file": "runner-unit",
+      "sha256": "8939cb69af15d576c772755ef3f1bfbbc156f939a1b9a0bc093c9fafa15e3e86"
+    },
+    {
+      "file": "save-checks.jsonl",
+      "sha256": "0bba6367bc3d066ceb61d6bedf1b60d9f2f115afe0ff83bdb24ea7625b094f61"
+    },
+    {
+      "file": "start.fls.json",
+      "sha256": "08c79b462619b6f7063a7a28ffad192ed5d5c6df86f66f2e726553e4e022a990"
+    },
+    {
+      "file": "summary.json",
+      "sha256": "6c9abc069d655a9bb6fd510bdec05a71c4ce1b08a2fc52ff20349fb66ea62c49"
+    },
+    {
+      "file": "year-1325.fls.json",
+      "sha256": "8a1e8bf5e44961942a79c062e71ec0701266f20eebc425b2bbe6a6d84da619dd"
+    },
+    {
+      "file": "year-1350.fls.json",
+      "sha256": "3db6f2012594cccf754d106693f7884b26ba6c2fb4717659dd0d6abebd895c34"
+    },
+    {
+      "file": "year-1375.fls.json",
+      "sha256": "4fd4afc5692db863130dd80a57380b579a6731c613e086cf1832692d1a124637"
+    },
+    {
+      "file": "year-1400.fls.json",
+      "sha256": "1ea420744f1f1d7c6a5d81c60362c7ae171f5a0a775038111f17e82633cccc27"
+    },
+    {
+      "file": "year-1425.fls.json",
+      "sha256": "e97e4336ebd2ac02064ed80423e60c79bb04d82548e89ac4c7c64f1272c52999"
+    },
+    {
+      "file": "year-1450.fls.json",
+      "sha256": "becdb45ebc8b4a7195dc7d150e9a5eea08be08d63bf4d581a49a252464798885"
+    },
+    {
+      "file": "years.jsonl",
+      "sha256": "df21ae56c89396b62f44f54b3f7005136812b8b4092dd71e78a4a95a9f4b92ba"
+    }
+  ]
+}

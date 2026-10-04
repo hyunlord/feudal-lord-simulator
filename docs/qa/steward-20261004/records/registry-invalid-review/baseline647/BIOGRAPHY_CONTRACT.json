@@ -1,0 +1,49 @@
+{
+  "status": "source_verified_adapter_proposal_not_installed",
+  "sourceHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+  "api": "personBiography(state,id)",
+  "source": "src/engine/personsApi.ts:14-24",
+  "eventsFields": [
+    "id",
+    "tick",
+    "date",
+    "template",
+    "summary"
+  ],
+  "missingFromApi": [
+    "params",
+    "subject",
+    "participants"
+  ],
+  "join": {
+    "key": "event.id === state.history.records[].id",
+    "scope": "same decoded save",
+    "conditionInput": "raw record.params; date from official historyDate or returned event.date",
+    "onMissing": "keep event.summary and confirmed date; do not infer required slots or fabricate subject",
+    "saveMutation": false
+  },
+  "identity": {
+    "stored": "raw person IDs remain untouched",
+    "readTime": "historyQuery/historyParams resolves names",
+    "source": [
+      "src/engine/history.ts:876",
+      "src/engine/history.ts:886"
+    ],
+    "age": "use only event params.age, never current biography age"
+  },
+  "estateOnlyPersons": {
+    "supported": false,
+    "reason": "personById searches persons.people, persons.past and factions only",
+    "source": "src/engine/persons.ts:1049-1052"
+  },
+  "newTemplates": {
+    "count": 7,
+    "actor": "TOWN",
+    "newPersonalBiographyKindClaim": false,
+    "source": [
+      "src/engine/history.ts:952-961",
+      "src/engine/history.ts:1129-1163"
+    ]
+  },
+  "engineExecuted": false
+}

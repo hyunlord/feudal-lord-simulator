@@ -1,0 +1,68 @@
+{
+  "scope": "proposed_contract_static_fixtures_only_not_engine",
+  "engineExecuted": false,
+  "groups": 11,
+  "entryRefs": 40,
+  "results": [
+    {
+      "id": "049_and_155_same_verified_textile_case_suppress",
+      "passed": true
+    },
+    {
+      "id": "049_textile_does_not_suppress_170_food_storage",
+      "passed": true
+    },
+    {
+      "id": "004_food_storage_and_water_priority_use_distinct_clusters",
+      "passed": true
+    },
+    {
+      "id": "same_physical_state_does_not_reoffer_after_settings_change",
+      "passed": true
+    },
+    {
+      "id": "changed_physical_state_after_cooldown_may_reoffer",
+      "passed": true
+    },
+    {
+      "id": "changed_state_before_cooldown_still_suppressed",
+      "passed": true
+    },
+    {
+      "id": "missing_snapshot_blocks_additional_copy",
+      "passed": true
+    },
+    {
+      "id": "157_actual_candidate_ids_are_sufficient",
+      "passed": true
+    },
+    {
+      "id": "157_different_candidate_pair_is_different_context",
+      "passed": true
+    },
+    {
+      "id": "prevention_and_post_damage_phases_do_not_merge",
+      "passed": true
+    },
+    {
+      "id": "missing_real_case_blocks_additional_copy",
+      "passed": true
+    },
+    {
+      "id": "149_own_pending034_does_not_self_suppress",
+      "passed": true
+    },
+    {
+      "id": "149_already_selected034_copy_does_not_show_again",
+      "passed": true
+    },
+    {
+      "id": "149_missing_original_never_creates_occurrence",
+      "passed": true
+    },
+    {
+      "id": "149_budget_normalized",
+      "passed": true
+    }
+  ]
+}

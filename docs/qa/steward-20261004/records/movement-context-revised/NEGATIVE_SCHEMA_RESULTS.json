@@ -1,0 +1,310 @@
+{
+  "safeTickBoundaryPositiveCases": 2,
+  "status": "PASS_SUPPORTED_SCHEMA_SUBSET",
+  "negativeCases": [
+    {
+      "id": "proposal.fields.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fallback.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.field.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.when.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.op_type",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.in_empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fact_line.missing",
+      "rejected": true
+    },
+    {
+      "id": "proposal.slot.unapproved",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.domain",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.provenance",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.unverified",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "house.withdrew.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.domain",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.provenance",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.unverified",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "house.arrived.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.domain",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.provenance",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.unverified",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "house.resettled.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.domain",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.provenance",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.unverified",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "agency.timber_ordered.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.domain",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.provenance",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.unverified",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.rejected.unknown_with_facts",
+      "rejected": true
+    }
+  ],
+  "negativeCount": 75,
+  "knownPositiveCount": 13,
+  "unknownEmptyAccepted": true,
+  "scope": "JSON schema keywords used in these documents executed by explicit Ruby subset validator; not full JSON Schema conformance suite or provenance proof"
+}

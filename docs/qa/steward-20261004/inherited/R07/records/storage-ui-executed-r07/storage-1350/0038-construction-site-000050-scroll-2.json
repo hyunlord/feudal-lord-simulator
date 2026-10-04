@@ -1,0 +1,284 @@
+{
+  "panelHtml": "<aside class=\"diagnostic-card\" data-frame=\"light\" aria-label=\"제재소 시설 진단\"><header class=\"inspector-heading\"><div class=\"inspector-thumbnail\" aria-hidden=\"true\"><img alt=\"\" src=\"/assets/buildings/historical-facilities-v1/sawmill-v2.png\"></div><div><p>도시 시설</p><h2>제재소</h2></div><button class=\"inspector-close ui-btn ui-btn--icon\" type=\"button\" aria-label=\"상세 정보 닫기\">×</button></header><p class=\"inspector-cause-line\" role=\"status\">제재소 · 제재소 운영 정보</p><div class=\"inspector-body\"><p>통나무를 목재로 가공</p><section class=\"inspector-actions\"><button class=\"ui-btn ui-btn--secondary\" type=\"button\" aria-pressed=\"false\" data-action=\"toggle-building-operation\" style=\"min-height: 44px; min-width: 44px;\">가동 중지</button><p>중지 중에는 일꾼을 배정하지 않고 생산과 서비스를 멈춥니다.</p></section><h3>운영과 재고</h3><ul class=\"inspector-facts\"><li>일꾼 2/2</li><li><span class=\"inspector-stock\">재고<span class=\"inspector-stock-item\" data-resource=\"logs\">통나무 1</span><span class=\"inspector-stock-item\" data-resource=\"timber\"><span class=\"ui-icon resource-glyph\" aria-hidden=\"true\" data-icon=\"resource.timber\" style=\"width: 24px; height: 24px; background-image: image-set(url(&quot;/assets/ui-p0/icons/icon_resource_sheet-24.png&quot;) 1x, url(&quot;/assets/ui-p0/icons/icon_resource_sheet-48.png&quot;) 2x); background-size: 216px 24px; background-position: -48px 0px; background-repeat: no-repeat;\"></span>목재 19</span></span></li><li>생산 0/35</li><li>원인: 창고에서 통나무 운반을 기다리는 중</li></ul></div></aside>",
+  "scrolls": [
+    {
+      "className": "diagnostic-card",
+      "scrollTop": 132,
+      "scrollHeight": 528,
+      "clientHeight": 396
+    }
+  ],
+  "foodHud": "식량 234일",
+  "foodDays": "234",
+  "pausePressed": "true",
+  "inspector": "도시 시설\n\n제재소\n×\n\n제재소 · 제재소 운영 정보\n\n통나무를 목재로 가공\n\n가동 중지\n\n중지 중에는 일꾼을 배정하지 않고 생산과 서비스를 멈춥니다.\n\n운영과 재고\n일꾼 2/2\n재고\n통나무 1\n목재 19\n생산 0/35\n원인: 창고에서 통나무 운반을 기다리는 중",
+  "calendar": "1350년 봄",
+  "text": "봉건 영주 시뮬레이터\n1350년 봄\n인구 225\n식량 234일\n£12 1s\n\n도시 시설\n\n제재소\n×\n\n제재소 · 제재소 운영 정보\n\n통나무를 목재로 가공\n\n가동 중지\n\n중지 중에는 일꾼을 배정하지 않고 생산과 서비스를 멈춥니다.\n\n운영과 재고\n일꾼 2/2\n재고\n통나무 1\n목재 19\n생산 0/35\n원인: 창고에서 통나무 운반을 기다리는 중\n일시 정지 중 · Space\n×5\n설정\n빈 거리\n직접\n구역\n방향\n건설\n장부\n청지기",
+  "buttons": [
+    {
+      "text": "1350년 봄",
+      "label": "계절 띠 — 다가오는 일 보기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "testid": "hud-calendar"
+      }
+    },
+    {
+      "text": "인구 225",
+      "label": "인구 기록 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "식량 234일",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "foodDays": "234"
+      }
+    },
+    {
+      "text": "£12 1s",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "×",
+      "label": "상세 정보 닫기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "가동 중지",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "action": "toggle-building-operation"
+      }
+    },
+    {
+      "text": "",
+      "label": "일시 정지",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "seal": "pause"
+      }
+    },
+    {
+      "text": "",
+      "label": "1배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "normal"
+      }
+    },
+    {
+      "text": "",
+      "label": "3배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "threefold"
+      }
+    },
+    {
+      "text": "×5",
+      "label": "5배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "fast"
+      }
+    },
+    {
+      "text": "설정",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 발전",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "튜토리얼 끔",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "소리 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "곡선 지면",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "해상도 배율",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "renderScale": "1"
+      }
+    },
+    {
+      "text": "색약 모드",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "colorblind": "off"
+      }
+    },
+    {
+      "text": "지금 저장",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "수동 저장시장도시 목표 · 333분째 · 인구 225 · 목책 시대",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일꾼 부족 — 첫 건물 보기 · 가용 일꾼이 없습니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 집에 빵이 없습니다 — 배급을 기다립니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 집에 빵이 없습니다 — 배급을 기다립니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "빈 거리",
+      "label": "빈 거리 — 카드 열기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "story": "plague_empty_streets"
+      }
+    },
+    {
+      "text": "직접",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "layer": "direct"
+      }
+    },
+    {
+      "text": "구역",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "zone"
+      }
+    },
+    {
+      "text": "방향",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "direction"
+      }
+    },
+    {
+      "text": "건설",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "build"
+      }
+    },
+    {
+      "text": "장부",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "ledger"
+      }
+    },
+    {
+      "text": "청지기",
+      "label": "청지기 바살러뮤 드 애시비",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "dock": "steward",
+        "speaking": "true"
+      }
+    }
+  ]
+}

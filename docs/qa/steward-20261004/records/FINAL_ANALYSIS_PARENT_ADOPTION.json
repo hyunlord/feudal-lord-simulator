@@ -1,0 +1,31 @@
+{
+  "at": "2026-10-04T11:12:52+09:00",
+  "checks": [
+    {
+      "path": "records/fen-run-review",
+      "checked": 5,
+      "manifestSHA256": "6e062ebce3e445c91c54167cca952b3f121e47ae032c4a94ae039a54be2c7d7c"
+    },
+    {
+      "path": "records/fen-cash-audit",
+      "checked": 8,
+      "manifestSHA256": "328e41db502a5cea0a460313ae6388211f6829bbda5208ae0ea0f5539555cf54"
+    },
+    {
+      "path": "records/severity-final-review",
+      "checked": 4,
+      "manifestSHA256": "d1e50ea6ff69a61b19a9e780ea0fbd98b8e689d3c4c35afabe159d0cb8d2bfd8"
+    },
+    {
+      "path": "analysis/fen-comparison-r08",
+      "checked": 13,
+      "manifestSHA256": "3307cf7d17a41634a007851386c09b9d7316ec31465b7ddc1327087a4e985ce8"
+    },
+    {
+      "path": "graphs/fen-comparison-r08",
+      "checked": 8,
+      "manifestSHA256": "121c64bbeaec71abf0b4ba068d379d1aa086b30ce169f0099d03621c564b7260"
+    }
+  ],
+  "decision": "Read full reports and accept bounded findings; no universal invariant or direct terrain causality claim."
+}

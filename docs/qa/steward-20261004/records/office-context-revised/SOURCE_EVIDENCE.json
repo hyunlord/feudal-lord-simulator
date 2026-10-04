@@ -1,0 +1,140 @@
+[
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 285,
+        "end": 294,
+        "text": "function leaderDrafts(before: GameState, after: GameState): Draft[] {\n  if (before.factions === undefined || after.factions === undefined || before.factions === after.factions) return [];\n  const past = new Set((after.persons?.past ?? []).filter(person => !person.alive).map(person => person.id));\n  return after.factions.factions.flatMap(faction => {\n    const was = before.factions!.factions.find(entry => entry.id === faction.id)?.leaderId ?? null;\n    if (was === null || faction.leaderId === null || was === faction.leaderId || !past.has(was)) return [];\n    return [{ tick: after.tick, kind: \"faction\" as const, template: \"faction.leader_succeeded\", subject: { type: \"faction\" as const, id: faction.id },\n      params: { faction: faction.id, name: faction.name, predecessorId: was, leaderId: faction.leaderId }, severity: 1 as const }];\n  });\n}\n"
+      },
+      {
+        "start": 586,
+        "end": 600,
+        "text": "  // FIX-11 (FX11-1): wardship begin and end — the ward is the lord the rule reads (`manorLord`), before or after.\n  const lordOf = (state: GameState) => manorLord(state.persons?.people ?? [], lordshipOf(state).house.order, currentYear(state));\n  if (was.wardship === undefined && now.wardship !== undefined) {\n    const lord = lordOf(after);\n    const guardianId = now.wardship.guardianId;\n    const guardian = guardianId === null ? undefined : after.persons?.people.find(person => person.id === guardianId);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"lord.wardship_begun\",\n      params: { lordId: lord?.id ?? \"\", guardianId: guardian?.id ?? \"\" },\n      subject: TOWN, severity: 2 });\n  } else if (was.wardship !== undefined && now.wardship === undefined) {\n    const lord = lordOf(after) ?? lordOf(before);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template: \"lord.wardship_ended\",\n      params: { lordId: lord?.id ?? \"\" },\n      subject: TOWN, severity: 2 });\n  }\n"
+      },
+      {
+        "start": 924,
+        "end": 940,
+        "text": "function stewardshipDrafts(before: GameState, after: GameState): Draft[] {\n  if (after.stewardship === before.stewardship || after.stewardship === undefined) return [];\n  const was = before.stewardship;\n  const now = after.stewardship;\n  const drafts: Draft[] = [];\n  const house = (estateId: string) => estatesOf(after).estates.find(estate => estate.id === estateId)?.name ?? estateId;\n  const line = (template: string, params: Record<string, string | number>, severity: 0 | 1 | 2 = 1) =>\n    drafts.push({ tick: after.tick, kind: \"event\", template, subject: TOWN, severity, params });\n  for (const oversight of now.oversight) {\n    if (was?.oversight.some(entry => entry.estateId === oversight.estateId) !== true) {\n      line(\"stewardship.began\", { estate: oversight.estateId, house: house(oversight.estateId), stewardId: oversight.stewardId }, 2);\n    }\n    // FIX-13 (ES-11): the steward died; the next one serves.\n    const prior = was?.oversight.find(entry => entry.estateId === oversight.estateId);\n    if (prior !== undefined && prior.stewardId !== oversight.stewardId && now.stewards.find(entry => entry.personId === prior.stewardId)?.status === \"dead\") {\n      line(\"stewardship.steward_died\", { house: house(oversight.estateId), deceasedId: prior.stewardId, stewardId: oversight.stewardId }, 2);\n    }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/lordship.ts",
+    "sha256": "b20b8a24ebbd8a36d6e9cc55e8e8fc8dfe6e079b96e1cf1beeb1ce294f8c1190",
+    "spans": [
+      {
+        "start": 31,
+        "end": 32,
+        "text": "/** FIX-11: a lord under this age is in wardship. */\nconst WARDSHIP_AGE_YEARS = 21;\n"
+      },
+      {
+        "start": 56,
+        "end": 72,
+        "text": "/** FIX-11: find the guardian for a minor lord (mother → adult blood kin → null = overlord wardship). */\nfunction findWardshipGuardian(state: GameState, lord: Person, houseOrder: number): string | null {\n  const year = currentYear(state);\n  const manorPeople = (state.persons?.people ?? []).filter(p => p.householdId === MANOR_HOUSEHOLD);\n  const houseTag = `lord-house:${houseOrder}`;\n  const mother = manorPeople.find(p => p.sex === \"female\" && p.role === \"spouse\");\n  if (mother !== undefined) return mother.id;\n  const kin = manorPeople.find(p => p.tags.includes(houseTag) && p.id !== lord.id && ageOf(p, year) >= WARDSHIP_AGE_YEARS);\n  if (kin !== undefined) return kin.id;\n  return null;\n}\n\n/** FIX-11: begin wardship for a minor lord — sets guardianId in lordship state. */\nexport function beginWardship(state: GameState, tick: number, lord: Person): GameState {\n  const lordship = lordshipOf(state);\n  const guardianId = findWardshipGuardian(state, lord, lordship.house.order);\n  return { ...state, lordship: { ...lordship, wardship: { guardianId, since: tick } } };\n"
+      },
+      {
+        "start": 170,
+        "end": 181,
+        "text": "  // FIX-11: wardship — yearly check for minor lord start/end.\n  if (state.tick % YEAR === 0) {\n    const year = currentYear(next);\n    const lord = manorLord(next.persons?.people ?? [], lordship.house.order, year);\n    if (lord !== undefined && ageOf(lord, year) < WARDSHIP_AGE_YEARS && lordship.wardship === undefined) {\n      lordship = { ...lordship, wardship: { guardianId: findWardshipGuardian(next, lord, lordship.house.order), since: state.tick } };\n      next = { ...next, lordship };\n    } else if (lord !== undefined && ageOf(lord, year) >= WARDSHIP_AGE_YEARS && lordship.wardship !== undefined) {\n      const { wardship: _w, ...rest } = lordship;\n      lordship = rest;\n      next = { ...next, lordship };\n    }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/stewardship.ts",
+    "sha256": "e73a230a40cc61951e6173ecb9cfde2ac62144b57fb573a10f183002743abe49",
+    "spans": [
+      {
+        "start": 51,
+        "end": 54,
+        "text": "/** The estates off the map the lord holds now (title and possession). */\nexport function heldOffMapEstates(state: GameState): readonly Estate[] {\n  return state.estates === undefined ? [] : estatesOf(state).estates.filter(estate => estate.offMap && estate.possessor === LORD && estate.titleHolder === LORD);\n}\n"
+      },
+      {
+        "start": 117,
+        "end": 158,
+        "text": "/** SW-2: the estates the lord came to hold get their oversight (direct, the most loyal candidate keeping the accounts). */\nfunction ensureOversight(state: GameState): GameState {\n  const held = heldOffMapEstates(state);\n  const current = stewardshipOf(state);\n  const missing = held.filter(estate => !current.oversight.some(entry => entry.estateId === estate.id));\n  if (missing.length === 0) return state;\n  let next = state;\n  let stewardship = current;\n  for (const estate of missing) {\n    const made = makeCandidates(next, estate.id);\n    const receiver = [...made.stewards].sort((a, b) => b.loyalty - a.loyalty || a.personId.localeCompare(b.personId))[0]!;\n    next = { ...next, estates: { ...estatesOf(next), people: [...estatesOf(next).people, ...made.people] } };\n    stewardship = { ...stewardship, stewards: [...stewardship.stewards, ...made.stewards.map(record => record === receiver ? { ...record, status: \"serving\" as const } : record)],\n      oversight: [...stewardship.oversight, { estateId: estate.id, mode: \"direct\", stewardId: receiver.personId, auditMode: \"accounts\", tenants: 0, merchants: 0,\n      undetected: 0, since: state.tick }] };\n  }\n  return withStewardship(next, stewardship);\n}\n\n/**\n * FIX-13 (ES-11): a steward (or a direct estate's receiver) who died by the table is replaced at the season's turn — the\n * most loyal living candidate serves; with none left a fresh round of three is drawn. The mode stays.\n */\nfunction replaceDeadStewards(state: GameState): GameState {\n  let next = state;\n  for (const oversight of stewardshipOf(state).oversight) {\n    const people = estatesOf(next).people;\n    if (people.find(person => person.id === oversight.stewardId)?.alive !== false) continue;\n    let stewardship = stewardshipOf(next);\n    stewardship = withSteward(stewardship, { ...steward(stewardship, oversight.stewardId)!, status: \"dead\" });\n    const living = (records: readonly StewardRecord[]) => records.filter(entry => entry.estateId === oversight.estateId && entry.status === \"candidate\"\n      && estatesOf(next).people.find(person => person.id === entry.personId)?.alive !== false);\n    if (living(stewardship.stewards).length === 0) {\n      const made = makeCandidates(withStewardship(next, stewardship), oversight.estateId);\n      next = { ...next, estates: { ...estatesOf(next), people: [...estatesOf(next).people, ...made.people] } };\n      stewardship = { ...stewardship, stewards: [...stewardship.stewards, ...made.stewards] };\n    }\n    const successor = [...living(stewardship.stewards)].sort((a, b) => b.loyalty - a.loyalty || a.personId.localeCompare(b.personId))[0]!;\n    stewardship = withOversight(withSteward(stewardship, { ...successor, status: \"serving\", since: state.tick }), { ...oversight, stewardId: successor.personId, since: state.tick });\n    next = withStewardship(next, stewardship);\n  }\n  return next;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/factions.ts",
+    "sha256": "e36ea2902b8d4a4bd752a931f7f25958701cb61888e0f16fa5fe2c497f37fb04",
+    "spans": [
+      {
+        "start": 117,
+        "end": 149,
+        "text": "/** FX-2: the town's heads a town faction may be led by, best first (merchant houses: merchants; the town: artisans; the commons: the reeve). */\nfunction townCandidates(state: Pick<GameState, \"persons\" | \"seed\" | \"tick\" | \"scenarioId\">, def: FactionDef): readonly Person[] {\n  const all = (state.persons?.people ?? []).filter(person => person.role === \"head\" && person.householdId !== \"manor\");\n  // FIX-9: a head old enough for the role (the town community's 30, a merchant's 25), while the town has one.\n  const year = currentYear(state);\n  const grown = all.filter(person => ageOf(person, year) >= FACTION_LEADER_MIN_AGE[def.id]);\n  const heads = grown.length > 0 ? grown : all;\n  const rank: Readonly<Record<string, readonly string[]>> = {\n    merchant_house: [\"merchant\", \"artisan\", \"labour\", \"poor_servant\"], town: [\"artisan\", \"merchant\", \"labour\", \"poor_servant\"], commons: [\"labour\", \"poor_servant\", \"artisan\", \"merchant\"],\n  };\n  const order = rank[def.kind] ?? [];\n  const key = (person: Person) => (def.kind === \"commons\" && person.tags.includes(\"reeve\") ? -1 : order.indexOf(person.classBand) === -1 ? 9 : order.indexOf(person.classBand));\n  return [...heads].sort((a, b) => key(a) - key(b) || hashSeed(state.seed, `leader:${def.id}`, Number(a.id.slice(2))) - hashSeed(state.seed, `leader:${def.id}`, Number(b.id.slice(2))));\n}\n\n/** FX-2: the town factions' leaders — kept while they live in the town, else the best head not leading another town faction. */\nfunction townLeaders(state: Pick<GameState, \"persons\" | \"seed\" | \"tick\" | \"scenarioId\">, factions: readonly FactionRecord[]): Map<FactionId, Person | null> {\n  const living = new Map((state.persons?.people ?? []).map(person => [person.id, person]));\n  const taken = new Set<string>();\n  const result = new Map<FactionId, Person | null>();\n  for (const def of FACTION_DEFS.filter(entry => entry.leaders === \"town\")) {\n    const current = factions.find(faction => faction.id === def.id)?.leaderId;\n    const kept = current == null ? undefined : living.get(current);\n    // The second merchant house is another family (another surname) than the first.\n    const firstSurname = def.id === \"merchant_house_2\" ? living.get(result.get(\"merchant_house_1\")?.id ?? \"\")?.surname : undefined;\n    const leader = kept !== undefined && kept.role === \"head\" && !taken.has(kept.id) ? kept\n      : townCandidates(state, def).find(person => !taken.has(person.id) && (firstSurname === undefined || person.surname !== firstSurname)) ?? null;\n    if (leader !== null) taken.add(leader.id);\n    result.set(def.id, leader);\n  }\n  return result;\n}\n\n"
+      },
+      {
+        "start": 290,
+        "end": 305,
+        "text": "/** FIX-12 (item 3): the town factions whose leader is no longer among the living get the next head (`townLeaders`). */\nfunction followDeadTownLeaders(state: GameState, current: FactionState): FactionState {\n  if (state.tick % SEASON !== 1 && !state.houses.some(house => house.burntTick === state.tick)) return current;\n  const living = new Set((state.persons?.people ?? []).map(person => person.id));\n  const dead = (faction: FactionRecord) => FACTION_DEF_BY_ID.get(faction.id)?.leaders === \"town\" && faction.leaderId !== null && !living.has(faction.leaderId);\n  if (!current.factions.some(dead)) return current;\n  const leaders = townLeaders(state, current.factions.map(faction => dead(faction) ? { ...faction, leaderId: null } : faction));\n  const year = currentYear(state);\n  return { ...current, factions: current.factions.map(faction => {\n    if (!dead(faction)) return faction;\n    const leader = leaders.get(faction.id) ?? null;\n    const def = FACTION_DEFS.find(entry => entry.id === faction.id)!;\n    return { ...faction, leaderId: leader?.id ?? null, name: townFactionName(def, leader),\n      timeline: leader === null ? faction.timeline : [...faction.timeline, { tick: state.tick, year, kind: \"leader\" as const, id: \"succeeded\", personId: leader.id }] };\n  }) };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/persons.types.ts",
+    "sha256": "3db97d6ca45cdc3a2db584437ad29636a510e28ec86b22020af20d38e7879710",
+    "spans": [
+      {
+        "start": 48,
+        "end": 81,
+        "text": "  readonly surname?: string;\n  /** PS-2: byname that tells namesakes in the town apart (\"the elder\", \"le Rous\"). */\n  readonly epithet?: string;\n  readonly sex: PersonSex;\n  readonly birthYear: number;\n  /** A house's building id, or `manor`. */\n  readonly householdId: string;\n  readonly role: PersonRole;\n  readonly classBand: PersonClassBand;\n  readonly occupation: string;\n  readonly build: PersonBuild;\n  readonly hair: string;\n  readonly alive: boolean;\n  readonly deathYear?: number;\n  readonly deathCause?: DeathCause;\n  /** The year the person left the town (alive, gone). */\n  readonly leftYear?: number;\n  /** PS-5: the portrait identity (its stage follows the person's age). */\n  readonly portraitIdentity: string;\n  readonly tags: readonly string[];\n  /** PERSON-1a (LN-2): the parents, when the person was born in town (or inferred in the household, save v24). */\n  readonly motherId?: string;\n  readonly fatherId?: string;\n  /** LN-5: the lineage (the father's; a founder's own `lin:<id>`; a named lineage keeps its id). */\n  readonly lineageId: string;\n  /** LN-1: the traits born with (from the parents, or the population). */\n  readonly traits: PersonTraits;\n  /** LN-10: ill, injured, with child or on pilgrimage, until a tick. */\n  readonly condition?: PersonCondition;\n  /** LN-4: whose name a child born in town was given (absent: the common names). */\n  readonly nameFrom?: NameOrigin;\n  /** LN-4: the godparent the name came from. */\n  readonly godparentId?: string;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 189,
+        "end": 191,
+        "text": "  \"lord.wardship_begun\": params => { const lord = s(params, \"lord\"); const guardian = s(params, \"guardian\"); return guardian === \"\" ? `${lord}${josa(lord, \"이\", \"가\")} 미성년 영주다 — 상위 영주가 후견한다` : `${lord}${josa(lord, \"이\", \"가\")} 미성년 영주다 — 후견인 ${guardian}`; },\n  \"lord.wardship_ended\": params => { const lord = s(params, \"lord\"); return `${lord}${josa(lord, \"이\", \"가\")} 성년이 되어 후견이 끝났다`; },\n  \"legacy.heir_seated\": params => { const heir = s(params, \"heir\"); return `${heir}${josa(heir, \"이\", \"가\")} 가문을 이었다 — ${s(params, \"relation\")}`; },\n"
+      },
+      {
+        "start": 217,
+        "end": 225,
+        "text": "  \"faction.leader_succeeded\": params => { const before = s(params, \"predecessor\"), next = s(params, \"leader\");\n    return `${factionDisplayName(s(params, \"faction\"), s(params, \"name\"))}의 ${before}${josa(before, \"이\", \"가\")} 세상을 떠나 ${next}${josa(next, \"이\", \"가\")} 무리를 이끈다`; },\n  \"petition.representative_replaced\": params => { const before = s(params, \"predecessor\"), next = s(params, \"leader\");\n    return `${PETITION_SUBJECTS[s(params, \"defId\")] ?? s(params, \"defId\")}의 대표 ${before}${josa(before, \"이\", \"가\")} ${s(params, \"gone\") === \"left\" ? \"마을을\" : \"세상을\"} 떠나 ${next}${josa(next, \"이\", \"가\")} 대신 나섰다`; },\n  // LM-E4 (SW-2…SW-7): the off-map estates' oversight; the steward is named from his id when read.\n  // FIX-13 (ES-11): the people off the map die by the table; a dead steward's place goes to the most loyal candidate.\n  \"estate.person_died\": params => `${s(params, \"deceased\")}(${ESTATE_ROLE_KO[s(params, \"role\")] ?? s(params, \"role\")})${josa(s(params, \"deceased\"), \"이\", \"가\")} ${n(params, \"age\")}세로 세상을 떠났다`,\n  \"stewardship.steward_died\": params => `${estateWord(s(params, \"house\"))}의 청지기 ${s(params, \"deceased\")}${josa(s(params, \"deceased\"), \"이\", \"가\")} 죽어 ${s(params, \"steward\")}${josa(s(params, \"steward\"), \"이\", \"가\")} 뒤를 잇는다`,\n  \"stewardship.began\": params => `${estateWord(s(params, \"house\"))}${josa(estateWord(s(params, \"house\")), \"이\", \"가\")} 영주의 손에 들어왔다 — 영주가 직접 보고, ${s(params, \"steward\")}${josa(s(params, \"steward\"), \"이\", \"가\")} 장부를 맡는다`,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 15,
+        "end": 20,
+        "text": "const PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).\n  deceasedId: \"deceased\",\n"
+      },
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 19,
+        "end": 23,
+        "text": "| 국왕 | 재위 중인 왕 개인 | king | 왕실과 무조건 치환 |\n| 왕실 | 국왕을 중심으로 한 제도·가솔·권력 집단 | Crown / royal household, 문맥별 | 국왕 개인의 행동으로 자동 변환 |\n| 청지기 | 영주의 위임을 받아 영지를 관리하는 직책 | steward | 집사, 집행관, 마을 대표와 혼용 |\n| 집행관 | 영지의 행정·집행을 맡은 역할 | bailiff | 청지기와 동일 직책으로 번역 |\n| 마을 대표(리브) | 이 게임의 reeve. 장원 관리·회계 역할을 설명에 명시 | reeve | 촌장, 원어만 reeve, 현대 시장과 혼동 |\n"
+      },
+      {
+        "start": 88,
+        "end": 98,
+        "text": "| 혼인 부담금(머쳇) | 특정 소작 관습의 혼인 관련 부담 | merchet | 모든 주민에게 보편적인 현대 혼인세 |\n| 왕실 보조세 | 왕실의 보조세 요구를 뜻하는 포괄 명칭 | royal subsidy | 과세를 낸다 |\n| 15분의 1세·10분의 1세 | 역사적 세목명. 게임 금고 비율 수식과 구분 | fifteenth and tenth | 교회 십일조 |\n| 인두세 | 개인을 과세 대상으로 하는 세금 | poll tax | 모든 연도의 대상·세율을 동일하게 단정 |\n| 왕실 조달 | 왕실을 위한 물자 조달·징발 | purveyance | 일반 시장 구매와 항상 동일시 |\n| 지참금 | 혼인 계약에서 제공되는 재산 | dowry / marriage portion | 과부산 |\n| 과부산 | 배우자 사망 뒤 아내의 생계를 위한 재산 약정, 이 게임의 jointure | jointure | 지참금, dower와 자동 동일시 |\n| 과부 몫 | 법적·관습적 dower를 따로 설명할 때의 명칭 | dower | jointure와 근거 없이 치환 |\n| 채무 인수 | 남의 빚을 떠맡는 약정 | assumption of debt | 원채무 탕감 |\n| 조건부 의무 해제 | 조건 불성립으로 약속 이행 의무가 사라짐 | discharge of conditional obligation | 이웃의 빚이 소멸함 |\n| 후견 | 미성년자와 재산의 관리 관계 | wardship | 곧 입양이라는 표현 |\n"
+      },
+      {
+        "start": 189,
+        "end": 192,
+        "text": "## 문장·금액·날짜·숫자 규칙\n\n1. 청지기·안내는 ‘~합니다/~하십시오’, 선택 버튼은 플레이어 행동 ‘~한다’, 연대기는 ‘~했다’로 통일한다. 인물의 개별 말투는 허용하되 한 문장 안 주체를 분명히 쓴다.\n2. 선택 결과는 `{청원 ID, 실제 선택}`으로 정한다. 저장값 `refuse`가 항상 거절은 아니다. 후계 후보·유산 방향처럼 실제 행위를 기록한다. 비용·수입·작업 시간·생산량은 명사를 생략하지 않는다.\n"
+      }
+    ]
+  }
+]

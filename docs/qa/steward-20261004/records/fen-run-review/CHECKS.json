@@ -1,0 +1,1331 @@
+{
+  "at": "2026-10-04T11:03:30+09:00",
+  "checks": [
+    {
+      "name": "frozen:changed-files.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:commands.jsonl",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:controls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:exit-code",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:final.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:latest.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:metadata.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:pid",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:progress.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:registry-selections.jsonl",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:registry-wait-outcomes.jsonl",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:registry-waits.jsonl",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:run.log",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:save-checks.jsonl",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:start.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:summary.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:timing.env",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:unit",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:year-1325.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:year-1350.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:year-1375.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:year-1400.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:year-1425.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:year-1450.fls.json",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "frozen:years.jsonl",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "metadata equals summary provenance",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "config identity",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "target complete",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "annual continuous",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "annual controls fixed",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "commands ordered bounded",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "commands before after controls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1300",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1301",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1302",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1303",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1304",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1305",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1306",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1307",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1308",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1309",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1310",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1311",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1312",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1313",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1314",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1315",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1316",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1317",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1318",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1319",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1320",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1321",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1322",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1323",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1324",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1325",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1326",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1327",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1328",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1329",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1330",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1331",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1332",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1333",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1334",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1335",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1336",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1337",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1338",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1339",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1340",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1341",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1342",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1343",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1344",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1345",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1346",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1347",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1348",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1349",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1350",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1351",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1352",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1353",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1354",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1355",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1356",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1357",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1358",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1359",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1360",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1361",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1362",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1363",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1364",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1365",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1366",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1367",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1368",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1369",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1370",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1371",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1372",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1373",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1374",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1375",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1376",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1377",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1378",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1379",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1380",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1381",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1382",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1383",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1384",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1385",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1386",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1387",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1388",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1389",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1390",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1391",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1392",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1393",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1394",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1395",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1396",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1397",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1398",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1399",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1400",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1401",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1402",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1403",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1404",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1405",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1406",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1407",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1408",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1409",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1410",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1411",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1412",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1413",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1414",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1415",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1416",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1417",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1418",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1419",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1420",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1421",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1422",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1423",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1424",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1425",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1426",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1427",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1428",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1429",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1430",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1431",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1432",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1433",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1434",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1435",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1436",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1437",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1438",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1439",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1440",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1441",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1442",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1443",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1444",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1445",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1446",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1447",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1448",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "year command arithmetic:1449",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "last annual all summary fields",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "codec logs38",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "codec schedule exact",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:final",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:final",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:latest",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:latest",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:start",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:start",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:year-1325",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:year-1325",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:year-1350",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:year-1350",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:year-1375",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:year-1375",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:year-1400",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:year-1400",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:year-1425",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:year-1425",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "saved state hash/bytes:year-1450",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "save controls/identity:year-1450",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "opening tick zero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary raw final hash",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "same final state distinct envelopes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary selected independent state metrics",
+      "pass": true,
+      "detail": {
+        "population": 470,
+        "treasury": 543952,
+        "timber": 0,
+        "houseRecords": 24,
+        "inhabited": 24,
+        "livingTownPeople": 470,
+        "historyRecordsRetained": 6250,
+        "historyNextOrdinal": 42920,
+        "retainedDeathsByCause": {
+          "age": 1963,
+          "famine": 607,
+          "famine_year": 8,
+          "fire": 9,
+          "plague": 289
+        },
+        "stocks": {
+          "barley": 1705,
+          "logs": 115,
+          "timber": 205,
+          "stone_raw": 133,
+          "stone": 347,
+          "malt": 0,
+          "wheat": 2090,
+          "bread": 605,
+          "fleece": 217,
+          "yarn": 18,
+          "raw_cloth": 0,
+          "fulled_cloth": 1,
+          "dyes": 20,
+          "dyed_cloth": 7,
+          "finished_cloth": 1
+        },
+        "buildings": {
+          "house": 24,
+          "well": 3,
+          "granary": 7,
+          "logging_camp": 5,
+          "storehouse": 3,
+          "manor_house": 1,
+          "farmstead": 4,
+          "mill": 13,
+          "sawmill": 3,
+          "chapel": 1,
+          "market": 1,
+          "masonry": 1,
+          "quarry": 1,
+          "malt_kiln": 1,
+          "pastoral_farm": 2,
+          "weaver_house": 2,
+          "fulling_mill": 1,
+          "dyehouse": 1,
+          "tenter_yard": 2
+        }
+      }
+    },
+    {
+      "name": "house residents population",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "final cash ledger entries and rollups",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "1000tick progress600",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "official fetched exit-code",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "official fetched timing.env",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "official fetched run.log",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "official exit0",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "official nice19 command",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "scope dead recorded",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "local current pins:EXECUTION_INPUT_SHA256SUMS",
+      "pass": true,
+      "detail": {
+        "count": 25,
+        "mismatch": [
+
+        ]
+      }
+    },
+    {
+      "name": "local current pins:FULL_SOURCE_DURING_SHA256SUMS",
+      "pass": true,
+      "detail": {
+        "count": 1095,
+        "mismatch": [
+
+        ]
+      }
+    },
+    {
+      "name": "local current pins:SOURCE_BEFORE_SHA256SUMS",
+      "pass": true,
+      "detail": {
+        "count": 26,
+        "mismatch": [
+
+        ]
+      }
+    },
+    {
+      "name": "recorded remote checks:REMOTE_INPUT_CHECK.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "recorded remote checks:REMOTE_INPUT_AFTER_CHECK.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "recorded remote checks:REMOTE_FULL_SOURCE_DURING_CHECK.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "recorded remote checks:REMOTE_FULL_SOURCE_AFTER_CHECK.txt",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/engine/lordBot.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/engine/registry.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/engine/registry.types.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/engine/townAgency.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/engine/tick.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/state/gameStore.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/state/newGame.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/content/registry/registryTypes.ts",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "summary source:src/content/registry/registryEntries.ts",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "pass": true,
+  "artifacts": [
+    {
+      "file": "final.fls.json",
+      "tick": 600000,
+      "fileSha256": "a606e61731eef3b571ad1d36e1df1aa3e3d671d892653009ef497d6b517bb285",
+      "stateRawSha256": "0b6072ab358f443c0c766e1cd44ee11d297a24b114a156c181986a9ffbe9cf89",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:57:33.437Z",
+      "checksum": "cyrb53:029be58a65b1f9"
+    },
+    {
+      "file": "latest.fls.json",
+      "tick": 600000,
+      "fileSha256": "a1f172a2c74026ce926f7dd599b6e843a795832a685247bb4795fa62fb1845b6",
+      "stateRawSha256": "0b6072ab358f443c0c766e1cd44ee11d297a24b114a156c181986a9ffbe9cf89",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:57:32.990Z",
+      "checksum": "cyrb53:029be58a65b1f9"
+    },
+    {
+      "file": "start.fls.json",
+      "tick": 0,
+      "fileSha256": "1d5c05ed2082daef4bb2a827b55731fec000e9b2a94a8a4a60b9eb6696365c93",
+      "stateRawSha256": "33554a2ca2efbbd12db535070e902cbfcf13c844504202ea878b355da2321c59",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:37:49.550Z",
+      "checksum": "cyrb53:1ddecfcaf6b974"
+    },
+    {
+      "file": "year-1325.fls.json",
+      "tick": 100000,
+      "fileSha256": "c56a25d95696e03ebea0a4651234902485bc6ccdd8ef5d92fb2289828f8497f3",
+      "stateRawSha256": "e2051e5dbbf957b451b418a58c9e7ddc68118d1af842a0e3edc22ebdc35e4177",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:42:47.463Z",
+      "checksum": "cyrb53:1d5cde2f57a160"
+    },
+    {
+      "file": "year-1350.fls.json",
+      "tick": 200000,
+      "fileSha256": "15fd34a48028aa39fb14b04b77d740b51185636b68a06d46e277a830a8cc8596",
+      "stateRawSha256": "8e9fea271192e348fa4e8f7c3c5d3bbfd971a371dc5e4eedfee528c10e7b4852",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:46:29.681Z",
+      "checksum": "cyrb53:031c95a55af77f"
+    },
+    {
+      "file": "year-1375.fls.json",
+      "tick": 300000,
+      "fileSha256": "22bba9368647331382ec2b3bc4ecd1ca285093ae2f18054a34aac5e3719dfc29",
+      "stateRawSha256": "25d487dc6da98e98a5f4898afa7e511e53c558de77dc497663a21ff03a6a97b8",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:49:21.402Z",
+      "checksum": "cyrb53:124119ee8efdef"
+    },
+    {
+      "file": "year-1400.fls.json",
+      "tick": 400000,
+      "fileSha256": "52b0fd28e1ca92a5cb8202cdf77beee2b24432896f1245cc8cd97fc340919a7f",
+      "stateRawSha256": "e7f4c4c1cf5e04f4c2da838f6172ebf369db6be9c76c4f515593a382342dbd1c",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:52:06.111Z",
+      "checksum": "cyrb53:005561482406bf"
+    },
+    {
+      "file": "year-1425.fls.json",
+      "tick": 500000,
+      "fileSha256": "e51a973bf5c76d3c80ab7a0d5942eb271e4ae1d532353ea014d6c391615f37e7",
+      "stateRawSha256": "a06b25450fa6cd5d89cbd6c6ad802d8bbecc4ec2b0401113bcf1b64e8358a3ee",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:54:51.397Z",
+      "checksum": "cyrb53:067828f6bf8fee"
+    },
+    {
+      "file": "year-1450.fls.json",
+      "tick": 600000,
+      "fileSha256": "583cf273ea35c3989c59101e5c47972ce3d3d1fb3db2f2908973493e748ac579",
+      "stateRawSha256": "0b6072ab358f443c0c766e1cd44ee11d297a24b114a156c181986a9ffbe9cf89",
+      "createdAt": "2026-10-04T01:37:49.533Z",
+      "savedAt": "2026-10-04T01:57:33.283Z",
+      "checksum": "cyrb53:029be58a65b1f9"
+    }
+  ],
+  "commands": 819,
+  "changedCommands": 306,
+  "progressRows": 600,
+  "observerSeconds": 1184,
+  "codecLogCount": 38,
+  "sourceScope": "26 prelaunch pins,25 execution inputs;1095 full-src inventory first captured during run, then after. No in-memory module trace.",
+  "limits": [
+    "codec not independently executed",
+    "hash extracted original raw JSON not Ruby reserialization",
+    "only9 retained save envelopes cover38 logged checkpoints",
+    "no second deterministic run",
+    "invariant sampling at1000ticks not everytick"
+  ]
+}

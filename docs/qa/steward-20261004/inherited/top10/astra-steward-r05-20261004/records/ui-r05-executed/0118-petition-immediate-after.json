@@ -1,0 +1,304 @@
+{
+  "calendar": "1303년 봄",
+  "text": "봉건 영주 시뮬레이터\n1303년 봄\n인구 7\n식량 0일\n1s 3d\n×10\n설정\n권리 복원 청원\n권리 복원 청원\n\n쇠퇴 때 잃은 권리를 넘겨받은 쪽이 영주에게 그 권리를 되팔겠다고 제안합니다.\n\n결정하기\n조언\n닫기\n새 길가에 집 짓기\n0/1\n집 놓기\n목표 기록\n직접\n구역\n방향\n\n방향 · 첫 청원 뒤에 열립니다\n\n건설\n장부\n청지기",
+  "buttons": [
+    {
+      "text": "1303년 봄",
+      "label": "계절 띠 — 다가오는 일 보기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "testid": "hud-calendar"
+      }
+    },
+    {
+      "text": "인구 7",
+      "label": "인구 기록 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "식량 0일",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "foodDays": "0",
+        "short": "true"
+      }
+    },
+    {
+      "text": "1s 3d",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일시 정지",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "pause"
+      }
+    },
+    {
+      "text": "",
+      "label": "1배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "normal"
+      }
+    },
+    {
+      "text": "",
+      "label": "3배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "threefold"
+      }
+    },
+    {
+      "text": "×10",
+      "label": "10배속 · 누르면 5배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "seal": "fast"
+      }
+    },
+    {
+      "text": "설정",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 발전",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "튜토리얼 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "소리 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "곡선 지면",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "해상도 배율",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "renderScale": "1"
+      }
+    },
+    {
+      "text": "색약 모드",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "colorblind": "off"
+      }
+    },
+    {
+      "text": "지금 저장",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 저장 1시장도시 목표 · 20분째 · 인구 9 · 촌락 시대 · 현재 문제: 빵 배급 부족",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 저장 3시장도시 목표 · 20분째 · 인구 13 · 촌락 시대 · 현재 문제: 빵 배급 부족",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 저장 2시장도시 목표 · 18분째 · 인구 1 · 촌락 시대 · 현재 문제: 빵 배급 부족",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일꾼 부족 — 첫 건물 보기 · 가용 일꾼이 없습니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 빵이 없고 곡창의 빵 재고가 없습니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "권리 복원 청원",
+      "label": "권리 복원 청원 — 카드 열기",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "story": "petition"
+      }
+    },
+    {
+      "text": "결정하기",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "조언",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "닫기",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "집 놓기",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "tutorialCta": "house"
+      }
+    },
+    {
+      "text": "목표 기록",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "직접",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "layer": "direct"
+      }
+    },
+    {
+      "text": "구역",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "zone"
+      }
+    },
+    {
+      "text": "방향",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "direction"
+      }
+    },
+    {
+      "text": "건설",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "build"
+      }
+    },
+    {
+      "text": "장부",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "ledger"
+      }
+    },
+    {
+      "text": "청지기",
+      "label": "청지기 토머스 드 웬도버",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "dock": "steward",
+        "speaking": "true"
+      }
+    }
+  ]
+}

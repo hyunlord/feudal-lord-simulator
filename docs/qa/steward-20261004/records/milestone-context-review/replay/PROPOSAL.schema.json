@@ -1,0 +1,84 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formatVersion",
+    "status",
+    "variants"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": 1
+    },
+    "status": {
+      "const": "DRAFT_NOT_CANONICAL"
+    },
+    "variants": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "template",
+          "axis",
+          "field",
+          "op",
+          "value",
+          "headline",
+          "retainFactLine",
+          "requiredSlots",
+          "status"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "template": {
+            "type": "string"
+          },
+          "axis": {
+            "enum": [
+              "params",
+              "capture"
+            ]
+          },
+          "field": {
+            "type": "string"
+          },
+          "op": {
+            "enum": [
+              "eq",
+              "gt"
+            ]
+          },
+          "value": {
+            "type": [
+              "string",
+              "integer"
+            ]
+          },
+          "headline": {
+            "type": "string",
+            "minLength": 1
+          },
+          "retainFactLine": {
+            "const": true
+          },
+          "requiredSlots": {
+            "type": "array",
+            "maxItems": 0
+          },
+          "status": {
+            "enum": [
+              "BLOCKED_NEW_CAPTURE_FIELD",
+              "BLOCKED_TYPED_INPUT_GUARD"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

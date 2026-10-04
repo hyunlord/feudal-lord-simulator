@@ -1,0 +1,487 @@
+[
+  {
+    "path": "src/ledger/ledger.ts",
+    "sha256": "ef2029b12fe25445410501cdd12147b233dca5b767650a7a6ba4a465326064b7",
+    "spans": [
+      {
+        "start": 140,
+        "end": 147,
+        "text": "/** A ledger holding one `opening_balance` entry for the current treasury (first posting, save v6→v7). */\nexport function openingLedger(state: Pick<GameState, \"treasuryCoin\" | \"tick\" | \"scenarioId\">, detail: string): Ledger {\n  return {\n    entries: [{ id: ledgerEntryId(1), tick: state.tick, account: \"cash\", category: \"opening_balance\", amount: state.treasuryCoin,\n      sourceRefs: [openingBalanceSource(state, detail)] }],\n    rollups: [],\n    nextEntryOrdinal: 2,\n  };\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ledger/ledger.types.ts",
+    "sha256": "1fa6380f8257594f2a2e88ecaae540832cd935c05c75aa578c9c46b60d44cb21",
+    "spans": [
+      {
+        "start": 11,
+        "end": 15,
+        "text": "/**\n * Registered categories (spec M-1…M-7). `market_sale` stays registered for saved history only: since C2 the\n * market no longer pays the treasury (goods belong to residents and traders). `construction` is reserved.\n */\nexport const LEDGER_CATEGORIES = [\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "spans": [
+      {
+        "start": 290,
+        "end": 299,
+        "text": "  let next = state;\n  for (const due of legacyInterludes(state).filter(entry => entry.state === \"ahead\" && entry.tick <= state.tick)) {\n    const legacy = legacyOf(next)!;\n    next = withLegacy(next, { ...legacy, interludes: { ...legacy.interludes, [due.id]: state.tick } });\n    if (due.id === \"guild_dispute\") next = addPetition(next, GUILD_DISPUTE_PETITION_ID, \"craftsmen\");\n    if (due.id === \"church_rebuilding\") next = addPetition(next, CHURCH_REBUILDING_PETITION_ID, \"parish\");\n    if (due.id === \"market_fire\") next = post(next, \"construction\", -B.marketFireRepair, [TOWN_ACTOR, { type: \"claim\", id: \"market_fire\", detail: \"repair\" }]).state;\n  }\n  return next;\n}\n"
+      },
+      {
+        "start": 170,
+        "end": 181,
+        "text": "    }\n    case BOROUGH_AUTONOMY_PETITION_ID: {\n      if (response === \"accept\") {\n        // LG-2: the mayoralty and the seal to the town (and chapter 4's two lines if it had refused); the fine; the fee farm.\n        const held = new Set((next.politics?.rights ?? []).map(right => right.id));\n        const lines = [MAYORALTY_RIGHT_ID, BOROUGH_SEAL_RIGHT_ID, MARKET_TOLLS_RIGHT_ID, BRIDGE_TOLLS_RIGHT_ID].filter(id => !held.has(id));\n        if (next.politics !== undefined) next = { ...next, politics: { ...next.politics, rights: [...next.politics.rights, ...lines.map(id => ({ id, holder: \"townsfolk\" as const,\n          grantedTick: state.tick, petitionId: petition.id, stallFeePermille: id === MARKET_TOLLS_RIGHT_ID ? 0 : 1000 }))] } };\n        next = post(next, \"charter_fee\", B.charterFine, [TOWN_ACTOR, { type: \"right\", id: BOROUGH_SEAL_RIGHT_ID, detail: \"charter_fine\" }]).state;\n        if (l.answers[ROYAL_TAX_PETITION_ID] !== \"accept\") {\n          next = post(next, \"royal_subsidy\", -B.confirmationFine, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"confirmation\" }]).state;\n        }\n"
+      },
+      {
+        "start": 447,
+        "end": 452,
+        "text": "  // LG-2: the fee farm a sealed charter raised — the part chapter 4's does not already pay (each spring).\n  const chapterFour = state.reorganisation?.chapterFiveStart?.charter === \"partial\" ? REORGANISATION_BALANCE.feeFarm : 0;\n  if (tick % YEAR === 0 && l.answers[BOROUGH_AUTONOMY_PETITION_ID] === \"accept\" && l.feeFarm > chapterFour) {\n    next = post(next, \"fee_farm\", l.feeFarm - chapterFour, [TOWN_ACTOR, { type: \"right\", id: BOROUGH_SEAL_RIGHT_ID, detail: \"fee_farm\" }]).state;\n  }\n\n"
+      },
+      {
+        "start": 151,
+        "end": 157,
+        "text": "  switch (petition.defId) {\n    case ROYAL_TAX_PETITION_ID: {\n      if (response !== \"accept\") break;\n      const due = Math.max(B.subsidyMin, Math.min(B.subsidyMax, Math.floor(treasuryBalance(next) * B.subsidyPermille / 1000)));\n      const paid = post(next, \"royal_subsidy\", -due, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"tenth_and_fifteenth\" }]);\n      next = withLegacy(paid.state, { ...l, royalSubsidy: l.royalSubsidy - paid.moved });\n      break;\n"
+      },
+      {
+        "start": 178,
+        "end": 181,
+        "text": "        next = post(next, \"charter_fee\", B.charterFine, [TOWN_ACTOR, { type: \"right\", id: BOROUGH_SEAL_RIGHT_ID, detail: \"charter_fine\" }]).state;\n        if (l.answers[ROYAL_TAX_PETITION_ID] !== \"accept\") {\n          next = post(next, \"royal_subsidy\", -B.confirmationFine, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"confirmation\" }]).state;\n        }\n"
+      },
+      {
+        "start": 159,
+        "end": 168,
+        "text": "    case HEIR_CHOICE_PETITION_ID: {\n      // The silence: the first there is (the son, else the daughter's husband, else the nephew).\n      const options = petition.options ?? heirOptions(l.candidates);\n      const answer = response === \"expired\" || !options.includes(response) ? options[0] : response;\n      const chosen = answer === undefined ? undefined : l.candidates.find(candidate => candidate.kind === HEIR_BY_RESPONSE[answer]);\n      if (chosen === undefined) break;\n      const previous = lordOf(next)?.id ?? null;\n      const relief = post(next, \"succession_relief\", -B.relief[chosen.kind], [{ type: \"actor\", id: \"overlord\" }, { type: \"claim\", id: \"relief\", detail: chosen.kind }]);\n      next = seatHeir(relief.state, chosen, l.candidates);\n      next = withLegacy(next, { ...l, heir: { kind: chosen.kind, personId: chosen.personId, previousHeadId: previous, tick: state.tick, relief: -relief.moved } });\n"
+      },
+      {
+        "start": 202,
+        "end": 210,
+        "text": "    }\n    case LEGACY_CHOICE_PETITION_ID: {\n      if (response === \"expired\") { next = withLegacy(next, { ...l, legacy: null }); break; }\n      const axis = LEGACY_BY_RESPONSE[response];\n      const paid = post(next, \"legacy_endowment\", -B.endowment, [TOWN_ACTOR, { type: \"claim\", id: \"legacy\", detail: axis }]);\n      next = withLegacy(paid.state, { ...l, legacy: axis, endowment: -paid.moved });\n      break;\n    }\n  }\n"
+      },
+      {
+        "start": 196,
+        "end": 201,
+        "text": "    case CHURCH_REBUILDING_PETITION_ID: {\n      // FIX-9 (LG-13): the nave rebuilt at the lord's cost (the guild's quarrel moves only the factions).\n      if (response !== \"accept\") break;\n      const paid = post(next, \"church_rebuilding\", -B.churchRebuildingCost, [{ type: \"actor\", id: \"bishop\" }, { type: \"claim\", id: \"church_rebuilding\", detail: \"nave\" }]);\n      next = withLegacy(paid.state, { ...l, naveRebuilt: true });\n      break;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/moneyRules.ts",
+    "sha256": "98136a56b880c47d87e18f764f11d3f4705e17db6de2f4ee6b707d64a50adc67",
+    "spans": [
+      {
+        "start": 195,
+        "end": 229,
+        "text": "export function settleMoneyPeriod(state: GameState): GameState {\n  if (state.tick <= 0 || state.tick % LEDGER_PERIOD_TICKS !== 0) return state;\n  const money = moneyOf(state);\n  const income = periodIncome(state, money);\n  const postings: LedgerPosting[] = [...income.postings];\n  let cash = treasuryBalance(state) + income.postings.reduce((sum, posting) => sum + posting.amount, 0);\n\n  // M-6: this period's upkeep first (E2 rank order, then gates), so an old debt cannot idle a facility\n  // the treasury can pay for now; then arrears oldest first, stopping at the first charge it cannot cover.\n  const arrears: UpkeepArrear[] = [];\n  for (const charge of upkeepCharges(state)) {\n    if (cash >= charge.amount) {\n      cash -= charge.amount;\n      postings.push({ account: \"cash\", category: \"upkeep\", amount: -charge.amount, sourceRefs: [charge.facility] });\n      continue;\n    }\n    arrears.push({ tick: state.tick, amount: charge.amount, facility: charge.facility });\n    postings.push({ account: \"arrears\", category: \"upkeep\", amount: charge.amount,\n      sourceRefs: [charge.facility, { type: \"claim\", id: `upkeep:${state.tick}`, detail: \"unpaid\" }] });\n  }\n  let paid = 0;\n  for (const arrear of money.arrears) {\n    if (cash < arrear.amount) break;\n    cash -= arrear.amount;\n    const category = arrear.category ?? \"upkeep\";\n    const sourceRefs: [SourceRef, ...SourceRef[]] = [arrear.facility, { type: \"claim\", id: `${category}:${arrear.tick}`, detail: \"arrears_paid\" }];\n    postings.push({ account: \"cash\", category, amount: -arrear.amount, sourceRefs });\n    postings.push({ account: \"arrears\", category, amount: -arrear.amount, sourceRefs });\n    paid += 1;\n  }\n  arrears.unshift(...money.arrears.slice(paid));\n\n  // FIX-4 E3 (M-6): only this period's unpaid charge idles a building; an old debt stays on the arrears account (and\n  // in the finance cell) but does not stop a facility that paid this period. Was every building with any debt left.\n  const unpaid = new Set(arrears.filter(arrear => arrear.tick === state.tick && arrear.facility.type === \"building\").map(arrear => arrear.facility.id));\n"
+      },
+      {
+        "start": 159,
+        "end": 163,
+        "text": "  for (const [pointId, count] of Object.entries(money.crossings).sort(([a], [b]) => a.localeCompare(b))) {\n    // F4-A (RG-9): once the town holds the bridge tolls, half the tolls are the town's.\n    const toll = Math.round(count * MONEY_BALANCE.tollPerCrossing * reorganisationTollPermille(state) / 1000);\n    if (count > 0 && tolls && toll > 0) postings.push({ account: \"cash\", category: \"toll\", amount: toll,\n      sourceRefs: [tollPointSource(pointId), { type: \"trade\", id: \"carter_crossings\", detail: `crossings:${count}` }] });\n"
+      },
+      {
+        "start": 139,
+        "end": 150,
+        "text": "  const markets = rightHeld(state, \"market\"), tolls = rightHeld(state, \"tolls\"), mill = rightHeld(state, \"mill\");\n  for (const market of [...state.buildings].filter(building => markets && building.kind === \"market\").sort((a, b) => a.id.localeCompare(b.id))) {\n    const stalls = marketStalls(state, market);\n    // FC-3/FC-4: a market charter lowers the dues (the right is a source of the posting).\n    const right = stallFeeRightSource(state);\n    // F2-A (WR-8): the market chosen over the wall raises the dues a quarter.\n    // LM-E1 (TA-6 ③): in lord mode the lord's market dues scale the fee (1000‰ otherwise).\n    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000 * marketExpansionPermille(state) / 1000\n      * agencyDuesPermille(state) / 1000);\n    if (stalls > 0 && fee > 0) postings.push({ account: \"cash\", category: \"stall_fee\", amount: fee,\n      sourceRefs: [buildingSource(market.id, `stalls:${stalls}`), ...(right === null ? [] : [right])] });\n  }\n"
+      },
+      {
+        "start": 121,
+        "end": 134,
+        "text": "  // F4-A (RG-8): after the collectors were chased the tenants withhold a period's rent (the court rolls burnt).\n  const withheld = reorganisationRentPermille(state) === 0;\n  for (const house of state.houses) {\n    // EV-4: a burnt house pays no rent until it is rebuilt.\n    if (house.residents <= 0 || house.burntTick !== undefined || withheld) continue;\n    const plot = plots.get(house.buildingId);\n    // F3-A (PL-8): once labour services are commuted the tenants pay money rent at its higher rate.\n    const amount = Math.round(rentRelief(house, state.tick, homeRent(house, plot?.width ?? null)) * plagueRentPermille(state) / 1000);\n    if (amount <= 0) continue;\n    const sourceRefs: [SourceRef, ...SourceRef[]] = [buildingSource(house.buildingId, `level:${house.level}`)];\n    if (plot !== undefined) sourceRefs.push({ type: \"zone\", id: plot.zoneId, detail: `frontage:${plot.width}` });\n    postings.push({ account: \"cash\", category: \"rent\", amount, sourceRefs });\n    rent += amount;\n  }\n"
+      },
+      {
+        "start": 151,
+        "end": 158,
+        "text": "  const millWheat: Record<string, number> = {};\n  for (const [millId, wheat] of Object.entries(money.millWheat).sort(([a], [b]) => a.localeCompare(b))) {\n    const units = Math.floor(wheat / MONEY_BALANCE.millTollWheat);\n    const remainder = wheat - units * MONEY_BALANCE.millTollWheat;\n    if (remainder > 0 && state.buildings.some(building => building.id === millId)) millWheat[millId] = remainder;\n    if (units > 0 && mill) postings.push({ account: \"cash\", category: \"mill_toll\", amount: units * MONEY_BALANCE.millTollPerUnit,\n      sourceRefs: [buildingSource(millId, `wheat:${units * MONEY_BALANCE.millTollWheat}`)] });\n  }\n"
+      },
+      {
+        "start": 241,
+        "end": 250,
+        "text": "  return { ...settled, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n}\n\n/** M-7: the stone-wall project spends its cost when proclaimed. Callers check `canAffordProject` first. */\nexport function spendStoneWallProject(state: GameState): GameState {\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"project\", amount: -MONEY_BALANCE.stoneWallProjectCost,\n    sourceRefs: [{ type: \"policy\", id: \"stone_wall_project\", detail: \"proclaimed\" }] }]);\n  return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n}\n\n"
+      },
+      {
+        "start": 135,
+        "end": 137,
+        "text": "  // F2-A (WR-4): the war tax adds its surcharge to the period's rent.\n  const warTax = Math.round(rent * warTaxPermille(state) / 1000);\n  if (warTax > 0) postings.push({ account: \"cash\", category: \"war_tax\", amount: warTax, sourceRefs: [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"war_tax\", detail: `rent:${rent}` }] });\n"
+      },
+      {
+        "start": 164,
+        "end": 168,
+        "text": "    // F2-A (WR-8): murage, the Crown's toll for the stone wall, while it is building.\n    const murage = Math.round(count * MONEY_BALANCE.tollPerCrossing * (murageTollPermille(state) - 1000) / 1000);\n    if (count > 0 && tolls && murage > 0) postings.push({ account: \"cash\", category: \"murage\", amount: murage,\n      sourceRefs: [tollPointSource(pointId), { type: \"right\", id: \"murage\", detail: `crossings:${count}` }] });\n  }\n"
+      },
+      {
+        "start": 215,
+        "end": 231,
+        "text": "  let paid = 0;\n  for (const arrear of money.arrears) {\n    if (cash < arrear.amount) break;\n    cash -= arrear.amount;\n    const category = arrear.category ?? \"upkeep\";\n    const sourceRefs: [SourceRef, ...SourceRef[]] = [arrear.facility, { type: \"claim\", id: `${category}:${arrear.tick}`, detail: \"arrears_paid\" }];\n    postings.push({ account: \"cash\", category, amount: -arrear.amount, sourceRefs });\n    postings.push({ account: \"arrears\", category, amount: -arrear.amount, sourceRefs });\n    paid += 1;\n  }\n  arrears.unshift(...money.arrears.slice(paid));\n\n  // FIX-4 E3 (M-6): only this period's unpaid charge idles a building; an old debt stays on the arrears account (and\n  // in the finance cell) but does not stop a facility that paid this period. Was every building with any debt left.\n  const unpaid = new Set(arrears.filter(arrear => arrear.tick === state.tick && arrear.facility.type === \"building\").map(arrear => arrear.facility.id));\n  const buildings = state.buildings.map(building => {\n    const owes = unpaid.has(building.id);\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/ale.ts",
+    "sha256": "ccb11033375137164b40cc027f165f4b06b4333a61533ce8729e9bc1c2a455a8",
+    "spans": [
+      {
+        "start": 172,
+        "end": 181,
+        "text": "  const next = counted({ ...state, houses }, { drunk, sold: [...sold.values()].reduce((sum, casks) => sum + casks, 0) });\n  if (sold.size === 0) return next;\n  const postings: LedgerPosting[] = [];\n  for (const [id, casks] of [...sold.entries()].sort(([a], [b]) => a.localeCompare(b))) {\n    const dues = Math.ceil(casks * ALE_BALANCE.alePrice * ALE_BALANCE.alehouseDuesPermille / 1000);\n    if (dues > 0) postings.push({ account: \"cash\", category: \"stall_fee\", amount: dues, sourceRefs: [{ type: \"building\", id, detail: `alehouse:${casks}` }] });\n  }\n  if (postings.length === 0) return next;\n  const posted = postLedgerEntries(next, postings);\n  return { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/marketSettlement.ts",
+    "sha256": "e0c29ccbeb76affafa1032a2c2bd69b4290e9d589cd2d21fd8269e6f0fe4eaa0",
+    "spans": [
+      {
+        "start": 223,
+        "end": 230,
+        "text": "      sourceRefs: [{ type: \"building\", id: market.id, detail: `cloth_price:${clothTrade.price}` }, { type: \"building\", id: result.from!.id }] });\n    if (demesneSale && result.from?.kind === \"granary\" && (result.sold === \"wheat\" || result.sold === \"bread\")) {\n      const dearth = foodPriceSource(state);\n      demesne.push({ account: \"cash\", category: \"demesne_sale\", amount: result.coin,\n        sourceRefs: [{ type: \"building\", id: result.from.id, detail: `sold:${result.sold}` }, { type: \"building\", id: market.id },\n          ...(dearth === null ? [] : [dearth])] });\n    }\n    }\n"
+      },
+      {
+        "start": 219,
+        "end": 221,
+        "text": "    // C5 (CL-8): the aulnager seals each cloth sold; the seal's due is the treasury's.\n    if (result.sold === \"finished_cloth\") ulnage.push({ account: \"cash\", category: \"ulnage\", amount: clothTrade?.ulnage ?? CLOTH_BALANCE.ulnagePerCloth,\n      sourceRefs: [{ type: \"building\", id: market.id, detail: \"cloth_sold\" }, { type: \"building\", id: result.from!.id }] });\n"
+      },
+      {
+        "start": 222,
+        "end": 224,
+        "text": "    if (result.sold === \"finished_cloth\" && clothTrade !== null && clothTrade.toll > 0) ulnage.push({ account: \"cash\", category: \"cloth_toll\", amount: clothTrade.toll,\n      sourceRefs: [{ type: \"building\", id: market.id, detail: `cloth_price:${clothTrade.price}` }, { type: \"building\", id: result.from!.id }] });\n    if (demesneSale && result.from?.kind === \"granary\" && (result.sold === \"wheat\" || result.sold === \"bread\")) {\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/politics.ts",
+    "sha256": "c78d456fa63bf7eb2fa48361919ff760da4a4e822c291559de6d12af9bf336cf",
+    "spans": [
+      {
+        "start": 110,
+        "end": 128,
+        "text": "    const { price, bought, released } = reliefSeason(state);\n    if (bought <= 0 && released <= 0) return state;\n    const stores = famineGranaries(state);\n    const granary = stores[0]!;\n    const postings: LedgerPosting[] = [];\n    if (bought > 0) postings.push({ account: \"cash\", category: \"famine_relief\", amount: -bought * price,\n      sourceRefs: [source, { type: \"building\", id: granary.id, detail: `bread:${bought}` }] });\n    // The release is valued at the market price, in kind (no money moves; the bread goes out through the town's usual trade).\n    let left = released;\n    for (const store of stores) {\n      const bread = Math.min(left, Math.max(0, store.inventory.bread ?? 0));\n      if (bread <= 0) continue;\n      left -= bread;\n      postings.push({ account: \"in_kind\", category: \"famine_relief\", amount: -bread * price, resource: \"bread\",\n        sourceRefs: [source, { type: \"building\", id: store.id, detail: `bread:${bread}` }] });\n    }\n    const posted = postLedgerEntries(state, postings);\n    return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, buildings: bought <= 0 ? state.buildings\n      : state.buildings.map(building => building.id === granary.id ? { ...building, inventory: { ...building.inventory, bread: (building.inventory.bread ?? 0) + bought } } : building) };\n"
+      },
+      {
+        "start": 130,
+        "end": 143,
+        "text": "  if (choice === \"speculation\") {\n    const postings: LedgerPosting[] = [];\n    const breadPrice = marketSalePrice(state, \"bread\");\n    const wheatPrice = marketSalePrice(state, \"wheat\");\n    const sold = new Map<string, { bread: number; wheat: number }>();\n    for (const granary of famineGranaries(state)) {\n      const { bread, wheat } = speculationSold(granary.inventory);\n      const amount = bread * breadPrice + wheat * wheatPrice;\n      if (amount <= 0) continue;\n      sold.set(granary.id, { bread, wheat });\n      postings.push({ account: \"cash\", category: \"famine_sale\", amount, sourceRefs: [source, { type: \"building\", id: granary.id, detail: `bread:${bread},wheat:${wheat}` }] });\n    }\n    if (postings.length === 0) return state;\n    const posted = postLedgerEntries(state, postings);\n"
+      },
+      {
+        "start": 210,
+        "end": 215,
+        "text": "  let next: GameState = state;\n  if (outcome.charterFee > 0) {\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"charter_fee\", amount: outcome.charterFee,\n      sourceRefs: [{ type: \"right\", id: outcome.right ?? def.id, detail: `petition:${petition.id}` }, { type: \"actor\", id: def.petitioner }] }]);\n    next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/lordship.ts",
+    "sha256": "b20b8a24ebbd8a36d6e9cc55e8e8fc8dfe6e079b96e1cf1beeb1ce294f8c1190",
+    "spans": [
+      {
+        "start": 202,
+        "end": 216,
+        "text": " */\nexport function answerRestoration(state: GameState, petition: PetitionRecord, response: PetitionResponse): GameState {\n  const lordship = lordshipOf(state);\n  const decline = lordship.decline;\n  if (decline === null) return state;\n  const fee = response === \"accept\" ? LORDSHIP_BALANCE.restoreFee : response === \"accept_with_price\" ? LORDSHIP_BALANCE.restoreFeeHaggled : 0;\n  if (response === \"refuse\" || treasuryBalance(state) < fee) {\n    return { ...state, lordship: { ...lordship, decline: { ...decline, petitionFrom: state.tick + LORDSHIP_BALANCE.restoreRetryTicks } } };\n  }\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"restoration_fee\", amount: -fee,\n    sourceRefs: [{ type: \"right\", id: decline.lost ?? \"title\", detail: `petition:${petition.id}` }, { type: \"actor\", id: petition.petitioner }] }]);\n  const restored: LordshipState = {\n    ...lordship,\n    titleDemoted: response !== \"accept\",\n    ...(response === \"accept\" ? {} : { titleReturnsTick: state.tick + LORDSHIP_BALANCE.titleReturnTicks }),\n"
+      },
+      {
+        "start": 118,
+        "end": 130,
+        "text": "/** FL-7: the house withdraws; a new one takes the town, its treasury halved, the merchants' grudge half forgotten. */\nfunction changeHouse(state: GameState, lordship: LordshipState): GameState {\n  const order = lordship.house.order + 1;\n  const house = { order, name: lordHouseName(state.seed, order), heraldrySeed: lordHouseHeraldrySeed(state.seed, order), since: state.tick };\n  const loss = Math.floor(Math.max(0, treasuryBalance(state)) * LORDSHIP_BALANCE.houseChangeTreasuryLossPermille / 1000);\n  let next: GameState = state;\n  if (loss > 0) {\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"house_change\", amount: -loss,\n      sourceRefs: [{ type: \"actor\", id: `lord_house:${lordship.house.order}`, detail: lordship.house.name }] }]);\n    next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n  }\n  const politics = next.politics === undefined ? undefined : {\n    ...next.politics,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/war.ts",
+    "sha256": "502703a1be4dbae2764cdbc247b9cba9b35fda3ae7895add24694b1e51acd58b",
+    "spans": [
+      {
+        "start": 287,
+        "end": 299,
+        "text": "  const refused = response === \"refuse\" || response === \"expired\";\n  const source: readonly [SourceRef, ...SourceRef[]] = [CROWN, { type: \"claim\", id: petition.id, detail: petition.defId }];\n  let next: GameState = withWar(state, { ...war, answers: { ...war.answers, [petition.defId]: response },\n    ...(refused && petition.petitioner === \"crown\" ? { favour: false } : {}) });\n  const now = warOf(next)!;\n  switch (petition.defId) {\n    case WOOL_PAYMENT_PETITION_ID: {\n      const levy = woolLevyAmount(state);\n      if (response === \"accept\") {\n        return withWar(next, { ...now, instalments: [...now.instalments, { category: \"wool_levy\", perSeason: woolInKindPerSeason(levy), seasonsLeft: WAR_BALANCE.woolInKindSeasons }] });\n      }\n      return charge(next, \"wool_levy\", response === \"accept_with_price\" ? levy : Math.ceil(levy * WAR_BALANCE.woolSeizedPermille / 1000), source);\n    }\n"
+      },
+      {
+        "start": 401,
+        "end": 420,
+        "text": "export function warTaxPermille(state: Pick<GameState, \"war\">): number {\n  return (state.war?.taxSeasonsLeft ?? 0) > 0 ? WAR_BALANCE.taxSurchargePermille : 0;\n}\n\n/**\n * WR-2 in kind (FIX-7, C5 CL-9, decisions FX7-1 and CL5): a season's wool — the town's fleece first, taken from the\n * stores and valued on the ledger's in-kind account (`resource` = the fleece, no cash moves), the rest charged in cash.\n */\nfunction payWoolInKind(state: GameState, amount: number): GameState {\n  const source: readonly [SourceRef, ...SourceRef[]] = [CROWN, { type: \"claim\", id: \"wool_levy\", detail: \"in_kind\" }];\n  const split = woolInKindSplit(state, amount);\n  let next = state;\n  if (split.inKind > 0) {\n    next = takeFleece(next, split.fleeces);\n    const posted = postLedgerEntries(next, [{ account: \"in_kind\", category: \"wool_levy\", amount: -split.inKind, resource: FLEECE_RESOURCE,\n      sourceRefs: [...source, { type: \"claim\", id: \"wool_levy\", detail: `fleece:${split.fleeces}` }] }]);\n    next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n  }\n  return charge(next, \"wool_levy\", split.cash, source);\n}\n"
+      },
+      {
+        "start": 300,
+        "end": 305,
+        "text": "    case LEVY_RESPONSE_PETITION_ID: {\n      const men = levyMen(state);\n      if (response === \"accept\") return withWar(next, { ...now, conscripts: conscriptsFor(state, men) });\n      if (response === \"accept_with_price\") return charge(next, \"war_exemption\", men * WAR_BALANCE.exemptionPerMan, source);\n      return next;\n    }\n"
+      },
+      {
+        "start": 111,
+        "end": 127,
+        "text": "/**\n * Charges the treasury `amount` (cash, category); what the cash cannot cover goes to the arrears account and queue\n * (paid off at the period close like unpaid upkeep, and counted by the failure ladder's arrears, FL-3).\n */\nfunction charge(state: GameState, category: LedgerCategory, amount: number, sources: readonly [SourceRef, ...SourceRef[]]): GameState {\n  if (amount <= 0) return state;\n  const paid = Math.min(amount, Math.max(0, treasuryBalance(state)));\n  const owed = amount - paid;\n  const postings: LedgerPosting[] = [];\n  if (paid > 0) postings.push({ account: \"cash\", category, amount: -paid, sourceRefs: sources });\n  if (owed > 0) postings.push({ account: \"arrears\", category, amount: owed, sourceRefs: [...sources, { type: \"claim\", id: `${category}:${state.tick}`, detail: \"unpaid\" }] });\n  const posted = postLedgerEntries(state, postings);\n  const money = state.money ?? EMPTY_MONEY;\n  const arrear: UpkeepArrear = { tick: state.tick, amount: owed, facility: sources[0], category };\n  return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger,\n    ...(owed > 0 ? { money: { ...money, arrears: [...money.arrears, arrear] } } : {}) };\n}\n"
+      },
+      {
+        "start": 306,
+        "end": 316,
+        "text": "    case WAR_FUNDING_PETITION_ID: {\n      const subsidy = subsidyAmount(state);\n      if (response === \"accept\") {\n        // The merchants lend the subsidy, the treasury hands it on, and repays it with interest over eight seasons.\n        next = earn(next, \"war_loan\", subsidy, [{ type: \"actor\", id: \"merchants\" }, { type: \"claim\", id: petition.id, detail: \"loan\" }]);\n        next = charge(next, \"war_subsidy\", subsidy, source);\n        const total = Math.ceil(subsidy * (1000 + WAR_BALANCE.loanInterestPermille) / 1000);\n        return withWar(next, { ...warOf(next)!, instalments: [...now.instalments, { category: \"war_loan\", perSeason: Math.ceil(total / WAR_BALANCE.loanSeasons), seasonsLeft: WAR_BALANCE.loanSeasons }] });\n      }\n      if (response === \"accept_with_price\") return withWar(charge(next, \"war_subsidy\", subsidy, source), { ...now, taxSeasonsLeft: WAR_BALANCE.taxSeasons });\n      return next;\n"
+      },
+      {
+        "start": 422,
+        "end": 429,
+        "text": "function seasonalCharges(state: GameState, war: WarState): GameState {\n  let next = state;\n  for (const instalment of war.instalments) {\n    if (instalment.category === \"wool_levy\") { next = payWoolInKind(next, instalment.perSeason); continue; }\n    next = charge(next, instalment.category, instalment.perSeason, [{ type: \"actor\", id: \"merchants\" }, { type: \"claim\", id: \"war_loan\", detail: \"repayment\" }]);\n  }\n  const instalments = war.instalments.map(entry => ({ ...entry, seasonsLeft: entry.seasonsLeft - 1 })).filter(entry => entry.seasonsLeft > 0);\n  let current = { ...warOf(next)!, instalments };\n"
+      },
+      {
+        "start": 207,
+        "end": 216,
+        "text": "      for (const [resource, amount] of Object.entries(out)) inventory[resource] = (inventory[resource] ?? 0) - amount;\n      return { ...building, inventory };\n    }),\n  };\n  if (losses.coin > 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"raid_loot\", amount: -losses.coin,\n      sourceRefs: [{ type: \"event\", id: eventId, detail: \"coastal_raid\" }, { type: \"actor\", id: \"raiders\" }] }]);\n    next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n  }\n  return withWar(next, { ...war, raid: { tick: state.tick, defencePermille, losses: { burntHouses: losses.burntHouses, looted: losses.looted, coin: losses.coin } } });\n"
+      },
+      {
+        "start": 438,
+        "end": 455,
+        "text": "      }\n    }\n    current = { ...current, taxSeasonsLeft: current.taxSeasonsLeft! - 1 };\n  }\n  // WR-7: the purveyors buy their share of the granaries' wheat at the market price.\n  if ((current.licenceSeasonsLeft ?? 0) > 0) {\n    const price = marketSalePrice(next, \"wheat\");\n    const postings: LedgerPosting[] = [];\n    const sold = new Map<string, number>();\n    for (const granary of next.buildings.filter(building => building.kind === \"granary\").sort((a, b) => a.id.localeCompare(b.id))) {\n      const wheat = Math.floor(Math.max(0, granary.inventory.wheat ?? 0) * WAR_BALANCE.licenceWheatPermille / 1000);\n      if (wheat <= 0) continue;\n      sold.set(granary.id, wheat);\n      postings.push({ account: \"cash\", category: \"purveyance\", amount: wheat * price, sourceRefs: [CROWN, { type: \"building\", id: granary.id, detail: `wheat:${wheat}` }] });\n    }\n    if (postings.length > 0) {\n      const posted = postLedgerEntries(next, postings);\n      next = { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, buildings: next.buildings.map(building => {\n"
+      },
+      {
+        "start": 317,
+        "end": 327,
+        "text": "    }\n    case REFUGEE_ADMISSION_PETITION_ID: {\n      if (refused) return next;\n      const households = response === \"accept\" ? WAR_BALANCE.refugeeHouseholds : Math.floor(WAR_BALANCE.refugeeHouseholds / 2);\n      const admitted = admitRefugees(next, households * WAR_BALANCE.refugeesPerHousehold);\n      next = admitted.state;\n      if (response === \"accept_with_price\") {\n        next = earn(next, \"refugee_fee\", Math.ceil(admitted.admitted / WAR_BALANCE.refugeesPerHousehold) * WAR_BALANCE.refugeeFeePerHousehold,\n          [{ type: \"actor\", id: \"refugees\" }, { type: \"claim\", id: petition.id, detail: `people:${admitted.admitted}` }]);\n      }\n      return next;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/plague.ts",
+    "sha256": "97f424f6a7bf85c461363eb00dbeb31b7fd600f16a3f4d4d6845a15d396531db",
+    "spans": [
+      {
+        "start": 361,
+        "end": 366,
+        "text": "\n/** PL-5 (money rule): a ledger period's raised wages — each worker in the lord's buildings, `raisedWagePerWorker`. */\nfunction payWages(state: GameState): GameState {\n  const workers = state.buildings.reduce((sum, building) => sum + (building.kind === \"house\" ? 0 : Math.max(0, building.workers)), 0);\n  return charge(state, \"wages\", workers * PLAGUE_BALANCE.raisedWagePerWorker, [{ type: \"actor\", id: \"labourers\" }, { type: \"claim\", id: \"wages\", detail: `workers:${workers}` }]);\n}\n"
+      },
+      {
+        "start": 237,
+        "end": 250,
+        "text": "/** The treasury pays `amount` (cash, category); what it cannot is owed (arrears, paid off at the period close, FL-3). */\nfunction charge(state: GameState, category: LedgerCategory, amount: number, sources: readonly [SourceRef, ...SourceRef[]]): GameState {\n  if (amount <= 0) return state;\n  const paid = Math.min(amount, Math.max(0, treasuryBalance(state)));\n  const owed = amount - paid;\n  const postings: LedgerPosting[] = [];\n  if (paid > 0) postings.push({ account: \"cash\", category, amount: -paid, sourceRefs: sources });\n  if (owed > 0) postings.push({ account: \"arrears\", category, amount: owed, sourceRefs: [...sources, { type: \"claim\", id: `${category}:${state.tick}`, detail: \"unpaid\" }] });\n  const posted = postLedgerEntries(state, postings);\n  const money = state.money ?? EMPTY_MONEY;\n  const arrear: UpkeepArrear = { tick: state.tick, amount: owed, facility: sources[0], category };\n  return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, ...(owed > 0 ? { money: { ...money, arrears: [...money.arrears, arrear] } } : {}) };\n}\n\n"
+      },
+      {
+        "start": 534,
+        "end": 539,
+        "text": "  if (plague.ordinanceTick === undefined && state.tick >= springOf(state, PLAGUE_BALANCE.ordinanceYear)) {\n    const raised = plague.answers[WAGES_PETITION_ID] === \"accept\";\n    next = withPlague(next, { ...plague, ordinanceTick: state.tick, ...(raised ? { statuteFine: PLAGUE_BALANCE.statuteFine } : {}) });\n    if (raised) next = charge(next, \"statute_fine\", PLAGUE_BALANCE.statuteFine, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"statute_of_labourers\", detail: \"wages\" }]);\n  }\n  plague = plagueOf(next)!;\n"
+      },
+      {
+        "start": 381,
+        "end": 390,
+        "text": "  switch (petition.defId) {\n    case VACANT_PRIEST_PETITION_ID: {\n      if (now.curacy === undefined || now.curacy.filledTick !== undefined) return next;\n      if (response === \"accept\") {\n        // The monastery sends a priest (its stipend now); he comes at the season's start after next.\n        next = charge(next, \"church_fee\", PLAGUE_BALANCE.monasteryStipend, [PARISH, { type: \"claim\", id: petition.id, detail: \"monastery\" }]);\n        const comes = (Math.floor(state.tick / SEASON) + PLAGUE_BALANCE.monasterySeasons) * SEASON + SEASON;\n        return withPlague(next, { ...plagueOf(next)!, curacy: { ...now.curacy, filledTick: comes, by: \"monastery\" } });\n      }\n      // A lay clerk reads the offices at once (and the bishop remembers it).\n"
+      },
+      {
+        "start": 350,
+        "end": 360,
+        "text": "    const residents = Math.max(1, Math.min(room, settlers ? PLAGUE_BALANCE.settlerPeople : houseLotArea(lots.get(id))));\n    const { abandonedTick: _vacant, ...rest } = house;\n    houses[index] = { ...rest, residents };\n    people += residents; taken.push(id); households -= 1;\n  }\n  if (taken.length === 0) return state;\n  let next: GameState = withPlague({ ...state, houses, population: state.population + people },\n    { ...plague, resettled: plague.resettled + taken.length, vacantHouseIds: plague.vacantHouseIds.filter(id => !taken.includes(id)) });\n  if (settlers) next = earn(next, \"entry_fine\", taken.length * PLAGUE_BALANCE.entryFine, [{ type: \"actor\", id: \"settlers\" }, { type: \"claim\", id: \"entry_fine\", detail: `households:${taken.length}` }]);\n  return next;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/cloth.ts",
+    "sha256": "2d5262f029de5af0ba07c135087905a54b8d6575ed7f1fb58e9eaaf471dddd6d",
+    "spans": [
+      {
+        "start": 186,
+        "end": 193,
+        "text": "/** CL-5 (production): the fulling mills' toll on the cloth they fulled this tick (the treasury, `fulling_toll`). */\nexport function fullingToll(state: GameState, fulled: ReadonlyMap<string, number>): GameState {\n  if (fulled.size === 0) return state;\n  const postings: LedgerPosting[] = [...fulled.entries()].sort(([a], [b]) => a.localeCompare(b)).map(([id, cloths]) => ({\n    account: \"cash\", category: \"fulling_toll\", amount: cloths * CLOTH_BALANCE.fullingTollPerCloth, sourceRefs: [{ type: \"building\", id, detail: `cloth:${cloths}` }],\n  }));\n  const posted = postLedgerEntries(state, postings);\n  return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/reorganisation.ts",
+    "sha256": "bf8b86099535fc3b3098c774da0aa5d45d8e7c21fdd25c013e79cf58d92c0595",
+    "spans": [
+      {
+        "start": 455,
+        "end": 466,
+        "text": "    next = withReorganisation(next, r);\n  }\n  for (const [collectYear, collectSeason] of B.pollTaxCollections) {\n    if (tick !== seasonOf(state, collectYear, collectSeason)) continue;\n    if (r.rebellion?.tick === tick && r.rebellion.outcome === \"chased\") continue;\n    const answer: PetitionResponse | \"expired\" | undefined = r.answers[TAX_COLLECTION_PETITION_ID];\n    if (answer === undefined) continue;\n    const perAdult: number = answer === \"accept\" ? B.delegatedPerAdult : B.directPerAdult;\n    const amount: number = perAdult * adults(next);\n    next = earn(next, \"poll_tax\", amount, [{ type: \"actor\", id: answer === \"accept\" ? \"town\" : \"crown\" }, { type: \"claim\", id: \"poll_tax\", detail: `${collectYear}:${answer === \"accept\" ? \"delegated\" : \"direct\"}` }]);\n    r = { ...reorganisationOf(next)!, pollTax: r.pollTax + amount, collections: r.collections + 1 };\n    next = withReorganisation(next, r);\n"
+      },
+      {
+        "start": 389,
+        "end": 393,
+        "text": "  // RG-9: the fee farm, each spring once the charter is granted (after the chapter too).\n  if (state.tick % YEAR === 0 && r.chapterFiveStart?.charter === \"partial\") {\n    next = earn(next, \"fee_farm\", B.feeFarm, [TOWN_ACTOR, { type: \"right\", id: MARKET_TOLLS_RIGHT_ID, detail: \"fee_farm\" }]);\n  }\n  if (r.endedTick !== undefined) return next;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/timberTrade.ts",
+    "sha256": "0983dcbf2ba146f186845e3f22bc6c764162c2b90c5d7b69ab14e6f8972905ca",
+    "spans": [
+      {
+        "start": 47,
+        "end": 55,
+        "text": "  // FIX-15 (TT-5): carted to a hamlet's storehouse — dearer and less a market day.\n  const carted = market.kind !== \"market\";\n  const price = carted ? TIMBER_TRADE_BALANCE.hamletPrice : TIMBER_TRADE_BALANCE.price;\n  const brought = Math.min(order, carted ? TIMBER_TRADE_BALANCE.hamletPerMarketDay : TIMBER_TRADE_BALANCE.perMarketDay, Math.floor(Math.max(0, state.treasuryCoin) / price));\n  if (brought <= 0) return state;\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"timber_purchase\", amount: -brought * price,\n    sourceRefs: [{ type: \"building\", id: market.id, detail: `timber:${brought}` }] }]);\n  const left = order - brought;\n  const { timberOrder: _order, ...rest } = state;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/townAgency.ts",
+    "sha256": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d",
+    "spans": [
+      {
+        "start": 534,
+        "end": 544,
+        "text": "    const siteId = proposal.action.kind === \"place_building\" ? constructionSiteId(next.nextConstructionOrdinal) : null;\n    const after = applyTownAction(next, proposal.action);\n    if (after === next) continue;\n    actors[actors.indexOf(actor)] = { ...actor, funds: actor.funds + paid + loan - proposal.cost };\n    if (loan > 0) actors[actors.indexOf(community)] = { ...community, funds: community.funds - loan };\n    next = after;\n    if (paid > 0) {\n      const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"project_subsidy\", amount: -paid,\n        sourceRefs: [{ type: \"actor\", id: FACTION_OF_ACTOR[proposal.actor] }, { type: \"claim\", id: \"project_subsidy\", detail: proposal.what }] }]);\n      next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n    }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/estateSuits.ts",
+    "sha256": "da874ca02d90d42f610d3799964513198dcede76aeef0181abc98fbdc8c5ff80",
+    "spans": [
+      {
+        "start": 39,
+        "end": 45,
+        "text": "/** The lord pays a stage's cost from the treasury (a ledger line); another plaintiff's costs are its own. */\nfunction pay(state: GameState, suit: Suit, amount: number, stage: string): GameState | null {\n  if (amount <= 0 || suit.plaintiff !== LORD) return state;\n  if (treasuryBalance(state) < amount) return null;\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"lawsuit\", amount: -amount,\n    sourceRefs: [{ type: \"claim\", id: suit.claimId, detail: `${suit.id}:${stage}` }] }]);\n  return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n"
+      },
+      {
+        "start": 75,
+        "end": 95,
+        "text": "  const claim = estates.claims.find(entry => entry.id === claimId)!;\n  const found = target(estates, claim.estateId, claim.pieceId)!;\n  const suit: Suit = { id: `suit-${estates.nextSuit}`, claimId, plaintiff: claim.claimant, defendant: titleOf(found), estateId: claim.estateId,\n    ...(claim.pieceId === undefined ? {} : { pieceId: claim.pieceId }), stage: \"filed\", stageSince: state.tick, patronSupport: 0, enforcements: 0, costs: SUIT_STAGE_COST.filed ?? 0 };\n  const paid = pay(state, suit, SUIT_STAGE_COST.filed ?? 0, \"filed\");\n  if (paid === null) return state;\n  return { ...paid, estates: { ...estates, suits: [...estates.suits, suit], nextSuit: estates.nextSuit + 1,\n    claims: estates.claims.map(entry => entry.id === claimId ? { ...entry, status: \"suing\" as const } : entry) } };\n}\n\n/** ES-7: evidence brought while the suit is filed or gathering it (once per kind; old possession counts its years). */\nexport function addSuitEvidence(state: GameState, suitId: string, kind: Evidence[\"kind\"]): GameState {\n  const estates = estatesOf(state);\n  const suit = estates.suits.find(entry => entry.id === suitId);\n  if (suit === undefined || (suit.stage !== \"filed\" && suit.stage !== \"evidence\")) return state;\n  const claim = estates.claims.find(entry => entry.id === suit.claimId)!;\n  if (claim.evidence.some(entry => entry.kind === kind)) return state;\n  const paid = pay(state, suit, EVIDENCE_COST[kind], `evidence:${kind}`);\n  if (paid === null) return state;\n  const withEvidence = withClaim(paid, { ...claim, evidence: [...claim.evidence, { kind, weight: EVIDENCE_WEIGHT[kind], tick: state.tick }] });\n  return withSuit(withEvidence, { ...suit, costs: suit.costs + EVIDENCE_COST[kind] });\n"
+      },
+      {
+        "start": 142,
+        "end": 150,
+        "text": "export function enforcePossession(state: GameState, suitId: string): GameState {\n  const suit = estatesOf(state).suits.find(entry => entry.id === suitId);\n  if (suit === undefined || suit.stage !== \"enforcing\") return state;\n  const cost = SUIT_STAGE_COST.enforcing ?? 0;\n  const paid = pay(state, suit, cost, `enforcing:${suit.enforcements + 1}`);\n  if (paid === null) return state;\n  const hold = suit.hold ?? 0;\n  const succeeded = ENFORCEMENT_BASE + suit.patronSupport > hold;\n  const attempted: Suit = { ...suit, enforcements: suit.enforcements + 1, costs: suit.costs + cost, enforced: succeeded,\n"
+      },
+      {
+        "start": 169,
+        "end": 183,
+        "text": "\n/** ES-7: the suits' season, at each season's first tick (nothing with no stored estates or no suit going). */\nexport function advanceSuits(state: GameState): GameState {\n  if (state.estates === undefined || state.tick <= 0 || state.tick % SEASON !== 0) return state;\n  let next = state;\n  for (const suit of state.estates.suits) {\n    const stage = NEXT_STAGE[suit.stage];\n    if (stage === undefined || state.tick - suit.stageSince < SEASON) continue;\n    if (stage === \"judged\") { next = judge(next, suit); continue; }\n    const cost = SUIT_STAGE_COST[stage] ?? 0;\n    const paid = pay(next, suit, cost, stage);\n    if (paid === null) continue;\n    next = withSuit(paid, { ...suit, stage, stageSince: state.tick, costs: suit.costs + cost });\n  }\n  return next;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "spans": [
+      {
+        "start": 256,
+        "end": 263,
+        "text": "function contract(state: GameState, negotiation: Negotiation, terms: readonly Term[]): GameState {\n  let next = state;\n  const cash = cashOf(terms);\n  if (cash > 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"marriage_portion\", amount: -cash,\n      sourceRefs: [{ type: \"claim\", id: negotiation.id, detail: \"marriage\" }, { type: \"actor\", id: negotiation.counterpart }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n"
+      },
+      {
+        "start": 210,
+        "end": 224,
+        "text": "/** NG-6 API: the lord keeps a promise before its deadline — a payment is paid from the treasury; support is given. */\nexport function keepPromise(state: GameState, promiseId: string): GameState {\n  const diplomacy = diplomacyOf(state);\n  const record = diplomacy.promises.find(entry => entry.id === promiseId);\n  if (record === undefined || record.status !== \"open\" || record.promisor !== LORD || state.tick > record.deadline) return state;\n  let next = state;\n  const amount = record.amount ?? 0;\n  if (amount > 0) {\n    if (treasuryBalance(state) < amount) return state;\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"promise_payment\", amount: -amount,\n      sourceRefs: [{ type: \"claim\", id: record.id, detail: record.term }, { type: \"actor\", id: record.promisee }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n  return settle(next, record.id, \"kept\");\n}\n"
+      },
+      {
+        "start": 373,
+        "end": 383,
+        "text": "/** NG-8 API: the will-change answer — a favour paid, support promised, or the new will let stand (it names a rival). */\nexport function answerWillChange(state: GameState, choice: \"favour\" | \"support_promise\" | \"let_it_be\"): GameState {\n  const plan = diplomacyOf(state).marriage;\n  if (plan === undefined || plan.stage !== \"will_change\" || plan.willAnswer !== undefined) return state;\n  if (choice === \"favour\") {\n    if (treasuryBalance(state) < WILL_FAVOUR_PENNIES) return state;\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"promise_payment\", amount: -WILL_FAVOUR_PENNIES,\n      sourceRefs: [{ type: \"claim\", id: plan.claimId, detail: \"will_favour\" }, { type: \"actor\", id: COUNTERPART }] }]);\n    return withPlan({ ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin },\n      { ...plan, stage: \"father_ill\", willAnswer: choice, events: { ...plan.events, will_dropped: state.tick } });\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/stewardship.ts",
+    "sha256": "e73a230a40cc61951e6173ecb9cfde2ac62144b57fb573a10f183002743abe49",
+    "spans": [
+      {
+        "start": 226,
+        "end": 231,
+        "text": "  const income = petitionEffect(answered, grant, false).income;\n  if (income !== 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"estate_income\", amount: income,\n      sourceRefs: [{ type: \"actor\", id: `estate:${HOME_ESTATE_ID}` }, { type: \"claim\", id: answered.id, detail: answered.kind }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n"
+      },
+      {
+        "start": 331,
+        "end": 336,
+        "text": "  const reported = Math.max(0, income - kept - error);\n  if (reported > 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"estate_income\", amount: reported,\n      sourceRefs: [{ type: \"actor\", id: `estate:${estate.id}` }, { type: \"actor\", id: `person:${record.personId}` }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n"
+      },
+      {
+        "start": 443,
+        "end": 461,
+        "text": "  if (petition.estateId === HOME_ESTATE_ID) {\n    const income = petitionEffect(petition, grant, false).income;\n    let next: GameState = state;\n    if (income !== 0) {\n      const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"estate_income\", amount: income,\n        sourceRefs: [{ type: \"actor\", id: `estate:${HOME_ESTATE_ID}` }, { type: \"claim\", id: petition.id, detail: petition.kind }] }]);\n      next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n    }\n    return withStewardship(next, { ...stewardship, petitions: stewardship.petitions.map(settled) });\n  }\n  const oversight = stewardship.oversight.find(entry => entry.estateId === petition.estateId)!;\n  const effect = petitionEffect(petition, grant, false);\n  let next: GameState = state;\n  if (effect.income !== 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"estate_income\", amount: effect.income,\n      sourceRefs: [{ type: \"actor\", id: `estate:${petition.estateId}` }, { type: \"claim\", id: petition.id, detail: petition.kind }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n  if (effect.neglect) next = neglectEstate(next, petition.estateId);\n"
+      },
+      {
+        "start": 492,
+        "end": 500,
+        "text": "  if (successor === undefined) return state;\n  let next = state;\n  const recovered = choice === \"punish\" ? Math.round(audit.revealedKept * PUNISH_RECOVERY / 1000) : 0;\n  if (recovered > 0) {\n    const posted = postLedgerEntries(next, [{ account: \"cash\", category: \"audit_recovery\", amount: recovered,\n      sourceRefs: [{ type: \"claim\", id: audit.id, detail: \"audit\" }, { type: \"actor\", id: `person:${record.personId}` }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n  const updated = withOversight(withSteward(withSteward(settled, { ...record, status: \"dismissed\" }), { ...successor, status: \"serving\", since: state.tick }),\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/registry.ts",
+    "sha256": "5a5bb81ff2e7fe445a8db833895217b13d7f5d1e4831d9ef0380e050b2a835a4",
+    "spans": [
+      {
+        "start": 209,
+        "end": 218,
+        "text": "      return state.factions?.factions.some(faction => faction.id === effect.faction) === true ? state : null;\n    }\n    case \"treasury\": {\n      if (effect.amount < 0 && treasuryBalance(state) < -effect.amount) return null;\n      const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"registry_settlement\", amount: effect.amount, sourceRefs: [{ type: \"actor\", id: occurrenceId }] }]);\n      return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n    }\n    case \"term\": return startTerm(state, effect, occurrenceId);\n    case \"rights_scope\": return ruleRightsScope(state, boundId, effect.sharePermille);\n    case \"set_exception_rules\": {\n"
+      },
+      {
+        "start": 265,
+        "end": 281,
+        "text": "/**\n * ER-7: a year's instalment, paid from the cash; what the cash cannot cover goes to the arrears account and queue, as the\n * war's charges do (paid off at the period close like unpaid upkeep, counted by the failure ladder's arrears).\n */\nfunction payInstalment(state: GameState, term: RegistryTerm): GameState {\n  const sources = [{ type: \"actor\", id: term.source }, { type: \"actor\", id: term.id }] as const;\n  const paid = Math.min(term.amountPerYear, Math.max(0, treasuryBalance(state)));\n  const owed = term.amountPerYear - paid;\n  const postings: LedgerPosting[] = [];\n  if (paid > 0) postings.push({ account: \"cash\", category: \"instalment\", amount: -paid, sourceRefs: [...sources] });\n  if (owed > 0) postings.push({ account: \"arrears\", category: \"instalment\", amount: owed, sourceRefs: [...sources, { type: \"claim\", id: `instalment:${state.tick}`, detail: \"unpaid\" }] });\n  if (postings.length === 0) return state;\n  const posted = postLedgerEntries(state, postings);\n  const money = state.money ?? EMPTY_MONEY;\n  const arrear: UpkeepArrear = { tick: state.tick, amount: owed, facility: sources[0], category: \"instalment\" };\n  return { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger, ...(owed > 0 ? { money: { ...money, arrears: [...money.arrears, arrear] } } : {}) };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 865,
+        "end": 890,
+        "text": "/** HL-7 `history.query`: records matching the filter, oldest first. */\nexport function historyQuery(state: Pick<GameState, \"history\"> & PersonReader, query: HistoryQuery = {}): readonly HistoryRecord[] {\n  const kinds = query.kinds === undefined ? null : new Set<HistoryKind>(query.kinds);\n  const actors = query.actors === undefined ? null : new Set(query.actors.map(actor => `${actor.type}:${actor.id}`));\n  const from = query.range?.from ?? -Infinity;\n  const to = query.range?.to ?? Infinity;\n  const least = query.severity ?? 0;\n  const found = historyOf(state).records.filter(record => record.severity >= least && record.tick >= from && record.tick <= to\n    && (kinds === null || kinds.has(record.kind))\n    && (actors === null || actors.has(`${record.subject.type}:${record.subject.id}`) || (record.actors ?? []).some(actor => actors.has(`${actor.type}:${actor.id}`))));\n  // FIX-12 (item 4, HL-1a): a record that names a person by id comes back with the person's name now (the summary reads it).\n  return state.persons === undefined ? found : found.map(record => namesPerson(record) ? { ...record, params: historyParams(record, state) } : record);\n}\n\n/** HL-7 `history.snapshot`: a thumbnail's palette indices, or null. */\nexport function historySnapshot(state: Pick<GameState, \"history\">, id: string): { readonly size: number; readonly tick: number; readonly pixels: Uint8Array } | null {\n  const snapshot = historyOf(state).snapshots.find(entry => entry.id === id);\n  return snapshot === undefined ? null : { size: snapshot.size, tick: snapshot.tick, pixels: decodeSnapshot(snapshot) };\n}\n\n/** HL-1: the record's sentence, rebuilt from its template and parameters (FIX-12: its persons named from `state` when given). */\nexport function historySummary(record: Pick<HistoryRecord, \"template\" | \"params\">, state?: PersonReader): string {\n  const template = HISTORY_TEMPLATES[record.template];\n  return template === undefined ? record.template : template(historyParams(record, state));\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/personsApi.ts",
+    "sha256": "fc9ac366b9dad35278ec44bc0bed8e2f66378d0bd8bbce8a66b4191ddd139cbc",
+    "spans": [
+      {
+        "start": 14,
+        "end": 24,
+        "text": "export function personBiography(state: GameState, id: string) {\n  const person = personById(state, id);\n  if (person === undefined) return null;\n  const year = person.deathYear ?? person.leftYear ?? currentYear(state);\n  const records = historyQuery(state, { actors: [{ type: \"person\", id }] });\n  return {\n    person, name: displayName(person), age: ageOf(person, year), ageBand: ageBandOf(ageOf(person, year)),\n    born: person.birthYear, died: person.deathYear ?? null, left: person.leftYear ?? null, portrait: personPortrait(state, person),\n    events: records.map(record => ({ id: record.id, tick: record.tick, date: historyDate(record, state), template: record.template, summary: historySummary(record) })),\n  };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ui/chronicle/chronicleScreenModel.ts",
+    "sha256": "52a47405117893ca1b1cbd281c2cc1fe2a1de64b4e8ca8c6ff9a74a2d86fdaf4",
+    "spans": [
+      {
+        "start": 543,
+        "end": 589,
+        "text": "export function biographyView(state: GameState, personId: string): BiographyView | null {\n  const biography = persons.biography(state, personId);\n  if (biography === null) return null;\n  const { person } = biography;\n  const members = personsOf(state, person.householdId).filter(member => member.id !== person.id)\n    .sort((a, b) => (RELATION_ORDER[a.role] ?? 9) - (RELATION_ORDER[b.role] ?? 9) || a.birthYear - b.birthYear);\n  const relations = members.map(member => ({ id: member.id, line: CHRONICLE_SCREEN_COPY.relation(person.role, member.role, personDisplayName(member)),\n    portraitId: drawnPortraitId(member, persons.portrait(state, member).portraitId) }));\n  // UI-7b: the shield and the small circle are the emblem slots (a family member stays in the relations below).\n  const emblem = personEmblem(state, person);\n  const offices: string[] = [];\n  for (const tag of person.tags) {\n    if (tag === \"reeve\") offices.push(CHRONICLE_SCREEN_COPY.reeve);\n    else if (tag.startsWith(\"manager:\")) {\n      const building = state.buildings.find(entry => entry.id === tag.slice(\"manager:\".length));\n      if (building !== undefined) offices.push(CHRONICLE_SCREEN_COPY.manager(BUILDING_CONFIG_BY_KIND[building.kind as BuildingKind].name));\n    } else if (tag.startsWith(\"petitioner:\")) {\n      const fellows = (state.persons?.people ?? []).filter(other => other.id !== person.id && other.tags.includes(tag)).map(other => personDisplayName(other));\n      offices.push(CHRONICLE_SCREEN_COPY.petitioner(fellows));\n    }\n  }\n  // \"함께 남긴 기록\": the weighty records that name this person (decisions, events, the town's milestones they were part of).\n  const shared = history.query(state, { actors: [{ type: \"person\", id: personId }], severity: 1 }).slice(-6).reverse();\n  const end = biography.died ?? biography.left;\n  return {\n    id: person.id, name: personDisplayName(person), portraitId: drawnPortraitId(person, biography.portrait.portraitId), portraitExact: person.role === \"steward\" || biography.portrait.exact,\n    ornament: personOrnament(state, person),\n    portraitLine: person.role === \"steward\" ? PERSONS_COPY.stewardPortrait\n      : CHRONICLE_SCREEN_COPY.portraitMatch(biography.portrait.identityId, biography.portrait.stage, biography.portrait.exact),\n    life: CHRONICLE_SCREEN_COPY.life(person.birthYear, end, biography.age, biography.died !== null, biography.left !== null && biography.died === null),\n    // UI-8 (F3-A PL-2): show plague cause in the header; other death causes are visible in the events list already.\n    deathCause: person.deathCause === \"plague\" && person.deathYear !== undefined\n      ? CHRONICLE_SCREEN_COPY.plagueDeath(person.deathYear) : null,\n    // The steward's trade is the office itself (not \"청지기 · 청지기\"); NAT-4 (QA-014): an outsider by his title alone.\n    role: isOutsider(person) ? occupationName(person.occupation)\n      : CHRONICLE_SCREEN_COPY.role(person.role, person.occupation === person.role ? \"\" : occupationName(person.occupation)),\n    household: person.role === \"head\" ? null : person.householdId === MANOR_HOUSEHOLD ? CHRONICLE_SCREEN_COPY.household(null)\n      : CHRONICLE_SCREEN_COPY.household(householdName(state, person.householdId)),\n    resemblance: (parts => parts.length === 0 ? null : PERSON_TRAIT_COPY.resemblance(parts))(resemblanceParts(state, person)),\n    arms: emblem?.kind === \"merchant\" ? null : emblem, mark: emblem?.kind === \"merchant\" ? emblem : null,\n    emblemLabel: emblem === null ? \"\" : emblem.kind === \"merchant\" ? PERSONS_COPY.merchantMark : PERSONS_COPY.arms,\n    events: biography.events.map((event, index) => ({ id: event.id, date: CHRONICLE_SCREEN_COPY.date(event.date.year, event.date.season), sentence: event.summary,\n      last: index === biography.events.length - 1 && end !== null })),\n    relations, survivors: !person.alive || person.leftYear !== undefined, offices,\n    records: shared.map(record => ({ id: record.id, tick: record.tick, date: chronicleDate(state, record.tick), sentence: history.summary(record, state) })),\n  };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 1,
+        "end": 55,
+        "text": "/**\n * FIX-12 (item 4, spec docs/design/history-ledger.md HL-1a, QA-010): a ledger record names a person by id; the name —\n * with the epithet the person has now (큰/작은) — is drawn when the record is read, never kept as text.\n */\nimport { PERSON_NAME_FALLBACK } from \"../content/historyCopy.ko\";\nimport type { GameState } from \"./engine.types\";\nimport type { HistoryParams, HistoryRecord } from \"./history.types\";\nimport { personDisplayName } from \"./persons\";\nimport type { Person } from \"./persons.types\";\n\n/**\n * FIX-12 (item 4, HL-1a, QA-010): the parameters that name a person by id, and the name each one gives the sentence.\n * A record keeps the id; the name (with its epithet as it is now — 큰/작은) is drawn when the record is read.\n */\nconst PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).\n  deceasedId: \"deceased\",\n};\nexport type PersonReader = Partial<Pick<GameState, \"persons\" | \"factions\" | \"estates\">>;\nexport const namesPerson = (record: Pick<HistoryRecord, \"params\">) => record.params !== undefined && Object.keys(record.params).some(key => key in PERSON_PARAMS);\nconst personIndex = new WeakMap<object, { readonly factions: unknown; readonly estates: unknown; readonly byId: Map<string, Person> }>();\n\n/** The town's people (living and past), the factions' and the neighbour estates' — by id (rebuilt when one of them changes). */\nfunction personNamed(state: PersonReader, id: string): Person | undefined {\n  const key = state.persons ?? state;\n  const factions = state.factions?.people, estates = state.estates?.people;\n  let entry = personIndex.get(key);\n  if (entry === undefined || entry.factions !== factions || entry.estates !== estates) {\n    entry = { factions, estates, byId: new Map([...(estates ?? []), ...(factions ?? []), ...(state.persons?.past ?? []), ...(state.persons?.people ?? [])]\n      .map(person => [person.id, person])) };\n    personIndex.set(key, entry);\n  }\n  return entry.byId.get(id);\n}\n\n/**\n * FIX-12 (item 4) API: a record's parameters with each person named now — `lordId` gives `lord`, and so on. An id no\n * reader knows keeps the name the record was written with (a save before FIX-12) or the copy's fallback word.\n */\nexport function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/diplomacyConfig.ts",
+    "sha256": "c37266ce00dd391f0db7e42ceddfc8aa420d03c8fc081d263e5cee3e87036967",
+    "spans": [
+      {
+        "start": 96,
+        "end": 99,
+        "text": "export const BREACHED_NON_INFRINGEMENT_GAIN = 15;\n/** NG-8: the favour that talks the old lord out of a new will, pennies. */\nexport const WILL_FAVOUR_PENNIES = 120;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/legacyConfig.ts",
+    "sha256": "3ca61d68328e3b15bd062a6bdd06061eaa56e0ccf8f02ab8510f1805993de1f8",
+    "spans": [
+      {
+        "start": 80,
+        "end": 85,
+        "text": "\n  /** LG-2: a sealed charter — the town's one-off fine, the fee farm from then, the Crown's confirmation after a petition. */\n  charterFine: 300,\n  feeFarm: 200,\n  confirmationFine: 200,\n  /** LG-2: a refusal's backlash — at least this, the town's influence, or chapter 4's backlash and this much. */\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/aleConfig.ts",
+    "sha256": "edbb0c889508acc87e4852402c8d2511127ac87d23bab9234f6cc28ec562b45c",
+    "spans": [
+      {
+        "start": 32,
+        "end": 36,
+        "text": "  servedHoldPermille: 1_000,\n  /** AL-7: ale's market price (pennies a cask), and the alehouse's dues a ledger period: this share of its sales. */\n  alePrice: 3,\n  alehouseDuesPermille: 200,\n  /**\n"
+      }
+    ]
+  }
+]

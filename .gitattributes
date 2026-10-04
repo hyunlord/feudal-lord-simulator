@@ -45,3 +45,4 @@ assets-inbox/wave44/candidates-20261002/**/*.jpg !filter !diff !merge !text
 # The perf-trend page is generated whole (npm run perf:trend); two refreshes merge by keeping the newer page (RR4).
 docs/verification/perf-trend/README.md merge=fls-trend
 docs/verification/perf-trend/trend.json merge=fls-trend
+docs/qa/steward-20261004/**/*.png filter=lfs diff=lfs merge=lfs -text

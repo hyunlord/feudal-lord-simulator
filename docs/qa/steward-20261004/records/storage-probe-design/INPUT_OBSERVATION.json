@@ -1,0 +1,1296 @@
+{
+  "input": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1350.fls.json",
+  "sha256": "b663dde465f0b8b4fceae704bd583fca4e79ea6fd0852a1ee83d78f88990dbbb",
+  "tick": 200000,
+  "seed": 1,
+  "timeFields": {
+    "wallTick": 200000
+  },
+  "targets": [
+    {
+      "id": "storehouse-41-40-0",
+      "kind": "storehouse",
+      "tx": 41,
+      "ty": 40,
+      "workers": 2,
+      "inventory": {
+        "timber": 60,
+        "logs": 88,
+        "stone": 51,
+        "malt": 0,
+        "stone_raw": 1
+      },
+      "reserved": {
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    },
+    {
+      "id": "construction-site-000039",
+      "kind": "storehouse",
+      "tx": 41,
+      "ty": 45,
+      "workers": 2,
+      "inventory": {
+        "logs": 97,
+        "timber": 60,
+        "malt": 0,
+        "stone": 41
+      },
+      "reserved": {
+        "timber": 1,
+        "logs": 1
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    },
+    {
+      "id": "construction-site-000048",
+      "kind": "storehouse",
+      "tx": 52,
+      "ty": 48,
+      "workers": 2,
+      "inventory": {
+        "logs": 100,
+        "timber": 60,
+        "malt": 0,
+        "stone": 40
+      },
+      "reserved": {
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    },
+    {
+      "id": "construction-site-000050",
+      "kind": "sawmill",
+      "tx": 43,
+      "ty": 43,
+      "workers": 2,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "reserved": {
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0,
+      "stuckSinceTick": {
+        "timber": 164900
+      }
+    },
+    {
+      "id": "construction-site-000062",
+      "kind": "storehouse",
+      "tx": 33,
+      "ty": 29,
+      "workers": 2,
+      "inventory": {
+        "logs": 100,
+        "stone": 40,
+        "timber": 60,
+        "malt": 0
+      },
+      "reserved": {
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    },
+    {
+      "id": "construction-site-000065",
+      "kind": "storehouse",
+      "tx": 38,
+      "ty": 30,
+      "workers": 2,
+      "inventory": {
+        "timber": 60,
+        "malt": 0,
+        "stone": 40,
+        "logs": 100
+      },
+      "reserved": {
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    }
+  ],
+  "relatedCarters": [
+    {
+      "id": "carter:construction-site-000003:199936",
+      "home": "construction-site-000003",
+      "destination": {
+        "kind": "building",
+        "buildingId": "construction-site-000039"
+      },
+      "mission": "deliver",
+      "phase": "outbound",
+      "cargo": {
+        "resource": "timber",
+        "amount": 1
+      },
+      "reservation": {
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000039"
+        },
+        "resource": "timber",
+        "amount": 1,
+        "sourceStockClaim": null,
+        "homeCapacityClaim": {
+          "buildingId": "construction-site-000003",
+          "resource": "timber",
+          "amount": 1
+        }
+      },
+      "pathIndex": 8,
+      "position": {
+        "tx": 49.960000000000036,
+        "ty": 37
+      },
+      "path": [
+        {
+          "tx": 43,
+          "ty": 39
+        },
+        {
+          "tx": 44,
+          "ty": 39
+        },
+        {
+          "tx": 45,
+          "ty": 39
+        },
+        {
+          "tx": 46,
+          "ty": 39
+        },
+        {
+          "tx": 47,
+          "ty": 39
+        },
+        {
+          "tx": 47,
+          "ty": 38
+        },
+        {
+          "tx": 47,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 49,
+          "ty": 37
+        },
+        {
+          "tx": 50,
+          "ty": 37
+        },
+        {
+          "tx": 50,
+          "ty": 38
+        },
+        {
+          "tx": 51,
+          "ty": 38
+        },
+        {
+          "tx": 52,
+          "ty": 38
+        },
+        {
+          "tx": 52,
+          "ty": 39
+        },
+        {
+          "tx": 52,
+          "ty": 40
+        },
+        {
+          "tx": 52,
+          "ty": 41
+        },
+        {
+          "tx": 52,
+          "ty": 42
+        },
+        {
+          "tx": 51,
+          "ty": 42
+        },
+        {
+          "tx": 51,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 45
+        },
+        {
+          "tx": 48,
+          "ty": 45
+        },
+        {
+          "tx": 47,
+          "ty": 45
+        },
+        {
+          "tx": 46,
+          "ty": 45
+        },
+        {
+          "tx": 45,
+          "ty": 45
+        },
+        {
+          "tx": 44,
+          "ty": 45
+        },
+        {
+          "tx": 43,
+          "ty": 45
+        }
+      ],
+      "length": 28,
+      "remaining": 19.039999999999964,
+      "cancellation": null
+    },
+    {
+      "id": "carter:construction-site-000049:199834",
+      "home": "construction-site-000049",
+      "destination": {
+        "kind": "building",
+        "buildingId": "storehouse-41-40-0"
+      },
+      "mission": "deliver",
+      "phase": "returning",
+      "cargo": null,
+      "reservation": {
+        "destination": {
+          "kind": "building",
+          "buildingId": "storehouse-41-40-0"
+        },
+        "resource": "logs",
+        "amount": 1,
+        "sourceStockClaim": null,
+        "homeCapacityClaim": null
+      },
+      "pathIndex": 7,
+      "position": {
+        "tx": 47.14000000000003,
+        "ty": 37
+      },
+      "path": [
+        {
+          "tx": 43,
+          "ty": 40
+        },
+        {
+          "tx": 43,
+          "ty": 39
+        },
+        {
+          "tx": 44,
+          "ty": 39
+        },
+        {
+          "tx": 45,
+          "ty": 39
+        },
+        {
+          "tx": 46,
+          "ty": 39
+        },
+        {
+          "tx": 47,
+          "ty": 39
+        },
+        {
+          "tx": 47,
+          "ty": 38
+        },
+        {
+          "tx": 47,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 36
+        },
+        {
+          "tx": 48,
+          "ty": 35
+        },
+        {
+          "tx": 48,
+          "ty": 34
+        },
+        {
+          "tx": 48,
+          "ty": 33
+        },
+        {
+          "tx": 48,
+          "ty": 32
+        },
+        {
+          "tx": 48,
+          "ty": 31
+        },
+        {
+          "tx": 48,
+          "ty": 30
+        },
+        {
+          "tx": 48,
+          "ty": 29
+        }
+      ],
+      "length": 16,
+      "remaining": 8.859999999999971,
+      "cancellation": null
+    },
+    {
+      "id": "carter:construction-site-000051:199840",
+      "home": "construction-site-000051",
+      "destination": {
+        "kind": "building",
+        "buildingId": "storehouse-41-40-0"
+      },
+      "mission": "deliver",
+      "phase": "returning",
+      "cargo": null,
+      "reservation": {
+        "destination": {
+          "kind": "building",
+          "buildingId": "storehouse-41-40-0"
+        },
+        "resource": "logs",
+        "amount": 1,
+        "sourceStockClaim": null,
+        "homeCapacityClaim": null
+      },
+      "pathIndex": 3,
+      "position": {
+        "tx": 45.360000000000014,
+        "ty": 39
+      },
+      "path": [
+        {
+          "tx": 43,
+          "ty": 40
+        },
+        {
+          "tx": 43,
+          "ty": 39
+        },
+        {
+          "tx": 44,
+          "ty": 39
+        },
+        {
+          "tx": 45,
+          "ty": 39
+        },
+        {
+          "tx": 46,
+          "ty": 39
+        },
+        {
+          "tx": 47,
+          "ty": 39
+        },
+        {
+          "tx": 47,
+          "ty": 38
+        },
+        {
+          "tx": 47,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 36
+        },
+        {
+          "tx": 48,
+          "ty": 35
+        },
+        {
+          "tx": 48,
+          "ty": 34
+        },
+        {
+          "tx": 48,
+          "ty": 33
+        },
+        {
+          "tx": 48,
+          "ty": 32
+        },
+        {
+          "tx": 48,
+          "ty": 31
+        },
+        {
+          "tx": 48,
+          "ty": 30
+        },
+        {
+          "tx": 48,
+          "ty": 29
+        },
+        {
+          "tx": 48,
+          "ty": 28
+        },
+        {
+          "tx": 47,
+          "ty": 28
+        },
+        {
+          "tx": 46,
+          "ty": 28
+        }
+      ],
+      "length": 19,
+      "remaining": 15.639999999999986,
+      "cancellation": null
+    },
+    {
+      "id": "carter:construction-site-000052:199986",
+      "home": "construction-site-000052",
+      "destination": {
+        "kind": "building",
+        "buildingId": "construction-site-000039"
+      },
+      "mission": "deliver",
+      "phase": "outbound",
+      "cargo": {
+        "resource": "logs",
+        "amount": 1
+      },
+      "reservation": {
+        "destination": {
+          "kind": "building",
+          "buildingId": "construction-site-000039"
+        },
+        "resource": "logs",
+        "amount": 1,
+        "sourceStockClaim": null,
+        "homeCapacityClaim": {
+          "buildingId": "construction-site-000052",
+          "resource": "logs",
+          "amount": 1
+        }
+      },
+      "pathIndex": 1,
+      "position": {
+        "tx": 46.96000000000001,
+        "ty": 28
+      },
+      "path": [
+        {
+          "tx": 45,
+          "ty": 28
+        },
+        {
+          "tx": 46,
+          "ty": 28
+        },
+        {
+          "tx": 47,
+          "ty": 28
+        },
+        {
+          "tx": 48,
+          "ty": 28
+        },
+        {
+          "tx": 48,
+          "ty": 29
+        },
+        {
+          "tx": 48,
+          "ty": 30
+        },
+        {
+          "tx": 48,
+          "ty": 31
+        },
+        {
+          "tx": 48,
+          "ty": 32
+        },
+        {
+          "tx": 48,
+          "ty": 33
+        },
+        {
+          "tx": 48,
+          "ty": 34
+        },
+        {
+          "tx": 48,
+          "ty": 35
+        },
+        {
+          "tx": 48,
+          "ty": 36
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 49,
+          "ty": 37
+        },
+        {
+          "tx": 50,
+          "ty": 37
+        },
+        {
+          "tx": 50,
+          "ty": 38
+        },
+        {
+          "tx": 51,
+          "ty": 38
+        },
+        {
+          "tx": 52,
+          "ty": 38
+        },
+        {
+          "tx": 52,
+          "ty": 39
+        },
+        {
+          "tx": 52,
+          "ty": 40
+        },
+        {
+          "tx": 52,
+          "ty": 41
+        },
+        {
+          "tx": 52,
+          "ty": 42
+        },
+        {
+          "tx": 51,
+          "ty": 42
+        },
+        {
+          "tx": 51,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 43
+        },
+        {
+          "tx": 49,
+          "ty": 43
+        },
+        {
+          "tx": 49,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 45
+        },
+        {
+          "tx": 48,
+          "ty": 45
+        },
+        {
+          "tx": 47,
+          "ty": 45
+        },
+        {
+          "tx": 46,
+          "ty": 45
+        },
+        {
+          "tx": 45,
+          "ty": 45
+        },
+        {
+          "tx": 44,
+          "ty": 45
+        },
+        {
+          "tx": 43,
+          "ty": 45
+        }
+      ],
+      "length": 33,
+      "remaining": 31.039999999999992,
+      "cancellation": null
+    }
+  ],
+  "retainedTargetPaths": [
+    {
+      "pair": "construction-site-000050|storehouse-41-40-0",
+      "nodes": 31,
+      "length": 30,
+      "path": [
+        {
+          "tx": 43,
+          "ty": 44
+        },
+        {
+          "tx": 44,
+          "ty": 44
+        },
+        {
+          "tx": 44,
+          "ty": 45
+        },
+        {
+          "tx": 45,
+          "ty": 45
+        },
+        {
+          "tx": 46,
+          "ty": 45
+        },
+        {
+          "tx": 47,
+          "ty": 45
+        },
+        {
+          "tx": 48,
+          "ty": 45
+        },
+        {
+          "tx": 49,
+          "ty": 45
+        },
+        {
+          "tx": 49,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 43
+        },
+        {
+          "tx": 51,
+          "ty": 43
+        },
+        {
+          "tx": 51,
+          "ty": 42
+        },
+        {
+          "tx": 52,
+          "ty": 42
+        },
+        {
+          "tx": 52,
+          "ty": 41
+        },
+        {
+          "tx": 52,
+          "ty": 40
+        },
+        {
+          "tx": 52,
+          "ty": 39
+        },
+        {
+          "tx": 52,
+          "ty": 38
+        },
+        {
+          "tx": 51,
+          "ty": 38
+        },
+        {
+          "tx": 50,
+          "ty": 38
+        },
+        {
+          "tx": 50,
+          "ty": 37
+        },
+        {
+          "tx": 49,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 47,
+          "ty": 37
+        },
+        {
+          "tx": 47,
+          "ty": 38
+        },
+        {
+          "tx": 47,
+          "ty": 39
+        },
+        {
+          "tx": 46,
+          "ty": 39
+        },
+        {
+          "tx": 45,
+          "ty": 39
+        },
+        {
+          "tx": 44,
+          "ty": 39
+        },
+        {
+          "tx": 43,
+          "ty": 39
+        },
+        {
+          "tx": 43,
+          "ty": 40
+        }
+      ]
+    },
+    {
+      "pair": "construction-site-000039|construction-site-000050",
+      "nodes": 2,
+      "length": 1,
+      "path": [
+        {
+          "tx": 42,
+          "ty": 44
+        },
+        {
+          "tx": 43,
+          "ty": 44
+        }
+      ]
+    },
+    {
+      "pair": "construction-site-000048|construction-site-000050",
+      "nodes": 21,
+      "length": 20,
+      "path": [
+        {
+          "tx": 52,
+          "ty": 47
+        },
+        {
+          "tx": 52,
+          "ty": 46
+        },
+        {
+          "tx": 53,
+          "ty": 46
+        },
+        {
+          "tx": 53,
+          "ty": 45
+        },
+        {
+          "tx": 53,
+          "ty": 44
+        },
+        {
+          "tx": 53,
+          "ty": 43
+        },
+        {
+          "tx": 53,
+          "ty": 42
+        },
+        {
+          "tx": 52,
+          "ty": 42
+        },
+        {
+          "tx": 51,
+          "ty": 42
+        },
+        {
+          "tx": 51,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 45
+        },
+        {
+          "tx": 48,
+          "ty": 45
+        },
+        {
+          "tx": 47,
+          "ty": 45
+        },
+        {
+          "tx": 46,
+          "ty": 45
+        },
+        {
+          "tx": 45,
+          "ty": 45
+        },
+        {
+          "tx": 44,
+          "ty": 45
+        },
+        {
+          "tx": 44,
+          "ty": 44
+        },
+        {
+          "tx": 43,
+          "ty": 44
+        }
+      ]
+    },
+    {
+      "pair": "construction-site-000050|construction-site-000062",
+      "nodes": 48,
+      "length": 47,
+      "path": [
+        {
+          "tx": 43,
+          "ty": 44
+        },
+        {
+          "tx": 44,
+          "ty": 44
+        },
+        {
+          "tx": 44,
+          "ty": 45
+        },
+        {
+          "tx": 45,
+          "ty": 45
+        },
+        {
+          "tx": 46,
+          "ty": 45
+        },
+        {
+          "tx": 47,
+          "ty": 45
+        },
+        {
+          "tx": 48,
+          "ty": 45
+        },
+        {
+          "tx": 49,
+          "ty": 45
+        },
+        {
+          "tx": 49,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 43
+        },
+        {
+          "tx": 51,
+          "ty": 43
+        },
+        {
+          "tx": 51,
+          "ty": 42
+        },
+        {
+          "tx": 52,
+          "ty": 42
+        },
+        {
+          "tx": 52,
+          "ty": 41
+        },
+        {
+          "tx": 52,
+          "ty": 40
+        },
+        {
+          "tx": 52,
+          "ty": 39
+        },
+        {
+          "tx": 52,
+          "ty": 38
+        },
+        {
+          "tx": 51,
+          "ty": 38
+        },
+        {
+          "tx": 50,
+          "ty": 38
+        },
+        {
+          "tx": 50,
+          "ty": 37
+        },
+        {
+          "tx": 49,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 36
+        },
+        {
+          "tx": 48,
+          "ty": 35
+        },
+        {
+          "tx": 48,
+          "ty": 34
+        },
+        {
+          "tx": 48,
+          "ty": 33
+        },
+        {
+          "tx": 48,
+          "ty": 32
+        },
+        {
+          "tx": 48,
+          "ty": 31
+        },
+        {
+          "tx": 48,
+          "ty": 30
+        },
+        {
+          "tx": 48,
+          "ty": 29
+        },
+        {
+          "tx": 48,
+          "ty": 28
+        },
+        {
+          "tx": 47,
+          "ty": 28
+        },
+        {
+          "tx": 46,
+          "ty": 28
+        },
+        {
+          "tx": 45,
+          "ty": 28
+        },
+        {
+          "tx": 44,
+          "ty": 28
+        },
+        {
+          "tx": 44,
+          "ty": 27
+        },
+        {
+          "tx": 43,
+          "ty": 27
+        },
+        {
+          "tx": 42,
+          "ty": 27
+        },
+        {
+          "tx": 42,
+          "ty": 28
+        },
+        {
+          "tx": 41,
+          "ty": 28
+        },
+        {
+          "tx": 40,
+          "ty": 28
+        },
+        {
+          "tx": 39,
+          "ty": 28
+        },
+        {
+          "tx": 38,
+          "ty": 28
+        },
+        {
+          "tx": 37,
+          "ty": 28
+        },
+        {
+          "tx": 36,
+          "ty": 28
+        },
+        {
+          "tx": 35,
+          "ty": 28
+        },
+        {
+          "tx": 34,
+          "ty": 28
+        }
+      ]
+    },
+    {
+      "pair": "construction-site-000050|construction-site-000065",
+      "nodes": 47,
+      "length": 46,
+      "path": [
+        {
+          "tx": 43,
+          "ty": 44
+        },
+        {
+          "tx": 44,
+          "ty": 44
+        },
+        {
+          "tx": 44,
+          "ty": 45
+        },
+        {
+          "tx": 45,
+          "ty": 45
+        },
+        {
+          "tx": 46,
+          "ty": 45
+        },
+        {
+          "tx": 47,
+          "ty": 45
+        },
+        {
+          "tx": 48,
+          "ty": 45
+        },
+        {
+          "tx": 49,
+          "ty": 45
+        },
+        {
+          "tx": 49,
+          "ty": 44
+        },
+        {
+          "tx": 49,
+          "ty": 43
+        },
+        {
+          "tx": 50,
+          "ty": 43
+        },
+        {
+          "tx": 51,
+          "ty": 43
+        },
+        {
+          "tx": 51,
+          "ty": 42
+        },
+        {
+          "tx": 52,
+          "ty": 42
+        },
+        {
+          "tx": 52,
+          "ty": 41
+        },
+        {
+          "tx": 52,
+          "ty": 40
+        },
+        {
+          "tx": 52,
+          "ty": 39
+        },
+        {
+          "tx": 52,
+          "ty": 38
+        },
+        {
+          "tx": 51,
+          "ty": 38
+        },
+        {
+          "tx": 50,
+          "ty": 38
+        },
+        {
+          "tx": 50,
+          "ty": 37
+        },
+        {
+          "tx": 49,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 37
+        },
+        {
+          "tx": 48,
+          "ty": 36
+        },
+        {
+          "tx": 48,
+          "ty": 35
+        },
+        {
+          "tx": 48,
+          "ty": 34
+        },
+        {
+          "tx": 48,
+          "ty": 33
+        },
+        {
+          "tx": 48,
+          "ty": 32
+        },
+        {
+          "tx": 48,
+          "ty": 31
+        },
+        {
+          "tx": 48,
+          "ty": 30
+        },
+        {
+          "tx": 48,
+          "ty": 29
+        },
+        {
+          "tx": 48,
+          "ty": 28
+        },
+        {
+          "tx": 47,
+          "ty": 28
+        },
+        {
+          "tx": 46,
+          "ty": 28
+        },
+        {
+          "tx": 45,
+          "ty": 28
+        },
+        {
+          "tx": 44,
+          "ty": 28
+        },
+        {
+          "tx": 44,
+          "ty": 27
+        },
+        {
+          "tx": 43,
+          "ty": 27
+        },
+        {
+          "tx": 42,
+          "ty": 27
+        },
+        {
+          "tx": 42,
+          "ty": 28
+        },
+        {
+          "tx": 41,
+          "ty": 28
+        },
+        {
+          "tx": 40,
+          "ty": 28
+        },
+        {
+          "tx": 39,
+          "ty": 28
+        },
+        {
+          "tx": 38,
+          "ty": 28
+        },
+        {
+          "tx": 37,
+          "ty": 28
+        },
+        {
+          "tx": 37,
+          "ty": 29
+        },
+        {
+          "tx": 37,
+          "ty": 30
+        }
+      ]
+    }
+  ]
+}

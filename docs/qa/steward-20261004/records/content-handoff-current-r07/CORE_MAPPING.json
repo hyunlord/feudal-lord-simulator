@@ -1,0 +1,3814 @@
+[
+  {
+    "id": "ck_evt_063",
+    "title": "소환을 듣지 못한 사람",
+    "class": "court_procedure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT03",
+        "requiredCapability": "본안 채무와 적법한 소환·불출석 책임을 분리.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "file_suit는 기존 권원 claim의 소송이며 소환 송달·경계 답사·재판 밖 합의가 아니다. seek_suit_patron은 기존 GameCommand이지만 RegistryEffect에는 없다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_064",
+    "title": "빌려 간 쟁기가 돌아오지 않는다",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT04",
+        "requiredCapability": "물건 반환과 수선비 상계를 구별. 돈만의 채무와 다른 점유·작업기한 문제.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_066",
+    "title": "가축 우리에서 풀려난 소",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT06",
+        "requiredCapability": "농작물 손해, 가축 보관, 무단 반출 세 책임을 분리.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_069",
+    "title": "지붕용 가지를 장에 내다 팔다",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT09",
+        "requiredCapability": "생활 수선용 채취권과 상업 판매권의 범위 차이.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_070",
+    "title": "약속한 날의 다른 일꾼",
+    "class": "labour_public_work_relief",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT10",
+        "requiredCapability": "이행 결과와 인적 노무 의무의 대리 허용을 분리. 후기 지속 여부 추가 고증 필요.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "장려금·시장 부담·영지 방침은 개인 역무·공동 공사 합의·현물 종자 대여·견적별 가족 부담 배분을 생성하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "ck_evt_070.history_window",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사용 자료의 확인된 시대와 집필 창 불일치. 동시대 근거 보강 또는 재배치 전 비노출."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_071",
+    "title": "직영지의 한 해를 미리 사겠다는 사람",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT11",
+        "requiredCapability": "직영 경영의 변동 수입과 임대의 고정 약속 교환.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_072",
+    "title": "한 필지에 세 개의 부엌",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT12",
+        "requiredCapability": "실사용 가구 분할과 원임차인의 공동 납부 책임 구분.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_073",
+    "title": "장부에는 길, 밭에는 이랑",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT13",
+        "requiredCapability": "경계 권원 확인과 실제 통행권 복구·작물 보상 분리.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_074",
+    "title": "갈대 묶음에 붙은 새 요구",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT14",
+        "requiredCapability": "같은 공유지라도 수선·연료·이탄의 용도별 권리는 다를 수 있음.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_079",
+    "title": "이웃이 주문한 지붕 기와",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT19",
+        "requiredCapability": "외부판매납기와자체수선의생산배정. 기와를목재자원으로치환하지않음.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_081",
+    "title": "남의 인장으로 남긴 약속",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT21",
+        "requiredCapability": "인장차이와문서위조를구분하는인증절차. 진위결론자동생성금지.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_082",
+    "title": "먼저 찾아온 보증인",
+    "class": "debt_guarantee_setoff_escrow",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT22",
+        "requiredCapability": "주채무와보증채무순서·한도·해제시점.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "term.installments는 영주 cash/arrears 지급이다. 개인 채무·보증·보관금·상계의 쌍방 당사자 원장이 아니다. marriage promises는 실제 혼인 계약에 한정된다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_084",
+    "title": "같은 빚이 다른 두 줄로",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT24",
+        "requiredCapability": "이중기록의정정이력·원채무합산중복방지.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_086",
+    "title": "짐값 대신 잡아 둔 보따리",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT26",
+        "requiredCapability": "운송대금회수와물건반환의선후·담보보관.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_089",
+    "title": "같은 도랑을 찾는 두 작업장",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT29",
+        "requiredCapability": "취수·배출위치와오염책임;보통우물장려금으로해결완료라할수없음.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "ck_evt_089.history_window",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사용 자료의 확인된 시대와 집필 창 불일치. 동시대 근거 보강 또는 재배치 전 비노출."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_091",
+    "title": "빚 대신 내민 물건의 값",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT31",
+        "requiredCapability": "현물평가·매각비용·담보와변제의구분.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_094",
+    "title": "작업장 아래의 다른 주인",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT34",
+        "requiredCapability": "토지권원·건물임대·수선책임다층관계.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_096",
+    "title": "계절 끝에 돌아온 빌린 베틀",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT36",
+        "requiredCapability": "대여물감가·수선·보증금반환. 후기계약관행추가근거필요.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "ck_evt_096.history_window",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사용 자료의 확인된 시대와 집필 창 불일치. 동시대 근거 보강 또는 재배치 전 비노출."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_097",
+    "title": "런던까지 이어진 외상 장부",
+    "class": "debt_guarantee_setoff_escrow",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT37",
+        "requiredCapability": "연쇄채무의기한불일치·상계·부분결제.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "term.installments는 영주 cash/arrears 지급이다. 개인 채무·보증·보관금·상계의 쌍방 당사자 원장이 아니다. marriage promises는 실제 혼인 계약에 한정된다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_098",
+    "title": "새 다리 곁의 오래된 여울",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT38",
+        "requiredCapability": "다리유지수입과병행여울경로권리;시장부담을통행세로치환금지.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_099",
+    "title": "이름 없이 적힌 재단사",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE01",
+        "requiredCapability": null,
+        "requiredState": null,
+        "operations": null,
+        "existingBoundary": null
+      },
+      {
+        "id": "NE_SR01_MT39",
+        "requiredCapability": "인물식별정정과조세의무분리;이름누락을유죄또는출신차별로단정하지않음.",
+        "requiredState": [
+          "stable dispute/contract id",
+          "actual parties and authority",
+          "amount/property or right scope",
+          "deadline and expiry",
+          "consent and evidence provenance",
+          "balanced ledger entries and idempotency key"
+        ],
+        "operations": null,
+        "existingBoundary": "혼인채무인수·권원소송·시장부담·목재를이사건의일반채무/손해배상/통행권효과로재해석금지."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_103",
+    "title": "미사 뒤의 맹세",
+    "class": "court_procedure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN01",
+        "requiredCapability": "지역 소환·출석·경계 답사 절차",
+        "requiredState": null,
+        "operations": [
+          "witness_meeting",
+          "local_summons",
+          "boundary_walk",
+          "summons_service_hearing",
+          "reissue_summons",
+          "customary_service_rule"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "file_suit는 기존 권원 claim의 소송이며 소환 송달·경계 답사·재판 밖 합의가 아니다. seek_suit_patron은 기존 GameCommand이지만 RegistryEffect에는 없다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_104",
+    "title": "두 성직록 사이의 편지",
+    "class": "church_office_restricted_gift",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN02",
+        "requiredCapability": "성직자 추천권·성직록 교환 절차",
+        "requiredState": null,
+        "operations": [
+          "benefice_exchange_recommend",
+          "temporary_service_agreement",
+          "advowson_review",
+          "benefice_presentation",
+          "advowson_dispute_mediation"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "등록기에는 성직 추천/교환 및 목적 제한 교회 재산의 당사자별 수탁·지출 상태가 없다. treasury나 faction_relation만으로 구현할 수 없다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_106",
+    "title": "남은 나무를 팔겠다는 청",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN03",
+        "requiredCapability": "용도 제한 채취권과 별도 매매 허락",
+        "requiredState": null,
+        "operations": [
+          "estovers_scope",
+          "timber_sale_licence",
+          "earmarked_repair_grant"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_107",
+    "title": "한 해에 두 사람의 장부",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN04",
+        "requiredCapability": "교구·장원 회계 인계와 독립 확인",
+        "requiredState": null,
+        "operations": [
+          "dated_account_handover",
+          "joint_inventory_receipt",
+          "independent_handover_audit",
+          "independent_parish_signoff",
+          "separate_parish_office",
+          "public_parish_account"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_109",
+    "title": "소환장은 누구에게 갔는가",
+    "class": "court_procedure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN01",
+        "requiredCapability": "지역 소환·출석·경계 답사 절차",
+        "requiredState": null,
+        "operations": [
+          "witness_meeting",
+          "local_summons",
+          "boundary_walk",
+          "summons_service_hearing",
+          "reissue_summons",
+          "customary_service_rule"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "file_suit는 기존 권원 claim의 소송이며 소환 송달·경계 답사·재판 밖 합의가 아니다. seek_suit_patron은 기존 GameCommand이지만 RegistryEffect에는 없다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_110",
+    "title": "수확을 받을 것인가, 정한 지대를 받을 것인가",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN05",
+        "requiredCapability": "직영지 임대·노동 계약",
+        "requiredState": null,
+        "operations": [
+          "demesne_lease",
+          "demesne_direct_labour",
+          "partial_demesne_lease"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_112",
+    "title": "지붕 위로 갈 타일, 수레에 실릴 타일",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN06",
+        "requiredCapability": "타일 등 물자 납품 계약과 재협상",
+        "requiredState": null,
+        "operations": [
+          "honour_goods_delivery",
+          "renegotiate_goods_delivery",
+          "purchase_tiles"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_114",
+    "title": "종자로 남긴 자루",
+    "class": "labour_public_work_relief",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN07",
+        "requiredCapability": "종자 비축·현물 구휼·씨앗 대여",
+        "requiredState": null,
+        "operations": [
+          "earmarked_grain_purchase",
+          "seed_reserve_release",
+          "seed_loan"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "장려금·시장 부담·영지 방침은 개인 역무·공동 공사 합의·현물 종자 대여·견적별 가족 부담 배분을 생성하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_116",
+    "title": "장원의 열쇠와 성직자의 이름",
+    "class": "church_office_restricted_gift",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN02",
+        "requiredCapability": "성직자 추천권·성직록 교환 절차",
+        "requiredState": null,
+        "operations": [
+          "benefice_exchange_recommend",
+          "temporary_service_agreement",
+          "advowson_review",
+          "benefice_presentation",
+          "advowson_dispute_mediation"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "등록기에는 성직 추천/교환 및 목적 제한 교회 재산의 당사자별 수탁·지출 상태가 없다. treasury나 faction_relation만으로 구현할 수 없다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_118",
+    "title": "다리 몫의 지대",
+    "class": "church_office_restricted_gift",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN08",
+        "requiredCapability": "목적 제한 기부 재산 회계",
+        "requiredState": null,
+        "operations": [
+          "restricted_endowment_account",
+          "endowment_interfund_loan",
+          "trust_fund_audit"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "등록기에는 성직 추천/교환 및 목적 제한 교회 재산의 당사자별 수탁·지출 상태가 없다. treasury나 faction_relation만으로 구현할 수 없다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_119",
+    "title": "유언에 적힌 덮개",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN09",
+        "requiredCapability": "유증 동산의 인도·대체·청구",
+        "requiredState": null,
+        "operations": [
+          "moveable_bequest_delivery",
+          "commute_moveable_bequest",
+          "moveable_bequest_claim"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_120",
+    "title": "같은 손에 모인 두 장부",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN04",
+        "requiredCapability": "교구·장원 회계 인계와 독립 확인",
+        "requiredState": null,
+        "operations": [
+          "dated_account_handover",
+          "joint_inventory_receipt",
+          "independent_handover_audit",
+          "independent_parish_signoff",
+          "separate_parish_office",
+          "public_parish_account"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_121",
+    "title": "서명 옆에 설 사람",
+    "class": "debt_guarantee_setoff_escrow",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN10",
+        "requiredCapability": "일반 채무·보증·면책 문서",
+        "requiredState": null,
+        "operations": [
+          "bounded_surety",
+          "bilateral_loan",
+          "conditional_surety",
+          "debt_discharge_reconciliation",
+          "conditional_debt_discharge",
+          "partial_debt_settlement"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "term.installments는 영주 cash/arrears 지급이다. 개인 채무·보증·보관금·상계의 쌍방 당사자 원장이 아니다. marriage promises는 실제 혼인 계약에 한정된다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_122",
+    "title": "울타리 안의 수선 길",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN11",
+        "requiredCapability": "일시 통행 허락·가축 피해 중재",
+        "requiredState": null,
+        "operations": [
+          "temporary_access_licence",
+          "boundary_work_contract",
+          "shared_access_agreement",
+          "livestock_release_surety",
+          "impound_damage_assessment",
+          "livestock_damage_arbitration"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_125",
+    "title": "반쪽 다리의 값",
+    "class": "labour_public_work_relief",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN12",
+        "requiredCapability": "공동 다리 수선 분담 약정",
+        "requiredState": null,
+        "operations": [
+          "one_off_bridge_contribution",
+          "shared_bridge_maintenance",
+          "bridge_liability_inquiry"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "장려금·시장 부담·영지 방침은 개인 역무·공동 공사 합의·현물 종자 대여·견적별 가족 부담 배분을 생성하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_126",
+    "title": "같은 빚을 적은 두 장",
+    "class": "debt_guarantee_setoff_escrow",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN10",
+        "requiredCapability": "일반 채무·보증·면책 문서",
+        "requiredState": null,
+        "operations": [
+          "bounded_surety",
+          "bilateral_loan",
+          "conditional_surety",
+          "debt_discharge_reconciliation",
+          "conditional_debt_discharge",
+          "partial_debt_settlement"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "term.installments는 영주 cash/arrears 지급이다. 개인 채무·보증·보관금·상계의 쌍방 당사자 원장이 아니다. marriage promises는 실제 혼인 계약에 한정된다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_129",
+    "title": "가축을 먼저 돌려보내자는 청",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN11",
+        "requiredCapability": "일시 통행 허락·가축 피해 중재",
+        "requiredState": null,
+        "operations": [
+          "temporary_access_licence",
+          "boundary_work_contract",
+          "shared_access_agreement",
+          "livestock_release_surety",
+          "impound_damage_assessment",
+          "livestock_damage_arbitration"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_134",
+    "title": "다투는 동안의 지대",
+    "class": "debt_guarantee_setoff_escrow",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN13",
+        "requiredCapability": "분쟁 수입 예치와 중립 결산",
+        "requiredState": null,
+        "operations": [
+          "disputed_income_escrow",
+          "partial_income_escrow",
+          "escrow_refusal_existing_suit"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "term.installments는 영주 cash/arrears 지급이다. 개인 채무·보증·보관금·상계의 쌍방 당사자 원장이 아니다. marriage promises는 실제 혼인 계약에 한정된다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_135",
+    "title": "법정에서 이름을 빌려 줄 사람",
+    "class": "court_procedure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN15",
+        "requiredCapability": "권원 소송의 재판 외 중재",
+        "requiredState": null,
+        "operations": [
+          "litigation_mediation"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "file_suit는 기존 권원 claim의 소송이며 소환 송달·경계 답사·재판 밖 합의가 아니다. seek_suit_patron은 기존 GameCommand이지만 RegistryEffect에는 없다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 1,
+      "b": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_137",
+    "title": "나무를 벨 권리, 땅을 남길 의무",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE_SR01_CN14",
+        "requiredCapability": "생존권자의 벌채 제한과 동의",
+        "requiredState": null,
+        "operations": [
+          "life_tenant_timber_limit",
+          "consensual_timber_sale",
+          "neighbour_debt_extension"
+        ],
+        "existingBoundary": "일반 금고·관계 증감이나 영지 권원 소송으로 해당 관행을 구현했다고 대체하지 않는다. 대상·기한·합의·회계의 실제 상태와 전용 handler가 필요하다."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_181",
+    "title": "후견 중인 장원의 새는 지붕",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI01",
+        "requiredCapability": "후견 중인 장원의 새는 지붕 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "미성년 당사자",
+          "유효 후견",
+          "별도 관리 재산",
+          "확인된 수선 필요"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "장원 수입으로 먼저 수선한다",
+            "proposedOutcome": "후견 계정에서 40–80d를 수선에 배정하고 영주에게 이전할 수입을 줄인다.",
+            "costAxes": [
+              "금전",
+              "권리"
+            ],
+            "ranges": [
+              {
+                "min": 40,
+                "max": 80,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "아이의 재산을 보전하지만 올해 영주 수입을 포기한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "우리 금고로 빌려 주고 반환 조건을 남긴다",
+            "proposedOutcome": "금고 40–80d 지출과 동일액 후견 계정 채무를 함께 기록한다. 성년 때 자동 공제하지 않고 승인된 정산을 거친다.",
+            "costAxes": [
+              "금전",
+              "약속"
+            ],
+            "ranges": [
+              {
+                "min": 40,
+                "max": 80,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "지금 현금이 줄고 반환 불승인 위험이 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "독립 관리인에게 수선과 회계를 맡긴다",
+            "proposedOutcome": "관리인 보수 12–24d와 조사 1계절을 부담하고 해당 재산 수입 인출권을 일시 잠근다.",
+            "costAxes": [
+              "시간",
+              "권한"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "영주의 재량과 시간이 줄며 조사만으로 수선 완료를 보장하지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "NE_SR01_KI01_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_182",
+    "title": "돌려줄 쟁기와 가축",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI02",
+        "requiredCapability": "돌려줄 쟁기와 가축 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "후견 종료 자격",
+          "초기와 현재 재산 목록",
+          "불일치 항목"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "부족분을 메워 인계한다",
+            "proposedOutcome": "금고 24–72d로 인정된 부족분을 보전하고 해당 후견 재산의 관리·수입 권한을 반환한다.",
+            "costAxes": [
+              "금전",
+              "권리"
+            ],
+            "ranges": [
+              {
+                "min": 24,
+                "max": 72,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "빠른 인계를 위해 영주가 손실을 부담한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "서로 인정한 몫부터 인계한다",
+            "proposedOutcome": "이견 없는 재산은 즉시 반환하고 분쟁액 24–72d만 봉인 정산 계정에 유보한다.",
+            "costAxes": [
+              "권리",
+              "약속"
+            ],
+            "ranges": [
+              {
+                "min": 24,
+                "max": 72,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "일부 지배권을 즉시 잃고 미해결 잔액이 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "외부 정산인을 부른다",
+            "proposedOutcome": "12–24d와 1계절을 들여 불일치만 심리한다. 성년 당사자의 다툼 없는 권리를 그동안 봉쇄하지 않는다.",
+            "costAxes": [
+              "금전",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "검증 비용과 기다림이 생기며 영주에게 유리한 판정을 보장하지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "NE_SR01_KI02_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_183",
+    "title": "재혼을 서두르지 않겠다는 과부",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI03",
+        "requiredCapability": "재혼을 서두르지 않겠다는 과부 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "생존한 성인 과부",
+          "직접 확인된 의사",
+          "가족의 재혼 추진",
+          "거처 약정"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "독립 거처의 기한을 정한다",
+            "proposedOutcome": "동의한 거처 사용권을 2–4계절 부여하고 관리비 12–24d를 부담한다. 재혼 협상은 당사자 재요청 전까지 중지한다.",
+            "costAxes": [
+              "거처",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 2,
+                "max": 4,
+                "unit": "계절",
+                "status": "game_estimate_not_runtime_input"
+              },
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "가문의 방과 비용을 묶지만 당사자 의사를 보전한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "원하는 친족의 집으로 옮기는 일을 돕는다",
+            "proposedOutcome": "당사자와 수용 가구가 동의하면 이주비 12–24d를 내고 기존 생계 약정은 보존한다.",
+            "costAxes": [
+              "금전",
+              "사람"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "현금을 지출하고 같은 집에서 돌보던 방식은 끝난다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "재산 문서부터 별도로 확인한다",
+            "proposedOutcome": "재혼과 무관하게 8–16d·1계절로 거처·과부 몫·과부산을 구분한 목록을 작성한다.",
+            "costAxes": [
+              "시간",
+              "문서"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "정산은 늦어지지만 혼인을 승인 조건으로 삼지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "NE_SR01_KI03_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_184",
+    "title": "형제의 빚에 우리 인장을",
+    "class": "debt_guarantee_setoff_escrow",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI04",
+        "requiredCapability": "형제의 빚에 우리 인장을 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "실제 친족 채무",
+          "채권자",
+          "만기",
+          "등록 관할",
+          "보증 가능 재산"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "상한을 정해 보증한다",
+            "proposedOutcome": "원금 중 40–80d만 보증하고 2–4계절 동안 동액 지급 능력을 예약한다. 채권자 수락 필요.",
+            "costAxes": [
+              "약속",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 40,
+                "max": 80,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              },
+              {
+                "min": 2,
+                "max": 4,
+                "unit": "계절",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "당장 지급하지 않지만 채무 불이행 때 금고가 책임진다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "보증 대신 일부를 증여한다",
+            "proposedOutcome": "금고 20–40d를 채권자에게 직접 지급하되 남은 빚의 보증은 거절한다.",
+            "costAxes": [
+              "금전",
+              "책임"
+            ],
+            "ranges": [
+              {
+                "min": 20,
+                "max": 40,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "확정 손실로 책임 상한을 닫지만 형제의 잔채무는 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "형제 재산을 담보로 재협상한다",
+            "proposedOutcome": "증서 비용 8–16d를 부담하고 실제 형제 소유 재산만 담보 후보로 제시한다. 영주 보증은 하지 않는다.",
+            "costAxes": [
+              "권리",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "형제는 재산 위험을 지며 상대가 동의하지 않으면 원래 만기가 유지된다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "term.installments는 영주 cash/arrears 지급이다. 개인 채무·보증·보관금·상계의 쌍방 당사자 원장이 아니다. marriage promises는 실제 혼인 계약에 한정된다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_185",
+    "title": "성년 친족의 혼담을 알릴 일",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI05",
+        "requiredCapability": "성년 친족의 혼담을 알릴 일 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "후견 종료 뒤 성년 혼담",
+          "당사자와 친족 관계",
+          "고지 기록",
+          "성년 당사자의 자유로운 동의 확인"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "가까운 친족에게 같은 문서를 보낸다",
+            "proposedOutcome": "사본·전달비 8–16d를 쓰고 1계절 고지 기간을 둔다. 혼인 조건·만기는 상대가 동의할 때만 변경한다.",
+            "costAxes": [
+              "금전",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "전달 비용과 협상 지연을 감수한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "당사자가 참석하는 자리를 마련한다",
+            "proposedOutcome": "12–24d로 공동 확인 자리를 열어 당사자 의사를 먼저 기록한다. 참석 합의가 없으면 혼인을 진행하지 않는다.",
+            "costAxes": [
+              "금전",
+              "사람"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "더 비싸지만 말이 엇갈리는 범위를 줄일 수 있다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "이번 혼담을 철회한다",
+            "proposedOutcome": "체결 전 혼담만 철회하고 이미 쓴 비용은 회수하지 않는다. 체결된 계약을 일방 취소하는 효과는 없다.",
+            "costAxes": [
+              "기회",
+              "약속"
+            ],
+            "ranges": [
+
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "해당 협상 기회를 포기하며 이미 존재하는 의무는 별도 정산한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "NE_SR01_KI05_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_186",
+    "title": "서로 다른 채무 사본",
+    "class": "debt_guarantee_setoff_escrow",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI06",
+        "requiredCapability": "서로 다른 채무 사본 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "가족 채무의 두 사본",
+          "기한 불일치",
+          "유효 관할 기록"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "등록된 기록과 대조한다",
+            "proposedOutcome": "기록 조회비 8–20d를 부담한다. 확인 전 임의 채무 삭감은 하지 않고 실제 등록 기한을 확정한다.",
+            "costAxes": [
+              "문서",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 20,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "현금과 처리 시간이 들고 우리 사본이 틀렸을 수도 있다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "다툼 없는 금액만 먼저 지급한다",
+            "proposedOutcome": "당사자 쌍방이 인정한 20–60d를 지급하고 잔액의 기존 기한·이의는 그대로 남긴다.",
+            "costAxes": [
+              "금전",
+              "약속"
+            ],
+            "ranges": [
+              {
+                "min": 20,
+                "max": 60,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "금고를 쓰지만 나머지 분쟁은 해결하지 못한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "공동 입회 아래 새 확인서를 제안한다",
+            "proposedOutcome": "12–24d의 작성비를 부담하고 양측 서명 때만 잔액·기한을 갱신한다. 거절되면 원래 분쟁 상태를 유지한다.",
+            "costAxes": [
+              "합의",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "합의 비용을 내고도 갱신이 거절될 수 있다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "term.installments는 영주 cash/arrears 지급이다. 개인 채무·보증·보관금·상계의 쌍방 당사자 원장이 아니다. marriage promises는 실제 혼인 계약에 한정된다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_187",
+    "title": "두 집이 맡겠다는 아이",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI07",
+        "requiredCapability": "두 집이 맡겠다는 아이 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "부모 사망이 확인된 미성년자",
+          "생존 친족",
+          "돌봄 수용 의사",
+          "별도 재산 후견 자격"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "돌봄과 재산 관리를 나눈다",
+            "proposedOutcome": "한 친족의 돌봄과 다른 관리인의 재산 회계를 분리하고 감독비 12–24d를 지출한다.",
+            "costAxes": [
+              "사람",
+              "권한"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "이중 연락과 비용을 감수하지만 한 집에 모든 권한을 주지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "한 집에 맡기되 정산일을 둔다",
+            "proposedOutcome": "돌봄에 동의한 친족에게 후견 권한을 부여하고 2계절 뒤 회계 제출 의무를 기록한다. 초기 지원 16–32d.",
+            "costAxes": [
+              "약속",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 16,
+                "max": 32,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "업무는 단순해지지만 권한 집중과 사후 감독 부담이 생긴다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "임시 거처부터 마련한다",
+            "proposedOutcome": "2계절 돌봄비 24–48d를 내고 후견권 분쟁은 유보한다. 기존 법적 후견권을 자동 박탈하지 않는다.",
+            "costAxes": [
+              "시간",
+              "거처"
+            ],
+            "ranges": [
+              {
+                "min": 24,
+                "max": 48,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "아이의 거처는 정하지만 재산 문제는 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "NE_SR01_KI07_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_188",
+    "title": "죽은 친족의 채무 청구",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI08",
+        "requiredCapability": "죽은 친족의 채무 청구 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "실제 사망",
+          "별도 유산 목록",
+          "집행 권한",
+          "확인 안 된 청구"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "다툼 없는 빚부터 유산에서 갚는다",
+            "proposedOutcome": "확인된 24–72d를 별도 유산 계정에서 지급하고 분배 가능액을 줄인다. 영주 금고는 사용하지 않는다.",
+            "costAxes": [
+              "유산",
+              "책임"
+            ],
+            "ranges": [
+              {
+                "min": 24,
+                "max": 72,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "수유자가 받을 몫이 줄지만 확인된 채무를 끝낸다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "분배를 잠시 묶고 청구를 대조한다",
+            "proposedOutcome": "1계절 동안 다툼 있는 금액만 유보하고 조사비 8–16d를 유산에서 부담한다.",
+            "costAxes": [
+              "시간",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "정산 비용과 늦어진 분배를 감수한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "영주가 한도를 정해 부족분을 보탠다",
+            "proposedOutcome": "금고 20–40d를 유산 계정에 증여한다. 증여만으로 청구의 진실이나 영주의 무한 보증을 인정하지 않는다.",
+            "costAxes": [
+              "금전",
+              "책임"
+            ],
+            "ranges": [
+              {
+                "min": 20,
+                "max": 40,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "영주 재산이 줄고 남은 청구 심리는 계속된다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_189",
+    "title": "어머니 몫의 지대 영수증",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI09",
+        "requiredCapability": "어머니 몫의 지대 영수증 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "법적",
+          "계약적 수입 수익자",
+          "지급 이력",
+          "이의 청구",
+          "영수증 부재"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "확인될 때까지 금고로 생활비를 댄다",
+            "proposedOutcome": "12–24d를 별도 생활비로 지급하고 분쟁 지대의 미지급 여부는 그대로 둔다. 이중 지급이면 자동 환수하지 않는다.",
+            "costAxes": [
+              "금전",
+              "사람"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "빠른 지원 대신 회수 못 할 비용을 부담한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "수금인과 수익자를 함께 부른다",
+            "proposedOutcome": "8–16d·1계절을 들여 양측 지급 증거를 대조한다. 확인 전 어느 쪽도 횡령으로 기록하지 않는다.",
+            "costAxes": [
+              "시간",
+              "문서"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "정산이 늦고 추가 조사 비용이 든다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "당사자 동의로 다음 지급을 공동 입회한다",
+            "proposedOutcome": "기존 미해결액은 보존하고 다음 지급만 공동 입회와 수령 확인 조건으로 바꾼다. 수금 사무비 4–8d가 추가된다.",
+            "costAxes": [
+              "약속",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 4,
+                "max": 8,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "이번 다툼은 남지만 다음 분쟁을 줄일 기록을 만든다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "NE_SR01_KI09_source_fulltext",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "CS09 원문403;검색 발췌만으로 해당 관행을 확정하지 않는다."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_190",
+    "title": "형제 둘의 한 방앗간",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI10",
+        "requiredCapability": "형제 둘의 한 방앗간 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "동일 권리 조각의 실제 공동 수익자",
+          "각 지분",
+          "수선 의무",
+          "분배 분쟁"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "공동 동의로 수선 적립금을 둔다",
+            "proposedOutcome": "수입 중 20–40d를 공동 계정에 먼저 남기고 나머지는 기존 지분대로 지급한다.",
+            "costAxes": [
+              "금전",
+              "권리"
+            ],
+            "ranges": [
+              {
+                "min": 20,
+                "max": 40,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "지급이 줄지만 수선 재원을 따로 보전한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "한쪽의 몫을 매입하도록 중재한다",
+            "proposedOutcome": "양측 동의·권원 확인 후 60–120d의 가족 간 지분 매매를 기록한다. 영주가 대신 금액을 지불하지 않는다.",
+            "costAxes": [
+              "재산",
+              "권리"
+            ],
+            "ranges": [
+              {
+                "min": 60,
+                "max": 120,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "사는 사람은 현금을 잃고 파는 사람은 장래 수입권을 잃는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "회계만 분리하고 공동 소유는 유지한다",
+            "proposedOutcome": "작성비 8–16d를 두 사람이 합의한 비율로 부담하고 수익·비용을 각각 기록한다.",
+            "costAxes": [
+              "문서",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "지분 갈등을 끝내지 못하고 지속 정산 업무가 생긴다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_191",
+    "title": "영주관의 돌을 둘러싼 형제 다툼",
+    "class": "labour_public_work_relief",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI11",
+        "requiredCapability": "영주관의 돌을 둘러싼 형제 다툼 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "영주관 실제 수선 의뢰",
+          "검증된 견적",
+          "친족 추가 공사 요구",
+          "재원 구분"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "공동 수선 범위만 계약한다",
+            "proposedOutcome": "공동 수선에 60–120d 상한 계약을 체결하고 형제 방 공사는 제외한다. 승인만으로 건물 등급은 바뀌지 않는다.",
+            "costAxes": [
+              "금전",
+              "계약"
+            ],
+            "ranges": [
+              {
+                "min": 60,
+                "max": 120,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "현금 약정이 생기고 형제의 추가 요구는 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "형제가 차액을 내는 조건으로 범위를 넓힌다",
+            "proposedOutcome": "추가 견적 24–48d를 형제가 먼저 맡기면 공사 범위를 확장한다. 미납이면 기존 범위만 유지한다.",
+            "costAxes": [
+              "금전",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 24,
+                "max": 48,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "가족의 돈과 영주의 일정이 함께 묶인다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "견본과 운송 견적부터 다시 받는다",
+            "proposedOutcome": "8–16d·1계절로 내후성 확인과 재견적을 의뢰하며 기존 수선 지연을 기록한다.",
+            "costAxes": [
+              "시간",
+              "물자"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "싸거나 좋은 돌을 보장하지 않고 조사 비용만 먼저 든다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "장려금·시장 부담·영지 방침은 개인 역무·공동 공사 합의·현물 종자 대여·견적별 가족 부담 배분을 생성하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_192",
+    "title": "혼례 옷의 두 몫",
+    "class": "chattels_contract_delivery",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI12",
+        "requiredCapability": "혼례 옷의 두 몫 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "성인 당사자의 유효 혼인 준비",
+          "가족별 현물 기여 합의",
+          "혼인 본계약과 분리된 비용"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "우리 몫의 옷감을 먼저 마련한다",
+            "proposedOutcome": "의복 제작비 20–40d를 지급하고 상대의 장식 제공 의무는 인도 확인 전 미완료로 남긴다.",
+            "costAxes": [
+              "금전",
+              "약속"
+            ],
+            "ranges": [
+              {
+                "min": 20,
+                "max": 40,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "우리 비용이 먼저 나가며 상대의 기여를 보장하지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "양쪽 물품을 함께 맡기는 날을 정한다",
+            "proposedOutcome": "1계절 안 공동 인도일을 제안한다. 상대 동의 때에만 8–16d의 보관·작성 비용과 기여 약정을 만든다.",
+            "costAxes": [
+              "시간",
+              "약속"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "준비는 늦고 보관 비용이 들지만 한쪽 선지출을 줄인다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "간소한 옷차림으로 다시 합의한다",
+            "proposedOutcome": "양측과 당사자 동의로 기여 범위를 줄이고 8–16d의 제작비만 부담한다. 기존 지참금·과부산은 손대지 않는다.",
+            "costAxes": [
+              "합의",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "상대가 원하는 격식을 포기하도록 설득해야 한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "order_timber는 목재 주문뿐이다. treasury/term은 물품 동일성·배송·반환·담보·상계·개인별 채권자를 보존하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_193",
+    "title": "아픈 친족의 귀가",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI13",
+        "requiredCapability": "아픈 친족의 귀가 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "생존 성인 가족",
+          "확인된 질환 보고",
+          "현재 거처",
+          "이동 가능 여부",
+          "돌봄 수용 의사"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "현지 돌봄 비용을 보낸다",
+            "proposedOutcome": "12–36d를 현지 돌봄에 지급하고 현 거처를 유지한다. 치료 성공이나 사망 방지는 보장하지 않는다.",
+            "costAxes": [
+              "금전",
+              "사람"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 36,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "가족과 떨어진 시간을 감수하고 금고를 쓴다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "이동 가능 확인 뒤 귀가를 돕는다",
+            "proposedOutcome": "이동 가능 판정과 본인 동의 뒤 호송비 16–32d를 내고 거처를 옮긴다. 집에서의 돌봄 비용은 별도다.",
+            "costAxes": [
+              "거처",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 16,
+                "max": 32,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "길과 가정의 돌봄 부담이 생긴다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "가족 한 사람이 찾아가도록 돕는다",
+            "proposedOutcome": "동의한 성인 방문자의 여비 8–20d와 1계절 부재를 기록한다. 환자는 현지에 남는다.",
+            "costAxes": [
+              "사람",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 20,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "집에서 그 사람이 맡던 업무를 다른 이가 맡아야 한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_194",
+    "title": "회복을 빌며 남긴 약속",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI14",
+        "requiredCapability": "회복을 빌며 남긴 약속 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "본인이 남긴 실제 순례 약속",
+          "회복 보고",
+          "업무 담당",
+          "자발적 여행 의사"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "이번 계절의 여행을 돕는다",
+            "proposedOutcome": "여비 12–24d를 지원하고 대리 업무자를 1계절 지정한다. 약속 이행은 실제 귀환 기록 뒤 판단한다.",
+            "costAxes": [
+              "시간",
+              "사람"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "현금과 담당자의 부재를 감수한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "출발일 조정을 당사자에게 제안한다",
+            "proposedOutcome": "당사자 및 필요한 종교적 확인을 거쳐 1–2계절 뒤 일정을 정한다. 동의 전에는 원래 약속을 변경하지 않는다.",
+            "costAxes": [
+              "약속",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 1,
+                "max": 2,
+                "unit": "계절",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "의무는 남고 출발 준비 업무가 늘어난다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "영주의 지원과 개인의 약속을 구분한다",
+            "proposedOutcome": "가문 금고 지원은 거절하되 개인 재산·의사로 갈 권리는 막지 않는다. 업무 대체 비용 4–12d만 부담한다.",
+            "costAxes": [
+              "권한",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 4,
+                "max": 12,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "여행비는 아끼지만 대체 업무와 가족 간 협의가 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_195",
+    "title": "몸값을 댄 친족의 잃어버린 증서",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI15",
+        "requiredCapability": "몸값을 댄 친족의 잃어버린 증서 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "귀환",
+          "구출 비용",
+          "청구인",
+          "실종된 원문",
+          "증언 가능한 생존 인물"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "입회자의 봉인 증언을 모은다",
+            "proposedOutcome": "8–24d·1계절로 구출과 지급 사실을 확인한다. 증언을 얻어도 채무 약정까지 자동 인정하지 않는다.",
+            "costAxes": [
+              "문서",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "시간과 조사비가 들며 증언이 엇갈릴 수 있다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "다툼 없는 비용만 갚는다",
+            "proposedOutcome": "당사자들이 함께 인정한 24–60d만 지급하고 나머지 청구는 남긴다.",
+            "costAxes": [
+              "금전",
+              "책임"
+            ],
+            "ranges": [
+              {
+                "min": 24,
+                "max": 60,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "즉시 금고가 줄고 나머지는 정산되지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "제삼자 정산에 함께 맡긴다",
+            "proposedOutcome": "양측 합의로 12–24d의 정산비를 나누고 증빙 제출 기한을 1계절로 정한다.",
+            "costAxes": [
+              "권한",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "영주가 결론을 정하지 못하며 추가 지급 판정도 가능하다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+      {
+        "id": "NE_SR01_KI15_source_date",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "편년은after1440(?)와1435년또는이전견해가충돌한다. FA05로1450이전근거는보강했지만정확연도와사건맥락은미확정이며핵심효과차단은유지한다."
+      }
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_196",
+    "title": "가족을 위한 사제의 숙소",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI16",
+        "requiredCapability": "가족을 위한 사제의 숙소 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "실제 추도 약정",
+          "사제 수락",
+          "사용 가능한 가족 거처",
+          "기존 건물 입주권"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "기존 방의 사용권을 정한다",
+            "proposedOutcome": "2–4년 동안 기존 방을 사제 거처로 배정하고 연 관리비 8–16d를 약정한다.",
+            "costAxes": [
+              "거처",
+              "약속"
+            ],
+            "ranges": [
+              {
+                "min": 2,
+                "max": 4,
+                "unit": "년",
+                "status": "game_estimate_not_runtime_input"
+              },
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "가족이 쓸 방과 장래 수입을 묶는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "도시의 거처 임차를 돕는다",
+            "proposedOutcome": "실제 임대인 동의 뒤 1년 임차료 16–32d를 부담한다. 새 건물을 놓거나 완공하지 않는다.",
+            "costAxes": [
+              "금전",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 16,
+                "max": 32,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "가문 공간은 남지만 해마다 계약을 다시 살펴야 한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "추도 약정 범위를 다시 논의한다",
+            "proposedOutcome": "사제와 합의해 방문 횟수·보수를 낮춘 새 약정을 만든다. 정산비 4–8d와 미이행분 기록을 남긴다.",
+            "costAxes": [
+              "약속",
+              "합의"
+            ],
+            "ranges": [
+              {
+                "min": 4,
+                "max": 8,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "당초 가족의 뜻을 줄이는 협의가 필요하며 일방 파기는 하지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_197",
+    "title": "가족 몫을 담보로 내놓자는 부탁",
+    "class": "land_use_damage_tenure",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI17",
+        "requiredCapability": "가족 몫을 담보로 내놓자는 부탁 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "성인 가족의 자금 요청",
+          "현 권원",
+          "장래 기대만 있는 재산",
+          "채권자"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "상속 기대 대신 한도 있는 현금을 증여한다",
+            "proposedOutcome": "20–40d를 지급하고 토지 담보는 거절한다. 상속권 확정이나 채무 보증을 동반하지 않는다.",
+            "costAxes": [
+              "금전",
+              "권리"
+            ],
+            "ranges": [
+              {
+                "min": 20,
+                "max": 40,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "현재 금고를 쓰고 자녀의 부족 자금은 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "자녀의 실제 소유 재산으로만 협상한다",
+            "proposedOutcome": "권원 확인비 8–16d를 내고 자녀 명의의 재산만 담보 후보로 제시한다. 적격 재산이 없으면 선택 불가.",
+            "costAxes": [
+              "재산",
+              "문서"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "자녀는 현재 가진 재산을 잃을 위험을 진다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "부모가 가진 수입의 일부를 한시 제공한다",
+            "proposedOutcome": "연 8–16d·2–3년의 수입 지급 약정을 새로 협상한다. 토지 명의·차기 상속은 바꾸지 않는다.",
+            "costAxes": [
+              "약속",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              },
+              {
+                "min": 2,
+                "max": 3,
+                "unit": "년",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "여러 해 현금을 묶고 거래 성공을 보장하지 않는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "rights_scope는 기존 suit.pieceId의 sharePermille만 갱신한다. 사용 목적·필지 경계·임대·피해 책임·통행·동의·별도 수익자의 법적 관계를 만들지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_198",
+    "title": "같은 편지를 두 번 쓰는 서기",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI18",
+        "requiredCapability": "같은 편지를 두 번 쓰는 서기 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "생존 배우자",
+          "동일 업무의 중복 의뢰",
+          "서면 위임 범위",
+          "이미 든 작성비"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "배우자의 위임 범위를 문서로 정한다",
+            "proposedOutcome": "작성비 8–12d를 내고 지출 상한 16–32d의 업무 위임을 만든다. 중복 의뢰는 원문을 보전한 채 취소 표기한다.",
+            "costAxes": [
+              "권한",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 12,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              },
+              {
+                "min": 16,
+                "max": 32,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "영주의 사전 통제 일부를 맡기고 검토 의무를 진다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "두 의뢰를 따로 정산한다",
+            "proposedOutcome": "이미 실제로 수행한 두 업무의 비용 12–24d를 지급하고 앞으로 각 의뢰자 승인을 별도로 받는다.",
+            "costAxes": [
+              "금전",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "당장 손해를 인정하고 승인 시간이 길어진다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "다음 의뢰부터 공동 확인한다",
+            "proposedOutcome": "두 담당자의 확인 없이는 추가 지출을 막고 사무비 4–8d를 쓴다. 이미 성립한 채무는 취소하지 않는다.",
+            "costAxes": [
+              "약속",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 4,
+                "max": 8,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "중복은 줄일 수 있지만 급한 업무도 늦어질 수 있다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_199",
+    "title": "병문안과 집안의 빈자리",
+    "class": "family_wardship_care_consent",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI19",
+        "requiredCapability": "병문안과 집안의 빈자리 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "실제 자발적 방문 계획",
+          "현재 담당 업무",
+          "대리 수락 가능한 생존 성인 둘"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "한 사람에게 기한을 정해 맡긴다",
+            "proposedOutcome": "수락한 대리인에게 1계절·지출 16–32d 한도 위임을 준다. 본인은 귀환 때 회계를 받는다.",
+            "costAxes": [
+              "권한",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 16,
+                "max": 32,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "권한 집중과 뒤늦은 검토 부담이 있다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "문서와 돈의 담당을 나눈다",
+            "proposedOutcome": "서신 담당과 지급 담당을 분리하고 사무비 8–16d를 쓴다. 두 담당 동의가 필요한 지급은 늦어질 수 있다.",
+            "costAxes": [
+              "사람",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "추가 비용과 조정 시간이 든다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "방문을 짧게 나누는 안을 협의한다",
+            "proposedOutcome": "당사자 동의 뒤 방문 기간을 줄이고 왕복 여비 12–24d를 부담한다. 환자 돌봄을 끝냈다고 기록하지 않는다.",
+            "costAxes": [
+              "시간",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "업무 공백은 줄지만 길 비용과 돌봄 부담이 남는다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "혼인 promise 이행은 해당 실제 계약의 영주 지급 의무다. 미성년 보호재산·유언 집행·거처 동의·간병·자발적 서약/방문과 대리권을 만드는 일반 가족 사례 명령이 아니다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  },
+  {
+    "id": "ck_evt_200",
+    "title": "가문 문서 상자의 두 열쇠",
+    "class": "documents_accounts_identity",
+    "proposals": [
+      {
+        "id": "NE_SR01_KI20",
+        "requiredCapability": "가문 문서 상자의 두 열쇠 — 필요한 가족 맥락과 처리",
+        "requiredState": [
+          "실제 가문 문서 목록",
+          "보관 담당",
+          "접근 분쟁",
+          "원문과 사본 식별"
+        ],
+        "operations": [
+          {
+            "choiceId": "a",
+            "label": "원문과 사본의 보관자를 나눈다",
+            "proposedOutcome": "사본 작성 12–24d를 부담하고 보관자를 분리한다. 사본은 자동으로 원문과 같은 증거 무게를 얻지 않는다.",
+            "costAxes": [
+              "문서",
+              "금전"
+            ],
+            "ranges": [
+              {
+                "min": 12,
+                "max": 24,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "비용과 위치 관리가 늘며 원문 접근 문제는 별도다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "b",
+            "label": "공동 입회로만 원문을 꺼낸다",
+            "proposedOutcome": "두 담당의 접근 규칙과 대리인을 기록하고 4–8d의 목록 작성비를 부담한다.",
+            "costAxes": [
+              "권한",
+              "시간"
+            ],
+            "ranges": [
+              {
+                "min": 4,
+                "max": 8,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "훼손·분실 위험을 없애지 못하고 긴급 조회가 늦어진다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          },
+          {
+            "choiceId": "c",
+            "label": "합의한 외부 보관처에 맡긴다",
+            "proposedOutcome": "연 8–16d·1–2년 보관 약정을 맺고 인출 권한을 명시한다. 영주의 단독 접근은 제한된다.",
+            "costAxes": [
+              "약속",
+              "권한"
+            ],
+            "ranges": [
+              {
+                "min": 8,
+                "max": 16,
+                "unit": "d",
+                "status": "game_estimate_not_runtime_input"
+              },
+              {
+                "min": 1,
+                "max": 2,
+                "unit": "년",
+                "status": "game_estimate_not_runtime_input"
+              }
+            ],
+            "command": null,
+            "executionStatus": "blocked_unsupported_effect",
+            "tradeoff": "지속 비용과 외부 의존을 감수한다.",
+            "mustObserve": "실제 지급액·지급 주체 계정·권리 보유자 또는 위임 대상·약속 기한·수락/거절을 원장에 기록. 성사/회복/승소는 보장하지 않는다."
+          }
+        ],
+        "existingBoundary": "marriage.ts:179–208은 성립한 혼인 계약에서만 약속을 만든다. keepPromise:211–224는 이미 있는 영주 약속만 이행한다. estateSuits.ts:59–97은 실재 토지/권리 청구·소송만 다룬다. 이 사건의 가족 의무를 만들어 주는 일반 명령은 COMMAND_CONTRACT에 없다."
+      }
+    ],
+    "currentEngineBoundary": "add_suit_evidence는 기존 소송 증거 종류/가중치다. 실제 문서 동일성·인증·중복 정정·지급 영수증·수익자·기록 보관 접근권을 모델링하지 않는다.",
+    "sourceRefs": [
+      "src/content/registry/registryTypes.ts:10-54",
+      "src/engine/registry.ts:176-225",
+      "src/engine/registry.ts:248-315",
+      "src/engine/estateSuits.ts:59-108",
+      "src/engine/marriage.ts:179-224"
+    ],
+    "commandCounts": {
+      "a": 0,
+      "b": 0,
+      "c": 0
+    },
+    "coreDisposition": "KEEP_UNSUPPORTED_CORE",
+    "historicalFilters": [
+
+    ],
+    "sameIdEngineInstalled": false
+  }
+]

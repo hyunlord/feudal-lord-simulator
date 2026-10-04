@@ -1,0 +1,465 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_not_installed",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "baselineSha256": "1b6f784255fb6901edd68da04f1922a7fa0fe96f2cf10c2f81572739c9efb2c3",
+  "additions": [
+    {
+      "template": "plague.abandoned_fields",
+      "variants": [
+        {
+          "id": "plague.abandoned_fields.r05c.000",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민과 영주관 소속 사람의 사망 기록은 없었고, 역병 집계에 남은 빈집도 없었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.abandoned_fields.r05c.001",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "gt",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민과 영주관 소속 사람의 사망 기록은 없었지만, 역병 집계에는 빈집이 남았다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.abandoned_fields.r05c.010",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민의 사망 기록은 없었지만 영주관 소속에서는 사망자가 나왔다. 역병 집계에 남은 빈집은 없었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.abandoned_fields.r05c.011",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "gt",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민의 사망 기록은 없었지만 영주관 소속에서는 사망자가 나왔고, 역병 집계에는 빈집이 남았다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.abandoned_fields.r05c.100",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민의 죽음이 기록됐지만 영주관 소속에는 사망 기록이 없었다. 역병 집계에 남은 빈집은 없었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.abandoned_fields.r05c.101",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "eq",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "gt",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민의 죽음과 역병 집계에 남은 빈집이 기록됐다. 영주관 소속에는 사망 기록이 없었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.abandoned_fields.r05c.110",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민과 영주관 소속 사람 모두의 죽음이 기록됐으나, 역병 집계에 남은 빈집은 없었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.abandoned_fields.r05c.111",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.manorDead",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.houses",
+              "op": "gt",
+              "value": 0
+            }
+          ],
+          "headline": "역병이 물러났다. 도시 주민과 영주관 소속 사람 모두의 죽음이 기록됐고, 역병 집계에는 빈집도 남았다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "plague.resettlement",
+      "variants": [
+        {
+          "id": "plague.resettlement.r05c.one",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.households",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "headline": "역병 뒤 빈집 한 곳에 첫 재정착 가구가 들었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.resettlement.r05c.many",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.households",
+              "op": "gte",
+              "value": 2
+            }
+          ],
+          "headline": "역병 뒤 첫 재정착 때 여러 가구가 빈집에 들었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "petition.representative_replaced",
+      "variants": [
+        {
+          "id": "petition.representative_replaced.r05c.died",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.gone",
+              "op": "eq",
+              "value": "died"
+            }
+          ],
+          "headline": "앞선 대표가 세상을 떠나, 새 대표가 청원을 이어 맡았다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "petition.representative_replaced.r05c.left",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.gone",
+              "op": "eq",
+              "value": "left"
+            }
+          ],
+          "headline": "앞선 대표가 마을을 떠나, 새 대표가 청원을 이어 맡았다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "legacy.legacy_record",
+      "variants": [
+        {
+          "id": "legacy.legacy_record.r05c.town",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.legacy",
+              "op": "eq",
+              "value": "길드홀과 시청"
+            }
+          ],
+          "headline": "길드홀과 시청을 남길 유산으로 적고 봉인했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "legacy.legacy_record.r05c.family",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.legacy",
+              "op": "eq",
+              "value": "영주관·문장·혈통 기록"
+            }
+          ],
+          "headline": "영주관과 문장, 혈통 기록을 가문의 유산으로 적고 봉인했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "legacy.legacy_record.r05c.church",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.legacy",
+              "op": "eq",
+              "value": "교회 증축과 기도처"
+            }
+          ],
+          "headline": "교회 증축과 기도처를 남길 유산으로 적고 봉인했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "legacy.legacy_record.r05c.none",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.legacy",
+              "op": "eq",
+              "value": ""
+            }
+          ],
+          "headline": "유산 기록을 봉인했다. 선택한 유산은 적혀 있지 않았다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "stewardship.lapsed",
+      "variants": [
+        {
+          "id": "stewardship.lapsed.r05c.rent_relief",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.kind",
+              "op": "eq",
+              "value": "rent_relief"
+            }
+          ],
+          "headline": "지대 경감 청원이 답을 기다리다 거둬졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "stewardship.lapsed.r05c.market_dues",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.kind",
+              "op": "eq",
+              "value": "market_dues"
+            }
+          ],
+          "headline": "시장 부담에 관한 청원이 답을 기다리다 거둬졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "stewardship.lapsed.r05c.repair",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.kind",
+              "op": "eq",
+              "value": "repair"
+            }
+          ],
+          "headline": "수리를 바란 청원이 답을 기다리다 거둬졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "stewardship.lapsed.r05c.common_dispute",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.kind",
+              "op": "eq",
+              "value": "common_dispute"
+            }
+          ],
+          "headline": "공유지 다툼의 청원이 답을 받지 못한 채 거둬졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "stewardship.lapsed.r05c.charter_request",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.kind",
+              "op": "eq",
+              "value": "charter_request"
+            }
+          ],
+          "headline": "칙허를 바란 청원이 답을 기다리다 거둬졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "stewardship.lapsed.r05c.marriage_licence",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.kind",
+              "op": "eq",
+              "value": "marriage_licence"
+            }
+          ],
+          "headline": "혼인 허가 청원이 답을 기다리다 거둬졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    }
+  ]
+}

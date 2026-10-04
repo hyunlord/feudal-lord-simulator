@@ -1,0 +1,9 @@
+{
+  "status": "R05_NARROW_CHECKS_ONLY",
+  "eventCount": 200,
+  "eventRevisionCheck": "R05_EDITORIAL_VALIDATION.json",
+  "atomicityCheck": "../records/SUPPORT_ATOMICITY_PARENT_CHECK.json",
+  "historicalFullChecks": "revisions/R04_VALIDATION.json",
+  "runtimeEnabled": 0,
+  "fullEngineRevalidation": false
+}

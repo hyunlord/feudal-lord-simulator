@@ -1,0 +1,105 @@
+{
+  "verdict": "PASS_RECORDED_INPUT_ORIGINAL_FUNCTION_REPLAY_ONLY",
+  "manifest_counts": {
+    "/tmp/astra-steward-r08-20261004/records/food-choice-executed/SHA256SUMS": 14,
+    "/Users/rexxa/fls-astra-steward/output/steward-food-choice-r08/SHA256SUMS": 5,
+    "/Users/rexxa/fls-astra-steward/output/steward-food-choice-r08/SOURCE_SHA256SUMS": 1097
+  },
+  "official_exit": "0",
+  "timing": "SYNC_S=19.5\nPREPARE_S=6.3\nWAIT_S=0.0\nCOMMAND_S=1.7\nNM_CACHE=hit\nPORT=4301\n",
+  "counter_revision_pins_match_parent_remote_record": true,
+  "probe_sha256": "6f3c86cf4feb25d3498ba1099b81725e9e5761075d64c29ea589ad3f8988efb2",
+  "artifact_manifest_sha256": "10a189a687023294d6b17d5a50534179771ca63d702d8746ebc8702aa5d62562",
+  "original_r07_stage_bytes_equal": true,
+  "checks604": {
+    "global": 8,
+    "row_fixed": 44,
+    "per_callback_triplet_both_calls": 552,
+    "actual_path_arguments_per_function": 92
+  },
+  "rows": [
+    {
+      "walker": "distributor:construction-site-000036:299880",
+      "recorded_path_calls": 24,
+      "selected_house": "house-46-42-0",
+      "selected_edges": 1,
+      "selected_bread": 0,
+      "target_edges": 20,
+      "remaining_range": 28,
+      "target_fits": true,
+      "next": {
+        "tx": 46,
+        "ty": 41
+      },
+      "same_next_house_count": 1
+    },
+    {
+      "walker": "distributor:construction-site-000036:300000",
+      "recorded_path_calls": 24,
+      "selected_house": "construction-site-000018",
+      "selected_edges": 7,
+      "selected_bread": 0,
+      "target_edges": 20,
+      "remaining_range": 40,
+      "target_fits": true,
+      "next": {
+        "tx": 48,
+        "ty": 33
+      },
+      "same_next_house_count": 24
+    },
+    {
+      "walker": "distributor:construction-site-000067:299760",
+      "recorded_path_calls": 22,
+      "selected_house": "house-46-42-0",
+      "selected_edges": 2,
+      "selected_bread": 0,
+      "target_edges": 19,
+      "remaining_range": 16,
+      "target_fits": false,
+      "next": {
+        "tx": 47,
+        "ty": 41
+      },
+      "same_next_house_count": 5
+    },
+    {
+      "walker": "distributor:granary-42-37-0:300000",
+      "recorded_path_calls": 22,
+      "selected_house": "construction-site-000018",
+      "selected_edges": 2,
+      "selected_bread": 0,
+      "target_edges": 19,
+      "remaining_range": 40,
+      "target_fits": true,
+      "next": {
+        "tx": 45,
+        "ty": 37
+      },
+      "same_next_house_count": 22
+    }
+  ],
+  "immutability_checks": "4 row hash checks plus full-record and input-file; recursive freeze inspected",
+  "direct_calls": {
+    "bestHouseDemand": 4,
+    "nextHouseDemandTile": 4,
+    "advanceTick": 0
+  },
+  "source_derived_nested_calls": {
+    "bestHouseDemandViaNextHouseDemandTile": 4,
+    "totalBestHouseDemand": 8,
+    "classification": "source-derived count, not separate runtime interception"
+  },
+  "scope": {
+    "origin": "recorded_input_function_replay",
+    "originalSourceFunctions": true,
+    "rankingReimplemented": false,
+    "officialTickExecuted": false,
+    "liveRouteSearch": false,
+    "officialPrefixIntercepted": false,
+    "liveChosenHouseIdObserved": false,
+    "warning": "Chosen IDs are returned by original functions on saved reconstructed inputs. They are not direct observations of the original official tick. Same next tile is not chosen-house proof."
+  },
+  "independent_test_scope": "offline JSON/hash/callback argument and result cross-check; no TS/engine rerun; no independent ranking implementation",
+  "new_cause_confirmed": false
+}

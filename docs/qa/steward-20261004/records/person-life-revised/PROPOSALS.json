@@ -1,0 +1,276 @@
+{
+  "formatVersion": "household-life-context-v1",
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "status": "NOT_CANONICAL_NOT_INSTALLED",
+  "variants": [
+    {
+      "id": "person.leaving.r06life.water",
+      "template": "person.leaving",
+      "field": "waterAfter",
+      "op": "eq",
+      "value": true,
+      "headline": "물은 공급되고 있었지만 가구는 떠날 준비를 했다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.leaving.r06life.no_water",
+      "template": "person.leaving",
+      "field": "waterAfter",
+      "op": "eq",
+      "value": false,
+      "headline": "물 공급도 없는 가구가 떠날 준비를 했다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.left.r06life.one",
+      "template": "person.left",
+      "field": "residentsBefore",
+      "op": "eq",
+      "value": 1,
+      "headline": "한 명이 살던 집에서 가구가 떠나 집이 비었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.left.r06life.many",
+      "template": "person.left",
+      "field": "residentsBefore",
+      "op": "gte",
+      "value": 2,
+      "headline": "여럿이 함께 살던 집에서 가구가 떠나 집이 비었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.resettled.r06life.early",
+      "template": "person.resettled",
+      "field": "elapsedTicks",
+      "op": "lt",
+      "value": 4000,
+      "headline": "빈집이 된 지 한 해가 지나기 전에 새 가구가 들었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.resettled.r06life.later",
+      "template": "person.resettled",
+      "field": "elapsedTicks",
+      "op": "gte",
+      "value": 4000,
+      "headline": "한 해 이상 비어 있던 집에 새 가구가 들었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.burnt.r06life.one",
+      "template": "person.burnt",
+      "field": "residentsBefore",
+      "op": "eq",
+      "value": 1,
+      "headline": "한 명이 살던 집이 불탔다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.burnt.r06life.many",
+      "template": "person.burnt",
+      "field": "residentsBefore",
+      "op": "gte",
+      "value": 2,
+      "headline": "여럿이 함께 살던 집이 불탔다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.rebuilt.r06life.early",
+      "template": "person.rebuilt",
+      "field": "elapsedTicks",
+      "op": "lt",
+      "value": 4000,
+      "headline": "집이 불탄 지 한 해가 지나기 전에 다시 지었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.rebuilt.r06life.later",
+      "template": "person.rebuilt",
+      "field": "elapsedTicks",
+      "op": "gte",
+      "value": 4000,
+      "headline": "불탄 뒤 한 해 이상 지난 집을 다시 지었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.stayed.r06life.water",
+      "template": "person.stayed",
+      "field": "waterAfter",
+      "op": "eq",
+      "value": true,
+      "headline": "물이 공급되는 집에 가구가 떠날 준비를 거두고 남았다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.stayed.r06life.no_water",
+      "template": "person.stayed",
+      "field": "waterAfter",
+      "op": "eq",
+      "value": false,
+      "headline": "물 공급은 아직 없었지만 가구는 떠날 준비를 거두었다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.hungry.r06life.one",
+      "template": "person.hungry",
+      "field": "residentsAfter",
+      "op": "eq",
+      "value": 1,
+      "headline": "한 명이 사는 집에 먹을거리 부족이 닥쳤다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.hungry.r06life.many",
+      "template": "person.hungry",
+      "field": "residentsAfter",
+      "op": "gte",
+      "value": 2,
+      "headline": "여럿이 사는 집에 먹을거리 부족이 닥쳤다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.fed.r06life.brief",
+      "template": "person.fed",
+      "field": "elapsedTicks",
+      "op": "lte",
+      "value": 1000,
+      "headline": "먹을거리 부족이 시작된 지 한 철 안에 사정이 나아졌다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_BASELINE_FACT_LINE_AND_CONTEXT"
+    },
+    {
+      "id": "person.fed.r06life.long",
+      "template": "person.fed",
+      "field": "elapsedTicks",
+      "op": "gt",
+      "value": 1000,
+      "headline": "한 철 넘게 이어지던 먹을거리 부족이 풀렸다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_BASELINE_FACT_LINE_AND_CONTEXT"
+    },
+    {
+      "id": "person.water.r06life.one",
+      "template": "person.water",
+      "field": "residentsAfter",
+      "op": "eq",
+      "value": 1,
+      "headline": "한 명이 사는 집에 우물물이 닿기 시작했다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.water.r06life.many",
+      "template": "person.water",
+      "field": "residentsAfter",
+      "op": "gte",
+      "value": 2,
+      "headline": "여럿이 사는 집에 우물물이 닿기 시작했다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.water_lost.r06life.burnt",
+      "template": "person.water_lost",
+      "field": "burntAfter",
+      "op": "eq",
+      "value": true,
+      "headline": "불탄 집에서 지내던 가구의 물 공급이 끊겼다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt",
+      "template": "person.water_lost",
+      "field": "burntAfter",
+      "op": "eq",
+      "value": false,
+      "headline": "집은 불타지 않았지만 가구의 물 공급은 끊겼다.",
+      "requiredSlots": [
+
+      ],
+      "retainFactLine": true,
+      "status": "BLOCKED_NEW_EMITTER_CONTEXT"
+    }
+  ],
+  "nonBranching": [
+    {
+      "template": "person.came_of_age",
+      "headline": "어른이 되어 가구의 일을 거들기 시작했다.",
+      "reason": "producer crosses age 14; do not fabricate multiple age branches",
+      "canonicalChange": false,
+      "completeContextCoverage": false
+    }
+  ]
+}

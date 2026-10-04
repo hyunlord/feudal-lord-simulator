@@ -1,0 +1,1218 @@
+[
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/metadata.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/metadata.json",
+    "bytes": 1805,
+    "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/summary.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/summary.json",
+    "bytes": 9601,
+    "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/years.jsonl",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/years.jsonl",
+    "bytes": 751449,
+    "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/commands.jsonl",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/commands.jsonl",
+    "bytes": 150648,
+    "sha256": "16a26ff01c2ace883d30012d8a50dc359800da847528ee57e361ac23ffc474c7",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/controls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/controls.json",
+    "bytes": 102,
+    "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/save-checks.jsonl",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/save-checks.jsonl",
+    "bytes": 9392,
+    "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/start.fls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/start.fls.json",
+    "bytes": 292335,
+    "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/final.fls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/final.fls.json",
+    "bytes": 8539773,
+    "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/runner-exit-code",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/runner-exit-code",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/runner-timing.env",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/runner-timing.env",
+    "bytes": 77,
+    "sha256": "81e7d7f11f7c1c27be987190e946d21b4bdf52c7829091db4041635005a82140",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/SHA256SUMS",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/SHA256SUMS",
+    "bytes": 1746,
+    "sha256": "f86f66853f6a504fafbfdbb9dc9e0c04bbe840dc342f1f5c2b9334b0fe57afbb",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/registry-waits.jsonl",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/registry-waits.jsonl",
+    "bytes": 637,
+    "sha256": "9399029d9102dba925691b9e7c6800881b5e0f8c55969c5c98f356bbfc83a62e",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/registry-wait-outcomes.jsonl",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/registry-wait-outcomes.jsonl",
+    "bytes": 769,
+    "sha256": "c29b563e0268fd8019e6dbdddfe10570bd3a130d762e288dae67152b40b659ec",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/year-1325.fls.json",
+    "bytes": 2719026,
+    "sha256": "5a3560012282942253fa7699704dc1eb7147405ee3d755598b50dc7088644961",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1350.fls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/year-1350.fls.json",
+    "bytes": 4057453,
+    "sha256": "b663dde465f0b8b4fceae704bd583fca4e79ea6fd0852a1ee83d78f88990dbbb",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1375.fls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/year-1375.fls.json",
+    "bytes": 5525846,
+    "sha256": "01db66af942c2687b0b6eb17c7a6fc5e65fe037c0a2ccb66e73f44bb56f36b26",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1400.fls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/year-1400.fls.json",
+    "bytes": 6628322,
+    "sha256": "5a7f49e8429a3bd7a534f7d04b1f378e02632b231a58ae1ac51aae476b11dee0",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1425.fls.json",
+    "destination": "inherited/R07/long-run/N02-v3-open-1-growth/year-1425.fls.json",
+    "bytes": 7601959,
+    "sha256": "8eaee5cd499c7619d3f68f0b78f50f6d65bac3f9964e1a344d7de4a656f9a9be",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/metadata.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/metadata.json",
+    "bytes": 1811,
+    "sha256": "139ff91a7df71576d8fb2963357ab86761b40a3947229533324a2de143bf0a1d",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/summary.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/summary.json",
+    "bytes": 9389,
+    "sha256": "55e9eb57a5e963a30dbd3e0b0e2700efb86f37a3b9ae9784318ec2006c748e59",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/years.jsonl",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/years.jsonl",
+    "bytes": 721147,
+    "sha256": "de9b265c755c7c0a6a12c1bc3e83ba265e9a7614668e92bf64d5f3a51cf7c319",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/commands.jsonl",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/commands.jsonl",
+    "bytes": 457255,
+    "sha256": "565e59b10fc458d920b4473c4d36945ce78d22b5a63843597d56e0252dbe2a4f",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/controls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/controls.json",
+    "bytes": 105,
+    "sha256": "0562e43105e3368cdc333a8114c7469a161e9c5fa26398543bd41af09d19b250",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/save-checks.jsonl",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/save-checks.jsonl",
+    "bytes": 9408,
+    "sha256": "594db2ebf19792da35ef8155cce4681875c661a1242e05b3c6c5683629ac7ba4",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/start.fls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/start.fls.json",
+    "bytes": 292802,
+    "sha256": "50998f74434bfd1c54e4f9ba1e484d28805923fab697db9dceee6325adc72479",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/final.fls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/final.fls.json",
+    "bytes": 11335675,
+    "sha256": "f14300baeaf2b4bb40311b413ad04730d8149bad78f3b57e2c5501ca3a39705d",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/runner-exit-code",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/runner-exit-code",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/runner-timing.env",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/runner-timing.env",
+    "bytes": 77,
+    "sha256": "29995db6cb1d0dc2691ff598c81bd3afff75ac66cf3ced76cc32f004b1f04c0e",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/SHA256SUMS",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/SHA256SUMS",
+    "bytes": 1838,
+    "sha256": "fde228570e52089db61931a97da131bbe21298a8959712e81767fb98bbfc879c",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/registry-selections.jsonl",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/registry-selections.jsonl",
+    "bytes": 357,
+    "sha256": "3983525292ee3a89ccaa385ddbb2ca70d154d1915edebf098effeb3b7973489a",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/registry-waits.jsonl",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/registry-waits.jsonl",
+    "bytes": 1454,
+    "sha256": "a1b7a4aee1e600a9e74976e119cf9f80e3ea1ffa3f50c917bbbeed0111f11453",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/registry-wait-outcomes.jsonl",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/registry-wait-outcomes.jsonl",
+    "bytes": 1627,
+    "sha256": "93e556fe56469d27aaf7d6b1c11b1059ec0e8aa41f50392b1684c925e39b25eb",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1325.fls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/year-1325.fls.json",
+    "bytes": 2076979,
+    "sha256": "6d0ec817029632a82ad7bdf44ca833fa25d117826bd79ced08ec72577d2db244",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1350.fls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/year-1350.fls.json",
+    "bytes": 6963620,
+    "sha256": "e66b7e83b4d2ca21460b6389fc0c8131a83488c1e83c001dd50fc758de7a37d5",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1375.fls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/year-1375.fls.json",
+    "bytes": 9385137,
+    "sha256": "a1d8625b05e2598e9ebb9b1fe0cf198402e368d35c1dcc388b0287577336824f",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1400.fls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/year-1400.fls.json",
+    "bytes": 10211430,
+    "sha256": "464dcc62134163dc0248d325f4023492b834227de1065f30b21d20f6411ad5c0",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1425.fls.json",
+    "destination": "inherited/R07/long-run/N03-v3-open-1-stability/year-1425.fls.json",
+    "bytes": 10804596,
+    "sha256": "75ea63e0485b39bbbc38d260f3665a0fc965af1a2420cbadbc4117e07d1075e3",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/metadata.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/metadata.json",
+    "bytes": 1797,
+    "sha256": "edf97d87fdbc9445f7405e0eef4dec2c0e204722a4571f1b5a1362a5f81eb05b",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/summary.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/summary.json",
+    "bytes": 9383,
+    "sha256": "3fb3cfa0d91d4dcd6965dc3be4ba34a0d1ea1d1b781b7cc9259fbcef9c32fc30",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/years.jsonl",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/years.jsonl",
+    "bytes": 729942,
+    "sha256": "b283e1700e8806c8d5bd946f4e5dacfc20a28eb8d7d9e0f6da6165bb02b4f537",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/commands.jsonl",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/commands.jsonl",
+    "bytes": 494614,
+    "sha256": "229e6af6a67cd45e8b228a0b6d9c14849322627cce8a9de87769b2a4a51706ef",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/controls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/controls.json",
+    "bytes": 38,
+    "sha256": "357a1d635eaba0f265fe928e3df90c519466c8ea510e3172fc11d13a193e54b5",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/save-checks.jsonl",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/save-checks.jsonl",
+    "bytes": 9392,
+    "sha256": "af01a04879422d64210d2a8e6d794ba38a7221a09ad91ebfd956789a2d50829d",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/start.fls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/start.fls.json",
+    "bytes": 289942,
+    "sha256": "bdf6d32769f5e69323f3e6dd6cc1b40a5eb757d5403ba10e9482493023a2b6f9",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/final.fls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/final.fls.json",
+    "bytes": 7033095,
+    "sha256": "760f899b00d0864572bb12b8a20e50e76911b9d9186019130b7ca701e1149d20",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/runner-exit-code",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/runner-exit-code",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/runner-timing.env",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/runner-timing.env",
+    "bytes": 77,
+    "sha256": "4bc5ffef6fb357861278a969eb299aaaf0a131e9155995783bde735d2f73b17b",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/SHA256SUMS",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/SHA256SUMS",
+    "bytes": 1564,
+    "sha256": "3b17863cd2c23e047c6a97b75a8c3e77405da68c6f1e21f9013085086a6012a8",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1325.fls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/year-1325.fls.json",
+    "bytes": 2338842,
+    "sha256": "75aed39542d545df0632107bf73983b9302586994177df1a16bbc70d7a98e669",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1350.fls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/year-1350.fls.json",
+    "bytes": 3755282,
+    "sha256": "d3928d5ada4647e8544b93de11364666152a7f3d6ce87303b675da71ad732ece",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1375.fls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/year-1375.fls.json",
+    "bytes": 4786698,
+    "sha256": "ad2169704457cf2cd56311752609fa97ae4b1fd6053b802e911fa72915d1e0ab",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1400.fls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/year-1400.fls.json",
+    "bytes": 5936030,
+    "sha256": "1be8120ef7aae438da9fc72e9c7def2b4fff7f7cbc7f0f82e8fa46331a5ce946",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1425.fls.json",
+    "destination": "inherited/R07/long-run/N04-chalk-2-full/year-1425.fls.json",
+    "bytes": 6409331,
+    "sha256": "6e276079cf5ec80178964d1860a79fe0e47815b4d04e683ef3c15ca983df85c3",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/metadata.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/metadata.json",
+    "bytes": 1814,
+    "sha256": "f344b56bc2498e1260c2b769922fd05a38f90a54b608dd1b2d9be692f6220b65",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/summary.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/summary.json",
+    "bytes": 9562,
+    "sha256": "4f82b150f5d4d450529840c2940d8582e19079645f371cb850871a13523bcccd",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/years.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/years.jsonl",
+    "bytes": 736938,
+    "sha256": "dd7fbc7a4a690a9445ec9c61fd07082f4514641e358c4aa58bf687e19d100722",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/commands.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/commands.jsonl",
+    "bytes": 157673,
+    "sha256": "0956a85a2323d7c683d01bf760ec15b93ad6016e14e4f9c56db1e235b1cc0861",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/controls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/controls.json",
+    "bytes": 102,
+    "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/save-checks.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/save-checks.jsonl",
+    "bytes": 9392,
+    "sha256": "a6442bacae4ae07f55e7c564d50e9fb68fcf2e5215dc329e3b5c244c65141961",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/start.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/start.fls.json",
+    "bytes": 290907,
+    "sha256": "e6d970612aadb8fb93cedece9f5a7e047d928c6ca82dcde3022d055ca2e56cba",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/final.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/final.fls.json",
+    "bytes": 6130250,
+    "sha256": "f8a9491032c3fee40085ff7ea3cb2ce8c97f7e574b9082bec2b1c0e469375489",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/runner-exit-code",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/runner-exit-code",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/runner-timing.env",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/runner-timing.env",
+    "bytes": 76,
+    "sha256": "053abc9bd434d169d2585025ed6611d26196a1989a48554c0117062921f39899",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/SHA256SUMS",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/SHA256SUMS",
+    "bytes": 1835,
+    "sha256": "86853139da5c08012edca7bd0de88c2e8be93b6517342b2408e27835421267fb",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/registry-selections.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/registry-selections.jsonl",
+    "bytes": 638,
+    "sha256": "6b7beaa4c336cbcf76b17baacf6edfc4dbfa4cd742c8077002a53ee4e6d224f7",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/registry-waits.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/registry-waits.jsonl",
+    "bytes": 637,
+    "sha256": "fe0f2ec68a75e5e22758911b1b361cb5b71d524d3b570ddfa3db31ceb13370a3",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/registry-wait-outcomes.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/registry-wait-outcomes.jsonl",
+    "bytes": 769,
+    "sha256": "acc736b80cc8d43c3e07b3096dd106a1a6c0d6c63d7a8fff9a412b59ab64ad07",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/year-1325.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/year-1325.fls.json",
+    "bytes": 1941149,
+    "sha256": "6edeb1cd9f073d96c1600103f017205fa76ac31536da2d394551a5a912fb3dc7",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/year-1350.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/year-1350.fls.json",
+    "bytes": 3113040,
+    "sha256": "2f958c85dd23bdd9bb61bf9561cda6863f80956ba30bf0ae9fe10bd78434ce0b",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/year-1375.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/year-1375.fls.json",
+    "bytes": 4157222,
+    "sha256": "6c8dc779083e328b3e24d775b54a4ab961534acb7ad7901bd10e33458e5dada2",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/year-1400.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/year-1400.fls.json",
+    "bytes": 4728024,
+    "sha256": "72153c7c1c84a3475aa8c6ac3c0c00a8d2789ee328ba45f2810096b0cf2cdc94",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-growth/year-1425.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-growth/year-1425.fls.json",
+    "bytes": 5582653,
+    "sha256": "12b8bdb88976405711ec2714439260b08f7c2a5ee1a3a69c83b73fc7c841187f",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/metadata.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/metadata.json",
+    "bytes": 1823,
+    "sha256": "96927accb3546f74f3da77c3946687b91d72df41df56068631025069b91a7578",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/summary.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/summary.json",
+    "bytes": 9494,
+    "sha256": "6c9abc069d655a9bb6fd510bdec05a71c4ce1b08a2fc52ff20349fb66ea62c49",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/years.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/years.jsonl",
+    "bytes": 730420,
+    "sha256": "df21ae56c89396b62f44f54b3f7005136812b8b4092dd71e78a4a95a9f4b92ba",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/commands.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/commands.jsonl",
+    "bytes": 391247,
+    "sha256": "07eb97d788ddd81d786c8da50d71116040c03d8d6860be147c3bd8b386365eb4",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/controls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/controls.json",
+    "bytes": 105,
+    "sha256": "0562e43105e3368cdc333a8114c7469a161e9c5fa26398543bd41af09d19b250",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/save-checks.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/save-checks.jsonl",
+    "bytes": 9392,
+    "sha256": "0bba6367bc3d066ceb61d6bedf1b60d9f2f115afe0ff83bdb24ea7625b094f61",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/start.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/start.fls.json",
+    "bytes": 291374,
+    "sha256": "08c79b462619b6f7063a7a28ffad192ed5d5c6df86f66f2e726553e4e022a990",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/final.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/final.fls.json",
+    "bytes": 5343211,
+    "sha256": "1ebcbe52a8b5641024480b553661f07298e6119ed60f1c6264e9f1b2b3dccb5c",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/runner-exit-code",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/runner-exit-code",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/runner-timing.env",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/runner-timing.env",
+    "bytes": 76,
+    "sha256": "7331126cc846f71ca47fac54ed0345e48bce28f37d998ae1caf087c59e63331d",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/SHA256SUMS",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/SHA256SUMS",
+    "bytes": 1835,
+    "sha256": "44445613cba47b44bc3d2d71666d5557552f7863dbd5fcda9e6340105524ce76",
+    "tier": "core",
+    "rationale": "Exact run identity, boundaries, annual observations, command density, retained final persons/ledger and completion provenance; historical manifest may name omitted duplicates/checkpoints"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/registry-selections.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/registry-selections.jsonl",
+    "bytes": 749,
+    "sha256": "77fc99edfd4a6251c154b95fa176aed132f84238e9435bbb18e81cb1c3d03a63",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/registry-waits.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/registry-waits.jsonl",
+    "bytes": 637,
+    "sha256": "b62e0fa3bbbc4a1a3bc8f053dfe645d42255b60e4fbabffe7af5f6452fec70dd",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/registry-wait-outcomes.jsonl",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/registry-wait-outcomes.jsonl",
+    "bytes": 772,
+    "sha256": "ea4a3390bdc1ab76ead1254441ef58db66fb6bf431d1cbf1f6f6009d77466760",
+    "tier": "core",
+    "rationale": "Registry wait/selection evidence underlying command semantics"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/year-1325.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/year-1325.fls.json",
+    "bytes": 1862985,
+    "sha256": "8a1e8bf5e44961942a79c062e71ec0701266f20eebc425b2bbe6a6d84da619dd",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/year-1350.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/year-1350.fls.json",
+    "bytes": 2980394,
+    "sha256": "3db6f2012594cccf754d106693f7884b26ba6c2fb4717659dd0d6abebd895c34",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/year-1375.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/year-1375.fls.json",
+    "bytes": 3690659,
+    "sha256": "4fd4afc5692db863130dd80a57380b579a6731c613e086cf1832692d1a124637",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/year-1400.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/year-1400.fls.json",
+    "bytes": 4235715,
+    "sha256": "1ea420744f1f1d7c6a5d81c60362c7ae171f5a0a775038111f17e82633cccc27",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run/seed3-open-fixed-stability/year-1425.fls.json",
+    "destination": "inherited/R07/long-run/seed3-open-fixed-stability/year-1425.fls.json",
+    "bytes": 4790167,
+    "sha256": "e97e4336ebd2ac02064ed80423e60c79bb04d82548e89ac4c7c64f1272c52999",
+    "tier": "checkpoint_extension",
+    "rationale": "Needed only to independently repeat intermediate death-ID retention/land-holder checkpoint claims, not annual final cumulative recount"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-policy-comparison-r07/REPORT.md",
+    "destination": "inherited/R07/analysis/seed3-policy-comparison-r07/REPORT.md",
+    "bytes": 12297,
+    "sha256": "212e1f8e319b253e4ad04dc2a2cceff09229647dbf53ed697b8d9fb49f381733",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-policy-comparison-r07/DATA.json",
+    "destination": "inherited/R07/analysis/seed3-policy-comparison-r07/DATA.json",
+    "bytes": 4004564,
+    "sha256": "07bba9558301434998744d9681e746f89655a1c38b4eb2993e87f6d9bd7a9a95",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-policy-comparison-r07/VALIDATION.json",
+    "destination": "inherited/R07/analysis/seed3-policy-comparison-r07/VALIDATION.json",
+    "bytes": 1343,
+    "sha256": "4e17ed62428369a6b09d15a3633d8aea1424e4b4e597a3d22fb0532b5f450153",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-policy-comparison-r07/INPUT_SHA256.json",
+    "destination": "inherited/R07/analysis/seed3-policy-comparison-r07/INPUT_SHA256.json",
+    "bytes": 8680,
+    "sha256": "abe17fa7ea7863268a27f6fb3f463d6d0e1b271e7e0e10a02a7267cbd6ef2647",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-policy-comparison-r07/SOURCE_SHA256.json",
+    "destination": "inherited/R07/analysis/seed3-policy-comparison-r07/SOURCE_SHA256.json",
+    "bytes": 1026,
+    "sha256": "d148ece2a09599c636c30799378ee929ec1253335f99993561b047f7e8462642",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-policy-comparison-r07/SOURCE_FILES.json",
+    "destination": "inherited/R07/analysis/seed3-policy-comparison-r07/SOURCE_FILES.json",
+    "bytes": 1833,
+    "sha256": "97f6b34b3cf6e14c16f3a6f4a26487a593f40a731e88a643cb9717f5febfcbac",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-cash-attribution-r07/REPORT.md",
+    "destination": "inherited/R07/analysis/seed3-cash-attribution-r07/REPORT.md",
+    "bytes": 7149,
+    "sha256": "ebc0446c34b2a41feb0de07cbd203a7dba27b553247c49feb860477cb01c3fcf",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-cash-attribution-r07/DATA.json",
+    "destination": "inherited/R07/analysis/seed3-cash-attribution-r07/DATA.json",
+    "bytes": 687294,
+    "sha256": "c02af846b2837638bf4d8d4659148c1fd18b61530a452f0f3eae2688debbb853",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-cash-attribution-r07/VALIDATION.json",
+    "destination": "inherited/R07/analysis/seed3-cash-attribution-r07/VALIDATION.json",
+    "bytes": 522,
+    "sha256": "06fec1f9fd0583f81360e4f4175ec60650dcaf762cc0830a7bc54957ca4f572d",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-cash-attribution-r07/INPUT_SHA256.json",
+    "destination": "inherited/R07/analysis/seed3-cash-attribution-r07/INPUT_SHA256.json",
+    "bytes": 749,
+    "sha256": "4ed02cda798782a3aa757e788de7aa42b74f3b25d63758fc6b41c9dc65d25ff2",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-cash-attribution-r07/SOURCE_SHA256.json",
+    "destination": "inherited/R07/analysis/seed3-cash-attribution-r07/SOURCE_SHA256.json",
+    "bytes": 959,
+    "sha256": "1cba27a0bb2b6f3377a1daf99425e191e5635765a5fa3148a9df48f31be1552c",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-growth-r07/REPORT.md",
+    "destination": "inherited/R07/analysis/seed3-growth-r07/REPORT.md",
+    "bytes": 11045,
+    "sha256": "4f9099d798f1a80b5112fa361dc8304f3aafeeb1a2651b0ef16488541293d823",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-growth-r07/RESULT.json",
+    "destination": "inherited/R07/analysis/seed3-growth-r07/RESULT.json",
+    "bytes": 29576,
+    "sha256": "d90141c27794a54cec6d797309798085593649bb7612fbd0974bc3b9c4326123",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/seed3-growth-r07/ANNUAL.json",
+    "destination": "inherited/R07/analysis/seed3-growth-r07/ANNUAL.json",
+    "bytes": 1398996,
+    "sha256": "1a82ec8d7f2dd1c996ffe0712316cbe7b02c7c16e30d242062877b80638bb5b6",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/recorded-deaths-r07/REPORT.md",
+    "destination": "inherited/R07/analysis/recorded-deaths-r07/REPORT.md",
+    "bytes": 2844,
+    "sha256": "6071733487d01682b15c2fa22bb3221f694740f270c82d4088f7253e8ed6a516",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/recorded-deaths-r07/ANNUAL_CAUSES.csv",
+    "destination": "inherited/R07/analysis/recorded-deaths-r07/ANNUAL_CAUSES.csv",
+    "bytes": 19119,
+    "sha256": "c2e90642007d772a9995d8e082bab3093a9093a8099611482fe95c28b0d83d9d",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/recorded-deaths-r07/ANNUAL_CAUSES.json",
+    "destination": "inherited/R07/analysis/recorded-deaths-r07/ANNUAL_CAUSES.json",
+    "bytes": 89248,
+    "sha256": "5c9d1261914380e6c074942746db28d9c067902d1626c79bcfad1683c632159d",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/recorded-deaths-r07/SUMMARY.json",
+    "destination": "inherited/R07/analysis/recorded-deaths-r07/SUMMARY.json",
+    "bytes": 2312,
+    "sha256": "8b97dedfdb484f391f55a4a3cc47491ecd6e27ce77b70c245f0e786b630f8e29",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/recorded-deaths-r07/EVENT_WINDOWS.json",
+    "destination": "inherited/R07/analysis/recorded-deaths-r07/EVENT_WINDOWS.json",
+    "bytes": 3849,
+    "sha256": "a98c71a6fdb8b4bbf3522390226ac8f04c71601e8de992b173436f98b7c87e9d",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/recorded-deaths-r07/VALIDATION.json",
+    "destination": "inherited/R07/analysis/recorded-deaths-r07/VALIDATION.json",
+    "bytes": 480,
+    "sha256": "01cbf041aabd3e87ea968210a2e6e65646aedcb84a600a91461b4848bf9a4d6a",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/recorded-deaths-r07/INPUT_SHA256SUMS.json",
+    "destination": "inherited/R07/analysis/recorded-deaths-r07/INPUT_SHA256SUMS.json",
+    "bytes": 976,
+    "sha256": "249bbf52f7b898d3e59d5d2d51ebd5901b0859d44b0b9fb6221da82f9b3384cb",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/decision-density/README.md",
+    "destination": "inherited/R07/analysis/decision-density/README.md",
+    "bytes": 2247,
+    "sha256": "7dd6713960412261008f3d8594b36ce6aca2da7c76a8ec3cea2ab4ec1e30b467",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/decision-density/RESULT.json",
+    "destination": "inherited/R07/analysis/decision-density/RESULT.json",
+    "bytes": 86768,
+    "sha256": "63850c5278f80ddaba7809e0d6437f12dd6130c92f88ab62fff727ddc28b5b7a",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/decision-density/YEARS.tsv",
+    "destination": "inherited/R07/analysis/decision-density/YEARS.tsv",
+    "bytes": 13709,
+    "sha256": "c2601a8bbdf28d23c1dc91b77e60b7810fac0176bc20f38bfb1b77ae85c34056",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/long-run-surfaces/README.md",
+    "destination": "inherited/R07/analysis/long-run-surfaces/README.md",
+    "bytes": 2357,
+    "sha256": "6d76f8df505c8a4a5419a6a3c18910290582b9dab08221843556e60bd1e361b4",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/long-run-surfaces/RESULT.json",
+    "destination": "inherited/R07/analysis/long-run-surfaces/RESULT.json",
+    "bytes": 9405,
+    "sha256": "7d367dc940a9c59ab241b86359b8555fe08e112c5832134c29fcf12b2dccf4ff",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/analysis/long-run-surfaces/PARENT_CHECK.json",
+    "destination": "inherited/R07/analysis/long-run-surfaces/PARENT_CHECK.json",
+    "bytes": 232,
+    "sha256": "811a562500ef8ec091a2671574418654d1dfe4eeb3ba3cf45a317b780a9b4f32",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/REPORT.md",
+    "destination": "inherited/R07/records/death-coverage-inventory/REPORT.md",
+    "bytes": 5963,
+    "sha256": "d9e4581ecf8a9843287cfa96f480dba3101104e8880884dcce6fda24098221ac",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/RESULT.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/RESULT.json",
+    "bytes": 559,
+    "sha256": "dcb307eb95dfa06d33cb01909f35f9de95615ec7b9fc06358c388d389b43ad0b",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/INVENTORY.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/INVENTORY.json",
+    "bytes": 23993,
+    "sha256": "bb0f556eeebc0e39e2a0677cd6a9e55cb3e8b5f6a13463f6aeb2859481671bf2",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/SOURCE_EVIDENCE.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/SOURCE_EVIDENCE.json",
+    "bytes": 25270,
+    "sha256": "56fd85b4e70b9a2f435a0b5050a07a65238d75f953e15b3e3939da391f14e937",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/N02-v3-open-1-growth-deaths.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/N02-v3-open-1-growth-deaths.json",
+    "bytes": 1297347,
+    "sha256": "dd8bd9f008974347603497a5a5ae0fcb38f0ed50fe20d98fa70952b5a091b7e0",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/N03-v3-open-1-stability-deaths.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/N03-v3-open-1-stability-deaths.json",
+    "bytes": 580887,
+    "sha256": "96733a74b717b5509095d52b632b82610e3db5fa37c135865f1d7556801a19b4",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/N04-chalk-2-full-deaths.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/N04-chalk-2-full-deaths.json",
+    "bytes": 837638,
+    "sha256": "26638b9ca6bd816f47051a4edd13507ec0f33abacfcdcb89af16889ae7f00e2d",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/N02-v3-open-1-growth-annual.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/N02-v3-open-1-growth-annual.json",
+    "bytes": 46656,
+    "sha256": "14cb9e06e5981c1ea1b9a9bf5fa6df43048a2bbcc143a838818c0c8b094b5d64",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/N03-v3-open-1-stability-annual.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/N03-v3-open-1-stability-annual.json",
+    "bytes": 46150,
+    "sha256": "97c7d2d321228f9edc5315380b53ceb6d8182e161410b94a51d8f1b9c3144419",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-inventory/N04-chalk-2-full-annual.json",
+    "destination": "inherited/R07/records/death-coverage-inventory/N04-chalk-2-full-annual.json",
+    "bytes": 49067,
+    "sha256": "3fea126df3f605cb0aa88f0100e8c7e9defb32752a8057fb5e3e114d4ae0160b",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-review-r07/REPORT.md",
+    "destination": "inherited/R07/records/death-coverage-review-r07/REPORT.md",
+    "bytes": 5195,
+    "sha256": "d6112cb05caddcf51fed3da122019bbfd04d46573b1f7754d015189401ded93a",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-review-r07/REVIEW.json",
+    "destination": "inherited/R07/records/death-coverage-review-r07/REVIEW.json",
+    "bytes": 443,
+    "sha256": "11792a30eaf2c7e376ad92bedcb99c3533b71cdf11de086c83c4df264835f6a6",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-review-r07/VALIDATION.json",
+    "destination": "inherited/R07/records/death-coverage-review-r07/VALIDATION.json",
+    "bytes": 4258,
+    "sha256": "5a6b2a12fdce84490f05b5b82b89a3377e81a93086eb649d055ec381c669fa30",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-review-r07/FINAL_EQUIVALENCE.json",
+    "destination": "inherited/R07/records/death-coverage-review-r07/FINAL_EQUIVALENCE.json",
+    "bytes": 1865,
+    "sha256": "8d1a96972b9d5b31d98d57ec983bcb527b5a1c12ebc166131d51ed811369027d",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-review-r07/INPUT_SHA256SUMS",
+    "destination": "inherited/R07/records/death-coverage-review-r07/INPUT_SHA256SUMS",
+    "bytes": 1845,
+    "sha256": "ab3cc440a944bd402fd69645eff6075c1ba5f6ca8bdbfa9fca69f8f4f5deecf6",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/death-coverage-review-r07/ADDITIONAL_SOURCE_SHA256SUMS",
+    "destination": "inherited/R07/records/death-coverage-review-r07/ADDITIONAL_SOURCE_SHA256SUMS",
+    "bytes": 189,
+    "sha256": "908f0406a2153892550b4ac321504171009bb78ca3fbca0641755ac63a9dbd97",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/seed3-stability-completion-review-r07/REPORT.md",
+    "destination": "inherited/R07/records/seed3-stability-completion-review-r07/REPORT.md",
+    "bytes": 3834,
+    "sha256": "c4e3ac1871a1e98f312c8158936647956e22f133c5f939fec85acf34a269880b",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/seed3-stability-completion-review-r07/REVIEW.json",
+    "destination": "inherited/R07/records/seed3-stability-completion-review-r07/REVIEW.json",
+    "bytes": 2356,
+    "sha256": "592af8da76f67ca96990d0892077ae626999003f870a0876361ec701ab37bc42",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/seed3-stability-completion-review-r07/CHECKS.json",
+    "destination": "inherited/R07/records/seed3-stability-completion-review-r07/CHECKS.json",
+    "bytes": 6690,
+    "sha256": "04cba1617fbd6237d9746262b8ba097c31ffd28f1e079ad55b3b08710a2ddfca",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/CHECKER_SCOPE.md",
+    "destination": "inherited/R07/records/long-run-completion-r07/CHECKER_SCOPE.md",
+    "bytes": 1070,
+    "sha256": "ceaa97ab71e8567f8a94e0ac73d84101db4d167475c0bbb9daba9fae2d093e8d",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/SEED3_GROWTH_RESULT.json",
+    "destination": "inherited/R07/records/long-run-completion-r07/SEED3_GROWTH_RESULT.json",
+    "bytes": 2273,
+    "sha256": "85b569ccfae84622321f35f67c2afc8bfd268a58e8db5b00bb3ae63f0c9f027b",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/SEED3_STABILITY_RESULT.json",
+    "destination": "inherited/R07/records/long-run-completion-r07/SEED3_STABILITY_RESULT.json",
+    "bytes": 2276,
+    "sha256": "6e7f54922400741597f6ea17f498b315a0739bd2617d6fc8dd3e307933731896",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/REVIEW_V2_PARENT_CHECK.json",
+    "destination": "inherited/R07/records/long-run-completion-r07/REVIEW_V2_PARENT_CHECK.json",
+    "bytes": 3051,
+    "sha256": "47b9dc85e03fe9ddba6155d5059de18a8e12e1e6cdad4bafe2aea62e280fa529",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/review-v2/REPORT.md",
+    "destination": "inherited/R07/records/long-run-completion-r07/review-v2/REPORT.md",
+    "bytes": 2903,
+    "sha256": "d69c6570483a35333d28f1ef08233885850142f73aed8be9cd313891100135b0",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/review-v2/REVIEW.json",
+    "destination": "inherited/R07/records/long-run-completion-r07/review-v2/REVIEW.json",
+    "bytes": 4891,
+    "sha256": "43c4f5d35b0d29b1fcf9e55ceaa60aabd05ebc3d9b92ad41f87a21cbbcbca880",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/review-v2/COUNTEREXAMPLES.json",
+    "destination": "inherited/R07/records/long-run-completion-r07/review-v2/COUNTEREXAMPLES.json",
+    "bytes": 42845,
+    "sha256": "2fd0306c3b95168be7bc6b2dadc10cd7e3bbbb25fed9db25d0553f34452e60ac",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/graphs/recorded-deaths-r07.svg",
+    "destination": "inherited/R07/graphs/recorded-deaths-r07.svg",
+    "bytes": 91745,
+    "sha256": "26e709f8bc5e329352f22260d2b4ebce9360d9d0a3310578f524f0786fbb268a",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/graphs/seed3-policy-comparison-r07.svg",
+    "destination": "inherited/R07/graphs/seed3-policy-comparison-r07.svg",
+    "bytes": 84283,
+    "sha256": "7734500fbc036ba998de645aad1ee7e1950ad5e912720408df49ca4caf21f6d9",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/graphs/seed3-growth-seed-comparison-r07.svg",
+    "destination": "inherited/R07/graphs/seed3-growth-seed-comparison-r07.svg",
+    "bytes": 91890,
+    "sha256": "44e6809d1ef9651f2aecacf407e0b324214e2340eb1c0d7cf2b507d528a90e62",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/graphs/N02-annual-observations.svg",
+    "destination": "inherited/R07/graphs/N02-annual-observations.svg",
+    "bytes": 34317,
+    "sha256": "e6fee0f5068c6a9fc62c3c360baa2d7ad08408d2f95a378b01a9b920dbd1a4f8",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/graphs/README.md",
+    "destination": "inherited/R07/graphs/README.md",
+    "bytes": 366,
+    "sha256": "39a8d2b92f5eb1208a57dc24befd81a6deb63854281b4bd69140f85ea46b44d0",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/graphs/INHERITED_PROVENANCE.json",
+    "destination": "inherited/R07/graphs/INHERITED_PROVENANCE.json",
+    "bytes": 533,
+    "sha256": "c5769f124d5e288e39e1c7a08168ce43ee44984df3cf2cebe2f9c4d06aea9779",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/POLICY_COMPARISON_PARENT_CHECK_R07.json",
+    "destination": "inherited/R07/records/POLICY_COMPARISON_PARENT_CHECK_R07.json",
+    "bytes": 481,
+    "sha256": "617678c67bb01bbba2f998cfdaebb8dc1028a8b5611a48f47a937de7954adf3a",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/long-run-summary/R06_INHERITED_PROVENANCE.json",
+    "destination": "inherited/R07/long-run-summary/R06_INHERITED_PROVENANCE.json",
+    "bytes": 4465,
+    "sha256": "07966b9faa155ccfbb3c55a24480a2acf7a34904202ac59543d4277eb5d994af",
+    "tier": "core",
+    "rationale": "Curated report/table/vector graph/check and its scope/provenance; not a new execution"
+  }
+]

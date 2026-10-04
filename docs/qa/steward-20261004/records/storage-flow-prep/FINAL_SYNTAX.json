@@ -1,0 +1,41 @@
+[
+  {
+    "command": "node --check output/steward-storage-flow-r08/diagnosis.mjs",
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "d057dc",
+        "wall_time_seconds": 0.000004167,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  },
+  {
+    "command": "node --check output/steward-storage-flow-r08/probe.mjs",
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "5b6256",
+        "wall_time_seconds": 0.00000525,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  },
+  {
+    "command": "bash -n output/steward-storage-flow-r08/run.sh",
+    "result": {
+      "status": "fulfilled",
+      "value": {
+        "chunk_id": "fa72c0",
+        "wall_time_seconds": 0.000005625,
+        "exit_code": 0,
+        "original_token_count": 0,
+        "output": ""
+      }
+    }
+  }
+]

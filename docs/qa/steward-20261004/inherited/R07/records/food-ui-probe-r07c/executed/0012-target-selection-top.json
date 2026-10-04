@@ -1,0 +1,299 @@
+{
+  "foodHud": "식량 191일",
+  "foodDays": "191",
+  "pausePressed": "true",
+  "inspector": "주택 · 생활 등급 1\n\n상인가옥\n×\n\n상인가옥 · L2 장인가옥 필요 · 집에 빵이 없습니다 — 배급을 기다립니다\n\n다음: L2 / 첫 방해: 집에 빵이 없습니다 — 배급을 기다립니다\n\n에일을 마십니다 · 제때 승급\n\n생활 등급 1 · 주민 6명 / 정원 8명 · 1×1칸\n\n식구\n로버트 아트무어\n가구주 · 36살 · 방앗간지기\n굶주림\n큰 엘레나 아트무어\n배우자 · 28살\n굶주림\n리처드 아트무어\n친척 · 29살\n굶주림\n작은 엘레나 아트무어\n자녀 · 1살\n굶주림\n식구 6명 모두 보기\n건축 단계\n3단계 · 보수 필요\n물\n우물에서 5칸\n빵\n배급꾼 순회 기록 없음 — 다음 배급 후 다시 확인\n인구\n감소 중 — 식량 없음, 약 36일 경과\n주택 발전 조건\n인접 주택 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n철거하면 주민 6명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거",
+  "calendar": "1375년 봄",
+  "text": "봉건 영주 시뮬레이터\n1375년 봄\n인구 431\n식량 191일\n£17 5s\n\n주택 · 생활 등급 1\n\n상인가옥\n×\n\n상인가옥 · L2 장인가옥 필요 · 집에 빵이 없습니다 — 배급을 기다립니다\n\n다음: L2 / 첫 방해: 집에 빵이 없습니다 — 배급을 기다립니다\n\n에일을 마십니다 · 제때 승급\n\n생활 등급 1 · 주민 6명 / 정원 8명 · 1×1칸\n\n식구\n로버트 아트무어\n가구주 · 36살 · 방앗간지기\n굶주림\n큰 엘레나 아트무어\n배우자 · 28살\n굶주림\n리처드 아트무어\n친척 · 29살\n굶주림\n작은 엘레나 아트무어\n자녀 · 1살\n굶주림\n식구 6명 모두 보기\n건축 단계\n3단계 · 보수 필요\n물\n우물에서 5칸\n빵\n배급꾼 순회 기록 없음 — 다음 배급 후 다시 확인\n인구\n감소 중 — 식량 없음, 약 36일 경과\n주택 발전 조건\n인접 주택 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n철거하면 주민 6명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거\n일시 정지 중 · Space\n×5\n설정\n직접\n구역\n방향\n건설\n장부\n청지기\n\n영주님, 빵 부족: 집에 빵이 없습니다 — 배급을 기다립니다",
+  "buttons": [
+    {
+      "text": "1375년 봄",
+      "label": "계절 띠 — 다가오는 일 보기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "testid": "hud-calendar"
+      }
+    },
+    {
+      "text": "인구 431",
+      "label": "인구 기록 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "식량 191일",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "foodDays": "191"
+      }
+    },
+    {
+      "text": "£17 5s",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "×",
+      "label": "상세 정보 닫기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "로버트 아트무어가구주 · 36살 · 방앗간지기굶주림",
+      "label": "로버트 아트무어의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-003398",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "큰 엘레나 아트무어배우자 · 28살굶주림",
+      "label": "큰 엘레나 아트무어의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-003399",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "리처드 아트무어친척 · 29살굶주림",
+      "label": "리처드 아트무어의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-003407",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "작은 엘레나 아트무어자녀 · 1살굶주림",
+      "label": "작은 엘레나 아트무어의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-003402",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "식구 6명 모두 보기",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일시 정지",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "seal": "pause"
+      }
+    },
+    {
+      "text": "",
+      "label": "1배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "normal"
+      }
+    },
+    {
+      "text": "",
+      "label": "3배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "threefold"
+      }
+    },
+    {
+      "text": "×5",
+      "label": "5배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "fast"
+      }
+    },
+    {
+      "text": "설정",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 발전",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "튜토리얼 끔",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "소리 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "곡선 지면",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "해상도 배율",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "renderScale": "1"
+      }
+    },
+    {
+      "text": "색약 모드",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "colorblind": "off"
+      }
+    },
+    {
+      "text": "지금 저장",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "수동 저장시장도시 목표 · 500분째 · 인구 431 · 목책 시대",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 집에 빵이 없습니다 — 배급을 기다립니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 집에 빵이 없습니다 — 배급을 기다립니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "직접",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "layer": "direct"
+      }
+    },
+    {
+      "text": "구역",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "zone"
+      }
+    },
+    {
+      "text": "방향",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "direction"
+      }
+    },
+    {
+      "text": "건설",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "build"
+      }
+    },
+    {
+      "text": "장부",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "ledger"
+      }
+    },
+    {
+      "text": "청지기",
+      "label": "청지기 마틴 드 스트래턴",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "dock": "steward",
+        "speaking": "true"
+      }
+    }
+  ]
+}

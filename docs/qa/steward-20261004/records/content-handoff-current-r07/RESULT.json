@@ -1,0 +1,173 @@
+{
+  "status": "STATIC_CURRENT_CONTRACT_AUDIT_COMPLETE",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "eventCount": 200,
+  "registryEntryCount": 200,
+  "choiceCount": 572,
+  "commandTemplateCount": 395,
+  "blockedCoreEvents": 61,
+  "allChoicesUnsupportedEvents": 60,
+  "mixedBlockedEvent": "ck_evt_135",
+  "classCounts": {
+    "court_procedure": 4,
+    "chattels_contract_delivery": 8,
+    "land_use_damage_tenure": 16,
+    "labour_public_work_relief": 4,
+    "documents_accounts_identity": 9,
+    "debt_guarantee_setoff_escrow": 7,
+    "church_office_restricted_gift": 3,
+    "family_wardship_care_consent": 10
+  },
+  "enabledSidecar": 0,
+  "sameIdEngineEntries": [
+    "ck_evt_005",
+    "ck_evt_009",
+    "ck_evt_013",
+    "ck_evt_027",
+    "ck_evt_032",
+    "ck_evt_033",
+    "ck_evt_034",
+    "ck_evt_038",
+    "ck_evt_050",
+    "ck_evt_052",
+    "ck_evt_053"
+  ],
+  "registryEffectCommands": [
+    "set_project_subsidy",
+    "set_market_dues",
+    "set_estate_policy",
+    "set_audit_mode",
+    "answer_audit",
+    "set_estate_oversight",
+    "add_suit_evidence",
+    "file_suit",
+    "order_timber",
+    "faction_relation",
+    "treasury",
+    "term",
+    "rights_scope",
+    "set_exception_rules",
+    "enforce_possession",
+    "none"
+  ],
+  "commandsOutsideRegistryEffect": [
+    "answer_counter",
+    "answer_estate_petition",
+    "famine_response",
+    "keep_promise",
+    "petition_response",
+    "propose_marriage",
+    "seek_suit_patron"
+  ],
+  "manifest": [
+    {
+      "path": "ADAPTER_CONTRACTS.json",
+      "pass": true
+    },
+    {
+      "path": "ASTRA_ANSWERS_R05.json",
+      "pass": true
+    },
+    {
+      "path": "ASTRA_ANSWERS_R05.md",
+      "pass": true
+    },
+    {
+      "path": "ASTRA_RESOLUTIONS_R05.md",
+      "pass": true
+    },
+    {
+      "path": "CHANGES.md",
+      "pass": true
+    },
+    {
+      "path": "COMMAND_CONTRACT.json",
+      "pass": true
+    },
+    {
+      "path": "DEDUP_CONTRACT.md",
+      "pass": true
+    },
+    {
+      "path": "DISTRIBUTION.json",
+      "pass": true
+    },
+    {
+      "path": "DISTRIBUTION.md",
+      "pass": true
+    },
+    {
+      "path": "EDITORIAL_CONTRACTS_R05.json",
+      "pass": true
+    },
+    {
+      "path": "EFFECT_CATALOG.json",
+      "pass": true
+    },
+    {
+      "path": "ENGINE_EFFECTS.md",
+      "pass": true
+    },
+    {
+      "path": "ENGINE_SUPPORT.json",
+      "pass": true
+    },
+    {
+      "path": "EVENTS.md",
+      "pass": true
+    },
+    {
+      "path": "KNOWN_DEBT.md",
+      "pass": true
+    },
+    {
+      "path": "PETITION_DEFS_DRAFT_R05.json",
+      "pass": true
+    },
+    {
+      "path": "PROMOTION.md",
+      "pass": true
+    },
+    {
+      "path": "PROVENANCE.json",
+      "pass": true
+    },
+    {
+      "path": "R05_EDITORIAL_VALIDATION.json",
+      "pass": true
+    },
+    {
+      "path": "README.md",
+      "pass": true
+    },
+    {
+      "path": "READ_MODEL.json",
+      "pass": true
+    },
+    {
+      "path": "SOURCE_CATALOG.json",
+      "pass": true
+    },
+    {
+      "path": "VALIDATION.json",
+      "pass": true
+    },
+    {
+      "path": "events.json",
+      "pass": true
+    },
+    {
+      "path": "registry.json",
+      "pass": true
+    }
+  ],
+  "engineExecuted": false,
+  "contentModified": false,
+  "full200SemanticRevalidation": false,
+  "minimumChange": "189 access-only unsupportedFilter removal proposed; keep context, literal false, empty commands and disabled status",
+  "sourceDateHold195": "KEEP",
+  "notes": [
+    "60 all-choice unsupported and 61 integration blocked are different correct metrics",
+    "Same ID engine subset is not proof of importing the sidecar or matching all semantics"
+  ]
+}

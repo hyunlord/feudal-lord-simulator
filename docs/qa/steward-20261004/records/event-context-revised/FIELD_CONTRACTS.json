@@ -1,0 +1,110 @@
+[
+  {
+    "id": "guardianRouteAtStart",
+    "values": [
+      "manor_female_spouse",
+      "adult_house_member",
+      "overlord"
+    ],
+    "templates": [
+      "lord.wardship_begun"
+    ],
+    "capture": "src/engine/lordship.ts:56-73",
+    "producer": "src/engine/history.ts:587-595",
+    "currentRecordStorage": "lordId/guardianId only; selected route is NOT stored",
+    "currentOtherStorage": "lordship.wardship guardianId/since; mutable current persons role/house tags",
+    "immutableReconstruction": "Not safe from guardianId alone: blank ID merges null guardian with failed lookup. Capture selected branch, lord ID and guardian ID at beginWardship; do not derive biological motherhood from female spouse role.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Emit the exact branch selected by findWardshipGuardian. Current female spouse branch proves spouse role, not motherId. adult_house_member means selected same house tag adult, not proven blood kin."
+  },
+  {
+    "id": "surgeTriggerAtRecord",
+    "values": [
+      "industry_ready",
+      "calendar_backstop"
+    ],
+    "templates": [
+      "reorg.petitions_surge"
+    ],
+    "capture": "src/engine/reorganisation.ts:433-435",
+    "producer": "src/engine/history.ts:700",
+    "currentRecordStorage": "No trigger params",
+    "currentOtherStorage": "surgeTick/textileStreetTick/alehouseBoomTick in reorganisation state",
+    "immutableReconstruction": "Partial potential: these timestamps are stored in current state, but save migration/retention and same generation identity are not audited. Do not currently claim reliable old-save reconstruction.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Capture evaluated both && year>=surgeFromYear. If true industry_ready; otherwise calendar_backstop only when latest-date branch fires. When both branches true prefer industry_ready. Do not use date.year alone."
+  },
+  {
+    "id": "acceptanceRouteAtRecord",
+    "values": [
+      "initial_offer",
+      "accepted_counter"
+    ],
+    "templates": [
+      "negotiation.accepted"
+    ],
+    "capture": "src/engine/marriage.ts:137-162",
+    "producer": "src/engine/history.ts:1020-1027",
+    "currentRecordStorage": "negotiation ID + changes; no route",
+    "currentOtherStorage": "negotiation status/counter and original terms may remain, not immutable transition trail",
+    "immutableReconstruction": "Requires event-linked transition proof; current accepted status does not prove route. New initial accepted record vs old countered -> accepted permits capture in history producer.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Capture initial_offer only at newly created accepted negotiation; accepted_counter only old.status countered -> accepted with matching counter. Other transition unknown."
+  },
+  {
+    "id": "withdrawalCauseAtRecord",
+    "values": [
+      "declined_counter",
+      "counter_expired"
+    ],
+    "templates": [
+      "negotiation.withdrawn"
+    ],
+    "capture": "src/engine/marriage.ts:154-170",
+    "producer": "src/engine/history.ts:1026-1027",
+    "currentRecordStorage": "negotiation ID and empty changes only",
+    "currentOtherStorage": "negotiation.status withdrawn/deadline; explicit decline and automatic lapse converge",
+    "immutableReconstruction": "Old historical tick/deadline might constrain causes but no immutable command link contract is verified. Capture at answerCounter(false) / lapseCounters instead.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Record explicit decline only when non-noop answerCounter(false) settles the matching counter. Record expired only the deadline path. Never classify missing data as expired."
+  },
+  {
+    "id": "favourLossCauseAtRecord",
+    "values": [
+      "royal_request_refused",
+      "royal_request_expired"
+    ],
+    "templates": [
+      "war.favour_lost"
+    ],
+    "capture": "src/engine/war.ts:280-290",
+    "producer": "src/engine/history.ts:627",
+    "currentRecordStorage": "No params",
+    "currentOtherStorage": "war.answers maps defId to response; no causal command link in this history record",
+    "immutableReconstruction": "Current answers cannot identify unique historical transition when multiple demands settle. Capture petition ID, defId, response and true -> false favour edge in source operation; if several causally indistinguishable changes, unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Only petition.petitioner crown and refused response while favour previously true. refuse and expired are separate causes. Do not derive from later current reputation."
+  },
+  {
+    "id": "groomRelationAtContract",
+    "values": [
+      "widowed_lord",
+      "son",
+      "brother",
+      "nephew",
+      "cousin"
+    ],
+    "templates": [
+      "marriage.bride_arrived",
+      "marriage.child_born",
+      "marriage.inherited"
+    ],
+    "capture": "src/engine/marriage.ts:85-111;src/engine/marriage.ts:137-149;src/engine/marriage.ts:256-276",
+    "producer": "src/engine/history.ts:1042-1055",
+    "currentRecordStorage": "contracted already stores relation, groom, bride, negotiation; later event does NOT store a unique contract reference",
+    "currentOtherStorage": "MarriagePlan negotiationId/groomId/brideId; current groom role may change and off-map groom ID materialises at contract",
+    "immutableReconstruction": "Conditional future adapter only: later record must carry an immutable contract record reference; exact unique retained contracted record and identities must agree. Existing later bride/brotherInLaw or estate/rival alone do not prove a unique join. No nearest-record join.",
+    "provenance": "immutable_contract_reference",
+    "captureRule": "Capture actual marriageCandidates relation before contract and pin original lord ID/house order/negotiation ID, before groomToManor remaps IDs. Preserve original+materialised groom IDs. Read names now, keep relation to the lord AT CONTRACT. Missing groom must not inherit current history.ts fallback son."
+  }
+]

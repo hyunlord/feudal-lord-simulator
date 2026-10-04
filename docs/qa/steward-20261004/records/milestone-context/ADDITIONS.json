@@ -1,0 +1,146 @@
+{
+  "formatVersion": 1,
+  "status": "DRAFT_NOT_CANONICAL",
+  "variants": [
+    {
+      "id": "milestone.chapter_start.r06stage.second",
+      "template": "milestone.chapter_start",
+      "axis": "params",
+      "field": "chapter",
+      "op": "eq",
+      "value": 2,
+      "headline": "첫 장을 지나 두 번째 장이 시작되었다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_TYPED_INPUT_GUARD"
+    },
+    {
+      "id": "milestone.chapter_start.r06stage.last",
+      "template": "milestone.chapter_start",
+      "axis": "params",
+      "field": "chapter",
+      "op": "eq",
+      "value": 5,
+      "headline": "가문의 마지막 장이 시작되었다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_TYPED_INPUT_GUARD"
+    },
+    {
+      "id": "milestone.chapter_end.r06stage.first",
+      "template": "milestone.chapter_end",
+      "axis": "params",
+      "field": "chapter",
+      "op": "eq",
+      "value": 1,
+      "headline": "도시가 거쳐 온 첫 장의 기록을 마쳤다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_TYPED_INPUT_GUARD"
+    },
+    {
+      "id": "milestone.chapter_end.r06stage.last",
+      "template": "milestone.chapter_end",
+      "axis": "params",
+      "field": "chapter",
+      "op": "eq",
+      "value": 5,
+      "headline": "다음 장을 열지 않고 가문의 마지막 장을 마쳤다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_TYPED_INPUT_GUARD"
+    },
+    {
+      "id": "milestone.market_town.r06stage.market",
+      "template": "milestone.market_town",
+      "axis": "capture",
+      "field": "era",
+      "op": "eq",
+      "value": "market_town",
+      "headline": "시장도시 단계에서 도시의 이정표가 기록되었다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_NEW_CAPTURE_FIELD"
+    },
+    {
+      "id": "milestone.market_town.r06stage.stone",
+      "template": "milestone.market_town",
+      "axis": "capture",
+      "field": "era",
+      "op": "eq",
+      "value": "stone_town",
+      "headline": "석벽 도시 단계에서 시장도시 이정표가 기록되었다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_NEW_CAPTURE_FIELD"
+    },
+    {
+      "id": "milestone.first_l4.r06stage.one",
+      "template": "milestone.first_l4",
+      "axis": "capture",
+      "field": "l4Count",
+      "op": "eq",
+      "value": 1,
+      "headline": "도시 대가옥 한 채가 처음 이정표에 올랐다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_NEW_CAPTURE_FIELD"
+    },
+    {
+      "id": "milestone.first_l4.r06stage.several",
+      "template": "milestone.first_l4",
+      "axis": "capture",
+      "field": "l4Count",
+      "op": "gt",
+      "value": 1,
+      "headline": "도시 대가옥 여러 채가 있는 때에 첫 이정표가 기록되었다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_NEW_CAPTURE_FIELD"
+    },
+    {
+      "id": "person.grew.r06stage.two",
+      "template": "person.grew",
+      "axis": "params",
+      "field": "residents",
+      "op": "eq",
+      "value": 2,
+      "headline": "식구가 늘어 두 사람이 한집에 살게 되었다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_TYPED_INPUT_GUARD"
+    },
+    {
+      "id": "person.grew.r06stage.several",
+      "template": "person.grew",
+      "axis": "params",
+      "field": "residents",
+      "op": "gt",
+      "value": 2,
+      "headline": "식구가 늘어 세 사람 이상이 한집에 살게 되었다.",
+      "retainFactLine": true,
+      "requiredSlots": [
+
+      ],
+      "status": "BLOCKED_TYPED_INPUT_GUARD"
+    }
+  ]
+}

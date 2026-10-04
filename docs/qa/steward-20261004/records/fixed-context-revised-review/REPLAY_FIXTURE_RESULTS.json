@@ -1,0 +1,782 @@
+[
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.known",
+    "selected": "person.came_of_age.r06fixed.co_resident",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.co_resident.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.known",
+    "selected": "person.came_of_age.r06fixed.not_co_resident",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "person.came_of_age.r06fixed.not_co_resident.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.known",
+    "selected": "milestone.stone_town.r06fixed.all_complete",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.all_complete.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.known",
+    "selected": "milestone.stone_town.r06fixed.partly_complete",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.partly_complete.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.known",
+    "selected": "milestone.stone_town.r06fixed.none_complete",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "milestone.stone_town.r06fixed.none_complete.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.known",
+    "selected": "plague.priest_died.r06fixed.present",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.present.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.known",
+    "selected": "plague.priest_died.r06fixed.absent",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "plague.priest_died.r06fixed.absent.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.known",
+    "selected": "ledger.l4.r06fixed.increased",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.increased.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.known",
+    "selected": "ledger.l4.r06fixed.decreased",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.decreased.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.known",
+    "selected": "ledger.l4.r06fixed.unchanged",
+    "schemaAccepted": true,
+    "fallback": false
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.missing_field",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.unknown_enum",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.wrong_record",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.wrong_tick",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.wrong_campaign",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.wrong_source",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.negative_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.unsafe_tick",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.unverified",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.extra_name",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.wrong_provenance",
+    "selected": null,
+    "schemaAccepted": false,
+    "fallback": true
+  },
+  {
+    "id": "ledger.l4.r06fixed.unchanged.unknown_empty",
+    "selected": null,
+    "schemaAccepted": true,
+    "fallback": true
+  }
+]

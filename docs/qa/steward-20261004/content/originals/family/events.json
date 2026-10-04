@@ -1,0 +1,3668 @@
+[
+  {
+    "number": 181,
+    "id": "ck_evt_181",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1300,
+      1312
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 미성년 당사자·유효 후견·별도 관리 재산·확인된 수선 필요. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "후견인"
+    },
+    "title": "후견 중인 장원의 새는 지붕",
+    "body": "맡아 둔 아이의 장원에서 지붕 수선을 청합니다. 올해 수입은 들어왔지만, 그 돈을 우리 금고에 남길지 수선에 쓸지 장부에 밝혀야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "장원 수입으로 먼저 수선한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI01의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "미성년 당사자·유효 후견·별도 관리 재산·확인된 수선 필요가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 후견 계정에서 40–80d를 수선에 배정하고 영주에게 이전할 수입을 줄인다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "아이의 재산을 보전하지만 올해 영주 수입을 포기한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 후견 중인 장원의 새는 지붕 — 장원 수입으로 먼저 수선한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 후견 재산의 수입을 수선 몫으로 배정했다.",
+        "costAxes": [
+          "금전",
+          "권리"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI01",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "우리 금고로 빌려 주고 반환 조건을 남긴다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI01의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "미성년 당사자·유효 후견·별도 관리 재산·확인된 수선 필요가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 금고 40–80d 지출과 동일액 후견 계정 채무를 함께 기록한다. 성년 때 자동 공제하지 않고 승인된 정산을 거친다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "지금 현금이 줄고 반환 불승인 위험이 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 후견 중인 장원의 새는 지붕 — 우리 금고로 빌려 주고 반환 조건을 남긴다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 수선 비용을 빌려 주고 별도 채무로 남겼다.",
+        "costAxes": [
+          "금전",
+          "약속"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI01",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "독립 관리인에게 수선과 회계를 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI01의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "미성년 당사자·유효 후견·별도 관리 재산·확인된 수선 필요가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 관리인 보수 12–24d와 조사 1계절을 부담하고 해당 재산 수입 인출권을 일시 잠근다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "영주의 재량과 시간이 줄며 조사만으로 수선 완료를 보장하지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 후견 중인 장원의 새는 지붕 — 독립 관리인에게 수선과 회계를 맡긴다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 수선과 회계의 독립 관리를 맡겼다.",
+        "costAxes": [
+          "시간",
+          "권한"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI01",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_181"
+    },
+    "illustration": "젖은 서까래 아래 후견인과 서기가 아이의 별도 장부를 펼친다.",
+    "history": {
+      "sourceIds": [
+        "FA06"
+      ],
+      "basis": "후견 재산 보전 의무라는 1215년 규범을 바탕으로 한 가공 갈등.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다.",
+      "sources": [
+        {
+          "id": "FA06",
+          "title": "Fordham, Magna Carta 1215, clauses 3–8",
+          "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI01의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI01"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 182,
+    "id": "ck_evt_182",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1308,
+      1324
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 후견 종료 자격·초기와 현재 재산 목록·불일치 항목. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "성년에 이른 피후견인"
+    },
+    "title": "돌려줄 쟁기와 가축",
+    "body": "후견을 받던 이가 장원 인계를 청합니다. 맡길 때의 목록과 지금의 목록이 다릅니다. 빠진 물건을 누가 메울지 정산해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "부족분을 메워 인계한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI02의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "후견 종료 자격·초기와 현재 재산 목록·불일치 항목가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 금고 24–72d로 인정된 부족분을 보전하고 해당 후견 재산의 관리·수입 권한을 반환한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "빠른 인계를 위해 영주가 손실을 부담한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 돌려줄 쟁기와 가축 — 부족분을 메워 인계한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 인정된 부족분을 메워 후견 재산을 인계했다.",
+        "costAxes": [
+          "금전",
+          "권리"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI02",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "서로 인정한 몫부터 인계한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI02의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "후견 종료 자격·초기와 현재 재산 목록·불일치 항목가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 이견 없는 재산은 즉시 반환하고 분쟁액 24–72d만 봉인 정산 계정에 유보한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "일부 지배권을 즉시 잃고 미해결 잔액이 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 돌려줄 쟁기와 가축 — 서로 인정한 몫부터 인계한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 다툼 없는 재산을 먼저 인계하고 분쟁액은 따로 남겼다.",
+        "costAxes": [
+          "권리",
+          "약속"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI02",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "외부 정산인을 부른다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI02의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "후견 종료 자격·초기와 현재 재산 목록·불일치 항목가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 12–24d와 1계절을 들여 불일치만 심리한다. 성년 당사자의 다툼 없는 권리를 그동안 봉쇄하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "검증 비용과 기다림이 생기며 영주에게 유리한 판정을 보장하지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 돌려줄 쟁기와 가축 — 외부 정산인을 부른다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 불일치한 재산 목록의 정산을 외부에 의뢰했다.",
+        "costAxes": [
+          "금전",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI02",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_182"
+    },
+    "illustration": "성년 당사자가 문간에서 쟁기 목록과 열쇠 꾸러미를 대조한다.",
+    "history": {
+      "sourceIds": [
+        "FA06"
+      ],
+      "basis": "성년 반환과 후견 재산 보전 규범에서 출발한 정산 장면.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다.",
+      "sources": [
+        {
+          "id": "FA06",
+          "title": "Fordham, Magna Carta 1215, clauses 3–8",
+          "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI02의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI02"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 183,
+    "id": "ck_evt_183",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1312,
+      1328
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 생존한 성인 과부·직접 확인된 의사·가족의 재혼 추진·거처 약정. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 과부"
+    },
+    "title": "재혼을 서두르지 않겠다는 과부",
+    "body": "친족들은 다시 혼인을 논의하자고 합니다. 당사자는 아직 원하지 않는다고 밝혔습니다. 거처와 생계 약정을 혼인 압박과 나누어 다루어야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "독립 거처의 기한을 정한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI03의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존한 성인 과부·직접 확인된 의사·가족의 재혼 추진·거처 약정가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 동의한 거처 사용권을 2–4계절 부여하고 관리비 12–24d를 부담한다. 재혼 협상은 당사자 재요청 전까지 중지한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "가문의 방과 비용을 묶지만 당사자 의사를 보전한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 재혼을 서두르지 않겠다는 과부 — 독립 거처의 기한을 정한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 과부가 동의한 독립 거처의 사용 기간을 정했다.",
+        "costAxes": [
+          "거처",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI03",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "원하는 친족의 집으로 옮기는 일을 돕는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI03의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존한 성인 과부·직접 확인된 의사·가족의 재혼 추진·거처 약정가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 당사자와 수용 가구가 동의하면 이주비 12–24d를 내고 기존 생계 약정은 보존한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "현금을 지출하고 같은 집에서 돌보던 방식은 끝난다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 재혼을 서두르지 않겠다는 과부 — 원하는 친족의 집으로 옮기는 일을 돕는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 당사자와 수용 가구가 동의한 이주를 도왔다.",
+        "costAxes": [
+          "금전",
+          "사람"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI03",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "재산 문서부터 별도로 확인한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI03의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존한 성인 과부·직접 확인된 의사·가족의 재혼 추진·거처 약정가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 재혼과 무관하게 8–16d·1계절로 거처·과부 몫·과부산을 구분한 목록을 작성한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "정산은 늦어지지만 혼인을 승인 조건으로 삼지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 재혼을 서두르지 않겠다는 과부 — 재산 문서부터 별도로 확인한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 혼담과 별개로 거처와 재산 약정의 확인을 의뢰했다.",
+        "costAxes": [
+          "시간",
+          "문서"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI03",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_183"
+    },
+    "illustration": "과부가 자신의 의사를 말하고 친족들이 인장 없는 혼담 문서를 접는다.",
+    "history": {
+      "sourceIds": [
+        "FA06"
+      ],
+      "basis": "과부를 재혼하도록 강제하지 않는다는 1215년 규범의 배경만 사용.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다.",
+      "sources": [
+        {
+          "id": "FA06",
+          "title": "Fordham, Magna Carta 1215, clauses 3–8",
+          "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI03의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI03"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 184,
+    "id": "ck_evt_184",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1316,
+      1332
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 실제 친족 채무·채권자·만기·등록 관할·보증 가능 재산. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "채무 보증을 청한 형제"
+    },
+    "title": "형제의 빚에 우리 인장을",
+    "body": "형제가 상인에게 진 빚의 보증을 청합니다. 채권자는 말만으로는 기한을 늘리지 않겠다고 합니다. 인장을 찍으면 우리 재산도 책임에서 벗어나지 못합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "상한을 정해 보증한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI04의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 친족 채무·채권자·만기·등록 관할·보증 가능 재산가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 원금 중 40–80d만 보증하고 2–4계절 동안 동액 지급 능력을 예약한다. 채권자 수락 필요. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "당장 지급하지 않지만 채무 불이행 때 금고가 책임진다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 형제의 빚에 우리 인장을 — 상한을 정해 보증한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 채권자가 수락한 상한 안에서 형제의 빚을 보증했다.",
+        "costAxes": [
+          "약속",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI04",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "보증 대신 일부를 증여한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI04의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 친족 채무·채권자·만기·등록 관할·보증 가능 재산가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 금고 20–40d를 채권자에게 직접 지급하되 남은 빚의 보증은 거절한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "확정 손실로 책임 상한을 닫지만 형제의 잔채무는 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 형제의 빚에 우리 인장을 — 보증 대신 일부를 증여한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 형제의 채무 일부를 대신 지급하되 잔액은 보증하지 않았다.",
+        "costAxes": [
+          "금전",
+          "책임"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI04",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "형제 재산을 담보로 재협상한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI04의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 친족 채무·채권자·만기·등록 관할·보증 가능 재산가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 증서 비용 8–16d를 부담하고 실제 형제 소유 재산만 담보 후보로 제시한다. 영주 보증은 하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "형제는 재산 위험을 지며 상대가 동의하지 않으면 원래 만기가 유지된다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 형제의 빚에 우리 인장을 — 형제 재산을 담보로 재협상한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 형제 소유 재산만을 담보 후보로 한 재협상을 제안했다.",
+        "costAxes": [
+          "권리",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI04",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_184"
+    },
+    "illustration": "형제가 채무 증서를 내밀고 영주의 인장은 아직 상자 안에 있다.",
+    "history": {
+      "sourceIds": [
+        "CS03"
+      ],
+      "basis": "상인 채무 등록과 보증인 의무를 가족의 가공 부탁에 적용.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+      "sources": [
+        {
+          "id": "CS03",
+          "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+          "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI04의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI04"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 185,
+    "id": "ck_evt_185",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1320,
+      1338
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 후견 종료·성년 당사자와 친족 관계·고지 기록·자유로운 동의 확인. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "친족 중재인"
+    },
+    "title": "성년 친족의 혼담을 알릴 일",
+    "body": "후견을 마치고 성년이 된 친족의 혼담이 거의 정리됐습니다. 가까운 친족 한 사람이 소식을 듣지 못했다며 이의를 냈습니다. 당사자의 의사와 알림 절차를 확인해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "가까운 친족에게 같은 문서를 보낸다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI05의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "후견 종료·성년 당사자와 친족 관계·고지 기록·자유로운 동의 확인가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 사본·전달비 8–16d를 쓰고 1계절 고지 기간을 둔다. 혼인 조건·만기는 상대가 동의할 때만 변경한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "전달 비용과 협상 지연을 감수한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 성년 친족의 혼담을 알릴 일 — 가까운 친족에게 같은 문서를 보낸다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 가까운 친족들에게 같은 혼담 문서를 보냈다.",
+        "costAxes": [
+          "금전",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI05",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "당사자가 참석하는 자리를 마련한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI05의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "후견 종료·성년 당사자와 친족 관계·고지 기록·자유로운 동의 확인가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 12–24d로 공동 확인 자리를 열어 당사자 의사를 먼저 기록한다. 참석 합의가 없으면 혼인을 진행하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "더 비싸지만 말이 엇갈리는 범위를 줄일 수 있다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 성년 친족의 혼담을 알릴 일 — 당사자가 참석하는 자리를 마련한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 혼인 당사자의 의사를 함께 확인할 자리를 마련했다.",
+        "costAxes": [
+          "금전",
+          "사람"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI05",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "이번 혼담을 철회한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI05의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "후견 종료·성년 당사자와 친족 관계·고지 기록·자유로운 동의 확인가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 체결 전 혼담만 철회하고 이미 쓴 비용은 회수하지 않는다. 체결된 계약을 일방 취소하는 효과는 없다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "해당 협상 기회를 포기하며 이미 존재하는 의무는 별도 정산한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 성년 친족의 혼담을 알릴 일 — 이번 혼담을 철회한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 체결 전 혼담을 철회하고 이미 생긴 의무는 남겼다.",
+        "costAxes": [
+          "기회",
+          "약속"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI05",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_185"
+    },
+    "illustration": "당사자와 친족이 같은 혼담 사본을 읽고 빈 인장 자리를 바라본다.",
+    "history": {
+      "sourceIds": [
+        "FA06"
+      ],
+      "basis": "1215년 문서의 혼인 관련 친족 고지 규범을 참고하되 현대적 동의 확인 장치를 별도 게임 설계로 추가.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다.",
+      "sources": [
+        {
+          "id": "FA06",
+          "title": "Fordham, Magna Carta 1215, clauses 3–8",
+          "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI05의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI05"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 186,
+    "id": "ck_evt_186",
+    "category": "가문 내부",
+    "period": "1300–1347",
+    "years": [
+      1328,
+      1347
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 가족 채무의 두 사본·기한 불일치·유효 관할 기록. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 서기"
+    },
+    "title": "서로 다른 채무 사본",
+    "body": "가문이 보관한 채무 사본과 상대방의 사본에 기한이 다릅니다. 어느 쪽도 아직 위조라고 단정할 수 없습니다. 다음 지급 전에 기록을 맞춰야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "등록된 기록과 대조한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI06의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "가족 채무의 두 사본·기한 불일치·유효 관할 기록가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 기록 조회비 8–20d를 부담한다. 확인 전 임의 채무 삭감은 하지 않고 실제 등록 기한을 확정한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "현금과 처리 시간이 들고 우리 사본이 틀렸을 수도 있다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 서로 다른 채무 사본 — 등록된 기록과 대조한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 엇갈린 채무 사본을 등록 기록과 대조하도록 의뢰했다.",
+        "costAxes": [
+          "문서",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI06",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "다툼 없는 금액만 먼저 지급한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI06의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "가족 채무의 두 사본·기한 불일치·유효 관할 기록가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 당사자 쌍방이 인정한 20–60d를 지급하고 잔액의 기존 기한·이의는 그대로 남긴다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "금고를 쓰지만 나머지 분쟁은 해결하지 못한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 서로 다른 채무 사본 — 다툼 없는 금액만 먼저 지급한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 양측이 인정한 채무액부터 지급했다.",
+        "costAxes": [
+          "금전",
+          "약속"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI06",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "공동 입회 아래 새 확인서를 제안한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI06의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "가족 채무의 두 사본·기한 불일치·유효 관할 기록가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 12–24d의 작성비를 부담하고 양측 서명 때만 잔액·기한을 갱신한다. 거절되면 원래 분쟁 상태를 유지한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "합의 비용을 내고도 갱신이 거절될 수 있다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 서로 다른 채무 사본 — 공동 입회 아래 새 확인서를 제안한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 공동 입회 아래 새 확인서를 작성하자고 제안했다.",
+        "costAxes": [
+          "합의",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI06",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_186"
+    },
+    "illustration": "같은 이름이 적힌 두 두루마리에 다른 기한이 보인다.",
+    "history": {
+      "sourceIds": [
+        "CS03"
+      ],
+      "basis": "채무 기록을 나누어 보관한 법령 규범이 출발점; 실제 불일치는 창작.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+      "sources": [
+        {
+          "id": "CS03",
+          "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+          "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI06의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI06"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 187,
+    "id": "ck_evt_187",
+    "category": "가문 내부",
+    "period": "1348–1381",
+    "years": [
+      1348,
+      1355
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 부모 사망이 확인된 미성년자·생존 친족·돌봄 수용 의사·별도 재산 후견 자격. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "살아남은 친족"
+    },
+    "title": "두 집이 맡겠다는 아이",
+    "body": "부모를 잃은 아이를 두 친족 집이 맡겠다고 합니다. 아이를 돌보는 일과 장원 수입을 관리하는 권리는 같은 것이 아닙니다. 두 책임을 나누어 정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "돌봄과 재산 관리를 나눈다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI07의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "부모 사망이 확인된 미성년자·생존 친족·돌봄 수용 의사·별도 재산 후견 자격가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 한 친족의 돌봄과 다른 관리인의 재산 회계를 분리하고 감독비 12–24d를 지출한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "이중 연락과 비용을 감수하지만 한 집에 모든 권한을 주지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 두 집이 맡겠다는 아이 — 돌봄과 재산 관리를 나눈다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 아이의 돌봄과 재산 관리를 나누어 맡겼다.",
+        "costAxes": [
+          "사람",
+          "권한"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI07",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "한 집에 맡기되 정산일을 둔다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI07의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "부모 사망이 확인된 미성년자·생존 친족·돌봄 수용 의사·별도 재산 후견 자격가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 돌봄에 동의한 친족에게 후견 권한을 부여하고 2계절 뒤 회계 제출 의무를 기록한다. 초기 지원 16–32d. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "업무는 단순해지지만 권한 집중과 사후 감독 부담이 생긴다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 두 집이 맡겠다는 아이 — 한 집에 맡기되 정산일을 둔다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 동의한 친족에게 후견을 맡기고 회계 제출일을 정했다.",
+        "costAxes": [
+          "약속",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI07",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "임시 거처부터 마련한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI07의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "부모 사망이 확인된 미성년자·생존 친족·돌봄 수용 의사·별도 재산 후견 자격가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 2계절 돌봄비 24–48d를 내고 후견권 분쟁은 유보한다. 기존 법적 후견권을 자동 박탈하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "아이의 거처는 정하지만 재산 문제는 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 두 집이 맡겠다는 아이 — 임시 거처부터 마련한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 아이의 임시 거처를 마련하고 후견권 분쟁은 남겼다.",
+        "costAxes": [
+          "시간",
+          "거처"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI07",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_187"
+    },
+    "illustration": "두 친족 사이에서 서기가 돌봄 명부와 재산 장부를 따로 놓는다.",
+    "history": {
+      "sourceIds": [
+        "FA06"
+      ],
+      "basis": "후견의 재산 관리 배경을 차용. 흑사병으로 부모가 반드시 사망한다고 만들지 않는다.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다.",
+      "sources": [
+        {
+          "id": "FA06",
+          "title": "Fordham, Magna Carta 1215, clauses 3–8",
+          "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI07의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI07"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 188,
+    "id": "ck_evt_188",
+    "category": "가문 내부",
+    "period": "1348–1381",
+    "years": [
+      1350,
+      1363
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 실제 사망·별도 유산 목록·집행 권한·확인 안 된 청구. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "유언 집행을 맡은 친족"
+    },
+    "title": "죽은 친족의 채무 청구",
+    "body": "죽은 친족 앞으로 두 장의 채무 청구가 왔습니다. 남은 동산을 나누기 전에 진짜 빚과 이미 갚은 빚을 구별해야 합니다. 우리 금고가 곧 유산인 것은 아닙니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "다툼 없는 빚부터 유산에서 갚는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI08의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 사망·별도 유산 목록·집행 권한·확인 안 된 청구가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 확인된 24–72d를 별도 유산 계정에서 지급하고 분배 가능액을 줄인다. 영주 금고는 사용하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "수유자가 받을 몫이 줄지만 확인된 채무를 끝낸다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 죽은 친족의 채무 청구 — 다툼 없는 빚부터 유산에서 갚는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 확인된 채무를 고인의 유산에서 먼저 지급했다.",
+        "costAxes": [
+          "유산",
+          "책임"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI08",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "분배를 잠시 묶고 청구를 대조한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI08의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 사망·별도 유산 목록·집행 권한·확인 안 된 청구가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 1계절 동안 다툼 있는 금액만 유보하고 조사비 8–16d를 유산에서 부담한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "정산 비용과 늦어진 분배를 감수한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 죽은 친족의 채무 청구 — 분배를 잠시 묶고 청구를 대조한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 분쟁액의 분배를 유보하고 청구 대조를 의뢰했다.",
+        "costAxes": [
+          "시간",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI08",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "영주가 한도를 정해 부족분을 보탠다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI08의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 사망·별도 유산 목록·집행 권한·확인 안 된 청구가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 금고 20–40d를 유산 계정에 증여한다. 증여만으로 청구의 진실이나 영주의 무한 보증을 인정하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "영주 재산이 줄고 남은 청구 심리는 계속된다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 죽은 친족의 채무 청구 — 영주가 한도를 정해 부족분을 보탠다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 영주의 금고에서 한도를 정해 유산 계정에 보탰다.",
+        "costAxes": [
+          "금전",
+          "책임"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI08",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_188"
+    },
+    "illustration": "상 위에 고인의 봉인 상자와 두 채권자의 청구서가 놓여 있다.",
+    "history": {
+      "sourceIds": [
+        "CS03"
+      ],
+      "basis": "채무 기록 확인을 상속 정산에 옮긴 가공 사례. 유언 집행의 상세 법제는 추가 고증 필요.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+      "sources": [
+        {
+          "id": "CS03",
+          "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+          "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI08의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI08"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 189,
+    "id": "ck_evt_189",
+    "category": "가문 내부",
+    "period": "1348–1381",
+    "years": [
+      1362,
+      1372
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 법적·계약적 수입 수익자·지급 이력·이의 청구·영수증 부재. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "과부인 어머니"
+    },
+    "title": "어머니 몫의 지대 영수증",
+    "body": "어머니는 약정한 지대를 받지 못했다고 합니다. 수금인은 지급했다고 답하지만 영수증이 없습니다. 어머니의 재산과 영주의 수입을 한 장부로 넘겨짚어서는 안 됩니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "확인될 때까지 금고로 생활비를 댄다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI09의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "법적·계약적 수입 수익자·지급 이력·이의 청구·영수증 부재가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 12–24d를 별도 생활비로 지급하고 분쟁 지대의 미지급 여부는 그대로 둔다. 이중 지급이면 자동 환수하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "빠른 지원 대신 회수 못 할 비용을 부담한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 어머니 몫의 지대 영수증 — 확인될 때까지 금고로 생활비를 댄다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 지대 다툼과 별도로 어머니의 생활비를 지원했다.",
+        "costAxes": [
+          "금전",
+          "사람"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI09",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "수금인과 수익자를 함께 부른다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI09의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "법적·계약적 수입 수익자·지급 이력·이의 청구·영수증 부재가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 8–16d·1계절을 들여 양측 지급 증거를 대조한다. 확인 전 어느 쪽도 횡령으로 기록하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "정산이 늦고 추가 조사 비용이 든다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 어머니 몫의 지대 영수증 — 수금인과 수익자를 함께 부른다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 지대 수금인과 수익자의 지급 증거를 대조하도록 의뢰했다.",
+        "costAxes": [
+          "시간",
+          "문서"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI09",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "당사자 동의로 다음 지급을 공동 입회한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI09의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "법적·계약적 수입 수익자·지급 이력·이의 청구·영수증 부재가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 기존 미해결액은 보존하고 다음 지급만 공동 입회와 수령 확인 조건으로 바꾼다. 수금 사무비 4–8d가 추가된다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "이번 다툼은 남지만 다음 분쟁을 줄일 기록을 만든다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 어머니 몫의 지대 영수증 — 당사자 동의로 다음 지급을 공동 입회한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 동의를 받아 다음 지대 지급에 공동 입회를 두었다.",
+        "costAxes": [
+          "약속",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI09",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_189"
+    },
+    "illustration": "어머니가 빈 영수증 난을 짚고 수금인은 자신의 장부를 펼친다.",
+    "history": {
+      "sourceIds": [
+        "CS09"
+      ],
+      "basis": "지대 수령증의 직접 사례는 1309년 Ermengarda의 Cubbington 장원 지대 수령증(TNA E 42/78)이다. 1366–1367년 Katherine의 E 42/243은 토지 청구권 포기 문서로 서로 다른 자료다. 기관 검색 본문에서 구분했으며 원문 직접 열람은 보류한다.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "1309년 수령증은 지대 수령을 기록한 사례만 지원한다. 1362–1372년 가족의 미지급 다툼·공동 입회·긴급 지원은 창작이다. 1366–1367년 quitclaim을 영수증으로 인용하지 않는다. 직접 페이지 403으로 원문 확인 보류; 모든 과부의 동일한 지위나 남부의 보편 관행을 입증하지 않는다.",
+      "sources": [
+        {
+          "id": "CS09",
+          "title": "The National Archives, Women in medieval deeds",
+          "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI09의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI09"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 190,
+    "id": "ck_evt_190",
+    "category": "가문 내부",
+    "period": "1348–1381",
+    "years": [
+      1370,
+      1381
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 동일 권리 조각의 실제 공동 수익자·각 지분·수선 의무·분배 분쟁. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 두 공동 권리자"
+    },
+    "title": "형제 둘의 한 방앗간",
+    "body": "형제 둘이 물려받은 방앗간 몫을 두고 다툽니다. 한 사람은 수선비를 먼저 빼자 하고 다른 사람은 당장 수입을 나누자 합니다. 영주 혼자 남의 몫을 넘길 수는 없습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "공동 동의로 수선 적립금을 둔다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI10의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "동일 권리 조각의 실제 공동 수익자·각 지분·수선 의무·분배 분쟁가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 수입 중 20–40d를 공동 계정에 먼저 남기고 나머지는 기존 지분대로 지급한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "지급이 줄지만 수선 재원을 따로 보전한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 형제 둘의 한 방앗간 — 공동 동의로 수선 적립금을 둔다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 공동 권리자들의 동의로 방앗간 수선 적립금을 두었다.",
+        "costAxes": [
+          "금전",
+          "권리"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI10",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "한쪽의 몫을 매입하도록 중재한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI10의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "동일 권리 조각의 실제 공동 수익자·각 지분·수선 의무·분배 분쟁가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 양측 동의·권원 확인 후 60–120d의 가족 간 지분 매매를 기록한다. 영주가 대신 금액을 지불하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "사는 사람은 현금을 잃고 파는 사람은 장래 수입권을 잃는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 형제 둘의 한 방앗간 — 한쪽의 몫을 매입하도록 중재한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 형제들이 동의한 방앗간 지분 매매를 기록했다.",
+        "costAxes": [
+          "재산",
+          "권리"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI10",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "회계만 분리하고 공동 소유는 유지한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI10의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "동일 권리 조각의 실제 공동 수익자·각 지분·수선 의무·분배 분쟁가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 작성비 8–16d를 두 사람이 합의한 비율로 부담하고 수익·비용을 각각 기록한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "지분 갈등을 끝내지 못하고 지속 정산 업무가 생긴다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 형제 둘의 한 방앗간 — 회계만 분리하고 공동 소유는 유지한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 공동 소유를 유지하며 각자의 수익과 비용을 따로 적었다.",
+        "costAxes": [
+          "문서",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI10",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_190"
+    },
+    "illustration": "한 방앗간 열쇠 옆에 형제 두 사람의 수입 명세가 나뉘어 있다.",
+    "history": {
+      "sourceIds": [
+        "CS01"
+      ],
+      "basis": "장원 권리와 의무를 구별하는 배경에서 만든 가족 공동수익 갈등. 공동지분 상세 제도는 별도 검증 필요.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외.",
+      "sources": [
+        {
+          "id": "CS01",
+          "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+          "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI10의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI10"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 191,
+    "id": "ck_evt_191",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1425,
+      1435
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 영주관 실제 수선 의뢰·검증된 견적·친족 추가 공사 요구·재원 구분. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 성인 형제"
+    },
+    "title": "영주관의 돌을 둘러싼 형제 다툼",
+    "body": "영주관 수선을 위해 돌 견적이 왔습니다. 형제는 돌을 더 사서 자신의 방까지 고치자고 합니다. 먼저 받은 견적에는 그 공사가 들어 있지 않습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "공동 수선 범위만 계약한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI11의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "영주관 실제 수선 의뢰·검증된 견적·친족 추가 공사 요구·재원 구분가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 공동 수선에 60–120d 상한 계약을 체결하고 형제 방 공사는 제외한다. 승인만으로 건물 등급은 바뀌지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "현금 약정이 생기고 형제의 추가 요구는 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 영주관의 돌을 둘러싼 형제 다툼 — 공동 수선 범위만 계약한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 영주관의 공동 수선 범위만 계약했다.",
+        "costAxes": [
+          "금전",
+          "계약"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI11",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "형제가 차액을 내는 조건으로 범위를 넓힌다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI11의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "영주관 실제 수선 의뢰·검증된 견적·친족 추가 공사 요구·재원 구분가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 추가 견적 24–48d를 형제가 먼저 맡기면 공사 범위를 확장한다. 미납이면 기존 범위만 유지한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "가족의 돈과 영주의 일정이 함께 묶인다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 영주관의 돌을 둘러싼 형제 다툼 — 형제가 차액을 내는 조건으로 범위를 넓힌다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 형제의 차액 납부를 확인하고 수선 범위를 넓혔다.",
+        "costAxes": [
+          "금전",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI11",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "견본과 운송 견적부터 다시 받는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI11의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "영주관 실제 수선 의뢰·검증된 견적·친족 추가 공사 요구·재원 구분가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 8–16d·1계절로 내후성 확인과 재견적을 의뢰하며 기존 수선 지연을 기록한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "싸거나 좋은 돌을 보장하지 않고 조사 비용만 먼저 든다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 영주관의 돌을 둘러싼 형제 다툼 — 견본과 운송 견적부터 다시 받는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 돌의 견본과 운송 견적을 다시 요청했다.",
+        "costAxes": [
+          "시간",
+          "물자"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI11",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_191"
+    },
+    "illustration": "형제가 돌 견본을 들고 추가 방 수선을 가리키며 서기가 견적 범위를 확인한다.",
+    "history": {
+      "sourceIds": [
+        "FA03"
+      ],
+      "basis": "1425년 Paston 석재 품질·운송·가격 문의에서 출발. 친족 사이의 비용 다툼은 창작.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "가족의 비용 다툼은 편지에 없고 원고의 창작이다. 건물이나 계약 성사를 증명하지 않는다.",
+      "sources": [
+        {
+          "id": "FA03",
+          "title": "William Paston to John Staynford, 1425",
+          "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=1&ref=PLETTER"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI11의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI11"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 192,
+    "id": "ck_evt_192",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1436,
+      1444
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 성인 당사자의 유효 혼인 준비·가족별 현물 기여 합의·혼인 본계약과 분리된 비용. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 혼례 준비를 맡은 친족"
+    },
+    "title": "혼례 옷의 두 몫",
+    "body": "예비 신부의 집은 모피 장식을 내고 우리 쪽은 옷감을 대자는 제안을 보냈습니다. 혼인 조건은 그대로지만 누가 무엇을 준비할지는 아직 적지 않았습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "우리 몫의 옷감을 먼저 마련한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI12의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "성인 당사자의 유효 혼인 준비·가족별 현물 기여 합의·혼인 본계약과 분리된 비용가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 의복 제작비 20–40d를 지급하고 상대의 장식 제공 의무는 인도 확인 전 미완료로 남긴다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "우리 비용이 먼저 나가며 상대의 기여를 보장하지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 혼례 옷의 두 몫 — 우리 몫의 옷감을 먼저 마련한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 우리 쪽이 맡은 혼례 옷감 비용을 먼저 지급했다.",
+        "costAxes": [
+          "금전",
+          "약속"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI12",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "양쪽 물품을 함께 맡기는 날을 정한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI12의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "성인 당사자의 유효 혼인 준비·가족별 현물 기여 합의·혼인 본계약과 분리된 비용가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 1계절 안 공동 인도일을 제안한다. 상대 동의 때에만 8–16d의 보관·작성 비용과 기여 약정을 만든다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "준비는 늦고 보관 비용이 들지만 한쪽 선지출을 줄인다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 혼례 옷의 두 몫 — 양쪽 물품을 함께 맡기는 날을 정한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 양쪽이 동의한 혼례 물품 공동 인도일을 정했다.",
+        "costAxes": [
+          "시간",
+          "약속"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI12",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "간소한 옷차림으로 다시 합의한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI12의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "성인 당사자의 유효 혼인 준비·가족별 현물 기여 합의·혼인 본계약과 분리된 비용가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 양측과 당사자 동의로 기여 범위를 줄이고 8–16d의 제작비만 부담한다. 기존 지참금·과부산은 손대지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "상대가 원하는 격식을 포기하도록 설득해야 한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 혼례 옷의 두 몫 — 간소한 옷차림으로 다시 합의한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 당사자와 양가가 동의한 간소한 혼례복 비용을 지급했다.",
+        "costAxes": [
+          "합의",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI12",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_192"
+    },
+    "illustration": "푸른 옷감과 모피 조각이 혼인 계약서와 떨어진 작업대에 놓여 있다.",
+    "history": {
+      "sourceIds": [
+        "FA01"
+      ],
+      "basis": "1436/40년 Agnes 편지의 양가 혼례복 기여를 참고한 장면.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "Norfolk 한 가문 사례. 혼인 준비와 당사자 동의·계약 법제를 동일시하지 않는다.",
+      "sources": [
+        {
+          "id": "FA01",
+          "title": "Agnes Paston to William Paston, 1436/40",
+          "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=5&ref=PLETTER"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI12의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI12"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 193,
+    "id": "ck_evt_193",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1440,
+      1450
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 생존 성인 가족·확인된 질환 보고·현재 거처·이동 가능 여부·돌봄 수용 의사. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "병든 친족의 배우자"
+    },
+    "title": "아픈 친족의 귀가",
+    "body": "멀리 머무는 친족이 병을 앓고 있습니다. 배우자는 집에서 돌보고 싶어 하지만 말을 탈 수 있는지부터 알아야 합니다. 길을 견딜 수 있을지 먼저 살펴야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "현지 돌봄 비용을 보낸다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI13의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존 성인 가족·확인된 질환 보고·현재 거처·이동 가능 여부·돌봄 수용 의사가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 12–36d를 현지 돌봄에 지급하고 현 거처를 유지한다. 치료 성공이나 사망 방지는 보장하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "가족과 떨어진 시간을 감수하고 금고를 쓴다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 아픈 친족의 귀가 — 현지 돌봄 비용을 보낸다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 병든 친족의 현지 돌봄 비용을 보냈다.",
+        "costAxes": [
+          "금전",
+          "사람"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI13",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "이동 가능 확인 뒤 귀가를 돕는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI13의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존 성인 가족·확인된 질환 보고·현재 거처·이동 가능 여부·돌봄 수용 의사가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 이동 가능 판정과 본인 동의 뒤 호송비 16–32d를 내고 거처를 옮긴다. 집에서의 돌봄 비용은 별도다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "길과 가정의 돌봄 부담이 생긴다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 아픈 친족의 귀가 — 이동 가능 확인 뒤 귀가를 돕는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 이동 가능 여부와 본인 의사를 확인하고 귀가를 도왔다.",
+        "costAxes": [
+          "거처",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI13",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "가족 한 사람이 찾아가도록 돕는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI13의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존 성인 가족·확인된 질환 보고·현재 거처·이동 가능 여부·돌봄 수용 의사가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 동의한 성인 방문자의 여비 8–20d와 1계절 부재를 기록한다. 환자는 현지에 남는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "집에서 그 사람이 맡던 업무를 다른 이가 맡아야 한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 아픈 친족의 귀가 — 가족 한 사람이 찾아가도록 돕는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 동의한 가족 한 사람의 병문안 여비를 지원했다.",
+        "costAxes": [
+          "사람",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI13",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_193"
+    },
+    "illustration": "집에서 온 편지 곁에서 환자와 방문자가 말안장을 살피며 이동 여부를 논한다.",
+    "history": {
+      "sourceIds": [
+        "FA02"
+      ],
+      "basis": "1443년 편지의 질병·귀가·가정 돌봄 걱정을 참고. 게임의 비용·건강 판정은 창작.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다.",
+      "sources": [
+        {
+          "id": "FA02",
+          "title": "Margaret Paston to John Paston, 28 September 1443",
+          "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI13의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI13"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 194,
+    "id": "ck_evt_194",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1440,
+      1450
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 본인이 남긴 실제 순례 약속·회복 보고·업무 담당·자발적 여행 의사. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 성인 구성원"
+    },
+    "title": "회복을 빌며 남긴 약속",
+    "body": "친족의 병이 나아가자 가족 한 사람이 순례 약속을 지키려 합니다. 그가 떠나면 집안의 맡은 일을 비워야 합니다. 헌금과 여행을 같은 일로 넘길 수는 없습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "이번 계절의 여행을 돕는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI14의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "본인이 남긴 실제 순례 약속·회복 보고·업무 담당·자발적 여행 의사가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 여비 12–24d를 지원하고 대리 업무자를 1계절 지정한다. 약속 이행은 실제 귀환 기록 뒤 판단한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "현금과 담당자의 부재를 감수한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 회복을 빌며 남긴 약속 — 이번 계절의 여행을 돕는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 순례 여비를 지원하고 빈 업무의 대리인을 정했다.",
+        "costAxes": [
+          "시간",
+          "사람"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI14",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "출발일 조정을 당사자에게 제안한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI14의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "본인이 남긴 실제 순례 약속·회복 보고·업무 담당·자발적 여행 의사가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 당사자 및 필요한 종교적 확인을 거쳐 1–2계절 뒤 일정을 정한다. 동의 전에는 원래 약속을 변경하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "의무는 남고 출발 준비 업무가 늘어난다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 회복을 빌며 남긴 약속 — 출발일 조정을 당사자에게 제안한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 필요한 동의를 얻어 순례 출발일을 조정했다.",
+        "costAxes": [
+          "약속",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI14",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "영주의 지원과 개인의 약속을 구분한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI14의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "본인이 남긴 실제 순례 약속·회복 보고·업무 담당·자발적 여행 의사가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 가문 금고 지원은 거절하되 개인 재산·의사로 갈 권리는 막지 않는다. 업무 대체 비용 4–12d만 부담한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "여행비는 아끼지만 대체 업무와 가족 간 협의가 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 회복을 빌며 남긴 약속 — 영주의 지원과 개인의 약속을 구분한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 개인의 순례를 막지 않고 가문의 대체 업무 비용만 부담했다.",
+        "costAxes": [
+          "권한",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI14",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_194"
+    },
+    "illustration": "순례 지팡이를 준비하는 가족 곁에서 빈 업무 자리를 서기가 기록한다.",
+    "history": {
+      "sourceIds": [
+        "FA02"
+      ],
+      "basis": "1443년 편지의 순례 서원과 기도 비용에서 착안. 영주가 종교적 서원을 임의 면제할 수 없도록 설계.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다.",
+      "sources": [
+        {
+          "id": "FA02",
+          "title": "Margaret Paston to John Paston, 28 September 1443",
+          "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI14의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI14"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 195,
+    "id": "ck_evt_195",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1440,
+      1450
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 귀환·구출 비용·청구인·실종된 원문·증언 가능한 생존 인물. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "귀환자의 친족"
+    },
+    "title": "몸값을 댄 친족의 잃어버린 증서",
+    "body": "친족을 풀어 주는 데 돈을 댔다던 이가 정산을 청합니다. 당시 증서는 손에 없고 사본만 남았습니다. 구출한 사실과 갚기로 한 약속을 따로 확인해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "입회자의 봉인 증언을 모은다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI15의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "귀환·구출 비용·청구인·실종된 원문·증언 가능한 생존 인물이 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 8–24d·1계절로 구출과 지급 사실을 확인한다. 증언을 얻어도 채무 약정까지 자동 인정하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "시간과 조사비가 들며 증언이 엇갈릴 수 있다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 몸값을 댄 친족의 잃어버린 증서 — 입회자의 봉인 증언을 모은다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 친족의 구출 경위를 아는 이들에게 봉인 증언을 요청했다.",
+        "costAxes": [
+          "문서",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI15",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "다툼 없는 비용만 갚는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI15의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "귀환·구출 비용·청구인·실종된 원문·증언 가능한 생존 인물이 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 당사자들이 함께 인정한 24–60d만 지급하고 나머지 청구는 남긴다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "즉시 금고가 줄고 나머지는 정산되지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 몸값을 댄 친족의 잃어버린 증서 — 다툼 없는 비용만 갚는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 양측이 인정한 구출 비용만 지급했다.",
+        "costAxes": [
+          "금전",
+          "책임"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI15",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "제삼자 정산에 함께 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI15의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "귀환·구출 비용·청구인·실종된 원문·증언 가능한 생존 인물이 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 양측 합의로 12–24d의 정산비를 나누고 증빙 제출 기한을 1계절로 정한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "영주가 결론을 정하지 못하며 추가 지급 판정도 가능하다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 몸값을 댄 친족의 잃어버린 증서 — 제삼자 정산에 함께 맡긴다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 양측 동의로 구출 비용 청구의 외부 정산을 의뢰했다.",
+        "costAxes": [
+          "권한",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI15",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_195"
+    },
+    "illustration": "귀환자와 친족이 사본을 펼치고 생존 입회자에게 보낼 봉인 문서를 준비한다.",
+    "history": {
+      "sourceIds": [
+        "FA04",
+        "FA05"
+      ],
+      "basis": "구출 기록이 수중에 없어 봉인된 확인과 사본을 요청한 Fastolf 편지를 참조했다. 구판의 after1440(?) 편집추정과 달리 McFarlane(1957), p111 주4는 1435년 또는 이전으로 추정한다. 게임 종료연도 이전의 사례 근거는 보강되었으나 정확한 편년은 확정하지 않는다.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "원고의 1440–1450은 가공 가족 사건의 집필 창이며 편지 작성연도를 뜻하지 않는다. 상충하는 편년을 함께 표시하고 친족의 상환 약정·손실 증서·중재 비용은 창작으로 남긴다. 근거 보강은 미지원 가족 채무·증거 모형을 구현하지 않는다.",
+      "sources": [
+        {
+          "id": "FA04",
+          "title": "John Fastolf to Henry Inglose and John Berney, after 1440?",
+          "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=6&ref=PLETTER"
+        },
+        {
+          "id": "FA05",
+          "title": "K. B. McFarlane (1957), The Investment of Sir John Fastolf’s Profits of War, p111 note4",
+          "url": "https://www.cambridge.org/core/journals/transactions-of-the-royal-historical-society/article/abs/investment-of-sir-john-fastolfs-profits-of-war/8416AE87A845B4412ACC63996E5ACA9C"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI15의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI15"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 196,
+    "id": "ck_evt_196",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1430,
+      1445
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 실제 추도 약정·사제 수락·사용 가능한 가족 거처·기존 건물 입주권. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 추도를 맡은 사제"
+    },
+    "title": "가족을 위한 사제의 숙소",
+    "body": "가족의 추도를 맡은 사제가 머물 곳을 청합니다. 오래된 방을 내주면 영주관의 쓰임이 줄고, 따로 거처를 마련하면 비용이 듭니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "기존 방의 사용권을 정한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI16의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 추도 약정·사제 수락·사용 가능한 가족 거처·기존 건물 입주권가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 2–4년 동안 기존 방을 사제 거처로 배정하고 연 관리비 8–16d를 약정한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "가족이 쓸 방과 장래 수입을 묶는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가족을 위한 사제의 숙소 — 기존 방의 사용권을 정한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 추도 사제와 거처 사용 기간·관리비를 약정했다.",
+        "costAxes": [
+          "거처",
+          "약속"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI16",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "도시의 거처 임차를 돕는다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI16의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 추도 약정·사제 수락·사용 가능한 가족 거처·기존 건물 입주권가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 실제 임대인 동의 뒤 1년 임차료 16–32d를 부담한다. 새 건물을 놓거나 완공하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "가문 공간은 남지만 해마다 계약을 다시 살펴야 한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가족을 위한 사제의 숙소 — 도시의 거처 임차를 돕는다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 임대인과 합의한 추도 사제의 거처 임차료를 지급했다.",
+        "costAxes": [
+          "금전",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI16",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "추도 약정 범위를 다시 논의한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI16의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 추도 약정·사제 수락·사용 가능한 가족 거처·기존 건물 입주권가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 사제와 합의해 방문 횟수·보수를 낮춘 새 약정을 만든다. 정산비 4–8d와 미이행분 기록을 남긴다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "당초 가족의 뜻을 줄이는 협의가 필요하며 일방 파기는 하지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가족을 위한 사제의 숙소 — 추도 약정 범위를 다시 논의한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 사제와 합의해 추도 약정의 범위를 조정했다.",
+        "costAxes": [
+          "약속",
+          "합의"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI16",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_196"
+    },
+    "illustration": "사제가 빈 방 문턱에서 서기와 거처 사용 약정을 읽는다.",
+    "history": {
+      "sourceIds": [
+        "CS07"
+      ],
+      "basis": "1430년 Farleigh Hungerford 사제 숙소 사례를 참고. 사제 수·지속 비용·선택은 창작.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외.",
+      "sources": [
+        {
+          "id": "CS07",
+          "title": "English Heritage, Description of Farleigh Hungerford Castle",
+          "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI16의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI16"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 197,
+    "id": "ck_evt_197",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1424,
+      1440
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 성인 가족의 자금 요청·현 권원·장래 기대만 있는 재산·채권자. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "성인 자녀"
+    },
+    "title": "가족 몫을 담보로 내놓자는 부탁",
+    "body": "성인 자녀가 거래 자금을 얻으려고 자신에게 돌아올 땅을 담보로 내놓자고 합니다. 아직 그의 명의가 아닌 땅입니다. 장래의 기대와 지금의 권리는 다릅니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "상속 기대 대신 한도 있는 현금을 증여한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI17의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "성인 가족의 자금 요청·현 권원·장래 기대만 있는 재산·채권자가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 20–40d를 지급하고 토지 담보는 거절한다. 상속권 확정이나 채무 보증을 동반하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "현재 금고를 쓰고 자녀의 부족 자금은 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가족 몫을 담보로 내놓자는 부탁 — 상속 기대 대신 한도 있는 현금을 증여한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 토지 담보 없이 한도를 정해 성인 자녀에게 증여했다.",
+        "costAxes": [
+          "금전",
+          "권리"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI17",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "자녀의 실제 소유 재산으로만 협상한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI17의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "성인 가족의 자금 요청·현 권원·장래 기대만 있는 재산·채권자가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 권원 확인비 8–16d를 내고 자녀 명의의 재산만 담보 후보로 제시한다. 적격 재산이 없으면 선택 불가. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "자녀는 현재 가진 재산을 잃을 위험을 진다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가족 몫을 담보로 내놓자는 부탁 — 자녀의 실제 소유 재산으로만 협상한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 자녀의 실제 소유 재산에 한정한 담보 협상을 제안했다.",
+        "costAxes": [
+          "재산",
+          "문서"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI17",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "부모가 가진 수입의 일부를 한시 제공한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI17의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "성인 가족의 자금 요청·현 권원·장래 기대만 있는 재산·채권자가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 연 8–16d·2–3년의 수입 지급 약정을 새로 협상한다. 토지 명의·차기 상속은 바꾸지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "여러 해 현금을 묶고 거래 성공을 보장하지 않는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가족 몫을 담보로 내놓자는 부탁 — 부모가 가진 수입의 일부를 한시 제공한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 토지 명의를 바꾸지 않는 한시 수입 지급 약정을 맺었다.",
+        "costAxes": [
+          "약속",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI17",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_197"
+    },
+    "illustration": "자녀가 가리킨 땅의 증서에 다른 권리자의 이름이 적혀 있다.",
+    "history": {
+      "sourceIds": [
+        "CS15"
+      ],
+      "basis": "1424년 남부 거래권과 채무 연결은 배경. 가족의 담보 요구·상속 기대 갈등은 창작.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다.",
+      "sources": [
+        {
+          "id": "CS15",
+          "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+          "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI17의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI17"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 198,
+    "id": "ck_evt_198",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1436,
+      1448
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 생존 배우자·동일 업무의 중복 의뢰·서면 위임 범위·이미 든 작성비. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문 업무를 맡은 배우자"
+    },
+    "title": "같은 편지를 두 번 쓰는 서기",
+    "body": "친족 사이에 오간 말이 서로 달라 서기가 같은 일을 두 번 적고 있습니다. 말로 맡긴 일을 어디까지 인정할지 정하지 않으면 비용도 두 번 나갑니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "배우자의 위임 범위를 문서로 정한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI18의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존 배우자·동일 업무의 중복 의뢰·서면 위임 범위·이미 든 작성비가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 작성비 8–12d를 내고 지출 상한 16–32d의 업무 위임을 만든다. 중복 의뢰는 원문을 보전한 채 취소 표기한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "영주의 사전 통제 일부를 맡기고 검토 의무를 진다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 같은 편지를 두 번 쓰는 서기 — 배우자의 위임 범위를 문서로 정한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 배우자의 업무 위임 범위와 지출 상한을 문서로 정했다.",
+        "costAxes": [
+          "권한",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI18",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "두 의뢰를 따로 정산한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI18의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존 배우자·동일 업무의 중복 의뢰·서면 위임 범위·이미 든 작성비가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 이미 실제로 수행한 두 업무의 비용 12–24d를 지급하고 앞으로 각 의뢰자 승인을 별도로 받는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "당장 손해를 인정하고 승인 시간이 길어진다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 같은 편지를 두 번 쓰는 서기 — 두 의뢰를 따로 정산한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 이미 수행된 두 의뢰를 각각 정산했다.",
+        "costAxes": [
+          "금전",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI18",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "다음 의뢰부터 공동 확인한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI18의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "생존 배우자·동일 업무의 중복 의뢰·서면 위임 범위·이미 든 작성비가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 두 담당자의 확인 없이는 추가 지출을 막고 사무비 4–8d를 쓴다. 이미 성립한 채무는 취소하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "중복은 줄일 수 있지만 급한 업무도 늦어질 수 있다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 같은 편지를 두 번 쓰는 서기 — 다음 의뢰부터 공동 확인한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 다음 의뢰의 추가 지출에 공동 확인을 두었다.",
+        "costAxes": [
+          "약속",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI18",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_198"
+    },
+    "illustration": "두 친족의 쪽지와 서기의 중복 작업 문서가 한 책상에 나란히 놓여 있다.",
+    "history": {
+      "sourceIds": [
+        "FA01"
+      ],
+      "basis": "1436/40년 편지의 가족 간 업무 전달과 서기 부재를 배경으로 한 중복 의뢰 창작.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "Norfolk 한 가문 사례. 혼인 준비와 당사자 동의·계약 법제를 동일시하지 않는다.",
+      "sources": [
+        {
+          "id": "FA01",
+          "title": "Agnes Paston to William Paston, 1436/40",
+          "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=5&ref=PLETTER"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI18의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI18"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 199,
+    "id": "ck_evt_199",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1440,
+      1450
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 실제 자발적 방문 계획·현재 담당 업무·대리 수락 가능한 생존 성인 둘. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "병든 친족의 배우자"
+    },
+    "title": "병문안과 집안의 빈자리",
+    "body": "배우자가 병문안을 떠나면 장원에서 받는 편지와 청구를 맡을 사람이 없습니다. 친족 두 사람은 서로 상대가 맡아야 한다고 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "한 사람에게 기한을 정해 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI19의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 자발적 방문 계획·현재 담당 업무·대리 수락 가능한 생존 성인 둘가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 수락한 대리인에게 1계절·지출 16–32d 한도 위임을 준다. 본인은 귀환 때 회계를 받는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "권한 집중과 뒤늦은 검토 부담이 있다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 병문안과 집안의 빈자리 — 한 사람에게 기한을 정해 맡긴다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 동의한 가족 대리인에게 기간과 지출 상한을 정해 업무를 맡겼다.",
+        "costAxes": [
+          "권한",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI19",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "문서와 돈의 담당을 나눈다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI19의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 자발적 방문 계획·현재 담당 업무·대리 수락 가능한 생존 성인 둘가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 서신 담당과 지급 담당을 분리하고 사무비 8–16d를 쓴다. 두 담당 동의가 필요한 지급은 늦어질 수 있다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "추가 비용과 조정 시간이 든다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 병문안과 집안의 빈자리 — 문서와 돈의 담당을 나눈다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 가족의 서신과 지급 담당을 나누었다.",
+        "costAxes": [
+          "사람",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI19",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "방문을 짧게 나누는 안을 협의한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI19의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 자발적 방문 계획·현재 담당 업무·대리 수락 가능한 생존 성인 둘가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 당사자 동의 뒤 방문 기간을 줄이고 왕복 여비 12–24d를 부담한다. 환자 돌봄을 끝냈다고 기록하지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "업무 공백은 줄지만 길 비용과 돌봄 부담이 남는다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 병문안과 집안의 빈자리 — 방문을 짧게 나누는 안을 협의한다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 당사자가 동의한 짧은 방문 일정과 여비를 마련했다.",
+        "costAxes": [
+          "시간",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI19",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_199"
+    },
+    "illustration": "여행 짐 옆에서 가족 두 사람이 편지 꾸러미와 금고 열쇠를 나누어 받는다.",
+    "history": {
+      "sourceIds": [
+        "FA02"
+      ],
+      "basis": "1443년 편지의 가족 방문·소식·돌봄 사이 긴장을 바탕으로 한 대리 업무 갈등.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다.",
+      "sources": [
+        {
+          "id": "FA02",
+          "title": "Margaret Paston to John Paston, 28 September 1443",
+          "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI19의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI19"
+    ],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 200,
+    "id": "ck_evt_200",
+    "category": "가문 내부",
+    "period": "1382–1450",
+    "years": [
+      1424,
+      1450
+    ],
+    "conditions": {
+      "land": "지형·타일 종류 제한 없음. 본문은 가공 가족 사례이며 실제 장원·거처 대상 확인은 미지원 필터로 차단한다.",
+      "population": "인구 임계값 없음. 실제 생존 당사자·성인/미성년 구분·가족 관계가 필요하나 이 사건의 적격 판별자는 아직 없다.",
+      "rights": "남의 재산·권리는 영주가 일방 처분하지 않는다. 실제 명의·사용권·정산 권한을 새 모델에서 검사해야 한다.",
+      "relations": "마음 수치 조건·자동 관계 증감 없음. 동의와 지급 능력을 관계 점수로 대신하지 않는다.",
+      "season": "계절 제한 없음; 노출될 경우 전역 새 사건 연2개·계절1개 예산을 따른다.",
+      "state": "미지원 필수 맥락: 실제 가문 문서 목록·보관 담당·접근 분쟁·원문과 사본 식별. 기존 필드라고 가정하지 않으며 현재 조건 AST는 false이다."
+    },
+    "sender": {
+      "faction": "영주 가문",
+      "role": "가문의 서기"
+    },
+    "title": "가문 문서 상자의 두 열쇠",
+    "body": "한 친족이 모든 증서를 자기 방에 두자고 합니다. 다른 친족은 급한 청구 때 열지 못할까 걱정합니다. 인장과 원문을 맡는 일은 땅을 갖는 일과 다릅니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "원문과 사본의 보관자를 나눈다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI20의 a안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 가문 문서 목록·보관 담당·접근 분쟁·원문과 사본 식별가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 사본 작성 12–24d를 부담하고 보관자를 분리한다. 사본은 자동으로 원문과 같은 증거 무게를 얻지 않는다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "비용과 위치 관리가 늘며 원문 접근 문제는 별도다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가문 문서 상자의 두 열쇠 — 원문과 사본의 보관자를 나눈다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 가문 문서의 원문과 사본을 다른 담당자에게 맡겼다.",
+        "costAxes": [
+          "문서",
+          "금전"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI20",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "b",
+        "label": "공동 입회로만 원문을 꺼낸다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI20의 b안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 가문 문서 목록·보관 담당·접근 분쟁·원문과 사본 식별가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 두 담당의 접근 규칙과 대리인을 기록하고 4–8d의 목록 작성비를 부담한다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "훼손·분실 위험을 없애지 못하고 긴급 조회가 늦어진다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가문 문서 상자의 두 열쇠 — 공동 입회로만 원문을 꺼낸다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 가문 문서 원문의 공동 열람 규칙을 정했다.",
+        "costAxes": [
+          "권한",
+          "시간"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI20",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      },
+      {
+        "id": "c",
+        "label": "합의한 외부 보관처에 맡긴다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "미지원 효과 자리표시 — NE_SR01_KI20의 c안. 실제 no_op 명령을 보내지 않는다.",
+            "parameters": {},
+            "rangeNote": "실행 수치 없음. 아래 별도 제안의 금액·기간은 모두 게임 추정 범위이며 사료 가격 아님.",
+            "preconditions": "실제 가문 문서 목록·보관 담당·접근 분쟁·원문과 사본 식별가 실재하고 적격 당사자·재원·권한·기한을 선택 시 재검증해야 한다. 현재 차단.",
+            "limits": "구현 효과가 아니다. 제안 결과: 연 8–16d·1–2년 보관 약정을 맺고 인출 권한을 명시한다. 영주의 단독 접근은 제한된다. 기존 혼인 약속·토지 소송을 다른 가족 채무로 바꾸지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:179",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L179"
+              },
+              {
+                "ref": "src/engine/marriage.ts:211",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/marriage.ts#L211"
+              },
+              {
+                "ref": "src/engine/estateSuits.ts:59",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/estateSuits.ts#L59"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "지속 비용과 외부 의존을 감수한다.",
+        "ledger": "[새 효과 구현 뒤 성공한 해당 처리만 기록] 가문 문서 상자의 두 열쇠 — 합의한 외부 보관처에 맡긴다의 실제 지급·권한·기한을 당사자 ID와 함께 기록한다.",
+        "chronicle": "[미구현 문구 후보·실제 처리 성공 때만] 합의한 외부 보관처와 문서의 보관·인출 조건을 약정했다.",
+        "costAxes": [
+          "약속",
+          "권한"
+        ],
+        "execution": {
+          "mode": "blocked_unsupported_effect",
+          "engineSupport": "없음: NE_SR01_KI20",
+          "beforeStart": "새 효과 원자 실행·동의·재원·대상 확인 전 선택 노출 금지",
+          "onPartialFailure": "현재 실행하지 않음. 구현 시 금고/권한/약속/기록 전체를 함께 커밋하거나 전부 유지한다."
+        }
+      }
+    ],
+    "recurrence": {
+      "allowed": false,
+      "cooldownYears": 0,
+      "steward": "현재 자동 처리 불가. 동의·남의 권리·보증·후견을 선례만으로 처리하지 않는다.",
+      "exclusions": "가문 세대 전체에서 한 번만 제안. 같은 당사자·같은 재산·같은 의무의 기존 혼인/후계/유산 사건과 동시 노출 금지.",
+      "variantGroup": "family_case_200"
+    },
+    "illustration": "두 가족 구성원이 문서 상자와 인장 상자를 서로 다른 선반에 올린다.",
+    "history": {
+      "sourceIds": [
+        "CS03"
+      ],
+      "basis": "분리 보관이라는 채무 기록 규범을 가족 문서 관리에 적용한 창작. 모든 가문에 두 열쇠 제도가 있었다는 주장은 아님.",
+      "inference": "[창작·게임 추정] 이 가족·갈등·선택·비용·시간·절차는 게임용 조합이다. 사료 속 인물의 실제 선택을 재현했다고 주장하지 않는다.",
+      "limits": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+      "sources": [
+        {
+          "id": "CS03",
+          "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+          "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "blocked_unsupported_effect",
+      "requirements": "NE_SR01_KI20의 맥락·상태·원자 효과·동의·도달 가능성 검증과 NE01 등록기가 필요하다. 현재 구현 가능한 선택0개이므로 전체 사건을 숨긴다.",
+      "classificationNote": "new_event_draft는 신규 원고의 구분이다. 기존 heir/legacy/marriage 장 사건의 문구 개선으로 세지 않았고 실행 가능한 신규 사건이라는 뜻도 아니다.",
+      "choiceDesignNote": "세 선택지는 새 효과 설계에서 결과가 서로 다르다. 현재는 모두 미지원으로 선택 깊이의 런타임 검증을 주장하지 않는다.",
+      "balanceNote": "모든 제안 수치는 게임 추정. 기존 효과에 돈/관계 변화를 더해 이중 실행하지 않는다."
+    },
+    "newEffectLinks": [
+      "NE_SR01_KI20"
+    ],
+    "contentClass": "new_event_draft"
+  }
+]

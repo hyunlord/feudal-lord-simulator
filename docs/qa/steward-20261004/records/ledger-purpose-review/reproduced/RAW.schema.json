@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [
+    "status",
+    "sourceHead",
+    "campaignId",
+    "entry"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "const": "known"
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "campaignId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entry": {
+      "type": "object",
+      "required": [
+        "id",
+        "tick",
+        "account",
+        "category",
+        "amount",
+        "sourceRefs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "tick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "account": {
+          "const": "cash"
+        },
+        "category": {
+          "enum": [
+            "promise_payment",
+            "royal_subsidy",
+            "stall_fee"
+          ]
+        },
+        "amount": {
+          "type": "integer",
+          "minimum": -9007199254740991,
+          "maximum": 9007199254740991
+        },
+        "sourceRefs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "type",
+              "id"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "enum": [
+                  "claim",
+                  "actor",
+                  "building",
+                  "right"
+                ]
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

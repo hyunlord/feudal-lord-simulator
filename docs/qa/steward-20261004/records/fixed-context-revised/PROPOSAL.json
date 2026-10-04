@@ -1,0 +1,263 @@
+{
+  "formatVersion": "fixed-context-second-pass-v1",
+  "status": "AUTHOR_DRAFT_UNINSTALLED",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "fields": [
+    {
+      "id": "parentsAtAdulthood",
+      "templates": [
+        "person.came_of_age"
+      ],
+      "values": [
+        "co_resident",
+        "not_co_resident"
+      ],
+      "capture": "src/engine/history.ts:392-406; src/engine/persons.types.ts:48-72; src/engine/persons.ts:85-87,233-237",
+      "captureRule": "At age-threshold emission bind subject person ID before/after, preserve birthYear, require before age<14 and after age>=14 at event years. Both motherId and fatherId must be distinct nonempty IDs and each resolve exactly once across after.persons.people and after.persons.past with explicit alive and nonempty householdId. Subject must belong to current people, alive=true, leftYear absent. A co-resident parent must belong to current people AND alive=true AND leftYear absent AND householdId equal subject; only then co_resident. A living parent in past, or any parent with leftYear, never qualifies even when historical householdId is equal. If both parents resolve but neither qualifies -> not_co_resident. Unknown/missing parent IDs -> unknown, never absent. No orphanhood, death cause, care quality or work start inferred; current ages/parents never backfill.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    {
+      "id": "wallCompletionAtMilestone",
+      "templates": [
+        "milestone.stone_town"
+      ],
+      "values": [
+        "all_complete",
+        "partly_complete",
+        "none_complete"
+      ],
+      "capture": "src/engine/history.ts:451-466; src/engine/era.ts:108-140; src/engine/engine.types.ts:32-43",
+      "captureRule": "At emitted milestone require era stone_town and nonempty after.palisade.segments with unique IDs and explicit boolean completed. All true/all false/mixed determine enum. Describe segment completed only, not replacementConstructionSiteId completion or material. Null/empty/inconsistent array unknown. No timber/stone material guess, no wall ring fully sealed inference.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    {
+      "id": "worshipBuildingsAtVacancy",
+      "templates": [
+        "plague.priest_died"
+      ],
+      "values": [
+        "present",
+        "absent"
+      ],
+      "capture": "src/engine/plague.ts:511-522; src/engine/history.ts:649-651; src/content/buildingCatalog.ts:94,113",
+      "captureRule": "Require curacy newly present, vacantSince matches operation tick, match old template record. Count existing after.buildings whose kind church or chapel; positive present else absent. Complete valid building list required; construction sites excluded. This is building presence, never actual priest death/cause/worship cessation. No current-world backfill.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    {
+      "id": "archivedL4Direction",
+      "templates": [
+        "ledger.l4"
+      ],
+      "values": [
+        "increased",
+        "decreased",
+        "unchanged"
+      ],
+      "capture": "src/content/historyCopy.ko.ts:336; src/engine/history.ts:468-491",
+      "captureRule": "For a real archived history record whose template is ledger.l4, validate original params.from and params.to as finite nonnegative safe integers. Compare to/from for increased/decreased/unchanged. Bind immutable record and campaign; do not calculate counts from present houses, infer period, cause, or producer identity. Real archive presence not established by this proposal; current checked save contains zero such records.",
+      "provenance": "immutable_record_params",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    }
+  ],
+  "additions": [
+    {
+      "template": "person.came_of_age",
+      "variant": {
+        "id": "person.came_of_age.r06fixed.co_resident",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.parentsAtAdulthood",
+            "op": "eq",
+            "value": "co_resident"
+          }
+        ],
+        "headline": "기록된 부모와 한 가구에서 지내던 아이가 성장의 고비를 맞았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "person.came_of_age",
+      "variant": {
+        "id": "person.came_of_age.r06fixed.not_co_resident",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.parentsAtAdulthood",
+            "op": "eq",
+            "value": "not_co_resident"
+          }
+        ],
+        "headline": "기록된 부모와 함께 살지 않는 가구에서 아이가 성장의 고비를 맞았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.stone_town",
+      "variant": {
+        "id": "milestone.stone_town.r06fixed.all_complete",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.wallCompletionAtMilestone",
+            "op": "eq",
+            "value": "all_complete"
+          }
+        ],
+        "headline": "석벽 사업 단계가 기록될 때, 성벽 구간들은 모두 완성 상태였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.stone_town",
+      "variant": {
+        "id": "milestone.stone_town.r06fixed.partly_complete",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.wallCompletionAtMilestone",
+            "op": "eq",
+            "value": "partly_complete"
+          }
+        ],
+        "headline": "석벽 사업 단계가 기록될 때, 완성된 성벽 구간과 미완성 구간이 함께 있었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.stone_town",
+      "variant": {
+        "id": "milestone.stone_town.r06fixed.none_complete",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.wallCompletionAtMilestone",
+            "op": "eq",
+            "value": "none_complete"
+          }
+        ],
+        "headline": "석벽 사업 단계가 기록될 때, 아직 완성 상태인 성벽 구간은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "plague.priest_died",
+      "variant": {
+        "id": "plague.priest_died.r06fixed.present",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.worshipBuildingsAtVacancy",
+            "op": "eq",
+            "value": "present"
+          }
+        ],
+        "headline": "교회나 예배당이 있는 도시에 사제직 공석이 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "plague.priest_died",
+      "variant": {
+        "id": "plague.priest_died.r06fixed.absent",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.worshipBuildingsAtVacancy",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "교회와 예배당이 없는 도시에 사제직 공석이 기록되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.l4",
+      "variant": {
+        "id": "ledger.l4.r06fixed.increased",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.archivedL4Direction",
+            "op": "eq",
+            "value": "increased"
+          }
+        ],
+        "headline": "보존된 집계에서 도시 대가옥 수가 늘었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.l4",
+      "variant": {
+        "id": "ledger.l4.r06fixed.decreased",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.archivedL4Direction",
+            "op": "eq",
+            "value": "decreased"
+          }
+        ],
+        "headline": "보존된 집계에서 도시 대가옥 수가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.l4",
+      "variant": {
+        "id": "ledger.l4.r06fixed.unchanged",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.archivedL4Direction",
+            "op": "eq",
+            "value": "unchanged"
+          }
+        ],
+        "headline": "보존된 집계에서 도시 대가옥 수는 그대로였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ],
+  "fallback": "Unknown, malformed or record/campaign mismatched context -> existing baseline; no inferred past facts",
+  "runtimeImplemented": false
+}

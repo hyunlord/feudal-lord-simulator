@@ -1,0 +1,110 @@
+[
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 333,
+        "end": 382,
+        "text": "function personDrafts(before: GameState, after: GameState): Draft[] {\n  const previous = new Map(before.houses.map(house => [house.buildingId, house]));\n  // SMOOTH-2E: the buildings' and the heads' lookups (and a record's base) are made only when a record is written —\n  // most ticks write none, and these were rebuilt for every house each tick.\n  let buildings: Map<string, GameState[\"buildings\"][number]> | null = null;\n  let heads: Map<string, string> | null = null;\n  const headOf = (householdId: string) => {\n    if (heads === null) {\n      heads = new Map();\n      for (const person of before.persons?.people ?? []) if (person.role === \"head\") heads.set(person.householdId, person.id);\n      for (const person of after.persons?.people ?? []) if (person.role === \"head\") heads.set(person.householdId, person.id);\n    }\n    return heads.get(householdId);\n  };\n  const drafts: Draft[] = [];\n  const placeOf = (householdId: string) => {\n    buildings ??= new Map(after.buildings.map(building => [building.id, building]));\n    const building = buildings.get(householdId);\n    return building === undefined ? {} : { place: { tx: building.tx, ty: building.ty, buildingId: building.id } };\n  };\n  for (const house of after.houses) {\n    const old = previous.get(house.buildingId);\n    if (old === undefined) continue;\n    const baseOf = () => {\n      const household = { type: \"household\" as const, id: house.buildingId };\n      const head = headOf(house.buildingId);\n      return { tick: after.tick, kind: \"person\" as const, ...placeOf(house.buildingId),\n        ...(head === undefined ? { subject: household } : { subject: { type: \"person\" as const, id: head }, actors: [household] }) };\n    };\n    const push = (template: string, severity: HistorySeverity, extra: Partial<Draft> = {}) => drafts.push({ ...baseOf(), template, severity, ...extra });\n    if (house.burntTick !== undefined && old.burntTick === undefined) {\n      push(\"person.burnt\", 1, house.burntByEventId === undefined ? {} : { cause: eventCause(house.burntByEventId, house.burntByEventId.split(\"@\")[0] ?? \"fire\") });\n      continue;\n    }\n    if (house.burntTick === undefined && old.burntTick !== undefined) push(\"person.rebuilt\", 0);\n    if (house.abandonedTick !== undefined && old.abandonedTick === undefined) { push(\"person.left\", 1); continue; }\n    if (house.abandonedTick === undefined && old.abandonedTick !== undefined) push(\"person.resettled\", 0);\n    if (house.leavingSinceTick !== undefined && old.leavingSinceTick === undefined) push(\"person.leaving\", 0);\n    if (old.residents <= 0 && house.residents > 0 && old.abandonedTick === undefined) push(\"person.move_in\", 0);\n    if (old.residents > 0 && house.residents <= 0 && house.abandonedTick === undefined) push(\"person.emptied\", 1);\n    if (house.level > old.level && house.burntTick === undefined) push(\"person.level_up\", 0, { params: { level: house.level } });\n    if (house.level < old.level && house.burntTick === undefined) push(\"person.level_down\", 0, { params: { level: house.level } });\n    if (house.leavingSinceTick === undefined && old.leavingSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.stayed\", 0);\n    if (house.foodShortSinceTick !== undefined && old.foodShortSinceTick === undefined) push(\"person.hungry\", 0);\n    if (house.foodShortSinceTick === undefined && old.foodShortSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.fed\", 0);\n    if (house.hasWater !== old.hasWater) push(house.hasWater ? \"person.water\" : \"person.water_lost\", 0);\n    // Without persons (a town before save v16's first tick) the household's size is its own line.\n    if (after.persons === undefined) {\n      if (old.residents > 0 && house.residents > old.residents) push(\"person.grew\", 0, { params: { residents: house.residents } });\n      if (house.residents > 0 && house.residents < old.residents) push(\"person.shrank\", 0, { params: { residents: house.residents } });\n"
+      },
+      {
+        "start": 388,
+        "end": 410,
+        "text": "  const was = new Map(before.persons.people.map(person => [person.id, person]));\n  const now = new Map(after.persons.people.map(person => [person.id, person]));\n  const personRecord = (person: Person, template: string, severity: HistorySeverity, params?: Readonly<Record<string, number | string>>) => drafts.push({\n    tick: after.tick, kind: \"person\", template, severity, subject: { type: \"person\", id: person.id },\n    ...(person.householdId === \"manor\" ? {} : { actors: [{ type: \"household\", id: person.householdId }] }), ...placeOf(person.householdId),\n    ...(params === undefined ? {} : { params }) });\n  for (const person of after.persons.people) {\n    const old = was.get(person.id);\n    if (old === undefined) {\n      // PERSON-1a (LN-4): the birth names the parents and where the child's name came from.\n      if (person.role === \"child\" && person.birthYear === year) personRecord(person, \"person.born\", 0, {\n        ...(person.motherId === undefined ? {} : { motherId: person.motherId }), ...(person.fatherId === undefined ? {} : { fatherId: person.fatherId }),\n        nameFrom: person.nameFrom ?? \"common\", ...(person.godparentId === undefined ? {} : { godparentId: person.godparentId }) });\n      else if (person.role === \"spouse\") personRecord(person, \"person.married\", 0);\n      else if (person.role === \"kin\") personRecord(person, \"person.arrived\", 0);\n      else if (person.role === \"steward\") personRecord(person, \"person.steward\", 1);\n      continue;\n    }\n    if (year - person.birthYear >= 14 && beforeYear - old.birthYear < 14) personRecord(person, \"person.came_of_age\", 0);\n    if (old.occupation !== person.occupation && old.occupation !== \"child\" && person.occupation !== \"labourer\") personRecord(person, \"person.occupation\", 0, { occupation: person.occupation });\n    if (!old.tags.includes(\"reeve\") && person.tags.includes(\"reeve\")) personRecord(person, \"person.reeve\", 1);\n    // PERSON-1a (LN-10): the passing states and the bailiff's office.\n    if (!old.tags.includes(\"bailiff\") && person.tags.includes(\"bailiff\")) personRecord(person, \"person.bailiff\", 1);\n"
+      }
+    ]
+  },
+  {
+    "path": "src/population/population.types.ts",
+    "sha256": "a9f7e05e3a7ddc1877f8d8a4ed1310bee5bbec9da7e3bc36be47447a98eb5b20",
+    "spans": [
+      {
+        "start": 18,
+        "end": 51,
+        "text": "export interface House {\n  buildingId: string;\n  level: number;\n  builtLevel?: number;\n  residents: number;\n  hasWater: boolean;\n  breadStock: number;\n  lastServicedTick: number;\n  emptyFoodTicks?: number;\n  starvationGraceUntilTick?: number;\n  unmetRequirementTicks: number;\n  promotionTicks?: number;\n  /** LB-1 (save v11). Absent only before the first housing update of a house built this tick. */\n  members?: HouseholdMembers;\n  /** LB-8 (save v11): slots that hold a product, by slot index. Absent = every slot empty. */\n  crafts?: readonly HouseholdSlot[];\n  /** FP-3 (save v12): the household has been short of food since this tick without a break. Absent = fed. */\n  foodShortSinceTick?: number;\n  /** FP-3 stage 1 (save v12): the household has been preparing to leave since this tick (`떠날 준비`). */\n  leavingSinceTick?: number;\n  /** FP-3 stage 2 (save v12): the household left at this tick; the house stands empty and pays no rent (not demolished). */\n  abandonedTick?: number;\n  /** FP-4 (save v12): the winter ration's carried fraction, thousandths of a bread (0–999). Absent = 0. */\n  winterRationCarry?: number;\n  /**\n   * F0-B EV-4 (save v13): the house burnt at this tick. It stands roofless: level 0, no rent, no promotion; its household\n   * stays and eats. A rebuild site (`rebuildOf`) clears it. Absent = not burnt.\n   */\n  burntTick?: number;\n  /** F0-B (save v13): the event (`EventRecord.id`) that burnt it, the cause the player reads (SourceRef type `event`). */\n  burntByEventId?: string;\n  /** C4 (AL-5, save v23): the household drank ale from an alehouse and counts as served until this tick. */\n  aleUntilTick?: number;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/seasonPressure.ts",
+    "sha256": "5d805dc64b372e1aded8f17753193a6179a91aa578026e9d5573697ed9be9380",
+    "spans": [
+      {
+        "start": 217,
+        "end": 266,
+        "text": "  // FC-2: in the famine the poorest households cannot buy bread at its price (relief or price control feeds them).\n  const famineShort = new Set(famineShortHouses(state));\n  let changed = false;\n  let leaving = 0;\n  let abandoned = 0;\n  const houses = state.houses.map(house => {\n    if (house.abandonedTick !== undefined) return house;\n    // A house that starved empty is an ordinary empty house (the old rule): it has no household to be short or leave.\n    if (!householdShortOfFood(house, reserveShort, tick) && !(famineShort.has(house.buildingId) && house.residents > 0)) {\n      if (house.foodShortSinceTick === undefined && house.leavingSinceTick === undefined) return house;\n      changed = true;\n      return withoutPressure(house);\n    }\n    const since = house.foodShortSinceTick ?? tick;\n    if (house.leavingSinceTick === undefined && tick - since >= SEASON) {\n      changed = true; leaving += 1;\n      return { ...house, foodShortSinceTick: since, leavingSinceTick: tick };\n    }\n    if (house.foodShortSinceTick === undefined) { changed = true; return { ...house, foodShortSinceTick: since }; }\n    return house;\n  });\n  // Stage 2: households a season into stage 1 leave, the worst fed first, up to the season's cap and never leaving\n  // fewer than `minOccupiedHouses` homes lived in (stage 2 is a loss, not the end of the town).\n  const occupied = houses.filter(house => house.residents > 0).length;\n  // FC-2: the famine answer moves the season's cap (relief 1, speculation 3).\n  const cap = departureCapPerSeason(state, PRESSURE_BALANCE.maxDeparturesPerSeason);\n  const room = Math.max(0, Math.min(cap - tally.departures, occupied - PRESSURE_BALANCE.minOccupiedHouses));\n  const due = houses\n    .map((house, index) => ({ house, index }))\n    .filter(({ house }) => house.leavingSinceTick !== undefined && house.abandonedTick === undefined && tick - house.leavingSinceTick >= SEASON)\n    .sort((a, b) => a.house.breadStock - b.house.breadStock || a.house.level - b.house.level || a.house.buildingId.localeCompare(b.house.buildingId))\n    .slice(0, room);\n  for (const { house, index } of due) houses[index] = abandonHouse(house, tick);\n  let resettled = 0;\n  if (!reserveShort) {\n    const lots = new Map(state.buildings.map(building => [building.id, building]));\n    // F3-A (PL-3): a house the pestilence emptied waits for its resettlement (`plague.ts`), not for the ladder's household.\n    const held = state.plague?.first !== undefined && state.plague.endedTick === undefined ? new Set(state.plague.vacantHouseIds) : null;\n    const index = houses.findIndex(house => house.abandonedTick !== undefined && house.hasWater && tick - house.abandonedTick >= PRESSURE_BALANCE.resettleAfterTicks\n      && held?.has(house.buildingId) !== true);\n    const house = houses[index];\n    if (house !== undefined) {\n      const { abandonedTick: _abandoned, ...rest } = house;\n      houses[index] = { ...rest, residents: houseLotArea(lots.get(house.buildingId)) };\n      resettled = 1;\n    }\n  }\n  if (due.length > 0 || resettled > 0) changed = true;\n  return {\n    houses, changed,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/fire.ts",
+    "sha256": "1ef35c35ea07093bf76e4fed95a05ab490882369c8983d3b40f55cbff386e4dc",
+    "spans": [
+      {
+        "start": 95,
+        "end": 105,
+        "text": "  return {\n    originBuildingId: origin.id,\n    state: { ...state, events: { ...events, burning: [...events.burning, burningEntry(state, origin, eventId, state.tick)] } },\n  };\n}\n\n/** EV-4: a burnt house — level and larder lost, rent-free, no promotion; the household stays. F2-A: the raid burns so too. */\nexport function burntHouse(house: House, tick: number, eventId: string): House {\n  const { promotionTicks: _promotion, ...rest } = house;\n  return { ...rest, level: 0, builtLevel: 0, breadStock: 0, unmetRequirementTicks: 0, burntTick: tick, burntByEventId: eventId };\n}\n"
+      },
+      {
+        "start": 168,
+        "end": 175,
+        "text": "/** EV-6: a completed rebuild clears the house's burnt state; its household moves back in at level 0. */\nexport function completeRebuild(house: House): House {\n  const { burntTick: _tick, burntByEventId: _event, ...rest } = house;\n  return rest;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 342,
+        "end": 356,
+        "text": "  \"person.leaving\": () => \"가구가 떠날 준비를 했다\",\n  \"person.left\": () => \"가구가 떠나 집이 비었다\",\n  \"person.resettled\": () => \"빈 집에 새 가구가 들었다\",\n  \"person.burnt\": () => \"가구의 집이 불탔다\",\n  \"person.rebuilt\": () => \"가구의 집을 다시 지었다\",\n  \"person.emptied\": () => \"굶주려 가구가 흩어졌다\",\n  \"person.stayed\": () => \"가구가 떠날 준비를 거두고 남았다\",\n  \"person.hungry\": () => \"가구가 먹을 것이 모자라기 시작했다\",\n  \"person.fed\": () => \"가구가 다시 배불리 먹게 되었다\",\n  \"person.water\": () => \"가구에 우물물이 공급되었다\",\n  \"person.water_lost\": () => \"가구의 우물물 공급이 끊겼다\",\n  \"person.born\": params => NAME_FROM[s(params, \"nameFrom\")] ?? \"아이가 태어났다\",\n  \"person.married\": () => \"혼인해 가구를 이루었다\",\n  \"person.arrived\": () => \"친척이 와서 함께 살게 되었다\",\n  \"person.came_of_age\": () => \"어른이 되어 일을 거들기 시작했다\",\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/balanceConfig.ts",
+    "sha256": "2e39f6a1b7ef0cfce6dc9baf822de332e723bf7fd3f468729dfeddae36f52bb3",
+    "spans": [
+      {
+        "start": 120,
+        "end": 134,
+        "text": "  seasonLedgerHistory: 8,\n  /** FP-3: households are checked for a food shortage every this many ticks (divides a season and a meal interval). */\n  sampleTicks: 50,\n  /** FP-3: at most this many households leave (stage 2) per calendar season (F3: \"필지 1~2개 황폐\"). */\n  maxDeparturesPerSeason: 2,\n  /**\n   * FP-3: stage 2 never leaves fewer than this many homes lived in — the opening village's four. Two departures from\n   * a four-home village leave too few adults to staff its mill, and the town starves empty (seed 5, first winter).\n   */\n  minOccupiedHouses: 4,\n  /** FP-3: an abandoned house stands empty at least this long before a new household may take it. */\n  resettleAfterTicks: BALANCE.TICKS_PER_YEAR / 4,\n  /** FP-4: bread a household eats in winter, permille of its ration (heating stands in for fuel, which is not a resource). */\n  winterRationPermille: 1200,\n  /** FP-4: in-year tick where winter starts (the calendar's fourth season; arable growth stops there too). */\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 1,
+        "end": 18,
+        "text": "/**\n * FIX-12 (item 4, spec docs/design/history-ledger.md HL-1a, QA-010): a ledger record names a person by id; the name —\n * with the epithet the person has now (큰/작은) — is drawn when the record is read, never kept as text.\n */\nimport { PERSON_NAME_FALLBACK } from \"../content/historyCopy.ko\";\nimport type { GameState } from \"./engine.types\";\nimport type { HistoryParams, HistoryRecord } from \"./history.types\";\nimport { personDisplayName } from \"./persons\";\nimport type { Person } from \"./persons.types\";\n\n/**\n * FIX-12 (item 4, HL-1a, QA-010): the parameters that name a person by id, and the name each one gives the sentence.\n * A record keeps the id; the name (with its epithet as it is now — 큰/작은) is drawn when the record is read.\n */\nconst PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n"
+      },
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 19,
+        "end": 23,
+        "text": "| 국왕 | 재위 중인 왕 개인 | king | 왕실과 무조건 치환 |\n| 왕실 | 국왕을 중심으로 한 제도·가솔·권력 집단 | Crown / royal household, 문맥별 | 국왕 개인의 행동으로 자동 변환 |\n| 청지기 | 영주의 위임을 받아 영지를 관리하는 직책 | steward | 집사, 집행관, 마을 대표와 혼용 |\n| 집행관 | 영지의 행정·집행을 맡은 역할 | bailiff | 청지기와 동일 직책으로 번역 |\n| 마을 대표(리브) | 이 게임의 reeve. 장원 관리·회계 역할을 설명에 명시 | reeve | 촌장, 원어만 reeve, 현대 시장과 혼동 |\n"
+      },
+      {
+        "start": 191,
+        "end": 191,
+        "text": "1. 청지기·안내는 ‘~합니다/~하십시오’, 선택 버튼은 플레이어 행동 ‘~한다’, 연대기는 ‘~했다’로 통일한다. 인물의 개별 말투는 허용하되 한 문장 안 주체를 분명히 쓴다.\n"
+      }
+    ]
+  }
+]

@@ -1,0 +1,40 @@
+[
+  {
+    "id": "FEN-MILL-CAPACITY-OBS",
+    "status": "HOLD_REQUIRES_CAPACITY_AND_DEMAND_CONTRACT",
+    "observation": "fen final mill13/farmstead4; open26/6. These are observed building counts, not a proved excess ratio.",
+    "firstObservedBoundary": {
+      "fen": 1302,
+      "open": 1304
+    },
+    "additionalProductionScope": {
+      "fen": {
+        "fields": 4,
+        "strips": 30,
+        "cells": 86,
+        "cropCells": {
+          "wheat": 73,
+          "barley": 13
+        }
+      },
+      "open": {
+        "fields": 3,
+        "strips": 34,
+        "cells": 95,
+        "cropCells": {
+          "barley": 6,
+          "wheat": 89
+        }
+      }
+    },
+    "notEstablished": [
+      "new regression relative to open",
+      "throughput demand/capacity mismatch over time",
+      "mill no-input duration or route failure",
+      "food availability cause",
+      "new distinct bug signature relative to inherited A01"
+    ],
+    "nextEvidence": "Independent reviewer should compare existing signature and resource demand/throughput contract; do not promote from count ratio.",
+    "engineExecuted": false
+  }
+]

@@ -1,0 +1,51 @@
+{
+  "status": "candidate_not_installed",
+  "parentReviewRequired": true,
+  "blocks": [
+    {
+      "variantId": "registry.answered.r05d.audit_punish",
+      "status": "blocked_fact_line",
+      "metadataKey": "factLineOverrideRequired",
+      "reason": "The required baseline registryChoiceLedger(ck_evt_013,a) contains literal Rd. Resolve recovered amount from historical outcome or replace baseline with truthful answer-only wording before enabling. Never inject a current audit amount.",
+      "source": "src/content/registry/registryCopy.ko.ts",
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "registry.answered.r05d.audit052_punish",
+      "status": "blocked_fact_line",
+      "metadataKey": "factLineOverrideRequired",
+      "reason": "The required baseline registryChoiceLedger(ck_evt_052,punish) contains unresolved {recovered}d. No recovered field is stored in registry.answered. Correct historical fact line before enabling.",
+      "source": "src/content/registry/registryCopy.ko.ts",
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "agency.subsidy_refused.r05d.zero_limit",
+      "status": "blocked_numeric_adapter_precondition",
+      "reason": "Numeric safety is enforced only by offline validate.rb. Current canonical when/schema does not guarantee safe integer input. Enable only after the selector implements and verifies the numeric input contract.",
+      "source": "validate.rb:match_variant",
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "agency.subsidy_refused.r05d.positive_limit",
+      "status": "blocked_numeric_adapter_precondition",
+      "reason": "Numeric safety is enforced only by offline validate.rb. Current canonical when/schema does not guarantee safe integer input. Enable only after the selector implements and verifies the numeric input contract.",
+      "source": "validate.rb:match_variant",
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "reorg.poll_tax.r05d.zero",
+      "status": "blocked_numeric_adapter_precondition",
+      "reason": "Numeric safety is enforced only by offline validate.rb. Current canonical when/schema does not guarantee safe integer input. Enable only after the selector implements and verifies the numeric input contract.",
+      "source": "validate.rb:match_variant",
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "reorg.poll_tax.r05d.positive",
+      "status": "blocked_numeric_adapter_precondition",
+      "reason": "Numeric safety is enforced only by offline validate.rb. Current canonical when/schema does not guarantee safe integer input. Enable only after the selector implements and verifies the numeric input contract.",
+      "source": "validate.rb:match_variant",
+      "runtimeInstalled": false
+    }
+  ],
+  "numericInputContract": "For condition-referenced params.amount and params.limit: finite safe integer in [0,9007199254740991]; otherwise select baseline. This offline boundary guard is a proposed selector precondition, not an installed runtime adapter."
+}

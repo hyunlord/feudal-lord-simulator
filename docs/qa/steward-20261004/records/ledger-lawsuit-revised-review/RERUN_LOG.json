@@ -1,0 +1,14 @@
+[
+  {
+    "script": "validate.rb",
+    "exit": 0,
+    "stdout": "57 reference selector cases passed\n",
+    "stderr": ""
+  },
+  {
+    "script": "regression.rb",
+    "exit": 0,
+    "stdout": "26 regression cases passed\n",
+    "stderr": ""
+  }
+]

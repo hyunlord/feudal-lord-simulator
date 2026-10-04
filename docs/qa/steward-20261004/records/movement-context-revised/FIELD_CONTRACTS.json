@@ -1,0 +1,90 @@
+[
+  {
+    "id": "houseReplacementTrigger",
+    "templates": [
+      "house.withdrew"
+    ],
+    "values": [
+      "empty_town",
+      "family_extinct",
+      "decline_elapsed"
+    ],
+    "capture": "src/engine/lordship.ts:148-168;src/engine/lordship.ts:186-194;src/engine/history.ts:568-571",
+    "producer": "src/engine/history.ts",
+    "currentRecordStorage": "Context field absent; only template baseline params recorded.",
+    "currentOtherStorage": "Decline reset in new lordship; pastHouses retain house identity but not exact trigger. Extinction relies on current/past persons at transition.",
+    "immutableReconstruction": "No current-state reconstruction. Capture exact event transition with recordId/tick and related IDs. Existing references may only be used after exact immutable provenance and identity verification; missing/ambiguous -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Capture actual selected changeHouseAndEstate call path, not a posthoc predicate. empty_town is sample branch with townEmpty (population<=0 AND chapter populationStart>0); family_extinct is seasonal lordFamilyExtinct branch only, after empty branch; decline_elapsed is exact elapsed decline branch. Pin old/new house.order and IDs. Do not claim all family died of plague: source only requires SOME past plague deaths and no current family tag/no pending heir. Do not infer voluntary migration or destination."
+  },
+  {
+    "id": "residentPresenceAtHouseArrival",
+    "templates": [
+      "house.arrived"
+    ],
+    "values": [
+      "inhabited",
+      "empty"
+    ],
+    "capture": "src/engine/lordship.ts:118-159;src/engine/history.ts:568-575",
+    "producer": "src/engine/history.ts",
+    "currentRecordStorage": "Context field absent; only template baseline params recorded.",
+    "currentOtherStorage": "Before population lost; after population may already include resettlement. pastHouses not migration log.",
+    "immutableReconstruction": "No current-state reconstruction. Capture exact event transition with recordId/tick and related IDs. Existing references may only be used after exact immutable provenance and identity verification; missing/ambiguous -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "At actual order increment capture population immediately BEFORE house change, safe nonnegative integer. >0 inhabited,0 empty. Pin before/after house order. After population cannot replace before; resettle happens within same operation. Do not claim new family moved physically into manor or brought residents unless separate resettled event proves it."
+  },
+  {
+    "id": "settlerBreadAllocation",
+    "templates": [
+      "house.resettled"
+    ],
+    "values": [
+      "granary_only",
+      "split",
+      "household_only"
+    ],
+    "capture": "src/engine/lordship.ts:229-255;src/engine/history.ts:572-575",
+    "producer": "src/engine/history.ts",
+    "currentRecordStorage": "Context field absent; only template baseline params recorded.",
+    "currentOtherStorage": "Bread enters mutable building inventory or house breadStock; history only house name/settlers.",
+    "immutableReconstruction": "No current-state reconstruction. Capture exact event transition with recordId/tick and related IDs. Existing references may only be used after exact immutable provenance and identity verification; missing/ambiguous -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Capture within resettleTown actual local bread>0 and stored and settled building IDs plus granary ID. Validate finite safe integer 0<=stored<=bread; stored==bread -> granary_only;0<stored<bread -> split;stored==0 -> household_only. Require actual before population<=0 / after>0 and house order change matching emitted record, positive settled household count, no burnt houses in settled set. Capture delivered additions not later stocks. No claim food production or indefinite survival."
+  },
+  {
+    "id": "charterTimberTradePoint",
+    "templates": [
+      "agency.timber_ordered"
+    ],
+    "values": [
+      "market",
+      "hamlet_storehouse"
+    ],
+    "capture": "src/engine/townAgency.ts:512-516;src/engine/autoplayEra.ts:197-203;src/engine/timberTrade.ts:28-39;src/engine/timberTrade.ts:81-97",
+    "producer": "src/engine/history.ts",
+    "currentRecordStorage": "Context field absent; only template baseline params recorded.",
+    "currentOtherStorage": "timberOrder only amount; no purpose/trade point snapshot. Later actual delivery chooses a fresh trade point.",
+    "immutableReconstruction": "No current-state reconstruction. Capture exact event transition with recordId/tick and related IDs. Existing references may only be used after exact immutable provenance and identity verification; missing/ambiguous -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Require verified automatic charterTimber planner=era order_timber call in advanceTownAgency, old order0 and actual new positive order. Capture timberTradePoint before order and building ID: existing trading market->market; no market + era hamlet + returned storehouse->hamlet_storehouse. Other planner/manual command/no point/malformed amount unknown. Purpose is charter shortfall only, not actual wall timber consumption. Point is intended at ORDER TIME; later deliveries can choose another point and no delivery/payment is claimed."
+  },
+  {
+    "id": "rejectedOfferCommitment",
+    "templates": [
+      "negotiation.rejected"
+    ],
+    "values": [
+      "jointure",
+      "deferred_without_jointure",
+      "neither"
+    ],
+    "capture": "src/engine/marriage.ts:137-150;src/engine/negotiation.ts:203-237;src/engine/history.ts:1020-1027",
+    "producer": "src/engine/history.ts",
+    "currentRecordStorage": "Context field absent; only template baseline params recorded.",
+    "currentOtherStorage": "New negotiation stores original terms, status, counterpart,groomId,brideId,tick. History holds negotiation ID but not terms.",
+    "immutableReconstruction": "No current-state reconstruction. Capture exact event transition with recordId/tick and related IDs. Existing references may only be used after exact immutable provenance and identity verification; missing/ambiguous -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Only newly emitted rejected negotiation in proposeMarriage after failed offer draw AND counterOffer null. Capture ORIGINAL negotiation.terms, not attempted counter draft, before any later changes. Validate term kind/giver/type; jointure proposer requires nonempty valid pieceId; deferred proposer requires safe positive amount; malformed/unknown terms or unproven negotiation link unknown. Priority: any valid proposer jointure -> jointure; else positive proposer debt_after_inheritance -> deferred_without_jointure; else neither only if NO proposer jointure/debt_after_inheritance terms. Pin negotiationId/counterpart/groom/bride. This describes proposed bundle, NOT rejection cause. No accepted contract, transfer, life-possession or binding debt promise inferred."
+  }
+]

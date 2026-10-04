@@ -1,0 +1,10 @@
+{
+  "at": "2026-10-04T10:38:30+09:00",
+  "firstRemoteCheck": "25 matched; unit-test.log missing",
+  "excluded": [
+    "3809039d5c0d375230f5b2066ad42f1964d68f3c3c6368f402e947926a86210c  output/steward-probe-v3/unit-test.log\n"
+  ],
+  "reason": "Prior local test result, not imported runtime code; official sync excludes ignored log.",
+  "runtimeInputsAltered": false,
+  "rerun": false
+}

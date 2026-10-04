@@ -1,0 +1,11 @@
+{
+  "path": "src/engine/plague.ts",
+  "sha256": "97f424f6a7bf85c461363eb00dbeb31b7fd600f16a3f4d4d6845a15d396531db",
+  "spans": [
+    {
+      "start": 382,
+      "end": 394,
+      "text": "    case VACANT_PRIEST_PETITION_ID: {\n      if (now.curacy === undefined || now.curacy.filledTick !== undefined) return next;\n      if (response === \"accept\") {\n        // The monastery sends a priest (its stipend now); he comes at the season's start after next.\n        next = charge(next, \"church_fee\", PLAGUE_BALANCE.monasteryStipend, [PARISH, { type: \"claim\", id: petition.id, detail: \"monastery\" }]);\n        const comes = (Math.floor(state.tick / SEASON) + PLAGUE_BALANCE.monasterySeasons) * SEASON + SEASON;\n        return withPlague(next, { ...plagueOf(next)!, curacy: { ...now.curacy, filledTick: comes, by: \"monastery\" } });\n      }\n      // A lay clerk reads the offices at once (and the bishop remembers it).\n      return setCuracy(withPlague(next, { ...now, curacy: { ...now.curacy, filledTick: state.tick, by: \"clerk\" } }), false);\n    }\n    case CASH_RENT_PETITION_ID: {\n      if (response !== \"accept\" || next.politics === undefined) return next;\n"
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "status": "READY_FOR_PARENT_FINAL_ADJUDICATION",
+  "captured_at": "2026-10-04T11:05:54+09:00",
+  "classification_unit": "사용자 막힘/교정 계약. 새 seed·새 관측·같은 파일명만으로 합치거나 가산하지 않음.",
+  "rows": [
+    {
+      "id": "R08_FOOD_SELECTION",
+      "classification": "existing_candidate_evidence_expansion",
+      "severity": "HOLD",
+      "proposed_new_confirmed_addition": null,
+      "basis": "R07 장기 미배급 원인 후보. R08 기록입력4개 원 exported 함수 반환 확인은 진단 범위 확대. 공식 내부prefix·1200틱 원인은 미입증.",
+      "owner": "엔진 배급",
+      "next_verification": "시간별 선택/전달/식사 경계와 실제 독립 계약 위반 확인"
+    },
+    {
+      "id": "FP02_STORAGE",
+      "classification": "existing_ui_gap_with_positive_flow_evidence",
+      "severity": "inherited",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "3840틱의 생산2주기·종점 재정체는 영구교착 단정을 좁힌다. 제재소→관련창고→조건변경 UI는 미검증.",
+      "owner": "렌더 공급망 / 엔진 운반",
+      "next_verification": "동일 UI에서 원인·관련 대상·가능 행동·효과 연결"
+    },
+    {
+      "id": "R08_MILL_OVERBUILD",
+      "classification": "distinct_unproven_product_candidate",
+      "severity": "HOLD",
+      "proposed_new_confirmed_addition": null,
+      "basis": "fen13/농가4,open26/농가6. 같은 현상은 기존 raw에도 있었지만 이전 발견확정과 다름. 수비 자체는 필요량·운반·수확·피해를 증명하지 않음. A01 성능이나 주택 정체 아래 자동 병합하지 않음.",
+      "owner": "엔진 자율사업·식량 공급계획",
+      "next_verification": "착수 당시 수확량/도달거리/근거리 제분능력·위치선정과 결과적 손해를 대조"
+    },
+    {
+      "id": "R08_FEN_OUTCOME",
+      "classification": "bounded_new_scenario_observation",
+      "severity": "not_defect",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "1450 인구470·금고543952는 open768·118342와 다른 경로 결과. 지형 직접 인과·더 좋은 정책·결함 임계값으로 환산하지 않음. famine 보존607 vs346(차이261),마지막25년105 vs0도 별도 관측. 분모·원인 없는 사망률/배급결함 판정은 안 함.",
+      "owner": "분석",
+      "next_verification": "실행·비교 독립검수 동결 결과 채택"
+    },
+    {
+      "id": "FP08_FIRE_GUIDANCE",
+      "classification": "existing_state_scope_expansion",
+      "severity": "medium_candidate",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "R01부터 자동 추진·재료·승인·기간 안내 요구. R07 완료후 시작 조언은 같은 교정계약 확장, R08 해결 증거 없음.",
+      "owner": "렌더 사건 조언",
+      "next_verification": "상태별 안내 실제 수정·자연 UI 검증은 별도"
+    },
+    {
+      "id": "A03_DEAD_ESTATE_HOLDER",
+      "classification": "inherited_confirmed_open",
+      "severity": "medium",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "R07 최종분류의 개인 사망 뒤 권원·점유 유지 서명 승계. 새fen 수치만으로 새 사망행위자 결함을 만들지 않음. A02 죽은청지기와 별개.",
+      "owner": "엔진 영지승계",
+      "next_verification": "생전/사후 권원·점유·행위자 계약의 후속 검사"
+    },
+    {
+      "id": "R06_FACTLINE_SEVEN",
+      "classification": "inherited_confirmed_seven",
+      "severity": "medium",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "R06 의미오류7은 그대로 승계. E 원고 검수·새경로는 런타임 수정도 신규7 재가산도 아님.",
+      "owner": "문구·렌더 계약",
+      "next_verification": "통합 여부는 작성완료와 분리"
+    },
+    {
+      "id": "LEDGER_PURPOSE3",
+      "classification": "inherited_draft_remedy_reviewed",
+      "severity": "inherited_candidate",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "R08 3분류6문구의 offline source/selector 검수 승인. 원장 본문/sourceRefs 의미구분은 이전 서명 보완이며 새 제품 결함 아님.",
+      "owner": "원고·렌더 계약",
+      "next_verification": "중립 fallback·formatter 결합은 미통합 한계"
+    },
+    {
+      "id": "CDE_HANDOFF",
+      "classification": "static_artifact_consistency",
+      "severity": "not_defect",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "C 원본·설치계획, D200/E882 작성범위와 설치를 분리. 미설치는 사용자 초안 승인에 새 필수조건이 아님.",
+      "owner": "인계 담당",
+      "next_verification": "기존 설치/통합 한계 명시 유지"
+    },
+    {
+      "id": "OTHER_OPEN",
+      "classification": "inherited_unresolved",
+      "severity": "mixed",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "SAVE01/A02/A05/B01/B02/B03/A01/PSNAP01/권리복원B04 등 기존 미해결은 다른판완주나 진단 성공으로 닫지 않음.",
+      "owner": "기존 소유자",
+      "next_verification": "개별 재현 계약 유지; 전부 수리를 회차 신규0 조건으로 추가하지 않음"
+    },
+    {
+      "id": "TOOLS_AND_METADATA",
+      "classification": "tool_or_documentation_scope",
+      "severity": "not_product_defect",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "과거 화재 save 대기·화면 탐색 실패, 이번 graft CLI 잘못된명령/누락별칭 경로의 로컬 조회 실패는 제품 결함 아님. 읽기 경로 수정 후 원자료 확인.",
+      "owner": "검수 도구",
+      "next_verification": "실패를 성공으로 소급하지 않음"
+    },
+    {
+      "id": "R08_FEN_AUDIT_REPETITION",
+      "classification": "observed_bot_attempts_not_new_defect_proof",
+      "severity": "undetermined",
+      "proposed_new_confirmed_addition": 0,
+      "basis": "비교 담당 전달: audit440시도/41참조변경; 기존 open stability에도 반복구조. attempt/refchange는 실패·피해·주의력 점유의 직접척도 아님. 기존관측 존재만으로 새독립계약 위반 가능성을 배제하지 않음.",
+      "owner": "엔진 봇·감사 계약",
+      "next_verification": "각 거절전제와 명령효과·비용·게임진행 손해를 입증할 때 별도 재심"
+    }
+  ],
+  "confirmed_new_medium_or_higher_recommended": 0,
+  "final_parent_count": null,
+  "round_complete": false,
+  "prior_round_count": 0,
+  "prior_round": "R07",
+  "holds": [
+    "R08_FOOD_SELECTION",
+    "R08_MILL_OVERBUILD"
+  ],
+  "open_findings_fixed": false,
+  "engine_execution": false,
+  "browser_execution": false,
+  "ssh_execution": false,
+  "read_only_source_lookup": "graft ask 후 실제소스. 최초 find-code는 unsupported CLI라 실패; help 후 복구.",
+  "source_spans": [
+    {
+      "path": "/Users/rexxa/fls-astra-steward/src/engine/autoplayBarnMill.ts",
+      "lines": "32–59,64–77",
+      "meaning": "예상 연간 밀/MILL_YEAR_WHEAT와 도로6칸 내 방앗간 수 비교. 당시 수요를 현재 저장에서 역산하지 않음."
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/src/engine/townAgency.ts",
+      "lines": "299–318",
+      "meaning": "mill/granary에 stuck 가점. 실제 각사업 잘못됨의 증거는 아님."
+    }
+  ],
+  "inputs": [
+    {
+      "path": "/tmp/astra-steward-r07-20261004/records/SEVERITY_FINAL_R07.json",
+      "sha256": "4354dd7e578f25f09c232b1afa62a44bb2adfa92d2db67c3b9e7d1a53ccf1b22",
+      "size": 662
+    },
+    {
+      "path": "/tmp/astra-steward-r07-20261004/records/severity-final-candidate-r07/REPORT.md",
+      "sha256": "943a7672a97a5c66c3b2a7024cd8f8ea96d4d34b171dff69cac5d01b08e48cd8",
+      "size": 7400
+    },
+    {
+      "path": "/tmp/astra-steward-r01-20261003/REPORT.md",
+      "sha256": "8158949cd4890ab372d63b08b1404fbedd9ab95cb3f473a57a8eebec0e87f79a",
+      "size": 17409
+    },
+    {
+      "path": "/tmp/astra-steward-r01-20261003/records/IDENTITY_AUDIT.md",
+      "sha256": "c5259e05dfc5ffca7e923e0337c34e277dca8360fe06ba660ed8f976da0788d6",
+      "size": 12520
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/food-choice-review/REPORT.md",
+      "sha256": "0ec579578e4603344bf2d22ce8860284ad4ba360a9bcc7191d620ad3759b61e0",
+      "size": 5217
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/storage-flow-review/REPORT.md",
+      "sha256": "2c356d39f8cc3cc00d0c815ad1c1d1e6ea4cb71a72bdf01e9d375c712c0b9425",
+      "size": 6307
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/ledger-purpose-review/REPORT.md",
+      "sha256": "59b4f3f341edcfbcd0b499317459569cd4853b8e8db2180f375588e7eb017a9a",
+      "size": 3755
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/firstplay-current/TRACKING.json",
+      "sha256": "9e9be747894375cda129c2e0e74204957d5f30afc3ebc240a713d0f5fcd8c105",
+      "size": 50111
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/status-midround/findings.json",
+      "sha256": "c81ecf5e163eebad81b286883865f9762cdda02c8102a7433d7027f009fc8abc",
+      "size": 8716
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/fen-run-lifecycle/END_PARENT_CHECK.json",
+      "sha256": "81c6c12dc8f776ae2c4d117073e67513711e23b7d5a6152dac51e89770de8c75",
+      "size": 384
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/long-run/seed3-fen-fixed-growth/summary.json",
+      "sha256": "96162b230eecd1749c5dfef4ec253297fa07f45b44dc37107f00eefbfb7584e5",
+      "size": 9539
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/inherited/R07/long-run/seed3-open-fixed-growth/summary.json",
+      "sha256": "4f82b150f5d4d450529840c2940d8582e19079645f371cb850871a13523bcccd",
+      "size": 9562
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/fen-comparison-design/REPORT.md",
+      "sha256": "f441b639b3ebbaa369e157a3b024f20b6ebe8c312538f1b770f41f8b522624c2",
+      "size": 5827
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/src/engine/autoplayBarnMill.ts",
+      "sha256": "73e72067dbdb59d44286e97778a9e0c095e5ff5ef9c18dcd3cc4580efe60ed33",
+      "size": 5266
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-steward/src/engine/townAgency.ts",
+      "sha256": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d",
+      "size": 41550
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/fen-run-review/REPORT.md",
+      "sha256": "01787ecc6bd191f594570bb9b7b6dad8751c6e4f7a954a2a8471b353a272839d",
+      "size": 6799
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/fen-run-review/REVIEW.json",
+      "sha256": "281699bf8529707ee6642c7f8b62f6c8489b1d098cac0c0947b3631531ec557d",
+      "size": 1288
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/records/fen-cash-audit/REPORT.md",
+      "sha256": "67ef50a44b2a48973f3efe6352018ba4de72ffe05c2c09f62b212b40f23d9203",
+      "size": 5893
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/analysis/fen-comparison-r08/CANDIDATES.json",
+      "sha256": "07f2476b6bb09144a115579be961e3056a36733c6ef7cdfccdeffac30fe6d546",
+      "size": 1132
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/analysis/fen-comparison-r08/BUILDING_OBSERVATIONS.json",
+      "sha256": "d4c107d8da8f932807fcd7806a71c21e2f891cd724cfb06dc31d1ff0a11e2cf2",
+      "size": 166730
+    },
+    {
+      "path": "/tmp/astra-steward-r08-20261004/analysis/fen-comparison-r08/REPORT.md",
+      "sha256": "793cd3f0da051952fddeee799ed72532fed672db81c5aab9484cc7e0ebc17aee",
+      "size": 9280
+    }
+  ],
+  "fen_completion": "PASS_BOUNDED_150_YEAR_COMPLETION independent review; 232 checks, 25 files, 38 logged codec checks; not full invariants",
+  "cash_attribution": "final signed-net difference425610d=estate_income417024+other8586. Not terrain profit; source-less old rollup408465 unallocated.",
+  "comparison_handoff": "r06_registry_merge frozen REPORT and13manifest checked; no additional confirmed medium+; mill HOLD agreed"
+}

@@ -1,0 +1,165 @@
+{
+  "status": "POST_PETITION_LOCK_AND_AUTONOMOUS_INSPECTOR_OBSERVED",
+  "fixtureSha256": "5a3560012282942253fa7699704dc1eb7147405ee3d755598b50dc7088644961",
+  "tick": 100000,
+  "seed": 1,
+  "matchedBuildings": [
+    {
+      "id": "construction-site-000039",
+      "kind": "storehouse",
+      "tx": 41,
+      "ty": 45,
+      "workers": 2,
+      "inventory": {
+        "logs": 92,
+        "timber": 4,
+        "malt": 0
+      },
+      "reserved": {
+        "logs": 8
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    }
+  ],
+  "receipt": {
+    "id": "receipt-98",
+    "tick": 49764,
+    "actor": "merchants",
+    "what": "storehouse",
+    "tx": 41,
+    "ty": 45,
+    "siteId": "construction-site-000039",
+    "planner": "storage",
+    "rank": 15,
+    "reasons": [
+      {
+        "name": "need",
+        "value": 46
+      },
+      {
+        "name": "cost",
+        "value": -6
+      },
+      {
+        "name": "plan",
+        "value": 4
+      },
+      {
+        "name": "access",
+        "value": -2
+      },
+      {
+        "name": "land",
+        "value": -2
+      }
+    ],
+    "score": 40,
+    "cost": 240,
+    "subsidy": 0,
+    "loan": 0,
+    "decisionIds": [
+
+    ],
+    "sites": {
+      "count": 1,
+      "planTx": 41,
+      "planTy": 45,
+      "reasons": [
+        {
+          "name": "access",
+          "value": -2
+        },
+        {
+          "name": "land",
+          "value": -2
+        },
+        {
+          "name": "plan",
+          "value": 4
+        }
+      ],
+      "runnerUp": null
+    },
+    "chance": {
+      "project": {
+        "permille": 1000,
+        "of": 1,
+        "temperament": "cautious",
+        "place": 1
+      }
+    }
+  },
+  "scroll": [
+    {
+      "at": "2026-10-03T20:07:05.302Z",
+      "elapsedSeconds": 39.799,
+      "kind": "scroll-before",
+      "geometry": [
+        {
+          "tag": "DIV",
+          "cls": "command-popover autoplay-control",
+          "top": 0,
+          "client": 644,
+          "height": 696,
+          "rect": {
+            "x": 902,
+            "y": 74,
+            "width": 360,
+            "height": 648
+          }
+        },
+        {
+          "tag": "DIV",
+          "cls": "slot-panel inspector-slot",
+          "top": 0,
+          "client": 458,
+          "height": 905,
+          "rect": {
+            "x": 932,
+            "y": 76,
+            "width": 340,
+            "height": 460
+          }
+        }
+      ]
+    },
+    {
+      "at": "2026-10-03T20:07:06.601Z",
+      "elapsedSeconds": 41.098,
+      "kind": "scroll-after",
+      "geometry": [
+        {
+          "tag": "DIV",
+          "cls": "command-popover autoplay-control",
+          "top": 0,
+          "client": 644,
+          "height": 696
+        },
+        {
+          "tag": "DIV",
+          "cls": "slot-panel inspector-slot",
+          "top": 447,
+          "client": 458,
+          "height": 905
+        }
+      ],
+      "drag": {
+        "x": 1263,
+        "fromY": 200,
+        "toY": 510
+      }
+    }
+  ],
+  "policyChanged": false,
+  "marriageSubmitted": false,
+  "receiptExistsInSave": true,
+  "receiptVisibleInInspectedPanel": false,
+  "limits": [
+    "Only selected autonomous storehouse inspector",
+    "No claim all UI surfaces lack receipts",
+    "Source and saved state linkage; no live store read",
+    "Scrollbar drag hit-test not separately captured; scroll geometry confirms movement"
+  ]
+}

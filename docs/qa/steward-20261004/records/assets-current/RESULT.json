@@ -1,0 +1,36 @@
+{
+  "verdict": "PASS_CURRENT_BYTES_AND_LEDGER_NO_CHANGE",
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "ledgerRows": 5885,
+  "planRows": 858,
+  "sourceFilesHashed": 858,
+  "sourceBytes": 85287352,
+  "ledgerSHA": "ef4ca1eec7c86319dc62aad21ee9a5cdb73dc90115ff3939a2cc4e4b768d58f5",
+  "planSHA": "8a1fc8484f1fe0498d104231eaece0c44c7840e843be2f4c4f1753bdbe663e17",
+  "sameLedgerAsR07": true,
+  "samePlanAsR07": true,
+  "ledgerStatusCounts": {
+    "confirmed": 4365,
+    "rejected": 1022,
+    "superseded": 338,
+    "rework_pending": 3,
+    "retired": 157
+  },
+  "planActions": {
+    "pending_existing_plan": 661,
+    "add_new_approved": 197
+  },
+  "confirmedUninstalled": 2221,
+  "excludedConfirmedUninstalled": 1363,
+  "partitionComplete": true,
+  "fallbackKeys": 197,
+  "approved44": 44,
+  "plannedTargetExisting": 1,
+  "issues": [
+
+  ],
+  "installed": false,
+  "engineRun": false,
+  "sourceModified": false,
+  "scope": "Current source bytes and ledger only; not pixel quality, renderer selection or runtime installation"
+}

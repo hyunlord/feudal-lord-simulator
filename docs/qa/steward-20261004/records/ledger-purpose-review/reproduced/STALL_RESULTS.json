@@ -1,0 +1,930 @@
+{
+  "cases": 36,
+  "rows": [
+    {
+      "id": "positive0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:2"
+            }
+          ]
+        }
+      },
+      "expected": "stall_fee.r06purpose.alehouse",
+      "actual": "stall_fee.r06purpose.alehouse"
+    },
+    {
+      "id": "amount0-0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 0,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:2"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount0-1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": -1,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:2"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount0-2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 1.5,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:2"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount0-3",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 9007199254740992,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:2"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail0-0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:0"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail0-1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:0"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail0-2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:1.5"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail0-3",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:01"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail0-4",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4\n"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail0-5",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "unknown:1"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "blank0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": " ",
+              "detail": "alehouse:2"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "positive1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            }
+          ]
+        }
+      },
+      "expected": "stall_fee.r06purpose.market",
+      "actual": "stall_fee.r06purpose.market"
+    },
+    {
+      "id": "amount1-0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 0,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount1-1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": -1,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount1-2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 1.5,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount1-3",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 9007199254740992,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail1-0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:0"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail1-1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:0"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail1-2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:1.5"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail1-3",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:01"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail1-4",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4\n"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail1-5",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "unknown:1"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "blank1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": " ",
+              "detail": "stalls:4"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "positive2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": "stall_fee.r06purpose.market",
+      "actual": "stall_fee.r06purpose.market"
+    },
+    {
+      "id": "amount2-0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 0,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount2-1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": -1,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount2-2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 1.5,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "amount2-3",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 9007199254740992,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail2-0",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:0"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail2-1",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:0"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail2-2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "alehouse:1.5"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail2-3",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:01"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail2-4",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "stalls:4\n"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "detail2-5",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": "building-original",
+              "detail": "unknown:1"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    },
+    {
+      "id": "blank2",
+      "input": {
+        "status": "known",
+        "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+        "campaignId": "campaign-test",
+        "entry": {
+          "id": "ledger-000001",
+          "tick": 1,
+          "account": "cash",
+          "category": "stall_fee",
+          "amount": 12,
+          "sourceRefs": [
+            {
+              "type": "building",
+              "id": " ",
+              "detail": "stalls:4"
+            },
+            {
+              "type": "right",
+              "id": "market-charter",
+              "detail": "stall_fee:500"
+            }
+          ]
+        }
+      },
+      "expected": null,
+      "actual": null
+    }
+  ],
+  "engineExecuted": false
+}

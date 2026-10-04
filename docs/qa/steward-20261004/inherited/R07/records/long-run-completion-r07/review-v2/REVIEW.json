@@ -1,0 +1,198 @@
+{
+  "verdict": "PASS_BOUNDED_CHECKER_V2",
+  "checker_sha256": "5d669b28e48b5ee739b4f61795411d684ca842714f313e56faf7fa6a33df9a0d",
+  "actual_seed3_reviewed": false,
+  "positive_cases": 3,
+  "negative_cases": 11,
+  "all_expected_guards_verified": true,
+  "calibration_matches": true,
+  "original_inputs_unchanged": true,
+  "cases": [
+    {
+      "id": "baseline",
+      "expected_failed_guards": [
+
+      ],
+      "actual_failed_guards": [
+
+      ],
+      "exit": 0,
+      "as_expected": true
+    },
+    {
+      "id": "duplicate_final",
+      "expected_failed_guards": [
+        "actual_start_final_hash"
+      ],
+      "actual_failed_guards": [
+        "actual_start_final_hash"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "wrong_start_seed",
+      "expected_failed_guards": [
+        "start_identity"
+      ],
+      "actual_failed_guards": [
+        "actual_start_final_hash",
+        "start_identity"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "wrong_start_policy",
+      "expected_failed_guards": [
+        "actual_start_final_controls"
+      ],
+      "actual_failed_guards": [
+        "actual_start_final_hash",
+        "actual_start_final_controls"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "wrong_scenario",
+      "expected_failed_guards": [
+        "scenario_identity"
+      ],
+      "actual_failed_guards": [
+        "actual_start_final_hash",
+        "scenario_identity"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "nonhex_equal_hashes",
+      "expected_failed_guards": [
+        "required_hashes"
+      ],
+      "actual_failed_guards": [
+        "required_hashes"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "positive_extra_diagnostic",
+      "expected_failed_guards": [
+
+      ],
+      "actual_failed_guards": [
+
+      ],
+      "exit": 0,
+      "as_expected": true
+    },
+    {
+      "id": "positive_reported_finding",
+      "expected_failed_guards": [
+
+      ],
+      "actual_failed_guards": [
+
+      ],
+      "exit": 0,
+      "as_expected": true
+    },
+    {
+      "id": "changed_final_cash",
+      "expected_failed_guards": [
+        "actual_start_final_hash"
+      ],
+      "actual_failed_guards": [
+        "actual_start_final_hash"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "missing_hashes",
+      "expected_failed_guards": [
+        "required_hashes"
+      ],
+      "actual_failed_guards": [
+        "required_hashes",
+        "actual_start_final_hash"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "wrong_final_controls",
+      "expected_failed_guards": [
+        "actual_start_final_controls"
+      ],
+      "actual_failed_guards": [
+        "actual_start_final_hash",
+        "actual_start_final_controls"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "final_only_codec_log",
+      "expected_failed_guards": [
+        "scheduled_save_logs"
+      ],
+      "actual_failed_guards": [
+        "actual_start_final_hash",
+        "scheduled_save_logs"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "wrong_annual_calendar",
+      "expected_failed_guards": [
+        "annual_calendar"
+      ],
+      "actual_failed_guards": [
+        "annual_calendar"
+      ],
+      "exit": 1,
+      "as_expected": true
+    },
+    {
+      "id": "wrong_run_metadata",
+      "expected_failed_guards": [
+        "run_config_identity"
+      ],
+      "actual_failed_guards": [
+        "run_config_identity",
+        "config_metadata_summary"
+      ],
+      "exit": 1,
+      "as_expected": true
+    }
+  ],
+  "input_pins": [
+    {
+      "path": "/private/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/check.rb",
+      "sha256": "5d669b28e48b5ee739b4f61795411d684ca842714f313e56faf7fa6a33df9a0d"
+    },
+    {
+      "path": "/private/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/CHECKER_SCOPE.md",
+      "sha256": "dccfd0b6db1d68709482d2e0ea6a89617e9f54fac43236de35d0ce430b508770"
+    },
+    {
+      "path": "/private/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/CALIBRATION_N02_V2.json",
+      "sha256": "55d685fb329b2c724cefb778751d2b529ce3f103c5aefb04dd2a90e627b12d9c"
+    },
+    {
+      "path": "/private/tmp/astra-steward-r07-20261004/records/long-run-completion-r07/review/SHA256SUMS",
+      "sha256": "b2d5b7819d86df8bfb66fbe1b0786ad04d3e5f3e3bb1edf24fe484eafc9eeb36"
+    }
+  ],
+  "limits": [
+    "No engine, browser, remote or real codec execution",
+    "Synthetic exit-zero file is calibration input, not DGX evidence",
+    "Summary population/treasury/death metrics are displayed not independently derived",
+    "Header checksum and intermediate saves not independently decoded",
+    "Pinned fresh fixed open_field 150-year protocol only"
+  ]
+}

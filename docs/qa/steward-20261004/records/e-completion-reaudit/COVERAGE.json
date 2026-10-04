@@ -1,0 +1,3148 @@
+{
+  "status": "E_HISTORY_GAPS_RESOLVED_LEDGER_SEMANTIC_REVIEW",
+  "historyCount": 182,
+  "ledgerCount": 46,
+  "canonicalCount": 650,
+  "separateCount": 206,
+  "inheritedAgeCount": 20,
+  "history": [
+    {
+      "template": "decision.bundle",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "decision.famine_response",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "decision.petition_response",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "war.messenger",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/war-plague-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "plague.rumour",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/war-plague-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "plague.arrived",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/war-plague-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "plague.priest_died",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/fixed-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "plague.priest_filled",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "plague.new_graves",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/current-param-candidates/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "plague.empty_streets",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/current-param-candidates/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "plague.abandoned_fields",
+      "canonical": 9,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 8,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "plague.ordinance",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "plague.resettlement",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "plague.second",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/war-plague-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "plague.second_ended",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "plague.unanswered",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "reorg.wage_competition",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/reorg-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.textile_street",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.alehouse_boom",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.petitions_surge",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.guild_founded",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/reorg-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.weavers_left",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/reorg-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.overlord_warning",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/reorg-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.poll_tax",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "reorg.rebellion_rumour",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "reorg.autonomy_request",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/reorg-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "reorg.charter",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "reorg.unanswered",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "legacy.mayor_demand",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/current-param-candidates/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "legacy.royal_tax_envoy",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-government-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.succession",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "lord.wardship_begun",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "lord.wardship_ended",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/office-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.heir_seated",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "legacy.royal_subsidy",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-government-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.city_seal",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-government-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.charter_sealed",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-government-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.charter_refused",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.family_departed",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-government-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.family_stayed",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-government-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.legacy_record",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "legacy.last_market",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.staple",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-town-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.guild_dispute",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-town-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.market_fire",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-town-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.church_rebuilding",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-town-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.nave_rebuilt",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-town-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.deposition",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/legacy-town-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "legacy.unanswered",
+      "canonical": 7,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 6,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "war.beacon",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/war-plague-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "war.raid",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "war.conscripts_left",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "war.conscripts_returned",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "war.favour_lost",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "war.licence",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/war-plague-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "war.unanswered",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "faction.leader_succeeded",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/office-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "petition.representative_replaced",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.person_died",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.steward_died",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/office-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "stewardship.began",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/office-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "stewardship.oversight",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.audit_mode",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.rules",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.season",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "manor.petition",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "manor.petition_answered",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "manor.petition_lapsed",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.precedent",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.steward_decided",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.escalated",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.brought",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.lord_decided",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.lapsed",
+      "canonical": 7,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 6,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.audit_clean",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.audit_found",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "stewardship.audit_answered",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "faction.relation",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "decline.entered",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "decline.recovered",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "house.withdrew",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/movement-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "house.arrived",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/movement-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "house.resettled",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/movement-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "milestone.chapter_start",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/milestone-context/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "decision.market_town",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "decision.stone_town",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "decision.rebuild",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "decision.wall_expand",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "decision.drainage",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-wave2-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "decision.estate_policy",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "decision.project_subsidy",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "decision.market_dues",
+      "canonical": 6,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 5,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "negotiation.offered",
+      "canonical": 6,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 5,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "negotiation.accepted",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "negotiation.countered",
+      "canonical": 6,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 5,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "negotiation.rejected",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/movement-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "negotiation.withdrawn",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "promise.made",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "promise.kept",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "promise.broken",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "marriage.contracted",
+      "canonical": 6,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 5,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "marriage.bride_arrived",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.child_born",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.brother_in_law_born",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.father_ill",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.will_change",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.will_dropped",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.father_died",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.inherited",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/event-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.lost",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.deferred_void",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "marriage.jointure_settled",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "marriage.contested",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/marriage-life-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "estate.claim_raised",
+      "canonical": 6,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 5,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.suit_filed",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.suit_stage",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.suit_patron",
+      "canonical": 6,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 5,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.suit_judged",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.possession_enforced",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.title_changed",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "estate.possession_changed",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "agency.subsidy_refused",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "agency.timber_ordered",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/movement-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "agency.project_started",
+      "canonical": 6,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 5,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "drainage.done",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "event.rumour",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "event.sign",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "event.arrived",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "event.recovered",
+      "canonical": 7,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 6,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "era.entered",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "milestone.first_building",
+      "canonical": 11,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 10,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "milestone.market_town",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/milestone-context/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "milestone.stone_town",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/fixed-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "milestone.first_l4",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/milestone-context/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "milestone.lots",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "milestone.chapter_end",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/milestone-context/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "ledger.season",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "ledger.population",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "ledger.treasury_turn",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "ledger.l4",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/fixed-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "ledger.departures",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "ledger.rollup",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.move_in",
+      "canonical": 4,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+        {
+          "headline": "{eventYear}년, 가구가 새 집에 들었다.",
+          "ids": [
+            "person.move_in.era.early",
+            "person.move_in.era.middle",
+            "person.move_in.era.late"
+          ]
+        }
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-transitions-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "person.level_up",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.level_down",
+      "canonical": 5,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.leaving",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.left",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.resettled",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.burnt",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.rebuilt",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.emptied",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-context-coverage/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.stayed",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.hungry",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.fed",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.water",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.water_lost",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-life-revised/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.born",
+      "canonical": 9,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 6,
+      "identicalTextDifferentConditions": [
+        {
+          "headline": "{eventYear}년, 아이가 태어났다.",
+          "ids": [
+            "person.born.era.early",
+            "person.born.era.middle",
+            "person.born.era.late"
+          ]
+        }
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.married",
+      "canonical": 4,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+        {
+          "headline": "{eventYear}년, 혼인하여 가구를 이루었다.",
+          "ids": [
+            "person.married.era.early",
+            "person.married.era.middle",
+            "person.married.era.late"
+          ]
+        }
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-transitions-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "person.arrived",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-context-coverage/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.came_of_age",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/fixed-context-revised/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "person.occupation",
+      "canonical": 10,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 9,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.reeve",
+      "canonical": 1,
+      "contextDrafts": 3,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-context-coverage/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.steward",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-context-coverage/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.died",
+      "canonical": 7,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 6,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.left_town",
+      "canonical": 4,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+        {
+          "headline": "{eventYear}년, 도시를 떠났다.",
+          "ids": [
+            "person.left_town.era.early",
+            "person.left_town.era.middle",
+            "person.left_town.era.late"
+          ]
+        }
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-transitions-context/PROPOSAL.json"
+      ]
+    },
+    {
+      "template": "person.bailiff",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-context-coverage/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.fell_ill",
+      "canonical": 1,
+      "contextDrafts": 0,
+      "ageDrafts": 4,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "INHERITED_AGE_DRAFT_PRESENT",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.recovered",
+      "canonical": 1,
+      "contextDrafts": 0,
+      "ageDrafts": 4,
+      "distinctConditionalHeadlines": 4,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "INHERITED_AGE_DRAFT_PRESENT",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.injured",
+      "canonical": 1,
+      "contextDrafts": 0,
+      "ageDrafts": 3,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "INHERITED_AGE_DRAFT_PRESENT",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.healed",
+      "canonical": 1,
+      "contextDrafts": 0,
+      "ageDrafts": 3,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "INHERITED_AGE_DRAFT_PRESENT",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.expecting",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/person-context-coverage/PROPOSALS.json"
+      ]
+    },
+    {
+      "template": "person.pilgrimage",
+      "canonical": 1,
+      "contextDrafts": 0,
+      "ageDrafts": 3,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "INHERITED_AGE_DRAFT_PRESENT",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.returned",
+      "canonical": 1,
+      "contextDrafts": 0,
+      "ageDrafts": 3,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "INHERITED_AGE_DRAFT_PRESENT",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "person.grew",
+      "canonical": 1,
+      "contextDrafts": 2,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "REVIEWED_CONTEXT_DRAFT_PRESENT",
+      "sources": [
+        "records/milestone-context/ADDITIONS.json"
+      ]
+    },
+    {
+      "template": "person.shrank",
+      "canonical": 2,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 1,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "registry.offered",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "registry.answered",
+      "canonical": 7,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 6,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "registry.lapsed",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "registry.invalid",
+      "canonical": 4,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 3,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "registry.term_began",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "registry.term_ended",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    },
+    {
+      "template": "manor.petition_precedent",
+      "canonical": 3,
+      "contextDrafts": 0,
+      "ageDrafts": 0,
+      "distinctConditionalHeadlines": 2,
+      "identicalTextDifferentConditions": [
+
+      ],
+      "status": "CANONICAL_CONDITION_AND_RETAINED_FACTLINE",
+      "sources": [
+
+      ]
+    }
+  ],
+  "ledger": [
+    {
+      "category": "opening_balance",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "market_sale",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "construction",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "upkeep",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "toll",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "stall_fee",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "rent",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "mill_toll",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "demesne_sale",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "project",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "famine_relief",
+      "canonical": 4,
+      "enabled": 4,
+      "disabled": 0,
+      "sourceSpecific": [
+        "famine_relief.in_kind"
+      ],
+      "status": "MONETARY_AND_PRODUCER_CONTEXT"
+    },
+    {
+      "category": "famine_sale",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "charter_fee",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "restoration_fee",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "house_change",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "wool_levy",
+      "canonical": 4,
+      "enabled": 4,
+      "disabled": 0,
+      "sourceSpecific": [
+        "wool_levy.in_kind"
+      ],
+      "status": "MONETARY_AND_PRODUCER_CONTEXT"
+    },
+    {
+      "category": "war_exemption",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "war_subsidy",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "war_loan",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "war_tax",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "raid_loot",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "purveyance",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "refugee_fee",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "murage",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "wages",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "statute_fine",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "church_fee",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "entry_fine",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "fulling_toll",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "ulnage",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "cloth_toll",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "poll_tax",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "fee_farm",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "royal_subsidy",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "succession_relief",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "legacy_endowment",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "church_rebuilding",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "timber_purchase",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "project_subsidy",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "lawsuit",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+        "lawsuit.r06context.filed",
+        "lawsuit.r06context.evidence",
+        "lawsuit.r06context.hearing",
+        "lawsuit.r06context.enforcing"
+      ],
+      "status": "MONETARY_AND_PRODUCER_CONTEXT"
+    },
+    {
+      "category": "marriage_portion",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "promise_payment",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "estate_income",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "audit_recovery",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "registry_settlement",
+      "canonical": 4,
+      "enabled": 3,
+      "disabled": 1,
+      "sourceSpecific": [
+
+      ],
+      "status": "MONETARY_DIRECTION_AND_ACCOUNT_CONTEXT_ONLY"
+    },
+    {
+      "category": "instalment",
+      "canonical": 6,
+      "enabled": 5,
+      "disabled": 1,
+      "sourceSpecific": [
+        "instalment.arrears_added",
+        "instalment.arrears_reduced"
+      ],
+      "status": "MONETARY_AND_PRODUCER_CONTEXT"
+    }
+  ],
+  "duplicateIds": [
+
+  ],
+  "undeclaredCanonicalSlots": [
+
+  ],
+  "inheritedAgeFiles": [
+    {
+      "path": "records/age-context-copy-proposal/SOURCES.json",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/ADDITIONS.json",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/verify.rb",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/schema_check.rb",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/README.md",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/NATURAL_SAMPLES.json",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/VALIDATION.json",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/PROPOSAL.schema.json",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/FIXTURE_RESULTS.json",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/SHA256SUMS",
+      "same": true
+    },
+    {
+      "path": "records/age-context-copy-proposal/build.rb",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-adapter-proposal/SOURCES.json",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-adapter-proposal/verify.rb",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-adapter-proposal/README.md",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-adapter-proposal/adapter.rb",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-adapter-proposal/VALIDATION.json",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-adapter-proposal/SHA256SUMS",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-contract/EXAMPLES.json",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-contract/CONTRACT.md",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-contract/VALIDATION.json",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-contract/derive_examples.rb",
+      "same": true
+    },
+    {
+      "path": "records/historical-age-contract/SHA256SUMS",
+      "same": true
+    }
+  ]
+}

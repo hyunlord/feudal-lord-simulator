@@ -1,0 +1,518 @@
+{
+  "safeTickBoundaryPositiveCases": 2,
+  "status": "PASS_SUPPORTED_SCHEMA_SUBSET",
+  "negativeCases": [
+    {
+      "id": "proposal.fields.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fallback.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.field.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.when.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.op_type",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.in_empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fact_line.missing",
+      "rejected": true
+    },
+    {
+      "id": "proposal.slot.unapproved",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.domain",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.provenance",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.unverified",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "reorg.textile_street.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.domain",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.provenance",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.unverified",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "reorg.alehouse_boom.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.domain",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.provenance",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.unverified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "legacy.charter_refused.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.domain",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.provenance",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.unverified",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "legacy.last_market.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.domain",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.provenance",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.unverified",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.market_town.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.domain",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.provenance",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.unverified",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.stone_town.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.domain",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.provenance",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.unverified",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.rebuild.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.domain",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.provenance",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.unverified",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.wall_expand.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.domain",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.provenance",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.unverified",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.unsafe_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.fractional_tick",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.missing_template",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.empty_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.other_sourceHead",
+      "rejected": true
+    },
+    {
+      "id": "decision.drainage.unknown_with_facts",
+      "rejected": true
+    }
+  ],
+  "negativeCount": 127,
+  "knownPositiveCount": 22,
+  "unknownEmptyAccepted": true,
+  "scope": "JSON schema keywords used in these documents executed by explicit Ruby subset validator; not full JSON Schema conformance suite or provenance proof"
+}

@@ -1,0 +1,1268 @@
+{
+  "scope": "one completed seed3 fixed growth run; recorded persons only; no stability or causal comparison",
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "completedTarget": true,
+  "tick": 600000,
+  "exit": "0",
+  "seconds": 988,
+  "manifestEntriesVerified": 22,
+  "inputFileCount": 23,
+  "annualCount": 150,
+  "continuousPeriods": true,
+  "controlsFrozen": true,
+  "saveChecks": {
+    "count": 38,
+    "allExact": true
+  },
+  "commands": {
+    "rows": 324,
+    "annualAttempted": 324,
+    "changed": 210,
+    "annualChanged": 210,
+    "asked": 202,
+    "own": 8,
+    "perYear": 2.16,
+    "byKind": {
+      "suit": {
+        "attempted": 116,
+        "referenceChanged": 2,
+        "types": {
+          "file_suit": 1,
+          "add_suit_evidence": 114,
+          "seek_suit_patron": 1
+        }
+      },
+      "estate_petition": {
+        "attempted": 166,
+        "referenceChanged": 166,
+        "types": {
+          "answer_estate_petition": 166
+        }
+      },
+      "petition": {
+        "attempted": 21,
+        "referenceChanged": 21,
+        "types": {
+          "petition_response": 21
+        }
+      },
+      "marriage_offer": {
+        "attempted": 1,
+        "referenceChanged": 1,
+        "types": {
+          "propose_marriage": 1
+        }
+      },
+      "counter": {
+        "attempted": 1,
+        "referenceChanged": 1,
+        "types": {
+          "answer_counter": 1
+        }
+      },
+      "promise": {
+        "attempted": 5,
+        "referenceChanged": 5,
+        "types": {
+          "keep_promise": 5
+        }
+      },
+      "town_request": {
+        "attempted": 11,
+        "referenceChanged": 11,
+        "types": {
+          "confirm_palisade_proclamation": 1,
+          "order_timber": 9,
+          "confirm_stone_town_proclamation": 1
+        }
+      },
+      "registry": {
+        "attempted": 2,
+        "referenceChanged": 2,
+        "types": {
+          "answer_registry_offer": 2
+        }
+      },
+      "famine": {
+        "attempted": 1,
+        "referenceChanged": 1,
+        "types": {
+          "famine_response": 1
+        }
+      }
+    },
+    "registrySelections": [
+      {
+        "tick": 40015,
+        "occurrenceId": "registry:ck_evt_005::40",
+        "entryId": "ck_evt_005",
+        "enabled": [
+          "a",
+          "b",
+          "c"
+        ],
+        "selection": {
+          "choiceId": "c",
+          "original": "c",
+          "preservingEnabled": [
+            "c"
+          ],
+          "reason": "original_preserves_controls"
+        },
+        "originalCommand": {
+          "type": "answer_registry_offer",
+          "occurrenceId": "registry:ck_evt_005::40",
+          "choiceId": "c"
+        }
+      },
+      {
+        "tick": 69031,
+        "occurrenceId": "registry:ck_evt_005::69",
+        "entryId": "ck_evt_005",
+        "enabled": [
+          "a",
+          "b",
+          "c"
+        ],
+        "selection": {
+          "choiceId": "c",
+          "original": "c",
+          "preservingEnabled": [
+            "c"
+          ],
+          "reason": "original_preserves_controls"
+        },
+        "originalCommand": {
+          "type": "answer_registry_offer",
+          "occurrenceId": "registry:ck_evt_005::69",
+          "choiceId": "c"
+        }
+      }
+    ]
+  },
+  "deaths": {
+    "uniqueIds": 2904,
+    "byCause": {
+      "age": 2127,
+      "famine": 346,
+      "famine_year": 11,
+      "fire": 7,
+      "plague": 413
+    },
+    "annualDeltaSum": 2904,
+    "cumulativeYearMatches": 150,
+    "cumulativeYearMismatches": [
+
+    ],
+    "historyRows": 2680,
+    "historyUniqueSubjects": 2680,
+    "annualHistorySum": 2680,
+    "noExactTickByCause": {
+      "age": 224
+    },
+    "peaks": {
+      "age": {
+        "total": 2127,
+        "maxAnnual": 27,
+        "peakYears": [
+          1364,
+          1409,
+          1419
+        ],
+        "activeYears": 149,
+        "historyMatched": 1903
+      },
+      "famine": {
+        "total": 346,
+        "maxAnnual": 28,
+        "peakYears": [
+          1365
+        ],
+        "activeYears": 64,
+        "historyMatched": 346
+      },
+      "famine_year": {
+        "total": 11,
+        "maxAnnual": 6,
+        "peakYears": [
+          1316
+        ],
+        "activeYears": 4,
+        "historyMatched": 11
+      },
+      "plague": {
+        "total": 413,
+        "maxAnnual": 182,
+        "peakYears": [
+          1348
+        ],
+        "activeYears": 3,
+        "historyMatched": 413
+      },
+      "fire": {
+        "total": 7,
+        "maxAnnual": 4,
+        "peakYears": [
+          1391
+        ],
+        "activeYears": 2,
+        "historyMatched": 7
+      }
+    }
+  },
+  "population": {
+    "first768Year": 1346,
+    "terminal768BoundaryCount": 25,
+    "people": 775,
+    "manor": 7,
+    "nonManor": 768
+  },
+  "scalarStats": {
+    "population": {
+      "min": 56,
+      "max": 768,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1346,
+      "final": 768,
+      "sum": 90741
+    },
+    "treasury": {
+      "min": 1,
+      "max": 118342,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1450,
+      "final": 118342,
+      "sum": 6248763
+    },
+    "timber": {
+      "min": 0,
+      "max": 80,
+      "firstMinYear": 1305,
+      "firstMaxYear": 1301,
+      "final": 0,
+      "sum": 185
+    },
+    "foodReserveTicks": {
+      "min": 0,
+      "max": 11140,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1323,
+      "final": 5662,
+      "sum": 863229
+    },
+    "houseRecords": {
+      "min": 4,
+      "max": 24,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1340,
+      "final": 24,
+      "sum": 3302
+    },
+    "inhabited": {
+      "min": 4,
+      "max": 24,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1340,
+      "final": 24,
+      "sum": 3282
+    },
+    "livingTownPeople": {
+      "min": 56,
+      "max": 768,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1346,
+      "final": 768,
+      "sum": 90668
+    },
+    "receiptCount": {
+      "min": 7,
+      "max": 228,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1426,
+      "final": 228,
+      "sum": 27105
+    },
+    "attemptedCommands": {
+      "min": 1,
+      "max": 117,
+      "firstMinYear": 1312,
+      "firstMaxYear": 1301,
+      "final": 1,
+      "sum": 324
+    },
+    "changedStateCommands": {
+      "min": 1,
+      "max": 8,
+      "firstMinYear": 1312,
+      "firstMaxYear": 1309,
+      "final": 1,
+      "sum": 210
+    },
+    "asked": {
+      "min": 1,
+      "max": 4,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1303,
+      "final": 1,
+      "sum": 202
+    },
+    "own": {
+      "min": 0,
+      "max": 5,
+      "firstMinYear": 1302,
+      "firstMaxYear": 1309,
+      "final": 0,
+      "sum": 8
+    },
+    "pauseTicks": {
+      "min": 0,
+      "max": 4,
+      "firstMinYear": 1301,
+      "firstMaxYear": 1349,
+      "final": 0,
+      "sum": 102
+    }
+  },
+  "periods": [
+    {
+      "from": 1300,
+      "to": 1324,
+      "population": 468,
+      "treasury": 815,
+      "bread": 107,
+      "foodReserveTicks": 2931,
+      "houses": 18,
+      "attempted": 178,
+      "changed": 64,
+      "asked": 56,
+      "deaths": {
+        "age": 128,
+        "famine": 105,
+        "famine_year": 11,
+        "plague": 0,
+        "fire": 0
+      }
+    },
+    {
+      "from": 1325,
+      "to": 1349,
+      "population": 455,
+      "treasury": 10236,
+      "bread": 699,
+      "foodReserveTicks": 5084,
+      "houses": 24,
+      "attempted": 35,
+      "changed": 35,
+      "asked": 35,
+      "deaths": {
+        "age": 331,
+        "famine": 47,
+        "famine_year": 0,
+        "plague": 330,
+        "fire": 3
+      }
+    },
+    {
+      "from": 1350,
+      "to": 1374,
+      "population": 654,
+      "treasury": 30830,
+      "bread": 514,
+      "foodReserveTicks": 8386,
+      "houses": 24,
+      "attempted": 28,
+      "changed": 28,
+      "asked": 28,
+      "deaths": {
+        "age": 371,
+        "famine": 89,
+        "famine_year": 0,
+        "plague": 83,
+        "fire": 0
+      }
+    },
+    {
+      "from": 1375,
+      "to": 1399,
+      "population": 640,
+      "treasury": 60084,
+      "bread": 630,
+      "foodReserveTicks": 3609,
+      "houses": 24,
+      "attempted": 30,
+      "changed": 30,
+      "asked": 30,
+      "deaths": {
+        "age": 353,
+        "famine": 59,
+        "famine_year": 0,
+        "plague": 0,
+        "fire": 4
+      }
+    },
+    {
+      "from": 1400,
+      "to": 1424,
+      "population": 759,
+      "treasury": 88074,
+      "bread": 796,
+      "foodReserveTicks": 3818,
+      "houses": 24,
+      "attempted": 27,
+      "changed": 27,
+      "asked": 27,
+      "deaths": {
+        "age": 467,
+        "famine": 46,
+        "famine_year": 0,
+        "plague": 0,
+        "fire": 0
+      }
+    },
+    {
+      "from": 1425,
+      "to": 1449,
+      "population": 768,
+      "treasury": 118342,
+      "bread": 1180,
+      "foodReserveTicks": 5662,
+      "houses": 24,
+      "attempted": 26,
+      "changed": 26,
+      "asked": 26,
+      "deaths": {
+        "age": 477,
+        "famine": 0,
+        "famine_year": 0,
+        "plague": 0,
+        "fire": 0
+      }
+    }
+  ],
+  "factions": {
+    "overlord": {
+      "min": -40,
+      "max": 20,
+      "final": -40,
+      "observedLeaders": 7,
+      "annualLeaderTransitions": 6
+    },
+    "crown": {
+      "min": 10,
+      "max": 40,
+      "final": 30,
+      "observedLeaders": 7,
+      "annualLeaderTransitions": 6
+    },
+    "neighbour_1": {
+      "min": -67,
+      "max": 0,
+      "final": -67,
+      "observedLeaders": 5,
+      "annualLeaderTransitions": 4
+    },
+    "neighbour_2": {
+      "min": -85,
+      "max": 0,
+      "final": -85,
+      "observedLeaders": 5,
+      "annualLeaderTransitions": 4
+    },
+    "bishop": {
+      "min": 5,
+      "max": 100,
+      "final": 100,
+      "observedLeaders": 6,
+      "annualLeaderTransitions": 5
+    },
+    "merchant_house_1": {
+      "min": -97,
+      "max": 18,
+      "final": -97,
+      "observedLeaders": 19,
+      "annualLeaderTransitions": 18
+    },
+    "merchant_house_2": {
+      "min": -4,
+      "max": 33,
+      "final": 30,
+      "observedLeaders": 21,
+      "annualLeaderTransitions": 20
+    },
+    "town": {
+      "min": 2,
+      "max": 100,
+      "final": 100,
+      "observedLeaders": 18,
+      "annualLeaderTransitions": 17
+    },
+    "commons": {
+      "min": 15,
+      "max": 100,
+      "final": 100,
+      "observedLeaders": 13,
+      "annualLeaderTransitions": 12
+    }
+  },
+  "trades": {
+    "carpenter": {
+      "firstObservedYear": 1301,
+      "min": 1,
+      "max": 2,
+      "final": 2
+    },
+    "miller": {
+      "firstObservedYear": 1301,
+      "min": 1,
+      "max": 1,
+      "final": 1
+    },
+    "carter": {
+      "firstObservedYear": 1301,
+      "min": 1,
+      "max": 3,
+      "final": 3
+    },
+    "brewer": {
+      "firstObservedYear": 1301,
+      "min": 0,
+      "max": 3,
+      "final": 3
+    },
+    "butcher": {
+      "firstObservedYear": 1302,
+      "min": 0,
+      "max": 2,
+      "final": 0
+    },
+    "baker": {
+      "firstObservedYear": 1302,
+      "min": 0,
+      "max": 2,
+      "final": 2
+    },
+    "tailor": {
+      "firstObservedYear": 1303,
+      "min": 0,
+      "max": 3,
+      "final": 3
+    },
+    "shoemaker": {
+      "firstObservedYear": 1303,
+      "min": 0,
+      "max": 4,
+      "final": 4
+    },
+    "smith": {
+      "firstObservedYear": 1303,
+      "min": 0,
+      "max": 2,
+      "final": 1
+    },
+    "tanner": {
+      "firstObservedYear": 1307,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    },
+    "merchant": {
+      "firstObservedYear": 1310,
+      "min": 0,
+      "max": 2,
+      "final": 2
+    },
+    "innkeeper": {
+      "firstObservedYear": 1310,
+      "min": 0,
+      "max": 3,
+      "final": 3
+    },
+    "cooper": {
+      "firstObservedYear": 1312,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    },
+    "wheelwright": {
+      "firstObservedYear": 1327,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    },
+    "mercer": {
+      "firstObservedYear": 1353,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    }
+  },
+  "estates": {
+    "estate-home": {
+      "first": [
+        1301,
+        {
+          "id": "estate-home",
+          "title": "lord",
+          "possessor": "lord",
+          "value": 0,
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:market",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:tolls",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:mill",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:fishery",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "last": [
+        1450,
+        {
+          "id": "estate-home",
+          "title": "lord",
+          "possessor": "lord",
+          "value": 0,
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:market",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:tolls",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:mill",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:fishery",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "observedOwnershipStates": [
+        {
+          "year": 1301,
+          "title": "lord",
+          "possessor": "lord",
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:market",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:tolls",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:mill",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:fishery",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        }
+      ]
+    },
+    "estate-neighbour-1": {
+      "first": [
+        1301,
+        {
+          "id": "estate-neighbour-1",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "value": 6400,
+          "pieces": [
+            {
+              "id": "estate-neighbour-1:land_rent",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:manor_court",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:fishery",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:hunting",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "last": [
+        1450,
+        {
+          "id": "estate-neighbour-1",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "value": 6400,
+          "pieces": [
+            {
+              "id": "estate-neighbour-1:land_rent",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:manor_court",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:fishery",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:hunting",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "observedOwnershipStates": [
+        {
+          "year": 1301,
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "pieces": [
+            {
+              "id": "estate-neighbour-1:land_rent",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:manor_court",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:fishery",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:hunting",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            }
+          ]
+        }
+      ]
+    },
+    "estate-neighbour-2": {
+      "first": [
+        1301,
+        {
+          "id": "estate-neighbour-2",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-2:land_rent",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:manor_court",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:mill",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:advowson",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "last": [
+        1450,
+        {
+          "id": "estate-neighbour-2",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-2:land_rent",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:manor_court",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:mill",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:advowson",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "observedOwnershipStates": [
+        {
+          "year": 1301,
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "pieces": [
+            {
+              "id": "estate-neighbour-2:land_rent",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:manor_court",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:mill",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:advowson",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            }
+          ]
+        }
+      ]
+    },
+    "estate-neighbour-3": {
+      "first": [
+        1301,
+        {
+          "id": "estate-neighbour-3",
+          "title": "estate:estate-neighbour-3",
+          "possessor": "estate:estate-neighbour-3",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "last": [
+        1450,
+        {
+          "id": "estate-neighbour-3",
+          "title": "person:est-000004",
+          "possessor": "person:est-000004",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            }
+          ]
+        }
+      ],
+      "observedOwnershipStates": [
+        {
+          "year": 1301,
+          "title": "estate:estate-neighbour-3",
+          "possessor": "estate:estate-neighbour-3",
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            }
+          ]
+        },
+        {
+          "year": 1312,
+          "title": "person:est-000004",
+          "possessor": "person:est-000004",
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "finalClaims": {
+    "lost": 1,
+    "lapsed": 1
+  },
+  "finalSuits": {
+    "closed": 1
+  },
+  "finalPromises": {
+    "kept": 6
+  },
+  "events": [
+    {
+      "id": "first_fire@13",
+      "defId": "first_fire",
+      "kind": "fire",
+      "season": 13,
+      "arrivalTick": 13350,
+      "originBuildingId": "house-46-42-0",
+      "losses": {
+        "burntHouses": 1,
+        "departures": 0,
+        "harvestLost": 0
+      },
+      "endTick": 13500,
+      "recoveryUntilTick": 15500
+    },
+    {
+      "id": "dearth_rehearsal@17",
+      "defId": "dearth_rehearsal",
+      "kind": "dearth",
+      "season": 17,
+      "arrivalTick": 17000,
+      "losses": {
+        "burntHouses": 0,
+        "departures": 0,
+        "harvestLost": 189
+      },
+      "endTick": 21500,
+      "recoveryUntilTick": 23500
+    },
+    {
+      "id": "great_famine@61",
+      "defId": "great_famine",
+      "kind": "dearth",
+      "season": 60,
+      "arrivalTick": 60000,
+      "losses": {
+        "burntHouses": 0,
+        "departures": 0,
+        "harvestLost": 2821
+      },
+      "harvestFromYear": 15,
+      "harvestYears": 3,
+      "populationAtArrival": 321,
+      "response": {
+        "choice": "relief",
+        "tick": 60000
+      },
+      "endTick": 73500,
+      "recoveryUntilTick": 75500,
+      "populationAtEnd": 342
+    },
+    {
+      "id": "fire@165",
+      "defId": "fire",
+      "kind": "fire",
+      "season": 165,
+      "arrivalTick": 165000,
+      "originBuildingId": "construction-site-000028",
+      "losses": {
+        "burntHouses": 2,
+        "departures": 0,
+        "harvestLost": 0
+      },
+      "endTick": 165080,
+      "recoveryUntilTick": 167080
+    },
+    {
+      "id": "fire@221",
+      "defId": "fire",
+      "kind": "fire",
+      "season": 221,
+      "arrivalTick": 221300,
+      "originBuildingId": "construction-site-000049",
+      "losses": {
+        "burntHouses": 2,
+        "departures": 0,
+        "harvestLost": 0
+      },
+      "endTick": 221360,
+      "recoveryUntilTick": 223360
+    },
+    {
+      "id": "fire@365",
+      "defId": "fire",
+      "kind": "fire",
+      "season": 365,
+      "arrivalTick": 365250,
+      "originBuildingId": "construction-site-000018",
+      "losses": {
+        "burntHouses": 1,
+        "departures": 0,
+        "harvestLost": 0
+      },
+      "endTick": 365310,
+      "recoveryUntilTick": 367310
+    }
+  ],
+  "plague": {
+    "eraTick": 192000,
+    "answers": {
+      "vacant_priest": "accept",
+      "wages": "accept",
+      "land_redistribution": "accept_with_price",
+      "cash_rent": "accept"
+    },
+    "vacantHouseIds": [
+
+    ],
+    "resettled": 4,
+    "recovered": 250,
+    "fled": 0,
+    "rumourTick": 193000,
+    "first": {
+      "arrivalTick": 194000,
+      "populationAtArrival": 768,
+      "deathPermille": 428,
+      "dead": 328,
+      "manorDead": 2,
+      "wipedHouses": 4,
+      "endTick": 198000
+    },
+    "curacy": {
+      "vacantSince": 194000,
+      "filledTick": 196000,
+      "by": "monastery"
+    },
+    "ordinanceTick": 204000,
+    "statuteFine": 100,
+    "second": {
+      "arrivalTick": 244000,
+      "populationAtArrival": 691,
+      "deathPermille": 120,
+      "dead": 82,
+      "manorDead": 1,
+      "wipedHouses": 0,
+      "endTick": 246000
+    },
+    "endedTick": 248000
+  },
+  "summaryFindings": [
+
+  ],
+  "limits": [
+    "full resource conservation",
+    "all cash movements have ledger entries",
+    "full rights transfer history",
+    "player fun",
+    "render/UI",
+    "dead actor command refusal",
+    "whole-run deterministic replay until compared externally"
+  ]
+}

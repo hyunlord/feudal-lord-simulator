@@ -1,0 +1,788 @@
+{
+  "positive": [
+    {
+      "id": "war.messenger.r06wp.no_ring",
+      "selected": "war.messenger.r06wp.no_ring"
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished",
+      "selected": "war.messenger.r06wp.unfinished"
+    },
+    {
+      "id": "war.messenger.r06wp.complete",
+      "selected": "war.messenger.r06wp.complete"
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring",
+      "selected": "war.beacon.r06wp.no_ring"
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished",
+      "selected": "war.beacon.r06wp.unfinished"
+    },
+    {
+      "id": "war.beacon.r06wp.complete",
+      "selected": "war.beacon.r06wp.complete"
+    },
+    {
+      "id": "war.licence.r06wp.no_stock",
+      "selected": "war.licence.r06wp.no_stock"
+    },
+    {
+      "id": "war.licence.r06wp.stocked",
+      "selected": "war.licence.r06wp.stocked"
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival",
+      "selected": "plague.rumour.r06wp.no_arrival"
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded",
+      "selected": "plague.rumour.r06wp.arrival_recorded"
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour",
+      "selected": "plague.arrived.r06wp.prior_rumour"
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour",
+      "selected": "plague.arrived.r06wp.no_prior_rumour"
+    },
+    {
+      "id": "plague.second.r06wp.filled",
+      "selected": "plague.second.r06wp.filled"
+    },
+    {
+      "id": "plague.second.r06wp.vacant",
+      "selected": "plague.second.r06wp.vacant"
+    }
+  ],
+  "negative": [
+    {
+      "id": "war.messenger.r06wp.no_ring.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.second.r06wp.filled.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    }
+  ],
+  "proposalNegative": [
+    {
+      "id": "empty_templates",
+      "rejected": true
+    },
+    {
+      "id": "missing_fallback",
+      "rejected": true
+    },
+    {
+      "id": "empty_variants",
+      "rejected": true
+    },
+    {
+      "id": "wrong_domain",
+      "rejected": true
+    },
+    {
+      "id": "missing_fact",
+      "rejected": true
+    },
+    {
+      "id": "wrong_template",
+      "rejected": true
+    }
+  ]
+}

@@ -1,0 +1,243 @@
+[
+  {
+    "template": "person.fed",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "부족 표식 해제만 기본행에 남긴다. headline은 capture.rb의 residentsAfter > 0 및 정확한 기간 계산 가드 하에서만 허용.",
+    "old": "  \"person.fed\": () => \"가구가 다시 배불리 먹게 되었다\",",
+    "new": "  \"person.fed\": () => \"먹을거리 부족 상태가 해제되었다\",",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 368,
+        "end": 378
+      },
+      {
+        "path": "src/engine/seasonPressure.ts",
+        "start": 220,
+        "end": 230
+      }
+    ]
+  },
+  {
+    "template": "person.emptied",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "거주자 수가 양수에서 0으로 바뀐 사실만 남기므로 굶주림·사망·이주의 원인을 만들지 않는다.",
+    "old": "  \"person.emptied\": () => \"굶주려 가구가 흩어졌다\",",
+    "new": "  \"person.emptied\": () => \"집에 남은 사람이 없게 되었다\",",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 368,
+        "end": 378
+      }
+    ]
+  },
+  {
+    "template": "marriage.brother_in_law_born",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "살아 있는 oldLord의 아들 출생 및 claimStrength 감소. 재혼 단정 제거. 계약 당시 신랑 관계 캡처가 별도로 필요.",
+    "old": "  \"marriage.brother_in_law_born\": () => \"이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다\",",
+    "new": "  \"marriage.brother_in_law_born\": () => \"이웃 영주에게 아들이 태어났다 — 상속 기대가 줄었다\",",
+    "evidence": [
+      {
+        "path": "src/engine/marriage.ts",
+        "start": 474,
+        "end": 484
+      }
+    ]
+  },
+  {
+    "template": "marriage.inherited",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "영주의 아내라는 한정 제거. 혼인 약정 및 title LORD 귀속 경로와 정합. 관계는 계약 당시 값만 허용.",
+    "old": "  \"marriage.inherited\": () => \"아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다\",",
+    "new": "  \"marriage.inherited\": () => \"혼인 약정에 따라 이웃 영지를 물려받았다\",",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 1040,
+        "end": 1060
+      },
+      {
+        "path": "src/engine/marriage.ts",
+        "start": 407,
+        "end": 420
+      }
+    ]
+  },
+  {
+    "template": "stewardship.began",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "새 oversight 추가를 관리 기록으로 표현. 기존 소유 영지의 관리 설정과 소유권 취득을 혼동하지 않는다. steward 이름은 read-time 해석 유지.",
+    "old": "  \"stewardship.began\": params => `${estateWord(s(params, \"house\"))}${josa(estateWord(s(params, \"house\")), \"이\", \"가\")} 영주의 손에 들어왔다 — 영주가 직접 보고, ${s(params, \"steward\")}${josa(s(params, \"steward\"), \"이\", \"가\")} 장부를 맡는다`,",
+    "new": "  \"stewardship.began\": params => `${estateWord(s(params, \"house\"))}${josa(estateWord(s(params, \"house\")), \"이\", \"가\")} 영지 관리 대상으로 기록되었다 — ${s(params, \"steward\")}${josa(s(params, \"steward\"), \"이\", \"가\")} 장부를 맡는다`,",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 925,
+        "end": 936
+      },
+      {
+        "path": "src/engine/stewardship.ts",
+        "start": 117,
+        "end": 135
+      }
+    ]
+  },
+  {
+    "template": "reorg.weavers_left",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "weaverLeavers는 누적 이주 가구 수. 직조공 신분·행선지를 단정하지 않음. refused/expired 발생 조건과 시간 선후만 표현.",
+    "old": "  \"reorg.weavers_left\": params => `직조공 ${n(params, \"households\")}가구가 길드가 있는 도시로 떠났다`,",
+    "new": "  \"reorg.weavers_left\": params => `길드 청원 뒤 떠난 가구가 누적 ${n(params, \"households\")}가구가 되었다`,",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 696,
+        "end": 704
+      },
+      {
+        "path": "src/engine/reorganisation.ts",
+        "start": 186,
+        "end": 212
+      },
+      {
+        "path": "src/engine/reorganisation.ts",
+        "start": 468,
+        "end": 476
+      }
+    ]
+  },
+  {
+    "template": "plague.priest_died",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "curacy 신규 생성은 공석만 증명한다. 사망자 신원·사인·교회 전체 무인 상태는 주장하지 않는다.",
+    "old": "  \"plague.priest_died\": () => \"사제가 역병으로 죽었다 — 교회가 비었다\",",
+    "new": "  \"plague.priest_died\": () => \"사제 자리가 비었다\",",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 643,
+        "end": 654
+      },
+      {
+        "path": "src/engine/plague.ts",
+        "start": 513,
+        "end": 525
+      }
+    ]
+  },
+  {
+    "template": "milestone.market_town",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "era가 hamlet이 아닌 표본에 미등록 이정표를 추가한다. 석벽 단계에서 뒤늦게 기록되어도 진입 시점으로 오독하지 않음.",
+    "old": "  \"milestone.market_town\": () => \"시장도시가 되었다\",",
+    "new": "  \"milestone.market_town\": () => \"시장도시 이정표가 기록되었다\",",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 450,
+        "end": 463
+      }
+    ]
+  },
+  {
+    "template": "legacy.market_fire",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "설정 수리비와 실제 post.moved를 구분. full/partial/zero headline은 정확한 해당 post 호출 캡처 필요.",
+    "old": "  \"legacy.market_fire\": params => `장터에 불이 났다 — 수리에 ${moneyWords(n(params, \"cost\"))}`,",
+    "new": "  \"legacy.market_fire\": params => `장터에 불이 났다 — 책정된 수리비 ${moneyWords(n(params, \"cost\"))}`,",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 760,
+        "end": 767
+      },
+      {
+        "path": "src/engine/legacy.ts",
+        "start": 70,
+        "end": 78
+      },
+      {
+        "path": "src/engine/legacy.ts",
+        "start": 290,
+        "end": 299
+      }
+    ]
+  },
+  {
+    "template": "legacy.nave_rebuilt",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "accept 시 즉시 설정되는 naveRebuilt는 준공 증거가 아니다. headline의 증축이 기록되었다는 행정 기록 의미로 승인; 준공 의미 확장 금지. 비용은 정확한 post.moved만 사용.",
+    "old": "  \"legacy.nave_rebuilt\": () => \"교회의 새 회중석이 섰다\",",
+    "new": "  \"legacy.nave_rebuilt\": () => \"교회 회중석 재건 청원을 받아들였다\",",
+    "evidence": [
+      {
+        "path": "src/engine/legacy.ts",
+        "start": 196,
+        "end": 202
+      },
+      {
+        "path": "src/engine/history.ts",
+        "start": 767,
+        "end": 767
+      }
+    ]
+  },
+  {
+    "template": "legacy.charter_refused",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "accept 이외의 응답에 대한 기록. expired headline과 영주가 명시 거절했다는 모순 해소.",
+    "old": "  \"legacy.charter_refused\": params => `영주가 자치 특허를 거절했다 — 도시의 반발 ${n(params, \"backlash\")}`,",
+    "new": "  \"legacy.charter_refused\": params => `자치 특허가 받아들여지지 않았다 — 도시의 반발 ${n(params, \"backlash\")}`,",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 751,
+        "end": 755
+      }
+    ]
+  },
+  {
+    "template": "decision.market_town",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "선포는 건설 부지 생성이며 벽 완공이 아니다. 물길을 경계로 삼는 분기도 목책 경계 선정이라는 표현과 양립.",
+    "old": "  \"decision.market_town\": () => \"목책을 두르고 시장도시를 선포했다\",",
+    "new": "  \"decision.market_town\": () => \"목책을 두를 경계를 정하고 시장도시를 선포했다\",",
+    "evidence": [
+      {
+        "path": "src/engine/palisade.ts",
+        "start": 274,
+        "end": 308
+      }
+    ]
+  },
+  {
+    "template": "person.came_of_age",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "14세 경계 통과는 게임의 어른 분류만 증명. 노동 시작·법적 성년·후견 해제 아님. 새 문맥 후보는 별도 검수.",
+    "old": "  \"person.came_of_age\": () => \"어른이 되어 일을 거들기 시작했다\",",
+    "new": "  \"person.came_of_age\": () => \"어른이 되었다\",",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 403,
+        "end": 408
+      }
+    ]
+  },
+  {
+    "template": "milestone.stone_town",
+    "verdict": "APPROVE_DRAFT_FACT_LINE",
+    "reason": "stone_town era 표본의 이정표 기록이며 성벽 준공 감사 아님. 새 문맥 후보는 별도 검수.",
+    "old": "  \"milestone.stone_town\": () => \"석벽 도시가 되었다\",",
+    "new": "  \"milestone.stone_town\": () => \"석벽 도시 이정표가 기록되었다\",",
+    "evidence": [
+      {
+        "path": "src/engine/history.ts",
+        "start": 450,
+        "end": 463
+      }
+    ]
+  }
+]

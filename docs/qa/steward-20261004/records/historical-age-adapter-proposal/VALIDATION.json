@@ -1,0 +1,379 @@
+{
+  "status": "OFFLINE_PROPOSAL_VALIDATED",
+  "fixtureCount": 45,
+  "allInputsUnchanged": true,
+  "cases": [
+    {
+      "name": "age_0",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 0,
+        "subjectAgeBandAtRecord": "child"
+      }
+    },
+    {
+      "name": "age_13",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 13,
+        "subjectAgeBandAtRecord": "child"
+      }
+    },
+    {
+      "name": "age_14",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 14,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    },
+    {
+      "name": "age_29",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    },
+    {
+      "name": "age_30",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    },
+    {
+      "name": "age_54",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 54,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    },
+    {
+      "name": "age_55",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 55,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    },
+    {
+      "name": "age_120",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 120,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    },
+    {
+      "name": "tick_3999",
+      "result": {
+        "status": "known",
+        "eventYear": 1300,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    },
+    {
+      "name": "tick_4000",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    },
+    {
+      "name": "tick_4001",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    },
+    {
+      "name": "person.burnt",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.rebuilt",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.left",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.resettled",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.leaving",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.move_in",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.emptied",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.level_up",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.level_down",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.stayed",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.hungry",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.fed",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.water",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.water_lost",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.grew",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "person.shrank",
+      "result": {
+        "status": "unknown",
+        "reason": "household_event"
+      }
+    },
+    {
+      "name": "unknown_scenario",
+      "result": {
+        "status": "unknown",
+        "reason": "unknown_scenario"
+      }
+    },
+    {
+      "name": "missing_person",
+      "result": {
+        "status": "unknown",
+        "reason": "person_missing"
+      }
+    },
+    {
+      "name": "duplicate_across_pools",
+      "result": {
+        "status": "unknown",
+        "reason": "duplicate_person"
+      }
+    },
+    {
+      "name": "birth_string",
+      "result": {
+        "status": "unknown",
+        "reason": "invalid_birth_year"
+      }
+    },
+    {
+      "name": "future_birth",
+      "result": {
+        "status": "unknown",
+        "reason": "negative_age"
+      }
+    },
+    {
+      "name": "after_death",
+      "result": {
+        "status": "unknown",
+        "reason": "after_death_year"
+      }
+    },
+    {
+      "name": "future_record",
+      "result": {
+        "status": "unknown",
+        "reason": "invalid_tick"
+      }
+    },
+    {
+      "name": "negative_tick",
+      "result": {
+        "status": "unknown",
+        "reason": "invalid_tick"
+      }
+    },
+    {
+      "name": "fraction_tick",
+      "result": {
+        "status": "unknown",
+        "reason": "invalid_tick"
+      }
+    },
+    {
+      "name": "bool_tick",
+      "result": {
+        "status": "unknown",
+        "reason": "invalid_tick"
+      }
+    },
+    {
+      "name": "actor_subject",
+      "result": {
+        "status": "unknown",
+        "reason": "not_person_subject"
+      }
+    },
+    {
+      "name": "missing_subject",
+      "result": {
+        "status": "unknown",
+        "reason": "not_person_subject"
+      }
+    },
+    {
+      "name": "bad_pool",
+      "result": {
+        "status": "unknown",
+        "reason": "invalid_pool"
+      }
+    },
+    {
+      "name": "bad_params",
+      "result": {
+        "status": "unknown",
+        "reason": "invalid_params"
+      }
+    },
+    {
+      "name": "death_age_conflict",
+      "result": {
+        "status": "unknown",
+        "reason": "recorded_age_mismatch"
+      }
+    },
+    {
+      "name": "death_age_agrees",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    },
+    {
+      "name": "past_pool_same_age",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    },
+    {
+      "name": "current_role_alive_left_ignored",
+      "result": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  ],
+  "naturalExamples": [
+    {
+      "id": "h-050888",
+      "template": "person.fell_ill",
+      "tick": 593000,
+      "result": {
+        "status": "known",
+        "eventYear": 1448,
+        "subjectAgeAtRecord": 66,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    },
+    {
+      "id": "h-051206",
+      "template": "person.came_of_age",
+      "tick": 596000,
+      "result": {
+        "status": "known",
+        "eventYear": 1449,
+        "subjectAgeAtRecord": 14,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  ],
+  "sourceSave": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-N04-r03-5fb1aeb/N04-chalk-2-full/year-1450.fls.json",
+  "sourceSha256": "b487a43879068c01c6db746ae604d121718114011777d347b802b599752a4ecb",
+  "engineExecuted": false,
+  "selectorInstalled": false,
+  "canonicalChanged": false
+}

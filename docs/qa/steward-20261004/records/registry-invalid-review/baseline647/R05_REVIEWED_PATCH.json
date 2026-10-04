@@ -1,0 +1,823 @@
+{
+  "status": "candidate_not_installed",
+  "baselineSha256": "841b24bf31812b996617320523de8a6c80d62abcec8e1b2b115f012cf971d32c",
+  "additions": [
+    {
+      "template": "decision.estate_policy",
+      "variant": {
+        "id": "decision.estate_policy.r05.growth",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "growth"
+          }
+        ],
+        "headline": "영지 방침을 성장에 두었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.estate_policy",
+      "variant": {
+        "id": "decision.estate_policy.r05.revenue",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "revenue"
+          }
+        ],
+        "headline": "영지 방침에서 세입을 앞세웠다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.estate_policy",
+      "variant": {
+        "id": "decision.estate_policy.r05.stability",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "stability"
+          }
+        ],
+        "headline": "영지 방침에서 안정을 앞세웠다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.estate_policy",
+      "variant": {
+        "id": "decision.estate_policy.r05.defence",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "defence"
+          }
+        ],
+        "headline": "영지 방침에서 방어를 앞세웠다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.entered",
+      "variant": {
+        "id": "decline.entered.r05.derelict",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.cause",
+            "op": "eq",
+            "value": "derelict"
+          }
+        ],
+        "headline": "빈 필지가 늘어난 끝에 영지가 쇠퇴에 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.entered",
+      "variant": {
+        "id": "decline.entered.r05.arrears",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.cause",
+            "op": "eq",
+            "value": "arrears"
+          }
+        ],
+        "headline": "유지비가 밀려 영지가 쇠퇴에 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.entered",
+      "variant": {
+        "id": "decline.entered.r05.depopulated",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.cause",
+            "op": "eq",
+            "value": "depopulated"
+          }
+        ],
+        "headline": "인구가 줄어 영지가 쇠퇴에 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.entered",
+      "variant": {
+        "id": "decline.entered.r05.empty",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.cause",
+            "op": "eq",
+            "value": "empty"
+          }
+        ],
+        "headline": "도시가 비면서 영지가 쇠퇴에 들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.recovered",
+      "variant": {
+        "id": "decline.recovered.r05.none",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.right",
+            "op": "eq",
+            "value": "none"
+          }
+        ],
+        "headline": "쇠퇴를 벗어났다. 이번 쇠퇴 기록에는 되찾을 권리가 적혀 있지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.recovered",
+      "variant": {
+        "id": "decline.recovered.r05.market",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.right",
+            "op": "eq",
+            "value": "market"
+          }
+        ],
+        "headline": "시장 좌판세를 되찾아 쇠퇴에서 벗어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.recovered",
+      "variant": {
+        "id": "decline.recovered.r05.tolls",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.right",
+            "op": "eq",
+            "value": "tolls"
+          }
+        ],
+        "headline": "통행세를 되찾아 쇠퇴에서 벗어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decline.recovered",
+      "variant": {
+        "id": "decline.recovered.r05.mill",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.right",
+            "op": "eq",
+            "value": "mill"
+          }
+        ],
+        "headline": "방앗간 사용료를 되찾아 쇠퇴에서 벗어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.claim_raised",
+      "variant": {
+        "id": "estate.claim_raised.r05.inheritance",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.basis",
+            "op": "eq",
+            "value": "inheritance"
+          }
+        ],
+        "headline": "상속을 근거로 권리를 청구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.claim_raised",
+      "variant": {
+        "id": "estate.claim_raised.r05.marriage",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.basis",
+            "op": "eq",
+            "value": "marriage"
+          }
+        ],
+        "headline": "혼인을 근거로 권리를 청구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.claim_raised",
+      "variant": {
+        "id": "estate.claim_raised.r05.purchase_deed",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.basis",
+            "op": "eq",
+            "value": "purchase_deed"
+          }
+        ],
+        "headline": "매입 문서를 근거로 권리를 청구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.claim_raised",
+      "variant": {
+        "id": "estate.claim_raised.r05.grant",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.basis",
+            "op": "eq",
+            "value": "grant"
+          }
+        ],
+        "headline": "하사를 근거로 권리를 청구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.claim_raised",
+      "variant": {
+        "id": "estate.claim_raised.r05.old_possession",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.basis",
+            "op": "eq",
+            "value": "old_possession"
+          }
+        ],
+        "headline": "오래된 점유를 근거로 권리를 청구했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_filed",
+      "variant": {
+        "id": "estate.suit_filed.r05.whole_estate",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.piece",
+            "op": "eq",
+            "value": ""
+          }
+        ],
+        "headline": "영지 전체를 놓고 소송을 냈다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_stage",
+      "variant": {
+        "id": "estate.suit_stage.r05.evidence",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.stage",
+            "op": "eq",
+            "value": "evidence"
+          }
+        ],
+        "headline": "소송이 증거를 다룰 단계에 들어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_stage",
+      "variant": {
+        "id": "estate.suit_stage.r05.patronage",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.stage",
+            "op": "eq",
+            "value": "patronage"
+          }
+        ],
+        "headline": "소송이 후원을 구할 단계에 들어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_stage",
+      "variant": {
+        "id": "estate.suit_stage.r05.hearing",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.stage",
+            "op": "eq",
+            "value": "hearing"
+          }
+        ],
+        "headline": "소송이 심리 단계에 들어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_stage",
+      "variant": {
+        "id": "estate.suit_stage.r05.enforcing",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.stage",
+            "op": "eq",
+            "value": "enforcing"
+          }
+        ],
+        "headline": "판결 뒤 점유를 집행할 단계에 들어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_patron",
+      "variant": {
+        "id": "estate.suit_patron.r05.bishop",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.patron",
+            "op": "eq",
+            "value": "bishop"
+          }
+        ],
+        "headline": "주교가 소송의 후원자로 나섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_patron",
+      "variant": {
+        "id": "estate.suit_patron.r05.overlord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.patron",
+            "op": "eq",
+            "value": "overlord"
+          }
+        ],
+        "headline": "상위 영주가 소송의 후원자로 나섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_patron",
+      "variant": {
+        "id": "estate.suit_patron.r05.crown",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.patron",
+            "op": "eq",
+            "value": "crown"
+          }
+        ],
+        "headline": "국왕이 소송의 후원자로 나섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_patron",
+      "variant": {
+        "id": "estate.suit_patron.r05.neighbour_1",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.patron",
+            "op": "eq",
+            "value": "neighbour_1"
+          }
+        ],
+        "headline": "첫째 이웃 영주가 소송의 후원자로 나섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "estate.suit_patron",
+      "variant": {
+        "id": "estate.suit_patron.r05.neighbour_2",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.patron",
+            "op": "eq",
+            "value": "neighbour_2"
+          }
+        ],
+        "headline": "둘째 이웃 영주가 소송의 후원자로 나섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "agency.project_started",
+      "variant": {
+        "id": "agency.project_started.r05.households",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.actor",
+            "op": "eq",
+            "value": "households"
+          }
+        ],
+        "headline": "가구들이 새 일에 나섰다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "agency.project_started",
+      "variant": {
+        "id": "agency.project_started.r05.merchants",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.actor",
+            "op": "eq",
+            "value": "merchants"
+          }
+        ],
+        "headline": "상인 가문이 공사를 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "agency.project_started",
+      "variant": {
+        "id": "agency.project_started.r05.guild",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.actor",
+            "op": "eq",
+            "value": "guild"
+          }
+        ],
+        "headline": "길드가 공사를 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "agency.project_started",
+      "variant": {
+        "id": "agency.project_started.r05.community",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.actor",
+            "op": "eq",
+            "value": "community"
+          }
+        ],
+        "headline": "공동체가 공사를 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "agency.project_started",
+      "variant": {
+        "id": "agency.project_started.r05.church",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.actor",
+            "op": "eq",
+            "value": "church"
+          }
+        ],
+        "headline": "교회가 공사를 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.offered",
+      "variant": {
+        "id": "negotiation.offered.r05.impossible",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.tier",
+            "op": "eq",
+            "value": "impossible"
+          }
+        ],
+        "headline": "성사 불가로 평가된 조건으로 혼인을 청했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.offered",
+      "variant": {
+        "id": "negotiation.offered.r05.unlikely",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.tier",
+            "op": "eq",
+            "value": "unlikely"
+          }
+        ],
+        "headline": "불리한 평가를 받은 조건으로 혼인을 청했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.offered",
+      "variant": {
+        "id": "negotiation.offered.r05.close",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.tier",
+            "op": "eq",
+            "value": "close"
+          }
+        ],
+        "headline": "박빙으로 평가된 조건으로 혼인을 청했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.offered",
+      "variant": {
+        "id": "negotiation.offered.r05.likely",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.tier",
+            "op": "eq",
+            "value": "likely"
+          }
+        ],
+        "headline": "유력하다는 평가를 받은 조건으로 혼인을 청했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.offered",
+      "variant": {
+        "id": "negotiation.offered.r05.almost_certain",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.tier",
+            "op": "eq",
+            "value": "almost_certain"
+          }
+        ],
+        "headline": "거의 확실하다는 평가를 받은 조건으로 혼인을 청했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "legacy.unanswered",
+      "variant": {
+        "id": "legacy.unanswered.r05.royal_tax",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "royal_tax"
+          }
+        ],
+        "headline": "왕실 보조세 요구에 답하지 않은 채 기한이 지났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "legacy.unanswered",
+      "variant": {
+        "id": "legacy.unanswered.r05.heir_choice",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "heir_choice"
+          }
+        ],
+        "headline": "후계자 선택에 답하지 않은 채 기한이 지났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "legacy.unanswered",
+      "variant": {
+        "id": "legacy.unanswered.r05.borough_autonomy",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "borough_autonomy"
+          }
+        ],
+        "headline": "자치 특허의 인장에 관한 청원에 답하지 않은 채 기한이 지났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "legacy.unanswered",
+      "variant": {
+        "id": "legacy.unanswered.r05.legacy_choice",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "legacy_choice"
+          }
+        ],
+        "headline": "남길 유산 선택에 답하지 않은 채 기한이 지났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "legacy.unanswered",
+      "variant": {
+        "id": "legacy.unanswered.r05.guild_dispute",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "guild_dispute"
+          }
+        ],
+        "headline": "길드와 상인의 다툼에 답하지 않은 채 기한이 지났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "legacy.unanswered",
+      "variant": {
+        "id": "legacy.unanswered.r05.church_rebuilding",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "church_rebuilding"
+          }
+        ],
+        "headline": "교회 증축 청원에 답하지 않은 채 기한이 지났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ]
+}

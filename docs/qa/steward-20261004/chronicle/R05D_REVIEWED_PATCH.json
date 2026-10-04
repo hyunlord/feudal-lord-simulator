@@ -1,0 +1,378 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_not_installed",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "baselineSha256": "173e82a0e9c0a2b1a4c87b6b755d4738a7c08f05c06a036ac4bb5de37eec3c1c",
+  "additions": [
+    {
+      "template": "marriage.jointure_settled",
+      "variants": [
+        {
+          "id": "marriage.jointure_settled.r05d.fishery",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.piece",
+              "op": "eq",
+              "value": "home:fishery"
+            }
+          ],
+          "headline": "남편을 먼저 보낸 아내에게 어업권의 평생 점유가 과부산으로 돌아갔다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "marriage.jointure_settled.r05d.manor_court",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.piece",
+              "op": "eq",
+              "value": "home:manor_court"
+            }
+          ],
+          "headline": "남편을 먼저 보낸 아내에게 장원 법정 권리 조각의 평생 점유가 과부산으로 돌아갔다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "registry.answered",
+      "variants": [
+        {
+          "id": "registry.answered.r05d.audit_punish",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_013"
+            },
+            {
+              "field": "params.choice",
+              "op": "eq",
+              "value": "a"
+            }
+          ],
+          "headline": "감사에서 드러난 일을 징계로 다루도록 답했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true,
+          "factLineOverrideRequired": "The required baseline registryChoiceLedger(ck_evt_013,a) contains literal Rd. Resolve recovered amount from historical outcome or replace baseline with truthful answer-only wording before enabling. Never inject a current audit amount."
+        },
+        {
+          "id": "registry.answered.r05d.audit_tolerate",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_013"
+            },
+            {
+              "field": "params.choice",
+              "op": "eq",
+              "value": "b"
+            }
+          ],
+          "headline": "감사에서 드러난 일을 덮고 현직을 남기는 답을 택했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.answered.r05d.audit_replace",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_013"
+            },
+            {
+              "field": "params.choice",
+              "op": "eq",
+              "value": "c"
+            }
+          ],
+          "headline": "드러난 돈을 회수하지 않고 청지기를 바꾸는 답을 택했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.answered.r05d.precedent",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_034"
+            },
+            {
+              "field": "params.choice",
+              "op": "eq",
+              "value": "precedent"
+            }
+          ],
+          "headline": "같은 청원을 다시 올리는 예외를 풀고 선례에 맡기기로 답했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.answered.r05d.hear",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_034"
+            },
+            {
+              "field": "params.choice",
+              "op": "eq",
+              "value": "hear"
+            }
+          ],
+          "headline": "반복된 청원도 영주에게 다시 올리도록 답했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.answered.r05d.audit052_punish",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_052"
+            },
+            {
+              "field": "params.choice",
+              "op": "eq",
+              "value": "punish"
+            }
+          ],
+          "headline": "빠진 돈을 회수하고 청지기를 해임하는 답을 택했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true,
+          "factLineOverrideRequired": "The required baseline registryChoiceLedger(ck_evt_052,punish) contains unresolved {recovered}d. No recovered field is stored in registry.answered. Correct historical fact line before enabling."
+        }
+      ]
+    },
+    {
+      "template": "registry.offered",
+      "variants": [
+        {
+          "id": "registry.offered.r05d.audit",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_013"
+            }
+          ],
+          "headline": "연줄 있는 청지기의 감사 처분을 정해 달라는 안건이 올라왔다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.offered.r05d.enforcement",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_038"
+            }
+          ],
+          "headline": "판결 뒤 남은 점유 집행을 할지 정해 달라는 안건이 올라왔다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.offered.r05d.precedent",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_034"
+            }
+          ],
+          "headline": "되풀이되는 청원을 선례에 맡길지 다시 들을지 묻는 안건이 올라왔다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "registry.lapsed",
+      "variants": [
+        {
+          "id": "registry.lapsed.r05d.audit",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_013"
+            }
+          ],
+          "headline": "청지기의 감사 처분 안건은 답 없이 기한을 넘겼다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.lapsed.r05d.enforcement",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_038"
+            }
+          ],
+          "headline": "점유 집행을 물은 안건은 답 없이 기한을 넘겼다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.lapsed.r05d.precedent",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_034"
+            }
+          ],
+          "headline": "반복 청원을 맡기는 방식을 묻던 안건은 답 없이 기한을 넘겼다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "agency.subsidy_refused",
+      "variants": [
+        {
+          "id": "agency.subsidy_refused.r05d.zero_limit",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.reason",
+              "op": "eq",
+              "value": "over_treasury_share"
+            },
+            {
+              "field": "params.amount",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.limit",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "headline": "금고 기준 장려금 한도가 없어 새 장려금을 걸지 못했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "agency.subsidy_refused.r05d.positive_limit",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.reason",
+              "op": "eq",
+              "value": "over_treasury_share"
+            },
+            {
+              "field": "params.amount",
+              "op": "gt",
+              "value": 0
+            },
+            {
+              "field": "params.limit",
+              "op": "gte",
+              "value": 1
+            }
+          ],
+          "headline": "장려금 합계가 금고 기준 한도를 넘어 새 장려금을 걸지 못했다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "reorg.poll_tax",
+      "variants": [
+        {
+          "id": "reorg.poll_tax.r05d.zero",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.amount",
+              "op": "eq",
+              "value": 0
+            }
+          ],
+          "headline": "인두세 징수 회차를 적었으나 영주의 몫은 없었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "reorg.poll_tax.r05d.positive",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.amount",
+              "op": "gte",
+              "value": 1
+            }
+          ],
+          "headline": "인두세 징수에서 영주의 몫이 들어왔다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    }
+  ]
+}

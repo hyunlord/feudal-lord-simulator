@@ -1,0 +1,29 @@
+{
+  "source": [
+    {
+      "path": "src/ui/StoreInspector.tsx",
+      "sha256": "4e7e28b4b47d2cfbd3a21a93f8821aebbddd7b71bd0c53c88b7f18bde6cb2e3e"
+    },
+    {
+      "path": "src/ui/inspectorModel.ts",
+      "sha256": "4f98928372be8386e737edf47edc4c26860a26cbbe7c06c3236125b998e9678d"
+    },
+    {
+      "path": "src/ui/InspectorView.tsx",
+      "sha256": "0e15817b0d7848982a22bdb74b98eeb3d7c5bbe4fbb8b825321219ae3776d4fc"
+    },
+    {
+      "path": "src/render/DiagnosticCard.tsx",
+      "sha256": "970df02dcfcfdb95db166145f357cc2ec65e7a011a4812684aafa088621ab267"
+    }
+  ],
+  "dom": {
+    "path": "/tmp/astra-steward-r07-20261004/records/storage-ui-executed-r07/storage-1350/0038-construction-site-000050-scroll-2.json",
+    "sha256": "68b1c59fe9a26919b39f27d4bd8bd74e90d5704b2e62f146202b2f97b6793142"
+  },
+  "checks": {
+    "actualDiagnosticCard": true,
+    "leftInspectorActionsAbsent": true
+  },
+  "scope": "saved DOM and current source only; no runtime executed"
+}

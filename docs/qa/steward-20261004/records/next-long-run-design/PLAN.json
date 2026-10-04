@@ -1,0 +1,34 @@
+{
+  "status": "DESIGN_ONLY",
+  "executions": 0,
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "candidate": {
+    "seed": 3,
+    "land": "core:fen_drainage",
+    "policy": "growth",
+    "mode": "fixed",
+    "years": 150
+  },
+  "configSupported": true,
+  "exactOpeningVerified": false,
+  "estimatedMinutes": [
+    15,
+    30
+  ],
+  "timeoutSeconds": 2400,
+  "termGraceSeconds": 30,
+  "coverageAdded": "new fen terrain and coefficient regime, not new seed",
+  "baselineContract": {
+    "fixedComparator": "seed3-open-fixed-growth v3",
+    "chalkHistoryOnly": {
+      "run": "N04-chalk-2-full",
+      "protocol": "v2",
+      "policyArgumentApplied": false,
+      "actualPolicyTransition": [
+        "growth",
+        "revenue"
+      ],
+      "policyCommands": 5
+    }
+  }
+}

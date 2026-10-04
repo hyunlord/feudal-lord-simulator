@@ -1,0 +1,518 @@
+{
+  "formatVersion": "event-context-proposal-v1",
+  "status": "DRAFT_UNINSTALLED_AUTHOR_ONLY",
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "canonicalModified": false,
+  "engineChangesRequiredForUse": true,
+  "engineIntegrationRequiredToCompleteUserDraftTask": false,
+  "fields": [
+    {
+      "id": "groomRelationAtContract",
+      "values": [
+        "widowed_lord",
+        "son",
+        "brother",
+        "nephew",
+        "cousin"
+      ],
+      "templates": [
+        "marriage.brother_in_law_born",
+        "marriage.father_ill",
+        "marriage.deferred_void"
+      ],
+      "capture": "src/engine/marriage.ts:85-111;src/engine/marriage.ts:137-149;src/engine/marriage.ts:256-276",
+      "producer": "src/engine/history.ts:1042-1055",
+      "currentRecordStorage": "contracted already stores relation, groom, bride, negotiation; later event does NOT store a unique contract reference",
+      "currentOtherStorage": "MarriagePlan negotiationId/groomId/brideId; current groom role may change and off-map groom ID materialises at contract",
+      "immutableReconstruction": "Conditional future adapter only: later record must carry an immutable contract record reference; exact unique retained contracted record and identities must agree. Existing later bride/brotherInLaw or estate/rival alone do not prove a unique join. No nearest-record join.",
+      "provenance": "immutable_contract_reference",
+      "captureRule": "Capture actual marriageCandidates relation before contract and pin original lord ID/house order/negotiation ID, before groomToManor remaps IDs. Preserve original+materialised groom IDs. Read names now, keep relation to the lord AT CONTRACT. Missing groom must not inherit current history.ts fallback son. For these later events pin original bride father ID and counterpart estate ID too. For brother birth/illness require actual emitted oldLord.id equals pinned bride fatherId and estate identity matches; otherwise unknown. For deferred_void relationship is groom to ORIGINAL lord, not the bride father or current town subject. New snapshot/reference adapter required."
+    },
+    {
+      "id": "nonInfringementOpenAtWillAttempt",
+      "templates": [
+        "marriage.will_change"
+      ],
+      "values": [
+        "open",
+        "absent"
+      ],
+      "capture": "src/engine/marriage.ts:391-397;src/engine/marriage.ts:487-490",
+      "producer": "src/engine/history.ts:1042-1058",
+      "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+      "currentOtherStorage": "Promises retain negotiationId/term/status but current status may later settle.",
+      "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+      "provenance": "emission_snapshot",
+      "captureRule": "At newly positive will_change event inspect the exact source-equivalent first open promise from COUNTERPART of term inheritance_non_infringement. If found, require matching plan.negotiationId and capture promiseId -> open; no matching source find -> absent. If source-selected promise belongs elsewhere -> unknown. This is promise status at attempt, NOT actual breach: breach occurs only if later let_it_be. Capture no displayed names."
+    },
+    {
+      "id": "willDroppedConsideration",
+      "templates": [
+        "marriage.will_dropped"
+      ],
+      "values": [
+        "paid_favour",
+        "support_promised"
+      ],
+      "capture": "src/engine/marriage.ts:374-390",
+      "producer": "src/engine/history.ts:1042-1058",
+      "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+      "currentOtherStorage": "plan.willAnswer and payment ledger/promise exist; history event omits choice.",
+      "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Capture successful answerWillChange path only. favour requires actual negative payment and newly emitted will_dropped; support_promise requires newly created matching political_support promise ID. No-op insufficient cash produces no variant. support promised is not fulfilled support."
+    },
+    {
+      "id": "inheritanceRouteAtFatherDeath",
+      "templates": [
+        "marriage.father_died"
+      ],
+      "values": [
+        "living_son",
+        "rival",
+        "lord_house"
+      ],
+      "capture": "src/engine/marriage.ts:412-427",
+      "producer": "src/engine/history.ts:1042-1058",
+      "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+      "currentOtherStorage": "plan.stage and estate holder now; son alive can change; no route in father_died record.",
+      "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Capture actual inheritance branch: found alive brotherInLawId -> living_son; otherwise plan.rival defined -> rival; else lord_house. Require oldLord exists and actual death verified, bride father/estate identity pinned. Do not infer which branch from later holder or rerun alive lookup. Missing oldLord permits source path but author adapter must yield unknown. rival means plan.rival not any rival person."
+    },
+    {
+      "id": "deferredDebtAtInheritanceLoss",
+      "templates": [
+        "marriage.lost"
+      ],
+      "values": [
+        "positive",
+        "absent"
+      ],
+      "capture": "src/engine/marriage.ts:269-275;src/engine/marriage.ts:412-420;src/engine/history.ts:1054-1058",
+      "producer": "src/engine/history.ts:1042-1058",
+      "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+      "currentOtherStorage": "plan.deferredDebt optional; outcome record estate/rival omits amount.",
+      "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+      "provenance": "emission_snapshot",
+      "captureRule": "At actual newly lost stage from son branch validate deferredDebt absent or safe integer >=0. >0 -> positive; absent/0 -> absent. Negative, fraction, unsafe -> unknown. This removes the conditional assumption promise only, not counterpart original debt."
+    },
+    {
+      "id": "willAllowedRoute",
+      "templates": [
+        "marriage.contested"
+      ],
+      "values": [
+        "explicit_let_stand",
+        "unanswered_deadline"
+      ],
+      "capture": "src/state/gameStore.ts:156;src/engine/marriage.ts:391-402;src/engine/marriage.ts:491",
+      "producer": "src/engine/history.ts:1042-1058",
+      "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+      "currentOtherStorage": "plan.willAnswer let_it_be merges explicit command and auto timeout; route is NOT stored.",
+      "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+      "provenance": "immutable_contract_reference",
+      "captureRule": "Capture route at successful explicit gameStore answer_will_change(let_it_be) versus automatic advanceMarriage deadline path. Bind capture to negotiationId/rivalID/answer tick and carry immutable reference to later contested emission. Require exact matching plan.rival and source inheritance rival branch. Do not infer explicit intent from same willAnswer or late tick. A bot command is explicit command route, not necessarily human intention. Missing reference unknown. ADDED DEATH/IDENTITY GUARD: For BOTH contested variants, at the inheritance operation require oldLord exists, is the same pinned bride-father person ID from the original contract, and actual death is verified at that event (alive=false with death evidence tied to the same person and transition). Match counterpart estateId, brideId, negotiationId and rivalId to the saved will-answer reference. Missing oldLord, absent/mismatched death evidence or identity -> unknown/baseline; never treat source !alive on missing lookup as proof of death. Never inspect current survivors to backfill this guard. Before/after rule: use the actual death transition with this same person present before alive=true and after alive=false, OR an exact immutable death record for that person captured earlier and verified before the contested inheritance emission. Inheritance before/after alone may already have alive=false on both sides and is not proof of a new death. A missing person on either side, no verified death record, changed estate lord or mismatched contract identity yields unknown; do not synthesize a death from lookup failure."
+    }
+  ],
+  "additions": [
+    {
+      "template": "marriage.brother_in_law_born",
+      "variant": {
+        "id": "marriage.brother_in_law_born.r06life.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.brother_in_law_born",
+      "variant": {
+        "id": "marriage.brother_in_law_born.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.brother_in_law_born",
+      "variant": {
+        "id": "marriage.brother_in_law_born.r06life.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 중 한 사람이 맺은 혼인의 상대 가문에 아들이 태어나 상속 기대가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.father_ill",
+      "variant": {
+        "id": "marriage.father_ill.r06life.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인과 혼인한 신부의 아버지가 병들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.father_ill",
+      "variant": {
+        "id": "marriage.father_ill.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들과 혼인한 신부의 아버지가 병들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.father_ill",
+      "variant": {
+        "id": "marriage.father_ill.r06life.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 중 한 사람과 혼인한 신부의 아버지가 병들었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.deferred_void",
+      "variant": {
+        "id": "marriage.deferred_void.r06life.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인의 혼인에 딸린 상속 후 채무인수 약정이 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.deferred_void",
+      "variant": {
+        "id": "marriage.deferred_void.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인에 딸린 상속 후 채무인수 약정이 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.deferred_void",
+      "variant": {
+        "id": "marriage.deferred_void.r06life.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 중 한 사람이 맺은 혼인에 딸린 상속 후 채무인수 약정이 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.will_change",
+      "variant": {
+        "id": "marriage.will_change.r06life.open",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.nonInfringementOpenAtWillAttempt",
+            "op": "eq",
+            "value": "open"
+          }
+        ],
+        "headline": "상속을 침해하지 않겠다는 약속이 남아 있는 가운데 이웃 영주가 유언을 고치려 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.will_change",
+      "variant": {
+        "id": "marriage.will_change.r06life.absent",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.nonInfringementOpenAtWillAttempt",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "이웃 영주가 유언을 고치려 했다. 그때 아직 열려 있는 상속 불침해 약속은 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.will_dropped",
+      "variant": {
+        "id": "marriage.will_dropped.r06life.paid",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willDroppedConsideration",
+            "op": "eq",
+            "value": "paid_favour"
+          }
+        ],
+        "headline": "돈을 건넨 뒤 이웃 영주가 유언을 고치지 않기로 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.will_dropped",
+      "variant": {
+        "id": "marriage.will_dropped.r06life.promised",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willDroppedConsideration",
+            "op": "eq",
+            "value": "support_promised"
+          }
+        ],
+        "headline": "정치적 지지를 약속한 뒤 이웃 영주가 유언을 고치지 않기로 했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.father_died",
+      "variant": {
+        "id": "marriage.father_died.r06life.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.inheritanceRouteAtFatherDeath",
+            "op": "eq",
+            "value": "living_son"
+          }
+        ],
+        "headline": "이웃 영주가 죽자 살아 있던 아들에게 영지가 넘어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.father_died",
+      "variant": {
+        "id": "marriage.father_died.r06life.rival",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.inheritanceRouteAtFatherDeath",
+            "op": "eq",
+            "value": "rival"
+          }
+        ],
+        "headline": "이웃 영주가 죽자 새 유언에 적힌 경쟁자에게 영지가 넘어갔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.father_died",
+      "variant": {
+        "id": "marriage.father_died.r06life.house",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.inheritanceRouteAtFatherDeath",
+            "op": "eq",
+            "value": "lord_house"
+          }
+        ],
+        "headline": "이웃 영주가 죽자 혼인에서 비롯한 상속 청구가 인정되어 우리 가문이 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.lost",
+      "variant": {
+        "id": "marriage.lost.r06life.debt",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.deferredDebtAtInheritanceLoss",
+            "op": "eq",
+            "value": "positive"
+          }
+        ],
+        "headline": "영지가 이웃 영주의 아들에게 가면서 상속 뒤 빚을 떠맡기로 한 약정도 풀렸다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.lost",
+      "variant": {
+        "id": "marriage.lost.r06life.no_debt",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.deferredDebtAtInheritanceLoss",
+            "op": "eq",
+            "value": "absent"
+          }
+        ],
+        "headline": "영지는 이웃 영주의 아들에게 갔다. 이 혼인에는 상속 뒤 떠맡을 빚이 정해져 있지 않았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.contested",
+      "variant": {
+        "id": "marriage.contested.r06life.explicit",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willAllowedRoute",
+            "op": "eq",
+            "value": "explicit_let_stand"
+          }
+        ],
+        "headline": "새 유언을 그대로 두겠다고 답한 뒤, 이웃 영주가 죽자 그의 조카가 영지를 차지했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.contested",
+      "variant": {
+        "id": "marriage.contested.r06life.deadline",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.willAllowedRoute",
+            "op": "eq",
+            "value": "unanswered_deadline"
+          }
+        ],
+        "headline": "유언 변경에 답하지 않아 기한을 넘겼고, 이웃 영주가 죽자 그의 조카가 영지를 차지했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ],
+  "fallback": {
+    "rule": "missing/unknown/malformed/unverified context -> original baseline; no current-state reconstruction",
+    "legacyDefault": "No inferred old-save relationships or historical intent",
+    "nameRule": "Stable IDs only; current display names through historyParams at reading; relationships frozen at event/contract."
+  }
+}

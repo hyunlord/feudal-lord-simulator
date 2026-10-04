@@ -1,0 +1,3166 @@
+{
+  "history": [
+    {
+      "template": "decision.bundle",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "decision.famine_response",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "decision.petition_response",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "war.messenger",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "plague.rumour",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "plague.arrived",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "plague.priest_died",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "plague.priest_filled",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "plague.new_graves",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "plague.empty_streets",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "plague.abandoned_fields",
+      "canonical": 9,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 8
+    },
+    {
+      "template": "plague.ordinance",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "plague.resettlement",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "plague.second",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "plague.second_ended",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "plague.unanswered",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "reorg.wage_competition",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.textile_street",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.alehouse_boom",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.petitions_surge",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.guild_founded",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.weavers_left",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.overlord_warning",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.poll_tax",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "reorg.rebellion_rumour",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "reorg.autonomy_request",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "reorg.charter",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "reorg.unanswered",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "legacy.mayor_demand",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.royal_tax_envoy",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.succession",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "lord.wardship_begun",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "lord.wardship_ended",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.heir_seated",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "legacy.royal_subsidy",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.city_seal",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.charter_sealed",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.charter_refused",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.family_departed",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.family_stayed",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.legacy_record",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "legacy.last_market",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.staple",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.guild_dispute",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.market_fire",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.church_rebuilding",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.nave_rebuilt",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.deposition",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "legacy.unanswered",
+      "canonical": 7,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 6
+    },
+    {
+      "template": "war.beacon",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "war.raid",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "war.conscripts_left",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "war.conscripts_returned",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "war.favour_lost",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "war.licence",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "war.unanswered",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "faction.leader_succeeded",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "petition.representative_replaced",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "estate.person_died",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "stewardship.steward_died",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "stewardship.began",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "stewardship.oversight",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "stewardship.audit_mode",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "stewardship.rules",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "stewardship.season",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "manor.petition",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "manor.petition_answered",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "manor.petition_lapsed",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "stewardship.precedent",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "stewardship.steward_decided",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "stewardship.escalated",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "stewardship.brought",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "stewardship.lord_decided",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "stewardship.lapsed",
+      "canonical": 7,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 6
+    },
+    {
+      "template": "stewardship.audit_clean",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "stewardship.audit_found",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "stewardship.audit_answered",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "faction.relation",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "decline.entered",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "decline.recovered",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "house.withdrew",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "house.arrived",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "house.resettled",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "milestone.chapter_start",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "decision.market_town",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "decision.stone_town",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "decision.rebuild",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "decision.wall_expand",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "decision.drainage",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "decision.estate_policy",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "decision.project_subsidy",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "decision.market_dues",
+      "canonical": 6,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 5
+    },
+    {
+      "template": "negotiation.offered",
+      "canonical": 6,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 5
+    },
+    {
+      "template": "negotiation.accepted",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "negotiation.countered",
+      "canonical": 6,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 5
+    },
+    {
+      "template": "negotiation.rejected",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "negotiation.withdrawn",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "promise.made",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "promise.kept",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "promise.broken",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "marriage.contracted",
+      "canonical": 6,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 5
+    },
+    {
+      "template": "marriage.bride_arrived",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.child_born",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.brother_in_law_born",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.father_ill",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.will_change",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.will_dropped",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.father_died",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.inherited",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.lost",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.deferred_void",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "marriage.jointure_settled",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "marriage.contested",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "estate.claim_raised",
+      "canonical": 6,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 5
+    },
+    {
+      "template": "estate.suit_filed",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "estate.suit_stage",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "estate.suit_patron",
+      "canonical": 6,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 5
+    },
+    {
+      "template": "estate.suit_judged",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "estate.possession_enforced",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "estate.title_changed",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "estate.possession_changed",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "agency.subsidy_refused",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "agency.timber_ordered",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "agency.project_started",
+      "canonical": 6,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 5
+    },
+    {
+      "template": "drainage.done",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "event.rumour",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "event.sign",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "event.arrived",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "event.recovered",
+      "canonical": 7,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 6
+    },
+    {
+      "template": "era.entered",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "milestone.first_building",
+      "canonical": 11,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 10
+    },
+    {
+      "template": "milestone.market_town",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "milestone.stone_town",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "milestone.first_l4",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "milestone.lots",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "milestone.chapter_end",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "ledger.season",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "ledger.population",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "ledger.treasury_turn",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "ledger.l4",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "ledger.departures",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "ledger.rollup",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "person.move_in",
+      "canonical": 4,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "person.level_up",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "person.level_down",
+      "canonical": 5,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 4
+    },
+    {
+      "template": "person.leaving",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.left",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.resettled",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.burnt",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.rebuilt",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.emptied",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.stayed",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.hungry",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.fed",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.water",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.water_lost",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.born",
+      "canonical": 9,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 6
+    },
+    {
+      "template": "person.married",
+      "canonical": 4,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "person.arrived",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.came_of_age",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.occupation",
+      "canonical": 10,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 9
+    },
+    {
+      "template": "person.reeve",
+      "canonical": 1,
+      "context": 3,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.steward",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.died",
+      "canonical": 7,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 6
+    },
+    {
+      "template": "person.left_town",
+      "canonical": 4,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "person.bailiff",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.fell_ill",
+      "canonical": 1,
+      "context": 0,
+      "age": 4,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.recovered",
+      "canonical": 1,
+      "context": 0,
+      "age": 4,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.injured",
+      "canonical": 1,
+      "context": 0,
+      "age": 3,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.healed",
+      "canonical": 1,
+      "context": 0,
+      "age": 3,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.expecting",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.pilgrimage",
+      "canonical": 1,
+      "context": 0,
+      "age": 3,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.returned",
+      "canonical": 1,
+      "context": 0,
+      "age": 3,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.grew",
+      "canonical": 1,
+      "context": 2,
+      "age": 0,
+      "distinctCanonicalConditionalText": 0
+    },
+    {
+      "template": "person.shrank",
+      "canonical": 2,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 1
+    },
+    {
+      "template": "registry.offered",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "registry.answered",
+      "canonical": 7,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 6
+    },
+    {
+      "template": "registry.lapsed",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "registry.invalid",
+      "canonical": 4,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 3
+    },
+    {
+      "template": "registry.term_began",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "registry.term_ended",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    },
+    {
+      "template": "manor.petition_precedent",
+      "canonical": 3,
+      "context": 0,
+      "age": 0,
+      "distinctCanonicalConditionalText": 2
+    }
+  ],
+  "ledger": [
+    {
+      "category": "opening_balance",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "market_sale",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "construction",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "upkeep",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "toll",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "stall_fee",
+      "canonical": 4,
+      "context": 2
+    },
+    {
+      "category": "rent",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "mill_toll",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "demesne_sale",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "project",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "famine_relief",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "famine_sale",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "charter_fee",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "restoration_fee",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "house_change",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "wool_levy",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "war_exemption",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "war_subsidy",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "war_loan",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "war_tax",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "raid_loot",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "purveyance",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "refugee_fee",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "murage",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "wages",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "statute_fine",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "church_fee",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "entry_fine",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "fulling_toll",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "ulnage",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "cloth_toll",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "poll_tax",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "fee_farm",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "royal_subsidy",
+      "canonical": 4,
+      "context": 2
+    },
+    {
+      "category": "succession_relief",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "legacy_endowment",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "church_rebuilding",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "timber_purchase",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "project_subsidy",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "lawsuit",
+      "canonical": 4,
+      "context": 4
+    },
+    {
+      "category": "marriage_portion",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "promise_payment",
+      "canonical": 4,
+      "context": 2
+    },
+    {
+      "category": "estate_income",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "audit_recovery",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "registry_settlement",
+      "canonical": 4,
+      "context": 0
+    },
+    {
+      "category": "instalment",
+      "canonical": 6,
+      "context": 0
+    }
+  ],
+  "catalogSources": [
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin",
+      "sourcePath": "records/event-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.already_recorded",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.same_tick",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.textile_street.r06ctx2.not_yet_recorded",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.already_recorded",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.same_tick",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.refused",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.town",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.family",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.last_market.r06ctx2.church",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.all_ready",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.partly_ready",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.stone_town.r06ctx2.none_ready",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.residents_present",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.rebuild.r06ctx2.empty",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.retained",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.wall_expand.r06ctx2.moved",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.sole_work",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "decision.drainage.r06ctx2.parallel_work",
+      "sourcePath": "records/event-context-wave2-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.arrived.r06ctx.young",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.arrived.r06ctx.elder",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.reeve.r06ctx.youth",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.reeve.r06ctx.adult",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.reeve.r06ctx.elder",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.expecting.r06ctx.youth",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.expecting.r06ctx.adult",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.emptied.r06ctx.one",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.emptied.r06ctx.many",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.steward.r06ctx.after_death",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.steward.r06ctx.after_departure",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.bailiff.r06ctx.artisan",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.bailiff.r06ctx.merchant",
+      "sourcePath": "records/person-context-coverage/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.leaving.r06life.water",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.leaving.r06life.no_water",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.left.r06life.one",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.left.r06life.many",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.resettled.r06life.early",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.resettled.r06life.later",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.burnt.r06life.one",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.burnt.r06life.many",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.rebuilt.r06life.early",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.rebuilt.r06life.later",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.stayed.r06life.water",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.stayed.r06life.no_water",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.hungry.r06life.one",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.hungry.r06life.many",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.fed.r06life.brief",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.fed.r06life.long",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.water.r06life.one",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.water.r06life.many",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.water_lost.r06life.burnt",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt",
+      "sourcePath": "records/person-life-revised/PROPOSALS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "promise_payment.r06purpose.kept",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "promise_payment.r06purpose.will_favour",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "royal_subsidy.r06purpose.tax",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "royal_subsidy.r06purpose.confirmation",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "stall_fee.r06purpose.market",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "stall_fee.r06purpose.alehouse",
+      "sourcePath": "records/ledger-purpose-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lawsuit.r06context.filed",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lawsuit.r06context.evidence",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lawsuit.r06context.hearing",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lawsuit.r06context.enforcing",
+      "sourcePath": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.move_in.r06transition.one",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.move_in.r06transition.several",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.married.r06transition.manor",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.married.r06transition.town_house",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.left_town.r06transition.present",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.left_town.r06transition.absent",
+      "sourcePath": "records/person-transitions-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.withdrew.r06move.empty_town",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.withdrew.r06move.family_extinct",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.withdrew.r06move.decline_elapsed",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.arrived.r06move.inhabited",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.arrived.r06move.empty",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.resettled.r06move.granary_only",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.resettled.r06move.split",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "house.resettled.r06move.household_only",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "agency.timber_ordered.r06move.market",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "agency.timber_ordered.r06move.hamlet_storehouse",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "negotiation.rejected.r06move.jointure",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "negotiation.rejected.r06move.deferred_without_jointure",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "negotiation.rejected.r06move.neither",
+      "sourcePath": "records/movement-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.came_of_age.r06fixed.co_resident",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.came_of_age.r06fixed.not_co_resident",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.all_complete",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.partly_complete",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.none_complete",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.priest_died.r06fixed.present",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.priest_died.r06fixed.absent",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "ledger.l4.r06fixed.increased",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "ledger.l4.r06fixed.decreased",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "ledger.l4.r06fixed.unchanged",
+      "sourcePath": "records/fixed-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.staple.r06town.present",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.staple.r06town.absent",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.guild_dispute.r06town.identified",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.guild_dispute.r06town.unidentified",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.market_fire.r06town.full",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.market_fire.r06town.partial",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.market_fire.r06town.zero",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.church_rebuilding.r06town.covers_cost",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.church_rebuilding.r06town.below_cost",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.full",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.partial",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.zero",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.deposition.r06town.toward_closer",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.deposition.r06town.toward_distant",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.deposition.r06town.unchanged",
+      "sourcePath": "records/legacy-town-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.held",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.royal_tax_envoy.r06gov.not_held",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.zero",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.royal_subsidy.r06gov.remaining",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.son",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.daughter_husband",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.city_seal.r06gov.collateral",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.same",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.replacement",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.charter_sealed.r06gov.unnamed",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.paid",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.family_departed.r06gov.no_record",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.paid",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.family_stayed.r06gov.no_record",
+      "sourcePath": "records/legacy-government-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted",
+      "sourcePath": "records/reorg-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lord.wardship_ended.r06office.named_guardian",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "lord.wardship_ended.r06office.overlord",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "faction.leader_succeeded.r06office.same_household",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "faction.leader_succeeded.r06office.different_household",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "stewardship.steward_died.r06office.direct",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "stewardship.steward_died.r06office.steward",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "stewardship.began.r06office.sole_estate",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "stewardship.began.r06office.multiple_estates",
+      "sourcePath": "records/office-context-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.chapter_start.r06stage.second",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.chapter_start.r06stage.last",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.chapter_end.r06stage.first",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.chapter_end.r06stage.last",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.market_town.r06stage.market",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.market_town.r06stage.stone",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.first_l4.r06stage.one",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "milestone.first_l4.r06stage.several",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.grew.r06stage.two",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "person.grew.r06stage.several",
+      "sourcePath": "records/milestone-context/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.lord",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.son",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.father_ill.r06life.kin",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.lord",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.son",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.deferred_void.r06life.kin",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.will_change.r06life.open",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.will_change.r06life.absent",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.paid",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.will_dropped.r06life.promised",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.father_died.r06life.son",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.father_died.r06life.rival",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.father_died.r06life.house",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.lost.r06life.debt",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.lost.r06life.no_debt",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.contested.r06life.explicit",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "marriage.contested.r06life.deadline",
+      "sourcePath": "records/marriage-life-revised/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.messenger.r06wp.no_ring",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.messenger.r06wp.unfinished",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.messenger.r06wp.complete",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.beacon.r06wp.no_ring",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.beacon.r06wp.unfinished",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.beacon.r06wp.complete",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.licence.r06wp.no_stock",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "war.licence.r06wp.stocked",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.rumour.r06wp.no_arrival",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.rumour.r06wp.arrival_recorded",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.arrived.r06wp.prior_rumour",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.arrived.r06wp.no_prior_rumour",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.second.r06wp.filled",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.second.r06wp.vacant",
+      "sourcePath": "records/war-plague-context/PROPOSAL.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.new_graves.r06raw.one",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.new_graves.r06raw.several",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.empty_streets.r06raw.one",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "plague.empty_streets.r06raw.several",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.unidentified",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    },
+    {
+      "id": "legacy.mayor_demand.r06raw.identified",
+      "sourcePath": "records/current-param-candidates/ADDITIONS.json",
+      "shaMatchesR07": true,
+      "sourcePresentR08": true,
+      "reviewPresentR08": true
+    }
+  ],
+  "astra": [
+    {
+      "id": "ck_evt_002",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_004",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_008",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_010",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_011",
+      "status": "r05_revised_and_reviewed",
+      "evidence": "EDITORIAL_CONTRACTS_R05.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_015",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_018",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_019",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_020",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_024",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_025",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_028",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_029",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_030",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_031",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_035",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_037",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_042",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_046",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_049",
+      "status": "r05_revised_and_reviewed",
+      "evidence": "EDITORIAL_CONTRACTS_R05.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_051",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_057",
+      "status": "r05_revised_and_reviewed",
+      "evidence": "EDITORIAL_CONTRACTS_R05.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_058",
+      "status": "r05_revised_and_reviewed",
+      "evidence": "EDITORIAL_CONTRACTS_R05.json",
+      "r08Present": true,
+      "r07Present": true
+    },
+    {
+      "id": "ck_evt_059",
+      "status": "existing_answer_mapped",
+      "evidence": "../records/lm-e9-answers/ANSWERS.json",
+      "r08Present": true,
+      "r07Present": true
+    }
+  ]
+}

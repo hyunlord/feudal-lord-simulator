@@ -1,0 +1,50 @@
+{
+  "status": "all_context_candidates_uninstalled",
+  "allVariantsRequireProvenanceAdapter": true,
+  "factLineReviewRequired": [
+    "legacy.charter_refused.r06ctx2.expired"
+  ],
+  "factLineReason": "historyCopy.ko.ts195 says 영주가 자치 특허를 거절했다 even for expiry. Preserve baseline for missing context, but do not adopt expired headline with this unchanged fact line; require neutral/nonaccept or response-specific factline.",
+  "unmeasuredNaturalReachability": [
+    "decision.stone_town.r06ctx2.none_ready"
+  ],
+  "completionBoundary": "Engine implementation is not required to finish this author draft delivery; no runtime success claimed.",
+  "blocks": [
+    {
+      "variantId": "legacy.charter_refused.r06ctx2.expired",
+      "status": "BLOCK_FACT_LINE_CONFLICT",
+      "originalFactLine": "영주가 자치 특허를 거절했다 — 도시의 반발 {backlash}",
+      "proposedFactLine": "자치 특허 청원에 답하지 않은 채 기한을 넘겼다 — 도시의 반발 {backlash}",
+      "requires": "응답별 기본 사실줄 분기 후 headline과 사실줄 함께 검수",
+      "engineModified": false
+    },
+    {
+      "variantId": "decision.market_town.r06ctx2.water_reach",
+      "status": "HOLD_COMPOSED_LINE_COMPLETION_AMBIGUITY",
+      "headline": "물길을 경계의 일부로 삼고, 땅 위에는 목책을 두를 시장도시를 선포했다.",
+      "originalFactLine": "목책을 두르고 시장도시를 선포했다",
+      "combinedReadingRisk": "headline은 경계 계획·선포이나 원래 사실줄을 붙이면 목책 완공으로 읽힐 여지가 있음",
+      "proposedFactLine": "목책을 두를 경계를 정하고 시장도시를 선포했다",
+      "evidence": "src/engine/palisade.ts:293-306 — constructionSites를 생성하는 시점",
+      "requires": "최종 출력의 headline+사실줄을 함께 검수하고 계획·착수 문구 확정 전 사용 보류",
+      "engineModified": false
+    },
+    {
+      "variantId": "decision.market_town.r06ctx2.land_ring",
+      "status": "HOLD_COMPOSED_LINE_COMPLETION_AMBIGUITY",
+      "headline": "땅 위를 잇는 목책 둘레를 정하고 시장도시를 선포했다.",
+      "originalFactLine": "목책을 두르고 시장도시를 선포했다",
+      "combinedReadingRisk": "headline은 경계 계획·선포이나 원래 사실줄을 붙이면 목책 완공으로 읽힐 여지가 있음",
+      "proposedFactLine": "목책을 두를 경계를 정하고 시장도시를 선포했다",
+      "evidence": "src/engine/palisade.ts:293-306 — constructionSites를 생성하는 시점",
+      "requires": "최종 출력의 headline+사실줄을 함께 검수하고 계획·착수 문구 확정 전 사용 보류",
+      "engineModified": false
+    }
+  ],
+  "compositionReviewRequired": [
+    "legacy.charter_refused.r06ctx2.expired",
+    "decision.market_town.r06ctx2.water_reach",
+    "decision.market_town.r06ctx2.land_ring"
+  ],
+  "reviewApplied": "event-context-wave2-review; revised schema needs separate review"
+}

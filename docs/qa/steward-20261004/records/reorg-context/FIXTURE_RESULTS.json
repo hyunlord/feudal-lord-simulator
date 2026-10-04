@@ -1,0 +1,707 @@
+{
+  "positive": [
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded",
+      "selected": "reorg.wage_competition.r06rg.none_recorded",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded",
+      "selected": "reorg.wage_competition.r06rg.departure_recorded",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned",
+      "selected": "reorg.guild_founded.r06rg.assigned",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned",
+      "selected": "reorg.guild_founded.r06rg.unassigned",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused",
+      "selected": "reorg.weavers_left.r06rg.refused",
+      "factLineCompositionAllowed": false,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired",
+      "selected": "reorg.weavers_left.r06rg.expired",
+      "factLineCompositionAllowed": false,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded",
+      "selected": "reorg.overlord_warning.r06rg.founded",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded",
+      "selected": "reorg.overlord_warning.r06rg.not_founded",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased",
+      "selected": "reorg.autonomy_request.r06rg.chased",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted",
+      "selected": "reorg.autonomy_request.r06rg.guild_accepted",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted",
+      "selected": "reorg.autonomy_request.r06rg.guild_not_accepted",
+      "factLineCompositionAllowed": true,
+      "runtimeInstalled": false
+    }
+  ],
+  "negative": [
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.none_recorded.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.wage_competition.r06rg.departure_recorded.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.assigned.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.guild_founded.r06rg.unassigned.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.founded.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.overlord_warning.r06rg.not_founded.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.chased.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_accepted.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.empty",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.missing_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.domain",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.cross_template",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.unverified",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.wrong_capture",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.negative_tick",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.extra_field",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.wrong_source",
+      "schemaRejected": true,
+      "fallback": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.record_id",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    },
+    {
+      "id": "reorg.autonomy_request.r06rg.guild_not_accepted.record_tick",
+      "schemaAccepted": true,
+      "bindingRejected": true
+    }
+  ],
+  "proposalNegative": [
+    {
+      "id": "empty_fields",
+      "rejected": true
+    },
+    {
+      "id": "empty_fallback",
+      "rejected": true
+    },
+    {
+      "id": "empty_additions",
+      "rejected": true
+    },
+    {
+      "id": "wrong_domain",
+      "rejected": true
+    },
+    {
+      "id": "missing_fact",
+      "rejected": true
+    },
+    {
+      "id": "wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "empty_when",
+      "rejected": true
+    }
+  ]
+}

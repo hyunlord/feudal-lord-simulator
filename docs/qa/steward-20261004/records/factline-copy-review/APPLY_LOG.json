@@ -1,0 +1,23 @@
+[
+  {
+    "argv": [
+      "git",
+      "apply",
+      "--check",
+      "/tmp/astra-steward-r06-20261004/patches/factline-copy-r06/historyCopy.ko.ts.patch"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "argv": [
+      "git",
+      "apply",
+      "/tmp/astra-steward-r06-20261004/patches/factline-copy-r06/historyCopy.ko.ts.patch"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  }
+]

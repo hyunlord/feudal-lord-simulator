@@ -1,0 +1,12 @@
+{
+  "status": "adopted bounded recorded-input replay",
+  "reviewSHA256": "0ec579578e4603344bf2d22ce8860284ad4ba360a9bcc7191d620ad3759b61e0",
+  "reviewArtifacts": 4,
+  "checks": 604,
+  "distinctDecisionInputs": 4,
+  "recordedPathCalls": 92,
+  "officialTickCalls": 0,
+  "gameCauseConfirmed": false,
+  "foodMechanism": "HOLD",
+  "scope": "4 original-function results consistent with stored next tiles; not official prefix interception"
+}

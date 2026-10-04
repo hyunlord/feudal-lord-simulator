@@ -1,0 +1,28 @@
+{
+  "status": "PASS_NARROW_POST_APPLICATION_REVIEW",
+  "structuralChanges": [
+    {
+      "op": "remove",
+      "eventId": "ck_evt_189",
+      "field": "unsupportedFilters",
+      "itemId": "NE_SR01_KI09_source_fulltext"
+    }
+  ],
+  "exactExpectedObject": true,
+  "other199Unchanged": true,
+  "conditionsChoicesEnabledUnchanged": true,
+  "contextHoldPreserved": true,
+  "unallowedContentInputsUnchanged": 23,
+  "sourceCatalogByteUnchanged": true,
+  "cs09ProductionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+  "eventCount": 200,
+  "coreBlocked": 61,
+  "allChoicesUnsupported": 60,
+  "enabledSidecar": 0,
+  "manifestPassCount": 25,
+  "historyLogPreserved": true,
+  "beforeRegistrySha256": "7decc818654c02f109c2a48cff1096dbc028dfeb71e94104ad28738bbf7a1f73",
+  "afterRegistrySha256": "f89fa934f5db54ce2d41efe2300e8b877e07e9a3b8e8d15c299c974ae5042148",
+  "engineExecuted": false,
+  "contentModifiedByReviewer": false
+}

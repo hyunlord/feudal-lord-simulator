@@ -1,0 +1,30 @@
+# LM-E9 Astra 확인24건 — R05 답변
+
+기존20건의 답변 대응과 새로 검수한4건의 편집결정이다. 실행 가능한24카드라는 뜻이 아니다. 020의 최소2결과선택 충돌 등 기존 실행차단을 유지한다.
+
+| ID | 편집 답변 | 상태 |
+|---|---|---|
+| ck_evt_002 | 이미 accounts를 다시 설정하는 첫 선택은 삭제됐다. 방문 감사 b와 직접 감독 c의 두 실제 변경만 남는다. load=capacity, capacity>=2여서 직접 감독 전환의 과부하를 요구한다. 최근 방문 조건은 visitTick 없음 또는 경과4000틱 이상이다. | existing_answer_mapped |
+| ck_evt_004 | 거주 가구2 이상, 실제 서비스 할당이 존재하면서 water.kind!=served인 가구2 이상, 밀 반입 공간0. A=40d, 분할20+20d. 두 장려금은 현재0, 남은 약속 한도40<=L<80, 두 건물의 적법 후보 필요. 역사 수치가 아닌 편집 문턱이다. | existing_answer_mapped |
+| ck_evt_008 | 완성 예배당1 이상, 거주 가구3 이상이 모든 완성 예배당에서 발판 거리8타일 초과. 이는 실제 서비스 반경이나 예배 이용 진단이 아니라 편집 거리 문턱이다. 50d 또는20d, 장려금 없음은 무명령. 장려금 없는 현재 townProposals에 chapel이 미리 있을 필요는 없다. | existing_answer_mapped |
+| ck_evt_010 | 실재 open 어업 청구권을 쓴다. 접수60d, 접수+charter는100d 이상. 두 번째 명령은 접수 성공으로 새로 생성된 동일 청구권의 소송 ID를 연결해야 한다. 새 청구권 생성이나 임의 소송 선택은 금지한다. | existing_answer_mapped |
+| ck_evt_011 | 원안 terms와 counter.terms의 동기간 금전항목을 보수 비교. 비금전조건 동일·각 항목 비감소·하나 증가. treasuryBalance 정본 및 비교기 어댑터는 별도 차단. | r05_revised_and_reviewed |
+| ck_evt_015 | 봄·여름만 검사하고 실제 습도·강우는 쓰지 않는다. 주문0, 시장 거래 경로 존재, 금고180d 이상, 가용 목재10단 미만이고 진행 공사의 미납품·미예약 수요가 가용량보다 클 때. 주문10단/4단/무명령이다. | existing_answer_mapped |
+| ck_evt_018 | 같은 실제 혼인 쌍과 기타 조건으로 현금120d, 연40d×3년, 현금60d+연30d×2년, 기존 권리 조각의 과부산을 비교한다. 공통 금고120d, 진행 협상 없음. 과부산은 현재 jointurePiece 반환 ID와 무부담 명세 검사에 한정한다. 지급은 제안 즉시가 아니라 계약/약속 경로다. | existing_answer_mapped |
+| ck_evt_019 | 직접 감독이며 부하가 여력을 초과한 지도 밖 보유 영지. 같은 영지의 살아 있는 peasant/merchant 실제 후보를 비교하는 성향 축이다. 능력·충성·연줄도 표시한다. 직접 유지 선택은 결과 있는 선택 수에서 제외한다. | existing_answer_mapped |
+| ck_evt_020 | 실제 open lord pension 약속, A=20~60d는 새 금액 생성이 아니라 해당 약속 금액을 읽는 범위다. 금고>=A, 기한까지 다음 시장일 이상의 여유. 지금 이행 또는 무명령 대기다. 결과 있는 선택이 한 개뿐이어서 현 누적 최소2 정책과 충돌한다. | existing_answer_mapped |
+| ck_evt_024 | 기본 좌판세1000에서750으로 낮춤/그대로/시장 장려금24d. 셋째는 적법 사업 후보와 금고 여유가 있을 때만. 유지안은 무명령이므로 셋째가 가용하지 않으면 최소2 결과 선택을 충족하지 못해 카드 전체를 막아야 한다. | existing_answer_mapped |
+| ck_evt_025 | pending 감사이며 기한 내, revealedKept>=2. 현직 serving·alive, loyalty0..90, 현직 연줄 세력 relation>=-95, tenants<=95. 같은 영지의 후임은 기존 answerAudit 정렬(ability 내림차순, personId.localeCompare 오름차순) 첫 후보가 살아 있고 현직과 능력 또는 충성도가 달라야 한다. punish/replace/tolerate 세 처분을 분리했다. | existing_answer_mapped |
+| ck_evt_028 | state.plague.second 존재, arrivalTick<=tick, second.endTick 없음, plague.endedTick 없음인 두 번째 유행의 실제 진행 상태다. 현재 growth 또는 defence에서 stability/revenue로 바꾸며, 선택조건을 만족하면 곡창32d 약속을 추가한다. 단순3장 진입이나 소문으로 대신하지 않는다. | existing_answer_mapped |
+| ck_evt_029 | 실제 위임 영지, 현직 kept=errors=0이고 관련 pending 감사 없음. 셋째 후보는 현직보다 능력이 높고 충성도가 낮으며 기존 성향·충성도 식의 숨김 비율이 더 커야 한다. STEWARD_HIDING_GREATER 명세에 비교식을 두었다. 현재 감사모드와 같은 선택은 결과 수에 넣지 않는다. | existing_answer_mapped |
+| ck_evt_030 | 발신 petitioner=craftsmen, factionId=town. 제안 인물은 reorganisation.guild.headId와 persons.people의 실제 인물, 건축 주체는 agency.actors kind=guild. 건축 점수/회계의 merchant_house_2를 청원 발신으로 오인하지 않는다. fulling_mill/mill 각각32d 또는16+16d. 양쪽 적법 후보와 총32d 약속 여력 필요. | existing_answer_mapped |
+| ck_evt_031 | 제목은 청지기를 갈아야 할 때로 이미 구별됐다. 현재 위임·살아 있는 현직, 서로 및 현직과 다른 두 살아 있는 후보. 능력 높은 쪽의 충성이 더 낮다는 교차 비교다. 직접 감독은 load=capacity일 때만 제3안. 059 최초 위임 및019 성향 비교와 합치지 않는다. | existing_answer_mapped |
+| ck_evt_035 | 미래 제안까지 넓히지 않고 현재 공사의 미납품·미예약 목재 수요만 쓴다. 가을·겨울, 시장 거래 경로, 주문0, 금고72d 이상, 가용량12단 미만이고 수요>가용량. 12단/4단/무명령. 72d는12단 전체 대금 보장이 아니며 미리 결제하지 않는다. | existing_answer_mapped |
+| ck_evt_037 | 위임 계속이라는 무효과 선택을 삭제했다. 직접 감독과 위임 유지+방문 감사 두 변경으로 바꿨다. accounts·serving·alive, load=capacity, capacity>=2, visitTick 없음 또는4000틱 경과. 방문 설정은 반복되며 일회성 무료 감사가 아니다. | existing_answer_mapped |
+| ck_evt_042 | 셋째 시장 장려금은32d로 확정됐다. 기본 좌판세1000에서800/1150, 또는 좌판세 유지+장려금32d. 시장 장려금0·적법 후보·다른 약속+32<=금고25%를 요구한다. 다른 약속0이면 금고128d 이상이다. | existing_answer_mapped |
+| ck_evt_046 | order_timber는 잔량 설정이다. 기존 주문>=8, treasuryTimber>0, 거래 경로 존재에서4로 줄이기/0으로 취소. stock은 명령을 보내지 않는 유지안이며 주문<=60 및 현재 공사 수요>가용량일 때만 표시한다. 8~60은 편집 범위이고 시장 주문 상한400과 다르다. | existing_answer_mapped |
+| ck_evt_049 | 직물 거래 관측 전제를 삭제하고 두 사업 장려금 제안으로 재집필. 적법후보·한도·복수명령 원자성 차단 유지. | r05_revised_and_reviewed |
+| ck_evt_051 | 현재 player 측 open fishery 청구권과 다른 명의가 대상이다. 접수/무명령/접수+deed. 새 소송 ID를 접수 결과에서 연결한다. 이미 처리된 초기 청구권을 다시 만들지 않는다. 증서 존재는 편집 전제이며 소송 증거 상태로 대체 추론하지 않는다. | existing_answer_mapped |
+| ck_evt_057 | 교회/예배당과 기존 시장의 발판거리4칸 이하(게임추정). 새 generic 정의 작성, 등록기 전용 도착·1000tick기한·중복·만료는 미구현. | r05_revised_and_reviewed |
+| ck_evt_058 | 본거지 상인의 일회 납부 협의로 개작·도시로 재분류. 이웃실거래/중개전제삭제. 기존시장 필요, 새 generic 정의와 도착 절차는 미구현. | r05_revised_and_reviewed |
+| ck_evt_059 | 제목은 직접 감독을 내려놓을 때로 이미 구별됐다. 현재 직접 감독, 능력/충성 교차하는 두 실제 후보, 직접 관리 부하>=여력. 처음 위임의 자질 비교다. 직접 유지안은 결과 수에 세지 않는다. | existing_answer_mapped |

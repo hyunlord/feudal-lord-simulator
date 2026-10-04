@@ -1,0 +1,24 @@
+{
+  "status": "E_DRAFT_COMPLETION_HELD_THREE_LEDGER_SEMANTIC_GAPS",
+  "historyTypes": 182,
+  "ledgerCategories": 46,
+  "canonicalVariants": 650,
+  "ageDrafts": 20,
+  "contextDrafts": 206,
+  "historyContextDrafts": 202,
+  "ledgerContextDrafts": 4,
+  "uniqueIds": 876,
+  "historyAuthoringGaps": [
+
+  ],
+  "ledgerSemanticGaps": [
+    "stall_fee",
+    "royal_subsidy",
+    "promise_payment"
+  ],
+  "conditionSupport": "Canonical params/account and retained baseline; context/age capture contracts independently reviewed; actual integration not claimed",
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "canonicalModified": false,
+  "runtimeExecuted": false,
+  "installationRequiredForDraftCompletion": false
+}

@@ -1,0 +1,373 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trusted proposed adapter output; not arbitrary user input",
+  "type": "object",
+  "required": [
+    "status",
+    "recordId",
+    "recordTick",
+    "template",
+    "sourceHead",
+    "captureKind",
+    "referenceVerified",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordTick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "template": {
+      "enum": [
+        "lord.wardship_begun",
+        "reorg.petitions_surge",
+        "negotiation.accepted",
+        "negotiation.withdrawn",
+        "war.favour_lost",
+        "marriage.bride_arrived",
+        "marriage.child_born",
+        "marriage.inherited"
+      ]
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "captureKind": {
+      "enum": [
+        "emission_snapshot",
+        "immutable_contract_reference"
+      ]
+    },
+    "referenceVerified": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "guardianRouteAtStart": {
+          "enum": [
+            "manor_female_spouse",
+            "adult_house_member",
+            "overlord"
+          ]
+        },
+        "surgeTriggerAtRecord": {
+          "enum": [
+            "industry_ready",
+            "calendar_backstop"
+          ]
+        },
+        "acceptanceRouteAtRecord": {
+          "enum": [
+            "initial_offer",
+            "accepted_counter"
+          ]
+        },
+        "withdrawalCauseAtRecord": {
+          "enum": [
+            "declined_counter",
+            "counter_expired"
+          ]
+        },
+        "favourLossCauseAtRecord": {
+          "enum": [
+            "royal_request_refused",
+            "royal_request_expired"
+          ]
+        },
+        "groomRelationAtContract": {
+          "enum": [
+            "widowed_lord",
+            "son",
+            "brother",
+            "nephew",
+            "cousin"
+          ]
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "lord.wardship_begun"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "guardianRouteAtStart"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "guardianRouteAtStart": {
+              "enum": [
+                "manor_female_spouse",
+                "adult_house_member",
+                "overlord"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.petitions_surge"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "surgeTriggerAtRecord"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "surgeTriggerAtRecord": {
+              "enum": [
+                "industry_ready",
+                "calendar_backstop"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "negotiation.accepted"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "acceptanceRouteAtRecord"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "acceptanceRouteAtRecord": {
+              "enum": [
+                "initial_offer",
+                "accepted_counter"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "negotiation.withdrawn"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "withdrawalCauseAtRecord"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "withdrawalCauseAtRecord": {
+              "enum": [
+                "declined_counter",
+                "counter_expired"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "war.favour_lost"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "favourLossCauseAtRecord"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "favourLossCauseAtRecord": {
+              "enum": [
+                "royal_request_refused",
+                "royal_request_expired"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.bride_arrived"
+        },
+        "captureKind": {
+          "const": "immutable_contract_reference"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "groomRelationAtContract"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "groomRelationAtContract": {
+              "enum": [
+                "widowed_lord",
+                "son",
+                "brother",
+                "nephew",
+                "cousin"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.child_born"
+        },
+        "captureKind": {
+          "const": "immutable_contract_reference"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "groomRelationAtContract"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "groomRelationAtContract": {
+              "enum": [
+                "widowed_lord",
+                "son",
+                "brother",
+                "nephew",
+                "cousin"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.inherited"
+        },
+        "captureKind": {
+          "const": "immutable_contract_reference"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "groomRelationAtContract"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "groomRelationAtContract": {
+              "enum": [
+                "widowed_lord",
+                "son",
+                "brother",
+                "nephew",
+                "cousin"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

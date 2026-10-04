@@ -1,0 +1,173 @@
+[
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "spans": [
+      {
+        "start": 28,
+        "end": 30,
+        "text": "/** NG-7: the house the first marriage is offered to (LM-E2's third neighbour). */\nexport const MARRIAGE_ESTATE_ID = \"estate-neighbour-3\";\nconst COUNTERPART = `estate:${MARRIAGE_ESTATE_ID}`;\n"
+      },
+      {
+        "start": 174,
+        "end": 177,
+        "text": "function promise(diplomacy: DiplomacyState, fields: Omit<PromiseRecord, \"id\" | \"status\">): { readonly diplomacy: DiplomacyState; readonly record: PromiseRecord } {\n  const record: PromiseRecord = { ...fields, id: `promise-${diplomacy.nextPromise}`, status: \"open\" };\n  return { diplomacy: { ...diplomacy, promises: [...diplomacy.promises, record], nextPromise: diplomacy.nextPromise + 1 }, record };\n}\n"
+      },
+      {
+        "start": 212,
+        "end": 225,
+        "text": "  const diplomacy = diplomacyOf(state);\n  const record = diplomacy.promises.find(entry => entry.id === promiseId);\n  if (record === undefined || record.status !== \"open\" || record.promisor !== LORD || state.tick > record.deadline) return state;\n  let next = state;\n  const amount = record.amount ?? 0;\n  if (amount > 0) {\n    if (treasuryBalance(state) < amount) return state;\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"promise_payment\", amount: -amount,\n      sourceRefs: [{ type: \"claim\", id: record.id, detail: record.term }, { type: \"actor\", id: record.promisee }] }]);\n    next = { ...next, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };\n  }\n  return settle(next, record.id, \"kept\");\n}\n\n"
+      },
+      {
+        "start": 374,
+        "end": 388,
+        "text": "export function answerWillChange(state: GameState, choice: \"favour\" | \"support_promise\" | \"let_it_be\"): GameState {\n  const plan = diplomacyOf(state).marriage;\n  if (plan === undefined || plan.stage !== \"will_change\" || plan.willAnswer !== undefined) return state;\n  if (choice === \"favour\") {\n    if (treasuryBalance(state) < WILL_FAVOUR_PENNIES) return state;\n    const posted = postLedgerEntries(state, [{ account: \"cash\", category: \"promise_payment\", amount: -WILL_FAVOUR_PENNIES,\n      sourceRefs: [{ type: \"claim\", id: plan.claimId, detail: \"will_favour\" }, { type: \"actor\", id: COUNTERPART }] }]);\n    return withPlan({ ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin },\n      { ...plan, stage: \"father_ill\", willAnswer: choice, events: { ...plan.events, will_dropped: state.tick } });\n  }\n  if (choice === \"support_promise\") {\n    const made = promise(diplomacyOf(state), { promisor: LORD, promisee: COUNTERPART, term: \"political_support\", deadline: state.tick + PROMISE_SUPPORT_TICKS,\n      witnesses: MARRIAGE_WITNESSES, stake: PROMISE_STAKE, negotiationId: plan.negotiationId });\n    return withDiplomacy(state, { ...made.diplomacy, marriage: { ...plan, stage: \"father_ill\", willAnswer: choice, events: { ...plan.events, will_dropped: state.tick } } });\n  }\n"
+      },
+      {
+        "start": 423,
+        "end": 438,
+        "text": " * FIX-13 (NG-5b): the estate inherited, the deferred debt falls due — a promise a year, over at most DEFERRED_DEBT_YEARS\n * (the last taking the remainder), paid from the estate's income as the treasury carries it.\n */\nfunction deferredDebtDue(state: GameState, plan: MarriagePlan): GameState {\n  const total = plan.deferredDebt ?? 0;\n  if (total <= 0) return state;\n  let diplomacy = diplomacyOf(state);\n  const instalment = Math.ceil(total / DEFERRED_DEBT_YEARS);\n  for (let year = 1; year <= DEFERRED_DEBT_YEARS; year += 1) {\n    const amount = year < DEFERRED_DEBT_YEARS ? instalment : total - instalment * (DEFERRED_DEBT_YEARS - 1);\n    if (amount <= 0) continue;\n    diplomacy = promise(diplomacy, { negotiationId: plan.negotiationId, witnesses: MARRIAGE_WITNESSES, stake: PROMISE_STAKE, promisor: LORD,\n      promisee: COUNTERPART, term: \"debt_after_inheritance\", amount, deadline: state.tick + year * PROMISE_PAYMENT_TICKS }).diplomacy;\n  }\n  return withDiplomacy(state, diplomacy);\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "spans": [
+      {
+        "start": 72,
+        "end": 76,
+        "text": "function post(state: GameState, category: LedgerCategory, amount: number, sources: readonly [SourceRef, ...SourceRef[]]): { readonly state: GameState; readonly moved: number } {\n  const moved = amount < 0 ? -Math.min(-amount, Math.max(0, treasuryBalance(state))) : amount;\n  if (moved === 0) return { state, moved: 0 };\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category, amount: moved, sourceRefs: sources }]);\n  return { state: { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger }, moved };\n"
+      },
+      {
+        "start": 150,
+        "end": 156,
+        "text": "  const l = legacyOf(next)!;\n  switch (petition.defId) {\n    case ROYAL_TAX_PETITION_ID: {\n      if (response !== \"accept\") break;\n      const due = Math.max(B.subsidyMin, Math.min(B.subsidyMax, Math.floor(treasuryBalance(next) * B.subsidyPermille / 1000)));\n      const paid = post(next, \"royal_subsidy\", -due, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"tenth_and_fifteenth\" }]);\n      next = withLegacy(paid.state, { ...l, royalSubsidy: l.royalSubsidy - paid.moved });\n"
+      },
+      {
+        "start": 170,
+        "end": 182,
+        "text": "    }\n    case BOROUGH_AUTONOMY_PETITION_ID: {\n      if (response === \"accept\") {\n        // LG-2: the mayoralty and the seal to the town (and chapter 4's two lines if it had refused); the fine; the fee farm.\n        const held = new Set((next.politics?.rights ?? []).map(right => right.id));\n        const lines = [MAYORALTY_RIGHT_ID, BOROUGH_SEAL_RIGHT_ID, MARKET_TOLLS_RIGHT_ID, BRIDGE_TOLLS_RIGHT_ID].filter(id => !held.has(id));\n        if (next.politics !== undefined) next = { ...next, politics: { ...next.politics, rights: [...next.politics.rights, ...lines.map(id => ({ id, holder: \"townsfolk\" as const,\n          grantedTick: state.tick, petitionId: petition.id, stallFeePermille: id === MARKET_TOLLS_RIGHT_ID ? 0 : 1000 }))] } };\n        next = post(next, \"charter_fee\", B.charterFine, [TOWN_ACTOR, { type: \"right\", id: BOROUGH_SEAL_RIGHT_ID, detail: \"charter_fine\" }]).state;\n        if (l.answers[ROYAL_TAX_PETITION_ID] !== \"accept\") {\n          next = post(next, \"royal_subsidy\", -B.confirmationFine, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"confirmation\" }]).state;\n        }\n        const mayorCandidate = personOf(next, l.mayorCandidateId);\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/estates.ts",
+    "sha256": "d592e9373961ed2b23780c83376dc00b78cea69b6c411732ea476629677e1c2e",
+    "spans": [
+      {
+        "start": 180,
+        "end": 189,
+        "text": "export function raiseClaim(state: GameState, fields: { readonly claimant: HolderId; readonly estateId: string; readonly pieceId?: string;\n  readonly basis: ClaimBasis; readonly strength?: number }): GameState {\n  const estates = estatesOf(state);\n  if (estates.claims.some(claim => claim.claimant === fields.claimant && claim.estateId === fields.estateId && claim.pieceId === fields.pieceId\n    && claim.basis === fields.basis && (claim.status === \"open\" || claim.status === \"suing\"))) return state;\n  const claim: Claim = { id: `claim-${estates.nextClaim}`, claimant: fields.claimant, estateId: fields.estateId,\n    ...(fields.pieceId === undefined ? {} : { pieceId: fields.pieceId }), basis: fields.basis,\n    strength: fields.strength ?? CLAIM_BASIS_STRENGTH[fields.basis], evidence: [], since: state.tick, status: \"open\" };\n  return { ...state, estates: { ...estates, claims: [...estates.claims, claim], nextClaim: estates.nextClaim + 1 } };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ledger/ledger.ts",
+    "sha256": "ef2029b12fe25445410501cdd12147b233dca5b767650a7a6ba4a465326064b7",
+    "spans": [
+      {
+        "start": 22,
+        "end": 26,
+        "text": "export const EMPTY_LEDGER: Ledger = { entries: [], rollups: [], nextEntryOrdinal: 1 };\n\nexport function ledgerEntryId(ordinal: number): string {\n  return `ledger-${String(ordinal).padStart(6, \"0\")}`;\n}\n"
+      },
+      {
+        "start": 116,
+        "end": 138,
+        "text": "  state: Pick<GameState, \"ledger\" | \"treasuryCoin\" | \"tick\" | \"scenarioId\">,\n  postings: readonly LedgerPosting[],\n): { readonly ledger: Ledger; readonly treasuryCoin: number } {\n  for (const posting of postings) {\n    if (!Array.isArray(posting.sourceRefs) || posting.sourceRefs.length === 0) {\n      throw new LedgerSourceError(`Ledger entry ${posting.category} has no source`);\n    }\n    if (!Number.isSafeInteger(posting.amount)) throw new RangeError(`Ledger amount must be whole pennies: ${posting.amount}`);\n  }\n  let ledger = state.ledger ?? openingLedger(state, \"ledger_start\");\n  const previousCash = accountBalance(ledger, \"cash\");\n  const entries = [...ledger.entries];\n  let ordinal = ledger.nextEntryOrdinal;\n  let postedCash = 0;\n  for (const posting of postings) {\n    entries.push({ ...posting, id: ledgerEntryId(ordinal), tick: state.tick });\n    if (posting.account === \"cash\") postedCash += posting.amount;\n    ordinal += 1;\n  }\n  ledger = rollUpLedger({ ...ledger, entries, nextEntryOrdinal: ordinal }, state.tick);\n  cashBalances.set(ledger, previousCash + postedCash);\n  return { ledger, treasuryCoin: previousCash + postedCash };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/diplomacyConfig.ts",
+    "sha256": "c37266ce00dd391f0db7e42ceddfc8aa420d03c8fc081d263e5cee3e87036967",
+    "spans": [
+      {
+        "start": 96,
+        "end": 99,
+        "text": "export const BREACHED_NON_INFRINGEMENT_GAIN = 15;\n/** NG-8: the favour that talks the old lord out of a new will, pennies. */\nexport const WILL_FAVOUR_PENNIES = 120;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/legacyConfig.ts",
+    "sha256": "3ca61d68328e3b15bd062a6bdd06061eaa56e0ccf8f02ab8510f1805993de1f8",
+    "spans": [
+      {
+        "start": 80,
+        "end": 85,
+        "text": "\n  /** LG-2: a sealed charter — the town's one-off fine, the fee farm from then, the Crown's confirmation after a petition. */\n  charterFine: 300,\n  feeFarm: 200,\n  confirmationFine: 200,\n  /** LG-2: a refusal's backlash — at least this, the town's influence, or chapter 4's backlash and this much. */\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/ale.ts",
+    "sha256": "ccb11033375137164b40cc027f165f4b06b4333a61533ce8729e9bc1c2a455a8",
+    "spans": [
+      {
+        "start": 169,
+        "end": 182,
+        "text": "    sold.set(stake.buildingId, (sold.get(stake.buildingId) ?? 0) + drink);\n    drunk += drink;\n  }\n  const next = counted({ ...state, houses }, { drunk, sold: [...sold.values()].reduce((sum, casks) => sum + casks, 0) });\n  if (sold.size === 0) return next;\n  const postings: LedgerPosting[] = [];\n  for (const [id, casks] of [...sold.entries()].sort(([a], [b]) => a.localeCompare(b))) {\n    const dues = Math.ceil(casks * ALE_BALANCE.alePrice * ALE_BALANCE.alehouseDuesPermille / 1000);\n    if (dues > 0) postings.push({ account: \"cash\", category: \"stall_fee\", amount: dues, sourceRefs: [{ type: \"building\", id, detail: `alehouse:${casks}` }] });\n  }\n  if (postings.length === 0) return next;\n  const posted = postLedgerEntries(next, postings);\n  return { ...next, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/moneyRules.ts",
+    "sha256": "98136a56b880c47d87e18f764f11d3f4705e17db6de2f4ee6b707d64a50adc67",
+    "spans": [
+      {
+        "start": 113,
+        "end": 115,
+        "text": "function buildingSource(id: string, detail?: string): SourceRef {\n  return detail === undefined ? { type: \"building\", id } : { type: \"building\", id, detail };\n}\n"
+      },
+      {
+        "start": 138,
+        "end": 150,
+        "text": "  // FAIL-3 (FL-1): a right lost to the overlord or the merchants pays its holder, not the treasury.\n  const markets = rightHeld(state, \"market\"), tolls = rightHeld(state, \"tolls\"), mill = rightHeld(state, \"mill\");\n  for (const market of [...state.buildings].filter(building => markets && building.kind === \"market\").sort((a, b) => a.id.localeCompare(b.id))) {\n    const stalls = marketStalls(state, market);\n    // FC-3/FC-4: a market charter lowers the dues (the right is a source of the posting).\n    const right = stallFeeRightSource(state);\n    // F2-A (WR-8): the market chosen over the wall raises the dues a quarter.\n    // LM-E1 (TA-6 ③): in lord mode the lord's market dues scale the fee (1000‰ otherwise).\n    const fee = Math.round(stalls * MONEY_BALANCE.stallFeePerStall * stallFeePermille(state) / 1000 * marketExpansionPermille(state) / 1000\n      * agencyDuesPermille(state) / 1000);\n    if (stalls > 0 && fee > 0) postings.push({ account: \"cash\", category: \"stall_fee\", amount: fee,\n      sourceRefs: [buildingSource(market.id, `stalls:${stalls}`), ...(right === null ? [] : [right])] });\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/politics.ts",
+    "sha256": "c78d456fa63bf7eb2fa48361919ff760da4a4e822c291559de6d12af9bf336cf",
+    "spans": [
+      {
+        "start": 234,
+        "end": 238,
+        "text": "/** FC-4: the source a stall fee under a right carries, or null. */\nexport function stallFeeRightSource(state: Pick<GameState, \"politics\">): SourceRef | null {\n  const right = (state.politics?.rights ?? []).find(entry => entry.stallFeePermille < 1000);\n  return right === undefined ? null : { type: \"right\", id: right.id, detail: `stall_fee:${right.stallFeePermille}` };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 70,
+        "end": 70,
+        "text": "| 시장 좌판세 | 시장 좌판에서 걷는 이 게임의 수입 | market stall dues | 통행세 |\n"
+      },
+      {
+        "start": 111,
+        "end": 111,
+        "text": "| 에일 | 프로젝트의 홉 없는 곡물 술, 통 | ale | 홉 맥주로 자동 치환 |\n"
+      },
+      {
+        "start": 137,
+        "end": 137,
+        "text": "| 에일집 | 에일을 파는 곳 | alehouse | 에일하우스 |\n"
+      }
+    ]
+  }
+]

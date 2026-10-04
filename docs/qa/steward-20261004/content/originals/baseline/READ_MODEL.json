@@ -1,0 +1,3284 @@
+{
+  "formatVersion": 1,
+  "status": "read_model_spec_not_installed",
+  "engineCalls": {
+    "stateCalendar": {
+      "sourceRef": "src/engine/scenarioState.ts:78",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "heldOffMapEstates": {
+      "sourceRef": "src/engine/stewardship.ts:51",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "estatesOf": {
+      "sourceRef": "src/engine/estates.ts:96",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "attention": {
+      "sourceRef": "src/engine/stewardship.ts:60",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "nextMichaelmas": {
+      "sourceRef": "src/engine/stewardship.ts:482",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "lordEstatePetitions": {
+      "sourceRef": "src/engine/stewardship.ts:394",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "subsidyRefusal": {
+      "sourceRef": "src/engine/townAgency.ts:73",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "treasuryBalance": {
+      "sourceRef": "src/ledger/ledger.ts:69",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "waitingTimberNeed": {
+      "sourceRef": "src/engine/autoplayTimberDemand.ts:23",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "availableStock": {
+      "sourceRef": "src/economy/storage.ts:184",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "storageCapacityBlock": {
+      "sourceRef": "src/economy/storage.ts:98",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "allocateHouseServices": {
+      "sourceRef": "src/population/serviceAllocation.ts:53",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "buildingFootprintDistance": {
+      "sourceRef": "src/geometry/buildingDistance.ts:12",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "timberTradeMarket": {
+      "sourceRef": "src/engine/timberTrade.ts:28",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "timberTradePoint": {
+      "sourceRef": "src/engine/timberTrade.ts:19",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "autoplayBuildAction": {
+      "sourceRef": "src/engine/autoplay.ts:275",
+      "adapter": "invoke existing pure selector with explicit arguments; no reflection/eval"
+    },
+    "marriageCandidates": {
+      "sourceRef": "src/engine/marriage.ts:104",
+      "adapter": "invoke existing function, no groom fabrication"
+    },
+    "jointurePiece": {
+      "sourceRef": "src/engine/negotiation.ts:152",
+      "adapter": "returns actual piece ID or null; no rights creation"
+    },
+    "completedMarkets": {
+      "sourceRef": "src/engine/marketSettlement.ts:83",
+      "adapter": "existing operational and workersRequired filter"
+    },
+    "rightHeld": {
+      "sourceRef": "src/engine/lordshipState.ts:41",
+      "adapter": "existing pure exported read function; explicit arguments; not a mutation command"
+    },
+    "stallFeePermille": {
+      "sourceRef": "src/engine/politics.ts:230",
+      "adapter": "existing pure exported read function; explicit arguments; not a mutation command"
+    },
+    "famineStatus": {
+      "sourceRef": "src/engine/politics.ts:81",
+      "adapter": "existing pure exported read function; explicit arguments; not a mutation command"
+    },
+    "marriageGrooms": {
+      "sourceRef": "src/engine/marriage.ts:85",
+      "adapter": "existing pure exported read function; explicit arguments; not a mutation command"
+    },
+    "marriageRefusal": {
+      "sourceRef": "src/engine/marriage.ts:114",
+      "adapter": "existing pure exported read function; explicit arguments; not a mutation command"
+    },
+    "heirCandidates": {
+      "sourceRef": "src/engine/legacy.ts:122",
+      "adapter": "existing pure exported read function; explicit arguments; not a mutation command"
+    },
+    "diplomacyOf": {
+      "sourceRef": "src/engine/negotiation.ts:29",
+      "adapter": "existing exported pure default-state selector"
+    }
+  },
+  "derived": {
+    "LIVE_COUNT": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "field": "state.houses"
+              },
+              "as": "house",
+              "where": {
+                "compare": {
+                  "left": {
+                    "field": "house.residents"
+                  },
+                  "op": "gt",
+                  "right": {
+                    "literal": 0
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/population/population.types.ts:22"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "CHAPELS_COUNT": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "field": "state.buildings"
+              },
+              "as": "building",
+              "where": {
+                "compare": {
+                  "left": {
+                    "field": "building.kind"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "chapel"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/townAgency.ts:324",
+        "src/content/buildingConfig.ts:200"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "TIMBER_AVAILABLE": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "add",
+        "args": [
+          {
+            "field": "state.treasuryTimber"
+          },
+          {
+            "operation": "sum",
+            "args": [
+              {
+                "map": {
+                  "from": {
+                    "field": "state.buildings"
+                  },
+                  "as": "building",
+                  "value": {
+                    "call": "availableStock",
+                    "args": [
+                      {
+                        "field": "building"
+                      },
+                      {
+                        "literal": "timber"
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/economy/storage.ts:184",
+        "src/engine/autoplayTimberDemand.ts:23"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "WHEAT_BLOCKED": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "compare": {
+          "left": {
+            "call": "storageCapacityBlock",
+            "args": [
+              {
+                "field": "state.buildings"
+              },
+              {
+                "literal": "wheat"
+              }
+            ]
+          },
+          "op": "neq",
+          "right": {
+            "literal": null
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/economy/storage.ts:98"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "SUB": {
+      "status": "derived_spec",
+      "parameters": [
+        "kind"
+      ],
+      "expression": {
+        "operation": "coalesce",
+        "args": [
+          {
+            "operation": "project",
+            "args": [
+              {
+                "operation": "first",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "field": "state.agency.subsidies"
+                      },
+                      "as": "subsidy",
+                      "where": {
+                        "compare": {
+                          "left": {
+                            "field": "subsidy.kind"
+                          },
+                          "op": "eq",
+                          "right": {
+                            "field": "arg.kind"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "literal": "amount"
+              }
+            ]
+          },
+          {
+            "literal": 0
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/townAgency.ts:73"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "SUBSIDY_REMAINING": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "subtract",
+        "args": [
+          {
+            "operation": "max",
+            "args": [
+              {
+                "literal": 0
+              },
+              {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "operation": "multiply",
+                        "args": [
+                          {
+                            "call": "treasuryBalance",
+                            "args": [
+                              {
+                                "field": "state"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": 250
+                          }
+                        ]
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "operation": "sum",
+            "args": [
+              {
+                "map": {
+                  "from": {
+                    "field": "state.agency.subsidies"
+                  },
+                  "as": "subsidy",
+                  "value": {
+                    "field": "subsidy.amount"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/townAgency.ts:73",
+        "src/ledger/ledger.ts:69"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "WATERLESS": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "filter": {
+                  "from": {
+                    "field": "state.houses"
+                  },
+                  "as": "house",
+                  "where": {
+                    "compare": {
+                      "left": {
+                        "field": "house.residents"
+                      },
+                      "op": "gt",
+                      "right": {
+                        "literal": 0
+                      }
+                    }
+                  }
+                }
+              },
+              "as": "house",
+              "where": {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "mapGet",
+                        "args": [
+                          {
+                            "operation": "project",
+                            "args": [
+                              {
+                                "call": "allocateHouseServices",
+                                "args": [
+                                  {
+                                    "field": "state"
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": "houses"
+                              }
+                            ]
+                          },
+                          {
+                            "field": "house.buildingId"
+                          }
+                        ]
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": null
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "operation": "mapGet",
+                            "args": [
+                              {
+                                "operation": "project",
+                                "args": [
+                                  {
+                                    "call": "allocateHouseServices",
+                                    "args": [
+                                      {
+                                        "field": "state"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": "houses"
+                                  }
+                                ]
+                              },
+                              {
+                                "field": "house.buildingId"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "water.kind"
+                          }
+                        ]
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": "served"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/population/serviceAllocation.ts:23",
+        "src/population/serviceAllocation.ts:53"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "REMOTE_COUNT": {
+      "status": "derived_spec",
+      "parameters": [
+        "distance"
+      ],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "filter": {
+                  "from": {
+                    "field": "state.houses"
+                  },
+                  "as": "house",
+                  "where": {
+                    "compare": {
+                      "left": {
+                        "field": "house.residents"
+                      },
+                      "op": "gt",
+                      "right": {
+                        "literal": 0
+                      }
+                    }
+                  }
+                }
+              },
+              "as": "house",
+              "where": {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "findBy",
+                        "args": [
+                          {
+                            "field": "state.buildings"
+                          },
+                          {
+                            "literal": "id"
+                          },
+                          {
+                            "field": "house.buildingId"
+                          }
+                        ]
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": null
+                      }
+                    }
+                  },
+                  {
+                    "every": {
+                      "from": {
+                        "filter": {
+                          "from": {
+                            "field": "state.buildings"
+                          },
+                          "as": "building",
+                          "where": {
+                            "compare": {
+                              "left": {
+                                "field": "building.kind"
+                              },
+                              "op": "eq",
+                              "right": {
+                                "literal": "chapel"
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "as": "chapel",
+                      "where": {
+                        "compare": {
+                          "left": {
+                            "call": "buildingFootprintDistance",
+                            "args": [
+                              {
+                                "operation": "findBy",
+                                "args": [
+                                  {
+                                    "field": "state.buildings"
+                                  },
+                                  {
+                                    "literal": "id"
+                                  },
+                                  {
+                                    "field": "house.buildingId"
+                                  }
+                                ]
+                              },
+                              {
+                                "field": "chapel"
+                              }
+                            ]
+                          },
+                          "op": "gt",
+                          "right": {
+                            "field": "arg.distance"
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/geometry/buildingDistance.ts:12",
+        "src/population/population.types.ts:22"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "HELD_OFFMAP_IDS": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "map": {
+          "from": {
+            "call": "heldOffMapEstates",
+            "args": [
+              {
+                "field": "state"
+              }
+            ]
+          },
+          "as": "estate",
+          "value": {
+            "field": "estate.id"
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/stewardship.ts:51"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "ESTATE_PERSON_ALIVE": {
+      "status": "derived_spec",
+      "parameters": [
+        "personId"
+      ],
+      "expression": {
+        "operation": "coalesce",
+        "args": [
+          {
+            "operation": "project",
+            "args": [
+              {
+                "operation": "findBy",
+                "args": [
+                  {
+                    "operation": "project",
+                    "args": [
+                      {
+                        "call": "estatesOf",
+                        "args": [
+                          {
+                            "field": "state"
+                          }
+                        ]
+                      },
+                      {
+                        "literal": "people"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "id"
+                  },
+                  {
+                    "field": "arg.personId"
+                  }
+                ]
+              },
+              {
+                "literal": "alive"
+              }
+            ]
+          },
+          {
+            "literal": false
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/estates.types.ts:122",
+        "src/engine/stewardship.ts:139"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "LIVE_PERSON_EXISTS": {
+      "status": "derived_spec",
+      "parameters": [
+        "personId"
+      ],
+      "expression": {
+        "compare": {
+          "left": {
+            "operation": "findBy",
+            "args": [
+              {
+                "field": "state.persons.people"
+              },
+              {
+                "literal": "id"
+              },
+              {
+                "field": "arg.personId"
+              }
+            ]
+          },
+          "op": "neq",
+          "right": {
+            "literal": null
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/persons.types.ts (people)"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "FACTION_EXISTS": {
+      "status": "derived_spec",
+      "parameters": [
+        "factionId"
+      ],
+      "expression": {
+        "compare": {
+          "left": {
+            "operation": "findBy",
+            "args": [
+              {
+                "field": "state.factions.factions"
+              },
+              {
+                "literal": "id"
+              },
+              {
+                "field": "arg.factionId"
+              }
+            ]
+          },
+          "op": "neq",
+          "right": {
+            "literal": null
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/faction.types.ts"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "FACTION_RELATION": {
+      "status": "derived_spec",
+      "parameters": [
+        "factionId"
+      ],
+      "expression": {
+        "operation": "project",
+        "args": [
+          {
+            "operation": "findBy",
+            "args": [
+              {
+                "field": "state.factions.factions"
+              },
+              {
+                "literal": "id"
+              },
+              {
+                "field": "arg.factionId"
+              }
+            ]
+          },
+          {
+            "literal": "relation"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/faction.types.ts"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "CLAIM_EVIDENCE_KINDS": {
+      "status": "derived_spec",
+      "parameters": [
+        "claim"
+      ],
+      "expression": {
+        "map": {
+          "from": {
+            "field": "arg.claim.evidence"
+          },
+          "as": "evidence",
+          "value": {
+            "field": "evidence.kind"
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/estates.types.ts:82"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "CLAIM_PIECE_KIND": {
+      "status": "derived_spec",
+      "parameters": [
+        "claim"
+      ],
+      "expression": {
+        "operation": "project",
+        "args": [
+          {
+            "operation": "findBy",
+            "args": [
+              {
+                "operation": "project",
+                "args": [
+                  {
+                    "operation": "findBy",
+                    "args": [
+                      {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "call": "estatesOf",
+                            "args": [
+                              {
+                                "field": "state"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "estates"
+                          }
+                        ]
+                      },
+                      {
+                        "literal": "id"
+                      },
+                      {
+                        "field": "arg.claim.estateId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "pieces"
+                  }
+                ]
+              },
+              {
+                "literal": "id"
+              },
+              {
+                "field": "arg.claim.pieceId"
+              }
+            ]
+          },
+          {
+            "literal": "kind"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/estates.types.ts:25",
+        "src/engine/estates.types.ts:82"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "CLAIM_TITLE_HOLDER": {
+      "status": "derived_spec",
+      "parameters": [
+        "claim"
+      ],
+      "expression": {
+        "operation": "project",
+        "args": [
+          {
+            "operation": "findBy",
+            "args": [
+              {
+                "operation": "project",
+                "args": [
+                  {
+                    "operation": "findBy",
+                    "args": [
+                      {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "call": "estatesOf",
+                            "args": [
+                              {
+                                "field": "state"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "estates"
+                          }
+                        ]
+                      },
+                      {
+                        "literal": "id"
+                      },
+                      {
+                        "field": "arg.claim.estateId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "pieces"
+                  }
+                ]
+              },
+              {
+                "literal": "id"
+              },
+              {
+                "field": "arg.claim.pieceId"
+              }
+            ]
+          },
+          {
+            "literal": "titleHolder"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/estates.types.ts:25"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "COUNTER_CASH": {
+      "status": "derived_spec",
+      "parameters": [
+        "negotiation"
+      ],
+      "expression": {
+        "operation": "sum",
+        "args": [
+          {
+            "map": {
+              "from": {
+                "filter": {
+                  "from": {
+                    "field": "arg.negotiation.counter.terms"
+                  },
+                  "as": "term",
+                  "where": {
+                    "all": [
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "term.kind"
+                          },
+                          "op": "eq",
+                          "right": {
+                            "literal": "cash"
+                          }
+                        }
+                      },
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "term.giver"
+                          },
+                          "op": "eq",
+                          "right": {
+                            "literal": "proposer"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              "as": "term",
+              "value": {
+                "operation": "coalesce",
+                "args": [
+                  {
+                    "field": "term.amount"
+                  },
+                  {
+                    "literal": 0
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/diplomacy.types.ts:17",
+        "src/engine/diplomacy.types.ts:56"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "ACTIVE_MARRIAGE_NEGOTIATION_COUNT": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "field": "state.diplomacy.negotiations"
+              },
+              "as": "negotiation",
+              "where": {
+                "compare": {
+                  "left": {
+                    "field": "negotiation.status"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "countered"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/diplomacy.types.ts:56"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "CURACY_VACANT": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.plague.curacy"
+            }
+          },
+          {
+            "not": {
+              "exists": {
+                "field": "state.plague.curacy.filledTick"
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/plague.types.ts:36"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "ACTOR_KIND_EXISTS": {
+      "status": "derived_spec",
+      "parameters": [
+        "kind"
+      ],
+      "expression": {
+        "compare": {
+          "left": {
+            "operation": "findBy",
+            "args": [
+              {
+                "field": "state.agency.actors"
+              },
+              {
+                "literal": "kind"
+              },
+              {
+                "field": "arg.kind"
+              }
+            ]
+          },
+          "op": "neq",
+          "right": {
+            "literal": null
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/townAgency.types.ts (actors)"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "LORD_PRECEDENT_EXISTS": {
+      "status": "derived_spec",
+      "parameters": [
+        "estateId"
+      ],
+      "expression": {
+        "compare": {
+          "left": {
+            "operation": "count",
+            "args": [
+              {
+                "filter": {
+                  "from": {
+                    "field": "state.stewardship.petitions"
+                  },
+                  "as": "petition",
+                  "where": {
+                    "all": [
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "petition.estateId"
+                          },
+                          "op": "eq",
+                          "right": {
+                            "field": "arg.estateId"
+                          }
+                        }
+                      },
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "petition.decidedBy"
+                          },
+                          "op": "eq",
+                          "right": {
+                            "literal": "lord"
+                          }
+                        }
+                      },
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "petition.status"
+                          },
+                          "op": "in",
+                          "right": {
+                            "literal": [
+                              "granted",
+                              "refused"
+                            ]
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "op": "gt",
+          "right": {
+            "literal": 0
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/stewardship.ts:270"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "OPEN_OFFMAP_RECURRING_PETITION": {
+      "status": "derived_spec",
+      "parameters": [
+        "estateId"
+      ],
+      "expression": {
+        "compare": {
+          "left": {
+            "operation": "count",
+            "args": [
+              {
+                "filter": {
+                  "from": {
+                    "call": "lordEstatePetitions",
+                    "args": [
+                      {
+                        "field": "state"
+                      }
+                    ]
+                  },
+                  "as": "petition",
+                  "where": {
+                    "all": [
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "petition.estateId"
+                          },
+                          "op": "eq",
+                          "right": {
+                            "field": "arg.estateId"
+                          }
+                        }
+                      },
+                      {
+                        "compare": {
+                          "left": {
+                            "operation": "count",
+                            "args": [
+                              {
+                                "filter": {
+                                  "from": {
+                                    "field": "state.stewardship.petitions"
+                                  },
+                                  "as": "past",
+                                  "where": {
+                                    "all": [
+                                      {
+                                        "compare": {
+                                          "left": {
+                                            "field": "past.estateId"
+                                          },
+                                          "op": "eq",
+                                          "right": {
+                                            "field": "petition.estateId"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "compare": {
+                                          "left": {
+                                            "field": "past.kind"
+                                          },
+                                          "op": "eq",
+                                          "right": {
+                                            "field": "petition.kind"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "compare": {
+                                          "left": {
+                                            "field": "past.decidedBy"
+                                          },
+                                          "op": "eq",
+                                          "right": {
+                                            "literal": "lord"
+                                          }
+                                        }
+                                      },
+                                      {
+                                        "compare": {
+                                          "left": {
+                                            "field": "past.status"
+                                          },
+                                          "op": "in",
+                                          "right": {
+                                            "literal": [
+                                              "granted",
+                                              "refused"
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          "op": "gt",
+                          "right": {
+                            "literal": 0
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          },
+          "op": "gt",
+          "right": {
+            "literal": 0
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/stewardship.ts:270",
+        "src/engine/stewardship.ts:394"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "COMPLETED_BUILDING_COUNT": {
+      "status": "derived_spec",
+      "parameters": [
+        "kind"
+      ],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "field": "state.buildings"
+              },
+              "as": "building",
+              "where": {
+                "compare": {
+                  "left": {
+                    "field": "building.kind"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "field": "arg.kind"
+                  }
+                }
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/content/buildingConfig.ts (BuildingKind)"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "POLITICS_RIGHT_IDS": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "map": {
+          "from": {
+            "field": "state.politics.rights"
+          },
+          "as": "right",
+          "value": {
+            "field": "right.id"
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/politics.types.ts:23"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "POLITICS_STALL_FEE_PERMILLE": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "min",
+        "args": [
+          {
+            "literal": 1000
+          },
+          {
+            "map": {
+              "from": {
+                "field": "state.politics.rights"
+              },
+              "as": "right",
+              "value": {
+                "field": "right.stallFeePermille"
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/politics.types.ts:23"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "PENDING_AUDIT_FOR_ESTATE_COUNT": {
+      "status": "derived_spec",
+      "parameters": [
+        "estateId"
+      ],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "filter": {
+              "from": {
+                "field": "state.stewardship.audits"
+              },
+              "as": "audit",
+              "where": {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "audit.estateId"
+                      },
+                      "op": "eq",
+                      "right": {
+                        "field": "arg.estateId"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "audit.status"
+                      },
+                      "op": "eq",
+                      "right": {
+                        "literal": "pending"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/stewardship.types.ts:98"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "subtract": {
+      "status": "derived_spec",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "expression": {
+        "operation": "subtract",
+        "args": [
+          {
+            "field": "arg.a"
+          },
+          {
+            "field": "arg.b"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "DSL arithmetic operation, not GameState field"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "coalesce": {
+      "status": "derived_spec",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "expression": {
+        "operation": "coalesce",
+        "args": [
+          {
+            "field": "arg.a"
+          },
+          {
+            "field": "arg.b"
+          }
+        ]
+      },
+      "sourceRefs": [
+        "DSL arithmetic operation, not GameState field"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "OPERATING_MARKETS": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "operation": "count",
+        "args": [
+          {
+            "call": "completedMarkets",
+            "args": [
+              {
+                "field": "state.buildings"
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/marketSettlement.ts:83"
+      ],
+      "onMissing": "block_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "MARKET_INCOME_RIGHT_ACTIVE": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "call": "rightHeld",
+                "args": [
+                  {
+                    "field": "state"
+                  },
+                  {
+                    "literal": "market"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": true
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "call": "stallFeePermille",
+                "args": [
+                  {
+                    "field": "state"
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/lordshipState.ts:41",
+        "src/engine/estates.ts:116",
+        "src/engine/politics.ts:230",
+        "src/engine/moneyRules.ts:139"
+      ],
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed",
+      "limits": [
+        "Collection rights, not guarantee of actual positive rounded revenue"
+      ]
+    },
+    "COUNTER_MATERIAL_BURDEN_INCREASE": {
+      "status": "unsupported_pending_source_binding",
+      "reason": "cash/pension/debt/right_piece 의무를 단일 수치로 임의 합산하지 않는다. 역제안 terms별 비교 계약 필요.",
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed"
+    },
+    "UNANSWERED_FAMINE_ARRIVAL": {
+      "status": "derived_spec",
+      "parameters": [],
+      "expression": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "call": "famineStatus",
+                "args": [
+                  {
+                    "field": "state"
+                  }
+                ]
+              },
+              "op": "neq",
+              "right": {
+                "literal": null
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "famineStatus",
+                    "args": [
+                      {
+                        "field": "state"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "stage"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": "arrival"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "famineStatus",
+                    "args": [
+                      {
+                        "field": "state"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "response"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": null
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "operation": "project",
+                    "args": [
+                      {
+                        "call": "famineStatus",
+                        "args": [
+                          {
+                            "field": "state"
+                          }
+                        ]
+                      },
+                      {
+                        "literal": "choices"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/politics.ts:76",
+        "src/engine/politics.ts:81",
+        "src/engine/politics.ts:92"
+      ],
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed",
+      "limits": []
+    },
+    "VALID_MARRIAGE_PAIR": {
+      "status": "derived_spec",
+      "parameters": [
+        "groomId",
+        "brideId"
+      ],
+      "expression": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "marriageCandidates",
+                    "args": [
+                      {
+                        "field": "state"
+                      },
+                      {
+                        "field": "arg.groomId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "groom"
+                  }
+                ]
+              },
+              "op": "neq",
+              "right": {
+                "literal": null
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "marriageCandidates",
+                    "args": [
+                      {
+                        "field": "state"
+                      },
+                      {
+                        "field": "arg.groomId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "bride"
+                  }
+                ]
+              },
+              "op": "neq",
+              "right": {
+                "literal": null
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "marriageCandidates",
+                    "args": [
+                      {
+                        "field": "state"
+                      },
+                      {
+                        "field": "arg.groomId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "groom.id"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "field": "arg.groomId"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "marriageCandidates",
+                    "args": [
+                      {
+                        "field": "state"
+                      },
+                      {
+                        "field": "arg.groomId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "bride.id"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "field": "arg.brideId"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "marriageCandidates",
+                    "args": [
+                      {
+                        "field": "state"
+                      },
+                      {
+                        "field": "arg.groomId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "groom.alive"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": true
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "call": "marriageCandidates",
+                    "args": [
+                      {
+                        "field": "state"
+                      },
+                      {
+                        "field": "arg.groomId"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "bride.alive"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": true
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/marriage.ts:85",
+        "src/engine/marriage.ts:104",
+        "src/engine/marriage.ts:114",
+        "src/engine/marriage.ts:140"
+      ],
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed",
+      "limits": [
+        "Engine-defined pair only. Per-choice marriageRefusal required with resolved actual terms. No inferred bride age rule."
+      ]
+    },
+    "SUIT_POSSESSION_PENDING": {
+      "status": "derived_spec",
+      "parameters": [
+        "suit"
+      ],
+      "expression": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "field": "arg.suit.stage"
+              },
+              "op": "eq",
+              "right": {
+                "literal": "enforcing"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "field": "arg.suit.verdict"
+              },
+              "op": "eq",
+              "right": {
+                "literal": "plaintiff"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "findBy",
+                "args": [
+                  {
+                    "operation": "project",
+                    "args": [
+                      {
+                        "call": "estatesOf",
+                        "args": [
+                          {
+                            "field": "state"
+                          }
+                        ]
+                      },
+                      {
+                        "literal": "estates"
+                      }
+                    ]
+                  },
+                  {
+                    "literal": "id"
+                  },
+                  {
+                    "field": "arg.suit.estateId"
+                  }
+                ]
+              },
+              "op": "neq",
+              "right": {
+                "literal": null
+              }
+            }
+          },
+          {
+            "any": [
+              {
+                "all": [
+                  {
+                    "not": {
+                      "exists": {
+                        "field": "arg.suit.pieceId"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "operation": "findBy",
+                            "args": [
+                              {
+                                "operation": "project",
+                                "args": [
+                                  {
+                                    "call": "estatesOf",
+                                    "args": [
+                                      {
+                                        "field": "state"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": "estates"
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": "id"
+                              },
+                              {
+                                "field": "arg.suit.estateId"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "possessor"
+                          }
+                        ]
+                      },
+                      "op": "neq",
+                      "right": {
+                        "field": "arg.suit.plaintiff"
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "exists": {
+                      "field": "arg.suit.pieceId"
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "findBy",
+                        "args": [
+                          {
+                            "operation": "project",
+                            "args": [
+                              {
+                                "operation": "findBy",
+                                "args": [
+                                  {
+                                    "operation": "project",
+                                    "args": [
+                                      {
+                                        "call": "estatesOf",
+                                        "args": [
+                                          {
+                                            "field": "state"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "literal": "estates"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": "id"
+                                  },
+                                  {
+                                    "field": "arg.suit.estateId"
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": "pieces"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "id"
+                          },
+                          {
+                            "field": "arg.suit.pieceId"
+                          }
+                        ]
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": null
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "operation": "findBy",
+                            "args": [
+                              {
+                                "operation": "project",
+                                "args": [
+                                  {
+                                    "operation": "findBy",
+                                    "args": [
+                                      {
+                                        "operation": "project",
+                                        "args": [
+                                          {
+                                            "call": "estatesOf",
+                                            "args": [
+                                              {
+                                                "field": "state"
+                                              }
+                                            ]
+                                          },
+                                          {
+                                            "literal": "estates"
+                                          }
+                                        ]
+                                      },
+                                      {
+                                        "literal": "id"
+                                      },
+                                      {
+                                        "field": "arg.suit.estateId"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": "pieces"
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": "id"
+                              },
+                              {
+                                "field": "arg.suit.pieceId"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "possessor"
+                          }
+                        ]
+                      },
+                      "op": "neq",
+                      "right": {
+                        "field": "arg.suit.plaintiff"
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/estateSuits.ts:23",
+        "src/engine/estateSuits.ts:35",
+        "src/engine/estateSuits.ts:121",
+        "src/engine/estateSuits.ts:136",
+        "src/engine/estateSuits.ts:142"
+      ],
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed",
+      "limits": [
+        "Missing requested piece blocks; never fallback to whole estate. Treasury enforcement-cost check remains separate."
+      ]
+    },
+    "HEIR_CHOICES_AVAILABLE": {
+      "status": "derived_spec",
+      "parameters": [
+        "petition"
+      ],
+      "expression": {
+        "map": {
+          "from": {
+            "filter": {
+              "from": {
+                "call": "heirCandidates",
+                "args": [
+                  {
+                    "field": "state"
+                  }
+                ]
+              },
+              "as": "candidate",
+              "where": {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "operation": "coalesce",
+                            "args": [
+                              {
+                                "operation": "findBy",
+                                "args": [
+                                  {
+                                    "field": "state.persons.people"
+                                  },
+                                  {
+                                    "literal": "id"
+                                  },
+                                  {
+                                    "field": "candidate.personId"
+                                  }
+                                ]
+                              },
+                              {
+                                "operation": "findBy",
+                                "args": [
+                                  {
+                                    "field": "state.persons.past"
+                                  },
+                                  {
+                                    "literal": "id"
+                                  },
+                                  {
+                                    "field": "candidate.personId"
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "alive"
+                          }
+                        ]
+                      },
+                      "op": "eq",
+                      "right": {
+                        "literal": true
+                      }
+                    }
+                  },
+                  {
+                    "any": [
+                      {
+                        "not": {
+                          "exists": {
+                            "field": "arg.petition.options"
+                          }
+                        }
+                      },
+                      {
+                        "compare": {
+                          "left": {
+                            "field": "arg.petition.options"
+                          },
+                          "op": "contains",
+                          "right": {
+                            "field": "candidate.response"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "as": "candidate",
+          "value": {
+            "field": "candidate.kind"
+          }
+        }
+      },
+      "sourceRefs": [
+        "src/engine/legacy.ts:84",
+        "src/engine/legacy.ts:117",
+        "src/engine/legacy.ts:122",
+        "src/engine/legacy.ts:159",
+        "src/engine/politics.ts:169",
+        "src/engine/politics.ts:181",
+        "src/content/legacyConfig.ts:53"
+      ],
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed",
+      "limits": [
+        "Only existing open heir_choice binding; person alive is conservative content safety, not a property guaranteed by heirCandidates itself."
+      ]
+    },
+    "JOINTURE_UNENCUMBERED": {
+      "status": "derived_spec",
+      "parameters": [
+        "home",
+        "piece"
+      ],
+      "expression": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.home"
+                  },
+                  {
+                    "literal": "id"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": "estate-home"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "call": "jointurePiece",
+                "args": [
+                  {
+                    "field": "state"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.piece"
+                  },
+                  {
+                    "literal": "id"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.piece"
+                  },
+                  {
+                    "literal": "titleHolder"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": "lord"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.piece"
+                  },
+                  {
+                    "literal": "possessor"
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": "lord"
+              }
+            }
+          },
+          {
+            "not": {
+              "exists": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.piece"
+                  },
+                  {
+                    "literal": "lifeTenant"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "not": {
+              "exists": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.piece"
+                  },
+                  {
+                    "literal": "remainder"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "not": {
+              "exists": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.home"
+                  },
+                  {
+                    "literal": "lifeTenant"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "not": {
+              "exists": {
+                "operation": "project",
+                "args": [
+                  {
+                    "field": "arg.home"
+                  },
+                  {
+                    "literal": "remainder"
+                  }
+                ]
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "call": "estatesOf",
+                            "args": [
+                              {
+                                "field": "state"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "claims"
+                          }
+                        ]
+                      },
+                      "as": "claim",
+                      "where": {
+                        "all": [
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "claim.estateId"
+                              },
+                              "op": "eq",
+                              "right": {
+                                "operation": "project",
+                                "args": [
+                                  {
+                                    "field": "arg.home"
+                                  },
+                                  {
+                                    "literal": "id"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "any": [
+                              {
+                                "not": {
+                                  "exists": {
+                                    "field": "claim.pieceId"
+                                  }
+                                }
+                              },
+                              {
+                                "compare": {
+                                  "left": {
+                                    "field": "claim.pieceId"
+                                  },
+                                  "op": "eq",
+                                  "right": {
+                                    "operation": "project",
+                                    "args": [
+                                      {
+                                        "field": "arg.piece"
+                                      },
+                                      {
+                                        "literal": "id"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "claim.status"
+                              },
+                              "op": "in",
+                              "right": {
+                                "literal": [
+                                  "open",
+                                  "suing"
+                                ]
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": 0
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "call": "estatesOf",
+                            "args": [
+                              {
+                                "field": "state"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "suits"
+                          }
+                        ]
+                      },
+                      "as": "suit",
+                      "where": {
+                        "all": [
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "suit.estateId"
+                              },
+                              "op": "eq",
+                              "right": {
+                                "operation": "project",
+                                "args": [
+                                  {
+                                    "field": "arg.home"
+                                  },
+                                  {
+                                    "literal": "id"
+                                  }
+                                ]
+                              }
+                            }
+                          },
+                          {
+                            "any": [
+                              {
+                                "not": {
+                                  "exists": {
+                                    "field": "suit.pieceId"
+                                  }
+                                }
+                              },
+                              {
+                                "compare": {
+                                  "left": {
+                                    "field": "suit.pieceId"
+                                  },
+                                  "op": "eq",
+                                  "right": {
+                                    "operation": "project",
+                                    "args": [
+                                      {
+                                        "field": "arg.piece"
+                                      },
+                                      {
+                                        "literal": "id"
+                                      }
+                                    ]
+                                  }
+                                }
+                              }
+                            ]
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "suit.stage"
+                              },
+                              "op": "neq",
+                              "right": {
+                                "literal": "closed"
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": 0
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "operation": "project",
+                        "args": [
+                          {
+                            "call": "diplomacyOf",
+                            "args": [
+                              {
+                                "field": "state"
+                              }
+                            ]
+                          },
+                          {
+                            "literal": "negotiations"
+                          }
+                        ]
+                      },
+                      "as": "neg",
+                      "where": {
+                        "all": [
+                          {
+                            "compare": {
+                              "left": {
+                                "operation": "count",
+                                "args": [
+                                  {
+                                    "filter": {
+                                      "from": {
+                                        "field": "neg.terms"
+                                      },
+                                      "as": "term",
+                                      "where": {
+                                        "all": [
+                                          {
+                                            "compare": {
+                                              "left": {
+                                                "field": "term.pieceId"
+                                              },
+                                              "op": "eq",
+                                              "right": {
+                                                "operation": "project",
+                                                "args": [
+                                                  {
+                                                    "field": "arg.piece"
+                                                  },
+                                                  {
+                                                    "literal": "id"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          },
+                                          {
+                                            "compare": {
+                                              "left": {
+                                                "field": "term.kind"
+                                              },
+                                              "op": "in",
+                                              "right": {
+                                                "literal": [
+                                                  "jointure",
+                                                  "right_piece",
+                                                  "land_use"
+                                                ]
+                                              }
+                                            }
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  }
+                                ]
+                              },
+                              "op": "gt",
+                              "right": {
+                                "literal": 0
+                              }
+                            }
+                          },
+                          {
+                            "any": [
+                              {
+                                "compare": {
+                                  "left": {
+                                    "field": "neg.status"
+                                  },
+                                  "op": "eq",
+                                  "right": {
+                                    "literal": "countered"
+                                  }
+                                }
+                              },
+                              {
+                                "compare": {
+                                  "left": {
+                                    "operation": "count",
+                                    "args": [
+                                      {
+                                        "filter": {
+                                          "from": {
+                                            "operation": "project",
+                                            "args": [
+                                              {
+                                                "call": "diplomacyOf",
+                                                "args": [
+                                                  {
+                                                    "field": "state"
+                                                  }
+                                                ]
+                                              },
+                                              {
+                                                "literal": "promises"
+                                              }
+                                            ]
+                                          },
+                                          "as": "promise",
+                                          "where": {
+                                            "all": [
+                                              {
+                                                "compare": {
+                                                  "left": {
+                                                    "field": "promise.status"
+                                                  },
+                                                  "op": "eq",
+                                                  "right": {
+                                                    "literal": "open"
+                                                  }
+                                                }
+                                              },
+                                              {
+                                                "compare": {
+                                                  "left": {
+                                                    "field": "promise.negotiationId"
+                                                  },
+                                                  "op": "eq",
+                                                  "right": {
+                                                    "field": "neg.id"
+                                                  }
+                                                }
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      }
+                                    ]
+                                  },
+                                  "op": "gt",
+                                  "right": {
+                                    "literal": 0
+                                  }
+                                }
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/negotiation.ts:152",
+        "src/engine/estates.types.ts:26",
+        "src/engine/estates.types.ts:90",
+        "src/engine/estates.types.ts:109",
+        "src/engine/marriage.ts:269",
+        "src/engine/marriage.ts:443"
+      ],
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed",
+      "limits": [
+        "Conservative no-recorded-encumbrance gate, not full historical lien certification. No silent switch to later helper piece. diplomacyOf supplies actual engine defaults when diplomacy is absent."
+      ]
+    },
+    "STEWARD_HIDING_GREATER": {
+      "status": "derived_spec",
+      "parameters": [
+        "current",
+        "candidate",
+        "mode"
+      ],
+      "expression": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "field": "arg.mode"
+              },
+              "op": "eq",
+              "right": {
+                "literal": "steward"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "field": "arg.candidate.ability"
+              },
+              "op": "gt",
+              "right": {
+                "field": "arg.current.ability"
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "field": "arg.candidate.loyalty"
+              },
+              "op": "lt",
+              "right": {
+                "field": "arg.current.loyalty"
+              }
+            }
+          },
+          {
+            "any": [
+              {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.current.disposition"
+                      },
+                      "op": "eq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.candidate.disposition"
+                      },
+                      "op": "eq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "add",
+                                "args": [
+                                  {
+                                    "literal": 100
+                                  },
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.candidate.loyalty"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "op": "gt",
+                      "right": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "add",
+                                "args": [
+                                  {
+                                    "literal": 100
+                                  },
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.current.loyalty"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.current.disposition"
+                      },
+                      "op": "eq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.candidate.disposition"
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "divide",
+                                "args": [
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.candidate.loyalty"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": 2
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "op": "gt",
+                      "right": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "add",
+                                "args": [
+                                  {
+                                    "literal": 100
+                                  },
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.current.loyalty"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.current.disposition"
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.candidate.disposition"
+                      },
+                      "op": "eq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "add",
+                                "args": [
+                                  {
+                                    "literal": 100
+                                  },
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.candidate.loyalty"
+                                      }
+                                    ]
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "op": "gt",
+                      "right": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "divide",
+                                "args": [
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.current.loyalty"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": 2
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              {
+                "all": [
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.current.disposition"
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "field": "arg.candidate.disposition"
+                      },
+                      "op": "neq",
+                      "right": {
+                        "literal": "greedy"
+                      }
+                    }
+                  },
+                  {
+                    "compare": {
+                      "left": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "divide",
+                                "args": [
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.candidate.loyalty"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": 2
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      },
+                      "op": "gt",
+                      "right": {
+                        "operation": "floor",
+                        "args": [
+                          {
+                            "operation": "add",
+                            "args": [
+                              {
+                                "operation": "divide",
+                                "args": [
+                                  {
+                                    "operation": "subtract",
+                                    "args": [
+                                      {
+                                        "literal": 100
+                                      },
+                                      {
+                                        "field": "arg.current.loyalty"
+                                      }
+                                    ]
+                                  },
+                                  {
+                                    "literal": 2
+                                  }
+                                ]
+                              },
+                              {
+                                "literal": 0.5
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "sourceRefs": [
+        "src/engine/stewardship.ts:295",
+        "src/content/stewardshipConfig.ts:32",
+        "src/engine/stewardship.ts:110",
+        "src/engine/stewardship.ts:371"
+      ],
+      "onMissing": "block_dependent_choice_or_entry",
+      "runtimeImplementation": "not_installed",
+      "limits": [
+        "100 is GREEDY_KEEP_BASE at source SHA; rebind exported constant on integration. floor(x+0.5) matches Math.round for these nonnegative ratios. Compare baseline ratio, not actual stolen money."
+      ]
+    }
+  },
+  "selectorRootBindings": {
+    "selectors.stateCalendar": {
+      "call": "stateCalendar",
+      "args": [
+        {
+          "field": "state"
+        }
+      ]
+    },
+    "selectors.estatesOf": {
+      "call": "estatesOf",
+      "args": [
+        {
+          "field": "state"
+        }
+      ]
+    },
+    "selectors.attention": {
+      "call": "attention",
+      "args": [
+        {
+          "field": "state"
+        }
+      ]
+    },
+    "selectors.autoplayBuildAction.<kind>": {
+      "call": "autoplayBuildAction",
+      "args": [
+        {
+          "field": "state"
+        },
+        {
+          "field": "kind"
+        }
+      ]
+    }
+  },
+  "dsl": {
+    "missing": "Every comparison with missing fails, including neq; only explicit exists/not exists may inspect absence. null is distinct from missing. mapGet/findBy returns null for no match.",
+    "filter": "Lexical item names only. A failed/missing predicate excludes item. Side effects forbidden.",
+    "project": "Dot path inside a declared returned object only; arbitrary reflection or eval forbidden.",
+    "every": "All items satisfy; call site must separately require nonempty when needed.",
+    "ordering": "codepoint except engine successor order explicitly retains localeCompare",
+    "operators": [
+      "add",
+      "subtract",
+      "multiply",
+      "divide",
+      "floor",
+      "max",
+      "min",
+      "coalesce",
+      "count",
+      "sum",
+      "project",
+      "mapGet",
+      "first",
+      "findBy"
+    ],
+    "comparisonOperators": [
+      "eq",
+      "neq",
+      "gt",
+      "gte",
+      "lt",
+      "lte",
+      "in",
+      "contains",
+      "contains_all",
+      "none_in",
+      "not_contains",
+      "has_year_inclusive"
+    ],
+    "unsupportedSelectors": "Unresolved specification names only; not runtime implementation availability. All derived adapters remain not_installed; enabledInEngine=false remains mandatory.",
+    "bindingMissing": "query.missing=invalidate invalidates its declared scope. requiredForChoices explicitly overrides entry default and disables only listed choices; absent marker blocks entry. Required bindings must not depend on choice-only bindings. Recount minimumEnabledConsequentialChoices after all disabled/no-op choices."
+  },
+  "hostContextBindings": {
+    "executionContext.resolvedCommandArgs": {
+      "status": "host_adapter_spec_not_GameState_field",
+      "source": "current choice.commands[0].args after recursively resolving declared binding tokens once; preserve same bound IDs",
+      "phase": "after instance bindings, before choice eligibility and dispatch",
+      "onMissing": "disable_choice",
+      "runtimeImplementation": "not_installed"
+    }
+  }
+}

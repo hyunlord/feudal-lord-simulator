@@ -1,0 +1,89 @@
+{
+  "status": "PASS_BOUNDED_COMPLETION",
+  "checks": {
+    "exit_zero": true,
+    "target_complete": true,
+    "target_1450": true,
+    "final_tick": true,
+    "seed": true,
+    "protocol": true,
+    "initial_controls": true,
+    "annual_150": true,
+    "annual_final_controls": true,
+    "save_roundtrips": true,
+    "final_save_hash": true,
+    "no_unsupported_file": true,
+    "no_pending_waits": true,
+    "required_hashes": true,
+    "actual_start_final_hash": true,
+    "actual_start_final_controls": true,
+    "start_identity": true,
+    "scenario_identity": true,
+    "annual_calendar": true,
+    "scheduled_save_logs": true,
+    "run_config_identity": true,
+    "config_metadata_summary": true
+  },
+  "annual_rows": 150,
+  "save_checks": 38,
+  "findings": [
+
+  ],
+  "final": {
+    "year": 1450,
+    "tick": 600000,
+    "population": 768,
+    "treasury": 118342,
+    "retainedDeathsByCause": {
+      "age": 2127,
+      "famine": 346,
+      "famine_year": 11,
+      "fire": 7,
+      "plague": 413
+    },
+    "policy": "growth",
+    "dues": 1000,
+    "subsidies": [
+
+    ]
+  },
+  "source_files": [
+    {
+      "path": "summary.json",
+      "sha256": "4f82b150f5d4d450529840c2940d8582e19079645f371cb850871a13523bcccd"
+    },
+    {
+      "path": "metadata.json",
+      "sha256": "f344b56bc2498e1260c2b769922fd05a38f90a54b608dd1b2d9be692f6220b65"
+    },
+    {
+      "path": "controls.json",
+      "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+    },
+    {
+      "path": "start.fls.json",
+      "sha256": "e6d970612aadb8fb93cedece9f5a7e047d928c6ca82dcde3022d055ca2e56cba"
+    },
+    {
+      "path": "final.fls.json",
+      "sha256": "f8a9491032c3fee40085ff7ea3cb2ce8c97f7e574b9082bec2b1c0e469375489"
+    },
+    {
+      "path": "years.jsonl",
+      "sha256": "dd7fbc7a4a690a9445ec9c61fd07082f4514641e358c4aa58bf687e19d100722"
+    },
+    {
+      "path": "save-checks.jsonl",
+      "sha256": "a6442bacae4ae07f55e7c564d50e9fb68fcf2e5215dc329e3b5c244c65141961"
+    }
+  ],
+  "limitations": [
+    "full resource conservation",
+    "all cash movements have ledger entries",
+    "full rights transfer history",
+    "player fun",
+    "render/UI",
+    "dead actor command refusal",
+    "whole-run deterministic replay until compared externally"
+  ]
+}

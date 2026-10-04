@@ -1,0 +1,23 @@
+{
+  "verdict": "PASS readable four charts",
+  "observations": "Four full charts visually inspected: legends, units, 1301-1450 boundaries and 1300-1449 periods visible without overlap.",
+  "method": "QuickLook cropped landscape originals; QA-only copies extend SVG root viewport to 1200x1200, preserving all chart coordinates. Original deliverable SVG unchanged.",
+  "inputs": [
+    {
+      "file": "01-population-housing.svg",
+      "sha256": "14e7bf46850b98120f00e778f69ae0391b23534b7bb1e062a7b315b77a1dd769"
+    },
+    {
+      "file": "02-economy.svg",
+      "sha256": "a346e260da74d89e7d3187e271b202c68abb80ed2b05931a39f1c6fa470798f0"
+    },
+    {
+      "file": "03-deaths.svg",
+      "sha256": "e606e477cd1efe3f252ca9df4a05e755cbc0103639a8e0683a0cb770443943d1"
+    },
+    {
+      "file": "04-command-density.svg",
+      "sha256": "3cc0f06cd37678dd26c2e1bf84ee5afd0219443c1d20ffd39c20ca3bbe227e9e"
+    }
+  ]
+}

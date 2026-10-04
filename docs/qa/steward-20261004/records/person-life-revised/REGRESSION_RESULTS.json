@@ -1,0 +1,383 @@
+[
+  {
+    "id": "wrong_household_subject_matching_actor",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "household",
+        "id": "wrong-house"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "empty_record_id",
+    "record": {
+      "id": "",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "person_subject_actor_only_positive",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": "person.leaving.r06life.water",
+    "passed": true,
+    "selected": "person.leaving.r06life.water",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.leaving.r06life.water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    }
+  },
+  {
+    "id": "household_subject_positive_no_actor",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "household",
+        "id": "fixture-house"
+      }
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": "person.leaving.r06life.water",
+    "passed": true,
+    "selected": "person.leaving.r06life.water",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.leaving.r06life.water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    }
+  },
+  {
+    "id": "blank_record_id",
+    "record": {
+      "id": "  ",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "unknown_subject_actor_must_not_rescue",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "town",
+        "id": "town"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "missing_subject_actor_must_not_rescue",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "empty_person_subject_actor_must_not_rescue",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": ""
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "ambiguous_household_actors",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        },
+        {
+          "type": "household",
+          "id": "wrong-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "household_subject_priority_ignores_other_actor",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "household",
+        "id": "fixture-house"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "wrong-house"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": "person.leaving.r06life.water",
+    "passed": true,
+    "selected": "person.leaving.r06life.water",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.leaving.r06life.water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    }
+  },
+  {
+    "id": "actor_id_alias_rejected",
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house-alias"
+        }
+      ]
+    },
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "expected": null,
+    "passed": true,
+    "selected": null,
+    "context": null
+  }
+]

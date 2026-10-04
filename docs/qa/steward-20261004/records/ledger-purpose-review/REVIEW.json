@@ -1,0 +1,46 @@
+{
+  "verdict": "PASS_OFFLINE_PURPOSE_DRAFT",
+  "categories": 3,
+  "variants": 6,
+  "mandatoryCorrections": [
+
+  ],
+  "independentSelectorCases": 247,
+  "independentStallCases": 34,
+  "authorReproduced": {
+    "selector": 125,
+    "stall": 36,
+    "proposalRows": 6,
+    "proposalNegative": 30
+  },
+  "sourceEvidence": {
+    "authorFiles": 11,
+    "authorSpans": 21,
+    "independentFiles": 10,
+    "independentSpans": 14
+  },
+  "baselineVariants": 650,
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "moneyAdapterSha256": "7aae43b7b4c9be0ca45f97861ed7b190c11f34d7bcd93630efc0d3e0d34bb9ae",
+  "names": "No person-name slots; FIX12 read-time naming unchanged",
+  "runtimeExecuted": false,
+  "canonicalModified": false,
+  "integrationConditions": [
+    "Trusted identity must come from the same saved campaign and whole entry; never copy untrusted input to certify itself",
+    "Neutral unknown cash fallback requires separate validated binding/money adapter implementation; selector currently returns nil",
+    "Do not prepend legacy category labels which could reintroduce false purposes",
+    "Verify money rendering through existing full-penny formatter during integration; not executed here"
+  ],
+  "contentFindings": [
+    "will_favour is paid favour, not performance of a previously created promise",
+    "confirmation can be partially paid; prose uses actual ledger amount and makes no full-payment claim",
+    "alehouse dues are sales-based cash receipt, not total sales or market stall count"
+  ],
+  "limitations": [
+    "Partial Ruby schema evaluator, not complete JSON Schema certification",
+    "PROPOSAL envelope metadata not fully schema-certified; six rows checked",
+    "Safe numeric domain differs from producer-specific current nominal amounts; trusted persisted entries are required",
+    "Synthetic fixture selection does not prove actual campaign occurrence",
+    "Runtime noninstallation is not a draft quality rejection"
+  ]
+}

@@ -1,0 +1,1076 @@
+{
+  "open": {
+    "estates": [
+      {
+        "id": "estate-home",
+        "observed": 150,
+        "first": {
+          "id": "estate-home",
+          "title": "lord",
+          "possessor": "lord",
+          "value": 0,
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:market",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:tolls",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:mill",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:fishery",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-home",
+          "title": "lord",
+          "possessor": "lord",
+          "value": 0,
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:market",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:tolls",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:mill",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:fishery",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "lord",
+            "lord"
+          ]
+        ]
+      },
+      {
+        "id": "estate-neighbour-1",
+        "observed": 150,
+        "first": {
+          "id": "estate-neighbour-1",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "value": 6400,
+          "pieces": [
+            {
+              "id": "estate-neighbour-1:land_rent",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:manor_court",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:fishery",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:hunting",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-neighbour-1",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "value": 6400,
+          "pieces": [
+            {
+              "id": "estate-neighbour-1:land_rent",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:manor_court",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:fishery",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:hunting",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "neighbour_1",
+            "neighbour_1"
+          ]
+        ]
+      },
+      {
+        "id": "estate-neighbour-2",
+        "observed": 150,
+        "first": {
+          "id": "estate-neighbour-2",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-2:land_rent",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:manor_court",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:mill",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:advowson",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-neighbour-2",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-2:land_rent",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:manor_court",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:mill",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:advowson",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "neighbour_2",
+            "neighbour_2"
+          ]
+        ]
+      },
+      {
+        "id": "estate-neighbour-3",
+        "observed": 150,
+        "first": {
+          "id": "estate-neighbour-3",
+          "title": "estate:estate-neighbour-3",
+          "possessor": "estate:estate-neighbour-3",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-neighbour-3",
+          "title": "person:est-000004",
+          "possessor": "person:est-000004",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "person:est-000004",
+              "possessor": "person:est-000004",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "estate:estate-neighbour-3",
+            "estate:estate-neighbour-3"
+          ],
+          [
+            "person:est-000004",
+            "person:est-000004"
+          ]
+        ]
+      }
+    ],
+    "factions": [
+      {
+        "id": "overlord",
+        "observed": 150,
+        "min": -40,
+        "max": 20,
+        "final": -40,
+        "distinctLeaders": 7,
+        "adjacentChanges": 6
+      },
+      {
+        "id": "crown",
+        "observed": 150,
+        "min": 10,
+        "max": 40,
+        "final": 30,
+        "distinctLeaders": 7,
+        "adjacentChanges": 6
+      },
+      {
+        "id": "neighbour_1",
+        "observed": 150,
+        "min": -67,
+        "max": 0,
+        "final": -67,
+        "distinctLeaders": 5,
+        "adjacentChanges": 4
+      },
+      {
+        "id": "neighbour_2",
+        "observed": 150,
+        "min": -85,
+        "max": 0,
+        "final": -85,
+        "distinctLeaders": 5,
+        "adjacentChanges": 4
+      },
+      {
+        "id": "bishop",
+        "observed": 150,
+        "min": 5,
+        "max": 100,
+        "final": 100,
+        "distinctLeaders": 6,
+        "adjacentChanges": 5
+      },
+      {
+        "id": "merchant_house_1",
+        "observed": 150,
+        "min": -97,
+        "max": 18,
+        "final": -97,
+        "distinctLeaders": 19,
+        "adjacentChanges": 18
+      },
+      {
+        "id": "merchant_house_2",
+        "observed": 150,
+        "min": -4,
+        "max": 33,
+        "final": 30,
+        "distinctLeaders": 21,
+        "adjacentChanges": 20
+      },
+      {
+        "id": "town",
+        "observed": 150,
+        "min": 2,
+        "max": 100,
+        "final": 100,
+        "distinctLeaders": 18,
+        "adjacentChanges": 17
+      },
+      {
+        "id": "commons",
+        "observed": 150,
+        "min": 15,
+        "max": 100,
+        "final": 100,
+        "distinctLeaders": 13,
+        "adjacentChanges": 12
+      }
+    ],
+    "trades": [
+      {
+        "id": "carpenter",
+        "firstBoundary": 1301,
+        "min": 1,
+        "max": 2,
+        "final": 2
+      },
+      {
+        "id": "miller",
+        "firstBoundary": 1301,
+        "min": 1,
+        "max": 1,
+        "final": 1
+      },
+      {
+        "id": "carter",
+        "firstBoundary": 1301,
+        "min": 1,
+        "max": 3,
+        "final": 3
+      },
+      {
+        "id": "brewer",
+        "firstBoundary": 1301,
+        "min": 0,
+        "max": 3,
+        "final": 3
+      },
+      {
+        "id": "butcher",
+        "firstBoundary": 1302,
+        "min": 0,
+        "max": 2,
+        "final": 0
+      },
+      {
+        "id": "baker",
+        "firstBoundary": 1302,
+        "min": 0,
+        "max": 2,
+        "final": 2
+      },
+      {
+        "id": "tailor",
+        "firstBoundary": 1303,
+        "min": 0,
+        "max": 3,
+        "final": 3
+      },
+      {
+        "id": "shoemaker",
+        "firstBoundary": 1303,
+        "min": 0,
+        "max": 4,
+        "final": 4
+      },
+      {
+        "id": "smith",
+        "firstBoundary": 1303,
+        "min": 0,
+        "max": 2,
+        "final": 1
+      },
+      {
+        "id": "tanner",
+        "firstBoundary": 1307,
+        "min": 0,
+        "max": 1,
+        "final": 0
+      },
+      {
+        "id": "merchant",
+        "firstBoundary": 1310,
+        "min": 0,
+        "max": 2,
+        "final": 2
+      },
+      {
+        "id": "innkeeper",
+        "firstBoundary": 1310,
+        "min": 0,
+        "max": 3,
+        "final": 3
+      },
+      {
+        "id": "cooper",
+        "firstBoundary": 1312,
+        "min": 0,
+        "max": 1,
+        "final": 0
+      },
+      {
+        "id": "wheelwright",
+        "firstBoundary": 1327,
+        "min": 0,
+        "max": 1,
+        "final": 0
+      },
+      {
+        "id": "mercer",
+        "firstBoundary": 1353,
+        "min": 0,
+        "max": 1,
+        "final": 0
+      }
+    ]
+  },
+  "fen": {
+    "estates": [
+      {
+        "id": "estate-home",
+        "observed": 150,
+        "first": {
+          "id": "estate-home",
+          "title": "lord",
+          "possessor": "lord",
+          "value": 0,
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:market",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:tolls",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:mill",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:fishery",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-home",
+          "title": "lord",
+          "possessor": "lord",
+          "value": 0,
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:market",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:tolls",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:mill",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:fishery",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "home:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "lord",
+            "lord"
+          ]
+        ]
+      },
+      {
+        "id": "estate-neighbour-1",
+        "observed": 150,
+        "first": {
+          "id": "estate-neighbour-1",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "value": 6400,
+          "pieces": [
+            {
+              "id": "estate-neighbour-1:land_rent",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:manor_court",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:fishery",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:hunting",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-neighbour-1",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "value": 6400,
+          "pieces": [
+            {
+              "id": "estate-neighbour-1:land_rent",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:manor_court",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:fishery",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-1:hunting",
+              "title": "neighbour_1",
+              "possessor": "neighbour_1",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "neighbour_1",
+            "neighbour_1"
+          ]
+        ]
+      },
+      {
+        "id": "estate-neighbour-2",
+        "observed": 150,
+        "first": {
+          "id": "estate-neighbour-2",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-2:land_rent",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:manor_court",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:mill",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:advowson",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-neighbour-2",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-2:land_rent",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:manor_court",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:mill",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-2:advowson",
+              "title": "neighbour_2",
+              "possessor": "neighbour_2",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "neighbour_2",
+            "neighbour_2"
+          ]
+        ]
+      },
+      {
+        "id": "estate-neighbour-3",
+        "observed": 150,
+        "first": {
+          "id": "estate-neighbour-3",
+          "title": "estate:estate-neighbour-3",
+          "possessor": "estate:estate-neighbour-3",
+          "value": 4000,
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "estate:estate-neighbour-3",
+              "possessor": "estate:estate-neighbour-3",
+              "loss": null
+            }
+          ]
+        },
+        "last": {
+          "id": "estate-neighbour-3",
+          "title": "lord",
+          "possessor": "lord",
+          "value": 3269,
+          "pieces": [
+            {
+              "id": "estate-neighbour-3:land_rent",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:manor_court",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:advowson",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            },
+            {
+              "id": "estate-neighbour-3:hunting",
+              "title": "lord",
+              "possessor": "lord",
+              "loss": null
+            }
+          ]
+        },
+        "titlePossessorStates": [
+          [
+            "estate:estate-neighbour-3",
+            "estate:estate-neighbour-3"
+          ],
+          [
+            "lord",
+            "lord"
+          ]
+        ]
+      }
+    ],
+    "factions": [
+      {
+        "id": "overlord",
+        "observed": 150,
+        "min": -50,
+        "max": 20,
+        "final": -50,
+        "distinctLeaders": 7,
+        "adjacentChanges": 6
+      },
+      {
+        "id": "crown",
+        "observed": 150,
+        "min": 10,
+        "max": 40,
+        "final": 30,
+        "distinctLeaders": 7,
+        "adjacentChanges": 6
+      },
+      {
+        "id": "neighbour_1",
+        "observed": 150,
+        "min": -67,
+        "max": 0,
+        "final": -67,
+        "distinctLeaders": 5,
+        "adjacentChanges": 4
+      },
+      {
+        "id": "neighbour_2",
+        "observed": 150,
+        "min": -85,
+        "max": 0,
+        "final": -85,
+        "distinctLeaders": 5,
+        "adjacentChanges": 4
+      },
+      {
+        "id": "bishop",
+        "observed": 150,
+        "min": 10,
+        "max": 100,
+        "final": 100,
+        "distinctLeaders": 6,
+        "adjacentChanges": 5
+      },
+      {
+        "id": "merchant_house_1",
+        "observed": 150,
+        "min": -100,
+        "max": 5,
+        "final": -100,
+        "distinctLeaders": 17,
+        "adjacentChanges": 16
+      },
+      {
+        "id": "merchant_house_2",
+        "observed": 150,
+        "min": -4,
+        "max": 33,
+        "final": 30,
+        "distinctLeaders": 19,
+        "adjacentChanges": 18
+      },
+      {
+        "id": "town",
+        "observed": 150,
+        "min": 10,
+        "max": 100,
+        "final": 100,
+        "distinctLeaders": 17,
+        "adjacentChanges": 16
+      },
+      {
+        "id": "commons",
+        "observed": 150,
+        "min": 15,
+        "max": 100,
+        "final": 100,
+        "distinctLeaders": 13,
+        "adjacentChanges": 12
+      }
+    ],
+    "trades": [
+      {
+        "id": "carpenter",
+        "firstBoundary": 1301,
+        "min": 1,
+        "max": 2,
+        "final": 2
+      },
+      {
+        "id": "butcher",
+        "firstBoundary": 1301,
+        "min": 0,
+        "max": 3,
+        "final": 1
+      },
+      {
+        "id": "miller",
+        "firstBoundary": 1301,
+        "min": 1,
+        "max": 1,
+        "final": 1
+      },
+      {
+        "id": "carter",
+        "firstBoundary": 1301,
+        "min": 1,
+        "max": 2,
+        "final": 2
+      },
+      {
+        "id": "tailor",
+        "firstBoundary": 1302,
+        "min": 0,
+        "max": 3,
+        "final": 2
+      },
+      {
+        "id": "brewer",
+        "firstBoundary": 1302,
+        "min": 0,
+        "max": 3,
+        "final": 3
+      },
+      {
+        "id": "smith",
+        "firstBoundary": 1302,
+        "min": 0,
+        "max": 2,
+        "final": 2
+      },
+      {
+        "id": "shoemaker",
+        "firstBoundary": 1302,
+        "min": 0,
+        "max": 3,
+        "final": 2
+      },
+      {
+        "id": "baker",
+        "firstBoundary": 1303,
+        "min": 0,
+        "max": 3,
+        "final": 2
+      },
+      {
+        "id": "tanner",
+        "firstBoundary": 1304,
+        "min": 0,
+        "max": 1,
+        "final": 1
+      },
+      {
+        "id": "cooper",
+        "firstBoundary": 1306,
+        "min": 0,
+        "max": 1,
+        "final": 1
+      },
+      {
+        "id": "wheelwright",
+        "firstBoundary": 1307,
+        "min": 0,
+        "max": 1,
+        "final": 1
+      },
+      {
+        "id": "innkeeper",
+        "firstBoundary": 1320,
+        "min": 0,
+        "max": 2,
+        "final": 2
+      },
+      {
+        "id": "merchant",
+        "firstBoundary": 1321,
+        "min": 0,
+        "max": 3,
+        "final": 2
+      },
+      {
+        "id": "mercer",
+        "firstBoundary": 1353,
+        "min": 0,
+        "max": 1,
+        "final": 0
+      },
+      {
+        "id": "spicer",
+        "firstBoundary": 1363,
+        "min": 0,
+        "max": 1,
+        "final": 0
+      },
+      {
+        "id": "vintner",
+        "firstBoundary": 1364,
+        "min": 0,
+        "max": 1,
+        "final": 0
+      }
+    ]
+  }
+}

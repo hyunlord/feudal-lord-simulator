@@ -1,0 +1,830 @@
+[
+  {
+    "run": "N02-v3-open-1-growth",
+    "finalTick": 600000,
+    "finalDeathCount": 5440,
+    "causes": {
+      "age": 3109,
+      "famine": 2059,
+      "famine_year": 13,
+      "plague": 257,
+      "fire": 2
+    },
+    "deathYearRange": [
+      1300,
+      1449
+    ],
+    "deadIdsUnique": true,
+    "checkpointUnion": 5440,
+    "checkpointEvidence": [
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/start.fls.json",
+        "tick": 0,
+        "dead": 0,
+        "earliestYear": null,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json",
+        "tick": 100000,
+        "dead": 269,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1350.fls.json",
+        "tick": 200000,
+        "dead": 1310,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1375.fls.json",
+        "tick": 300000,
+        "dead": 2271,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1400.fls.json",
+        "tick": 400000,
+        "dead": 3435,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1425.fls.json",
+        "tick": 500000,
+        "dead": 4486,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1450.fls.json",
+        "tick": 600000,
+        "dead": 5440,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      }
+    ],
+    "annualRows": 150,
+    "annualFinalReconstructionMismatch": [
+
+    ],
+    "finalHistoryDeathRecords": 3795,
+    "annualHistoryDeathSum": 3795,
+    "deadWithoutPersonDiedHistory": 1645,
+    "missingHistoryByCause": {
+      "age": 1645
+    },
+    "earliestMissingHistory": [
+      {
+        "id": "p-000121",
+        "deathYear": 1304,
+        "deathCause": "age",
+        "householdId": "construction-site-000011",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000080",
+        "deathYear": 1305,
+        "deathCause": "age",
+        "householdId": "construction-site-000004",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000106",
+        "deathYear": 1305,
+        "deathCause": "age",
+        "householdId": "construction-site-000008",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000062",
+        "deathYear": 1306,
+        "deathCause": "age",
+        "householdId": "construction-site-000004",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000085",
+        "deathYear": 1307,
+        "deathCause": "age",
+        "householdId": "construction-site-000011",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000238",
+        "deathYear": 1315,
+        "deathCause": "age",
+        "householdId": "construction-site-000022",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000117",
+        "deathYear": 1317,
+        "deathCause": "age",
+        "householdId": "construction-site-000011",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000107",
+        "deathYear": 1324,
+        "deathCause": "age",
+        "householdId": "construction-site-000010",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000112",
+        "deathYear": 1327,
+        "deathCause": "age",
+        "householdId": "construction-site-000010",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000213",
+        "deathYear": 1327,
+        "deathCause": "age",
+        "householdId": "construction-site-000022",
+        "priorDepartureRecords": [
+
+        ]
+      }
+    ],
+    "inputSha256": {
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/start.fls.json": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json": "5a3560012282942253fa7699704dc1eb7147405ee3d755598b50dc7088644961",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1350.fls.json": "b663dde465f0b8b4fceae704bd583fca4e79ea6fd0852a1ee83d78f88990dbbb",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1375.fls.json": "01db66af942c2687b0b6eb17c7a6fc5e65fe037c0a2ccb66e73f44bb56f36b26",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1400.fls.json": "5a7f49e8429a3bd7a534f7d04b1f378e02632b231a58ae1ac51aae476b11dee0",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1425.fls.json": "8eaee5cd499c7619d3f68f0b78f50f6d65bac3f9964e1a344d7de4a656f9a9be",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1450.fls.json": "fdd2a11416c95f45b2f86b8dc9653af5128c6e89ef3f1aa03c75211902555ac7",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/years.jsonl": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d",
+      "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/metadata.json": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+    },
+    "missingHistoryWithPriorDeparture": 0,
+    "allPastDeathIdsRetainedAcrossCheckpoints": true,
+    "missingDeathHistoryPreviouslyAliveInPastWitnessCount": 1368,
+    "offTownDeathWitnesses": [
+      {
+        "id": "p-000063",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000063",
+          "year": 1340,
+          "cause": "age",
+          "householdId": "construction-site-000004",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json"
+      },
+      {
+        "id": "p-000071",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000071",
+          "year": 1329,
+          "cause": "age",
+          "householdId": "construction-site-000004",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json"
+      },
+      {
+        "id": "p-000075",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000075",
+          "year": 1345,
+          "cause": "age",
+          "householdId": "construction-site-000004",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json"
+      },
+      {
+        "id": "p-000086",
+        "observedAliveDepartedAtTick": 200000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000086",
+          "year": 1363,
+          "cause": "age",
+          "householdId": "construction-site-000004",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1350.fls.json"
+      },
+      {
+        "id": "p-000091",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000091",
+          "year": 1329,
+          "cause": "age",
+          "householdId": "construction-site-000011",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json"
+      }
+    ]
+  },
+  {
+    "run": "N03-v3-open-1-stability",
+    "finalTick": 600000,
+    "finalDeathCount": 2167,
+    "causes": {
+      "age": 1739,
+      "famine": 98,
+      "famine_year": 14,
+      "plague": 313,
+      "fire": 3
+    },
+    "deathYearRange": [
+      1300,
+      1449
+    ],
+    "deadIdsUnique": true,
+    "checkpointUnion": 2167,
+    "checkpointEvidence": [
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/start.fls.json",
+        "tick": 0,
+        "dead": 0,
+        "earliestYear": null,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1325.fls.json",
+        "tick": 100000,
+        "dead": 297,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1350.fls.json",
+        "tick": 200000,
+        "dead": 835,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1375.fls.json",
+        "tick": 300000,
+        "dead": 1234,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1400.fls.json",
+        "tick": 400000,
+        "dead": 1530,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1425.fls.json",
+        "tick": 500000,
+        "dead": 1857,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1450.fls.json",
+        "tick": 600000,
+        "dead": 2167,
+        "earliestYear": 1300,
+        "missingOrChangedInFinal": [
+
+        ]
+      }
+    ],
+    "annualRows": 150,
+    "annualFinalReconstructionMismatch": [
+
+    ],
+    "finalHistoryDeathRecords": 1988,
+    "annualHistoryDeathSum": 1988,
+    "deadWithoutPersonDiedHistory": 179,
+    "missingHistoryByCause": {
+      "age": 179
+    },
+    "earliestMissingHistory": [
+      {
+        "id": "p-000197",
+        "deathYear": 1313,
+        "deathCause": "age",
+        "householdId": "construction-site-000018",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000352",
+        "deathYear": 1313,
+        "deathCause": "age",
+        "householdId": "construction-site-000031",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000237",
+        "deathYear": 1314,
+        "deathCause": "age",
+        "householdId": "construction-site-000013",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000443",
+        "deathYear": 1314,
+        "deathCause": "age",
+        "householdId": "construction-site-000013",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000127",
+        "deathYear": 1315,
+        "deathCause": "age",
+        "householdId": "construction-site-000014",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000032",
+        "deathYear": 1316,
+        "deathCause": "age",
+        "householdId": "house-46-42-0",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000369",
+        "deathYear": 1316,
+        "deathCause": "age",
+        "householdId": "construction-site-000028",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000056",
+        "deathYear": 1317,
+        "deathCause": "age",
+        "householdId": "house-44-40-0",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000117",
+        "deathYear": 1317,
+        "deathCause": "age",
+        "householdId": "construction-site-000013",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000461",
+        "deathYear": 1317,
+        "deathCause": "age",
+        "householdId": "construction-site-000028",
+        "priorDepartureRecords": [
+
+        ]
+      }
+    ],
+    "inputSha256": {
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/start.fls.json": "50998f74434bfd1c54e4f9ba1e484d28805923fab697db9dceee6325adc72479",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1325.fls.json": "6d0ec817029632a82ad7bdf44ca833fa25d117826bd79ced08ec72577d2db244",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1350.fls.json": "e66b7e83b4d2ca21460b6389fc0c8131a83488c1e83c001dd50fc758de7a37d5",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1375.fls.json": "a1d8625b05e2598e9ebb9b1fe0cf198402e368d35c1dcc388b0287577336824f",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1400.fls.json": "464dcc62134163dc0248d325f4023492b834227de1065f30b21d20f6411ad5c0",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1425.fls.json": "75ea63e0485b39bbbc38d260f3665a0fc965af1a2420cbadbc4117e07d1075e3",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1450.fls.json": "b7910694b7c89ad4ee9a42330fd06bd4d8347b2e13ffcce6b8ef3d9cc54e819a",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/years.jsonl": "de9b265c755c7c0a6a12c1bc3e83ba265e9a7614668e92bf64d5f3a51cf7c319",
+      "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/metadata.json": "139ff91a7df71576d8fb2963357ab86761b40a3947229533324a2de143bf0a1d"
+    },
+    "missingHistoryWithPriorDeparture": 0,
+    "allPastDeathIdsRetainedAcrossCheckpoints": true,
+    "missingDeathHistoryPreviouslyAliveInPastWitnessCount": 147,
+    "offTownDeathWitnesses": [
+      {
+        "id": "p-000094",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1312,
+        "laterDeath": {
+          "id": "p-000094",
+          "year": 1333,
+          "cause": "age",
+          "householdId": "house-44-42-0",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1325.fls.json"
+      },
+      {
+        "id": "p-000111",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1312,
+        "laterDeath": {
+          "id": "p-000111",
+          "year": 1345,
+          "cause": "age",
+          "householdId": "construction-site-000013",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1325.fls.json"
+      },
+      {
+        "id": "p-000112",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1312,
+        "laterDeath": {
+          "id": "p-000112",
+          "year": 1327,
+          "cause": "age",
+          "householdId": "construction-site-000013",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1325.fls.json"
+      },
+      {
+        "id": "p-000113",
+        "observedAliveDepartedAtTick": 300000,
+        "leftYear": 1312,
+        "laterDeath": {
+          "id": "p-000113",
+          "year": 1380,
+          "cause": "age",
+          "householdId": "construction-site-000013",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1375.fls.json"
+      },
+      {
+        "id": "p-000114",
+        "observedAliveDepartedAtTick": 300000,
+        "leftYear": 1312,
+        "laterDeath": {
+          "id": "p-000114",
+          "year": 1383,
+          "cause": "age",
+          "householdId": "construction-site-000013",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/year-1375.fls.json"
+      }
+    ]
+  },
+  {
+    "run": "N04-chalk-2-full",
+    "finalTick": 600000,
+    "finalDeathCount": 3083,
+    "causes": {
+      "age": 2349,
+      "famine": 293,
+      "fire": 6,
+      "famine_year": 13,
+      "plague": 422
+    },
+    "deathYearRange": [
+      1301,
+      1449
+    ],
+    "deadIdsUnique": true,
+    "checkpointUnion": 3083,
+    "checkpointEvidence": [
+      {
+        "path": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/start.fls.json",
+        "tick": 0,
+        "dead": 0,
+        "earliestYear": null,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1325.fls.json",
+        "tick": 100000,
+        "dead": 456,
+        "earliestYear": 1301,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1350.fls.json",
+        "tick": 200000,
+        "dead": 1157,
+        "earliestYear": 1301,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1375.fls.json",
+        "tick": 300000,
+        "dead": 1660,
+        "earliestYear": 1301,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1400.fls.json",
+        "tick": 400000,
+        "dead": 2051,
+        "earliestYear": 1301,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1425.fls.json",
+        "tick": 500000,
+        "dead": 2582,
+        "earliestYear": 1301,
+        "missingOrChangedInFinal": [
+
+        ]
+      },
+      {
+        "path": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1450.fls.json",
+        "tick": 600000,
+        "dead": 3083,
+        "earliestYear": 1301,
+        "missingOrChangedInFinal": [
+
+        ]
+      }
+    ],
+    "annualRows": 150,
+    "annualFinalReconstructionMismatch": [
+
+    ],
+    "finalHistoryDeathRecords": 2903,
+    "annualHistoryDeathSum": 2903,
+    "deadWithoutPersonDiedHistory": 180,
+    "missingHistoryByCause": {
+      "age": 180
+    },
+    "earliestMissingHistory": [
+      {
+        "id": "p-000099",
+        "deathYear": 1305,
+        "deathCause": "age",
+        "householdId": "construction-site-000009",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000023",
+        "deathYear": 1306,
+        "deathCause": "age",
+        "householdId": "house-46-42-0",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000301",
+        "deathYear": 1306,
+        "deathCause": "age",
+        "householdId": "construction-site-000008",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000349",
+        "deathYear": 1306,
+        "deathCause": "age",
+        "householdId": "construction-site-000023",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000371",
+        "deathYear": 1307,
+        "deathCause": "age",
+        "householdId": "construction-site-000023",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000306",
+        "deathYear": 1308,
+        "deathCause": "age",
+        "householdId": "construction-site-000007",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000376",
+        "deathYear": 1308,
+        "deathCause": "age",
+        "householdId": "construction-site-000008",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000073",
+        "deathYear": 1309,
+        "deathCause": "age",
+        "householdId": "construction-site-000009",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000408",
+        "deathYear": 1309,
+        "deathCause": "age",
+        "householdId": "construction-site-000008",
+        "priorDepartureRecords": [
+
+        ]
+      },
+      {
+        "id": "p-000078",
+        "deathYear": 1310,
+        "deathCause": "age",
+        "householdId": "construction-site-000009",
+        "priorDepartureRecords": [
+
+        ]
+      }
+    ],
+    "inputSha256": {
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/start.fls.json": "bdf6d32769f5e69323f3e6dd6cc1b40a5eb757d5403ba10e9482493023a2b6f9",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1325.fls.json": "75aed39542d545df0632107bf73983b9302586994177df1a16bbc70d7a98e669",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1350.fls.json": "d3928d5ada4647e8544b93de11364666152a7f3d6ce87303b675da71ad732ece",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1375.fls.json": "ad2169704457cf2cd56311752609fa97ae4b1fd6053b802e911fa72915d1e0ab",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1400.fls.json": "1be8120ef7aae438da9fc72e9c7def2b4fff7f7cbc7f0f82e8fa46331a5ce946",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1425.fls.json": "6e276079cf5ec80178964d1860a79fe0e47815b4d04e683ef3c15ca983df85c3",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1450.fls.json": "b487a43879068c01c6db746ae604d121718114011777d347b802b599752a4ecb",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/years.jsonl": "b283e1700e8806c8d5bd946f4e5dacfc20a28eb8d7d9e0f6da6165bb02b4f537",
+      "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/metadata.json": "edf97d87fdbc9445f7405e0eef4dec2c0e204722a4571f1b5a1362a5f81eb05b"
+    },
+    "missingHistoryWithPriorDeparture": 0,
+    "allPastDeathIdsRetainedAcrossCheckpoints": true,
+    "missingDeathHistoryPreviouslyAliveInPastWitnessCount": 132,
+    "offTownDeathWitnesses": [
+      {
+        "id": "p-000062",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000062",
+          "year": 1328,
+          "cause": "age",
+          "householdId": "construction-site-000005",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1325.fls.json"
+      },
+      {
+        "id": "p-000074",
+        "observedAliveDepartedAtTick": 200000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000074",
+          "year": 1360,
+          "cause": "age",
+          "householdId": "construction-site-000005",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1350.fls.json"
+      },
+      {
+        "id": "p-000087",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000087",
+          "year": 1339,
+          "cause": "age",
+          "householdId": "construction-site-000005",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1325.fls.json"
+      },
+      {
+        "id": "p-000095",
+        "observedAliveDepartedAtTick": 200000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000095",
+          "year": 1354,
+          "cause": "age",
+          "householdId": "construction-site-000005",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1350.fls.json"
+      },
+      {
+        "id": "p-000061",
+        "observedAliveDepartedAtTick": 100000,
+        "leftYear": 1302,
+        "laterDeath": {
+          "id": "p-000061",
+          "year": 1346,
+          "cause": "age",
+          "householdId": "construction-site-000006",
+          "history": [
+
+          ]
+        },
+        "snapshot": "/tmp/astra-steward-r03-20261003/long-run/N04-chalk-2-full/year-1325.fls.json"
+      }
+    ]
+  }
+]

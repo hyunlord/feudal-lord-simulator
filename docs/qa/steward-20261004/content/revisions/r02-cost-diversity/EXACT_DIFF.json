@@ -1,0 +1,252 @@
+{
+  "verdict": "PASS_STATIC_DIFF",
+  "eventPointers": [
+    {
+      "path": "/60/choices/1/label",
+      "before": "권리·혼인과 40d 이상을 올리게 한다",
+      "after": "권리·혼인과 40d 이상을 듣고, 선례 생략을 멈춘다"
+    },
+    {
+      "path": "/60/choices/1/effects/0/limits",
+      "before": "한 장원만이 아닌 모든 청지기의 상신 규칙을 바꾼다. 혼인/권리 예외를 끄는 비용과 더 낮은 금액 하한의 업무 증가를 함께 공개한다. 홈 선례 처리는 만들지 않는다.",
+      "after": "recurring=true를 유지한다. 홈 12종은 금액·권리·혼인 예외에 맞지 않아도 선례 처리를 하지 않는다. 청지기에게 맡긴 지도 밖 영지는 40d 이상 또는 권리·혼인 예외에 해당하는 청원만 다시 상신하고, 예외에 해당하지 않는 청원은 청지기가 계속 처리한다. 직접 감독 영지는 원래 영주가 듣는다. 누적200 일반 사건의 선례 기능을 새로 만드는 효과가 아니다."
+    },
+    {
+      "path": "/60/choices/1/tradeoff",
+      "before": "중요 사안을 직접 듣는 대신 해당 예외가 모든 청지기에 적용되어 업무가 늘어난다.",
+      "after": "모든 영지에 같은 규칙을 적용한다. 홈 12종은 선례로 넘기지 않고 영주가 듣는다. 청지기에게 맡긴 지도 밖 영지는 40d 이상 또는 권리·혼인 예외에 해당하는 반복 청원만 선례로 넘기지 않고 다시 올리므로 그 업무가 늘어난다."
+    },
+    {
+      "path": "/60/choices/2/label",
+      "before": "액수 20d부터 올리되 권리는 별도 위임한다",
+      "after": "20d 이상·혼인 청원과 홈 청원을 다시 듣는다"
+    },
+    {
+      "path": "/60/choices/2/effects/0/limits",
+      "before": "한 장원만이 아닌 모든 청지기의 상신 규칙을 바꾼다. 혼인/권리 예외를 끄는 비용과 더 낮은 금액 하한의 업무 증가를 함께 공개한다. 홈 선례 처리는 만들지 않는다.",
+      "after": "recurring=true와 rights=false를 유지한다. 홈 12종은 금액·혼인 예외에 맞지 않아도 선례 처리를 하지 않는다. 청지기에게 맡긴 지도 밖 영지는 20d 이상 또는 혼인 예외에 해당할 때만 다시 상신하며, 그 외 청원은 권리 사안이어도 청지기가 처리한다. 직접 감독 영지는 원래 영주가 듣는다. 누적200 일반 사건의 선례 기능을 새로 만드는 효과가 아니다."
+    },
+    {
+      "path": "/60/choices/2/tradeoff",
+      "before": "작은 금액도 더 듣지만 금액 없는 권리 문제는 청지기에게 남긴다.",
+      "after": "모든 영지에 같은 규칙을 적용한다. 청지기에게 맡긴 지도 밖 영지는 20d 이상 또는 혼인 청원을 선례로 넘기지 않고 다시 올린다. 20d 미만이고 혼인 사안이 아닌 권리 청원은 청지기에게 남긴다. 홈 12종은 권리 여부와 무관하게 선례 처리가 막혀 영주가 들어야 한다."
+    },
+    {
+      "path": "/60/choices/2/ledger",
+      "before": "법정 날마다 빈 영주의 자리: 액수 20d부터 올리되 권리는 별도 위임한다.",
+      "after": "상신 규칙: 홈 청원과 위임 영지의 20d 이상·혼인 청원은 다시 듣는다. 위임 영지의 20d 미만 비혼인 청원은 청지기가 처리한다."
+    },
+    {
+      "path": "/60/choices/2/chronicle",
+      "before": "영주는 액수 20d부터 올리되 권리는 별도 위임한다고 정했다.",
+      "after": "영주는 홈 청원과 위임 영지의 20d 이상·혼인 청원을 다시 듣고, 위임 영지의 20d 미만 비혼인 청원은 청지기에게 맡겼다."
+    },
+    {
+      "path": "/142/choices/2",
+      "before": {
+        "id": "c",
+        "label": "증거를 늘리기보다 시장 부담을 800‰로 조정한다",
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "permille": 800
+            },
+            "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+            "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다. 현재 시장 부담이 목표 800‰보다 높을 때만 선택 가능.",
+            "limits": "지속하는 기본 좌판세 배율이다. 즉시 금고 이동이 없고 세율 변경은 개인 면세·통행세 변경·가구 소득 지급이 아니다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:96",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/townAgency.ts#L96"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "지금 문서비는 쓰지 않지만 앞으로의 좌판세 수입을 줄이며 소송 단계의 기한은 그대로 흐른다.",
+        "ledger": "법정에 함께 서자는 이웃들: 시장 부담을 낮췄고 추가 증거는 내지 않았다.",
+        "chronicle": "시장 부담을 낮췄고 추가 증거는 내지 않았다.",
+        "costAxes": [
+          "cash",
+          "opportunity"
+        ]
+      }
+    },
+    {
+      "path": "/152/choices/2",
+      "before": {
+        "id": "c",
+        "label": "수선용 목재 네 단만 주문한다",
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 4,
+              "orderUnits": [
+                4,
+                4
+              ],
+              "pricePerUnitD": [
+                18,
+                27
+              ],
+              "maximumTotalCostD": [
+                72,
+                108
+              ],
+              "immediateCashDeltaD": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+            "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다.",
+            "limits": "기존 미입고 주문을 대체한다. 신규 가산 주문이 아니다. 시장은18d/단·거래일2단, 시장 전 촌락 창고는27d/단·거래일1단. 거래 지점·금고 없으면 미입고로 남는다. 날씨별 지연·연료 배급은 없다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/timberTrade.ts:19",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/timberTrade.ts#L19"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "물자 확보에 금고를 쓰지만 청구권을 인정하거나 부인하지 않는다.",
+        "ledger": "돈을 보탰으니 권리도 달라는 말: 목재 주문을 정했고 권원 판단은 별도로 남겼다.",
+        "chronicle": "목재 주문을 정했고 권원 판단은 별도로 남겼다.",
+        "costAxes": [
+          "cash",
+          "material",
+          "time"
+        ]
+      }
+    }
+  ],
+  "registryPointers": [
+    {
+      "path": "/entries/142/choices/2",
+      "before": {
+        "id": "c",
+        "commands": [
+          {
+            "type": "set_market_dues",
+            "args": {
+              "permille": 800
+            },
+            "expectedEffectsOwner": "existing_engine_handler"
+          }
+        ],
+        "execution": "existing_handler_after_binding",
+        "conditions": {
+          "ast": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.agency.duesPermille"
+                  },
+                  "op": "gt",
+                  "right": {
+                    "literal": 800
+                  }
+                }
+              }
+            ]
+          },
+          "revalidate": true,
+          "bindingFailures": "disable_choice",
+          "unsupportedSelectors": []
+        },
+        "automaticObservations": [],
+        "noOpIsConsequential": false,
+        "rangeInputPolicy": "fixed_authored_candidate"
+      }
+    },
+    {
+      "path": "/entries/152/choices/2",
+      "before": {
+        "id": "c",
+        "commands": [
+          {
+            "type": "order_timber",
+            "args": {
+              "amount": 4
+            },
+            "expectedEffectsOwner": "existing_engine_handler"
+          }
+        ],
+        "execution": "existing_handler_after_binding",
+        "conditions": {
+          "ast": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "operation": "coalesce",
+                    "args": [
+                      {
+                        "field": "state.timberOrder"
+                      },
+                      {
+                        "literal": 0
+                      }
+                    ]
+                  },
+                  "op": "neq",
+                  "right": {
+                    "literal": 4
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "call": "timberTradePoint",
+                    "args": [
+                      {
+                        "field": "state"
+                      }
+                    ]
+                  },
+                  "op": "neq",
+                  "right": {
+                    "literal": null
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.treasuryCoin"
+                  },
+                  "op": "gte",
+                  "right": {
+                    "literal": 108
+                  }
+                }
+              }
+            ]
+          },
+          "revalidate": true,
+          "bindingFailures": "disable_choice",
+          "unsupportedSelectors": []
+        },
+        "automaticObservations": [],
+        "noOpIsConsequential": false,
+        "rangeInputPolicy": "fixed_authored_candidate"
+      }
+    }
+  ],
+  "changedEventIds": [
+    "ck_evt_061",
+    "ck_evt_143",
+    "ck_evt_153"
+  ],
+  "unrelatedEventsUnchanged": 197,
+  "registryEntriesUnchanged": 198,
+  "remainingChoicesAndGuardsUnchanged": true,
+  "allDisabled": true,
+  "sourceIdsUnchanged": true,
+  "runtimeExecuted": false
+}

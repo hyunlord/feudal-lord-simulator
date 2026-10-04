@@ -1,0 +1,235 @@
+{
+  "type": "object",
+  "required": [
+    "status",
+    "recordId",
+    "recordTick",
+    "template",
+    "sourceHead",
+    "captureKind",
+    "referenceVerified",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordTick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "template": {
+      "enum": [
+        "war.messenger",
+        "war.beacon",
+        "war.licence",
+        "plague.rumour",
+        "plague.arrived",
+        "plague.second"
+      ]
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "captureKind": {
+      "const": "emission_snapshot"
+    },
+    "referenceVerified": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "war.messenger"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "ringAtMessenger"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ringAtMessenger": {
+              "enum": [
+                "no_ring",
+                "unfinished",
+                "complete"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "war.beacon"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "ringAtBeacon"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "ringAtBeacon": {
+              "enum": [
+                "no_ring",
+                "unfinished",
+                "complete"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "war.licence"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "granaryWheatAtLicence"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "granaryWheatAtLicence": {
+              "enum": [
+                "no_stock",
+                "stocked"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "plague.rumour"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "arrivalAlongsideRumour"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "arrivalAlongsideRumour": {
+              "enum": [
+                "no_arrival",
+                "arrival_recorded"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "plague.arrived"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "priorRumourAtArrival"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "priorRumourAtArrival": {
+              "enum": [
+                "prior_rumour",
+                "no_prior_rumour"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "plague.second"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "curacyAtSecondArrival"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "curacyAtSecondArrival": {
+              "enum": [
+                "filled",
+                "vacant"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}
