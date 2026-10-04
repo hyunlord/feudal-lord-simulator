@@ -220,6 +220,62 @@
       "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
       "rgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127",
       "storageNote": "Independent QA003 integrated run; identity/RGBA/JPEG equal historical4151. Physical JPEG reused only after exact hash comparison."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-summer-occupied-z1",
+      "file": "captures/integrated-summer-occupied-z1.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z1.jpg",
+      "sha256": "a80843f2f9f94dc575594d7ec3b9b389a79e85387c8997f0ba13fdaa6988df7f",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z1.png",
+      "sourcePngSha256": "6d80f332d48a332e3214cf741f26abab7662530182d3aff57e6adcbc45b7d930",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "e1f31bc58a23b50f5ec4da4f46e7d43a89ebe7b2651efbf89b91ca34aaa4cfea",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-summer-occupied-z06",
+      "file": "captures/integrated-summer-occupied-z06.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z06.jpg",
+      "sha256": "66c3694efc1728dbb43cab652e3042cd2d2941c5ec5dadd5c496ec4349dc30e0",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z06.png",
+      "sourcePngSha256": "0cb5ebca90d61cf216ca04a8190011e18a0107235f465410813949964855a205",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "6bea2af519985691e72074feb76123c2c5ba1e220c0555b47c7d27acacf9ef26",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-winter-empty-z1",
+      "file": "captures/integrated-winter-empty-z1.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-winter-empty-z1.jpg",
+      "sha256": "6b8a063339ea6ddd8a9b7dd77864260177fe1611fb5c41345fcc2e299112a598",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-winter-empty-z1.png",
+      "sourcePngSha256": "592bf97f6cc1295886426b84c7ff2a5ac5bbcd88390f82f4a25868701ec778df",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "5663a9ab48009d30eecb83f42d7a5b1aca6b62cc01fa1485d8c8836addbe8866",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-winter-empty-z06",
+      "file": "captures/integrated-winter-empty-z06.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-winter-empty-z06.jpg",
+      "sha256": "33afb0c2779a1f49477994149a2486c9672c998b08b7aa3294e4ab36d79d6971",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-winter-empty-z06.png",
+      "sourcePngSha256": "792b6658670122f202c6c2d82606af79eb2d7972e2dca6628025bcb31e0673fa",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
     }
   ],
   "previewsRetainedOutsideTaskFolder": [

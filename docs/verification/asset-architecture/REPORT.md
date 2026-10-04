@@ -105,3 +105,5 @@ QA003 통합 smoke 첫 실행 `astra-ARCH1-qa003-smoke-ab67dcb`는 `--states` �
 경계 파일 수정: `scripts/provenanceLedgerAssets.ts`의 최근 소유는 `39b1d55c` kwanhyeonpark-ctrl이며, 새 계약 목록을 기존 설치 감사에서 빠뜨리지 않기 위한1행 목록 추가다. 렌더·엔진·UI·그림 바이트는 변경하지 않았다. 독립 검토는72/4/68 집합과 기존 경로 정규화/중복/파생그림 처리 보존에 blocker0을 기록했다.
 
 `astra-ARCH1-merge-check-d6776f2`는 이미 통과한 역사적 관문이다. 이 수정 뒤 최종 commit의 check:merge·깨끗한 clone 전체시험/빌드·보호된 본선push는 다시 필요하며, 첫 clone 실패를 통과로 고쳐 기록하지 않는다.
+
+수정 커밋 `92a566d7`의 별도 DGX 실제 재촬영 `astra-ARCH1-provenance-smoke-92a566d`는4/4·A/A4/4·오류0이며 QA003 화면과 전체 identity 및 RGBA 차이0이다. 부모가 새 원본PNG4장을 각각 열어 새 회귀 없음을 확인했다. 기존 경고 배지·금색 고리 가림, 작은 줌 글자와 영주관 지붕 눈 부재는 남는다. [수정 뒤 실제 화면 영수증](provenance-smoke.json)에 조건과 원본 해시를 기록했다. 동일 바이트 JPEG만 기존 물리 파일을 공유하여 논리28캡처/물리16JPEG이며, 새 촬영을 과거 촬영으로 대체하지 않았다. 마지막 증거 커밋의 전체 clone 관문과 본선 push는 여전히 대기다.
