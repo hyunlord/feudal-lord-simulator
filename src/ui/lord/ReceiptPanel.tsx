@@ -76,6 +76,7 @@ function ReceiptBody({ view }: { readonly view: Extract<ReceiptView, { kind: "re
     <>
       <p className="lord-receipt-line">{view.builtBy}</p>
       <p className="lord-receipt-line">{view.origin}</p>
+      {view.reused === null ? null : <p className="lord-receipt-line" data-reused-walk="true">{view.reused}</p>}
       <h3>{COPY.reasonsHeading}</h3>
       <ul className="lord-receipt-reasons">
         {view.reasons.map(reason => (

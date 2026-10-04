@@ -1,3 +1,4 @@
+import { RECEIPT_REUSED_WALK } from "../../content/townAgencyCopy.ko";
 import type { BuildingKind } from "../../content/buildingConfig";
 import { BUILDING_COPY } from "../../content/buildingCatalog.ko";
 import { START_SCORE } from "../../content/townAgencyConfig";
@@ -22,7 +23,7 @@ export type ReceiptReasonRow = Readonly<{ name: ReasonName; label: string; value
 export type ReceiptDecisionRow = Readonly<{ id: string; tick: number | null; date: string; line: string; found: boolean }>;
 
 export type ReceiptView =
-  | Readonly<{ kind: "receipt"; id: string; name: string; building: BuildingKind | null; builtBy: string; origin: string;
+  | Readonly<{ kind: "receipt"; id: string; name: string; building: BuildingKind | null; builtBy: string; origin: string; reused: string | null;
       reasons: readonly ReceiptReasonRow[];
       /** The sites compared, line by line; `runnerUp` the next site's score (null with one candidate or none compared). */
       sites: readonly string[]; runnerUp: number | null; siteCount: number | null;
@@ -82,6 +83,8 @@ export function receiptView(state: GameState, id: string): ReceiptView | null {
     kind: "receipt", id, name, building: kind,
     builtBy: COPY.builtBy(COPY.actors[receipt.actor], chronicleDate(state, receipt.tick), receipt.score, START_SCORE),
     origin: receipt.rank === null ? COPY.fromOpportunity : COPY.fromNeed(receipt.rank + 1),
+    // LM-E9b (TA-13): started from last week's judgement, reused because nothing it read had changed — the engine's words.
+    reused: receipt.reusedWalk === undefined ? null : RECEIPT_REUSED_WALK,
     reasons: reasonRows(receipt.reasons),
     sites: siteLines(receipt), runnerUp: receipt.sites?.runnerUp?.score ?? null, siteCount: receipt.sites?.count ?? null,
     chance: chanceLines(receipt), chanceKnown: receipt.chance !== undefined,

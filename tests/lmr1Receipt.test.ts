@@ -208,3 +208,13 @@ test("LM-R1 (Astra B03): a store opened in the left inspector carries the lord's
   const plain = renderToStaticMarkup(createElement(Inspector, { state: sandbox as GameState, buildingId: store.id, onClose: () => undefined }));
   assert.doesNotMatch(plain, /lord-why-here/);
 });
+
+test("LM-R1 (LM-E9b): a receipt started from a reused week's judgement says so in the engine's words", () => {
+  const state = lordTown();
+  const target = receiptTarget(state);
+  const reused = withReceipt(state, target.receipt.id, receipt => ({ ...receipt, reusedWalk: receipt.tick - 100 }));
+  const view = receiptView(reused, target.id);
+  assert.equal(view?.kind === "receipt" ? view.reused : undefined, "지난주 판단을 다시 씀");
+  const plain = receiptView(withReceipt(state, target.receipt.id, ({ reusedWalk: _r, ...receipt }) => receipt), target.id);
+  assert.equal(plain?.kind === "receipt" ? plain.reused : undefined, null);
+});
