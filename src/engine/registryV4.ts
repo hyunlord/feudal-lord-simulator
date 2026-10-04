@@ -5,6 +5,9 @@
  * have done what it was asked (ER-16), and the season's candidates. Lord mode only (the registry runs with `agency`).
  */
 import type { BuildingKind } from "../content/buildingConfig";
+import { HOLD_CLAIM_WEAKEN, HOLD_RELATION_DELTA } from "../content/registry/registryHoldConfig";
+import { V4_SENDER_FACTION } from "../content/registry/registryHoldCopy.ko";
+import { V4_COPY } from "../content/registry/v4Copy.generated";
 import { V4_BLOCKED_ENTRIES, V4_LIVE_ENTRIES } from "../content/registry/v4Entries.generated";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
@@ -131,15 +134,50 @@ export function runCommands(state: GameState, commands: readonly V4Command[], sc
   return next;
 }
 
+// --- ER-19 holds (R3) -------------------------------------------------------------------------------------------------------
+
+/** ER-19: what holding costs on this entry — its claim weakens, its promise or negotiation runs on, or its sender's relation falls (null: no cost, the hold is hidden). */
+export type HoldCost = { readonly kind: "claim" } | { readonly kind: "deadline"; readonly binding: string } | { readonly kind: "relation"; readonly faction: string };
+export function holdCost(entry: V4Entry): HoldCost | null {
+  const names = Object.keys(entry.bindings);
+  if (names.includes("claim") || names.includes("suit")) return { kind: "claim" };
+  const deadline = names.find(name => name === "promise" || name === "negotiation");
+  if (deadline !== undefined) return { kind: "deadline", binding: deadline };
+  const faction = V4_SENDER_FACTION[V4_COPY[entry.id]?.senderFaction ?? ""];
+  return faction === undefined ? null : { kind: "relation", faction };
+}
+
+function heldClaimId(state: GameState, bound: Readonly<Record<string, unknown>>): string | null {
+  const claim = bound.claim as { id?: unknown } | undefined;
+  if (typeof claim?.id === "string") return claim.id;
+  const suit = bound.suit as { claimId?: unknown } | undefined;
+  return typeof suit?.claimId === "string" && estatesOf(state).claims.some(entry => entry.id === suit.claimId) ? suit.claimId : null;
+}
+
+/** ER-19: a hold applied — the claim weakened now (the relation is moved by the history from the occurrence's record). */
+export function applyHold(state: GameState, entry: V4Entry, bound: Readonly<Record<string, unknown>>): { readonly state: GameState; readonly hold: NonNullable<import("./registry.types").RegistryOccurrence["hold"]> } | null {
+  const cost = holdCost(entry);
+  if (cost === null) return null;
+  if (cost.kind === "claim") {
+    const claimId = heldClaimId(state, bound);
+    if (claimId === null) return null;
+    const estates = estatesOf(state);
+    const claims = estates.claims.map(claim => claim.id === claimId ? { ...claim, strength: Math.max(0, claim.strength - HOLD_CLAIM_WEAKEN) } : claim);
+    return { state: { ...state, estates: { ...estates, claims } }, hold: { claimId, weakened: HOLD_CLAIM_WEAKEN } };
+  }
+  if (cost.kind === "deadline") return bound[cost.binding] === undefined ? null : { state, hold: { deadline: itemIdentity(bound[cost.binding]) } };
+  return state.factions?.factions.some(faction => faction.id === cost.faction) === true ? { state, hold: { faction: cost.faction, delta: HOLD_RELATION_DELTA } } : null;
+}
+
 // --- ER-17 support ---------------------------------------------------------------------------------------------------------
 
 export interface V4ChoiceSupport { readonly id: string; readonly supported: boolean; readonly reason: string | null }
 export interface V4EntrySupport { readonly id: string; readonly contentClass: string; readonly runs: boolean; readonly reason: string | null; readonly choices: readonly V4ChoiceSupport[] }
 
-function choiceSupport(choice: V4Choice): V4ChoiceSupport {
+function choiceSupport(entry: V4Entry, choice: V4Choice): V4ChoiceSupport {
   if (choice.execution === "blocked_unsupported_effect") return { id: choice.id, supported: false, reason: "new effect (R5)" };
   if (choice.execution === "blocked_until_atomic_adapter") return { id: choice.id, supported: false, reason: "compound command (R4)" };
-  if (choice.commands.length === 0) return { id: choice.id, supported: false, reason: "hold without a time cost (R3)" };
+  if (choice.commands.length === 0 && holdCost(entry) === null) return { id: choice.id, supported: false, reason: "hold without a time cost (R3)" };
   const unknown = choice.commands.find(command => V4_COMMANDS[command.type] === undefined);
   if (unknown !== undefined) return { id: choice.id, supported: false, reason: `command ${unknown.type}` };
   const problem = expressionProblem([choice.conditions?.ast, choice.commands]);
@@ -147,7 +185,7 @@ function choiceSupport(choice: V4Choice): V4ChoiceSupport {
 }
 
 function entrySupport(entry: V4Entry): V4EntrySupport {
-  const choices = entry.choices.map(choiceSupport);
+  const choices = entry.choices.map(choice => choiceSupport(entry, choice));
   const problem = expressionProblem([entry.bindings, entry.conditions]);
   const supported = choices.filter(choice => choice.supported).length;
   const reason = entry.contentClass !== "new_event_draft" ? "a variant of an existing occurrence's words (ER-13), not drawn"
@@ -260,7 +298,8 @@ export function v4EnabledChoices(state: GameState, entry: V4Entry, bound: Readon
     const scoped = Object.entries(entry.bindings).filter(([, binding]) => binding.requiredForChoices?.includes(choice.id) === true);
     if (scoped.some(([name]) => bound[name] === undefined)) return false;
     const scope: Scope = { state, bound, vars: {} };
-    return holds(choice.conditions?.ast, scope) && runCommands(state, choice.commands, scope) !== null;
+    if (!holds(choice.conditions?.ast, scope)) return false;
+    return choice.commands.length === 0 ? applyHold(state, entry, bound) !== null : runCommands(state, choice.commands, scope) !== null;
   }).map(choice => choice.id);
 }
 

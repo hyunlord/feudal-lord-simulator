@@ -108,3 +108,29 @@ test("ER-3, ER-4 a v4 offer: drawn in a season, answered on its bound suit, a se
   assert.equal(answerRegistryOffer(answered, offer.id, "b"), answered, "a second answer is refused");
   state = answered;
 });
+
+test("ER-19 (R3) a hold is a choice only when time costs it: a held suit's claim weakens; a sender's relation falls through the ledger; no cost, no hold", async () => {
+  const { applyHold, holdCost } = await import("../src/engine/registryV4");
+  const { HOLD_CLAIM_WEAKEN, HOLD_RELATION_DELTA } = await import("../src/content/registry/registryHoldConfig");
+  // A suit held: its claim weakens.
+  const state = suing(1);
+  const suit = estatesOf(state).suits.find(entry => entry.plaintiff === LORD)!;
+  const claim = estatesOf(state).claims.find(entry => entry.id === suit.claimId)!;
+  const held = applyHold(state, v4Entry("ck_evt_009")!, { suit, claim })!;
+  assert.equal(estatesOf(held.state).claims.find(entry => entry.id === claim.id)!.strength, Math.max(0, claim.strength - HOLD_CLAIM_WEAKEN));
+  // ck_evt_005's merchants: holding moves the first merchant house's relation, answered through the game's command.
+  assert.deepEqual(holdCost(v4Entry("ck_evt_005")!), { kind: "relation", faction: "merchant_house_1" });
+  // The lord's own house as the sender: no cost, so the hold is not offered.
+  assert.equal(holdCost(v4Entry("ck_evt_046")!), null);
+  assert.equal(registryV4Support().find(entry => entry.id === "ck_evt_046")!.choices.find(choice => choice.id === "stock")!.supported, false);
+  // A v4 hold answered: the occurrence keeps its cost and the ledger (the game's command record) moves the relation.
+  const { recordDecision } = await import("../src/engine/history");
+  const offer = { id: "registry:ck_evt_005:test:1", entryId: "ck_evt_005", boundId: "", offeredTick: state.tick, deadline: state.tick + 1000,
+    status: "offered" as const, receipt: { draw: 0, chancePermille: 1000, conditions: [] }, source: "v4" as const, bound: {}, key: "market_dues|", context: "" };
+  const offered: GameState = { ...state, registry: { ...registryOf(state), occurrences: [offer] } };
+  const answered: GameState = { ...offered, registry: { ...registryOf(offered), occurrences: [{ ...offer, status: "answered", choiceId: "c", settledTick: state.tick,
+    hold: { faction: "merchant_house_1", delta: HOLD_RELATION_DELTA } }] } };
+  const before = offered.factions!.factions.find(faction => faction.id === "merchant_house_1")!.relation;
+  const recorded = recordDecision(offered, answered, { type: "answer_registry_offer", occurrenceId: offer.id, choiceId: "c" });
+  assert.equal(recorded.factions!.factions.find(faction => faction.id === "merchant_house_1")!.relation, Math.max(-100, before + HOLD_RELATION_DELTA));
+});

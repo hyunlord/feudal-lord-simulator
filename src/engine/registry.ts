@@ -21,7 +21,7 @@ import { stateCalendar } from "./scenarioState";
 import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode, setEstateOversight, setExceptionRules, stewardshipOf } from "./stewardship";
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
-import { bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry } from "./registryV4";
+import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry } from "./registryV4";
 
 const SEASON = 1_000;
 const YEAR = 4_000;
@@ -474,6 +474,11 @@ function answerV4Offer(state: GameState, occurrence: RegistryOccurrence, choiceI
   if (entry === undefined || bound === null) return settleOccurrence(state, occurrence.id, { status: "invalid" });
   const choice = entry.choices.find(candidate => candidate.id === choiceId);
   if (choice === undefined || !v4EnabledChoices(state, entry, bound).includes(choiceId)) return state;
+  if (choice.commands.length === 0) {
+    // ER-19 (R3): a hold — its time cost applied (the claim weakened now, a relation moved by the history).
+    const held = applyHold(state, entry, bound);
+    return held === null ? state : settleOccurrence(held.state, occurrence.id, { status: "answered", choiceId, hold: held.hold });
+  }
   const applied = runCommands(state, choice.commands, { state, bound, vars: {} });
   return applied === null ? state : settleOccurrence(applied, occurrence.id, { status: "answered", choiceId });
 }

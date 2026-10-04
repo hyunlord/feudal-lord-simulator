@@ -224,7 +224,9 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
   if (kind === undefined || reduced === before) return reduced;
   // LM-E2 (ES-7): a suit command's effect (a suit filed, evidence, a patron, an enforcement) is in the ledger as well.
   const lines = kind === "lawsuit" ? estateDrafts(before, reduced) : kind === "marriage" ? [...diplomacyDrafts(before, reduced), ...estateDrafts(before, reduced)]
-    : kind === "stewardship" ? stewardshipDrafts(before, reduced) : kind === "registry" ? [...registryDrafts(before, reduced), ...stewardshipDrafts(before, reduced), ...estateDrafts(before, reduced)] : [];
+    : kind === "stewardship" ? stewardshipDrafts(before, reduced) : kind === "registry" ? [...registryDrafts(before, reduced), ...stewardshipDrafts(before, reduced), ...estateDrafts(before, reduced),
+      // LM-E9b (ER-16): a v4 answer may also offer a marriage, keep a promise or set the town's terms.
+      ...diplomacyDrafts(before, reduced), ...agencyDrafts(before, reduced)] : [];
   // FIX-14: a command's own lines may move factions (an estate petition answered, a steward punished): applied with them.
   const after = lines.length === 0 ? reduced : withFactionRecords(reduced, historyOf(reduced), append(historyOf(reduced), lines));
   // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
@@ -1140,6 +1142,13 @@ function registryDrafts(before: GameState, after: GameState): Draft[] {
     if (old.status !== "offered" || occurrence.status === "offered") continue;
     drafts.push({ tick: after.tick, kind: "event", template: occurrence.status === "answered" ? "registry.answered" : occurrence.status === "lapsed" ? "registry.lapsed" : "registry.invalid",
       subject: TOWN, severity: 1, params: { entry: occurrence.entryId, choice: occurrence.choiceId ?? "" } });
+    // ER-19 (R3): a v4 hold's cost to its sender's relation.
+    const holdFaction = occurrence.hold?.faction === undefined ? undefined : after.factions?.factions.find(entry => entry.id === occurrence.hold!.faction);
+    if (holdFaction !== undefined && occurrence.hold?.delta !== undefined) {
+      drafts.push({ tick: after.tick, kind: "faction", template: "faction.relation", subject: { type: "faction", id: holdFaction.id }, severity: 1,
+        params: { faction: holdFaction.id, name: holdFaction.name, delta: occurrence.hold.delta, reason: `registry:${occurrence.entryId}:${occurrence.choiceId ?? ""}`,
+          relation: Math.max(-100, Math.min(100, holdFaction.relation + occurrence.hold.delta)) } });
+    }
     const choice = registryEntryData(occurrence.entryId)?.choices.find(candidate => candidate.id === occurrence.choiceId);
     for (const effect of choice?.effects ?? []) {
       if (effect.command !== "faction_relation") continue;

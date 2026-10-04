@@ -54,12 +54,12 @@ export const V4_POLICY: unknown = ${JSON.stringify(registry.policy)};
 export const V4_DERIVED: unknown = ${JSON.stringify(readModel)};
 `);
 
-const copy = Object.fromEntries(events.map(event => [event.id, { title: event.title, body: event.body, sender: event.sender?.role ?? event.sender?.faction ?? "",
+const copy = Object.fromEntries(events.map(event => [event.id, { title: event.title, body: event.body, sender: event.sender?.role ?? event.sender?.faction ?? "", senderFaction: event.sender?.faction ?? "",
   choices: Object.fromEntries(event.choices.map(choice => [choice.id, { label: choice.label, ...(choice.tradeoff === undefined ? {} : { tradeoff: choice.tradeoff }),
     ...(choice.ledger === undefined ? {} : { ledger: choice.ledger }), ...(choice.chronicle === undefined ? {} : { chronicle: choice.chronicle }) }])) }]));
 writeFileSync(resolve(ROOT, "src/content/registry/v4Copy.generated.ts"), `${header("events-v4.json")}
 export interface V4ChoiceCopy { readonly label: string; readonly tradeoff?: string; readonly ledger?: string; readonly chronicle?: string }
-export interface V4EventCopy { readonly title: string; readonly body: string; readonly sender: string; readonly choices: Readonly<Record<string, V4ChoiceCopy>> }
+export interface V4EventCopy { readonly title: string; readonly body: string; readonly sender: string; readonly senderFaction: string; readonly choices: Readonly<Record<string, V4ChoiceCopy>> }
 /** ER-13: each v4 event's words (the canon's events-v4.json). */
 export const V4_COPY: Readonly<Record<string, V4EventCopy>> = ${JSON.stringify(copy)};
 `);

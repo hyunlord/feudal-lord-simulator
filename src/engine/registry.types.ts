@@ -21,6 +21,8 @@ export interface RegistryOccurrence {
   /** ER-15: its dedup key (group and semantic fields) and its recurrence context. */
   readonly key?: string;
   readonly context?: string;
+  /** ER-19 (R3): an answered hold's cost — the claim weakened, or the sender faction's relation moved (the history moves it). */
+  readonly hold?: { readonly claimId?: string; readonly weakened?: number; readonly faction?: string; readonly delta?: number; readonly deadline?: string };
 }
 
 /** ER-7 (NE03): a remission or an instalment plan with its term. */
