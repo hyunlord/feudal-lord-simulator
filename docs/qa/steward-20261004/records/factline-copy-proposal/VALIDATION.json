@@ -1,0 +1,102 @@
+{
+  "status": "PASS_OFFLINE_TEXT_ONLY",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "templates": 14,
+  "heldCandidateLinks": 23,
+  "originalSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+  "proposedSha256": "e09c875182af83f58c584839cb0abb668f5b0da84942745dccf10044c5f5a90e",
+  "patchSha256": "134e5161b6677bbac94be012e8ca5a0e765308f664cbac44c0b13b9ab8caae90",
+  "gitApplyCheck": true,
+  "gitApplyToArtifactCopy": true,
+  "exactAppliedCopyMatch": true,
+  "repositorySourceUnchanged": true,
+  "slotChecks": [
+    {
+      "template": "person.fed",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "person.emptied",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "marriage.brother_in_law_born",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "marriage.inherited",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "stewardship.began",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "reorg.weavers_left",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "plague.priest_died",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "milestone.market_town",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "legacy.market_fire",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "legacy.nave_rebuilt",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "legacy.charter_refused",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "decision.market_town",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "person.came_of_age",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    },
+    {
+      "template": "milestone.stone_town",
+      "old_line_exact": true,
+      "interpolation_sequence_unchanged": true,
+      "changed_one_line": true
+    }
+  ],
+  "typescriptRuntimeExecuted": false,
+  "contextCaptureImplemented": false,
+  "independentReviewPerformed": false
+}

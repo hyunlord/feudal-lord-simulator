@@ -1,0 +1,16 @@
+{
+  "status": "all_context_candidates_uninstalled",
+  "allVariantsRequireProvenanceAdapter": true,
+  "blocks": [
+    {
+      "variantId": "reorg.weavers_left.r06rg.refused",
+      "status": "BLOCK_FACT_LINE_OCCUPATION_DESTINATION",
+      "reason": "leave selects households by proximity, without proving weaver occupation or modeled destination. Review neutral factual line; do not alter engine here."
+    },
+    {
+      "variantId": "reorg.weavers_left.r06rg.expired",
+      "status": "BLOCK_FACT_LINE_OCCUPATION_DESTINATION",
+      "reason": "leave selects households by proximity, without proving weaver occupation or modeled destination. Review neutral factual line; do not alter engine here."
+    }
+  ]
+}

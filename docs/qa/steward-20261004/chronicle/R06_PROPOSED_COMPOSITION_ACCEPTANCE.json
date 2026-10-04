@@ -1,0 +1,162 @@
+{
+  "status": "PROPOSED_COMPOSITION_REVIEW_COVERS_ALL_CURRENT_HOLDS",
+  "count": 30,
+  "currentEngineHoldsRetained": 30,
+  "proposedFactLineCount": 14,
+  "patchSha256": "134e5161b6677bbac94be012e8ca5a0e765308f664cbac44c0b13b9ab8caae90",
+  "reviews": [
+    {
+      "id": "person.fed.r06life.brief",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "person.fed.r06life.long",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "person.emptied.r06ctx.one",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "person.emptied.r06ctx.many",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.lord",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.son",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "marriage.brother_in_law_born.r06life.kin",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "stewardship.began.r06office.sole_estate",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "stewardship.began.r06office.multiple_estates",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.refused",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "reorg.weavers_left.r06rg.expired",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "milestone.market_town.r06stage.stone",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "legacy.market_fire.r06town.full",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "legacy.market_fire.r06town.partial",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "legacy.market_fire.r06town.zero",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.full",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.partial",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "legacy.nave_rebuilt.r06town.zero",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "legacy.charter_refused.r06ctx2.expired",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "decision.market_town.r06ctx2.water_reach",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "decision.market_town.r06ctx2.land_ring",
+      "verdict": "APPROVE_COMPOSITION_CONDITIONAL_CAPTURE_AND_SELECTOR",
+      "review": "records/factline-copy-review/COMPOSITION_VERDICTS.json"
+    },
+    {
+      "id": "person.came_of_age.r06fixed.co_resident",
+      "verdict": "DRAFT_COMPOSITION_PASS",
+      "review": "records/fixed-factline-composition-review/COMPOSITIONS.json"
+    },
+    {
+      "id": "person.came_of_age.r06fixed.not_co_resident",
+      "verdict": "DRAFT_COMPOSITION_PASS",
+      "review": "records/fixed-factline-composition-review/COMPOSITIONS.json"
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.all_complete",
+      "verdict": "DRAFT_COMPOSITION_PASS",
+      "review": "records/fixed-factline-composition-review/COMPOSITIONS.json"
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.partly_complete",
+      "verdict": "DRAFT_COMPOSITION_PASS",
+      "review": "records/fixed-factline-composition-review/COMPOSITIONS.json"
+    },
+    {
+      "id": "milestone.stone_town.r06fixed.none_complete",
+      "verdict": "DRAFT_COMPOSITION_PASS",
+      "review": "records/fixed-factline-composition-review/COMPOSITIONS.json"
+    },
+    {
+      "id": "plague.priest_died.r06fixed.present",
+      "verdict": "DRAFT_COMPOSITION_PASS",
+      "review": "records/fixed-factline-composition-review/COMPOSITIONS.json"
+    },
+    {
+      "id": "plague.priest_died.r06fixed.absent",
+      "verdict": "DRAFT_COMPOSITION_PASS",
+      "review": "records/fixed-factline-composition-review/COMPOSITIONS.json"
+    }
+  ],
+  "engineInstalled": false,
+  "captureImplemented": false,
+  "scope": "Draft composition approval only. Current engine baseline holds remain. Capture and selector contracts still apply."
+}

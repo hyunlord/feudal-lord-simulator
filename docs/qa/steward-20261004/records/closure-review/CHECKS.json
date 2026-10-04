@@ -1,0 +1,62 @@
+{
+  "at": "2026-10-04T11:14:09+09:00",
+  "method": "Light local JSON/hash; prior semantic/runtime reviews inherited explicitly.",
+  "checks": [
+    {
+      "scope": "records/fen-run-review",
+      "files": 5,
+      "mismatches": [
+
+      ]
+    },
+    {
+      "scope": "records/fen-cash-audit",
+      "files": 8,
+      "mismatches": [
+
+      ]
+    },
+    {
+      "scope": "records/severity-final-review",
+      "files": 4,
+      "mismatches": [
+
+      ]
+    },
+    {
+      "scope": "analysis/fen-comparison-r08",
+      "files": 13,
+      "mismatches": [
+
+      ]
+    },
+    {
+      "scope": "graphs/fen-comparison-r08",
+      "files": 8,
+      "mismatches": [
+
+      ]
+    },
+    {
+      "scope": "termination condition",
+      "r7Zero": true,
+      "r8Zero": true,
+      "parentConsecutive": 2,
+      "Dcount": 200,
+      "history": 182,
+      "ledger": 46,
+      "canonical": 650,
+      "context": 212,
+      "age": 20,
+      "missingTypesReported": [
+
+      ],
+      "r7SourceCopyShaEqual": true
+    }
+  ],
+  "archive": {
+    "zipExists": false,
+    "rootManifestExists": false,
+    "gate": "pending_not_inspected"
+  }
+}

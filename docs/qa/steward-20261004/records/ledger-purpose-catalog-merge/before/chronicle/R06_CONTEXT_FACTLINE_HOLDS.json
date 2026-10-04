@@ -1,0 +1,250 @@
+{
+  "status": "INDEXED_DRAFT_FACTLINE_HOLDS_ONLY",
+  "catalogCount": 202,
+  "catalogSha256": "ba2805fc82a99276b2f32f6753401a33da21269de74ae1a98d431c74dfee66dd",
+  "count": 30,
+  "holds": [
+    {
+      "variantId": "person.came_of_age.r06fixed.co_resident",
+      "template": "person.came_of_age",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "나이 경계를 노동 시작으로 단정",
+      "reviewPath": "records/fixed-context-revised-review/REVIEW.md",
+      "reviewSha256": "37cb32b7bfb35fb826adb45c9ca49c8e096ad4e2a3808992e658a6ae2aaaa5e6"
+    },
+    {
+      "variantId": "person.came_of_age.r06fixed.not_co_resident",
+      "template": "person.came_of_age",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "나이 경계를 노동 시작으로 단정",
+      "reviewPath": "records/fixed-context-revised-review/REVIEW.md",
+      "reviewSha256": "37cb32b7bfb35fb826adb45c9ca49c8e096ad4e2a3808992e658a6ae2aaaa5e6"
+    },
+    {
+      "variantId": "milestone.stone_town.r06fixed.all_complete",
+      "template": "milestone.stone_town",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "단계 기록이 석재 교체나 성벽 준공을 보장하지 않음",
+      "reviewPath": "records/fixed-context-revised-review/REVIEW.md",
+      "reviewSha256": "37cb32b7bfb35fb826adb45c9ca49c8e096ad4e2a3808992e658a6ae2aaaa5e6"
+    },
+    {
+      "variantId": "milestone.stone_town.r06fixed.partly_complete",
+      "template": "milestone.stone_town",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "단계 기록이 석재 교체나 성벽 준공을 보장하지 않음",
+      "reviewPath": "records/fixed-context-revised-review/REVIEW.md",
+      "reviewSha256": "37cb32b7bfb35fb826adb45c9ca49c8e096ad4e2a3808992e658a6ae2aaaa5e6"
+    },
+    {
+      "variantId": "milestone.stone_town.r06fixed.none_complete",
+      "template": "milestone.stone_town",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "단계 기록이 석재 교체나 성벽 준공을 보장하지 않음",
+      "reviewPath": "records/fixed-context-revised-review/REVIEW.md",
+      "reviewSha256": "37cb32b7bfb35fb826adb45c9ca49c8e096ad4e2a3808992e658a6ae2aaaa5e6"
+    },
+    {
+      "variantId": "plague.priest_died.r06fixed.present",
+      "template": "plague.priest_died",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "사제 공석을 특정 사제의 역병 사망으로 단정",
+      "reviewPath": "records/fixed-context-revised-review/REVIEW.md",
+      "reviewSha256": "37cb32b7bfb35fb826adb45c9ca49c8e096ad4e2a3808992e658a6ae2aaaa5e6"
+    },
+    {
+      "variantId": "plague.priest_died.r06fixed.absent",
+      "template": "plague.priest_died",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "사제 공석을 특정 사제의 역병 사망으로 단정",
+      "reviewPath": "records/fixed-context-revised-review/REVIEW.md",
+      "reviewSha256": "37cb32b7bfb35fb826adb45c9ca49c8e096ad4e2a3808992e658a6ae2aaaa5e6"
+    },
+    {
+      "variantId": "legacy.market_fire.r06town.full",
+      "template": "legacy.market_fire",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "원래 수리금액과 실제 지급액을 혼동",
+      "reviewPath": "records/legacy-town-review/REVIEW.md",
+      "reviewSha256": "0d18070c76d5408ecb6a022c4b2a80fd88185042e894844dd5cfa9e4b09bddf0"
+    },
+    {
+      "variantId": "legacy.market_fire.r06town.partial",
+      "template": "legacy.market_fire",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "원래 수리금액과 실제 지급액을 혼동",
+      "reviewPath": "records/legacy-town-review/REVIEW.md",
+      "reviewSha256": "0d18070c76d5408ecb6a022c4b2a80fd88185042e894844dd5cfa9e4b09bddf0"
+    },
+    {
+      "variantId": "legacy.market_fire.r06town.zero",
+      "template": "legacy.market_fire",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "원래 수리금액과 실제 지급액을 혼동",
+      "reviewPath": "records/legacy-town-review/REVIEW.md",
+      "reviewSha256": "0d18070c76d5408ecb6a022c4b2a80fd88185042e894844dd5cfa9e4b09bddf0"
+    },
+    {
+      "variantId": "legacy.nave_rebuilt.r06town.full",
+      "template": "legacy.nave_rebuilt",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "즉시 설정된 증축기록을 물리적 완공으로 표현",
+      "reviewPath": "records/legacy-town-review/REVIEW.md",
+      "reviewSha256": "0d18070c76d5408ecb6a022c4b2a80fd88185042e894844dd5cfa9e4b09bddf0"
+    },
+    {
+      "variantId": "legacy.nave_rebuilt.r06town.partial",
+      "template": "legacy.nave_rebuilt",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "즉시 설정된 증축기록을 물리적 완공으로 표현",
+      "reviewPath": "records/legacy-town-review/REVIEW.md",
+      "reviewSha256": "0d18070c76d5408ecb6a022c4b2a80fd88185042e894844dd5cfa9e4b09bddf0"
+    },
+    {
+      "variantId": "legacy.nave_rebuilt.r06town.zero",
+      "template": "legacy.nave_rebuilt",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "즉시 설정된 증축기록을 물리적 완공으로 표현",
+      "reviewPath": "records/legacy-town-review/REVIEW.md",
+      "reviewSha256": "0d18070c76d5408ecb6a022c4b2a80fd88185042e894844dd5cfa9e4b09bddf0"
+    },
+    {
+      "variantId": "marriage.inherited.r06ctx.son",
+      "template": "marriage.inherited",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "배우자와 다른 친족을 모두 아내로 표현하는 기본 사실행",
+      "reviewPath": "records/event-context-revised-review/REVIEW.md",
+      "reviewSha256": "12372343b512b5765372b02c687aae44fd13d20bf6536b1938c72fcd764a0d4c"
+    },
+    {
+      "variantId": "marriage.inherited.r06ctx.kin",
+      "template": "marriage.inherited",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "배우자와 다른 친족을 모두 아내로 표현하는 기본 사실행",
+      "reviewPath": "records/event-context-revised-review/REVIEW.md",
+      "reviewSha256": "12372343b512b5765372b02c687aae44fd13d20bf6536b1938c72fcd764a0d4c"
+    },
+    {
+      "variantId": "legacy.charter_refused.r06ctx2.expired",
+      "template": "legacy.charter_refused",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "기한 경과를 명시적 거절로 표현",
+      "reviewPath": "records/event-context-wave2-revised-review/REVIEW.md",
+      "reviewSha256": "f9f5af8c98fd513d429834b9ffb24836a5d057d31bfd89536329281e6e3e83e6"
+    },
+    {
+      "variantId": "decision.market_town.r06ctx2.water_reach",
+      "template": "decision.market_town",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "경계 계획을 목책 완공처럼 읽게 하는 조합",
+      "reviewPath": "records/event-context-wave2-revised-review/REVIEW.md",
+      "reviewSha256": "f9f5af8c98fd513d429834b9ffb24836a5d057d31bfd89536329281e6e3e83e6"
+    },
+    {
+      "variantId": "decision.market_town.r06ctx2.land_ring",
+      "template": "decision.market_town",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "경계 계획을 목책 완공처럼 읽게 하는 조합",
+      "reviewPath": "records/event-context-wave2-revised-review/REVIEW.md",
+      "reviewSha256": "f9f5af8c98fd513d429834b9ffb24836a5d057d31bfd89536329281e6e3e83e6"
+    },
+    {
+      "variantId": "person.emptied.r06ctx.one",
+      "template": "person.emptied",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "거주자 부재를 기아로 단정",
+      "reviewPath": "records/person-context-independent-review/REVIEW.md",
+      "reviewSha256": "d23d083da5848ce315475ee11c9c65e72b1bafef96c24c6a67b140fcd0663ee0"
+    },
+    {
+      "variantId": "person.emptied.r06ctx.many",
+      "template": "person.emptied",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "거주자 부재를 기아로 단정",
+      "reviewPath": "records/person-context-independent-review/REVIEW.md",
+      "reviewSha256": "d23d083da5848ce315475ee11c9c65e72b1bafef96c24c6a67b140fcd0663ee0"
+    },
+    {
+      "variantId": "person.fed.r06life.brief",
+      "template": "person.fed",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "식량 압박 해소를 충분한 식사로 단정",
+      "reviewPath": "records/person-life-revised-review/REVIEW.md",
+      "reviewSha256": "b4bf9fef1b3648f630705acd80766e82eee0926ed4eb456a5e5ce0002a26f56e"
+    },
+    {
+      "variantId": "person.fed.r06life.long",
+      "template": "person.fed",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "식량 압박 해소를 충분한 식사로 단정",
+      "reviewPath": "records/person-life-revised-review/REVIEW.md",
+      "reviewSha256": "b4bf9fef1b3648f630705acd80766e82eee0926ed4eb456a5e5ce0002a26f56e"
+    },
+    {
+      "variantId": "marriage.brother_in_law_born.r06life.lord",
+      "template": "marriage.brother_in_law_born",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "새 아들의 출생만으로 재혼을 단정",
+      "reviewPath": "records/marriage-life-revised-review/REVIEW.md",
+      "reviewSha256": "10ea786e0835644bdb7efeb548350046173c071e36494c0bf854d0906ed8ee41"
+    },
+    {
+      "variantId": "marriage.brother_in_law_born.r06life.son",
+      "template": "marriage.brother_in_law_born",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "새 아들의 출생만으로 재혼을 단정",
+      "reviewPath": "records/marriage-life-revised-review/REVIEW.md",
+      "reviewSha256": "10ea786e0835644bdb7efeb548350046173c071e36494c0bf854d0906ed8ee41"
+    },
+    {
+      "variantId": "marriage.brother_in_law_born.r06life.kin",
+      "template": "marriage.brother_in_law_born",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "새 아들의 출생만으로 재혼을 단정",
+      "reviewPath": "records/marriage-life-revised-review/REVIEW.md",
+      "reviewSha256": "10ea786e0835644bdb7efeb548350046173c071e36494c0bf854d0906ed8ee41"
+    },
+    {
+      "variantId": "stewardship.began.r06office.sole_estate",
+      "template": "stewardship.began",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "관리 시작을 소유권 취득으로 표현",
+      "reviewPath": "records/office-context-revised-review/REVIEW.md",
+      "reviewSha256": "cb2e932deabbb1a38392995ac2b206156cb4560c659568f4a5af6ace18b65191"
+    },
+    {
+      "variantId": "stewardship.began.r06office.multiple_estates",
+      "template": "stewardship.began",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "관리 시작을 소유권 취득으로 표현",
+      "reviewPath": "records/office-context-revised-review/REVIEW.md",
+      "reviewSha256": "cb2e932deabbb1a38392995ac2b206156cb4560c659568f4a5af6ace18b65191"
+    },
+    {
+      "variantId": "reorg.weavers_left.r06rg.refused",
+      "template": "reorg.weavers_left",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "떠난 가구의 직업과 목적지를 기본 사실행에서 단정",
+      "reviewPath": "records/reorg-context-review/REVIEW.md",
+      "reviewSha256": "ba29910cebc4994db5ce84a349614145847d8cffd5b7b12ef51f3e3e7dd62dc9"
+    },
+    {
+      "variantId": "reorg.weavers_left.r06rg.expired",
+      "template": "reorg.weavers_left",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "떠난 가구의 직업과 목적지를 기본 사실행에서 단정",
+      "reviewPath": "records/reorg-context-review/REVIEW.md",
+      "reviewSha256": "ba29910cebc4994db5ce84a349614145847d8cffd5b7b12ef51f3e3e7dd62dc9"
+    },
+    {
+      "variantId": "milestone.market_town.r06stage.stone",
+      "template": "milestone.market_town",
+      "status": "HOLD_UNCHANGED_BASELINE_COMPOSITION",
+      "reason": "이미 석벽 도시인 기록 시점과 시장도시가 되었다는 사실행 조합",
+      "reviewPath": "records/milestone-context-review/REVIEW.md",
+      "reviewSha256": "70e118b4bddb21d1372f50656157c226e5c7bc1d4a8255247a62a588d18dd801"
+    }
+  ],
+  "excludes": "Typed input/capture integration conditions; unindexed drafts; historical canonical R05D_INSTALL_BLOCKS. A proposed patch does not release these holds until composed output is reviewed.",
+  "engineModified": false
+}

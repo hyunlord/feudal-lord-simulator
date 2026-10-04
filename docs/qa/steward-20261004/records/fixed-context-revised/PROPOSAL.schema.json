@@ -1,0 +1,404 @@
+{
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "status",
+    "sourceHead",
+    "fields",
+    "additions",
+    "fallback",
+    "runtimeImplemented"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "formatVersion": {
+      "const": "fixed-context-second-pass-v1"
+    },
+    "status": {
+      "const": "AUTHOR_DRAFT_UNINSTALLED"
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "fields": {
+      "const": [
+        {
+          "id": "parentsAtAdulthood",
+          "templates": [
+            "person.came_of_age"
+          ],
+          "values": [
+            "co_resident",
+            "not_co_resident"
+          ],
+          "capture": "src/engine/history.ts:392-406; src/engine/persons.types.ts:48-72; src/engine/persons.ts:85-87,233-237",
+          "captureRule": "At age-threshold emission bind subject person ID before/after, preserve birthYear, require before age<14 and after age>=14 at event years. Both motherId and fatherId must be distinct nonempty IDs and each resolve exactly once across after.persons.people and after.persons.past with explicit alive and nonempty householdId. Subject must belong to current people, alive=true, leftYear absent. A co-resident parent must belong to current people AND alive=true AND leftYear absent AND householdId equal subject; only then co_resident. A living parent in past, or any parent with leftYear, never qualifies even when historical householdId is equal. If both parents resolve but neither qualifies -> not_co_resident. Unknown/missing parent IDs -> unknown, never absent. No orphanhood, death cause, care quality or work start inferred; current ages/parents never backfill.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "wallCompletionAtMilestone",
+          "templates": [
+            "milestone.stone_town"
+          ],
+          "values": [
+            "all_complete",
+            "partly_complete",
+            "none_complete"
+          ],
+          "capture": "src/engine/history.ts:451-466; src/engine/era.ts:108-140; src/engine/engine.types.ts:32-43",
+          "captureRule": "At emitted milestone require era stone_town and nonempty after.palisade.segments with unique IDs and explicit boolean completed. All true/all false/mixed determine enum. Describe segment completed only, not replacementConstructionSiteId completion or material. Null/empty/inconsistent array unknown. No timber/stone material guess, no wall ring fully sealed inference.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "worshipBuildingsAtVacancy",
+          "templates": [
+            "plague.priest_died"
+          ],
+          "values": [
+            "present",
+            "absent"
+          ],
+          "capture": "src/engine/plague.ts:511-522; src/engine/history.ts:649-651; src/content/buildingCatalog.ts:94,113",
+          "captureRule": "Require curacy newly present, vacantSince matches operation tick, match old template record. Count existing after.buildings whose kind church or chapel; positive present else absent. Complete valid building list required; construction sites excluded. This is building presence, never actual priest death/cause/worship cessation. No current-world backfill.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "archivedL4Direction",
+          "templates": [
+            "ledger.l4"
+          ],
+          "values": [
+            "increased",
+            "decreased",
+            "unchanged"
+          ],
+          "capture": "src/content/historyCopy.ko.ts:336; src/engine/history.ts:468-491",
+          "captureRule": "For a real archived history record whose template is ledger.l4, validate original params.from and params.to as finite nonnegative safe integers. Compare to/from for increased/decreased/unchanged. Bind immutable record and campaign; do not calculate counts from present houses, infer period, cause, or producer identity. Real archive presence not established by this proposal; current checked save contains zero such records.",
+          "provenance": "immutable_record_params",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        }
+      ]
+    },
+    "additions": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "person.came_of_age"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^person\\.came_of_age\\.r06fixed\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.parentsAtAdulthood"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "co_resident",
+                            "not_co_resident"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "milestone.stone_town"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^milestone\\.stone_town\\.r06fixed\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.wallCompletionAtMilestone"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "all_complete",
+                            "partly_complete",
+                            "none_complete"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "plague.priest_died"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^plague\\.priest_died\\.r06fixed\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.worshipBuildingsAtVacancy"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "present",
+                            "absent"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "ledger.l4"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^ledger\\.l4\\.r06fixed\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.archivedL4Direction"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "increased",
+                            "decreased",
+                            "unchanged"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fallback": {
+      "const": "Unknown, malformed or record/campaign mismatched context -> existing baseline; no inferred past facts"
+    },
+    "runtimeImplemented": {
+      "const": false
+    }
+  }
+}

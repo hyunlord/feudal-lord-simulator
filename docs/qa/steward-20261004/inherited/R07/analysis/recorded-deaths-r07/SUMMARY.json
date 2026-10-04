@@ -1,0 +1,113 @@
+[
+  {
+    "run": "N02-v3-open-1-growth",
+    "total": 5440,
+    "exactHistoryTick": 3795,
+    "byCause": {
+      "famine": {
+        "count": 2059,
+        "withHistoryTick": 2059,
+        "peakYear": 1343,
+        "peakAnnual": 83
+      },
+      "famine_year": {
+        "count": 13,
+        "withHistoryTick": 13,
+        "peakYear": 1320,
+        "peakAnnual": 9
+      },
+      "plague": {
+        "count": 257,
+        "withHistoryTick": 257,
+        "peakYear": 1348,
+        "peakAnnual": 122
+      },
+      "age": {
+        "count": 3109,
+        "withHistoryTick": 1464,
+        "peakYear": 1392,
+        "peakAnnual": 51
+      },
+      "fire": {
+        "count": 2,
+        "withHistoryTick": 2,
+        "peakYear": 1378,
+        "peakAnnual": 1
+      }
+    }
+  },
+  {
+    "run": "N03-v3-open-1-stability",
+    "total": 2167,
+    "exactHistoryTick": 1988,
+    "byCause": {
+      "famine": {
+        "count": 98,
+        "withHistoryTick": 98,
+        "peakYear": 1313,
+        "peakAnnual": 52
+      },
+      "famine_year": {
+        "count": 14,
+        "withHistoryTick": 14,
+        "peakYear": 1320,
+        "peakAnnual": 8
+      },
+      "plague": {
+        "count": 313,
+        "withHistoryTick": 313,
+        "peakYear": 1348,
+        "peakAnnual": 141
+      },
+      "age": {
+        "count": 1739,
+        "withHistoryTick": 1560,
+        "peakYear": 1364,
+        "peakAnnual": 22
+      },
+      "fire": {
+        "count": 3,
+        "withHistoryTick": 3,
+        "peakYear": 1445,
+        "peakAnnual": 2
+      }
+    }
+  },
+  {
+    "run": "N04-chalk-2-full",
+    "total": 3083,
+    "exactHistoryTick": 2903,
+    "byCause": {
+      "famine": {
+        "count": 293,
+        "withHistoryTick": 293,
+        "peakYear": 1305,
+        "peakAnnual": 86
+      },
+      "famine_year": {
+        "count": 13,
+        "withHistoryTick": 13,
+        "peakYear": 1320,
+        "peakAnnual": 4
+      },
+      "plague": {
+        "count": 422,
+        "withHistoryTick": 422,
+        "peakYear": 1349,
+        "peakAnnual": 272
+      },
+      "age": {
+        "count": 2349,
+        "withHistoryTick": 2169,
+        "peakYear": 1427,
+        "peakAnnual": 31
+      },
+      "fire": {
+        "count": 6,
+        "withHistoryTick": 6,
+        "peakYear": 1424,
+        "peakAnnual": 3
+      }
+    }
+  }
+]

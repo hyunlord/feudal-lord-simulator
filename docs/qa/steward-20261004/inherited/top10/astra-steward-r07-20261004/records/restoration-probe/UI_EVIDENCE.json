@@ -1,0 +1,26 @@
+{
+  "files": [
+    {
+      "path": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/0115-petition-immediate-before.json",
+      "sha256": "0acd3d14d66734edadfdf4db9e67d05f632804975eec458d959a26ceaf8f9f15"
+    },
+    {
+      "path": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/0118-petition-immediate-after.json",
+      "sha256": "42c0a374ce533745eb1c3b659fadcb791d2f442afc5956bb801ca858abe1aa9c"
+    },
+    {
+      "path": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/0124-petition-after-treasury.json",
+      "sha256": "b87ac4a4ae1c83629ef740c5e41bd7dec0eb6dd9e0fb1c21c88ecd09a54c1d28"
+    },
+    {
+      "path": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/actions.jsonl",
+      "sha256": "de1802263a86e76a5463366e9d2a1403ad11d35c735ad0caccfc779e49582721"
+    }
+  ],
+  "observedResponse": "accept_with_price",
+  "definitionId": "restore_right",
+  "originalRuntimePetitionId": null,
+  "runtimeIdStatus": "Not present in preserved calendar/text/buttons DOM snapshots or action locator; not inferred",
+  "commandMapping": "AppModals dispatch petition_response with petitionView.petitionId",
+  "actionLine": 206
+}

@@ -1,0 +1,2001 @@
+{
+  "total": 200,
+  "categories": {
+    "장원": 29,
+    "도시": 29,
+    "교회": 28,
+    "이웃 가문": 28,
+    "세력": 29,
+    "자연": 28,
+    "가문 내부": 29
+  },
+  "periods": {
+    "1300–1347": 62,
+    "1348–1381": 48,
+    "1382–1450": 90
+  },
+  "enabled": 0,
+  "existingCommandsPendingRegistry": 20,
+  "rows": [
+    {
+      "id": "ck_evt_001",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_002",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_003",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_004",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_005",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_006",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_007",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_008",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_009",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_010",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_011",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 1,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_012",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_013",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_014",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_015",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_016",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_017",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_018",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_019",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_020",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 1
+    },
+    {
+      "id": "ck_evt_021",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_022",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_023",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_024",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_025",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_026",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_027",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_028",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_029",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_030",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_031",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_032",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_033",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_034",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_035",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_036",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_037",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_038",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 1
+    },
+    {
+      "id": "ck_evt_039",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_040",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_041",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_042",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_043",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_044",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_045",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_046",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_047",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_048",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_049",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_050",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_051",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_052",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_053",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_054",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_055",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_056",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_057",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_new_petition_definition",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_058",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_new_petition_definition",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_059",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_060",
+      "block": "baseline",
+      "enabled": false,
+      "bindingStatus": "requires_runtime_target_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_061",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_062",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_063",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_064",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_065",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_066",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_067",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_068",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_069",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_070",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 3,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_071",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_072",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_073",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_074",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_075",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_076",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_077",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_078",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_079",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_080",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_081",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_082",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_083",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_084",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_085",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_086",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_087",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_088",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_089",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 3,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_090",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_091",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_092",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_093",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_094",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_095",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_096",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 3,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_097",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_098",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_099",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_100",
+      "block": "manor-town",
+      "enabled": false,
+      "bindingStatus": "structured_spec_requires_runtime_target_binding",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_101",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_102",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_103",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_104",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_105",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_106",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_107",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_108",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_109",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_110",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_111",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_112",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_113",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_114",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_115",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_116",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_117",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 2
+    },
+    {
+      "id": "ck_evt_118",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_119",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_120",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_121",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_122",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_123",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_124",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_125",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_126",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_127",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_128",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_129",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_130",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_131",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_132",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_133",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_134",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_135",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 1
+    },
+    {
+      "id": "ck_evt_136",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_137",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "blocked_unsupported_effect",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_138",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_139",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_140",
+      "block": "church-neighbors",
+      "enabled": false,
+      "bindingStatus": "existing_commands_pending_registry_binding",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_141",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_142",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_143",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_144",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_145",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_146",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_147",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_148",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_149",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_150",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_151",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_152",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_153",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_154",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_155",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_156",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_157",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_158",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_159",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_160",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_161",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_162",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_163",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_164",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_165",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_166",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_167",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_168",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_169",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_170",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_171",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_172",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_173",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_174",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_175",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_176",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_177",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_178",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_179",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 0,
+      "commands": 3
+    },
+    {
+      "id": "ck_evt_180",
+      "block": "faction-nature",
+      "enabled": false,
+      "bindingStatus": "spec_requires_runtime_evaluator",
+      "unsupportedFilters": 0,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 1,
+      "commands": 4
+    },
+    {
+      "id": "ck_evt_181",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_182",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_183",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_184",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_185",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_186",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_187",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_188",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_189",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_190",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_191",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_192",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_193",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_194",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_195",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 2,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_196",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_197",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_198",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_199",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    },
+    {
+      "id": "ck_evt_200",
+      "block": "family",
+      "enabled": false,
+      "unsupportedFilters": 1,
+      "unsupportedSelectors": 0,
+      "blockedChoices": 3,
+      "commands": 0
+    }
+  ]
+}

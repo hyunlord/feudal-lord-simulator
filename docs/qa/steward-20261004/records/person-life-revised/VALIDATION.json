@@ -1,0 +1,22 @@
+{
+  "status": "AUTHOR_REVISION_CHECK_PASSED_INDEPENDENT_RECHECK_PENDING",
+  "originalFixtures": 125,
+  "regressionFixtures": 11,
+  "totalFixtures": 136,
+  "priorIndependentReview": "18 conditional draft passes and 2 fact-line blocks; two capture defects found",
+  "wrongHouseholdSubjectRejected": true,
+  "emptyRecordIdRejected": true,
+  "actorOnlyPersonControlPassed": true,
+  "factLineBlocks": [
+    "person.fed.r06life.brief",
+    "person.fed.r06life.long"
+  ],
+  "candidateTextChanged": false,
+  "canonicalModified": false,
+  "originalCandidateModified": false,
+  "canonicalShaAtCheck": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "frozenBaselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "runtimeExecuted": false,
+  "immutableRuntimeProvenanceVerified": false,
+  "independentRecheck": "pending"
+}

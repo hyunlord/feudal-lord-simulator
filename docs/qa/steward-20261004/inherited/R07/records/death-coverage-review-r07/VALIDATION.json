@@ -1,0 +1,221 @@
+{
+  "manifestEntries": 10,
+  "sourceFiles": 7,
+  "sourceSpans": 15,
+  "runs": [
+    {
+      "run": "N02-v3-open-1-growth",
+      "deathCount": 5440,
+      "causes": {
+        "age": 3109,
+        "famine": 2059,
+        "famine_year": 13,
+        "plague": 257,
+        "fire": 2
+      },
+      "historyCount": 3795,
+      "missingHistory": 1645,
+      "missingCauses": {
+        "age": 1645
+      },
+      "checkpointStates": [
+        {
+          "tick": 0,
+          "deaths": 0,
+          "losses": 0
+        },
+        {
+          "tick": 100000,
+          "deaths": 269,
+          "losses": 0
+        },
+        {
+          "tick": 200000,
+          "deaths": 1310,
+          "losses": 0
+        },
+        {
+          "tick": 300000,
+          "deaths": 2271,
+          "losses": 0
+        },
+        {
+          "tick": 400000,
+          "deaths": 3435,
+          "losses": 0
+        },
+        {
+          "tick": 500000,
+          "deaths": 4486,
+          "losses": 0
+        },
+        {
+          "tick": 600000,
+          "deaths": 5440,
+          "losses": 0
+        }
+      ],
+      "annualRows": 150,
+      "annualFailures": [
+
+      ],
+      "boundaryTickDeaths": 0,
+      "historyLinkFailures": 0,
+      "alivePastWitnessIds": 1368,
+      "witness": {
+        "id": "p-000063",
+        "tick": 100000,
+        "leftYear": 1302,
+        "deathYear": 1340
+      },
+      "errors": [
+
+      ],
+      "namespace": "N02-v3-open-1-growth"
+    },
+    {
+      "run": "N03-v3-open-1-stability",
+      "deathCount": 2167,
+      "causes": {
+        "age": 1739,
+        "famine": 98,
+        "famine_year": 14,
+        "plague": 313,
+        "fire": 3
+      },
+      "historyCount": 1988,
+      "missingHistory": 179,
+      "missingCauses": {
+        "age": 179
+      },
+      "checkpointStates": [
+        {
+          "tick": 0,
+          "deaths": 0,
+          "losses": 0
+        },
+        {
+          "tick": 100000,
+          "deaths": 297,
+          "losses": 0
+        },
+        {
+          "tick": 200000,
+          "deaths": 835,
+          "losses": 0
+        },
+        {
+          "tick": 300000,
+          "deaths": 1234,
+          "losses": 0
+        },
+        {
+          "tick": 400000,
+          "deaths": 1530,
+          "losses": 0
+        },
+        {
+          "tick": 500000,
+          "deaths": 1857,
+          "losses": 0
+        },
+        {
+          "tick": 600000,
+          "deaths": 2167,
+          "losses": 0
+        }
+      ],
+      "annualRows": 150,
+      "annualFailures": [
+
+      ],
+      "boundaryTickDeaths": 0,
+      "historyLinkFailures": 0,
+      "alivePastWitnessIds": 147,
+      "witness": {
+        "id": "p-000094",
+        "tick": 100000,
+        "leftYear": 1312,
+        "deathYear": 1333
+      },
+      "errors": [
+
+      ],
+      "namespace": "N03-v3-open-1-stability"
+    },
+    {
+      "run": "N04-chalk-2-full",
+      "deathCount": 3083,
+      "causes": {
+        "age": 2349,
+        "famine": 293,
+        "fire": 6,
+        "famine_year": 13,
+        "plague": 422
+      },
+      "historyCount": 2903,
+      "missingHistory": 180,
+      "missingCauses": {
+        "age": 180
+      },
+      "checkpointStates": [
+        {
+          "tick": 0,
+          "deaths": 0,
+          "losses": 0
+        },
+        {
+          "tick": 100000,
+          "deaths": 456,
+          "losses": 0
+        },
+        {
+          "tick": 200000,
+          "deaths": 1157,
+          "losses": 0
+        },
+        {
+          "tick": 300000,
+          "deaths": 1660,
+          "losses": 0
+        },
+        {
+          "tick": 400000,
+          "deaths": 2051,
+          "losses": 0
+        },
+        {
+          "tick": 500000,
+          "deaths": 2582,
+          "losses": 0
+        },
+        {
+          "tick": 600000,
+          "deaths": 3083,
+          "losses": 0
+        }
+      ],
+      "annualRows": 150,
+      "annualFailures": [
+
+      ],
+      "boundaryTickDeaths": 0,
+      "historyLinkFailures": 0,
+      "alivePastWitnessIds": 132,
+      "witness": {
+        "id": "p-000062",
+        "tick": 100000,
+        "leftYear": 1302,
+        "deathYear": 1328
+      },
+      "errors": [
+
+      ],
+      "namespace": "N04-chalk-2-full"
+    }
+  ],
+  "failures": [
+
+  ],
+  "engineExecuted": false
+}

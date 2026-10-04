@@ -1,0 +1,30 @@
+{
+  "status": "candidate_not_installed_awaiting_independent_review",
+  "baseHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "baseCandidateSha256": "f8eb252fd54b977fc74ae31463906a7bead2bbd041c6433071d316a755a1305b",
+  "newCandidateSha256": "15d91cc1b969495a2ef99291df8d5a2d09d8183548f138a50e0461413d3df918",
+  "allowedChangedDataPaths": [
+    "sourceHead",
+    "slots.amountExact",
+    "slots.amountAbsExact",
+    "slots.amountSignedExact",
+    "historyTemplates[template=ledger.season].sourceExpression"
+  ],
+  "preservedVariantIds": 427,
+  "changedVariantObjects": 0,
+  "newVariantIds": [],
+  "removedVariantIds": [],
+  "allConditionsPreserved": true,
+  "inKindProducersPreserved": true,
+  "fix12Preserved": true,
+  "selectorFixturesPreserved": 524,
+  "pureMoneyAdapterExecuted": true,
+  "moneyVariantIdsRendered": 142,
+  "cashVariantIdsRendered": 138,
+  "syntheticRowsRendered": 1152,
+  "engineExecuted": false,
+  "browserExecuted": false,
+  "canonicalPromoted": false,
+  "parentR01RuntimeUnchanged": true
+}

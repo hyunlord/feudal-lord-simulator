@@ -1,0 +1,152 @@
+[
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 729,
+        "end": 760,
+        "text": "  const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];\n  const by = (id: string) => ({ actors: [{ type: \"faction\" as const, id }] });\n  const at = { tick: after.tick, subject: TOWN, ...by(\"town\") };\n  const cause = { type: \"event\" as const, id: `legacy@${now.startTick}`, detail: \"legacy\" };\n  const came = (step: keyof typeof LEGACY_STEP_ART) => now.steps[step] !== undefined && was?.steps[step] === undefined;\n  const art = (step: keyof typeof LEGACY_STEP_ART) => ({ illustration: LEGACY_STEP_ART[step] });\n  const house = lordshipOf(after).house.name;\n  if (came(\"mayor_demand\")) drafts.push({ ...at, ...by(\"merchant_house_1\"), ...art(\"mayor_demand\"), kind: \"event\", template: \"legacy.mayor_demand\", severity: 2, params: { candidateId: now.mayorCandidateId ?? \"\" }, cause });\n  if (came(\"royal_tax_envoy\")) drafts.push({ ...at, ...by(\"crown\"), ...art(\"royal_tax_envoy\"), kind: \"event\", template: \"legacy.royal_tax_envoy\", severity: 2, cause });\n  if (came(\"succession\")) {\n    const lord = manorLord(after.persons?.people ?? [], lordshipOf(after).house.order, calendar(after.tick, scenarioOf(after).startYear).year);\n    drafts.push({ ...at, ...by(\"overlord\"), ...art(\"succession\"), kind: \"event\", template: \"legacy.succession\", severity: 3, cause,\n      params: { lordId: lord?.id ?? \"\", age: lord === undefined ? 0 : calendar(after.tick, scenarioOf(after).startYear).year - lord.birthYear, candidates: now.candidates.length } });\n  }\n  if (now.royalSubsidy > (was?.royalSubsidy ?? 0)) drafts.push({ ...at, ...by(\"crown\"), kind: \"event\", template: \"legacy.royal_subsidy\", severity: 1, params: { amount: now.royalSubsidy - (was?.royalSubsidy ?? 0) }, cause });\n  if (now.heir !== undefined && was?.heir === undefined) {\n    const candidate = now.candidates.find(entry => entry.personId === now.heir!.personId);\n    drafts.push({ tick: after.tick, subject: { type: \"person\", id: now.heir.personId }, actors: [{ type: \"faction\", id: \"overlord\" }], kind: \"event\", template: \"legacy.heir_seated\", severity: 3,\n      params: { heirId: now.heir.personId, relation: candidate === undefined ? \"\" : heirRelationWord(candidate) }, illustration: \"ch5_chronicle_heir\", cause });\n  }\n  if (came(\"city_seal\")) drafts.push({ ...at, ...art(\"city_seal\"), kind: \"event\", template: \"legacy.city_seal\", severity: 2, cause, thumbnail: { state: after, size: 128 } });\n  const charter = now.answers[BOROUGH_AUTONOMY_PETITION_ID];\n  if (charter !== undefined && was?.answers[BOROUGH_AUTONOMY_PETITION_ID] === undefined) {\n    drafts.push(charter === \"accept\"\n      ? { ...at, ...art(\"charter_sealing\"), kind: \"event\", template: \"legacy.charter_sealed\", severity: 3, params: { mayorId: now.mayorId ?? \"\" }, cause, thumbnail: { state: after, size: 256 } }\n      : { ...at, kind: \"event\", template: \"legacy.charter_refused\", severity: 3, params: { backlash: now.backlash }, cause, thumbnail: { state: after, size: 256 } });\n  }\n  if (came(\"family_departure\")) {\n    drafts.push({ ...at, ...(now.family === \"departed\" ? art(\"family_departure\") : {}), kind: \"event\", template: now.family === \"departed\" ? \"legacy.family_departed\" : \"legacy.family_stayed\",\n      severity: 3, params: { house }, cause });\n  }\n  // FIX-9 (LG-13): the interlude's events, the nave rebuilt.\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "spans": [
+      {
+        "start": 72,
+        "end": 81,
+        "text": "function post(state: GameState, category: LedgerCategory, amount: number, sources: readonly [SourceRef, ...SourceRef[]]): { readonly state: GameState; readonly moved: number } {\n  const moved = amount < 0 ? -Math.min(-amount, Math.max(0, treasuryBalance(state))) : amount;\n  if (moved === 0) return { state, moved: 0 };\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category, amount: moved, sourceRefs: sources }]);\n  return { state: { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger }, moved };\n}\n\n// --- the persons ---------------------------------------------------------------------------------------------------\n\n/** The ledger's records (read directly: `history.ts` reads this module's forecast). */\n"
+      },
+      {
+        "start": 146,
+        "end": 191,
+        "text": "export function answerLegacyPetition(state: GameState, petition: PetitionRecord, response: PetitionResponse | \"expired\"): GameState {\n  const legacy = legacyOf(state);\n  if (legacy === undefined) return state;\n  let next = withLegacy(state, { ...legacy, answers: { ...legacy.answers, [petition.defId]: response } });\n  const l = legacyOf(next)!;\n  switch (petition.defId) {\n    case ROYAL_TAX_PETITION_ID: {\n      if (response !== \"accept\") break;\n      const due = Math.max(B.subsidyMin, Math.min(B.subsidyMax, Math.floor(treasuryBalance(next) * B.subsidyPermille / 1000)));\n      const paid = post(next, \"royal_subsidy\", -due, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"tenth_and_fifteenth\" }]);\n      next = withLegacy(paid.state, { ...l, royalSubsidy: l.royalSubsidy - paid.moved });\n      break;\n    }\n    case HEIR_CHOICE_PETITION_ID: {\n      // The silence: the first there is (the son, else the daughter's husband, else the nephew).\n      const options = petition.options ?? heirOptions(l.candidates);\n      const answer = response === \"expired\" || !options.includes(response) ? options[0] : response;\n      const chosen = answer === undefined ? undefined : l.candidates.find(candidate => candidate.kind === HEIR_BY_RESPONSE[answer]);\n      if (chosen === undefined) break;\n      const previous = lordOf(next)?.id ?? null;\n      const relief = post(next, \"succession_relief\", -B.relief[chosen.kind], [{ type: \"actor\", id: \"overlord\" }, { type: \"claim\", id: \"relief\", detail: chosen.kind }]);\n      next = seatHeir(relief.state, chosen, l.candidates);\n      next = withLegacy(next, { ...l, heir: { kind: chosen.kind, personId: chosen.personId, previousHeadId: previous, tick: state.tick, relief: -relief.moved } });\n      break;\n    }\n    case BOROUGH_AUTONOMY_PETITION_ID: {\n      if (response === \"accept\") {\n        // LG-2: the mayoralty and the seal to the town (and chapter 4's two lines if it had refused); the fine; the fee farm.\n        const held = new Set((next.politics?.rights ?? []).map(right => right.id));\n        const lines = [MAYORALTY_RIGHT_ID, BOROUGH_SEAL_RIGHT_ID, MARKET_TOLLS_RIGHT_ID, BRIDGE_TOLLS_RIGHT_ID].filter(id => !held.has(id));\n        if (next.politics !== undefined) next = { ...next, politics: { ...next.politics, rights: [...next.politics.rights, ...lines.map(id => ({ id, holder: \"townsfolk\" as const,\n          grantedTick: state.tick, petitionId: petition.id, stallFeePermille: id === MARKET_TOLLS_RIGHT_ID ? 0 : 1000 }))] } };\n        next = post(next, \"charter_fee\", B.charterFine, [TOWN_ACTOR, { type: \"right\", id: BOROUGH_SEAL_RIGHT_ID, detail: \"charter_fine\" }]).state;\n        if (l.answers[ROYAL_TAX_PETITION_ID] !== \"accept\") {\n          next = post(next, \"royal_subsidy\", -B.confirmationFine, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"confirmation\" }]).state;\n        }\n        const mayorCandidate = personOf(next, l.mayorCandidateId);\n        const mayorCandidateInTown = mayorCandidate !== undefined && inTown(mayorCandidate);\n        // FIX-11: candidate who left or died → next adult of same household, else merchantLeader.\n        const mayor = mayorCandidateInTown ? l.mayorCandidateId\n          : mayorCandidate !== undefined\n            ? ((next.persons?.people ?? []).find(p => p.householdId === mayorCandidate.householdId && ageOf(p, currentYear(next)) >= ADULT_AGE)?.id ?? merchantLeader(next))\n            : merchantLeader(next);\n        next = withLegacy(next, { ...l, backlash: 0, feeFarm: B.feeFarm, mayorId: mayor });\n      } else {\n        const town = next.reorganisation?.chapterFiveStart?.influence.town ?? next.reorganisation?.influence.town ?? 0;\n"
+      },
+      {
+        "start": 249,
+        "end": 253,
+        "text": "    case \"royal_tax_envoy\": return at.mayor_demand === undefined ? null : at.mayor_demand + B.envoyAfterMayor * SEASON;\n    case \"succession\": return at.royal_tax_envoy === undefined ? null : Math.max(at.royal_tax_envoy + B.successionAfterEnvoy * SEASON, seasonOf(state, B.successionFromYear));\n    case \"city_seal\": { const heir = answeredAt(state, HEIR_CHOICE_PETITION_ID); return heir === null ? null : heir + B.sealAfterHeir * SEASON; }\n    case \"charter_sealing\": return at.city_seal === undefined ? null : at.city_seal + B.charterAfterSeal * SEASON;\n    case \"family_departure\": { const charter = answeredAt(state, BOROUGH_AUTONOMY_PETITION_ID); return charter === null ? null : charter + B.departureAfterCharter * SEASON; }\n"
+      },
+      {
+        "start": 490,
+        "end": 501,
+        "text": "  if (ready(\"city_seal\")) {\n    next = came(next, l, \"city_seal\");\n    l = legacyOf(next)!;\n  }\n  if (ready(\"charter_sealing\")) {\n    next = addPetition(came(next, l, \"charter_sealing\"), BOROUGH_AUTONOMY_PETITION_ID, \"townsfolk\");\n    l = legacyOf(next)!;\n  }\n  if (ready(\"family_departure\")) {\n    next = came(next, l, \"family_departure\");\n    next = withLegacy(next, l = { ...legacyOf(next)!, family: l.answers[BOROUGH_AUTONOMY_PETITION_ID] === \"accept\" ? \"departed\" : \"stayed\" });\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/legacy.types.ts",
+    "sha256": "da1c47fcce441a5135da2c7d2c7097c0f7bc7d59a2083e073825b9dd124c1628",
+    "spans": [
+      {
+        "start": 7,
+        "end": 26,
+        "text": "\n/** LG-3: one heir the old lord may name (a real person of the family, or one who came with the question). */\nexport interface HeirCandidate {\n  readonly kind: HeirKind;\n  readonly personId: string;\n  /** The family member he or she comes through (the daughter, the brother or sister), or null (the son, a kinsman). */\n  readonly throughId: string | null;\n  /** LG-3: a nephew of the lord's brother or sister, or a distant kinsman when the lord has none. */\n  readonly relation: \"son\" | \"daughter\" | \"husband\" | \"nephew\" | \"kinsman\";\n  /** Came with the question (not yet of the family): leaves again if not chosen. */\n  readonly created: boolean;\n}\n\nexport interface HeirRecord {\n  readonly kind: HeirKind;\n  readonly personId: string;\n  readonly previousHeadId: string | null;\n  readonly tick: number;\n  readonly relief: number;\n}\n"
+      },
+      {
+        "start": 48,
+        "end": 69,
+        "text": "export interface LegacyState {\n  readonly startTick: number;\n  /** LG-1: the tick each step came (absent: still ahead). */\n  readonly steps: Readonly<Partial<Record<LegacyStepId, number>>>;\n  readonly answers: Readonly<Partial<Record<string, PetitionResponse | \"expired\">>>;\n  /** LG-1: the merchants' candidate for mayor (the first merchant house's head), and the mayor once the charter is sealed. */\n  readonly mayorCandidateId: string | null;\n  readonly mayorId?: string | null;\n  /** LG-3: the heirs offered, and the one named. */\n  readonly candidates: readonly HeirCandidate[];\n  readonly heir?: HeirRecord;\n  /** LG-4: what the Crown was paid. */\n  readonly royalSubsidy: number;\n  /** LG-2: the town's backlash (chapter 4's, then the refusal's), 0–100. */\n  readonly backlash: number;\n  /** LG-2: the fee farm the town pays each spring from chapter 5 (chapter 4's until the charter is sealed). */\n  readonly feeFarm: number;\n  /** LG-1: the family left the manor for its country seat, or stayed. */\n  readonly family?: \"departed\" | \"stayed\";\n  /** LG-5: the legacy and what it cost. */\n  readonly legacy?: LegacyAxis | null;\n  readonly endowment: number;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 186,
+        "end": 197,
+        "text": "  \"legacy.royal_tax_envoy\": () => \"국왕의 과세 사절이 왔다 — 15분의 1·10분의 1세\",\n  \"legacy.succession\": params => { const lord = s(params, \"lord\"); const age = n(params, \"age\"); return `${age >= 50 ? \"늙은 영주\" : \"영주\"} ${lord}(${age}세)${josa(lord, \"이\", \"가\")} 후계자를 정해야 한다 — 후보 ${n(params, \"candidates\")}명`; },\n  // FIX-11: wardship of a minor lord.\n  \"lord.wardship_begun\": params => { const lord = s(params, \"lord\"); const guardian = s(params, \"guardian\"); return guardian === \"\" ? `${lord}${josa(lord, \"이\", \"가\")} 미성년 영주다 — 상위 영주가 후견한다` : `${lord}${josa(lord, \"이\", \"가\")} 미성년 영주다 — 후견인 ${guardian}`; },\n  \"lord.wardship_ended\": params => { const lord = s(params, \"lord\"); return `${lord}${josa(lord, \"이\", \"가\")} 성년이 되어 후견이 끝났다`; },\n  \"legacy.heir_seated\": params => { const heir = s(params, \"heir\"); return `${heir}${josa(heir, \"이\", \"가\")} 가문을 이었다 — ${s(params, \"relation\")}`; },\n  \"legacy.royal_subsidy\": params => `국왕에게 보조세를 냈다 — ${moneyWords(n(params, \"amount\"))}`,\n  \"legacy.city_seal\": () => \"도시가 제 인장을 새겼다\",\n  \"legacy.charter_sealed\": params => s(params, \"mayor\") === \"\" ? \"자치 특허에 도시 인장이 찍혔다\" : `자치 특허에 도시 인장이 찍혔다 — 첫 시장 ${s(params, \"mayor\")}`,\n  \"legacy.charter_refused\": params => `영주가 자치 특허를 거절했다 — 도시의 반발 ${n(params, \"backlash\")}`,\n  \"legacy.family_departed\": params => `${houseName(s(params, \"house\"))} 가문이 영주관을 떠나 시골 장원으로 갔다`,\n  \"legacy.family_stayed\": params => `${houseName(s(params, \"house\"))} 가문이 영주관에 남았다`,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/reorganisationConfig.ts",
+    "sha256": "9fe86251a2516416f26f3aa106ca9acf230bdf599ead86b99d5ef165432d9355",
+    "spans": [
+      {
+        "start": 19,
+        "end": 24,
+        "text": "\n/** RG-9: the rights a partial charter hands the town (their holder `townsfolk`). */\nexport const MARKET_TOLLS_RIGHT_ID = \"market_tolls\";\nexport const BRIDGE_TOLLS_RIGHT_ID = \"bridge_tolls\";\n\nexport const REORGANISATION_BALANCE = {\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/legacyConfig.ts",
+    "sha256": "3ca61d68328e3b15bd062a6bdd06061eaa56e0ccf8f02ab8510f1805993de1f8",
+    "spans": [
+      {
+        "start": 10,
+        "end": 27,
+        "text": "export const LEGACY_SEQUENCE_ID = \"legacy_1400\";\n\n/** LG-2…LG-5: the four decisions, one petition each (the Wave 21 chapter-5 decision cards, 1:1). */\nexport const BOROUGH_AUTONOMY_PETITION_ID = \"borough_autonomy\";\nexport const HEIR_CHOICE_PETITION_ID = \"heir_choice\";\nexport const ROYAL_TAX_PETITION_ID = \"royal_tax\";\nexport const LEGACY_CHOICE_PETITION_ID = \"legacy_choice\";\n/** FIX-9 (LG-13): the interlude's two petitions — the guild against the merchants (1394), the parish's nave (1396). */\nexport const GUILD_DISPUTE_PETITION_ID = \"guild_dispute\";\nexport const CHURCH_REBUILDING_PETITION_ID = \"church_rebuilding\";\n/** LG-2…LG-5: the four Wave 21 decisions. */\nexport const LEGACY_CARD_PETITION_IDS = [ROYAL_TAX_PETITION_ID, HEIR_CHOICE_PETITION_ID, BOROUGH_AUTONOMY_PETITION_ID, LEGACY_CHOICE_PETITION_ID] as const;\nexport const LEGACY_PETITION_IDS = [...LEGACY_CARD_PETITION_IDS, GUILD_DISPUTE_PETITION_ID, CHURCH_REBUILDING_PETITION_ID] as const;\nexport type LegacyPetitionId = (typeof LEGACY_PETITION_IDS)[number];\n\n/** LG-2: the rights a sealed charter hands the town (their holder `townsfolk`). */\nexport const MAYORALTY_RIGHT_ID = \"mayoralty\";\nexport const BOROUGH_SEAL_RIGHT_ID = \"borough_seal\";\n"
+      },
+      {
+        "start": 50,
+        "end": 53,
+        "text": "\n/** LG-3: the three heirs, by the answer that names them. */\nexport type HeirKind = \"eldest_son\" | \"daughter_husband\" | \"nephew\";\nexport const HEIR_BY_RESPONSE: Readonly<Record<PetitionResponse, HeirKind>> = { accept: \"eldest_son\", accept_with_price: \"daughter_husband\", refuse: \"nephew\" };\n"
+      }
+    ]
+  },
+  {
+    "path": "src/ui/lordshipCopy.ko.ts",
+    "sha256": "820d010485e78f7a3a78c1099f9a0627f1f995ab27d4f27f1994873e2e02567d",
+    "spans": [
+      {
+        "start": 6,
+        "end": 11,
+        "text": "// UI-9: 4장 권리 이양 (RG-7) — market_tolls and bridge_tolls granted to the town via borough_charter.\nconst house = (name: string) => LORD_HOUSE_NAMES_KO[name] ?? name;\n// UI-9: localised names for the rights the town receives in chapter 4.\nconst RIGHTS_TRANSFER_NAMES: Readonly<Record<string, string>> = {\n  market_tolls: \"시장 좌판세\", bridge_tolls: \"통행세 절반\",\n};\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/persons.ts",
+    "sha256": "8444172872cbb7e9b5394d1fa86af7af876e7908b1c45e0ed92d10895f9858f6",
+    "spans": [
+      {
+        "start": 655,
+        "end": 678,
+        "text": "  const all = () => [...town.people, ...town.past];\n  const byAge = (a: Person, b: Person) => a.birthYear - b.birthYear || a.id.localeCompare(b.id);\n  const childrenOf = (id: string) => all().filter(person => person.alive && (person.fatherId === id || person.motherId === id)).sort(byAge);\n  const candidates: HeirCandidate[] = [];\n  const sons = childrenOf(head.id).filter(person => person.sex === \"male\");\n  const son = sons.find(person => town.people.includes(person)) ?? sons[0];\n  if (son !== undefined) candidates.push({ kind: \"eldest_son\", personId: son.id, throughId: null, relation: \"son\", created: false });\n  const common = { householdId: MANOR_HOUSEHOLD, role: \"kin\" as const, classBand: \"gentry\" as const, occupation: \"lord\", lord: true as const, tags: [HEIR_CANDIDATE_TAG] };\n  const roll = hashSeed(state.seed, \"heir-candidates\", state.tick);\n  const daughter = childrenOf(head.id).find(person => person.sex === \"female\" && ageOf(person, year) >= LEGACY_BALANCE.daughterMinAge);\n  if (daughter !== undefined) {\n    const [low, high] = LEGACY_BALANCE.husbandOlder;\n    const husband = town.create({ ...common, sex: \"male\", birthYear: daughter.birthYear - low - roll % (high - low + 1),\n      surname: NEIGHBOUR_SURNAMES[(roll >>> 4) % NEIGHBOUR_SURNAMES.length]! });\n    candidates.push({ kind: \"daughter_husband\", personId: husband.id, throughId: daughter.id, relation: \"husband\", created: true });\n  }\n  const sibling = all().filter(person => person.id !== head.id && ((head.fatherId !== undefined && person.fatherId === head.fatherId)\n    || (head.motherId !== undefined && person.motherId === head.motherId))).sort(byAge)[0];\n  const [young, old] = LEGACY_BALANCE.nephewAge;\n  const nephew = town.create({ ...common, sex: \"male\", birthYear: year - young - (roll >>> 8) % (old - young + 1),\n    surname: sibling === undefined || sibling.sex === \"male\" ? house.name : NEIGHBOUR_SURNAMES[(roll >>> 12) % NEIGHBOUR_SURNAMES.length]!,\n    ...(sibling === undefined ? { lineageId: `lord:${house.order}` } : sibling.sex === \"male\" ? { fatherId: sibling.id } : { motherId: sibling.id }) });\n  candidates.push({ kind: \"nephew\", personId: nephew.id, throughId: sibling?.id ?? null, relation: sibling === undefined ? \"kinsman\" : \"nephew\", created: true });\n  return { state: { ...state, persons: town.result() }, candidates };\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 1,
+        "end": 18,
+        "text": "/**\n * FIX-12 (item 4, spec docs/design/history-ledger.md HL-1a, QA-010): a ledger record names a person by id; the name —\n * with the epithet the person has now (큰/작은) — is drawn when the record is read, never kept as text.\n */\nimport { PERSON_NAME_FALLBACK } from \"../content/historyCopy.ko\";\nimport type { GameState } from \"./engine.types\";\nimport type { HistoryParams, HistoryRecord } from \"./history.types\";\nimport { personDisplayName } from \"./persons\";\nimport type { Person } from \"./persons.types\";\n\n/**\n * FIX-12 (item 4, HL-1a, QA-010): the parameters that name a person by id, and the name each one gives the sentence.\n * A record keeps the id; the name (with its epithet as it is now — 큰/작은) is drawn when the record is read.\n */\nconst PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n"
+      },
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 23,
+        "end": 35,
+        "text": "| 마을 대표(리브) | 이 게임의 reeve. 장원 관리·회계 역할을 설명에 명시 | reeve | 촌장, 원어만 reeve, 현대 시장과 혼동 |\n| 마을 대표 | 위 직책의 짧은 이름 | reeve | 독립된 두 번째 직책으로 취급 |\n| 시장 | 도시의 선출 직책. 처음에는 ‘도시의 시장’ | mayor | 시장(장터)과 문맥 없는 단독 혼용 |\n| 주교 | 교구를 관할하는 성직자 | bishop | 사제, 수도원장과 혼용 |\n| 사제 | 성직자의 역할명. 교구 사제는 소속 명시 | priest / parish priest | 주교, 평신도 서기 |\n| 수도원장 | 수도원의 장 | abbot / abbess | 주교와 혼용 |\n| 탁발 수도사 | 탁발 수도회 소속 인물 | friar | 모든 수도사를 탁발승으로 통일 |\n| 서기 | 문서·회계 기록을 맡은 사람. 평신도 여부 별도 | clerk | 모두 사제로 단정 |\n| 가구 | 함께 거주하고 생활하는 단위 | household | 가문, 집(건물) |\n| 가문 | 혈연·혼인·계승으로 이어지는 집단 | lineage / house | 가구 |\n| 도시 공동체 | 도시 주민들의 집합적 행위 주체 | town community | 모두 상인 길드로 취급 |\n| 농민 공동체 | 농업에 종사하는 주민들의 집합적 주체 | commons, 이 게임의 세력 ID | 의회 하원 |\n| 상인 가문 | 상업 기반을 가진 가문 | merchant house | 모든 상인, 길드 |\n"
+      },
+      {
+        "start": 67,
+        "end": 84,
+        "text": "| 자치 특허 | 도시의 자치권을 정하는 특허·합의 | borough charter | 현대 지방자치 제도와 동일시 |\n| 시장 개설권 | 장터를 열 권리 | market right | 도시 시장(mayor) 선출권 |\n| 시장 선출권 | 도시 대표를 선출하는 권리 | right to elect a mayor | 장터 개설권 |\n| 시장 좌판세 | 시장 좌판에서 걷는 이 게임의 수입 | market stall dues | 통행세 |\n| 통행세 | 통행·운송에 따른 수입 | toll | 모든 시장세와 통합 |\n| 제분료 | 곡물 제분의 대가 | multure / milling toll | 축융료와 통합 |\n| 방앗간 사용료 | 권리 패널의 기존 포괄 명칭. 상세에서 제분료 설명 | mill dues | 모호한 방앗간세 남발 |\n| 축융 방앗간 사용료 | 모직 축융 시설 이용 수입 | fulling toll | 곡물 제분료 |\n| 성벽세 | 성벽 건설·유지 재원을 위한 해당 수입 | murage | 모든 통행세와 동일시 |\n| 직물 검정·인장세 | 직물 검사·인증에 관련된 해당 세목 | ulnage / alnage | 단순 판매세와 동일시 |\n| 직물 매매세 | 거래에 따른 이 게임의 수입 | cloth toll | 직물 검정·인장세 |\n| 성직자 추천권 | 공석 성직의 후보를 추천할 권리 | advowson | 교회 추천권, 교회 소유권 |\n| 어업권 | 특정 수역의 어업 권리 | fishery right | 수역 전체의 절대 소유권 |\n| 사냥권 | 정해진 범위의 수렵 권리 | hunting right | 모든 숲의 무제한 사용권 |\n| 지대 | 토지 사용의 대가 | rent | 모든 조세·수입 |\n| 부역 | 관습·계약에 따른 노동 의무 | labour service | 현대 자원봉사 |\n| 현금 지대 | 돈으로 내는 지대 | cash rent | 부역 자체와 동일시 |\n| 자치 연납금 | 자치권 등에 대한 도시의 정기 지급액 | fee farm | 영어만 fee farm, 권리 종류로 분류 |\n"
+      },
+      {
+        "start": 191,
+        "end": 191,
+        "text": "1. 청지기·안내는 ‘~합니다/~하십시오’, 선택 버튼은 플레이어 행동 ‘~한다’, 연대기는 ‘~했다’로 통일한다. 인물의 개별 말투는 허용하되 한 문장 안 주체를 분명히 쓴다.\n"
+      }
+    ]
+  }
+]

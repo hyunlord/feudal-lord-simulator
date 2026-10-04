@@ -1,0 +1,5335 @@
+[
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.bundle",
+    "expected": "decision.bundle.brief",
+    "actual": "decision.bundle.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.famine_response",
+    "expected": "decision.famine_response.brief",
+    "actual": "decision.famine_response.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.petition_response",
+    "expected": "decision.petition_response.brief",
+    "actual": "decision.petition_response.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.messenger",
+    "expected": "war.messenger.brief",
+    "actual": "war.messenger.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.rumour",
+    "expected": "plague.rumour.brief",
+    "actual": "plague.rumour.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.arrived",
+    "expected": "plague.arrived.brief",
+    "actual": "plague.arrived.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.priest_died",
+    "expected": "plague.priest_died.brief",
+    "actual": "plague.priest_died.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.priest_filled",
+    "expected": "plague.priest_filled.brief",
+    "actual": "plague.priest_filled.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.new_graves",
+    "expected": "plague.new_graves.brief",
+    "actual": "plague.new_graves.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.empty_streets",
+    "expected": "plague.empty_streets.brief",
+    "actual": "plague.empty_streets.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.abandoned_fields",
+    "expected": "plague.abandoned_fields.brief",
+    "actual": "plague.abandoned_fields.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.ordinance",
+    "expected": "plague.ordinance.brief",
+    "actual": "plague.ordinance.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.resettlement",
+    "expected": "plague.resettlement.brief",
+    "actual": "plague.resettlement.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.second",
+    "expected": "plague.second.brief",
+    "actual": "plague.second.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.second_ended",
+    "expected": "plague.second_ended.brief",
+    "actual": "plague.second_ended.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "plague.unanswered",
+    "expected": "plague.unanswered.brief",
+    "actual": "plague.unanswered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.wage_competition",
+    "expected": "reorg.wage_competition.brief",
+    "actual": "reorg.wage_competition.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.textile_street",
+    "expected": "reorg.textile_street.brief",
+    "actual": "reorg.textile_street.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.alehouse_boom",
+    "expected": "reorg.alehouse_boom.brief",
+    "actual": "reorg.alehouse_boom.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.petitions_surge",
+    "expected": "reorg.petitions_surge.brief",
+    "actual": "reorg.petitions_surge.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.guild_founded",
+    "expected": "reorg.guild_founded.brief",
+    "actual": "reorg.guild_founded.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.weavers_left",
+    "expected": "reorg.weavers_left.brief",
+    "actual": "reorg.weavers_left.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.overlord_warning",
+    "expected": "reorg.overlord_warning.brief",
+    "actual": "reorg.overlord_warning.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.poll_tax",
+    "expected": "reorg.poll_tax.brief",
+    "actual": "reorg.poll_tax.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.rebellion_rumour",
+    "expected": "reorg.rebellion_rumour.brief",
+    "actual": "reorg.rebellion_rumour.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.autonomy_request",
+    "expected": "reorg.autonomy_request.brief",
+    "actual": "reorg.autonomy_request.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.charter",
+    "expected": "reorg.charter.brief",
+    "actual": "reorg.charter.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "reorg.unanswered",
+    "expected": "reorg.unanswered.brief",
+    "actual": "reorg.unanswered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.mayor_demand",
+    "expected": "legacy.mayor_demand.brief",
+    "actual": "legacy.mayor_demand.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.royal_tax_envoy",
+    "expected": "legacy.royal_tax_envoy.brief",
+    "actual": "legacy.royal_tax_envoy.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.succession",
+    "expected": "legacy.succession.brief",
+    "actual": "legacy.succession.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "lord.wardship_begun",
+    "expected": "lord.wardship_begun.brief",
+    "actual": "lord.wardship_begun.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "lord.wardship_ended",
+    "expected": "lord.wardship_ended.brief",
+    "actual": "lord.wardship_ended.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.heir_seated",
+    "expected": "legacy.heir_seated.brief",
+    "actual": "legacy.heir_seated.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.royal_subsidy",
+    "expected": "legacy.royal_subsidy.brief",
+    "actual": "legacy.royal_subsidy.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.city_seal",
+    "expected": "legacy.city_seal.brief",
+    "actual": "legacy.city_seal.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.charter_sealed",
+    "expected": "legacy.charter_sealed.brief",
+    "actual": "legacy.charter_sealed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.charter_refused",
+    "expected": "legacy.charter_refused.brief",
+    "actual": "legacy.charter_refused.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.family_departed",
+    "expected": "legacy.family_departed.brief",
+    "actual": "legacy.family_departed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.family_stayed",
+    "expected": "legacy.family_stayed.brief",
+    "actual": "legacy.family_stayed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.legacy_record",
+    "expected": "legacy.legacy_record.brief",
+    "actual": "legacy.legacy_record.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.last_market",
+    "expected": "legacy.last_market.brief",
+    "actual": "legacy.last_market.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.staple",
+    "expected": "legacy.staple.brief",
+    "actual": "legacy.staple.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.guild_dispute",
+    "expected": "legacy.guild_dispute.brief",
+    "actual": "legacy.guild_dispute.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.market_fire",
+    "expected": "legacy.market_fire.brief",
+    "actual": "legacy.market_fire.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.church_rebuilding",
+    "expected": "legacy.church_rebuilding.brief",
+    "actual": "legacy.church_rebuilding.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.nave_rebuilt",
+    "expected": "legacy.nave_rebuilt.brief",
+    "actual": "legacy.nave_rebuilt.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.deposition",
+    "expected": "legacy.deposition.brief",
+    "actual": "legacy.deposition.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "legacy.unanswered",
+    "expected": "legacy.unanswered.brief",
+    "actual": "legacy.unanswered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.beacon",
+    "expected": "war.beacon.brief",
+    "actual": "war.beacon.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.raid",
+    "expected": "war.raid.brief",
+    "actual": "war.raid.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.conscripts_left",
+    "expected": "war.conscripts_left.brief",
+    "actual": "war.conscripts_left.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.conscripts_returned",
+    "expected": "war.conscripts_returned.brief",
+    "actual": "war.conscripts_returned.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.favour_lost",
+    "expected": "war.favour_lost.brief",
+    "actual": "war.favour_lost.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.licence",
+    "expected": "war.licence.brief",
+    "actual": "war.licence.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "war.unanswered",
+    "expected": "war.unanswered.brief",
+    "actual": "war.unanswered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "faction.leader_succeeded",
+    "expected": "faction.leader_succeeded.brief",
+    "actual": "faction.leader_succeeded.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "petition.representative_replaced",
+    "expected": "petition.representative_replaced.brief",
+    "actual": "petition.representative_replaced.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.person_died",
+    "expected": "estate.person_died.brief",
+    "actual": "estate.person_died.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.steward_died",
+    "expected": "stewardship.steward_died.brief",
+    "actual": "stewardship.steward_died.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.began",
+    "expected": "stewardship.began.brief",
+    "actual": "stewardship.began.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.oversight",
+    "expected": "stewardship.oversight.brief",
+    "actual": "stewardship.oversight.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.audit_mode",
+    "expected": "stewardship.audit_mode.brief",
+    "actual": "stewardship.audit_mode.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.rules",
+    "expected": "stewardship.rules.brief",
+    "actual": "stewardship.rules.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.season",
+    "expected": "stewardship.season.brief",
+    "actual": "stewardship.season.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "manor.petition",
+    "expected": "manor.petition.brief",
+    "actual": "manor.petition.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "manor.petition_answered",
+    "expected": "manor.petition_answered.brief",
+    "actual": "manor.petition_answered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "manor.petition_lapsed",
+    "expected": "manor.petition_lapsed.brief",
+    "actual": "manor.petition_lapsed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.precedent",
+    "expected": "stewardship.precedent.brief",
+    "actual": "stewardship.precedent.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.steward_decided",
+    "expected": "stewardship.steward_decided.brief",
+    "actual": "stewardship.steward_decided.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.escalated",
+    "expected": "stewardship.escalated.brief",
+    "actual": "stewardship.escalated.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.brought",
+    "expected": "stewardship.brought.brief",
+    "actual": "stewardship.brought.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.lord_decided",
+    "expected": "stewardship.lord_decided.brief",
+    "actual": "stewardship.lord_decided.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.lapsed",
+    "expected": "stewardship.lapsed.brief",
+    "actual": "stewardship.lapsed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.audit_clean",
+    "expected": "stewardship.audit_clean.brief",
+    "actual": "stewardship.audit_clean.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.audit_found",
+    "expected": "stewardship.audit_found.brief",
+    "actual": "stewardship.audit_found.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "stewardship.audit_answered",
+    "expected": "stewardship.audit_answered.brief",
+    "actual": "stewardship.audit_answered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "faction.relation",
+    "expected": "faction.relation.brief",
+    "actual": "faction.relation.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decline.entered",
+    "expected": "decline.entered.brief",
+    "actual": "decline.entered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decline.recovered",
+    "expected": "decline.recovered.brief",
+    "actual": "decline.recovered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "house.withdrew",
+    "expected": "house.withdrew.brief",
+    "actual": "house.withdrew.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "house.arrived",
+    "expected": "house.arrived.brief",
+    "actual": "house.arrived.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "house.resettled",
+    "expected": "house.resettled.brief",
+    "actual": "house.resettled.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "milestone.chapter_start",
+    "expected": "milestone.chapter_start.brief",
+    "actual": "milestone.chapter_start.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.market_town",
+    "expected": "decision.market_town.brief",
+    "actual": "decision.market_town.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.stone_town",
+    "expected": "decision.stone_town.brief",
+    "actual": "decision.stone_town.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.rebuild",
+    "expected": "decision.rebuild.brief",
+    "actual": "decision.rebuild.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.wall_expand",
+    "expected": "decision.wall_expand.brief",
+    "actual": "decision.wall_expand.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.drainage",
+    "expected": "decision.drainage.brief",
+    "actual": "decision.drainage.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.estate_policy",
+    "expected": "decision.estate_policy.brief",
+    "actual": "decision.estate_policy.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.project_subsidy",
+    "expected": "decision.project_subsidy.brief",
+    "actual": "decision.project_subsidy.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "decision.market_dues",
+    "expected": "decision.market_dues.brief",
+    "actual": "decision.market_dues.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "negotiation.offered",
+    "expected": "negotiation.offered.brief",
+    "actual": "negotiation.offered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "negotiation.accepted",
+    "expected": "negotiation.accepted.brief",
+    "actual": "negotiation.accepted.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "negotiation.countered",
+    "expected": "negotiation.countered.brief",
+    "actual": "negotiation.countered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "negotiation.rejected",
+    "expected": "negotiation.rejected.brief",
+    "actual": "negotiation.rejected.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "negotiation.withdrawn",
+    "expected": "negotiation.withdrawn.brief",
+    "actual": "negotiation.withdrawn.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "promise.made",
+    "expected": "promise.made.brief",
+    "actual": "promise.made.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "promise.kept",
+    "expected": "promise.kept.brief",
+    "actual": "promise.kept.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "promise.broken",
+    "expected": "promise.broken.brief",
+    "actual": "promise.broken.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.contracted",
+    "expected": "marriage.contracted.brief",
+    "actual": "marriage.contracted.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.bride_arrived",
+    "expected": "marriage.bride_arrived.brief",
+    "actual": "marriage.bride_arrived.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.child_born",
+    "expected": "marriage.child_born.brief",
+    "actual": "marriage.child_born.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.brother_in_law_born",
+    "expected": "marriage.brother_in_law_born.brief",
+    "actual": "marriage.brother_in_law_born.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.father_ill",
+    "expected": "marriage.father_ill.brief",
+    "actual": "marriage.father_ill.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.will_change",
+    "expected": "marriage.will_change.brief",
+    "actual": "marriage.will_change.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.will_dropped",
+    "expected": "marriage.will_dropped.brief",
+    "actual": "marriage.will_dropped.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.father_died",
+    "expected": "marriage.father_died.brief",
+    "actual": "marriage.father_died.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.inherited",
+    "expected": "marriage.inherited.brief",
+    "actual": "marriage.inherited.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.lost",
+    "expected": "marriage.lost.brief",
+    "actual": "marriage.lost.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.deferred_void",
+    "expected": "marriage.deferred_void.brief",
+    "actual": "marriage.deferred_void.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.jointure_settled",
+    "expected": "marriage.jointure_settled.brief",
+    "actual": "marriage.jointure_settled.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "marriage.contested",
+    "expected": "marriage.contested.brief",
+    "actual": "marriage.contested.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.claim_raised",
+    "expected": "estate.claim_raised.brief",
+    "actual": "estate.claim_raised.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.suit_filed",
+    "expected": "estate.suit_filed.brief",
+    "actual": "estate.suit_filed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.suit_stage",
+    "expected": "estate.suit_stage.brief",
+    "actual": "estate.suit_stage.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.suit_patron",
+    "expected": "estate.suit_patron.brief",
+    "actual": "estate.suit_patron.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.suit_judged",
+    "expected": "estate.suit_judged.brief",
+    "actual": "estate.suit_judged.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.possession_enforced",
+    "expected": "estate.possession_enforced.brief",
+    "actual": "estate.possession_enforced.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.title_changed",
+    "expected": "estate.title_changed.brief",
+    "actual": "estate.title_changed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "estate.possession_changed",
+    "expected": "estate.possession_changed.brief",
+    "actual": "estate.possession_changed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "agency.subsidy_refused",
+    "expected": "agency.subsidy_refused.brief",
+    "actual": "agency.subsidy_refused.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "agency.timber_ordered",
+    "expected": "agency.timber_ordered.brief",
+    "actual": "agency.timber_ordered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "agency.project_started",
+    "expected": "agency.project_started.brief",
+    "actual": "agency.project_started.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "drainage.done",
+    "expected": "drainage.done.brief",
+    "actual": "drainage.done.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "event.rumour",
+    "expected": "event.rumour.brief",
+    "actual": "event.rumour.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "event.sign",
+    "expected": "event.sign.brief",
+    "actual": "event.sign.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "event.arrived",
+    "expected": "event.arrived.brief",
+    "actual": "event.arrived.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "event.recovered",
+    "expected": "event.recovered.brief",
+    "actual": "event.recovered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "era.entered",
+    "expected": "era.entered.brief",
+    "actual": "era.entered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "milestone.first_building",
+    "expected": "milestone.first_building.brief",
+    "actual": "milestone.first_building.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "milestone.market_town",
+    "expected": "milestone.market_town.brief",
+    "actual": "milestone.market_town.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "milestone.stone_town",
+    "expected": "milestone.stone_town.brief",
+    "actual": "milestone.stone_town.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "milestone.first_l4",
+    "expected": "milestone.first_l4.brief",
+    "actual": "milestone.first_l4.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "milestone.lots",
+    "expected": "milestone.lots.brief",
+    "actual": "milestone.lots.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "milestone.chapter_end",
+    "expected": "milestone.chapter_end.brief",
+    "actual": "milestone.chapter_end.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "ledger.season",
+    "expected": "ledger.season.brief",
+    "actual": "ledger.season.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "ledger.population",
+    "expected": "ledger.population.brief",
+    "actual": "ledger.population.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "ledger.treasury_turn",
+    "expected": "ledger.treasury_turn.brief",
+    "actual": "ledger.treasury_turn.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "ledger.l4",
+    "expected": "ledger.l4.brief",
+    "actual": "ledger.l4.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "ledger.departures",
+    "expected": "ledger.departures.brief",
+    "actual": "ledger.departures.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "ledger.rollup",
+    "expected": "ledger.rollup.brief",
+    "actual": "ledger.rollup.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.move_in",
+    "expected": "person.move_in.brief",
+    "actual": "person.move_in.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.level_up",
+    "expected": "person.level_up.brief",
+    "actual": "person.level_up.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.level_down",
+    "expected": "person.level_down.brief",
+    "actual": "person.level_down.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.leaving",
+    "expected": "person.leaving.brief",
+    "actual": "person.leaving.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.left",
+    "expected": "person.left.brief",
+    "actual": "person.left.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.resettled",
+    "expected": "person.resettled.brief",
+    "actual": "person.resettled.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.burnt",
+    "expected": "person.burnt.brief",
+    "actual": "person.burnt.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.rebuilt",
+    "expected": "person.rebuilt.brief",
+    "actual": "person.rebuilt.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.emptied",
+    "expected": "person.emptied.brief",
+    "actual": "person.emptied.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.stayed",
+    "expected": "person.stayed.brief",
+    "actual": "person.stayed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.hungry",
+    "expected": "person.hungry.brief",
+    "actual": "person.hungry.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.fed",
+    "expected": "person.fed.brief",
+    "actual": "person.fed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.water",
+    "expected": "person.water.brief",
+    "actual": "person.water.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.water_lost",
+    "expected": "person.water_lost.brief",
+    "actual": "person.water_lost.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.born",
+    "expected": "person.born.brief",
+    "actual": "person.born.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.married",
+    "expected": "person.married.brief",
+    "actual": "person.married.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.arrived",
+    "expected": "person.arrived.brief",
+    "actual": "person.arrived.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.came_of_age",
+    "expected": "person.came_of_age.brief",
+    "actual": "person.came_of_age.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.occupation",
+    "expected": "person.occupation.brief",
+    "actual": "person.occupation.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.reeve",
+    "expected": "person.reeve.brief",
+    "actual": "person.reeve.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.steward",
+    "expected": "person.steward.brief",
+    "actual": "person.steward.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.died",
+    "expected": "person.died.brief",
+    "actual": "person.died.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.left_town",
+    "expected": "person.left_town.brief",
+    "actual": "person.left_town.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.bailiff",
+    "expected": "person.bailiff.brief",
+    "actual": "person.bailiff.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.fell_ill",
+    "expected": "person.fell_ill.brief",
+    "actual": "person.fell_ill.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.recovered",
+    "expected": "person.recovered.brief",
+    "actual": "person.recovered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.injured",
+    "expected": "person.injured.brief",
+    "actual": "person.injured.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.healed",
+    "expected": "person.healed.brief",
+    "actual": "person.healed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.expecting",
+    "expected": "person.expecting.brief",
+    "actual": "person.expecting.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.pilgrimage",
+    "expected": "person.pilgrimage.brief",
+    "actual": "person.pilgrimage.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.returned",
+    "expected": "person.returned.brief",
+    "actual": "person.returned.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.grew",
+    "expected": "person.grew.brief",
+    "actual": "person.grew.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "person.shrank",
+    "expected": "person.shrank.brief",
+    "actual": "person.shrank.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "registry.offered",
+    "expected": "registry.offered.brief",
+    "actual": "registry.offered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "registry.answered",
+    "expected": "registry.answered.brief",
+    "actual": "registry.answered.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "registry.lapsed",
+    "expected": "registry.lapsed.brief",
+    "actual": "registry.lapsed.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "registry.invalid",
+    "expected": "registry.invalid.brief",
+    "actual": "registry.invalid.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "registry.term_began",
+    "expected": "registry.term_began.brief",
+    "actual": "registry.term_began.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "registry.term_ended",
+    "expected": "registry.term_ended.brief",
+    "actual": "registry.term_ended.brief"
+  },
+  {
+    "case": "missing_context",
+    "input": {},
+    "row": "manor.petition_precedent",
+    "expected": "manor.petition_precedent.brief",
+    "actual": "manor.petition_precedent.brief"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "decisionKind": "registry",
+        "count": 1
+      }
+    },
+    "row": "decision.bundle",
+    "expected": "decision.bundle.registry",
+    "actual": "decision.bundle.registry"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "by": "monastery"
+      }
+    },
+    "row": "plague.priest_filled",
+    "expected": "plague.priest_filled.context.19",
+    "actual": "plague.priest_filled.context.19"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "by": "clerk"
+      }
+    },
+    "row": "plague.priest_filled",
+    "expected": "plague.priest_filled.context.20",
+    "actual": "plague.priest_filled.context.20"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "outcome": "chased"
+      }
+    },
+    "row": "reorg.rebellion_rumour",
+    "expected": "reorg.rebellion_rumour.context.22",
+    "actual": "reorg.rebellion_rumour.context.22"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "charter": "partial"
+      }
+    },
+    "row": "reorg.charter",
+    "expected": "reorg.charter.context.21",
+    "actual": "reorg.charter.context.21"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "age": 50
+      }
+    },
+    "row": "legacy.succession",
+    "expected": "legacy.succession.context.12",
+    "actual": "legacy.succession.context.12"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "age": 49
+      }
+    },
+    "row": "legacy.succession",
+    "expected": "legacy.succession.context.13",
+    "actual": "legacy.succession.context.13"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "lost": 0,
+        "men": 20
+      }
+    },
+    "row": "war.conscripts_returned",
+    "expected": "war.conscripts_returned.context.23",
+    "actual": "war.conscripts_returned.context.23"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "lost": 1
+      }
+    },
+    "row": "war.conscripts_returned",
+    "expected": "war.conscripts_returned.context.24",
+    "actual": "war.conscripts_returned.context.24"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "mode": "steward"
+      }
+    },
+    "row": "stewardship.oversight",
+    "expected": "stewardship.oversight.context.29",
+    "actual": "stewardship.oversight.context.29"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "mode": "visit"
+      }
+    },
+    "row": "stewardship.audit_mode",
+    "expected": "stewardship.audit_mode.context.30",
+    "actual": "stewardship.audit_mode.context.30"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "overloaded": 1
+      }
+    },
+    "row": "stewardship.season",
+    "expected": "stewardship.season.context.32",
+    "actual": "stewardship.season.context.32"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "late": 1
+      }
+    },
+    "row": "stewardship.brought",
+    "expected": "stewardship.brought.context.31",
+    "actual": "stewardship.brought.context.31"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "choice": "replaced"
+      }
+    },
+    "row": "stewardship.audit_answered",
+    "expected": "stewardship.audit_answered.context.28",
+    "actual": "stewardship.audit_answered.context.28"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "delta": 1
+      }
+    },
+    "row": "faction.relation",
+    "expected": "faction.relation.context.35",
+    "actual": "faction.relation.context.35"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "delta": -1
+      }
+    },
+    "row": "faction.relation",
+    "expected": "faction.relation.context.36",
+    "actual": "faction.relation.context.36"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "amount": 0
+      }
+    },
+    "row": "decision.project_subsidy",
+    "expected": "decision.project_subsidy.context.33",
+    "actual": "decision.project_subsidy.context.33"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "amount": 1
+      }
+    },
+    "row": "decision.project_subsidy",
+    "expected": "decision.project_subsidy.context.34",
+    "actual": "decision.project_subsidy.context.34"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "relation": "son"
+      }
+    },
+    "row": "marriage.contracted",
+    "expected": "marriage.contracted.context.14",
+    "actual": "marriage.contracted.context.14"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "relation": "brother"
+      }
+    },
+    "row": "marriage.contracted",
+    "expected": "marriage.contracted.context.15",
+    "actual": "marriage.contracted.context.15"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "relation": "nephew"
+      }
+    },
+    "row": "marriage.contracted",
+    "expected": "marriage.contracted.context.16",
+    "actual": "marriage.contracted.context.16"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "relation": "cousin"
+      }
+    },
+    "row": "marriage.contracted",
+    "expected": "marriage.contracted.context.17",
+    "actual": "marriage.contracted.context.17"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "relation": "widowed_lord"
+      }
+    },
+    "row": "marriage.contracted",
+    "expected": "marriage.contracted.context.18",
+    "actual": "marriage.contracted.context.18"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "verdict": "plaintiff"
+      }
+    },
+    "row": "estate.suit_judged",
+    "expected": "estate.suit_judged.context.25",
+    "actual": "estate.suit_judged.context.25"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "succeeded": 1,
+        "attempt": 20
+      }
+    },
+    "row": "estate.possession_enforced",
+    "expected": "estate.possession_enforced.context.26",
+    "actual": "estate.possession_enforced.context.26"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "succeeded": 0,
+        "attempt": 20
+      }
+    },
+    "row": "estate.possession_enforced",
+    "expected": "estate.possession_enforced.context.27",
+    "actual": "estate.possession_enforced.context.27"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "forced": 1
+      }
+    },
+    "row": "era.entered",
+    "expected": "era.entered.context.39",
+    "actual": "era.entered.context.39"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "net": 1
+      }
+    },
+    "row": "ledger.treasury_turn",
+    "expected": "ledger.treasury_turn.context.37",
+    "actual": "ledger.treasury_turn.context.37"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "net": -1
+      }
+    },
+    "row": "ledger.treasury_turn",
+    "expected": "ledger.treasury_turn.context.38",
+    "actual": "ledger.treasury_turn.context.38"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "net": 0
+      }
+    },
+    "row": "ledger.treasury_turn",
+    "expected": "ledger.treasury_turn.context.zero",
+    "actual": "ledger.treasury_turn.context.zero"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1347
+      }
+    },
+    "row": "person.move_in",
+    "expected": "person.move_in.era.early",
+    "actual": "person.move_in.era.early"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1381
+      }
+    },
+    "row": "person.move_in",
+    "expected": "person.move_in.era.middle",
+    "actual": "person.move_in.era.middle"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1450
+      }
+    },
+    "row": "person.move_in",
+    "expected": "person.move_in.era.late",
+    "actual": "person.move_in.era.late"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "nameFrom": "father"
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.context.7",
+    "actual": "person.born.context.7"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "nameFrom": "mother"
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.context.8",
+    "actual": "person.born.context.8"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "nameFrom": "grandfather"
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.context.9",
+    "actual": "person.born.context.9"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "nameFrom": "grandmother"
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.context.10",
+    "actual": "person.born.context.10"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "nameFrom": "godparent"
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.context.11",
+    "actual": "person.born.context.11"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1347
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.era.early",
+    "actual": "person.born.era.early"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1381
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.era.middle",
+    "actual": "person.born.era.middle"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1450
+      }
+    },
+    "row": "person.born",
+    "expected": "person.born.era.late",
+    "actual": "person.born.era.late"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1347
+      }
+    },
+    "row": "person.married",
+    "expected": "person.married.era.early",
+    "actual": "person.married.era.early"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1381
+      }
+    },
+    "row": "person.married",
+    "expected": "person.married.era.middle",
+    "actual": "person.married.era.middle"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1450
+      }
+    },
+    "row": "person.married",
+    "expected": "person.married.era.late",
+    "actual": "person.married.era.late"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "cause": "famine",
+        "age": 20
+      }
+    },
+    "row": "person.died",
+    "expected": "person.died.context.1",
+    "actual": "person.died.context.1"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "cause": "famine_year",
+        "age": 20
+      }
+    },
+    "row": "person.died",
+    "expected": "person.died.context.2",
+    "actual": "person.died.context.2"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "cause": "fire",
+        "age": 20
+      }
+    },
+    "row": "person.died",
+    "expected": "person.died.context.3",
+    "actual": "person.died.context.3"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "cause": "plague",
+        "age": 20
+      }
+    },
+    "row": "person.died",
+    "expected": "person.died.context.4",
+    "actual": "person.died.context.4"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "cause": "captivity",
+        "age": 20
+      }
+    },
+    "row": "person.died",
+    "expected": "person.died.context.5",
+    "actual": "person.died.context.5"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "cause": "age",
+        "age": 20
+      }
+    },
+    "row": "person.died",
+    "expected": "person.died.context.6",
+    "actual": "person.died.context.6"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1347
+      }
+    },
+    "row": "person.left_town",
+    "expected": "person.left_town.era.early",
+    "actual": "person.left_town.era.early"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1381
+      }
+    },
+    "row": "person.left_town",
+    "expected": "person.left_town.era.middle",
+    "actual": "person.left_town.era.middle"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "date": {
+        "year": 1450
+      }
+    },
+    "row": "person.left_town",
+    "expected": "person.left_town.era.late",
+    "actual": "person.left_town.era.late"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "kind": "remission",
+        "what": "market_dues",
+        "years": 1
+      }
+    },
+    "row": "registry.term_began",
+    "expected": "registry.term_began.market_remission",
+    "actual": "registry.term_began.market_remission"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "kind": "installments",
+        "years": 1
+      }
+    },
+    "row": "registry.term_began",
+    "expected": "registry.term_began.installments",
+    "actual": "registry.term_began.installments"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "kind": "remission"
+      }
+    },
+    "row": "registry.term_ended",
+    "expected": "registry.term_ended.remission",
+    "actual": "registry.term_ended.remission"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "kind": "installments"
+      }
+    },
+    "row": "registry.term_ended",
+    "expected": "registry.term_ended.installments",
+    "actual": "registry.term_ended.installments"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "kind": "wardship",
+        "granted": 1
+      }
+    },
+    "row": "manor.petition_precedent",
+    "expected": "manor.petition_precedent.wardship_kin",
+    "actual": "manor.petition_precedent.wardship_kin"
+  },
+  {
+    "case": "condition_witness",
+    "input": {
+      "params": {
+        "kind": "wardship",
+        "granted": 0
+      }
+    },
+    "row": "manor.petition_precedent",
+    "expected": "manor.petition_precedent.wardship_lord",
+    "actual": "manor.petition_precedent.wardship_lord"
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "opening_balance",
+    "expected": "opening_balance.cash_in",
+    "actual": "opening_balance.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "opening_balance",
+    "expected": "opening_balance.cash_out",
+    "actual": "opening_balance.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "opening_balance",
+    "expected": "opening_balance.other",
+    "actual": "opening_balance.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "opening_balance",
+    "expected": "opening_balance.other",
+    "actual": "opening_balance.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "opening_balance",
+    "expected": "opening_balance.other",
+    "actual": "opening_balance.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "opening_balance",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "market_sale",
+    "expected": "market_sale.cash_in",
+    "actual": "market_sale.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "market_sale",
+    "expected": "market_sale.cash_out",
+    "actual": "market_sale.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "market_sale",
+    "expected": "market_sale.other",
+    "actual": "market_sale.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "market_sale",
+    "expected": "market_sale.other",
+    "actual": "market_sale.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "market_sale",
+    "expected": "market_sale.other",
+    "actual": "market_sale.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "market_sale",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "construction",
+    "expected": "construction.cash_in",
+    "actual": "construction.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "construction",
+    "expected": "construction.cash_out",
+    "actual": "construction.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "construction",
+    "expected": "construction.other",
+    "actual": "construction.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "construction",
+    "expected": "construction.other",
+    "actual": "construction.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "construction",
+    "expected": "construction.other",
+    "actual": "construction.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "construction",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "upkeep",
+    "expected": "upkeep.cash_in",
+    "actual": "upkeep.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "upkeep",
+    "expected": "upkeep.cash_out",
+    "actual": "upkeep.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "upkeep",
+    "expected": "upkeep.other",
+    "actual": "upkeep.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "upkeep",
+    "expected": "upkeep.other",
+    "actual": "upkeep.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "upkeep",
+    "expected": "upkeep.other",
+    "actual": "upkeep.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "upkeep",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "toll",
+    "expected": "toll.cash_in",
+    "actual": "toll.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "toll",
+    "expected": "toll.cash_out",
+    "actual": "toll.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "toll",
+    "expected": "toll.other",
+    "actual": "toll.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "toll",
+    "expected": "toll.other",
+    "actual": "toll.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "toll",
+    "expected": "toll.other",
+    "actual": "toll.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "toll",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "stall_fee",
+    "expected": "stall_fee.cash_in",
+    "actual": "stall_fee.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "stall_fee",
+    "expected": "stall_fee.cash_out",
+    "actual": "stall_fee.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "stall_fee",
+    "expected": "stall_fee.other",
+    "actual": "stall_fee.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "stall_fee",
+    "expected": "stall_fee.other",
+    "actual": "stall_fee.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "stall_fee",
+    "expected": "stall_fee.other",
+    "actual": "stall_fee.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "stall_fee",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "rent",
+    "expected": "rent.cash_in",
+    "actual": "rent.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "rent",
+    "expected": "rent.cash_out",
+    "actual": "rent.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "rent",
+    "expected": "rent.other",
+    "actual": "rent.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "rent",
+    "expected": "rent.other",
+    "actual": "rent.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "rent",
+    "expected": "rent.other",
+    "actual": "rent.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "rent",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "mill_toll",
+    "expected": "mill_toll.cash_in",
+    "actual": "mill_toll.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "mill_toll",
+    "expected": "mill_toll.cash_out",
+    "actual": "mill_toll.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "mill_toll",
+    "expected": "mill_toll.other",
+    "actual": "mill_toll.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "mill_toll",
+    "expected": "mill_toll.other",
+    "actual": "mill_toll.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "mill_toll",
+    "expected": "mill_toll.other",
+    "actual": "mill_toll.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "mill_toll",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "demesne_sale",
+    "expected": "demesne_sale.cash_in",
+    "actual": "demesne_sale.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "demesne_sale",
+    "expected": "demesne_sale.cash_out",
+    "actual": "demesne_sale.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "demesne_sale",
+    "expected": "demesne_sale.other",
+    "actual": "demesne_sale.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "demesne_sale",
+    "expected": "demesne_sale.other",
+    "actual": "demesne_sale.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "demesne_sale",
+    "expected": "demesne_sale.other",
+    "actual": "demesne_sale.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "demesne_sale",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "project",
+    "expected": "project.cash_in",
+    "actual": "project.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "project",
+    "expected": "project.cash_out",
+    "actual": "project.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "project",
+    "expected": "project.other",
+    "actual": "project.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "project",
+    "expected": "project.other",
+    "actual": "project.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "project",
+    "expected": "project.other",
+    "actual": "project.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "project",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "famine_relief",
+    "expected": "famine_relief.cash_in",
+    "actual": "famine_relief.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "famine_relief",
+    "expected": "famine_relief.cash_out",
+    "actual": "famine_relief.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "famine_relief",
+    "expected": "famine_relief.other",
+    "actual": "famine_relief.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "famine_relief",
+    "expected": "famine_relief.other",
+    "actual": "famine_relief.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "famine_relief",
+    "expected": "famine_relief.other",
+    "actual": "famine_relief.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "famine_relief",
+    "expected": "famine_relief.in_kind",
+    "actual": "famine_relief.in_kind"
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "famine_sale",
+    "expected": "famine_sale.cash_in",
+    "actual": "famine_sale.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "famine_sale",
+    "expected": "famine_sale.cash_out",
+    "actual": "famine_sale.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "famine_sale",
+    "expected": "famine_sale.other",
+    "actual": "famine_sale.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "famine_sale",
+    "expected": "famine_sale.other",
+    "actual": "famine_sale.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "famine_sale",
+    "expected": "famine_sale.other",
+    "actual": "famine_sale.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "famine_sale",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "charter_fee",
+    "expected": "charter_fee.cash_in",
+    "actual": "charter_fee.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "charter_fee",
+    "expected": "charter_fee.cash_out",
+    "actual": "charter_fee.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "charter_fee",
+    "expected": "charter_fee.other",
+    "actual": "charter_fee.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "charter_fee",
+    "expected": "charter_fee.other",
+    "actual": "charter_fee.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "charter_fee",
+    "expected": "charter_fee.other",
+    "actual": "charter_fee.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "charter_fee",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "restoration_fee",
+    "expected": "restoration_fee.cash_in",
+    "actual": "restoration_fee.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "restoration_fee",
+    "expected": "restoration_fee.cash_out",
+    "actual": "restoration_fee.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "restoration_fee",
+    "expected": "restoration_fee.other",
+    "actual": "restoration_fee.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "restoration_fee",
+    "expected": "restoration_fee.other",
+    "actual": "restoration_fee.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "restoration_fee",
+    "expected": "restoration_fee.other",
+    "actual": "restoration_fee.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "restoration_fee",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "house_change",
+    "expected": "house_change.cash_in",
+    "actual": "house_change.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "house_change",
+    "expected": "house_change.cash_out",
+    "actual": "house_change.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "house_change",
+    "expected": "house_change.other",
+    "actual": "house_change.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "house_change",
+    "expected": "house_change.other",
+    "actual": "house_change.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "house_change",
+    "expected": "house_change.other",
+    "actual": "house_change.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "house_change",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "wool_levy",
+    "expected": "wool_levy.cash_in",
+    "actual": "wool_levy.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "wool_levy",
+    "expected": "wool_levy.cash_out",
+    "actual": "wool_levy.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "wool_levy",
+    "expected": "wool_levy.other",
+    "actual": "wool_levy.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "wool_levy",
+    "expected": "wool_levy.other",
+    "actual": "wool_levy.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "wool_levy",
+    "expected": "wool_levy.other",
+    "actual": "wool_levy.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "wool_levy",
+    "expected": "wool_levy.in_kind",
+    "actual": "wool_levy.in_kind"
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "war_exemption",
+    "expected": "war_exemption.cash_in",
+    "actual": "war_exemption.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "war_exemption",
+    "expected": "war_exemption.cash_out",
+    "actual": "war_exemption.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "war_exemption",
+    "expected": "war_exemption.other",
+    "actual": "war_exemption.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "war_exemption",
+    "expected": "war_exemption.other",
+    "actual": "war_exemption.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "war_exemption",
+    "expected": "war_exemption.other",
+    "actual": "war_exemption.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "war_exemption",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "war_subsidy",
+    "expected": "war_subsidy.cash_in",
+    "actual": "war_subsidy.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "war_subsidy",
+    "expected": "war_subsidy.cash_out",
+    "actual": "war_subsidy.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "war_subsidy",
+    "expected": "war_subsidy.other",
+    "actual": "war_subsidy.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "war_subsidy",
+    "expected": "war_subsidy.other",
+    "actual": "war_subsidy.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "war_subsidy",
+    "expected": "war_subsidy.other",
+    "actual": "war_subsidy.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "war_subsidy",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "war_loan",
+    "expected": "war_loan.cash_in",
+    "actual": "war_loan.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "war_loan",
+    "expected": "war_loan.cash_out",
+    "actual": "war_loan.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "war_loan",
+    "expected": "war_loan.other",
+    "actual": "war_loan.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "war_loan",
+    "expected": "war_loan.other",
+    "actual": "war_loan.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "war_loan",
+    "expected": "war_loan.other",
+    "actual": "war_loan.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "war_loan",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "war_tax",
+    "expected": "war_tax.cash_in",
+    "actual": "war_tax.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "war_tax",
+    "expected": "war_tax.cash_out",
+    "actual": "war_tax.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "war_tax",
+    "expected": "war_tax.other",
+    "actual": "war_tax.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "war_tax",
+    "expected": "war_tax.other",
+    "actual": "war_tax.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "war_tax",
+    "expected": "war_tax.other",
+    "actual": "war_tax.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "war_tax",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "raid_loot",
+    "expected": "raid_loot.cash_in",
+    "actual": "raid_loot.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "raid_loot",
+    "expected": "raid_loot.cash_out",
+    "actual": "raid_loot.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "raid_loot",
+    "expected": "raid_loot.other",
+    "actual": "raid_loot.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "raid_loot",
+    "expected": "raid_loot.other",
+    "actual": "raid_loot.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "raid_loot",
+    "expected": "raid_loot.other",
+    "actual": "raid_loot.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "raid_loot",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "purveyance",
+    "expected": "purveyance.cash_in",
+    "actual": "purveyance.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "purveyance",
+    "expected": "purveyance.cash_out",
+    "actual": "purveyance.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "purveyance",
+    "expected": "purveyance.other",
+    "actual": "purveyance.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "purveyance",
+    "expected": "purveyance.other",
+    "actual": "purveyance.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "purveyance",
+    "expected": "purveyance.other",
+    "actual": "purveyance.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "purveyance",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "refugee_fee",
+    "expected": "refugee_fee.cash_in",
+    "actual": "refugee_fee.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "refugee_fee",
+    "expected": "refugee_fee.cash_out",
+    "actual": "refugee_fee.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "refugee_fee",
+    "expected": "refugee_fee.other",
+    "actual": "refugee_fee.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "refugee_fee",
+    "expected": "refugee_fee.other",
+    "actual": "refugee_fee.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "refugee_fee",
+    "expected": "refugee_fee.other",
+    "actual": "refugee_fee.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "refugee_fee",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "murage",
+    "expected": "murage.cash_in",
+    "actual": "murage.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "murage",
+    "expected": "murage.cash_out",
+    "actual": "murage.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "murage",
+    "expected": "murage.other",
+    "actual": "murage.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "murage",
+    "expected": "murage.other",
+    "actual": "murage.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "murage",
+    "expected": "murage.other",
+    "actual": "murage.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "murage",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "wages",
+    "expected": "wages.cash_in",
+    "actual": "wages.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "wages",
+    "expected": "wages.cash_out",
+    "actual": "wages.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "wages",
+    "expected": "wages.other",
+    "actual": "wages.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "wages",
+    "expected": "wages.other",
+    "actual": "wages.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "wages",
+    "expected": "wages.other",
+    "actual": "wages.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "wages",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "statute_fine",
+    "expected": "statute_fine.cash_in",
+    "actual": "statute_fine.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "statute_fine",
+    "expected": "statute_fine.cash_out",
+    "actual": "statute_fine.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "statute_fine",
+    "expected": "statute_fine.other",
+    "actual": "statute_fine.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "statute_fine",
+    "expected": "statute_fine.other",
+    "actual": "statute_fine.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "statute_fine",
+    "expected": "statute_fine.other",
+    "actual": "statute_fine.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "statute_fine",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "church_fee",
+    "expected": "church_fee.cash_in",
+    "actual": "church_fee.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "church_fee",
+    "expected": "church_fee.cash_out",
+    "actual": "church_fee.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "church_fee",
+    "expected": "church_fee.other",
+    "actual": "church_fee.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "church_fee",
+    "expected": "church_fee.other",
+    "actual": "church_fee.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "church_fee",
+    "expected": "church_fee.other",
+    "actual": "church_fee.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "church_fee",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "entry_fine",
+    "expected": "entry_fine.cash_in",
+    "actual": "entry_fine.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "entry_fine",
+    "expected": "entry_fine.cash_out",
+    "actual": "entry_fine.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "entry_fine",
+    "expected": "entry_fine.other",
+    "actual": "entry_fine.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "entry_fine",
+    "expected": "entry_fine.other",
+    "actual": "entry_fine.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "entry_fine",
+    "expected": "entry_fine.other",
+    "actual": "entry_fine.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "entry_fine",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "fulling_toll",
+    "expected": "fulling_toll.cash_in",
+    "actual": "fulling_toll.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "fulling_toll",
+    "expected": "fulling_toll.cash_out",
+    "actual": "fulling_toll.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "fulling_toll",
+    "expected": "fulling_toll.other",
+    "actual": "fulling_toll.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "fulling_toll",
+    "expected": "fulling_toll.other",
+    "actual": "fulling_toll.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "fulling_toll",
+    "expected": "fulling_toll.other",
+    "actual": "fulling_toll.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "fulling_toll",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "ulnage",
+    "expected": "ulnage.cash_in",
+    "actual": "ulnage.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "ulnage",
+    "expected": "ulnage.cash_out",
+    "actual": "ulnage.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "ulnage",
+    "expected": "ulnage.other",
+    "actual": "ulnage.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "ulnage",
+    "expected": "ulnage.other",
+    "actual": "ulnage.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "ulnage",
+    "expected": "ulnage.other",
+    "actual": "ulnage.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "ulnage",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "cloth_toll",
+    "expected": "cloth_toll.cash_in",
+    "actual": "cloth_toll.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "cloth_toll",
+    "expected": "cloth_toll.cash_out",
+    "actual": "cloth_toll.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "cloth_toll",
+    "expected": "cloth_toll.other",
+    "actual": "cloth_toll.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "cloth_toll",
+    "expected": "cloth_toll.other",
+    "actual": "cloth_toll.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "cloth_toll",
+    "expected": "cloth_toll.other",
+    "actual": "cloth_toll.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "cloth_toll",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "poll_tax",
+    "expected": "poll_tax.cash_in",
+    "actual": "poll_tax.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "poll_tax",
+    "expected": "poll_tax.cash_out",
+    "actual": "poll_tax.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "poll_tax",
+    "expected": "poll_tax.other",
+    "actual": "poll_tax.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "poll_tax",
+    "expected": "poll_tax.other",
+    "actual": "poll_tax.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "poll_tax",
+    "expected": "poll_tax.other",
+    "actual": "poll_tax.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "poll_tax",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "fee_farm",
+    "expected": "fee_farm.cash_in",
+    "actual": "fee_farm.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "fee_farm",
+    "expected": "fee_farm.cash_out",
+    "actual": "fee_farm.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "fee_farm",
+    "expected": "fee_farm.other",
+    "actual": "fee_farm.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "fee_farm",
+    "expected": "fee_farm.other",
+    "actual": "fee_farm.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "fee_farm",
+    "expected": "fee_farm.other",
+    "actual": "fee_farm.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "fee_farm",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "royal_subsidy",
+    "expected": "royal_subsidy.cash_in",
+    "actual": "royal_subsidy.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "royal_subsidy",
+    "expected": "royal_subsidy.cash_out",
+    "actual": "royal_subsidy.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "royal_subsidy",
+    "expected": "royal_subsidy.other",
+    "actual": "royal_subsidy.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "royal_subsidy",
+    "expected": "royal_subsidy.other",
+    "actual": "royal_subsidy.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "royal_subsidy",
+    "expected": "royal_subsidy.other",
+    "actual": "royal_subsidy.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "royal_subsidy",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "succession_relief",
+    "expected": "succession_relief.cash_in",
+    "actual": "succession_relief.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "succession_relief",
+    "expected": "succession_relief.cash_out",
+    "actual": "succession_relief.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "succession_relief",
+    "expected": "succession_relief.other",
+    "actual": "succession_relief.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "succession_relief",
+    "expected": "succession_relief.other",
+    "actual": "succession_relief.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "succession_relief",
+    "expected": "succession_relief.other",
+    "actual": "succession_relief.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "succession_relief",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "legacy_endowment",
+    "expected": "legacy_endowment.cash_in",
+    "actual": "legacy_endowment.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "legacy_endowment",
+    "expected": "legacy_endowment.cash_out",
+    "actual": "legacy_endowment.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "legacy_endowment",
+    "expected": "legacy_endowment.other",
+    "actual": "legacy_endowment.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "legacy_endowment",
+    "expected": "legacy_endowment.other",
+    "actual": "legacy_endowment.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "legacy_endowment",
+    "expected": "legacy_endowment.other",
+    "actual": "legacy_endowment.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "legacy_endowment",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "church_rebuilding",
+    "expected": "church_rebuilding.cash_in",
+    "actual": "church_rebuilding.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "church_rebuilding",
+    "expected": "church_rebuilding.cash_out",
+    "actual": "church_rebuilding.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "church_rebuilding",
+    "expected": "church_rebuilding.other",
+    "actual": "church_rebuilding.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "church_rebuilding",
+    "expected": "church_rebuilding.other",
+    "actual": "church_rebuilding.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "church_rebuilding",
+    "expected": "church_rebuilding.other",
+    "actual": "church_rebuilding.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "church_rebuilding",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "timber_purchase",
+    "expected": "timber_purchase.cash_in",
+    "actual": "timber_purchase.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "timber_purchase",
+    "expected": "timber_purchase.cash_out",
+    "actual": "timber_purchase.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "timber_purchase",
+    "expected": "timber_purchase.other",
+    "actual": "timber_purchase.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "timber_purchase",
+    "expected": "timber_purchase.other",
+    "actual": "timber_purchase.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "timber_purchase",
+    "expected": "timber_purchase.other",
+    "actual": "timber_purchase.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "timber_purchase",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "project_subsidy",
+    "expected": "project_subsidy.cash_in",
+    "actual": "project_subsidy.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "project_subsidy",
+    "expected": "project_subsidy.cash_out",
+    "actual": "project_subsidy.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "project_subsidy",
+    "expected": "project_subsidy.other",
+    "actual": "project_subsidy.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "project_subsidy",
+    "expected": "project_subsidy.other",
+    "actual": "project_subsidy.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "project_subsidy",
+    "expected": "project_subsidy.other",
+    "actual": "project_subsidy.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "project_subsidy",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "lawsuit",
+    "expected": "lawsuit.cash_in",
+    "actual": "lawsuit.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "lawsuit",
+    "expected": "lawsuit.cash_out",
+    "actual": "lawsuit.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "lawsuit",
+    "expected": "lawsuit.other",
+    "actual": "lawsuit.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "lawsuit",
+    "expected": "lawsuit.other",
+    "actual": "lawsuit.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "lawsuit",
+    "expected": "lawsuit.other",
+    "actual": "lawsuit.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "lawsuit",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "marriage_portion",
+    "expected": "marriage_portion.cash_in",
+    "actual": "marriage_portion.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "marriage_portion",
+    "expected": "marriage_portion.cash_out",
+    "actual": "marriage_portion.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "marriage_portion",
+    "expected": "marriage_portion.other",
+    "actual": "marriage_portion.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "marriage_portion",
+    "expected": "marriage_portion.other",
+    "actual": "marriage_portion.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "marriage_portion",
+    "expected": "marriage_portion.other",
+    "actual": "marriage_portion.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "marriage_portion",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "promise_payment",
+    "expected": "promise_payment.cash_in",
+    "actual": "promise_payment.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "promise_payment",
+    "expected": "promise_payment.cash_out",
+    "actual": "promise_payment.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "promise_payment",
+    "expected": "promise_payment.other",
+    "actual": "promise_payment.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "promise_payment",
+    "expected": "promise_payment.other",
+    "actual": "promise_payment.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "promise_payment",
+    "expected": "promise_payment.other",
+    "actual": "promise_payment.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "promise_payment",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "estate_income",
+    "expected": "estate_income.cash_in",
+    "actual": "estate_income.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "estate_income",
+    "expected": "estate_income.cash_out",
+    "actual": "estate_income.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "estate_income",
+    "expected": "estate_income.other",
+    "actual": "estate_income.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "estate_income",
+    "expected": "estate_income.other",
+    "actual": "estate_income.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "estate_income",
+    "expected": "estate_income.other",
+    "actual": "estate_income.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "estate_income",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "audit_recovery",
+    "expected": "audit_recovery.cash_in",
+    "actual": "audit_recovery.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "audit_recovery",
+    "expected": "audit_recovery.cash_out",
+    "actual": "audit_recovery.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "audit_recovery",
+    "expected": "audit_recovery.other",
+    "actual": "audit_recovery.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "audit_recovery",
+    "expected": "audit_recovery.other",
+    "actual": "audit_recovery.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "audit_recovery",
+    "expected": "audit_recovery.other",
+    "actual": "audit_recovery.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "audit_recovery",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "registry_settlement",
+    "expected": "registry_settlement.cash_in",
+    "actual": "registry_settlement.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "registry_settlement",
+    "expected": "registry_settlement.cash_out",
+    "actual": "registry_settlement.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "registry_settlement",
+    "expected": "registry_settlement.other",
+    "actual": "registry_settlement.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "registry_settlement",
+    "expected": "registry_settlement.other",
+    "actual": "registry_settlement.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "registry_settlement",
+    "expected": "registry_settlement.other",
+    "actual": "registry_settlement.other"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "registry_settlement",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "cash_25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 25
+      }
+    },
+    "row": "instalment",
+    "expected": "instalment.cash_in",
+    "actual": "instalment.cash_in"
+  },
+  {
+    "case": "cash_-25",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": -25
+      }
+    },
+    "row": "instalment",
+    "expected": "instalment.cash_out",
+    "actual": "instalment.cash_out"
+  },
+  {
+    "case": "cash_0",
+    "input": {
+      "entry": {
+        "account": "cash",
+        "amount": 0
+      }
+    },
+    "row": "instalment",
+    "expected": "instalment.other",
+    "actual": "instalment.other"
+  },
+  {
+    "case": "restricted_25",
+    "input": {
+      "entry": {
+        "account": "restricted",
+        "amount": 25
+      }
+    },
+    "row": "instalment",
+    "expected": "instalment.other",
+    "actual": "instalment.other"
+  },
+  {
+    "case": "arrears_25",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": 25
+      }
+    },
+    "row": "instalment",
+    "expected": "instalment.arrears_added",
+    "actual": "instalment.arrears_added"
+  },
+  {
+    "case": "in_kind_-25",
+    "input": {
+      "entry": {
+        "account": "in_kind",
+        "amount": -25
+      }
+    },
+    "row": "instalment",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "case": "negative_arrears_not_cash",
+    "input": {
+      "entry": {
+        "account": "arrears",
+        "amount": -25
+      }
+    },
+    "row": "instalment",
+    "expected": "instalment.arrears_reduced",
+    "actual": "instalment.arrears_reduced"
+  },
+  {
+    "case": "new_missing_or_wrong_context",
+    "input": {
+      "params": {
+        "decisionKind": "registry"
+      }
+    },
+    "row": "decision.bundle",
+    "expected": "decision.bundle.brief",
+    "actual": "decision.bundle.brief"
+  },
+  {
+    "case": "new_missing_or_wrong_context",
+    "input": {
+      "params": {
+        "decisionKind": "registry",
+        "count": 0
+      }
+    },
+    "row": "decision.bundle",
+    "expected": "decision.bundle.brief",
+    "actual": "decision.bundle.brief"
+  },
+  {
+    "case": "new_missing_or_wrong_context",
+    "input": {
+      "params": {
+        "kind": "installments"
+      }
+    },
+    "row": "registry.term_began",
+    "expected": "registry.term_began.brief",
+    "actual": "registry.term_began.brief"
+  },
+  {
+    "case": "new_missing_or_wrong_context",
+    "input": {
+      "params": {
+        "kind": "installments",
+        "years": 0
+      }
+    },
+    "row": "registry.term_began",
+    "expected": "registry.term_began.brief",
+    "actual": "registry.term_began.brief"
+  },
+  {
+    "case": "new_missing_or_wrong_context",
+    "input": {
+      "params": {
+        "kind": "remission",
+        "what": "other",
+        "years": 3
+      }
+    },
+    "row": "registry.term_began",
+    "expected": "registry.term_began.brief",
+    "actual": "registry.term_began.brief"
+  },
+  {
+    "case": "new_missing_or_wrong_context",
+    "input": {
+      "params": {
+        "kind": "boundary",
+        "granted": 1
+      }
+    },
+    "row": "manor.petition_precedent",
+    "expected": "manor.petition_precedent.brief",
+    "actual": "manor.petition_precedent.brief"
+  }
+]

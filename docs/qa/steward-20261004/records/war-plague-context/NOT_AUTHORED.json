@@ -1,0 +1,5 @@
+{
+  "template": "plague.priest_died",
+  "status": "NOT_AUTHORED_FIXED_FACT_AND_BASELINE_RISK",
+  "reason": "Producer tests curacy created, not a named-person death transition. Arrival sets vacantSince and adds priest petition regardless of whether a church building or tracked priest exists. Existing fact line asserts priest death and church emptied. Do not author population/death-size variants on this marker; neutral vacancy baseline review needed. Engine unchanged."
+}

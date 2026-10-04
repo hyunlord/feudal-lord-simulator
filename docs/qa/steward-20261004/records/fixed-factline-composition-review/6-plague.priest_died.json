@@ -1,0 +1,28 @@
+{
+  "variantId": "plague.priest_died.r06fixed.present",
+  "template": "plague.priest_died",
+  "headline": "교회나 예배당이 있는 도시에 사제직 공석이 기록되었다.",
+  "proposedFactLine": "사제 자리가 비었다",
+  "composedText": "교회나 예배당이 있는 도시에 사제직 공석이 기록되었다.\n사제 자리가 비었다",
+  "currentEngineFactLine": "사제가 역병으로 죽었다 — 교회가 비었다",
+  "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+  "currentEngineHold": "RETAIN",
+  "captureContract": {
+    "id": "worshipBuildingsAtVacancy",
+    "templates": [
+      "plague.priest_died"
+    ],
+    "values": [
+      "present",
+      "absent"
+    ],
+    "capture": "src/engine/plague.ts:511-522; src/engine/history.ts:649-651; src/content/buildingCatalog.ts:94,113",
+    "captureRule": "Require curacy newly present, vacantSince matches operation tick, match old template record. Count existing after.buildings whose kind church or chapel; positive present else absent. Complete valid building list required; construction sites excluded. This is building presence, never actual priest death/cause/worship cessation. No current-world backfill.",
+    "provenance": "emission_snapshot",
+    "currentRecordStorage": "absent: proposed event-time context",
+    "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+  },
+  "reason": "사제 자리가 비었다는 curacy 공석 사실과 교회/예배당 건물 유무를 결합한다. 실제 사제의 사망·사인·신앙활동 부재는 주장하지 않는다.",
+  "engineExecuted": false,
+  "uiRendered": false
+}

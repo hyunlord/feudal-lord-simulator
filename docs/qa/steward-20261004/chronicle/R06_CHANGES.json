@@ -1,0 +1,21 @@
+{
+  "baselineCount": 647,
+  "total": 650,
+  "addedIds": [
+    "registry.invalid.r06.audit",
+    "registry.invalid.r06.precedent",
+    "registry.invalid.r06.enforcement"
+  ],
+  "changedExistingVariants": 0,
+  "changedTemplates": [
+
+  ],
+  "newTemplateVariants": [
+    "registry.invalid"
+  ],
+  "baselinePreserved": true,
+  "source": "../records/registry-invalid-candidates/ADDITIONS.json",
+  "review": "../records/registry-invalid-review/REVIEW.md",
+  "runtimeInstalled": false,
+  "inheritedInstallBlocks": 6
+}

@@ -1,0 +1,584 @@
+{
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "status",
+    "sourceHead",
+    "fields",
+    "additions",
+    "fallback",
+    "runtimeImplemented"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "formatVersion": {
+      "const": "legacy-town-context-v1"
+    },
+    "status": {
+      "const": "AUTHOR_DRAFT_UNINSTALLED"
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "fields": {
+      "const": [
+        {
+          "id": "weaversAtStaple",
+          "templates": [
+            "legacy.staple"
+          ],
+          "values": [
+            "present",
+            "absent"
+          ],
+          "capture": "src/engine/legacy.ts:270-304; src/content/buildingCatalog.ts:127-128",
+          "captureRule": "At actual staple emission count existing after.buildings kind weaver_house, not constructionSites, not current read-time buildings. Positive count -> present; zero -> absent. Valid complete building list required. Do not infer actual sales, profit, household occupation or historical causation; price effect is game balance only.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "guildHeadAtDispute",
+          "templates": [
+            "legacy.guild_dispute"
+          ],
+          "values": [
+            "identified",
+            "unidentified"
+          ],
+          "capture": "src/engine/legacy.ts:279-295; src/engine/reorganisation.types.ts:6-11",
+          "captureRule": "Require event guild_dispute and after.reorganisation.guild exists. Snapshot guild.headId: nonempty string -> identified, null -> unidentified; missing/empty/malformed unknown. No inferred death, vacancy cause, weakness, or outcome. Names resolved only at reading if future formatter adds ID slot.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "repairPaymentAtFire",
+          "templates": [
+            "legacy.market_fire"
+          ],
+          "values": [
+            "full",
+            "partial",
+            "zero"
+          ],
+          "capture": "src/engine/legacy.ts:73-78,290-298; src/content/legacyConfig.ts:109",
+          "captureRule": "Capture return moved from exact post construction call sourceRef claim market_fire/detail repair. Compare positive configured marketFireRepair with -moved: equal full, positive smaller partial, zero zero. Safe integer bounds and exact call correlation required; aggregate tick treasury delta is insufficient. Do not infer burned building IDs, casualty extent, completion, debt, or unpaid remainder obligation.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "treasuryAtNaveRequest",
+          "templates": [
+            "legacy.church_rebuilding"
+          ],
+          "values": [
+            "covers_cost",
+            "below_cost"
+          ],
+          "capture": "src/engine/legacy.ts:290-295,196-201; src/content/legacyConfig.ts:110-111",
+          "captureRule": "At the exact addPetition church_rebuilding point read treasuryBalance and configured churchRebuildingCost; finite nonnegative safe coin and positive safe cost required. coin>=cost covers_cost else below_cost. Capture operation-local state to avoid later same-tick effects. Not an approval, future affordability, reserved fund, physical church audit, or payment.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "navePaymentAtRecord",
+          "templates": [
+            "legacy.nave_rebuilt"
+          ],
+          "values": [
+            "full",
+            "partial",
+            "zero"
+          ],
+          "capture": "src/engine/legacy.ts:73-78,196-201; src/engine/history.ts:767",
+          "captureRule": "Capture exact accept answer post church_rebuilding source claim church_rebuilding/detail nave and false->true naveRebuilt. -moved==cost -> full; 0<-moved<cost -> partial; moved0 -> zero. Validate safe integers, record binding. Flag is set immediately even if payment is partial/zero. No construction site, physical nave completion, labour, or remaining debt inferred.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        },
+        {
+          "id": "crownResetAtDeposition",
+          "templates": [
+            "legacy.deposition"
+          ],
+          "values": [
+            "toward_closer",
+            "toward_distant",
+            "unchanged"
+          ],
+          "capture": "src/engine/factions.ts:423-431; src/content/legacyConfig.ts:112-113",
+          "captureRule": "At factionChanges deposition branch capture exact Math.round((start-crown.relation)*depositionPermille/1000) before delta filtering, with crown present and finite valid relation/start. Positive -> toward_closer, negative -> toward_distant, zero -> unchanged. Capture local contribution, not total after-minus-before relation if other causes share tick. No inference of player loyalty, dynastic cause, reward or punishment.",
+          "provenance": "emission_snapshot",
+          "currentRecordStorage": "absent: proposed event-time context",
+          "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+        }
+      ]
+    },
+    "additions": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.staple"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^legacy\\.staple\\.r06town\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.weaversAtStaple"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "present",
+                            "absent"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.guild_dispute"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^legacy\\.guild_dispute\\.r06town\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.guildHeadAtDispute"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "identified",
+                            "unidentified"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.market_fire"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^legacy\\.market_fire\\.r06town\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.repairPaymentAtFire"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "full",
+                            "partial",
+                            "zero"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.church_rebuilding"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^legacy\\.church_rebuilding\\.r06town\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.treasuryAtNaveRequest"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "covers_cost",
+                            "below_cost"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.nave_rebuilt"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^legacy\\.nave_rebuilt\\.r06town\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.navePaymentAtRecord"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "full",
+                            "partial",
+                            "zero"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.deposition"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^legacy\\.deposition\\.r06town\\.[a-z_]+$"
+                  },
+                  "priority": {
+                    "const": 20
+                  },
+                  "when": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 1,
+                    "items": {
+                      "type": "object",
+                      "required": [
+                        "field",
+                        "op",
+                        "value"
+                      ],
+                      "additionalProperties": false,
+                      "properties": {
+                        "field": {
+                          "const": "context.crownResetAtDeposition"
+                        },
+                        "op": {
+                          "const": "eq"
+                        },
+                        "value": {
+                          "enum": [
+                            "toward_closer",
+                            "toward_distant",
+                            "unchanged"
+                          ]
+                        }
+                      }
+                    }
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "const": [
+
+                    ]
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "fallback": {
+      "const": "Unknown, malformed or record/campaign mismatched context -> existing baseline; no inferred past facts"
+    },
+    "runtimeImplemented": {
+      "const": false
+    }
+  }
+}

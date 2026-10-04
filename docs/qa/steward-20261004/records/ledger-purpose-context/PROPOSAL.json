@@ -1,0 +1,62 @@
+{
+  "status": "DRAFT_UNINSTALLED",
+  "variants": [
+    {
+      "id": "promise_payment.r06purpose.kept",
+      "category": "promise_payment",
+      "purpose": "kept",
+      "text": "약속한 돈을 지급하여 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ]
+    },
+    {
+      "id": "promise_payment.r06purpose.will_favour",
+      "category": "promise_payment",
+      "purpose": "will_favour",
+      "text": "유언 변경에 답하는 호의 지급으로 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ]
+    },
+    {
+      "id": "royal_subsidy.r06purpose.tax",
+      "category": "royal_subsidy",
+      "purpose": "tax",
+      "text": "왕실 보조세로 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ]
+    },
+    {
+      "id": "royal_subsidy.r06purpose.confirmation",
+      "category": "royal_subsidy",
+      "purpose": "confirmation",
+      "text": "자치 특허 확인금으로 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ]
+    },
+    {
+      "id": "stall_fee.r06purpose.market",
+      "category": "stall_fee",
+      "purpose": "market",
+      "text": "시장 좌판세로 금고에 {amountExact} 들어왔다.",
+      "requiredSlots": [
+        "amountExact"
+      ]
+    },
+    {
+      "id": "stall_fee.r06purpose.alehouse",
+      "category": "stall_fee",
+      "purpose": "alehouse",
+      "text": "에일집 판매에 따른 부담금으로 금고에 {amountExact} 들어왔다.",
+      "requiredSlots": [
+        "amountExact"
+      ]
+    }
+  ],
+  "unknownCashOutFallback": "지출 목적 미확인 — 금고에서 {amountAbsExact} 나갔다.",
+  "fallbackStatus": "separate neutral adapter proposal, not installed",
+  "unknownCashInFallback": "수입 목적 미확인 — 금고에 {amountExact} 들어왔다."
+}

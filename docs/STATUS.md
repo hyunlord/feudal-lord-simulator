@@ -15,6 +15,10 @@
 - **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
 - **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
 
+- **COPY-1r 문구 감사의 화면 몫 — 완료, 본선 병합**(Claude Code, 렌더 세션, NAT-5 다음·LM-R1 앞): [보고서](verification/copy1r/REPORT.md). Astra 문구 감사 src/ui·src/ledger 28건 + CA-006 + QA-033.
+  - 상세·확정 금액은 완전 표기(장부·계절 결산·왕실 보조세), 장부에 틱 없이 달력 날짜. 시장 거리는 길 걸음(serviceMeasure).
+  - 용어집 기준: 석벽 도시, 왕실 보조세 요구, 영주의 후계자, 자치 연납금, 운반꾼·배급꾼, 통나무, 시장도시, 일시 정지. 첫해 파종 안내를 규칙대로.
+
 - **NAT-5 땅 자연스러움 — 완료, 본선 병합**(Claude Code, 렌더 세션, LM-R1 앞에 끼움): [보고서](verification/nat5/REPORT.md), 결정 N5-D1·D2(D2 사용자 결정), N5-G1~G3, N5S-1~7, N5-W1·W2.
   - 땅 경계(QA-040 숲 바닥, QA-039 백악 바위, 검사기 습지 #5·#10): 지도 전체 뒤틀림으로 칸 직각 윤곽 62~77% → 9~10%, 바위는 부드러운 영역·자갈 표시 없음, 강가 바위도(N5-D1). 습지의 긴 경계는 땅 생성기 몫으로 남음(엔진).
   - 설치: Wave 41 재작업 27장, Wave 41 바위, 창고 눈 셋(RUN-02), Wave 42 땅의 변화 단계 36장(그루터기·어린나무·발길·묵은 밭, 엔진 treeStage·fallowStage·footpaths).
@@ -27,6 +31,13 @@
   - 넘김: 012는 NAT-3, 003·026·RUN-02 그림은 Astra, RUN-01·UI-01·UI-02는 LM-R1.
 
 - **LAND-UI 땅 고르기·지면·여울·배수(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 4번·연쇄 G 1번): [보고서](verification/landui/REPORT.md), 결정 LU-D1~D10(사용자 승인 2026-10-02 — D1은 임시, D7은 NAT-4에서 숫자 칸 + 무작위로 바꿈). 새 게임에서 땅 다섯(미리보기·지도 번호), Wave 22 지면·Wave 28 돌담·Wave 29 강 흐름·물레 도랑·Wave 34 여울·배수 단계, 배수 도구, "흐르는 물가" 문구. 강가 그림 그대로. 지면 띠는 렌더가 넓고 부드럽게(NAT-4), 숲 가장자리 띠는 Astra(LU-D11).
+
+- **LM-E9 범용 등록기 — 완료, 본선 병합**(Claude Code, 엔진 세션, 영주 모드에서만·화면 없음): [보고서](verification/lm-e9/REPORT.md), [명세](design/registry.md) ER-1~ER-12, 결정 LM9-1~10, 저장 v47.
+  - 청원·사건·연례 규칙을 데이터 항목으로(조건 나무·seed 추첨·계절 1건·해 2건·원자 답). 홈 청원 열둘을 옮겼고 전후 결정 목록이 같다.
+  - 홈 선례(사용자 판정): 같은 종류에 같은 답 두 번 뒤부터 청지기가 처리, 해마다 첫 홈 청원은 영주에게, `precedentReport` 목록.
+  - 분할 납부(모자라면 체납)·좌판세 감면·권리 범위 판결·가문 "드 해버럴". 콘텐츠 2차 초안 11 들임, 24는 [AMBIGUOUS](verification/lm-e9/AMBIGUOUS.md)(Astra 몫·엔진 몫).
+  - **새 사건 분포 관문은 실패해 LM-E9b로**(사용자 판정): 세계가 그 시기에 새 소송·기본 좌판세를 만들지 않는다.
+  - 렌더가 받을 것: 등록기 카드(`openRegistryOffers`·`enabledChoices`·`REGISTRY_COPY`·`answer_registry_offer`), 계절 보고의 선례 목록, 새 게임 가문 칸. Astra: 초안 11개 그림.
 
 - **LM-E6a 직업 확장 1차 — 완료, 본선 병합**(Claude Code, 엔진 세션, 영주 모드에서만·화면 없음): [보고서](verification/lm-e6a/REPORT.md), [명세](design/trades.md) TR-1~TR-9, 결정 LM6A-1~5, 저장 v46.
   - 직업 20·작업장 원형 12를 데이터로, 가구가 위치 점수로 직업을 고르고 영수증을 남김. 사슬 일곱의 병목 하나, 같은 직업 셋이 모이면 거리 이름.
@@ -768,6 +779,7 @@
 
 ## 다음 작업
 
+- **엔진 LM-E9b**(사용자 지시 2026-10-03): AMBIGUOUS 엔진 몫(나·다, 새 청원 057·058), 이웃의 새 청구·소송·채무를 연례 규칙으로(이웃 세계 설계), 세율이 바뀌어도 시장 부담 초안, Astra 콘텐츠 v3 들이기. 관문: 125년 판 seed 셋에서 새 사건이 시대·종류별로 고르게, 한 해 최대 30 미만.
 - **엔진 2장 작업(사용자 지시 순서, C4는 판정으로 뒤로)**: FAIL-3 완료 → F2-A 완료 → FACTION-0 완료 → FIX-5 완료 → C4 완료. 다음 엔진 후보는 관계를 읽는 규칙(RIGHTS)이다. 작업마다 본선 병합·브랜치 삭제.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").

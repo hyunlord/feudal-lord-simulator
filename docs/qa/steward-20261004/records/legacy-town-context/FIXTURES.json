@@ -1,0 +1,4667 @@
+[
+  {
+    "id": "legacy.staple.r06town.present.known",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": "legacy.staple.r06town.present"
+  },
+  {
+    "id": "legacy.staple.r06town.present.missing_field",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.unknown_enum",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.wrong_record",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.wrong_tick",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "other",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.wrong_source",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.negative_tick",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.unverified",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.extra_name",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.present.unknown_empty",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.known",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": "legacy.staple.r06town.absent"
+  },
+  {
+    "id": "legacy.staple.r06town.absent.missing_field",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.unknown_enum",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.wrong_record",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.wrong_tick",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "other",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.wrong_source",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.negative_tick",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.unverified",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.extra_name",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "weaversAtStaple": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.staple.r06town.absent.unknown_empty",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.staple",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.known",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": "legacy.guild_dispute.r06town.identified"
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.missing_field",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.unknown_enum",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.wrong_record",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.wrong_tick",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "other",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.wrong_source",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.negative_tick",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.unverified",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.extra_name",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "identified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.identified.unknown_empty",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.known",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": "legacy.guild_dispute.r06town.unidentified"
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.missing_field",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.unknown_enum",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.wrong_record",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.wrong_tick",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "other",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.wrong_source",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.negative_tick",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.unverified",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.extra_name",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "guildHeadAtDispute": "unidentified"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.guild_dispute.r06town.unidentified.unknown_empty",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.guild_dispute",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.known",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": "legacy.market_fire.r06town.full"
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.missing_field",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.unknown_enum",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.wrong_record",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.wrong_tick",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "other",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.wrong_source",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.negative_tick",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.unverified",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.extra_name",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.full.unknown_empty",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.known",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": "legacy.market_fire.r06town.partial"
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.missing_field",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.unknown_enum",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.wrong_record",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.wrong_tick",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "other",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.wrong_source",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.negative_tick",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.unverified",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.extra_name",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.partial.unknown_empty",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.known",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": "legacy.market_fire.r06town.zero"
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.missing_field",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.unknown_enum",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.wrong_record",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.wrong_tick",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "other",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.wrong_source",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.negative_tick",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.unverified",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.extra_name",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "repairPaymentAtFire": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.market_fire.r06town.zero.unknown_empty",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.known",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": "legacy.church_rebuilding.r06town.covers_cost"
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.missing_field",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.unknown_enum",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.wrong_record",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.wrong_tick",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "other",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.wrong_source",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.negative_tick",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.unverified",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.extra_name",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "covers_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.covers_cost.unknown_empty",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.known",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": "legacy.church_rebuilding.r06town.below_cost"
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.missing_field",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.unknown_enum",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.wrong_record",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.wrong_tick",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "other",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.wrong_source",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.negative_tick",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.unverified",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.extra_name",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "treasuryAtNaveRequest": "below_cost"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.church_rebuilding.r06town.below_cost.unknown_empty",
+    "identity": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-8",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.church_rebuilding",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.known",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": "legacy.nave_rebuilt.r06town.full"
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.missing_field",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.unknown_enum",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.wrong_record",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.wrong_tick",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "other",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.wrong_source",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.negative_tick",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.unverified",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.extra_name",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "full"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.full.unknown_empty",
+    "identity": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-9",
+      "recordTick": 1243,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.known",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": "legacy.nave_rebuilt.r06town.partial"
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.missing_field",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.unknown_enum",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.wrong_record",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.wrong_tick",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "other",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.wrong_source",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.negative_tick",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.unverified",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.extra_name",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "partial"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.partial.unknown_empty",
+    "identity": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-10",
+      "recordTick": 1244,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.known",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": "legacy.nave_rebuilt.r06town.zero"
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.missing_field",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.unknown_enum",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.wrong_record",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.wrong_tick",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "other",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.wrong_source",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.negative_tick",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.unverified",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.extra_name",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "navePaymentAtRecord": "zero"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.nave_rebuilt.r06town.zero.unknown_empty",
+    "identity": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-11",
+      "recordTick": 1245,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.known",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": "legacy.deposition.r06town.toward_closer"
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.missing_field",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.unknown_enum",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.wrong_record",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.wrong_tick",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "other",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.wrong_source",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.negative_tick",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.unverified",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.extra_name",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_closer"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_closer.unknown_empty",
+    "identity": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-12",
+      "recordTick": 1246,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.known",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": "legacy.deposition.r06town.toward_distant"
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.missing_field",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.unknown_enum",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.wrong_record",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.wrong_tick",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "other",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.wrong_source",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.negative_tick",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.unverified",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.extra_name",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "toward_distant"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.toward_distant.unknown_empty",
+    "identity": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-13",
+      "recordTick": 1247,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.known",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": "legacy.deposition.r06town.unchanged"
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.missing_field",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.unknown_enum",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.wrong_record",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.wrong_tick",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1249,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "other",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.wrong_source",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.negative_tick",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.unverified",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.extra_name",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "crownResetAtDeposition": "unchanged"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.deposition.r06town.unchanged.unknown_empty",
+    "identity": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-14",
+      "recordTick": 1248,
+      "campaignId": "seed1-fixture",
+      "template": "legacy.deposition",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  }
+]

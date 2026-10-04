@@ -8,14 +8,14 @@ export const CHAPTER_COPY = {
     prosperity: "번영하는 시장도시를 이룬다",
     wall_or_market: "전쟁을 넘긴 뒤 석벽을 다 쌓거나 장을 넓힌다",
     // F3-A PL-10: the resettlement goal — progress is shown dynamically in useTutorialController.
-    resettled: "역병에서 회복해 사람의 70 %를 되찾는다",
+    resettled: "역병에서 회복해 사람의 70%를 되찾는다",
     // UI-9 (F4-A RG-10): the chapter 4 goal — the charter negotiated (granted or refused).
     charter: "도시에 자치 특허를 내주거나 거부한다",
     // UI-9b (F5-A LG-8): the chapter 5 goal — the last market day of 1450, the legacy judged (the campaign's end).
     legacy: "1450년 마지막 장날까지 도시와 가문의 유산을 남긴다",
   } as Readonly<Record<string, string>>,
   /** Dynamic resettled progress line shown while the goal is active (permille / target ‰). */
-  resettledProgress: (permille: number) => `도래 때 사람의 ${Math.round(permille / 10)} % / 70 %`,
+  resettledProgress: (permille: number) => `도래 때 사람의 ${Math.round(permille / 10)}% / 70%`,
   /** UI-10 (F5-A LG-1 / LG-8): chapter 5's progress — its steps come, the years to the last market day of 1450. */
   legacyProgress: (steps: number, total: number, years: number) => years > 0
     ? `유산의 여덟 단계 ${steps}/${total} · 마지막 장날까지 ${years}년` : `유산의 여덟 단계 ${steps}/${total} · 올해 여름 마지막 장날`,

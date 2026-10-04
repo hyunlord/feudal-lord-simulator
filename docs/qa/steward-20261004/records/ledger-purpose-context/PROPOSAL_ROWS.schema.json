@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "array",
+  "minItems": 6,
+  "maxItems": 6,
+  "uniqueItems": true,
+  "items": {
+    "anyOf": [
+      {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "purpose",
+          "text",
+          "requiredSlots"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "const": "promise_payment.r06purpose.kept"
+          },
+          "category": {
+            "const": "promise_payment"
+          },
+          "purpose": {
+            "const": "kept"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredSlots": {
+            "const": [
+              "amountAbsExact"
+            ]
+          }
+        }
+      },
+      {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "purpose",
+          "text",
+          "requiredSlots"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "const": "promise_payment.r06purpose.will_favour"
+          },
+          "category": {
+            "const": "promise_payment"
+          },
+          "purpose": {
+            "const": "will_favour"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredSlots": {
+            "const": [
+              "amountAbsExact"
+            ]
+          }
+        }
+      },
+      {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "purpose",
+          "text",
+          "requiredSlots"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "const": "royal_subsidy.r06purpose.tax"
+          },
+          "category": {
+            "const": "royal_subsidy"
+          },
+          "purpose": {
+            "const": "tax"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredSlots": {
+            "const": [
+              "amountAbsExact"
+            ]
+          }
+        }
+      },
+      {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "purpose",
+          "text",
+          "requiredSlots"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "const": "royal_subsidy.r06purpose.confirmation"
+          },
+          "category": {
+            "const": "royal_subsidy"
+          },
+          "purpose": {
+            "const": "confirmation"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredSlots": {
+            "const": [
+              "amountAbsExact"
+            ]
+          }
+        }
+      },
+      {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "purpose",
+          "text",
+          "requiredSlots"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "const": "stall_fee.r06purpose.market"
+          },
+          "category": {
+            "const": "stall_fee"
+          },
+          "purpose": {
+            "const": "market"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredSlots": {
+            "const": [
+              "amountExact"
+            ]
+          }
+        }
+      },
+      {
+        "type": "object",
+        "required": [
+          "id",
+          "category",
+          "purpose",
+          "text",
+          "requiredSlots"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "const": "stall_fee.r06purpose.alehouse"
+          },
+          "category": {
+            "const": "stall_fee"
+          },
+          "purpose": {
+            "const": "alehouse"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requiredSlots": {
+            "const": [
+              "amountExact"
+            ]
+          }
+        }
+      }
+    ]
+  }
+}

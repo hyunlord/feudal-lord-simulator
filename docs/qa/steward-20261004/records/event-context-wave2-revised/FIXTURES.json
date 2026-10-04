@@ -1,0 +1,2972 @@
+[
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.already_recorded",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "already_recorded"
+      }
+    },
+    "expected": "reorg.textile_street.r06ctx2.already_recorded"
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.missing",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.unknown",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_type",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_template",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_tick",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.wrong_source",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.already_recorded.unresolved_reference",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "aleMilestoneBeforeTextile": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.same_tick",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "same_tick"
+      }
+    },
+    "expected": "reorg.textile_street.r06ctx2.same_tick"
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.missing",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.unknown",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.wrong_type",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.wrong_template",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.wrong_tick",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.wrong_source",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.same_tick.unresolved_reference",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "aleMilestoneBeforeTextile": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.not_yet_recorded",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "not_yet_recorded"
+      }
+    },
+    "expected": "reorg.textile_street.r06ctx2.not_yet_recorded"
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.missing",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.unknown",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_type",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_template",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_tick",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.wrong_source",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "aleMilestoneBeforeTextile": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.textile_street.r06ctx2.not_yet_recorded.unresolved_reference",
+    "template": "reorg.textile_street",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.textile_street",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "aleMilestoneBeforeTextile": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.already_recorded",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "already_recorded"
+      }
+    },
+    "expected": "reorg.alehouse_boom.r06ctx2.already_recorded"
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.missing",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.unknown",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_type",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_template",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_tick",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.wrong_source",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.already_recorded.unresolved_reference",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "textileMilestoneBeforeAle": "already_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.same_tick",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "same_tick"
+      }
+    },
+    "expected": "reorg.alehouse_boom.r06ctx2.same_tick"
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.missing",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.unknown",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_type",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_template",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_tick",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.wrong_source",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.same_tick.unresolved_reference",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "textileMilestoneBeforeAle": "same_tick"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.not_yet_recorded",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "not_yet_recorded"
+      }
+    },
+    "expected": "reorg.alehouse_boom.r06ctx2.not_yet_recorded"
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.missing",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.unknown",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_type",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_template",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_tick",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.wrong_source",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "textileMilestoneBeforeAle": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded.unresolved_reference",
+    "template": "reorg.alehouse_boom",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "reorg.alehouse_boom",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "textileMilestoneBeforeAle": "not_yet_recorded"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.refused",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "refused"
+      }
+    },
+    "expected": "legacy.charter_refused.r06ctx2.refused"
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.missing",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.unknown",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "refused"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.wrong_type",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.wrong_template",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "refused"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.wrong_tick",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "refused"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.wrong_source",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "refused"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.refused.unresolved_reference",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "refused"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.expired",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "expired"
+      }
+    },
+    "expected": "legacy.charter_refused.r06ctx2.expired"
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.missing",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.unknown",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "expired"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.wrong_type",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.wrong_template",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "expired"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.wrong_tick",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "expired"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.wrong_source",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "expired"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.charter_refused.r06ctx2.expired.unresolved_reference",
+    "template": "legacy.charter_refused",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "charterNonAcceptanceAtRecord": "expired"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.town",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "town"
+      }
+    },
+    "expected": "legacy.last_market.r06ctx2.town"
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.missing",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.unknown",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "town"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.wrong_type",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.wrong_template",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "town"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.wrong_tick",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "town"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.wrong_source",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "town"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.town.unresolved_reference",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "finalEndingAxis": "town"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.family",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "family"
+      }
+    },
+    "expected": "legacy.last_market.r06ctx2.family"
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.missing",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.unknown",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "family"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.wrong_type",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.wrong_template",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "family"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.wrong_tick",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "family"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.wrong_source",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "family"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.family.unresolved_reference",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "finalEndingAxis": "family"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.church",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "church"
+      }
+    },
+    "expected": "legacy.last_market.r06ctx2.church"
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.missing",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.unknown",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "church"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.wrong_type",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.wrong_template",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "church"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.wrong_tick",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "church"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.wrong_source",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "finalEndingAxis": "church"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "legacy.last_market.r06ctx2.church.unresolved_reference",
+    "template": "legacy.last_market",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "legacy.last_market",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "finalEndingAxis": "church"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.water_reach",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "water_reach"
+      }
+    },
+    "expected": "decision.market_town.r06ctx2.water_reach"
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.missing",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.unknown",
+    "template": "decision.market_town",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "water_reach"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.wrong_type",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.wrong_template",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "water_reach"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.wrong_tick",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "water_reach"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.wrong_source",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "water_reach"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.water_reach.unresolved_reference",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "marketBoundaryAtStart": "water_reach"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.land_ring",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "land_ring"
+      }
+    },
+    "expected": "decision.market_town.r06ctx2.land_ring"
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.missing",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.unknown",
+    "template": "decision.market_town",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "land_ring"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.wrong_type",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.wrong_template",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "land_ring"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.wrong_tick",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "land_ring"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.wrong_source",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "marketBoundaryAtStart": "land_ring"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.market_town.r06ctx2.land_ring.unresolved_reference",
+    "template": "decision.market_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "marketBoundaryAtStart": "land_ring"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.all_ready",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "all_ready"
+      }
+    },
+    "expected": "decision.stone_town.r06ctx2.all_ready"
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.missing",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.unknown",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "all_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.wrong_type",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.wrong_template",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "all_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.wrong_tick",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "all_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.wrong_source",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "all_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.all_ready.unresolved_reference",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "stoneReplacementReadiness": "all_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.partly_ready",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "partly_ready"
+      }
+    },
+    "expected": "decision.stone_town.r06ctx2.partly_ready"
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.missing",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.unknown",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "partly_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.wrong_type",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.wrong_template",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "partly_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.wrong_tick",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "partly_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.wrong_source",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "partly_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.partly_ready.unresolved_reference",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "stoneReplacementReadiness": "partly_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.none_ready",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "none_ready"
+      }
+    },
+    "expected": "decision.stone_town.r06ctx2.none_ready"
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.missing",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.unknown",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "none_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.wrong_type",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.wrong_template",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "none_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.wrong_tick",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "none_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.wrong_source",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "stoneReplacementReadiness": "none_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.stone_town.r06ctx2.none_ready.unresolved_reference",
+    "template": "decision.stone_town",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "stoneReplacementReadiness": "none_ready"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.residents_present",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "residents_present"
+      }
+    },
+    "expected": "decision.rebuild.r06ctx2.residents_present"
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.missing",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.unknown",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "residents_present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.wrong_type",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.wrong_template",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "residents_present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.wrong_tick",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "residents_present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.wrong_source",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "residents_present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.residents_present.unresolved_reference",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "rebuildOccupancyAtStart": "residents_present"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.empty",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "empty"
+      }
+    },
+    "expected": "decision.rebuild.r06ctx2.empty"
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.missing",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.unknown",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "empty"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.wrong_type",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.wrong_template",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "empty"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.wrong_tick",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "empty"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.wrong_source",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "rebuildOccupancyAtStart": "empty"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.rebuild.r06ctx2.empty.unresolved_reference",
+    "template": "decision.rebuild",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.rebuild",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "rebuildOccupancyAtStart": "empty"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.retained",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "retained"
+      }
+    },
+    "expected": "decision.wall_expand.r06ctx2.retained"
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.missing",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.unknown",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "retained"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.wrong_type",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.wrong_template",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "retained"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.wrong_tick",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "retained"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.wrong_source",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "retained"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.retained.unresolved_reference",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "expansionGateAtStart": "retained"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.moved",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "moved"
+      }
+    },
+    "expected": "decision.wall_expand.r06ctx2.moved"
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.missing",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.unknown",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "moved"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.wrong_type",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.wrong_template",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "moved"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.wrong_tick",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "moved"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.wrong_source",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "expansionGateAtStart": "moved"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.wall_expand.r06ctx2.moved.unresolved_reference",
+    "template": "decision.wall_expand",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.wall_expand",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "expansionGateAtStart": "moved"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.sole_work",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "sole_work"
+      }
+    },
+    "expected": "decision.drainage.r06ctx2.sole_work"
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.missing",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.unknown",
+    "template": "decision.drainage",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "sole_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.wrong_type",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.wrong_template",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "sole_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.wrong_tick",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "sole_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.wrong_source",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "sole_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.sole_work.unresolved_reference",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "drainageQueueAtStart": "sole_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.parallel_work",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "parallel_work"
+      }
+    },
+    "expected": "decision.drainage.r06ctx2.parallel_work"
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.missing",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.unknown",
+    "template": "decision.drainage",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "parallel_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.wrong_type",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.wrong_template",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "parallel_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.wrong_tick",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "parallel_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.wrong_source",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "drainageQueueAtStart": "parallel_work"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "decision.drainage.r06ctx2.parallel_work.unresolved_reference",
+    "template": "decision.drainage",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "decision.drainage",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "drainageQueueAtStart": "parallel_work"
+      }
+    },
+    "expected": null
+  }
+]

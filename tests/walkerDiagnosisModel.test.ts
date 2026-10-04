@@ -163,7 +163,7 @@ test("Carter diagnosis reports its real mission route cargo and ETA", () => {
 
   // Then
   assert.ok(model !== null);
-  assert.equal(model.roleLabel, "운반인");
+  assert.equal(model.roleLabel, "운반꾼");
   assert.equal(model.cargoLabel, "통나무 4");
   assert.equal(model.sourceLabel, "벌목소");
   assert.equal(model.destinationLabel, "창고");
@@ -184,10 +184,10 @@ test("Distributor diagnosis reports roaming facts without inventing a fixed dest
 
   // Then
   assert.ok(model !== null);
-  assert.equal(model.roleLabel, "배급자");
+  assert.equal(model.roleLabel, "배급꾼");
   assert.equal(model.cargoLabel, "빵 2");
   assert.equal(model.sourceLabel, "곡창");
-  assert.equal(model.destinationLabel, "홈 곡창");
+  assert.equal(model.destinationLabel, "소속 곡창");
   assert.equal(model.statusLabel, "곡창으로 귀환 중");
   assert.equal(model.tilesTravelled, 18);
 });

@@ -1,0 +1,1239 @@
+{
+  "status": "candidate_not_installed",
+  "baselineSha256": "9be04c56bd58145021d4d0b9887abf515e9e1bbf1c4585c6b5bbc0cb5537af4c",
+  "additions": [
+    {
+      "template": "event.rumour",
+      "variant": {
+        "id": "event.rumour.r05b.first_fire",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "first_fire"
+          }
+        ],
+        "headline": "불이 날지 모른다는 소문이 돌았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.rumour",
+      "variant": {
+        "id": "event.rumour.r05b.fire",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "fire"
+          }
+        ],
+        "headline": "화재를 걱정하는 소문이 돌았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.rumour",
+      "variant": {
+        "id": "event.rumour.r05b.dearth_rehearsal",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "dearth_rehearsal"
+          }
+        ],
+        "headline": "흉작이 들지 모른다는 소문이 돌았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.rumour",
+      "variant": {
+        "id": "event.rumour.r05b.great_famine",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "great_famine"
+          }
+        ],
+        "headline": "큰 기근이 다가온다는 소문이 돌았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.sign",
+      "variant": {
+        "id": "event.sign.r05b.first_fire",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "first_fire"
+          }
+        ],
+        "headline": "도시에 화재의 징후가 드러났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.sign",
+      "variant": {
+        "id": "event.sign.r05b.fire",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "fire"
+          }
+        ],
+        "headline": "화재의 징후가 드러났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.sign",
+      "variant": {
+        "id": "event.sign.r05b.dearth_rehearsal",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "dearth_rehearsal"
+          }
+        ],
+        "headline": "흉작을 예고하는 징후가 드러났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.sign",
+      "variant": {
+        "id": "event.sign.r05b.great_famine",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "great_famine"
+          }
+        ],
+        "headline": "대기근을 예고하는 징후가 드러났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.arrived",
+      "variant": {
+        "id": "event.arrived.r05b.first_fire",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "first_fire"
+          }
+        ],
+        "headline": "도시에 첫 화재가 일어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.arrived",
+      "variant": {
+        "id": "event.arrived.r05b.fire",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "fire"
+          }
+        ],
+        "headline": "도시에 화재가 일어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.arrived",
+      "variant": {
+        "id": "event.arrived.r05b.dearth_rehearsal",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "dearth_rehearsal"
+          }
+        ],
+        "headline": "예고되던 흉작이 닥쳤다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.arrived",
+      "variant": {
+        "id": "event.arrived.r05b.great_famine",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.defId",
+            "op": "eq",
+            "value": "great_famine"
+          }
+        ],
+        "headline": "예고되던 대기근이 닥쳤다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.recovered",
+      "variant": {
+        "id": "event.recovered.r05b.000",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.burntHouses",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.departures",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.harvestLost",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.defId",
+            "op": "in",
+            "value": [
+              "first_fire",
+              "fire",
+              "dearth_rehearsal",
+              "great_famine"
+            ]
+          }
+        ],
+        "headline": "사건 피해 집계에는 불탄 집·떠난 가구·잃은 수확이 없었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.recovered",
+      "variant": {
+        "id": "event.recovered.r05b.001",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.burntHouses",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.departures",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.harvestLost",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "params.defId",
+            "op": "in",
+            "value": [
+              "dearth_rehearsal",
+              "great_famine"
+            ]
+          }
+        ],
+        "headline": "사건에서 회복한 뒤 피해 항목을 기록했다: 잃은 수확.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.recovered",
+      "variant": {
+        "id": "event.recovered.r05b.010",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.burntHouses",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.departures",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "params.harvestLost",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.defId",
+            "op": "in",
+            "value": [
+              "first_fire",
+              "fire",
+              "dearth_rehearsal",
+              "great_famine"
+            ]
+          }
+        ],
+        "headline": "사건에서 회복한 뒤 피해 항목을 기록했다: 떠난 가구.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.recovered",
+      "variant": {
+        "id": "event.recovered.r05b.011",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.burntHouses",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.departures",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "params.harvestLost",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "params.defId",
+            "op": "in",
+            "value": [
+              "dearth_rehearsal",
+              "great_famine"
+            ]
+          }
+        ],
+        "headline": "사건에서 회복한 뒤 피해 항목을 기록했다: 떠난 가구·잃은 수확.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.recovered",
+      "variant": {
+        "id": "event.recovered.r05b.100",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.burntHouses",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "params.departures",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.harvestLost",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.defId",
+            "op": "in",
+            "value": [
+              "first_fire",
+              "fire"
+            ]
+          }
+        ],
+        "headline": "사건에서 회복한 뒤 피해 항목을 기록했다: 불탄 집.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "event.recovered",
+      "variant": {
+        "id": "event.recovered.r05b.110",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.burntHouses",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "params.departures",
+            "op": "gt",
+            "value": 0
+          },
+          {
+            "field": "params.harvestLost",
+            "op": "eq",
+            "value": 0
+          },
+          {
+            "field": "params.defId",
+            "op": "in",
+            "value": [
+              "first_fire",
+              "fire"
+            ]
+          }
+        ],
+        "headline": "사건에서 회복한 뒤 피해 항목을 기록했다: 불탄 집·떠난 가구.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.season",
+      "variant": {
+        "id": "ledger.season.r05b.season_0",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 0
+          }
+        ],
+        "headline": "봄 한 철의 인구와 금고 증감을 결산했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.rollup",
+      "variant": {
+        "id": "ledger.rollup.r05b.season_0",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 0
+          }
+        ],
+        "headline": "봄의 오래된 일상 기록을 한데 묶었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.season",
+      "variant": {
+        "id": "ledger.season.r05b.season_1",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        "headline": "여름 한 철의 인구와 금고 증감을 결산했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.rollup",
+      "variant": {
+        "id": "ledger.rollup.r05b.season_1",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        "headline": "여름의 오래된 일상 기록을 한데 묶었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.season",
+      "variant": {
+        "id": "ledger.season.r05b.season_2",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 2
+          }
+        ],
+        "headline": "가을 한 철의 인구와 금고 증감을 결산했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.rollup",
+      "variant": {
+        "id": "ledger.rollup.r05b.season_2",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 2
+          }
+        ],
+        "headline": "가을의 오래된 일상 기록을 한데 묶었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.season",
+      "variant": {
+        "id": "ledger.season.r05b.season_3",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 3
+          }
+        ],
+        "headline": "겨울 한 철의 인구와 금고 증감을 결산했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.rollup",
+      "variant": {
+        "id": "ledger.rollup.r05b.season_3",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.season",
+            "op": "eq",
+            "value": 3
+          }
+        ],
+        "headline": "겨울의 오래된 일상 기록을 한데 묶었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.population",
+      "variant": {
+        "id": "ledger.population.r05b.increase",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.percent",
+            "op": "gte",
+            "value": 5
+          }
+        ],
+        "headline": "한 철 사이 도시 인구가 늘었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.population",
+      "variant": {
+        "id": "ledger.population.r05b.decrease",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.percent",
+            "op": "lte",
+            "value": -5
+          }
+        ],
+        "headline": "한 철 사이 도시 인구가 줄었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.market_dues",
+      "variant": {
+        "id": "decision.market_dues.r05b.usual",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "1000"
+          }
+        ],
+        "headline": "시장 부담을 평소 수준으로 정했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.market_dues",
+      "variant": {
+        "id": "decision.market_dues.r05b.level_250",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "250"
+          }
+        ],
+        "headline": "시장 부담을 평소의 4분의 1로 정했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.market_dues",
+      "variant": {
+        "id": "decision.market_dues.r05b.level_500",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "500"
+          }
+        ],
+        "headline": "시장 부담을 평소의 절반으로 정했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.market_dues",
+      "variant": {
+        "id": "decision.market_dues.r05b.level_1500",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "1500"
+          }
+        ],
+        "headline": "시장 부담을 평소의 한 배 반으로 정했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "decision.market_dues",
+      "variant": {
+        "id": "decision.market_dues.r05b.level_2000",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.chosen",
+            "op": "eq",
+            "value": "2000"
+          }
+        ],
+        "headline": "시장 부담을 평소의 두 배로 정했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.well",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "well"
+          }
+        ],
+        "headline": "도시의 첫 우물 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.granary",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "granary"
+          }
+        ],
+        "headline": "도시의 첫 곡창 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.mill",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "mill"
+          }
+        ],
+        "headline": "도시의 첫 곡물 방앗간 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.farmstead",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "farmstead"
+          }
+        ],
+        "headline": "도시의 첫 헛간 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.market",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "market"
+          }
+        ],
+        "headline": "도시의 첫 장터 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.chapel",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "chapel"
+          }
+        ],
+        "headline": "도시의 첫 예배당 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.church",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "church"
+          }
+        ],
+        "headline": "도시의 첫 교회 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.sawmill",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "sawmill"
+          }
+        ],
+        "headline": "도시의 첫 제재소 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.quarry",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "quarry"
+          }
+        ],
+        "headline": "도시의 첫 채석장 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.first_building",
+      "variant": {
+        "id": "milestone.first_building.r05b.masonry",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.building",
+            "op": "eq",
+            "value": "masonry"
+          }
+        ],
+        "headline": "도시의 첫 석공소 자리를 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.lots",
+      "variant": {
+        "id": "milestone.lots.r05b.lots_6",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.lots",
+            "op": "eq",
+            "value": 6
+          }
+        ],
+        "headline": "도시의 필지가 6개에 이른 일을 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.lots",
+      "variant": {
+        "id": "milestone.lots.r05b.lots_12",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.lots",
+            "op": "eq",
+            "value": 12
+          }
+        ],
+        "headline": "도시의 필지가 12개에 이른 일을 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "milestone.lots",
+      "variant": {
+        "id": "milestone.lots.r05b.lots_24",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.lots",
+            "op": "eq",
+            "value": 24
+          }
+        ],
+        "headline": "도시의 필지가 24개에 이른 일을 기록했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "plague.second_ended",
+      "variant": {
+        "id": "plague.second_ended.r05b.no_deaths",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.dead",
+            "op": "eq",
+            "value": 0
+          }
+        ],
+        "headline": "두 번째 역병이 물러갔고, 이번 역병의 주민 사망 집계는 0명이었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "plague.second_ended",
+      "variant": {
+        "id": "plague.second_ended.r05b.deaths",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.dead",
+            "op": "gt",
+            "value": 0
+          }
+        ],
+        "headline": "두 번째 역병이 물러간 뒤 이번 역병으로 잃은 주민들을 집계했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "drainage.done",
+      "variant": {
+        "id": "drainage.done.r05b.one_cell",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.cells",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        "headline": "배수 공사가 끝나 웅덩이 한 칸이 풀밭으로 바뀌었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "drainage.done",
+      "variant": {
+        "id": "drainage.done.r05b.several_cells",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.cells",
+            "op": "gte",
+            "value": 2
+          }
+        ],
+        "headline": "배수 공사가 끝나 여러 칸의 웅덩이가 풀밭으로 바뀌었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.countered",
+      "variant": {
+        "id": "negotiation.countered.r05b.cash",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.changes",
+            "op": "eq",
+            "value": "cash"
+          }
+        ],
+        "headline": "이웃 영주가 계약금 조건을 고쳐 혼인을 다시 제안했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.countered",
+      "variant": {
+        "id": "negotiation.countered.r05b.pension",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.changes",
+            "op": "eq",
+            "value": "pension"
+          }
+        ],
+        "headline": "이웃 영주가 연금 조건을 고쳐 혼인을 다시 제안했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.countered",
+      "variant": {
+        "id": "negotiation.countered.r05b.debt_assumption",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.changes",
+            "op": "eq",
+            "value": "debt_assumption"
+          }
+        ],
+        "headline": "이웃 영주가 채무 인수 조건을 고쳐 혼인을 다시 제안했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.countered",
+      "variant": {
+        "id": "negotiation.countered.r05b.political_support",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.changes",
+            "op": "eq",
+            "value": "political_support"
+          }
+        ],
+        "headline": "이웃 영주가 정치적 지원 조건을 고쳐 혼인을 다시 제안했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.countered",
+      "variant": {
+        "id": "negotiation.countered.r05b.jointure",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.changes",
+            "op": "eq",
+            "value": "jointure"
+          }
+        ],
+        "headline": "이웃 영주가 과부산 조건을 고쳐 혼인을 다시 제안했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "war.conscripts_left",
+      "variant": {
+        "id": "war.conscripts_left.r05b.one",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.men",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        "headline": "징집된 한 사람이 도시를 떠났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "war.conscripts_left",
+      "variant": {
+        "id": "war.conscripts_left.r05b.several",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.men",
+            "op": "gte",
+            "value": 2
+          }
+        ],
+        "headline": "징집된 사람들이 함께 도시를 떠났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.departures",
+      "variant": {
+        "id": "ledger.departures.r05b.one",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.count",
+            "op": "eq",
+            "value": 1
+          }
+        ],
+        "headline": "이번 철에는 한 가구가 도시를 떠났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "ledger.departures",
+      "variant": {
+        "id": "ledger.departures.r05b.several",
+        "priority": 20,
+        "when": [
+          {
+            "field": "params.count",
+            "op": "gte",
+            "value": 2
+          }
+        ],
+        "headline": "이번 철에는 여러 가구가 도시를 떠났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ]
+}

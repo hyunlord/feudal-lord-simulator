@@ -1,0 +1,443 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "anyOf": [
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "person.came_of_age"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "parentsAtAdulthood"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "parentsAtAdulthood": {
+              "enum": [
+                "co_resident",
+                "not_co_resident"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "person.came_of_age"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "milestone.stone_town"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "wallCompletionAtMilestone"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "wallCompletionAtMilestone": {
+              "enum": [
+                "all_complete",
+                "partly_complete",
+                "none_complete"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "milestone.stone_town"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "plague.priest_died"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "worshipBuildingsAtVacancy"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "worshipBuildingsAtVacancy": {
+              "enum": [
+                "present",
+                "absent"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "template": {
+          "const": "plague.priest_died"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "immutable_record_params"
+        },
+        "template": {
+          "const": "ledger.l4"
+        },
+        "status": {
+          "const": "known"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "archivedL4Direction"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "archivedL4Direction": {
+              "enum": [
+                "increased",
+                "decreased",
+                "unchanged"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "object",
+      "required": [
+        "recordId",
+        "recordTick",
+        "campaignId",
+        "sourceHead",
+        "captureKind",
+        "template",
+        "status",
+        "referenceVerified",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "recordId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "recordTick": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "campaignId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceHead": {
+          "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+        },
+        "captureKind": {
+          "const": "immutable_record_params"
+        },
+        "template": {
+          "const": "ledger.l4"
+        },
+        "status": {
+          "const": "unknown"
+        },
+        "referenceVerified": {
+          "const": false
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

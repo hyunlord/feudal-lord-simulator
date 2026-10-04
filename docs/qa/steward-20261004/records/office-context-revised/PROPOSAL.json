@@ -1,0 +1,223 @@
+{
+  "formatVersion": "office-context-v1",
+  "status": "AUTHOR_DRAFT_UNINSTALLED",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "fields": [
+    {
+      "id": "endingGuardianKind",
+      "templates": [
+        "lord.wardship_ended"
+      ],
+      "values": [
+        "named_guardian",
+        "overlord"
+      ],
+      "capture": "src/engine/lordship.ts:56-72,170-181; src/engine/history.ts:586-600",
+      "captureRule": "At successful ending, bind SAME ward lord ID before and after; verify event-year minus birthYear is finite safe integer >=21. Snapshot before.lordship.wardship.guardianId: nonempty string -> named_guardian; null -> overlord by engine convention; missing/invalid unknown. Do not infer mother/kin from role or current state.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    {
+      "id": "successorHouseholdAtEvent",
+      "templates": [
+        "faction.leader_succeeded"
+      ],
+      "values": [
+        "same_household",
+        "different_household"
+      ],
+      "capture": "src/engine/history.ts:285-294; src/engine/factions.ts:117-149,290-305",
+      "captureRule": "Match params predecessorId and leaderId to exact event identities. Require predecessor explicitly dead and successor explicitly alive. Snapshot predecessor householdId from before persons people/past and successor householdId after; both nonempty valid IDs. Equal -> same_household else different_household. No inference of blood kin, hereditary right, rivalry, or motive.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    {
+      "id": "oversightModeAtSuccession",
+      "templates": [
+        "stewardship.steward_died"
+      ],
+      "values": [
+        "direct",
+        "steward"
+      ],
+      "capture": "src/engine/stewardship.ts:137-158; src/engine/history.ts:924-940",
+      "captureRule": "Capture in per-estate oversight loop, retaining estate ID even though current history record lacks it. Require prior/current steward IDs equal record params, deceased explicitly dead, successor exists and alive=true in estates.people, prior.mode==after.mode. direct/steward only. Multiple estate matches without capture identity -> unknown. No current-state backfill or promises of loyal/competent successor.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    {
+      "id": "offMapPortfolioAtStart",
+      "templates": [
+        "stewardship.began"
+      ],
+      "values": [
+        "sole_estate",
+        "multiple_estates"
+      ],
+      "capture": "src/engine/stewardship.ts:51-54,117-134; src/engine/history.ts:924-935",
+      "captureRule": "At new oversight require after mode=direct, estate offMap=true and titleHolder=possessor=lord, appointed person exists alive=true. Count distinct after oversight estate IDs whose after estates are offMap and held in BOTH title/possession by lord, including this estate. One -> sole_estate, greater than one -> multiple_estates; zero/duplicate/invalid -> unknown. This describes concurrent oversight portfolio only, not lifetime first acquisition. Multiple additions share after snapshot; never invent ordering.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    }
+  ],
+  "additions": [
+    {
+      "template": "lord.wardship_ended",
+      "variant": {
+        "id": "lord.wardship_ended.r06office.named_guardian",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.endingGuardianKind",
+            "op": "eq",
+            "value": "named_guardian"
+          }
+        ],
+        "headline": "후견인이 기록되어 있던 영주의 후견이 성년과 함께 끝났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "lord.wardship_ended",
+      "variant": {
+        "id": "lord.wardship_ended.r06office.overlord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.endingGuardianKind",
+            "op": "eq",
+            "value": "overlord"
+          }
+        ],
+        "headline": "상위 영주의 후견 아래 있던 영주가 성년이 되어 후견을 벗어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "faction.leader_succeeded",
+      "variant": {
+        "id": "faction.leader_succeeded.r06office.same_household",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.successorHouseholdAtEvent",
+            "op": "eq",
+            "value": "same_household"
+          }
+        ],
+        "headline": "세상을 떠난 수장과 같은 가구의 사람이 무리를 이었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "faction.leader_succeeded",
+      "variant": {
+        "id": "faction.leader_succeeded.r06office.different_household",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.successorHouseholdAtEvent",
+            "op": "eq",
+            "value": "different_household"
+          }
+        ],
+        "headline": "세상을 떠난 수장과 다른 가구의 사람이 무리를 이었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "stewardship.steward_died",
+      "variant": {
+        "id": "stewardship.steward_died.r06office.direct",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.oversightModeAtSuccession",
+            "op": "eq",
+            "value": "direct"
+          }
+        ],
+        "headline": "영주가 직접 보는 영지에서 장부를 맡던 사람이 세상을 떠나 후임이 장부를 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "stewardship.steward_died",
+      "variant": {
+        "id": "stewardship.steward_died.r06office.steward",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.oversightModeAtSuccession",
+            "op": "eq",
+            "value": "steward"
+          }
+        ],
+        "headline": "청지기에게 맡긴 영지에서 담당자가 세상을 떠나 후임 청지기가 뒤를 이었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "stewardship.began",
+      "variant": {
+        "id": "stewardship.began.r06office.sole_estate",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.offMapPortfolioAtStart",
+            "op": "eq",
+            "value": "sole_estate"
+          }
+        ],
+        "headline": "관리하는 지도 밖 영지가 한 곳인 가운데, 영주가 직접 보고 청지기가 장부를 맡기 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "stewardship.began",
+      "variant": {
+        "id": "stewardship.began.r06office.multiple_estates",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.offMapPortfolioAtStart",
+            "op": "eq",
+            "value": "multiple_estates"
+          }
+        ],
+        "headline": "여러 지도 밖 영지를 관리하는 가운데, 이 영지도 영주가 직접 보고 청지기가 장부를 맡기 시작했다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ],
+  "fallback": "Unknown, malformed or record/campaign mismatched context -> existing baseline; no inferred past facts",
+  "runtimeImplemented": false
+}

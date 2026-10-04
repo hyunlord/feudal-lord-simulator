@@ -1,0 +1,461 @@
+{
+  "contexts": [
+    {
+      "id": "move_in.1.empty_fields",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.invented_domain",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.extra_field",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.extra_envelope",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.missing_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.empty_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.negative_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.fractional_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.unsafe_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.wrong_source",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.wrong_capture",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.wrong_template",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.binding_recordId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.binding_recordTick",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.1.binding_householdId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.empty_fields",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.invented_domain",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.extra_field",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.extra_envelope",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.missing_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.empty_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.negative_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.fractional_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.unsafe_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.wrong_source",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.wrong_capture",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.wrong_template",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.binding_recordId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.binding_recordTick",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "move_in.3.binding_householdId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.empty_fields",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.invented_domain",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.extra_field",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.extra_envelope",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.missing_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.empty_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.negative_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.fractional_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.unsafe_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.wrong_source",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.wrong_capture",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.wrong_template",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.binding_recordId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.binding_recordTick",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.manor.binding_householdId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.empty_fields",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.invented_domain",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.extra_field",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.extra_envelope",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.missing_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.empty_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.negative_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.fractional_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.unsafe_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.wrong_source",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.wrong_capture",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.wrong_template",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.binding_recordId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.binding_recordTick",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "married.h1.binding_householdId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.empty_fields",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.invented_domain",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.extra_field",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.extra_envelope",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.missing_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.empty_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.negative_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.fractional_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.unsafe_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.wrong_source",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.wrong_capture",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.wrong_template",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.binding_recordId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.binding_recordTick",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.true.binding_householdId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.empty_fields",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.invented_domain",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.extra_field",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.extra_envelope",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.missing_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.empty_id",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.negative_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.fractional_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.unsafe_tick",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.wrong_source",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.wrong_capture",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.wrong_template",
+      "schemaRejected": true,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.binding_recordId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.binding_recordTick",
+      "schemaRejected": false,
+      "selectorFallback": true
+    },
+    {
+      "id": "left.false.binding_householdId",
+      "schemaRejected": false,
+      "selectorFallback": true
+    }
+  ],
+  "proposalRejected": [
+    "empty_contracts",
+    "empty_fallback",
+    "empty_when",
+    "wrong_template_field",
+    "invented_condition"
+  ]
+}

@@ -1,0 +1,47 @@
+[
+  {
+    "file": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "lines": [
+      892,
+      894
+    ],
+    "text": "export function historyDate(record: Pick<HistoryRecord, \"tick\">, state: Pick<GameState, \"scenarioId\">) {\n  return calendar(record.tick, scenarioOf(state).startYear);\n}\n"
+  },
+  {
+    "file": "src/engine/scenarioState.ts",
+    "sha256": "f9fcc1b25b09b89956d73c030dad325c1339810a4499b9f97bc41493b33ca387",
+    "lines": [
+      67,
+      76
+    ],
+    "text": "export function calendar(tick: number, startYear: number, ticksPerYear: number = BALANCE.TICKS_PER_YEAR): CalendarDate {\n  const whole = Math.max(0, Math.floor(tick));\n  const yearOffset = Math.floor(whole / ticksPerYear);\n  const inYear = whole - yearOffset * ticksPerYear;\n  return {\n    year: startYear + yearOffset,\n    season: Math.floor((inYear * 4) / ticksPerYear) as 0 | 1 | 2 | 3,\n    dayOfYear: Math.floor((inYear * 360) / ticksPerYear) + 1,\n  };\n}\n"
+  },
+  {
+    "file": "src/engine/persons.ts",
+    "sha256": "8444172872cbb7e9b5394d1fa86af7af876e7908b1c45e0ed92d10895f9858f6",
+    "lines": [
+      43,
+      84
+    ],
+    "text": "const YEAR = BALANCE.TICKS_PER_YEAR;\nexport const ADULT_AGE = 14;\nexport const HEIR_AGE = 12;\nconst YOUTH_END = 29;\nconst ELDER_AGE = 55;\n/** FIX-11 (FX11-2): the age from which a head without a spouse no longer takes one. */\nconst REMARRY_MAX_AGE = 60;\n\n/** PS-3: yearly death rate by age, permille (a medieval village; dearth and famine weigh it). */\n// FIX-11 (item 2): the tail past 85 — at 200‰ a year from 75 on, one in two hundred lived past 100, and a town of\n// thousands over 150 years showed 109- and 115-year-olds (QA-010). From 85 350‰, from 95 700‰.\nconst DEATH_PERMILLE_BY_AGE: readonly (readonly [number, number])[] = [[5, 40], [14, 10], [30, 8], [55, 12], [65, 40], [75, 90], [85, 200], [95, 350], [Infinity, 700]];\n/** PS-3: weights on the rate, permille: bread at 1.4× or dearer (dearth), 2× or dearer (famine); a plague when there is one. */\nexport const MORTALITY_WEIGHTS = { dearth: 1_500, famine: 3_000, plague: 4_000 } as const;\n/** FIX-16: the share, permille, of dear bread's extra deaths a house not short of food still bears (the rest fall on\n *  the houses short of it, engine/foodShortage). A fed house's dead of such a year died of the year's sickness, not of hunger — relief that feeds a house\n *  lowers its death rate. */\nexport const FED_HOUSE_DEARTH_SHARE_PERMILLE = 200;\n/** PS-3: chance, permille, that a person in a house dies when it burns. */\nconst FIRE_DEATH_PERMILLE = 60;\n\n/** PS-4: the trade a staffed building's master takes, and its class. */\nexport const MASTER_TRADES: Readonly<Record<string, { readonly occupation: string; readonly classBand: PersonClassBand }>> = {\n  mill: { occupation: \"miller\", classBand: \"artisan\" }, sawmill: { occupation: \"sawyer\", classBand: \"artisan\" },\n  masonry: { occupation: \"mason\", classBand: \"artisan\" }, market: { occupation: \"chapman\", classBand: \"merchant\" },\n  farmstead: { occupation: \"husbandman\", classBand: \"labour\" }, logging_camp: { occupation: \"woodward\", classBand: \"labour\" },\n  quarry: { occupation: \"quarrier\", classBand: \"labour\" }, granary: { occupation: \"granger\", classBand: \"labour\" },\n  storehouse: { occupation: \"storekeeper\", classBand: \"labour\" },\n};\nconst STEWARD_SURNAMES = [\"de Stratton\", \"de Ashby\", \"de Wendover\", \"de Merton\", \"de Harpden\", \"de Cumbe\"] as const;\n\nexport const EMPTY_PERSONS: PersonState = { people: [], past: [], nextOrdinal: 1 };\n\nexport function currentYear(state: Pick<GameState, \"tick\" | \"scenarioId\">): number {\n  return calendar(state.tick, scenarioOf(state).startYear).year;\n}\nexport function ageOf(person: Pick<Person, \"birthYear\">, year: number): number {\n  return year - person.birthYear;\n}\nexport function ageBandOf(age: number): PersonAgeBand {\n  return age < ADULT_AGE ? \"child\" : age <= YOUTH_END ? \"youth\" : age < ELDER_AGE ? \"adult\" : \"elder\";\n}\n"
+  },
+  {
+    "file": "src/content/balanceConfig.ts",
+    "sha256": "2e39f6a1b7ef0cfce6dc9baf822de332e723bf7fd3f468729dfeddae36f52bb3",
+    "lines": [
+      30,
+      36
+    ],
+    "text": "  STARTING_COIN: 60,\n  /**\n   * Provisional (C1c): four 1,000-tick seasons, so autoplay's 24-lot victories (280–630k ticks) land in about\n   * 1370–1460 from a 1300 start. Derived only (no state field); tune after player timing.\n   */\n  TICKS_PER_YEAR: 4000,\n} as const;\n"
+  },
+  {
+    "file": "src/content/scenario/coreScenarios.ts",
+    "sha256": "215a98690720381cfd05494af912a266849588c85dfdd4107c4a4549cf87404f",
+    "lines": [
+      98,
+      110
+    ],
+    "text": "    name: SCENARIO_COPY.scenarios.campaign_market_town,\n    mode: \"campaign\",\n    startYear: 1300,\n    archetype: \"core:open_field\",\n    stages: STAGES,\n    eras: ERAS,\n    objectives: OBJECTIVES,\n    // K4-1: no stone-town era or stone wall; a completed stone wall is only a victory-screen bonus.\n    victory: { all: [\n      { kind: \"population_at_least\", value: 140 },\n      { kind: \"occupied_l4_lots_at_least\", value: 4 },\n      { kind: \"supplied_percent_at_least\", value: 90 },\n    ], holdTicks: 1200 },\n"
+  }
+]

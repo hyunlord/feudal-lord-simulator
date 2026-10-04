@@ -1,0 +1,553 @@
+{
+  "baseline": "seed3-open-fixed-growth",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "complete": true,
+  "finalTick": 600000,
+  "annualRows": 150,
+  "economicBoundaryStats": {
+    "population": {
+      "firstBoundary": 56,
+      "lastBoundary": 768,
+      "min": 56,
+      "max": 768,
+      "meanOfBoundaries": 604.94
+    },
+    "treasury": {
+      "firstBoundary": 1,
+      "lastBoundary": 118342,
+      "min": 1,
+      "max": 118342,
+      "meanOfBoundaries": 41658.42
+    },
+    "timber": {
+      "firstBoundary": 80,
+      "lastBoundary": 0,
+      "min": 0,
+      "max": 80,
+      "meanOfBoundaries": 1.2333333333333334
+    },
+    "foodReserveTicks": {
+      "firstBoundary": 0,
+      "lastBoundary": 5662,
+      "min": 0,
+      "max": 11140,
+      "meanOfBoundaries": 5754.86
+    },
+    "houseRecords": {
+      "firstBoundary": 4,
+      "lastBoundary": 24,
+      "min": 4,
+      "max": 24,
+      "meanOfBoundaries": 22.013333333333332
+    },
+    "inhabited": {
+      "firstBoundary": 4,
+      "lastBoundary": 24,
+      "min": 4,
+      "max": 24,
+      "meanOfBoundaries": 21.88
+    }
+  },
+  "commandTotals": {
+    "attempted": 324,
+    "changed": 210,
+    "asked": 202,
+    "own": 8,
+    "zeroAttemptYears": 0,
+    "zeroChangedYears": 0,
+    "zeroAskedYears": 0,
+    "peakAttempt": 117,
+    "peakChanged": 8,
+    "changedAtLeast5Years": 1,
+    "attemptAtLeast5Years": 2,
+    "pauseTicks": 102
+  },
+  "finalRetainedDeaths": {
+    "age": 2127,
+    "famine": 346,
+    "famine_year": 11,
+    "fire": 7,
+    "plague": 413
+  },
+  "negativeDeathCounterDiffs": [
+
+  ],
+  "startEnvelopeKeys": [
+    "schemaVersion",
+    "gameVersion",
+    "createdAt",
+    "savedAt",
+    "scenarioId",
+    "seed",
+    "tick",
+    "rngState",
+    "summary",
+    "checksum",
+    "state"
+  ],
+  "finalEstateSnapshots": [
+    {
+      "id": "estate-home",
+      "title": "lord",
+      "possessor": "lord",
+      "value": 0,
+      "pieces": [
+        {
+          "id": "home:land_rent",
+          "title": "lord",
+          "possessor": "lord",
+          "loss": null
+        },
+        {
+          "id": "home:manor_court",
+          "title": "lord",
+          "possessor": "lord",
+          "loss": null
+        },
+        {
+          "id": "home:market",
+          "title": "lord",
+          "possessor": "lord",
+          "loss": null
+        },
+        {
+          "id": "home:tolls",
+          "title": "lord",
+          "possessor": "lord",
+          "loss": null
+        },
+        {
+          "id": "home:mill",
+          "title": "lord",
+          "possessor": "lord",
+          "loss": null
+        },
+        {
+          "id": "home:fishery",
+          "title": "lord",
+          "possessor": "lord",
+          "loss": null
+        },
+        {
+          "id": "home:advowson",
+          "title": "lord",
+          "possessor": "lord",
+          "loss": null
+        }
+      ]
+    },
+    {
+      "id": "estate-neighbour-1",
+      "title": "neighbour_1",
+      "possessor": "neighbour_1",
+      "value": 6400,
+      "pieces": [
+        {
+          "id": "estate-neighbour-1:land_rent",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-1:manor_court",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-1:fishery",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-1:hunting",
+          "title": "neighbour_1",
+          "possessor": "neighbour_1",
+          "loss": null
+        }
+      ]
+    },
+    {
+      "id": "estate-neighbour-2",
+      "title": "neighbour_2",
+      "possessor": "neighbour_2",
+      "value": 4000,
+      "pieces": [
+        {
+          "id": "estate-neighbour-2:land_rent",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-2:manor_court",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-2:mill",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-2:advowson",
+          "title": "neighbour_2",
+          "possessor": "neighbour_2",
+          "loss": null
+        }
+      ]
+    },
+    {
+      "id": "estate-neighbour-3",
+      "title": "person:est-000004",
+      "possessor": "person:est-000004",
+      "value": 4000,
+      "pieces": [
+        {
+          "id": "estate-neighbour-3:land_rent",
+          "title": "person:est-000004",
+          "possessor": "person:est-000004",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-3:manor_court",
+          "title": "person:est-000004",
+          "possessor": "person:est-000004",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-3:advowson",
+          "title": "person:est-000004",
+          "possessor": "person:est-000004",
+          "loss": null
+        },
+        {
+          "id": "estate-neighbour-3:hunting",
+          "title": "person:est-000004",
+          "possessor": "person:est-000004",
+          "loss": null
+        }
+      ]
+    }
+  ],
+  "factions": {
+    "overlord": {
+      "observedBoundaries": 150,
+      "minRelation": -40,
+      "maxRelation": 20,
+      "last": {
+        "id": "overlord",
+        "leader": "f-000030",
+        "relation": -40
+      },
+      "distinctLeaderIds": 7,
+      "adjacentLeaderChanges": 6
+    },
+    "crown": {
+      "observedBoundaries": 150,
+      "minRelation": 10,
+      "maxRelation": 40,
+      "last": {
+        "id": "crown",
+        "leader": "f-000027",
+        "relation": 30
+      },
+      "distinctLeaderIds": 7,
+      "adjacentLeaderChanges": 6
+    },
+    "neighbour_1": {
+      "observedBoundaries": 150,
+      "minRelation": -67,
+      "maxRelation": 0,
+      "last": {
+        "id": "neighbour_1",
+        "leader": "f-000024",
+        "relation": -67
+      },
+      "distinctLeaderIds": 5,
+      "adjacentLeaderChanges": 4
+    },
+    "neighbour_2": {
+      "observedBoundaries": 150,
+      "minRelation": -85,
+      "maxRelation": 0,
+      "last": {
+        "id": "neighbour_2",
+        "leader": "f-000028",
+        "relation": -85
+      },
+      "distinctLeaderIds": 5,
+      "adjacentLeaderChanges": 4
+    },
+    "bishop": {
+      "observedBoundaries": 150,
+      "minRelation": 5,
+      "maxRelation": 100,
+      "last": {
+        "id": "bishop",
+        "leader": "f-000026",
+        "relation": 100
+      },
+      "distinctLeaderIds": 6,
+      "adjacentLeaderChanges": 5
+    },
+    "merchant_house_1": {
+      "observedBoundaries": 150,
+      "minRelation": -97,
+      "maxRelation": 18,
+      "last": {
+        "id": "merchant_house_1",
+        "leader": "p-002791",
+        "relation": -97
+      },
+      "distinctLeaderIds": 19,
+      "adjacentLeaderChanges": 18
+    },
+    "merchant_house_2": {
+      "observedBoundaries": 150,
+      "minRelation": -4,
+      "maxRelation": 33,
+      "last": {
+        "id": "merchant_house_2",
+        "leader": "p-002261",
+        "relation": 30
+      },
+      "distinctLeaderIds": 21,
+      "adjacentLeaderChanges": 20
+    },
+    "town": {
+      "observedBoundaries": 150,
+      "minRelation": 2,
+      "maxRelation": 100,
+      "last": {
+        "id": "town",
+        "leader": "p-002285",
+        "relation": 100
+      },
+      "distinctLeaderIds": 18,
+      "adjacentLeaderChanges": 17
+    },
+    "commons": {
+      "observedBoundaries": 150,
+      "minRelation": 15,
+      "maxRelation": 100,
+      "last": {
+        "id": "commons",
+        "leader": "p-002403",
+        "relation": 100
+      },
+      "distinctLeaderIds": 13,
+      "adjacentLeaderChanges": 12
+    }
+  },
+  "trades": {
+    "carpenter": {
+      "firstBoundary": 1301,
+      "min": 1,
+      "max": 2,
+      "final": 2
+    },
+    "miller": {
+      "firstBoundary": 1301,
+      "min": 1,
+      "max": 1,
+      "final": 1
+    },
+    "carter": {
+      "firstBoundary": 1301,
+      "min": 1,
+      "max": 3,
+      "final": 3
+    },
+    "brewer": {
+      "firstBoundary": 1301,
+      "min": 0,
+      "max": 3,
+      "final": 3
+    },
+    "butcher": {
+      "firstBoundary": 1302,
+      "min": 0,
+      "max": 2,
+      "final": 0
+    },
+    "baker": {
+      "firstBoundary": 1302,
+      "min": 0,
+      "max": 2,
+      "final": 2
+    },
+    "tailor": {
+      "firstBoundary": 1303,
+      "min": 0,
+      "max": 3,
+      "final": 3
+    },
+    "shoemaker": {
+      "firstBoundary": 1303,
+      "min": 0,
+      "max": 4,
+      "final": 4
+    },
+    "smith": {
+      "firstBoundary": 1303,
+      "min": 0,
+      "max": 2,
+      "final": 1
+    },
+    "tanner": {
+      "firstBoundary": 1307,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    },
+    "merchant": {
+      "firstBoundary": 1310,
+      "min": 0,
+      "max": 2,
+      "final": 2
+    },
+    "innkeeper": {
+      "firstBoundary": 1310,
+      "min": 0,
+      "max": 3,
+      "final": 3
+    },
+    "cooper": {
+      "firstBoundary": 1312,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    },
+    "wheelwright": {
+      "firstBoundary": 1327,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    },
+    "mercer": {
+      "firstBoundary": 1353,
+      "min": 0,
+      "max": 1,
+      "final": 0
+    }
+  },
+  "blocks25Years": [
+    {
+      "from": 1300,
+      "to": 1324,
+      "endSnapshotYear": 1325,
+      "population": 468,
+      "treasury": 815,
+      "foodReserveTicks": 2931,
+      "attempted": 178,
+      "changed": 64,
+      "asked": 56,
+      "zeroChangedYears": 0,
+      "retainedDeathNetChange": {
+        "age": 128,
+        "famine": 105,
+        "famine_year": 11
+      }
+    },
+    {
+      "from": 1325,
+      "to": 1349,
+      "endSnapshotYear": 1350,
+      "population": 455,
+      "treasury": 10236,
+      "foodReserveTicks": 5084,
+      "attempted": 35,
+      "changed": 35,
+      "asked": 35,
+      "zeroChangedYears": 0,
+      "retainedDeathNetChange": {
+        "age": 331,
+        "famine": 47,
+        "famine_year": 0,
+        "fire": 3,
+        "plague": 330
+      }
+    },
+    {
+      "from": 1350,
+      "to": 1374,
+      "endSnapshotYear": 1375,
+      "population": 654,
+      "treasury": 30830,
+      "foodReserveTicks": 8386,
+      "attempted": 28,
+      "changed": 28,
+      "asked": 28,
+      "zeroChangedYears": 0,
+      "retainedDeathNetChange": {
+        "age": 371,
+        "famine": 89,
+        "famine_year": 0,
+        "fire": 0,
+        "plague": 83
+      }
+    },
+    {
+      "from": 1375,
+      "to": 1399,
+      "endSnapshotYear": 1400,
+      "population": 640,
+      "treasury": 60084,
+      "foodReserveTicks": 3609,
+      "attempted": 30,
+      "changed": 30,
+      "asked": 30,
+      "zeroChangedYears": 0,
+      "retainedDeathNetChange": {
+        "age": 353,
+        "famine": 59,
+        "famine_year": 0,
+        "fire": 4,
+        "plague": 0
+      }
+    },
+    {
+      "from": 1400,
+      "to": 1424,
+      "endSnapshotYear": 1425,
+      "population": 759,
+      "treasury": 88074,
+      "foodReserveTicks": 3818,
+      "attempted": 27,
+      "changed": 27,
+      "asked": 27,
+      "zeroChangedYears": 0,
+      "retainedDeathNetChange": {
+        "age": 467,
+        "famine": 46,
+        "famine_year": 0,
+        "fire": 0,
+        "plague": 0
+      }
+    },
+    {
+      "from": 1425,
+      "to": 1449,
+      "endSnapshotYear": 1450,
+      "population": 768,
+      "treasury": 118342,
+      "foodReserveTicks": 5662,
+      "attempted": 26,
+      "changed": 26,
+      "asked": 26,
+      "zeroChangedYears": 0,
+      "retainedDeathNetChange": {
+        "age": 477,
+        "famine": 0,
+        "famine_year": 0,
+        "fire": 0,
+        "plague": 0
+      }
+    }
+  ],
+  "engineExecuted": false
+}

@@ -1,0 +1,5146 @@
+[
+  {
+    "id": "ck_evt_001",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "pasture_market_route_overlap",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_002",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_audit_mode",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_003",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_004",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_005",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_006",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_007",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_008",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_009",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_010",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "file_suit",
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_011",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_counter"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_counter"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_012",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_013",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "answer_audit"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_014",
+    "integrationMode": "기존 사건 문구 개선. 새 사건 수·발생 빈도에 합산하지 않고 기존 사건 화면의 대사와 선택지 설명을 교체한다.",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_015",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_016",
+    "integrationMode": "기존 사건 문구 개선. 새 사건 수·발생 빈도에 합산하지 않고 기존 사건 화면의 대사와 선택지 설명을 교체한다.",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "famine_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "famine_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_017",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_018",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "propose_marriage"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "propose_marriage"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_019",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_020",
+    "integrationMode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "keep_promise"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "keep_promise"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_021",
+    "integrationMode": "기존 home 청원의 보충 서사 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_022",
+    "integrationMode": "기존 장별 청원 보충 장면 — 원본 제목/선택 유지",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_023",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "offmap_agricultural_building_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_024",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_025",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_audit"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_026",
+    "integrationMode": "기존 home 청원의 보충 서사 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "household_origin_neighbour",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_027",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "set_estate_policy",
+      "order_timber"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_028",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_policy",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_029",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_audit_mode",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_030",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_031",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_032",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_033",
+    "integrationMode": "기존 소송 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_034",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "set_exception_rules"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_035",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_036",
+    "integrationMode": "기존 home 청원의 보충 서사 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_037",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight",
+      "set_audit_mode"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_038",
+    "integrationMode": "기존 명령 안내 초안 — 미설치",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "enforce_possession"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_039",
+    "integrationMode": "기존 장별 청원 보충 장면 — 원본 제목/선택 유지",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_040",
+    "integrationMode": "기존 장별 청원 보충 장면 — 원본 제목/선택 유지",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_041",
+    "integrationMode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "home_customary_forest_use",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_042",
+    "integrationMode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_043",
+    "integrationMode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_044",
+    "integrationMode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "adjacent_estate_road_geometry",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_045",
+    "integrationMode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_046",
+    "integrationMode": "미설치 콘텐츠 초안 / 기존 경로 안내·문구 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_047",
+    "integrationMode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_048",
+    "integrationMode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "home_common_pasture_geometry",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_049",
+    "integrationMode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_050",
+    "integrationMode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "parish_residential_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_051",
+    "integrationMode": "미설치 초안 / 기존 명령·응답 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "file_suit",
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_052",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "answer_audit"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_053",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": true,
+    "commands": [
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_054",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "offmap_arable_pasture_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_055",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_056",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "answer_estate_petition"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "answer_estate_petition"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "market_approach_route",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "기존 원고의 필수 편집 맥락. 실제 지형·거래·가구출신 또는 새 정의 연결을 아직 확인할 수 없어 자동 통과 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_057",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "church_near_market",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "편집 정의 완료: 기존 market과 church/chapel의 buildingFootprintDistance<=4. CONTRACTS.json 참조. 어댑터 구현 전 차단 유지."
+      },
+      {
+        "id": "new_petition_definition_057",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "PETITION_DEFS_DRAFT.json에 정의 초안 완료. lookup·상태기반 주입·기한·중복·화면·저장 검증 전 차단 유지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_058",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_petition_definition_058",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "PETITION_DEFS_DRAFT.json 정의 초안 완료. lookup·상태기반 주입·기한·중복·화면·저장 검증 전 차단 유지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_059",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_060",
+    "integrationMode": "미설치 초안 / 기존 경로 안내 어댑터",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "petition_response"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "petition_response"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_061",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight",
+      "set_exception_rules"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_061.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_062",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_062.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_063",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_063.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT03",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_064",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_064.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT04",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_065",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_065.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_066",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_066.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT06",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_067",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_067.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_068",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_068.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_069",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_069.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT09",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_070",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_070.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT10",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      },
+      {
+        "id": "ck_evt_070.history_window",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사용 자료의 확인된 시대와 집필 창 불일치. 동시대 근거 보강 또는 재배치 전 비노출."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_071",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_071.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT11",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS10",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_072",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_072.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT12",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_073",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_073.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT13",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_074",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_074.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT14",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_075",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_075.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_076",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_audit_mode",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_076.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_077",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_exception_rules"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_077.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_078",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_078.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS10",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_079",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_079.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT19",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_080",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_080.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS11",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_081",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_081.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT21",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS16",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "인장이 다르다는 이유만으로 위조를 확정하지 않는다. 예시 중 시기 밖 문서를 게임 기간의 사건으로 쓰지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_082",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_082.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT22",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_083",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_083.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_084",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_084.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT24",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_085",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_085.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_086",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_086.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT26",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_087",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_087.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_088",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_088.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_089",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_089.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT29",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      },
+      {
+        "id": "ck_evt_089.history_window",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사용 자료의 확인된 시대와 집필 창 불일치. 동시대 근거 보강 또는 재배치 전 비노출."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS05",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "제목 범위만으로 1400년 특정 작업장·인물의 존재를 확정하지 않는다. 1450 이후 개별 소송·재혼·직종 사례는 사용하지 않았다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_090",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_090.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_091",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_091.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT31",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_092",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_092.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_093",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_093.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS13",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "왕실 서기관의 사례를 평범한 이주민의 표준 경로로 삼지 않는다. 지역 영주는 왕실의 지위 특허를 발급할 수 없다. denization은16세기 이후 naturalisation과 동일하지 않으므로 단순한 완전 귀화로 번역하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_094",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_094.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT34",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_095",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_095.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_096",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_096.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT36",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      },
+      {
+        "id": "ck_evt_096.history_window",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사용 자료의 확인된 시대와 집필 창 불일치. 동시대 근거 보강 또는 재배치 전 비노출."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_097",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_097.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT37",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_098",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_098.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT38",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_099",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_099.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      },
+      {
+        "id": "NE_SR01_MT39",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "핵심법정/계약효과미구현"
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS14",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "이름 누락의 원인이 적대감인지 새 이주인지 저자도 확정하지 않는다.1440년의 과세·면제 규칙을 이후 모든 연도에 동일 적용하지 않는다. 현대 가치 환산과 임금 수치는 사용하지 않았다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_100",
+    "integrationMode": "existing_commands_content_not_installed",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "order_timber"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "ck_evt_100.authored_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "구체청원사실·계약당사자·원인맥락을생성하고저장하는등록기어댑터미구현. 명시적bindingRequirements를resolver로구현하기전차단."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_101",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_102",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_103",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN01",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 지역 소환·출석·경계 답사 절차 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_104",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN02",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 성직자 추천권·성직록 교환 절차 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_105",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "order_timber",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_106",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN03",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 용도 제한 채취권과 별도 매매 허락 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_107",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN04",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 교구·장원 회계 인계와 독립 확인 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_108",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_109",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN01",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 지역 소환·출석·경계 답사 절차 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_110",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN05",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 직영지 임대·노동 계약 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS10",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_111",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS07",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_112",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN06",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 타일 등 물자 납품 계약과 재협상 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_113",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_114",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN07",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 종자 비축·현물 구휼·씨앗 대여 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_115",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_116",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN02",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 성직자 추천권·성직록 교환 절차 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_117",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS07",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_118",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN08",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 목적 제한 기부 재산 회계 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_119",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN09",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 유증 동산의 인도·대체·청구 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_120",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN04",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 교구·장원 회계 인계와 독립 확인 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_121",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN10",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 일반 채무·보증·면책 문서 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_122",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN11",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 일시 통행 허락·가축 피해 중재 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_123",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_124",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "propose_marriage"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "propose_marriage"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_125",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN12",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 공동 다리 수선 분담 약정 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_126",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN10",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 일반 채무·보증·면책 문서 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_127",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_128",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "propose_marriage"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "propose_marriage"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_129",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN11",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 일시 통행 허락·가축 피해 중재 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_130",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_exception_rules",
+      "set_estate_oversight",
+      "set_audit_mode"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_131",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "propose_marriage"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "propose_marriage"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_132",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "propose_marriage"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "propose_marriage"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_133",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "propose_marriage"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "propose_marriage"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_134",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN13",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 분쟁 수입 예치와 중립 결산 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_135",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "seek_suit_patron"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "seek_suit_patron"
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN15",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 권원 소송의 재판 외 중재 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_136",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_137",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "new_effect_CN14",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사건 핵심에 생존권자의 벌채 제한과 동의 상태·효과가 필요하다. 기존 명령의 주변 설정으로 사건 해결을 가장하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_138",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_139",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "propose_marriage"
+    ],
+    "commandsOutsideRegistryEffect": [
+      "propose_marriage"
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_140",
+    "integrationMode": "existing_commands_pending_registry_binding",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_audit_mode",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_141",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_142",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_audit_mode",
+      "set_exception_rules",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN01",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "문서의 이중 승인·인장 보관 주체 상태가 없어 요청의 완전 해결은 새 효과가 필요하다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_143",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_144",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "order_timber",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_145",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_policy",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_146",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy",
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN02",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "수선용 이용권과 판매권의 범위를 가진 실제 분쟁 바인딩이 필요하다. 범용 청구권에 무작위 적용 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_147",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN03",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "관리 사망으로 생긴 승계 맥락을 실제 사람·사망 기록에 연결해야 한다. 살아 있는 현직을 죽었다고 쓰지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_148",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN04",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "빈 작업장이 실제 역병 사망 가구와 연결되는 맥락이 필요하다. 길드 존재와 별개로 자동 발병 판정 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_149",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_exception_rules",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_150",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "add_suit_evidence",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_151",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN05",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "이주 장인의 신분·가입 거부 사건 상태가 필요하다. 지위 특허 발급 효과는 제안하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS13",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "왕실 서기관의 사례를 평범한 이주민의 표준 경로로 삼지 않는다. 지역 영주는 왕실의 지위 특허를 발급할 수 없다. denization은16세기 이후 naturalisation과 동일하지 않으므로 단순한 완전 귀화로 번역하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_152",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN06",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "동일 가구의 두 생업과 토지 보유를 연결할 상태가 필요하다. 현재 tradeId 하나를 복수 직업으로 꾸미지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS05",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "제목 범위만으로 1400년 특정 작업장·인물의 존재를 확정하지 않는다. 1450 이후 개별 소송·재혼·직종 사례는 사용하지 않았다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_153",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "add_suit_evidence"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN07",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "해당 다리의 기부 이력과 실제 권리 조각 분쟁을 연결할 상태가 필요하다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_154",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "add_suit_evidence",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN08",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "가구 간 채무 사건은 현행 영지 권리 소송과 다르다. 채무-권리 연결 근거 없으면 이 장면 전체 보류."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_155",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_156",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_157",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS10",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_158",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_market_dues",
+      "set_audit_mode",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN09",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "왕실 명부·개인 식별 정정과 본인 진술 상태가 없어 장면의 실질 해결은 미지원. 현행 세력 관계 보상으로 대체 금지."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS14",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "이름 누락의 원인이 적대감인지 새 이주인지 저자도 확정하지 않는다.1440년의 과세·면제 규칙을 이후 모든 연도에 동일 적용하지 않는다. 현대 가치 환산과 임금 수치는 사용하지 않았다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_159",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN10",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "공동체 차입의 상환·채권 추적은 현재 엔진에서 확인되지 않았다. 영수증 loan만으로 상환된 듯 쓰지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_160",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_161",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_162",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_163",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_164",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_165",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_166",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_estate_policy",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN11",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 급류·다리 통행 위험 상태와 사료의 시기 적용이 없다. 초기 장면은 합성 설계 보류."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS06",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_167",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_audit_mode",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN12",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "사망한 관리의 잔여 회계와 새 현직을 연결하는 승계 맥락이 필요하다. 현재 현직 alive 조건을 반드시 지킨다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_168",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN13",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "현재 일손 부족이 역병 사망과 연결되는 검증된 사건 맥락이 필요하다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_169",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_policy",
+      "set_market_dues",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN14",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "원거리 질병 보고·확인 여부 상태가 없어 확정 발병과 분리하는 새 맥락이 필요하다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_170",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "order_timber"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN15",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 노동 부족과 물류 부담을 연결할 상태 검증이 필요하다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_171",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_estate_policy",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS11",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_172",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN16",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "종자와 식용 곡물의 분리 재고가 없다. 주민의 실제 종자 부족을 확정하는 사건은 보류."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS10",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_173",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS11",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_174",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_audit_mode",
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS11",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_175",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN17",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "목재 거래는 실제 엔진에서 선박 지연과 연결되지 않는다. 수로 지연을 실제 조건으로 쓰려면 새 상태가 필요하다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS11",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_176",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_estate_oversight"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN18",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 영지 흉작과 수입 변화의 인과 연결이 필요하다. 임의 가구 파산을 생성하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS10",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_177",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "order_timber",
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN19",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 질병 휴업과 수선 기한은 현행 인물 상태·약속에 직접 대응하지 않는다. 기한 연장 명령은 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_178",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_FN20",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "원거리 질병 보고의 같은 지역·재발 맥락을 저장할 상태가 필요하다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS12",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_179",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_market_dues"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS10",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_180",
+    "integrationMode": "분리 작성한 미설치 사건 초안",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+      "set_project_subsidy",
+      "set_estate_policy"
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "draft_requires_adapter_and_per_event_review_not_runtime_pass"
+  },
+  {
+    "id": "ck_evt_181",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI01_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "미성년 당사자·유효 후견·별도 관리 재산·확인된 수선 필요의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      },
+      {
+        "id": "NE_SR01_KI01_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA06",
+        "status": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+        "limit": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_182",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI02_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "후견 종료 자격·초기와 현재 재산 목록·불일치 항목의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      },
+      {
+        "id": "NE_SR01_KI02_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA06",
+        "status": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+        "limit": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_183",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI03_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "생존한 성인 과부·직접 확인된 의사·가족의 재혼 추진·거처 약정의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      },
+      {
+        "id": "NE_SR01_KI03_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA06",
+        "status": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+        "limit": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_184",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI04_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 친족 채무·채권자·만기·등록 관할·보증 가능 재산의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_185",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI05_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "후견 종료·성년 당사자와 친족 관계·고지 기록·자유로운 동의 확인의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      },
+      {
+        "id": "NE_SR01_KI05_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA06",
+        "status": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+        "limit": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_186",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI06_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "가족 채무의 두 사본·기한 불일치·유효 관할 기록의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_187",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI07_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "부모 사망이 확인된 미성년자·생존 친족·돌봄 수용 의사·별도 재산 후견 자격의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      },
+      {
+        "id": "NE_SR01_KI07_later_practice",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA06",
+        "status": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+        "limit": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_188",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI08_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 사망·별도 유산 목록·집행 권한·확인 안 된 청구의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_189",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI09_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "법적·계약적 수입 수익자·지급 이력·이의 청구·영수증 부재의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      },
+      {
+        "id": "NE_SR01_KI09_source_fulltext",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "CS09 원문403;검색 발췌만으로 해당 관행을 확정하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS09",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "공식 유물 해설 본문 직접 확인. 중세 필체 자체의 독립 판독은 하지 않았다. 인장 소유로 라틴어 문해력·모든 여성의 독립 법적 지위를 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_190",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI10_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "동일 권리 조각의 실제 공동 수익자·각 지분·수선 의무·분배 분쟁의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_191",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI11_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "영주관 실제 수선 의뢰·검증된 견적·친족 추가 공사 요구·재원 구분의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "가족의 비용 다툼은 편지에 없고 원고의 창작이다. 건물이나 계약 성사를 증명하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_192",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI12_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "성인 당사자의 유효 혼인 준비·가족별 현물 기여 합의·혼인 본계약과 분리된 비용의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Norfolk 한 가문 사례. 혼인 준비와 당사자 동의·계약 법제를 동일시하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_193",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI13_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "생존 성인 가족·확인된 질환 보고·현재 거처·이동 가능 여부·돌봄 수용 의사의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_194",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI14_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "본인이 남긴 실제 순례 약속·회복 보고·업무 담당·자발적 여행 의사의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_195",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI15_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "귀환·구출 비용·청구인·실종된 원문·증언 가능한 생존 인물의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      },
+      {
+        "id": "NE_SR01_KI15_source_date",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "편년은after1440(?)와1435년또는이전견해가충돌한다. FA05로1450이전근거는보강했지만정확연도와사건맥락은미확정이며핵심효과차단은유지한다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA04",
+        "status": "HOLD_DATE_CONFIRMATION",
+        "limit": "after1440(?)는 구판 편집추정이다. FA05의1435년 또는 이전 견해와 충돌하며 정확 편년은 미확정. 원고 집필연도와 편지연도를 동일시하지 않는다."
+      },
+      {
+        "id": "FA05",
+        "status": "LIMITED_TO_PRE1450_EVIDENCE_EXACT_DATE_DISPUTED",
+        "limit": "정확한 연도는 확정하지 않는다. after1440(?)라는 구판 편집추정과 충돌한다. 가족 상환 약정·정산 절차의 직접 증거는 아니다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_196",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI16_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 추도 약정·사제 수락·사용 가능한 가족 거처·기존 건물 입주권의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS07",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_197",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI17_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "성인 가족의 자금 요청·현 권원·장래 기대만 있는 재산·채권자의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS15",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_198",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI18_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "생존 배우자·동일 업무의 중복 의뢰·서면 위임 범위·이미 든 작성비의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA01",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Norfolk 한 가문 사례. 혼인 준비와 당사자 동의·계약 법제를 동일시하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_199",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI19_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 자발적 방문 계획·현재 담당 업무·대리 수락 가능한 생존 성인 둘의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "FA02",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  },
+  {
+    "id": "ck_evt_200",
+    "integrationMode": "blocked_unsupported_effect",
+    "enabledInSidecar": false,
+    "sameIdEngineEntry": false,
+    "commands": [
+
+    ],
+    "commandsOutsideRegistryEffect": [
+
+    ],
+    "unsupportedFilters": [
+      {
+        "id": "NE_SR01_KI20_context",
+        "status": "unsupported",
+        "onMissing": "block_entry",
+        "reason": "실제 가문 문서 목록·보관 담당·접근 분쟁·원문과 사본 식별의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+      }
+    ],
+    "sourceCatalogRestrictions": [
+      {
+        "id": "CS03",
+        "status": "LIMITED_TO_CONFIRMED_CLAIM",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다."
+      }
+    ],
+    "disposition": "core_unsupported_plus_infrastructure"
+  }
+]

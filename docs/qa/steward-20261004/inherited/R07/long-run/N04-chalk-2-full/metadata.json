@@ -1,0 +1,39 @@
+{
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "config": {
+    "seed": 2,
+    "years": 150,
+    "land": "core:chalk_downs",
+    "mode": "full",
+    "policy": "growth",
+    "output": "/home/hyunlord/fls-runs/astra-steward-N04-r03-5fb1aeb/.remote/N04-chalk-2-full"
+  },
+  "verifiedSource": {
+    "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+    "sourceSha256": {
+      "src/engine/lordBot.ts": "47c7e2d50d9438e110f8f77a7e1ab58db7b5c35897c42e0837187d573bd6fa29",
+      "src/engine/registry.ts": "5a5bb81ff2e7fe445a8db833895217b13d7f5d1e4831d9ef0380e050b2a835a4",
+      "src/engine/registry.types.ts": "7c6dae66001f59bd5d08f1b51af5abe6fd48119f931bd0db5f0bb664483dcdbc",
+      "src/engine/townAgency.ts": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d",
+      "src/engine/tick.ts": "1bfa1f8c7afa3e06c3fb6ac511971edb03436ef89f58c863db53eb9499c0cb1a",
+      "src/state/gameStore.ts": "08946bb1a8dff61965d0ecdd767eaa3d4a40bc4bc92b12ba603f7bfb086d7ed3",
+      "src/state/newGame.ts": "a4a858ed3d12021a05fa9be3d626996a86f14401e5ddbc6841e2db20d81dd8d3",
+      "src/content/registry/registryTypes.ts": "458f7a21a4c922fce717aa4d213a943545c2e7a3696607ddf0c3560c7e2e255f",
+      "src/content/registry/registryEntries.ts": "ac0243b0d74974ef3a3a175e93b19523c65d8baff0bb78abcdff836a88e52a80"
+    },
+    "trackedSourceClean": true
+  },
+  "protocol": "current-v2-fresh-registry-controls",
+  "policyArgumentApplied": false,
+  "startedAt": "2026-10-03T11:44:34.829Z",
+  "opening": "newGameState campaign lord",
+  "unverified": [
+    "full resource conservation",
+    "all cash movements have ledger entries",
+    "full rights transfer history",
+    "player fun",
+    "render/UI",
+    "dead actor command refusal",
+    "whole-run deterministic replay until compared externally"
+  ]
+}

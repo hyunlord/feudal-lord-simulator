@@ -1,0 +1,6258 @@
+[
+  {
+    "id": "positive0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.will_favour",
+    "actual": "promise_payment.r06purpose.will_favour"
+  },
+  {
+    "id": "reordered0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.will_favour",
+    "actual": "promise_payment.r06purpose.will_favour"
+  },
+  {
+    "id": "amount0-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount0-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount0-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount0-3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount0-4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount0-5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount0-6",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding0-campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": null,
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding0-sourceHead",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": null,
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding0-entry",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": null
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign0-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign0-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign0-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "zeroid0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "duplicate0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "detail0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "actor0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "claim0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "positive1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept"
+  },
+  {
+    "id": "reordered1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept"
+  },
+  {
+    "id": "amount1-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount1-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount1-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount1-3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount1-4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount1-5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount1-6",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding1-campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": null,
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding1-sourceHead",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": null,
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding1-entry",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": null
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign1-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign1-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign1-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "zeroid1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "duplicate1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "detail1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "actor1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "claim1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "positive2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept"
+  },
+  {
+    "id": "reordered2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept"
+  },
+  {
+    "id": "amount2-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount2-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount2-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount2-3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount2-4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount2-5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount2-6",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding2-campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": null,
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding2-sourceHead",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": null,
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding2-entry",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": null
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign2-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign2-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign2-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "zeroid2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "duplicate2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "detail2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "actor2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "claim2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "debt_assumption"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "positive3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept"
+  },
+  {
+    "id": "reordered3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          }
+        ]
+      }
+    },
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept"
+  },
+  {
+    "id": "amount3-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount3-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount3-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount3-3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount3-4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount3-5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount3-6",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding3-campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": null,
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding3-sourceHead",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": null,
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding3-entry",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": null
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign3-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign3-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign3-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "zeroid3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "duplicate3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          },
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "detail3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "unknown"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "actor3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-2",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "crown-other"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "claim3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "debt_after_inheritance"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "positive4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": "royal_subsidy.r06purpose.tax",
+    "actual": "royal_subsidy.r06purpose.tax"
+  },
+  {
+    "id": "reordered4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          }
+        ]
+      }
+    },
+    "expected": "royal_subsidy.r06purpose.tax",
+    "actual": "royal_subsidy.r06purpose.tax"
+  },
+  {
+    "id": "amount4-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount4-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount4-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount4-3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount4-4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount4-5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount4-6",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding4-campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": null,
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding4-sourceHead",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": null,
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding4-entry",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": null
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign4-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign4-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign4-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "zeroid4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "duplicate4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "detail4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "unknown"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "unknown"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "actor4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown-other"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown-other"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "claim4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "tenth_and_fifteenth"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "positive5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": "royal_subsidy.r06purpose.confirmation",
+    "actual": "royal_subsidy.r06purpose.confirmation"
+  },
+  {
+    "id": "reordered5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          }
+        ]
+      }
+    },
+    "expected": "royal_subsidy.r06purpose.confirmation",
+    "actual": "royal_subsidy.r06purpose.confirmation"
+  },
+  {
+    "id": "amount5-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount5-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount5-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount5-3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount5-4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": "-120",
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount5-5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount5-6",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding5-campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": null,
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding5-sourceHead",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": null,
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding5-entry",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": null
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign5-0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign5-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "   ",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "campaign5-2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "\n",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "zeroid5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000000",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "duplicate5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          },
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "detail5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "unknown"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "unknown"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "actor5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown-other"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown-other"
+          },
+          {
+            "type": "claim",
+            "id": "royal_subsidy",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "claim5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "royal_subsidy",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "crown"
+          },
+          {
+            "type": "claim",
+            "id": " ",
+            "detail": "confirmation"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "crosspurpose0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-0",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-0",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "crosspurpose1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-1",
+            "detail": "will_favour"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "crosspurpose2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-1",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "crosspurpose3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-1",
+            "detail": "political_support"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-1",
+            "detail": "political_support"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "crosspurpose4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-01",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000001",
+        "tick": 1,
+        "account": "cash",
+        "category": "promise_payment",
+        "amount": -120,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "promise-01",
+            "detail": "pension"
+          },
+          {
+            "type": "actor",
+            "id": "estate:estate-neighbour-3"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  }
+]

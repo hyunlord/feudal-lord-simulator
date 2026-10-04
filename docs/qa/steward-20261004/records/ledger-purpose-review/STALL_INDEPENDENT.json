@@ -1,0 +1,172 @@
+[
+  {
+    "case": "alehouse-positive",
+    "actual": "stall_fee.r06purpose.alehouse",
+    "expected": "stall_fee.r06purpose.alehouse"
+  },
+  {
+    "case": "market-positive",
+    "actual": "stall_fee.r06purpose.market",
+    "expected": "stall_fee.r06purpose.market"
+  },
+  {
+    "case": "right-rate0",
+    "actual": "stall_fee.r06purpose.market",
+    "expected": "stall_fee.r06purpose.market"
+  },
+  {
+    "case": "right-reverse0",
+    "actual": "stall_fee.r06purpose.market",
+    "expected": "stall_fee.r06purpose.market"
+  },
+  {
+    "case": "right-rate1",
+    "actual": "stall_fee.r06purpose.market",
+    "expected": "stall_fee.r06purpose.market"
+  },
+  {
+    "case": "right-reverse1",
+    "actual": "stall_fee.r06purpose.market",
+    "expected": "stall_fee.r06purpose.market"
+  },
+  {
+    "case": "right-rate999",
+    "actual": "stall_fee.r06purpose.market",
+    "expected": "stall_fee.r06purpose.market"
+  },
+  {
+    "case": "right-reverse999",
+    "actual": "stall_fee.r06purpose.market",
+    "expected": "stall_fee.r06purpose.market"
+  },
+  {
+    "case": "amount0",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "amount1",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "amount2",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "amount3",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "amount4",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "amount5",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "amount6",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "alehouse:0",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "alehouse:-1",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "alehouse:01",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "alehouse:1.5",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "alehouse:9007199254740992",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "stalls:0",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "stalls:+1",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "alehouse:1junk",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "unknown:1",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "stall_fee:1000",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "stall_fee:-1",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "stall_fee:01",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "stall_fee:2.5",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "alehouse-with-market-right",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "bad-ref-container0",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "bad-ref-container1",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "bad-ref-container2",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "duplicate-building",
+    "actual": null,
+    "expected": null
+  },
+  {
+    "case": "crosscampaign",
+    "actual": null,
+    "expected": null
+  }
+]

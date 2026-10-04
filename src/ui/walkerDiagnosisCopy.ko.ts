@@ -1,7 +1,7 @@
 // Player-facing copy of the walker diagnosis model (carter and distributor cards).
 export const WALKER_DIAGNOSIS_COPY = {
-  carterRole: "운반인",
-  distributorRole: "배급자",
+  carterRole: "운반꾼",
+  distributorRole: "배급꾼",
   destinationUnavailable: "목적지를 이용할 수 없음",
   manualCancel: "수동 취소",
   roadRemoved: "도로가 끊김",
@@ -21,7 +21,7 @@ export const WALKER_DIAGNOSIS_COPY = {
   delivering: "배송 중",
   goingToCollect: "수령하러 이동 중",
   returningToSource: "출발지로 귀환 중",
-  homeGranary: "홈 곡창",
+  homeGranary: "소속 곡창",
   roadRound: "도로 순회",
   returningToGranary: "곡창으로 귀환 중",
   distributing: "주택 배급 순회 중",

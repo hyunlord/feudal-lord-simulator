@@ -1,0 +1,358 @@
+{
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "sourceFile": "src/content/historyCopy.ko.ts",
+  "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+  "entries": [
+    {
+      "template": "person.fed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 350,
+      "old": "  \"person.fed\": () => \"가구가 다시 배불리 먹게 되었다\",",
+      "new": "  \"person.fed\": () => \"먹을거리 부족 상태가 해제되었다\",",
+      "reason": "부족 표식이 해제되는 조건에는 빈집도 들어간다. 생존 가구의 포만을 보장하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 368,
+          "end": 378
+        },
+        {
+          "path": "src/engine/seasonPressure.ts",
+          "start": 220,
+          "end": 230
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "person.fed.r06life.brief",
+        "person.fed.r06life.long"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "person.emptied",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 347,
+      "old": "  \"person.emptied\": () => \"굶주려 가구가 흩어졌다\",",
+      "new": "  \"person.emptied\": () => \"집에 남은 사람이 없게 되었다\",",
+      "reason": "양수 거주민이 0 이하로 바뀌면 기록한다. 해당 전이에서 기아라는 원인은 확인하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 368,
+          "end": 378
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "person.emptied.r06ctx.one",
+        "person.emptied.r06ctx.many"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 294,
+      "old": "  \"marriage.brother_in_law_born\": () => \"이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다\",",
+      "new": "  \"marriage.brother_in_law_born\": () => \"이웃 영주에게 아들이 태어났다 — 상속 기대가 줄었다\",",
+      "reason": "아들을 생성하고 상속 청구 강도를 낮추지만 재혼 상태는 확인하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/marriage.ts",
+          "start": 474,
+          "end": 484
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "marriage.brother_in_law_born.r06life.lord",
+        "marriage.brother_in_law_born.r06life.son",
+        "marriage.brother_in_law_born.r06life.kin"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "marriage.inherited",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 299,
+      "old": "  \"marriage.inherited\": () => \"아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다\",",
+      "new": "  \"marriage.inherited\": () => \"혼인 약정에 따라 이웃 영지를 물려받았다\",",
+      "reason": "신랑은 영주 본인 외에 아들·형제·조카·사촌도 가능하므로 영주 자신의 아내라고 단정하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 1040,
+          "end": 1060
+        },
+        {
+          "path": "src/engine/marriage.ts",
+          "start": 407,
+          "end": 420
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "marriage.inherited.r06ctx.son",
+        "marriage.inherited.r06ctx.kin"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 225,
+      "old": "  \"stewardship.began\": params => `${estateWord(s(params, \"house\"))}${josa(estateWord(s(params, \"house\")), \"이\", \"가\")} 영주의 손에 들어왔다 — 영주가 직접 보고, ${s(params, \"steward\")}${josa(s(params, \"steward\"), \"이\", \"가\")} 장부를 맡는다`,",
+      "new": "  \"stewardship.began\": params => `${estateWord(s(params, \"house\"))}${josa(estateWord(s(params, \"house\")), \"이\", \"가\")} 영지 관리 대상으로 기록되었다 — ${s(params, \"steward\")}${josa(s(params, \"steward\"), \"이\", \"가\")} 장부를 맡는다`,",
+      "reason": "새 oversight가 기록된 전이지 이번 시점의 소유권 취득은 아니다. 집사 이름과 조사식은 유지한다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 925,
+          "end": 936
+        },
+        {
+          "path": "src/engine/stewardship.ts",
+          "start": 117,
+          "end": 135
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "stewardship.began.r06office.sole_estate",
+        "stewardship.began.r06office.multiple_estates"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "reorg.weavers_left",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 176,
+      "old": "  \"reorg.weavers_left\": params => `직조공 ${n(params, \"households\")}가구가 길드가 있는 도시로 떠났다`,",
+      "new": "  \"reorg.weavers_left\": params => `길드 청원 뒤 떠난 가구가 누적 ${n(params, \"households\")}가구가 되었다`,",
+      "reason": "직조소 근접 거주가구를 고르지만 직업·목적지는 추적하지 않는다. 숫자는 전이별 수가 아닌 누계이다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 696,
+          "end": 704
+        },
+        {
+          "path": "src/engine/reorganisation.ts",
+          "start": 186,
+          "end": 212
+        },
+        {
+          "path": "src/engine/reorganisation.ts",
+          "start": 468,
+          "end": 476
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "reorg.weavers_left.r06rg.refused",
+        "reorg.weavers_left.r06rg.expired"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "plague.priest_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 159,
+      "old": "  \"plague.priest_died\": () => \"사제가 역병으로 죽었다 — 교회가 비었다\",",
+      "new": "  \"plague.priest_died\": () => \"사제 자리가 비었다\",",
+      "reason": "역병 도착 때 curacy 공석을 만든다. 특정 사제의 죽음이나 교회 존재·비어 있음은 확인하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 643,
+          "end": 654
+        },
+        {
+          "path": "src/engine/plague.ts",
+          "start": 513,
+          "end": 525
+        }
+      ],
+      "relatedHeldCandidateIds": [
+
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "milestone.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 327,
+      "old": "  \"milestone.market_town\": () => \"시장도시가 되었다\",",
+      "new": "  \"milestone.market_town\": () => \"시장도시 이정표가 기록되었다\",",
+      "reason": "hamlet이 아니면 누락 이정표를 기록한다. 이미 stone_town일 수도 있어 현재 승격으로 단정하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 450,
+          "end": 463
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "milestone.market_town.r06stage.stone"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "legacy.market_fire",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 203,
+      "old": "  \"legacy.market_fire\": params => `장터에 불이 났다 — 수리에 ${moneyWords(n(params, \"cost\"))}`,",
+      "new": "  \"legacy.market_fire\": params => `장터에 불이 났다 — 책정된 수리비 ${moneyWords(n(params, \"cost\"))}`,",
+      "reason": "장터 화재는 예약된 사건이다. cost는 설정된 수리비이고 실제 지급은 금고 한도에 묶인다. 건물 소실 규모는 말하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 760,
+          "end": 767
+        },
+        {
+          "path": "src/engine/legacy.ts",
+          "start": 70,
+          "end": 78
+        },
+        {
+          "path": "src/engine/legacy.ts",
+          "start": 290,
+          "end": 299
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "legacy.market_fire.r06town.full",
+        "legacy.market_fire.r06town.partial",
+        "legacy.market_fire.r06town.zero"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "legacy.nave_rebuilt",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 205,
+      "old": "  \"legacy.nave_rebuilt\": () => \"교회의 새 회중석이 섰다\",",
+      "new": "  \"legacy.nave_rebuilt\": () => \"교회 회중석 재건 청원을 받아들였다\",",
+      "reason": "청원 accept 경로에서 지급 요청 후 즉시 flag를 세운다. 실제 건물 완공을 단정하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/legacy.ts",
+          "start": 196,
+          "end": 202
+        },
+        {
+          "path": "src/engine/history.ts",
+          "start": 767,
+          "end": 767
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "legacy.nave_rebuilt.r06town.full",
+        "legacy.nave_rebuilt.r06town.partial",
+        "legacy.nave_rebuilt.r06town.zero"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "legacy.charter_refused",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 195,
+      "old": "  \"legacy.charter_refused\": params => `영주가 자치 특허를 거절했다 — 도시의 반발 ${n(params, \"backlash\")}`,",
+      "new": "  \"legacy.charter_refused\": params => `자치 특허가 받아들여지지 않았다 — 도시의 반발 ${n(params, \"backlash\")}`,",
+      "reason": "첫 응답이 accept 아닌 모든 경우를 같은 template로 보낸다. 기한 만료도 포함하므로 영주의 적극 거절로 좁히지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 751,
+          "end": 755
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "legacy.charter_refused.r06ctx2.expired"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "decision.market_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 270,
+      "old": "  \"decision.market_town\": () => \"목책을 두르고 시장도시를 선포했다\",",
+      "new": "  \"decision.market_town\": () => \"목책을 두를 경계를 정하고 시장도시를 선포했다\",",
+      "reason": "선포 때 완성 벽이 아니라 constructionSites를 만든다.",
+      "evidence": [
+        {
+          "path": "src/engine/palisade.ts",
+          "start": 274,
+          "end": 308
+        }
+      ],
+      "relatedHeldCandidateIds": [
+        "decision.market_town.r06ctx2.water_reach",
+        "decision.market_town.r06ctx2.land_ring"
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "person.came_of_age",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 356,
+      "old": "  \"person.came_of_age\": () => \"어른이 되어 일을 거들기 시작했다\",",
+      "new": "  \"person.came_of_age\": () => \"어른이 되었다\",",
+      "reason": "14세 경계 통과만 검사한다. 어른이라는 게임 단계는 보존하고 실제 노동 개시를 단정하지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 403,
+          "end": 408
+        }
+      ],
+      "relatedHeldCandidateIds": [
+
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    },
+    {
+      "template": "milestone.stone_town",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+      "line": 328,
+      "old": "  \"milestone.stone_town\": () => \"석벽 도시가 되었다\",",
+      "new": "  \"milestone.stone_town\": () => \"석벽 도시 이정표가 기록되었다\",",
+      "reason": "석벽 도시 단계 도달을 이정표로 기록한다. 석벽 공사가 끝났다는 뜻으로 좁히지 않는다.",
+      "evidence": [
+        {
+          "path": "src/engine/history.ts",
+          "start": 450,
+          "end": 463
+        }
+      ],
+      "relatedHeldCandidateIds": [
+
+      ],
+      "unblocksAutomatically": false,
+      "status": "PROPOSED_TEXT_ONLY_INDEPENDENT_REVIEW_REQUIRED"
+    }
+  ]
+}

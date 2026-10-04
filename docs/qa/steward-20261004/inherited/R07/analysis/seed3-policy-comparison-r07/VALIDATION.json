@@ -1,0 +1,54 @@
+{
+  "growth": {
+    "inputManifestCount": 22,
+    "inputManifestValid": true,
+    "complete": true,
+    "exitCode": "0",
+    "annualContinuous": true,
+    "annualFinalMatchesSummary": true,
+    "deathsUnique": true,
+    "cumulative150Matches": true,
+    "deathDeltaSum": 2904,
+    "deathsRecountMatchesSummary": true,
+    "attemptedMatch": true,
+    "changedMatch": true,
+    "historyCountMatch": true,
+    "controlsFrozen": true,
+    "codecChecks": 38,
+    "allCodecExact": true,
+    "sourcePinned": true
+  },
+  "stability": {
+    "inputManifestCount": 22,
+    "inputManifestValid": true,
+    "complete": true,
+    "exitCode": "0",
+    "annualContinuous": true,
+    "annualFinalMatchesSummary": true,
+    "deathsUnique": true,
+    "cumulative150Matches": true,
+    "deathDeltaSum": 2236,
+    "deathsRecountMatchesSummary": true,
+    "attemptedMatch": true,
+    "changedMatch": true,
+    "historyCountMatch": true,
+    "controlsFrozen": true,
+    "codecChecks": 38,
+    "allCodecExact": true,
+    "sourcePinned": true
+  },
+  "growthPriorAnnualExact": true,
+  "comparability": {
+    "sameHead": true,
+    "sameSourceHashes": true,
+    "sameProtocol": true,
+    "sameSeedLandYearsMode": true,
+    "startTopLevelDifferentKeys": [
+      "agency"
+    ],
+    "startAgencyDifferentKeys": [
+      "policy"
+    ],
+    "startOnlyPolicyDiff": true
+  }
+}

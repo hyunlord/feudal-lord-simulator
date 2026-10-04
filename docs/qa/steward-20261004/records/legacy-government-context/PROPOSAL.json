@@ -1,0 +1,260 @@
+{
+  "version": "legacy-government-context-v1",
+  "status": "PROPOSED_UNINSTALLED",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "captureKind": "emission_snapshot",
+  "fallback": "unknown or invalid context => original fact line only; capture provenance must be independently validated, not trusted from a flag",
+  "templates": [
+    {
+      "template": "legacy.royal_tax_envoy",
+      "field": "townMarketTollsAtEnvoy",
+      "values": [
+        "held",
+        "not_held"
+      ],
+      "captureContract": "At steps.royal_tax_envoy absent->present: inspect after.politics.rights, unique id=market_tolls. held iff holder=townsfolk; not_held iff no such id or unique other holder. Missing politics/rights, duplicates, invalid holder unknown. Only this political right, not all market income/estate pieces.",
+      "variants": [
+        {
+          "id": "legacy.royal_tax_envoy.r06gov.held",
+          "when": {
+            "field": "context.townMarketTollsAtEnvoy",
+            "op": "eq",
+            "value": "held"
+          },
+          "headline": "도시가 시장 좌판세를 거둘 권리를 지닌 때에 국왕의 과세 사절이 왔다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.royal_tax_envoy.r06gov.not_held",
+          "when": {
+            "field": "context.townMarketTollsAtEnvoy",
+            "op": "eq",
+            "value": "not_held"
+          },
+          "headline": "도시가 시장 좌판세를 거둘 권리를 지니지 않은 때에 국왕의 과세 사절이 왔다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "template": "legacy.royal_subsidy",
+      "field": "cashAfterSubsidy",
+      "values": [
+        "zero",
+        "remaining"
+      ],
+      "captureContract": "At legacy.royalSubsidy positive increase; use treasuryBalance(after), safe integer >=0; zero iff0 else remaining. record.params.amount must equal positive delta. This is after-emission cash, not attribution of every same-tick payment. Do not include charter confirmation fee, which posts ledger but does not increment royalSubsidy.",
+      "variants": [
+        {
+          "id": "legacy.royal_subsidy.r06gov.zero",
+          "when": {
+            "field": "context.cashAfterSubsidy",
+            "op": "eq",
+            "value": "zero"
+          },
+          "headline": "국왕에게 보조세를 낸 때, 금고에 남은 돈은 없었다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.royal_subsidy.r06gov.remaining",
+          "when": {
+            "field": "context.cashAfterSubsidy",
+            "op": "eq",
+            "value": "remaining"
+          },
+          "headline": "국왕에게 보조세를 낸 뒤에도 금고에 돈이 남아 있었다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "template": "legacy.city_seal",
+      "field": "heirChoiceBeforeSeal",
+      "values": [
+        "son",
+        "daughter_husband",
+        "collateral"
+      ],
+      "captureContract": "At steps.city_seal absent->present: after.legacy.heir.tick <= after.tick and unique matching saved candidates by personId. son iff kind eldest_son+relation son; daughter_husband iff kind daughter_husband+relation husband; collateral iff kind nephew+relation nephew or kinsman. Missing/mismatched candidate unknown. Describes recorded choice, not current living head or rights inheritance proof.",
+      "variants": [
+        {
+          "id": "legacy.city_seal.r06gov.son",
+          "when": {
+            "field": "context.heirChoiceBeforeSeal",
+            "op": "eq",
+            "value": "son"
+          },
+          "headline": "아들을 후계자로 정한 뒤, 도시는 제 인장을 새겼다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.city_seal.r06gov.daughter_husband",
+          "when": {
+            "field": "context.heirChoiceBeforeSeal",
+            "op": "eq",
+            "value": "daughter_husband"
+          },
+          "headline": "딸의 남편을 후계자로 정한 뒤, 도시는 제 인장을 새겼다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.city_seal.r06gov.collateral",
+          "when": {
+            "field": "context.heirChoiceBeforeSeal",
+            "op": "eq",
+            "value": "collateral"
+          },
+          "headline": "다른 친족을 후계자로 정한 뒤, 도시는 제 인장을 새겼다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "template": "legacy.charter_sealed",
+      "field": "mayorSelectionAtSeal",
+      "values": [
+        "same",
+        "replacement",
+        "unnamed"
+      ],
+      "captureContract": "At borough_autonomy answer absent->accept: record.params.mayorId must equal after.legacy.mayorId or empty on explicit null. same iff nonempty candidateId=mayorId; replacement iff both nonempty unequal; unnamed iff mayorId explicitly null. Undefined/malformed/inconsistent unknown. No lookup of alive or reason for replacement. Names only through historyNames at reading.",
+      "variants": [
+        {
+          "id": "legacy.charter_sealed.r06gov.same",
+          "when": {
+            "field": "context.mayorSelectionAtSeal",
+            "op": "eq",
+            "value": "same"
+          },
+          "headline": "당초 후보를 첫 도시의 시장으로 올리며 자치 특허에 인장을 찍었다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.charter_sealed.r06gov.replacement",
+          "when": {
+            "field": "context.mayorSelectionAtSeal",
+            "op": "eq",
+            "value": "replacement"
+          },
+          "headline": "당초 후보와 다른 이를 첫 도시의 시장으로 올리며 자치 특허에 인장을 찍었다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.charter_sealed.r06gov.unnamed",
+          "when": {
+            "field": "context.mayorSelectionAtSeal",
+            "op": "eq",
+            "value": "unnamed"
+          },
+          "headline": "첫 도시의 시장 이름을 기록하지 않은 채 자치 특허에 인장을 찍었다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "template": "legacy.family_departed",
+      "field": "priorSubsidyAtDeparture",
+      "values": [
+        "paid",
+        "no_record"
+      ],
+      "captureContract": "Only family_departure step absent->present AND family=departed AND borough_autonomy=accept. after.legacy.royalSubsidy safe integer>=0: paid iff>0, no_record iff0. Payment accumulator records royal tax response only; no_record does not mean no payments to Crown. Preserve original house params, not current lordship name lookup.",
+      "variants": [
+        {
+          "id": "legacy.family_departed.r06gov.paid",
+          "when": {
+            "field": "context.priorSubsidyAtDeparture",
+            "op": "eq",
+            "value": "paid"
+          },
+          "headline": "과세 사절이 요구한 보조세를 낸 가문이 영주관을 떠나 시골 장원으로 갔다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.family_departed.r06gov.no_record",
+          "when": {
+            "field": "context.priorSubsidyAtDeparture",
+            "op": "eq",
+            "value": "no_record"
+          },
+          "headline": "과세 사절의 요구에 따른 납부 기록 없이 가문은 영주관을 떠나 시골 장원으로 갔다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        }
+      ]
+    },
+    {
+      "template": "legacy.family_stayed",
+      "field": "priorSubsidyAtStay",
+      "values": [
+        "paid",
+        "no_record"
+      ],
+      "captureContract": "Only family_departure step absent->present AND family=stayed AND borough_autonomy answer is known nonaccept response. after.legacy.royalSubsidy safe integer>=0: paid iff>0, no_record iff0. Does not infer loyalty/refusal motive. Confirmation ledger charges are not this accumulator.",
+      "variants": [
+        {
+          "id": "legacy.family_stayed.r06gov.paid",
+          "when": {
+            "field": "context.priorSubsidyAtStay",
+            "op": "eq",
+            "value": "paid"
+          },
+          "headline": "과세 사절이 요구한 보조세를 낸 가문은 영주관에 그대로 남았다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        },
+        {
+          "id": "legacy.family_stayed.r06gov.no_record",
+          "when": {
+            "field": "context.priorSubsidyAtStay",
+            "op": "eq",
+            "value": "no_record"
+          },
+          "headline": "과세 사절의 요구에 따른 납부 기록 없이 가문은 영주관에 남았다.",
+          "retainFactLine": true,
+          "requiredSlots": [
+
+          ]
+        }
+      ]
+    }
+  ]
+}

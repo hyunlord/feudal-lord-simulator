@@ -1,0 +1,374 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trusted proposed adapter output; not arbitrary user input",
+  "type": "object",
+  "required": [
+    "status",
+    "recordId",
+    "recordTick",
+    "template",
+    "sourceHead",
+    "captureKind",
+    "referenceVerified",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordTick": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "template": {
+      "enum": [
+        "marriage.brother_in_law_born",
+        "marriage.father_ill",
+        "marriage.deferred_void",
+        "marriage.will_change",
+        "marriage.will_dropped",
+        "marriage.father_died",
+        "marriage.lost",
+        "marriage.contested"
+      ]
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "captureKind": {
+      "enum": [
+        "emission_snapshot",
+        "immutable_contract_reference"
+      ]
+    },
+    "referenceVerified": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "groomRelationAtContract": {
+          "enum": [
+            "widowed_lord",
+            "son",
+            "brother",
+            "nephew",
+            "cousin"
+          ]
+        },
+        "nonInfringementOpenAtWillAttempt": {
+          "enum": [
+            "open",
+            "absent"
+          ]
+        },
+        "willDroppedConsideration": {
+          "enum": [
+            "paid_favour",
+            "support_promised"
+          ]
+        },
+        "inheritanceRouteAtFatherDeath": {
+          "enum": [
+            "living_son",
+            "rival",
+            "lord_house"
+          ]
+        },
+        "deferredDebtAtInheritanceLoss": {
+          "enum": [
+            "positive",
+            "absent"
+          ]
+        },
+        "willAllowedRoute": {
+          "enum": [
+            "explicit_let_stand",
+            "unanswered_deadline"
+          ]
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.brother_in_law_born"
+        },
+        "captureKind": {
+          "const": "immutable_contract_reference"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "groomRelationAtContract"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "groomRelationAtContract": {
+              "enum": [
+                "widowed_lord",
+                "son",
+                "brother",
+                "nephew",
+                "cousin"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.father_ill"
+        },
+        "captureKind": {
+          "const": "immutable_contract_reference"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "groomRelationAtContract"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "groomRelationAtContract": {
+              "enum": [
+                "widowed_lord",
+                "son",
+                "brother",
+                "nephew",
+                "cousin"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.deferred_void"
+        },
+        "captureKind": {
+          "const": "immutable_contract_reference"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "groomRelationAtContract"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "groomRelationAtContract": {
+              "enum": [
+                "widowed_lord",
+                "son",
+                "brother",
+                "nephew",
+                "cousin"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.will_change"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "nonInfringementOpenAtWillAttempt"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "nonInfringementOpenAtWillAttempt": {
+              "enum": [
+                "open",
+                "absent"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.will_dropped"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "willDroppedConsideration"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "willDroppedConsideration": {
+              "enum": [
+                "paid_favour",
+                "support_promised"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.father_died"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "inheritanceRouteAtFatherDeath"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "inheritanceRouteAtFatherDeath": {
+              "enum": [
+                "living_son",
+                "rival",
+                "lord_house"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.lost"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "deferredDebtAtInheritanceLoss"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "deferredDebtAtInheritanceLoss": {
+              "enum": [
+                "positive",
+                "absent"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "marriage.contested"
+        },
+        "captureKind": {
+          "const": "immutable_contract_reference"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "willAllowedRoute"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "willAllowedRoute": {
+              "enum": [
+                "explicit_let_stand",
+                "unanswered_deadline"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

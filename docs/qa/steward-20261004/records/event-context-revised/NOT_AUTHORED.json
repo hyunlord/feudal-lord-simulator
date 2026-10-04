@@ -1,0 +1,211 @@
+{
+  "targetTypes": 32,
+  "authoredTypes": 8,
+  "remaining": [
+    {
+      "template": "reorg.textile_street",
+      "missing": [
+        "weaverHouseCountAtRecord",
+        "previousWeaverHouseCount"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "reorg.alehouse_boom",
+      "missing": [
+        "alehouseCountAtRecord",
+        "drunkLastSeasonAtRecord"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "legacy.charter_refused",
+      "missing": [
+        "previousBacklash",
+        "answerAtRecord",
+        "backlashDrivers"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "legacy.last_market",
+      "missing": [
+        "endingId",
+        "endingParamsAtFinal",
+        "endingQuotesAtFinal"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "stewardship.began",
+      "missing": [
+        "oversightModeAtStart",
+        "acquisitionBasis"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "decision.market_town",
+      "missing": [
+        "charterBasis",
+        "rightsAtProclamation"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "decision.stone_town",
+      "missing": [
+        "projectCostAtDecision"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "decision.rebuild",
+      "missing": [
+        "damageCause",
+        "householdAtDecision"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "decision.wall_expand",
+      "missing": [
+        "oldEnclosureArea",
+        "newEnclosureArea"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "decision.drainage",
+      "missing": [
+        "workCells",
+        "timberCommitted"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "negotiation.rejected",
+      "missing": [
+        "groomRelationAtNegotiation",
+        "acceptedTermsSnapshot",
+        "rejectionReasonsAtDecision"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "agency.timber_ordered",
+      "missing": [
+        "previousOrder",
+        "orderDelta",
+        "orderReasonAtRecord"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.emptied",
+      "missing": [
+        "emptyCauseAtRecord",
+        "householdResidentDeltaCause"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.arrived",
+      "missing": [
+        "kinRelationshipAtArrival"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.reeve",
+      "missing": [
+        "ageAtRecord",
+        "occupationBeforeOffice"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.steward",
+      "missing": [
+        "appointmentRoute",
+        "priorOffice"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.bailiff",
+      "missing": [
+        "ageAtRecord",
+        "appointmentReason"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.fell_ill",
+      "missing": [
+        "ageAtRecord",
+        "conditionCause"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.recovered",
+      "missing": [
+        "ageAtRecord",
+        "duration"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.injured",
+      "missing": [
+        "ageAtRecord",
+        "occupationAtInjury"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.healed",
+      "missing": [
+        "ageAtRecord",
+        "duration"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.expecting",
+      "missing": [
+        "ageAtRecord",
+        "familyRoleAtRecord"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.pilgrimage",
+      "missing": [
+        "ageAtRecord",
+        "destination"
+      ],
+      "status": "not_authored_this_batch"
+    },
+    {
+      "template": "person.returned",
+      "missing": [
+        "ageAtRecord",
+        "journeyDuration"
+      ],
+      "status": "not_authored_this_batch"
+    }
+  ],
+  "excludedRationale": [
+    {
+      "template": "stewardship.began",
+      "reason": "ensureOversight initialises mode direct unconditionally; do not fabricate initial delegated branch."
+    },
+    {
+      "template": "agency.timber_ordered",
+      "reason": "Current automatic charter timber call requires old timberOrder zero; before-positive branch lacks verified natural producer."
+    }
+  ],
+  "ageProposal": "The separate20 age candidate lines are not copied, merged or counted here."
+}

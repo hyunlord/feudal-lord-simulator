@@ -1,0 +1,148 @@
+{
+  "status": "INCOMPLETE_CONTEXT_IMPLEMENTATION",
+  "types": [
+    {
+      "template": "person.emptied",
+      "existingAgeProposalCount": 0,
+      "existingAxis": null,
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "emptyCauseAtRecord",
+        "householdResidentDeltaCause"
+      ],
+      "status": "NEW_SEPARATE_PROPOSAL_REQUIRES_ADAPTER_OR_EMITTER",
+      "complete": false
+    },
+    {
+      "template": "person.arrived",
+      "existingAgeProposalCount": 0,
+      "existingAxis": null,
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "kinRelationshipAtArrival"
+      ],
+      "status": "NEW_SEPARATE_PROPOSAL_REQUIRES_ADAPTER_OR_EMITTER",
+      "complete": false
+    },
+    {
+      "template": "person.reeve",
+      "existingAgeProposalCount": 0,
+      "existingAxis": null,
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "occupationBeforeOffice"
+      ],
+      "status": "NEW_SEPARATE_PROPOSAL_REQUIRES_ADAPTER_OR_EMITTER",
+      "complete": false
+    },
+    {
+      "template": "person.steward",
+      "existingAgeProposalCount": 0,
+      "existingAxis": null,
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "appointmentRoute",
+        "priorOffice"
+      ],
+      "status": "NEW_SEPARATE_PROPOSAL_REQUIRES_ADAPTER_OR_EMITTER",
+      "complete": false
+    },
+    {
+      "template": "person.bailiff",
+      "existingAgeProposalCount": 0,
+      "existingAxis": null,
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "appointmentReason"
+      ],
+      "status": "NEW_SEPARATE_PROPOSAL_REQUIRES_ADAPTER_OR_EMITTER",
+      "complete": false
+    },
+    {
+      "template": "person.fell_ill",
+      "existingAgeProposalCount": 4,
+      "existingAxis": "historical_age_only",
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "conditionCause"
+      ],
+      "status": "EXISTING_20_REUSED_NOT_DUPLICATED_REQUIRES_ADAPTER",
+      "complete": false
+    },
+    {
+      "template": "person.recovered",
+      "existingAgeProposalCount": 4,
+      "existingAxis": "historical_age_only",
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "duration"
+      ],
+      "status": "EXISTING_20_REUSED_NOT_DUPLICATED_REQUIRES_ADAPTER",
+      "complete": false
+    },
+    {
+      "template": "person.injured",
+      "existingAgeProposalCount": 3,
+      "existingAxis": "historical_age_only",
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "occupationAtInjury"
+      ],
+      "status": "EXISTING_20_REUSED_NOT_DUPLICATED_REQUIRES_ADAPTER",
+      "complete": false
+    },
+    {
+      "template": "person.healed",
+      "existingAgeProposalCount": 3,
+      "existingAxis": "historical_age_only",
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "duration"
+      ],
+      "status": "EXISTING_20_REUSED_NOT_DUPLICATED_REQUIRES_ADAPTER",
+      "complete": false
+    },
+    {
+      "template": "person.expecting",
+      "existingAgeProposalCount": 0,
+      "existingAxis": null,
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "familyRoleAtRecord"
+      ],
+      "status": "NEW_SEPARATE_PROPOSAL_REQUIRES_ADAPTER_OR_EMITTER",
+      "complete": false
+    },
+    {
+      "template": "person.pilgrimage",
+      "existingAgeProposalCount": 3,
+      "existingAxis": "historical_age_only",
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "destination"
+      ],
+      "status": "EXISTING_20_REUSED_NOT_DUPLICATED_REQUIRES_ADAPTER",
+      "complete": false
+    },
+    {
+      "template": "person.returned",
+      "existingAgeProposalCount": 3,
+      "existingAxis": "historical_age_only",
+      "canonicalConditionalCount": 0,
+      "remainingFields": [
+        "ageAtRecord",
+        "journeyDuration"
+      ],
+      "status": "EXISTING_20_REUSED_NOT_DUPLICATED_REQUIRES_ADAPTER",
+      "complete": false
+    }
+  ]
+}

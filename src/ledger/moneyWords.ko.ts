@@ -20,6 +20,26 @@ export function moneyWords(value: number): string {
   return words.length === 0 ? "0d" : `${whole < 0 ? "−" : ""}${words.join(" ")}`;
 }
 
+/** COPY-1r (CA-002, CA-006): a detailed or confirmed sum, every part down to the penny — "£160 3s 11d", "−£1 13s 3d",
+ *  "0d" — as the screens' `moneyFull`. The short form above stays for summary lines only. */
+export function moneyWordsFull(value: number): string {
+  if (!Number.isFinite(value)) return "—";
+  const whole = Math.trunc(value);
+  const size = Math.abs(whole);
+  const pounds = Math.floor(size / PENCE_PER_POUND);
+  const shillings = Math.floor((size % PENCE_PER_POUND) / PENCE_PER_SHILLING);
+  const pence = size % PENCE_PER_SHILLING;
+  const words = [...(pounds > 0 ? [`£${grouped(pounds)}`] : []), ...(shillings > 0 ? [`${shillings}s`] : []), ...(pence > 0 ? [`${pence}d`] : [])];
+  return words.length === 0 ? "0d" : `${whole < 0 ? "−" : ""}${words.join(" ")}`;
+}
+
+/** A detailed or confirmed change with its sign: "+£1 13s 3d", "−7d", "±0d". */
+export function moneyWordsFullDelta(value: number): string {
+  if (!Number.isFinite(value)) return "—";
+  const whole = Math.trunc(value);
+  return whole === 0 ? "±0d" : `${whole > 0 ? "+" : ""}${moneyWordsFull(whole)}`;
+}
+
 /** A change with its sign: "+£1 3s", "−7d", "±0d". */
 export function moneyWordsDelta(value: number): string {
   if (!Number.isFinite(value)) return "—";

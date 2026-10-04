@@ -1,0 +1,118 @@
+{
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "files": [
+    {
+      "path": "src/main.tsx",
+      "sha256": "1b4e136fd7b39f99e5cfffecdcee085cf277a8ba5797998daa19aa3aa3cd89a1",
+      "spans": [
+        {
+          "from": 43,
+          "to": 55,
+          "text": "      </GameProvider>\n    </StrictMode>,\n  );\n}\n"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/screens/WelcomeScreen.tsx",
+      "sha256": "a8ef360138be85cd356d732f9c0a237ddac45c1877180ba416cb4c9c3da9f1ff",
+      "spans": [
+        {
+          "from": 75,
+          "to": 104,
+          "text": "        {continueLine === null ? <>\n          <LandPicker choice={land} onChange={setLand} />\n          <ScenarioModeButtons playable={playable} onChoose={scenarioId => onChooseMode(scenarioId, land)} />\n          <p className=\"welcome-dismiss\">{TITLE_COPY.dismiss}</p>\n        </> : (\n          <div className=\"welcome-save\" role=\"group\" aria-label={SAVE_COPY.welcomeSaveLabel}>\n            <p>{continueLine}</p>\n            <Button className=\"autoplay-toggle save-control-button\" type=\"button\" isolate onPress={() => onContinue()} variant=\"primary\">\n              {SAVE_COPY.continueGame}\n            </Button>\n            {confirmingNewGame ? <>\n              <p role=\"status\">{archiveNotice}</p>\n              <LandPicker choice={land} onChange={setLand} />\n              <ScenarioModeButtons playable={playable} onChoose={scenarioId => onNewGame(scenarioId, land)} />\n              <Button className=\"autoplay-toggle save-control-button\" type=\"button\" isolate onPress={() => setConfirmingNewGame(false)} variant=\"secondary\">\n                {SAVE_COPY.cancel}\n              </Button>\n            </> : (\n              <Button className=\"autoplay-toggle save-control-button\" type=\"button\" isolate onPress={() => setConfirmingNewGame(true)} variant=\"secondary\">\n                {SAVE_COPY.newGame}\n              </Button>\n            )}\n          </div>\n        )}\n      </section>\n    </div>\n  );\n}\n\n/** New-game mode choice (B2): one button per registered scenario, in registration order; off while the land cannot start. */\n"
+        },
+        {
+          "from": 112,
+          "to": 129,
+          "text": "        data-scenario={scenario.id} aria-disabled={playable ? undefined : true} isolate onPress={() => { if (playable) onChoose(scenario.id); }} variant=\"primary\">\n        {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? \"campaign_market_town\" : \"sandbox\"]}\n      </Button>\n      <p className=\"welcome-mode-line\">{TUTORIAL_COPY.modeLines[scenario.id === DEFAULT_SCENARIO_ID ? \"campaign_market_town\" : \"sandbox\"]}</p>\n    </div>)}\n  </div>;\n}\n\nexport function readWelcomeDismissed(): boolean {\n  return platformServices().preferences.get(WELCOME_DISMISSED_KEY) === \"1\";\n}\n\nexport function writeWelcomeDismissed(): void {\n  platformServices().preferences.set(WELCOME_DISMISSED_KEY, \"1\");\n}\n"
+        }
+      ]
+    },
+    {
+      "path": "src/content/scenario/coreScenarios.ts",
+      "sha256": "215a98690720381cfd05494af912a266849588c85dfdd4107c4a4549cf87404f",
+      "spans": [
+        {
+          "from": 94,
+          "to": 155,
+          "text": "\nexport const CORE_SCENARIOS: readonly ScenarioDef[] = [\n  {\n    id: \"core:campaign_market_town\",\n    name: SCENARIO_COPY.scenarios.campaign_market_town,\n    mode: \"campaign\",\n    startYear: 1300,\n    archetype: \"core:open_field\",\n    stages: STAGES,\n    eras: ERAS,\n    objectives: OBJECTIVES,\n    // K4-1: no stone-town era or stone wall; a completed stone wall is only a victory-screen bonus.\n    victory: { all: [\n      { kind: \"population_at_least\", value: 140 },\n      { kind: \"occupied_l4_lots_at_least\", value: 4 },\n      { kind: \"supplied_percent_at_least\", value: 90 },\n    ], holdTicks: 1200 },\n    failure: { all: [{ kind: \"settlement_empty_for\", ticks: 600 }] },\n    walls: WALLS,\n    activeEvents: CORE_EVENTS,\n    economyRules: ECONOMY_RULES,\n  },\n  {\n    id: \"core:sandbox\",\n    name: SCENARIO_COPY.scenarios.sandbox,\n    mode: \"sandbox\",\n    startYear: 1300,\n    archetype: \"core:open_field\",\n    stages: STAGES,\n    eras: ERAS,\n    objectives: [],\n    victory: null,\n    failure: null,\n    walls: WALLS,\n    activeEvents: CORE_EVENTS,\n    economyRules: ECONOMY_RULES,\n  },\n];\n\n/**\n * LM-E8 (spec docs/design/lord-slice.md LS-1): the lord's vertical slice — the demesne and its market town, the three\n * neighbour estates off the map, from 1300; always lord mode (the town builds itself). No chapters' victory: it ends\n * after twenty years or five after a second estate (`lordSliceOutcome`). Registered beside the core two but not among\n * them: the start screen lists `CORE_SCENARIOS`, and the slice's own start is render's (LM-R3).\n */\nexport const LORD_SLICE_SCENARIO: ScenarioDef = {\n  id: LORD_SLICE_SCENARIO_ID,\n  name: SCENARIO_COPY.scenarios.lord_slice,\n  mode: \"sandbox\",\n  startYear: 1300,\n  archetype: \"core:open_field\",\n  stages: STAGES,\n  eras: ERAS,\n  objectives: [],\n  victory: null,\n  failure: null,\n  walls: WALLS,\n  activeEvents: CORE_EVENTS,\n  economyRules: ECONOMY_RULES,\n};\n\nexport const DEFAULT_SCENARIO_ID = \"core:campaign_market_town\";\n"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/landChoice.ts",
+      "sha256": "666b8a83a16d1281b1f28eb223aa7777ffe1dedd9b8ee13d8b1f03ebe88519f6",
+      "spans": [
+        {
+          "from": 39,
+          "to": 50,
+          "text": "}\n\n/** The welcome's first choice: the riverside on a random map number, or the number `search` pins (see PIN_SEED_QUERY). */\nexport function initialLandChoice(search: string, random: () => number = Math.random): LandChoice {\n  const query = new URLSearchParams(search);\n  const pinned = parseLandSeed(query.get(PIN_SEED_QUERY) ?? \"\");\n  if (pinned !== null) return { archetypeId: defaultLandId(), seed: pinned };\n  if (query.get(\"phase10-proof\") === \"1\") return defaultLandChoice();\n  return randomLandSeed({ archetypeId: defaultLandId(), seed: null }, random);\n}\n\n/** The typed map number: digits only, 1–999,999 (a leading zero is allowed); null otherwise. */\n"
+        },
+        {
+          "from": 104,
+          "to": 115,
+          "text": "/**\n * The command a start sends: none for the default campaign on today's land (the current state is that game), the\n * scenario alone for the sandbox on today's land, and the land and map number for any other choice. Only a playable\n * choice is started (the welcome refuses the others: landPlayable).\n */\nexport function landStartCommand(scenarioId: string, choice: LandChoice, overSave: boolean): LandStartCommand | null {\n  if (isDefaultLand(choice)) return overSave || scenarioId !== DEFAULT_SCENARIO_ID ? { type: \"start_new_game\", scenarioId } : null;\n  return { type: \"start_new_game\", scenarioId, archetypeId: choice.archetypeId, ...(choice.seed === null ? {} : { seed: choice.seed }) };\n}\n"
+        }
+      ]
+    },
+    {
+      "path": "src/state/newGame.ts",
+      "sha256": "a4a858ed3d12021a05fa9be3d626996a86f14401e5ddbc6841e2db20d81dd8d3",
+      "spans": [
+        {
+          "from": 37,
+          "to": 64,
+          "text": "  /** The land (`namespace:id`); absent = the scenario's own (the riverside town). */\n  readonly archetypeId?: string;\n  /** The map's seed, a whole number from 1 (the same seed, the same game). */\n  readonly seed?: number;\n  /**\n   * LM-E1 (TA-1): \"lord\" — the town builds itself (the town agency) and the player sets its conditions; \"sandbox\"\n   * (the default, today's game) — the player builds. A different axis from the scenario's campaign / sandbox.\n   */\n  readonly mode?: \"lord\" | \"sandbox\";\n  /** LM-E9 (ER-9): the player's house in lord mode — its name and arms; absent = \"de Haverel\" (드 해버럴). */\n  readonly house?: { readonly name: string; readonly arms: string };\n}\n\n/** MA-6: the lands a new game can start on, in the start screen's order. */\nexport function mapArchetypes(): readonly ArchetypeDef[] {\n  return SCENARIOS.listArchetypes();\n}\n\n/** MA-6: the opening state of a new game, or null for an unknown scenario, land or seed. */\nexport function newGameState(options: NewGameOptions): GameState | null {\n  const state = openingState(options);\n  // LM-E1 (TA-1): lord mode's town starts with its actors (the campaign's default stays sandbox). LM-E8 (LS-1): the lord's\n  // slice is always lord mode.\n  const lord = options.mode === \"lord\" || options.scenarioId === LORD_SLICE_SCENARIO_ID;\n  if (state === null || !lord) return state;\n  // LM-E9 (ER-9): the player's house is kept from the start (the campaign keeps its own names).\n  return { ...state, agency: initialAgency(), registry: initialRegistry(options.house ?? DEFAULT_LORD_HOUSE) };\n}\n"
+        }
+      ]
+    },
+    {
+      "path": "src/state/gameStore.ts",
+      "sha256": "08946bb1a8dff61965d0ecdd767eaa3d4a40bc4bc92b12ba603f7bfb086d7ed3",
+      "spans": [
+        {
+          "from": 83,
+          "to": 110,
+          "text": "export const DEFAULT_GAME_STATE: GameState = withOpeningVillageServices({\n  tick: 0,\n  seed: WORLD_SEED,\n  tiles: INITIAL_WORLD.tiles.map(applyOpeningVillageToTile),\n  width: INITIAL_WORLD.width,\n  height: INITIAL_WORLD.height,\n  buildings: [...STARTING_BUILDINGS],\n  constructionSites: [],\n  houses: [...STARTING_HOUSES],\n  walkers: [],\n  population: STARTING_HOUSES.reduce((total, house) => total + house.residents, 0),\n  idleWorkers: 0,\n  treasuryTimber: BALANCE.STARTING_TIMBER,\n  treasuryCoin: BALANCE.STARTING_COIN,\n  wallTick: 0,\n  era: \"hamlet\",\n  eraProclaimedTick: null,\n  palisade: null,\n  forestHarvests: [],\n  nextConstructionOrdinal: 1,\n  roadRevision: 0,\n  pathCache: {},\n  scenarioId: DEFAULT_SCENARIO_ID,\n  ...(INITIAL_LAND.river === null ? {} : { river: INITIAL_LAND.river }),\n  zones: [],\n  nextZoneOrdinal: 1,\n});\n\n"
+        },
+        {
+          "from": 124,
+          "to": 133,
+          "text": "\nfunction reduceGameAction(state: GameState, action: GameAction): GameState {\n  if (action.type === \"load_saved_state\") return action.state;\n  // A new game is the default opening under the chosen scenario (B2 mode choice), ARCH-1 on the chosen land; unknown\n  // ids are ignored.\n  if (action.type === \"start_new_game\") return newGameState({ scenarioId: action.scenarioId,\n    ...(action.archetypeId === undefined ? {} : { archetypeId: action.archetypeId }), ...(action.seed === undefined ? {} : { seed: action.seed }),\n    ...(action.mode === undefined ? {} : { mode: action.mode }), ...(action.house === undefined ? {} : { house: action.house }) }) ?? state;\n  if (state.settlement?.outcome === \"abandoned\") {\n    return action.type === \"restart_settlement\" ? structuredClone(DEFAULT_GAME_STATE) : state;\n"
+        },
+        {
+          "from": 244,
+          "to": 250,
+          "text": "\nexport function GameProvider({ children }: GameProviderProps) {\n  const [sessionKey, setSessionKey] = useState(0);\n  // The state the store starts from (scripts/sceneInjection.mjs replaces this call to start a scene).\n  const [initialState] = useState(DEFAULT_GAME_STATE);\n  const stateRef = useRef(initialState);\n  const previousRenderStateRef = useRef<PreviousRenderState>(initialState);\n"
+        }
+      ]
+    },
+    {
+      "path": "src/App.tsx",
+      "sha256": "e3b3a3ac523c2cdd76b16acdfe3bd54c1a14bfe69e59d65cf3ba2c4f5e58bbe5",
+      "spans": [
+        {
+          "from": 403,
+          "to": 423,
+          "text": "  const dismissWelcome = (land: LandChoice) => {\n    if (!saveSystem.offerContinue && !isDefaultLand(land)) { showChapterLoading(CHAPTER_LOADING_MS); startScenarioWithoutSave(DEFAULT_SCENARIO_ID, land); return; }\n    writeWelcomeDismissed();\n    setWelcomeVisible(false);\n    if (saveSystem.offerContinue) saveSystem.declineContinue();\n    else tutorial.startNewGame(welcomeTutorial, state);\n  };\n  const startNewGameOverSave = (scenarioId: string, land: LandChoice) => {\n    writeWelcomeDismissed();\n    setWelcomeVisible(false);\n    dispatch(landStartCommand(scenarioId, land, true) ?? { type: \"start_new_game\", scenarioId });\n    saveSystem.startNewGame();\n    tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, null);\n  };\n  const startScenarioWithoutSave = (scenarioId: string, land: LandChoice) => {\n    writeWelcomeDismissed();\n    setWelcomeVisible(false);\n    const command = landStartCommand(scenarioId, land, false);\n    if (command !== null) dispatch(command);\n    tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, command === null ? state : null);\n  };\n"
+        },
+        {
+          "from": 525,
+          "to": 532,
+          "text": "          eraserOpen={tutorial.access.zoneTargets(\"erase\")} kindOpen={kind => tutorial.access.zoneTargets(kind)} pulse={tutorial.pulse} onPick={pickZoneMode}\n          onRadius={radius => setZoneTool(current => current === null ? current : { ...current, radius })} /> : null}\n        {/* Mounted in every state (their locks stay readable), hidden where the state clears them from the screen. */}\n        <LayerSwitch layer={layer} access={tutorial.access} pulse={tutorial.pulse} hidden={!visibility.layers}\n          onChange={next => { setLayer(next); if (next === \"direct\") setZoneTool(null); }} />\n        <ActionDock hidden={!visibility.dock} buildOpen={ui.mode === \"build\"} ledgerOpen={ui.mode === \"ledger\"}\n          onBuild={() => sendUi({ type: \"toggle_build\" })} onLedger={() => sendUi({ type: \"toggle_ledger\" })}\n          advisor={tutorial.advisor} onDismissAdvisor={tutorial.dismissAdvisor}\n"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/tutorial/tutorialModel.ts",
+      "sha256": "d48c19c4ccbb96310fa5ca024391d1f4f47129df6d78edef4cd4702600fdca50",
+      "spans": [
+        {
+          "from": 156,
+          "to": 191,
+          "text": "  readonly arableCard: boolean;\n};\n\nconst ALL_OPEN: TutorialAccess = {\n  categories: { living: true, paths: true, trade: true, storage: true, public: true, defense: true },\n  tools: () => true,\n  layers: { direct: true, zone: true, direction: false },\n  zoneTargets: () => true,\n  arableCard: true,\n};\n\nconst stepAt = (id: TutorialStepId): number => TUTORIAL_STEP_IDS.indexOf(id);\n\n/**\n * What is open at a step index (tutorial on). Direct building of houses, wells and roads from the start; the trade\n * category (the arable brush, then the barn and mill) at the food step; the sawmill at its step; storage (the granary)\n * and the zone layer, with plots only, at the zone step; public buildings and the other trade and storage tools when\n * the tutorial ends. Defence opens with the palisade stage (`defenseOpen`: the proclamation is possible or done); the\n * direction layer stays closed (petitions, P2).\n */\nexport function tutorialAccess(enabled: boolean, index: number, defenseOpen = false): TutorialAccess {\n  if (!enabled) return ALL_OPEN;\n  // Finished: everything is open but defence, which waits for the palisade stage (research E: \"방어·권리 계속 숨김\").\n  if (index >= TUTORIAL_STEP_IDS.length) return defenseOpen ? ALL_OPEN : { ...ALL_OPEN, categories: { ...ALL_OPEN.categories, defense: false } };\n  const reached = (id: TutorialStepId) => index >= stepAt(id);\n  const trade = reached(\"arable\"); const chain = reached(\"food_chain\"); const zone = reached(\"zone_unlock\");\n  const storage = zone;\n  const openTools = new Set<PlacementTool>([\"house\", \"well\", \"road\"]);\n  if (chain) { openTools.add(\"farmstead\"); openTools.add(\"mill\"); }\n  if (reached(\"sawmill\")) openTools.add(\"sawmill\");\n  if (storage) openTools.add(\"granary\");\n  return {\n    categories: { living: true, paths: true, trade, storage, public: false, defense: false },\n    tools: tool => openTools.has(tool),\n    layers: { direct: true, zone, direction: false },\n    zoneTargets: target => zone && target === \"burgage\",\n"
+        }
+      ]
+    }
+  ]
+}

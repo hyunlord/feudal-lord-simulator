@@ -311,7 +311,9 @@ export function estatePortfolio(state: GameState): readonly EstateView[] {
       .reduce((sum, entry) => sum + entry.amount, 0);
   };
   return estates.estates.map(estate => {
-    const pieces = estate.pieces.map(piece => ({ ...piece, yearValue: estate.offMap ? piece.annualValue : year(piece.kind) ?? piece.annualValue,
+    // LM-E9 (ER-8): a ruling's scope takes its share of the piece's year.
+    const scoped = (value: number, piece: (typeof estate.pieces)[number]) => piece.scope === undefined ? value : Math.round(value * piece.scope.sharePermille / 1000);
+    const pieces = estate.pieces.map(piece => ({ ...piece, yearValue: scoped(estate.offMap ? piece.annualValue : year(piece.kind) ?? piece.annualValue, piece),
       claims: estates.claims.filter(claim => claim.pieceId === piece.id && (claim.status === "open" || claim.status === "suing")) }));
     // A faction's estate is led by the faction's leader now (the stored id is the one it had when stored).
     const leader = estate.house === undefined ? undefined : state.factions?.factions.find(faction => faction.id === estate.titleHolder)?.leaderId;

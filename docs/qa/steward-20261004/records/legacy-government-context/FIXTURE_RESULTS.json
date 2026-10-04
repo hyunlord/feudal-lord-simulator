@@ -1,0 +1,4048 @@
+[
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held",
+    "expected": "legacy.royal_tax_envoy.r06gov.held",
+    "selected": "legacy.royal_tax_envoy.r06gov.held",
+    "positive": true
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": -1,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": "440000",
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440001,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "tick": 440000.0,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.held.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.held",
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held",
+    "expected": "legacy.royal_tax_envoy.r06gov.not_held",
+    "selected": "legacy.royal_tax_envoy.r06gov.not_held",
+    "positive": true
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": -1,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": "440000",
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440001,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "townMarketTollsAtEnvoy": "not_held"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "recordTick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "tick": 440000.0,
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "tick": 440000,
+      "template": "legacy.royal_tax_envoy",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.royal_tax_envoy.r06gov.not_held.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_tax_envoy.r06gov.not_held",
+      "template": "legacy.royal_tax_envoy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero",
+    "expected": "legacy.royal_subsidy.r06gov.zero",
+    "selected": "legacy.royal_subsidy.r06gov.zero",
+    "positive": true
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": -1,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": "440000",
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440001,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "zero"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "tick": 440000.0,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.zero.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.zero",
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining",
+    "expected": "legacy.royal_subsidy.r06gov.remaining",
+    "selected": "legacy.royal_subsidy.r06gov.remaining",
+    "positive": true
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": -1,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": "440000",
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440001,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "cashAfterSubsidy": "remaining"
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "recordTick": 440000,
+      "template": "legacy.royal_subsidy",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "tick": 440000.0,
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "tick": 440000,
+      "template": "legacy.royal_subsidy",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.royal_subsidy.r06gov.remaining.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.royal_subsidy.r06gov.remaining",
+      "template": "legacy.royal_subsidy"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son",
+    "expected": "legacy.city_seal.r06gov.son",
+    "selected": "legacy.city_seal.r06gov.son",
+    "positive": true
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": -1,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": "440000",
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440001,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "son"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.city_seal.r06gov.son",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.son",
+      "tick": 440000.0,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.son",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.son",
+      "tick": 440000,
+      "template": "legacy.city_seal",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.son.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.son",
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband",
+    "expected": "legacy.city_seal.r06gov.daughter_husband",
+    "selected": "legacy.city_seal.r06gov.daughter_husband",
+    "positive": true
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": -1,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": "440000",
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440001,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "daughter_husband"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "tick": 440000.0,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "tick": 440000,
+      "template": "legacy.city_seal",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.daughter_husband.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.daughter_husband",
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral",
+    "expected": "legacy.city_seal.r06gov.collateral",
+    "selected": "legacy.city_seal.r06gov.collateral",
+    "positive": true
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": -1,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": "440000",
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440001,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "heirChoiceBeforeSeal": "collateral"
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.city_seal.r06gov.collateral",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.collateral",
+      "tick": 440000.0,
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.collateral",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.collateral",
+      "tick": 440000,
+      "template": "legacy.city_seal",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.city_seal.r06gov.collateral.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.city_seal.r06gov.collateral",
+      "template": "legacy.city_seal"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same",
+    "expected": "legacy.charter_sealed.r06gov.same",
+    "selected": "legacy.charter_sealed.r06gov.same",
+    "positive": true
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": -1,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": "440000",
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440001,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "same"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.same",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.same",
+      "tick": 440000.0,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.same",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.same",
+      "tick": 440000,
+      "template": "legacy.charter_sealed",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.same.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.same",
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement",
+    "expected": "legacy.charter_sealed.r06gov.replacement",
+    "selected": "legacy.charter_sealed.r06gov.replacement",
+    "positive": true
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": -1,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": "440000",
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440001,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "replacement"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "tick": 440000.0,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "tick": 440000,
+      "template": "legacy.charter_sealed",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.replacement.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.replacement",
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed",
+    "expected": "legacy.charter_sealed.r06gov.unnamed",
+    "selected": "legacy.charter_sealed.r06gov.unnamed",
+    "positive": true
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": -1,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": "440000",
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440001,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "mayorSelectionAtSeal": "unnamed"
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "recordTick": 440000,
+      "template": "legacy.charter_sealed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "tick": 440000.0,
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "tick": 440000,
+      "template": "legacy.charter_sealed",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.charter_sealed.r06gov.unnamed.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.charter_sealed.r06gov.unnamed",
+      "template": "legacy.charter_sealed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid",
+    "expected": "legacy.family_departed.r06gov.paid",
+    "selected": "legacy.family_departed.r06gov.paid",
+    "positive": true
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": -1,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": "440000",
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440001,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.family_departed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.paid",
+      "tick": 440000.0,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.paid",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.paid",
+      "tick": 440000,
+      "template": "legacy.family_departed",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.paid.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.paid",
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record",
+    "expected": "legacy.family_departed.r06gov.no_record",
+    "selected": "legacy.family_departed.r06gov.no_record",
+    "positive": true
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": -1,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": "440000",
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440001,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtDeparture": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.family_departed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_departed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.no_record",
+      "tick": 440000.0,
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.no_record",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.no_record",
+      "tick": 440000,
+      "template": "legacy.family_departed",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.family_departed.r06gov.no_record.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_departed.r06gov.no_record",
+      "template": "legacy.family_departed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid",
+    "expected": "legacy.family_stayed.r06gov.paid",
+    "selected": "legacy.family_stayed.r06gov.paid",
+    "positive": true
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": -1,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": "440000",
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440001,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "paid"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.family_stayed.r06gov.paid",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.paid",
+      "tick": 440000.0,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.paid",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.paid",
+      "tick": 440000,
+      "template": "legacy.family_stayed",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.paid.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.paid",
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record",
+    "expected": "legacy.family_stayed.r06gov.no_record",
+    "selected": "legacy.family_stayed.r06gov.no_record",
+    "positive": true
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.empty",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.missing_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.domain",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.wrong_template",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.city_seal",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.unverified",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.wrong_capture",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_state",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.negative_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": -1,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.wrong_head",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.extra_field",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record",
+        "invented": "invented"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.bad_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": "440000",
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.empty_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.wrong_id",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "another-record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.wrong_tick",
+    "selected": null,
+    "context": {
+      "status": "known",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440001,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "priorSubsidyAtStay": "no_record"
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.unknown",
+    "selected": null,
+    "context": {
+      "status": "unknown",
+      "recordId": "fixture-legacy.family_stayed.r06gov.no_record",
+      "recordTick": 440000,
+      "template": "legacy.family_stayed",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+      }
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.record_empty_id",
+    "selected": null,
+    "record": {
+      "id": "",
+      "tick": 440000,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.record_blank_id",
+    "selected": null,
+    "record": {
+      "id": " ",
+      "tick": 440000,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.record_multiline_id",
+    "selected": null,
+    "record": {
+      "id": "valid\ninvalid",
+      "tick": 440000,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.record_float_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.no_record",
+      "tick": 440000.0,
+      "template": "legacy.family_stayed"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.record_wrong_template",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.no_record",
+      "tick": 440000,
+      "template": "legacy.unknown"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.record_extra_field",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.no_record",
+      "tick": 440000,
+      "template": "legacy.family_stayed",
+      "override": "accept"
+    }
+  },
+  {
+    "id": "legacy.family_stayed.r06gov.no_record.record_missing_tick",
+    "selected": null,
+    "record": {
+      "id": "fixture-legacy.family_stayed.r06gov.no_record",
+      "template": "legacy.family_stayed"
+    }
+  }
+]

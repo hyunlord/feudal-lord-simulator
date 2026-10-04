@@ -1,0 +1,3050 @@
+[
+  {
+    "id": "person.arrived_13",
+    "template": "person.arrived",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1288
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_14",
+    "template": "person.arrived",
+    "selected": "person.arrived.r06ctx.young",
+    "headline": "14살의 젊은 친척이 가구에 합류했다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1287
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_29",
+    "template": "person.arrived",
+    "selected": "person.arrived.r06ctx.young",
+    "headline": "29살의 젊은 친척이 가구에 합류했다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1272
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_30",
+    "template": "person.arrived",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_54",
+    "template": "person.arrived",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1247
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_55",
+    "template": "person.arrived",
+    "selected": "person.arrived.r06ctx.elder",
+    "headline": "55살의 나이 든 친척이 가구에 합류했다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1246
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_70",
+    "template": "person.arrived",
+    "selected": "person.arrived.r06ctx.elder",
+    "headline": "70살의 나이 든 친척이 가구에 합류했다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1231
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_71",
+    "template": "person.arrived",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1230
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_unknown_scenario",
+    "template": "person.arrived",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "unknown",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.arrived_duplicate_person",
+    "template": "person.arrived",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          },
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_24",
+    "template": "person.reeve",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1277
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_25",
+    "template": "person.reeve",
+    "selected": "person.reeve.r06ctx.youth",
+    "headline": "젊은 시절, 25살에 마을 대표로 뽑혔다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1276
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_29",
+    "template": "person.reeve",
+    "selected": "person.reeve.r06ctx.youth",
+    "headline": "젊은 시절, 29살에 마을 대표로 뽑혔다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1272
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_30",
+    "template": "person.reeve",
+    "selected": "person.reeve.r06ctx.adult",
+    "headline": "30살에 마을 대표 일을 맡게 되었다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_54",
+    "template": "person.reeve",
+    "selected": "person.reeve.r06ctx.adult",
+    "headline": "54살에 마을 대표 일을 맡게 되었다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1247
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_55",
+    "template": "person.reeve",
+    "selected": "person.reeve.r06ctx.elder",
+    "headline": "나이 들어, 55살에 마을 대표로 뽑혔다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1246
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_60",
+    "template": "person.reeve",
+    "selected": "person.reeve.r06ctx.elder",
+    "headline": "나이 들어, 60살에 마을 대표로 뽑혔다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1241
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_61",
+    "template": "person.reeve",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1240
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_unknown_scenario",
+    "template": "person.reeve",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "unknown",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.reeve_duplicate_person",
+    "template": "person.reeve",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          },
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_15",
+    "template": "person.expecting",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1286
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_16",
+    "template": "person.expecting",
+    "selected": "person.expecting.r06ctx.youth",
+    "headline": "젊은 시절, 16살에 아이를 갖게 되었다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1285
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_29",
+    "template": "person.expecting",
+    "selected": "person.expecting.r06ctx.youth",
+    "headline": "젊은 시절, 29살에 아이를 갖게 되었다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1272
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_30",
+    "template": "person.expecting",
+    "selected": "person.expecting.r06ctx.adult",
+    "headline": "30살에 아이를 갖게 되었다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_44",
+    "template": "person.expecting",
+    "selected": "person.expecting.r06ctx.adult",
+    "headline": "44살에 아이를 갖게 되었다.",
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1257
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_45",
+    "template": "person.expecting",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1256
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_unknown_scenario",
+    "template": "person.expecting",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "unknown",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "person.expecting_duplicate_person",
+    "template": "person.expecting",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+      "scenarioId": "core:campaign_market_town",
+      "tick": 4000,
+      "persons": {
+        "people": [
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          },
+          {
+            "id": "fixture-person",
+            "birthYear": 1271
+          }
+        ],
+        "past": [
+
+        ]
+      }
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one",
+    "template": "person.emptied",
+    "selected": "person.emptied.r06ctx.one",
+    "headline": "한 명이 살던 집이 비었다.",
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "one_missing",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_tick_string",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_tick_float",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000.0,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_wrong_tick",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 3999,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_current_state",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "current_state",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_numeric_string_version",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": "1",
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_numeric_string_capturedAtTick",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_numeric_string_residentsBefore",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": "1",
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_numeric_string_residentsAfter",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": "0",
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_version",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_recordId",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_capturedAtTick",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_source",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_residentsBefore",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_residentsAfter",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_householdId",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_abandonedAfter",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "one_missing_burnTransition",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many",
+    "template": "person.emptied",
+    "selected": "person.emptied.r06ctx.many",
+    "headline": "여럿이 살던 집이 비었다.",
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "many_missing",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_tick_string",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_tick_float",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000.0,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_wrong_tick",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 3999,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_current_state",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "current_state",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_numeric_string_version",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": "1",
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_numeric_string_capturedAtTick",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_numeric_string_residentsBefore",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": "3",
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_numeric_string_residentsAfter",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": "0",
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_version",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_recordId",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_capturedAtTick",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_source",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_residentsBefore",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_residentsAfter",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "householdId": "house-test",
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_householdId",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "abandonedAfter": false,
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_abandonedAfter",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "burnTransition": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "many_missing_burnTransition",
+    "template": "person.emptied",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "residentsBefore": 3,
+      "residentsAfter": 0,
+      "householdId": "house-test",
+      "abandonedAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan",
+    "template": "person.bailiff",
+    "selected": "person.bailiff.r06ctx.artisan",
+    "headline": "장인 가구를 이끌던 이가 영주의 집행관이 되었다.",
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_tick_string",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_tick_float",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000.0,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_wrong_tick",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 3999,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_current_state",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "current_state",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_numeric_string_version",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": "1",
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_numeric_string_capturedAtTick",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_numeric_string_ageAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": "35"
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_version",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_recordId",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_capturedAtTick",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_source",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_classBandAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_roleAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_householdId",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "artisan_missing_ageAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "artisan",
+      "roleAtAppointment": "head",
+      "householdId": "house-test"
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant",
+    "template": "person.bailiff",
+    "selected": "person.bailiff.r06ctx.merchant",
+    "headline": "상인 가구를 이끌던 이가 영주의 집행관이 되었다.",
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_tick_string",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_tick_float",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000.0,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_wrong_tick",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 3999,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_current_state",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "current_state",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_numeric_string_version",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": "1",
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_numeric_string_capturedAtTick",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_numeric_string_ageAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": "35"
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_version",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_recordId",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_capturedAtTick",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_source",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_classBandAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "roleAtAppointment": "head",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_roleAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "householdId": "house-test",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_householdId",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "ageAtAppointment": 35
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "merchant_missing_ageAtAppointment",
+    "template": "person.bailiff",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "classBandAtAppointment": "merchant",
+      "roleAtAppointment": "head",
+      "householdId": "house-test"
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death",
+    "template": "person.steward",
+    "selected": "person.steward.r06ctx.after_death",
+    "headline": "앞선 청지기가 세상을 떠난 뒤 새 청지기가 임명되었다.",
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_tick_string",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_tick_float",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000.0,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_wrong_tick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 3999,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_current_state",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "current_state",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_numeric_string_version",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": "1",
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_numeric_string_capturedAtTick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_numeric_string_predecessorCountBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": "1",
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_version",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_recordId",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_capturedAtTick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_source",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorExitAtAppointment",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorId",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorCountBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorRoleBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorPresentBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorAbsentAfter",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorMovedToPastThisTick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorAliveAfter": false
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_death_missing_predecessorAliveAfter",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "died",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure",
+    "template": "person.steward",
+    "selected": "person.steward.r06ctx.after_departure",
+    "headline": "앞선 청지기가 도시를 떠난 뒤 새 청지기가 임명되었다.",
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": false,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": null,
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_tick_string",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_tick_float",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000.0,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_wrong_tick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 3999,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_current_state",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "current_state",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_numeric_string_version",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": "1",
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_numeric_string_capturedAtTick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": "4000",
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_numeric_string_predecessorCountBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": "1",
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_version",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_recordId",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_capturedAtTick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_source",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorExitAtAppointment",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorId",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorCountBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorRoleBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorPresentBefore",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorAbsentAfter",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorMovedToPastThisTick": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorMovedToPastThisTick",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorAliveAfter": true
+    },
+    "fallback": true,
+    "installable": false
+  },
+  {
+    "id": "after_departure_missing_predecessorAliveAfter",
+    "template": "person.steward",
+    "selected": null,
+    "headline": null,
+    "inputSnapshot": {
+    },
+    "capturedProposal": {
+      "version": 1,
+      "recordId": "fixture-record",
+      "capturedAtTick": 4000,
+      "source": "emitter_before_after",
+      "predecessorExitAtAppointment": "left_town",
+      "predecessorId": "predecessor-test",
+      "predecessorCountBefore": 1,
+      "predecessorRoleBefore": "steward",
+      "predecessorPresentBefore": true,
+      "predecessorAbsentAfter": true,
+      "predecessorMovedToPastThisTick": true
+    },
+    "fallback": true,
+    "installable": false
+  }
+]

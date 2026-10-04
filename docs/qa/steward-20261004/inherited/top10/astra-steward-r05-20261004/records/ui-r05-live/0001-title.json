@@ -1,0 +1,314 @@
+{
+  "calendar": "1300년 봄",
+  "text": "봉건 영주 시뮬레이터\n1300년 봄\n인구 12\n식량 270일\n5s\n×5\n설정\n자립 마을\n12/20\n조건 보기\n목표 기록\n직접\n구역\n방향\n건설\n장부\n청지기\n영지에 오신 것을 환영합니다\n\n오른쪽 아래 [건설]에서 건물을 고르고, 지도를 눌러 지으세요.\n\n마우스 휠로 확대, 드래그로 이동합니다.\n\n튜토리얼 켬\n\n어떤 땅에서 시작할지 고르세요\n\n지도 번호\n무작위\n강가 시장도시\n강 하나와 풀밭. 경작·목축·목재가 고르고, 강어귀라 1337년의 습격이 닿습니다.\n해안 항구\n모래·자갈 해변과 염습지. 습격과 항구 열병이 가장 셉니다. 나무가 적습니다.\n백악 언덕 목양\n짧은 풀과 흰 백악, 마른 돌담. 양은 잘 되고 밭은 덜 됩니다. 물이 귀합니다.\n숲 가장자리 개척\n낙엽과 쓰러진 나무. 목재가 빨리 나고, 밭은 숲을 베어 얻습니다.\n습지 간척\n갈대와 웅덩이. 마른 땅은 가장 기름지지만 젖은 여름엔 물이 찹니다.\n목표형으로 시작\n\n목표를 따라 마을을 시장도시로 키웁니다. 처음이라면 이 모드로 시작하세요.\n\n샌드박스로 시작\n\n목표와 실패 없이 자유롭게 짓습니다.\n\n(아무 곳이나 클릭하여 시작)",
+  "buttons": [
+    {
+      "text": "1300년 봄",
+      "label": "계절 띠 — 다가오는 일 보기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "testid": "hud-calendar"
+      }
+    },
+    {
+      "text": "인구 12",
+      "label": "인구 기록 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "식량 270일",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "foodDays": "270"
+      }
+    },
+    {
+      "text": "5s",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일시 정지",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "seal": "pause"
+      }
+    },
+    {
+      "text": "",
+      "label": "1배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "normal"
+      }
+    },
+    {
+      "text": "",
+      "label": "3배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "threefold"
+      }
+    },
+    {
+      "text": "×5",
+      "label": "5배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "fast"
+      }
+    },
+    {
+      "text": "설정",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 발전",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "튜토리얼 끔",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "소리 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "곡선 지면",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "해상도 배율",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "renderScale": "1"
+      }
+    },
+    {
+      "text": "색약 모드",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "colorblind": "off"
+      }
+    },
+    {
+      "text": "지금 저장",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "조건 보기",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "tutorialCta": "settlement"
+      }
+    },
+    {
+      "text": "목표 기록",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "직접",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "layer": "direct"
+      }
+    },
+    {
+      "text": "구역",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "zone"
+      }
+    },
+    {
+      "text": "방향",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "direction"
+      }
+    },
+    {
+      "text": "건설",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "build"
+      }
+    },
+    {
+      "text": "장부",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "ledger"
+      }
+    },
+    {
+      "text": "청지기",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "steward"
+      }
+    },
+    {
+      "text": "튜토리얼 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "무작위",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "강가 시장도시강 하나와 풀밭. 경작·목축·목재가 고르고, 강어귀라 1337년의 습격이 닿습니다.",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "archetype": "core:open_field"
+      }
+    },
+    {
+      "text": "해안 항구모래·자갈 해변과 염습지. 습격과 항구 열병이 가장 셉니다. 나무가 적습니다.",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "archetype": "core:coastal_port"
+      }
+    },
+    {
+      "text": "백악 언덕 목양짧은 풀과 흰 백악, 마른 돌담. 양은 잘 되고 밭은 덜 됩니다. 물이 귀합니다.",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "archetype": "core:chalk_downs"
+      }
+    },
+    {
+      "text": "숲 가장자리 개척낙엽과 쓰러진 나무. 목재가 빨리 나고, 밭은 숲을 베어 얻습니다.",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "archetype": "core:forest_edge"
+      }
+    },
+    {
+      "text": "습지 간척갈대와 웅덩이. 마른 땅은 가장 기름지지만 젖은 여름엔 물이 찹니다.",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "archetype": "core:fen_drainage"
+      }
+    },
+    {
+      "text": "목표형으로 시작",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "scenario": "core:campaign_market_town"
+      }
+    },
+    {
+      "text": "샌드박스로 시작",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "scenario": "core:sandbox"
+      }
+    }
+  ]
+}

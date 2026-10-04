@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-04T10:55:05+09:00",
+  "method": "Light Ruby JSON, direct counts and SHA; no engine/browser/remote. Field presence is not historical/semantic correctness.",
+  "checks": {
+    "events": 200,
+    "uniqueEventIds": 200,
+    "choices": 572,
+    "registryEntries": 200,
+    "registryRuntimeStatus": "proposal_only_not_runtime_registry",
+    "missingEventFields": [
+
+    ],
+    "missingChoiceFields": [
+
+    ],
+    "historyTypes": 182,
+    "ledgerTypes": 46,
+    "canonicalVariants": 650,
+    "separateContext": 212,
+    "ageGroups": 6,
+    "ageVariants": 20,
+    "astraAnswers": 24,
+    "top10EvidenceRows": 64,
+    "top10MissingOrHashMismatch": [
+
+    ],
+    "firstplayRows": 10,
+    "firstplayEvidenceRows": 59,
+    "firstplayMissingOrHashMismatch": [
+
+    ],
+    "rootManifestPresent": false,
+    "zipPresent": false,
+    "oldAssetStrategyRelativeLinkPresent": true
+  }
+}

@@ -7,6 +7,8 @@ import { CAUSE_REGISTRY } from './causeRegistry';
 import { BUILDING_CONFIG_BY_KIND } from '../content/buildingConfig';
 import { MONEY_RULE_COPY } from '../content/moneyCopy.ko';
 import { tollPointTile } from '../engine/tollCrossings';
+import { calendarLabel } from '../engine/scenarioState';
+import { LEDGER_PERIOD_TICKS } from '../ledger/ledger';
 
 export const LEDGER_WINDOWS: readonly LedgerWindow[] = ['recent', 'previous', 'all'];
 
@@ -77,6 +79,12 @@ export function ledgerPanelModel(state: GameState, account: LedgerAccount, windo
   } else if (account !== 'cash') notes.push(LEDGER_COPY.emptyAccount);
   else if (view.entries.length === 0 && !view.includesRollups) notes.push(window === 'recent' ? LEDGER_COPY.noIncome : LEDGER_COPY.noEntries);
   if (view.includesRollups) notes.push(LEDGER_COPY.rolledUp);
+  // COPY-1r (CA-044): the window as calendar dates (ledgerView's windowRange: the last period, the one before), never ticks.
+  if (window !== 'all') {
+    const last = window === 'recent' ? state.tick : state.tick - LEDGER_PERIOD_TICKS;
+    const first = Math.max(0, last - LEDGER_PERIOD_TICKS + 1);
+    if (last >= 0) notes.push(LEDGER_COPY.windowRange(calendarLabel({ ...state, tick: first }), calendarLabel({ ...state, tick: last })));
+  }
   return {
     accounts: LEDGER_ACCOUNTS.map(candidate => ({ account: candidate, label: LEDGER_ACCOUNT_LABELS[candidate], selected: candidate === account })),
     windows: LEDGER_WINDOWS.map(candidate => ({ window: candidate, label: LEDGER_WINDOW_LABELS[candidate], selected: candidate === window })),
@@ -88,7 +96,7 @@ export function ledgerPanelModel(state: GameState, account: LedgerAccount, windo
     }),
     entries: view.entries.slice(0, ENTRY_LIMIT).map(entry => ({
       id: entry.id,
-      text: LEDGER_COPY.entryLine(entry.tick, LEDGER_CATEGORY_LABELS[entry.category], entry.amount),
+      text: LEDGER_COPY.entryLine(calendarLabel({ ...state, tick: entry.tick }), LEDGER_CATEGORY_LABELS[entry.category], entry.amount),
       buildingIds: sourceBuildingIds(entry.sourceRefs).filter(id => state.buildings.some(building => building.id === id)),
     })),
     notes,

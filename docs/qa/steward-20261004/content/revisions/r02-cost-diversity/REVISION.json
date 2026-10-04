@@ -1,0 +1,23 @@
+{
+  "revision": "r02-cost-diversity-candidate",
+  "parent": "/tmp/astra-steward-r01-20261003/content",
+  "parentManifestSha": "a6b2a8c98ff648d9015c3f655200f52342db784963f46a18863f4f8c7deb1aaf",
+  "status": "candidate_not_promoted",
+  "exactDiff": "EXACT_DIFF.json",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "sourceChanges": false,
+  "events": 200,
+  "choices": 572,
+  "commands": 395,
+  "changedEventIds": [
+    "ck_evt_061",
+    "ck_evt_143",
+    "ck_evt_153"
+  ],
+  "unrelated197Preserved": true,
+  "originalsPreserved": true,
+  "allDisabled": true,
+  "runtimeExecuted": false,
+  "validation": "../../validation/pre-final-cumulative.json",
+  "finalVerificationRecord": "/tmp/astra-steward-r02-20261003/records/CONTENT_REVISION_R02.md"
+}

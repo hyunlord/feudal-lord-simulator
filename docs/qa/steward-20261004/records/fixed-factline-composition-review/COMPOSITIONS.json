@@ -1,0 +1,201 @@
+[
+  {
+    "variantId": "person.came_of_age.r06fixed.co_resident",
+    "template": "person.came_of_age",
+    "headline": "기록된 부모와 한 가구에서 지내던 아이가 성장의 고비를 맞았다.",
+    "proposedFactLine": "어른이 되었다",
+    "composedText": "기록된 부모와 한 가구에서 지내던 아이가 성장의 고비를 맞았다.\n어른이 되었다",
+    "currentEngineFactLine": "어른이 되어 일을 거들기 시작했다",
+    "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+    "currentEngineHold": "RETAIN",
+    "captureContract": {
+      "id": "parentsAtAdulthood",
+      "templates": [
+        "person.came_of_age"
+      ],
+      "values": [
+        "co_resident",
+        "not_co_resident"
+      ],
+      "capture": "src/engine/history.ts:392-406; src/engine/persons.types.ts:48-72; src/engine/persons.ts:85-87,233-237",
+      "captureRule": "At age-threshold emission bind subject person ID before/after, preserve birthYear, require before age<14 and after age>=14 at event years. Both motherId and fatherId must be distinct nonempty IDs and each resolve exactly once across after.persons.people and after.persons.past with explicit alive and nonempty householdId. Subject must belong to current people, alive=true, leftYear absent. A co-resident parent must belong to current people AND alive=true AND leftYear absent AND householdId equal subject; only then co_resident. A living parent in past, or any parent with leftYear, never qualifies even when historical householdId is equal. If both parents resolve but neither qualifies -> not_co_resident. Unknown/missing parent IDs -> unknown, never absent. No orphanhood, death cause, care quality or work start inferred; current ages/parents never backfill.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    "reason": "연령 경계에 따른 성장을 말하며 실제 일 배정·돌봄·부모 사망 원인을 덧붙이지 않는다. 부모 동거는 수정된 당시 people 소속/alive/leftYear 없음/같은 householdId 계약이 필요하다.",
+    "engineExecuted": false,
+    "uiRendered": false
+  },
+  {
+    "variantId": "person.came_of_age.r06fixed.not_co_resident",
+    "template": "person.came_of_age",
+    "headline": "기록된 부모와 함께 살지 않는 가구에서 아이가 성장의 고비를 맞았다.",
+    "proposedFactLine": "어른이 되었다",
+    "composedText": "기록된 부모와 함께 살지 않는 가구에서 아이가 성장의 고비를 맞았다.\n어른이 되었다",
+    "currentEngineFactLine": "어른이 되어 일을 거들기 시작했다",
+    "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+    "currentEngineHold": "RETAIN",
+    "captureContract": {
+      "id": "parentsAtAdulthood",
+      "templates": [
+        "person.came_of_age"
+      ],
+      "values": [
+        "co_resident",
+        "not_co_resident"
+      ],
+      "capture": "src/engine/history.ts:392-406; src/engine/persons.types.ts:48-72; src/engine/persons.ts:85-87,233-237",
+      "captureRule": "At age-threshold emission bind subject person ID before/after, preserve birthYear, require before age<14 and after age>=14 at event years. Both motherId and fatherId must be distinct nonempty IDs and each resolve exactly once across after.persons.people and after.persons.past with explicit alive and nonempty householdId. Subject must belong to current people, alive=true, leftYear absent. A co-resident parent must belong to current people AND alive=true AND leftYear absent AND householdId equal subject; only then co_resident. A living parent in past, or any parent with leftYear, never qualifies even when historical householdId is equal. If both parents resolve but neither qualifies -> not_co_resident. Unknown/missing parent IDs -> unknown, never absent. No orphanhood, death cause, care quality or work start inferred; current ages/parents never backfill.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    "reason": "연령 경계에 따른 성장을 말하며 실제 일 배정·돌봄·부모 사망 원인을 덧붙이지 않는다. 부모 동거는 수정된 당시 people 소속/alive/leftYear 없음/같은 householdId 계약이 필요하다.",
+    "engineExecuted": false,
+    "uiRendered": false
+  },
+  {
+    "variantId": "milestone.stone_town.r06fixed.all_complete",
+    "template": "milestone.stone_town",
+    "headline": "석벽 사업 단계가 기록될 때, 성벽 구간들은 모두 완성 상태였다.",
+    "proposedFactLine": "석벽 도시 이정표가 기록되었다",
+    "composedText": "석벽 사업 단계가 기록될 때, 성벽 구간들은 모두 완성 상태였다.\n석벽 도시 이정표가 기록되었다",
+    "currentEngineFactLine": "석벽 도시가 되었다",
+    "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+    "currentEngineHold": "RETAIN",
+    "captureContract": {
+      "id": "wallCompletionAtMilestone",
+      "templates": [
+        "milestone.stone_town"
+      ],
+      "values": [
+        "all_complete",
+        "partly_complete",
+        "none_complete"
+      ],
+      "capture": "src/engine/history.ts:451-466; src/engine/era.ts:108-140; src/engine/engine.types.ts:32-43",
+      "captureRule": "At emitted milestone require era stone_town and nonempty after.palisade.segments with unique IDs and explicit boolean completed. All true/all false/mixed determine enum. Describe segment completed only, not replacementConstructionSiteId completion or material. Null/empty/inconsistent array unknown. No timber/stone material guess, no wall ring fully sealed inference.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    "reason": "도시 이정표의 기록과 성벽 구간 completed 속성을 구분한다. 모든 completed가 true여도 석재 교체 완공·방어선 봉합을 뜻하지 않는다. 새 사실행은 물리 완공 단정을 제거한다.",
+    "engineExecuted": false,
+    "uiRendered": false
+  },
+  {
+    "variantId": "milestone.stone_town.r06fixed.partly_complete",
+    "template": "milestone.stone_town",
+    "headline": "석벽 사업 단계가 기록될 때, 완성된 성벽 구간과 미완성 구간이 함께 있었다.",
+    "proposedFactLine": "석벽 도시 이정표가 기록되었다",
+    "composedText": "석벽 사업 단계가 기록될 때, 완성된 성벽 구간과 미완성 구간이 함께 있었다.\n석벽 도시 이정표가 기록되었다",
+    "currentEngineFactLine": "석벽 도시가 되었다",
+    "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+    "currentEngineHold": "RETAIN",
+    "captureContract": {
+      "id": "wallCompletionAtMilestone",
+      "templates": [
+        "milestone.stone_town"
+      ],
+      "values": [
+        "all_complete",
+        "partly_complete",
+        "none_complete"
+      ],
+      "capture": "src/engine/history.ts:451-466; src/engine/era.ts:108-140; src/engine/engine.types.ts:32-43",
+      "captureRule": "At emitted milestone require era stone_town and nonempty after.palisade.segments with unique IDs and explicit boolean completed. All true/all false/mixed determine enum. Describe segment completed only, not replacementConstructionSiteId completion or material. Null/empty/inconsistent array unknown. No timber/stone material guess, no wall ring fully sealed inference.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    "reason": "도시 이정표의 기록과 성벽 구간 completed 속성을 구분한다. 모든 completed가 true여도 석재 교체 완공·방어선 봉합을 뜻하지 않는다. 새 사실행은 물리 완공 단정을 제거한다.",
+    "engineExecuted": false,
+    "uiRendered": false
+  },
+  {
+    "variantId": "milestone.stone_town.r06fixed.none_complete",
+    "template": "milestone.stone_town",
+    "headline": "석벽 사업 단계가 기록될 때, 아직 완성 상태인 성벽 구간은 없었다.",
+    "proposedFactLine": "석벽 도시 이정표가 기록되었다",
+    "composedText": "석벽 사업 단계가 기록될 때, 아직 완성 상태인 성벽 구간은 없었다.\n석벽 도시 이정표가 기록되었다",
+    "currentEngineFactLine": "석벽 도시가 되었다",
+    "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+    "currentEngineHold": "RETAIN",
+    "captureContract": {
+      "id": "wallCompletionAtMilestone",
+      "templates": [
+        "milestone.stone_town"
+      ],
+      "values": [
+        "all_complete",
+        "partly_complete",
+        "none_complete"
+      ],
+      "capture": "src/engine/history.ts:451-466; src/engine/era.ts:108-140; src/engine/engine.types.ts:32-43",
+      "captureRule": "At emitted milestone require era stone_town and nonempty after.palisade.segments with unique IDs and explicit boolean completed. All true/all false/mixed determine enum. Describe segment completed only, not replacementConstructionSiteId completion or material. Null/empty/inconsistent array unknown. No timber/stone material guess, no wall ring fully sealed inference.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    "reason": "도시 이정표의 기록과 성벽 구간 completed 속성을 구분한다. 모든 completed가 true여도 석재 교체 완공·방어선 봉합을 뜻하지 않는다. 새 사실행은 물리 완공 단정을 제거한다.",
+    "engineExecuted": false,
+    "uiRendered": false
+  },
+  {
+    "variantId": "plague.priest_died.r06fixed.present",
+    "template": "plague.priest_died",
+    "headline": "교회나 예배당이 있는 도시에 사제직 공석이 기록되었다.",
+    "proposedFactLine": "사제 자리가 비었다",
+    "composedText": "교회나 예배당이 있는 도시에 사제직 공석이 기록되었다.\n사제 자리가 비었다",
+    "currentEngineFactLine": "사제가 역병으로 죽었다 — 교회가 비었다",
+    "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+    "currentEngineHold": "RETAIN",
+    "captureContract": {
+      "id": "worshipBuildingsAtVacancy",
+      "templates": [
+        "plague.priest_died"
+      ],
+      "values": [
+        "present",
+        "absent"
+      ],
+      "capture": "src/engine/plague.ts:511-522; src/engine/history.ts:649-651; src/content/buildingCatalog.ts:94,113",
+      "captureRule": "Require curacy newly present, vacantSince matches operation tick, match old template record. Count existing after.buildings whose kind church or chapel; positive present else absent. Complete valid building list required; construction sites excluded. This is building presence, never actual priest death/cause/worship cessation. No current-world backfill.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    "reason": "사제 자리가 비었다는 curacy 공석 사실과 교회/예배당 건물 유무를 결합한다. 실제 사제의 사망·사인·신앙활동 부재는 주장하지 않는다.",
+    "engineExecuted": false,
+    "uiRendered": false
+  },
+  {
+    "variantId": "plague.priest_died.r06fixed.absent",
+    "template": "plague.priest_died",
+    "headline": "교회와 예배당이 없는 도시에 사제직 공석이 기록되었다.",
+    "proposedFactLine": "사제 자리가 비었다",
+    "composedText": "교회와 예배당이 없는 도시에 사제직 공석이 기록되었다.\n사제 자리가 비었다",
+    "currentEngineFactLine": "사제가 역병으로 죽었다 — 교회가 비었다",
+    "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+    "currentEngineHold": "RETAIN",
+    "captureContract": {
+      "id": "worshipBuildingsAtVacancy",
+      "templates": [
+        "plague.priest_died"
+      ],
+      "values": [
+        "present",
+        "absent"
+      ],
+      "capture": "src/engine/plague.ts:511-522; src/engine/history.ts:649-651; src/content/buildingCatalog.ts:94,113",
+      "captureRule": "Require curacy newly present, vacantSince matches operation tick, match old template record. Count existing after.buildings whose kind church or chapel; positive present else absent. Complete valid building list required; construction sites excluded. This is building presence, never actual priest death/cause/worship cessation. No current-world backfill.",
+      "provenance": "emission_snapshot",
+      "currentRecordStorage": "absent: proposed event-time context",
+      "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+    },
+    "reason": "사제 자리가 비었다는 curacy 공석 사실과 교회/예배당 건물 유무를 결합한다. 실제 사제의 사망·사인·신앙활동 부재는 주장하지 않는다.",
+    "engineExecuted": false,
+    "uiRendered": false
+  }
+]

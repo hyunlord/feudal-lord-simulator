@@ -1,0 +1,269 @@
+{
+  "revision": "r02-engine-support",
+  "sourceHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+  "evidenceLevel": "source_verified_not_runtime_tested",
+  "runtimeExecuted": false,
+  "historicalAuthoringHead": "5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b",
+  "status": "STATIC_SUPPORT_MAP_NOT_INSTALLATION",
+  "independentReview": {
+    "file": "../records/LM_E9_ASTRA_REVIEW.json",
+    "sha256": "1d7b7a401098cd841548e78c3b0e94efb3f409a8077d3ddd0613960aac026c92",
+    "verdict": "PASS_STATIC_HANDOFF_ONLY",
+    "passedChecks": 159,
+    "scope": "Astra 15 항목과 엔진 유보 9항목의 정적 인계 검수; 이번 지원표의 독립 검수는 아님"
+  },
+  "sourceEvidence": [
+    {
+      "file": "src/content/registry/registryTypes.ts",
+      "sha256": "458f7a21a4c922fce717aa4d213a943545c2e7a3696607ddf0c3560c7e2e255f"
+    },
+    {
+      "file": "src/content/registry/registryEntries.ts",
+      "sha256": "ac0243b0d74974ef3a3a175e93b19523c65d8baff0bb78abcdff836a88e52a80"
+    },
+    {
+      "file": "src/content/registry/draftEvents.ts",
+      "sha256": "d7f474b4a1fde72c1bfa33fab0a1f995e07907098e1734ecfcdfe41bc2fa83d4"
+    },
+    {
+      "file": "src/content/registry/homePetitions.ts",
+      "sha256": "ceec855cd8a6403f728ba8e1a654c0f40a6d4ba191f5576d6746bb2eadef5b6d"
+    },
+    {
+      "file": "src/content/stewardshipConfig.ts",
+      "sha256": "aa01e8e7a7929122d75cd26fadce98459d86ff2893eec57a64ea8a03533e5949"
+    },
+    {
+      "file": "src/engine/registry.ts",
+      "sha256": "5a5bb81ff2e7fe445a8db833895217b13d7f5d1e4831d9ef0380e050b2a835a4"
+    },
+    {
+      "file": "src/engine/registry.types.ts",
+      "sha256": "7c6dae66001f59bd5d08f1b51af5abe6fd48119f931bd0db5f0bb664483dcdbc"
+    },
+    {
+      "file": "src/engine/stewardship.ts",
+      "sha256": "e73a230a40cc61951e6173ecb9cfde2ac62144b57fb573a10f183002743abe49"
+    },
+    {
+      "file": "src/engine/townAgency.ts",
+      "sha256": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d"
+    },
+    {
+      "file": "src/engine/estates.ts",
+      "sha256": "d592e9373961ed2b23780c83376dc00b78cea69b6c411732ea476629677e1c2e"
+    },
+    {
+      "file": "src/engine/estates.types.ts",
+      "sha256": "f742db482a529f0894e297e5506c68bd5c9cc2b1395bc580eaaf1f06fac3818c"
+    }
+  ],
+  "support": {
+    "NE01": {
+      "status": "partially_implemented",
+      "scope": "홈 12종 + 초안 11종을 등록한 제한형 사건 등록기",
+      "supported": [
+        "all/any/not와 allowlist field/op/value 조건",
+        "6종 bind와 빈도·재등장·exclusiveGroup",
+        "제한형 RegistryEffect와 저장 상태"
+      ],
+      "notSupported": [
+        "현재 누적200 sidecar의 임의 call/derived/field 비교 AST 직접 실행",
+        "복수 인물 alias 및 선택별 optional binding 계약 직접 이식",
+        "13개 중앙 context dedup 계약 전체"
+      ],
+      "sourceRefs": [
+        "src/content/registry/registryTypes.ts:10",
+        "src/content/registry/registryEntries.ts:10",
+        "src/engine/registry.ts:229"
+      ]
+    },
+    "NE03": {
+      "status": "implemented_subset",
+      "scope": "기간부 시장 부담 조정과 연 단위 분납",
+      "supported": [
+        "term remission + what market_dues: permille 변경, 만기 이전값 복원",
+        "term installments: 금고에서 연 납부, 부족분 arrears 기록"
+      ],
+      "notSupported": [
+        "임의 지대/노역 감면의 실물 효과",
+        "상대방별 수취 계정·범용 계약 이행",
+        "여러 누락 연도의 일괄 추징 보장"
+      ],
+      "units": "remission.market_dues의 amountPerYear는 금액이 아니라 permille; installments는 금고 금액",
+      "sourceRefs": [
+        "src/engine/registry.ts:248",
+        "src/engine/registry.ts:273",
+        "src/engine/registry.ts:286"
+      ]
+    },
+    "NE08": {
+      "status": "implemented_subset",
+      "scope": "bound suit가 가리키는 기존 권리 조각의 수익 지분 배율",
+      "supported": [
+        "sharePermille 0..2000 및 ruledTick/suitId 저장",
+        "영지 평가 수익에 지분 배율 적용"
+      ],
+      "notSupported": [
+        "새 권리 조각 생성",
+        "titleHolder/possessor 변경",
+        "구역 경계·새 권리자·복수 지분자 생성",
+        "판결 확정 단계 검사 보장"
+      ],
+      "sourceRefs": [
+        "src/engine/registry.ts:307",
+        "src/engine/estates.ts:315",
+        "src/engine/estates.types.ts:40"
+      ]
+    },
+    "NE10": {
+      "status": "implemented_home_12_only",
+      "scope": "HOME_PETITION_ENTRIES 12종 홈 청원 선례",
+      "supported": [
+        "같은 종류에 대한 최근 영주 판결 두 번이 같을 때 선례",
+        "매년 첫 비선례 홈 청원은 영주 판결",
+        "recurring/금액/권리/혼인 예외는 영주에게 올림",
+        "청지기 선례 결과와 원장 및 선례 보고"
+      ],
+      "notSupported": [
+        "누적200 임의 등록기 사건의 범용 선례 처리"
+      ],
+      "sourceRefs": [
+        "src/content/registry/homePetitions.ts:12",
+        "src/engine/stewardship.ts:188",
+        "src/engine/stewardship.ts:211",
+        "src/engine/stewardship.ts:432"
+      ]
+    }
+  },
+  "actualRegistryContract": {
+    "typeFile": "src/content/registry/registryTypes.ts",
+    "conditionShape": "all | any | not | {field, op, value, faction?}",
+    "operators": [
+      "eq",
+      "ne",
+      "gte",
+      "lte",
+      "in",
+      "has",
+      "lacks"
+    ],
+    "binds": [
+      "none",
+      "delegated_estate",
+      "held_estate",
+      "pending_audit",
+      "open_suit",
+      "open_claim"
+    ],
+    "effectDiscriminator": "command",
+    "effectNames": [
+      "set_project_subsidy",
+      "set_market_dues",
+      "set_estate_policy",
+      "set_audit_mode",
+      "answer_audit",
+      "set_estate_oversight",
+      "add_suit_evidence",
+      "file_suit",
+      "order_timber",
+      "faction_relation",
+      "treasury",
+      "term",
+      "rights_scope",
+      "set_exception_rules",
+      "enforce_possession",
+      "none"
+    ],
+    "canonicalCommandContractUnchanged": true,
+    "canonicalRegistryDirectlyExecutable": false
+  },
+  "none": {
+    "registryMeaning": "applyEffect returns input state; valid no-operation selection",
+    "countsAsEnabledChoice": true,
+    "countsAsConsequential": false,
+    "homeCycleException": "홈 grant/refuse의 none은 기존 answer_estate_petition 경로가 실제효과를 처리하는 표식. 홈 판결 전체가 무효과라는 뜻 아님.",
+    "translationOnly": [
+      {
+        "event": "ck_evt_019",
+        "choice": "a"
+      },
+      {
+        "event": "ck_evt_059",
+        "choice": "direct"
+      },
+      {
+        "event": "ck_evt_008",
+        "choice": "b"
+      },
+      {
+        "event": "ck_evt_015",
+        "choice": "b"
+      },
+      {
+        "event": "ck_evt_035",
+        "choice": "wait"
+      },
+      {
+        "event": "ck_evt_046",
+        "choice": "stock",
+        "guard": "order <= 60 AND waiting need > available"
+      }
+    ],
+    "notAppliedToCanonical": true,
+    "minimumTwoConsequentialChoices": "authoring requirement; enabledChoices does not enforce this distinction"
+  },
+  "atomicity": {
+    "status": "not_generally_guaranteed",
+    "sourceRefs": [
+      "src/engine/registry.ts:193",
+      "src/engine/registry.ts:229",
+      "src/engine/townAgency.ts:88"
+    ],
+    "reason": "applyChoice는 null 감지 시 중간 상태를 버리지만 setProjectSubsidy 거절이 lastRefusal을 추가한 새 참조를 반환하면 changed는 성공으로 취급한다.",
+    "blockedChoices": [
+      "ck_evt_004/c",
+      "ck_evt_030/divide",
+      "ck_evt_049/share"
+    ],
+    "requiredBeforeUnblock": [
+      "모든 구성 명령의 초기 전제조건 확인",
+      "각 구성 명령의 실제 장려금 결과 사후조건 확인",
+      "거절 결과를 명시적으로 실패로 판정하는 adapter와 런타임 원자성 검증"
+    ],
+    "runtimeReproductionPerformed": true,
+    "runtimeReproduction": {
+      "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "environment": "DGX official scripts/remote/run.sh, nice19, detached kept",
+      "job": "astra-steward-atomic-r05-5fb1aeb",
+      "evidence": "../records/registry-atomic-executed/result.json",
+      "evidenceSha256": "92e729fb7af3e50f8881a3b07bc0fb930218ff04d29097f4a5093a8f18dbc7f4",
+      "parentCheck": "../records/registry-atomic-executed/PARENT_CHECK.json",
+      "cases": 4,
+      "checks": 8,
+      "defectReproduced": true,
+      "observed": "15d limit: 7d+9d keeps first subsidy after second refusal and reports enabled choice; 7+8 success and genuine-null failure controls included",
+      "scope": "Synthetic registry entry on initial lord-mode seed1 state; no campaign advance, UI, save roundtrip, or full typecheck",
+      "unblocksChoices": false
+    },
+    "sourceRevalidated": {
+      "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "spans": [
+        "src/engine/registry.ts:190-244",
+        "src/engine/townAgency.ts:80-89"
+      ]
+    }
+  },
+  "unreviewedEffectsPolicy": "다른83개는 원문 proposal 상태를 보존. 이번 검토로 구현 여부를 재분류하지 않음.",
+  "canonicalStatus": {
+    "events": 200,
+    "enabled": 0,
+    "adapterImplemented": false,
+    "bodyAndCommandsChanged": true,
+    "choices": 572,
+    "commandTemplates": 395,
+    "revision": "r02-cost-diversity-candidate",
+    "changes": "061 copy only;143c and153c removed; current support classifications unchanged"
+  },
+  "verificationScopeNote": "Top-level sourceHead and runtimeExecuted retain the historical overall support audit. Only atomicity has the separately pinned R05 runtime reproduction; this does not verify every effect."
+}

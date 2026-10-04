@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:charter-kin:age-context-copy-proposal:v1",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "status",
+    "baselineSha256",
+    "canonicalModified",
+    "adapter",
+    "conditionSources",
+    "slots",
+    "fallback",
+    "additions"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "formatVersion": {
+      "const": "age-context-proposal-v1"
+    },
+    "status": {
+      "const": "NOT_INSTALLED_REQUIRES_CONTEXT_ADAPTER"
+    },
+    "baselineSha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "canonicalModified": {
+      "const": false
+    },
+    "adapter": {
+      "type": "string"
+    },
+    "conditionSources": {
+      "type": "object"
+    },
+    "slots": {
+      "type": "object"
+    },
+    "fallback": {
+      "type": "object"
+    },
+    "additions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "template",
+          "variants"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "template": {
+            "enum": [
+              "person.fell_ill",
+              "person.recovered",
+              "person.injured",
+              "person.healed",
+              "person.pilgrimage",
+              "person.returned"
+            ]
+          },
+          "variants": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/variant"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "condition": {
+      "type": "object",
+      "required": [
+        "field",
+        "op",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "context.subjectAgeBandAtRecord",
+            "context.subjectAgeAtRecord"
+          ]
+        },
+        "op": {
+          "enum": [
+            "eq",
+            "gte",
+            "lte"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "integer"
+          ]
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": [
+        "id",
+        "priority",
+        "when"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "when": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "headline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requiredSlots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true
+        },
+        "retainFactLine": {
+          "const": true
+        }
+      },
+      "anyOf": [
+        {
+          "required": [
+            "headline"
+          ]
+        },
+        {
+          "required": [
+            "text"
+          ]
+        }
+      ]
+    }
+  }
+}

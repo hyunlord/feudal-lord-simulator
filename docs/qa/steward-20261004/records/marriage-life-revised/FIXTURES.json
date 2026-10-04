@@ -1,0 +1,2804 @@
+[
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.widowed_lord",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": "marriage.brother_in_law_born.r06life.lord"
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.missing",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.unknown",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.wrong_type",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.wrong_template",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.wrong_tick",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.wrong_source",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.lord.unresolved_reference",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.son",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": "marriage.brother_in_law_born.r06life.son"
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.missing",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.unknown",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.wrong_type",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.wrong_template",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.wrong_tick",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.wrong_source",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.son.unresolved_reference",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.brother",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": "marriage.brother_in_law_born.r06life.kin"
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.nephew",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "nephew"
+      }
+    },
+    "expected": "marriage.brother_in_law_born.r06life.kin"
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.cousin",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "cousin"
+      }
+    },
+    "expected": "marriage.brother_in_law_born.r06life.kin"
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.missing",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.unknown",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.wrong_type",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.wrong_template",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.wrong_tick",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.wrong_source",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.brother_in_law_born.r06life.kin.unresolved_reference",
+    "template": "marriage.brother_in_law_born",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.brother_in_law_born",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.widowed_lord",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": "marriage.father_ill.r06life.lord"
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.missing",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.unknown",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.wrong_type",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.wrong_template",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.wrong_tick",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.wrong_source",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.lord.unresolved_reference",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.son",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": "marriage.father_ill.r06life.son"
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.missing",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.unknown",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.wrong_type",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.wrong_template",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.wrong_tick",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.wrong_source",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.son.unresolved_reference",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.brother",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": "marriage.father_ill.r06life.kin"
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.nephew",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "nephew"
+      }
+    },
+    "expected": "marriage.father_ill.r06life.kin"
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.cousin",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "cousin"
+      }
+    },
+    "expected": "marriage.father_ill.r06life.kin"
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.missing",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.unknown",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.wrong_type",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.wrong_template",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.wrong_tick",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.wrong_source",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_ill.r06life.kin.unresolved_reference",
+    "template": "marriage.father_ill",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_ill",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.widowed_lord",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": "marriage.deferred_void.r06life.lord"
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.missing",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.unknown",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.wrong_type",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.wrong_template",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.wrong_tick",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.wrong_source",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.lord.unresolved_reference",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "widowed_lord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.son",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": "marriage.deferred_void.r06life.son"
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.missing",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.unknown",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.wrong_type",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.wrong_template",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.wrong_tick",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.wrong_source",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.son.unresolved_reference",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.brother",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": "marriage.deferred_void.r06life.kin"
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.nephew",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "nephew"
+      }
+    },
+    "expected": "marriage.deferred_void.r06life.kin"
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.cousin",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "cousin"
+      }
+    },
+    "expected": "marriage.deferred_void.r06life.kin"
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.missing",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.unknown",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.wrong_type",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.wrong_template",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.wrong_tick",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.wrong_source",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.deferred_void.r06life.kin.unresolved_reference",
+    "template": "marriage.deferred_void",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.deferred_void",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "groomRelationAtContract": "brother"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.open.open",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "open"
+      }
+    },
+    "expected": "marriage.will_change.r06life.open"
+  },
+  {
+    "id": "marriage.will_change.r06life.open.missing",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.open.unknown",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "open"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.open.wrong_type",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.open.wrong_template",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "open"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.open.wrong_tick",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "open"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.open.wrong_source",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "open"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.open.unresolved_reference",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "open"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.absent",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "absent"
+      }
+    },
+    "expected": "marriage.will_change.r06life.absent"
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.missing",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.unknown",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.wrong_type",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.wrong_template",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.wrong_tick",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.wrong_source",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_change.r06life.absent.unresolved_reference",
+    "template": "marriage.will_change",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_change",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "nonInfringementOpenAtWillAttempt": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.paid_favour",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "paid_favour"
+      }
+    },
+    "expected": "marriage.will_dropped.r06life.paid"
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.missing",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.unknown",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "paid_favour"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.wrong_type",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.wrong_template",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "paid_favour"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.wrong_tick",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "paid_favour"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.wrong_source",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "paid_favour"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.paid.unresolved_reference",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "willDroppedConsideration": "paid_favour"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.support_promised",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "support_promised"
+      }
+    },
+    "expected": "marriage.will_dropped.r06life.promised"
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.missing",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.unknown",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "support_promised"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.wrong_type",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.wrong_template",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "support_promised"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.wrong_tick",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "support_promised"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.wrong_source",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "willDroppedConsideration": "support_promised"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.will_dropped.r06life.promised.unresolved_reference",
+    "template": "marriage.will_dropped",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.will_dropped",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "willDroppedConsideration": "support_promised"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.son.living_son",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "living_son"
+      }
+    },
+    "expected": "marriage.father_died.r06life.son"
+  },
+  {
+    "id": "marriage.father_died.r06life.son.missing",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.son.unknown",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "living_son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.son.wrong_type",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.son.wrong_template",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "living_son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.son.wrong_tick",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "living_son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.son.wrong_source",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "living_son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.son.unresolved_reference",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "living_son"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.rival",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "rival"
+      }
+    },
+    "expected": "marriage.father_died.r06life.rival"
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.missing",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.unknown",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "rival"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.wrong_type",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.wrong_template",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "rival"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.wrong_tick",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "rival"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.wrong_source",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "rival"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.rival.unresolved_reference",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "rival"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.house.lord_house",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "lord_house"
+      }
+    },
+    "expected": "marriage.father_died.r06life.house"
+  },
+  {
+    "id": "marriage.father_died.r06life.house.missing",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.house.unknown",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "lord_house"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.house.wrong_type",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.house.wrong_template",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "lord_house"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.house.wrong_tick",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "lord_house"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.house.wrong_source",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "lord_house"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.father_died.r06life.house.unresolved_reference",
+    "template": "marriage.father_died",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.father_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "inheritanceRouteAtFatherDeath": "lord_house"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.debt.positive",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "positive"
+      }
+    },
+    "expected": "marriage.lost.r06life.debt"
+  },
+  {
+    "id": "marriage.lost.r06life.debt.missing",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.debt.unknown",
+    "template": "marriage.lost",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "positive"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.debt.wrong_type",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.debt.wrong_template",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "positive"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.debt.wrong_tick",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "positive"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.debt.wrong_source",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "positive"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.debt.unresolved_reference",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "positive"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.absent",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "absent"
+      }
+    },
+    "expected": "marriage.lost.r06life.no_debt"
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.missing",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.unknown",
+    "template": "marriage.lost",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.wrong_type",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.wrong_template",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.wrong_tick",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.wrong_source",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "unknown",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": true,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.lost.r06life.no_debt.unresolved_reference",
+    "template": "marriage.lost",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.lost",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "referenceVerified": false,
+      "fields": {
+        "deferredDebtAtInheritanceLoss": "absent"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.explicit_let_stand",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "explicit_let_stand"
+      }
+    },
+    "expected": "marriage.contested.r06life.explicit"
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.missing",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.unknown",
+    "template": "marriage.contested",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "explicit_let_stand"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.wrong_type",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.wrong_template",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "explicit_let_stand"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.wrong_tick",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "explicit_let_stand"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.wrong_source",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "explicit_let_stand"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.explicit.unresolved_reference",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "willAllowedRoute": "explicit_let_stand"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.unanswered_deadline",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "unanswered_deadline"
+      }
+    },
+    "expected": "marriage.contested.r06life.deadline"
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.missing",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.unknown",
+    "template": "marriage.contested",
+    "context": {
+      "status": "unknown",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "unanswered_deadline"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.wrong_type",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": 17
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.wrong_template",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "person.arrived",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "unanswered_deadline"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.wrong_tick",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 999,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "unanswered_deadline"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.wrong_source",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "unknown",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": true,
+      "fields": {
+        "willAllowedRoute": "unanswered_deadline"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "marriage.contested.r06life.deadline.unresolved_reference",
+    "template": "marriage.contested",
+    "context": {
+      "status": "known",
+      "recordId": "h-test",
+      "recordTick": 1000,
+      "template": "marriage.contested",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "immutable_contract_reference",
+      "referenceVerified": false,
+      "fields": {
+        "willAllowedRoute": "unanswered_deadline"
+      }
+    },
+    "expected": null
+  }
+]

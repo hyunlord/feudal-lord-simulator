@@ -1,0 +1,350 @@
+{
+  "verdict": "PASS_BOUNDED_TRANSIENT_PRODUCTION_RECOVERY",
+  "manifest_counts": {
+    "/tmp/astra-steward-r08-20261004/records/storage-flow-executed/SHA256SUMS": 24,
+    "/Users/rexxa/fls-astra-steward/output/steward-storage-flow-r08/SHA256SUMS": 5,
+    "/Users/rexxa/fls-astra-steward/output/steward-storage-flow-r08/SOURCE_SHA256SUMS": 1095
+  },
+  "trace_rows": 3841,
+  "public_steps": 3840,
+  "first_target_change": 200394,
+  "progress_changes": 70,
+  "completion_resets": [
+    {
+      "tick": 200874,
+      "from": 34,
+      "to": 0,
+      "inventory": {
+        "logs": 0,
+        "timber": 19
+      }
+    },
+    {
+      "tick": 201720,
+      "from": 34,
+      "to": 0,
+      "inventory": {
+        "logs": 0,
+        "timber": 19
+      }
+    }
+  ],
+  "progress_first": {
+    "tick": 200840,
+    "from": 0,
+    "to": 1,
+    "inventory": {
+      "logs": 2,
+      "timber": 18
+    }
+  },
+  "progress_last": {
+    "tick": 201720,
+    "from": 34,
+    "to": 0,
+    "inventory": {
+      "logs": 0,
+      "timber": 19
+    }
+  },
+  "stock_changes": [
+    {
+      "tick": 200394,
+      "inventory": {
+        "logs": 1,
+        "timber": 18
+      },
+      "reserved": {
+        "timber": 1
+      },
+      "progress": 0
+    },
+    {
+      "tick": 200609,
+      "inventory": {
+        "logs": 1,
+        "timber": 18
+      },
+      "reserved": {
+      },
+      "progress": 0
+    },
+    {
+      "tick": 200824,
+      "inventory": {
+        "logs": 1,
+        "timber": 18
+      },
+      "reserved": {
+        "logs": 1
+      },
+      "progress": 0
+    },
+    {
+      "tick": 200840,
+      "inventory": {
+        "logs": 2,
+        "timber": 18
+      },
+      "reserved": {
+      },
+      "progress": 1
+    },
+    {
+      "tick": 200874,
+      "inventory": {
+        "logs": 0,
+        "timber": 19
+      },
+      "reserved": {
+        "logs": 1
+      },
+      "progress": 0
+    },
+    {
+      "tick": 200890,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "reserved": {
+      },
+      "progress": 0
+    },
+    {
+      "tick": 201240,
+      "inventory": {
+        "logs": 1,
+        "timber": 18
+      },
+      "reserved": {
+        "timber": 1
+      },
+      "progress": 0
+    },
+    {
+      "tick": 201455,
+      "inventory": {
+        "logs": 1,
+        "timber": 18
+      },
+      "reserved": {
+      },
+      "progress": 0
+    },
+    {
+      "tick": 201670,
+      "inventory": {
+        "logs": 1,
+        "timber": 18
+      },
+      "reserved": {
+        "logs": 1
+      },
+      "progress": 0
+    },
+    {
+      "tick": 201686,
+      "inventory": {
+        "logs": 2,
+        "timber": 18
+      },
+      "reserved": {
+      },
+      "progress": 1
+    },
+    {
+      "tick": 201720,
+      "inventory": {
+        "logs": 0,
+        "timber": 19
+      },
+      "reserved": {
+        "logs": 1
+      },
+      "progress": 0
+    },
+    {
+      "tick": 201736,
+      "inventory": {
+        "logs": 1,
+        "timber": 19
+      },
+      "reserved": {
+      },
+      "progress": 0
+    }
+  ],
+  "diagnostic_rows": 187,
+  "diagnostic_operations": {
+    "no_input": 119,
+    "working": 68
+  },
+  "diagnostics_all_hash_unchanged": true,
+  "topology_changed_rows": 0,
+  "all_tick_end_stores_committed_full": true,
+  "snapshots": [
+    {
+      "label": "first-target-change-before",
+      "tick": 200393,
+      "file_sha256": "a0f6dddb1d95817b950e59fdfeecfe98d0610fbd8395b0193d878da5f6d8a647",
+      "state_sha256": "a2f4a4dc9756801905eed1d22f8f8c01a5880e821da82af55aff809a9242e3e8",
+      "topology_fields": {
+        "width": {
+          "present": true,
+          "type": "Integer"
+        },
+        "height": {
+          "present": true,
+          "type": "Integer"
+        },
+        "roadRevision": {
+          "present": true,
+          "type": "Integer"
+        },
+        "tiles": {
+          "present": true,
+          "type": "Array"
+        },
+        "buildings": {
+          "present": true,
+          "type": "Array"
+        },
+        "palisade": {
+          "present": true,
+          "type": "Hash"
+        },
+        "river": {
+          "present": true,
+          "type": "Hash"
+        },
+        "wallConstructionReserve": {
+          "present": true,
+          "type": "Hash"
+        }
+      }
+    },
+    {
+      "label": "first-target-change-after",
+      "tick": 200394,
+      "file_sha256": "c356354769a2c01078e18dc0407451c132c5b6ff8421e50bb858a8692a58ecbb",
+      "state_sha256": "95cfbedc7cf5227bc8494cc5268509317bc821b5dcab30db2b6b2579777cbec9",
+      "topology_fields": {
+        "width": {
+          "present": true,
+          "type": "Integer"
+        },
+        "height": {
+          "present": true,
+          "type": "Integer"
+        },
+        "roadRevision": {
+          "present": true,
+          "type": "Integer"
+        },
+        "tiles": {
+          "present": true,
+          "type": "Array"
+        },
+        "buildings": {
+          "present": true,
+          "type": "Array"
+        },
+        "palisade": {
+          "present": true,
+          "type": "Hash"
+        },
+        "river": {
+          "present": true,
+          "type": "Hash"
+        },
+        "wallConstructionReserve": {
+          "present": true,
+          "type": "Hash"
+        }
+      }
+    },
+    {
+      "label": "endpoint",
+      "tick": 203840,
+      "file_sha256": "14833075b398a7fe4594c83e59455c81eb2e25431056cf4694d8c80ae5d5664a",
+      "state_sha256": "58f42287683582b90e7a8c369250e00b0518a4af230d039bbb334c1a2293b199",
+      "topology_fields": {
+        "width": {
+          "present": true,
+          "type": "Integer"
+        },
+        "height": {
+          "present": true,
+          "type": "Integer"
+        },
+        "roadRevision": {
+          "present": true,
+          "type": "Integer"
+        },
+        "tiles": {
+          "present": true,
+          "type": "Array"
+        },
+        "buildings": {
+          "present": true,
+          "type": "Array"
+        },
+        "palisade": {
+          "present": true,
+          "type": "Hash"
+        },
+        "river": {
+          "present": true,
+          "type": "Hash"
+        },
+        "wallConstructionReserve": {
+          "present": true,
+          "type": "Hash"
+        }
+      }
+    }
+  ],
+  "transitions": {
+    "dispatch": 415,
+    "removed": 413,
+    "phaseChanges": 416,
+    "ambiguousDeltas": 3007
+  },
+  "endpoint_target": {
+    "id": "construction-site-000050",
+    "kind": "sawmill",
+    "tx": 43,
+    "ty": 43,
+    "inventory": {
+      "logs": 1,
+      "timber": 19
+    },
+    "reserved": {
+    },
+    "stockReserved": {
+    },
+    "workers": 2,
+    "productionProgress": 0,
+    "stuckSinceTick": {
+      "timber": 164900
+    },
+    "operationPaused": false,
+    "upkeepUnpaid": false,
+    "capacity": 20
+  },
+  "official_exit": "0",
+  "official_timing": "SYNC_S=19.2\nPREPARE_S=6.2\nWAIT_S=0.0\nCOMMAND_S=13.7\nNM_CACHE=hit\nPORT=4301\n",
+  "scope_correction": {
+    "scope": "single no-extra-command public tick observation; no UI remedy tested",
+    "scopeId": "fls-run-steward-storage-flow-r08-5fb1aeb-1791077232.scope",
+    "recordCorrection": "Initial Ruby duplicate scope key replaced identifier with scope explanation; scopeId now explicit before independent review"
+  },
+  "limits": [
+    "No direct delivery callback exposed; transition attribution remains source-correlated/ambiguous",
+    "No permanent deadlock claim",
+    "No manual commands or per-store switches; natural autonomous changes retained",
+    "No deterministic replay; one public advanceTick run",
+    "UI firstplay2 outcome not evaluated"
+  ]
+}

@@ -1,0 +1,305 @@
+{
+  "status": "PASS_SUPPORTED_SCHEMA_SUBSET",
+  "negativeCases": [
+    {
+      "id": "proposal.fields.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fallback.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.field.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.when.empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.domain",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.op_type",
+      "rejected": true
+    },
+    {
+      "id": "proposal.condition.in_empty",
+      "rejected": true
+    },
+    {
+      "id": "proposal.fact_line.missing",
+      "rejected": true
+    },
+    {
+      "id": "proposal.slot.unapproved",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.domain",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.provenance",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.unverified",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "lord.wardship_begun.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.domain",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.provenance",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.unverified",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "reorg.petitions_surge.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.domain",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.provenance",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.unverified",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.accepted.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.domain",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.provenance",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.unverified",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "negotiation.withdrawn.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.domain",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.provenance",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.unverified",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "war.favour_lost.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.bride_arrived.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.child_born.unknown_with_facts",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.known_empty",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.known_missing_field",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.domain",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.wrong_template",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.provenance",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.unverified",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.negative_tick",
+      "rejected": true
+    },
+    {
+      "id": "marriage.inherited.unknown_with_facts",
+      "rejected": true
+    }
+  ],
+  "negativeCount": 74,
+  "knownPositiveCount": 26,
+  "unknownEmptyAccepted": true,
+  "scope": "JSON schema keywords used in these documents executed by explicit Ruby subset validator; not full JSON Schema conformance suite or provenance proof"
+}

@@ -1,0 +1,76 @@
+{
+  "status": "scoped_copy_proposal_not_applied",
+  "authority": "docs/design/glossary.md",
+  "items": [
+    {
+      "source": "src/content/historyCopy.ko.ts",
+      "scope": "ESTATE_PETITION_KO.heriot",
+      "before": "과부의 사망세(가장 좋은 짐승) 감면 청원",
+      "after": "사망 부과금(헤리엇) 감면 청원",
+      "reason": "헤리엇과 상속 승인금을 구분하고 신청자 성별 일반화를 피한다"
+    },
+    {
+      "source": "src/content/historyCopy.ko.ts",
+      "scope": "ESTATE_PETITION_KO.merchet",
+      "before": "딸을 장원 밖으로 시집보내는 혼인세 청원",
+      "after": "장원 밖 혼인의 혼인 부담금(머쳇) 청원",
+      "reason": "혼인 부담금 정본, 보편 혼인세로 오해하지 않게 한다"
+    },
+    {
+      "source": "src/content/historyCopy.ko.ts",
+      "scope": "HISTORY_TEMPLATES.legacy.mayor_demand",
+      "before": "상인 엘리트",
+      "after": "유력 상인",
+      "reason": "정본; 이 template 내부만 교체한다"
+    },
+    {
+      "source": "src/content/historyCopy.ko.ts",
+      "scope": "HISTORY_TEMPLATES.person.died",
+      "before": "살에",
+      "after": "세에",
+      "reason": "나이 표기 정본"
+    },
+    {
+      "source": "src/ledger/ledgerCopy.ko.ts",
+      "scope": "LEDGER_CATEGORY_LABELS.succession_relief",
+      "before": "상속세",
+      "after": "상속 승인금",
+      "reason": "현대 상속세와 구분"
+    },
+    {
+      "source": "src/ledger/ledgerCopy.ko.ts",
+      "scope": "LEDGER_CATEGORY_LABELS.royal_subsidy",
+      "before": "국왕 과세",
+      "after": "왕실 보조세",
+      "reason": "세목 정본"
+    },
+    {
+      "source": "src/ledger/ledgerCopy.ko.ts",
+      "scope": "LEDGER_CATEGORY_LABELS.fee_farm",
+      "before": "도시의 연납금",
+      "after": "자치 연납금",
+      "reason": "정본"
+    },
+    {
+      "source": "src/ledger/ledgerCopy.ko.ts",
+      "scope": "LEDGER_CATEGORY_LABELS.ulnage",
+      "before": "직물 인장세",
+      "after": "직물 검정·인장세",
+      "reason": "직물 매매세와 구분"
+    },
+    {
+      "source": "src/content/historyCopy.ko.ts",
+      "scope": "HISTORY_TEMPLATES.ledger.treasury_turn",
+      "before": "net >= 0 => 금고가 다시 늘기 시작했다",
+      "after": "net > 0 증가 / net === 0 순증감 없음 / net < 0 감소",
+      "reason": "0을 증가로 서술하지 않음; runtime event emission separately checked"
+    },
+    {
+      "source": "src/content/historyCopy.ko.ts",
+      "scope": "HISTORY_TEMPLATES.stewardship.audit_clean",
+      "before": "장부가 맞았다",
+      "after": "감사에서 장부의 부족분이 드러나지 않았다",
+      "reason": "stewardship.ts:321-338 clean은 revealedKept+errors=0이며 hidden 횡령이 없다는 보장이 아니다. 탐지 결과만 서술한다."
+    }
+  ]
+}

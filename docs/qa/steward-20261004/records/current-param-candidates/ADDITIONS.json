@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "status": "AUTHOR_CANDIDATE_REQUIRES_GUARD_AND_OPERATOR_REVIEW",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "canonicalModified": false,
+  "additions": [
+    {
+      "template": "plague.new_graves",
+      "variants": [
+        {
+          "id": "plague.new_graves.r06raw.one",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "headline": "역병으로 숨진 한 사람이 기록되었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.new_graves.r06raw.several",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.dead",
+              "op": "gt",
+              "value": 1
+            }
+          ],
+          "headline": "역병으로 숨진 여러 사람이 기록되었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "plague.empty_streets",
+      "variants": [
+        {
+          "id": "plague.empty_streets.r06raw.one",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.houses",
+              "op": "eq",
+              "value": 1
+            }
+          ],
+          "headline": "역병 기록에 빈집 한 채가 올랐다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "plague.empty_streets.r06raw.several",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.houses",
+              "op": "gt",
+              "value": 1
+            }
+          ],
+          "headline": "역병 기록에 여러 채의 빈집이 올랐다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "legacy.mayor_demand",
+      "variants": [
+        {
+          "id": "legacy.mayor_demand.r06raw.unidentified",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.candidateId",
+              "op": "eq",
+              "value": ""
+            }
+          ],
+          "headline": "시장 후보를 특정하지 않은 선출권 요구가 기록되었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "legacy.mayor_demand.r06raw.identified",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.candidateId",
+              "op": "neq",
+              "value": ""
+            }
+          ],
+          "headline": "시장 후보가 함께 적힌 선출권 요구가 기록되었다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    }
+  ]
+}

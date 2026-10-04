@@ -1,0 +1,142 @@
+{
+  "review_files": 34,
+  "checks": [
+    {
+      "file": "COUNTEREXAMPLES.json",
+      "pass": true
+    },
+    {
+      "file": "REPORT.md",
+      "pass": true
+    },
+    {
+      "file": "REVIEW.json",
+      "pass": true
+    },
+    {
+      "file": "audit.rb",
+      "pass": true
+    },
+    {
+      "file": "exit-zero.txt",
+      "pass": true
+    },
+    {
+      "file": "finalize.rb",
+      "pass": true
+    },
+    {
+      "file": "fixtures/baseline/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/changed_final_cash/final.fls.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/changed_final_cash/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/duplicate_final/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/duplicate_final/save-checks.jsonl",
+      "pass": true
+    },
+    {
+      "file": "fixtures/final_only_codec_log/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/final_only_codec_log/save-checks.jsonl",
+      "pass": true
+    },
+    {
+      "file": "fixtures/missing_hashes/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/missing_hashes/save-checks.jsonl",
+      "pass": true
+    },
+    {
+      "file": "fixtures/missing_hashes/summary.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/nonhex_equal_hashes/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/nonhex_equal_hashes/save-checks.jsonl",
+      "pass": true
+    },
+    {
+      "file": "fixtures/positive_extra_diagnostic/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/positive_extra_diagnostic/save-checks.jsonl",
+      "pass": true
+    },
+    {
+      "file": "fixtures/positive_reported_finding/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/positive_reported_finding/summary.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_annual_calendar/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_annual_calendar/years.jsonl",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_final_controls/final.fls.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_final_controls/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_run_metadata/metadata.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_run_metadata/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_scenario/final.fls.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_scenario/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_start_policy/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_start_policy/start.fls.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_start_seed/result.json",
+      "pass": true
+    },
+    {
+      "file": "fixtures/wrong_start_seed/start.fls.json",
+      "pass": true
+    }
+  ],
+  "actual_checker_sha": "5d669b28e48b5ee739b4f61795411d684ca842714f313e56faf7fa6a33df9a0d"
+}

@@ -1,0 +1,193 @@
+{
+ "scenario": "core:lord_slice",
+ "seed": 1,
+ "instalments": [
+  {
+   "step": "before",
+   "year": 1305,
+   "treasury": 60,
+   "duesPermille": 1000,
+   "term": null,
+   "instalmentLines": [],
+   "arrears": 0
+  },
+  {
+   "step": "answered: 50 a year for 3 years",
+   "year": 1305,
+   "treasury": 60,
+   "duesPermille": 1000,
+   "term": {
+    "kind": "installments",
+    "what": "debt",
+    "settledYears": 0,
+    "status": "running",
+    "endYear": 1308
+   },
+   "instalmentLines": [],
+   "arrears": 0
+  },
+  {
+   "step": "instalments year turn 1",
+   "year": 1306,
+   "treasury": 10,
+   "duesPermille": 1000,
+   "term": {
+    "kind": "installments",
+    "what": "debt",
+    "settledYears": 1,
+    "status": "running",
+    "endYear": 1308
+   },
+   "instalmentLines": [
+    {
+     "year": 1306,
+     "account": "cash",
+     "amount": -50
+    }
+   ],
+   "arrears": 0
+  },
+  {
+   "step": "instalments year turn 2",
+   "year": 1307,
+   "treasury": 0,
+   "duesPermille": 1000,
+   "term": {
+    "kind": "installments",
+    "what": "debt",
+    "settledYears": 2,
+    "status": "running",
+    "endYear": 1308
+   },
+   "instalmentLines": [
+    {
+     "year": 1306,
+     "account": "cash",
+     "amount": -50
+    },
+    {
+     "year": 1307,
+     "account": "cash",
+     "amount": -10
+    },
+    {
+     "year": 1307,
+     "account": "arrears",
+     "amount": 40
+    }
+   ],
+   "arrears": 40
+  },
+  {
+   "step": "instalments year turn 3",
+   "year": 1308,
+   "treasury": 0,
+   "duesPermille": 1000,
+   "term": {
+    "kind": "installments",
+    "what": "debt",
+    "settledYears": 3,
+    "status": "ended",
+    "endYear": 1308
+   },
+   "instalmentLines": [
+    {
+     "year": 1306,
+     "account": "cash",
+     "amount": -50
+    },
+    {
+     "year": 1307,
+     "account": "cash",
+     "amount": -10
+    },
+    {
+     "year": 1307,
+     "account": "arrears",
+     "amount": 40
+    },
+    {
+     "year": 1308,
+     "account": "arrears",
+     "amount": 50
+    }
+   ],
+   "arrears": 90
+  }
+ ],
+ "remission": [
+  {
+   "step": "before",
+   "year": 1305,
+   "treasury": 60,
+   "duesPermille": 1000,
+   "term": null,
+   "instalmentLines": [],
+   "arrears": 0
+  },
+  {
+   "step": "answered: dues at 250 permille for 2 years",
+   "year": 1305,
+   "treasury": 60,
+   "duesPermille": 250,
+   "term": {
+    "kind": "remission",
+    "what": "market_dues",
+    "settledYears": 0,
+    "status": "running",
+    "endYear": 1307
+   },
+   "instalmentLines": [],
+   "arrears": 0
+  },
+  {
+   "step": "remission year turn 1",
+   "year": 1306,
+   "treasury": 60,
+   "duesPermille": 250,
+   "term": {
+    "kind": "remission",
+    "what": "market_dues",
+    "settledYears": 1,
+    "status": "running",
+    "endYear": 1307
+   },
+   "instalmentLines": [],
+   "arrears": 0
+  },
+  {
+   "step": "remission year turn 2",
+   "year": 1307,
+   "treasury": 60,
+   "duesPermille": 1000,
+   "term": {
+    "kind": "remission",
+    "what": "market_dues",
+    "settledYears": 2,
+    "status": "ended",
+    "endYear": 1307
+   },
+   "instalmentLines": [],
+   "arrears": 0
+  }
+ ],
+ "scope": {
+  "claim": "claim-1",
+  "suit": "suit-1",
+  "estate": "estate-neighbour-1",
+  "piece": "estate-neighbour-1:fishery",
+  "ruling": "600 permille of the right",
+  "before": {
+   "yearValue": 1600,
+   "scope": null
+  },
+  "after": {
+   "yearValue": 960,
+   "scope": {
+    "sharePermille": 600,
+    "ruledTick": 20000,
+    "suitId": "suit-1"
+   }
+  }
+ }
+}

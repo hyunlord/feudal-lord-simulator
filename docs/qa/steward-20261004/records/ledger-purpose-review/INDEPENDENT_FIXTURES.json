@@ -1,0 +1,1484 @@
+[
+  {
+    "id": "valid-0",
+    "expected": "promise_payment.r06purpose.will_favour",
+    "actual": "promise_payment.r06purpose.will_favour",
+    "pass": true
+  },
+  {
+    "id": "missing-root-0-status",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-0-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-0-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-0-entry",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-0-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-0-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-0-account",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-0-category",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-0-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-0-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-0-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-0-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-0-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-0-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-0-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-0-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-0-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-0-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-0-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-0-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-0-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-0-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-0-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-0-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-0-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-0-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-0-ledger-000000",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-0-ledger-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-0-ledger-0000001",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-0-ledger-9007199254740992",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-0-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-0-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-0-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-0-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-0-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-0-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-entry-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-ref-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unsupported-stall-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unknown-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "valid-1",
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept",
+    "pass": true
+  },
+  {
+    "id": "missing-root-1-status",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-1-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-1-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-1-entry",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-1-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-1-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-1-account",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-1-category",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-1-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-1-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-1-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-1-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-1-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-1-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-1-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-1-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-1-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-1-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-1-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-1-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-1-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-1-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-1-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-1-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-1-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-1-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-1-ledger-000000",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-1-ledger-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-1-ledger-0000001",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-1-ledger-9007199254740992",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-1-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-1-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-1-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-1-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-1-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-1-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-entry-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-ref-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unsupported-stall-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unknown-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "valid-2",
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept",
+    "pass": true
+  },
+  {
+    "id": "missing-root-2-status",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-2-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-2-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-2-entry",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-2-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-2-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-2-account",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-2-category",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-2-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-2-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-2-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-2-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-2-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-2-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-2-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-2-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-2-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-2-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-2-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-2-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-2-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-2-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-2-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-2-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-2-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-2-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-2-ledger-000000",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-2-ledger-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-2-ledger-0000001",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-2-ledger-9007199254740992",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-2-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-2-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-2-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-2-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-2-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-2-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-entry-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-ref-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unsupported-stall-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unknown-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "valid-3",
+    "expected": "promise_payment.r06purpose.kept",
+    "actual": "promise_payment.r06purpose.kept",
+    "pass": true
+  },
+  {
+    "id": "missing-root-3-status",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-3-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-3-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-3-entry",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-3-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-3-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-3-account",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-3-category",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-3-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-3-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-3-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-3-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-3-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-3-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-3-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-3-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-3-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-3-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-3-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-3-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-3-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-3-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-3-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-3-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-3-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-3-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-3-ledger-000000",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-3-ledger-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-3-ledger-0000001",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-3-ledger-9007199254740992",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-3-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-3-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-3-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-3-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-3-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-3-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-entry-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-ref-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unsupported-stall-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unknown-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "valid-4",
+    "expected": "royal_subsidy.r06purpose.confirmation",
+    "actual": "royal_subsidy.r06purpose.confirmation",
+    "pass": true
+  },
+  {
+    "id": "missing-root-4-status",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-4-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-4-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-4-entry",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-4-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-4-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-4-account",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-4-category",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-4-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-4-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-4-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-4-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-4-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-4-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-4-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-4-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-4-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-4-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-4-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-4-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-4-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-4-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-4-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-4-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-4-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-4-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-4-ledger-000000",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-4-ledger-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-4-ledger-0000001",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-4-ledger-9007199254740992",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-4-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-4-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-4-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-4-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-4-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-4-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-entry-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-ref-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unsupported-stall-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unknown-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "valid-5",
+    "expected": "royal_subsidy.r06purpose.tax",
+    "actual": "royal_subsidy.r06purpose.tax",
+    "pass": true
+  },
+  {
+    "id": "missing-root-5-status",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-5-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-5-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-root-5-entry",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-5-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-5-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-5-account",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-5-category",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-5-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "missing-entry-5-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-5-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-5-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-5-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-5-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-root-5-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-5-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-5-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-5-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-5-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "wrong-entry-5-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-5-0",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-5-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-5-2",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-5-3",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-5-4",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-tick-5-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-5-ledger-000000",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-5-ledger-1",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-5-ledger-0000001",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "bad-id-5-ledger-9007199254740992",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-5-campaignId",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-binding-5-sourceHead",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-5-id",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-5-tick",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-5-amount",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "cross-record-5-sourceRefs",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-entry-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "extra-ref-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unsupported-stall-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "unknown-5",
+    "expected": null,
+    "actual": null,
+    "pass": true
+  },
+  {
+    "id": "one-penny-partial-confirmation",
+    "expected": "royal_subsidy.r06purpose.confirmation",
+    "actual": "royal_subsidy.r06purpose.confirmation",
+    "pass": true
+  }
+]

@@ -5,6 +5,7 @@ import type { GameState } from '../src/engine/engine.types';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 import { firstBlocker, houseProgressModel, buildingCauseSnapshot } from '../src/ui/houseProgressModel';
 import { causeMarkersForState } from '../src/render/causeMapOverlay';
+import { marketRoadDistance } from '../src/engine/marketService';
 
 function building(id: string, kind: Building['kind'], tx: number, ty: number): Building {
   return { id, kind, tx, ty, workers: 5, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
@@ -144,7 +145,10 @@ test('capacity detail selects reachable staffed provider instead of nearer disco
   assert.equal(result?.blocker?.providerId, 'full-market');
   assert.equal(result?.blocker?.used, 24);
   assert.equal(result?.blocker?.capacity, 24);
-  assert.equal(result?.blocker?.distance, 4);
+  // QA-033: a market's distance is its rule's own, road steps from the market's road access (MARKET-1), not tiles.
+  const home = state.buildings.find(b => b.id === 'h24')!; const market = state.buildings.find(b => b.id === 'full-market')!;
+  assert.equal(result?.blocker?.distance, marketRoadDistance(state)(home, market));
+  assert.match(result?.blocker?.label ?? '', /길 \d+걸음 \/ 최대 40걸음/);
 });
 test('stored bread and supplied services do not add an unrelated road requirement', () => {
   const state = fixture(1);

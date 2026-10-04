@@ -1,0 +1,229 @@
+domain,id,source,fallback,authored_headlines,conditional_variants,disabled_variants,runtime_verified
+history,decision.bundle,src/content/historyCopy.ko.ts:143,"history.summary(record,state)",2,1,0,no
+history,decision.famine_response,src/content/historyCopy.ko.ts:144,"history.summary(record,state)",5,4,0,no
+history,decision.petition_response,src/content/historyCopy.ko.ts:145,"history.summary(record,state)",4,3,0,no
+history,war.messenger,src/content/historyCopy.ko.ts:155,"history.summary(record,state)",1,0,0,no
+history,plague.rumour,src/content/historyCopy.ko.ts:157,"history.summary(record,state)",1,0,0,no
+history,plague.arrived,src/content/historyCopy.ko.ts:158,"history.summary(record,state)",1,0,0,no
+history,plague.priest_died,src/content/historyCopy.ko.ts:159,"history.summary(record,state)",1,0,0,no
+history,plague.priest_filled,src/content/historyCopy.ko.ts:160,"history.summary(record,state)",3,2,0,no
+history,plague.new_graves,src/content/historyCopy.ko.ts:161,"history.summary(record,state)",1,0,0,no
+history,plague.empty_streets,src/content/historyCopy.ko.ts:162,"history.summary(record,state)",1,0,0,no
+history,plague.abandoned_fields,src/content/historyCopy.ko.ts:163,"history.summary(record,state)",9,8,0,no
+history,plague.ordinance,src/content/historyCopy.ko.ts:165,"history.summary(record,state)",2,1,0,no
+history,plague.resettlement,src/content/historyCopy.ko.ts:166,"history.summary(record,state)",3,2,0,no
+history,plague.second,src/content/historyCopy.ko.ts:167,"history.summary(record,state)",1,0,0,no
+history,plague.second_ended,src/content/historyCopy.ko.ts:168,"history.summary(record,state)",3,2,0,no
+history,plague.unanswered,src/content/historyCopy.ko.ts:169,"history.summary(record,state)",5,4,0,no
+history,reorg.wage_competition,src/content/historyCopy.ko.ts:171,"history.summary(record,state)",1,0,0,no
+history,reorg.textile_street,src/content/historyCopy.ko.ts:172,"history.summary(record,state)",1,0,0,no
+history,reorg.alehouse_boom,src/content/historyCopy.ko.ts:173,"history.summary(record,state)",1,0,0,no
+history,reorg.petitions_surge,src/content/historyCopy.ko.ts:174,"history.summary(record,state)",1,0,0,no
+history,reorg.guild_founded,src/content/historyCopy.ko.ts:175,"history.summary(record,state)",1,0,0,no
+history,reorg.weavers_left,src/content/historyCopy.ko.ts:176,"history.summary(record,state)",1,0,0,no
+history,reorg.overlord_warning,src/content/historyCopy.ko.ts:177,"history.summary(record,state)",1,0,0,no
+history,reorg.poll_tax,src/content/historyCopy.ko.ts:178,"history.summary(record,state)",3,2,0,no
+history,reorg.rebellion_rumour,src/content/historyCopy.ko.ts:179,"history.summary(record,state)",2,1,0,no
+history,reorg.autonomy_request,src/content/historyCopy.ko.ts:180,"history.summary(record,state)",1,0,0,no
+history,reorg.charter,src/content/historyCopy.ko.ts:181,"history.summary(record,state)",2,1,0,no
+history,reorg.unanswered,src/content/historyCopy.ko.ts:182,"history.summary(record,state)",5,4,0,no
+history,legacy.mayor_demand,src/content/historyCopy.ko.ts:184,"history.summary(record,state)",1,0,0,no
+history,legacy.royal_tax_envoy,src/content/historyCopy.ko.ts:186,"history.summary(record,state)",1,0,0,no
+history,legacy.succession,src/content/historyCopy.ko.ts:187,"history.summary(record,state)",3,2,0,no
+history,lord.wardship_begun,src/content/historyCopy.ko.ts:189,"history.summary(record,state)",1,0,0,no
+history,lord.wardship_ended,src/content/historyCopy.ko.ts:190,"history.summary(record,state)",1,0,0,no
+history,legacy.heir_seated,src/content/historyCopy.ko.ts:191,"history.summary(record,state)",5,4,0,no
+history,legacy.royal_subsidy,src/content/historyCopy.ko.ts:192,"history.summary(record,state)",1,0,0,no
+history,legacy.city_seal,src/content/historyCopy.ko.ts:193,"history.summary(record,state)",1,0,0,no
+history,legacy.charter_sealed,src/content/historyCopy.ko.ts:194,"history.summary(record,state)",1,0,0,no
+history,legacy.charter_refused,src/content/historyCopy.ko.ts:195,"history.summary(record,state)",1,0,0,no
+history,legacy.family_departed,src/content/historyCopy.ko.ts:196,"history.summary(record,state)",1,0,0,no
+history,legacy.family_stayed,src/content/historyCopy.ko.ts:197,"history.summary(record,state)",1,0,0,no
+history,legacy.legacy_record,src/content/historyCopy.ko.ts:198,"history.summary(record,state)",5,4,0,no
+history,legacy.last_market,src/content/historyCopy.ko.ts:199,"history.summary(record,state)",1,0,0,no
+history,legacy.staple,src/content/historyCopy.ko.ts:201,"history.summary(record,state)",1,0,0,no
+history,legacy.guild_dispute,src/content/historyCopy.ko.ts:202,"history.summary(record,state)",1,0,0,no
+history,legacy.market_fire,src/content/historyCopy.ko.ts:203,"history.summary(record,state)",1,0,0,no
+history,legacy.church_rebuilding,src/content/historyCopy.ko.ts:204,"history.summary(record,state)",1,0,0,no
+history,legacy.nave_rebuilt,src/content/historyCopy.ko.ts:205,"history.summary(record,state)",1,0,0,no
+history,legacy.deposition,src/content/historyCopy.ko.ts:206,"history.summary(record,state)",1,0,0,no
+history,legacy.unanswered,src/content/historyCopy.ko.ts:207,"history.summary(record,state)",7,6,0,no
+history,war.beacon,src/content/historyCopy.ko.ts:208,"history.summary(record,state)",1,0,0,no
+history,war.raid,src/content/historyCopy.ko.ts:209,"history.summary(record,state)",2,1,0,no
+history,war.conscripts_left,src/content/historyCopy.ko.ts:210,"history.summary(record,state)",3,2,0,no
+history,war.conscripts_returned,src/content/historyCopy.ko.ts:211,"history.summary(record,state)",3,2,0,no
+history,war.favour_lost,src/content/historyCopy.ko.ts:212,"history.summary(record,state)",1,0,0,no
+history,war.licence,src/content/historyCopy.ko.ts:213,"history.summary(record,state)",1,0,0,no
+history,war.unanswered,src/content/historyCopy.ko.ts:214,"history.summary(record,state)",4,3,0,no
+history,faction.leader_succeeded,src/content/historyCopy.ko.ts:217,"history.summary(record,state)",1,0,0,no
+history,petition.representative_replaced,src/content/historyCopy.ko.ts:219,"history.summary(record,state)",3,2,0,no
+history,estate.person_died,src/content/historyCopy.ko.ts:223,"history.summary(record,state)",3,2,0,no
+history,stewardship.steward_died,src/content/historyCopy.ko.ts:224,"history.summary(record,state)",1,0,0,no
+history,stewardship.began,src/content/historyCopy.ko.ts:225,"history.summary(record,state)",1,0,0,no
+history,stewardship.oversight,src/content/historyCopy.ko.ts:226,"history.summary(record,state)",2,1,0,no
+history,stewardship.audit_mode,src/content/historyCopy.ko.ts:228,"history.summary(record,state)",2,1,0,no
+history,stewardship.rules,src/content/historyCopy.ko.ts:229,"history.summary(record,state)",2,1,0,no
+history,stewardship.season,src/content/historyCopy.ko.ts:233,"history.summary(record,state)",2,1,0,no
+history,manor.petition,src/content/historyCopy.ko.ts:235,"history.summary(record,state)",3,2,0,no
+history,manor.petition_answered,src/content/historyCopy.ko.ts:243,"history.summary(record,state)",3,2,0,no
+history,manor.petition_lapsed,src/content/historyCopy.ko.ts:244,"history.summary(record,state)",3,2,0,no
+history,stewardship.precedent,src/content/historyCopy.ko.ts:245,"history.summary(record,state)",3,2,0,no
+history,stewardship.steward_decided,src/content/historyCopy.ko.ts:246,"history.summary(record,state)",3,2,0,no
+history,stewardship.escalated,src/content/historyCopy.ko.ts:249,"history.summary(record,state)",4,3,0,no
+history,stewardship.brought,src/content/historyCopy.ko.ts:250,"history.summary(record,state)",2,1,0,no
+history,stewardship.lord_decided,src/content/historyCopy.ko.ts:251,"history.summary(record,state)",3,2,0,no
+history,stewardship.lapsed,src/content/historyCopy.ko.ts:254,"history.summary(record,state)",7,6,0,no
+history,stewardship.audit_clean,src/content/historyCopy.ko.ts:255,"history.summary(record,state)",3,2,0,no
+history,stewardship.audit_found,src/content/historyCopy.ko.ts:256,"history.summary(record,state)",3,2,0,no
+history,stewardship.audit_answered,src/content/historyCopy.ko.ts:257,"history.summary(record,state)",2,1,0,no
+history,faction.relation,src/content/historyCopy.ko.ts:261,"history.summary(record,state)",3,2,0,no
+history,decline.entered,src/content/historyCopy.ko.ts:263,"history.summary(record,state)",5,4,0,no
+history,decline.recovered,src/content/historyCopy.ko.ts:264,"history.summary(record,state)",5,4,0,no
+history,house.withdrew,src/content/historyCopy.ko.ts:265,"history.summary(record,state)",1,0,0,no
+history,house.arrived,src/content/historyCopy.ko.ts:266,"history.summary(record,state)",1,0,0,no
+history,house.resettled,src/content/historyCopy.ko.ts:268,"history.summary(record,state)",1,0,0,no
+history,milestone.chapter_start,src/content/historyCopy.ko.ts:269,"history.summary(record,state)",1,0,0,no
+history,decision.market_town,src/content/historyCopy.ko.ts:270,"history.summary(record,state)",1,0,0,no
+history,decision.stone_town,src/content/historyCopy.ko.ts:271,"history.summary(record,state)",1,0,0,no
+history,decision.rebuild,src/content/historyCopy.ko.ts:272,"history.summary(record,state)",1,0,0,no
+history,decision.wall_expand,src/content/historyCopy.ko.ts:273,"history.summary(record,state)",1,0,0,no
+history,decision.drainage,src/content/historyCopy.ko.ts:275,"history.summary(record,state)",1,0,0,no
+history,decision.estate_policy,src/content/historyCopy.ko.ts:277,"history.summary(record,state)",5,4,0,no
+history,decision.project_subsidy,src/content/historyCopy.ko.ts:278,"history.summary(record,state)",3,2,0,no
+history,decision.market_dues,src/content/historyCopy.ko.ts:280,"history.summary(record,state)",6,5,0,no
+history,negotiation.offered,src/content/historyCopy.ko.ts:282,"history.summary(record,state)",6,5,0,no
+history,negotiation.accepted,src/content/historyCopy.ko.ts:283,"history.summary(record,state)",1,0,0,no
+history,negotiation.countered,src/content/historyCopy.ko.ts:284,"history.summary(record,state)",6,5,0,no
+history,negotiation.rejected,src/content/historyCopy.ko.ts:285,"history.summary(record,state)",1,0,0,no
+history,negotiation.withdrawn,src/content/historyCopy.ko.ts:286,"history.summary(record,state)",1,0,0,no
+history,promise.made,src/content/historyCopy.ko.ts:287,"history.summary(record,state)",5,4,0,no
+history,promise.kept,src/content/historyCopy.ko.ts:288,"history.summary(record,state)",5,4,0,no
+history,promise.broken,src/content/historyCopy.ko.ts:289,"history.summary(record,state)",5,4,0,no
+history,marriage.contracted,src/content/historyCopy.ko.ts:290,"history.summary(record,state)",6,5,0,no
+history,marriage.bride_arrived,src/content/historyCopy.ko.ts:292,"history.summary(record,state)",1,0,0,no
+history,marriage.child_born,src/content/historyCopy.ko.ts:293,"history.summary(record,state)",1,0,0,no
+history,marriage.brother_in_law_born,src/content/historyCopy.ko.ts:294,"history.summary(record,state)",1,0,0,no
+history,marriage.father_ill,src/content/historyCopy.ko.ts:295,"history.summary(record,state)",1,0,0,no
+history,marriage.will_change,src/content/historyCopy.ko.ts:296,"history.summary(record,state)",1,0,0,no
+history,marriage.will_dropped,src/content/historyCopy.ko.ts:297,"history.summary(record,state)",1,0,0,no
+history,marriage.father_died,src/content/historyCopy.ko.ts:298,"history.summary(record,state)",1,0,0,no
+history,marriage.inherited,src/content/historyCopy.ko.ts:299,"history.summary(record,state)",1,0,0,no
+history,marriage.lost,src/content/historyCopy.ko.ts:300,"history.summary(record,state)",1,0,0,no
+history,marriage.deferred_void,src/content/historyCopy.ko.ts:303,"history.summary(record,state)",1,0,0,no
+history,marriage.jointure_settled,src/content/historyCopy.ko.ts:304,"history.summary(record,state)",3,2,0,no
+history,marriage.contested,src/content/historyCopy.ko.ts:305,"history.summary(record,state)",1,0,0,no
+history,estate.claim_raised,src/content/historyCopy.ko.ts:307,"history.summary(record,state)",6,5,0,no
+history,estate.suit_filed,src/content/historyCopy.ko.ts:308,"history.summary(record,state)",2,1,0,no
+history,estate.suit_stage,src/content/historyCopy.ko.ts:309,"history.summary(record,state)",5,4,0,no
+history,estate.suit_patron,src/content/historyCopy.ko.ts:310,"history.summary(record,state)",6,5,0,no
+history,estate.suit_judged,src/content/historyCopy.ko.ts:311,"history.summary(record,state)",2,1,0,no
+history,estate.possession_enforced,src/content/historyCopy.ko.ts:312,"history.summary(record,state)",3,2,0,no
+history,estate.title_changed,src/content/historyCopy.ko.ts:313,"history.summary(record,state)",2,1,0,no
+history,estate.possession_changed,src/content/historyCopy.ko.ts:314,"history.summary(record,state)",2,1,0,no
+history,agency.subsidy_refused,src/content/historyCopy.ko.ts:316,"history.summary(record,state)",3,2,0,no
+history,agency.timber_ordered,src/content/historyCopy.ko.ts:318,"history.summary(record,state)",1,0,0,no
+history,agency.project_started,src/content/historyCopy.ko.ts:319,"history.summary(record,state)",6,5,0,no
+history,drainage.done,src/content/historyCopy.ko.ts:320,"history.summary(record,state)",3,2,0,no
+history,event.rumour,src/content/historyCopy.ko.ts:321,"history.summary(record,state)",5,4,0,no
+history,event.sign,src/content/historyCopy.ko.ts:322,"history.summary(record,state)",5,4,0,no
+history,event.arrived,src/content/historyCopy.ko.ts:323,"history.summary(record,state)",5,4,0,no
+history,event.recovered,src/content/historyCopy.ko.ts:324,"history.summary(record,state)",7,6,0,no
+history,era.entered,src/content/historyCopy.ko.ts:325,"history.summary(record,state)",2,1,0,no
+history,milestone.first_building,src/content/historyCopy.ko.ts:326,"history.summary(record,state)",11,10,0,no
+history,milestone.market_town,src/content/historyCopy.ko.ts:327,"history.summary(record,state)",1,0,0,no
+history,milestone.stone_town,src/content/historyCopy.ko.ts:328,"history.summary(record,state)",1,0,0,no
+history,milestone.first_l4,src/content/historyCopy.ko.ts:329,"history.summary(record,state)",1,0,0,no
+history,milestone.lots,src/content/historyCopy.ko.ts:330,"history.summary(record,state)",4,3,0,no
+history,milestone.chapter_end,src/content/historyCopy.ko.ts:331,"history.summary(record,state)",1,0,0,no
+history,ledger.season,src/content/historyCopy.ko.ts:333,"history.summary(record,state)",5,4,0,no
+history,ledger.population,src/content/historyCopy.ko.ts:334,"history.summary(record,state)",3,2,0,no
+history,ledger.treasury_turn,src/content/historyCopy.ko.ts:335,"history.summary(record,state)",4,3,0,no
+history,ledger.l4,src/content/historyCopy.ko.ts:336,"history.summary(record,state)",1,0,0,no
+history,ledger.departures,src/content/historyCopy.ko.ts:337,"history.summary(record,state)",3,2,0,no
+history,ledger.rollup,src/content/historyCopy.ko.ts:338,"history.summary(record,state)",5,4,0,no
+history,person.move_in,src/content/historyCopy.ko.ts:339,"history.summary(record,state)",4,3,0,no
+history,person.level_up,src/content/historyCopy.ko.ts:340,"history.summary(record,state)",5,4,0,no
+history,person.level_down,src/content/historyCopy.ko.ts:341,"history.summary(record,state)",5,4,0,no
+history,person.leaving,src/content/historyCopy.ko.ts:342,"history.summary(record,state)",1,0,0,no
+history,person.left,src/content/historyCopy.ko.ts:343,"history.summary(record,state)",1,0,0,no
+history,person.resettled,src/content/historyCopy.ko.ts:344,"history.summary(record,state)",1,0,0,no
+history,person.burnt,src/content/historyCopy.ko.ts:345,"history.summary(record,state)",1,0,0,no
+history,person.rebuilt,src/content/historyCopy.ko.ts:346,"history.summary(record,state)",1,0,0,no
+history,person.emptied,src/content/historyCopy.ko.ts:347,"history.summary(record,state)",1,0,0,no
+history,person.stayed,src/content/historyCopy.ko.ts:348,"history.summary(record,state)",1,0,0,no
+history,person.hungry,src/content/historyCopy.ko.ts:349,"history.summary(record,state)",1,0,0,no
+history,person.fed,src/content/historyCopy.ko.ts:350,"history.summary(record,state)",1,0,0,no
+history,person.water,src/content/historyCopy.ko.ts:351,"history.summary(record,state)",1,0,0,no
+history,person.water_lost,src/content/historyCopy.ko.ts:352,"history.summary(record,state)",1,0,0,no
+history,person.born,src/content/historyCopy.ko.ts:353,"history.summary(record,state)",9,8,0,no
+history,person.married,src/content/historyCopy.ko.ts:354,"history.summary(record,state)",4,3,0,no
+history,person.arrived,src/content/historyCopy.ko.ts:355,"history.summary(record,state)",1,0,0,no
+history,person.came_of_age,src/content/historyCopy.ko.ts:356,"history.summary(record,state)",1,0,0,no
+history,person.occupation,src/content/historyCopy.ko.ts:357,"history.summary(record,state)",10,9,0,no
+history,person.reeve,src/content/historyCopy.ko.ts:358,"history.summary(record,state)",1,0,0,no
+history,person.steward,src/content/historyCopy.ko.ts:359,"history.summary(record,state)",1,0,0,no
+history,person.died,src/content/historyCopy.ko.ts:360,"history.summary(record,state)",7,6,0,no
+history,person.left_town,src/content/historyCopy.ko.ts:361,"history.summary(record,state)",4,3,0,no
+history,person.bailiff,src/content/historyCopy.ko.ts:363,"history.summary(record,state)",1,0,0,no
+history,person.fell_ill,src/content/historyCopy.ko.ts:364,"history.summary(record,state)",1,0,0,no
+history,person.recovered,src/content/historyCopy.ko.ts:365,"history.summary(record,state)",1,0,0,no
+history,person.injured,src/content/historyCopy.ko.ts:366,"history.summary(record,state)",1,0,0,no
+history,person.healed,src/content/historyCopy.ko.ts:367,"history.summary(record,state)",1,0,0,no
+history,person.expecting,src/content/historyCopy.ko.ts:368,"history.summary(record,state)",1,0,0,no
+history,person.pilgrimage,src/content/historyCopy.ko.ts:369,"history.summary(record,state)",1,0,0,no
+history,person.returned,src/content/historyCopy.ko.ts:370,"history.summary(record,state)",1,0,0,no
+history,person.grew,src/content/historyCopy.ko.ts:371,"history.summary(record,state)",1,0,0,no
+history,person.shrank,src/content/historyCopy.ko.ts:372,"history.summary(record,state)",2,1,0,no
+history,registry.offered,src/content/historyCopy.ko.ts:236,"history.summary(record,state)",4,3,0,no
+history,registry.answered,src/content/historyCopy.ko.ts:237,"history.summary(record,state)",7,6,0,no
+history,registry.lapsed,src/content/historyCopy.ko.ts:238,"history.summary(record,state)",4,3,0,no
+history,registry.invalid,src/content/historyCopy.ko.ts:239,"history.summary(record,state)",1,0,0,no
+history,registry.term_began,src/content/historyCopy.ko.ts:240,"history.summary(record,state)",3,2,0,no
+history,registry.term_ended,src/content/historyCopy.ko.ts:241,"history.summary(record,state)",3,2,0,no
+history,manor.petition_precedent,src/content/historyCopy.ko.ts:242,"history.summary(record,state)",3,2,0,no
+ledger,opening_balance,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,market_sale,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,construction,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,upkeep,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,toll,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,stall_fee,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,rent,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,mill_toll,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,demesne_sale,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,project,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,famine_relief,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,0,no
+ledger,famine_sale,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,charter_fee,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,restoration_fee,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,house_change,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,wool_levy,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,0,no
+ledger,war_exemption,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,war_subsidy,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,war_loan,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,war_tax,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,raid_loot,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,purveyance,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,refugee_fee,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,murage,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,wages,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,statute_fine,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,church_fee,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,entry_fine,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,fulling_toll,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,ulnage,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,cloth_toll,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,poll_tax,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,fee_farm,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,royal_subsidy,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,succession_relief,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,legacy_endowment,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,church_rebuilding,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,timber_purchase,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,project_subsidy,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,lawsuit,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,marriage_portion,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,promise_payment,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,estate_income,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,audit_recovery,src/ledger/ledger.types.ts:16,preserve raw entry and actual account,4,4,1,no
+ledger,registry_settlement,src/ledger/ledger.types.ts:46,preserve raw entry and actual account,4,4,1,no
+ledger,instalment,src/ledger/ledger.types.ts:46,preserve raw entry and actual account,6,6,1,no

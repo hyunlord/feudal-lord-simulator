@@ -1,0 +1,915 @@
+[
+  {
+    "template": "person.fell_ill",
+    "age": 0,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.child",
+      "headline": "어린 시절, 0살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 0,
+        "subjectAgeBandAtRecord": "child"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 13,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.child",
+      "headline": "어린 시절, 13살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 13,
+        "subjectAgeBandAtRecord": "child"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 14,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.youth",
+      "headline": "젊은 시절, 14살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 14,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 17,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.youth",
+      "headline": "젊은 시절, 17살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 17,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 18,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.youth",
+      "headline": "젊은 시절, 18살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 18,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 29,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.youth",
+      "headline": "젊은 시절, 29살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 30,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.adult",
+      "headline": "30살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 54,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.adult",
+      "headline": "54살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 54,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 55,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.elder",
+      "headline": "나이 들어 55살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 55,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 60,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.elder",
+      "headline": "나이 들어 60살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 60,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.fell_ill",
+    "age": 61,
+    "result": {
+      "status": "candidate",
+      "id": "person.fell_ill.age_proposal.elder",
+      "headline": "나이 들어 61살에 병을 얻었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 61,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 0,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.child",
+      "headline": "어린 시절, 0살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 0,
+        "subjectAgeBandAtRecord": "child"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 13,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.child",
+      "headline": "어린 시절, 13살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 13,
+        "subjectAgeBandAtRecord": "child"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 14,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.youth",
+      "headline": "젊은 시절, 14살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 14,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 17,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.youth",
+      "headline": "젊은 시절, 17살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 17,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 18,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.youth",
+      "headline": "젊은 시절, 18살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 18,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 29,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.youth",
+      "headline": "젊은 시절, 29살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 30,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.adult",
+      "headline": "30살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 54,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.adult",
+      "headline": "54살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 54,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 55,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.elder",
+      "headline": "나이 들어 55살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 55,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 60,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.elder",
+      "headline": "나이 들어 60살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 60,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.recovered",
+    "age": 61,
+    "result": {
+      "status": "candidate",
+      "id": "person.recovered.age_proposal.elder",
+      "headline": "나이 들어 61살에 앓던 병에서 회복했다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 61,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 0,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 13,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 14,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.youth",
+      "headline": "젊은 시절, 14살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 14,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 17,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.youth",
+      "headline": "젊은 시절, 17살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 17,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 18,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.youth",
+      "headline": "젊은 시절, 18살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 18,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 29,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.youth",
+      "headline": "젊은 시절, 29살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 30,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.adult",
+      "headline": "30살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 54,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.adult",
+      "headline": "54살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 54,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 55,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.elder",
+      "headline": "나이 들어 55살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 55,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 60,
+    "result": {
+      "status": "candidate",
+      "id": "person.injured.age_proposal.elder",
+      "headline": "나이 들어 60살에 일을 하던 중 다쳤다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 60,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.injured",
+    "age": 61,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 0,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 13,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 14,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.youth",
+      "headline": "젊은 시절, 14살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 14,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 17,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.youth",
+      "headline": "젊은 시절, 17살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 17,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 18,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.youth",
+      "headline": "젊은 시절, 18살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 18,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 29,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.youth",
+      "headline": "젊은 시절, 29살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 30,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.adult",
+      "headline": "30살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 54,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.adult",
+      "headline": "54살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 54,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 55,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.elder",
+      "headline": "나이 들어 55살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 55,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 60,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.elder",
+      "headline": "나이 들어 60살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 60,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.healed",
+    "age": 61,
+    "result": {
+      "status": "candidate",
+      "id": "person.healed.age_proposal.elder",
+      "headline": "나이 들어 61살에 입었던 상처가 아물었다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 61,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 0,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 13,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 14,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 17,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 18,
+    "result": {
+      "status": "candidate",
+      "id": "person.pilgrimage.age_proposal.youth",
+      "headline": "젊은 시절, 18살에 순례길에 올랐다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 18,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 29,
+    "result": {
+      "status": "candidate",
+      "id": "person.pilgrimage.age_proposal.youth",
+      "headline": "젊은 시절, 29살에 순례길에 올랐다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 30,
+    "result": {
+      "status": "candidate",
+      "id": "person.pilgrimage.age_proposal.adult",
+      "headline": "30살에 순례길에 올랐다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 54,
+    "result": {
+      "status": "candidate",
+      "id": "person.pilgrimage.age_proposal.adult",
+      "headline": "54살에 순례길에 올랐다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 54,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 55,
+    "result": {
+      "status": "candidate",
+      "id": "person.pilgrimage.age_proposal.elder",
+      "headline": "나이 들어 55살에 순례길에 올랐다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 55,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 60,
+    "result": {
+      "status": "candidate",
+      "id": "person.pilgrimage.age_proposal.elder",
+      "headline": "나이 들어 60살에 순례길에 올랐다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 60,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.pilgrimage",
+    "age": 61,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 0,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 13,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 14,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 17,
+    "result": {
+      "status": "baseline",
+      "reason": "age_not_supported"
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 18,
+    "result": {
+      "status": "candidate",
+      "id": "person.returned.age_proposal.youth",
+      "headline": "젊은 시절, 18살에 순례에서 돌아왔다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 18,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 29,
+    "result": {
+      "status": "candidate",
+      "id": "person.returned.age_proposal.youth",
+      "headline": "젊은 시절, 29살에 순례에서 돌아왔다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 29,
+        "subjectAgeBandAtRecord": "youth"
+      }
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 30,
+    "result": {
+      "status": "candidate",
+      "id": "person.returned.age_proposal.adult",
+      "headline": "30살에 순례에서 돌아왔다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 30,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 54,
+    "result": {
+      "status": "candidate",
+      "id": "person.returned.age_proposal.adult",
+      "headline": "54살에 순례에서 돌아왔다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 54,
+        "subjectAgeBandAtRecord": "adult"
+      }
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 55,
+    "result": {
+      "status": "candidate",
+      "id": "person.returned.age_proposal.elder",
+      "headline": "나이 들어 55살에 순례에서 돌아왔다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 55,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 60,
+    "result": {
+      "status": "candidate",
+      "id": "person.returned.age_proposal.elder",
+      "headline": "나이 들어 60살에 순례에서 돌아왔다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 60,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "template": "person.returned",
+    "age": 61,
+    "result": {
+      "status": "candidate",
+      "id": "person.returned.age_proposal.elder",
+      "headline": "나이 들어 61살에 순례에서 돌아왔다.",
+      "context": {
+        "status": "known",
+        "eventYear": 1301,
+        "subjectAgeAtRecord": 61,
+        "subjectAgeBandAtRecord": "elder"
+      }
+    }
+  },
+  {
+    "rejection": "unknown",
+    "result": {
+      "status": "baseline",
+      "reason": "person_missing"
+    }
+  },
+  {
+    "rejection": "duplicate",
+    "result": {
+      "status": "baseline",
+      "reason": "duplicate_person"
+    }
+  },
+  {
+    "rejection": "household",
+    "result": {
+      "status": "baseline",
+      "reason": "household_event"
+    }
+  }
+]

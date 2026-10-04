@@ -1,0 +1,379 @@
+{
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "config": {
+    "seed": 3,
+    "years": 150,
+    "land": "core:open_field",
+    "mode": "fixed",
+    "policy": "stability",
+    "output": "/home/hyunlord/fls-runs/astra-steward-seed3-stability-r07-5fb1aeb/.remote/seed3-open-fixed-stability"
+  },
+  "verifiedSource": {
+    "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+    "sourceSha256": {
+      "src/engine/lordBot.ts": "47c7e2d50d9438e110f8f77a7e1ab58db7b5c35897c42e0837187d573bd6fa29",
+      "src/engine/registry.ts": "5a5bb81ff2e7fe445a8db833895217b13d7f5d1e4831d9ef0380e050b2a835a4",
+      "src/engine/registry.types.ts": "7c6dae66001f59bd5d08f1b51af5abe6fd48119f931bd0db5f0bb664483dcdbc",
+      "src/engine/townAgency.ts": "b2e99ce084df555b676423a2d767b0bd9874f349a2d71d50dd1bd48fb2bac63d",
+      "src/engine/tick.ts": "1bfa1f8c7afa3e06c3fb6ac511971edb03436ef89f58c863db53eb9499c0cb1a",
+      "src/state/gameStore.ts": "08946bb1a8dff61965d0ecdd767eaa3d4a40bc4bc92b12ba603f7bfb086d7ed3",
+      "src/state/newGame.ts": "a4a858ed3d12021a05fa9be3d626996a86f14401e5ddbc6841e2db20d81dd8d3",
+      "src/content/registry/registryTypes.ts": "458f7a21a4c922fce717aa4d213a943545c2e7a3696607ddf0c3560c7e2e255f",
+      "src/content/registry/registryEntries.ts": "ac0243b0d74974ef3a3a175e93b19523c65d8baff0bb78abcdff836a88e52a80"
+    },
+    "trackedSourceClean": true
+  },
+  "protocol": "current-v3-fresh-fixed-natural-lapse",
+  "policyArgumentApplied": true,
+  "startedAt": "2026-10-03T23:39:46.902Z",
+  "opening": "newGameState campaign lord",
+  "unverified": [
+    "full resource conservation",
+    "all cash movements have ledger entries",
+    "full rights transfer history",
+    "player fun",
+    "render/UI",
+    "dead actor command refusal",
+    "whole-run deterministic replay until compared externally"
+  ],
+  "stoppedFor": "target_year",
+  "final": {
+    "year": 1450,
+    "tick": 600000,
+    "population": 640,
+    "treasury": 521469,
+    "timber": 0,
+    "foodReserveTicks": 6750,
+    "buildings": {
+      "house": 20,
+      "well": 6,
+      "granary": 6,
+      "logging_camp": 2,
+      "storehouse": 6,
+      "manor_house": 1,
+      "farmstead": 6,
+      "sawmill": 4,
+      "mill": 10,
+      "chapel": 1,
+      "masonry": 1,
+      "quarry": 1,
+      "market": 1,
+      "malt_kiln": 1,
+      "church": 2,
+      "pastoral_farm": 1,
+      "weaver_house": 2,
+      "fulling_mill": 1,
+      "dyehouse": 1,
+      "tenter_yard": 2
+    },
+    "houseRecords": 20,
+    "inhabited": 20,
+    "livingTownPeople": 640,
+    "retainedDeathsByCause": {
+      "age": 1840,
+      "fire": 13,
+      "famine_year": 14,
+      "famine": 27,
+      "plague": 342
+    },
+    "retainedDeparted": 2,
+    "stocks": {
+      "bread": 1136,
+      "logs": 39,
+      "stone": 231,
+      "malt": 39,
+      "timber": 433,
+      "yarn": 197,
+      "raw_cloth": 329,
+      "stone_raw": 152,
+      "wheat": 912,
+      "barley": 106,
+      "fleece": 43,
+      "fulled_cloth": 9,
+      "dyes": 20,
+      "dyed_cloth": 2
+    },
+    "trades": {
+      "innkeeper": 2,
+      "carpenter": 2,
+      "smith": 1,
+      "brewer": 3,
+      "shoemaker": 3,
+      "tanner": 1,
+      "butcher": 1,
+      "cooper": 1,
+      "merchant": 2,
+      "tailor": 2,
+      "carter": 2
+    },
+    "tradeStock": {
+      "iron": 48,
+      "dyes": 16,
+      "wine": 1481.4,
+      "spices": 590.8,
+      "smallwares": 0,
+      "leather": 0,
+      "cloth": 0,
+      "shoes": 0,
+      "meat": 0,
+      "hides": 64,
+      "garments": 0,
+      "tools": 0,
+      "barrels": 0,
+      "carts": 0
+    },
+    "factions": [
+      {
+        "id": "overlord",
+        "leader": "f-000030",
+        "relation": -50
+      },
+      {
+        "id": "crown",
+        "leader": "f-000027",
+        "relation": 30
+      },
+      {
+        "id": "neighbour_1",
+        "leader": "f-000024",
+        "relation": -67
+      },
+      {
+        "id": "neighbour_2",
+        "leader": "f-000028",
+        "relation": -85
+      },
+      {
+        "id": "bishop",
+        "leader": "f-000026",
+        "relation": 100
+      },
+      {
+        "id": "merchant_house_1",
+        "leader": "p-001850",
+        "relation": -100
+      },
+      {
+        "id": "merchant_house_2",
+        "leader": "p-001752",
+        "relation": 30
+      },
+      {
+        "id": "town",
+        "leader": "p-001715",
+        "relation": 100
+      },
+      {
+        "id": "commons",
+        "leader": "p-002666",
+        "relation": 100
+      }
+    ],
+    "estates": [
+      {
+        "id": "estate-home",
+        "title": "lord",
+        "possessor": "lord",
+        "value": 0,
+        "pieces": [
+          {
+            "id": "home:land_rent",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "home:manor_court",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "home:market",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "home:tolls",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "home:mill",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "home:fishery",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "home:advowson",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          }
+        ]
+      },
+      {
+        "id": "estate-neighbour-1",
+        "title": "neighbour_1",
+        "possessor": "neighbour_1",
+        "value": 6400,
+        "pieces": [
+          {
+            "id": "estate-neighbour-1:land_rent",
+            "title": "neighbour_1",
+            "possessor": "neighbour_1",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-1:manor_court",
+            "title": "neighbour_1",
+            "possessor": "neighbour_1",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-1:fishery",
+            "title": "neighbour_1",
+            "possessor": "neighbour_1",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-1:hunting",
+            "title": "neighbour_1",
+            "possessor": "neighbour_1",
+            "loss": null
+          }
+        ]
+      },
+      {
+        "id": "estate-neighbour-2",
+        "title": "neighbour_2",
+        "possessor": "neighbour_2",
+        "value": 4000,
+        "pieces": [
+          {
+            "id": "estate-neighbour-2:land_rent",
+            "title": "neighbour_2",
+            "possessor": "neighbour_2",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-2:manor_court",
+            "title": "neighbour_2",
+            "possessor": "neighbour_2",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-2:mill",
+            "title": "neighbour_2",
+            "possessor": "neighbour_2",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-2:advowson",
+            "title": "neighbour_2",
+            "possessor": "neighbour_2",
+            "loss": null
+          }
+        ]
+      },
+      {
+        "id": "estate-neighbour-3",
+        "title": "lord",
+        "possessor": "lord",
+        "value": 3269,
+        "pieces": [
+          {
+            "id": "estate-neighbour-3:land_rent",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-3:manor_court",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-3:advowson",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          },
+          {
+            "id": "estate-neighbour-3:hunting",
+            "title": "lord",
+            "possessor": "lord",
+            "loss": null
+          }
+        ]
+      }
+    ],
+    "claimStates": {
+      "lost": 1,
+      "won": 1
+    },
+    "suitStates": {
+      "closed": 1
+    },
+    "promises": {
+      "kept": 11
+    },
+    "openEstatePetitions": 0,
+    "registry": {
+      "retainedOccurrences": 3,
+      "statuses": {
+        "answered": 2,
+        "lapsed": 1
+      },
+      "entries": {
+        "ck_evt_027": 1,
+        "ck_evt_034": 1,
+        "ck_evt_050": 1
+      },
+      "termStatuses": {},
+      "nextTerm": 1
+    },
+    "policy": "stability",
+    "dues": 1000,
+    "subsidies": [],
+    "historyRecordsRetained": 5684,
+    "historyNextOrdinal": 40181,
+    "receiptCount": 185,
+    "nextReceipt": 186,
+    "oldestReceiptTick": 78,
+    "actorFunds": {
+      "community": 141081,
+      "households": 674994,
+      "merchants": 269104,
+      "guild": 24924,
+      "church": 138990
+    },
+    "currentBuildingsWithoutWhyHere": 9,
+    "era": "stone_town",
+    "settlementOutcome": "ongoing"
+  },
+  "targetYear": 1450,
+  "completedTarget": true,
+  "stateSha256": "dc0f5edfcff2c8a9e0b7823dfb2f40b5adb32c4ca4db2ca36c49cd768f71f3dc",
+  "findings": [],
+  "pendingIntentionalWaits": [],
+  "partialYearCounters": {
+    "year": 1450,
+    "attempted": 0,
+    "changed": 0,
+    "asked": 0,
+    "stops": 0,
+    "kinds": {}
+  },
+  "seconds": 967,
+  "maxRssKiB": 1489736
+}

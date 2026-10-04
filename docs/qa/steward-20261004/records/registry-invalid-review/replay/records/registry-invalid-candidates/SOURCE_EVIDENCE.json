@@ -1,0 +1,99 @@
+[
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 1129,
+        "end": 1144,
+        "text": "function registryDrafts(before: GameState, after: GameState): Draft[] {\n  if (after.registry === before.registry || after.registry === undefined) return [];\n  const drafts: Draft[] = [];\n  const was = before.registry?.occurrences ?? [];\n  for (const occurrence of after.registry.occurrences) {\n    const old = was.find(entry => entry.id === occurrence.id);\n    if (old === undefined) {\n      drafts.push({ tick: after.tick, kind: \"event\", template: \"registry.offered\", subject: TOWN, severity: 1,\n        params: { entry: occurrence.entryId, bound: occurrence.boundId, draw: occurrence.receipt.draw, chance: occurrence.receipt.chancePermille } });\n      continue;\n    }\n    if (old.status !== \"offered\" || occurrence.status === \"offered\") continue;\n    drafts.push({ tick: after.tick, kind: \"event\", template: occurrence.status === \"answered\" ? \"registry.answered\" : occurrence.status === \"lapsed\" ? \"registry.lapsed\" : \"registry.invalid\",\n      subject: TOWN, severity: 1, params: { entry: occurrence.entryId, choice: occurrence.choiceId ?? \"\" } });\n    const choice = registryEntryData(occurrence.entryId)?.choices.find(candidate => candidate.id === occurrence.choiceId);\n    for (const effect of choice?.effects ?? []) {\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/registry.ts",
+    "sha256": "5a5bb81ff2e7fe445a8db833895217b13d7f5d1e4831d9ef0380e050b2a835a4",
+    "spans": [
+      {
+        "start": 420,
+        "end": 434,
+        "text": "/** ER-4 API: the lord answers an offer — rechecked now, applied whole or not at all; a second answer is refused. */\nexport function answerRegistryOffer(state: GameState, occurrenceId: string, choiceId: string): GameState {\n  const occurrence = openRegistryOffers(state).find(entry => entry.id === occurrenceId);\n  const entry = occurrence === undefined ? undefined : registryEntry(occurrence.entryId);\n  if (occurrence === undefined || entry === undefined) return state;\n  if (!boundTargets(state, entry).includes(occurrence.boundId) || !conditionHolds(state, entry.conditions, occurrence.boundId)) {\n    const registry = registryOf(state);\n    return { ...state, registry: { ...registry, occurrences: registry.occurrences.map(item => item.id === occurrenceId ? { ...item, status: \"invalid\" as const, settledTick: state.tick } : item) } };\n  }\n  const applied = applyChoice(state, entry, choiceId, occurrence.boundId, occurrence.id);\n  if (applied === null) return state;\n  const registry = registryOf(applied);\n  return { ...applied, registry: { ...registry, occurrences: registry.occurrences.map(item => item.id === occurrenceId\n    ? { ...item, status: \"answered\" as const, choiceId, settledTick: state.tick } : item) } };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 236,
+        "end": 239,
+        "text": "  \"registry.offered\": params => `${registryTitle(s(params, \"entry\"))}`,\n  \"registry.answered\": params => `${registryTitle(s(params, \"entry\"))}: ${registryChoiceLedger(s(params, \"entry\"), s(params, \"choice\"))}`,\n  \"registry.lapsed\": params => `${registryTitle(s(params, \"entry\"))}: 답하지 않아 기한이 지났다`,\n  \"registry.invalid\": params => `${registryTitle(s(params, \"entry\"))}: 사정이 바뀌어 없던 일이 되었다`,\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/registry/draftEvents.ts",
+    "sha256": "d7f474b4a1fde72c1bfa33fab0a1f995e07907098e1734ecfcdfe41bc2fa83d4",
+    "spans": [
+      {
+        "start": 31,
+        "end": 36,
+        "text": "  { id: \"ck_evt_013\", kind: \"event\", source: \"content drafts v2\", years: { fromYear: 1321, toYear: 1347 },\n    conditions: { all: [{ field: \"bound.revealedKept\", op: \"gte\", value: 1 }, { field: \"bound.stewardConnected\", op: \"eq\", value: true }, { field: \"bound.stewardLoyalty\", op: \"lte\", value: 90 }] },\n    frequency: FREQUENCY, recurrence: cooldownYears(7), exclusiveGroup: \"steward_audit\", sender: \"commons\", bind: \"pending_audit\",\n    choices: [{ id: \"a\", effects: [{ command: \"answer_audit\", choice: \"punish\" }] }, { id: \"b\", effects: [{ command: \"answer_audit\", choice: \"tolerate\" }] },\n      { id: \"c\", effects: [{ command: \"answer_audit\", choice: \"replace\" }] }],\n    precedent: false, artId: null },\n"
+      },
+      {
+        "start": 57,
+        "end": 67,
+        "text": "  { id: \"ck_evt_034\", kind: \"event\", source: \"content drafts v2\", years: { fromYear: 1372, toYear: 1374 },\n    conditions: { all: [{ field: \"estates.delegated\", op: \"gte\", value: 1 }, { field: \"steward.lordDecided\", op: \"gte\", value: 1 }] },\n    frequency: FREQUENCY, recurrence: ONCE_PER_TARGET, sender: \"commons\", bind: \"none\",\n    choices: [{ id: \"precedent\", effects: [{ command: \"set_exception_rules\", recurring: false }] }, { id: \"hear\", effects: [{ command: \"set_exception_rules\", recurring: true }] },\n      { id: \"rights_only\", effects: [{ command: \"set_exception_rules\", amountAtLeast: null }], requires: { field: \"steward.rules.amountAtLeast\", op: \"gte\", value: 0 } }],\n    precedent: false, artId: null },\n  { id: \"ck_evt_038\", kind: \"event\", source: \"content drafts v2\", years: { fromYear: 1378, toYear: 1381 },\n    conditions: { field: \"bound.suitStage\", op: \"eq\", value: \"enforcing\" },\n    frequency: FREQUENCY, recurrence: ONCE_PER_TARGET, sender: \"lord\", bind: \"open_suit\",\n    choices: [{ id: \"enforce\", effects: [{ command: \"enforce_possession\" }], requires: treasuryAtLeast(80) }, { id: \"defer\", effects: [{ command: \"none\" }] }],\n    precedent: false, artId: null },\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/registry/registryCopy.ko.ts",
+    "sha256": "9f431b3c6326360ace2758f1cfe3011563d23cb049f74718d078d2958b4314a8",
+    "spans": [
+      {
+        "start": 15,
+        "end": 16,
+        "text": "  \"ck_evt_013\": { title: \"연줄 있는 청지기의 빈 장부\", body: \"미카엘마스 감사에서 청지기가 감춘 돈이 드러났습니다. 그의 연줄을 생각할지, 드러난 돈을 거둬들이고 사람을 바꿀지 정해야 합니다.\",\n    choices: { \"a\": { label: \"돈을 회수하고 청지기를 해임한다\", ledger: \"감사 징계: Rd 회수, 청지기 해임과 후임 기록.\" }, \"b\": { label: \"드러난 일을 덮고 유임한다\", ledger: \"감사 관용: 회수 없음, 청지기 유임.\" }, \"c\": { label: \"회수 없이 해임하고 후임에게 넘긴다\", ledger: \"감사 결과 청지기 교체. 회수액0d, 연줄 세력 징벌 변화 없음.\" } } },\n"
+      },
+      {
+        "start": 23,
+        "end": 26,
+        "text": "  \"ck_evt_034\": { title: \"같은 청원이 또 올라오다\", body: \"지난번과 같은 장원 청원이 다시 책상에 쌓였습니다. 청지기는 앞선 판결대로 처리하겠다 하지만, 소작인 대표는 영주가 다시 들어 주길 바랍니다. 영주는 금액의 크기와 권리·혼인 안건을 갈라 들을 수도 있습니다.\",\n    choices: { \"precedent\": { label: \"같은 종류는 선례를 따르게 한다\", ledger: \"반복 예외 상신 해제; 기존 선례 처리 허용.\" }, \"hear\": { label: \"반복 청원도 다시 올리게 한다\", ledger: \"반복 청원 예외 상신 유지; 현금 변동 없음.\" }, \"rights_only\": { label: \"금액 대신 권리·혼인 안건만 다시 올리게 한다\", ledger: \"전역예외: 금액없음, 권리·혼인true, 반복true; 기존 열린 청원은 미결유지.\" } } },\n  \"ck_evt_038\": { title: \"판결 뒤에도 닫힌 문\", body: \"소송의 판결은 나왔지만 다투던 권리의 점유는 아직 이웃에게 있습니다. 관리인은 집행비를 내고 절차를 밟을지, 당분간 금고를 지킬지 묻습니다.\",\n    choices: { \"enforce\": { label: \"점유 집행을 시도한다\", ledger: \"점유 집행비80d; 성공 여부와 남은 저항값을 실제 결과로 기록.\" }, \"defer\": { label: \"집행을 미룬다\", ledger: \"집행 미실시; 금고·점유 변화 없음.\" } } },\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 1,
+        "end": 18,
+        "text": "/**\n * FIX-12 (item 4, spec docs/design/history-ledger.md HL-1a, QA-010): a ledger record names a person by id; the name —\n * with the epithet the person has now (큰/작은) — is drawn when the record is read, never kept as text.\n */\nimport { PERSON_NAME_FALLBACK } from \"../content/historyCopy.ko\";\nimport type { GameState } from \"./engine.types\";\nimport type { HistoryParams, HistoryRecord } from \"./history.types\";\nimport { personDisplayName } from \"./persons\";\nimport type { Person } from \"./persons.types\";\n\n/**\n * FIX-12 (item 4, HL-1a, QA-010): the parameters that name a person by id, and the name each one gives the sentence.\n * A record keeps the id; the name (with its epithet as it is now — 큰/작은) is drawn when the record is read.\n */\nconst PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n"
+      },
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 19,
+        "end": 23,
+        "text": "| 국왕 | 재위 중인 왕 개인 | king | 왕실과 무조건 치환 |\n| 왕실 | 국왕을 중심으로 한 제도·가솔·권력 집단 | Crown / royal household, 문맥별 | 국왕 개인의 행동으로 자동 변환 |\n| 청지기 | 영주의 위임을 받아 영지를 관리하는 직책 | steward | 집사, 집행관, 마을 대표와 혼용 |\n| 집행관 | 영지의 행정·집행을 맡은 역할 | bailiff | 청지기와 동일 직책으로 번역 |\n| 마을 대표(리브) | 이 게임의 reeve. 장원 관리·회계 역할을 설명에 명시 | reeve | 촌장, 원어만 reeve, 현대 시장과 혼동 |\n"
+      },
+      {
+        "start": 191,
+        "end": 191,
+        "text": "1. 청지기·안내는 ‘~합니다/~하십시오’, 선택 버튼은 플레이어 행동 ‘~한다’, 연대기는 ‘~했다’로 통일한다. 인물의 개별 말투는 허용하되 한 문장 안 주체를 분명히 쓴다.\n"
+      }
+    ]
+  }
+]

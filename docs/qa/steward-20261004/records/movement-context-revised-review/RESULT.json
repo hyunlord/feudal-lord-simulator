@@ -1,0 +1,37 @@
+{
+  "status": "13_CONDITIONAL_DRAFT_PASSES_0_EDITORIAL_HOLDS",
+  "templates": 5,
+  "variants": 13,
+  "resolvedHolds": [
+    {
+      "id": "house.withdrew.r06move.family_extinct",
+      "verdict": "CONDITIONAL_DRAFT_APPROVED",
+      "reason": "도시의 현재 인물 목록에 가문 태그 인물이 없고 대기 후계 후보가 없다는 범위로 한정. 지도 밖 친족 전체 소멸·전원 역병 사망 주장 제거. lordship.ts:47-53 및 실제 seasonal 경로 캡처 조건과 정합."
+    },
+    {
+      "id": "house.withdrew.r06move.decline_elapsed",
+      "verdict": "CONDITIONAL_DRAFT_APPROVED",
+      "reason": "정해진 기한을 삭제하고 쇠퇴 지속 뒤 교체만 서술. lordship.ts:188-190의 내부 경과 tick을 대외 약속으로 만들지 않음."
+    },
+    {
+      "id": "house.resettled.r06move.split",
+      "verdict": "CONDITIONAL_DRAFT_APPROVED",
+      "reason": "집집마다를 이주민 가구로 바꾸어 모든 집에 배분했다는 주장 제거. lordship.ts:244-250은 남은 빵이 있는 동안 일부 가구에만 배분할 수 있음."
+    }
+  ],
+  "unchangedOtherHeadlines": 10,
+  "onlyHeadlineChanges": 3,
+  "selectionFixtures": 104,
+  "schemaNegative": 75,
+  "extraFieldCases": 26,
+  "envelopeCases": 15,
+  "nameContractCases": 4,
+  "sourceFiles": 11,
+  "sourceSpans": 22,
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "canonicalUnchanged": true,
+  "authorArtifactsUnchanged": true,
+  "runtimeExecuted": false,
+  "captureAdapterImplemented": false,
+  "draftCompletionRequiresEngineInstallation": false
+}

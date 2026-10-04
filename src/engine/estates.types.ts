@@ -36,6 +36,8 @@ export interface RightPiece {
   /** ES-4: held for a life (a person), then the remainder takes title and possession. */
   readonly lifeTenant?: HolderId;
   readonly remainder?: HolderId;
+  /** LM-E9 (ER-8, NE08): a ruling's scope on the piece — its share of the year's worth (permille), when and by which suit. */
+  readonly scope?: { readonly sharePermille: number; readonly ruledTick: number; readonly suitId: string };
 }
 
 /** ES-1: what an estate owes each year (pennies). */

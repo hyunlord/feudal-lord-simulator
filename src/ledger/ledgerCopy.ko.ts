@@ -1,4 +1,4 @@
-import { moneyWordsDelta } from "./moneyWords.ko";
+import { moneyWordsDelta, moneyWordsFullDelta } from "./moneyWords.ko";
 import { MONEY_LABEL } from "../content/moneyCopy.ko";
 import type { LedgerAccount, LedgerCategory } from "./ledger.types";
 
@@ -43,6 +43,8 @@ export const LEDGER_CATEGORY_LABELS = {
   marriage_portion: "혼인 계약금",
   estate_income: "영지 수입",
   audit_recovery: "감사로 되찾은 돈",
+  registry_settlement: "청원·사건 답의 지급",
+  instalment: "분할 납부",
   promise_payment: "약속 이행 지급",
   famine_sale: "기근 곡물 판매",
   charter_fee: "특허 대가",
@@ -80,7 +82,7 @@ export const LEDGER_CATEGORY_LABELS = {
 } as const satisfies Record<LedgerCategory, string>;
 
 export const LEDGER_WINDOW_LABELS = {
-  recent: "최근 2,400틱",
+  recent: "최근 기간",
   previous: "지난 기간",
   all: "전체",
 } as const;
@@ -97,16 +99,19 @@ export const LEDGER_COPY = {
   emptyAccount: "아직 쓰는 규칙이 없습니다",
   noArrears: "미납 없음 · 유지비를 못 내면 여기에 쌓이고 그 시설은 멈춥니다",
   rolledUp: "오래된 기간은 분류별 합계로 접혀 있어 출처가 없습니다",
-  noIncome: "이번 기간 항목 없음 · 지대·좌판세·제분료·통행세와 유지비는 2,400틱마다 마감 때 정산합니다",
+  noIncome: "이번 기간 항목 없음 · 지대·좌판세·제분료·통행세와 유지비는 기간이 끝날 때 정산합니다",
   highlightHint: "누르면 지도에서 출처 건물을 표시합니다",
   sourceAt: (kind: string, tx: number, ty: number) => `${kind} (${tx}, ${ty})`,
   goneSource: (kind: string) => `${kind} (지금은 없음)`,
   goneBuilding: "건물",
-  signed: (amount: number) => `${amount > 0 ? "+" : ""}${amount}`,
-  sourceLine: (label: string, count: number, amount: number) => `${label} · ${count}건 ${amount > 0 ? "+" : ""}${amount}`,
-  entryLine: (tick: number, category: string, amount: number) => `${tick}틱 · ${category} ${amount > 0 ? "+" : ""}${amount}`,
-  eraIncome: (lines: string) => `수입원(장부, 최근 2,400틱) ${lines}`,
+  // COPY-1r (CA-002, CA-044): every amount in full with its sign (the summary total too: the ledger is the detail),
+  // and a date, not a tick.
+  signed: (amount: number) => moneyWordsFullDelta(amount),
+  sourceLine: (label: string, count: number, amount: number) => `${label} · ${count}건 ${moneyWordsFullDelta(amount)}`,
+  entryLine: (date: string, category: string, amount: number) => `${date} · ${category} ${moneyWordsFullDelta(amount)}`,
+  windowRange: (from: string, to: string) => `기간: ${from} ~ ${to}`,
+  eraIncome: (lines: string) => `수입원(장부, 최근 기간) ${lines}`,
   eraIncomeLine: (category: string, amount: number) => `${category} ${moneyWordsDelta(amount)}`,
   eraIncomeSeparator: " · ",
-  eraNoIncome: "수입원(장부, 최근 2,400틱) 없음 · 기간 마감 때 지대·좌판세·제분료·통행세가 들어옵니다",
+  eraNoIncome: "수입원(장부, 최근 기간) 없음 · 기간이 끝날 때 지대·좌판세·제분료·통행세가 들어옵니다",
 } as const;

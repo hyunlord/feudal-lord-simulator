@@ -1,0 +1,518 @@
+{
+  "formatVersion": "event-context-proposal-v1",
+  "status": "DRAFT_UNINSTALLED_AUTHOR_ONLY",
+  "baselineSha256": "ac1bde4a2c92381f8adaed3b3e5c6a4cd6dbe5745098639754bb6389919aba88",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "canonicalModified": false,
+  "engineChangesRequiredForUse": true,
+  "engineIntegrationRequiredToCompleteUserDraftTask": false,
+  "fields": [
+    {
+      "id": "guardianRouteAtStart",
+      "values": [
+        "manor_female_spouse",
+        "adult_house_member",
+        "overlord"
+      ],
+      "templates": [
+        "lord.wardship_begun"
+      ],
+      "capture": "src/engine/lordship.ts:56-73",
+      "producer": "src/engine/history.ts:587-595",
+      "currentRecordStorage": "lordId/guardianId only; selected route is NOT stored",
+      "currentOtherStorage": "lordship.wardship guardianId/since; mutable current persons role/house tags",
+      "immutableReconstruction": "Not safe from guardianId alone: blank ID merges null guardian with failed lookup. Capture selected branch, lord ID and guardian ID at beginWardship; do not derive biological motherhood from female spouse role.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Emit the exact branch selected by findWardshipGuardian. Current female spouse branch proves spouse role, not motherId. adult_house_member means selected same house tag adult, not proven blood kin."
+    },
+    {
+      "id": "surgeTriggerAtRecord",
+      "values": [
+        "industry_ready",
+        "calendar_backstop"
+      ],
+      "templates": [
+        "reorg.petitions_surge"
+      ],
+      "capture": "src/engine/reorganisation.ts:433-435",
+      "producer": "src/engine/history.ts:700",
+      "currentRecordStorage": "No trigger params",
+      "currentOtherStorage": "surgeTick/textileStreetTick/alehouseBoomTick in reorganisation state",
+      "immutableReconstruction": "Partial potential: these timestamps are stored in current state, but save migration/retention and same generation identity are not audited. Do not currently claim reliable old-save reconstruction.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Capture evaluated both && year>=surgeFromYear. If true industry_ready; otherwise calendar_backstop only when latest-date branch fires. When both branches true prefer industry_ready. Do not use date.year alone."
+    },
+    {
+      "id": "acceptanceRouteAtRecord",
+      "values": [
+        "initial_offer",
+        "accepted_counter"
+      ],
+      "templates": [
+        "negotiation.accepted"
+      ],
+      "capture": "src/engine/marriage.ts:137-162",
+      "producer": "src/engine/history.ts:1020-1027",
+      "currentRecordStorage": "negotiation ID + changes; no route",
+      "currentOtherStorage": "negotiation status/counter and original terms may remain, not immutable transition trail",
+      "immutableReconstruction": "Requires event-linked transition proof; current accepted status does not prove route. New initial accepted record vs old countered -> accepted permits capture in history producer.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Capture initial_offer only at newly created accepted negotiation; accepted_counter only old.status countered -> accepted with matching counter. Other transition unknown."
+    },
+    {
+      "id": "withdrawalCauseAtRecord",
+      "values": [
+        "declined_counter",
+        "counter_expired"
+      ],
+      "templates": [
+        "negotiation.withdrawn"
+      ],
+      "capture": "src/engine/marriage.ts:154-170",
+      "producer": "src/engine/history.ts:1026-1027",
+      "currentRecordStorage": "negotiation ID and empty changes only",
+      "currentOtherStorage": "negotiation.status withdrawn/deadline; explicit decline and automatic lapse converge",
+      "immutableReconstruction": "Old historical tick/deadline might constrain causes but no immutable command link contract is verified. Capture at answerCounter(false) / lapseCounters instead.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Record explicit decline only when non-noop answerCounter(false) settles the matching counter. Record expired only the deadline path. Never classify missing data as expired."
+    },
+    {
+      "id": "favourLossCauseAtRecord",
+      "values": [
+        "royal_request_refused",
+        "royal_request_expired"
+      ],
+      "templates": [
+        "war.favour_lost"
+      ],
+      "capture": "src/engine/war.ts:280-290",
+      "producer": "src/engine/history.ts:627",
+      "currentRecordStorage": "No params",
+      "currentOtherStorage": "war.answers maps defId to response; no causal command link in this history record",
+      "immutableReconstruction": "Current answers cannot identify unique historical transition when multiple demands settle. Capture petition ID, defId, response and true -> false favour edge in source operation; if several causally indistinguishable changes, unknown.",
+      "provenance": "emission_snapshot",
+      "captureRule": "Only petition.petitioner crown and refused response while favour previously true. refuse and expired are separate causes. Do not derive from later current reputation."
+    },
+    {
+      "id": "groomRelationAtContract",
+      "values": [
+        "widowed_lord",
+        "son",
+        "brother",
+        "nephew",
+        "cousin"
+      ],
+      "templates": [
+        "marriage.bride_arrived",
+        "marriage.child_born",
+        "marriage.inherited"
+      ],
+      "capture": "src/engine/marriage.ts:85-111;src/engine/marriage.ts:137-149;src/engine/marriage.ts:256-276",
+      "producer": "src/engine/history.ts:1042-1055",
+      "currentRecordStorage": "contracted already stores relation, groom, bride, negotiation; later event does NOT store a unique contract reference",
+      "currentOtherStorage": "MarriagePlan negotiationId/groomId/brideId; current groom role may change and off-map groom ID materialises at contract",
+      "immutableReconstruction": "Conditional future adapter only: later record must carry an immutable contract record reference; exact unique retained contracted record and identities must agree. Existing later bride/brotherInLaw or estate/rival alone do not prove a unique join. No nearest-record join.",
+      "provenance": "immutable_contract_reference",
+      "captureRule": "Capture actual marriageCandidates relation before contract and pin original lord ID/house order/negotiation ID, before groomToManor remaps IDs. Preserve original+materialised groom IDs. Read names now, keep relation to the lord AT CONTRACT. Missing groom must not inherit current history.ts fallback son."
+    }
+  ],
+  "additions": [
+    {
+      "template": "lord.wardship_begun",
+      "variant": {
+        "id": "lord.wardship_begun.r06ctx.spouse",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guardianRouteAtStart",
+            "op": "eq",
+            "value": "manor_female_spouse"
+          }
+        ],
+        "headline": "영주관에서 배우자로 살던 이가 미성년 영주의 후견을 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "lord.wardship_begun",
+      "variant": {
+        "id": "lord.wardship_begun.r06ctx.adult",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guardianRouteAtStart",
+            "op": "eq",
+            "value": "adult_house_member"
+          }
+        ],
+        "headline": "가문에 속한 성인이 미성년 영주의 후견을 맡았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "lord.wardship_begun",
+      "variant": {
+        "id": "lord.wardship_begun.r06ctx.overlord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.guardianRouteAtStart",
+            "op": "eq",
+            "value": "overlord"
+          }
+        ],
+        "headline": "가문 안에서 후견인을 정하지 못해 상위 영주의 후견이 시작되었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.petitions_surge",
+      "variant": {
+        "id": "reorg.petitions_surge.r06ctx.industry",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.surgeTriggerAtRecord",
+            "op": "eq",
+            "value": "industry_ready"
+          }
+        ],
+        "headline": "직물 거리와 에일집이 성장한 뒤, 상인과 직인 무리의 청원이 몰려왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "reorg.petitions_surge",
+      "variant": {
+        "id": "reorg.petitions_surge.r06ctx.calendar",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.surgeTriggerAtRecord",
+            "op": "eq",
+            "value": "calendar_backstop"
+          }
+        ],
+        "headline": "상인과 직인 무리의 요구가 올라왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.accepted",
+      "variant": {
+        "id": "negotiation.accepted.r06ctx.initial",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.acceptanceRouteAtRecord",
+            "op": "eq",
+            "value": "initial_offer"
+          }
+        ],
+        "headline": "처음 내민 혼인 조건을 이웃 가문이 받아들였다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.accepted",
+      "variant": {
+        "id": "negotiation.accepted.r06ctx.counter",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.acceptanceRouteAtRecord",
+            "op": "eq",
+            "value": "accepted_counter"
+          }
+        ],
+        "headline": "이웃 가문이 고쳐 보낸 조건을 받아 혼인 계약을 맺었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.withdrawn",
+      "variant": {
+        "id": "negotiation.withdrawn.r06ctx.declined",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.withdrawalCauseAtRecord",
+            "op": "eq",
+            "value": "declined_counter"
+          }
+        ],
+        "headline": "고쳐 온 혼인 조건을 받지 않겠다고 답해 혼담을 끝냈다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "negotiation.withdrawn",
+      "variant": {
+        "id": "negotiation.withdrawn.r06ctx.expired",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.withdrawalCauseAtRecord",
+            "op": "eq",
+            "value": "counter_expired"
+          }
+        ],
+        "headline": "고쳐 온 혼인 조건에 답하지 않아, 기한이 지나 혼담이 끝났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "war.favour_lost",
+      "variant": {
+        "id": "war.favour_lost.r06ctx.refused",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.favourLossCauseAtRecord",
+            "op": "eq",
+            "value": "royal_request_refused"
+          }
+        ],
+        "headline": "왕실의 요구를 거절한 뒤 국왕의 신임을 잃었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "war.favour_lost",
+      "variant": {
+        "id": "war.favour_lost.r06ctx.expired",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.favourLossCauseAtRecord",
+            "op": "eq",
+            "value": "royal_request_expired"
+          }
+        ],
+        "headline": "왕실의 요구에 답하지 않은 채 기한을 넘겨 국왕의 신임을 잃었다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.bride_arrived",
+      "variant": {
+        "id": "marriage.bride_arrived.r06ctx.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인의 혼인으로 신부가 영주관에 들어왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.bride_arrived",
+      "variant": {
+        "id": "marriage.bride_arrived.r06ctx.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인으로 신부가 영주관에 들어왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.bride_arrived",
+      "variant": {
+        "id": "marriage.bride_arrived.r06ctx.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 가운데 한 사람이 맺은 혼인으로 신부가 영주관에 들어왔다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.child_born",
+      "variant": {
+        "id": "marriage.child_born.r06ctx.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인이 맺은 혼인에서 부부의 첫아이가 태어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.child_born",
+      "variant": {
+        "id": "marriage.child_born.r06ctx.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인에서 부부의 첫아이가 태어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.child_born",
+      "variant": {
+        "id": "marriage.child_born.r06ctx.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 가운데 한 사람이 맺은 혼인에서 부부의 첫아이가 태어났다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.inherited",
+      "variant": {
+        "id": "marriage.inherited.r06ctx.lord",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "widowed_lord"
+          }
+        ],
+        "headline": "계약 당시 영주 본인이 맺은 혼인을 통해 이웃 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.inherited",
+      "variant": {
+        "id": "marriage.inherited.r06ctx.son",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "eq",
+            "value": "son"
+          }
+        ],
+        "headline": "계약 당시 영주의 아들이 맺은 혼인을 통해 이웃 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    },
+    {
+      "template": "marriage.inherited",
+      "variant": {
+        "id": "marriage.inherited.r06ctx.kin",
+        "priority": 20,
+        "when": [
+          {
+            "field": "context.groomRelationAtContract",
+            "op": "in",
+            "value": [
+              "brother",
+              "nephew",
+              "cousin"
+            ]
+          }
+        ],
+        "headline": "계약 당시 영주의 형제·조카·사촌 가운데 한 사람이 맺은 혼인을 통해 이웃 영지를 물려받았다.",
+        "requiredSlots": [
+
+        ],
+        "retainFactLine": true
+      }
+    }
+  ],
+  "fallback": {
+    "rule": "unknown/missing/malformed/context provenance mismatch -> existing baseline only; never guess",
+    "legacyDefault": "Do not backfill inferred historical relationships or causes into old records.",
+    "nameRule": "Only IDs in snapshots; resolve names through existing historyParams(record,state) at reading time."
+  }
+}

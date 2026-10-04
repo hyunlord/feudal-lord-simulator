@@ -1,0 +1,5829 @@
+[
+  {
+    "id": "move_in.1",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": "person.move_in.r06transition.one"
+  },
+  {
+    "id": "move_in.3",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": "person.move_in.r06transition.several"
+  },
+  {
+    "id": "married.manor",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": "person.married.r06transition.manor"
+  },
+  {
+    "id": "married.h1",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": "person.married.r06transition.town_house"
+  },
+  {
+    "id": "left.true",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": "person.left_town.r06transition.present"
+  },
+  {
+    "id": "left.false",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": "person.left_town.r06transition.absent"
+  },
+  {
+    "id": "move_in.1.empty_record_id",
+    "record": {
+      "id": "",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.wrong_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 1001,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.no_before_time",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.empty_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": ""
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.wrong_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "wrong"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.missing_snapshot",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.wrong_house_actor",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "wrong"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.duplicate_people",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.unknown_field",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ],
+      "currentMood": "invented"
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.unsafe_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 9007199254740992,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 9007199254740992,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.dead_in_living",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dead",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.empty_record_id",
+    "record": {
+      "id": "",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.wrong_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 1001,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.no_before_time",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.empty_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": ""
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.wrong_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "wrong"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.missing_snapshot",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.wrong_house_actor",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "wrong"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.duplicate_people",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.unknown_field",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ],
+      "currentMood": "invented"
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.unsafe_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 9007199254740992,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 9007199254740992,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.3.dead_in_living",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 3,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dead",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.empty_record_id",
+    "record": {
+      "id": "",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.wrong_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 1001,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.no_before_time",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.empty_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": ""
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.wrong_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "wrong"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.missing_snapshot",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.wrong_house_actor",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "wrong"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.duplicate_people",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.unknown_field",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ],
+      "currentMood": "invented"
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.unsafe_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 9007199254740992,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 9007199254740992,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.dead_in_living",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        },
+        {
+          "id": "dead",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.empty_record_id",
+    "record": {
+      "id": "",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.wrong_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 1001,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.no_before_time",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.empty_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": ""
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.wrong_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "wrong"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.missing_snapshot",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.wrong_house_actor",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "wrong"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.duplicate_people",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.unknown_field",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ],
+      "currentMood": "invented"
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.unsafe_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 9007199254740992,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 9007199254740992,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.dead_in_living",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        },
+        {
+          "id": "dead",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.empty_record_id",
+    "record": {
+      "id": "",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.wrong_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 1001,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.no_before_time",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.empty_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": ""
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.wrong_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "wrong"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.missing_snapshot",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.wrong_house_actor",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "wrong"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.duplicate_people",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.unknown_field",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "currentMood": "invented"
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.unsafe_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 9007199254740992,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 9007199254740992,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.dead_in_living",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dead",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.empty_record_id",
+    "record": {
+      "id": "",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.wrong_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 1001,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.no_before_time",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.empty_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": ""
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.wrong_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "wrong"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.missing_snapshot",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.wrong_house_actor",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "wrong"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.duplicate_people",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "dup",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.unknown_field",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "currentMood": "invented"
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.unsafe_tick",
+    "record": {
+      "id": "record-1",
+      "tick": 9007199254740992,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 9007199254740992,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.false.dead_in_living",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "dead",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.household_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "household",
+        "id": "h1"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": "person.move_in.r06transition.one"
+  },
+  {
+    "id": "move_in.1.contradictory_household_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "household",
+        "id": "h1"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.was_occupied",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.new_burn",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": true,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.new_abandon",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": true
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.old_abandon",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": true
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.no_increase",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.fractional_residents",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1.5,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "move_in.1.subject_not_head",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 0,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "child",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.existing_spouse_subject",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.new_person_not_spouse",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.different_head",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "another",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.manor.no_old_head",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+
+      ],
+      "people": [
+
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "manor",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "manor",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.unknown_house",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "married.h1.abandoned_house",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": true
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "spouse",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.died_not_left",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": false
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.still_in_people",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.household_reassigned",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "p1",
+          "householdId": "other",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.missing_past_entry",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+
+      ]
+    },
+    "expected": null
+  },
+  {
+    "id": "left.true.changed_past_prefix",
+    "record": {
+      "id": "record-1",
+      "tick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "h1"
+        }
+      ]
+    },
+    "before": {
+      "tick": 999,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 2,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        },
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "prior",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        }
+      ]
+    },
+    "after": {
+      "tick": 1000,
+      "houses": [
+        {
+          "id": "h1",
+          "residents": 1,
+          "burnt": false,
+          "abandoned": false
+        }
+      ],
+      "people": [
+        {
+          "id": "p2",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ],
+      "past": [
+        {
+          "id": "other",
+          "householdId": "h1",
+          "role": "kin",
+          "alive": false
+        },
+        {
+          "id": "p1",
+          "householdId": "h1",
+          "role": "head",
+          "alive": true
+        }
+      ]
+    },
+    "expected": null
+  }
+]

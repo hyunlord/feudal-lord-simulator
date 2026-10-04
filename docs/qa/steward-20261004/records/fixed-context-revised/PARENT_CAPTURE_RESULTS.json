@@ -1,0 +1,72 @@
+[
+  {
+    "id": "current_parent_same_home",
+    "expected": "co_resident",
+    "actual": "co_resident"
+  },
+  {
+    "id": "migrated_past_alive_same_home",
+    "expected": "not_co_resident",
+    "actual": "not_co_resident"
+  },
+  {
+    "id": "past_alive_same_home_without_leftYear",
+    "expected": "not_co_resident",
+    "actual": "not_co_resident"
+  },
+  {
+    "id": "people_parent_leftYear_same_home",
+    "expected": "not_co_resident",
+    "actual": "not_co_resident"
+  },
+  {
+    "id": "both_parents_elsewhere",
+    "expected": "not_co_resident",
+    "actual": "not_co_resident"
+  },
+  {
+    "id": "one_stays_one_migrated",
+    "expected": "co_resident",
+    "actual": "co_resident"
+  },
+  {
+    "id": "dead_parent_same_home",
+    "expected": "not_co_resident",
+    "actual": "not_co_resident"
+  },
+  {
+    "id": "missing_parent",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "duplicate_parent_across_lists",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "missing_parent_alive_flag",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "missing_parent_household",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "missing_parent_id",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "same_parent_id",
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "left_child",
+    "expected": null,
+    "actual": null
+  }
+]

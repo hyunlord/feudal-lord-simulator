@@ -1,0 +1,26 @@
+{
+  "status": "PASS_E_AUDITED_DRAFT_SCOPE",
+  "historyTypes": 182,
+  "ledgerCategories": 46,
+  "canonicalVariants": 650,
+  "inheritedAgeDrafts": 20,
+  "contextDrafts": 212,
+  "historyContextDrafts": 202,
+  "ledgerContextDrafts": 10,
+  "uniqueIds": 882,
+  "neutralFallbackProposalsOutsideCount": 2,
+  "confirmedMandatoryAuthoringGaps": [
+
+  ],
+  "closedLedgerPurposeGaps": [
+    "promise_payment",
+    "royal_subsidy",
+    "stall_fee"
+  ],
+  "currentFactlineHoldsPreserved": 30,
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "installationRequiredForDraftCompletion": false,
+  "runtimeInstalled": false,
+  "runtimeExecuted": false,
+  "reviewBasis": "Prior whole-scope 182/46 audit plus independently approved six purpose drafts; exact inventories and source entries rechecked"
+}

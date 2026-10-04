@@ -111,7 +111,7 @@ test("completed production names the missing destination store", () => {
     inventory: { wheat: 20 },
     productionProgress: 40,
   };
-  assert.equal(buildingProblemCause(state(farm), farm.id), "운반인이 가져갈 곡창이 없습니다");
+  assert.equal(buildingProblemCause(state(farm), farm.id), "운반꾼이 가져갈 곳 없음 · 받을 곡창 없음");
 });
 
 test("completed production distinguishes full disconnected and waiting destinations", () => {
@@ -138,7 +138,7 @@ test("completed production distinguishes full disconnected and waiting destinati
   );
   assert.equal(
     buildingProblemCause(connectedState(farm, openGranary), farm.id),
-    "운반인이 곡창으로 옮기기를 기다리는 중",
+    "운반꾼이 곡창까지 옮기기를 기다리는 중",
   );
 });
 

@@ -1,0 +1,24 @@
+require 'json';require 'digest'
+r='/tmp/astra-steward-r08-20261004/records/food-choice-executed';b='/Users/rexxa/fls-astra-steward/output/steward-food-choice-r08';repo='/Users/rexxa/fls-astra-steward'
+def j(p);JSON.parse(File.read(p));end
+def h(x);Digest::SHA256.hexdigest(JSON.generate(x));end
+counts={};[[r+'/SHA256SUMS',r],[b+'/SHA256SUMS',b],[b+'/SOURCE_SHA256SUMS',repo]].each{|m,root|ls=File.readlines(m);ls.each{|l|sha,p=l.strip.split(/\s+/,2);raise p unless Digest::SHA256.file(root+'/'+p).hexdigest==sha};counts[m]=ls.size}
+[['source','SOURCE_SHA256SUMS'],['artifact','SHA256SUMS']].each{|kind,m|expected=File.readlines(b+'/'+m).map{|l|l.strip.split(/\s+/,2)[1]}.sort;%w[before after].each{|phase|rows=File.readlines(r+"/#{kind}-#{phase}.log").map(&:strip);raise 'pins' unless rows.all?{|s|s.end_with?(': OK')}&&rows.map{|s|s.delete_suffix(': OK')}.sort==expected}}
+parent=j(r+'/PARENT_CHECK.json');raise 'revision' unless Digest::SHA256.file(b+'/probe.mjs').hexdigest==parent['actualRemoteProbeSHA256']&&Digest::SHA256.file(b+'/SHA256SUMS').hexdigest==parent['actualRemoteArtifactManifestSHA256']
+stage=j(b+'/stage.json');raise 'prior stage' unless File.binread(b+'/stage.json')==File.binread('/tmp/astra-steward-r07-20261004/records/food-boundary-executed-r07/result/stage.json')
+choices=j(r+'/result/choices.json');summary=j(r+'/result/summary.json');raise 'checks' unless summary['checks'].size==604&&summary['checks'].all?{|c|c['pass']}&&summary['checks'].map{|c|c['name']}.uniq.size==604
+reports=choices['rows'].map do |row|
+ original=stage['walkers'].find{|w|w['walkerBefore']['id']==row['walkerId']};raise 'row' unless original
+ saved=original['actualPortCalls'].select{|c|c['method']=='servicePath'}
+ %w[bestCalls nextCalls].each{|key|raise 'callback count' unless row[key].size==saved.size;row[key].zip(saved).each_with_index{|(a,c),i|raise 'args/path hash' unless a['ordinal']==i&&a['houseId']==c['arguments'][1]['buildingId']&&a['argumentsSha256']==h(c['arguments'])&&a['resultSha256']==h(c['result']);raise 'post service arguments' unless original['housesAfter'].find{|v|v['buildingId']==a['houseId']}==c['arguments'][1]}}
+ raise 'two sequences' unless row['bestCalls']==row['nextCalls']
+ selected=saved.find{|c|c['arguments'][1]['buildingId']==row['replaySelectedHouseId']};raise 'selected path' unless selected&&row['replaySelectedPath']==selected['result']
+ raise 'next tile' unless row['replayNextTile']==selected['result'][1]&&row['replayNextTile']==original['walkerAfter']['path'][1]&&row['recordedReconstructedStageNextTile']==original['walkerAfter']['path'][1]
+ raise 'range' unless row['remainingRangeDerived']==40-original['walkerBefore']['tilesTravelled']&&original['walkerAfter']['tilesTravelled']==original['walkerBefore']['tilesTravelled']+1
+ target=saved.find{|c|c['arguments'][1]['buildingId']=='construction-site-000023'};raise 'target edges' unless row['targetPredicateEvaluation']['pathEdges']==target['result'].size-1
+ same=saved.select{|c|c['result']&&c['result'][1]==row['replayNextTile']}.map{|c|c['arguments'][1]['buildingId']};raise 'same next' unless same==row['sameNextTileHouseIds']
+ {walker:row['walkerId'],recorded_path_calls:saved.size,selected_house:row['replaySelectedHouseId'],selected_edges:selected['result'].size-1,selected_bread:selected['arguments'][1]['breadStock'],target_edges:target['result'].size-1,remaining_range:row['remainingRangeDerived'],target_fits:row['targetPredicateEvaluation']['fitsRemainingRange'],next:row['replayNextTile'],same_next_house_count:same.size}
+end
+names=summary['checks'].map{|c|c['name']};raise 'immutability coverage' unless reports.all?{|x|names.include?(x[:walker]+':immutable-record-inputs')}&&names.include?('whole-record-input-immutable')&&names.include?('input-file-unchanged')
+result={verdict:'PASS_RECORDED_INPUT_ORIGINAL_FUNCTION_REPLAY_ONLY',manifest_counts:counts,official_exit:File.read(r+'/runner-exit-code').strip,timing:File.read(r+'/runner-timing.env'),counter_revision_pins_match_parent_remote_record:true,probe_sha256:parent['actualRemoteProbeSHA256'],artifact_manifest_sha256:parent['actualRemoteArtifactManifestSHA256'],original_r07_stage_bytes_equal:true,checks604:{global:8,row_fixed:44,per_callback_triplet_both_calls:552,actual_path_arguments_per_function:92},rows:reports,immutability_checks:'4 row hash checks plus full-record and input-file; recursive freeze inspected',direct_calls:summary['directExportCalls'],source_derived_nested_calls:summary['sourceDerivedNestedCallCount'],scope:j(r+'/result/scope.json'),independent_test_scope:'offline JSON/hash/callback argument and result cross-check; no TS/engine rerun; no independent ranking implementation',new_cause_confirmed:false}
+File.write(__dir__+'/REVIEW.json',JSON.pretty_generate(result)+"\n");puts JSON.pretty_generate(result.reject{|k,v|k==:scope})

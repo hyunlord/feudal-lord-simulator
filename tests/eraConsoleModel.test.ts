@@ -227,8 +227,8 @@ test("era console exposes Stone Town gauges and actual assigned wall labour", ()
   ]);
   assert.equal(model.tooltip, "성벽 공사 인력 0명");
   assert.equal(model.action.enabled, true);
-  assert.equal(model.action.label, "석조 도시 선포");
-  assert.match(markup, /석조 도시 선포/);
+  assert.equal(model.action.label, "석벽 도시 선포");
+  assert.match(markup, /석벽 도시 선포/);
   assert.match(markup, /400\/400/);
   assert.match(markup, /성벽 공사 인력 0명/);
 });
@@ -243,7 +243,7 @@ test("era console labels the proclaimed Stone Town current era without enabling 
   // When / Then
   assert.equal(model.currentEraLabel, "요새 도시"); // B2: stage names come from scenario data
   assert.equal(model.action.enabled, false);
-  assert.equal(model.action.reason, "이미 석조 도시가 선포되었습니다");
+  assert.equal(model.action.reason, "이미 석벽 도시가 선포되었습니다");
 });
 
 test("reserve deadlock cause offers an explicit non-hover priority action", () => {
@@ -388,7 +388,7 @@ for (const era of ["palisade", "stone_town"] as const) {
     // Then
     assert.equal(model.proposal.visible, false);
     assert.equal(model.action.enabled, false);
-    assert.equal(model.action.reason, era === "palisade" ? "인구 60/140" : "이미 석조 도시가 선포되었습니다");
+    assert.equal(model.action.reason, era === "palisade" ? "인구 60/140" : "이미 석벽 도시가 선포되었습니다");
     assert.doesNotMatch(markup, /era-proposal|목책 제안 불가|둘레 \d+칸/);
     assert.equal(model.action.targetEra, "stone_town");
   });

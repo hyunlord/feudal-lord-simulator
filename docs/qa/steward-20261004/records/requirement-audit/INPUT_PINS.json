@@ -1,0 +1,156 @@
+{
+  "at": "2026-10-04T10:55:05+09:00",
+  "scope": "Read-time snapshot; parent-owned live files may change after this audit.",
+  "files": [
+    {
+      "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/attachments/f24f76ab-2fb8-4c0e-9ff6-2a061b9ebe64/pasted-text-1.txt",
+      "bytes": 6080,
+      "sha256": "04198c2ad5fbafb2460991be98312cc4a833ead3a44c6e125b51f487a7ebd15f"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 6867,
+      "sha256": "2cac731445648e3e42aad287d12f3ecca5fa04ad49784383a27899817a72674a"
+    },
+    {
+      "path": "ROUND_PLAN.md",
+      "bytes": 1004,
+      "sha256": "baea1da8a4c3db04844510bd98e9dc6d1847d89ae6d6382a4cc260b5679848a4"
+    },
+    {
+      "path": "SYSTEM_MAP.md",
+      "bytes": 6096,
+      "sha256": "181622bc151442eed6dffdacbb72fb5447a8e26b9edbf2316bd10dcfcb47fdb4"
+    },
+    {
+      "path": "ASSET_STRATEGY.md",
+      "bytes": 3909,
+      "sha256": "1dff264208d39a29aa2314ed362da07a47effd8f2928ba0b470a847e47c20911"
+    },
+    {
+      "path": "HANDOFF_CURRENT.md",
+      "bytes": 1808,
+      "sha256": "aad17c5f14c4f8867e46cd27a0133f5d90b0d502c41513266d937682a09b199b"
+    },
+    {
+      "path": "records/ROUND_START.json",
+      "bytes": 15201,
+      "sha256": "5bfd1987722fd6daae785aa0af569decdae71746ad636cd42865aaff2735c717"
+    },
+    {
+      "path": "records/status-midround/STATUS.md",
+      "bytes": 6328,
+      "sha256": "2298083ecb65bc0d6b027c4b60e9974a2cdf3657970740c435f425b055fefe0b"
+    },
+    {
+      "path": "records/status-midround/findings.json",
+      "bytes": 8716,
+      "sha256": "c81ecf5e163eebad81b286883865f9762cdda02c8102a7433d7027f009fc8abc"
+    },
+    {
+      "path": "records/top10-evidence-plan/REPORT.md",
+      "bytes": 6858,
+      "sha256": "5bfbeac294ab9fa9420a56ddbaf73715f58b8af26d6a75786bd54874d340cf66"
+    },
+    {
+      "path": "records/top10-evidence-plan/EVIDENCE_FILES.json",
+      "bytes": 35565,
+      "sha256": "c5adea5ef918da90edbba34c4f0b94ab9d5427eced23030c95c923c852f31245"
+    },
+    {
+      "path": "records/TOP10_EVIDENCE_PARENT_ADOPTION.json",
+      "bytes": 308,
+      "sha256": "00d02048ddc69774f47872acc1a4f035eae719b7f14d7a6718eff7b0586912e1"
+    },
+    {
+      "path": "records/firstplay-current/TRACKING.md",
+      "bytes": 9480,
+      "sha256": "6535e3a6cf98bb298cce35ea62da0d5085ed7116d66f91f747d360ba3d8a9273"
+    },
+    {
+      "path": "records/firstplay-current/TRACKING.json",
+      "bytes": 50111,
+      "sha256": "9e9be747894375cda129c2e0e74204957d5f30afc3ebc240a713d0f5fcd8c105"
+    },
+    {
+      "path": "records/FIRSTPLAY_PARENT_ADOPTION.json",
+      "bytes": 283,
+      "sha256": "e9631ea5cc833abdde4419336606db57b1753c2036cc5e6fff5f201bc1c65736"
+    },
+    {
+      "path": "records/assets-current/REPORT.md",
+      "bytes": 4154,
+      "sha256": "43908d1a389ec9fc114d3c76ca4a9db8c8f4e46ef08c7b9c60c3016d9a6a3f14"
+    },
+    {
+      "path": "records/de-coverage-current/RESULT.json",
+      "bytes": 937,
+      "sha256": "d7813480625c227cc6f743e19571ce3295330a078ad8035b4df8656dc8783506"
+    },
+    {
+      "path": "records/de-coverage-current/REVIEW.md",
+      "bytes": 7884,
+      "sha256": "2b00fe38f5a3db1499be4010e4c96da82e7c506ce5a23d44a3fa51d628b76093"
+    },
+    {
+      "path": "records/long-run-inheritance/REPORT.md",
+      "bytes": 6432,
+      "sha256": "5d9c99883d6a87e5c33710945d41789092d0bae9c9efedf1ce6a9654c67b127e"
+    },
+    {
+      "path": "content/events.json",
+      "bytes": 1936352,
+      "sha256": "5768c312c5a73338bf2bcd7f860e69b30941352212511a8458aab6e1c0bb2fc4"
+    },
+    {
+      "path": "content/registry.json",
+      "bytes": 1906082,
+      "sha256": "f89fa934f5db54ce2d41efe2300e8b877e07e9a3b8e8d15c299c974ae5042148"
+    },
+    {
+      "path": "content/ASTRA_ANSWERS_R05.json",
+      "bytes": 12529,
+      "sha256": "ec5550d778fc3e58620b19b86d10468effa2f7f6531c9536395acb73ccf0f48d"
+    },
+    {
+      "path": "chronicle/variants.ko.json",
+      "bytes": 386611,
+      "sha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf"
+    },
+    {
+      "path": "chronicle/CONTEXT_DRAFTS.catalog.json",
+      "bytes": 175077,
+      "sha256": "be3a958670b63841783c65c5e5ed691278114c00979d0aa8b205e0bba5c96964"
+    },
+    {
+      "path": "chronicle/BIOGRAPHY_CONTRACT.json",
+      "bytes": 2265,
+      "sha256": "ca5bb512ae3db981501d7f293a98df27a363bc4053c5d998e06ba155c26a4c21"
+    },
+    {
+      "path": "records/age-context-copy-proposal/ADDITIONS.json",
+      "bytes": 13926,
+      "sha256": "665c3fac9607d4a61a11fc10e34e5fda72b5cf9f2e74fc64b750e20cd252ab3a"
+    },
+    {
+      "path": "records/fen-run-lifecycle/LIVE_PROGRESS_1049.txt",
+      "bytes": 147,
+      "sha256": "9f5fe22f5c0f5c5887007bc407d845eb6e9a1389532f11722ab99b2e7e48264d"
+    },
+    {
+      "path": "FIRST_PLAY_STATUS_R08.md",
+      "bytes": 9643,
+      "sha256": "7fdeb2bfad5de8ad70c007697e8a325c3ad5106a8e780849bd2b2f10f67ce8ba"
+    },
+    {
+      "path": "records/ASSET_REPORT_LINK_ADOPTION.json",
+      "bytes": 406,
+      "sha256": "9f46d672a27a90a0142da6ebc9949e78d038dde88ad1b8debb810aa920b56667"
+    },
+    {
+      "path": "records/storage-background-art-audit-r07/REPORT.md",
+      "bytes": 4782,
+      "sha256": "10bf31688079d4e280fcc09d46601132329ada9df245029243e75df4c3b5a178"
+    }
+  ]
+}

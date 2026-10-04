@@ -188,7 +188,7 @@ test("house diagnosis reports an unserviced connected household", () => {
   assert.equal(model.bread.kind, "not_visited");
   assert.equal(
     model.bread.label,
-    "배급자 순회 기록 없음 — 다음 배급 후 다시 확인",
+    "배급꾼 순회 기록 없음 — 다음 배급 후 다시 확인",
   );
 });
 
@@ -273,7 +273,7 @@ test("house diagnosis reports the nearest out-of-range well distance", () => {
   // Then
   assert.equal(model.water.kind, "well_too_far");
   assert.equal(model.water.distance, 8);
-  assert.equal(model.water.label, "우물이 너무 멉니다 — 거리 8 / 범위 6");
+  assert.equal(model.water.label, "우물이 너무 멉니다 — 거리 8칸 / 범위 6칸");
 });
 
 test("house diagnosis names starvation as the active population decline", () => {

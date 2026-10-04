@@ -1,0 +1,1150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "status",
+    "baselineSha256",
+    "sourceHead",
+    "canonicalModified",
+    "engineChangesRequiredForUse",
+    "engineIntegrationRequiredToCompleteUserDraftTask",
+    "fields",
+    "additions",
+    "fallback"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "formatVersion": {
+      "const": "event-context-proposal-v1"
+    },
+    "status": {
+      "const": "DRAFT_UNINSTALLED_AUTHOR_ONLY"
+    },
+    "baselineSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceHead": {
+      "type": "string"
+    },
+    "canonicalModified": {
+      "const": false
+    },
+    "engineChangesRequiredForUse": {
+      "const": true
+    },
+    "engineIntegrationRequiredToCompleteUserDraftTask": {
+      "const": false
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          {
+            "id": "guardianRouteAtStart",
+            "values": [
+              "manor_female_spouse",
+              "adult_house_member",
+              "overlord"
+            ],
+            "templates": [
+              "lord.wardship_begun"
+            ],
+            "capture": "src/engine/lordship.ts:56-73",
+            "producer": "src/engine/history.ts:587-595",
+            "currentRecordStorage": "lordId/guardianId only; selected route is NOT stored",
+            "currentOtherStorage": "lordship.wardship guardianId/since; mutable current persons role/house tags",
+            "immutableReconstruction": "Not safe from guardianId alone: blank ID merges null guardian with failed lookup. Capture selected branch, lord ID and guardian ID at beginWardship; do not derive biological motherhood from female spouse role.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Emit the exact branch selected by findWardshipGuardian. Current female spouse branch proves spouse role, not motherId. adult_house_member means selected same house tag adult, not proven blood kin."
+          },
+          {
+            "id": "surgeTriggerAtRecord",
+            "values": [
+              "industry_ready",
+              "calendar_backstop"
+            ],
+            "templates": [
+              "reorg.petitions_surge"
+            ],
+            "capture": "src/engine/reorganisation.ts:433-435",
+            "producer": "src/engine/history.ts:700",
+            "currentRecordStorage": "No trigger params",
+            "currentOtherStorage": "surgeTick/textileStreetTick/alehouseBoomTick in reorganisation state",
+            "immutableReconstruction": "Partial potential: these timestamps are stored in current state, but save migration/retention and same generation identity are not audited. Do not currently claim reliable old-save reconstruction.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Capture evaluated both && year>=surgeFromYear. If true industry_ready; otherwise calendar_backstop only when latest-date branch fires. When both branches true prefer industry_ready. Do not use date.year alone."
+          },
+          {
+            "id": "acceptanceRouteAtRecord",
+            "values": [
+              "initial_offer",
+              "accepted_counter"
+            ],
+            "templates": [
+              "negotiation.accepted"
+            ],
+            "capture": "src/engine/marriage.ts:137-162",
+            "producer": "src/engine/history.ts:1020-1027",
+            "currentRecordStorage": "negotiation ID + changes; no route",
+            "currentOtherStorage": "negotiation status/counter and original terms may remain, not immutable transition trail",
+            "immutableReconstruction": "Requires event-linked transition proof; current accepted status does not prove route. New initial accepted record vs old countered -> accepted permits capture in history producer.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Capture initial_offer only at newly created accepted negotiation; accepted_counter only old.status countered -> accepted with matching counter. Other transition unknown."
+          },
+          {
+            "id": "withdrawalCauseAtRecord",
+            "values": [
+              "declined_counter",
+              "counter_expired"
+            ],
+            "templates": [
+              "negotiation.withdrawn"
+            ],
+            "capture": "src/engine/marriage.ts:154-170",
+            "producer": "src/engine/history.ts:1026-1027",
+            "currentRecordStorage": "negotiation ID and empty changes only",
+            "currentOtherStorage": "negotiation.status withdrawn/deadline; explicit decline and automatic lapse converge",
+            "immutableReconstruction": "Old historical tick/deadline might constrain causes but no immutable command link contract is verified. Capture at answerCounter(false) / lapseCounters instead.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Record explicit decline only when non-noop answerCounter(false) settles the matching counter. Record expired only the deadline path. Never classify missing data as expired."
+          },
+          {
+            "id": "favourLossCauseAtRecord",
+            "values": [
+              "royal_request_refused",
+              "royal_request_expired"
+            ],
+            "templates": [
+              "war.favour_lost"
+            ],
+            "capture": "src/engine/war.ts:280-290",
+            "producer": "src/engine/history.ts:627",
+            "currentRecordStorage": "No params",
+            "currentOtherStorage": "war.answers maps defId to response; no causal command link in this history record",
+            "immutableReconstruction": "Current answers cannot identify unique historical transition when multiple demands settle. Capture petition ID, defId, response and true -> false favour edge in source operation; if several causally indistinguishable changes, unknown.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Only petition.petitioner crown and refused response while favour previously true. refuse and expired are separate causes. Do not derive from later current reputation."
+          },
+          {
+            "id": "groomRelationAtContract",
+            "values": [
+              "widowed_lord",
+              "son",
+              "brother",
+              "nephew",
+              "cousin"
+            ],
+            "templates": [
+              "marriage.bride_arrived",
+              "marriage.child_born",
+              "marriage.inherited"
+            ],
+            "capture": "src/engine/marriage.ts:85-111;src/engine/marriage.ts:137-149;src/engine/marriage.ts:256-276",
+            "producer": "src/engine/history.ts:1042-1055",
+            "currentRecordStorage": "contracted already stores relation, groom, bride, negotiation; later event does NOT store a unique contract reference",
+            "currentOtherStorage": "MarriagePlan negotiationId/groomId/brideId; current groom role may change and off-map groom ID materialises at contract",
+            "immutableReconstruction": "Conditional future adapter only: later record must carry an immutable contract record reference; exact unique retained contracted record and identities must agree. Existing later bride/brotherInLaw or estate/rival alone do not prove a unique join. No nearest-record join.",
+            "provenance": "immutable_contract_reference",
+            "captureRule": "Capture actual marriageCandidates relation before contract and pin original lord ID/house order/negotiation ID, before groomToManor remaps IDs. Preserve original+materialised groom IDs. Read names now, keep relation to the lord AT CONTRACT. Missing groom must not inherit current history.ts fallback son."
+          }
+        ]
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "required": [
+        "rule",
+        "legacyDefault",
+        "nameRule"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "rule": {
+          "const": "unknown/missing/malformed/context provenance mismatch -> existing baseline only; never guess"
+        },
+        "legacyDefault": {
+          "const": "Do not backfill inferred historical relationships or causes into old records."
+        },
+        "nameRule": {
+          "const": "Only IDs in snapshots; resolve names through existing historyParams(record,state) at reading time."
+        }
+      }
+    },
+    "additions": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "lord.wardship_begun"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.guardianRouteAtStart"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "manor_female_spouse",
+                                "adult_house_member",
+                                "overlord"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.guardianRouteAtStart"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "manor_female_spouse",
+                                  "adult_house_member",
+                                  "overlord"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "reorg.petitions_surge"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.surgeTriggerAtRecord"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "industry_ready",
+                                "calendar_backstop"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.surgeTriggerAtRecord"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "industry_ready",
+                                  "calendar_backstop"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "negotiation.accepted"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.acceptanceRouteAtRecord"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "initial_offer",
+                                "accepted_counter"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.acceptanceRouteAtRecord"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "initial_offer",
+                                  "accepted_counter"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "negotiation.withdrawn"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.withdrawalCauseAtRecord"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "declined_counter",
+                                "counter_expired"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.withdrawalCauseAtRecord"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "declined_counter",
+                                  "counter_expired"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "war.favour_lost"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.favourLossCauseAtRecord"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "royal_request_refused",
+                                "royal_request_expired"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.favourLossCauseAtRecord"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "royal_request_refused",
+                                  "royal_request_expired"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "marriage.bride_arrived"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.groomRelationAtContract"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "widowed_lord",
+                                "son",
+                                "brother",
+                                "nephew",
+                                "cousin"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.groomRelationAtContract"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "widowed_lord",
+                                  "son",
+                                  "brother",
+                                  "nephew",
+                                  "cousin"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "marriage.child_born"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.groomRelationAtContract"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "widowed_lord",
+                                "son",
+                                "brother",
+                                "nephew",
+                                "cousin"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.groomRelationAtContract"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "widowed_lord",
+                                  "son",
+                                  "brother",
+                                  "nephew",
+                                  "cousin"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "marriage.inherited"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.groomRelationAtContract"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "widowed_lord",
+                                "son",
+                                "brother",
+                                "nephew",
+                                "cousin"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.groomRelationAtContract"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "widowed_lord",
+                                  "son",
+                                  "brother",
+                                  "nephew",
+                                  "cousin"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 20,
+      "maxItems": 20
+    }
+  },
+  "$defs": {
+    "condition": {
+      "type": "object",
+      "required": [
+        "field",
+        "op",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "context.guardianRouteAtStart",
+            "context.surgeTriggerAtRecord",
+            "context.acceptanceRouteAtRecord",
+            "context.withdrawalCauseAtRecord",
+            "context.favourLossCauseAtRecord",
+            "context.groomRelationAtContract"
+          ]
+        },
+        "op": {
+          "enum": [
+            "eq",
+            "in"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "array"
+          ]
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": [
+        "id",
+        "priority",
+        "when",
+        "headline",
+        "requiredSlots",
+        "retainFactLine"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "when": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "headline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requiredSlots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "maxItems": 0
+        },
+        "retainFactLine": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

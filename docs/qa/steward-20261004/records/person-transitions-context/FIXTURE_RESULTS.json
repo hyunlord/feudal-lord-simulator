@@ -1,0 +1,567 @@
+[
+  {
+    "id": "move_in.1",
+    "selected": "person.move_in.r06transition.one",
+    "context": {
+      "status": "known",
+      "recordId": "record-1",
+      "recordTick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "householdId": "h1",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "fields": {
+        "arrivalSize": "one"
+      }
+    }
+  },
+  {
+    "id": "move_in.3",
+    "selected": "person.move_in.r06transition.several",
+    "context": {
+      "status": "known",
+      "recordId": "record-1",
+      "recordTick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "householdId": "h1",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "fields": {
+        "arrivalSize": "several"
+      }
+    }
+  },
+  {
+    "id": "married.manor",
+    "selected": "person.married.r06transition.manor",
+    "context": {
+      "status": "known",
+      "recordId": "record-1",
+      "recordTick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "householdId": "manor",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "fields": {
+        "spouseHousehold": "manor"
+      }
+    }
+  },
+  {
+    "id": "married.h1",
+    "selected": "person.married.r06transition.town_house",
+    "context": {
+      "status": "known",
+      "recordId": "record-1",
+      "recordTick": 1000,
+      "template": "person.married",
+      "subject": {
+        "type": "person",
+        "id": "p2"
+      },
+      "householdId": "h1",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "fields": {
+        "spouseHousehold": "town_house"
+      }
+    }
+  },
+  {
+    "id": "left.true",
+    "selected": "person.left_town.r06transition.present",
+    "context": {
+      "status": "known",
+      "recordId": "record-1",
+      "recordTick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "householdId": "h1",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "fields": {
+        "householdPeopleAfter": "present"
+      }
+    }
+  },
+  {
+    "id": "left.false",
+    "selected": "person.left_town.r06transition.absent",
+    "context": {
+      "status": "known",
+      "recordId": "record-1",
+      "recordTick": 1000,
+      "template": "person.left_town",
+      "subject": {
+        "type": "person",
+        "id": "p1"
+      },
+      "householdId": "h1",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "fields": {
+        "householdPeopleAfter": "absent"
+      }
+    }
+  },
+  {
+    "id": "move_in.1.empty_record_id",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.wrong_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.no_before_time",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.empty_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.wrong_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.missing_snapshot",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.wrong_house_actor",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.duplicate_people",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.unknown_field",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.unsafe_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.dead_in_living",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.empty_record_id",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.wrong_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.no_before_time",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.empty_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.wrong_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.missing_snapshot",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.wrong_house_actor",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.duplicate_people",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.unknown_field",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.unsafe_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.3.dead_in_living",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.empty_record_id",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.wrong_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.no_before_time",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.empty_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.wrong_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.missing_snapshot",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.wrong_house_actor",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.duplicate_people",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.unknown_field",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.unsafe_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.dead_in_living",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.empty_record_id",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.wrong_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.no_before_time",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.empty_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.wrong_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.missing_snapshot",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.wrong_house_actor",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.duplicate_people",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.unknown_field",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.unsafe_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.dead_in_living",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.empty_record_id",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.wrong_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.no_before_time",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.empty_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.wrong_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.missing_snapshot",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.wrong_house_actor",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.duplicate_people",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.unknown_field",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.unsafe_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.dead_in_living",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.empty_record_id",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.wrong_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.no_before_time",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.empty_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.wrong_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.missing_snapshot",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.wrong_house_actor",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.duplicate_people",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.unknown_field",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.unsafe_tick",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.false.dead_in_living",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.household_subject",
+    "selected": "person.move_in.r06transition.one",
+    "context": {
+      "status": "known",
+      "recordId": "record-1",
+      "recordTick": 1000,
+      "template": "person.move_in",
+      "subject": {
+        "type": "household",
+        "id": "h1"
+      },
+      "householdId": "h1",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "fields": {
+        "arrivalSize": "one"
+      }
+    }
+  },
+  {
+    "id": "move_in.1.contradictory_household_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.was_occupied",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.new_burn",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.new_abandon",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.old_abandon",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.no_increase",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.fractional_residents",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "move_in.1.subject_not_head",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.existing_spouse_subject",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.new_person_not_spouse",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.different_head",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.manor.no_old_head",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.unknown_house",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "married.h1.abandoned_house",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.died_not_left",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.still_in_people",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.household_reassigned",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.missing_past_entry",
+    "selected": null,
+    "context": null
+  },
+  {
+    "id": "left.true.changed_past_prefix",
+    "selected": null,
+    "context": null
+  }
+]

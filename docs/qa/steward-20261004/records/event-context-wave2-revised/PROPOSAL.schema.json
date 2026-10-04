@@ -1,0 +1,1298 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "status",
+    "baselineSha256",
+    "sourceHead",
+    "canonicalModified",
+    "engineChangesRequiredForUse",
+    "engineIntegrationRequiredToCompleteUserDraftTask",
+    "fields",
+    "additions",
+    "fallback"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "formatVersion": {
+      "const": "event-context-proposal-v1"
+    },
+    "status": {
+      "const": "DRAFT_UNINSTALLED_AUTHOR_ONLY"
+    },
+    "baselineSha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "canonicalModified": {
+      "const": false
+    },
+    "engineChangesRequiredForUse": {
+      "const": true
+    },
+    "engineIntegrationRequiredToCompleteUserDraftTask": {
+      "const": false
+    },
+    "fields": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          {
+            "id": "aleMilestoneBeforeTextile",
+            "values": [
+              "already_recorded",
+              "same_tick",
+              "not_yet_recorded"
+            ],
+            "templates": [
+              "reorg.textile_street"
+            ],
+            "capture": "src/engine/reorganisation.ts:426-431; src/engine/history.ts:698-699",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "textileStreetTick/alehouseBoomTick retained in reorganisation state, no per-record snapshot.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "At textile emission compare alehouseBoomTick STRICTLY LESS than textileStreetTick. Equal tick -> same_tick; absent -> not_yet_recorded; future timestamp -> unknown. Finite safe ticks required; invalid -> unknown. This is milestone ordering, not proof that no alehouses existed."
+          },
+          {
+            "id": "textileMilestoneBeforeAle",
+            "values": [
+              "already_recorded",
+              "same_tick",
+              "not_yet_recorded"
+            ],
+            "templates": [
+              "reorg.alehouse_boom"
+            ],
+            "capture": "src/engine/reorganisation.ts:426-431; src/engine/history.ts:698-699",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "Both milestone ticks exist in reorganisation state; current industry counts are mutable.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "At ale emission compare textileStreetTick STRICTLY LESS than alehouseBoomTick. Equal tick -> same_tick; absent -> not_yet_recorded; future timestamp -> unknown. Safe tick checks; do not infer prosperity, drunken disorder, or causal industrial demand."
+          },
+          {
+            "id": "charterNonAcceptanceAtRecord",
+            "values": [
+              "refused",
+              "expired"
+            ],
+            "templates": [
+              "legacy.charter_refused"
+            ],
+            "capture": "src/engine/legacy.ts:170-193; src/engine/history.ts:750-755",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "legacy.answers contains refusal/expiry; history only backlash.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Capture exact new autonomy answer: refuse -> refused, expired -> expired; any other nonaccept value unknown. No inferred motives."
+          },
+          {
+            "id": "finalEndingAxis",
+            "values": [
+              "town",
+              "family",
+              "church"
+            ],
+            "templates": [
+              "legacy.last_market"
+            ],
+            "capture": "src/engine/legacy.ts:360-384; src/engine/legacy.ts:513-518",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "legacy.ending contains frozen highest/id/params; record only localized ending title.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Capture newly finalized ending.highest and verify id against ENDINGS[highest](chosen). Never recalculate legacyScores from later state. Town/family/church tie order follows endingOf. Exact frozen ending reference could permit future immutable adapter only with campaign/record identity verified."
+          },
+          {
+            "id": "marketBoundaryAtStart",
+            "values": [
+              "water_reach",
+              "land_ring"
+            ],
+            "templates": [
+              "decision.market_town"
+            ],
+            "capture": "src/engine/palisade.ts:274-307",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "palisade polygon retained but terrain and walls mutable; reach local only.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "After successful projectPalisadeProclamation capture actual local reach flag (water.some(Boolean)); this describes boundary plan, not completed walls. No inference from current terrain."
+          },
+          {
+            "id": "stoneReplacementReadiness",
+            "values": [
+              "all_ready",
+              "partly_ready",
+              "none_ready"
+            ],
+            "templates": [
+              "decision.stone_town"
+            ],
+            "capture": "src/engine/era.ts:109-142",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "completed segment flags + created replacement sites mutable; no record snapshot.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "Successful proclamation only: before.palisade.segments nonempty; completed count equals total -> all_ready; 0<count<total -> partly_ready; zero -> none_ready. Null/empty palisade unknown. Safe counts required. Zero branch source permitted but natural scenario reachability not measured."
+          },
+          {
+            "id": "rebuildOccupancyAtStart",
+            "values": [
+              "residents_present",
+              "empty"
+            ],
+            "templates": [
+              "decision.rebuild"
+            ],
+            "capture": "src/engine/fire.ts:101-105; src/engine/fire.ts:150-166; src/engine/history.ts:258-264",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "House residents and burntTick exist now but can change; history place holds buildingId.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "At successful rebuild start look up SAME buildingId in before.houses. Finite safe nonnegative residents >0 vs0. Require burntTick and newly created site.rebuildOf match; invalid/missing unknown. Do not claim household returned or work completed."
+          },
+          {
+            "id": "expansionGateAtStart",
+            "values": [
+              "retained",
+              "moved"
+            ],
+            "templates": [
+              "decision.wall_expand"
+            ],
+            "capture": "src/engine/palisade.ts:375-384; src/engine/palisade.ts:412-425",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "Current gate point and expansion tick exist; old gate not retained in record.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "On successful expansion compare actual gate.point with before.palisade.gate. Coordinates equal -> retained, different -> moved. Store before/after coordinates in provenance. Do not call planned gate completed."
+          },
+          {
+            "id": "drainageQueueAtStart",
+            "values": [
+              "sole_work",
+              "parallel_work"
+            ],
+            "templates": [
+              "decision.drainage"
+            ],
+            "capture": "src/engine/drainage.ts:46-56; src/engine/drainage.ts:84-103",
+            "producer": "src/engine/history.ts",
+            "currentRecordStorage": "Proposed context field absent; baseline params only.",
+            "currentOtherStorage": "Open works list is mutable; completed works removed.",
+            "immutableReconstruction": "No general old-save reconstruction promised. Bind snapshot to exact history record ID/tick; mutable current state must not backfill past conditions.",
+            "provenance": "emission_snapshot",
+            "captureRule": "At successful start require exactly one added matching work ID; before works.length zero -> sole_work else parallel_work. This predicts neither actual labour assignment nor completion date; priority uses list order."
+          }
+        ]
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "required": [
+        "rule",
+        "legacyDefault",
+        "nameRule"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "rule": {
+          "const": "unknown/missing/malformed/unverified -> existing baseline; no guessed historical cause"
+        },
+        "legacyDefault": {
+          "const": "No current-state backfill"
+        },
+        "nameRule": {
+          "const": "Stable IDs only; resolve personal display names at reading through historyParams."
+        }
+      }
+    },
+    "additions": {
+      "type": "array",
+      "items": {
+        "anyOf": [
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "reorg.textile_street"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.aleMilestoneBeforeTextile"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "already_recorded",
+                                "same_tick",
+                                "not_yet_recorded"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.aleMilestoneBeforeTextile"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "already_recorded",
+                                  "same_tick",
+                                  "not_yet_recorded"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "reorg.alehouse_boom"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.textileMilestoneBeforeAle"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "already_recorded",
+                                "same_tick",
+                                "not_yet_recorded"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.textileMilestoneBeforeAle"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "already_recorded",
+                                  "same_tick",
+                                  "not_yet_recorded"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.charter_refused"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.charterNonAcceptanceAtRecord"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "refused",
+                                "expired"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.charterNonAcceptanceAtRecord"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "refused",
+                                  "expired"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "legacy.last_market"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.finalEndingAxis"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "town",
+                                "family",
+                                "church"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.finalEndingAxis"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "town",
+                                  "family",
+                                  "church"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "decision.market_town"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.marketBoundaryAtStart"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "water_reach",
+                                "land_ring"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.marketBoundaryAtStart"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "water_reach",
+                                  "land_ring"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "decision.stone_town"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.stoneReplacementReadiness"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "all_ready",
+                                "partly_ready",
+                                "none_ready"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.stoneReplacementReadiness"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "all_ready",
+                                  "partly_ready",
+                                  "none_ready"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "decision.rebuild"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.rebuildOccupancyAtStart"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "residents_present",
+                                "empty"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.rebuildOccupancyAtStart"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "residents_present",
+                                  "empty"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "decision.wall_expand"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.expansionGateAtStart"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "retained",
+                                "moved"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.expansionGateAtStart"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "retained",
+                                  "moved"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          },
+          {
+            "type": "object",
+            "required": [
+              "template",
+              "variant"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "template": {
+                "const": "decision.drainage"
+              },
+              "variant": {
+                "type": "object",
+                "required": [
+                  "id",
+                  "priority",
+                  "when",
+                  "headline",
+                  "requiredSlots",
+                  "retainFactLine"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string"
+                  },
+                  "priority": {
+                    "type": "integer"
+                  },
+                  "when": {
+                    "type": "array",
+                    "items": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.drainageQueueAtStart"
+                            },
+                            "op": {
+                              "const": "eq"
+                            },
+                            "value": {
+                              "enum": [
+                                "sole_work",
+                                "parallel_work"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "type": "object",
+                          "required": [
+                            "field",
+                            "op",
+                            "value"
+                          ],
+                          "additionalProperties": false,
+                          "properties": {
+                            "field": {
+                              "const": "context.drainageQueueAtStart"
+                            },
+                            "op": {
+                              "const": "in"
+                            },
+                            "value": {
+                              "type": "array",
+                              "minItems": 1,
+                              "uniqueItems": true,
+                              "items": {
+                                "enum": [
+                                  "sole_work",
+                                  "parallel_work"
+                                ]
+                              }
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    "minItems": 1,
+                    "maxItems": 1
+                  },
+                  "headline": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "requiredSlots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "uniqueItems": true,
+                    "maxItems": 0
+                  },
+                  "retainFactLine": {
+                    "const": true
+                  }
+                },
+                "additionalProperties": false
+              }
+            }
+          }
+        ]
+      },
+      "minItems": 22,
+      "maxItems": 22
+    }
+  },
+  "$defs": {
+    "condition": {
+      "type": "object",
+      "required": [
+        "field",
+        "op",
+        "value"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "context.aleMilestoneBeforeTextile",
+            "context.textileMilestoneBeforeAle",
+            "context.charterNonAcceptanceAtRecord",
+            "context.finalEndingAxis",
+            "context.marketBoundaryAtStart",
+            "context.stoneReplacementReadiness",
+            "context.rebuildOccupancyAtStart",
+            "context.expansionGateAtStart",
+            "context.drainageQueueAtStart"
+          ]
+        },
+        "op": {
+          "enum": [
+            "eq",
+            "in"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "array"
+          ]
+        }
+      }
+    },
+    "variant": {
+      "type": "object",
+      "required": [
+        "id",
+        "priority",
+        "when",
+        "headline",
+        "requiredSlots",
+        "retainFactLine"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "when": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "minItems": 1,
+          "maxItems": 1
+        },
+        "headline": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requiredSlots": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "uniqueItems": true,
+          "maxItems": 0
+        },
+        "retainFactLine": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

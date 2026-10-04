@@ -1,0 +1,6080 @@
+{
+  "status": "PASS_SYNTHETIC_CHARACTERIZATION",
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "seed": 1,
+  "tick": 12001,
+  "helperSha256": "a616dd8a8887e5f540777428cd27dd0d2e5aa029f6f7c68a3f44ae077445aec6",
+  "baseSha256": "ea0daf816774fa303d169756e2ef524d9dbd1726606cd0bfbed68c79e684e9cd",
+  "fixture": "Official seed1 lord opening + synthetic tick, official openingLedger balance, initialPolitics restoration petition, decline and official possession helper; not natural campaign replay",
+  "checks": [
+    {
+      "name": "haggled-market-15-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-15:possession-not-title-transfer",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-15:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-49:possession-not-title-transfer",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-49:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:delayed-title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-50:possession-not-title-transfer",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-50:delayed-title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:delayed-title",
+      "passed": true
+    },
+    {
+      "name": "haggled-market-51:possession-not-title-transfer",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:title",
+      "passed": true
+    },
+    {
+      "name": "haggled-title-only-51:delayed-title",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:title",
+      "passed": true
+    },
+    {
+      "name": "full-price-market-100:possession-not-title-transfer",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50-before:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50-after:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:save-resume-command",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:input-unchanged",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50-repeat:codec-exact",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:repeat-unchanged",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:decision-recorded",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:cash-and-fee",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:decline-or-retry",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:title",
+      "passed": true
+    },
+    {
+      "name": "refusal-market-50:possession-not-title-transfer",
+      "passed": true
+    },
+    {
+      "name": "official-base-unchanged",
+      "passed": true
+    }
+  ],
+  "traces": [
+    {
+      "id": "haggled-market-15",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "d40c2a08ca9d4d305e38939edbdb58dc413e9eb3ad67722347013b2f8cd14721",
+        "cash": 15,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 15,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "06d91682a79bfe244fb2871ecb12a89224bdc4202bab042099a29dce6780a358",
+        "cash": 15,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 15,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -35,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "06d91682a79bfe244fb2871ecb12a89224bdc4202bab042099a29dce6780a358",
+        "cash": 15,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 15,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -35,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "haggled-title-only-15",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "d74021b71e449f22293ff2703c26a592430c8400d086d4c50dcf75584fc2cd01",
+        "cash": 15,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 15,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "1c741e96ed84f5385ff08d61f3248c24cba223e5a746f27ad6b621c235a1217c",
+        "cash": 15,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 15,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -35,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "1c741e96ed84f5385ff08d61f3248c24cba223e5a746f27ad6b621c235a1217c",
+        "cash": 15,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 15,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -35,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "haggled-market-49",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "d5bf456c806a88775c70681dd4434d8f829268003454945f474a1c32cbf30488",
+        "cash": 49,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 49,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "3da46f35b4b13fb4bfb20b91b2496576c52d62aeefff9628609d9e08b5b125aa",
+        "cash": 49,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 49,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "3da46f35b4b13fb4bfb20b91b2496576c52d62aeefff9628609d9e08b5b125aa",
+        "cash": 49,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 49,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "haggled-title-only-49",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "9f07c090ff9eabda7ae37faa00215eedff1f9eaf6b6a5a67cc62a20fb2bd5898",
+        "cash": 49,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 49,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "2413ca50ca57139ebe5e1b4c20892b0a6e462bfca18cb4a4db302b87aadc7bea",
+        "cash": 49,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 49,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "2413ca50ca57139ebe5e1b4c20892b0a6e462bfca18cb4a4db302b87aadc7bea",
+        "cash": 49,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 49,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": -1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "haggled-market-50",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "b3e310ce898642b54e71fca8c3ced526fa4f1c37545cd9b5f11c40aaae423d5f",
+        "cash": 50,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "61c957efbbc39871b90de596246c214a22d68b1432aa19684ab8a0a2e2c578b9",
+        "cash": 0,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 12001
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "market",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 0,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "61c957efbbc39871b90de596246c214a22d68b1432aa19684ab8a0a2e2c578b9",
+        "cash": 0,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 12001
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "market",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 0,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "haggled-title-only-50",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "28b315c5bd2c7e861d1c334fc9a8adc77d9cbe30f9773b593ae7c6764854d795",
+        "cash": 50,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "5626473eeceaccda089b58fdd7ec6471ee92bdf3f0e3ba1c7461d9e9aa318de7",
+        "cash": 0,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "title",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 0,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "5626473eeceaccda089b58fdd7ec6471ee92bdf3f0e3ba1c7461d9e9aa318de7",
+        "cash": 0,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "title",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 0,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "haggled-market-51",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "6ec7438fd16a83a7c0e5c5084d55ef255da362d913da7dbd18a8ad80697dd0f4",
+        "cash": 51,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 51,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "9b39314eb30889fd0320f75cac586654ce885dd40fbf42098bc9703d80d0eead",
+        "cash": 1,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 12001
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 51,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "market",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "9b39314eb30889fd0320f75cac586654ce885dd40fbf42098bc9703d80d0eead",
+        "cash": 1,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 12001
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 51,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "market",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "haggled-title-only-51",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "6c517d1a4d8a68c7f807d88920349f42db0eebd4fa94ca87d72a6a07a7989ab3",
+        "cash": 51,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": null,
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 51,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "1f16f72b096cae884d0532e95c764a8e978372232e36f4c95d787d30cda8b389",
+        "cash": 1,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 51,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "title",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "1f16f72b096cae884d0532e95c764a8e978372232e36f4c95d787d30cda8b389",
+        "cash": 1,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": null,
+          "titleReturnsTick": 16001
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept_with_price",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept_with_price"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 51,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -50,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "title",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 50,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept_with_price",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept_with_price",
+              "alternatives": [
+                "accept",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 1,
+                "merchantGauge": 50
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "full-price-market-100",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "064cad9c4b6cc6ea3ee27b1971e85545f6b43ba23515c501eef981eaf6242113",
+        "cash": 100,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 100,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "07224c4897031d1a8dfe81ed1980a1cb851f15d8e64b445422d3b82e6df44d78",
+        "cash": 0,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": false,
+          "decline": null
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 12001
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 100,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -100,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "market",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 60,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept",
+              "alternatives": [
+                "accept_with_price",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 0,
+                "merchantGauge": 60
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "07224c4897031d1a8dfe81ed1980a1cb851f15d8e64b445422d3b82e6df44d78",
+        "cash": 0,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": false,
+          "decline": null
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 12001
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "accept",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "accept"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 100,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            },
+            {
+              "account": "cash",
+              "category": "restoration_fee",
+              "amount": -100,
+              "sourceRefs": [
+                {
+                  "type": "right",
+                  "id": "market",
+                  "detail": "petition:synthetic-restoration-boundary"
+                },
+                {
+                  "type": "actor",
+                  "id": "merchants"
+                }
+              ],
+              "id": "ledger-000002",
+              "tick": 12001
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 3
+        },
+        "merchantGauge": 60,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "accept",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "accept",
+              "alternatives": [
+                "accept_with_price",
+                "refuse"
+              ],
+              "predicted": {
+                "treasury": 0,
+                "merchantGauge": 60
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    },
+    {
+      "id": "refusal-market-50",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "refuse"
+      },
+      "before": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "b3e310ce898642b54e71fca8c3ced526fa4f1c37545cd9b5f11c40aaae423d5f",
+        "cash": 50,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 12001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001
+        },
+        "decisions": [],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 50
+      },
+      "after": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "a0ca4cbe833bf1c76eda93a57cc2ce95e46fcfb55df6cee139401296aa988231",
+        "cash": 50,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "refuse",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "refuse"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 40,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "refuse",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "refuse",
+              "alternatives": [
+                "accept",
+                "accept_with_price"
+              ],
+              "predicted": {
+                "treasury": 50,
+                "merchantGauge": 40
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      },
+      "repeat": {
+        "seed": 1,
+        "tick": 12001,
+        "stateSha256": "a0ca4cbe833bf1c76eda93a57cc2ce95e46fcfb55df6cee139401296aa988231",
+        "cash": 50,
+        "lordship": {
+          "house": {
+            "order": 1,
+            "name": "de Fauconval",
+            "heraldrySeed": 1,
+            "since": 0
+          },
+          "pastHouses": [],
+          "titleDemoted": true,
+          "decline": {
+            "since": 11001,
+            "cause": "derelict",
+            "lost": "market",
+            "by": "merchants",
+            "petitionFrom": 16001
+          }
+        },
+        "rights": [
+          {
+            "id": "market",
+            "present": false,
+            "status": "seized",
+            "by": "merchants",
+            "since": 12001
+          },
+          {
+            "id": "tolls",
+            "present": false,
+            "status": "held"
+          },
+          {
+            "id": "mill",
+            "present": false,
+            "status": "held"
+          }
+        ],
+        "homeEstate": {
+          "id": "estate-home",
+          "name": "home",
+          "kind": "market_town",
+          "manors": 1,
+          "annualValue": 0,
+          "burdens": {
+            "debt": 0,
+            "rentCharges": 0,
+            "repairs": 0
+          },
+          "pieces": [
+            {
+              "id": "home:land_rent",
+              "kind": "land_rent",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:manor_court",
+              "kind": "manor_court",
+              "annualValue": 240,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:market",
+              "kind": "market",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "merchants",
+              "possessedSince": 12001,
+              "loss": "seized"
+            },
+            {
+              "id": "home:tolls",
+              "kind": "tolls",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:mill",
+              "kind": "mill",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:fishery",
+              "kind": "fishery",
+              "annualValue": 320,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            },
+            {
+              "id": "home:advowson",
+              "kind": "advowson",
+              "annualValue": 0,
+              "titleHolder": "lord",
+              "possessor": "lord",
+              "possessedSince": 0
+            }
+          ],
+          "titleHolder": "lord",
+          "possessor": "lord",
+          "titleStrength": 100,
+          "possessionStrength": 100,
+          "offMap": false
+        },
+        "petition": {
+          "id": "synthetic-restoration-boundary",
+          "defId": "restore_right",
+          "petitioner": "merchants",
+          "arrivedTick": 12001,
+          "response": "refuse",
+          "respondedTick": 12001
+        },
+        "decisions": [
+          {
+            "kind": "petition_response",
+            "tick": 12001,
+            "petitionId": "synthetic-restoration-boundary",
+            "choice": "refuse"
+          }
+        ],
+        "ledger": {
+          "entries": [
+            {
+              "id": "ledger-000001",
+              "tick": 12001,
+              "account": "cash",
+              "category": "opening_balance",
+              "amount": 50,
+              "sourceRefs": [
+                {
+                  "type": "scenario",
+                  "id": "core:campaign_market_town",
+                  "detail": "synthetic-restoration-boundary-opening"
+                }
+              ]
+            }
+          ],
+          "rollups": [],
+          "nextEntryOrdinal": 2
+        },
+        "merchantGauge": 40,
+        "history": [
+          {
+            "tick": 12001,
+            "kind": "decision",
+            "template": "decision.petition_response",
+            "params": {
+              "decisionKind": "petition_response",
+              "chosen": "refuse",
+              "defId": "restore_right"
+            },
+            "subject": {
+              "type": "town",
+              "id": "town"
+            },
+            "actors": [
+              {
+                "type": "faction",
+                "id": "merchant_house_1"
+              }
+            ],
+            "decision": {
+              "chosen": "refuse",
+              "alternatives": [
+                "accept",
+                "accept_with_price"
+              ],
+              "predicted": {
+                "treasury": 50,
+                "merchantGauge": 40
+              },
+              "actualDueTick": 14001
+            },
+            "severity": 1,
+            "id": "h-000001"
+          }
+        ]
+      }
+    }
+  ],
+  "saves": [
+    {
+      "id": "haggled-market-15-before",
+      "sha256": "3bf4a4fd7aaf871899e83701ea48b9a212191c412c848273b406daf14b949384",
+      "stateSha256": "d40c2a08ca9d4d305e38939edbdb58dc413e9eb3ad67722347013b2f8cd14721",
+      "decodedSha256": "d40c2a08ca9d4d305e38939edbdb58dc413e9eb3ad67722347013b2f8cd14721"
+    },
+    {
+      "id": "haggled-market-15-after",
+      "sha256": "7d773863803bb73dd52f4e6dbad537b29afbbdf7cbcce5d25f94b30a0ebed698",
+      "stateSha256": "06d91682a79bfe244fb2871ecb12a89224bdc4202bab042099a29dce6780a358",
+      "decodedSha256": "06d91682a79bfe244fb2871ecb12a89224bdc4202bab042099a29dce6780a358"
+    },
+    {
+      "id": "haggled-market-15-repeat",
+      "sha256": "7d773863803bb73dd52f4e6dbad537b29afbbdf7cbcce5d25f94b30a0ebed698",
+      "stateSha256": "06d91682a79bfe244fb2871ecb12a89224bdc4202bab042099a29dce6780a358",
+      "decodedSha256": "06d91682a79bfe244fb2871ecb12a89224bdc4202bab042099a29dce6780a358"
+    },
+    {
+      "id": "haggled-title-only-15-before",
+      "sha256": "30273c86a1254134647d41a1e62cbd8285207ededd64064d5baf232e35620307",
+      "stateSha256": "d74021b71e449f22293ff2703c26a592430c8400d086d4c50dcf75584fc2cd01",
+      "decodedSha256": "d74021b71e449f22293ff2703c26a592430c8400d086d4c50dcf75584fc2cd01"
+    },
+    {
+      "id": "haggled-title-only-15-after",
+      "sha256": "1f5d2eb393d2d315bff9aa1e746aee6a50abb9f8ff1704fd0ad862ed795188f0",
+      "stateSha256": "1c741e96ed84f5385ff08d61f3248c24cba223e5a746f27ad6b621c235a1217c",
+      "decodedSha256": "1c741e96ed84f5385ff08d61f3248c24cba223e5a746f27ad6b621c235a1217c"
+    },
+    {
+      "id": "haggled-title-only-15-repeat",
+      "sha256": "1f5d2eb393d2d315bff9aa1e746aee6a50abb9f8ff1704fd0ad862ed795188f0",
+      "stateSha256": "1c741e96ed84f5385ff08d61f3248c24cba223e5a746f27ad6b621c235a1217c",
+      "decodedSha256": "1c741e96ed84f5385ff08d61f3248c24cba223e5a746f27ad6b621c235a1217c"
+    },
+    {
+      "id": "haggled-market-49-before",
+      "sha256": "09add4060bff6f198ce84a1314b58b03e8a54481ea4c40805f1eb1bf0c38f5c7",
+      "stateSha256": "d5bf456c806a88775c70681dd4434d8f829268003454945f474a1c32cbf30488",
+      "decodedSha256": "d5bf456c806a88775c70681dd4434d8f829268003454945f474a1c32cbf30488"
+    },
+    {
+      "id": "haggled-market-49-after",
+      "sha256": "c025e7b491f18f10fce4e94106f2e655538f9013760df61bf68994eeaab88933",
+      "stateSha256": "3da46f35b4b13fb4bfb20b91b2496576c52d62aeefff9628609d9e08b5b125aa",
+      "decodedSha256": "3da46f35b4b13fb4bfb20b91b2496576c52d62aeefff9628609d9e08b5b125aa"
+    },
+    {
+      "id": "haggled-market-49-repeat",
+      "sha256": "c025e7b491f18f10fce4e94106f2e655538f9013760df61bf68994eeaab88933",
+      "stateSha256": "3da46f35b4b13fb4bfb20b91b2496576c52d62aeefff9628609d9e08b5b125aa",
+      "decodedSha256": "3da46f35b4b13fb4bfb20b91b2496576c52d62aeefff9628609d9e08b5b125aa"
+    },
+    {
+      "id": "haggled-title-only-49-before",
+      "sha256": "cf1a597a44da8acd7a5a65949cc22581ea4f682a25d326f1013d3cd9968271fa",
+      "stateSha256": "9f07c090ff9eabda7ae37faa00215eedff1f9eaf6b6a5a67cc62a20fb2bd5898",
+      "decodedSha256": "9f07c090ff9eabda7ae37faa00215eedff1f9eaf6b6a5a67cc62a20fb2bd5898"
+    },
+    {
+      "id": "haggled-title-only-49-after",
+      "sha256": "6f136206cac0397a10c4c99849b637d1fc00443946a59c222e2f94f2c312ad21",
+      "stateSha256": "2413ca50ca57139ebe5e1b4c20892b0a6e462bfca18cb4a4db302b87aadc7bea",
+      "decodedSha256": "2413ca50ca57139ebe5e1b4c20892b0a6e462bfca18cb4a4db302b87aadc7bea"
+    },
+    {
+      "id": "haggled-title-only-49-repeat",
+      "sha256": "6f136206cac0397a10c4c99849b637d1fc00443946a59c222e2f94f2c312ad21",
+      "stateSha256": "2413ca50ca57139ebe5e1b4c20892b0a6e462bfca18cb4a4db302b87aadc7bea",
+      "decodedSha256": "2413ca50ca57139ebe5e1b4c20892b0a6e462bfca18cb4a4db302b87aadc7bea"
+    },
+    {
+      "id": "haggled-market-50-before",
+      "sha256": "a4a20ca103b4167354d9b9a687f2061650ba162fa29fb2841d1ffd293694edb4",
+      "stateSha256": "b3e310ce898642b54e71fca8c3ced526fa4f1c37545cd9b5f11c40aaae423d5f",
+      "decodedSha256": "b3e310ce898642b54e71fca8c3ced526fa4f1c37545cd9b5f11c40aaae423d5f"
+    },
+    {
+      "id": "haggled-market-50-after",
+      "sha256": "a95a8ffc04a423c93c7ae7e6c0e6ca4bb4234b93e921a55826d08393142e2d3c",
+      "stateSha256": "61c957efbbc39871b90de596246c214a22d68b1432aa19684ab8a0a2e2c578b9",
+      "decodedSha256": "61c957efbbc39871b90de596246c214a22d68b1432aa19684ab8a0a2e2c578b9"
+    },
+    {
+      "id": "haggled-market-50-repeat",
+      "sha256": "a95a8ffc04a423c93c7ae7e6c0e6ca4bb4234b93e921a55826d08393142e2d3c",
+      "stateSha256": "61c957efbbc39871b90de596246c214a22d68b1432aa19684ab8a0a2e2c578b9",
+      "decodedSha256": "61c957efbbc39871b90de596246c214a22d68b1432aa19684ab8a0a2e2c578b9"
+    },
+    {
+      "id": "haggled-title-only-50-before",
+      "sha256": "8243c09842170ffb2185b5e0bd2f1f6115b38aac03b453c39d4d7be83c727022",
+      "stateSha256": "28b315c5bd2c7e861d1c334fc9a8adc77d9cbe30f9773b593ae7c6764854d795",
+      "decodedSha256": "28b315c5bd2c7e861d1c334fc9a8adc77d9cbe30f9773b593ae7c6764854d795"
+    },
+    {
+      "id": "haggled-title-only-50-after",
+      "sha256": "630f9d83c9d38d11b877cb109ecb4d1dcd78c139a1c1cffe360010f2a6bc6a9c",
+      "stateSha256": "5626473eeceaccda089b58fdd7ec6471ee92bdf3f0e3ba1c7461d9e9aa318de7",
+      "decodedSha256": "5626473eeceaccda089b58fdd7ec6471ee92bdf3f0e3ba1c7461d9e9aa318de7"
+    },
+    {
+      "id": "haggled-title-only-50-repeat",
+      "sha256": "630f9d83c9d38d11b877cb109ecb4d1dcd78c139a1c1cffe360010f2a6bc6a9c",
+      "stateSha256": "5626473eeceaccda089b58fdd7ec6471ee92bdf3f0e3ba1c7461d9e9aa318de7",
+      "decodedSha256": "5626473eeceaccda089b58fdd7ec6471ee92bdf3f0e3ba1c7461d9e9aa318de7"
+    },
+    {
+      "id": "haggled-market-51-before",
+      "sha256": "2e40f89eec6a08f606118038a0b64d6b3011c8c79e5bac71444ac51a0f6f7487",
+      "stateSha256": "6ec7438fd16a83a7c0e5c5084d55ef255da362d913da7dbd18a8ad80697dd0f4",
+      "decodedSha256": "6ec7438fd16a83a7c0e5c5084d55ef255da362d913da7dbd18a8ad80697dd0f4"
+    },
+    {
+      "id": "haggled-market-51-after",
+      "sha256": "934920be733c46b630c273af254f1a967aac7864fdb27671b4b05b4b50dbb2e7",
+      "stateSha256": "9b39314eb30889fd0320f75cac586654ce885dd40fbf42098bc9703d80d0eead",
+      "decodedSha256": "9b39314eb30889fd0320f75cac586654ce885dd40fbf42098bc9703d80d0eead"
+    },
+    {
+      "id": "haggled-market-51-repeat",
+      "sha256": "934920be733c46b630c273af254f1a967aac7864fdb27671b4b05b4b50dbb2e7",
+      "stateSha256": "9b39314eb30889fd0320f75cac586654ce885dd40fbf42098bc9703d80d0eead",
+      "decodedSha256": "9b39314eb30889fd0320f75cac586654ce885dd40fbf42098bc9703d80d0eead"
+    },
+    {
+      "id": "haggled-title-only-51-before",
+      "sha256": "fc0b45c393c17c325bc070ecb8dbcc31fd466b1fb3fb48b651b69c1ac525be77",
+      "stateSha256": "6c517d1a4d8a68c7f807d88920349f42db0eebd4fa94ca87d72a6a07a7989ab3",
+      "decodedSha256": "6c517d1a4d8a68c7f807d88920349f42db0eebd4fa94ca87d72a6a07a7989ab3"
+    },
+    {
+      "id": "haggled-title-only-51-after",
+      "sha256": "912c8c017f27720495d9cf2bf072e1666b3ec2675de295d604e651676b293d0c",
+      "stateSha256": "1f16f72b096cae884d0532e95c764a8e978372232e36f4c95d787d30cda8b389",
+      "decodedSha256": "1f16f72b096cae884d0532e95c764a8e978372232e36f4c95d787d30cda8b389"
+    },
+    {
+      "id": "haggled-title-only-51-repeat",
+      "sha256": "912c8c017f27720495d9cf2bf072e1666b3ec2675de295d604e651676b293d0c",
+      "stateSha256": "1f16f72b096cae884d0532e95c764a8e978372232e36f4c95d787d30cda8b389",
+      "decodedSha256": "1f16f72b096cae884d0532e95c764a8e978372232e36f4c95d787d30cda8b389"
+    },
+    {
+      "id": "full-price-market-100-before",
+      "sha256": "837bb8b8a3f6f669dc519008887d9b2d04a49989c72037e184cce773c51aa7e4",
+      "stateSha256": "064cad9c4b6cc6ea3ee27b1971e85545f6b43ba23515c501eef981eaf6242113",
+      "decodedSha256": "064cad9c4b6cc6ea3ee27b1971e85545f6b43ba23515c501eef981eaf6242113"
+    },
+    {
+      "id": "full-price-market-100-after",
+      "sha256": "186656a2d68d4ebd9cc8e78a7ce9ce3045c4c140771d4fc361f90203a382f656",
+      "stateSha256": "07224c4897031d1a8dfe81ed1980a1cb851f15d8e64b445422d3b82e6df44d78",
+      "decodedSha256": "07224c4897031d1a8dfe81ed1980a1cb851f15d8e64b445422d3b82e6df44d78"
+    },
+    {
+      "id": "full-price-market-100-repeat",
+      "sha256": "186656a2d68d4ebd9cc8e78a7ce9ce3045c4c140771d4fc361f90203a382f656",
+      "stateSha256": "07224c4897031d1a8dfe81ed1980a1cb851f15d8e64b445422d3b82e6df44d78",
+      "decodedSha256": "07224c4897031d1a8dfe81ed1980a1cb851f15d8e64b445422d3b82e6df44d78"
+    },
+    {
+      "id": "refusal-market-50-before",
+      "sha256": "a4a20ca103b4167354d9b9a687f2061650ba162fa29fb2841d1ffd293694edb4",
+      "stateSha256": "b3e310ce898642b54e71fca8c3ced526fa4f1c37545cd9b5f11c40aaae423d5f",
+      "decodedSha256": "b3e310ce898642b54e71fca8c3ced526fa4f1c37545cd9b5f11c40aaae423d5f"
+    },
+    {
+      "id": "refusal-market-50-after",
+      "sha256": "8d86279b0e9a1678425d1f9766eb1e381bcdd81fc6b2932996f85d34402fab86",
+      "stateSha256": "a0ca4cbe833bf1c76eda93a57cc2ce95e46fcfb55df6cee139401296aa988231",
+      "decodedSha256": "a0ca4cbe833bf1c76eda93a57cc2ce95e46fcfb55df6cee139401296aa988231"
+    },
+    {
+      "id": "refusal-market-50-repeat",
+      "sha256": "8d86279b0e9a1678425d1f9766eb1e381bcdd81fc6b2932996f85d34402fab86",
+      "stateSha256": "a0ca4cbe833bf1c76eda93a57cc2ce95e46fcfb55df6cee139401296aa988231",
+      "decodedSha256": "a0ca4cbe833bf1c76eda93a57cc2ce95e46fcfb55df6cee139401296aa988231"
+    }
+  ],
+  "limitations": [
+    "Original browser runtime petitionId and exact state unavailable",
+    "No UI execution or direction unlock verification",
+    "No natural decline/recovery trigger replay",
+    "No 4000-tick title/retry simulation",
+    "Characterization pass is not design approval of accepted-but-unpaid decision"
+  ]
+}

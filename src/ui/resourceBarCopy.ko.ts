@@ -29,5 +29,5 @@ export const RESOURCE_BAR_COPY = {
   coinDetail: "재정 수입과 지출 상세",
   coinLabel: "재정",
   moreSummary: "자원 상세",
-  rawStock: (wheat: number, logs: number, rawStone: number) => `밀 ${wheat} · 원목 ${logs} · 원석 ${rawStone}`,
+  rawStock: (wheat: number, logs: number, rawStone: number) => `밀 ${wheat} · 통나무 ${logs} · 원석 ${rawStone}`,
 } as const;

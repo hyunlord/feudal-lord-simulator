@@ -1,0 +1,205 @@
+{
+  "type": "object",
+  "required": [
+    "status",
+    "recordId",
+    "recordTick",
+    "template",
+    "sourceHead",
+    "captureKind",
+    "referenceVerified",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordTick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "template": {
+      "enum": [
+        "reorg.wage_competition",
+        "reorg.guild_founded",
+        "reorg.weavers_left",
+        "reorg.overlord_warning",
+        "reorg.autonomy_request"
+      ]
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "captureKind": {
+      "const": "emission_snapshot"
+    },
+    "referenceVerified": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.wage_competition"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "departuresAtWageOpening"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "departuresAtWageOpening": {
+              "enum": [
+                "none_recorded",
+                "departure_recorded"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.guild_founded"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "headAtGuildFoundation"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "headAtGuildFoundation": {
+              "enum": [
+                "assigned",
+                "unassigned"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.weavers_left"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "guildAnswerAtDeparture"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "guildAnswerAtDeparture": {
+              "enum": [
+                "refused",
+                "expired"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.overlord_warning"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "guildAtWarning"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "guildAtWarning": {
+              "enum": [
+                "founded",
+                "not_founded"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "reorg.autonomy_request"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "autonomyRouteAtRequest"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "autonomyRouteAtRequest": {
+              "enum": [
+                "chased",
+                "guild_accepted",
+                "guild_not_accepted"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

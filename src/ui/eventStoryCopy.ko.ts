@@ -135,8 +135,9 @@ export const EVENT_STORY_COPY = {
     abandonedFields: { title: "버려진 밭", line: "역병이 물러갔습니다. 일꾼이 줄어 밭이 버려지고 수확이 모자랍니다",
       advice: "빈 필지 재분배 청원에 답해 재정착을 시작하십시오" },
     /** PL-5: the Statute of Labourers is read — within 1 season of ordinanceTick. */
-    ordinance: { title: "노동자 조례 낭독", line: "국왕이 1351년 노동자 조례를 낭독했습니다. 임금을 올린 영주는 벌금을 냅니다",
-      advice: "임금을 올렸다면 조례 벌금이 금고에서 나갑니다" },
+    // COPY-1r CA-007: the 1351 Statute (노동자법), not the 1349 ordinance (노동자 조례); no claim that the king read it.
+    ordinance: { title: "노동자법 공포", line: "1351년 노동자법이 공포되었습니다. 게임에서는 임금을 올린 영주에게 벌금이 부과됩니다",
+      advice: "임금을 올렸다면 노동자법 벌금이 금고에서 나갑니다" },
     /** PL-7: resettlement has begun — while resettled > 0 and endedTick undefined. */
     resettlement: { title: "재정착", line: "빈 집에 새 가족이 들기 시작했습니다. 빈 필지가 서서히 채워집니다",
       advice: "화폐 지대 청원에 답해 지대 수입을 안정시키십시오" },
@@ -186,7 +187,7 @@ export const EVENT_STORY_COPY = {
   // UI-10 (F5-A LG-1…LG-8): chapter 5's eight steps, the lord's names quoted from the ledger's records.
   legacy: {
     /** LG-1: the merchant elite asks that the town choose its mayor. */
-    mayorDemand: { title: "시장을 뽑게 해 달라는 요구", line: "상인 엘리트가 도시가 제 시장을 뽑게 해 달라고 요구합니다",
+    mayorDemand: { title: "시장을 뽑게 해 달라는 요구", line: "유력 상인들이 도시의 시장 선출권을 요구합니다", // COPY-1r CA-032
       advice: "요구는 자치 특허로 이어집니다. 특허에 인장을 찍으면 이 후보가 첫 시장이 됩니다",
       candidate: (name: string) => `시장 후보 — ${name}` },
     /** LG-4: the Crown's envoy and the tenth and fifteenth. */
@@ -224,7 +225,8 @@ export const EVENT_STORY_COPY = {
   },
   // UI-10 (FIX-9 LG-13): the 1384–1400 interlude, by the calendar.
   interlude: {
-    staple: { title: "양모 집산지 이전", line: "양모 집산지(Staple)가 옮겨지고 양모 수출이 묶였습니다. 직조공의 시장이 넓어집니다",
+    // COPY-1r CA-008: in 1391–1392 the Calais Staple was suspended for a while (not moved); the effect is the game's.
+    staple: { title: "칼레 양모 무역 제도 중단", line: "칼레의 지정 무역 제도(Staple)가 잠시 중단되었습니다. 게임 효과: 직물이 더 비싸게 팔립니다",
       advice: "여덟 계절 동안 직물이 더 비싸게 팔립니다. 직조공 집을 멈추지 마십시오", fact: "직물 값 1.1배 · 여덟 계절" },
     guildDispute: { title: "길드와 상인의 다툼", line: "길드와 상인이 직물을 파는 권리를 두고 다툽니다",
       advice: "어느 편을 들든 한쪽 세력이 등을 돌립니다" },

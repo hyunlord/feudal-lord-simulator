@@ -43,6 +43,6 @@ export const PAD_HINT_COPY = {
   /** The status line while a building tool is armed (the keyboard's "지을 곳을 클릭하세요 — … · 취소하려면 Esc"). */
   placeBuilding: (building: string): readonly PadHintPart[] => [{ actions: ["select"], text: `지을 곳 정하기 — ${building}` }, { actions: ["cancel"], text: "취소" }],
   placeRoad: [{ actions: ["select"], text: "누른 채 커서를 움직여 길 놓기" }, { actions: ["cancel"], text: "취소" }] as readonly PadHintPart[],
-  /** The pause badge (the keyboard's "일시정지 중 · Space"). */
-  paused: [{ text: "일시정지 중" }, { actions: ["pause"], text: "" }] as readonly PadHintPart[],
+  /** The pause badge (the keyboard's "일시 정지 중 · Space"). */
+  paused: [{ text: "일시 정지 중" }, { actions: ["pause"], text: "" }] as readonly PadHintPart[],
 } as const;

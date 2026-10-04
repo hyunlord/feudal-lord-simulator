@@ -1,0 +1,929 @@
+{
+ "seed": 2,
+ "years": 20,
+ "decisions": 83,
+ "decisionsHash": "21c04e508fd13448",
+ "homes": 46,
+ "homesHash": "f23bfc6903586627",
+ "byYear": {
+  "1300": {
+   "toLord": 2,
+   "precedent": 0
+  },
+  "1301": {
+   "toLord": 1,
+   "precedent": 0
+  },
+  "1302": {
+   "toLord": 3,
+   "precedent": 0
+  },
+  "1303": {
+   "toLord": 3,
+   "precedent": 0
+  },
+  "1304": {
+   "toLord": 2,
+   "precedent": 0
+  },
+  "1305": {
+   "toLord": 1,
+   "precedent": 0
+  },
+  "1306": {
+   "toLord": 2,
+   "precedent": 0
+  },
+  "1307": {
+   "toLord": 3,
+   "precedent": 0
+  },
+  "1308": {
+   "toLord": 2,
+   "precedent": 0
+  },
+  "1309": {
+   "toLord": 1,
+   "precedent": 0
+  },
+  "1310": {
+   "toLord": 2,
+   "precedent": 0
+  },
+  "1311": {
+   "toLord": 2,
+   "precedent": 0
+  },
+  "1312": {
+   "toLord": 4,
+   "precedent": 0
+  },
+  "1313": {
+   "toLord": 2,
+   "precedent": 0
+  },
+  "1314": {
+   "toLord": 3,
+   "precedent": 0
+  },
+  "1315": {
+   "toLord": 3,
+   "precedent": 0
+  },
+  "1316": {
+   "toLord": 1,
+   "precedent": 0
+  },
+  "1317": {
+   "toLord": 4,
+   "precedent": 0
+  },
+  "1318": {
+   "toLord": 1,
+   "precedent": 0
+  },
+  "1319": {
+   "toLord": 3,
+   "precedent": 0
+  },
+  "1320": {
+   "toLord": 1,
+   "precedent": 0
+  }
+ },
+ "homeDecisions": 50,
+ "decisionList": [
+  {
+   "tick": 1,
+   "kind": "suit",
+   "command": "{\"type\":\"file_suit\",\"claimId\":\"claim-1\"}"
+  },
+  {
+   "tick": 1,
+   "kind": "dues",
+   "command": "{\"type\":\"set_market_dues\",\"permille\":800}"
+  },
+  {
+   "tick": 1015,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-1\",\"grant\":true}"
+  },
+  {
+   "tick": 3043,
+   "kind": "suit",
+   "command": "{\"type\":\"seek_suit_patron\",\"suitId\":\"suit-1\",\"factionId\":\"bishop\"}"
+  },
+  {
+   "tick": 3043,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-2\",\"grant\":true}"
+  },
+  {
+   "tick": 7021,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-3\",\"grant\":false}"
+  },
+  {
+   "tick": 8035,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-4\",\"grant\":true}"
+  },
+  {
+   "tick": 10063,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-5\",\"grant\":true}"
+  },
+  {
+   "tick": 11077,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-6\",\"grant\":false}"
+  },
+  {
+   "tick": 12013,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-7\",\"grant\":true}"
+  },
+  {
+   "tick": 13027,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-8\",\"grant\":true}"
+  },
+  {
+   "tick": 15055,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-9\",\"grant\":true}"
+  },
+  {
+   "tick": 16069,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-10\",\"grant\":false}"
+  },
+  {
+   "tick": 18019,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-11\",\"grant\":true}"
+  },
+  {
+   "tick": 19267,
+   "kind": "subsidy",
+   "command": "{\"type\":\"set_project_subsidy\",\"kind\":\"granary\",\"amount\":40}"
+  },
+  {
+   "tick": 23011,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-12\",\"grant\":true}"
+  },
+  {
+   "tick": 24025,
+   "kind": "marriage_offer",
+   "command": "{\"type\":\"propose_marriage\",\"terms\":[{\"kind\":\"cash\",\"giver\":\"proposer\",\"amount\":133},{\"kind\":\"inheritance_non_infringement\",\"giver\":\"counterpart\"},{\"kind\":\"residence\",\"giver\":\"counterpart\"}]}"
+  },
+  {
+   "tick": 24025,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-13\",\"grant\":true}"
+  },
+  {
+   "tick": 24025,
+   "kind": "subsidy",
+   "command": "{\"type\":\"set_project_subsidy\",\"kind\":\"granary\",\"amount\":0}"
+  },
+  {
+   "tick": 24103,
+   "kind": "counter",
+   "command": "{\"type\":\"answer_counter\",\"negotiationId\":\"negotiation-1\",\"accept\":true}"
+  },
+  {
+   "tick": 24103,
+   "kind": "subsidy",
+   "command": "{\"type\":\"set_project_subsidy\",\"kind\":\"market\",\"amount\":60}"
+  },
+  {
+   "tick": 24181,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-2\"}"
+  },
+  {
+   "tick": 24259,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-3\"}"
+  },
+  {
+   "tick": 24337,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-4\"}"
+  },
+  {
+   "tick": 25039,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-14\",\"grant\":true}"
+  },
+  {
+   "tick": 26053,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-5\"}"
+  },
+  {
+   "tick": 26053,
+   "kind": "oversight",
+   "command": "{\"type\":\"set_exception_rules\",\"rules\":{\"amountAtLeast\":240,\"rights\":true,\"marriage\":true}}"
+  },
+  {
+   "tick": 26053,
+   "kind": "oversight",
+   "command": "{\"type\":\"set_estate_oversight\",\"estateId\":\"estate-neighbour-3\",\"mode\":\"steward\",\"stewardId\":\"est-000004\"}"
+  },
+  {
+   "tick": 26053,
+   "kind": "oversight",
+   "command": "{\"type\":\"set_audit_mode\",\"estateId\":\"estate-neighbour-3\",\"mode\":\"visit\"}"
+  },
+  {
+   "tick": 26053,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-15\",\"grant\":true}"
+  },
+  {
+   "tick": 26131,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-6\"}"
+  },
+  {
+   "tick": 26209,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-7\"}"
+  },
+  {
+   "tick": 26287,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-8\"}"
+  },
+  {
+   "tick": 26365,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-9\"}"
+  },
+  {
+   "tick": 26365,
+   "kind": "oversight",
+   "command": "{\"type\":\"set_audit_mode\",\"estateId\":\"estate-neighbour-3\",\"mode\":\"accounts\"}"
+  },
+  {
+   "tick": 26365,
+   "kind": "audit",
+   "command": "{\"type\":\"answer_audit\",\"auditId\":\"audit-1\",\"choice\":\"punish\"}"
+  },
+  {
+   "tick": 26443,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-10\"}"
+  },
+  {
+   "tick": 26521,
+   "kind": "promise",
+   "command": "{\"type\":\"keep_promise\",\"promiseId\":\"promise-11\"}"
+  },
+  {
+   "tick": 28003,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-17\",\"grant\":true}"
+  },
+  {
+   "tick": 29017,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-18\",\"grant\":true}"
+  },
+  {
+   "tick": 30000,
+   "kind": "petition",
+   "command": "{\"type\":\"petition_response\",\"petitionId\":\"market_charter@30000\",\"response\":\"accept\"}"
+  },
+  {
+   "tick": 30031,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-20\",\"grant\":true}"
+  },
+  {
+   "tick": 30343,
+   "kind": "audit",
+   "command": "{\"type\":\"answer_audit\",\"auditId\":\"audit-2\",\"choice\":\"punish\"}"
+  },
+  {
+   "tick": 31045,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-22\",\"grant\":true}"
+  },
+  {
+   "tick": 32059,
+   "kind": "policy",
+   "command": "{\"type\":\"set_estate_policy\",\"policy\":\"revenue\"}"
+  },
+  {
+   "tick": 34009,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-26\",\"grant\":true}"
+  },
+  {
+   "tick": 35023,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-28\",\"grant\":true}"
+  },
+  {
+   "tick": 35023,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-29\",\"grant\":false}"
+  },
+  {
+   "tick": 36037,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-30\",\"grant\":true}"
+  },
+  {
+   "tick": 37051,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-31\",\"grant\":true}"
+  },
+  {
+   "tick": 39001,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-34\",\"grant\":true}"
+  },
+  {
+   "tick": 40015,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-35\",\"grant\":true}"
+  },
+  {
+   "tick": 40015,
+   "kind": "dues",
+   "command": "{\"type\":\"set_market_dues\",\"permille\":1100}"
+  },
+  {
+   "tick": 42043,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-38\",\"grant\":false}"
+  },
+  {
+   "tick": 44071,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-41\",\"grant\":true}"
+  },
+  {
+   "tick": 47035,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-45\",\"grant\":true}"
+  },
+  {
+   "tick": 48049,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-47\",\"grant\":true}"
+  },
+  {
+   "tick": 48049,
+   "kind": "subsidy",
+   "command": "{\"type\":\"set_project_subsidy\",\"kind\":\"market\",\"amount\":0}"
+  },
+  {
+   "tick": 48049,
+   "kind": "subsidy",
+   "command": "{\"type\":\"set_project_subsidy\",\"kind\":\"church\",\"amount\":60}"
+  },
+  {
+   "tick": 49063,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-49\",\"grant\":true}"
+  },
+  {
+   "tick": 50077,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-51\",\"grant\":true}"
+  },
+  {
+   "tick": 51013,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-53\",\"grant\":true}"
+  },
+  {
+   "tick": 52027,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-55\",\"grant\":true}"
+  },
+  {
+   "tick": 53041,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-57\",\"grant\":true}"
+  },
+  {
+   "tick": 56005,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-61\",\"grant\":true}"
+  },
+  {
+   "tick": 57019,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-63\",\"grant\":true}"
+  },
+  {
+   "tick": 58033,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-65\",\"grant\":true}"
+  },
+  {
+   "tick": 60061,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-68\",\"grant\":true}"
+  },
+  {
+   "tick": 60061,
+   "kind": "policy",
+   "command": "{\"type\":\"set_estate_policy\",\"policy\":\"stability\"}"
+  },
+  {
+   "tick": 62011,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-71\",\"grant\":true}"
+  },
+  {
+   "tick": 63025,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-73\",\"grant\":false}"
+  },
+  {
+   "tick": 66067,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-77\",\"grant\":true}"
+  },
+  {
+   "tick": 68017,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-80\",\"grant\":true}"
+  },
+  {
+   "tick": 69031,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-82\",\"grant\":true}"
+  },
+  {
+   "tick": 70045,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-84\",\"grant\":true}"
+  },
+  {
+   "tick": 71059,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-86\",\"grant\":true}"
+  },
+  {
+   "tick": 72073,
+   "kind": "policy",
+   "command": "{\"type\":\"set_estate_policy\",\"policy\":\"revenue\"}"
+  },
+  {
+   "tick": 75037,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-91\",\"grant\":true}"
+  },
+  {
+   "tick": 76051,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-93\",\"grant\":true}"
+  },
+  {
+   "tick": 77065,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-95\",\"grant\":true}"
+  },
+  {
+   "tick": 77065,
+   "kind": "town_request",
+   "command": "{\"type\":\"confirm_palisade_proclamation\",\"candidatePath\":[{\"x\":39,\"y\":35},{\"x\":37,\"y\":33},{\"x\":41,\"y\":29},{\"x\":48,\"y\":29},{\"x\":52,\"y\":33},{\"x\":64,\"y\":33},{\"x\":64,\"y\":48},{\"x\":60,\"y\":52},{\"x\":54,\"y\":52},{\"x\":50,\"y\":48},{\"x\":45,\"y\":48},{\"x\":39,\"y\":42},{\"x\":39,\"y\":36},{\"x\":39,\"y\":35}]}"
+  },
+  {
+   "tick": 78391,
+   "kind": "audit",
+   "command": "{\"type\":\"answer_audit\",\"auditId\":\"audit-14\",\"choice\":\"tolerate\"}"
+  },
+  {
+   "tick": 79015,
+   "kind": "estate_petition",
+   "command": "{\"type\":\"answer_estate_petition\",\"petitionId\":\"estate-petition-98\",\"grant\":true}"
+  }
+ ],
+ "homeList": [
+  {
+   "tick": 1000,
+   "kind": "wardship",
+   "amount": 55,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 3000,
+   "kind": "heriot",
+   "amount": 49,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 7000,
+   "kind": "mill_suit",
+   "amount": 57,
+   "party": "",
+   "status": "refused",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 8000,
+   "kind": "newcomer",
+   "amount": 35,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 10000,
+   "kind": "road_bridge",
+   "amount": 35,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 11000,
+   "kind": "stall_dispute",
+   "amount": 0,
+   "party": "",
+   "status": "refused",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 12000,
+   "kind": "ale_fines",
+   "amount": 29,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 13000,
+   "kind": "pannage",
+   "amount": 20,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 15000,
+   "kind": "boundary_dispute",
+   "amount": 0,
+   "party": "neighbour_1",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 16000,
+   "kind": "chancel_repair",
+   "amount": 44,
+   "party": "",
+   "status": "refused",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 18000,
+   "kind": "merchet",
+   "amount": 20,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 23000,
+   "kind": "common_pasture",
+   "amount": 0,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 24000,
+   "kind": "pannage",
+   "amount": 23,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 25000,
+   "kind": "common_pasture",
+   "amount": 0,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 29000,
+   "kind": "ale_fines",
+   "amount": 18,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 30000,
+   "kind": "chancel_repair",
+   "amount": 51,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 31000,
+   "kind": "mill_suit",
+   "amount": 36,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 34000,
+   "kind": "boundary_dispute",
+   "amount": 0,
+   "party": "neighbour_2",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 35000,
+   "kind": "road_bridge",
+   "amount": 41,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 37000,
+   "kind": "newcomer",
+   "amount": 15,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 40000,
+   "kind": "wardship",
+   "amount": 51,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 42000,
+   "kind": "stall_dispute",
+   "amount": 0,
+   "party": "",
+   "status": "refused",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 44000,
+   "kind": "heriot",
+   "amount": 35,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 47000,
+   "kind": "merchet",
+   "amount": 20,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 48000,
+   "kind": "ale_fines",
+   "amount": 27,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 49000,
+   "kind": "chancel_repair",
+   "amount": 78,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 50000,
+   "kind": "common_pasture",
+   "amount": 0,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 51000,
+   "kind": "boundary_dispute",
+   "amount": 0,
+   "party": "neighbour_1",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 52000,
+   "kind": "road_bridge",
+   "amount": 31,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 53000,
+   "kind": "merchet",
+   "amount": 15,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 56000,
+   "kind": "wardship",
+   "amount": 42,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 57000,
+   "kind": "pannage",
+   "amount": 12,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 58000,
+   "kind": "mill_suit",
+   "amount": 58,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 60000,
+   "kind": "newcomer",
+   "amount": 33,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 62000,
+   "kind": "heriot",
+   "amount": 45,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 63000,
+   "kind": "stall_dispute",
+   "amount": 0,
+   "party": "",
+   "status": "refused",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 66000,
+   "kind": "chancel_repair",
+   "amount": 50,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 68000,
+   "kind": "boundary_dispute",
+   "amount": 0,
+   "party": "neighbour_1",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 69000,
+   "kind": "wardship",
+   "amount": 39,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 70000,
+   "kind": "newcomer",
+   "amount": 36,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 71000,
+   "kind": "pannage",
+   "amount": 20,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 75000,
+   "kind": "merchet",
+   "amount": 9,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 76000,
+   "kind": "road_bridge",
+   "amount": 59,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 77000,
+   "kind": "mill_suit",
+   "amount": 54,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 79000,
+   "kind": "common_pasture",
+   "amount": 0,
+   "party": "",
+   "status": "granted",
+   "decidedBy": "lord",
+   "precedent": false
+  },
+  {
+   "tick": 80000,
+   "kind": "ale_fines",
+   "amount": 20,
+   "party": "",
+   "status": "open",
+   "decidedBy": "",
+   "precedent": false
+  }
+ ],
+ "registryOffers": 0
+}

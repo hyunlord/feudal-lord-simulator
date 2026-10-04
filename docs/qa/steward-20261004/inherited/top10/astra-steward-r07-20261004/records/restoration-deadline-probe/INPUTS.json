@@ -1,0 +1,89 @@
+[
+  {
+    "source": "output/steward-restoration-r06/result/haggled-market-50-after.fls.json",
+    "path": "output/steward-restoration-deadline-r06/inputs/haggled-market-50-after.fls.json",
+    "sha256": "a95a8ffc04a423c93c7ae7e6c0e6ca4bb4234b93e921a55826d08393142e2d3c",
+    "sourceEnvelopeTick": 12001,
+    "tick": 12001,
+    "wallTick": 12001,
+    "seed": 1,
+    "population": 12,
+    "buildings": 9,
+    "houses": 4,
+    "lordship": {
+      "house": {
+        "order": 1,
+        "name": "de Fauconval",
+        "heraldrySeed": 1,
+        "since": 0
+      },
+      "pastHouses": [
+
+      ],
+      "titleDemoted": true,
+      "decline": null,
+      "titleReturnsTick": 16001
+    },
+    "origin": "Official command result on previously documented synthetic clock/funding/decline fixture; not natural campaign",
+    "commandProvenance": {
+      "resultSource": "output/steward-restoration-r06/result/result.json",
+      "resultSha256": "938fe7d7381f56d67b7427b7205f061d426e77cddfe704ad5e653bd69947deb7",
+      "caseId": "haggled-market-50",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "beforeStateSha256": "b3e310ce898642b54e71fca8c3ced526fa4f1c37545cd9b5f11c40aaae423d5f",
+      "afterStateSha256": "61c957efbbc39871b90de596246c214a22d68b1432aa19684ab8a0a2e2c578b9",
+      "beforeTick": 12001,
+      "afterTick": 12001
+    }
+  },
+  {
+    "source": "output/steward-restoration-r06/result/haggled-market-15-after.fls.json",
+    "path": "output/steward-restoration-deadline-r06/inputs/haggled-market-15-after.fls.json",
+    "sha256": "7d773863803bb73dd52f4e6dbad537b29afbbdf7cbcce5d25f94b30a0ebed698",
+    "sourceEnvelopeTick": 12001,
+    "tick": 12001,
+    "wallTick": 12001,
+    "seed": 1,
+    "population": 12,
+    "buildings": 9,
+    "houses": 4,
+    "lordship": {
+      "house": {
+        "order": 1,
+        "name": "de Fauconval",
+        "heraldrySeed": 1,
+        "since": 0
+      },
+      "pastHouses": [
+
+      ],
+      "titleDemoted": true,
+      "decline": {
+        "since": 11001,
+        "cause": "derelict",
+        "lost": "market",
+        "by": "merchants",
+        "petitionFrom": 16001
+      }
+    },
+    "origin": "Official command result on previously documented synthetic clock/funding/decline fixture; not natural campaign",
+    "commandProvenance": {
+      "resultSource": "output/steward-restoration-r06/result/result.json",
+      "resultSha256": "938fe7d7381f56d67b7427b7205f061d426e77cddfe704ad5e653bd69947deb7",
+      "caseId": "haggled-market-15",
+      "command": {
+        "type": "petition_response",
+        "petitionId": "synthetic-restoration-boundary",
+        "response": "accept_with_price"
+      },
+      "beforeStateSha256": "d40c2a08ca9d4d305e38939edbdb58dc413e9eb3ad67722347013b2f8cd14721",
+      "afterStateSha256": "06d91682a79bfe244fb2871ecb12a89224bdc4202bab042099a29dce6780a358",
+      "beforeTick": 12001,
+      "afterTick": 12001
+    }
+  }
+]
