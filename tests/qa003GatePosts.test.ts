@@ -109,7 +109,11 @@ test("Given plain ends, towers and bends When their modules draw Then no door po
   const ops = draws(terminal, "timber");
   assert.equal(faceCrops(ops).length, 0, "a plain end keeps its plain post");
   assert.ok(ops.some(op => op.startsWith("fillRect(")));
-  assert.equal(faceCrops(draws(walls.nodes.filter(node => node.kind === "tower"), "timber")).length, 0);
+  assert.ok(kinds.has("tower") && walls.pillars.length > 0, "a 90 degree corner and a 135 degree bend");
+  assert.deepEqual(draws(walls.nodes.filter(node => node.kind === "tower"), "timber"), [], "the joined band turns by itself (N5-W2)");
+  const bends = recordingCanvas(1024, 1024);
+  drawWallModules(bends.context, [], walls.pillars, "timber", 1);
+  assert.equal(faceCrops(bends.canvas.ops).length, 0);
 });
 
 test("Given an arm When its door post is placed Then its opening side stands on the strip's cut end (end-on: on the end)", () => {
