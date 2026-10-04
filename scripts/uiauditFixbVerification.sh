@@ -9,7 +9,7 @@ set -u
 base_sha=${1:?base sha or none}
 out=${2:-docs/verification/uiaudit1/fixb}
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
-base_port=$((port + 50))
+base_port=${FLS_REMOTE_BASE_PORT:?run through scripts/remote/run.sh (its second port)}
 dir=${TMPDIR:-/tmp}/fls-base-$port
 . scripts/remote/devServers.sh   # both servers stop on any exit, failures and a stopped run included
 fls_serve .remote/vite-this.log --host 127.0.0.1 --port "$port" --strictPort
