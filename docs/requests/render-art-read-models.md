@@ -36,7 +36,7 @@
 
 `trade_shepherd_{a,b}`와 `trade_fisher_{a,b}`는 실제 그 집 가구/구성원의 직업을 나타내야 한다. 현재 TradeId에 두 직업이 없고, 인물의 직장 master tag→occupation→household 연결도 목축·어업을 배정하지 않는다. 건물의 worker 수는 개별 인물/집 주소가 아니며, walker.homeBuildingId는 배달 출발 직장에 쓰이므로 주민의 집으로 읽지 않는다. 초상 풀의 fisherman 태그도 실제 직업 배정이 아니다.
 
-미병합 렌더 A 스냅샷 `b525d546`에는 이4개 파일/표지 종류가 선언되어 있지만, `backyardDecals.yardOccupation`의 정상 생산 경로에 두 직업이 없다는 제한을 `doorSigns.ts`도 명시한다. 엔진이 실제 가구/인물의 두 직업과 집 귀속을 제공하거나 해당 그림의 사용 의미가 달라지기 전에는 자동 도달/활성4장으로 세지 않는다. Wave37 나머지28장이나 별도 trade-world128과 중복 집계하지 않는다.
+본선 `57228cc1`에 포함된 렌더 A 구현 `b525d546`에는 이4개 파일/표지 종류가 선언되어 있지만, `backyardDecals.yardOccupation`의 정상 생산 경로에 두 직업이 없다는 제한을 `doorSigns.ts`도 명시한다. 엔진이 실제 가구/인물의 두 직업과 집 귀속을 제공하거나 해당 그림의 사용 의미가 달라지기 전에는 자동 도달/활성4장으로 세지 않는다. Wave37 나머지28장이나 별도 trade-world128과 중복 집계하지 않는다.
 
 ## 랜드마크 성장의 대상과 완료 상태: 44장
 

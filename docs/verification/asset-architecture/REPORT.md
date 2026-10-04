@@ -53,3 +53,7 @@
 | `buildingOverlays.ts` | kwanhyeonpark-ctrl, `c8fa7ef3` | 영수증의 층만 그려 본체/층 재선택 불일치를 방지 |
 | `historicalHouseAssets.ts` | kwanhyeonpark-ctrl, `30dfbd19` | 새 계약 준비 완료 시 본체를 선택하고 기존 fallback·boolean API를 보존 |
 | `houseConditionOverlay.ts` | kwanhyeonpark-ctrl, `30dfbd19` | 계약 층을 그린 경우 기존 판자 층을 중복 표시하지 않음 |
+
+## 통합 후 확인
+
+코어 `d60ababf`와 데이터 `541a0811` 사이 제품 코드 변경은 0이다. 본선 `57228cc1` 통합 뒤에는 렌더 A의 기존 변경 53파일 때문에 d497 기준 전체 동결 SHA와 같지 않으며, 이를 데이터 경계 위반으로 해석하지 않는다. B 제품 파일은 데이터 커밋과 동일하다. 카탈로그가 두 묶음이 되며 드러난 테스트 두 파일의 JSON 추론 가정을 검증된 계약 종류로 좁혔고, 21개 집중 시험과 타입 검사를 통과했다. 새 그림은 UI 기하 입력에 포함되므로 현재 통합 입력으로 전체 기하 감사를 다시 제출했다.

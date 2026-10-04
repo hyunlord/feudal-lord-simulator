@@ -12,6 +12,12 @@ import catalog from '../src/render/art/catalog.json';
 import { createArtRegistry, ArtRegistryError } from '../src/render/art/artRegistry';
 import { ART_REGISTRY, selectLandArt } from '../src/render/art/wave42Registry';
 
+const validatedCatalog = catalog.map(bundle => ({ ...bundle, entries: bundle.entries.map(entry => {
+  const validated = ART_REGISTRY.entry(entry.id);
+  assert.ok(validated);
+  return validated;
+}) }));
+
 const YEAR = 4 * PRESSURE_BALANCE.seasonTicks;
 const turns = [YEAR, STUMP_YEARS * YEAR, ((STUMP_YEARS + GROWN_YEARS) / 2) * YEAR, GROWN_YEARS * YEAR];
 const sha = (value: string | Buffer): string => createHash('sha256').update(value).digest('hex');
@@ -91,7 +97,7 @@ test('rejects malformed, incomplete and duplicate topology data atomically', () 
 });
 
 test('new authored visual thresholds change selection and invalidation together', () => {
-  const changed = catalog.map(bundle => ({ ...bundle, rules: bundle.rules.map(rule => ({
+  const changed = validatedCatalog.map(bundle => ({ ...bundle, rules: bundle.rules.map(rule => ({
     ...rule, conditions: rule.conditions.map(condition => condition.op === 'range' && condition.field === 'stageProgress'
       ? { ...condition, ...('min' in condition ? { min: 0.25 } : {}), ...('max' in condition ? { max: 0.25 } : {}) } : condition),
   })) }));
@@ -106,8 +112,8 @@ test('new authored visual thresholds change selection and invalidation together'
 test('connector stage names are authored data rather than a renderer enum', () => {
   const previous = 'path_clear_corner_ne';
   const renamed = 'new-corner-family';
-  const registry = createArtRegistry(catalog.map(bundle => ({ ...bundle,
-    entries: bundle.entries.map(entry => ({ ...entry, stage: entry.stage === previous ? renamed : entry.stage })),
+  const registry = createArtRegistry(validatedCatalog.map(bundle => ({ ...bundle,
+    entries: bundle.entries.map(entry => entry.kind === 'land-stage' && entry.stage === previous ? { ...entry, stage: renamed } : entry),
   })));
   const changed = layouts.map(row => ({ ...row, connector: row.connector === previous ? renamed : row.connector }));
   const parsed = parseFootpathLayouts(changed, registry);
@@ -179,8 +185,8 @@ test('rejects connector port loss in either season even when the other season re
   const corner = layouts.find(row => row.ports === 'SW+NW');
   assert.ok(corner?.connector);
   for (const season of ['summer', 'winter']) {
-    const registry = createArtRegistry(catalog.map(bundle => ({ ...bundle,
-      entries: bundle.entries.map(entry => entry.stage === corner.connector && entry.season === season ? { ...entry, ports: {} } : entry),
+    const registry = createArtRegistry(validatedCatalog.map(bundle => ({ ...bundle,
+      entries: bundle.entries.map(entry => entry.kind === 'land-stage' && entry.stage === corner.connector && entry.season === season ? { ...entry, ports: {} } : entry),
     })));
     assert.throws(() => parseFootpathLayouts(layouts, registry), ArtRegistryError, `port loss in ${season}`);
   }

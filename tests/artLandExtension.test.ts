@@ -8,12 +8,24 @@ import { pathArtScale, stageKey } from '../src/render/wave42StageArt';
 import layouts from '../src/render/art/bundles/footpath-layouts.json';
 import { parseFootpathLayouts } from '../src/render/footpathModel';
 
+function wave42Fixture() {
+  const source = catalog.find(bundle => bundle.bundleId === 'wave42');
+  assert.ok(source);
+  const registry = createArtRegistry(catalog);
+  const entries = source.entries.map(entry => {
+    const validated = registry.entry(entry.id);
+    assert.ok(validated?.kind === 'land-stage');
+    return validated;
+  });
+  assert.equal(entries.length, 36);
+  const bundle = { ...source, entries, rules: structuredClone(source.rules) };
+  return { bundle, data: [...catalog.filter(item => item.bundleId !== source.bundleId), bundle] };
+}
+
 test('land queue preserves the actual selected variant ID even when its stage and season are shared', () => {
   const harvest = { tx: 0, ty: 0, harvestedAtTick: 0 };
   const selected = treeStageArt(harvest, 0, 'summer');
-  const data = structuredClone(catalog);
-  const bundle = data[0];
-  assert.ok(bundle);
+  const { data, bundle } = wave42Fixture();
   const original = bundle.entries.find(entry => entry.id === selected.id);
   assert.ok(original);
   const extra = { ...original, id: 'authored-alternate-stump', geometry: { ...original.geometry, scale: 0.75 } };
@@ -31,9 +43,7 @@ test('land queue preserves the actual selected variant ID even when its stage an
 });
 
 test('an independently scaled unrelated land family does not constrain the path projection', () => {
-  const data = structuredClone(catalog);
-  const bundle = data[0];
-  assert.ok(bundle);
+  const { data, bundle } = wave42Fixture();
   const original = bundle.entries.find(entry => entry.layout === 'single');
   assert.ok(original);
   bundle.entries.push({ ...original, id: 'other-family-example', family: 'independent-family',
@@ -42,9 +52,7 @@ test('an independently scaled unrelated land family does not constrain the path 
 });
 
 test('connector draw resolves the selected path variant instead of an ambiguous stage lookup', () => {
-  const data = structuredClone(catalog);
-  const bundle = data[0];
-  assert.ok(bundle);
+  const { data, bundle } = wave42Fixture();
   const original = bundle.entries.find(entry => entry.layout === 'connector' && entry.season === 'summer');
   assert.ok(original);
   const alternate = { ...original, id: 'authored-path-alternate' };
@@ -61,15 +69,13 @@ test('connector draw resolves the selected path variant instead of an ambiguous 
 });
 
 test('legacy connector lookup stays within the path family like topology validation', () => {
-  const data = structuredClone(catalog);
-  const bundle = data[0];
-  assert.ok(bundle);
+  const { data, bundle } = wave42Fixture();
   const original = bundle.entries.find(entry => entry.layout === 'connector' && entry.season === 'summer');
   assert.ok(original);
   const previous = original.stage;
   const stage = 'renamed-connector';
-  for (const entry of bundle.entries) if (entry.stage === previous) entry.stage = stage;
-  bundle.entries.push({ ...original, id: 'unrelated-connector', family: 'independent-family' });
+  bundle.entries = bundle.entries.map(entry => entry.stage === previous ? { ...entry, stage } : entry);
+  bundle.entries.push({ ...original, stage, id: 'unrelated-connector', family: 'independent-family' });
   const registry = createArtRegistry(data);
   const changedLayouts = layouts.map(row => ({ ...row, connector: row.connector === previous ? stage : row.connector }));
   assert.doesNotThrow(() => parseFootpathLayouts(changedLayouts, registry));
