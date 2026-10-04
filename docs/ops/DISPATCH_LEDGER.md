@@ -83,8 +83,9 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 ## B′. 렌더 B — Astra (결정 FND-2, 2026-10-04 출범)
 세계 그리기 장치·그림 계약(manifest)·그림 설치. 자기 가지에 커밋하고 `check:merge`·깨끗한 클론을 통과한 뒤 본선에 푸시한다. 파일 경계는 AGENTS.md "레인과 파일 경계"(UI·영주 화면은 렌더 A). 판정은 실제 게임 장면 합성으로.
 - [x] **ASSET-ARCH-1** 그림 계약과 데이터 주도 그리기 장치(visual-architecture 4절) — 끝 기준: **그림 한 종류가 코드 없이 데이터로 설치됨**(0단계 끝). UI 그림부터(결정 FND-4). 10종 계약·UI descriptor, Wave42 36장28쌍 RGBA 동일, 시대 집 신규32+재사용4의8장면 데이터 증명(코어 `d60ababf`, 데이터 `541a0811`). QA003 통합 smoke4/4·A/A0차이·오류0 및 clean `1da2327e` 기하122행/2202조건 실패0 확인(도달불가4·경고693 보존). d677 check:merge 통과; 같은 HEAD clone 4819/4820으로 출처 열거68누락을 찾고 수정(관련11시험 통과). 수정92a566d7 뒤 smoke4/4·이전RGBA 차이0 확인; 최종 clean90d9b586 clone4820/4820·타입/build·check:merge PASS, 보호된 본선push exit0 완료. [보고서](../verification/asset-architecture/REPORT.md).
+- [ ] **계절 기존20 계약 이전** — **계절 기존20 계약 이전 — 통합 준비, 최종 커밋 검증 미실행**(Astra 렌더 B): legacy45+contract20=65의 기존 URL·선택·기하·preload 순서를 보존한다. detached notify-v3 10뷰 identity/A-A/전후RGBA 동일·오류0·기존20 URL 도달, remote1097입력 일치를 확인했다. 이후 역사65 영수증/활성 provenance 시험만 보강해 양 트리 집중37/37·타입·린트를 통과했다. 신규 봄9·밭·퇴역/설치 장부 변경은 이 단계 밖이다. 최종 committed-head10뷰와 여름·겨울×줌1.0/0.6 보존4쌍은 아직 미실행이다. [증거](../verification/season-core/REPORT.md).
 - [x] **RENDER-B 출범 관문** — 본선 `90d9b586`, exact clean clone4820/4820·build PASS·보호된 push0.
-- [ ] **RENDER-B-W37** — 기존 사용16행 installed_by 적용, 원본/PNG/provenance 변경0. LM-R1 12·fisher/shepherd4 공란 보존. 과거 d677 reference4와 분리한 작업commit 이후 after4 대기. [보고서](../verification/wave37-reconcile/REPORT.md).
+- [ ] **RENDER-B-W37** — 기존 사용16행 installed_by 적용, 원본/PNG/provenance 변경0. LM-R1 12·fisher/shepherd4 공란 보존. 커밋 `bc29f6b2`의 실제 after4 PASS·RGBA 차이0·A/A4·오류0. 후속 가지 최종 clone·본선 게시 대기. [보고서](../verification/wave37-reconcile/REPORT.md).
 - [ ] 설치 1단계: 영주 모드 수직 조각용 그림(`docs/ops/install-plan-20261003` ORDER 1절) — 데이터 커밋 + 실제 장면 캡처
 - [ ] 설치 2단계: NAT-5·NAT-3 자연스러움(ORDER 2절)
 - [ ] 설치 3단계: 나머지 기존 기능 연결과 새 기능(ORDER 3절)

@@ -53,3 +53,5 @@ Wave37은 현재 legacy world consumer가 존재하므로 역사 CSV의 “world
 ## 데이터 보존과 범위
 
 원본 CSV568KB를 다시 쓰지 않았다. JSON112행+기존CSV313행으로 exact425를 추적한다. 이번에는 장부 installed_by16과 담당 문서·증거만 바꿨다. 제품·그림·provenance·역사CSV는 수정하지 않았다. 원본425 회계150marks/byteproof154와 Wave374 미표기·retired16을 대조했다. 원래 LM-R1/ARCH1 계산 및 d677 clone실패 이력은 보존한다. 신규 전체회의 runtime 사실은 해당 캡처 증거 범위를 넘어서 주장하지 않는다.
+
+W37 실제 후속 검증: `bc29f6b2`의 여름·겨울×줌1/.6 네 장을 새로 촬영해 전후 identity/RGBA 차이0·A/A4·오류0을 확인했다. 장부 수량150/4/255/16과 byteproof154는 그대로이며 후속 가지 게시 관문은 아직 남아 있다.

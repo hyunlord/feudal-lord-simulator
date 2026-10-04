@@ -1,9 +1,10 @@
+import { validateSeasonVariants } from './seasonVariantValidation';
 import type { ArtBundle, ArtPoint, ArtRect } from './artContract';
 import type { ArtSchemaIssue } from './schemaValidation';
 
 /** Semantic checks require the complete bundle set so references can cross bundle boundaries. */
 export function validateRegistryData(bundles: readonly ArtBundle[]): readonly ArtSchemaIssue[] {
-  const issues: ArtSchemaIssue[] = [];
+  const issues: ArtSchemaIssue[] = [...validateSeasonVariants(bundles)];
   const identities = new Set<string>();
   const entries = bundles.flatMap(bundle => bundle.entries);
   const byId = new Map(entries.map(entry => [entry.id, entry]));
@@ -32,9 +33,9 @@ export function validateRegistryData(bundles: readonly ArtBundle[]): readonly Ar
     if (!finiteScaled([entry.image.width, entry.image.height])) report(at, 'Scaled image canvas overflows');
     if ('geometry' in entry) {
       if (!pointFits(entry.geometry.pivot, entry.image)) report(at, 'Pivot is outside image canvas');
-      if (entry.geometry.crop && !rectFits(entry.geometry.crop, entry.image)) report(at, 'Crop is outside image canvas');
+      if ('crop' in entry.geometry && entry.geometry.crop && !rectFits(entry.geometry.crop, entry.image)) report(at, 'Crop is outside image canvas');
       if (!finiteScaled(Object.values(entry.geometry.pivot))) report(at, 'Scaled image pivot overflows');
-      if (entry.geometry.crop && !finiteScaled(Object.values(entry.geometry.crop))) report(at, 'Scaled crop overflows');
+      if ('crop' in entry.geometry && entry.geometry.crop && !finiteScaled(Object.values(entry.geometry.crop))) report(at, 'Scaled crop overflows');
     }
     if ('frames' in entry && entry.frames && !Number.isFinite(entry.frames.reduce((sum, frame) => sum + frame.durationMs, 0))) report(at, 'Animation loop duration overflows');
     if ('frames' in entry && entry.frames) for (const frame of entry.frames) {

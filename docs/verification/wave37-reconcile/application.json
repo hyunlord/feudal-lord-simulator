@@ -1,8 +1,8 @@
 {
-  "status": "LEDGER_APPLIED_POST_COMMIT_RUNTIME_PENDING",
+  "status": "LEDGER_COMMITTED_POST_LEDGER_RUNTIME_PASS_PUBLICATION_PENDING",
   "baseHead": "90d9b5865bee4dc012f49f6eded135ac85975e78",
-  "taskCommit": null,
-  "postLedgerCaptureRun": null,
+  "taskCommit": "bc29f6b254292a7e2080aebc0c23b3cd4368a9f6",
+  "postLedgerCaptureRun": "astra-W37-ledger-after-bc29f6b",
   "ledgerBeforeSha256": "759a143aec97da6ba455c2f4b655f4949e8e50d44e5df35d5ee7e2c215a8052b",
   "ledgerAfterSha256": "162d4ad7001a8f522d614112a78f369be08a19181e67eda5906980a729fd3d12",
   "recordCount": 6122,
@@ -110,5 +110,15 @@
   "preservedUnsupportedBlank": 4,
   "sourcePublicProvenanceChanges": 0,
   "historicalReferenceAfter": "astra-W37-after-reference-d6776f2",
-  "historicalReferenceIsPostLedgerProof": false
+  "historicalReferenceIsPostLedgerProof": false,
+  "postLedgerRuntime": {
+    "pass": true,
+    "views": 4,
+    "sameFullIdentity": true,
+    "beforeAfterDifferingPixels": 0,
+    "independentRepeatPass": 4,
+    "errors": 0,
+    "receipt": "post-ledger-after.json"
+  },
+  "finalPhase2Publication": "PENDING"
 }

@@ -117,4 +117,4 @@ QA003 통합 smoke 첫 실행 `astra-ARCH1-qa003-smoke-ab67dcb`는 `--states` �
 
 `astra-ARCH1-trunk-push-90d9b58`은 보호된 pre-push check:merge를 거쳐 exit0으로 `bba59ece → 90d9b586`을 `codex/phase15-organic-ground`에 게시했다. 부모가 해당 remote ref를 명시적으로 fetch/rev-parse하여 exact SHA를 확인했다. [final-publication.json](final-publication.json)에 clone/merge 요약, 게시 확인과 원본 로그 경로·SHA256을 저장했다. 과거 d677 clone4819/4820·build 미실행 기록을 성공으로 고쳐 쓰지 않는다. 수정92a566d7와 그 뒤 smoke4의 증거도 각각 유지한다.
 
-따라서 앞 절의 최종 clone/build/push 대기는 이90d9 관문으로 해소됐으며 ASSET-ARCH-1과 RENDER-B 출범 관문을 완료했다. UI 전체 연결·잔여425 전체·추가 계절/밭 작업은 포함하지 않는다. 별도 [W37 장부 조정](../wave37-reconcile/REPORT.md)은 후속 working-tree16표시 적용이며 그 작업 commit 뒤 실제 after4는 아직 대기다. ARCH1 완료로 W37의 새 runtime 관문을 대체하지 않는다.
+따라서 앞 절의 최종 clone/build/push 대기는 이90d9 관문으로 해소됐으며 ASSET-ARCH-1과 RENDER-B 출범 관문을 완료했다. UI 전체 연결·잔여425 전체·추가 계절/밭 작업은 포함하지 않는다. 별도 [W37 장부 조정](../wave37-reconcile/REPORT.md)은 후속 `bc29f6b2`의16표시 적용이며 그 커밋 뒤 실제 after4도 전후 RGBA 차이0·A/A4·오류0으로 검증했다. W37 후속 가지의 최종 게시 관문은 별도로 남아 있다.

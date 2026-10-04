@@ -1426,6 +1426,9 @@
         },
         {
           "$ref": "#/$defs/regional-map"
+        },
+        {
+          "$ref": "#/$defs/season-variant"
         }
       ]
     },
@@ -1448,7 +1451,8 @@
             "event-scene",
             "event-illustration",
             "portrait",
-            "regional-map"
+            "regional-map",
+            "season-variant"
           ]
         },
         "slot": {
@@ -1500,6 +1504,84 @@
         "conditions",
         "variants",
         "fallback"
+      ],
+      "additionalProperties": false
+    },
+    "season-variant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "kind": {
+          "const": "season-variant"
+        },
+        "base": {
+          "type": "object",
+          "properties": {
+            "namespace": {
+              "enum": [
+                "world-sprite",
+                "zone-prop"
+              ]
+            },
+            "key": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "namespace",
+            "key"
+          ],
+          "additionalProperties": false
+        },
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "pivot": {
+              "$ref": "#/$defs/point"
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "allowMirror": {
+              "const": false
+            }
+          },
+          "required": [
+            "pivot",
+            "scale",
+            "allowMirror"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "image",
+        "provenance",
+        "base",
+        "season",
+        "geometry"
       ],
       "additionalProperties": false
     }

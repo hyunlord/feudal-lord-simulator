@@ -68,3 +68,38 @@ test('Node without Image is unavailable rather than ready', () => {
   assert.equal(loader.image('image'), null); assert.equal(loader.status('image').status, 'unavailable');
   assert.equal(loader.status('unknown').status, 'unavailable');
 });
+test('ready subscriptions fire once after decode and immediately for an already ready image', async () => {
+  const fake = fakeImage(); const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => fake.image });
+  let count = 0; const ready = (image: HTMLImageElement): void => { assert.equal(image, fake.image); count++; };
+  loader.onReady('image', ready); loader.onReady('image', ready);
+  loader.image('image'); fake.load(); assert.equal(count, 0);
+  fake.resolveDecode(); await Promise.resolve(); assert.equal(count, 1);
+  loader.onReady('image', ready); assert.equal(count, 1);
+  loader.onReady('image', () => { count++; }); assert.equal(count, 2);
+  fake.load(); await Promise.resolve(); assert.equal(count, 2);
+});
+test('a failing readiness consumer cannot turn a decoded image into a decoder failure', async () => {
+  const fake = fakeImage(); const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => fake.image });
+  let otherCalled = false;
+  loader.onReady('image', () => { throw 'raster consumer failed'; });
+  loader.onReady('image', () => { otherCalled = true; });
+  loader.image('image'); fake.load(); fake.resolveDecode(); await Promise.resolve();
+  assert.equal(loader.status('image').status, 'ready'); assert.equal(otherCalled, true);
+  assert.equal(loader.readinessErrors('image')[0]?.message, 'Readiness callback failed: raster consumer failed');
+});
+
+for (const [label, thrown] of [
+  ['null prototype', Object.create(null)],
+  ['throwing toString', { toString() { throw new Error('conversion failed'); } }],
+] as const) test(`unprintable ${label} readiness failures cannot suppress later listeners`, async () => {
+  const fake = fakeImage(); const loader = createArtImageLoader(registry, { baseUrl: '/', createImage: () => fake.image });
+  let called = 0; const fails = (): void => { throw thrown; };
+  loader.onReady('image', fails); loader.onReady('image', () => { called++; });
+  loader.image('image'); fake.load(); fake.resolveDecode(); await Promise.resolve();
+  assert.equal(called, 1); assert.equal(loader.status('image').status, 'ready');
+  assert.equal(loader.image('image'), fake.image);
+  assert.doesNotThrow(() => loader.onReady('image', () => { throw thrown; }));
+  loader.onReady('image', () => { called++; }); assert.equal(called, 2);
+  loader.onReady('image', fails); assert.equal(loader.readinessErrors('image').length, 2);
+  for (const error of loader.readinessErrors('image')) assert.equal(error.message, 'Readiness callback failed: Unprintable thrown value');
+});

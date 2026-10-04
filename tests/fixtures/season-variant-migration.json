@@ -1,0 +1,1006 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "wave15-season-migration",
+  "entries": [
+    {
+      "id": "orchard_apple_c_spring",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/orchard/orchard_apple_c_spring-v1.png",
+        "width": 256,
+        "height": 256
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_spring-v1.png",
+        "sourceSha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f",
+        "runtimeSha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f"
+      },
+      "base": {
+        "namespace": "zone-prop",
+        "key": "orchard_apple_c"
+      },
+      "season": "spring",
+      "geometry": {
+        "pivot": {
+          "x": 128,
+          "y": 246
+        },
+        "scale": 0.16796875,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "orchard_apple_c_winter",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+        "width": 256,
+        "height": 256
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_winter-v1.png",
+        "sourceSha256": "9f8364ec8898da73ae1c2112aa0682ff9bae848260de5d2097374cc1cc2fd041",
+        "runtimeSha256": "9f8364ec8898da73ae1c2112aa0682ff9bae848260de5d2097374cc1cc2fd041"
+      },
+      "base": {
+        "namespace": "zone-prop",
+        "key": "orchard_apple_c"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 128,
+          "y": 246
+        },
+        "scale": 0.16796875,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "orchard_pear_e_spring",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/orchard/orchard_pear_e_spring-v1.png",
+        "width": 256,
+        "height": 256
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_spring-v1.png",
+        "sourceSha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d",
+        "runtimeSha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d"
+      },
+      "base": {
+        "namespace": "zone-prop",
+        "key": "orchard_pear_e"
+      },
+      "season": "spring",
+      "geometry": {
+        "pivot": {
+          "x": 123,
+          "y": 246
+        },
+        "scale": 0.16796875,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "orchard_pear_e_winter",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+        "width": 256,
+        "height": 256
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_winter-v1.png",
+        "sourceSha256": "7ee905876ef9788d504ecf9439b3b4b131cfc8e22d4cc916bd7a19f20df3e98a",
+        "runtimeSha256": "7ee905876ef9788d504ecf9439b3b4b131cfc8e22d4cc916bd7a19f20df3e98a"
+      },
+      "base": {
+        "namespace": "zone-prop",
+        "key": "orchard_pear_e"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 123,
+          "y": 246
+        },
+        "scale": 0.16796875,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "orchard_plum_f_spring",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/orchard/orchard_plum_f_spring-v1.png",
+        "width": 256,
+        "height": 256
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_spring-v1.png",
+        "sourceSha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624",
+        "runtimeSha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624"
+      },
+      "base": {
+        "namespace": "zone-prop",
+        "key": "orchard_plum_f"
+      },
+      "season": "spring",
+      "geometry": {
+        "pivot": {
+          "x": 141,
+          "y": 246
+        },
+        "scale": 0.16796875,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "orchard_plum_f_winter",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/orchard/orchard_plum_f_winter-v1.png",
+        "width": 256,
+        "height": 256
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_winter-v1.png",
+        "sourceSha256": "a6e7f742931607b36ef2e85eaf40cb654b76644bdb85d403a9899f88a4555c8f",
+        "runtimeSha256": "a6e7f742931607b36ef2e85eaf40cb654b76644bdb85d403a9899f88a4555c8f"
+      },
+      "base": {
+        "namespace": "zone-prop",
+        "key": "orchard_plum_f"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 141,
+          "y": 246
+        },
+        "scale": 0.16796875,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_birch_autumn",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_birch_autumn-v1.png",
+        "width": 60,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_autumn-v1.png",
+        "sourceSha256": "15583e03f2cd6ec5647ed971d9be2c3119efbeed0dfd9852b8e69340159aa2f7",
+        "runtimeSha256": "15583e03f2cd6ec5647ed971d9be2c3119efbeed0dfd9852b8e69340159aa2f7"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_birch"
+      },
+      "season": "autumn",
+      "geometry": {
+        "pivot": {
+          "x": 30,
+          "y": 96
+        },
+        "scale": 0.6666666666666666,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_birch_spring",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_birch_spring-v1.png",
+        "width": 60,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_spring-v1.png",
+        "sourceSha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e",
+        "runtimeSha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_birch"
+      },
+      "season": "spring",
+      "geometry": {
+        "pivot": {
+          "x": 30,
+          "y": 96
+        },
+        "scale": 0.6666666666666666,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_birch_winter",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_birch_winter-v1.png",
+        "width": 60,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_winter-v1.png",
+        "sourceSha256": "1a25b3117593314473da1366246f95daaca1b9301590c30f1385d6b2823fb062",
+        "runtimeSha256": "1a25b3117593314473da1366246f95daaca1b9301590c30f1385d6b2823fb062"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_birch"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 30,
+          "y": 96
+        },
+        "scale": 0.6666666666666666,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_dead_winter_snow",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+        "width": 56,
+        "height": 80
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_dead_winter_snow-v1.png",
+        "sourceSha256": "b1a05c875d08439ec40c95e24f5fc3bb0ca1aef303ead50f830a4599049d581d",
+        "runtimeSha256": "b1a05c875d08439ec40c95e24f5fc3bb0ca1aef303ead50f830a4599049d581d"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_dead"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 28,
+          "y": 80
+        },
+        "scale": 0.8,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_large_autumn",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_large_autumn-v1.png",
+        "width": 88,
+        "height": 112
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_autumn-v1.png",
+        "sourceSha256": "787293e80a7b38c9e58e1010f182ad17db769ed574fc4f328d6ff64d6961c5c2",
+        "runtimeSha256": "787293e80a7b38c9e58e1010f182ad17db769ed574fc4f328d6ff64d6961c5c2"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_large"
+      },
+      "season": "autumn",
+      "geometry": {
+        "pivot": {
+          "x": 44,
+          "y": 112
+        },
+        "scale": 0.5714285714285714,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_large_spring",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_large_spring-v1.png",
+        "width": 88,
+        "height": 112
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_spring-v1.png",
+        "sourceSha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f",
+        "runtimeSha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_large"
+      },
+      "season": "spring",
+      "geometry": {
+        "pivot": {
+          "x": 44,
+          "y": 112
+        },
+        "scale": 0.5714285714285714,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_large_winter",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_large_winter-v1.png",
+        "width": 88,
+        "height": 112
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_winter-v1.png",
+        "sourceSha256": "c5fa00e8fdc8cb5e2f8862f8a7e406e13983e62c9213734f589b88ef84273ba5",
+        "runtimeSha256": "c5fa00e8fdc8cb5e2f8862f8a7e406e13983e62c9213734f589b88ef84273ba5"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_large"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 44,
+          "y": 112
+        },
+        "scale": 0.5714285714285714,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_large_winter_snow",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+        "width": 88,
+        "height": 112
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_winter_snow-v1.png",
+        "sourceSha256": "62d0fc2d98a766399efea9f63fb68078356e7fcd7bb48ab45282d70126edb155",
+        "runtimeSha256": "62d0fc2d98a766399efea9f63fb68078356e7fcd7bb48ab45282d70126edb155"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_large"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 44,
+          "y": 112
+        },
+        "scale": 0.5714285714285714,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_small_autumn",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_small_autumn-v1.png",
+        "width": 64,
+        "height": 80
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_autumn-v1.png",
+        "sourceSha256": "b82666a899d226207376168da8d588bcbb19f97923d661358110e205025915ea",
+        "runtimeSha256": "b82666a899d226207376168da8d588bcbb19f97923d661358110e205025915ea"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_small"
+      },
+      "season": "autumn",
+      "geometry": {
+        "pivot": {
+          "x": 32,
+          "y": 80
+        },
+        "scale": 0.8,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_small_spring",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_small_spring-v1.png",
+        "width": 64,
+        "height": 80
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_spring-v1.png",
+        "sourceSha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8",
+        "runtimeSha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_small"
+      },
+      "season": "spring",
+      "geometry": {
+        "pivot": {
+          "x": 32,
+          "y": 80
+        },
+        "scale": 0.8,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_small_winter",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_small_winter-v1.png",
+        "width": 64,
+        "height": 80
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_winter-v1.png",
+        "sourceSha256": "cac1f5fd486df83f721d6fb0e2621f7f9e653e9810bf2d5dd38d429324ae6f3b",
+        "runtimeSha256": "cac1f5fd486df83f721d6fb0e2621f7f9e653e9810bf2d5dd38d429324ae6f3b"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_small"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 32,
+          "y": 80
+        },
+        "scale": 0.8,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_oak_small_winter_snow",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+        "width": 64,
+        "height": 80
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_winter_snow-v1.png",
+        "sourceSha256": "d266dfb9bc77403e443d029cbe8b04c7ba040b9665d650e67683fcb2bcd48c41",
+        "runtimeSha256": "d266dfb9bc77403e443d029cbe8b04c7ba040b9665d650e67683fcb2bcd48c41"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_oak_small"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 32,
+          "y": 80
+        },
+        "scale": 0.8,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_pine_short_winter_snow",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+        "width": 56,
+        "height": 88
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_pine_short_winter_snow-v1.png",
+        "sourceSha256": "7671687bf3ebccbba08d85d213f5eae4e34546e1736bfdc56feef31980c31ec8",
+        "runtimeSha256": "7671687bf3ebccbba08d85d213f5eae4e34546e1736bfdc56feef31980c31ec8"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_pine_short"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 28,
+          "y": 88
+        },
+        "scale": 0.7272727272727273,
+        "allowMirror": false
+      }
+    },
+    {
+      "id": "tree_pine_tall_winter_snow",
+      "kind": "season-variant",
+      "image": {
+        "url": "assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+        "width": 64,
+        "height": 120
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_pine_tall_winter_snow-v1.png",
+        "sourceSha256": "7b35b71faec923571e56d50b730e805c427603c0fb4afd04fb5d7a6ad3a4bd67",
+        "runtimeSha256": "7b35b71faec923571e56d50b730e805c427603c0fb4afd04fb5d7a6ad3a4bd67"
+      },
+      "base": {
+        "namespace": "world-sprite",
+        "key": "tree_pine_tall"
+      },
+      "season": "winter",
+      "geometry": {
+        "pivot": {
+          "x": 32,
+          "y": 120
+        },
+        "scale": 0.5333333333333333,
+        "allowMirror": false
+      }
+    }
+  ],
+  "rules": [
+    {
+      "id": "wave15-season-orchard_apple_c-spring",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "orchard_apple_c"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "spring"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "orchard_apple_c_spring",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-orchard_apple_c-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "orchard_apple_c"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "orchard_apple_c_winter",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-orchard_pear_e-spring",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "orchard_pear_e"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "spring"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "orchard_pear_e_spring",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-orchard_pear_e-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "orchard_pear_e"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "orchard_pear_e_winter",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-orchard_plum_f-spring",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "orchard_plum_f"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "spring"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "orchard_plum_f_spring",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-orchard_plum_f-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "orchard_plum_f"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "orchard_plum_f_winter",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_birch-autumn",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_birch"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "autumn"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_birch_autumn",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_birch-spring",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_birch"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "spring"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_birch_spring",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_birch-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_birch"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_birch_winter",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_dead-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_dead"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_dead_winter_snow",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_oak_large-autumn",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_oak_large"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "autumn"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_oak_large_autumn",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_oak_large-spring",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_oak_large"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "spring"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_oak_large_spring",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_oak_large-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_oak_large"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_oak_large_winter",
+          "weight": 1
+        },
+        {
+          "assetId": "tree_oak_large_winter_snow",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_oak_small-autumn",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_oak_small"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "autumn"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_oak_small_autumn",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_oak_small-spring",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_oak_small"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "spring"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_oak_small_spring",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_oak_small-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_oak_small"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_oak_small_winter",
+          "weight": 1
+        },
+        {
+          "assetId": "tree_oak_small_winter_snow",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_pine_short-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_pine_short"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_pine_short_winter_snow",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "wave15-season-tree_pine_tall-winter",
+      "kind": "season-variant",
+      "slot": "season-replacement",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "baseKey",
+          "value": "tree_pine_tall"
+        },
+        {
+          "op": "eq",
+          "field": "season",
+          "value": "winter"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "tree_pine_tall_winter_snow",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    }
+  ]
+}

@@ -8,7 +8,7 @@
 
 세계 그림의 `geometry`는 `pivot`, 양수 균일 `scale`, 선택 `crop`/논리 타일 `footprint`, `allowMirror:false`다. `pivot`과 `crop`은 원본 이미지 픽셀 좌표이며 `footprint`는 타일 단위다. 축별 임의 늘이기와 미승인 반전을 허용하지 않는다. 프레임의 `sourceRect`는 이미지 기준, `pivot`은 프레임 내부 좌표, `durationMs`는 시각 프레임 기간이다. UI 3종에는 가짜 세계 scale/발판/발 피벗을 채우지 않는다. 워커의 foot과 짐의 grip도 서로 다른 attachment다.
 
-## 2. 열 종류
+## 2. 열한 종류
 
 | kind | 실제 종류 필드 | 배치 및 지원 경계 |
 |---|---|---|
@@ -22,6 +22,7 @@
 | `event-illustration` | `eventIds[]`, `fit`=contain/cover, `altTextKey` | image 비율과 UI fit 사용. Render A 인계 descriptor, 세계 draw가 아님 |
 | `portrait` | `pool`, 선택 `personIds[]`,`lineage`, `ageStage`, `era`, `derivatives[{size:96|256,assetId}]` | 완성 초상·노화 사슬. derivative는 portrait 참조와 실제 선언 크기 검증. 얼굴 부품 합성 금지 |
 | `regional-map` | `mapId`, `landTypes[]`, `coordinateSpace{width,height}`, `slots[{id,x,y,landType}]` | 완성 지도+명명 슬롯. 슬롯 ID/범위/landType 확인; 영지 생성·클릭·경로 탐색을 대신하지 않음 |
+| `season-variant` | `base:{namespace:world-sprite\|zone-prop,key}`, `season`, `geometry:{pivot,scale,allowMirror:false}` | 실제 base와 canvas/pivot/scale을 일치시킨 완성 이미지 교체. 기존 소비자의 기하 유지 |
 
 정확한 union은 `artContract.ts:2`의 ArtKind와 `:28` 이후 각 Entry, `:93` 이후 ArtRule/ArtBundle을 따른다. 표의 선택 필드는 schema에서 허용되는 생략을 뜻한다. schema와 TypeScript가 바뀌면 유효/무효 fixture로 둘의 일치를 함께 확인해야 한다.
 
@@ -57,7 +58,7 @@ allowlist는 가능한 계약 어휘이지 모든 사실이 제품에서 공급�
 | portrait `personId`,`pool`,`lineage`,`ageStage`,`era` | 인물·노화 사슬·시대 읽기 모델 | Render A/엔진. 기존 portraitFor는 시대판 새 adapter의 대체물이 아님 |
 | regional-map `mapId`,`landType` | seed에 따른 지도 선택 및 영지 slot 배정 | Render A/엔진. 원본 atlas 데모는 제품 바인딩이 아님 |
 
-미연결 항목은 `schema-valid`, `adapter-ready`, `binding-ready`, `runtime-proven`을 구별하여 보고한다. 이 상태들은 보고·인계 판단이며 entry에 그런 bool을 넣어 스스로 활성화하는 API는 없다. `createArtRegistry`는 10종의 구조/참조를 검증하지만 그 데이터의 engine binding 존재를 자동 증명하지 않는다.
+미연결 항목은 `schema-valid`, `adapter-ready`, `binding-ready`, `runtime-proven`을 구별하여 보고한다. 이 상태들은 보고·인계 판단이며 entry에 그런 bool을 넣어 스스로 활성화하는 API는 없다. `createArtRegistry`는 기존10종과 season-variant의 구조/참조를 검증하지만 그 데이터의 engine binding 존재를 자동 증명하지 않는다.
 
 ## 5. 원자 검증과 이미지 수명
 
@@ -72,6 +73,18 @@ allowlist는 가능한 계약 어휘이지 모든 사실이 제품에서 공급�
 single house 소비자는 `contractHouseArt.ts:38,54,69`에서 본체와 필요한 boarded/snow를 한 묶음으로 선택·요청한다. overlay는 실제 본체가 `targetBodyIds`에 포함되어야 하며, 필수 이미지가 모두 ready일 때만 계약 본체를 그린다. `drawBody`의 immutable receipt는 **실제로 그린 본체 ID/sourceRect/targetRect, anchor와 layer ID**를 고정한다. `historicalHouseAssets.ts:115` → `drawBuildings.ts:161` → `buildingOverlays.ts:51`이 receipt를 넘겨 같은 draw pass에서 층을 다시 추첨하지 않는다. 준비되지 않으면 기존 house 경로를 유지한다. 이것은 정적 원자 소비 구조의 확인이지 브라우저 무깜빡임/동일 픽셀 증명이 아니다.
 
 길의 공통 scale 제약은 `wave42StageArt.ts:13`에서 **family=path만** 대상으로 한다. `footpathModel.ts:65`의 16 topology 검증과 `wave42StageArt.ts:39`의 connector 해석도 path family로 제한된다. 다른 land family의 single 그림은 자기 geometry.scale을 사용하므로 새 land 묶음까지 길의 0.5 배율로 강제하지 않는다.
+
+### 계절 완성 그림 교체 — 기존20 이전
+
+`season-variant`는 본체 위 상태층이 아니라 등록된 base의 완성 이미지 교체이므로 별도11번째 kind다. 기존10종 의미는 유지한다. entry는 공통 image/provenance와 `base:{namespace:world-sprite|zone-prop,key}`, `season`, `geometry:{pivot,scale,allowMirror:false}`를 갖는다. crop/footprint를 발명하지 않는다. `seasonVariantValidation.ts`는 실제 world sprite 또는 zone prop 등록을 해석해 base 존재·namespace 모호성·canvas/pivot/scale 일치를 startup에서 검사한다.
+
+selector 입력은 `baseKey`, `season`뿐이다. rule은 `slot:season-replacement`, priority0, 두 필드의 정확한 eq 조건, 일치하는 base/season의 variant, weight1, 사전순 ID를 요구한다. 잘못된 전체 bundle은 원자적으로 거부하고 legacy/contract ID 충돌도 시작 시 거부한다. facade는 기존 salt의 절댓값·정수절삭 규칙과 여름 base fallback을 유지한다. descriptor는 기존 소비자가 실제 기하로 그리도록 넘기며 엔진에 없는 성장·부·계절 사실을 합성하지 않는다.
+
+`seasonArt`는 계약20과 legacy45를 합쳐65개의 기존 URL·preload 순서·선택·기하를 보존한다. shared loader는 decode와 실제 치수 일치 뒤 onReady를 알리고, callback이 임의값을 던져도 안전하게 오류를 기록하여 다른 listener와 image-ready 상태를 유지한다. migrated entry의 terminal raster 실패는 image 상태와 별개로 기록해 반복 raster를 막는다. legacy45의 기존 재시도 정책은 바꾸지 않는다.
+
+`seasonMigrationOwnership.json`과 `installWave15.py`는 이전된 base/season 소유권을 공유한다. generator가 계약20 또는 이후 교체된 같은 슬롯의 옛6을 legacy manifest로 되살리지 않는다. 이 단계는 기존20 이전만이며 새 봄9 PNG·catalog 추가·옛6 public 퇴역은 별도 데이터 단계다. 향후 추가 묶음은 이 코어와 동일 시험 입력을 먼저 동결한 뒤 제품 TS/Python 변경0으로 입증한다.
+
+검증은 역사 INSTALL-15의65 source/receipt/hash와 현재 active manifest의 exact provenance/runtime/source hash를 분리한다. 역사 detached `astra-season-core-notify-v3-ab67dcb`는10뷰 RGBA/identity/A-A 보존과 오류0·20 URL 도달을 확인했다. 뒤의 test-only 보강은 같은 런타임 입력으로 소급하지 않는다. 현재 단계의 최종 committed-head 캡처·병합 검사는 아직 미실행이다. 준비 JPEG는 무손실 비교 원본이 아니며 원PNG/입력freeze/receipt가 근거다.
 
 ## 6. JSON Schema 방언과 data-only 설치 경계
 
@@ -93,6 +106,6 @@ single house 소비자는 `contractHouseArt.ts:38,54,69`에서 본체와 필요�
 
 ## 7. 검증의 범위
 
-문서 작성 자체는 검증 실행을 뜻하지 않으며 최종 결과는 verification 보고서가 소유한다. 유지해야 하는 검증 항목은 전체 bundle 거부의 원자성, 10종 유효/무효 구조, Wave42 36 ID와 16 mask의 선택·기하·시간 경계 회귀, lazy/decode 수명, 여름/겨울×줌1.0/0.6의 A/A 안정성 후 A/B RGBA 동일, 새 묶음의 제품 실행 코드 diff0, 실제 선택→load→draw coverage다. 자연 플레이와 준비 fixture는 구별한다. 장부 공란·카탈로그 행·unit 통과만으로 installed 수량을 늘리지 않는다.
+문서 작성 자체는 검증 실행을 뜻하지 않으며 최종 결과는 verification 보고서가 소유한다. 유지해야 하는 검증 항목은 전체 bundle 거부의 원자성, 기존10종과 season-variant의 유효/무효 구조, Wave42 36 ID와 16 mask의 선택·기하·시간 경계 회귀, lazy/decode 수명, 여름/겨울×줌1.0/0.6의 A/A 안정성 후 A/B RGBA 동일, 새 묶음의 제품 실행 코드 diff0, 실제 선택→load→draw coverage다. 자연 플레이와 준비 fixture는 구별한다. 장부 공란·카탈로그 행·unit 통과만으로 installed 수량을 늘리지 않는다.
 
 무거운 회귀·브라우저·캡처는 최신 [CHARTER](../CHARTER.md)의 실행기 규약을 따른다(`d4973e85`, 32행): `scripts/remote/run.sh`의 동시 2개 slot과 대기열을 사용하며 작업 Mac은 단위 시험·린트·개발 서버 범위다. DGX 기존 이전은 전후28쌍 RGBA 동일, 신규 데이터8장면은 A/A 안정성·오류0·실제사용을 통과했다. 본선 통합 뒤 UI 기하·전체 회귀·깨끗한 클론은 별도 관문이며, 미래의 모든 묶음이나 자연 플레이 도달까지 이 결과를 일반화하지 않는다.

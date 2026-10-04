@@ -5,12 +5,14 @@ import test from "node:test";
 
 import { createGroundChunkCache } from "../src/render/groundChunkCache";
 import { setPresentationSpeed } from "../src/render/presentationSpeed";
+import baseline from "./fixtures/season-art-before.json";
 import { SEASON_IMAGES } from "../src/render/seasonArtManifest.generated";
-import { seasonVariant, seasonVariants } from "../src/render/seasonArt";
+import { seasonVariant, seasonVariants, seasonMeta } from "../src/render/seasonArt";
 import { seasonChunkToken } from "../src/render/seasonGround";
 import { fenceDriftSpots, wave15GroundDecal } from "../src/render/seasonalDecals";
 import { SEASON_FX_TICKS, seasonFxAt } from "../src/render/seasonFx";
 import { resetSeasonBlendForTest, SEASON_FADE_FAST_MS, SEASON_FADE_MS, seasonBlend } from "../src/render/seasonTransition";
+import { parseCsv, parseCsvRows } from "../scripts/provenanceLedgerCsv";
 import { recordingCanvas } from "../scripts/recordingCanvas";
 
 // INSTALL-15 seasonal nature (Wave 15): the 65 installed files and their ledger rows, the picture chooser, the season
@@ -19,25 +21,51 @@ import { recordingCanvas } from "../scripts/recordingCanvas";
 const ROOT = new URL("../", import.meta.url);
 const state = (tick: number) => ({ tick, scenarioId: "core:campaign_market_town" });
 
-test("Given the Wave 15 install When the manifest and the ledger are read Then 65 runtime files each have one ledger row with the received bytes", () => {
-  const keys = Object.keys(SEASON_IMAGES);
-  assert.equal(keys.length, 65);
-  const ledger = readFileSync(new URL("docs/provenance/assets.csv", ROOT), "utf8");
-  const rows = ledger.split("\n").filter(line => line.includes("public/assets/wave15/"));
-  assert.equal(rows.length, 65, "one ledger row per Wave 15 file");
-  for (const key of keys) {
-    const file = new URL(`public/${SEASON_IMAGES[key as keyof typeof SEASON_IMAGES].url}`, ROOT);
-    assert.ok(existsSync(file), key);
-    const digest = createHash("sha256").update(readFileSync(file)).digest("hex");
-    assert.ok(ledger.includes(digest), `${key}: runtime sha in the ledger`);
+test("Given the historical Wave 15 install Then all 65 received sources retain their exact INSTALL-15 receipt and provenance hash", () => {
+  const entries = Object.entries(baseline);
+  assert.equal(entries.length, 65);
+  const ledger = parseCsvRows(readFileSync(new URL("docs/provenance/assets.csv", ROOT), "utf8"));
+  const inbox = parseCsv(readFileSync(new URL("assets-inbox/INBOX_LEDGER.csv", ROOT), "utf8"));
+  const header = inbox[0]; assert.ok(header);
+  const column = (name: string) => { const index = header.indexOf(name); assert.ok(index >= 0, name); return index; };
+  const wave = column("wave"), file = column("file"), hash = column("sha256"), installed = column("installed_by");
+  const receipts = inbox.slice(1).filter(row => row[wave] === "wave15" && row[installed] === "INSTALL-15");
+  assert.equal(receipts.length, 65, "historical INSTALL-15 receipts");
+  for (const [key, meta] of entries) {
+    const received = meta.url.replace("assets/wave15/", "wave15/candidates-20260926/assets/");
+    const sourcePath = `assets-inbox/${received}`;
+    const source = new URL(sourcePath, ROOT); assert.ok(existsSync(source), key);
+    const digest = createHash("sha256").update(readFileSync(source)).digest("hex");
+    const matchingReceipts = receipts.filter(row => row[file] === received);
+    assert.equal(matchingReceipts.length, 1, `${key}: exact received-file receipt`);
+    assert.equal(matchingReceipts[0]?.[hash], digest, `${key}: received bytes match INSTALL-15`);
+    const rows = ledger.filter(row => row.sourcePath === sourcePath);
+    assert.equal(rows.length, 1, `${key}: exact historical provenance source`);
+    assert.equal(rows[0]?.sourceSha256, digest, `${key}: source hash`);
   }
-  const inbox = readFileSync(new URL("assets-inbox/INBOX_LEDGER.csv", ROOT), "utf8").split(/\r?\n/).filter(line => line.startsWith("wave15,") && line.includes("/assets/"));
-  assert.equal(inbox.filter(line => line.endsWith(",INSTALL-15")).length, 65, "installed_by = INSTALL-15");
+});
+
+test("Given the active seasonal manifest Then every runtime file has one active provenance row with exact runtime and source hashes", () => {
+  const ledger = parseCsvRows(readFileSync(new URL("docs/provenance/assets.csv", ROOT), "utf8"));
+  const paths = Object.values(SEASON_IMAGES).map(meta => `public/${meta.url}`);
+  assert.equal(new Set(paths).size, paths.length, "active URLs are unique");
+  for (const runtimePath of paths) {
+    const rows = ledger.filter(row => row.runtimePath === runtimePath);
+    assert.equal(rows.length, 1, `${runtimePath}: exact provenance row`);
+    const row = rows[0]; assert.ok(row);
+    assert.ok(row.status === "runtime" || row.status === "candidate", `${runtimePath}: active status`);
+    const runtime = new URL(runtimePath, ROOT); assert.ok(existsSync(runtime), runtimePath);
+    assert.equal(createHash("sha256").update(readFileSync(runtime)).digest("hex"), row.runtimeSha256, `${runtimePath}: runtime hash`);
+    const source = new URL(row.sourcePath, ROOT); assert.ok(existsSync(source), row.sourcePath);
+    assert.equal(createHash("sha256").update(readFileSync(source)).digest("hex"), row.sourceSha256, `${runtimePath}: source hash`);
+  }
 });
 
 test("Given a base art and a season When the chooser picks Then the variant follows the brief (pines and stumps only winter, orchards no autumn, summer the base)", () => {
   assert.equal(seasonVariant("tree_oak_large", 2), "tree_oak_large_autumn");
-  assert.equal(seasonVariant("tree_oak_large", 0), "tree_oak_large_spring");
+  const spring = seasonVariant("tree_oak_large", 0); assert.ok(spring);
+  const springMeta = seasonMeta(spring); assert.ok("bases" in springMeta);
+  assert.deepEqual(springMeta.bases, ["tree_oak_large"]); assert.equal(springMeta.season, "spring");
   assert.deepEqual([seasonVariant("tree_oak_large", 3, 0), seasonVariant("tree_oak_large", 3, 1)], ["tree_oak_large_winter", "tree_oak_large_winter_snow"]);
   assert.equal(seasonVariant("tree_pine_tall", 2), null);
   assert.equal(seasonVariant("tree_pine_tall", 3), "tree_pine_tall_winter_snow");
@@ -52,7 +80,7 @@ test("Given a base art and a season When the chooser picks Then the variant foll
   for (const base of ["tree_oak_large", "tree_birch", "orchard_apple_c", "grass", "pasture_fill"]) assert.equal(seasonVariant(base, 1), null, `${base} in summer`);
   // Every variant is used by some season (57 variants; the 6 decals and 2 fx sheets are drawn by key).
   const used = new Set([0, 2, 3].flatMap(season => seasonVariants(season as 0 | 2 | 3)));
-  assert.equal(used.size, 65 - 8);
+  assert.equal(used.size, Object.values(SEASON_IMAGES).filter(meta => "bases" in meta).length);
 });
 
 test("Given the ground chunk keys When the season turns Then summer keeps the old keys and every other season has its own token", () => {
