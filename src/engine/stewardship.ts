@@ -107,10 +107,18 @@ function makeCandidates(state: GameState, estateId: string): { readonly people: 
   return { people: made, stewards };
 }
 
-/** SW-3 API: an estate's stewards — the serving one and the candidates (dismissed ones are not offered again). */
+/**
+ * FIX-17 (A02): a steward record whose person lives — a candidate who died keeps the status "candidate" (only a serving
+ * steward's death is turned into "dead" at the season's turn), so every choice of a steward asks the person.
+ */
+function living(state: GameState, record: StewardRecord): boolean {
+  return record.status !== "dismissed" && record.status !== "dead" && estatesOf(state).people.find(person => person.id === record.personId)?.alive !== false;
+}
+
+/** SW-3 API: an estate's stewards — the serving one and the candidates, living (dismissed and dead ones are not offered). */
 export function stewardCandidates(state: GameState, estateId: string): readonly { readonly record: StewardRecord; readonly person: Person | undefined }[] {
   const people = estatesOf(state).people;
-  return stewardshipOf(state).stewards.filter(entry => entry.estateId === estateId && entry.status !== "dismissed" && entry.status !== "dead")
+  return stewardshipOf(state).stewards.filter(entry => entry.estateId === estateId && living(state, entry))
     .map(record => ({ record, person: people.find(person => person.id === record.personId) }));
 }
 
@@ -404,7 +412,7 @@ export function setEstateOversight(state: GameState, estateId: string, mode: Ove
   if (oversight === undefined) return state;
   const chosen = stewardId ?? oversight.stewardId;
   const record = steward(stewardship, chosen);
-  if (record === undefined || record.estateId !== estateId || record.status === "dismissed" || record.status === "dead") return state;
+  if (record === undefined || record.estateId !== estateId || !living(state, record)) return state;
   if (mode === oversight.mode && chosen === oversight.stewardId) return state;
   const swapped = chosen === oversight.stewardId ? stewardship
     : withSteward(withSteward(stewardship, { ...steward(stewardship, oversight.stewardId)!, status: "candidate" }), { ...record, status: "serving", since: state.tick });
@@ -487,7 +495,9 @@ export function answerAudit(state: GameState, auditId: string, choice: "punish" 
   const settled = { ...stewardship, audits: stewardship.audits.map(entry => entry.id === auditId
     ? { ...entry, status: choice === "punish" ? "punished" as const : choice === "replace" ? "replaced" as const : "tolerated" as const } : entry) };
   if (choice === "tolerate") return withStewardship(state, withSteward(settled, { ...record, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) }));
-  const others = settled.stewards.filter(entry => entry.estateId === audit.estateId && entry.status !== "dismissed" && entry.status !== "dead" && entry.personId !== record.personId);
+  const others = settled.stewards.filter(entry => entry.estateId === audit.estateId && living(state, entry) && entry.personId !== record.personId);
+  // FIX-17 (A02): a named successor must be a living candidate (a dead or unknown one is refused, not replaced by another).
+  if (replacementId !== undefined && !others.some(entry => entry.personId === replacementId)) return state;
   const successor = others.find(entry => entry.personId === replacementId) ?? [...others].sort((a, b) => b.ability - a.ability || a.personId.localeCompare(b.personId))[0];
   if (successor === undefined) return state;
   let next = state;

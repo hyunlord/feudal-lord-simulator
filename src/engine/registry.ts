@@ -190,20 +190,30 @@ export function boundTargets(state: GameState, entry: RegistryEntry): readonly s
 
 /** One effect on the state, or null when the engine refuses it (nothing changed). */
 function applyEffect(state: GameState, effect: RegistryEffect, boundId: string, occurrenceId: string): GameState | null {
-  const changed = (next: GameState) => (next === state ? null : next);
+  // FIX-17 (A05): an effect counts only when the command did what it was asked — a changed state is not enough (a
+  // refused subsidy still records its refusal), so each command's own result is checked.
+  const done = (next: GameState, did: (after: GameState) => boolean) => (next !== state && did(next) ? next : null);
   const audit = pendingAudits(state).find(entry => entry.id === boundId);
   const estateId = audit?.estateId ?? boundId;
+  const oversightOf = (after: GameState) => stewardshipOf(after).oversight.find(entry => entry.estateId === estateId);
+  const suitOf = (after: GameState) => estatesOf(after).suits.find(entry => entry.id === boundId);
   switch (effect.command) {
     case "none": return state;
-    case "set_project_subsidy": return changed(setProjectSubsidy(state, effect.kind as BuildingKind, effect.amount));
-    case "set_market_dues": return changed(setMarketDues(state, effect.permille));
-    case "set_estate_policy": return changed(setEstatePolicy(state, effect.policy));
-    case "set_audit_mode": return changed(setAuditMode(state, estateId, effect.mode));
-    case "answer_audit": return changed(answerAudit(state, boundId, effect.choice));
-    case "set_estate_oversight": return changed(setEstateOversight(state, estateId, effect.mode));
-    case "add_suit_evidence": return changed(addSuitEvidence(state, boundId, effect.evidence));
-    case "file_suit": return changed(fileSuit(state, boundId));
-    case "order_timber": return changed(orderTimber(state, effect.amount));
+    case "set_project_subsidy": return done(setProjectSubsidy(state, effect.kind as BuildingKind, effect.amount), after =>
+      effect.amount === 0 ? !(after.agency?.subsidies ?? []).some(subsidy => subsidy.kind === effect.kind)
+        : (after.agency?.subsidies ?? []).some(subsidy => subsidy.kind === effect.kind && subsidy.amount === effect.amount));
+    case "set_market_dues": return done(setMarketDues(state, effect.permille), after => after.agency?.duesPermille === effect.permille);
+    case "set_estate_policy": return done(setEstatePolicy(state, effect.policy), after => after.agency?.policy === effect.policy);
+    case "set_audit_mode": return done(setAuditMode(state, estateId, effect.mode), after => oversightOf(after)?.auditMode === effect.mode);
+    case "answer_audit": return done(answerAudit(state, boundId, effect.choice),
+      after => stewardshipOf(after).audits.find(entry => entry.id === boundId)?.status !== "pending");
+    case "set_estate_oversight": return done(setEstateOversight(state, estateId, effect.mode), after => oversightOf(after)?.mode === effect.mode);
+    case "add_suit_evidence": return done(addSuitEvidence(state, boundId, effect.evidence), after => {
+      const suit = suitOf(after);
+      return estatesOf(after).claims.find(claim => claim.id === suit?.claimId)?.evidence.some(entry => entry.kind === effect.evidence) === true;
+    });
+    case "file_suit": return done(fileSuit(state, boundId), after => estatesOf(after).suits.some(suit => suit.claimId === boundId));
+    case "order_timber": return done(orderTimber(state, effect.amount), after => (after.timberOrder ?? 0) !== (state.timberOrder ?? 0));
     case "faction_relation": {
       // The relation moves through the ledger (history.ts reads the answered occurrence); here only check the faction.
       return state.factions?.factions.some(faction => faction.id === effect.faction) === true ? state : null;
@@ -218,10 +228,13 @@ function applyEffect(state: GameState, effect: RegistryEffect, boundId: string, 
     case "set_exception_rules": {
       if (state.stewardship === undefined) return null;
       const rules = stewardshipOf(state).rules;
-      return changed(setExceptionRules(state, { ...rules, ...(effect.recurring === undefined ? {} : { recurring: effect.recurring }),
-        ...(effect.amountAtLeast === undefined ? {} : { amountAtLeast: effect.amountAtLeast }) }));
+      return done(setExceptionRules(state, { ...rules, ...(effect.recurring === undefined ? {} : { recurring: effect.recurring }),
+        ...(effect.amountAtLeast === undefined ? {} : { amountAtLeast: effect.amountAtLeast }) }), after => {
+        const now = stewardshipOf(after).rules;
+        return (effect.recurring === undefined || (now.recurring === true) === effect.recurring) && (effect.amountAtLeast === undefined || now.amountAtLeast === effect.amountAtLeast);
+      });
     }
-    case "enforce_possession": return changed(enforcePossession(state, boundId));
+    case "enforce_possession": return done(enforcePossession(state, boundId), after => (suitOf(after)?.enforcements ?? 0) > (suitOf(state)?.enforcements ?? 0));
   }
 }
 
