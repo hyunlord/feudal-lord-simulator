@@ -1,0 +1,82 @@
+{
+  "location": "Mac offline",
+  "schemaChanged49": "PASS",
+  "schemaMerged60": "PASS",
+  "reviewed": 60,
+  "changed": 49,
+  "unchanged": 11,
+  "botRateCases": [
+    {
+      "draft": 5,
+      "currentPermille": 800,
+      "choice": "a",
+      "actualInputPermille": 750,
+      "changed": true
+    },
+    {
+      "draft": 5,
+      "currentPermille": 800,
+      "choice": "b",
+      "actualInputPermille": 1250,
+      "changed": true
+    },
+    {
+      "draft": 5,
+      "currentPermille": 1100,
+      "choice": "a",
+      "actualInputPermille": 750,
+      "changed": true
+    },
+    {
+      "draft": 5,
+      "currentPermille": 1100,
+      "choice": "b",
+      "actualInputPermille": 1250,
+      "changed": true
+    },
+    {
+      "draft": 24,
+      "currentPermille": 800,
+      "choice": "lower",
+      "actualInputPermille": 750,
+      "changed": true
+    },
+    {
+      "draft": 24,
+      "currentPermille": 1100,
+      "choice": "lower",
+      "actualInputPermille": 750,
+      "changed": true
+    },
+    {
+      "draft": 42,
+      "currentPermille": 800,
+      "choice": "light",
+      "actualInputPermille": 650,
+      "changed": true
+    },
+    {
+      "draft": 42,
+      "currentPermille": 800,
+      "choice": "firm",
+      "actualInputPermille": 1250,
+      "changed": true
+    },
+    {
+      "draft": 42,
+      "currentPermille": 1100,
+      "choice": "light",
+      "actualInputPermille": 650,
+      "changed": true
+    },
+    {
+      "draft": 42,
+      "currentPermille": 1100,
+      "choice": "firm",
+      "actualInputPermille": 1250,
+      "changed": true
+    }
+  ],
+  "eventsSha256": "8ace1f2d8f0b1b347b698e974d0b08079a41a0bdba1d79ef35f7950a80c9167e",
+  "runtimeFrequencyMeasured": false
+}

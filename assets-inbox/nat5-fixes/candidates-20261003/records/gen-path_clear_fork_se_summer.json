@@ -1,0 +1,20 @@
+{
+  "id": "path_clear_fork_se_summer",
+  "prompt": "One transparent medieval game footpath fork_se sprite. Input1 is the exact geometric stencil: KEEP exact shape, orientation, size, position and large transparent top padding. Input2 is the summer soil/grass brushwork reference. Replace stencil's flat brown with naturally worn pale brown compacted earth, scattered tiny muted pebbles and sparse olive grass edge. NOT a vector symbol. Organic worn junction with continuous compacted earth at the meeting, no seams, no grid, no dark outline. Connect only NE,SW,SE; center(64,80); NW32,64 NE96,64 SW32,96 SE96,96 target128x128. Armwidth8px target. Exact2:1isometric slopes, no mirrored asset or flipped light. Handpainted southern England1300. No extra arms, text, marks, tile base or disk. Genuine transparent background;do not crop/recenter.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-fork_se.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_summer.png"
+  ],
+  "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-be7c48c3-2948-4ed7-917e-c492d513ed4c.png",
+  "raw_sha256": "f4d1b178005795d92009529cb847e2c7dd257f3d1433ad3d18f5ea7ba82cfbfe",
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-fork_se.png",
+      "sha256": "4131be332e6665e3ca3776a832594f4fbbb70152aa5f941974172c4d7cb17fed"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_summer.png",
+      "sha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e"
+    }
+  ]
+}

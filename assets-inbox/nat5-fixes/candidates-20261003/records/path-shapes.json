@@ -1,0 +1,66 @@
+{
+  "canvas": [
+    128,
+    128
+  ],
+  "pivot": [
+    64,
+    80
+  ],
+  "ports": {
+    "NW": [
+      32,
+      64
+    ],
+    "NE": [
+      96,
+      64
+    ],
+    "SW": [
+      32,
+      96
+    ],
+    "SE": [
+      96,
+      96
+    ]
+  },
+  "shapes": {
+    "corner_top": [
+      "NW",
+      "NE"
+    ],
+    "corner_bottom": [
+      "SW",
+      "SE"
+    ],
+    "fork_sw": [
+      "NW",
+      "SW",
+      "SE"
+    ],
+    "fork_se": [
+      "NE",
+      "SW",
+      "SE"
+    ],
+    "cross": [
+      "NW",
+      "NE",
+      "SW",
+      "SE"
+    ],
+    "end_nw": [
+      "NW"
+    ],
+    "end_ne": [
+      "NE"
+    ],
+    "end_sw": [
+      "SW"
+    ],
+    "end_se": [
+      "SE"
+    ]
+  }
+}
