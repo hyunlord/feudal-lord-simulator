@@ -13,8 +13,8 @@ import { unitEdgeKey, wallBaselines, type WallNode } from "../src/world/boundary
 import { GATE_HALF_CLEARANCE } from "../src/world/wallTraversal";
 import type { TileEdgePoint } from "../src/world/palisadeGeometry";
 
-// QA-003 gate posts: a palisade gate's every arm ends in a doubled post cut from the face strip, a stone corner gate's
-// off-axis arm in the stone jamb; plain ends, towers and bends draw what they drew before.
+// QA-003 gate posts: a palisade corner gate's arms end in a doubled post cut from the face strip (a straight gate keeps
+// its frame's posts), a stone corner gate's off-axis arm in the stone jamb; plain ends, towers and bends as before.
 setShoreAssetsForTest(Object.fromEntries(WALL_FACE_KEYS.map(key => {
   const asset = TERRAIN_VARIANT_ASSETS.find(candidate => candidate.key === key)!;
   return [key, { label: key, width: asset.width, height: asset.height, naturalWidth: asset.width, naturalHeight: asset.height } as unknown as HTMLImageElement];
@@ -34,27 +34,22 @@ const draws = (nodes: readonly WallNode[], material: "timber" | "stone") => {
 };
 const faceCrops = (ops: readonly string[]) => ops.filter(op => op.startsWith("drawImage(palisade_face_v2_a,238,"));
 
-test("Given a straight palisade gate When its arms' items draw their modules Then each arm draws one door post, and the gate's owner draws the art and both posts", () => {
+test("Given a straight palisade gate with its art When its items draw Then no door post (the gate frame's own posts stand there, QA3-7); without the art the marker's piers are door posts", () => {
   // Given: a straight wall along y = 2 with the gate in its middle.
   const walls = wallOf("timber", [[at(-3, 0), P], [P, at(3, 0)]]);
   const node = gateNode(walls);
   const west = unitEdgeKey(P, at(-1, 0)); const east = unitEdgeKey(P, at(1, 0));
 
-  // When / Then: both arms are the art's (no corner modules), one post each on its own item.
+  // When / Then: no corner modules, no post on either arm, none over the art.
   assert.equal(cornerGateModules(node, west), null);
-  assert.equal(gateArtPostArms(legacy(node)).length, 2);
-  for (const key of [west, east]) {
-    const posts = gateArmPosts(node, key);
-    assert.equal(posts.length, 1, key);
-    assert.ok(posts.every(isGateEnd) && posts[0]!.gate === node.point);
-    assert.equal(faceCrops(draws(posts, "timber")).length, 3, "one post: tips, plain stake, rails");
-  }
-  assert.deepEqual(gateArmPosts(node, unitEdgeKey(at(-2, 0), at(-1, 0))), [], "a farther edge draws none");
-  // The gate's owner draws both posts after the art (drawGateArtPosts); in Node the gate art is not loaded, so here it is
-  // the fallback marker, whose piers are the same door posts instead of its plain posts.
+  assert.deepEqual(gateArtPostArms(legacy(node)), []);
+  for (const key of [west, east]) assert.deepEqual(gateArmPosts(node, key), [], key);
   const art = recordingCanvas(1024, 1024);
   drawGateArtPosts(art.context, legacy(node), FACE_HEIGHT);
-  assert.equal(faceCrops(art.canvas.ops).length, 6);
+  assert.equal(faceCrops(art.canvas.ops).length, 0);
+  // In Node the gate art is not loaded, so the owner draws the fallback marker: no gate frame there, so its two piers
+  // are the doubled posts instead of its plain posts.
+  assert.deepEqual(gatePostArms(legacy(node)), [at(-1, 0), at(1, 0)]);
   const owner = draws([node], "timber");
   assert.equal(faceCrops(owner).length, 6);
   assert.ok(!owner.some(op => op.startsWith("fillRect(")), "no plain post");
@@ -69,10 +64,15 @@ test("Given a palisade corner gate When the items draw Then the axis arm draws i
   // When
   const axis = gateArmPosts(node, axisKey);
   const off = cornerGateModules(node, offKey) ?? [];
+  const art = recordingCanvas(1024, 1024);
+  drawGateArtPosts(art.context, legacy(node), FACE_HEIGHT);
 
   // Then
   assert.deepEqual(gateArtPostArms(legacy(node)), [at(-1, 0)]);
   assert.equal(axis.length, 1);
+  assert.ok(isGateEnd(axis[0]!) && axis[0]!.gate === node.point);
+  assert.equal(faceCrops(draws(axis, "timber")).length, 3, "one post: tips, plain stake, rails");
+  assert.equal(faceCrops(art.canvas.ops).length, 3, "and over the art: the art side of the diagonal opening");
   assert.deepEqual(gateArmPosts(node, offKey), [], "the diagonal arm keeps its corner-gate end module");
   assert.equal(off.length, 1);
   assert.ok(isGateEnd(off[0]!));

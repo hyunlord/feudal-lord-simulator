@@ -285,7 +285,7 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
     const legacy: StoneWallNode = { point: node.point, neighbors: node.neighbors,
       kind: node.kind === "gate" ? "gate" : node.kind === "terminal" ? "terminal" : node.kind === "junction" ? "junction" : "corner" };
     if (node.kind === "gate") {
-      // QA-003: a palisade gate's door posts stand over its art (gateOpeningPosts), or are the fallback marker's posts.
+      // QA-003: a palisade corner gate's door post stands over its art (gateOpeningPosts), or the fallback marker's posts.
       if (drawRegisteredGate(context, legacy, kind, true)) { if (kind === "timber") drawGateArtPosts(context, legacy, FACE_HEIGHT); continue; }
       if (kind === "stone") { for (const solid of stoneWallNodeSolids(legacy)) drawMasonrySolid(context, solid, stoneWallMaterial(), false); }
       else drawGateMarker(context, node.neighbors.flatMap(point => [point, node.point]), node.point, zoom, legacy, pier => drawPalisadeGatePost(context, node.point, pier, FACE_HEIGHT));

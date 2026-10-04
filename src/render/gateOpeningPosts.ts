@@ -1,7 +1,7 @@
 import { GATE_HALF_CLEARANCE } from "../world/wallTraversal";
 import { unitEdgeKey, type WallNode } from "../world/boundary/wallBaseline";
 import type { TileEdgePoint } from "../world/palisadeGeometry";
-import { gateArtAxis } from "./gateArtGeometry";
+import { gateArtAxis, gateOffAxisPiers } from "./gateArtGeometry";
 import type { GateEndNode } from "./gateCornerModules";
 import { gateHasSharedOpening } from "./gatePortalBranches";
 import { tileToScreen } from "./iso";
@@ -15,8 +15,9 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 //    are), so its colour, width and grain are the wall's: two stake columns side by side, GATE_POST_WIDTH times a stake's
 //    width and GATE_POST_HEIGHT times the face's height. Below the upper rail the columns keep the face's own scale (the
 //    rails line up with the strip beside them); the stake tips keep their shape at the post's width; the plain stake
-//    between takes the extra height. It stands on every arm a palisade gate's opening cuts (straight gates and both
-//    arms of a corner gate), its opening side on the strip's cut end (gatePostPoint).
+//    between takes the extra height. It stands where no gate frame closes the opening: both arms of a corner gate (the
+//    diagonal opening between two posts) and the arms of a gate without art; a straight gate keeps its frame's own
+//    posts (user decision 2026-10-05, QA3-7). Its opening side is on the strip's cut end (gatePostPoint).
 //  - Stone: Astra's gate_jamb_stone (confirmed 2026-10-04) where the off-axis arm of a corner gate ends, the place the
 //    painted pillar stood, drawn with the registration in its record (64 x 80 canvas, pivot (32, 70), world scale
 //    0.5). A straight stone gate keeps the gate art's own towers at both edges of its opening.
@@ -44,10 +45,13 @@ export function gatePostArms(node: StoneWallNode): readonly TileEdgePoint[] {
     && !(node.clearanceGates?.some(gate => gate.x === arm.x && gate.y === arm.y) ?? false));
 }
 
-/** The arms a gate's art stands over (gateArtAxis: a straight gate's two, a corner gate's axis arm); none without art. */
+/** The arm a corner gate's art stands over (gateArtAxis), whose post closes the art side of the diagonal opening; none
+ * for a straight gate (the gate frame's own posts stand at both edges: user decision QA3-7) or a gate without art. */
 export function gateArtPostArms(node: StoneWallNode): readonly TileEdgePoint[] {
   const axis = gateArtAxis(node);
   if (axis === null || gateHasSharedOpening(node)) return [];
+  const piers = gateOffAxisPiers(node);
+  if (piers.behind.length + piers.front.length === 0) return [];
   return gatePostArms(node).filter(arm => axis === "descending" ? arm.y === node.point.y : arm.x === node.point.x);
 }
 
@@ -70,7 +74,7 @@ export function gatePostWidth(faceHeight: number): number {
   return STAKE_PAIR.width * faceHeight / FACE_ROWS * GATE_POST_WIDTH;
 }
 
-/** QA-003: the door posts the wall item of unit edge `key` draws for a palisade gate with art, on its own arm's end
+/** QA-003: the door post the wall item of unit edge `key` draws for a palisade corner gate with art, on its axis arm's end
  * after its strip (the gate's owner draws them over the art as well, drawGateArtPosts). A corner gate's off-axis arm
  * keeps its end module (gateCornerModules); stone gates draw none here. */
 export function gateArmPosts(node: WallNode, key: string): readonly GateEndNode[] {
