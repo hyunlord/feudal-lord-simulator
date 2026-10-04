@@ -1,0 +1,430 @@
+{
+  "review_type": "v4_source_alignment_actual_visual_review",
+  "language": "ko",
+  "source_commit": "a84bc778697e8b1b3a84a08c481ccd58029b6598",
+  "source_path": "/Users/rexxa/fls-astra-eventart200/docs/design/content-drafts-20261002/v4/events-v4.json",
+  "source_sha256": "2f09e1cc292d9c80ecab686026f05ab647129f0d12b8c9d260dea19299f1dfcb",
+  "delta_path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/records/v4-source-delta.json",
+  "delta_sha256": "a9fb448bcb0f38943f9b988fb5bfe3ab22585bf8c004a82f512f16b83f9cbece",
+  "selected_paths_basis": "/Users/rexxa/fls-astra-eventart200-delivery/r09/CUMULATIVE-PROVISIONAL.csv",
+  "composition_baseline": "/Users/rexxa/fls-astra-eventart200-delivery/r09/records/composition-final200.json",
+  "scope": "009 013 021 032 033 034 037 052 053의 실제 선택 JPEG와 v4 title/body/illustration 대조. 익명 판독 자료는 열지 않음. 원본·이미지·CSV·기존 감사는 수정하지 않음.",
+  "decision_rule": "승인본을 우선 보존하고 본문 의미와 핵심 행동이 직접 충돌하거나 대상 자체가 없는 경우만 필수 재작업. 삽화 문장을 문자 그대로 재현하지 않은 것과 의미 모순을 구분한다.",
+  "reviews": [
+    {
+      "id": "009",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_009.jpg",
+      "sha256": "db06ded0199ce1aaf64c5e14132d17c91e348331d82d2b6a5a7424ff36769388",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "수도원 문서함에서 고를 증거",
+        "body": "열린 소송에 보탤 증거를 두고 수도원 서기가 찾아왔습니다. 이미 낸 자료는 빼고, 특허장 사본과 재산 증서, 법정 장부 가운데 지금 준비할 수 있는 것을 살펴보자고 합니다. 비용을 쓸지, 이번에는 더 내지 않을지 정해야 합니다.",
+        "illustration": "수도원 문서함 앞에서 인장 달린 특허장, 접은 재산 증서, 얇은 법정 장부를 서기가 비교한다.",
+        "period": "1300–1450"
+      },
+      "verdict": "compatible",
+      "visual_evidence_and_reason": "수도원 복장의 두 사람이 열린 문서함 앞에서 봉인 증서, 접은 문서, 두루마리를 비교한다. 선택 가능한 증거를 준비한다는 새 본문과 직접 연결된다.",
+      "limits": "얇은 법정 장부가 별도 책 형태로 뚜렷하지 않고 두루마리로 표현됨. 이미 낸 자료 제외와 비용은 그림만으로 확인할 수 없다.",
+      "frozen_group": {
+        "name": "큰 열린 문서함을 사선으로 내려다보는 두 사람",
+        "ids": [
+          "009",
+          "134",
+          "017"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "013",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_013.jpg",
+      "sha256": "d89c9347dcc61b88a2dbc9daa21f973966ceefc395b1bc3b518d7a7b3b57498f",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "연줄 있는 회계 담당자의 빈 장부",
+        "body": "영지 감사에서 회계 담당자가 감춘 돈이 드러났습니다. 위임한 영지라면 청지기, 직접 감독하는 영지라면 장부를 맡긴 담당자의 책임입니다. 그의 연줄을 생각할지, 드러난 돈을 거둬들이고 사람을 바꿀지 정해야 합니다.",
+        "illustration": "위임 영지 또는 직접 감독 영지의 감사 탁자에서 장부와 돈궤를 살피는 회계 담당자·후임·연줄 세력 대리인.",
+        "period": "1300–1450"
+      },
+      "verdict": "mandatory_redraw",
+      "visual_evidence_and_reason": "마구간 앞 근접 두 인물 사이에 열쇠가 건네지고, 돌 위 동전과 뒤편 말/후임이 보인다. 해임·책임 이양을 이미 실행하는 장면으로 강하게 읽힌다. v4는 감춘 돈이 드러난 뒤 회수·해임·유임을 고르기 전 감사 장면이다.",
+      "limits": "이 불일치는 v4의 직책 일반화만으로 생긴 것은 아니며 기존 선택 전/후 표현 문제도 포함한다. 감사 장부가 없고 핵심 행동이 열쇠 반납이다.",
+      "frozen_group": {
+        "name": "가까운 두 사람 사이의 손과 직접 만지는 물건",
+        "ids": [
+          "013",
+          "030",
+          "067"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "021",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_021.jpg",
+      "sha256": "c4ae3cf852cb6e4c48b2687641befed68c945a4a8433fb46ed5a875c0d541859",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "장례 뒤에 남은 부담금",
+        "body": "소작인이 숨지고, 남은 가족이 장원에 사망 부과금 감면을 청했습니다. 집행관은 이 가구에 적용되는 관습 부담액을 적어 왔습니다.",
+        "illustration": "작은 장례용 천과 닳은 모자를 품은 유족 앞에 집행관이 사망 부과금 장부를 펼친다. 가축 사체나 역병 의학 도구는 그리지 않는다.",
+        "period": "1300–1450"
+      },
+      "verdict": "compatible",
+      "visual_evidence_and_reason": "장례 들것 앞에서 닳은 모자를 품은 유족과 장부를 든 집행관이 마주한다. 사망 부과금 감면 청원과 맞고 역병 의학 도구나 가축 사체가 없다.",
+      "limits": "삽화 지시의 펼친 장부는 닫힌 책으로 나타나며 작은 장례 천 대신 큰 들것을 사용한다. 병 소식 문구 삭제와 충돌하지 않는다.",
+      "frozen_group": {
+        "name": "낮은 잠자리 발 전경과 덮개 밖 응답자",
+        "ids": [
+          "108",
+          "193",
+          "021"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "032",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_032.jpg",
+      "sha256": "d0906ef9738869c63e08fa7960f002d0a89d24128d21fecca31638ba506827b1",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "소송 서기가 권하는 증거",
+        "body": "열린 소송의 서기가 증거 목록을 다시 펼쳤습니다. 이미 낸 자료는 빼고 특허장 사본이나 법정 기록을 더 준비할 수 있는지 묻습니다. 더 강한 증거와 남겨 둘 금고 사이에서 비용을 가늠해야 합니다.",
+        "illustration": "밀랍 인장이 달린 특허장과 법정 기록 두루마리가 저울 양쪽처럼 펼쳐진 책상.",
+        "period": "1300–1450"
+      },
+      "verdict": "mandatory_redraw",
+      "visual_evidence_and_reason": "야외 경계석과 측량 줄 양쪽에 네 사람이 서서 밭의 방향을 가리킨다. 특허장·법정 기록·서기·준비비를 비교하는 대상이 전혀 없어 토지 경계 분쟁 사건으로 읽힌다.",
+      "limits": "소송 자체의 배경을 암시할 수는 있지만 새 본문의 증거 준비 선택을 대체하지 못한다. 기존 이미지에도 있었던 의미 누락이며 v4 변경에만 원인을 돌리지 않는다.",
+      "frozen_group": {
+        "name": "중앙 경계석과 좌우 멀리 떨어진 작은 인물군",
+        "ids": [
+          "032",
+          "116",
+          "141"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "033",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_033.jpg",
+      "sha256": "4cb06bd45e59314edcb048fb18e1bb411a3b49a204cf263070e50f533df8e335",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "교회 궤짝에 맡긴 증서",
+        "body": "열린 소송을 두고 교회 서기가 찾아왔습니다. 아직 내지 않은 증서나 증언을 준비하는 데 손을 보태겠다고 합니다. 글로 남은 기록을 옮겨 적을지, 기억하는 이들의 증언을 들을지, 당장은 준비비를 아낄지 정해야 합니다.",
+        "illustration": "작은 목제 궤짝에서 밀랍 인장 달린 증서를 꺼내는 교회 서기와, 문 밖에서 기다리는 서로 다른 두 증인. 제단이나 성유물은 그리지 않는다.",
+        "period": "1300–1450"
+      },
+      "verdict": "compatible",
+      "visual_evidence_and_reason": "교회 서기가 작은 열린 궤짝에서 봉인 증서를 들고, 문 밖에 서로 다른 두 증인이 기다린다. 기록 또는 증언을 준비하는 선택과 직접 맞는다.",
+      "limits": "아직 제출하지 않은 증거라는 상태나 비용 절약 선택은 그림만으로 증명되지 않지만 제출 완료를 그리지도 않는다.",
+      "frozen_group": {
+        "name": "전경의 단독 독자와 문간의 작은 증인",
+        "ids": [
+          "033",
+          "167",
+          "175"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "034",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_034.jpg",
+      "sha256": "d9b29031d0515597575562e71b6a69efde9de403601f708c82fc1d1eab32c16f",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "청원을 어디까지 직접 들을까",
+        "body": "장원 청원을 어디까지 영주가 직접 들을지 서기가 기준을 묻습니다. 이미 위임했다면 앞으로 올 청원부터, 아직 직접 감독한다면 나중에 위임할 때부터 적용할 규칙입니다. 같은 종류를 전에 판결했더라도 다시 올리게 할지, 권리·혼인 안건만 따로 들을지 정할 수 있습니다.",
+        "illustration": "같은 표식이 붙은 두 청원 두루마리를 청지기 앞에 겹쳐 놓는 청지기.",
+        "period": "1300–1450"
+      },
+      "verdict": "compatible",
+      "visual_evidence_and_reason": "문간의 관리에게 주민이 손으로 청원하고 다른 주민이 뒤에서 기다린다. 청원을 관리가 듣고 걸러 올리는 업무라는 넓은 본문 맥락은 유지된다.",
+      "limits": "반복 청원 두루마리, 영주의 직접 청취 범위, 권리·혼인 선별 정책은 보이지 않는다. 일반 청원 그림이라는 기존 한계를 보존하며 v4 정책 내용을 독립적으로 판독할 수 있다고 주장하지 않는다.",
+      "frozen_group": {
+        "name": "오른쪽 닫힌 문을 향한 바깥 접근자",
+        "ids": [
+          "028",
+          "034",
+          "038"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "037",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_037.jpg",
+      "sha256": "74595cb81c8d885fdb5c540a050f8143fc8f39c5b93281c8207f3d644c399294",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "가문의 책상에 남은 장부",
+        "body": "가문의 한 어른은 이미 청지기에게 맡긴 먼 영지도 가주가 직접 살펴야 한다고 말합니다. 서기는 영주의 장부가 업무 한도에 닿거나 그 이상 쌓였음을 가리킵니다. 직접 감독으로 되돌릴지, 위임을 유지하고 방문 감사로 바꿀지 정해야 합니다.",
+        "illustration": "가문의 큰 식탁 한쪽에 쌓인 장부와, 먼 영지로 보낼 봉인 꾸러미.",
+        "period": "1300–1450"
+      },
+      "verdict": "compatible",
+      "visual_evidence_and_reason": "계단 위 가문 어른이 말 탄 가주에게 말하고, 아래 관리가 열쇠를 든다. 가문 어른의 개입과 먼 영지 방문/감독의 긴장을 간접적으로 보여준다.",
+      "limits": "장부 업무 한도와 직접 감독/위임의 선택은 보이지 않는다. 짐과 말은 방문 준비처럼 읽힐 수 있으나 열쇠 인수나 출발 완료를 명확히 보여주지는 않는다. 한도에 닿거나 넘었다는 문구 변경은 기존 그림과 새 충돌을 만들지 않는다.",
+      "frozen_group": {
+        "name": "계단과 말 위 인물을 따라 내려가는 대각선",
+        "ids": [
+          "037",
+          "120",
+          "170"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "052",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_052.jpg",
+      "sha256": "139ee5e862b066efaecc5cdef32d8e6bc0c606a9aadd4037b6ac7c0635f7b191",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "빠진 돈과 회계 담당자의 후원자",
+        "body": "감사에서 장부와 맞지 않는 돈이 드러났습니다. 위임 영지의 청지기든 직접 감독 영지의 회계 담당자든, 그를 밀어 준 세력은 처벌을 거두어 달라고 하고 소작인들은 설명을 기다립니다.",
+        "illustration": "위임 영지 또는 직접 감독 영지의 감사 탁자에서 장부와 돈궤를 살피는 회계 담당자·후임·연줄 세력 대리인.",
+        "period": "1300–1450"
+      },
+      "verdict": "compatible",
+      "visual_evidence_and_reason": "전경 통 옆 주머니에서 동전이 드러나고, 화려한 옷의 후원자가 담당자의 어깨를 감싼다. 멀리 두 주민이 지켜본다. 드러난 돈·후원자의 보호·소작인의 시선이라는 본문의 세 관계가 남는다.",
+      "limits": "감사 탁자/장부/후임을 문자 그대로 보여주지 않는다. 두 사람이 뒤돌아 이동해 후원자 보호가 이미 성립한 듯 읽힐 여지는 있지만 처벌 결정이나 회수/해임 실행을 명시하지 않는다. 승인본 보존 원칙에서 재작업 필수로 올리지 않는다.",
+      "frozen_group": {
+        "name": "낮은 시점의 왼쪽 큰 용기와 그 너머 인물",
+        "ids": [
+          "011",
+          "020",
+          "052"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    },
+    {
+      "id": "053",
+      "selected_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_053.jpg",
+      "sha256": "65a15f2a00db4ef16d343d23bd26c4ea61bd851dcdc2bedd1d206ab6bba62cc8",
+      "csv_hash_matches": true,
+      "viewed_actual_fullsize": true,
+      "source_v4": {
+        "title": "가문의 증서와 장원 법정 기록",
+        "body": "열린 소송의 증거를 준비하던 가문의 서기가 찾아왔습니다. 아직 내지 않은 재산 증서나 장원 법정 기록 가운데 무엇을 먼저 갖출지 묻습니다. 증거의 무게만큼 준비비도 달라 금고 사정을 함께 살펴야 합니다.",
+        "illustration": "영주관 서고에서 친족의 봉인 증서와 두루마리 법정 기록을 펼쳐 비교하는 서기.",
+        "period": "1300–1450"
+      },
+      "verdict": "compatible",
+      "visual_evidence_and_reason": "영주관 서고에서 두 사람이 인장 달린 접은 증서와 긴 기록 두루마리를 비교한다. 가문의 증서와 법정 기록 준비라는 새 본문과 직접 연결된다.",
+      "limits": "특정 조모가 아닌 가문 기록이라는 제목 변화와 충돌하지 않는다. 배경 청색 천에 금색 백합 문장이 보인다. 의미 적합성과 별개로 출처 없는 특정 문장/정치 귀속 장식이라는 기존 비차단 우려를 기록한다.",
+      "frozen_group": {
+        "name": "전경 작업대 뒤에 나란히 몸을 숙이는 두 사람",
+        "ids": [
+          "002",
+          "049",
+          "053"
+        ],
+        "count": 3
+      },
+      "group_changed_by_this_report": false
+    }
+  ],
+  "mandatory_redraw_ids": [],
+  "compatible_preserve_ids": [
+    "009",
+    "021",
+    "033",
+    "034",
+    "037",
+    "052",
+    "053"
+  ],
+  "history_observations": {
+    "new_mandatory_history_fix_ids": [],
+    "053_unrequested_fleur_de_lis": "실제로 보임. 본문에는 문장 귀속 근거 없음. 이 감사는 새로운 프랑스 장면이라고 단정하지 않으며 별도 세부 정리 권고로 남김.",
+    "limits": "이 9장의 시각적 검사이며 역사적 관습 전반을 새로 외부 조사한 결과가 아니다. 읽을 수 있는 현대 문자나 명백한 현대 소품은 이 검사에서 발견하지 못했다."
+  },
+  "redraw_guidance": {
+    "013": {
+      "scene": "감춘 돈 감사, 결정 전. 담당자·후임 후보·연줄 대리인 모두 손을 거둔 채 대기. 열쇠 이전·승마 출발·해임 실행 없음.",
+      "camera": "높은 사선 부감, 한 개의 길고 얕은 계산판이 대각선 전경을 차지하며 세 얼굴은 오직 한 먼 변에 작게. 동전 부족/탈리 불일치를 중심으로 하고 큰 열린 함이나 좌우 두 물체 비교를 피한다.",
+      "capacity": "기존 009/134/017 큰 열린 함 고각군, 085/090/126 두 물체 부감군은 각3. 실제로 그 구조가 되면 실패. 단일 긴 계산면/일렬 먼 변 구조가 성립하는지 생성 후 재검사 필요.",
+      "indoor_document_reservation": 1
+    },
+    "032": {
+      "scene": "야외 마당의 측면 서기 1인. 두 경사진 얕은 계산판 가운데 하나에는 소수 동전, 다른 하나에는 빈 열린 돈주머니를 둔다. 서기는 손을 거둔 채 준비비를 가늠한다. 서로 다른 두 봉인 기록은 허리의 열린 가죽 문서집에서 작은 끝부분만 보이는 부수 소품으로 두며 읽거나 쓰지 않는다.",
+      "camera": "서기 옆모습 한 개와 나란한 얕은 두 계산판의 비용 대비가 주구조. 문서가 화면을 차지하지 않음. 추가 의뢰인은 생략하거나 먼 작은 인물로만 둔다.",
+      "capacity": "198 측면 서기·두 판 군은 현재1. 물체 재질과 무관하게 같은 카메라/사람/두 판 구조가 실제 성립하면2 가능. 고각 두 물체와 잘린 손 중심이 되면 포화085군 위험. 기존 정의를 변경하지 않으며 실제 결과 판정 필요.",
+      "indoor_document_reservation": "미확정. 독서대 두 개의 문서 비교 계획은 철회. 실제 주제가 비용/동전이고 문서가 작은 보조 소품인 경우에만 추가0 가능. 문서 중심이면 야외라도 보수적으로 추가1을 기록하여 013와 합계21 초과로 반려.",
+      "avoid": "열린 문서함 내부 시점은 포화015군 위험. 문틀/잠긴 보관소는 접근 거절 오인 위험. 지붕이 없다는 이유만으로 문서 중심을 0 처리하지 않는다.",
+      "withdrawn_prior_proposal": "두 경사진 독서판에 특허장과 법정 기록을 펼쳐 비교하는 문서 중심 안은 예산상 철회했다."
+    }
+  },
+  "cumulative_status": {
+    "selected_count_at_baseline": 200,
+    "groups_at_baseline": 86,
+    "max_group_count_at_baseline": 3,
+    "indoor_document_at_baseline": 19,
+    "indoor_document_limit": 20,
+    "indoor_document_after_013_reservation": 20,
+    "unchanged_classifications": true,
+    "redraw_images_reviewed": true,
+    "final_acceptance_after_redraw": "032v4구도/고증/본문정합실물감사통과.후속익명판독과전체모아보기대기.",
+    "selected_count_current": 200,
+    "groups_current": 87,
+    "max_group_count_current": 3,
+    "indoor_document_current": 20
+  },
+  "blind_semantic_pass_claim": false,
+  "overall_v4_alignment_complete": true,
+  "initial_review_snapshot_preserved": true,
+  "initial_mandatory_redraw_ids": [
+    "013",
+    "032"
+  ],
+  "final_current_visual_status": "032v4법정실내단독서기와앞뒤두증거판실물검토통과.198군복귀로87군최대3,문서20/200.독립익명판독과최신누적모아보기는별도대기.",
+  "final_composition_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r09/records/composition-final-selected-v4.json",
+  "semantic_test_status": "013v2부모보고정답이력유지.032v4독립익명판독은아직확인하지않음.답안/키직접열람없음.",
+  "semantic_rework_pending_ids": [],
+  "overall_delivery_complete": false,
+  "post_replacement_v1_reviews": [
+    {
+      "id": "013",
+      "replacement": true,
+      "actually_viewed_fullsize": true,
+      "actual_evidence": "높은 사선 시점. 하나의 긴 계산판이 아래 절반을 대각선으로 차지하고 세 당사자가 오직 먼 긴 변에 늘어서 있다. 동전·쪼갠 탈리·닫힌 장부. 담당자는 자기 주머니를 움켜쥐고 후임 후보는 손을 모으며 후원자는 유예 손짓. 열쇠 반납이나 인물 교체 실행 없음.",
+      "source_fidelity": "감춘 돈 발견 뒤 회수·유임·교체 전의 감사 판단 장면으로 읽힌다. 후임/연줄 역할의 정확한 신원은 본문으로 보완한다.",
+      "group_name": "높은 사선의 긴 단일 계산면과 한쪽 긴 변에 늘어선 세 감사 당사자",
+      "comparison_to_other_saturated_groups": "큰 열린 문서함(009), 부감 두 물체/손(085), 네 면 네 사람 탁자(050), 장재 주위 분산 작업자(035)와 다르게 단일 계산면 한 긴 변에 세 인물이 일렬로 선다. 재료 이름만 바꾼 분할이 아니라 실제 공간 배열 차이다.",
+      "indoor_document": true,
+      "people": 3,
+      "season": "가을 낙엽과 따뜻한 낮빛",
+      "history_seam_review": "현대 문자·스팟 모피·보이는 주택 굴뚝 없음. 계산판 지지대와 손/주머니 연결에 명백한 파손 없음. 역사적 회계 관습을 특정하게 입증하는 자료로 주장하지 않는다.",
+      "composition_pass": true,
+      "history_pass": true,
+      "mandatory_corrections": [],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_013.jpg",
+      "sha256": "6799335245ba3000fcd37d837a183c9e30bdba8b2f16f521b26937db182e6d91"
+    },
+    {
+      "id": "032",
+      "replacement": true,
+      "actually_viewed_fullsize": true,
+      "actual_evidence": "지붕 없는 마당, 왼쪽 단독 앉은 인물의 옆모습과 앞뒤로 나란한 낮은 두 계산 받침. 가까운 받침에는 소수 동전, 먼 받침에는 빈 열린 돈주머니. 봉인 두루마리 두 개는 허리 가죽 가방 밖에 작은 끝부분만 보인다. 읽기·쓰기·문서 펼침·돈 지급 없음.",
+      "source_fidelity": "부족한 준비비를 가늠하는 비용 중심 장면. 봉인 기록은 부수 단서로 남아 본문과 충돌하지 않는다. 그림 단독으로 특허장 대 법정 기록의 법적 차이를 판독하거나 익명 의미 시험 통과를 주장하지 않는다.",
+      "group_name": "측면 단독 서기의 실제 필기와 앞뒤 두 작업판",
+      "comparison_to_other_saturated_groups": "198 실물도 이번에 다시 열어 확인했다. 한쪽의 단독 측면 인물이 앞뒤 두 작업판을 향하는 공통 배치를 보수적으로 같은 군에 포함. 198의 필기와 실내가 032에서는 비용 고민과 야외로 달라졌지만 기존 군 명칭/정의는 변경하지 않았다. 두 물체를 수직 부감하고 손만 잘리는085군 구조는 아니다.",
+      "indoor_document": false,
+      "document_count_reason": "야외라는 이유가 아니라 시각 주제가 동전/빈 주머니이고 문서는 허리 가방의 작은 보조 소품이며 독서/필기가 없기 때문. 문서 중심이 되면 야외여도 재산정한다.",
+      "people": 1,
+      "season": "잎이 있는 온화한 낮, 봄/초가을 정확 구분 불가",
+      "history_seam_review": "작은 두루마리 봉인이 보이며 현대 V형 봉투/읽을 수 있는 현대 글자 없음. 명백한 굴뚝·스팟 모피·현대 소품 없음. 받침 지지대 연결에 필수 교정 수준 파손 없음.",
+      "composition_pass": true,
+      "history_pass": true,
+      "mandatory_corrections": [],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_032.jpg",
+      "sha256": "c64b860189da89dc0a061da00a56d870df814daee2f21a6719dda11ca3d87340"
+    }
+  ],
+  "post_replacement_v2_reviews": [
+    {
+      "id": "013",
+      "replacement": true,
+      "actually_viewed_fullsize": true,
+      "actual_evidence": "긴 단일 사선 목판이 전경을 가로지르고 세 인물은 같은 먼 긴 변에 늘어서 있다. 왼쪽 담당자가 옷을 열어 안쪽에 숨긴 동전을 드러내며 자기 손 아래로 동전이 떨어진다. 가운데 인물이 그 돈을 가리키고 오른쪽 후원자는 손바닥을 들어 제지한다. 판에는 돈과 빈 금속 그릇만 있고 장부·탈리·문서·열쇠가 없다.",
+      "source_fidelity": "숨긴 돈이 드러난 담당자와 후원자의 제지 관계가 직접 보인다. 해임·열쇠 반납·후임 임명 완료가 없다. 가운데 인물이 후임이라는 신원은 본문으로 보완해야 하며 그림 자체는 목격자로 읽힐 수 있다. 독립 익명 판독 통과를 이 시각 감사가 보증하지 않는다.",
+      "group_name": "높은 사선의 긴 단일 계산면과 한쪽 긴 변에 늘어선 세 감사 당사자",
+      "comparison_to_other_saturated_groups": "큰 열린 문서함(009), 부감 두 물체/손(085), 네 면 네 사람 탁자(050), 장재 주위 분산 작업자(035)와 다르게 단일 계산면 한 긴 변에 세 인물이 일렬로 선다. 재료 이름만 바꾼 분할이 아니라 실제 공간 배열 차이다.",
+      "indoor_document": false,
+      "people": 3,
+      "season": "가을 낙엽과 따뜻한 낮빛",
+      "history_seam_review": "옷 안쪽 주머니와 자기 손 사이로 동전이 떨어지는 장면은 시각적으로 이어진다. 정지 화면의 공중 동전 배열이 다소 규칙적이지만 명백한 합성 단절/역사 위반으로 반려할 정도는 아니다. 현대 소품·문자·점박이 모피·주택 굴뚝 발견 없음. 숨김 주머니를 특정 역사적 관습의 증거로 주장하지 않는다.",
+      "composition_pass": true,
+      "history_pass": true,
+      "mandatory_corrections": [],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_013.jpg",
+      "sha256": "d6a0c1126bf6d9274269aae21aac503f1be126e522d72b0076d0a2710d960672",
+      "selected_version": "v2",
+      "document_count_reason": "위치가 아니라 실제 주제와 소품 변화로 재판정. 장부·기록·탈리가 모두 사라지고 숨긴 동전 발견이 중심이므로 문서 중심이 아니다. 실내/지붕 아래 금융 장면이라는 이유만으로 문서 장면에 포함하지 않는다."
+    },
+    {
+      "id": "032",
+      "replacement": true,
+      "actually_viewed_fullsize": true,
+      "actual_evidence": "야외 마당 왼쪽 앉은 단독 인물 옆모습과 앞뒤 두 낮은 작업판의 구도를 유지한다. 가까운 판에는 큰 닫힌 가죽 장부와 동전 더미, 먼 판에는 봉인 달린 긴 두루마리와 빈 주머니가 놓였다. 당사자는 손을 거두고 비용과 기록을 살핀다. 읽을 수 있는 글자나 지급/서류 전달 행동은 없다.",
+      "source_fidelity": "법정 장부를 나타내는 책과 봉인 증서, 지출할 동전/빈 주머니가 함께 있어 법적 증거 준비와 비용의 관계를 이전 버전보다 명확히 보인다. 글자가 없으므로 정확한 문서 법적 종류와 이미 제출한 자료 제외 상태는 본문으로 보완한다.",
+      "group_name": "측면 단독 서기의 실제 필기와 앞뒤 두 작업판",
+      "comparison_to_other_saturated_groups": "198 실물도 이번에 다시 열어 확인했다. 한쪽의 단독 측면 인물이 앞뒤 두 작업판을 향하는 공통 배치를 보수적으로 같은 군에 포함. 198의 필기와 실내가 032에서는 비용 고민과 야외로 달라졌지만 기존 군 명칭/정의는 변경하지 않았다. 두 물체를 수직 부감하고 손만 잘리는085군 구조는 아니다.",
+      "indoor_document": true,
+      "document_count_reason": "큰 장부와 봉인 기록이 두 작업판의 핵심 대상이 되어 문서/증거 준비 중심 장면으로 바뀌었다. 야외라도 보수적으로 문서 상한에 포함한다.",
+      "people": 1,
+      "season": "잎이 있는 온화한 낮, 봄/초가을 정확 구분 불가",
+      "history_seam_review": "끈과 매달린 봉인의 두루마리, 가죽 장부, 동전/가죽 주머니는 장면 재료와 일관된다. 현대 V형 봉투·읽을 수 있는 현대 문자·굴뚝·스팟 모피 발견 없음. 책과 작업판의 받침/투시 연결에 필수 교정 수준 단절 없음.",
+      "composition_pass": true,
+      "history_pass": true,
+      "mandatory_corrections": [],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_032.jpg",
+      "sha256": "f54798a4dfce6b07feb2b15499c4161cf717ea0de3de94f4add3905271e4a5d5",
+      "selected_version": "v2"
+    }
+  ],
+  "post_replacement_v3_review": {
+    "id": "032",
+    "replacement": true,
+    "actually_viewed_fullsize": true,
+    "actual_evidence": "왼쪽 가까운 앉은 서기가 봉인 증서를 가리키며, 오른쪽 먼 곳에 새 의뢰인이 전신으로 서서 주머니를 쥐고 듣는다. 책·증서·동전·빈 주머니 두 판은 유지된다. 서기와 의뢰인 사이의 가까움/먼 거리 대화축이 생겼다.",
+    "source_fidelity": "의뢰인에게 특허장과 법정 장부 준비비를 설명하는 관계가 v2보다 직접 보인다. 익명 의미 판독은 확인하지 않았으며 그 결과와 별개로 구도 상한 실패.",
+    "group_name": "가까이 앉은 옆얼굴 소유자와 멀리 분리된 상대",
+    "comparison_to_other_saturated_groups": "128131135 실물을 이번에 다시 열어 비교. 카메라 가까이 앉은 옆얼굴과 멀리 선 상대 구조가 동일하여 해당군에 보수적으로 합산한다.198의 단독 서기/두판군에 남기면 새로 생긴 주요 상대를 무시하므로 불가.",
+    "indoor_document": true,
+    "document_count_reason": "큰 장부와 봉인 기록이 두 작업판의 핵심 대상이 되어 문서/증거 준비 중심 장면으로 바뀌었다. 야외라도 보수적으로 문서 상한에 포함한다.",
+    "people": 1,
+    "season": "잎이 있는 온화한 낮, 봄/초가을 정확 구분 불가",
+    "history_seam_review": "끈과 매달린 봉인의 두루마리, 가죽 장부, 동전/가죽 주머니는 장면 재료와 일관된다. 현대 V형 봉투·읽을 수 있는 현대 문자·굴뚝·스팟 모피 발견 없음. 책과 작업판의 받침/투시 연결에 필수 교정 수준 단절 없음.",
+    "composition_pass": false,
+    "history_pass": true,
+    "mandatory_corrections": [
+      "032가128131135포화군의네번째가되어구도재교정필요"
+    ],
+    "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_032.jpg",
+    "sha256": "66fe56688981aad3fa6272e1bd0f04311b5d8ccfc61744d586dd853793d850b2",
+    "selected_version": "v3"
+  },
+  "post_replacement_v4_review": {
+    "id": "032",
+    "replacement": true,
+    "actually_viewed_fullsize": true,
+    "actual_evidence": "법정의 빈 목제 판사석/난간 앞. 가까운 왼쪽 단독 서기 옆모습과 앞뒤로 깊이가 다른 두 경사 작업판. 앞판에는 큰 펼친 장부, 뒤판에는 큰 봉인 두루마리와 작은 묶음. 서기는 뒤쪽 증서를 손가락으로 가리키며 설명하고 반대 손을 펼친다. 의뢰인이나 배경 인물은 없고 돈은 허리 주머니만 보인다.",
+    "source_fidelity": "법정 장소와 봉인 증서/펼친 기록을 설명하는 서기의 동작이 있어 소송 증거 준비라는 대상과 맞는다. 비용 절충은 허리 주머니 정도로 약해졌지만 본문과 모순되지 않는다. 문서의 정확한 법적 종류와이미낸자료제외는본문으로보완.독립익명판독통과는이감사로주장하지않음.",
+    "group_name": "측면 단독 서기의 실제 필기와 앞뒤 두 작업판",
+    "comparison_to_other_saturated_groups": "단독 측면 인물과 앞뒤 두 작업판 구조로198군에복귀.128131135군을성립시킨먼전신상대가완전히제거됐다.판사석은비어있는장소배경이며주요상대나중재자가아니다.기존군정의유지.",
+    "indoor_document": true,
+    "document_count_reason": "법정 실내에서 두 작업판의 증서/장부가 명확한 중심 대상이므로 보수적 문서 수에 포함.013v2의기록없는숨긴돈중심판정은유지.",
+    "people": 1,
+    "season": "실내라계절판별불가,창으로밝은낮빛",
+    "history_seam_review": "가죽 장부, 묶인 양피지 두루마리, 매달린 봉인, 목재 법정석이 보인다. 읽을 수 있는 현대 글자/현대봉투/점박이모피없음. 의자·판·손의 연결에 필수교정수준파손없음. 종이와봉인관습의정확한연대검증을추가로수행했다는뜻은아님.",
+    "composition_pass": true,
+    "history_pass": true,
+    "mandatory_corrections": [],
+    "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_032.jpg",
+    "sha256": "a598a7426cdcd92fb2731a3de52515f6e104dafb09c0a12feff6f81524126bd4",
+    "selected_version": "v4"
+  }
+}

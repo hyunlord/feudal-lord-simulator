@@ -1,0 +1,29 @@
+{
+  "matches": [
+    {"image":"P01","title":"T05","confidence":"high","reason":"성직자가 벽의 이야기 그림 밑그림을 가리키고 화가와 후원자가 함께 본다."},
+    {"image":"P02","title":"T06","confidence":"medium","reason":"창고 회랑에서 떠나는 남자와 남아 있는 남자가 서로 다른 열쇠와 계수목을 들고 성직자와 대면한다. 담당자 교체로 읽히지만 한 해와 장부는 직접 보이지 않는다."},
+    {"image":"P03","title":"T20","confidence":"high","reason":"마당의 대형 저울에 양모 꾸러미를 달고 사람들이 중량을 확인한다."},
+    {"image":"P04","title":"T16","confidence":"high","reason":"성직자가 다락의 소박한 침상들을 방문자에게 보여 준다."},
+    {"image":"P05","title":"T15","confidence":"high","reason":"지붕 보수 사다리와 쌓인 평기와, 기와를 실은 수레가 동시에 보인다."},
+    {"image":"P06","title":"T11","confidence":"medium","reason":"가족처럼 보이는 사람들이 식품과 직물 시장을 걷고 고른다. 생활에 필요한 물자를 연상시키지만 품삯이나 정착 의사는 직접 드러나지 않는다."},
+    {"image":"P07","title":"T01","confidence":"high","reason":"겨울 숲의 빈 톱질 받침대와 작업 도구, 기다리는 두 사람으로 목재 작업 지연이 읽힌다."},
+    {"image":"P08","title":"T08","confidence":"high","reason":"동전과 돈주머니를 다루는 궤짝 너머로 석조 다리가 보인다."},
+    {"image":"P09","title":"T14","confidence":"high","reason":"남은 낡은 목재와 못 곁에서 노동자와 주민이 성직자에게 이야기를 건넨다."},
+    {"image":"P10","title":"T02","confidence":"high","reason":"교회 밖 성직자와 목격자 앞에서 남자가 손을 높이 들어 맹세하는 자세다."},
+    {"image":"P11","title":"T09","confidence":"high","reason":"장원 대문 쪽 인물이 큰 열쇠 꾸러미를 들고 맞은편 교회 입구에는 성직자가 서 있다."},
+    {"image":"P12","title":"T04","confidence":"high","reason":"갈림길의 두 성직자 중 한 명이 봉인된 편지를 들고 서로 다른 길로 이동한다."},
+    {"image":"P13","title":"T17","confidence":"high","reason":"곡물 자루 앞에서 관리자가 빈 그릇을 내민 주민들을 손으로 제지한다. 보존할 곡물이라는 의미가 강하다."},
+    {"image":"P14","title":"T12","confidence":"high","reason":"수확 중인 밭에서 한 사람이 밀 다발과 돈주머니를 양손에 들어 두 지급 방식을 대비한다."},
+    {"image":"P15","title":"T10","confidence":"high","reason":"풍차 앞 탁자에 곡립과 흰 밀가루가 나란히 놓이고 성직자가 이를 검토한다."},
+    {"image":"P16","title":"T13","confidence":"high","reason":"농기구 곁 임시 초가 쉼터에서 사람들이 누워 있고 성직자가 이들의 잠자리를 살핀다."},
+    {"image":"P17","title":"T19","confidence":"high","reason":"수도원 입구에서 짐말에 실린 자루와 주민 곁에 남겨진 자루 무더기가 나뉘어 있다."},
+    {"image":"P18","title":"T03","confidence":"high","reason":"한 사람이 양손에 열쇠를 쥐고 두 장부 궤짝 사이에 서 있다."},
+    {"image":"P19","title":"T07","confidence":"high","reason":"집 문간에서 봉인된 문서를 내밀자 주민이 손을 들고 의문을 표시한다."},
+    {"image":"P20","title":"T18","confidence":"medium","reason":"큰 장식 직물과 천을 덮은 가구가 있는 실내에서 성직자와 남자들이 협의한다. 덮개는 읽히지만 유언 문서는 뚜렷하지 않다."}
+  ],
+  "limitations": [
+    "익명 보드 4장과 P02, P12, P18 개별 이미지만 시각적으로 검사했으며 제목 목록 외 정보는 사용하지 않았다.",
+    "각 제목을 한 번씩 사용하는 제약을 적용했다. P02와 P06은 제목 고유의 시간·고용 조건이 직접 보이지 않아 남은 후보와의 비교가 일부 작용했다.",
+    "이는 제목 식별력 검사이며 역사 고증, 제품 설치 또는 런타임 검증이 아니다."
+  ]
+}

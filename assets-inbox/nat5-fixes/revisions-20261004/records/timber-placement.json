@@ -1,0 +1,35 @@
+{
+  "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9b/docs/verification/nat2/wall/ui9-chapter3-end-timber-gate-47-42-zoom1.4.jpg",
+  "crop": [
+    428,
+    22,
+    420,
+    300
+  ],
+  "groundAnchors": [
+    [
+      168,
+      163
+    ],
+    [
+      251,
+      193
+    ]
+  ],
+  "scale": 0.7,
+  "scaleStatus": "nominal1.4 inferred from capture name; screenshot logger missing",
+  "canvas": [
+    64,
+    80
+  ],
+  "pivot": [
+    32,
+    70
+  ],
+  "worldScale": 0.5,
+  "bodyWorld": [
+    18,
+    30
+  ],
+  "classification": "actual timber scene offline composite; no runtime occlusion or collision claim"
+}

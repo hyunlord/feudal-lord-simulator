@@ -1,0 +1,32 @@
+{
+  "status": "candidate_delivery_ready",
+  "visual_audit_pass": true,
+  "full20_initial": {
+    "correct": 18,
+    "total": 20
+  },
+  "supplementary_tests": [
+    {
+      "stage": "193199v2",
+      "correct": 1,
+      "total": 2
+    },
+    {
+      "stage": "199v3",
+      "correct": 0,
+      "total": 1
+    },
+    {
+      "stage": "199v5",
+      "correct": 1,
+      "total": 1,
+      "confidence": 0.53
+    }
+  ],
+  "all_original_wrong_pairs_revised_and_retested": true,
+  "final_full20_retest": false,
+  "coverage_after_delivery": 174,
+  "source_v4_present": false,
+  "game_installation": false,
+  "cumulative_montage_review": "/Users/rexxa/fls-astra-eventart200-delivery/r07/records/cumulative-montage-review.json"
+}

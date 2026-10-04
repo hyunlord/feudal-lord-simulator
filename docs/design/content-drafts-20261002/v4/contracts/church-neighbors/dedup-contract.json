@@ -1,0 +1,179 @@
+{
+  "status": "adapter_contract_not_installed",
+  "onMissing": "block_dependent_entry",
+  "keyEncoding": "JSON array of typed scalar values; no string concatenation; reject missing/null person IDs",
+  "groups": [
+    {
+      "id": "marriage.candidate_pair.v1",
+      "canonicalGroup": "marriage.offer",
+      "events": [
+        "ck_evt_018",
+        "ck_evt_124",
+        "ck_evt_128",
+        "ck_evt_131",
+        "ck_evt_132",
+        "ck_evt_133",
+        "ck_evt_139"
+      ],
+      "key": {
+        "elements": [
+          {
+            "literal": "marriage.candidate_pair.v1"
+          },
+          {
+            "registryContext": "campaignId"
+          },
+          {
+            "canonicalField": "groomId"
+          },
+          {
+            "canonicalField": "brideId"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "ids": [
+            "ck_evt_018"
+          ],
+          "fields": {
+            "groomId": {
+              "field": "bound.groom.id"
+            },
+            "brideId": {
+              "field": "bound.bride.id"
+            }
+          }
+        },
+        {
+          "ids": [
+            "ck_evt_124",
+            "ck_evt_128",
+            "ck_evt_131",
+            "ck_evt_132",
+            "ck_evt_133",
+            "ck_evt_139"
+          ],
+          "fields": {
+            "groomId": {
+              "field": "bound.groom.person.id"
+            },
+            "brideId": {
+              "field": "bound.bride.id"
+            }
+          }
+        }
+      ],
+      "oldKeyReplacement": {
+        "group": "marriage.offer",
+        "semanticFields": [
+          "bound.instanceId"
+        ],
+        "replaceOnlyFor": [
+          "ck_evt_018"
+        ]
+      },
+      "reserveAt": "offer_visible",
+      "releaseAt": "never_for_same_pair_in_campaign",
+      "effects": "Candidate advice seen once per pair; negotiation status does not reset the pair key. A refusal does not cause a different title to reoffer the same pair.",
+      "saveRestore": "Registry must persist key reservation with event resolution; no evaluator/persistence currently installed. If legacy018 history lacks pair IDs, fail closed for remaining marriage variants until a verified migration identifies the pair."
+    },
+    {
+      "id": "civic_conditions.shared.v1",
+      "events": [
+        "ck_evt_101",
+        "ck_evt_102",
+        "ck_evt_105",
+        "ck_evt_108",
+        "ck_evt_111",
+        "ck_evt_113",
+        "ck_evt_115",
+        "ck_evt_117",
+        "ck_evt_123",
+        "ck_evt_127",
+        "ck_evt_130",
+        "ck_evt_136",
+        "ck_evt_138",
+        "ck_evt_140",
+        "ck_evt_024",
+        "ck_evt_027",
+        "ck_evt_029",
+        "ck_evt_030",
+        "ck_evt_031",
+        "ck_evt_034",
+        "ck_evt_035",
+        "ck_evt_037",
+        "ck_evt_042",
+        "ck_evt_046",
+        "ck_evt_049",
+        "ck_evt_050",
+        "ck_evt_059"
+      ],
+      "tokenRules": {
+        "set_project_subsidy": {
+          "family": "project_support",
+          "scope": "home",
+          "kind": "args.kind"
+        },
+        "order_timber": {
+          "family": "timber_supply",
+          "scope": "home"
+        },
+        "set_market_dues": {
+          "family": "market_burden",
+          "scope": "home"
+        },
+        "set_estate_policy": {
+          "family": "development_priority",
+          "scope": "home"
+        },
+        "set_estate_oversight": {
+          "family": "estate_supervision",
+          "scope": "resolved args.estateId"
+        },
+        "set_audit_mode": {
+          "family": "estate_supervision",
+          "scope": "resolved args.estateId"
+        },
+        "set_exception_rules": {
+          "family": "estate_exceptions",
+          "scope": "all_held_offmap"
+        }
+      },
+      "matching": "Evaluate actual eligible choices, create each declared token, suppress an entry if any token overlaps a reserved eligible-choice token. Do not merge unrelated new-effect scenes by title alone.",
+      "cooldownSeasons": 8,
+      "requireActualStateChangeAfterResolution": true,
+      "stateSignatures": {
+        "project_support": [
+          "state.agency.subsidies[kind].amount",
+          "completed building IDs of kind"
+        ],
+        "timber_supply": [
+          "state.timberOrder default 0",
+          "state.treasuryTimber"
+        ],
+        "market_burden": [
+          "state.agency.duesPermille",
+          "completed market IDs"
+        ],
+        "development_priority": [
+          "state.agency.policy",
+          "completed building IDs"
+        ],
+        "estate_supervision": [
+          "oversight[estateId].mode",
+          "oversight[estateId].stewardId",
+          "oversight[estateId].auditMode"
+        ],
+        "estate_exceptions": [
+          "state.stewardship.rules with recurring default false"
+        ]
+      },
+      "snapshotAt": "after_choice_resolution_or_dismissal; not before own command",
+      "existingArrivalPolicy": "Do not suppress engine chapter events or existing petition arrivals. Suppress only additional advisory copy for their matching tokens; engine arrival retains priority.",
+      "legacyMapping": "Resolve each listed old entry actual command types/args through tokenRules; rules not matching a supported command do not create a token. Unknown required target binding blocks this additional copy, not the old engine arrival.",
+      "scopeLimit": "These are explicit registry-owned reads/specifications, not GameState fields. Preserve current campaign-once limits as additional restriction."
+    }
+  ],
+  "tokenRulesRef": "groups[id=civic_conditions.shared.v1].tokenRules"
+}

@@ -1,0 +1,87 @@
+{
+  "review_type": "independent_targeted_detail_fix_visual_comparison",
+  "scope": [
+    "142v3",
+    "150v2",
+    "158v2"
+  ],
+  "visual_basis": "Each current960x540 selected JPG and each prior fullsize originalPNG actually opened and compared. No contact sheets used for this targeted review. No blind data accessed.",
+  "reviews": [
+    {
+      "id": "142",
+      "selected_version": 3,
+      "current_asset": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_142.jpg",
+      "current_sha256": "2220d4a04a5683be60220bf4343868803428cb70a389a33e66bb1543b265568f",
+      "compared_original": "/Users/rexxa/fls-astra-eventart200-delivery/r05/originals/ck_evt_142-v2.png",
+      "original_sha256": "4d4e53ac335f783000fbaa5869ac3b82b948b71092ddd1e943eea0548578ffff",
+      "selected_original_sha256": "d0a6ea1ca1d62acb8a701d55f81387af6883ffc4fb8288448125bd7ca1f24b5b",
+      "viewed_current_asset_fullsize": true,
+      "viewed_old_original_fullsize": true,
+      "targeted_fix_status": "pass",
+      "composition_preserved": true,
+      "action_preserved": true,
+      "frozen_group_name": "높은 게시자와 수레 쪽 낮은 응답자",
+      "r05_initial_group_membership": [
+        "095",
+        "142",
+        "151"
+      ],
+      "notes": "원본 벽의 큰 파란 백합깃발과 오른쪽 방패형 깃발 모두 제거되어 돌벽으로 연결됨.높은 벽감 봉인함/첫 열쇠를 든 서있는 보관자와 낮게 무릎꿇고 별도 열쇠를 든 보관자 동작 보존.추가 구경꾼4명은 그대로여서 총6명 대 계획2명 불일치 남음.삭제교정 자체는 통과.",
+      "new_clear_history_or_text_issue_observed": false
+    },
+    {
+      "id": "150",
+      "selected_version": 2,
+      "current_asset": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_150.jpg",
+      "current_sha256": "99e0ca0099b5b69635173d999f3cbc878bbef4e7fcb9aa586972f3e88d1d3777",
+      "compared_original": "/Users/rexxa/fls-astra-eventart200-delivery/r05/originals/ck_evt_150-v1.png",
+      "original_sha256": "60bb4f2fb9847e96ab44339ee6779351368052f3939138aa90e65d6a00fd8410",
+      "selected_original_sha256": "b32a602c85cf27064cb9d7add9c542e7e975654c59ab6f180447e7748d8cc606",
+      "viewed_current_asset_fullsize": true,
+      "viewed_old_original_fullsize": true,
+      "targeted_fix_status": "pass",
+      "composition_preserved": true,
+      "action_preserved": true,
+      "frozen_group_name": "넓은 가로 행렬의 맹세자와 반대방향으로 떠나는 인물",
+      "r05_initial_group_membership": [
+        "103",
+        "150"
+      ],
+      "notes": "왼쪽 아케이드 파란 금백합깃발 제거 확인.옆모습 상인의 빈 맹세손,벤치 위 별도 닫힌 돈주머니와 천,이를 가리키는 오른쪽 서기,멀리 앉은 증인 모두 보존.겨울 눈과 앙상한 가지 유지.",
+      "new_clear_history_or_text_issue_observed": false
+    },
+    {
+      "id": "158",
+      "selected_version": 2,
+      "current_asset": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_158.jpg",
+      "current_sha256": "e19683157d3829a71080bad8700cc252ab3ab10277d797d82b094e07ba0ac237",
+      "compared_original": "/Users/rexxa/fls-astra-eventart200-delivery/r05/originals/ck_evt_158-v1.png",
+      "original_sha256": "ba68ad297a0d3ce45ea9f904fed3dd678c67573c6cac1d636434f3fd5e3a4230",
+      "selected_original_sha256": "1d9854f65fd4ff9ee47636e2594a485ae254744f68a9967b8185cf7f0f6858bc",
+      "viewed_current_asset_fullsize": true,
+      "viewed_old_original_fullsize": true,
+      "targeted_fix_status": "pass",
+      "composition_preserved": true,
+      "action_preserved": true,
+      "frozen_group_name": "문설주 사이 부분가린 여러 얼굴과 중심 전달손",
+      "r05_initial_group_membership": [
+        "109",
+        "158"
+      ],
+      "notes": "왼쪽 먼 주택의 명백한 쌍 굴뚝 통이 제거되어 끊김 없는 경사진 지붕으로 보임.큰 교회탑 보존.재단사의 천 절단행동,양창가 이웃 두 얼굴,뒤 닫힌장부 서기 보존.겨울계획과 달리 봄꽃/잎인 기존 계절 불일치는 남음.",
+      "new_clear_history_or_text_issue_observed": false
+    }
+  ],
+  "targeted_fixes_pass": true,
+  "composition_assignment_changes": [],
+  "indoor_document_changes": [],
+  "indoor_document_conservative_count_still": 12,
+  "cumulative_total": 134,
+  "full_cumulative_approval": false,
+  "pending_whole_audit": "Await new146148149153159 assets before cumulative reassessment. Existing initial audit retained.",
+  "remaining_nonblocking_limits": [
+    "142 retains6 people instead of2; extra spectators not removed.",
+    "158 retains spring rather than planned winter.",
+    "Visual preservation means visible structure/actions, not pixel identity or archival historical verification."
+  ]
+}

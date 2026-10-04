@@ -1,0 +1,422 @@
+{
+  "review_type": "R08_plan_only_composition_preflight",
+  "visual_claim": "새17장 및107 교정본 실물 미검수. 생성 성공/최종 합격 주장 없음. 재사용012045047 원본만 이번 실제 열어 확인.",
+  "sources": [
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/scene-plan.json",
+      "sha256": "6483a57de341e381cbf5446d9f3fdac3fc1f284af604edf6a61022f0c26c7ffb"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/PLAN.md",
+      "sha256": "5731a3871633afb1372c02cbe2feae5c0c8275b0b20765523b0f8bf5de8bcbdd"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/records/composition-round07-after-final199.json",
+      "sha256": "cca37739142a480676de79c7d97042246c777303741d74804665c6492cc36522"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/records/reuse-composition-options.json",
+      "sha256": "33955095d53098a7b3c77138df329eed42b9cec6f9e2059badc4a9209af4bd46"
+    }
+  ],
+  "frozen_baseline": {
+    "total": 174,
+    "groups": 79,
+    "max": 3,
+    "assignments_changed": false
+  },
+  "scope": {
+    "new_mapping_ids": [
+      "001",
+      "003",
+      "006",
+      "007",
+      "012",
+      "014",
+      "016",
+      "017",
+      "021",
+      "022",
+      "023",
+      "036",
+      "039",
+      "040",
+      "041",
+      "043",
+      "044",
+      "045",
+      "047",
+      "048"
+    ],
+    "new_mapping_count": 20,
+    "expected_total_after_new_mappings": 194,
+    "reused_ids": [
+      "012",
+      "045",
+      "047"
+    ],
+    "new_generation_count": 17,
+    "additional_existing_id_recompose": "107",
+    "excluded_unresolved": "026",
+    "060": "not_in_this_round"
+  },
+  "per_plan_review": [
+    {
+      "id": "001",
+      "status": "conditional_proceed",
+      "candidate_existing_group": null,
+      "candidate_frozen_members": [],
+      "candidate_count_after_addition": null,
+      "saturated_risk_ids": [
+        "029",
+        "123",
+        "129"
+      ],
+      "necessary_geometry_or_revision": "소 발굽·다리만 왼쪽 극전경에 잘라 두고 소 머리/몸통을 큰 왼쪽 덩어리로 만들지 않는다. 상인과 소몰이 인물은 붙인 오른쪽 쌍이 아니라 다른 깊이에 둔다. 측면 수레 자체가 화면을 횡단하면018군도 포화.",
+      "reason_and_source_watch": "낮은 가축 다리 전경/먼 다른 깊이 길목 분쟁은 새 형식 후보. 아직 실제 신규군 확정 아님."
+    },
+    {
+      "id": "003",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "큰 수직 기계 옆 낮게 앉은 단독 수리자",
+      "candidate_frozen_members": [
+        "096"
+      ],
+      "candidate_count_after_addition": 2,
+      "saturated_risk_ids": [],
+      "necessary_geometry_or_revision": "수직 받침과 처마를 주요 축으로, 단독 청지기는 아래 옆에 작게 둔다. 중앙 정면 전신이나 마루 아래 시점으로 변형하지 않는다.",
+      "reason_and_source_watch": "096군1→2 예상. 수리 완료/진행 장면 대신 검사+닫힌 주머니를 유지."
+    },
+    {
+      "id": "006",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "선반 틈의 정면 얼굴과 양손 장부막대 비교",
+      "candidate_frozen_members": [
+        "084",
+        "178"
+      ],
+      "candidate_count_after_addition": 3,
+      "saturated_risk_ids": [
+        "081",
+        "159",
+        "172"
+      ],
+      "necessary_geometry_or_revision": "두 통이 양쪽 틀처럼 얼굴을 가리고 그 틈에 여성 한 얼굴이 보이도록 한다. 닫힌 기록은 얼굴 옆 두 표본 비교가 아니라 낮게 내민다. 서기는 팔 일부만.",
+      "reason_and_source_watch": "084/178군2→3 예상. 통 한 개 왼쪽 덩어리/오른쪽 인물이면011군 포화, 얼굴 옆 비교면081군 포화."
+    },
+    {
+      "id": "007",
+      "status": "tighten_before_generation",
+      "candidate_existing_group": null,
+      "candidate_frozen_members": [],
+      "candidate_count_after_addition": null,
+      "saturated_risk_ids": [
+        "035",
+        "051",
+        "064"
+      ],
+      "necessary_geometry_or_revision": "사선 버팀목은 가까운 건축 단면으로 두고 두 작은 사람 모두 먼 제단 한쪽 끝에 붙인다. 버팀목 길이를 따라 인물을 분산하지 않는다. 카메라는 옆에서 수평으로 보며 낮은 올려다보기는 피한다.",
+      "reason_and_source_watch": "사선 설비 따라 작업자를 나누면035군4장. 단순 거대 구조물 아래 올려다보는 구도도105군 포화. 실제 구조/인물 깊이가 달라야 신규 후보 인정."
+    },
+    {
+      "id": "012",
+      "status": "reuse_conditional_visual_match",
+      "candidate_existing_group": "낮은 판매대 안쪽에서 보는 두 전신과 그릇",
+      "candidate_frozen_members": [
+        "093",
+        "192"
+      ],
+      "candidate_count_after_addition": 3,
+      "saturated_risk_ids": [],
+      "necessary_geometry_or_revision": "재사용본의 전신·낮은 좌판·발 아래 공간을 보존. 상반신만 자르는 크롭 금지.",
+      "reason_and_source_watch": "현재 재사용 원본 실제 확인.093/192군2→3 타당. 주변 인물은 계획2명보다 훨씬 많다."
+    },
+    {
+      "id": "014",
+      "status": "conditional_proceed",
+      "candidate_existing_group": null,
+      "candidate_frozen_members": [],
+      "candidate_count_after_addition": null,
+      "saturated_risk_ids": [
+        "085",
+        "090",
+        "126"
+      ],
+      "necessary_geometry_or_revision": "선반 전체를 정면 넓게 보여 주고 사람은 양끝 작게 둔다. 고부감 두 물건/손 비교나 선반틈 한 얼굴 근접으로 바꾸지 않는다.",
+      "reason_and_source_watch": "정면 선반 칸 전체 재고 비교는 새 후보. 돈지불 완료보다 양모/현금 선택 전 상태 유지."
+    },
+    {
+      "id": "016",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "지붕 사이 높은 시점의 적재 골목과 먼 빈 시장",
+      "candidate_frozen_members": [
+        "100"
+      ],
+      "candidate_count_after_addition": 2,
+      "saturated_risk_ids": [
+        "069",
+        "156",
+        "163"
+      ],
+      "necessary_geometry_or_revision": "지붕 위 가까운 작업자를 넣지 말고 지붕 사이 아래 마당의 작은 대기 가구를 본다.",
+      "reason_and_source_watch": "100군1→2. 굶주린 가구의 빈바구니와 아직 배분하지 않은 자루 구분."
+    },
+    {
+      "id": "017",
+      "status": "revise_before_generation",
+      "candidate_existing_group": "빈 실내 바닥과 먼 출입 경계에 몰린 일행",
+      "candidate_frozen_members": [
+        "124",
+        "181",
+        "196"
+      ],
+      "candidate_count_after_addition": 4,
+      "saturated_risk_ids": [
+        "124",
+        "181",
+        "196"
+      ],
+      "necessary_geometry_or_revision": "빈 바닥/먼 문간의 두 사람 구조를 버린다. 예: 빈 구유의 거친 목재 테두리와 늘어진 빈 소 고삐를 극전경 위아래로 보여 주고, 바깥 낮은 측면 틈에서 소작인 한 사람의 부분 얼굴만 보이게 한다. 두 번째 인물은 더 먼 바깥 작은 옆모습. 실내 바닥과 정면 문간 군집은 없앤다.",
+      "reason_and_source_watch": "현재 계획은124군4장으로 명백 충돌. 빈 수레165에 이름만 바꿔 넣지 않는다. 닫힌 청원도 제거해 빈 외양간/고삐를 핵심 단서로 권고."
+    },
+    {
+      "id": "021",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "낮은 잠자리 발 전경과 덮개 밖 응답자",
+      "candidate_frozen_members": [
+        "108",
+        "193"
+      ],
+      "candidate_count_after_addition": 3,
+      "saturated_risk_ids": [],
+      "necessary_geometry_or_revision": "낮은 운구대 덮개가 전경이고 유족/집행관은 그 건너편. 실물에서 가까운 좌우 얼굴 쌍이 되지 않게 한다.",
+      "reason_and_source_watch": "108/193군2→3 예상. 사망부과금 장면이며 시신/가축압류/역병가면은 넣지 않는다."
+    },
+    {
+      "id": "022",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "빈 자리와 벽걸이 열쇠를 향해 나란히 기다리는 전신 후보",
+      "candidate_frozen_members": [
+        "147",
+        "199"
+      ],
+      "candidate_count_after_addition": 3,
+      "saturated_risk_ids": [],
+      "necessary_geometry_or_revision": "큰 빈 의자와 멀리 서 있는 평신도 서기를 유지.111의 앉은 성직자로 분류하지 않는다. 새 사제 도착이나 임명 완료를 그리지 않는다.",
+      "reason_and_source_watch": "147/199군2→3 예상. 실내 봉인 편지가 주요 단서라 보수 문서1장 예약."
+    },
+    {
+      "id": "023",
+      "status": "conditional_proceed",
+      "candidate_existing_group": null,
+      "candidate_frozen_members": [],
+      "candidate_count_after_addition": null,
+      "saturated_risk_ids": [
+        "071",
+        "168",
+        "171",
+        "105",
+        "137",
+        "160"
+      ],
+      "necessary_geometry_or_revision": "먼 수평 시점에서 건물의 기울어진 뼈대 전체를 보여 주고 작은 인물은 양옆으로 분리. 오른쪽 관찰자 둘+넓은 빈 들판이나 저각 거대 수직 건물 아래 인물로 만들지 않는다.",
+      "reason_and_source_watch": "기울어진 건물 전체 단면은 별도 후보지만 야외 장소 차이만으로 신규군 인정하지 않음."
+    },
+    {
+      "id": "036",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "낮은 밭고랑 시점과 위쪽 인물 가로열",
+      "candidate_frozen_members": [
+        "073",
+        "143"
+      ],
+      "candidate_count_after_addition": 3,
+      "saturated_risk_ids": [],
+      "necessary_geometry_or_revision": "깊은 진흙 고랑 아래에서 위쪽 인물을 가로열로 본다. 정면 보행 일행으로 만들지 않는다.",
+      "reason_and_source_watch": "073/143군2→3. 먼 풍차는 곡물 기둥풍차, 물레방아/탑풍차 아님."
+    },
+    {
+      "id": "039",
+      "status": "tighten_before_generation",
+      "candidate_existing_group": "탁자 네 면을 에워싼 네 사람의 숙의",
+      "candidate_frozen_members": [
+        "050"
+      ],
+      "candidate_count_after_addition": 2,
+      "saturated_risk_ids": [
+        "072",
+        "145",
+        "194",
+        "025",
+        "062",
+        "083"
+      ],
+      "necessary_geometry_or_revision": "돌판 네 면에 네 사람을 밀착시키고 판과 인물 전체를 사선 중고각으로 본다. 넓은 마당 둘레에 흩어진 일손이나 수직 부감 빈 직사각형 공간으로 만들지 않는다.",
+      "reason_and_source_watch": "원형/도구라는 명칭으로 새 군을 만들지 말고 실제 탁자 네 면 숙의050군1→2 후보. 인장을 아직 찍지 않은 상태."
+    },
+    {
+      "id": "040",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "야외 양편 떨어진 전신 거래인과 각자의 기록",
+      "candidate_frozen_members": [
+        "154",
+        "186"
+      ],
+      "candidate_count_after_addition": 3,
+      "saturated_risk_ids": [],
+      "necessary_geometry_or_revision": "넓은 야외 양끝 전신 둘과 빈 땅을 유지. 공유 양피지는 손 사이 가까운 주제로 확대하지 않는다. 두 사람이 허리 높이에서 감당할 수 있는 길이로.",
+      "reason_and_source_watch": "154/186군2→3 보수 예상. 각자 기록 대 공유 기록 차이만으로 군 분리하지 않음. 실내 문서 아님."
+    },
+    {
+      "id": "041",
+      "status": "conditional_proceed",
+      "candidate_existing_group": null,
+      "candidate_frozen_members": [],
+      "candidate_count_after_addition": null,
+      "saturated_risk_ids": [
+        "066",
+        "183",
+        "197",
+        "029",
+        "123",
+        "129"
+      ],
+      "necessary_geometry_or_revision": "돼지 등을 낮은 전경에 분산하고 대표들은 서로 다른 깊이. 큰 왼쪽 돼지 덩어리/오른쪽 쌍 또는 닫힌 가로 울타리 프레임을 피한다.",
+      "reason_and_source_watch": "001과 모두 가축 높이 전경/깊은 사람이라 같은 새 후보군이 될 수 있음. 장소가 숲이라는 이유로 별도군 만들지 않음."
+    },
+    {
+      "id": "043",
+      "status": "revise_before_generation",
+      "candidate_existing_group": null,
+      "candidate_frozen_members": [],
+      "candidate_count_after_addition": null,
+      "saturated_risk_ids": [
+        "008",
+        "031",
+        "061",
+        "088",
+        "148",
+        "200"
+      ],
+      "necessary_geometry_or_revision": "옆 통로 깊은 축과 가까운 큰 등진 관찰자를 없앤다. 교회 신랑을 옆벽에서 가로로 자른 넓은 측면 시점, 낮은 벤치에 앉은 여러 옆얼굴/무릎이 좁은 통행 폭을 가로막는 구조로 제안. 대표는 같은 먼 가로열, 서기 책 제거.",
+      "reason_and_source_watch": "현재 등진 전경에서 먼 대표를 보는 문장은008군 포화 위험, 깊은 중앙 통로가 커지면088군도 포화. 군명 변경으로 해결 불가. 현대 고정 일렬 좌석처럼 균일한 대량 벤치를 만들지 말 것."
+    },
+    {
+      "id": "044",
+      "status": "conditional_proceed",
+      "candidate_existing_group": "돌계단 손 접촉 극근접과 먼 증인",
+      "candidate_frozen_members": [
+        "075",
+        "140"
+      ],
+      "candidate_count_after_addition": 3,
+      "saturated_risk_ids": [
+        "058",
+        "068",
+        "077"
+      ],
+      "necessary_geometry_or_revision": "한 사람의 손 두 개와 땅/말뚝 접촉 극근접, 먼 전신 증인을 실제로 보존한다. 양쪽 인물의 잘린 손 교환으로 바꾸지 않는다.",
+      "reason_and_source_watch": "075/140군2→3. 말뚝이 기존 수레바퀴 자국 안에 있어 통행 차단을 보여야 함."
+    },
+    {
+      "id": "045",
+      "status": "reuse_conditional_visual_match",
+      "candidate_existing_group": "가까운 청중 집단과 계단 위 가로열 권한자",
+      "candidate_frozen_members": [
+        "157"
+      ],
+      "candidate_count_after_addition": 2,
+      "saturated_risk_ids": [],
+      "necessary_geometry_or_revision": "원본 보존. 최종 가로 리프레이밍으로 큰 전경 등 하나만 남지 않도록 군중/계단 권한자 관계 유지.",
+      "reason_and_source_watch": "원본 실제 확인,157군1→2. 실제 인원은8명보다 많고 공구 깃발/백합 문양이 보임. 역사적 관할 귀속의 정확성은 보장 못하며 원본 보존 지시 때문에 무단 삭제하지 않음."
+    },
+    {
+      "id": "047",
+      "status": "blocked_until107_actual_recompose",
+      "candidate_existing_group": "눈높이의 중앙 중재자와 좌우 상대방",
+      "candidate_frozen_members": [
+        "004",
+        "019",
+        "107"
+      ],
+      "candidate_count_after_addition": 4,
+      "saturated_risk_ids": [
+        "004",
+        "019",
+        "107"
+      ],
+      "necessary_geometry_or_revision": "004019와 재사용047원본을 유지하고107 새 버전을 실제 다른 구도로 검수한 후에만 중앙중재군에서 이동한다. 계획만으로107을 먼저 빼지 않는다.",
+      "reason_and_source_watch": "현재 추가하면4장. 재사용 원본 실제 확인: 야외 세 사람/방패, 문서중심 실내 아님. 방패의 백합 문양은 기존 원본 관찰이며 새로운 잉글랜드 왕실 귀속 인증은 아님."
+    },
+    {
+      "id": "048",
+      "status": "conditional_proceed",
+      "candidate_existing_group": null,
+      "candidate_frozen_members": [],
+      "candidate_count_after_addition": null,
+      "saturated_risk_ids": [
+        "104",
+        "122",
+        "138",
+        "071",
+        "168",
+        "171"
+      ],
+      "necessary_geometry_or_revision": "높은 넓은 목초지 속 크기가 다른 두 소떼 자체를 주제로. X자 교차로의 두 방향 운송, 오른쪽에 모인 두 관찰자, 수직부감 물체/손 비교로 축소하지 않는다.",
+      "reason_and_source_watch": "큰/작은 소떼 비교의 넓은 목초지 조망은 별도 후보. 2대8은 창작 연출 수치이며 역사적 방목 한도 확정 아님."
+    }
+  ],
+  "first_batch": {
+    "001": "conditional_proceed;전경은다리만/인물깊이분리",
+    "003": "conditional_proceed;096군2예상",
+    "006": "conditional_proceed;084군3예상",
+    "007": "tighten;사선작업열제거/작은두명한끝집중"
+  },
+  "required_plan_changes": [
+    "017",
+    "043"
+  ],
+  "tighten_geometry_before_generation": [
+    "007",
+    "039"
+  ],
+  "mandatory_recompose_dependency": {
+    "047": "107 실제 교정검수 전에는 중앙중재군4장, 합격 불가"
+  },
+  "indoor_document_budget": {
+    "frozen_conservative_count": 17,
+    "final_total_if20accepted": 194,
+    "maximum_integer_count": 19,
+    "available_new_capacity": 2,
+    "likely_additional_ids": [
+      "022"
+    ],
+    "conditional_additional_ids": [
+      "017",
+      "043"
+    ],
+    "107_recompose_document_status": "unknown_plan_pending",
+    "range_before107": {
+      "minimum_reasonable_conservative": 18,
+      "if017and043become_document_centered": 20
+    },
+    "worst_case_without107_pass": false,
+    "recommendation": "022에 보수1장 배정.017청원지와043책 제거하여 의미는 빈 소자리/혼잡공간으로 전달.남은1장은107 실물까지 예약.현재174단계에새문서부터추가하면10%넘을수있으므로 최종194와 단계별분모를 구별한다.007실내는건축수선중심으로문서아님;014양모/동전도문서아님.012045047실제원본은실내문서추가0.",
+    "final_count_not_certified": true
+  },
+  "history_and_semantics": [
+    "지붕수선003007023은결정전검사/임시받침만.완공이나활발한시공으로미리결론내지않는다.",
+    "보통초가/목골조집의외부굴뚝·굴뚝통·현대유리 금지.제분036은기둥풍차.",
+    "017소죽음에살아있는소를되넣지않는다.021사망부과금에소압류/역병의사가면을추가하지않는다.",
+    "022은평신도서기이며수도원봉인편지를가져도성직자도착완료가아님.",
+    "039공동인장은미사용,043증축미시작,048방목제한판결전이다.",
+    "045047기존원본의백합/공구깃발및방패무늬는관찰된속성.재사용보존과역사적귀속의인증을구분한다."
+  ],
+  "aggregate_status": "changes_required_before_full_generation_or_acceptance",
+  "limits": [
+    "계획카메라가실제생성에서유지되는지fullsize검수필수.",
+    "장소/대상명만바꿔기존포화군을나누지않음.",
+    "후보신규군은001041서로포함전체누적판에서판정;이번문서에서확정군수를꾸미지않음.",
+    "107계획도착전빈군수나실내문서최종합격을확정하지않음."
+  ]
+}

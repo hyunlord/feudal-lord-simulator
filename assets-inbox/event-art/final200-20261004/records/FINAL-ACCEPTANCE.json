@@ -1,0 +1,30 @@
+{
+  "candidate_coverage": 200,
+  "unique_ids": 200,
+  "images_rgb_960x540": 200,
+  "sha_verified": 200,
+  "last_two_rounds": [
+    {
+      "round": "r08",
+      "correct": 20,
+      "total": 20
+    },
+    {
+      "round": "r09",
+      "correct": 6,
+      "total": 6
+    }
+  ],
+  "composition_groups": 87,
+  "max_group_count": 3,
+  "over_limit_groups": 0,
+  "indoor_document": 20,
+  "indoor_fraction": 0.1,
+  "montage_gate": true,
+  "all_wrong_pairs_revised_retested": true,
+  "supplement_testing": "Sequential retakes, not one final aggregate test.013confidence0.43,032confidence0.72.145minorcleanup visualcomparison only.",
+  "source_v4_aligned": true,
+  "product_installed": false,
+  "source_head": "a84bc778697e8b1b3a84a08c481ccd58029b6598",
+  "overall_candidate_delivery_complete": true
+}
