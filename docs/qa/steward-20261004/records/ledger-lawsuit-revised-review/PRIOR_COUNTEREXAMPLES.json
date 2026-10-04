@@ -1,0 +1,52 @@
+[
+  {
+    "id": "blank_campaign",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "blank_claim",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "newline_claim",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "ledger_zero",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "multiple_distinct_refs",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "ref_extra_field",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "wrong_category",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "negative_tick",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "empty_entry_id",
+    "selected": null,
+    "reason": "Previous negative input rejected"
+  },
+  {
+    "id": "claim_equals_suit",
+    "selected": null,
+    "reason": "New claim-N restriction grounded in estates.ts producers; arbitrary suit-3 claim ID now deliberately falls back"
+  }
+]

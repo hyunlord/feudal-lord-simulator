@@ -4,7 +4,7 @@
 //   PLAYWRIGHT_MODULE=... npx tsx scripts/landWorksCaptures.ts <out> --states <dir> --port <port>
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
 refuseHeavyOnMac("브라우저 캡처(scripts/landWorksCaptures.ts)", { remote: "scripts/remote/run.sh render-LANDUI-works-<sha7> -- node_modules/.bin/tsx scripts/landWorksCaptures.ts …", entry: import.meta.url });
-import { spawn } from "node:child_process";
+import { spawnServer } from "./serverProcess";
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { loadChromium, openScene } from "./renderCommitProbe.mjs";
@@ -26,7 +26,7 @@ const W = 1280, H = 800;
 const result: Record<string, unknown> = {};
 const errors: string[] = [];
 
-const vite = spawn("node_modules/.bin/vite", ["--config", "scripts/remote/viteNoWatch.config.ts", "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
+const vite = spawnServer("node_modules/.bin/vite", ["--config", "scripts/remote/viteNoWatch.config.ts", "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" });
 const url = `http://127.0.0.1:${port}/`;
 for (let tries = 0; tries < 90; tries += 1) {
   try { if ((await fetch(url)).ok) break; } catch { /* not up yet */ }

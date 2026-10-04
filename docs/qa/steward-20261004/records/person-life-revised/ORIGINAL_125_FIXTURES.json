@@ -1,0 +1,4488 @@
+[
+  {
+    "id": "person.leaving.r06life.water",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.leaving.r06life.water",
+    "selected": "person.leaving.r06life.water",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.leaving.r06life.water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "물은 공급되고 있었지만 가구는 떠날 준비를 했다.",
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.water_wrong_house",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.water_wrong_house",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.water_no_household_ref",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.water_no_household_ref",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.water_bad_residents",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.water_bad_residents",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.water_current_only",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.water_current_only",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.water_future_marker",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.water_future_marker",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.no_water",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.no_water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.leaving.r06life.no_water",
+    "selected": "person.leaving.r06life.no_water",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": false,
+      "burntAfter": false,
+      "recordId": "person.leaving.r06life.no_water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "물 공급도 없는 가구가 떠날 준비를 했다.",
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.no_water_wrong_house",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": false,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.no_water_wrong_house",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.no_water_no_household_ref",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.no_water_no_household_ref",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.no_water_bad_residents",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.no_water_bad_residents",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.no_water_current_only",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "leavingSinceTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.no_water_current_only",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.leaving.r06life.no_water_future_marker",
+    "template": "person.leaving",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "leavingSinceTick": 8000
+    },
+    "record": {
+      "id": "person.leaving.r06life.no_water_future_marker",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.one",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.one",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.left.r06life.one",
+    "selected": "person.left.r06life.one",
+    "context": {
+      "residentsBefore": 1,
+      "residentsAfter": 0,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.left.r06life.one",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "한 명이 살던 집에서 가구가 떠나 집이 비었다.",
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.one_wrong_house",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.one_wrong_house",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.one_no_household_ref",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.one_no_household_ref",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.one_bad_residents",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.one_bad_residents",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.one_current_only",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.one_current_only",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.one_future_marker",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.one_future_marker",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.many",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.many",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.left.r06life.many",
+    "selected": "person.left.r06life.many",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 0,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.left.r06life.many",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "여럿이 함께 살던 집에서 가구가 떠나 집이 비었다.",
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.many_wrong_house",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.many_wrong_house",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.many_no_household_ref",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.many_no_household_ref",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.many_bad_residents",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.many_bad_residents",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.many_current_only",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.many_current_only",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.left.r06life.many_future_marker",
+    "template": "person.left",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 8000
+    },
+    "record": {
+      "id": "person.left.r06life.many_future_marker",
+      "tick": 8000,
+      "template": "person.left",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.early",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.early",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.resettled.r06life.early",
+    "selected": "person.resettled.r06life.early",
+    "context": {
+      "residentsBefore": 0,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.resettled.r06life.early",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house",
+      "elapsedTicks": 1000
+    },
+    "headline": "빈집이 된 지 한 해가 지나기 전에 새 가구가 들었다.",
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.early_wrong_house",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 7000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.early_wrong_house",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.early_no_household_ref",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.early_no_household_ref",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.early_bad_residents",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "abandonedTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.early_bad_residents",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.early_current_only",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.early_current_only",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.early_future_marker",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 7000,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.early_future_marker",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.later",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 4000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.later",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.resettled.r06life.later",
+    "selected": "person.resettled.r06life.later",
+    "context": {
+      "residentsBefore": 0,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.resettled.r06life.later",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house",
+      "elapsedTicks": 4000
+    },
+    "headline": "한 해 이상 비어 있던 집에 새 가구가 들었다.",
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.later_wrong_house",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 4000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.later_wrong_house",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.later_no_household_ref",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 4000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.later_no_household_ref",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.later_bad_residents",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "abandonedTick": 4000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.later_bad_residents",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.later_current_only",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.later_current_only",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.resettled.r06life.later_future_marker",
+    "template": "person.resettled",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true,
+      "abandonedTick": 4000,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.resettled.r06life.later_future_marker",
+      "tick": 8000,
+      "template": "person.resettled",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.one",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.one",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.burnt.r06life.one",
+    "selected": "person.burnt.r06life.one",
+    "context": {
+      "residentsBefore": 1,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": true,
+      "recordId": "person.burnt.r06life.one",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "한 명이 살던 집이 불탔다.",
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.one_wrong_house",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.one_wrong_house",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.one_no_household_ref",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.one_no_household_ref",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.one_bad_residents",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.one_bad_residents",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.one_current_only",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.one_current_only",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.one_future_marker",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.one_future_marker",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.many",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.many",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.burnt.r06life.many",
+    "selected": "person.burnt.r06life.many",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": true,
+      "recordId": "person.burnt.r06life.many",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "여럿이 함께 살던 집이 불탔다.",
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.many_wrong_house",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.many_wrong_house",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.many_no_household_ref",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.many_no_household_ref",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.many_bad_residents",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.many_bad_residents",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.many_current_only",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.many_current_only",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.burnt.r06life.many_future_marker",
+    "template": "person.burnt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "person.burnt.r06life.many_future_marker",
+      "tick": 8000,
+      "template": "person.burnt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.early",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.early",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.rebuilt.r06life.early",
+    "selected": "person.rebuilt.r06life.early",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.rebuilt.r06life.early",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house",
+      "elapsedTicks": 1000
+    },
+    "headline": "집이 불탄 지 한 해가 지나기 전에 다시 지었다.",
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.early_wrong_house",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.early_wrong_house",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.early_no_household_ref",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.early_no_household_ref",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.early_bad_residents",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.early_bad_residents",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.early_current_only",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.early_current_only",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.early_future_marker",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.early_future_marker",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.later",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 4000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.later",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.rebuilt.r06life.later",
+    "selected": "person.rebuilt.r06life.later",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.rebuilt.r06life.later",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house",
+      "elapsedTicks": 4000
+    },
+    "headline": "불탄 뒤 한 해 이상 지난 집을 다시 지었다.",
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.later_wrong_house",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 4000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.later_wrong_house",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.later_no_household_ref",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 4000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.later_no_household_ref",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.later_bad_residents",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "burntTick": 4000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.later_bad_residents",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.later_current_only",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.later_current_only",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.rebuilt.r06life.later_future_marker",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 4000,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.rebuilt.r06life.later_future_marker",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.water",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.stayed.r06life.water",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.stayed.r06life.water",
+    "selected": "person.stayed.r06life.water",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.stayed.r06life.water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "물이 공급되는 집에 가구가 떠날 준비를 거두고 남았다.",
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.water_wrong_house",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.stayed.r06life.water_wrong_house",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.water_no_household_ref",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.stayed.r06life.water_no_household_ref",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.water_bad_residents",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.stayed.r06life.water_bad_residents",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.water_current_only",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.stayed.r06life.water_current_only",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.water_future_marker",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.stayed.r06life.water_future_marker",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.no_water",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.stayed.r06life.no_water",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.stayed.r06life.no_water",
+    "selected": "person.stayed.r06life.no_water",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": false,
+      "burntAfter": false,
+      "recordId": "person.stayed.r06life.no_water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "물 공급은 아직 없었지만 가구는 떠날 준비를 거두었다.",
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.no_water_wrong_house",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.stayed.r06life.no_water_wrong_house",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.no_water_no_household_ref",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.stayed.r06life.no_water_no_household_ref",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.no_water_bad_residents",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.stayed.r06life.no_water_bad_residents",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.no_water_current_only",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.stayed.r06life.no_water_current_only",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.stayed.r06life.no_water_future_marker",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.stayed.r06life.no_water_future_marker",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.one",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.one",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.hungry.r06life.one",
+    "selected": "person.hungry.r06life.one",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 1,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.hungry.r06life.one",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "한 명이 사는 집에 먹을거리 부족이 닥쳤다.",
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.one_wrong_house",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.one_wrong_house",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.one_no_household_ref",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.one_no_household_ref",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.one_bad_residents",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.one_bad_residents",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.one_current_only",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.one_current_only",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.one_future_marker",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.one_future_marker",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.many",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.many",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.hungry.r06life.many",
+    "selected": "person.hungry.r06life.many",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.hungry.r06life.many",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "여럿이 사는 집에 먹을거리 부족이 닥쳤다.",
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.many_wrong_house",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.many_wrong_house",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.many_no_household_ref",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.many_no_household_ref",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.many_bad_residents",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.many_bad_residents",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.many_current_only",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.many_current_only",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.hungry.r06life.many_future_marker",
+    "template": "person.hungry",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 8000
+    },
+    "record": {
+      "id": "person.hungry.r06life.many_future_marker",
+      "tick": 8000,
+      "template": "person.hungry",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.brief",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.brief",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.fed.r06life.brief",
+    "selected": "person.fed.r06life.brief",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.fed.r06life.brief",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house",
+      "elapsedTicks": 1000
+    },
+    "headline": "먹을거리 부족이 시작된 지 한 철 안에 사정이 나아졌다.",
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.brief_wrong_house",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.brief_wrong_house",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.brief_no_household_ref",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.brief_no_household_ref",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.brief_bad_residents",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "foodShortSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.brief_bad_residents",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.brief_current_only",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.brief_current_only",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.brief_future_marker",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.brief_future_marker",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.long",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 6999
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.long",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.fed.r06life.long",
+    "selected": "person.fed.r06life.long",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.fed.r06life.long",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house",
+      "elapsedTicks": 1001
+    },
+    "headline": "한 철 넘게 이어지던 먹을거리 부족이 풀렸다.",
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.long_wrong_house",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 6999
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.long_wrong_house",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.long_no_household_ref",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 6999
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.long_no_household_ref",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.long_bad_residents",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "foodShortSinceTick": 6999
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.long_bad_residents",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.long_current_only",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.long_current_only",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.fed.r06life.long_future_marker",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.fed.r06life.long_future_marker",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.one",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.one",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.water.r06life.one",
+    "selected": "person.water.r06life.one",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 1,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.water.r06life.one",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "한 명이 사는 집에 우물물이 닿기 시작했다.",
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.one_wrong_house",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 1,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.one_wrong_house",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.one_no_household_ref",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.one_no_household_ref",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.one_bad_residents",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.one_bad_residents",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.one_current_only",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.one_current_only",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.one_future_marker",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 1,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.one_future_marker",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.many",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.many",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.water.r06life.many",
+    "selected": "person.water.r06life.many",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.water.r06life.many",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "여럿이 사는 집에 우물물이 닿기 시작했다.",
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.many_wrong_house",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.many_wrong_house",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.many_no_household_ref",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.many_no_household_ref",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.many_bad_residents",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.many_bad_residents",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.many_current_only",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.many_current_only",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water.r06life.many_future_marker",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "person.water.r06life.many_future_marker",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.burnt",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "burntTick": 7000
+    },
+    "record": {
+      "id": "person.water_lost.r06life.burnt",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.water_lost.r06life.burnt",
+    "selected": "person.water_lost.r06life.burnt",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": false,
+      "burntAfter": true,
+      "recordId": "person.water_lost.r06life.burnt",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "불탄 집에서 지내던 가구의 물 공급이 끊겼다.",
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.burnt_wrong_house",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": false,
+      "burntTick": 7000
+    },
+    "record": {
+      "id": "person.water_lost.r06life.burnt_wrong_house",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.burnt_no_household_ref",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "burntTick": 7000
+    },
+    "record": {
+      "id": "person.water_lost.r06life.burnt_no_household_ref",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.burnt_bad_residents",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "burntTick": 7000
+    },
+    "record": {
+      "id": "person.water_lost.r06life.burnt_bad_residents",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.burnt_current_only",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "burntTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "burntTick": 7000
+    },
+    "record": {
+      "id": "person.water_lost.r06life.burnt_current_only",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.burnt_future_marker",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 7000,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false,
+      "burntTick": 7000
+    },
+    "record": {
+      "id": "person.water_lost.r06life.burnt_future_marker",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.not_burnt",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.water_lost.r06life.not_burnt",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": "person.water_lost.r06life.not_burnt",
+    "selected": "person.water_lost.r06life.not_burnt",
+    "context": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": false,
+      "burntAfter": false,
+      "recordId": "person.water_lost.r06life.not_burnt",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "headline": "집은 불타지 않았지만 가구의 물 공급은 끊겼다.",
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.not_burnt_wrong_house",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "other",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.water_lost.r06life.not_burnt_wrong_house",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.not_burnt_no_household_ref",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.water_lost.r06life.not_burnt_no_household_ref",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.not_burnt_bad_residents",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": "2",
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.water_lost.r06life.not_burnt_bad_residents",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.not_burnt_current_only",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.water_lost.r06life.not_burnt_current_only",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "person.water_lost.r06life.not_burnt_future_marker",
+    "template": "person.water_lost",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 9000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "record": {
+      "id": "person.water_lost.r06life.not_burnt_future_marker",
+      "tick": 8000,
+      "template": "person.water_lost",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "fed_empty_factline_block",
+    "template": "person.fed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "foodShortSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true
+    },
+    "record": {
+      "id": "fed_empty_factline_block",
+      "tick": 8000,
+      "template": "person.fed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "stayed_empty_factline_block",
+    "template": "person.stayed",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "leavingSinceTick": 7000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 0,
+      "hasWater": true
+    },
+    "record": {
+      "id": "stayed_empty_factline_block",
+      "tick": 8000,
+      "template": "person.stayed",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "burn_suppresses_water",
+    "template": "person.water",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": false
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "record": {
+      "id": "burn_suppresses_water",
+      "tick": 8000,
+      "template": "person.water",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "zero_elapsed",
+    "template": "person.rebuilt",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true,
+      "burntTick": 8000
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "zero_elapsed",
+      "tick": 8000,
+      "template": "person.rebuilt",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  },
+  {
+    "id": "came_of_age_no_household_age",
+    "template": "person.came_of_age",
+    "before": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "after": {
+      "buildingId": "fixture-house",
+      "residents": 2,
+      "hasWater": true
+    },
+    "record": {
+      "id": "came_of_age_no_household_age",
+      "tick": 8000,
+      "template": "person.came_of_age",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "expected": null,
+    "selected": null,
+    "context": null,
+    "headline": null,
+    "installable": false
+  }
+]

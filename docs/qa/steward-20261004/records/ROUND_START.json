@@ -1,0 +1,395 @@
+{
+  "startedAt": "2026-10-04T10:08:30+09:00",
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "pull": "Already up to date; verified live",
+  "previousZip": "/tmp/astra-steward-r07-20261004.zip",
+  "previousZipSHA256": "2f2f64e19333fe903200e0b243e66192779b52944596b3bb4faae8d4ed0ff985",
+  "previousTurnClassification": "progress: R07 final severity decision, D189 correction adopted, verified archive delivered",
+  "cSourcePins": [
+    {
+      "path": "assets-inbox/INBOX_LEDGER.csv",
+      "sha256": "ef4ca1eec7c86319dc62aad21ee9a5cdb73dc90115ff3939a2cc4e4b768d58f5",
+      "bytes": 1449487
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/legacy-reconcile.md",
+      "sha256": "740bca967df0102454f7b60ab376e1f50c1a2ff873a80e3f45b134c6bdbb21fb",
+      "bytes": 13929
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave41-replacements.fragments.ts.txt",
+      "sha256": "46b683b9ae22c6b9cfa144d4e3754fcfecbc5482b289915e18380ace6b43bb04",
+      "bytes": 7385
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/existing-season-pairs.json",
+      "sha256": "1e1ad7442f8ff3e4f563961ec90a00c75f1488d48e28ad2abfdfc4f19c037c08",
+      "bytes": 17147
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave43-season-variants.files.json",
+      "sha256": "3fea9fce52fe1235c974146f256ca643f1aa2073136eb8fff8e0c5d1697460d7",
+      "bytes": 11068
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave41-replacements.files.json",
+      "sha256": "c74ed2734460610010fb1127c3ee8ee9a40eee7b98c97c6ca74515b796c33293",
+      "bytes": 33685
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave22-heath.md",
+      "sha256": "d6174a61cfadd748ba4d6f6ac2a530e545c478ce6876f336790947cfe31338ac",
+      "bytes": 3064
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave22-heath.files.json",
+      "sha256": "a5d62774e1334572b1734076c925999159fbc00e7535b6012f72415dc29a1de2",
+      "bytes": 2308
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/legacy-reconcile.json",
+      "sha256": "c93f92a9067fea189886c3266a499186a703260d72b019d12dd37d80c4ea3482",
+      "bytes": 100769
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave43-season-variants.fragments.ts.txt",
+      "sha256": "11c70b836a5da03e1c4d5e65c3a01dab4cb06bd2eb1729ff10c956ee47ea6322",
+      "bytes": 1581
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave41-replacements.md",
+      "sha256": "f26c8e744678359c3ea2c0483b6faccc8d78680502a2d02bb2f257f7ca6a38ff",
+      "bytes": 9252
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave41-rock.entry.json",
+      "sha256": "21651d9ab3912473328474461de6d153c44357b3a06aaf98a1dc3387c65b91eb",
+      "bytes": 267
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave22-heath.fragments.ts.txt",
+      "sha256": "ea365da4def9b67984d642d3fb66452edf7c7c353a65ab29cde19ddbca682447",
+      "bytes": 514
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave43-season-variants.md",
+      "sha256": "47dcb8879a7d612387c91974e55d577e18ffe3e9f99f483e6711d6319d72be37",
+      "bytes": 4728
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_LISTS/wave41-replacements.mapping.json",
+      "sha256": "99416a60b45f1104a82f5154d5edd0b81896548ba6fbcf5e957b262f8694c055",
+      "bytes": 10727
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/EXCLUSION_REVIEW.md",
+      "sha256": "e085d9ca698c861296d25f1d0baddbb4f27e7a9c9d21f3ec28cc24e1a0030a17",
+      "bytes": 3031
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave14-bordure.md",
+      "sha256": "d8fbff2b3c13cb0a74e4cbe676a32832c6cc005c2a0359a10b9d9e1a39bcad72",
+      "bytes": 1742
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave42-land-stages.md",
+      "sha256": "8ec51c91cb5397fb8bcddaf0ad084015d5efb5b8d1d29b57185976cd5b7e536d",
+      "bytes": 12114
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave13-workers.md",
+      "sha256": "8135efaecbd03e5dabdd579f819fb3f9b6bab2b511911d71cc2eb717fd0fa9b7",
+      "bytes": 3274
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/endings-manors.md",
+      "sha256": "a8ac87e96cc3c4215b26e01c2894191dcbcd16684f5f4e9933b9c4db26a2a875",
+      "bytes": 2722
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/era-houses.md",
+      "sha256": "97765d9f3f93ca5fb065631355af04fed7b9e71a31ede4598fe6e0e84f08753c",
+      "bytes": 2657
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/storehouse-snow.md",
+      "sha256": "eaeeefda9d88e3af056bb2fe93753193c750c152e97988b47e6917fad183c240",
+      "bytes": 3296
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave3-pasture.md",
+      "sha256": "4db18fb920bcc64e935b0f1de2ca7bf86cd750e0afd26bdb351414d165a2a02a",
+      "bytes": 1875
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/region-atlas.md",
+      "sha256": "e209ae12e9113f1b2c664e1c43de6d797469c25d438a4b52bceb6dffce1937a2",
+      "bytes": 2841
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave17-war.md",
+      "sha256": "098890d1a54c3377874d8e06690a43414d85f197dee6afbf5117e63ed8418319",
+      "bytes": 10157
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/era-portraits.md",
+      "sha256": "3f54c6880e500d3c9f70f3183690ebe72fb43a787e30deac44922f05019e437a",
+      "bytes": 2651
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave37.md",
+      "sha256": "0a3cd57181403bb9edb93f83a125a2ab52559f355394a844ef1d39548a745f48",
+      "bytes": 3092
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave35-estates.md",
+      "sha256": "9ed5ff6b10006a9c3beb6451c12aea8707f8a35b9f16df9c02d6bf564fc3064c",
+      "bytes": 2606
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave3-tools.md",
+      "sha256": "bec940ede5b4a965bfd5a7bdb36f518a8ebe7a7f8675c37c21db1f2917e1fd62",
+      "bytes": 3894
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave12-quay.md",
+      "sha256": "aa9b804c1ff4f4e8ff876a5fb89746e12916ed92e2caf20860782edbad7a4c12",
+      "bytes": 1513
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave38.md",
+      "sha256": "c954faa389a4807e9606931990482bda6d19963ffad8b2384012ba75bef15da2",
+      "bytes": 2696
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave39-weather-ground.md",
+      "sha256": "b1c1c8d9d853318e1f6b87ca65676353a00fd6f8b0f7ea72791cf3e292799f8b",
+      "bytes": 6135
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/lord-components-region.md",
+      "sha256": "a852f34c24700c49d2efd454cacd5668a788fab8192359ee222493402f952d26",
+      "bytes": 2685
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave35-negotiation.md",
+      "sha256": "3cd24dd141ea93272901450223b9a8e50be08b134b0e1331e2edee37d78b67bf",
+      "bytes": 2601
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave13-animals.md",
+      "sha256": "7a795bf35371a45f4d8996509aeac3e9e1b1fda57ffe89ef8692d91855dde7ef",
+      "bytes": 3649
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave18-hud.md",
+      "sha256": "c16cb2ab7c93332f853b079c4cf1704464b92063052c7503a384b888cbe18d07",
+      "bytes": 7156
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave12-manor.md",
+      "sha256": "1d1391258946e7c4385153611ca5872f442e1aa6740d60eec341ab8dfe08e64d",
+      "bytes": 2392
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave35-operations.md",
+      "sha256": "77d03caaa59e3562c46a2cf83670b03a083d27e3fdd727af35a0387404955466",
+      "bytes": 2614
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/strip-corners.md",
+      "sha256": "d9668d082b9b35b45242c2efdb77be8aa40777923e6aa92f0f2c868a07c970e6",
+      "bytes": 5695
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave35-promises.md",
+      "sha256": "fb71c96997b3f3ec4a412d9b2996e1542f6792db4f3929e53b0dd0b68fe26abf",
+      "bytes": 2438
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave20-era.md",
+      "sha256": "92cd46d696355eee7881565b4c37a921de9d4943942c91923a751685a1267daa",
+      "bytes": 7585
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/walker-pilot2-final.md",
+      "sha256": "89a22bcb837b034c0f10e740434d2bb637b08ded5d2a243b9b3f632b8b660029",
+      "bytes": 6682
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/experiments-region.md",
+      "sha256": "3bd3b29613ba0e1ac57841a2bb47400ebdebe3d3a83abb6a02eccece8278f505",
+      "bytes": 2751
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/people-pilot1.md",
+      "sha256": "a15f54bc6284f86d75c8f46f5a07f3df7716a7b0452370b0253ca31e3d6b0f23",
+      "bytes": 2779
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave43-ground-props.md",
+      "sha256": "1e305c770781c18032a982e859cf279988cee638c3b46c2f016187be9333567d",
+      "bytes": 5823
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/event-art.md",
+      "sha256": "423f50b4805f4091a6f10041fe2419872a2ad470942e9291a358f78a7b457adc",
+      "bytes": 2652
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave3-cloth-hall.md",
+      "sha256": "c02b576d35b96d2306062d2dcbfbd849fb041fe764f70ff676b12403eb47b48d",
+      "bytes": 1663
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave13-transport.md",
+      "sha256": "1e3541232a5c16bedb50642abfb052714c267850d68540656068fbb089530187",
+      "bytes": 2641
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md",
+      "sha256": "1c1630c8842f93062b655f527c8fc607742720e333a3b688aa76ffb395766671",
+      "bytes": 9283
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave14-ui.md",
+      "sha256": "47717dbf637178359b2277250922299b17fe0b6b6a207aa3df7e136e6e353231",
+      "bytes": 3869
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave35-receipts.md",
+      "sha256": "ebe1a78e0e930a3a649d3e5da6624a71529ff6ae3d2895623bc91d2f95116fe4",
+      "bytes": 2467
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/era-signs.md",
+      "sha256": "de062d0cd9a7e793bde8a78d52123ec11f5345e2a84b2509456af920cf6f1b97",
+      "bytes": 2488
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave39-particles-contact.md",
+      "sha256": "bbdc86728b09aee7fae8514a2e91e27487e4b00d1bc2afa6a132c4df98fa22c6",
+      "bytes": 9493
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave41-hurdles.md",
+      "sha256": "25fd459506c234d4608618fc3cebddcd1d25cde13a56d1d21dd90568c5662477",
+      "bytes": 2813
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave41-queue.md",
+      "sha256": "e5ae507f8bb3fb94fdcb6218039682516ec250486d2a681f41bd5a01d9159b3b",
+      "bytes": 2695
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave40.md",
+      "sha256": "db4eda38f001ff5a50f326ec88886fac5085bc402db0e60b030e44e4237ef823",
+      "bytes": 2901
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave12-icons.md",
+      "sha256": "86b9b8fa393150bafb0adeab6dc3f347645f798ca617039fe66c14ce68a846d9",
+      "bytes": 1981
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/wave44.md",
+      "sha256": "defeb4e53e6c5f09e94fe817ca54294a21f622f9f182464b946558bc80ba27f0",
+      "bytes": 3248
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SPECS/lord-components-ui.md",
+      "sha256": "fd05e82ec6cf23c7456dd96b23464fe87c0b4469c08f7e6d1ae25c2df73b448a",
+      "bytes": 2635
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INVENTORY.csv.astra-raw.txt",
+      "sha256": "b4b67baf34eb8316651a5dca06f580755a1a88a2eb1a5a7f7f2f2aa7cc507bf7",
+      "bytes": 276
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/EXCLUSIONS.csv.astra-raw.txt",
+      "sha256": "581899b4cfb7abf5c3baa3c1c98409056e1f1b53ae3e3a8e480ca5b90af3c62b",
+      "bytes": 279
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/CENSUS.md",
+      "sha256": "75ba7bbe1dbd622b2248c5609a79eab20b15e844c1232d014faa75f3dc8fc62c",
+      "bytes": 4376
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/README.md",
+      "sha256": "2ae2a34c7cf53cca43a7b8dfb49a88181f2b0da8d4918a575a74888727026cf0",
+      "bytes": 3430
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/INSTALL_PROTOCOL.md",
+      "sha256": "e90d1c129095d1dcb47657fe1c2c0bd6460d31ebc4224bc27c769cf07ac3a4f3",
+      "bytes": 3079
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/SHA256SUMS",
+      "sha256": "fc5bd700d3980eab83716ac1b62cf9184cc59a3cae72042f15256388a6b41748",
+      "bytes": 6902
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/METADATA/legacy.csv",
+      "sha256": "1e4dce1a1bd7bb18319bec6f7bc7943efd0d8edc62c783dfd8e68970eb1a98d7",
+      "bytes": 238387
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/METADATA/nature.json",
+      "sha256": "a7fc940eb913fe18e31bf3d428fae75a1a786afa46ca6e44200cc726d6eb1f90",
+      "bytes": 203633
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/METADATA/pending_game.csv.astra-raw.txt",
+      "sha256": "88d7cac41ff890ca8649498dc604b787ceafaecd21ec27157868ee1f10d50747",
+      "bytes": 303
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/METADATA/groups.json",
+      "sha256": "a7a2a69858bae83a13d7df0af2acd76feb0c5bcabe041fe86b5c43d0e7e78a18",
+      "bytes": 55309
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/METADATA/lord.json.astra-raw.txt",
+      "sha256": "62c1a92231ce95ddfddd5b9bce386626c5605e513c93d34fe2f2fca329a2c706",
+      "bytes": 282
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/ORDER.md",
+      "sha256": "086fe26acb8fb80da5bc303f3b90a71695b1406b971b7da7a456e755f2ac7d45",
+      "bytes": 6901
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/VALIDATION/INDEPENDENT_REVIEW.md",
+      "sha256": "03328bd8898620bb697934d178a5e56cfb8a9f3ceab21238cba37c5e4ec83f40",
+      "bytes": 939
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/VALIDATION/SOURCE_VERIFICATION.json.astra-raw.txt",
+      "sha256": "1a7f1520ddb1e332ecf66de7d77a435ec679be7a8c60047a7321da366a181955",
+      "bytes": 331
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/VALIDATION/REPORT.md",
+      "sha256": "ca80a1ff03defd4f093b8d5a4f24cd08af207906897777da0ba1076e52160d4b",
+      "bytes": 2618
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/VALIDATION/CENSUS.json",
+      "sha256": "b311c41def77233cd94cc21d7d283c16bfc8f2469b26cbd9d9fd8afa1db6e258",
+      "bytes": 2295
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/VALIDATION/FRAGMENTS.json",
+      "sha256": "0961908b525f208b4b829dffe9eef581ba85abb4486a580b0ebcc76b804767c8",
+      "bytes": 578
+    },
+    {
+      "path": "docs/ops/install-plan-20261003/VALIDATION/COUNTS.json",
+      "sha256": "035c0980533f0bf8e8628020d62534a452c316ad11b03d290535b5cb697cafaf",
+      "bytes": 1333
+    }
+  ]
+}

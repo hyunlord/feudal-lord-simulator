@@ -1,0 +1,700 @@
+{
+  "status": "PASS_OFFLINE_CAPTURE_REVISION_18_CONDITIONAL_DRAFTS_2_FACTLINE_BLOCKS",
+  "originalFixtures": 125,
+  "regressionFixtures": 11,
+  "passed": 136,
+  "candidateTextByteIdentical": true,
+  "original125ByteIdentical": true,
+  "sourceFiles": 8,
+  "sourceSpans": 12,
+  "baseline650Sha": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "currentCanonicalSha": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "blocks": [
+    "person.fed.r06life.brief",
+    "person.fed.r06life.long"
+  ],
+  "results": [
+    {
+      "id": "person.leaving.r06life.water",
+      "passed": true,
+      "selected": "person.leaving.r06life.water"
+    },
+    {
+      "id": "person.leaving.r06life.water_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.water_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.water_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.water_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.water_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.no_water",
+      "passed": true,
+      "selected": "person.leaving.r06life.no_water"
+    },
+    {
+      "id": "person.leaving.r06life.no_water_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.no_water_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.no_water_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.no_water_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.leaving.r06life.no_water_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.one",
+      "passed": true,
+      "selected": "person.left.r06life.one"
+    },
+    {
+      "id": "person.left.r06life.one_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.one_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.one_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.one_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.one_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.many",
+      "passed": true,
+      "selected": "person.left.r06life.many"
+    },
+    {
+      "id": "person.left.r06life.many_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.many_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.many_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.many_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.left.r06life.many_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.early",
+      "passed": true,
+      "selected": "person.resettled.r06life.early"
+    },
+    {
+      "id": "person.resettled.r06life.early_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.early_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.early_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.early_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.early_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.later",
+      "passed": true,
+      "selected": "person.resettled.r06life.later"
+    },
+    {
+      "id": "person.resettled.r06life.later_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.later_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.later_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.later_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.resettled.r06life.later_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.one",
+      "passed": true,
+      "selected": "person.burnt.r06life.one"
+    },
+    {
+      "id": "person.burnt.r06life.one_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.one_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.one_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.one_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.one_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.many",
+      "passed": true,
+      "selected": "person.burnt.r06life.many"
+    },
+    {
+      "id": "person.burnt.r06life.many_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.many_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.many_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.many_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.burnt.r06life.many_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.early",
+      "passed": true,
+      "selected": "person.rebuilt.r06life.early"
+    },
+    {
+      "id": "person.rebuilt.r06life.early_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.early_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.early_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.early_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.early_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.later",
+      "passed": true,
+      "selected": "person.rebuilt.r06life.later"
+    },
+    {
+      "id": "person.rebuilt.r06life.later_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.later_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.later_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.later_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.rebuilt.r06life.later_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.water",
+      "passed": true,
+      "selected": "person.stayed.r06life.water"
+    },
+    {
+      "id": "person.stayed.r06life.water_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.water_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.water_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.water_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.water_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.no_water",
+      "passed": true,
+      "selected": "person.stayed.r06life.no_water"
+    },
+    {
+      "id": "person.stayed.r06life.no_water_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.no_water_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.no_water_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.no_water_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.stayed.r06life.no_water_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.one",
+      "passed": true,
+      "selected": "person.hungry.r06life.one"
+    },
+    {
+      "id": "person.hungry.r06life.one_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.one_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.one_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.one_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.one_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.many",
+      "passed": true,
+      "selected": "person.hungry.r06life.many"
+    },
+    {
+      "id": "person.hungry.r06life.many_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.many_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.many_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.many_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.hungry.r06life.many_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.brief",
+      "passed": true,
+      "selected": "person.fed.r06life.brief"
+    },
+    {
+      "id": "person.fed.r06life.brief_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.brief_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.brief_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.brief_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.brief_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.long",
+      "passed": true,
+      "selected": "person.fed.r06life.long"
+    },
+    {
+      "id": "person.fed.r06life.long_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.long_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.long_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.long_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.fed.r06life.long_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.one",
+      "passed": true,
+      "selected": "person.water.r06life.one"
+    },
+    {
+      "id": "person.water.r06life.one_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.one_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.one_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.one_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.one_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.many",
+      "passed": true,
+      "selected": "person.water.r06life.many"
+    },
+    {
+      "id": "person.water.r06life.many_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.many_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.many_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.many_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water.r06life.many_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.burnt",
+      "passed": true,
+      "selected": "person.water_lost.r06life.burnt"
+    },
+    {
+      "id": "person.water_lost.r06life.burnt_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.burnt_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.burnt_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.burnt_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.burnt_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt",
+      "passed": true,
+      "selected": "person.water_lost.r06life.not_burnt"
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt_wrong_house",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt_no_household_ref",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt_bad_residents",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt_current_only",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person.water_lost.r06life.not_burnt_future_marker",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "fed_empty_factline_block",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "stayed_empty_factline_block",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "burn_suppresses_water",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "zero_elapsed",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "came_of_age_no_household_age",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "wrong_household_subject_matching_actor",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "empty_record_id",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "person_subject_actor_only_positive",
+      "passed": true,
+      "selected": "person.leaving.r06life.water"
+    },
+    {
+      "id": "household_subject_positive_no_actor",
+      "passed": true,
+      "selected": "person.leaving.r06life.water"
+    },
+    {
+      "id": "blank_record_id",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "unknown_subject_actor_must_not_rescue",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "missing_subject_actor_must_not_rescue",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "empty_person_subject_actor_must_not_rescue",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "ambiguous_household_actors",
+      "passed": true,
+      "selected": null
+    },
+    {
+      "id": "household_subject_priority_ignores_other_actor",
+      "passed": true,
+      "selected": "person.leaving.r06life.water"
+    },
+    {
+      "id": "actor_id_alias_rejected",
+      "passed": true,
+      "selected": null
+    }
+  ],
+  "runtimeExecuted": false,
+  "immutableRuntimeProvenanceVerified": false
+}

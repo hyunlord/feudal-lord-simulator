@@ -1,0 +1,782 @@
+[
+  {
+    "id": "rock",
+    "file": "terrain/rock.png",
+    "canvas": [
+      512,
+      512
+    ],
+    "pivot": [
+      0,
+      0
+    ],
+    "worldScale": 1,
+    "flip": false,
+    "sha256": "61519f9c31202853e68a7db054d50b027ebdffcca4e04285767a0f88e44fcb26",
+    "repeat": [
+      512,
+      512
+    ]
+  },
+  {
+    "id": "yard_rain_barrel",
+    "file": "yards/yard_rain_barrel.png",
+    "canvas": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      52
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "f5064486857a24cf0745784d8c3a82c3e180f3c1c360c86e8a6a4f9f0b4bf010",
+    "assemblyHeight": 22,
+    "assemblyH": 0.625
+  },
+  {
+    "id": "yard_chicken_coop",
+    "file": "yards/yard_chicken_coop.png",
+    "canvas": [
+      128,
+      64
+    ],
+    "pivot": [
+      64,
+      52
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "3a51aa457010bcfae40f35c40f53927306141168ee862d06292a5d3a0fa379d7",
+    "editRegions": [
+      [
+        15,
+        25,
+        23,
+        27
+      ],
+      [
+        77,
+        33,
+        28,
+        25
+      ]
+    ],
+    "scope": "NAT5 coop hens; standalone flock excluded"
+  },
+  {
+    "id": "orchard_apple_c_spring-v1",
+    "file": "orchard/orchard_apple_c_spring-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "4303eee72a0dc9ab7f87aa13acb11a97278ea3c00823d3a11c4b068ac794268b",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/11-orchard_apple_c-v1-wave41-v1.png",
+    "summerSha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753"
+  },
+  {
+    "id": "orchard_apple_c_winter-v1",
+    "file": "orchard/orchard_apple_c_winter-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      128,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "c807758e1aadee94091b300baf4bd06591ecfcbcd14948fe73f132a11f975c27",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/11-orchard_apple_c-v1-wave41-v1.png",
+    "summerSha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753"
+  },
+  {
+    "id": "orchard_apple_d_spring-v1",
+    "file": "orchard/orchard_apple_d_spring-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      123,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "7fc86171c09185f9485761ec639f3809eef1b797374bc6333cd57a74165789a6",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/12-orchard_apple_d-v1-wave41-v1.png",
+    "summerSha256": "9a7517d707fb8fb150151092a00994f8ea8ab24ae997ad8a82a2dae61aead90f"
+  },
+  {
+    "id": "orchard_apple_d_winter-v1",
+    "file": "orchard/orchard_apple_d_winter-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      123,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "2578aef695aee18512c263762a3430f508106260de0daf496c590819b49cc95b",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/12-orchard_apple_d-v1-wave41-v1.png",
+    "summerSha256": "9a7517d707fb8fb150151092a00994f8ea8ab24ae997ad8a82a2dae61aead90f"
+  },
+  {
+    "id": "orchard_pear_e_spring-v1",
+    "file": "orchard/orchard_pear_e_spring-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      123,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "7544c550e2867cf51f14b46ca2718824b06f4a6ee560f08d8f0782a43c0153eb",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/13-orchard_pear_e-v1-wave41-v1.png",
+    "summerSha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5"
+  },
+  {
+    "id": "orchard_pear_e_winter-v1",
+    "file": "orchard/orchard_pear_e_winter-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      123,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "eba39c296d4a3a1020a3463e98b02d5d3926bba3932c59f749585b7fffa52756",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/13-orchard_pear_e-v1-wave41-v1.png",
+    "summerSha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5"
+  },
+  {
+    "id": "orchard_plum_f_spring-v1",
+    "file": "orchard/orchard_plum_f_spring-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      141,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "e3bb408ccee57616632bbd4bc9bdad28ee1bd3e425a11ccead868c4d304902dd",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/14-orchard_plum_f-v1-wave41-v1.png",
+    "summerSha256": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665"
+  },
+  {
+    "id": "orchard_plum_f_winter-v1",
+    "file": "orchard/orchard_plum_f_winter-v1.png",
+    "canvas": [
+      256,
+      256
+    ],
+    "pivot": [
+      141,
+      246
+    ],
+    "worldScale": 0.16796875,
+    "flip": false,
+    "sha256": "d0cea21aae052eefec6cda41a4d4fa589c038907aaad142fe4c9720d139b0c93",
+    "summerReference": "/Users/rexxa/fls-astra-world/assets-inbox/wave41/candidates-20261002/assets/14-orchard_plum_f-v1-wave41-v1.png",
+    "summerSha256": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665"
+  },
+  {
+    "id": "path_clear_corner_top_summer",
+    "file": "connections/path_clear_corner_top_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "fae9aa778d5af85cd91e4f1e3a231d16f17d0bd0f3b01f67f94b40d238ee0b3d",
+    "ports": [
+      "NW",
+      "NE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ],
+      [
+        96,
+        64
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_corner_top_winter",
+    "file": "connections/path_clear_corner_top_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "7c8c0bd85628a26ed8fcc225c43f2c7d0c4c8ec76515cea8359ccc4e39d83a5e",
+    "ports": [
+      "NW",
+      "NE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ],
+      [
+        96,
+        64
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_corner_bottom_summer",
+    "file": "connections/path_clear_corner_bottom_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "62df0eb99b8d758e3c15f5ca6fc7170aed5e637b8228a689f081c5ea5e022706",
+    "ports": [
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_corner_bottom_winter",
+    "file": "connections/path_clear_corner_bottom_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "0dd901d92e6bf02ffcbc8a6da5b91d00c9a344e2d875ad1391cf480b997aabdb",
+    "ports": [
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_fork_sw_summer",
+    "file": "connections/path_clear_fork_sw_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "09d8e68676b332e424f06969c790147774f4df3e0297cbbe2a8840f62db012c6",
+    "ports": [
+      "NW",
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ],
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_fork_sw_winter",
+    "file": "connections/path_clear_fork_sw_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "c7642509a39bd09d03f633b195d3cafbb37ddd9209ff66b14714c9e7daf3ead0",
+    "ports": [
+      "NW",
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ],
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_fork_se_summer",
+    "file": "connections/path_clear_fork_se_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "727d950457f71485d4158f8a1299183b581fc2a3292408aa37430648a959d2eb",
+    "ports": [
+      "NE",
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        96,
+        64
+      ],
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_fork_se_winter",
+    "file": "connections/path_clear_fork_se_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "3ecd21fda87ece61004050c7422530a13be684bbee43422b4e39a69d020fd2ea",
+    "ports": [
+      "NE",
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        96,
+        64
+      ],
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_cross_summer",
+    "file": "connections/path_clear_cross_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "5cd0c156d611af04ad24cae1f941838d40198468219453326b9a74513a741e88",
+    "ports": [
+      "NW",
+      "NE",
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ],
+      [
+        96,
+        64
+      ],
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_cross_winter",
+    "file": "connections/path_clear_cross_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "f7d45737e8c3ae6a62a6c101115ec89869986cd3d4beb1c964be128b540bb56b",
+    "ports": [
+      "NW",
+      "NE",
+      "SW",
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ],
+      [
+        96,
+        64
+      ],
+      [
+        32,
+        96
+      ],
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_nw_summer",
+    "file": "connections/path_clear_end_nw_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "ea5ac703a29c785e8a8f1767e5c572c6c01cf597a98c65bb48e5afc89ef25cb2",
+    "ports": [
+      "NW"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_nw_winter",
+    "file": "connections/path_clear_end_nw_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "66f6759b41a73be2cd138ad0b3f3913e5cd42028751178af0540911baaf227c7",
+    "ports": [
+      "NW"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        64
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_ne_summer",
+    "file": "connections/path_clear_end_ne_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "460cd8904ad8eb1dbebaecfc32c9c396abaa5879c6fed6ea69cac3539c0f0f6d",
+    "ports": [
+      "NE"
+    ],
+    "portCoordinates": [
+      [
+        96,
+        64
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_ne_winter",
+    "file": "connections/path_clear_end_ne_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "3b430a3fc709f5ed2d1fa80dc164d24eda8614a98d3f83859f60317ceee0ed74",
+    "ports": [
+      "NE"
+    ],
+    "portCoordinates": [
+      [
+        96,
+        64
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_sw_summer",
+    "file": "connections/path_clear_end_sw_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "5745ec86512afc22e81030066678aeec898352bce612dd8cc3622fddd7019bb7",
+    "ports": [
+      "SW"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_sw_winter",
+    "file": "connections/path_clear_end_sw_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "8647f5cd3fc028c3f22bf56345cbeb25d82e6600ff9ed23f845c6866beede66d",
+    "ports": [
+      "SW"
+    ],
+    "portCoordinates": [
+      [
+        32,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_se_summer",
+    "file": "connections/path_clear_end_se_summer.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "b90298927efdda9f210cbbbb83402af8ce3dab9ce2c2fa89018f2194860a4d71",
+    "ports": [
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "path_clear_end_se_winter",
+    "file": "connections/path_clear_end_se_winter.png",
+    "canvas": [
+      128,
+      128
+    ],
+    "pivot": [
+      64,
+      80
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "bb82e3e39e351e6574f9c32d8a7316e92131ab004921135fb4c135253cccdd5c",
+    "ports": [
+      "SE"
+    ],
+    "portCoordinates": [
+      [
+        96,
+        96
+      ]
+    ],
+    "portCollars": "Approved same-season Wave42 strip, source u256 phase, inner32/outer8UV alpha taper; no reflection"
+  },
+  {
+    "id": "gate_jamb_stone",
+    "file": "wall/gate_jamb_stone.png",
+    "canvas": [
+      64,
+      80
+    ],
+    "pivot": [
+      32,
+      70
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "992300b7c9562bfab147b3d13391a57e5f49874fae87573d561370539ab59208",
+    "bodyWorld": [
+      22,
+      30
+    ]
+  },
+  {
+    "id": "gate_jamb_timber",
+    "file": "wall/gate_jamb_timber.png",
+    "canvas": [
+      64,
+      80
+    ],
+    "pivot": [
+      32,
+      70
+    ],
+    "worldScale": 0.5,
+    "flip": false,
+    "sha256": "3369632f45062cefbb14f67f9d8ae75a29332321ff3db3ea6fc7a380502262d5",
+    "bodyWorld": [
+      22,
+      30
+    ]
+  }
+]

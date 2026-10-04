@@ -1,0 +1,277 @@
+{
+  "status": "PASS_DIAGNOSTIC_VERIFICATION_DEFECT_REPRODUCED",
+  "cases": [
+    {
+      "id": "natural-dead-appointment",
+      "selectedWhileDead": true,
+      "mutations": [
+
+      ],
+      "tick": 600000,
+      "personId": "est-000021",
+      "deathYear": 1435,
+      "cashBefore": 291821,
+      "cashAfter": 291821,
+      "ledgerUnchanged": true,
+      "historyBeforeCount": 6855,
+      "historyAfterCount": 6856,
+      "newHistoryRecords": [
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.oversight",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 1,
+          "params": {
+            "estate": "estate-neighbour-3",
+            "house": "de Heronel",
+            "mode": "steward",
+            "stewardId": "est-000021"
+          },
+          "id": "h-051591"
+        }
+      ]
+    },
+    {
+      "id": "natural-dead-audit-explicit",
+      "selectedWhileDead": true,
+      "mutations": [
+        "synthetic pending audit appended; no ability/status/ownership edits"
+      ],
+      "tick": 600000,
+      "personId": "est-000021",
+      "deathYear": 1435,
+      "cashBefore": 291821,
+      "cashAfter": 291821,
+      "ledgerUnchanged": true,
+      "historyBeforeCount": 6855,
+      "historyAfterCount": 6857,
+      "newHistoryRecords": [
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.audit_answered",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 2,
+          "params": {
+            "stewardId": "est-000019",
+            "choice": "replaced",
+            "recovered": 0
+          },
+          "id": "h-051591"
+        },
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.oversight",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 1,
+          "params": {
+            "estate": "estate-neighbour-3",
+            "house": "de Heronel",
+            "mode": "steward",
+            "stewardId": "est-000021"
+          },
+          "id": "h-051592"
+        }
+      ]
+    },
+    {
+      "id": "natural-dead-audit-automatic",
+      "selectedWhileDead": true,
+      "mutations": [
+        "synthetic pending audit appended; no ability/status/ownership edits"
+      ],
+      "tick": 600000,
+      "personId": "est-000021",
+      "deathYear": 1435,
+      "cashBefore": 291821,
+      "cashAfter": 291821,
+      "ledgerUnchanged": true,
+      "historyBeforeCount": 6855,
+      "historyAfterCount": 6857,
+      "newHistoryRecords": [
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.audit_answered",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 2,
+          "params": {
+            "stewardId": "est-000019",
+            "choice": "replaced",
+            "recovered": 0
+          },
+          "id": "h-051591"
+        },
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.oversight",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 1,
+          "params": {
+            "estate": "estate-neighbour-3",
+            "house": "de Heronel",
+            "mode": "steward",
+            "stewardId": "est-000021"
+          },
+          "id": "h-051592"
+        }
+      ]
+    },
+    {
+      "id": "synthetic-alive-control-appointment",
+      "selectedWhileDead": false,
+      "mutations": [
+        "estates.people[id=est-000021].alive: false -> true; deathYear/deathCause retained (not a coherent resurrection)"
+      ],
+      "tick": 600000,
+      "personId": "est-000021",
+      "deathYear": 1435,
+      "cashBefore": 291821,
+      "cashAfter": 291821,
+      "ledgerUnchanged": true,
+      "historyBeforeCount": 6855,
+      "historyAfterCount": 6856,
+      "newHistoryRecords": [
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.oversight",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 1,
+          "params": {
+            "estate": "estate-neighbour-3",
+            "house": "de Heronel",
+            "mode": "steward",
+            "stewardId": "est-000021"
+          },
+          "id": "h-051591"
+        }
+      ]
+    },
+    {
+      "id": "synthetic-alive-control-audit-explicit",
+      "selectedWhileDead": false,
+      "mutations": [
+        "estates.people[id=est-000021].alive: false -> true; deathYear/deathCause retained (not a coherent resurrection)",
+        "synthetic pending audit appended; no ability/status/ownership edits"
+      ],
+      "tick": 600000,
+      "personId": "est-000021",
+      "deathYear": 1435,
+      "cashBefore": 291821,
+      "cashAfter": 291821,
+      "ledgerUnchanged": true,
+      "historyBeforeCount": 6855,
+      "historyAfterCount": 6857,
+      "newHistoryRecords": [
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.audit_answered",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 2,
+          "params": {
+            "stewardId": "est-000019",
+            "choice": "replaced",
+            "recovered": 0
+          },
+          "id": "h-051591"
+        },
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.oversight",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 1,
+          "params": {
+            "estate": "estate-neighbour-3",
+            "house": "de Heronel",
+            "mode": "steward",
+            "stewardId": "est-000021"
+          },
+          "id": "h-051592"
+        }
+      ]
+    },
+    {
+      "id": "synthetic-alive-control-audit-automatic",
+      "selectedWhileDead": false,
+      "mutations": [
+        "estates.people[id=est-000021].alive: false -> true; deathYear/deathCause retained (not a coherent resurrection)",
+        "synthetic pending audit appended; no ability/status/ownership edits"
+      ],
+      "tick": 600000,
+      "personId": "est-000021",
+      "deathYear": 1435,
+      "cashBefore": 291821,
+      "cashAfter": 291821,
+      "ledgerUnchanged": true,
+      "historyBeforeCount": 6855,
+      "historyAfterCount": 6857,
+      "newHistoryRecords": [
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.audit_answered",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 2,
+          "params": {
+            "stewardId": "est-000019",
+            "choice": "replaced",
+            "recovered": 0
+          },
+          "id": "h-051591"
+        },
+        {
+          "tick": 600000,
+          "kind": "event",
+          "template": "stewardship.oversight",
+          "subject": {
+            "type": "town",
+            "id": "town"
+          },
+          "severity": 1,
+          "params": {
+            "estate": "estate-neighbour-3",
+            "house": "de Heronel",
+            "mode": "steward",
+            "stewardId": "est-000021"
+          },
+          "id": "h-051592"
+        }
+      ]
+    }
+  ],
+  "saveHashesVerified": 12,
+  "limit": "Read retained runtime logs and artifacts; no local engine reexecution"
+}

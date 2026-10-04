@@ -1,0 +1,937 @@
+{
+  "selection": [
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.manor_female_spouse",
+      "selected": "lord.wardship_begun.r06ctx.spouse",
+      "fallback": false
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.adult_house_member",
+      "selected": "lord.wardship_begun.r06ctx.adult",
+      "fallback": false
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.overlord",
+      "selected": "lord.wardship_begun.r06ctx.overlord",
+      "fallback": false
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.industry_ready",
+      "selected": "reorg.petitions_surge.r06ctx.industry",
+      "fallback": false
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.calendar_backstop",
+      "selected": "reorg.petitions_surge.r06ctx.calendar",
+      "fallback": false
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.initial_offer",
+      "selected": "negotiation.accepted.r06ctx.initial",
+      "fallback": false
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.accepted_counter",
+      "selected": "negotiation.accepted.r06ctx.counter",
+      "fallback": false
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.declined_counter",
+      "selected": "negotiation.withdrawn.r06ctx.declined",
+      "fallback": false
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.counter_expired",
+      "selected": "negotiation.withdrawn.r06ctx.expired",
+      "fallback": false
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.expired.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.royal_request_refused",
+      "selected": "war.favour_lost.r06ctx.refused",
+      "fallback": false
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.refused.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.royal_request_expired",
+      "selected": "war.favour_lost.r06ctx.expired",
+      "fallback": false
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "war.favour_lost.r06ctx.expired.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.widowed_lord",
+      "selected": "marriage.bride_arrived.r06ctx.lord",
+      "fallback": false
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.lord.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.son",
+      "selected": "marriage.bride_arrived.r06ctx.son",
+      "fallback": false
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.son.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.brother",
+      "selected": "marriage.bride_arrived.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.nephew",
+      "selected": "marriage.bride_arrived.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.cousin",
+      "selected": "marriage.bride_arrived.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.bride_arrived.r06ctx.kin.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.widowed_lord",
+      "selected": "marriage.child_born.r06ctx.lord",
+      "fallback": false
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.lord.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.son",
+      "selected": "marriage.child_born.r06ctx.son",
+      "fallback": false
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.son.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.brother",
+      "selected": "marriage.child_born.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.nephew",
+      "selected": "marriage.child_born.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.cousin",
+      "selected": "marriage.child_born.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.child_born.r06ctx.kin.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.widowed_lord",
+      "selected": "marriage.inherited.r06ctx.lord",
+      "fallback": false
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.lord.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.son",
+      "selected": "marriage.inherited.r06ctx.son",
+      "fallback": false
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.son.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.brother",
+      "selected": "marriage.inherited.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.nephew",
+      "selected": "marriage.inherited.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.cousin",
+      "selected": "marriage.inherited.r06ctx.kin",
+      "fallback": false
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.missing",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.unknown",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.wrong_type",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.wrong_template",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.wrong_tick",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.wrong_source",
+      "selected": null,
+      "fallback": true
+    },
+    {
+      "id": "marriage.inherited.r06ctx.kin.unresolved_reference",
+      "selected": null,
+      "fallback": true
+    }
+  ],
+  "adversarialEnvelope": [
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.manor_female_spouse.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.manor_female_spouse.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.spouse.manor_female_spouse.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.adult_house_member.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.adult_house_member.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.adult.adult_house_member.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.overlord.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.overlord.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "lord.wardship_begun.r06ctx.overlord.overlord.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.industry_ready.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.industry_ready.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.industry.industry_ready.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.calendar_backstop.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.calendar_backstop.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "reorg.petitions_surge.r06ctx.calendar.calendar_backstop.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.initial_offer.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.initial_offer.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.initial.initial_offer.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.accepted_counter.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.accepted_counter.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.accepted.r06ctx.counter.accepted_counter.bad_capture",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.declined_counter.wrong_domain",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.declined_counter.missing_record",
+      "fallback": true
+    },
+    {
+      "id": "negotiation.withdrawn.r06ctx.declined.declined_counter.bad_capture",
+      "fallback": true
+    }
+  ],
+  "nameContract": {
+    "cases": 4,
+    "passed": true,
+    "scope": "Offline ID/display substitution contract only; production historyParams not executed"
+  }
+}

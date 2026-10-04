@@ -1,0 +1,508 @@
+{
+  "formatVersion": "age-context-proposal-v1",
+  "status": "NOT_INSTALLED_REQUIRES_CONTEXT_ADAPTER",
+  "baselineSha256": "173e82a0e9c0a2b1a4c87b6b755d4738a7c08f05c06a036ac4bb5de37eec3c1c",
+  "canonicalModified": false,
+  "adapter": "../historical-age-adapter-proposal/adapter.rb",
+  "conditionSources": {
+    "context.subjectAgeBandAtRecord": "known HistoricalAgeProposal.read output only; unknown never matches"
+  },
+  "slots": {
+    "ageAtRecord": {
+      "source": "context.subjectAgeAtRecord",
+      "type": "nonnegative integer",
+      "render": "decimal integer",
+      "onMissing": "fallback to baseline"
+    }
+  },
+  "fallback": {
+    "renderer": "history.summary",
+    "arguments": [
+      "record",
+      "state"
+    ],
+    "required": true
+  },
+  "additions": [
+    {
+      "template": "person.fell_ill",
+      "variants": [
+        {
+          "id": "person.fell_ill.age_proposal.child",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "child"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "어린 시절, {ageAtRecord}살에 병을 얻었다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.fell_ill.age_proposal.youth",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "youth"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "젊은 시절, {ageAtRecord}살에 병을 얻었다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.fell_ill.age_proposal.adult",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "adult"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "{ageAtRecord}살에 병을 얻었다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.fell_ill.age_proposal.elder",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "elder"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "나이 들어 {ageAtRecord}살에 병을 얻었다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "person.recovered",
+      "variants": [
+        {
+          "id": "person.recovered.age_proposal.child",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "child"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "어린 시절, {ageAtRecord}살에 앓던 병에서 회복했다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.recovered.age_proposal.youth",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "youth"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "젊은 시절, {ageAtRecord}살에 앓던 병에서 회복했다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.recovered.age_proposal.adult",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "adult"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "{ageAtRecord}살에 앓던 병에서 회복했다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.recovered.age_proposal.elder",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "elder"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 0
+            }
+          ],
+          "headline": "나이 들어 {ageAtRecord}살에 앓던 병에서 회복했다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "person.injured",
+      "variants": [
+        {
+          "id": "person.injured.age_proposal.youth",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "youth"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 14
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "lte",
+              "value": 60
+            }
+          ],
+          "headline": "젊은 시절, {ageAtRecord}살에 일을 하던 중 다쳤다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.injured.age_proposal.adult",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "adult"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 14
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "lte",
+              "value": 60
+            }
+          ],
+          "headline": "{ageAtRecord}살에 일을 하던 중 다쳤다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.injured.age_proposal.elder",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "elder"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 14
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "lte",
+              "value": 60
+            }
+          ],
+          "headline": "나이 들어 {ageAtRecord}살에 일을 하던 중 다쳤다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "person.healed",
+      "variants": [
+        {
+          "id": "person.healed.age_proposal.youth",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "youth"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 14
+            }
+          ],
+          "headline": "젊은 시절, {ageAtRecord}살에 입었던 상처가 아물었다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.healed.age_proposal.adult",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "adult"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 14
+            }
+          ],
+          "headline": "{ageAtRecord}살에 입었던 상처가 아물었다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.healed.age_proposal.elder",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "elder"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 14
+            }
+          ],
+          "headline": "나이 들어 {ageAtRecord}살에 입었던 상처가 아물었다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "person.pilgrimage",
+      "variants": [
+        {
+          "id": "person.pilgrimage.age_proposal.youth",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "youth"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 18
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "lte",
+              "value": 60
+            }
+          ],
+          "headline": "젊은 시절, {ageAtRecord}살에 순례길에 올랐다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.pilgrimage.age_proposal.adult",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "adult"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 18
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "lte",
+              "value": 60
+            }
+          ],
+          "headline": "{ageAtRecord}살에 순례길에 올랐다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.pilgrimage.age_proposal.elder",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "elder"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 18
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "lte",
+              "value": 60
+            }
+          ],
+          "headline": "나이 들어 {ageAtRecord}살에 순례길에 올랐다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        }
+      ]
+    },
+    {
+      "template": "person.returned",
+      "variants": [
+        {
+          "id": "person.returned.age_proposal.youth",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "youth"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 18
+            }
+          ],
+          "headline": "젊은 시절, {ageAtRecord}살에 순례에서 돌아왔다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.returned.age_proposal.adult",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "adult"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 18
+            }
+          ],
+          "headline": "{ageAtRecord}살에 순례에서 돌아왔다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "person.returned.age_proposal.elder",
+          "priority": 30,
+          "when": [
+            {
+              "field": "context.subjectAgeBandAtRecord",
+              "op": "eq",
+              "value": "elder"
+            },
+            {
+              "field": "context.subjectAgeAtRecord",
+              "op": "gte",
+              "value": 18
+            }
+          ],
+          "headline": "나이 들어 {ageAtRecord}살에 순례에서 돌아왔다.",
+          "requiredSlots": [
+            "ageAtRecord"
+          ],
+          "retainFactLine": true
+        }
+      ]
+    }
+  ]
+}

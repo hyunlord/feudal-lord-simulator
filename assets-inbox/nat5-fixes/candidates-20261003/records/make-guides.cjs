@@ -1,0 +1,4 @@
+const fs=require('fs'),path=require('path'),sharp=require('/tmp/astra-wave39-work-20260930/node_modules/sharp');
+const root=path.dirname(__dirname),P={NW:[32,64],NE:[96,64],SW:[32,96],SE:[96,96]};
+const shapes={corner_top:['NW','NE'],corner_bottom:['SW','SE'],fork_sw:['NW','SW','SE'],fork_se:['NE','SW','SE'],cross:['NW','NE','SW','SE'],end_nw:['NW'],end_ne:['NE'],end_sw:['SW'],end_se:['SE']};
+(async()=>{for(const [id,ports] of Object.entries(shapes)){let lines=ports.map(p=>`<path d="M64 80 L${P[p][0]} ${P[p][1]}"/>`).join('');let svg=`<svg width="128" height="128"><g stroke="#998166" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none">${lines}</g></svg>`;await sharp(Buffer.from(svg)).resize(1024,1024).png().toFile(path.join(root,'references',`guide-${id}.png`));}fs.writeFileSync(path.join(root,'records/path-shapes.json'),JSON.stringify({canvas:[128,128],pivot:[64,80],ports:P,shapes},null,2));})();

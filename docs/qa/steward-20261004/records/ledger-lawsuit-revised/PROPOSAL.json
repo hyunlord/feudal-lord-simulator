@@ -1,0 +1,43 @@
+{
+  "status": "DRAFT_UNINSTALLED",
+  "category": "lawsuit",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "variants": [
+    {
+      "id": "lawsuit.r06context.filed",
+      "phase": "filed",
+      "text": "소송을 제기하는 비용으로 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ],
+      "fallback": "existing lawsuit cash_out/general account selector"
+    },
+    {
+      "id": "lawsuit.r06context.evidence",
+      "phase": "evidence",
+      "text": "소송 증거를 마련하는 비용으로 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ],
+      "fallback": "existing lawsuit cash_out/general account selector"
+    },
+    {
+      "id": "lawsuit.r06context.hearing",
+      "phase": "hearing",
+      "text": "소송 심리 단계의 비용으로 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ],
+      "fallback": "existing lawsuit cash_out/general account selector"
+    },
+    {
+      "id": "lawsuit.r06context.enforcing",
+      "phase": "enforcing",
+      "text": "판결에 따른 점유 집행을 시도하는 비용으로 금고에서 {amountAbsExact} 나갔다.",
+      "requiredSlots": [
+        "amountAbsExact"
+      ],
+      "fallback": "existing lawsuit cash_out/general account selector"
+    }
+  ]
+}

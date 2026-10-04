@@ -1,0 +1,3065 @@
+{
+  "status": "PASS_RECORDED_INPUT_FUNCTION_REPLAY_ONLY",
+  "elapsedMs": 33,
+  "directExportCalls": {
+    "bestHouseDemand": 4,
+    "nextHouseDemandTile": 4,
+    "advanceTick": 0
+  },
+  "sourceDerivedNestedCallCount": {
+    "bestHouseDemandViaNextHouseDemandTile": 4,
+    "totalBestHouseDemand": 8,
+    "classification": "source-derived count, not separate runtime interception"
+  },
+  "checks": [
+    {
+      "name": "HEAD",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "input-sha",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "recorded-stage-scope",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "source-range",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "exact-four-records-in-order",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:nonempty-path-calls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:one-current-tile",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:unique-house-call",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:saved-house-arguments-match-post-service-houses",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:roaming-decision",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-22-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-22-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-22-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-23-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-23-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:call-23-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:best:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 24,
+        "expected": 24
+      }
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-22-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-22-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-22-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-23-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-23-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:call-23-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 24,
+        "expected": 24
+      }
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:independent-cursors-same-call-sequence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:next-equals-best-first-step",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:recorded-stage-next-tile-equals-replay",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:299880:immutable-record-inputs",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:nonempty-path-calls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:one-current-tile",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:unique-house-call",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:saved-house-arguments-match-post-service-houses",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:roaming-decision",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-22-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-22-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-22-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-23-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-23-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:call-23-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:best:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 24,
+        "expected": 24
+      }
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-22-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-22-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-22-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-23-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-23-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:call-23-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 24,
+        "expected": 24
+      }
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:independent-cursors-same-call-sequence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:next-equals-best-first-step",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:recorded-stage-next-tile-equals-replay",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000036:300000:immutable-record-inputs",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:nonempty-path-calls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:one-current-tile",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:unique-house-call",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:saved-house-arguments-match-post-service-houses",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:roaming-decision",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:best:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 22,
+        "expected": 22
+      }
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 22,
+        "expected": 22
+      }
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:independent-cursors-same-call-sequence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:next-equals-best-first-step",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:recorded-stage-next-tile-equals-replay",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:construction-site-000067:299760:immutable-record-inputs",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:nonempty-path-calls",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:one-current-tile",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:unique-house-call",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:saved-house-arguments-match-post-service-houses",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:roaming-decision",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:best:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 22,
+        "expected": 22
+      }
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-0-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-0-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-0-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-1-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-1-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-1-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-2-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-2-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-2-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-3-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-3-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-3-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-4-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-4-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-4-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-5-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-5-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-5-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-6-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-6-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-6-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-7-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-7-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-7-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-8-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-8-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-8-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-9-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-9-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-9-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-10-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-10-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-10-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-11-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-11-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-11-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-12-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-12-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-12-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-13-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-13-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-13-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-14-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-14-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-14-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-15-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-15-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-15-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-16-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-16-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-16-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-17-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-17-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-17-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-18-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-18-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-18-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-19-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-19-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-19-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-20-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-20-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-20-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-21-exists",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-21-exact-arguments",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:call-21-defined-result",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next:all-recorded-calls-consumed",
+      "pass": true,
+      "detail": {
+        "cursor": 22,
+        "expected": 22
+      }
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:independent-cursors-same-call-sequence",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:next-equals-best-first-step",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:recorded-stage-next-tile-equals-replay",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "distributor:granary-42-37-0:300000:immutable-record-inputs",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "exact-call-budget",
+      "pass": true,
+      "detail": {
+        "bestHouseDemand": 4,
+        "nextHouseDemandTile": 4,
+        "advanceTick": 0
+      }
+    },
+    {
+      "name": "whole-record-input-immutable",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "input-file-unchanged",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "completedRows": 4
+}

@@ -1,0 +1,29 @@
+{
+  "status": "static_pass_runtime_not_run",
+  "sourceHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+  "candidateSha256": "f8eb252fd54b977fc74ae31463906a7bead2bbd041c6433071d316a755a1305b",
+  "baseCandidateSha256": "b86a92a3cf544f0dd9b0bc2f2365d4e62c523b2f10357f23104aacf28742ca0b",
+  "historyKinds": 7,
+  "templates": 182,
+  "historyVariants": 241,
+  "conditionalHistoryVariants": 59,
+  "ledgerCategories": 46,
+  "ledgerVariants": 186,
+  "uniqueIds": 427,
+  "preservedOriginalIds": 403,
+  "changedOriginalIds": [
+    "person.emptied.brief"
+  ],
+  "newIds": 24,
+  "schema": "passed Draft202012Validator",
+  "sourceKeyCoverage": "exact",
+  "fixtureTotal": 524,
+  "fixtureSelected": 480,
+  "fixtureBlocked": 44,
+  "fixtureScope": "synthetic pure-data condition selection; no money, name, quantity parser or engine API execution",
+  "engineExecution": false,
+  "render": false,
+  "saveRestore": false,
+  "canonicalPromoted": false,
+  "independentReview": "pending"
+}

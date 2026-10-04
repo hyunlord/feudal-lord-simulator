@@ -6,21 +6,20 @@
 set -euo pipefail
 base_sha=$1; out=$2; shift 2
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
-serve() { node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$1" --strictPort; }
+. scripts/remote/devServers.sh   # every server started here stops on any exit, failures and a stopped run included
+serve() { fls_serve "$1" ${3:+--in "$3"} --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$2" --strictPort; }  # <log> <port> [dir]
 up() { for _ in $(seq 1 90); do curl -sf "$1" > /dev/null && return 0; sleep 1; done; echo "vite did not come up on $1"; return 1; }
-serve "$port" > .remote/vite-this.log 2>&1 &
-pids=$!
+serve .remote/vite-this.log "$port"
 dir=.remote/base-build
+fls_on_exit 'git worktree remove --force "$dir" 2>/dev/null || true'
 if [ "$base_sha" != "-" ]; then
   git worktree remove --force "$dir" 2>/dev/null || true
   git worktree add -q --detach "$dir" "$base_sha"
   ln -sfn "$PWD/node_modules" "$dir/node_modules"
   # The base serves its own tree with this run's no-watch config (the base may predate it).
   cp scripts/remote/viteNoWatch.config.ts "$dir/scripts/remote/viteNoWatch.config.ts"
-  (cd "$dir" && serve $((port + 50))) > .remote/vite-base.log 2>&1 &
-  pids="$pids $!"
+  serve .remote/vite-base.log $((port + 50)) "$dir"
 fi
-trap 'kill $pids 2>/dev/null; git worktree remove --force "$dir" 2>/dev/null || true' EXIT
 up "http://127.0.0.1:$port/"
 node_modules/.bin/tsx scripts/nat4WorldCaptures.ts "http://127.0.0.1:$port/" "$out" after "$@"
 if [ "$base_sha" != "-" ]; then

@@ -1,0 +1,2490 @@
+[
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.known",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": "lord.wardship_ended.r06office.named_guardian"
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.missing_field",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.unknown_enum",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.wrong_record",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.wrong_tick",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "other",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.wrong_source",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.negative_tick",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.unverified",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.extra_name",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "named_guardian"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.named_guardian.unknown_empty",
+    "identity": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-0",
+      "recordTick": 1234,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.known",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": "lord.wardship_ended.r06office.overlord"
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.missing_field",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.unknown_enum",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.wrong_record",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.wrong_tick",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "other",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.wrong_source",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.negative_tick",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.unverified",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.extra_name",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "endingGuardianKind": "overlord"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "lord.wardship_ended.r06office.overlord.unknown_empty",
+    "identity": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-1",
+      "recordTick": 1235,
+      "campaignId": "seed1-fixture",
+      "template": "lord.wardship_ended",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.known",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": "faction.leader_succeeded.r06office.same_household"
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.missing_field",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.unknown_enum",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.wrong_record",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.wrong_tick",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "other",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.wrong_source",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.negative_tick",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.unverified",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.extra_name",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "same_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.same_household.unknown_empty",
+    "identity": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-2",
+      "recordTick": 1236,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.known",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": "faction.leader_succeeded.r06office.different_household"
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.missing_field",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.unknown_enum",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.wrong_record",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.wrong_tick",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "other",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.wrong_source",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.negative_tick",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.unverified",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.extra_name",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "successorHouseholdAtEvent": "different_household"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "faction.leader_succeeded.r06office.different_household.unknown_empty",
+    "identity": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-3",
+      "recordTick": 1237,
+      "campaignId": "seed1-fixture",
+      "template": "faction.leader_succeeded",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.known",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": "stewardship.steward_died.r06office.direct"
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.missing_field",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.unknown_enum",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.wrong_record",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.wrong_tick",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "other",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.wrong_source",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.negative_tick",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.unverified",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.extra_name",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "direct"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.direct.unknown_empty",
+    "identity": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-4",
+      "recordTick": 1238,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.known",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": "stewardship.steward_died.r06office.steward"
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.missing_field",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.unknown_enum",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.wrong_record",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.wrong_tick",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "other",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.wrong_source",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.negative_tick",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.unverified",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.extra_name",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "oversightModeAtSuccession": "steward"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.steward_died.r06office.steward.unknown_empty",
+    "identity": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-5",
+      "recordTick": 1239,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.steward_died",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.known",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": "stewardship.began.r06office.sole_estate"
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.missing_field",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.unknown_enum",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.wrong_record",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.wrong_tick",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "other",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.wrong_source",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.negative_tick",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.unverified",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.extra_name",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "sole_estate"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.sole_estate.unknown_empty",
+    "identity": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-6",
+      "recordTick": 1240,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.known",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": "stewardship.began.r06office.multiple_estates"
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.missing_field",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.unknown_enum",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "invented"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.wrong_record",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "other",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.wrong_tick",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1242,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.wrong_campaign",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "other",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.wrong_source",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "0000000000000000000000000000000000000000",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.negative_tick",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": -1,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.unsafe_tick",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 9007199254740992,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.unverified",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": false,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.extra_name",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      },
+      "name": "한때 이름"
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.wrong_provenance",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "current_person_lookup",
+      "status": "known",
+      "referenceVerified": true,
+      "fields": {
+        "offMapPortfolioAtStart": "multiple_estates"
+      }
+    },
+    "expected": null
+  },
+  {
+    "id": "stewardship.began.r06office.multiple_estates.unknown_empty",
+    "identity": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "context": {
+      "recordId": "office-h-7",
+      "recordTick": 1241,
+      "campaignId": "seed1-fixture",
+      "template": "stewardship.began",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "captureKind": "emission_snapshot",
+      "status": "unknown",
+      "referenceVerified": false,
+      "fields": {
+      }
+    },
+    "expected": null
+  }
+]

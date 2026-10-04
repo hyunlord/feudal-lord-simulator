@@ -1,0 +1,778 @@
+[
+  {
+    "source": "/tmp/astra-steward-r03-20261003/records/N01-failure/RESULT.md",
+    "destination": "inherited/top10/astra-steward-r03-20261003/records/N01-failure/RESULT.md",
+    "bytes": 3567,
+    "sha256": "10574ba3e4e539ebb9709479f53432af52b3ee4bf81cf6b356f22ad8aba274d5",
+    "rationale": "seed1/open/full t560000 actual failed envelope and exact decode rejection, not another passing save",
+    "ids": [
+      "SAVE01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/records/N01-failure/SNAPSHOT_AUDIT.json",
+    "destination": "inherited/top10/astra-steward-r03-20261003/records/N01-failure/SNAPSHOT_AUDIT.json",
+    "bytes": 6304,
+    "sha256": "eabe1b0ea7f8bcf740a282bf9ffffdcfda801a383891302cefec35b1521527e3",
+    "rationale": "seed1/open/full t560000 actual failed envelope and exact decode rejection, not another passing save",
+    "ids": [
+      "SAVE01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/records/N01-failure/latest.fls.json",
+    "destination": "inherited/top10/astra-steward-r03-20261003/records/N01-failure/latest.fls.json",
+    "bytes": 6116394,
+    "sha256": "f95a35dee518c76ce539d16dc949d4e25c241e403fe30afa301f594a1e20d3de",
+    "rationale": "seed1/open/full t560000 actual failed envelope and exact decode rejection, not another passing save",
+    "ids": [
+      "SAVE01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/records/N01-failure/metadata.json",
+    "destination": "inherited/top10/astra-steward-r03-20261003/records/N01-failure/metadata.json",
+    "bytes": 1795,
+    "sha256": "e3f3f2a9cb2e510f169ffc1c883ffb34cf80be45b11166fcde84cfb8e61d412f",
+    "rationale": "seed1/open/full t560000 actual failed envelope and exact decode rejection, not another passing save",
+    "ids": [
+      "SAVE01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/records/N01-failure/savebytes-confirmed/run.log",
+    "destination": "inherited/top10/astra-steward-r03-20261003/records/N01-failure/savebytes-confirmed/run.log",
+    "bytes": 1693,
+    "sha256": "54ecb63d8cf2be416066558c39640743feb87556d2b32634d89f865bde5198c4",
+    "rationale": "seed1/open/full t560000 actual failed envelope and exact decode rejection, not another passing save",
+    "ids": [
+      "SAVE01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r03-20261003/records/N01-failure/savebytes-confirmed/exit-code",
+    "destination": "inherited/top10/astra-steward-r03-20261003/records/N01-failure/savebytes-confirmed/exit-code",
+    "bytes": 2,
+    "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "rationale": "seed1/open/full t560000 actual failed envelope and exact decode rejection, not another passing save",
+    "ids": [
+      "SAVE01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/records/DEAD_STEWARD_RESULT_R04.md",
+    "destination": "inherited/top10/astra-steward-r04-20261003/records/DEAD_STEWARD_RESULT_R04.md",
+    "bytes": 1857,
+    "sha256": "754d2c0b7a2d8cea8c329dd80953cd095009227e800dce4410c7fe8a3515f7eb",
+    "rationale": "seed2/chalk t600000 natural dead est-000021 appointment before/after; synthetic audit controls distinguished in result",
+    "ids": [
+      "A02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/records/dead-steward-executed/metadata.json",
+    "destination": "inherited/top10/astra-steward-r04-20261003/records/dead-steward-executed/metadata.json",
+    "bytes": 118875,
+    "sha256": "2888cad4f8fc215635327fa3f4c9007d34bbddd618962b83a98d999e79b97919",
+    "rationale": "seed2/chalk t600000 natural dead est-000021 appointment before/after; synthetic audit controls distinguished in result",
+    "ids": [
+      "A02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/records/dead-steward-executed/natural-dead-appointment.json",
+    "destination": "inherited/top10/astra-steward-r04-20261003/records/dead-steward-executed/natural-dead-appointment.json",
+    "bytes": 9696008,
+    "sha256": "e823dff1a04ecc6a99ae25872009b9034a5786e31dbba94934f9de4d2dc6a6f8",
+    "rationale": "seed2/chalk t600000 natural dead est-000021 appointment before/after; synthetic audit controls distinguished in result",
+    "ids": [
+      "A02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/records/dead-steward-executed/natural-dead-appointment-before.fls.json",
+    "destination": "inherited/top10/astra-steward-r04-20261003/records/dead-steward-executed/natural-dead-appointment-before.fls.json",
+    "bytes": 7033095,
+    "sha256": "aeeecef0809c8f3c09d31a14a21c1854ca5acc58c946886c53e9e66cc64338ff",
+    "rationale": "seed2/chalk t600000 natural dead est-000021 appointment before/after; synthetic audit controls distinguished in result",
+    "ids": [
+      "A02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/records/dead-steward-executed/natural-dead-appointment-after.fls.json",
+    "destination": "inherited/top10/astra-steward-r04-20261003/records/dead-steward-executed/natural-dead-appointment-after.fls.json",
+    "bytes": 7033347,
+    "sha256": "9450ed94da18360960c8d7c1e1f116a1f888d079596bb63d7790e2e4e879416e",
+    "rationale": "seed2/chalk t600000 natural dead est-000021 appointment before/after; synthetic audit controls distinguished in result",
+    "ids": [
+      "A02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/records/dead-steward-executed/result.json",
+    "destination": "inherited/top10/astra-steward-r04-20261003/records/dead-steward-executed/result.json",
+    "bytes": 4264,
+    "sha256": "462e6d668a3db45e6bbdeba19cde673aa27e5fff639a540248bd60c4a1b22c7f",
+    "rationale": "seed2/chalk t600000 natural dead est-000021 appointment before/after; synthetic audit controls distinguished in result",
+    "ids": [
+      "A02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/records/dead-steward-executed/PARENT_CHECK.json",
+    "destination": "inherited/top10/astra-steward-r04-20261003/records/dead-steward-executed/PARENT_CHECK.json",
+    "bytes": 7506,
+    "sha256": "7f2ad5254d9d57e03460056c83e524d326c946e9d2902abd7b746677967e5b0e",
+    "rationale": "seed2/chalk t600000 natural dead est-000021 appointment before/after; synthetic audit controls distinguished in result",
+    "ids": [
+      "A02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/A05_CURRENT_RESULT.md",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/A05_CURRENT_RESULT.md",
+    "bytes": 1315,
+    "sha256": "dbb27f775387c38d3a0207bcee3b8656bce88ea25e989b3c911b55a68f59906c",
+    "rationale": "seed1 initial t0 synthetic 7+9 subsidy atomicity input/results; no time advance/UI claim",
+    "ids": [
+      "A05"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/result.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/result.json",
+    "bytes": 10895,
+    "sha256": "92e729fb7af3e50f8881a3b07bc0fb930218ff04d29097f4a5093a8f18dbc7f4",
+    "rationale": "seed1 initial t0 synthetic 7+9 subsidy atomicity input/results; no time advance/UI claim",
+    "ids": [
+      "A05"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/PARENT_CHECK.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/PARENT_CHECK.json",
+    "bytes": 237,
+    "sha256": "05840712a48355cbce7ffe5d777d72f747b6d02f37ed8d78d70d63141266d499",
+    "rationale": "seed1 initial t0 synthetic 7+9 subsidy atomicity input/results; no time advance/UI claim",
+    "ids": [
+      "A05"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/run.log",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/registry-atomic-r05-inherited/run.log",
+    "bytes": 913,
+    "sha256": "27f8037915fdfe0e70eaca3ba137f7a8e8abdb8b57a45970b007a36991ee8c9b",
+    "rationale": "seed1 initial t0 synthetic 7+9 subsidy atomicity input/results; no time advance/UI claim",
+    "ids": [
+      "A05"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/REVIEW.md",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/REVIEW.md",
+    "bytes": 3659,
+    "sha256": "485f0ef245391bdb3bd0e326d1b5e124ce2b175dcc6a46837054641aefc5f398",
+    "rationale": "t100000 accepted charter@25000 but direction locked; actual observed screenshot/DOM and source scope",
+    "ids": [
+      "B02",
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/PREFLIGHT.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/PREFLIGHT.json",
+    "bytes": 4469,
+    "sha256": "cfb93f6125c94424c9dec623053388c691dcfacf21343aeba42cfde93c4fc99a",
+    "rationale": "t100000 accepted charter@25000 but direction locked; actual observed screenshot/DOM and source scope",
+    "ids": [
+      "B02",
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/AUDIT.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/AUDIT.json",
+    "bytes": 3381,
+    "sha256": "d6a53f2da3fecf56b7b41394fae0e959b80dbae81506bd0fae180b9abddb3431",
+    "rationale": "t100000 accepted charter@25000 but direction locked; actual observed screenshot/DOM and source scope",
+    "ids": [
+      "B02",
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/SOURCE_DIAGNOSIS.md",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/SOURCE_DIAGNOSIS.md",
+    "bytes": 1759,
+    "sha256": "bed27e641af6fac84ff1ab30acbc3919f995f49b3c6e2f3d6d849f0390a92534",
+    "rationale": "t100000 accepted charter@25000 but direction locked; actual observed screenshot/DOM and source scope",
+    "ids": [
+      "B02",
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/actions.jsonl",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/actions.jsonl",
+    "bytes": 14376,
+    "sha256": "71ba47980cfaccaf3fdc34ef346771bb2f41076c5356c040e34512c58fe6d616",
+    "rationale": "t100000 accepted charter@25000 but direction locked; actual observed screenshot/DOM and source scope",
+    "ids": [
+      "B02",
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0009-policy-surface.jpg",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0009-policy-surface.jpg",
+    "bytes": 187299,
+    "sha256": "2e5f3de70863ca36a25727228a55c49610b28217bbd3ee7be8073a5bb89ea5b6",
+    "rationale": "t100000 accepted charter@25000 but direction locked; actual observed screenshot/DOM and source scope",
+    "ids": [
+      "B02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0009-policy-surface.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0009-policy-surface.json",
+    "bytes": 5579,
+    "sha256": "3e9673cff150d9b36445921068640292bd0ab8f0456525a1a0dc6be67f45adb0",
+    "rationale": "t100000 accepted charter@25000 but direction locked; actual observed screenshot/DOM and source scope",
+    "ids": [
+      "B02"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0026-autonomous-inspector-top.jpg",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0026-autonomous-inspector-top.jpg",
+    "bytes": 176443,
+    "sha256": "c9c99d1aac54e903e3e6360598c1e2f1c0222dda8d284d32a2b4b2c317d0bdd8",
+    "rationale": "receipt98 storehouse000039; top AND actual scrollbar bottom needed for bounded absence claim",
+    "ids": [
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0026-autonomous-inspector-top.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0026-autonomous-inspector-top.json",
+    "bytes": 6077,
+    "sha256": "b69aede84951c4d985555ac6f8955390fd6a923b6670065a5227e5f60ff528c7",
+    "rationale": "receipt98 storehouse000039; top AND actual scrollbar bottom needed for bounded absence claim",
+    "ids": [
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0028-autonomous-inspector-end.jpg",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0028-autonomous-inspector-end.jpg",
+    "bytes": 171558,
+    "sha256": "1cbc4a40d937981e1d10066efbd2af53b00d4b3a3c1b1456a6c266e5cb1ee12f",
+    "rationale": "receipt98 storehouse000039; top AND actual scrollbar bottom needed for bounded absence claim",
+    "ids": [
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0028-autonomous-inspector-end.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/post-petition-ui/executed-scrollbar/0028-autonomous-inspector-end.json",
+    "bytes": 6082,
+    "sha256": "f5b223e1bea7588d1cf7ba9d2ad62b34fda15b0950379f546f93babfa90cb958",
+    "rationale": "receipt98 storehouse000039; top AND actual scrollbar bottom needed for bounded absence claim",
+    "ids": [
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json",
+    "destination": "inherited/top10/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json",
+    "bytes": 2719026,
+    "sha256": "5a3560012282942253fa7699704dc1eb7147405ee3d755598b50dc7088644961",
+    "rationale": "seed1 t100000 exact browser fixture; old long-run core intentionally omitted midpoint saves",
+    "ids": [
+      "B02",
+      "B03"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/REPORT.md",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/natural-firstplay-r07/REPORT.md",
+    "bytes": 3102,
+    "sha256": "a0a292a4a03512c08350f41897c6bee402ed9302befc6acd8beee5c335a94ae2",
+    "rationale": "Normal lord new-game entry source restriction; prior live UI not R08 execution",
+    "ids": [
+      "B01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/SOURCE_EVIDENCE.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/natural-firstplay-r07/SOURCE_EVIDENCE.json",
+    "bytes": 16154,
+    "sha256": "37366df43a46878009b7d8cb556b3350bebd0c1351fd9e55344504afbfeb3fc3",
+    "rationale": "Normal lord new-game entry source restriction; prior live UI not R08 execution",
+    "ids": [
+      "B01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/natural-firstplay-r07/PRIOR_EVIDENCE.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/natural-firstplay-r07/PRIOR_EVIDENCE.json",
+    "bytes": 530,
+    "sha256": "7e150a813db97363c5dbbbef6ba7c953cab1dad2c858beda3241f6ac334b5049",
+    "rationale": "Normal lord new-game entry source restriction; prior live UI not R08 execution",
+    "ids": [
+      "B01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-live/0001-title.json",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-live/0001-title.json",
+    "bytes": 7898,
+    "sha256": "64dd42be5bdf1572d375f2e5f3a09a34844d22197cfec710d61740ce25b262e5",
+    "rationale": "Actual initial goal-mode build-house CTA screenshot, separate from lord fixture loading",
+    "ids": [
+      "B01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-live/0007-goal-initial.jpg",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-live/0007-goal-initial.jpg",
+    "bytes": 123977,
+    "sha256": "4ddc8c3be9da3367de49ca76dc5c2179ab31b6d78e42b45ce8969e0c736c7536",
+    "rationale": "Actual initial goal-mode build-house CTA screenshot, separate from lord fixture loading",
+    "ids": [
+      "B01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-live/0007-goal-initial.json",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-live/0007-goal-initial.json",
+    "bytes": 4697,
+    "sha256": "41e567402929ed673a5026446670d2c81d4e21c1966e32f0272e7025524c1594",
+    "rationale": "Actual initial goal-mode build-house CTA screenshot, separate from lord fixture loading",
+    "ids": [
+      "B01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-diagnosis/DIAGNOSIS.md",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-diagnosis/DIAGNOSIS.md",
+    "bytes": 5034,
+    "sha256": "26fd7e4bd8ab58796f541e091ec856174dfc122ebf2509b8dc3c715f1b7038d0",
+    "rationale": "Actual initial goal-mode build-house CTA screenshot, separate from lord fixture loading",
+    "ids": [
+      "B01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r01-20261003/records/PERF_RUNTIME.md",
+    "destination": "inherited/top10/astra-steward-r01-20261003/records/PERF_RUNTIME.md",
+    "bytes": 2689,
+    "sha256": "5c0ba491a1c567cd1bc95075c3a1790515aa110ef25f40ac32ce73ba5a126a99",
+    "rationale": "Old HEAD5ad seed1 t60000; small actual CPU sample profile and stack, not browser profile; must continue full bot, no current performance proof",
+    "ids": [
+      "A01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r01-20261003/records/PERF_SOURCE_REVIEW.md",
+    "destination": "inherited/top10/astra-steward-r01-20261003/records/PERF_SOURCE_REVIEW.md",
+    "bytes": 10994,
+    "sha256": "6adbbd477877cab9c3f69a3d65660ca195be1b941b8b093b5b925891b1d146fe",
+    "rationale": "Old HEAD5ad seed1 t60000; small actual CPU sample profile and stack, not browser profile; must continue full bot, no current performance proof",
+    "ids": [
+      "A01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r01-20261003/records/repro-1315.fls.json",
+    "destination": "inherited/top10/astra-steward-r01-20261003/records/repro-1315.fls.json",
+    "bytes": 1742509,
+    "sha256": "84317a6b490d181900b6405696f9c96b761afdf45b35b7fd101a48ab6c6c75c3",
+    "rationale": "Old HEAD5ad seed1 t60000; small actual CPU sample profile and stack, not browser profile; must continue full bot, no current performance proof",
+    "ids": [
+      "A01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r01-20261003/records/debug-profile.json",
+    "destination": "inherited/top10/astra-steward-r01-20261003/records/debug-profile.json",
+    "bytes": 16695,
+    "sha256": "487575efdd77316f5451eb594dc0fcc0e6d7c3f62a4c793b552fe8e38212d838",
+    "rationale": "Old HEAD5ad seed1 t60000; small actual CPU sample profile and stack, not browser profile; must continue full bot, no current performance proof",
+    "ids": [
+      "A01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r01-20261003/records/debug-profile-summary.json",
+    "destination": "inherited/top10/astra-steward-r01-20261003/records/debug-profile-summary.json",
+    "bytes": 113,
+    "sha256": "11457242c8a1ee252066bdc6409af439844d3f2f2502a07e66aea1c977dc3787",
+    "rationale": "Old HEAD5ad seed1 t60000; small actual CPU sample profile and stack, not browser profile; must continue full bot, no current performance proof",
+    "ids": [
+      "A01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r01-20261003/records/debug-stack-02.json",
+    "destination": "inherited/top10/astra-steward-r01-20261003/records/debug-stack-02.json",
+    "bytes": 49348,
+    "sha256": "410fbbd8155f721b7045c7a8a1e5daeac8a74de4d5db8ffd6325cdf9aa80664d",
+    "rationale": "Old HEAD5ad seed1 t60000; small actual CPU sample profile and stack, not browser profile; must continue full bot, no current performance proof",
+    "ids": [
+      "A01"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-probe/UI_EVIDENCE.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-probe/UI_EVIDENCE.json",
+    "bytes": 1157,
+    "sha256": "9665916157b1d9dba08cd5e08adc3f33b2b918e815ca3c55ef78abd75c80ffc2",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-probe/executed/REVIEW.md",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-probe/executed/REVIEW.md",
+    "bytes": 1639,
+    "sha256": "d1a2d5c4def113c7248ecb4e505e756bd09f8cc59781b8be071bbb66a4bbe19b",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-probe/executed/result/result.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-probe/executed/result/result.json",
+    "bytes": 170093,
+    "sha256": "938fe7d7381f56d67b7427b7205f061d426e77cddfe704ad5e653bd69947deb7",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-probe/executed/result/haggled-market-15-before.fls.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-probe/executed/result/haggled-market-15-before.fls.json",
+    "bytes": 298795,
+    "sha256": "3bf4a4fd7aaf871899e83701ea48b9a212191c412c848273b406daf14b949384",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-probe/executed/result/haggled-market-15-after.fls.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-probe/executed/result/haggled-market-15-after.fls.json",
+    "bytes": 299545,
+    "sha256": "7d773863803bb73dd52f4e6dbad537b29afbbdf7cbcce5d25f94b30a0ebed698",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-deadline-probe/INPUTS.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-deadline-probe/INPUTS.json",
+    "bytes": 3015,
+    "sha256": "6e1e6ab1fefc6c1df54446e4c1f694a0507bf3dc6f5dc57d7dfda2ecdbf729ba",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-deadline-probe/executed/REVIEW.md",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-deadline-probe/executed/REVIEW.md",
+    "bytes": 1040,
+    "sha256": "7dac8a5f48915933c99e55eb0733c9dc63cf938710d46613b6c50055f34dd479",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-deadline-probe/executed/result-continuous/result.json",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-deadline-probe/executed/result-continuous/result.json",
+    "bytes": 976822,
+    "sha256": "36a9bc1105b413992da3b938089969ffc045d5ec1356c4c4d49712b9b5704a56",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r07-20261004/records/restoration-deadline-probe/executed/result-continuous/boundaries.jsonl",
+    "destination": "inherited/top10/astra-steward-r07-20261004/records/restoration-deadline-probe/executed/result-continuous/boundaries.jsonl",
+    "bytes": 27776,
+    "sha256": "274e5ab3fa608037c034740aa5e8e090b852d639ba663efa1bbeaac7d21a8aed",
+    "rationale": "Synthetic seed1 t12001 insufficient15 and time boundaries16001/17000; preserve natural/UI limits",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/0115-petition-immediate-before.jpg",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-executed/0115-petition-immediate-before.jpg",
+    "bytes": 89957,
+    "sha256": "b0cfb9df56d00dcca8c837f9cee9a12eca75ac26f8eb6d856da5015eb6147a97",
+    "rationale": "Actual insufficient-cash restoration UI before/after; original runtime petition ID unknown, not identical synthetic fixture",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/0115-petition-immediate-before.json",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-executed/0115-petition-immediate-before.json",
+    "bytes": 9376,
+    "sha256": "0acd3d14d66734edadfdf4db9e67d05f632804975eec458d959a26ceaf8f9f15",
+    "rationale": "Actual insufficient-cash restoration UI before/after; original runtime petition ID unknown, not identical synthetic fixture",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/0118-petition-immediate-after.jpg",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-executed/0118-petition-immediate-after.jpg",
+    "bytes": 127506,
+    "sha256": "1dd4490563da9e6017ac9bc313f12f29096927c2968d392399113f465f354adf",
+    "rationale": "Actual insufficient-cash restoration UI before/after; original runtime petition ID unknown, not identical synthetic fixture",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  },
+  {
+    "source": "/tmp/astra-steward-r05-20261004/records/ui-r05-executed/0118-petition-immediate-after.json",
+    "destination": "inherited/top10/astra-steward-r05-20261004/records/ui-r05-executed/0118-petition-immediate-after.json",
+    "bytes": 6713,
+    "sha256": "42c0a374ce533745eb1c3b659fadcb791d2f442afc5956bb801ca858abe1aa9c",
+    "rationale": "Actual insufficient-cash restoration UI before/after; original runtime petition ID unknown, not identical synthetic fixture",
+    "ids": [
+      "B04.restore-affordability"
+    ],
+    "existingR08Paths": [
+
+    ],
+    "action": "PROPOSE_COPY"
+  }
+]

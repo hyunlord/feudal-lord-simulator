@@ -1,0 +1,25 @@
+{
+  "status": "PASS_OFFLINE_DRAFT_REVIEW",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "sourceSha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+  "patchSha256": "134e5161b6677bbac94be012e8ca5a0e765308f664cbac44c0b13b9ab8caae90",
+  "appliedCopySha256": "e09c875182af83f58c584839cb0abb668f5b0da84942745dccf10044c5f5a90e",
+  "factLinesApproved": 14,
+  "compositionConditionalApproved": 23,
+  "compositionHeld": 0,
+  "sourceFilesVerified": 8,
+  "sourceSpansVerified": 24,
+  "exact14LinesChanged": true,
+  "interpolationExpressionsUnchanged": true,
+  "sourceUnchanged": true,
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "canonicalUnchanged": true,
+  "runtimeExecuted": false,
+  "engineInstalled": false,
+  "contextCaptureImplemented": false,
+  "oldHoldLedgersChanged": false,
+  "separateNewCandidateReview": [
+    "person.came_of_age",
+    "milestone.stone_town"
+  ]
+}

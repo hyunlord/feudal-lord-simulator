@@ -68,6 +68,7 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
      - 2026-10-02에 확인: 올리는 동안(파일 0 → 30,553개) 잠금이 계속 잡혀 있었고, 실행이 끝난 뒤 풀렸다.
      - 본선을 합치지 않은 체크아웃의 옛 run.sh는 아직 올리는 동안 잠그지 않는다.
    - 정리는 어느 세션의 실행이 끝날 때든 돈다. `_`로 시작하는 폴더(`_kept`·`_trend`·`_clones` 등), `.remote/keep`이 있는 폴더, 아직 도는 폴더(잠금)는 건드리지 않는다(2026-10-01 DGX 임시 폴더에서 `prune_runs`를 그대로 돌려 확인: 14개 중 보존·도는 폴더를 빼고 가장 오래된 둘만 지움).
+   - **남은 개발 서버도 정리한다**(2026-10-03, 결정 RR12): 실행이 끝날 때 `remote-exec.sh`의 `stop_dev_servers`가 작업 폴더가 실행 폴더(`<run>/…`, `_clones/<run>/…`) 안인 vite node 프로세스를 찾는다. 이 실행의 것(명령이 끝났으므로)과 잠금이 풀린 다른 실행의 것을 실행 기록에 이름을 적고 멈춘다(TERM, 3초 뒤 KILL). 도는 실행(잠금)의 서버와 `fls-runs` 밖(플레이 서버 4173)은 건드리지 않는다. 계기: 캡처 스크립트가 끄지 않은 vite 24개가 4300~4399 포트를 쥐고 남았다(렌더가 정리).
    - 그래서 `--keep` 없이 돈 실행의 폴더는 다른 세션의 실행이 지울 수 있다. 남겨야 할 실행은 `--keep`으로 돌린다.
    - 추이 실행(`--task trend`)은 결과를 `_trend/`(측정 `<sha>.json`, A-B 확인 `ab/`)에 두고, 로그도 `_trend/logs/<run>.log`로 복사한다.
    - **본선 푸시의 추이 측정**은 pre-push 훅이 `scripts/remote/trendLaunch.mjs`로 띄운다. 새 세션(setsid)에서 돌고, 표준 입력은 닫고, 출력은 `.remote-runs/trend-push.log`로 보낸다. 그래서 푸시의 입출력을 붙잡지 않고, 푸시를 죽여도 함께 죽지 않는다. 푸시는 그 프로세스가 생겼는지만 확인하고 바로 끝난다.
@@ -98,6 +99,10 @@ scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <아무 
   - `/usr/bin/google-chrome`: 같은 Chromium을 가리키는 심볼릭 링크. Linux 기본값으로 Chrome을 찾는 테스트(Part7)를 위해 둔다.
 - `CHROME_PATH`는 설정하지 않는다. 기본 Chrome 경로를 검사하는 CLI 테스트가 Mac과 똑같이 돌게 하기 위해서다. 명시 경로가 필요한 명령은 `CHROME_PATH=$FLS_CHROMIUM_PATH …`를 붙인다(`remote:browser`는 그렇게 한다).
 - 한글 캡처에 쓰는 폰트는 Noto CJK(`fonts-noto-cjk`)다. 이미 설치되어 있다.
+- **서버를 띄우는 스크립트는 끝날 때 반드시 끈다**(결정 RR12).
+  - 셸: `. scripts/remote/devServers.sh` 뒤 `fls_serve <log> [--in <dir>] <vite 인자…>`. 서버를 자기 프로세스 그룹으로 띄우고(`setsid`), 정상 끝·`set -e` 실패·Ctrl-C·TERM/HUP(실행 중지) 어느 때든 그룹째 끈다. 다른 정리는 `fls_on_exit '<명령>'`로 건다(자기 EXIT 함정을 따로 걸지 않는다).
+  - TS·mjs: `scripts/serverProcess.ts`의 `spawnServer`(spawn과 같은 인자). `process.exit`·잡히지 않은 오류·SIGINT/SIGTERM/SIGHUP에도 서버를 끈다(호출 쪽 `finally`는 그때 돌지 않는다).
+  - 전에는 NAT-4·NAT-5 캡처 스크립트가 셸 함수로 띄운 vite(`serve … &`)의 `$!`가 함수의 하위 셸이라, 함정이 그것만 죽이고 vite는 남았다.
 
 ## 성능 기준선
 - 처리량 관문(p95 비교)은 **DGX 대 DGX로만** 한다. Mac 수치와 섞지 않는다.

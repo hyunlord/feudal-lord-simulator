@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 1,
+  "status": "editorial_contracts_not_runtime_implemented",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "engineEnabling": false,
+  "aliases": [
+    {
+      "eventId": "ck_evt_011",
+      "old": "COUNTER_MATERIAL_BURDEN_INCREASE",
+      "new": "COUNTER_MATERIAL_BURDEN_INCREASE_V1",
+      "action": "patch renames derived selector and unsupportedSelectors together; V1 remains unsupported until implemented"
+    },
+    {
+      "eventId": "ck_evt_049",
+      "old": "actual_cloth_trade_context",
+      "new": null,
+      "action": "remove unsupported filter and all positive claims of observed cloth trade; retain subsidy eligibility"
+    },
+    {
+      "eventId": "ck_evt_057",
+      "old": "church_near_market",
+      "new": "CHURCH_NEAR_MARKET_V1",
+      "action": "old unsupportedFilters id is compatibility key; resolve its semantics through V1, keep status unsupported and onMissing block_entry"
+    },
+    {
+      "eventId": "ck_evt_058",
+      "old": "cross_estate_trade_context",
+      "new": "EXISTS_EXISTING_MARKET_V1",
+      "action": "remove cross-estate filter and mediation fiction; replace with named existing-market predicate, unsupportedSelectors keeps block"
+    },
+    {
+      "eventId": "ck_evt_057",
+      "old": "new_petition_definition_057",
+      "new": "REGISTRY_GENERIC_PETITION_V1",
+      "action": "definition is draft only; lookup and lifecycle absent; keep block"
+    },
+    {
+      "eventId": "ck_evt_058",
+      "old": "new_petition_definition_058",
+      "new": "REGISTRY_GENERIC_PETITION_V1",
+      "action": "definition is draft only; lookup and lifecycle absent; keep block"
+    }
+  ],
+  "selectors": [
+    {
+      "id": "treasuryBalance",
+      "kind": "engine_call_adapter",
+      "engineFunctionExists": true,
+      "registryAdapterVerified": false,
+      "status": "unsupported_until_adapter_verified",
+      "onMissing": "block_entry",
+      "readModelRef": "READ_MODEL.json#/engineCalls/treasuryBalance",
+      "inputs": [
+        "state"
+      ],
+      "ast": {
+        "operation": "max",
+        "args": [
+          {
+            "literal": 0
+          },
+          {
+            "call": "treasuryBalance",
+            "args": [
+              {
+                "field": "state"
+              }
+            ]
+          }
+        ]
+      },
+      "rules": [
+        "Use existing treasuryBalance: ledger cash when present, opening treasuryCoin only when no ledger exists. Do not substitute raw treasuryCoin for an existing ledger.",
+        "The engine helper exists; this flag blocks only unverified registry evaluator wiring. Remove unsupportedSelectors marker only after adapter verification against positive, negative and ledger/raw divergence cases."
+      ]
+    },
+    {
+      "id": "COUNTER_MATERIAL_BURDEN_INCREASE_V1",
+      "inputs": [
+        "bound.negotiation.terms",
+        "bound.negotiation.counter.terms"
+      ],
+      "result": "boolean; invalid or incomparable => false",
+      "rules": [
+        "Require status countered and nonmissing counter. Original is negotiation.terms, never counter.changes summary.",
+        "Compare proposer cash, pension and debt_assumption only. Require finite nonnegative integer amount; cash must omit years; pension/debt_assumption require positive integer years. Optional pieceId on monetary terms is invalid. Unknown fields or kinds fail closed.",
+        "Normalize every other term by sorted object keys without discarding amount/years/pieceId or giver; compare sorted multisets including duplicate multiplicity. No political-support, right, jointure, counterpart or residence tradeoffs may differ.",
+        "Bucket monetary terms by kind and years (cash uses absent-year sentinel). Sum amounts within each bucket. For each pension/debt kind, the set of positive-amount year buckets must be unchanged when that kind is present on both sides; changing duration is incomparable even if total pennies rise. Newly added kind may use its explicit positive years.",
+        "Across the union of buckets, absent amount is zero. All counter totals must be >= original totals and at least one strictly >. Do not collapse pension annual amount into principal or equate pension and cash.",
+        "Eligibility separately rechecks deadline - tick >= 80 and counter cash <= max(0, treasuryBalance(state)); choice handler remains answerCounter. No payment is made by selector. AST uses operation max(0, call treasuryBalance(state)); treasuryBalance is listed separately in unsupportedSelectors until registry adapter support is verified. No raw treasuryCoin fallback is allowed by this contract."
+      ],
+      "boundaryCases": [
+        {
+          "case": "cash 10 -> 12 with unchanged consent",
+          "expected": true
+        },
+        {
+          "case": "cash 10 -> 10",
+          "expected": false
+        },
+        {
+          "case": "cash 10 -> 12 and pension 3x5 -> 2x5",
+          "expected": false
+        },
+        {
+          "case": "pension 3x5 -> 4x6",
+          "expected": false
+        },
+        {
+          "case": "cash rises but political_support added",
+          "expected": false
+        },
+        {
+          "case": "new pension 2x5, all other terms equal",
+          "expected": true
+        },
+        {
+          "case": "missing/negative/noninteger amount",
+          "expected": false
+        }
+      ]
+    },
+    {
+      "id": "CHURCH_NEAR_MARKET_V1",
+      "inputs": [
+        "state.buildings"
+      ],
+      "rules": [
+        "Exists one built market and one built church or chapel in state.buildings with buildingFootprintDistance <= 4. Exclude proposed agency projects; do not require trade, service coverage, walkability or parish jurisdiction.",
+        "Use runtime buildingFootprint/buildingFootprintDistance, including orientation. The Manhattan gap is between occupied tile extents; touching adjacent tiles are distance 1, not 0.",
+        "4 tiles is authored game estimate, not historical evidence. Distances 4 qualify and 5 fail; empty/missing required collections fail closed."
+      ],
+      "engineStatus": "geometry helper exists; registry predicate adapter absent"
+    },
+    {
+      "id": "EXISTS_EXISTING_MARKET_V1",
+      "inputs": [
+        "state.buildings"
+      ],
+      "rules": [
+        "Some existing state.buildings entry has kind market. Proposed projects do not qualify. Missing collection returns false. No cross-estate commerce or mediator is asserted."
+      ],
+      "engineStatus": "state data exists; named selector unimplemented"
+    }
+  ],
+  "lifecycle": {
+    "id": "REGISTRY_GENERIC_PETITION_V1",
+    "definitionIds": [
+      "ck_evt_057",
+      "ck_evt_058"
+    ],
+    "status": "proposal_not_installed",
+    "rules": [
+      "Separate definition lookup from calendar scheduler. Do not append these absent-trigger definitions to PETITION_DEFS: current trigger default calendar bypasses registry gates.",
+      "Use two phases. Candidate phase evaluates calendar, frequency, spatial/rights conditions and campaign dedup WITHOUT requiring bound.chapterPetition. If it qualifies, inject exactly one PetitionRecord using id defId@tick, defId, petitioner merchants, arrivedTick. Bind this record before exposing choices. The current registry binding alone cannot create it and would block on missing record.",
+      "Once per campaign per defId. Existing record of any response suppresses another arrival. Suppress while same semantic group already open; persist selected occurrence and dedup history in save data. Retain global new_content frequency budget and choice revalidation. No automatic steward response is implied.",
+      "Editorial deadline proposal: arrivedTick + 1000 ticks (one existing game season), capped at first tick after 1450. 1000 and one-season response window are game tuning, not existing PetitionDef deadline support. Reject arrival if fewer than 80 ticks remain before cap; both 80 and response window require new adapter and persistence tests.",
+      "At expiry, mark response expired/respondedTick once; apply expiredGauge from definition and run existing generic faction transition once (merchant_house_1 -10). This deadline cannot be inferred from current PetitionDef, whose calendar expiry is year > toYear. Do not claim stock scheduler already supports this lifecycle.",
+      "On response revalidate same unanswered id, allowed response, current contextual predicates; for 057 additionally reject duplicate market_charter or any open stock market_charter petition. Dispatch existing petition_response through normal transition pipeline so faction/history/ledger effects are recorded once. A generic right affects whole market and does not transfer estate pieces.",
+      "057 accept: charter right,750 permille,fee0,gauge+12; accept_with_price:right,1000,fee+80,gauge+3; refuse:no right,fee0,gauge-5. Generic faction deltas accept+10/priced+3/refuse-15 are separate.",
+      "058 accept: no right,fee0,gauge+8; priced:no right,fee+50,gauge0. Refuse exists only because outcomes Record requires it, but not in offered responses. No existing debt cancellation, recurring tax or neighbour diplomacy effect.",
+      "Implement and verify definition lookup, arrival, expiry, reload exactly-once semantics, UI text/options, response transition, raw ledger/history and campaign cut-off before enabling."
+    ]
+  },
+  "unresolvedRuntime": [
+    "011 V1 comparator and canonical treasury eligibility adapter",
+    "049 registry adapter and sequential subsidy safety remain; filter removal is not execution proof",
+    "057 spatial filter plus both new definition lifecycles",
+    "058 market selector plus both new definition lifecycles"
+  ],
+  "editorialQuestionsAnswered": 4,
+  "runtimeVerified": false
+}

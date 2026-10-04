@@ -1,0 +1,2324 @@
+[
+  {
+    "id": "filed",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.filed",
+    "actual": "lawsuit.r06context.filed"
+  },
+  {
+    "id": "hearing",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:hearing"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:hearing"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.hearing",
+    "actual": "lawsuit.r06context.hearing"
+  },
+  {
+    "id": "evidence:charter",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:charter"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:charter"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.evidence",
+    "actual": "lawsuit.r06context.evidence"
+  },
+  {
+    "id": "evidence:deed",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:deed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:deed"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.evidence",
+    "actual": "lawsuit.r06context.evidence"
+  },
+  {
+    "id": "evidence:court_roll",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:court_roll"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:court_roll"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.evidence",
+    "actual": "lawsuit.r06context.evidence"
+  },
+  {
+    "id": "evidence:witnesses",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:witnesses"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:witnesses"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.evidence",
+    "actual": "lawsuit.r06context.evidence"
+  },
+  {
+    "id": "enforcing:1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:1"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:1"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.enforcing",
+    "actual": "lawsuit.r06context.enforcing"
+  },
+  {
+    "id": "enforcing:12",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:12"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:12"
+          }
+        ]
+      }
+    },
+    "expected": "lawsuit.r06context.enforcing",
+    "actual": "lawsuit.r06context.enforcing"
+  },
+  {
+    "id": "unknown_evidence",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_patronage",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:patronage"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:patronage"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_judged",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:judged"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:judged"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_closed",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:closed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:closed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_evidence:possession_years",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:possession_years"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:possession_years"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_evidence:unknown",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:unknown"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:evidence:unknown"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_enforcing:0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:0"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:0"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_enforcing:-1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:-1"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:-1"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_enforcing:01",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:01"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:01"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_enforcing:1.0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:1.0"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:1.0"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown_enforcing:9007199254740992",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:9007199254740992"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:enforcing:9007199254740992"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "suit-0:filed",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-0:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-0:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "suit-03:filed",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-03:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-03:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "suit-3:filed\n",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed\n"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed\n"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "suit-9007199254740992:filed",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-9007199254740992:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-9007199254740992:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "filed",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": 0,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": 1,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -1.5,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount3",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -9007199254740992,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount4",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": "-60",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": "-60",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount5",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "amount6",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": false,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "missing_status",
+    "input": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "missing_sourceHead",
+    "input": {
+      "status": "known",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "missing_campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "missing_entry",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test"
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test"
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "entry_missing_id",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "entry_missing_tick",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "entry_missing_account",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "entry_missing_category",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "entry_missing_amount",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "entry_missing_sourceRefs",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "refs0",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "refs1",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": null
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": null
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "refs2",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          },
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          },
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding_campaignId",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "other",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding_sourceHead",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "other",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding_entry_id",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": null,
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding_entry_tick",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": null,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding_entry_amount",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": null,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "binding_entry_sourceRefs",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": null
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "restricted",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "restricted",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "restricted",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "arrears",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "arrears",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "arrears",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "in_kind",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "in_kind",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "in_kind",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "extra",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      },
+      "unexpected": true
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "wrong_ref",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "actor",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "empty_claim",
+    "input": {
+      "status": "known",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  },
+  {
+    "id": "unknown",
+    "input": {
+      "status": "unknown",
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "identity": {
+      "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+      "campaignId": "campaign-test",
+      "entry": {
+        "id": "ledger-000041",
+        "tick": 2400,
+        "account": "cash",
+        "category": "lawsuit",
+        "amount": -60,
+        "sourceRefs": [
+          {
+            "type": "claim",
+            "id": "claim-7",
+            "detail": "suit-3:filed"
+          }
+        ]
+      }
+    },
+    "expected": null,
+    "actual": null
+  }
+]

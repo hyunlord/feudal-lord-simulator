@@ -1,0 +1,47 @@
+{
+  "status": "PASS_BOUNDED_150_YEAR_COMPLETION",
+  "at": "2026-10-04T11:05:38+09:00",
+  "checks": 232,
+  "failed": [
+
+  ],
+  "actual": {
+    "seed": 3,
+    "land": "core:fen_drainage",
+    "policy": "growth",
+    "startTick": 0,
+    "finalTick": 600000,
+    "finalYear": 1450,
+    "annualRows": 150,
+    "commandRows": 819,
+    "changedReferenceCommands": 306,
+    "codecLogRows": 38,
+    "retainedSaveFiles": 9,
+    "finalPopulation": 470,
+    "observerSeconds": 1184,
+    "officialSeconds": 1187,
+    "exit": 0
+  },
+  "sourceScope": {
+    "prelaunchPins": 26,
+    "executionPins": 25,
+    "fullSourceInventoryPhase": "during_run",
+    "fullSourceDuringAndAfterOK": 1095
+  },
+  "duplicateEnvelopeDecision": "all three preserved; only savedAt differs; actual state identical",
+  "limits": [
+    "codec not independently executed",
+    "hash extracted original raw JSON not Ruby reserialization",
+    "only9 retained save envelopes cover38 logged checkpoints",
+    "no second deterministic run",
+    "invariant sampling at1000ticks not everytick",
+    "findings empty is sampled observer result only",
+    "no whole-world mortality rate",
+    "no UI/fun/policy dominance claim"
+  ],
+  "files": {
+    "report": "REPORT.md",
+    "checks": "CHECKS.json",
+    "pins": "INPUT_PINS.json"
+  }
+}

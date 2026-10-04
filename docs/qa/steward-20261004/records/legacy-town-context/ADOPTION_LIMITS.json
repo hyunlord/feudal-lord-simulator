@@ -1,0 +1,43 @@
+{
+  "allVariantsRequireVerifiedCapture": true,
+  "compositionHolds": [
+    {
+      "variantId": "legacy.market_fire.r06town.full",
+      "status": "HOLD_COMPOSED_FACT_LINE_REVIEW",
+      "reason": "Original cost is configured repair cost, not actual posted payment; no building fire operation in this event. Review configured versus paid and avoid physical damage claims.",
+      "engineModified": false
+    },
+    {
+      "variantId": "legacy.market_fire.r06town.partial",
+      "status": "HOLD_COMPOSED_FACT_LINE_REVIEW",
+      "reason": "Original cost is configured repair cost, not actual posted payment; no building fire operation in this event. Review configured versus paid and avoid physical damage claims.",
+      "engineModified": false
+    },
+    {
+      "variantId": "legacy.market_fire.r06town.zero",
+      "status": "HOLD_COMPOSED_FACT_LINE_REVIEW",
+      "reason": "Original cost is configured repair cost, not actual posted payment; no building fire operation in this event. Review configured versus paid and avoid physical damage claims.",
+      "engineModified": false
+    },
+    {
+      "variantId": "legacy.nave_rebuilt.r06town.full",
+      "status": "HOLD_COMPOSED_FACT_LINE_REVIEW",
+      "reason": "Original fact line claims new nave stood; producer only sets flag immediately after bounded cash post, without physical construction. Review paid/flag versus completed building language.",
+      "engineModified": false
+    },
+    {
+      "variantId": "legacy.nave_rebuilt.r06town.partial",
+      "status": "HOLD_COMPOSED_FACT_LINE_REVIEW",
+      "reason": "Original fact line claims new nave stood; producer only sets flag immediately after bounded cash post, without physical construction. Review paid/flag versus completed building language.",
+      "engineModified": false
+    },
+    {
+      "variantId": "legacy.nave_rebuilt.r06town.zero",
+      "status": "HOLD_COMPOSED_FACT_LINE_REVIEW",
+      "reason": "Original fact line claims new nave stood; producer only sets flag immediately after bounded cash post, without physical construction. Review paid/flag versus completed building language.",
+      "engineModified": false
+    }
+  ],
+  "globalLimit": "Scheduled interlude and balance effects are game events, not additional historical source evidence. No fire scope, built nave or sales results were measured.",
+  "runtimeInstalled": false
+}

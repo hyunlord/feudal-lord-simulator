@@ -1,0 +1,4462 @@
+{
+  "status": "scoped_provenance_preserved",
+  "sources": [
+    {
+      "id": "CS01",
+      "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+      "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+      "type": "institutional_glossary",
+      "access": "direct_page",
+      "scope": "중세에서 후대까지, Cumbria 중심",
+      "claim": "출석 면제 사유, 관습 명세 장부, 수선·연료용 채취권, 감금 가축 무단 반출, 경계·집 수선 감독 직책이 구별된다.",
+      "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS02",
+      "title": "CAMPOP, Private Law and Medieval Village Society",
+      "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/",
+      "type": "university_research",
+      "access": "direct_page",
+      "scope": "약1250–1350, 동서부 10개 주의 103 법정 기록군",
+      "claim": "채무·불이행·침해 소송과 평신도 법정 참여를 조사했다. 1328년 Longdon의 출석 면제 횟수 다툼, 1348년 Halesowen의 적법한 소환 여부 다툼을 구체적으로 든다.",
+      "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS03",
+      "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+      "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+      "type": "primary_text_translation",
+      "access": "direct_page",
+      "scope": "1283·1285·1311 잉글랜드 법령 번역",
+      "claim": "채무액·기한 등록, 채무자 인장, 두 벌의 기록과 분리 인장 보관, 보증인 의무, 재산 평가와 집행 관할을 명시한다.",
+      "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS04",
+      "title": "The National Archives, Medieval agreements and arguments",
+      "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-agreements-and-arguments/",
+      "type": "archive_primary_document_guide",
+      "access": "search_index_only_open_failed",
+      "scope": "1407 York 경계 합의 지도; 1426 Middelburg 상인 청원",
+      "claim": "합의 지도와 법정 사건을 장부에 함께 보관한 사례, 통행보호 문서를 받았으나 구금·물자 압류를 당했다는 상인 청원이 있다.",
+      "limit": "기관 검색 색인 본문만 확인. York와 네덜란드 사례를 남부 가공도시의 실제 사건으로 제시하지 않는다. 청원은 당사자 주장으로 결과를 보장하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "HOLD_SOURCE_FULLTEXT_REQUIRED",
+      "accessAttempts": [
+        {
+          "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-agreements-and-arguments/",
+          "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+        }
+      ]
+    },
+    {
+      "id": "CS05",
+      "title": "Kent Archaeological Society, Jayne Semple, The Tanners of Wrotham Manor 1400–1600",
+      "url": "https://www.kentarchaeology.org.uk/journal/126/tanners-wrotham-manor-1400-1600",
+      "type": "regional_scholarly_article",
+      "access": "direct_page",
+      "scope": "Kent, 15–16세기; 세부 임대 장부1495·1538·1568",
+      "claim": "무두질 입지가 소 떼·물·참나무 껍질 공급과 관련됨을 설명하며 농업과 다른 생업의 병행을 다룬다.",
+      "limit": "제목 범위만으로 1400년 특정 작업장·인물의 존재를 확정하지 않는다. 1450 이후 개별 소송·재혼·직종 사례는 사용하지 않았다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.kentarchaeology.org.uk/journal/126/tanners-wrotham-manor-1400-1600",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS06",
+      "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810",
+      "type": "official_heritage_record",
+      "access": "direct_page",
+      "scope": "Cornwall, 현 구조 약1430–1450 추정; 다리 언급1412",
+      "claim": "돌다리와 인접 여울이 공존했다. 안내는 교회·길드의 다리 유지 및 수선용 통행 징수권을 일반적으로 설명한다.",
+      "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS07",
+      "title": "English Heritage, Description of Farleigh Hungerford Castle",
+      "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+      "type": "official_heritage_record",
+      "access": "direct_page",
+      "scope": "Somerset, 1430 사제 숙소; 약1430–1445 외곽 구역; 1440년대 벽화 추정",
+      "claim": "가문의 추도를 맡은 사제들의 숙소가1430년 시작되었고 예배당의 성 게오르기우스 벽화는1440년대 의뢰로 추정된다.",
+      "limit": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS08",
+      "title": "The National Archives, Magna Carta 1225, Westminster translation",
+      "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/magna-carta-1225-westminster/",
+      "type": "primary_text_translation",
+      "access": "search_index_only_open_failed",
+      "scope": "1225 법 규범, 잉글랜드",
+      "claim": "과부의 재산 배정과 재혼 의사, 후견 중인 상속인의 성년 및 혼인에 관한 규범을 구별한다.",
+      "limit": "1300–1450 실제 준수율이나 모든 신분의 보편 절차로 쓰지 않는다. dower와 게임 jointure를 동일시하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "supplement": {
+        "title": "Fordham Medieval Sourcebook, Magna Carta 1215 translation",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp",
+        "access": "direct_page",
+        "locator": "조항3–8",
+        "claim": "후견 재산의 관리·성년 반환과 과부의 재혼 의사에 관한1215년 규범을 직접 읽었다.",
+        "limit": "1225년 본문을 열었다는 대체 증거가 아니다.1300–1450 실행 관행을 확정하지 않는다."
+      },
+      "productionUse": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+      "accessAttempts": [
+        {
+          "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/magna-carta-1225-westminster/",
+          "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+        }
+      ]
+    },
+    {
+      "id": "CS09",
+      "title": "The National Archives, Women in medieval deeds",
+      "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+      "type": "archive_primary_document_guide",
+      "access": "official_guide_body_direct_2026-10-04_not_manuscript_transcription",
+      "scope": "1309 Warwickshire;1319 Stepney;1366–1367 Yorkshire",
+      "claim": "과부가 자신의 인장으로 지대 수령증을 남기거나 토지 청구권 포기 문서를 발급한 사례를 제시한다.",
+      "limit": "공식 유물 해설 본문 직접 확인. 중세 필체 자체의 독립 판독은 하지 않았다. 인장 소유로 라틴어 문해력·모든 여성의 독립 법적 지위를 확정하지 않는다.",
+      "checkedAt": "2026-10-04",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+          "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+        },
+        {
+          "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+          "result": "2026-10-04 web.open403; 직접curl200 HTML 본문에서 E42/78·E42/243 유물해설 확인; 원본 저장."
+        }
+      ]
+    },
+    {
+      "id": "CS10",
+      "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+      "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F",
+      "type": "academic_book_chapter",
+      "access": "publisher_summary",
+      "scope": "1370–1420 직영지 임대 전환;1430년대 불황; Durham 중심",
+      "claim": "직영지를 직접 경영하기보다 임대하는 움직임과 지대·수입 저하 및1430년대 흉작을 설명한다.",
+      "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS11",
+      "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+      "url": "https://kar.kent.ac.uk/60707/",
+      "type": "academic_article_repository",
+      "access": "repository_abstract",
+      "scope": "1430년대 북서·중앙 유럽",
+      "claim": "복수 자연·문헌 자료로1430년대 추위와 사회경제적 영향을 논의한다.",
+      "limit": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://kar.kent.ac.uk/60707/",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS12",
+      "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+      "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf",
+      "type": "regional_scholarly_volume",
+      "access": "direct_pdf_text",
+      "scope": "Sussex Alciston,1349 및1425–1427·1440–1441",
+      "claim": "논문 제목·저자와 본문을 직접 확인했다. p.93은1425–1427·1440–1441년 역병 노동 부족과1349년 관리 사망에 따른 회계 담당 변경을 설명한다. p.90은1429–1430년 기와 생산·인근 장원 판매를 기록한다.",
+      "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS13",
+      "title": "Our Migration Story, Becoming English: letters of denization",
+      "url": "https://www.ourmigrationstory.org.uk/oms/becoming-english-letters-of-denization",
+      "type": "academic_public_history_primary_document",
+      "access": "direct_page",
+      "scope": "1441 Gervase le Vulre, 잉글랜드",
+      "claim": "1441년 Gervase와Joan의 지위 특허 번역(TNA C66/450,m.12)을 직접 확인. 재산 보유·소송 등의 권리를 다룬다. 낮은 지위의 장인 다수에게 필수 문서가 아니었다.",
+      "limit": "왕실 서기관의 사례를 평범한 이주민의 표준 경로로 삼지 않는다. 지역 영주는 왕실의 지위 특허를 발급할 수 없다. denization은16세기 이후 naturalisation과 동일하지 않으므로 단순한 완전 귀화로 번역하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.ourmigrationstory.org.uk/oms/becoming-english-letters-of-denization",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        }
+      ]
+    },
+    {
+      "id": "CS14",
+      "title": "Jessica Lutkin and W. Mark Ormrod (University of York), Alien subsidies in Medieval England",
+      "url": "https://www.ourmigrationstory.org.uk/oms/the-alien-subsidies-in-medieval-england",
+      "type": "academic_public_history_primary_document",
+      "access": "direct_page_with_primary_translation",
+      "scope": "1441–1442 Langley Marsh, Buckinghamshire; TNA E179/235/11,m.3",
+      "claim": "학자 저자와1441–1442년 문서 번역을 직접 확인. 이름이 적히지 않은 아일랜드 출신 재단사와 출신이 불명확한 하인이 나온다. 주민을 식별해 과세한 지방 배심의 역할을 설명한다.",
+      "limit": "이름 누락의 원인이 적대감인지 새 이주인지 저자도 확정하지 않는다.1440년의 과세·면제 규칙을 이후 모든 연도에 동일 적용하지 않는다. 현대 가치 환산과 임금 수치는 사용하지 않았다.",
+      "checkedAt": "2026-10-03",
+      "replacedUrl": "https://www.englandsimmigrants.com/bundles/hrionlinemedievalimmigrants/pdf/Resource-Guide-1440-FINAL.pdf",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.ourmigrationstory.org.uk/oms/the-alien-subsidies-in-medieval-england",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        },
+        {
+          "url": "https://www.englandsimmigrants.com/bundles/hrionlinemedievalimmigrants/pdf/Resource-Guide-1440-FINAL.pdf",
+          "result": "web.open 403 Forbidden; 학자 해설의 1차 사료 번역으로 대체"
+        }
+      ]
+    },
+    {
+      "id": "CS15",
+      "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+      "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+      "type": "university_research_report",
+      "access": "direct_page",
+      "scope": "1329·1424 Common Pleas 자료 및London권",
+      "claim": "1329·1424·1570년 채무 소송 표본의 출신지·직업·거래망 분석을 직접 확인했다.1424년 London 거래권은 남부·동남부를 포함해 넓게 퍼졌다.",
+      "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다.",
+      "checkedAt": "2026-10-03",
+      "replacedUrl": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+          "result": "web.open 성공; access의 열람 범위만 확인"
+        },
+        {
+          "url": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+          "result": "종전 PDF 검색 발췌를 직접 열리는 같은 연구기관 후속 연차보고서로 보완"
+        }
+      ]
+    },
+    {
+      "id": "CS16",
+      "title": "The National Archives, Medieval seals",
+      "url": "https://cdn.nationalarchives.gov.uk/documents/education/medieval-seals.pdf",
+      "type": "archive_primary_document_guide",
+      "access": "official_pdf_fulltext_direct_2026-10-04",
+      "scope": "중세 잉글랜드·아일랜드의 문서 인증",
+      "claim": "문서의 발급 주체를 인증하는 인장의 역할과 타인의 인장을 사용한 경우도 있었음을 설명한다.",
+      "limit": "인장이 다르다는 이유만으로 위조를 확정하지 않는다. 예시 중 시기 밖 문서를 게임 기간의 사건으로 쓰지 않는다.",
+      "checkedAt": "2026-10-04",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+      "accessAttempts": [
+        {
+          "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-seals/",
+          "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+        },
+        {
+          "url": "https://cdn.nationalarchives.gov.uk/documents/education/medieval-seals.pdf",
+          "result": "2026-10-04 web.open PDF본문 p2·p4 직접 확인; curl200 원본 저장. 기존 HTML은 web403/curl410."
+        }
+      ]
+    },
+    {
+      "id": "HK01",
+      "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+      "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+      "claimSupported": "공유지 방목·연료/수선 목재 이용권, 입주금, 직영지, 직책과 법정 기록의 구분. 사망 부과금(헤리엇), 제분료와 지정 방앗간 이용 의무(multure)의 구분.",
+      "limits": "기관 해설. Cumbria의 특정 보유관행·부담은 잉글랜드 남부 전체의 보편 관행으로 일반화하지 않는다.",
+      "verification": "2026-10-02 웹 원문 열람. common rights, estovers, cattle-gate, entry fine, demesne 항목 확인. 집필 교정 때 Heriot·Entry fine·Multure 항목을 원문 재확인했다.",
+      "localResearchRefs": [
+        "docs/design/glossary.md",
+        "docs/design/copy-audit-20261002/SOURCES.md#H06"
+      ]
+    },
+    {
+      "id": "HK02",
+      "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+      "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/",
+      "claimSupported": "연례 회계 검사, 씨앗·곡물 계량, 수선 책임, 무단 접대 제한, 가축 돌봄, 공동체의 마을 대표 선임.",
+      "limits": "13세기 관리 규범의 번역 재게시. 1300~1450 모든 장원의 실제 준수·의학적 효능을 입증하지 않는다.",
+      "verification": "2026-10-02 웹 본문 열람. Office of Reeve, Lord, Auditors 구간 확인. UWM 및 Bloomsbury 원문 링크는 열기 오류여서 확인 자료로 쓰지 않음.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#여러-장원은-어떻게-굴렸는가"
+      ]
+    },
+    {
+      "id": "HK03",
+      "title": "The National Archives, Manors and manorial records",
+      "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors",
+      "claimSupported": "법정 기록·보유권을 증명하는 사본·장원 관리 회계는 서로 다른 증거다.",
+      "limits": "기관 연구 안내이며 개별 관습이나 가격의 근거가 아니다. 직접 열기는 오류.",
+      "verification": "2026-10-02 기관 검색 색인 본문 확인. 원문 전체 열람 아님.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#법정과-회계의-리듬"
+      ]
+    },
+    {
+      "id": "HK04",
+      "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+      "url": "https://archives.history.ac.uk/gazetteer/intro.html",
+      "claimSupported": "시장은 주간 요일, 정기시는 연례 축일과 기간이 정해졌으며, 이웃 시장의 손해 주장이 특허의 실제 개설을 막을 수 있었다.",
+      "limits": "왕실 문서를 종합한 연구 안내. 특정 가공 도시의 시장 존속·실현 수익을 보장하지 않는다.",
+      "verification": "2026-10-02 웹 원문 열람. What was a market, Granted Markets and fairs, charter conditionality 확인.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-indirect-rule-expansion-loop-gpt.md#협상이-도시를-바꾸는-통로"
+      ]
+    },
+    {
+      "id": "HK05",
+      "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4",
+      "claimSupported": "혼인 계약에 부부·후손의 재산과 상대 부모의 생애권을 함께 설정한 사례.",
+      "limits": "직접 문서의 편집자 초록. Norfolk 가문 사례이며 남부의 보편 법률이나 수익률 아님.",
+      "verification": "2026-10-02 공개 편집본 문서 4 원문 초록 및 Add. Charter 17,225 표기 확인.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#거래·협상과-도시의-대응"
+      ]
+    },
+    {
+      "id": "HK06",
+      "title": "Paston Letters II, 문서 35: Mauteby 재산 임대 초안, 약1440",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter35",
+      "claimSupported": "과부의 생애권 뒤 딸과 다른 친족의 차순위 승계가 이어지는 설정.",
+      "limits": "편집자 초록과 연대 추론. 정확한 작성년은 1439~1442 범위. 혼인 즉시 전 재산 획득으로 쓰지 않는다.",
+      "verification": "2026-10-02 문서 35 및 편집자의 날짜 설명 직접 열람.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#실제-문서에서-보이는-조건·금액·결과"
+      ]
+    },
+    {
+      "id": "HK07",
+      "title": "Paston Letters II, 서한 62: Agnes가 Edmund에게, 1445-02-04",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter62",
+      "claimSupported": "길 경계 말뚝·지대 다툼과 법률교육의 필요를 연결한 가족 서한.",
+      "limits": "당사자 주장. 분쟁의 최종 판결을 입증하지 않는다. Norfolk 사례.",
+      "verification": "2026-10-02 서한 62 직접 열람. 길 변경 허가에 관한 편집 주석은 1443년으로 구별.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#정치·후원·소송·폭력은-토지와-어떻게-연결됐는가"
+      ]
+    },
+    {
+      "id": "HK08",
+      "title": "Paston Letters II, 문서 70: William Pope 약정, 1447-09-03",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter70",
+      "claimSupported": "토지 설정과 정기 추도미사를 연결한 약정 사례.",
+      "limits": "직접 문서 편집자 초록. 종교적 효능이나 모든 교회의 수입 구조를 입증하지 않는다.",
+      "verification": "2026-10-02 문서 70과 Add. Charter 17,235 출처 표기 열람.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#거래·협상과-도시의-대응"
+      ]
+    },
+    {
+      "id": "HK09",
+      "title": "Paston Letters II, 서한 129: 숲과 체납, 약1450",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter129",
+      "claimSupported": "울타리 미비의 손실·곡물 저가·체납이 함께 거론된 관리 보고.",
+      "limits": "편집자의 잠정 연대. 재해 빈도·전국 가격·표준 배상액으로 환산하지 않는다.",
+      "verification": "2026-10-02 서한 129 초록과 불확실한 날짜에 관한 편집 주석 열람.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#여러-장원은-어떻게-굴렸는가"
+      ]
+    },
+    {
+      "id": "HK10",
+      "title": "Paston Letters II, 서한 127~131: Gresham 권원·점유 분쟁, 1450",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter131",
+      "claimSupported": "소송 문서·상층 중재와 분쟁 수입의 중립 보관 제안은 권원과 점유의 차이를 보여준다.",
+      "limits": "당사자 서한. 명령·제안이 그대로 집행되었다는 근거 아님. 1448 징수와 1449 축출을 하나의 날짜로 합치지 않는다.",
+      "verification": "2026-10-02 서한 127, 128, 131 본문 직접 열람. 문서 131의 훼손 표기 확인.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#법적-권원과-실제-점유는-같은-변수가-아니었다"
+      ]
+    },
+    {
+      "id": "HK11",
+      "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+      "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors",
+      "claimSupported": "Kent의 Otham에서 후원자의 추천과 교회 측 임직을 구분하며, 친족 추천·혼인으로 이어진 추천권·과부의 추천 사례를 기록한다.",
+      "limits": "사제 등록기록을 이용한 오래된 지방사 연구. 한 교구 사례를 보편 특권으로 확대하지 않으며 OCR 이름 오독 주의.",
+      "verification": "2026-10-02 KAS 원문 페이지 열람. 1318, 1349, 1385 사례와 Canterbury Sede Vacante 기록 인용 확인.",
+      "localResearchRefs": [
+        "docs/design/glossary.md#땅·권리·혼인·청원",
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#사료-범위와-먼저-고쳐야-할-전제"
+      ]
+    },
+    {
+      "id": "HK12",
+      "title": "Paston Letters II, 서한 34: Agnes가 William에게, 약1440",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter34",
+      "claimSupported": "혼담 접촉을 가족이 중개하고 의복 증여를 협의한 사례.",
+      "limits": "잠정 연대의 개인 서한. 혼담 성공률·지참금 가격표의 근거 아님.",
+      "verification": "2026-10-02 서한 34 본문과 편집자의 혼인 직전 날짜 추론 열람.",
+      "localResearchRefs": [
+        "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#Paston-현금을-토지로-바꾸고-혼인으로-다시-한-번-도약한-가문"
+      ]
+    },
+    {
+      "id": "HT01",
+      "title": "CAMPOP: Other sources of occupational data",
+      "url": "https://www.campop.geog.cam.ac.uk/research/projects/occupationalstructure/maleoccothersources/",
+      "claimSupported": "1377·1379·1381 인두세는 직업사 자료이지만 지역·여성·하인의 기록 누락과 표본 한계가 있다. 직업별 청원은 가능한 지역 생업으로 제시한다.",
+      "limits": "도시별 장인 수·전국 직업 비율을 확정하지 않는다. 성씨를 곧 실제 직업으로 읽지 않는다.",
+      "verification": "2026-10-02 원문 페이지 열람; 연구기관 자료",
+      "localResearchRefs": [
+        "docs/research/2026-10-02-market-town-trades-gpt.md:연구 기준과 빈도 해석"
+      ]
+    },
+    {
+      "id": "HT02",
+      "title": "Judith M. Bennett, Ale, Beer, and Brewsters in England: Women's Work in a Changing World, 1300–1600",
+      "url": "https://academic.oup.com/book/47408",
+      "claimSupported": "중세 잉글랜드 에일 생산·판매에서 여성의 비중이 컸고 1350년 뒤 남성의 상업 양조 참여가 점진적으로 커졌다. 여성 양조업자·과부의 생업 유지 청원에 적합하다.",
+      "limits": "열람한 출판사 초록과 목차만 사용. 전 책을 읽었다고 주장하지 않는다. 여성 양조가 특정 연도에 사라졌다는 효과 금지; 1600년 상황을 1450년에 투영하지 않는다.",
+      "verification": "2026-10-02 출판사 초록 원문·목차 열람",
+      "localResearchRefs": [
+        "docs/research/2026-09-24-content-catalog.md:맥아·에일",
+        "docs/research/2026-10-02-market-town-trades-gpt.md:식품·숙박"
+      ]
+    },
+    {
+      "id": "HT03",
+      "title": "The fortunes of urban fullers in fourteenth-century England",
+      "url": "https://academic.oup.com/histres/article/93/260/227/5826632",
+      "claimSupported": "14세기 중엽 이후 모직 산업 성장과 함께 도시 축융공의 위상이 높아졌다. 축융업자의 수력·공간·독립 영업 요구를 뒷받침한다.",
+      "limits": "원문 직접 열기는 CDN 접근 오류. 출판사 검색 색인 초록 확인 범위만 사용. 도시별 인원이나 모든 축융공의 부유화를 확정하지 않는다.",
+      "verification": "2026-10-02 출판사 검색 색인 초록 확인; 직접 open 실패",
+      "localResearchRefs": [
+        "docs/research/2026-10-02-market-town-trades-gpt.md:가장 분명하게 커지는 직종은 Fuller다"
+      ]
+    },
+    {
+      "id": "HT04",
+      "title": "Wendy Childs, The English export trade in cloth in the fourteenth century",
+      "url": "https://www.cambridge.org/core/books/progress-and-problems-in-medieval-england/english-export-trade-in-cloth-in-the-fourteenth-century/8F4C6A2347607D673B9AC95E87A02D38",
+      "claimSupported": "1347년 전에도 염료·매염제 수입과 국내 직물 산업 지원이 있었다. 직물 산업을 흑사병 뒤 처음 생긴 것으로 쓰지 않는다.",
+      "limits": "출판사 발췌 범위. 수출량·가격 상승률·지역별 성장률은 사용하지 않는다.",
+      "verification": "2026-10-02 출판사 검색 발췌 확인",
+      "localResearchRefs": [
+        "docs/research/2026-09-24-content-catalog.md:양모·직물",
+        "docs/research/2026-10-02-market-town-trades-gpt.md:흑사병 이후와 15세기 초의 변곡점"
+      ]
+    },
+    {
+      "id": "HT05",
+      "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+      "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/",
+      "claimSupported": "중세 정착지는 단독 농장·작은 촌락·큰 마을 등 다양했으며 가구 필지와 뒤뜰이 경관의 단위를 이루었다. 필지·생활공간의 중첩을 표현한다.",
+      "limits": "기관 소개 페이지 및 PDF 검색 부분 확인. 모든 남부 도시를 동일한 개방경지·규격 필지로 만드는 근거가 아니다.",
+      "verification": "2026-10-02 기관 페이지 및 PDF 색인 문단 확인",
+      "localResearchRefs": [
+        "docs/research/2026-09-24-content-catalog.md:도시 안팎의 토지 어휘"
+      ]
+    },
+    {
+      "id": "HT06",
+      "title": "Historic England, Pre-industrial Lime Kilns",
+      "url": "https://historicengland.org.uk/images-books/publications/iha-preindustrial-lime-kilns/",
+      "claimSupported": "석회가마는 석회석·백악 등을 소성하여 인근 건물의 모르타르용 석회를 공급했다. 건축 수요에 얽힌 재료·운송·연료 청원에 적합하다.",
+      "limits": "소성 자원을 현 엔진 재고로 새로 만들 수 있다는 뜻은 아니다. 공사 인근 입지와 물자 부담만 사용하고 신자원은 새 효과로 분리한다.",
+      "verification": "2026-10-02 기관 소개 페이지 검색 본문 확인",
+      "localResearchRefs": [
+        "docs/research/2026-09-24-content-catalog.md:석회·기와·도기"
+      ]
+    },
+    {
+      "id": "HT07",
+      "title": "Philip Slavin, The Great Bovine Pestilence and its economic and environmental consequences in England and Wales, 1318–50",
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-0289.2011.00625.x",
+      "claimSupported": "1319~1320년 가축 역병은 소 사육과 낙농 공급에 큰 충격을 주었다. 초록은 잉글랜드·웨일스 소 약 62% 손실 추정을 제시한다.",
+      "limits": "전국 추정치를 플레이어 장원의 확정 손실률로 사용하지 않는다. 뒤의 흑사병과 영양부족 사이 인과는 논문의 질문이며 확정 사실이 아니다.",
+      "verification": "2026-10-02 학술지 출판사 초록 검색 본문 확인",
+      "localResearchRefs": [
+        "docs/research/2026-09-24-content-catalog.md:변곡점과 실제 충격·회복 경로"
+      ]
+    },
+    {
+      "id": "HT08",
+      "title": "William Chester Jordan, The Great Famine: Northern Europe in the Early Fourteenth Century",
+      "url": "https://www.jstor.org/stable/j.ctt7s2mz",
+      "claimSupported": "1315년 이후 수년에 걸친 북유럽 기근은 한 철의 단순 수확 감소보다 넓은 생계 위기였다.",
+      "limits": "출판물 소개 확인 범위. 장원별 사망률·수확량 수치는 제시하지 않는다. 구체적 종자 배급 청원은 관행을 바탕으로 한 합성 창작이다.",
+      "verification": "2026-10-02 Princeton University Press 출판물 JSTOR 소개 검색 확인; 저자 Princeton 연구 등록으로 서지 대조",
+      "localResearchRefs": [
+        "docs/research/2026-09-24-content-catalog.md:1315–17 대기근"
+      ]
+    },
+    {
+      "id": "HT09",
+      "title": "W. R. Jones, Purveyance for War and the Community of the Realm in Late Medieval England",
+      "url": "https://www.cambridge.org/core/journals/albion/article/abs/purveyance-for-war-and-the-community-of-the-realm-in-late-medieval-england/8658443BD38F3ABFDEE0807574A54EC3",
+      "claimSupported": "왕실 조달은 식량·군수품·운송 확보를 포괄했고 1297~1362년 그 부담과 제한을 둘러싼 갈등이 있었다. 물자 납부와 운송 차출을 돈 하나로 환원하지 않는다.",
+      "limits": "발췌 확인 범위. 모든 영주에게 동일 면제권·보상기일이 있었다고 쓰지 않는다. 고정 조달량과 관계 효과는 게임 추정이다.",
+      "verification": "2026-10-02 Cambridge 출판사 발췌 원문 열람",
+      "localResearchRefs": [
+        "docs/research/2026-10-02-lordly-force-gpt.md:Purveyance는 반드시 경제 시스템으로 연결"
+      ]
+    },
+    {
+      "id": "HT10",
+      "title": "The Soldier in Later Medieval England, The English army in 1415",
+      "url": "https://medievalsoldier.org/about/agincourt/the-english-army-in-1415/",
+      "claimSupported": "1415년 왕실 원정은 지휘관과 왕 사이 계약으로 병종과 인원을 정했다. 원정 복무를 평시 상비병이나 무차별 농민 소집과 구별한다.",
+      "limits": "1415년 원정 기록을 1300년 전체의 동일 모집제도로 쓰지 않는다. 병사의 개별 부상·귀환 여부와 금액은 별도 초안상 추정이다.",
+      "verification": "2026-10-02 연구 프로젝트 원문 열람; E101·E404 등 기록군 설명 확인",
+      "localResearchRefs": [
+        "docs/research/2026-10-02-lordly-force-gpt.md:실제 원정 retinue의 크기",
+        "docs/research/2026-10-02-lordly-force-gpt.md:국왕 원정은 계약 협상"
+      ]
+    },
+    {
+      "id": "HT11",
+      "title": "Historic England, The Armada Beacon, Alderley Edge, listing 1019850",
+      "url": "https://historicengland.org.uk/listing/the-list/list-entry/1019850?section=comments-and-photos",
+      "claimSupported": "봉화망 일반 해설은 봉화 사용이 1325년 무렵 공식화되었다고 설명한다. 봉화는 조기 경보라는 맥락으로 쓴다.",
+      "limits": "등록 대상 자체는 북서부 사례다. 남부 모든 봉화의 설치 연대나 경보 도달 시간을 증명하지 않는다. 경보가 반드시 피해를 막는다는 보장도 없다.",
+      "verification": "2026-10-02 국가유산 등록문 검색 색인 확인",
+      "localResearchRefs": [
+        "docs/research/2026-10-02-lordly-force-gpt.md:봉화는 실제 조기경보망"
+      ]
+    },
+    {
+      "id": "HT12",
+      "title": "Southampton City Council, History of Southampton's monuments",
+      "url": "https://www.southampton.gov.uk/culture-leisure-tourism/history-and-preservation/monuments-and-landmarks/history-southampton-monuments/",
+      "claimSupported": "1338년 프랑스 습격 뒤 Southampton의 방어벽 확충이 이어졌다. 해안 습격·방어비·기존 상업공간 사이 갈등의 지역 사례다.",
+      "limits": "Southampton은 특정 항구이며 모든 시장도시의 보편 경험이 아니다. 페이지의 1338년 뒤 Edward II 명령 표기는 재위 연도와 맞지 않는 오류라 사용하지 않는다. 국왕을 언급하지 않고 피해와 방어공사 연관만 사용한다.",
+      "verification": "2026-10-02 시의회 페이지 검색 전체 본문 확인; 왕명 오류 별도 배제",
+      "localResearchRefs": [
+        "docs/research/2026-10-02-lordly-force-gpt.md:Southampton과 Rye"
+      ]
+    },
+    {
+      "id": "HT13",
+      "title": "The National Archives, E179 Document notes: grant 407",
+      "url": "https://www.nationalarchives.gov.uk/e179/notes.asp?action=3&slctgrantid=407",
+      "claimSupported": "1379년 징수 절차의 재사용과 1381년 징수·봉기의 연결.",
+      "limits": "엔진의 1d/3d·14세·계절 일정의 근거가 아니다. 1377·1379·1380 승인세의 세율과 대상은 서로 같지 않다.",
+      "verification": "2026-10-02 역사 조사 담당이 기관 검색 색인을 확인. 원문 열기 403.",
+      "localResearchRefs": [
+        "docs/design/copy-audit-20261002/SOURCES.md#H04",
+        "docs/research/2026-09-24-content-catalog.md"
+      ]
+    },
+    {
+      "id": "HT14",
+      "title": "The National Archives, E179 Document notes: 1377 poll tax, grant403",
+      "url": "https://www.nationalarchives.gov.uk/e179/notes.asp?action=3&slctgrantid=403",
+      "claimSupported": "1377년 인두세의 1인당4d 부과,14세초과 대상과 구걸인 예외,지역 대표가 산정·징수한 절차.",
+      "limits": "게임의 주민당1d/3d 수입과 계절별 징수는 사료의4d 세율을 재현하지 않는 게임 간소화다.",
+      "verification": "2026-10-02 통합 담당이 TNA 페이지 검색 색인 본문 확인. 원문 전체 열람으로 표시하지 않는다.",
+      "localResearchRefs": [
+        "docs/design/copy-audit-20261002/SOURCES.md#H03"
+      ]
+    },
+    {
+      "id": "CN01",
+      "title": "Otham Rectors, Archaeologia Cantiana 23, pp.184–185",
+      "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors",
+      "access": "direct_page",
+      "claim": "1326 성직록 교환, 1349 혼인으로 전해진 추천권, 1385 과부 후원자, 1413 새 영주 추천, 1441 유언 증인.",
+      "limit": "사제 임명은 영주의 단독 명령이 아니다. 1538 이후 교구 등록부 관행 제외."
+    },
+    {
+      "id": "CN02",
+      "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+      "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm",
+      "access": "direct_primary_edition",
+      "claim": "1420·1439–1442 재산 귀속 순서, 1440경 혼담과 선물, 1447 추모 의무, 1450경 점유·소송·화해의 구별.",
+      "limit": "Norfolk 사료다. 남부의 모든 가족 관습으로 일반화하지 않는다. 해당 원고의 협상 수치와 인물은 창작."
+    },
+    {
+      "id": "CN03",
+      "title": "Lordship, State Formation and Local Authority, chapter 5: The Parish",
+      "url": "https://www.cambridge.org/core/books/lordship-state-formation-and-local-authority-in-late-medieval-and-early-modern-england/state-formation-i-the-parish/3AD2A2B23591380887446BD37F07C589",
+      "access": "direct_academic_chapter",
+      "claim": "Worfield 1419–1420 교회 관리인 둘이 유언집행자에게 교회에 남긴 덮개를 청구했고 장원 직책도 겸했다.",
+      "limit": "Shropshire 비교 사례이며 16세기 의무를 앞당겨 쓰지 않는다. 지원 범위는 1419–1420 단락에 한정."
+    },
+    {
+      "id": "CN04",
+      "title": "Duncan L. Berryman, The 14th-century buildings of the curia of Alciston manor (2020), pp.107–119",
+      "url": "https://pure.qub.ac.uk/files/640823354/The_14th_century_buildings_of_the_curia.pdf",
+      "access": "direct_academic_pdf",
+      "claim": "14세기 수도원 공급용 장원, 농업 마당·저장 건물, 수입·지출·파종·수확·재고 회계; 수도원 영지 간 자원 교환.",
+      "limit": "14세기 자료를 이용한 연구다. 특정 1300년의 자루 운반이나 우리 가상 도시의 거래·건설을 입증하지 않는다. 숫자는 사용하지 않는다.",
+      "checkedAt": "2026-10-03",
+      "accessAttempts": [
+        {
+          "url": "https://pure.qub.ac.uk/en/publications/the-14th-century-buildings-of-the-curia-of-alciston-manor/",
+          "result": "web.open 대학 저장소 논문정보·초록 성공"
+        },
+        {
+          "url": "https://pure.qub.ac.uk/files/640823354/The_14th_century_buildings_of_the_curia.pdf",
+          "result": "web.click PDF 본문15페이지 성공; pp.107–110 확인"
+        }
+      ]
+    },
+    {
+      "id": "FA06",
+      "title": "Fordham, Magna Carta 1215, clauses 3–8",
+      "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp",
+      "type": "primary_text_translation",
+      "access": "direct_page_2026-10-03",
+      "scope": "1215 법 규범, 잉글랜드; 후대 실제 적용 별도 검토",
+      "claim": "1215년 후견 재산 보전·성년 반환·과부의 재혼 의사와 혼인 관련 고지 규범.",
+      "limit": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다.",
+      "checkedAt": "2026-10-03",
+      "supplement": {
+        "title": "Fordham Medieval Sourcebook, Magna Carta 1215 translation",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp",
+        "access": "direct_page",
+        "locator": "조항3–8",
+        "claim": "후견 재산의 관리·성년 반환과 과부의 재혼 의사에 관한1215년 규범을 직접 읽었다.",
+        "limit": "1225년 본문을 열었다는 대체 증거가 아니다.1300–1450 실행 관행을 확정하지 않는다."
+      },
+      "productionUse": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+      "accessAttempts": [
+        {
+          "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/magna-carta-1225-westminster/",
+          "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+        }
+      ]
+    },
+    {
+      "id": "FA01",
+      "title": "Agnes Paston to William Paston, 1436/40",
+      "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=5&ref=PLETTER",
+      "access": "direct_page_2026-10-03",
+      "claim": "양가의 혼례 옷감·장식 기여와 가족 업무 전달, 서기 부재가 편지에 나타난다.",
+      "limit": "Norfolk 한 가문 사례. 혼인 준비와 당사자 동의·계약 법제를 동일시하지 않는다.",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM"
+    },
+    {
+      "id": "FA02",
+      "title": "Margaret Paston to John Paston, 28 September 1443",
+      "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER",
+      "access": "direct_page_2026-10-03",
+      "claim": "배우자의 질환 소식, 귀가 가능성, 가족 돌봄, 순례 약속과 여행·소식의 긴장이 나타난다.",
+      "limit": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다.",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM"
+    },
+    {
+      "id": "FA03",
+      "title": "William Paston to John Staynford, 1425",
+      "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=1&ref=PLETTER",
+      "access": "direct_page_2026-10-03",
+      "claim": "석재 품질·가공·운송·가격에 대한 문의를 확인했다.",
+      "limit": "가족의 비용 다툼은 편지에 없고 원고의 창작이다. 건물이나 계약 성사를 증명하지 않는다.",
+      "productionUse": "LIMITED_TO_CONFIRMED_CLAIM"
+    },
+    {
+      "id": "FA04",
+      "title": "John Fastolf to Henry Inglose and John Berney, after 1440?",
+      "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=6&ref=PLETTER",
+      "access": "transcription_body_direct_2026-10-04_not_original_manuscript",
+      "claim": "구출 관련 문서가 수중에 없어 Inglose·Berney에게 봉인된 확인을 요청하고 별도 메모의 사본을 보내는 전사문. 정확한 혈연·기록의 영구 분실·가족 간 상환 채무는 이 문구만으로 입증하지 않는다.",
+      "limit": "after1440(?)는 구판 편집추정이다. FA05의1435년 또는 이전 견해와 충돌하며 정확 편년은 미확정. 원고 집필연도와 편지연도를 동일시하지 않는다.",
+      "productionUse": "HOLD_DATE_CONFIRMATION"
+    },
+    {
+      "id": "FA05",
+      "title": "K. B. McFarlane (1957), The Investment of Sir John Fastolf’s Profits of War, p111 note4",
+      "url": "https://www.cambridge.org/core/journals/transactions-of-the-royal-historical-society/article/abs/investment-of-sir-john-fastolfs-profits-of-war/8416AE87A845B4412ACC63996E5ACA9C",
+      "access": "publisher_page_note111_4_directly_read_2026-10-04_not_whole_article",
+      "claim": "동일 Inglose·Berney 편지를 1435년 또는 이전으로 추정하는 학술 견해를 명시한다.",
+      "limit": "정확한 연도는 확정하지 않는다. after1440(?)라는 구판 편집추정과 충돌한다. 가족 상환 약정·정산 절차의 직접 증거는 아니다.",
+      "productionUse": "LIMITED_TO_PRE1450_EVIDENCE_EXACT_DATE_DISPUTED"
+    }
+  ],
+  "variants": [
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+        "type": "institutional_glossary",
+        "access": "direct_page",
+        "scope": "중세에서 후대까지, Cumbria 중심",
+        "claim": "출석 면제 사유, 관습 명세 장부, 수선·연료용 채취권, 감금 가축 무단 반출, 경계·집 수선 감독 직책이 구별된다.",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/",
+        "type": "university_research",
+        "access": "direct_page",
+        "scope": "약1250–1350, 동서부 10개 주의 103 법정 기록군",
+        "claim": "채무·불이행·침해 소송과 평신도 법정 참여를 조사했다. 1328년 Longdon의 출석 면제 횟수 다툼, 1348년 Halesowen의 적법한 소환 여부 다툼을 구체적으로 든다.",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+        "type": "primary_text_translation",
+        "access": "direct_page",
+        "scope": "1283·1285·1311 잉글랜드 법령 번역",
+        "claim": "채무액·기한 등록, 채무자 인장, 두 벌의 기록과 분리 인장 보관, 보증인 의무, 재산 평가와 집행 관할을 명시한다.",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS04",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS04",
+        "title": "The National Archives, Medieval agreements and arguments",
+        "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-agreements-and-arguments/",
+        "type": "archive_primary_document_guide",
+        "access": "search_index_only_open_failed",
+        "scope": "1407 York 경계 합의 지도; 1426 Middelburg 상인 청원",
+        "claim": "합의 지도와 법정 사건을 장부에 함께 보관한 사례, 통행보호 문서를 받았으나 구금·물자 압류를 당했다는 상인 청원이 있다.",
+        "limit": "기관 검색 색인 본문만 확인. York와 네덜란드 사례를 남부 가공도시의 실제 사건으로 제시하지 않는다. 청원은 당사자 주장으로 결과를 보장하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "HOLD_SOURCE_FULLTEXT_REQUIRED",
+        "accessAttempts": [
+          {
+            "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-agreements-and-arguments/",
+            "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS05",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS05",
+        "title": "Kent Archaeological Society, Jayne Semple, The Tanners of Wrotham Manor 1400–1600",
+        "url": "https://www.kentarchaeology.org.uk/journal/126/tanners-wrotham-manor-1400-1600",
+        "type": "regional_scholarly_article",
+        "access": "direct_page",
+        "scope": "Kent, 15–16세기; 세부 임대 장부1495·1538·1568",
+        "claim": "무두질 입지가 소 떼·물·참나무 껍질 공급과 관련됨을 설명하며 농업과 다른 생업의 병행을 다룬다.",
+        "limit": "제목 범위만으로 1400년 특정 작업장·인물의 존재를 확정하지 않는다. 1450 이후 개별 소송·재혼·직종 사례는 사용하지 않았다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.kentarchaeology.org.uk/journal/126/tanners-wrotham-manor-1400-1600",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810",
+        "type": "official_heritage_record",
+        "access": "direct_page",
+        "scope": "Cornwall, 현 구조 약1430–1450 추정; 다리 언급1412",
+        "claim": "돌다리와 인접 여울이 공존했다. 안내는 교회·길드의 다리 유지 및 수선용 통행 징수권을 일반적으로 설명한다.",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS07",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS07",
+        "title": "English Heritage, Description of Farleigh Hungerford Castle",
+        "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+        "type": "official_heritage_record",
+        "access": "direct_page",
+        "scope": "Somerset, 1430 사제 숙소; 약1430–1445 외곽 구역; 1440년대 벽화 추정",
+        "claim": "가문의 추도를 맡은 사제들의 숙소가1430년 시작되었고 예배당의 성 게오르기우스 벽화는1440년대 의뢰로 추정된다.",
+        "limit": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS08",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS08",
+        "title": "The National Archives, Magna Carta 1225, Westminster translation",
+        "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/magna-carta-1225-westminster/",
+        "type": "primary_text_translation",
+        "access": "search_index_only_open_failed",
+        "scope": "1225 법 규범, 잉글랜드",
+        "claim": "과부의 재산 배정과 재혼 의사, 후견 중인 상속인의 성년 및 혼인에 관한 규범을 구별한다.",
+        "limit": "1300–1450 실제 준수율이나 모든 신분의 보편 절차로 쓰지 않는다. dower와 게임 jointure를 동일시하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "supplement": {
+          "title": "Fordham Medieval Sourcebook, Magna Carta 1215 translation",
+          "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp",
+          "access": "direct_page",
+          "locator": "조항3–8",
+          "claim": "후견 재산의 관리·성년 반환과 과부의 재혼 의사에 관한1215년 규범을 직접 읽었다.",
+          "limit": "1225년 본문을 열었다는 대체 증거가 아니다.1300–1450 실행 관행을 확정하지 않는다."
+        },
+        "productionUse": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+        "accessAttempts": [
+          {
+            "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/magna-carta-1225-westminster/",
+            "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS09",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS09",
+        "title": "The National Archives, Women in medieval deeds",
+        "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+        "type": "archive_primary_document_guide",
+        "access": "search_index_only_open_failed",
+        "scope": "1309 Warwickshire;1319 Stepney;1366–1367 Yorkshire",
+        "claim": "과부가 자신의 인장으로 지대 수령증을 남기거나 토지 청구권 포기 문서를 발급한 사례를 제시한다.",
+        "limit": "기관 색인 본문 확인. 인장 소유로 라틴어 문해력·모든 여성의 독립 법적 지위를 확정하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "HOLD_SOURCE_FULLTEXT_REQUIRED",
+        "accessAttempts": [
+          {
+            "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+            "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F",
+        "type": "academic_book_chapter",
+        "access": "publisher_summary",
+        "scope": "1370–1420 직영지 임대 전환;1430년대 불황; Durham 중심",
+        "claim": "직영지를 직접 경영하기보다 임대하는 움직임과 지대·수입 저하 및1430년대 흉작을 설명한다.",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS11",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS11",
+        "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+        "url": "https://kar.kent.ac.uk/60707/",
+        "type": "academic_article_repository",
+        "access": "repository_abstract",
+        "scope": "1430년대 북서·중앙 유럽",
+        "claim": "복수 자연·문헌 자료로1430년대 추위와 사회경제적 영향을 논의한다.",
+        "limit": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://kar.kent.ac.uk/60707/",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf",
+        "type": "regional_scholarly_volume",
+        "access": "direct_pdf_text",
+        "scope": "Sussex Alciston,1349 및1425–1427·1440–1441",
+        "claim": "논문 제목·저자와 본문을 직접 확인했다. p.93은1425–1427·1440–1441년 역병 노동 부족과1349년 관리 사망에 따른 회계 담당 변경을 설명한다. p.90은1429–1430년 기와 생산·인근 장원 판매를 기록한다.",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS13",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS13",
+        "title": "Our Migration Story, Becoming English: letters of denization",
+        "url": "https://www.ourmigrationstory.org.uk/oms/becoming-english-letters-of-denization",
+        "type": "academic_public_history_primary_document",
+        "access": "direct_page",
+        "scope": "1441 Gervase le Vulre, 잉글랜드",
+        "claim": "1441년 Gervase와Joan의 지위 특허 번역(TNA C66/450,m.12)을 직접 확인. 재산 보유·소송 등의 권리를 다룬다. 낮은 지위의 장인 다수에게 필수 문서가 아니었다.",
+        "limit": "왕실 서기관의 사례를 평범한 이주민의 표준 경로로 삼지 않는다. 지역 영주는 왕실의 지위 특허를 발급할 수 없다. denization은16세기 이후 naturalisation과 동일하지 않으므로 단순한 완전 귀화로 번역하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.ourmigrationstory.org.uk/oms/becoming-english-letters-of-denization",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS14",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS14",
+        "title": "Jessica Lutkin and W. Mark Ormrod (University of York), Alien subsidies in Medieval England",
+        "url": "https://www.ourmigrationstory.org.uk/oms/the-alien-subsidies-in-medieval-england",
+        "type": "academic_public_history_primary_document",
+        "access": "direct_page_with_primary_translation",
+        "scope": "1441–1442 Langley Marsh, Buckinghamshire; TNA E179/235/11,m.3",
+        "claim": "학자 저자와1441–1442년 문서 번역을 직접 확인. 이름이 적히지 않은 아일랜드 출신 재단사와 출신이 불명확한 하인이 나온다. 주민을 식별해 과세한 지방 배심의 역할을 설명한다.",
+        "limit": "이름 누락의 원인이 적대감인지 새 이주인지 저자도 확정하지 않는다.1440년의 과세·면제 규칙을 이후 모든 연도에 동일 적용하지 않는다. 현대 가치 환산과 임금 수치는 사용하지 않았다.",
+        "checkedAt": "2026-10-03",
+        "replacedUrl": "https://www.englandsimmigrants.com/bundles/hrionlinemedievalimmigrants/pdf/Resource-Guide-1440-FINAL.pdf",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.ourmigrationstory.org.uk/oms/the-alien-subsidies-in-medieval-england",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          },
+          {
+            "url": "https://www.englandsimmigrants.com/bundles/hrionlinemedievalimmigrants/pdf/Resource-Guide-1440-FINAL.pdf",
+            "result": "web.open 403 Forbidden; 학자 해설의 1차 사료 번역으로 대체"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+        "type": "university_research_report",
+        "access": "direct_page",
+        "scope": "1329·1424 Common Pleas 자료 및London권",
+        "claim": "1329·1424·1570년 채무 소송 표본의 출신지·직업·거래망 분석을 직접 확인했다.1424년 London 거래권은 남부·동남부를 포함해 넓게 퍼졌다.",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다.",
+        "checkedAt": "2026-10-03",
+        "replacedUrl": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          },
+          {
+            "url": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+            "result": "종전 PDF 검색 발췌를 직접 열리는 같은 연구기관 후속 연차보고서로 보완"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS16",
+      "origin": "shared-source-pack",
+      "value": {
+        "id": "CS16",
+        "title": "The National Archives, Medieval seals",
+        "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-seals/",
+        "type": "archive_primary_document_guide",
+        "access": "search_index_full_extract",
+        "scope": "중세 잉글랜드·아일랜드의 문서 인증",
+        "claim": "문서의 발급 주체를 인증하는 인장의 역할과 타인의 인장을 사용한 경우도 있었음을 설명한다.",
+        "limit": "인장이 다르다는 이유만으로 위조를 확정하지 않는다. 예시 중 시기 밖 문서를 게임 기간의 사건으로 쓰지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "HOLD_SOURCE_FULLTEXT_REQUIRED",
+        "accessAttempts": [
+          {
+            "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-seals/",
+            "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+        "claimSupported": "공유지 방목·연료/수선 목재 이용권, 입주금, 직영지, 직책과 법정 기록의 구분. 사망 부과금(헤리엇), 제분료와 지정 방앗간 이용 의무(multure)의 구분.",
+        "limits": "기관 해설. Cumbria의 특정 보유관행·부담은 잉글랜드 남부 전체의 보편 관행으로 일반화하지 않는다.",
+        "verification": "2026-10-02 웹 원문 열람. common rights, estovers, cattle-gate, entry fine, demesne 항목 확인. 집필 교정 때 Heriot·Entry fine·Multure 항목을 원문 재확인했다.",
+        "localResearchRefs": [
+          "docs/design/glossary.md",
+          "docs/design/copy-audit-20261002/SOURCES.md#H06"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/",
+        "claimSupported": "연례 회계 검사, 씨앗·곡물 계량, 수선 책임, 무단 접대 제한, 가축 돌봄, 공동체의 마을 대표 선임.",
+        "limits": "13세기 관리 규범의 번역 재게시. 1300~1450 모든 장원의 실제 준수·의학적 효능을 입증하지 않는다.",
+        "verification": "2026-10-02 웹 본문 열람. Office of Reeve, Lord, Auditors 구간 확인. UWM 및 Bloomsbury 원문 링크는 열기 오류여서 확인 자료로 쓰지 않음.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#여러-장원은-어떻게-굴렸는가"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors",
+        "claimSupported": "법정 기록·보유권을 증명하는 사본·장원 관리 회계는 서로 다른 증거다.",
+        "limits": "기관 연구 안내이며 개별 관습이나 가격의 근거가 아니다. 직접 열기는 오류.",
+        "verification": "2026-10-02 기관 검색 색인 본문 확인. 원문 전체 열람 아님.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#법정과-회계의-리듬"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html",
+        "claimSupported": "시장은 주간 요일, 정기시는 연례 축일과 기간이 정해졌으며, 이웃 시장의 손해 주장이 특허의 실제 개설을 막을 수 있었다.",
+        "limits": "왕실 문서를 종합한 연구 안내. 특정 가공 도시의 시장 존속·실현 수익을 보장하지 않는다.",
+        "verification": "2026-10-02 웹 원문 열람. What was a market, Granted Markets and fairs, charter conditionality 확인.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-indirect-rule-expansion-loop-gpt.md#협상이-도시를-바꾸는-통로"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK05",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK05",
+        "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4",
+        "claimSupported": "혼인 계약에 부부·후손의 재산과 상대 부모의 생애권을 함께 설정한 사례.",
+        "limits": "직접 문서의 편집자 초록. Norfolk 가문 사례이며 남부의 보편 법률이나 수익률 아님.",
+        "verification": "2026-10-02 공개 편집본 문서 4 원문 초록 및 Add. Charter 17,225 표기 확인.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#거래·협상과-도시의-대응"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK06",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK06",
+        "title": "Paston Letters II, 문서 35: Mauteby 재산 임대 초안, 약1440",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter35",
+        "claimSupported": "과부의 생애권 뒤 딸과 다른 친족의 차순위 승계가 이어지는 설정.",
+        "limits": "편집자 초록과 연대 추론. 정확한 작성년은 1439~1442 범위. 혼인 즉시 전 재산 획득으로 쓰지 않는다.",
+        "verification": "2026-10-02 문서 35 및 편집자의 날짜 설명 직접 열람.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#실제-문서에서-보이는-조건·금액·결과"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK07",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK07",
+        "title": "Paston Letters II, 서한 62: Agnes가 Edmund에게, 1445-02-04",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter62",
+        "claimSupported": "길 경계 말뚝·지대 다툼과 법률교육의 필요를 연결한 가족 서한.",
+        "limits": "당사자 주장. 분쟁의 최종 판결을 입증하지 않는다. Norfolk 사례.",
+        "verification": "2026-10-02 서한 62 직접 열람. 길 변경 허가에 관한 편집 주석은 1443년으로 구별.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#정치·후원·소송·폭력은-토지와-어떻게-연결됐는가"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK08",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK08",
+        "title": "Paston Letters II, 문서 70: William Pope 약정, 1447-09-03",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter70",
+        "claimSupported": "토지 설정과 정기 추도미사를 연결한 약정 사례.",
+        "limits": "직접 문서 편집자 초록. 종교적 효능이나 모든 교회의 수입 구조를 입증하지 않는다.",
+        "verification": "2026-10-02 문서 70과 Add. Charter 17,235 출처 표기 열람.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#거래·협상과-도시의-대응"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK09",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK09",
+        "title": "Paston Letters II, 서한 129: 숲과 체납, 약1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter129",
+        "claimSupported": "울타리 미비의 손실·곡물 저가·체납이 함께 거론된 관리 보고.",
+        "limits": "편집자의 잠정 연대. 재해 빈도·전국 가격·표준 배상액으로 환산하지 않는다.",
+        "verification": "2026-10-02 서한 129 초록과 불확실한 날짜에 관한 편집 주석 열람.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#여러-장원은-어떻게-굴렸는가"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK10",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK10",
+        "title": "Paston Letters II, 서한 127~131: Gresham 권원·점유 분쟁, 1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter131",
+        "claimSupported": "소송 문서·상층 중재와 분쟁 수입의 중립 보관 제안은 권원과 점유의 차이를 보여준다.",
+        "limits": "당사자 서한. 명령·제안이 그대로 집행되었다는 근거 아님. 1448 징수와 1449 축출을 하나의 날짜로 합치지 않는다.",
+        "verification": "2026-10-02 서한 127, 128, 131 본문 직접 열람. 문서 131의 훼손 표기 확인.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#법적-권원과-실제-점유는-같은-변수가-아니었다"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors",
+        "claimSupported": "Kent의 Otham에서 후원자의 추천과 교회 측 임직을 구분하며, 친족 추천·혼인으로 이어진 추천권·과부의 추천 사례를 기록한다.",
+        "limits": "사제 등록기록을 이용한 오래된 지방사 연구. 한 교구 사례를 보편 특권으로 확대하지 않으며 OCR 이름 오독 주의.",
+        "verification": "2026-10-02 KAS 원문 페이지 열람. 1318, 1349, 1385 사례와 Canterbury Sede Vacante 기록 인용 확인.",
+        "localResearchRefs": [
+          "docs/design/glossary.md#땅·권리·혼인·청원",
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#사료-범위와-먼저-고쳐야-할-전제"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK12",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-land-kin.json",
+      "value": {
+        "id": "HK12",
+        "title": "Paston Letters II, 서한 34: Agnes가 William에게, 약1440",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter34",
+        "claimSupported": "혼담 접촉을 가족이 중개하고 의복 증여를 협의한 사례.",
+        "limits": "잠정 연대의 개인 서한. 혼담 성공률·지참금 가격표의 근거 아님.",
+        "verification": "2026-10-02 서한 34 본문과 편집자의 혼인 직전 날짜 추론 열람.",
+        "localResearchRefs": [
+          "docs/research/2026-09-30-gentry-estates-1300-1450-gpt.md#Paston-현금을-토지로-바꾸고-혼인으로-다시-한-번-도약한-가문"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT01",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT01",
+        "title": "CAMPOP: Other sources of occupational data",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/occupationalstructure/maleoccothersources/",
+        "claimSupported": "1377·1379·1381 인두세는 직업사 자료이지만 지역·여성·하인의 기록 누락과 표본 한계가 있다. 직업별 청원은 가능한 지역 생업으로 제시한다.",
+        "limits": "도시별 장인 수·전국 직업 비율을 확정하지 않는다. 성씨를 곧 실제 직업으로 읽지 않는다.",
+        "verification": "2026-10-02 원문 페이지 열람; 연구기관 자료",
+        "localResearchRefs": [
+          "docs/research/2026-10-02-market-town-trades-gpt.md:연구 기준과 빈도 해석"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT02",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT02",
+        "title": "Judith M. Bennett, Ale, Beer, and Brewsters in England: Women's Work in a Changing World, 1300–1600",
+        "url": "https://academic.oup.com/book/47408",
+        "claimSupported": "중세 잉글랜드 에일 생산·판매에서 여성의 비중이 컸고 1350년 뒤 남성의 상업 양조 참여가 점진적으로 커졌다. 여성 양조업자·과부의 생업 유지 청원에 적합하다.",
+        "limits": "열람한 출판사 초록과 목차만 사용. 전 책을 읽었다고 주장하지 않는다. 여성 양조가 특정 연도에 사라졌다는 효과 금지; 1600년 상황을 1450년에 투영하지 않는다.",
+        "verification": "2026-10-02 출판사 초록 원문·목차 열람",
+        "localResearchRefs": [
+          "docs/research/2026-09-24-content-catalog.md:맥아·에일",
+          "docs/research/2026-10-02-market-town-trades-gpt.md:식품·숙박"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT03",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT03",
+        "title": "The fortunes of urban fullers in fourteenth-century England",
+        "url": "https://academic.oup.com/histres/article/93/260/227/5826632",
+        "claimSupported": "14세기 중엽 이후 모직 산업 성장과 함께 도시 축융공의 위상이 높아졌다. 축융업자의 수력·공간·독립 영업 요구를 뒷받침한다.",
+        "limits": "원문 직접 열기는 CDN 접근 오류. 출판사 검색 색인 초록 확인 범위만 사용. 도시별 인원이나 모든 축융공의 부유화를 확정하지 않는다.",
+        "verification": "2026-10-02 출판사 검색 색인 초록 확인; 직접 open 실패",
+        "localResearchRefs": [
+          "docs/research/2026-10-02-market-town-trades-gpt.md:가장 분명하게 커지는 직종은 Fuller다"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT04",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT04",
+        "title": "Wendy Childs, The English export trade in cloth in the fourteenth century",
+        "url": "https://www.cambridge.org/core/books/progress-and-problems-in-medieval-england/english-export-trade-in-cloth-in-the-fourteenth-century/8F4C6A2347607D673B9AC95E87A02D38",
+        "claimSupported": "1347년 전에도 염료·매염제 수입과 국내 직물 산업 지원이 있었다. 직물 산업을 흑사병 뒤 처음 생긴 것으로 쓰지 않는다.",
+        "limits": "출판사 발췌 범위. 수출량·가격 상승률·지역별 성장률은 사용하지 않는다.",
+        "verification": "2026-10-02 출판사 검색 발췌 확인",
+        "localResearchRefs": [
+          "docs/research/2026-09-24-content-catalog.md:양모·직물",
+          "docs/research/2026-10-02-market-town-trades-gpt.md:흑사병 이후와 15세기 초의 변곡점"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/",
+        "claimSupported": "중세 정착지는 단독 농장·작은 촌락·큰 마을 등 다양했으며 가구 필지와 뒤뜰이 경관의 단위를 이루었다. 필지·생활공간의 중첩을 표현한다.",
+        "limits": "기관 소개 페이지 및 PDF 검색 부분 확인. 모든 남부 도시를 동일한 개방경지·규격 필지로 만드는 근거가 아니다.",
+        "verification": "2026-10-02 기관 페이지 및 PDF 색인 문단 확인",
+        "localResearchRefs": [
+          "docs/research/2026-09-24-content-catalog.md:도시 안팎의 토지 어휘"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT06",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT06",
+        "title": "Historic England, Pre-industrial Lime Kilns",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-preindustrial-lime-kilns/",
+        "claimSupported": "석회가마는 석회석·백악 등을 소성하여 인근 건물의 모르타르용 석회를 공급했다. 건축 수요에 얽힌 재료·운송·연료 청원에 적합하다.",
+        "limits": "소성 자원을 현 엔진 재고로 새로 만들 수 있다는 뜻은 아니다. 공사 인근 입지와 물자 부담만 사용하고 신자원은 새 효과로 분리한다.",
+        "verification": "2026-10-02 기관 소개 페이지 검색 본문 확인",
+        "localResearchRefs": [
+          "docs/research/2026-09-24-content-catalog.md:석회·기와·도기"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT07",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT07",
+        "title": "Philip Slavin, The Great Bovine Pestilence and its economic and environmental consequences in England and Wales, 1318–50",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-0289.2011.00625.x",
+        "claimSupported": "1319~1320년 가축 역병은 소 사육과 낙농 공급에 큰 충격을 주었다. 초록은 잉글랜드·웨일스 소 약 62% 손실 추정을 제시한다.",
+        "limits": "전국 추정치를 플레이어 장원의 확정 손실률로 사용하지 않는다. 뒤의 흑사병과 영양부족 사이 인과는 논문의 질문이며 확정 사실이 아니다.",
+        "verification": "2026-10-02 학술지 출판사 초록 검색 본문 확인",
+        "localResearchRefs": [
+          "docs/research/2026-09-24-content-catalog.md:변곡점과 실제 충격·회복 경로"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT08",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT08",
+        "title": "William Chester Jordan, The Great Famine: Northern Europe in the Early Fourteenth Century",
+        "url": "https://www.jstor.org/stable/j.ctt7s2mz",
+        "claimSupported": "1315년 이후 수년에 걸친 북유럽 기근은 한 철의 단순 수확 감소보다 넓은 생계 위기였다.",
+        "limits": "출판물 소개 확인 범위. 장원별 사망률·수확량 수치는 제시하지 않는다. 구체적 종자 배급 청원은 관행을 바탕으로 한 합성 창작이다.",
+        "verification": "2026-10-02 Princeton University Press 출판물 JSTOR 소개 검색 확인; 저자 Princeton 연구 등록으로 서지 대조",
+        "localResearchRefs": [
+          "docs/research/2026-09-24-content-catalog.md:1315–17 대기근"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT09",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT09",
+        "title": "W. R. Jones, Purveyance for War and the Community of the Realm in Late Medieval England",
+        "url": "https://www.cambridge.org/core/journals/albion/article/abs/purveyance-for-war-and-the-community-of-the-realm-in-late-medieval-england/8658443BD38F3ABFDEE0807574A54EC3",
+        "claimSupported": "왕실 조달은 식량·군수품·운송 확보를 포괄했고 1297~1362년 그 부담과 제한을 둘러싼 갈등이 있었다. 물자 납부와 운송 차출을 돈 하나로 환원하지 않는다.",
+        "limits": "발췌 확인 범위. 모든 영주에게 동일 면제권·보상기일이 있었다고 쓰지 않는다. 고정 조달량과 관계 효과는 게임 추정이다.",
+        "verification": "2026-10-02 Cambridge 출판사 발췌 원문 열람",
+        "localResearchRefs": [
+          "docs/research/2026-10-02-lordly-force-gpt.md:Purveyance는 반드시 경제 시스템으로 연결"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT10",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT10",
+        "title": "The Soldier in Later Medieval England, The English army in 1415",
+        "url": "https://medievalsoldier.org/about/agincourt/the-english-army-in-1415/",
+        "claimSupported": "1415년 왕실 원정은 지휘관과 왕 사이 계약으로 병종과 인원을 정했다. 원정 복무를 평시 상비병이나 무차별 농민 소집과 구별한다.",
+        "limits": "1415년 원정 기록을 1300년 전체의 동일 모집제도로 쓰지 않는다. 병사의 개별 부상·귀환 여부와 금액은 별도 초안상 추정이다.",
+        "verification": "2026-10-02 연구 프로젝트 원문 열람; E101·E404 등 기록군 설명 확인",
+        "localResearchRefs": [
+          "docs/research/2026-10-02-lordly-force-gpt.md:실제 원정 retinue의 크기",
+          "docs/research/2026-10-02-lordly-force-gpt.md:국왕 원정은 계약 협상"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT11",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT11",
+        "title": "Historic England, The Armada Beacon, Alderley Edge, listing 1019850",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1019850?section=comments-and-photos",
+        "claimSupported": "봉화망 일반 해설은 봉화 사용이 1325년 무렵 공식화되었다고 설명한다. 봉화는 조기 경보라는 맥락으로 쓴다.",
+        "limits": "등록 대상 자체는 북서부 사례다. 남부 모든 봉화의 설치 연대나 경보 도달 시간을 증명하지 않는다. 경보가 반드시 피해를 막는다는 보장도 없다.",
+        "verification": "2026-10-02 국가유산 등록문 검색 색인 확인",
+        "localResearchRefs": [
+          "docs/research/2026-10-02-lordly-force-gpt.md:봉화는 실제 조기경보망"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT12",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT12",
+        "title": "Southampton City Council, History of Southampton's monuments",
+        "url": "https://www.southampton.gov.uk/culture-leisure-tourism/history-and-preservation/monuments-and-landmarks/history-southampton-monuments/",
+        "claimSupported": "1338년 프랑스 습격 뒤 Southampton의 방어벽 확충이 이어졌다. 해안 습격·방어비·기존 상업공간 사이 갈등의 지역 사례다.",
+        "limits": "Southampton은 특정 항구이며 모든 시장도시의 보편 경험이 아니다. 페이지의 1338년 뒤 Edward II 명령 표기는 재위 연도와 맞지 않는 오류라 사용하지 않는다. 국왕을 언급하지 않고 피해와 방어공사 연관만 사용한다.",
+        "verification": "2026-10-02 시의회 페이지 검색 전체 본문 확인; 왕명 오류 별도 배제",
+        "localResearchRefs": [
+          "docs/research/2026-10-02-lordly-force-gpt.md:Southampton과 Rye"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT13",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT13",
+        "title": "The National Archives, E179 Document notes: grant 407",
+        "url": "https://www.nationalarchives.gov.uk/e179/notes.asp?action=3&slctgrantid=407",
+        "claimSupported": "1379년 징수 절차의 재사용과 1381년 징수·봉기의 연결.",
+        "limits": "엔진의 1d/3d·14세·계절 일정의 근거가 아니다. 1377·1379·1380 승인세의 세율과 대상은 서로 같지 않다.",
+        "verification": "2026-10-02 역사 조사 담당이 기관 검색 색인을 확인. 원문 열기 403.",
+        "localResearchRefs": [
+          "docs/design/copy-audit-20261002/SOURCES.md#H04",
+          "docs/research/2026-09-24-content-catalog.md"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT14",
+      "origin": "/Users/rexxa/fls-astra-steward/docs/design/content-drafts-20261002/records/sources-trade-force.json",
+      "value": {
+        "id": "HT14",
+        "title": "The National Archives, E179 Document notes: 1377 poll tax, grant403",
+        "url": "https://www.nationalarchives.gov.uk/e179/notes.asp?action=3&slctgrantid=403",
+        "claimSupported": "1377년 인두세의 1인당4d 부과,14세초과 대상과 구걸인 예외,지역 대표가 산정·징수한 절차.",
+        "limits": "게임의 주민당1d/3d 수입과 계절별 징수는 사료의4d 세율을 재현하지 않는 게임 간소화다.",
+        "verification": "2026-10-02 통합 담당이 TNA 페이지 검색 색인 본문 확인. 원문 전체 열람으로 표시하지 않는다.",
+        "localResearchRefs": [
+          "docs/design/copy-audit-20261002/SOURCES.md#H03"
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_001",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_001",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_002",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_003",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_004",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_004",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_005",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT02",
+      "origin": "ck_evt_006",
+      "value": {
+        "id": "HT02",
+        "title": "Judith M. Bennett, Ale, Beer, and Brewsters in England: Women's Work in a Changing World, 1300–1600",
+        "url": "https://academic.oup.com/book/47408"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_006",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_007",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "ck_evt_007",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_008",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "ck_evt_008",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_009",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "ck_evt_009",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_010",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_010",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK12",
+      "origin": "ck_evt_011",
+      "value": {
+        "id": "HK12",
+        "title": "Paston Letters II, 서한 34: Agnes가 William에게, 약1440",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter34"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK05",
+      "origin": "ck_evt_011",
+      "value": {
+        "id": "HK05",
+        "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_012",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_012",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_013",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT09",
+      "origin": "ck_evt_014",
+      "value": {
+        "id": "HT09",
+        "title": "W. R. Jones, Purveyance for War and the Community of the Realm in Late Medieval England",
+        "url": "https://www.cambridge.org/core/journals/albion/article/abs/purveyance-for-war-and-the-community-of-the-realm-in-late-medieval-england/8658443BD38F3ABFDEE0807574A54EC3"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_015",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_015",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT08",
+      "origin": "ck_evt_016",
+      "value": {
+        "id": "HT08",
+        "title": "William Chester Jordan, The Great Famine: Northern Europe in the Early Fourteenth Century",
+        "url": "https://www.jstor.org/stable/j.ctt7s2mz"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_016",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT07",
+      "origin": "ck_evt_017",
+      "value": {
+        "id": "HT07",
+        "title": "Philip Slavin, The Great Bovine Pestilence and its economic and environmental consequences in England and Wales, 1318–50",
+        "url": "https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1468-0289.2011.00625.x"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_017",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK05",
+      "origin": "ck_evt_018",
+      "value": {
+        "id": "HK05",
+        "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK12",
+      "origin": "ck_evt_018",
+      "value": {
+        "id": "HK12",
+        "title": "Paston Letters II, 서한 34: Agnes가 William에게, 약1440",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter34"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_019",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK05",
+      "origin": "ck_evt_020",
+      "value": {
+        "id": "HK05",
+        "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK12",
+      "origin": "ck_evt_020",
+      "value": {
+        "id": "HK12",
+        "title": "Paston Letters II, 서한 34: Agnes가 William에게, 약1440",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter34"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_021",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "ck_evt_022",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_023",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT02",
+      "origin": "ck_evt_024",
+      "value": {
+        "id": "HT02",
+        "title": "Judith M. Bennett, Ale, Beer, and Brewsters in England: Women's Work in a Changing World, 1300–1600",
+        "url": "https://academic.oup.com/book/47408"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_024",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_025",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_026",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_026",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT09",
+      "origin": "ck_evt_027",
+      "value": {
+        "id": "HT09",
+        "title": "W. R. Jones, Purveyance for War and the Community of the Realm in Late Medieval England",
+        "url": "https://www.cambridge.org/core/journals/albion/article/abs/purveyance-for-war-and-the-community-of-the-realm-in-late-medieval-england/8658443BD38F3ABFDEE0807574A54EC3"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT03",
+      "origin": "ck_evt_028",
+      "value": {
+        "id": "HT03",
+        "title": "The fortunes of urban fullers in fourteenth-century England",
+        "url": "https://academic.oup.com/histres/article/93/260/227/5826632"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_028",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_029",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT03",
+      "origin": "ck_evt_030",
+      "value": {
+        "id": "HT03",
+        "title": "The fortunes of urban fullers in fourteenth-century England",
+        "url": "https://academic.oup.com/histres/article/93/260/227/5826632"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT04",
+      "origin": "ck_evt_030",
+      "value": {
+        "id": "HT04",
+        "title": "Wendy Childs, The English export trade in cloth in the fourteenth century",
+        "url": "https://www.cambridge.org/core/books/progress-and-problems-in-medieval-england/english-export-trade-in-cloth-in-the-fourteenth-century/8F4C6A2347607D673B9AC95E87A02D38"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_031",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_032",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK10",
+      "origin": "ck_evt_032",
+      "value": {
+        "id": "HK10",
+        "title": "Paston Letters II, 서한 127~131: Gresham 권원·점유 분쟁, 1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter131"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_033",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "ck_evt_033",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_034",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_034",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_035",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_035",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_036",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_036",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_037",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK10",
+      "origin": "ck_evt_038",
+      "value": {
+        "id": "HK10",
+        "title": "Paston Letters II, 서한 127~131: Gresham 권원·점유 분쟁, 1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter131"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_038",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT03",
+      "origin": "ck_evt_039",
+      "value": {
+        "id": "HT03",
+        "title": "The fortunes of urban fullers in fourteenth-century England",
+        "url": "https://academic.oup.com/histres/article/93/260/227/5826632"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT04",
+      "origin": "ck_evt_039",
+      "value": {
+        "id": "HT04",
+        "title": "Wendy Childs, The English export trade in cloth in the fourteenth century",
+        "url": "https://www.cambridge.org/core/books/progress-and-problems-in-medieval-england/english-export-trade-in-cloth-in-the-fourteenth-century/8F4C6A2347607D673B9AC95E87A02D38"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT14",
+      "origin": "ck_evt_040",
+      "value": {
+        "id": "HT14",
+        "title": "The National Archives, E179 Document notes: 1377 poll tax, grant403",
+        "url": "https://www.nationalarchives.gov.uk/e179/notes.asp?action=3&slctgrantid=403"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT13",
+      "origin": "ck_evt_040",
+      "value": {
+        "id": "HT13",
+        "title": "The National Archives, E179 Document notes: grant 407",
+        "url": "https://www.nationalarchives.gov.uk/e179/notes.asp?action=3&slctgrantid=407"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_041",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_041",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_042",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "ck_evt_043",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK08",
+      "origin": "ck_evt_043",
+      "value": {
+        "id": "HK08",
+        "title": "Paston Letters II, 문서 70: William Pope 약정, 1447-09-03",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter70"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK07",
+      "origin": "ck_evt_044",
+      "value": {
+        "id": "HK07",
+        "title": "Paston Letters II, 서한 62: Agnes가 Edmund에게, 1445-02-04",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter62"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_044",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT03",
+      "origin": "ck_evt_045",
+      "value": {
+        "id": "HT03",
+        "title": "The fortunes of urban fullers in fourteenth-century England",
+        "url": "https://academic.oup.com/histres/article/93/260/227/5826632"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT04",
+      "origin": "ck_evt_045",
+      "value": {
+        "id": "HT04",
+        "title": "Wendy Childs, The English export trade in cloth in the fourteenth century",
+        "url": "https://www.cambridge.org/core/books/progress-and-problems-in-medieval-england/english-export-trade-in-cloth-in-the-fourteenth-century/8F4C6A2347607D673B9AC95E87A02D38"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_046",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK09",
+      "origin": "ck_evt_046",
+      "value": {
+        "id": "HK09",
+        "title": "Paston Letters II, 서한 129: 숲과 체납, 약1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter129"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK05",
+      "origin": "ck_evt_047",
+      "value": {
+        "id": "HK05",
+        "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK06",
+      "origin": "ck_evt_047",
+      "value": {
+        "id": "HK06",
+        "title": "Paston Letters II, 문서 35: Mauteby 재산 임대 초안, 약1440",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter35"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK01",
+      "origin": "ck_evt_048",
+      "value": {
+        "id": "HK01",
+        "title": "Lancaster University, Cumbrian Manorial Records: Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT03",
+      "origin": "ck_evt_049",
+      "value": {
+        "id": "HT03",
+        "title": "The fortunes of urban fullers in fourteenth-century England",
+        "url": "https://academic.oup.com/histres/article/93/260/227/5826632"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT04",
+      "origin": "ck_evt_049",
+      "value": {
+        "id": "HT04",
+        "title": "Wendy Childs, The English export trade in cloth in the fourteenth century",
+        "url": "https://www.cambridge.org/core/books/progress-and-problems-in-medieval-england/english-export-trade-in-cloth-in-the-fourteenth-century/8F4C6A2347607D673B9AC95E87A02D38"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_050",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HT05",
+      "origin": "ck_evt_050",
+      "value": {
+        "id": "HT05",
+        "title": "Historic England, Medieval Settlements: Introductions to Heritage Assets",
+        "url": "https://historicengland.org.uk/images-books/publications/iha-medieval-settlements/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK10",
+      "origin": "ck_evt_051",
+      "value": {
+        "id": "HK10",
+        "title": "Paston Letters II, 서한 127~131: Gresham 권원·점유 분쟁, 1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter131"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_051",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_052",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK03",
+      "origin": "ck_evt_053",
+      "value": {
+        "id": "HK03",
+        "title": "The National Archives, Manors and manorial records",
+        "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/manors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK06",
+      "origin": "ck_evt_053",
+      "value": {
+        "id": "HK06",
+        "title": "Paston Letters II, 문서 35: Mauteby 재산 임대 초안, 약1440",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter35"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_054",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK09",
+      "origin": "ck_evt_054",
+      "value": {
+        "id": "HK09",
+        "title": "Paston Letters II, 서한 129: 숲과 체납, 약1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter129"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_055",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_055",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK07",
+      "origin": "ck_evt_056",
+      "value": {
+        "id": "HK07",
+        "title": "Paston Letters II, 서한 62: Agnes가 Edmund에게, 1445-02-04",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter62"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_056",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_057",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK11",
+      "origin": "ck_evt_057",
+      "value": {
+        "id": "HK11",
+        "title": "J. Cave-Browne, Otham Rectors, Archaeologia Cantiana 23",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK04",
+      "origin": "ck_evt_058",
+      "value": {
+        "id": "HK04",
+        "title": "Samantha Letters, Gazetteer of Markets and Fairs to 1516: Basic Introduction",
+        "url": "https://archives.history.ac.uk/gazetteer/intro.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK10",
+      "origin": "ck_evt_058",
+      "value": {
+        "id": "HK10",
+        "title": "Paston Letters II, 서한 127~131: Gresham 권원·점유 분쟁, 1450",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter131"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK02",
+      "origin": "ck_evt_059",
+      "value": {
+        "id": "HK02",
+        "title": "Seneschaucy, Elizabeth Lamond 1890 번역: The Organization of a Medieval Manor",
+        "url": "https://www.medievalists.net/2024/05/organization-medieval-manor/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK08",
+      "origin": "ck_evt_060",
+      "value": {
+        "id": "HK08",
+        "title": "Paston Letters II, 문서 70: William Pope 약정, 1447-09-03",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter70"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "HK05",
+      "origin": "ck_evt_060",
+      "value": {
+        "id": "HK05",
+        "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_061",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_062",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_063",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_064",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_065",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_066",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_067",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_068",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_069",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_070",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "ck_evt_071",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_072",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_073",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_074",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_075",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_076",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_077",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "ck_evt_078",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_079",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS11",
+      "origin": "ck_evt_080",
+      "value": {
+        "id": "CS11",
+        "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+        "url": "https://kar.kent.ac.uk/60707/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS16",
+      "origin": "ck_evt_081",
+      "value": {
+        "id": "CS16",
+        "title": "The National Archives, Medieval seals",
+        "url": "https://www.nationalarchives.gov.uk/education/resources/medieval-seals/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_082",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_083",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_084",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_085",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_086",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_087",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_088",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS05",
+      "origin": "ck_evt_089",
+      "value": {
+        "id": "CS05",
+        "title": "Kent Archaeological Society, Jayne Semple, The Tanners of Wrotham Manor 1400–1600",
+        "url": "https://www.kentarchaeology.org.uk/journal/126/tanners-wrotham-manor-1400-1600"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_090",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_091",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_092",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS13",
+      "origin": "ck_evt_093",
+      "value": {
+        "id": "CS13",
+        "title": "Our Migration Story, Becoming English: letters of denization",
+        "url": "https://www.ourmigrationstory.org.uk/oms/becoming-english-letters-of-denization"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_094",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_095",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_096",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_097",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_098",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS14",
+      "origin": "ck_evt_099",
+      "value": {
+        "id": "CS14",
+        "title": "Jessica Lutkin and W. Mark Ormrod (University of York), Alien subsidies in Medieval England",
+        "url": "https://www.ourmigrationstory.org.uk/oms/the-alien-subsidies-in-medieval-england"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_100",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+        "type": "institutional_glossary",
+        "access": "direct_page",
+        "scope": "중세에서 후대까지, Cumbria 중심",
+        "claim": "출석 면제 사유, 관습 명세 장부, 수선·연료용 채취권, 감금 가축 무단 반출, 경계·집 수선 감독 직책이 구별된다.",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/",
+        "type": "university_research",
+        "access": "direct_page",
+        "scope": "약1250–1350, 동서부 10개 주의 103 법정 기록군",
+        "claim": "채무·불이행·침해 소송과 평신도 법정 참여를 조사했다. 1328년 Longdon의 출석 면제 횟수 다툼, 1348년 Halesowen의 적법한 소환 여부 다툼을 구체적으로 든다.",
+        "limit": "1350 이후까지 똑같은 절차가 지속되었다는 직접 근거 아님. 장원마다 절차가 달랐다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+        "type": "primary_text_translation",
+        "access": "direct_page",
+        "scope": "1283·1285·1311 잉글랜드 법령 번역",
+        "claim": "채무액·기한 등록, 채무자 인장, 두 벌의 기록과 분리 인장 보관, 보증인 의무, 재산 평가와 집행 관할을 명시한다.",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810",
+        "type": "official_heritage_record",
+        "access": "direct_page",
+        "scope": "Cornwall, 현 구조 약1430–1450 추정; 다리 언급1412",
+        "claim": "돌다리와 인접 여울이 공존했다. 안내는 교회·길드의 다리 유지 및 수선용 통행 징수권을 일반적으로 설명한다.",
+        "limit": "수도원의 건설 주도와 건설 연대는 추정이다. 19세기 중량 제한 표지를 중세 규칙으로 전용하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS07",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS07",
+        "title": "English Heritage, Description of Farleigh Hungerford Castle",
+        "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+        "type": "official_heritage_record",
+        "access": "direct_page",
+        "scope": "Somerset, 1430 사제 숙소; 약1430–1445 외곽 구역; 1440년대 벽화 추정",
+        "claim": "가문의 추도를 맡은 사제들의 숙소가1430년 시작되었고 예배당의 성 게오르기우스 벽화는1440년대 의뢰로 추정된다.",
+        "limit": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F",
+        "type": "academic_book_chapter",
+        "access": "publisher_summary",
+        "scope": "1370–1420 직영지 임대 전환;1430년대 불황; Durham 중심",
+        "claim": "직영지를 직접 경영하기보다 임대하는 움직임과 지대·수입 저하 및1430년대 흉작을 설명한다.",
+        "limit": "책 전체 열람 아님. 북부 사례를 남부 모든 장원의 필연적 쇠퇴로 일반화하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf",
+        "type": "regional_scholarly_volume",
+        "access": "direct_pdf_text",
+        "scope": "Sussex Alciston,1349 및1425–1427·1440–1441",
+        "claim": "논문 제목·저자와 본문을 직접 확인했다. p.93은1425–1427·1440–1441년 역병 노동 부족과1349년 관리 사망에 따른 회계 담당 변경을 설명한다. p.90은1429–1430년 기와 생산·인근 장원 판매를 기록한다.",
+        "limit": "Battle Abbey의 큰 장원에 대한 지역 연구다. 사료는 토지 보유자 중심이며 전체 주민 사망률을 바로 계산할 수 없다. 당시 수량을 게임 생산량으로 환산하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+        "type": "university_research_report",
+        "access": "direct_page",
+        "scope": "1329·1424 Common Pleas 자료 및London권",
+        "claim": "1329·1424·1570년 채무 소송 표본의 출신지·직업·거래망 분석을 직접 확인했다.1424년 London 거래권은 남부·동남부를 포함해 넓게 퍼졌다.",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다.",
+        "checkedAt": "2026-10-03",
+        "replacedUrl": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          },
+          {
+            "url": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+            "result": "종전 PDF 검색 발췌를 직접 열리는 같은 연구기관 후속 연차보고서로 보완"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN01",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CN01",
+        "title": "Otham Rectors, Archaeologia Cantiana 23, pp.184–185",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors",
+        "access": "direct_page",
+        "claim": "1326 성직록 교환, 1349 혼인으로 전해진 추천권, 1385 과부 후원자, 1413 새 영주 추천, 1441 유언 증인.",
+        "limit": "사제 임명은 영주의 단독 명령이 아니다. 1538 이후 교구 등록부 관행 제외."
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm",
+        "access": "direct_primary_edition",
+        "claim": "1420·1439–1442 재산 귀속 순서, 1440경 혼담과 선물, 1447 추모 의무, 1450경 점유·소송·화해의 구별.",
+        "limit": "Norfolk 사료다. 남부의 모든 가족 관습으로 일반화하지 않는다. 해당 원고의 협상 수치와 인물은 창작."
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN03",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CN03",
+        "title": "Lordship, State Formation and Local Authority, chapter 5: The Parish",
+        "url": "https://www.cambridge.org/core/books/lordship-state-formation-and-local-authority-in-late-medieval-and-early-modern-england/state-formation-i-the-parish/3AD2A2B23591380887446BD37F07C589",
+        "access": "direct_academic_chapter",
+        "claim": "Worfield 1419–1420 교회 관리인 둘이 유언집행자에게 교회에 남긴 덮개를 청구했고 장원 직책도 겸했다.",
+        "limit": "Shropshire 비교 사례이며 16세기 의무를 앞당겨 쓰지 않는다. 지원 범위는 1419–1420 단락에 한정."
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN04",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/church-neighbors/sources.json",
+      "value": {
+        "id": "CN04",
+        "title": "Duncan L. Berryman, The 14th-century buildings of the curia of Alciston manor (2020), pp.107–119",
+        "url": "https://pure.qub.ac.uk/files/640823354/The_14th_century_buildings_of_the_curia.pdf",
+        "access": "direct_academic_pdf",
+        "claim": "14세기 수도원 공급용 장원, 농업 마당·저장 건물, 수입·지출·파종·수확·재고 회계; 수도원 영지 간 자원 교환.",
+        "limit": "14세기 자료를 이용한 연구다. 특정 1300년의 자루 운반이나 우리 가상 도시의 거래·건설을 입증하지 않는다. 숫자는 사용하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "accessAttempts": [
+          {
+            "url": "https://pure.qub.ac.uk/en/publications/the-14th-century-buildings-of-the-curia-of-alciston-manor/",
+            "result": "web.open 대학 저장소 논문정보·초록 성공"
+          },
+          {
+            "url": "https://pure.qub.ac.uk/files/640823354/The_14th_century_buildings_of_the_curia.pdf",
+            "result": "web.click PDF 본문15페이지 성공; pp.107–110 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_101",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN04",
+      "origin": "ck_evt_101",
+      "value": {
+        "id": "CN04",
+        "title": "Duncan L. Berryman, The 14th-century buildings of the curia of Alciston manor (2020), pp.107–119",
+        "url": "https://pure.qub.ac.uk/files/640823354/The_14th_century_buildings_of_the_curia.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_102",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_103",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN01",
+      "origin": "ck_evt_104",
+      "value": {
+        "id": "CN01",
+        "title": "Otham Rectors, Archaeologia Cantiana 23, pp.184–185",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_105",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN04",
+      "origin": "ck_evt_105",
+      "value": {
+        "id": "CN04",
+        "title": "Duncan L. Berryman, The 14th-century buildings of the curia of Alciston manor (2020), pp.107–119",
+        "url": "https://pure.qub.ac.uk/files/640823354/The_14th_century_buildings_of_the_curia.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_106",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_107",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_108",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_109",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "ck_evt_110",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS07",
+      "origin": "ck_evt_111",
+      "value": {
+        "id": "CS07",
+        "title": "English Heritage, Description of Farleigh Hungerford Castle",
+        "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_112",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_113",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_114",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_115",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN01",
+      "origin": "ck_evt_116",
+      "value": {
+        "id": "CN01",
+        "title": "Otham Rectors, Archaeologia Cantiana 23, pp.184–185",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS07",
+      "origin": "ck_evt_117",
+      "value": {
+        "id": "CS07",
+        "title": "English Heritage, Description of Farleigh Hungerford Castle",
+        "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_118",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN03",
+      "origin": "ck_evt_119",
+      "value": {
+        "id": "CN03",
+        "title": "Lordship, State Formation and Local Authority, chapter 5: The Parish",
+        "url": "https://www.cambridge.org/core/books/lordship-state-formation-and-local-authority-in-late-medieval-and-early-modern-england/state-formation-i-the-parish/3AD2A2B23591380887446BD37F07C589"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN03",
+      "origin": "ck_evt_120",
+      "value": {
+        "id": "CN03",
+        "title": "Lordship, State Formation and Local Authority, chapter 5: The Parish",
+        "url": "https://www.cambridge.org/core/books/lordship-state-formation-and-local-authority-in-late-medieval-and-early-modern-england/state-formation-i-the-parish/3AD2A2B23591380887446BD37F07C589"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_121",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_122",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_123",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN01",
+      "origin": "ck_evt_124",
+      "value": {
+        "id": "CN01",
+        "title": "Otham Rectors, Archaeologia Cantiana 23, pp.184–185",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_125",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_126",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_127",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN01",
+      "origin": "ck_evt_128",
+      "value": {
+        "id": "CN01",
+        "title": "Otham Rectors, Archaeologia Cantiana 23, pp.184–185",
+        "url": "https://www.kentarchaeology.org.uk/journal/23/otham-rectors"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_129",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_130",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "ck_evt_131",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "ck_evt_132",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_133",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "ck_evt_134",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "ck_evt_135",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_136",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "ck_evt_137",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_138",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "ck_evt_139",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CN02",
+      "origin": "ck_evt_140",
+      "value": {
+        "id": "CN02",
+        "title": "Paston Letters, vol.II, documents 4,35,37,70 and letters 34,62,127–131",
+        "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_141",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_142",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_143",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_144",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_145",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_146",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_147",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_148",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_149",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS02",
+      "origin": "ck_evt_150",
+      "value": {
+        "id": "CS02",
+        "title": "CAMPOP, Private Law and Medieval Village Society",
+        "url": "https://www.campop.geog.cam.ac.uk/research/projects/privatelaw/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS13",
+      "origin": "ck_evt_151",
+      "value": {
+        "id": "CS13",
+        "title": "Our Migration Story, Becoming English: letters of denization",
+        "url": "https://www.ourmigrationstory.org.uk/oms/becoming-english-letters-of-denization"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS05",
+      "origin": "ck_evt_152",
+      "value": {
+        "id": "CS05",
+        "title": "Kent Archaeological Society, Jayne Semple, The Tanners of Wrotham Manor 1400–1600",
+        "url": "https://www.kentarchaeology.org.uk/journal/126/tanners-wrotham-manor-1400-1600"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_153",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_154",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_155",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_156",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "ck_evt_157",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS14",
+      "origin": "ck_evt_158",
+      "value": {
+        "id": "CS14",
+        "title": "Jessica Lutkin and W. Mark Ormrod (University of York), Alien subsidies in Medieval England",
+        "url": "https://www.ourmigrationstory.org.uk/oms/the-alien-subsidies-in-medieval-england"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_159",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_160",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_161",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_162",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_163",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_164",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_165",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS06",
+      "origin": "ck_evt_166",
+      "value": {
+        "id": "CS06",
+        "title": "Historic England, Ruthern Bridge with adjacent ford, listing 1020810",
+        "url": "https://historicengland.org.uk/listing/the-list/list-entry/1020810"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_167",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_168",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_169",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_170",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS11",
+      "origin": "ck_evt_171",
+      "value": {
+        "id": "CS11",
+        "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+        "url": "https://kar.kent.ac.uk/60707/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "ck_evt_172",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS11",
+      "origin": "ck_evt_173",
+      "value": {
+        "id": "CS11",
+        "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+        "url": "https://kar.kent.ac.uk/60707/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS11",
+      "origin": "ck_evt_174",
+      "value": {
+        "id": "CS11",
+        "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+        "url": "https://kar.kent.ac.uk/60707/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS11",
+      "origin": "ck_evt_175",
+      "value": {
+        "id": "CS11",
+        "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+        "url": "https://kar.kent.ac.uk/60707/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "ck_evt_176",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_177",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS12",
+      "origin": "ck_evt_178",
+      "value": {
+        "id": "CS12",
+        "title": "Judith A. Brent, Alciston Manor in the Later Middle Ages, Sussex Archaeological Collections 106 (1968), pp.89–102",
+        "url": "https://archaeologydataservice.ac.uk/catalogue/adsdata/arch-285-1/dissemination/pdf/Vol_106_1968/SAC106_Brent.pdf"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS10",
+      "origin": "ck_evt_179",
+      "value": {
+        "id": "CS10",
+        "title": "A.T. Brown, Ecclesiastical Responses to the Fifteenth-Century Recession",
+        "url": "https://www.cambridge.org/core/books/abs/rural-society-and-economic-change-in-county-durham/ecclesiastical-responses-to-the-fifteenthcentury-recession/CE4A76E3ED79E6E0D4023AA5B0802A8F"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_180",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+        "type": "institutional_glossary",
+        "access": "direct_page",
+        "scope": "중세에서 후대까지, Cumbria 중심",
+        "claim": "출석 면제 사유, 관습 명세 장부, 수선·연료용 채취권, 감금 가축 무단 반출, 경계·집 수선 감독 직책이 구별된다.",
+        "limit": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+        "type": "primary_text_translation",
+        "access": "direct_page",
+        "scope": "1283·1285·1311 잉글랜드 법령 번역",
+        "claim": "채무액·기한 등록, 채무자 인장, 두 벌의 기록과 분리 인장 보관, 보증인 의무, 재산 평가와 집행 관할을 명시한다.",
+        "limit": "법령은 실제 준수율이 아니다. 지정 도시·상인 및 적용 범위 변화가 있으므로 모든 작은 장원에 해당 집행권이 있다고 쓰지 않는다. 1311 제한의 이후 효력을 이 페이지만으로 확정하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS07",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "CS07",
+        "title": "English Heritage, Description of Farleigh Hungerford Castle",
+        "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+        "type": "official_heritage_record",
+        "access": "direct_page",
+        "scope": "Somerset, 1430 사제 숙소; 약1430–1445 외곽 구역; 1440년대 벽화 추정",
+        "claim": "가문의 추도를 맡은 사제들의 숙소가1430년 시작되었고 예배당의 성 게오르기우스 벽화는1440년대 의뢰로 추정된다.",
+        "limit": "유력 가문의 특정 거처 사례. 모든 영주관의 보편 단계가 아니다. 17세기 무덤·장식·관은 제외.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA06",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "FA06",
+        "title": "Fordham, Magna Carta 1215, clauses 3–8",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp",
+        "type": "primary_text_translation",
+        "access": "direct_page_2026-10-03",
+        "scope": "1215 법 규범, 잉글랜드; 후대 실제 적용 별도 검토",
+        "claim": "1215년 후견 재산 보전·성년 반환·과부의 재혼 의사와 혼인 관련 고지 규범.",
+        "limit": "1300–1450의 실제 관행·성년 연령·모든 신분의 적용 범위를 증명하지 않는다. 후견 법제의 후대 정합은 추가 검토가 필요하다.",
+        "checkedAt": "2026-10-03",
+        "supplement": {
+          "title": "Fordham Medieval Sourcebook, Magna Carta 1215 translation",
+          "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp",
+          "access": "direct_page",
+          "locator": "조항3–8",
+          "claim": "후견 재산의 관리·성년 반환과 과부의 재혼 의사에 관한1215년 규범을 직접 읽었다.",
+          "limit": "1225년 본문을 열었다는 대체 증거가 아니다.1300–1450 실행 관행을 확정하지 않는다."
+        },
+        "productionUse": "BACKGROUND_1215_ONLY_LATER_PRACTICE_UNVERIFIED",
+        "accessAttempts": [
+          {
+            "url": "https://www.nationalarchives.gov.uk/education/resources/magna-carta/magna-carta-1225-westminster/",
+            "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS09",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "CS09",
+        "title": "The National Archives, Women in medieval deeds",
+        "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+        "type": "archive_primary_document_guide",
+        "access": "search_index_only_open_failed",
+        "scope": "1309 Warwickshire;1319 Stepney;1366–1367 Yorkshire",
+        "claim": "1309년 E42/78은 Ermengarda의 Cubbington 장원 지대 수령증, 1366–1367년 E42/243은 Katherine의 토지 청구권 포기 문서다.",
+        "limit": "기관 색인 본문 확인. 인장 소유로 라틴어 문해력·모든 여성의 독립 법적 지위를 확정하지 않는다.",
+        "checkedAt": "2026-10-03",
+        "productionUse": "HOLD_SOURCE_FULLTEXT_REQUIRED",
+        "accessAttempts": [
+          {
+            "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+            "result": "web.open 실패 또는 검색 색인만 확인; 원문 열람 아님"
+          },
+          {
+            "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/",
+            "result": "2026-10-03 교차검수: 직접403 재확인, 기관 검색 본문에서 두 자료 식별; 직접 원문 열람으로 세지 않음"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+        "type": "university_research_report",
+        "access": "direct_page",
+        "scope": "1329·1424 Common Pleas 자료 및London권",
+        "claim": "1329·1424·1570년 채무 소송 표본의 출신지·직업·거래망 분석을 직접 확인했다.1424년 London 거래권은 남부·동남부를 포함해 넓게 퍼졌다.",
+        "limit": "1570년의 구조 변화를1424년에 투사하지 않는다. 연구 요약이지 모든 소송 기록의 직접 열람은 아니다. 일반 가구의 특정 납부 기일·이율은 창작이다.",
+        "checkedAt": "2026-10-03",
+        "replacedUrl": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM",
+        "accessAttempts": [
+          {
+            "url": "https://archives.history.ac.uk/cmh/arpt99.html",
+            "result": "web.open 성공; access의 열람 범위만 확인"
+          },
+          {
+            "url": "https://archives.history.ac.uk/ihrcms/cmh/assets/sites/history.ac.uk/files/CMH_Annual_Report_1998-9.pdf",
+            "result": "종전 PDF 검색 발췌를 직접 열리는 같은 연구기관 후속 연차보고서로 보완"
+          }
+        ]
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA01",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "FA01",
+        "title": "Agnes Paston to William Paston, 1436/40",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=5&ref=PLETTER",
+        "access": "direct_page_2026-10-03",
+        "claim": "양가의 혼례 옷감·장식 기여와 가족 업무 전달, 서기 부재가 편지에 나타난다.",
+        "limit": "Norfolk 한 가문 사례. 혼인 준비와 당사자 동의·계약 법제를 동일시하지 않는다.",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA02",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "FA02",
+        "title": "Margaret Paston to John Paston, 28 September 1443",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER",
+        "access": "direct_page_2026-10-03",
+        "claim": "배우자의 질환 소식, 귀가 가능성, 가족 돌봄, 순례 약속과 여행·소식의 긴장이 나타난다.",
+        "limit": "Norfolk/London 가족 편지. 특정 질병·치료 성공·여비·업무 위임 제도는 증명하지 않는다.",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA03",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "FA03",
+        "title": "William Paston to John Staynford, 1425",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=1&ref=PLETTER",
+        "access": "direct_page_2026-10-03",
+        "claim": "석재 품질·가공·운송·가격에 대한 문의를 확인했다.",
+        "limit": "가족의 비용 다툼은 편지에 없고 원고의 창작이다. 건물이나 계약 성사를 증명하지 않는다.",
+        "productionUse": "LIMITED_TO_CONFIRMED_CLAIM"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA04",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "FA04",
+        "title": "John Fastolf to Henry Inglose and John Berney, after 1440?",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=6&ref=PLETTER",
+        "access": "direct_page_2026-10-03",
+        "claim": "구출 관련 기록이 수중에 없어 친족에게 봉인된 확인을 요청하고 사본을 보내는 내용.",
+        "limit": "after1440(?)는 구판 편집추정이다. FA05의1435년 또는 이전 견해와 충돌하며 정확 편년은 미확정. 원고 집필연도와 편지연도를 동일시하지 않는다.",
+        "productionUse": "HOLD_DATE_CONFIRMATION"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA05",
+      "origin": "/tmp/astra-steward-r01-20261003/content-expansion/family/sources.json",
+      "value": {
+        "id": "FA05",
+        "title": "K. B. McFarlane (1957), The Investment of Sir John Fastolf’s Profits of War, p111 note4",
+        "url": "https://www.cambridge.org/core/journals/transactions-of-the-royal-historical-society/article/abs/investment-of-sir-john-fastolfs-profits-of-war/8416AE87A845B4412ACC63996E5ACA9C",
+        "access": "publisher_page_note_directly_read_2026-10-03",
+        "claim": "동일 Inglose·Berney 편지를 1435년 또는 이전으로 추정하는 학술 견해를 명시한다.",
+        "limit": "정확한 연도는 확정하지 않는다. after1440(?)라는 구판 편집추정과 충돌한다. 가족 상환 약정·정산 절차의 직접 증거는 아니다.",
+        "productionUse": "LIMITED_TO_PRE1450_EVIDENCE_EXACT_DATE_DISPUTED"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA06",
+      "origin": "ck_evt_181",
+      "value": {
+        "id": "FA06",
+        "title": "Fordham, Magna Carta 1215, clauses 3–8",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA06",
+      "origin": "ck_evt_182",
+      "value": {
+        "id": "FA06",
+        "title": "Fordham, Magna Carta 1215, clauses 3–8",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA06",
+      "origin": "ck_evt_183",
+      "value": {
+        "id": "FA06",
+        "title": "Fordham, Magna Carta 1215, clauses 3–8",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_184",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA06",
+      "origin": "ck_evt_185",
+      "value": {
+        "id": "FA06",
+        "title": "Fordham, Magna Carta 1215, clauses 3–8",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_186",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA06",
+      "origin": "ck_evt_187",
+      "value": {
+        "id": "FA06",
+        "title": "Fordham, Magna Carta 1215, clauses 3–8",
+        "url": "https://sourcebooks.web.fordham.edu/source/magnacarta.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_188",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS09",
+      "origin": "ck_evt_189",
+      "value": {
+        "id": "CS09",
+        "title": "The National Archives, Women in medieval deeds",
+        "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-time-period/medieval/women-in-medieval-deeds/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS01",
+      "origin": "ck_evt_190",
+      "value": {
+        "id": "CS01",
+        "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+        "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA03",
+      "origin": "ck_evt_191",
+      "value": {
+        "id": "FA03",
+        "title": "William Paston to John Staynford, 1425",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=1&ref=PLETTER"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA01",
+      "origin": "ck_evt_192",
+      "value": {
+        "id": "FA01",
+        "title": "Agnes Paston to William Paston, 1436/40",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=5&ref=PLETTER"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA02",
+      "origin": "ck_evt_193",
+      "value": {
+        "id": "FA02",
+        "title": "Margaret Paston to John Paston, 28 September 1443",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA02",
+      "origin": "ck_evt_194",
+      "value": {
+        "id": "FA02",
+        "title": "Margaret Paston to John Paston, 28 September 1443",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA04",
+      "origin": "ck_evt_195",
+      "value": {
+        "id": "FA04",
+        "title": "John Fastolf to Henry Inglose and John Berney, after 1440?",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=6&ref=PLETTER"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA05",
+      "origin": "ck_evt_195",
+      "value": {
+        "id": "FA05",
+        "title": "K. B. McFarlane (1957), The Investment of Sir John Fastolf’s Profits of War, p111 note4",
+        "url": "https://www.cambridge.org/core/journals/transactions-of-the-royal-historical-society/article/abs/investment-of-sir-john-fastolfs-profits-of-war/8416AE87A845B4412ACC63996E5ACA9C"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS07",
+      "origin": "ck_evt_196",
+      "value": {
+        "id": "CS07",
+        "title": "English Heritage, Description of Farleigh Hungerford Castle",
+        "url": "https://www.english-heritage.org.uk/visit/places/farleigh-hungerford-castle/history/description/"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS15",
+      "origin": "ck_evt_197",
+      "value": {
+        "id": "CS15",
+        "title": "Centre for Metropolitan History Annual Report 1999–2000, Metropolitan Market Networks",
+        "url": "https://archives.history.ac.uk/cmh/arpt99.html"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA01",
+      "origin": "ck_evt_198",
+      "value": {
+        "id": "FA01",
+        "title": "Agnes Paston to William Paston, 1436/40",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=5&ref=PLETTER"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "FA02",
+      "origin": "ck_evt_199",
+      "value": {
+        "id": "FA02",
+        "title": "Margaret Paston to John Paston, 28 September 1443",
+        "url": "https://www.thisispaston.co.uk/index.php?_m=PAGE&letter=7&ref=PLETTER"
+      }
+    },
+    {
+      "kind": "source",
+      "id": "CS03",
+      "origin": "ck_evt_200",
+      "value": {
+        "id": "CS03",
+        "title": "Fordham Medieval Sourcebook, Statutes of Merchants 1283/1285 and 1311 provisions",
+        "url": "https://sourcebooks.web.fordham.edu/source/1283stat-merchants.asp"
+      }
+    }
+  ]
+}

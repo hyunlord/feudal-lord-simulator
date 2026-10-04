@@ -1,0 +1,425 @@
+{
+  "status": "PASS_STATIC_ONLY",
+  "revision": "r02-engine-support",
+  "historicalInitialMergeReport": "../records/content-revisions/r01-fn-r03/before/VALIDATION.json",
+  "historicalInputManifestSha256": "a8b707139b434f781c77bdb54b031c5f9a0fc1db7208d9a54ff69ab7c63e145b",
+  "preservation": {
+    "baselineSeparate": true,
+    "preserved45": [
+      "ck_evt_001",
+      "ck_evt_003",
+      "ck_evt_005",
+      "ck_evt_006",
+      "ck_evt_007",
+      "ck_evt_009",
+      "ck_evt_010",
+      "ck_evt_011",
+      "ck_evt_012",
+      "ck_evt_013",
+      "ck_evt_014",
+      "ck_evt_016",
+      "ck_evt_017",
+      "ck_evt_018",
+      "ck_evt_020",
+      "ck_evt_021",
+      "ck_evt_022",
+      "ck_evt_023",
+      "ck_evt_024",
+      "ck_evt_026",
+      "ck_evt_027",
+      "ck_evt_029",
+      "ck_evt_032",
+      "ck_evt_033",
+      "ck_evt_034",
+      "ck_evt_036",
+      "ck_evt_038",
+      "ck_evt_039",
+      "ck_evt_040",
+      "ck_evt_041",
+      "ck_evt_043",
+      "ck_evt_044",
+      "ck_evt_045",
+      "ck_evt_047",
+      "ck_evt_048",
+      "ck_evt_050",
+      "ck_evt_051",
+      "ck_evt_052",
+      "ck_evt_053",
+      "ck_evt_054",
+      "ck_evt_055",
+      "ck_evt_056",
+      "ck_evt_057",
+      "ck_evt_058",
+      "ck_evt_060"
+    ],
+    "patched15": [
+      "ck_evt_002",
+      "ck_evt_004",
+      "ck_evt_008",
+      "ck_evt_015",
+      "ck_evt_019",
+      "ck_evt_025",
+      "ck_evt_028",
+      "ck_evt_030",
+      "ck_evt_031",
+      "ck_evt_035",
+      "ck_evt_037",
+      "ck_evt_042",
+      "ck_evt_046",
+      "ck_evt_049",
+      "ck_evt_059"
+    ],
+    "baselineBytesSha256": "ae4210655c5c59b610deb9376859f9afdffe670f067486d5b7ad8b7d0b458b9c"
+  },
+  "runtimeValidated": false,
+  "checkedAt": "2026-10-03T06:56:03.865Z",
+  "counts": {
+    "hashFiles": 47,
+    "events": 200,
+    "choices": 574,
+    "registry": 200,
+    "commands": 397,
+    "relativeReferences": 336,
+    "centralGroups": 13,
+    "optionalBindings": 8,
+    "unsupportedEntries": 113,
+    "enabled": 0
+  },
+  "errors": [],
+  "warnings": [
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_063",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_063",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_063",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_064",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_064",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_064",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_066",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_066",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_066",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_069",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_069",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_069",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_070",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_070",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_070",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_071",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_071",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_071",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_072",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_072",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_072",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_073",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_073",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_073",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_074",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_074",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_074",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_079",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_079",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_079",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_081",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_081",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_081",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_082",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_082",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_082",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_084",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_084",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_084",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_086",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_086",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_086",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_089",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_089",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_089",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_091",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_091",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_091",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_094",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_094",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_094",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_096",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_096",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_096",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_097",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_097",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_097",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_098",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_098",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_098",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_099",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_099",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "blocked_unbound_context",
+      "id": "ck_evt_099",
+      "alias": "authoredCase"
+    },
+    {
+      "code": "not_runtime_validation",
+      "detail": "조건 평가·명령 실행·중복 저장·optional/default/alias adapter 구현은 검사하지 않음. 명령 이름과 카탈로그 필드/enum만 검사; 전체 GameCommand 타입 증명 아님."
+    }
+  ],
+  "schemas": {
+    "library": "python3 jsonschema existing environment",
+    "errors": []
+  },
+  "validatedContent": "revised event/registry/adapter data; subsequent final SHA-only validation recorded in revision",
+  "staticCheckReport": "../records/cumulative-validation/2026-10-03T06-11-11-365Z.json",
+  "adapterImplementationValidated": false,
+  "historicalPriorRevisionReport": "../records/content-revisions/r02-engine-support/before/VALIDATION.json",
+  "supportMetadata": {
+    "sourceHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+    "reviewLevel": "source_only",
+    "supportFile": "ENGINE_SUPPORT.json",
+    "preFinalStaticReport": "../records/cumulative-validation/2026-10-03T06-56-03-865Z.json",
+    "runtimeExecuted": false
+  }
+}

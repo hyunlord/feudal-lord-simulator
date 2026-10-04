@@ -1,0 +1,105 @@
+{
+ "save": "output/lme9b/seed3-1325.save.json",
+ "kind": "dyehouse",
+ "weeks": [
+  {
+   "tick": 100074,
+   "year": 1325,
+   "ms": 8529,
+   "week": "walked",
+   "walkTick": 100074,
+   "proposals": [
+    "dyehouse@38,8:34",
+    "road@0,14:5",
+    "road@43,7:5"
+   ],
+   "subsidies": [
+    "church:60"
+   ],
+   "receipts": 148
+  },
+  {
+   "tick": 100152,
+   "year": 1325,
+   "ms": 92,
+   "week": "reused",
+   "walkTick": 100074,
+   "proposals": [
+    "dyehouse@38,8:34",
+    "road@0,14:5",
+    "road@43,7:5"
+   ],
+   "subsidies": [
+    "church:60"
+   ],
+   "receipts": 148
+  },
+  {
+   "tick": 100230,
+   "year": 1325,
+   "ms": 79,
+   "week": "reused",
+   "walkTick": 100074,
+   "proposals": [
+    "dyehouse@38,8:34",
+    "road@0,14:5",
+    "road@43,7:5"
+   ],
+   "subsidies": [
+    "church:60"
+   ],
+   "receipts": 148
+  },
+  {
+   "tick": 100308,
+   "year": 1325,
+   "ms": 72,
+   "week": "reused",
+   "walkTick": 100074,
+   "proposals": [
+    "dyehouse@38,8:34",
+    "road@0,14:5",
+    "road@43,7:5"
+   ],
+   "subsidies": [
+    "church:60"
+   ],
+   "receipts": 148
+  },
+  {
+   "tick": 100308,
+   "lord": "set_project_subsidy dyehouse 40",
+   "subsidies": [
+    "church:60",
+    "dyehouse:40"
+   ],
+   "refusal": null
+  },
+  {
+   "tick": 100386,
+   "year": 1325,
+   "ms": 9752,
+   "week": "started",
+   "walkTick": null,
+   "proposals": [],
+   "subsidies": [
+    "church:60",
+    "dyehouse:40"
+   ],
+   "receipts": 149
+  },
+  {
+   "tick": 100464,
+   "year": 1325,
+   "ms": 7868,
+   "week": "started",
+   "walkTick": null,
+   "proposals": [],
+   "subsidies": [
+    "church:60",
+    "dyehouse:40"
+   ],
+   "receipts": 150
+  }
+ ]
+}

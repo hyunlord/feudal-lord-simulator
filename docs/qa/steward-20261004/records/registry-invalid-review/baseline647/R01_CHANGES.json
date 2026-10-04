@@ -1,0 +1,53 @@
+{
+  "status": "candidate_awaiting_independent_review_not_canonical",
+  "baseHead": "5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b",
+  "sourceHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+  "baseCandidateSha256": "b86a92a3cf544f0dd9b0bc2f2365d4e62c523b2f10357f23104aacf28742ca0b",
+  "newCandidateSha256": "f8eb252fd54b977fc74ae31463906a7bead2bbd041c6433071d316a755a1305b",
+  "newHistoryTemplateKeys": [
+    "registry.offered",
+    "registry.answered",
+    "registry.lapsed",
+    "registry.invalid",
+    "registry.term_began",
+    "registry.term_ended",
+    "manor.petition_precedent"
+  ],
+  "newDecisionKindOnExistingBundle": "registry",
+  "newLedgerCategories": [
+    "registry_settlement",
+    "instalment"
+  ],
+  "originalVariantIdsPreserved": 403,
+  "correctedOriginalVariantIds": [
+    "person.emptied.brief"
+  ],
+  "newVariantIds": [
+    "decision.bundle.registry",
+    "instalment.arrears_added",
+    "instalment.arrears_reduced",
+    "instalment.cash_in",
+    "instalment.cash_out",
+    "instalment.in_kind",
+    "instalment.other",
+    "manor.petition_precedent.brief",
+    "manor.petition_precedent.wardship_kin",
+    "manor.petition_precedent.wardship_lord",
+    "registry.answered.brief",
+    "registry.invalid.brief",
+    "registry.lapsed.brief",
+    "registry.offered.brief",
+    "registry.term_began.brief",
+    "registry.term_began.installments",
+    "registry.term_began.market_remission",
+    "registry.term_ended.brief",
+    "registry.term_ended.installments",
+    "registry.term_ended.remission",
+    "registry_settlement.cash_in",
+    "registry_settlement.cash_out",
+    "registry_settlement.in_kind",
+    "registry_settlement.other"
+  ],
+  "engineExecuted": false,
+  "parentCanonicalUnchanged": true
+}

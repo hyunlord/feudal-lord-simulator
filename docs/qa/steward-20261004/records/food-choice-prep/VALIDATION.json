@@ -1,0 +1,23 @@
+{
+  "status": "PREPARED_NOT_EXECUTED",
+  "inputSha256": "f5bc425b4c6a763e1beda92fbdb4547ee76bb783ac1e5486ccf55b13436a0203",
+  "rows": 4,
+  "recordedCallbackCounts": [
+    24,
+    24,
+    22,
+    22
+  ],
+  "staticArgsMatch": true,
+  "syntax": [
+    "node --check PASS",
+    "bash -n PASS"
+  ],
+  "engineRuns": 0,
+  "proposedDirectCalls": {
+    "bestHouseDemand": 4,
+    "nextHouseDemandTile": 4,
+    "advanceTick": 0
+  },
+  "nestedBestHouseDemandCallsFromNext": 4
+}

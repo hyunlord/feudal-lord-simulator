@@ -1,0 +1,31 @@
+{
+  "runs": {
+    "fen": {
+      "entryIdsUnique": true,
+      "rollupIntervalsValid": true,
+      "rollupOverlapAbsent": true,
+      "entryRollupOverlapAbsent": true,
+      "integerAmounts": true,
+      "cashEqualsTreasury": true,
+      "startLedgerAbsent": true,
+      "openingMatchesStart": true,
+      "sameFinalTick": true
+    },
+    "open": {
+      "entryIdsUnique": true,
+      "rollupIntervalsValid": true,
+      "rollupOverlapAbsent": true,
+      "entryRollupOverlapAbsent": true,
+      "integerAmounts": true,
+      "cashEqualsTreasury": true,
+      "startLedgerAbsent": true,
+      "openingMatchesStart": true,
+      "sameFinalTick": true
+    }
+  },
+  "sourcePinsMatchR07": true,
+  "inputUnchanged": true,
+  "categoryDifferenceReconciles": true,
+  "engineExecutions": 0,
+  "sshCalls": 0
+}

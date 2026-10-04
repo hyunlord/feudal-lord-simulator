@@ -1,0 +1,3810 @@
+{
+  "status": "PASS_OFFLINE_COUNTER_RECONCILIATION",
+  "newSimulation": false,
+  "period": "1300..1449 inclusive, 150 annual bins",
+  "scope": "Existing same-seed open-field fixed-policy bot runs; state-reference change is not player decision quality or semantic state equality.",
+  "limitations": [
+    "No policy causal comparison: command/marriage trajectories diverge",
+    "No claim that zero bot changes means no player opportunities",
+    "Annual retained history cannot prove all event occurrence counts"
+  ],
+  "runs": [
+    {
+      "run": "N02-v3-open-1-growth",
+      "inputHashes": [
+        {
+          "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/metadata.json",
+          "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+        },
+        {
+          "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/years.jsonl",
+          "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+        },
+        {
+          "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/commands.jsonl",
+          "sha256": "16a26ff01c2ace883d30012d8a50dc359800da847528ee57e361ac23ffc474c7"
+        }
+      ],
+      "totalCommands": 311,
+      "totals": {
+        "attempted": 311,
+        "changed": 197
+      },
+      "zeroChangeYears": [
+
+      ],
+      "longestZeroChangeRun": [
+
+      ],
+      "maxChangeYear": {
+        "year": 1306,
+        "attempts": 11,
+        "stateReferenceChanges": 11,
+        "asked": 5,
+        "own": 6,
+        "population": 354,
+        "cash": 13,
+        "kinds": {
+          "marriage_offer": 1,
+          "estate_petition": 3,
+          "counter": 1,
+          "promise": 5,
+          "petition": 1
+        }
+      },
+      "retryOrNoOpCommands": 114,
+      "years": [
+        {
+          "year": 1300,
+          "attempts": 117,
+          "stateReferenceChanges": 3,
+          "asked": 1,
+          "own": 2,
+          "population": 56,
+          "cash": 1,
+          "kinds": {
+            "suit": 2,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1301,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 110,
+          "cash": 26,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1302,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 137,
+          "cash": 46,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1303,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 212,
+          "cash": 1,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1304,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 244,
+          "cash": 117,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1305,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 306,
+          "cash": 342,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1306,
+          "attempts": 11,
+          "stateReferenceChanges": 11,
+          "asked": 5,
+          "own": 6,
+          "population": 354,
+          "cash": 13,
+          "kinds": {
+            "marriage_offer": 1,
+            "estate_petition": 3,
+            "counter": 1,
+            "promise": 5,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1307,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 427,
+          "cash": 333,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1308,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 440,
+          "cash": 638,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1309,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 474,
+          "cash": 827,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1310,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 512,
+          "cash": 1262,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1311,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 512,
+          "cash": 1670,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1312,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 520,
+          "cash": 1844,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1313,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 2300,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1314,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 2763,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1315,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 2991,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1316,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 3352,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1317,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 3771,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1318,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 4004,
+          "kinds": {
+            "estate_petition": 1,
+            "town_request": 1
+          }
+        },
+        {
+          "year": 1319,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 4015,
+          "kinds": {
+            "estate_petition": 1,
+            "famine": 1
+          }
+        },
+        {
+          "year": 1320,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 3705,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1321,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 3135,
+          "kinds": {
+            "estate_petition": 1,
+            "town_request": 1
+          }
+        },
+        {
+          "year": 1322,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 1687,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1323,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 864,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1324,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 1086,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1325,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 1361,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1326,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 738,
+          "cash": 1821,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1327,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 738,
+          "cash": 2119,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1328,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 738,
+          "cash": 2563,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1329,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 703,
+          "cash": 2933,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1330,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 649,
+          "cash": 3058,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1331,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 683,
+          "cash": 3449,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1332,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 686,
+          "cash": 3810,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1333,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 695,
+          "cash": 3981,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1334,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 727,
+          "cash": 4386,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1335,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 626,
+          "cash": 4605,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1336,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 435,
+          "cash": 4624,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1337,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 402,
+          "cash": 4015,
+          "kinds": {
+            "estate_petition": 1,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1338,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 397,
+          "cash": 3552,
+          "kinds": {
+            "petition": 2,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1339,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 458,
+          "cash": 3086,
+          "kinds": {
+            "estate_petition": 1,
+            "petition": 2
+          }
+        },
+        {
+          "year": 1340,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 502,
+          "cash": 3176,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1341,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 529,
+          "cash": 3335,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1342,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 563,
+          "cash": 3414,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1343,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 368,
+          "cash": 3433,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1344,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 365,
+          "cash": 3425,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1345,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 424,
+          "cash": 3447,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1346,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 387,
+          "cash": 3386,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1347,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 428,
+          "cash": 3425,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1348,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 317,
+          "cash": 3280,
+          "kinds": {
+            "estate_petition": 1,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1349,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 225,
+          "cash": 2896,
+          "kinds": {
+            "petition": 2,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1350,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 215,
+          "cash": 2323,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1351,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 221,
+          "cash": 2059,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1352,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 245,
+          "cash": 1682,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1353,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 251,
+          "cash": 1640,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1354,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 227,
+          "cash": 1656,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1355,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 247,
+          "cash": 1641,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1356,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 262,
+          "cash": 1626,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1357,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 268,
+          "cash": 1655,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1358,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 285,
+          "cash": 1726,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1359,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 292,
+          "cash": 1739,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1360,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 289,
+          "cash": 1759,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1361,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 267,
+          "cash": 1814,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1362,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 262,
+          "cash": 1755,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1363,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 274,
+          "cash": 1831,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1364,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 395,
+          "cash": 2187,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1365,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 402,
+          "cash": 2439,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1366,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 414,
+          "cash": 2635,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1367,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 445,
+          "cash": 2827,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1368,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 474,
+          "cash": 3056,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1369,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 466,
+          "cash": 3185,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1370,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 458,
+          "cash": 3411,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1371,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 434,
+          "cash": 3542,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1372,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 439,
+          "cash": 3727,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1373,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 433,
+          "cash": 3969,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1374,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 431,
+          "cash": 4148,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1375,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 467,
+          "cash": 4271,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1376,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 489,
+          "cash": 4541,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1377,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 474,
+          "cash": 5124,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1378,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 454,
+          "cash": 5643,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1379,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 468,
+          "cash": 5860,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1380,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 468,
+          "cash": 6092,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1381,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 508,
+          "cash": 6980,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1382,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 7825,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1383,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 556,
+          "cash": 8766,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1384,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 503,
+          "cash": 9342,
+          "kinds": {
+            "estate_petition": 1,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1385,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 477,
+          "cash": 10215,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1386,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 533,
+          "cash": 10696,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1387,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 539,
+          "cash": 11238,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1388,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 496,
+          "cash": 12100,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1389,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 534,
+          "cash": 12925,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1390,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 544,
+          "cash": 13688,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1391,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 558,
+          "cash": 14707,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1392,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 575,
+          "cash": 15705,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1393,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 568,
+          "cash": 16654,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1394,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 538,
+          "cash": 17686,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1395,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 530,
+          "cash": 18761,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1396,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 19444,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1397,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 548,
+          "cash": 20356,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1398,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 557,
+          "cash": 21363,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1399,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 540,
+          "cash": 22252,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1400,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 541,
+          "cash": 23097,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1401,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 517,
+          "cash": 24491,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1402,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 563,
+          "cash": 25508,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1403,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 535,
+          "cash": 26615,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1404,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 558,
+          "cash": 27682,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1405,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 580,
+          "cash": 28779,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1406,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 587,
+          "cash": 29973,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1407,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 584,
+          "cash": 31063,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1408,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 577,
+          "cash": 32092,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1409,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 574,
+          "cash": 33266,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1410,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 580,
+          "cash": 34392,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1411,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 579,
+          "cash": 35426,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1412,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 577,
+          "cash": 36626,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1413,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 542,
+          "cash": 37692,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1414,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 529,
+          "cash": 38733,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1415,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 513,
+          "cash": 39843,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1416,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 482,
+          "cash": 40828,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1417,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 483,
+          "cash": 41674,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1418,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 42440,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1419,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 546,
+          "cash": 43378,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1420,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 555,
+          "cash": 44319,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1421,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 537,
+          "cash": 45307,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1422,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 563,
+          "cash": 46310,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1423,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 577,
+          "cash": 47348,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1424,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 568,
+          "cash": 48489,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1425,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 584,
+          "cash": 49680,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1426,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 561,
+          "cash": 50748,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1427,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 576,
+          "cash": 51932,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1428,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 588,
+          "cash": 53077,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1429,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 583,
+          "cash": 54214,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1430,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 582,
+          "cash": 55380,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1431,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 588,
+          "cash": 56558,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1432,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 585,
+          "cash": 57537,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1433,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 595,
+          "cash": 58732,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1434,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 614,
+          "cash": 59888,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1435,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 675,
+          "cash": 61081,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1436,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 762,
+          "cash": 62806,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1437,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 768,
+          "cash": 64595,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1438,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 747,
+          "cash": 65979,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1439,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 635,
+          "cash": 67512,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1440,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 521,
+          "cash": 68213,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1441,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 505,
+          "cash": 69237,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1442,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 460,
+          "cash": 70074,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1443,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 489,
+          "cash": 70668,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1444,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 518,
+          "cash": 71249,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1445,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 481,
+          "cash": 71918,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1446,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 512,
+          "cash": 72746,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1447,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 478,
+          "cash": 73375,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1448,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 542,
+          "cash": 74029,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1449,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 520,
+          "cash": 74830,
+          "kinds": {
+            "estate_petition": 1
+          }
+        }
+      ]
+    },
+    {
+      "run": "N03-v3-open-1-stability",
+      "inputHashes": [
+        {
+          "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/metadata.json",
+          "sha256": "139ff91a7df71576d8fb2963357ab86761b40a3947229533324a2de143bf0a1d"
+        },
+        {
+          "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/years.jsonl",
+          "sha256": "de9b265c755c7c0a6a12c1bc3e83ba265e9a7614668e92bf64d5f3a51cf7c319"
+        },
+        {
+          "path": "/tmp/astra-steward-r04-20261003/long-run/N03-v3-open-1-stability/commands.jsonl",
+          "sha256": "565e59b10fc458d920b4473c4d36945ce78d22b5a63843597d56e0252dbe2a4f"
+        }
+      ],
+      "totalCommands": 944,
+      "totals": {
+        "attempted": 944,
+        "changed": 535
+      },
+      "zeroChangeYears": [
+
+      ],
+      "longestZeroChangeRun": [
+
+      ],
+      "maxChangeYear": {
+        "year": 1313,
+        "attempts": 12,
+        "stateReferenceChanges": 12,
+        "asked": 3,
+        "own": 9,
+        "population": 245,
+        "cash": 3903,
+        "kinds": {
+          "promise": 5,
+          "oversight": 4,
+          "estate_petition": 3
+        }
+      },
+      "retryOrNoOpCommands": 409,
+      "years": [
+        {
+          "year": 1300,
+          "attempts": 117,
+          "stateReferenceChanges": 3,
+          "asked": 1,
+          "own": 2,
+          "population": 32,
+          "cash": 0,
+          "kinds": {
+            "suit": 2,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1301,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 48,
+          "cash": 3,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1302,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 43,
+          "cash": 27,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1303,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 56,
+          "cash": 56,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1304,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 56,
+          "cash": 44,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1305,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 100,
+          "cash": 76,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1306,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 136,
+          "cash": 13,
+          "kinds": {
+            "estate_petition": 3,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1307,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 175,
+          "cash": 121,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1308,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 224,
+          "cash": 201,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1309,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 280,
+          "cash": 271,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1310,
+          "attempts": 8,
+          "stateReferenceChanges": 8,
+          "asked": 2,
+          "own": 6,
+          "population": 336,
+          "cash": 24,
+          "kinds": {
+            "estate_petition": 1,
+            "marriage_offer": 1,
+            "counter": 1,
+            "promise": 5
+          }
+        },
+        {
+          "year": 1311,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 359,
+          "cash": 236,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1312,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 281,
+          "cash": 1109,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1313,
+          "attempts": 12,
+          "stateReferenceChanges": 12,
+          "asked": 3,
+          "own": 9,
+          "population": 245,
+          "cash": 3903,
+          "kinds": {
+            "promise": 5,
+            "oversight": 4,
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1314,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 349,
+          "cash": 7374,
+          "kinds": {
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1315,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 357,
+          "cash": 10634,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1316,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 523,
+          "cash": 14057,
+          "kinds": {
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1317,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 18310,
+          "kinds": {
+            "audit": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1318,
+          "attempts": 14,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 21913,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1319,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 25242,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1320,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 27965,
+          "kinds": {
+            "famine": 1,
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1321,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 31331,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1322,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 35079,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1323,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 38416,
+          "kinds": {
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1324,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 42119,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1325,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 46098,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1326,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 50076,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1327,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 53515,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1328,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 57134,
+          "kinds": {
+            "estate_petition": 1,
+            "town_request": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1329,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 60889,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1330,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 64875,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1331,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 68508,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1332,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 72008,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1333,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 75767,
+          "kinds": {
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1334,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 79746,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1335,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 83532,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1336,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 87013,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1337,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 90110,
+          "kinds": {
+            "estate_petition": 2,
+            "petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1338,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 90249,
+          "kinds": {
+            "petition": 2,
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1339,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 86121,
+          "kinds": {
+            "estate_petition": 1,
+            "petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1340,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 86850,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1341,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 90282,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1342,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 93399,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1343,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 97242,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1344,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 100957,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1345,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 104685,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1346,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 108568,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1347,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 112458,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1348,
+          "attempts": 16,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 389,
+          "cash": 116110,
+          "kinds": {
+            "estate_petition": 2,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1349,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 288,
+          "cash": 119452,
+          "kinds": {
+            "petition": 2,
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1350,
+          "attempts": 15,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 304,
+          "cash": 122688,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1351,
+          "attempts": 15,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 328,
+          "cash": 126085,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1352,
+          "attempts": 15,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 352,
+          "cash": 129200,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1353,
+          "attempts": 14,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 368,
+          "cash": 132025,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1354,
+          "attempts": 14,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 384,
+          "cash": 134837,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1355,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 400,
+          "cash": 137644,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1356,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 416,
+          "cash": 140604,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1357,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 432,
+          "cash": 143303,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1358,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 448,
+          "cash": 146018,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1359,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 464,
+          "cash": 148900,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1360,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 480,
+          "cash": 151750,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1361,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 435,
+          "cash": 154098,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1362,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 506,
+          "cash": 156636,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1363,
+          "attempts": 14,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 527,
+          "cash": 159604,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1364,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 162702,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1365,
+          "attempts": 13,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 165481,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1366,
+          "attempts": 14,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 168043,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1367,
+          "attempts": 15,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 170655,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1368,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 173213,
+          "kinds": {
+            "estate_petition": 1,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1369,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 175395,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1370,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 177901,
+          "kinds": {
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1371,
+          "attempts": 1,
+          "stateReferenceChanges": 1,
+          "asked": 1,
+          "own": 0,
+          "population": 528,
+          "cash": 180309,
+          "kinds": {
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1372,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 182919,
+          "kinds": {
+            "registry": 1,
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1373,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 185465,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1374,
+          "attempts": 7,
+          "stateReferenceChanges": 7,
+          "asked": 7,
+          "own": 0,
+          "population": 528,
+          "cash": 188197,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 5,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1375,
+          "attempts": 8,
+          "stateReferenceChanges": 8,
+          "asked": 8,
+          "own": 0,
+          "population": 528,
+          "cash": 190308,
+          "kinds": {
+            "estate_petition": 7,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1376,
+          "attempts": 7,
+          "stateReferenceChanges": 7,
+          "asked": 7,
+          "own": 0,
+          "population": 528,
+          "cash": 193151,
+          "kinds": {
+            "estate_petition": 6,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1377,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 196234,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1378,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 527,
+          "cash": 198814,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1379,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 527,
+          "cash": 201336,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1380,
+          "attempts": 17,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 527,
+          "cash": 203498,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1381,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 206561,
+          "kinds": {
+            "estate_petition": 6
+          }
+        },
+        {
+          "year": 1382,
+          "attempts": 16,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 209390,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1383,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 212419,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1384,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 214412,
+          "kinds": {
+            "estate_petition": 5,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1385,
+          "attempts": 15,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 217255,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1386,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 220352,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1387,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 223480,
+          "kinds": {
+            "estate_petition": 6
+          }
+        },
+        {
+          "year": 1388,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 226784,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1389,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 229782,
+          "kinds": {
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1390,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 232685,
+          "kinds": {
+            "estate_petition": 6
+          }
+        },
+        {
+          "year": 1391,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 235963,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1392,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 239118,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1393,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 241545,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1394,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 244125,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 1
+          }
+        },
+        {
+          "year": 1395,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 246801,
+          "kinds": {
+            "estate_petition": 6
+          }
+        },
+        {
+          "year": 1396,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 248735,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1397,
+          "attempts": 7,
+          "stateReferenceChanges": 7,
+          "asked": 7,
+          "own": 0,
+          "population": 528,
+          "cash": 251198,
+          "kinds": {
+            "estate_petition": 6,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1398,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 253673,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1399,
+          "attempts": 18,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 255689,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1400,
+          "attempts": 18,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 257812,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1401,
+          "attempts": 16,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 260781,
+          "kinds": {
+            "estate_petition": 2,
+            "petition": 1
+          }
+        },
+        {
+          "year": 1402,
+          "attempts": 7,
+          "stateReferenceChanges": 7,
+          "asked": 7,
+          "own": 0,
+          "population": 528,
+          "cash": 263005,
+          "kinds": {
+            "estate_petition": 7
+          }
+        },
+        {
+          "year": 1403,
+          "attempts": 18,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 265462,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1404,
+          "attempts": 15,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 268216,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1405,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 270845,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1406,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 273539,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1407,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 275870,
+          "kinds": {
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1408,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 278593,
+          "kinds": {
+            "estate_petition": 6
+          }
+        },
+        {
+          "year": 1409,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 281318,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1410,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 283692,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1411,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 285893,
+          "kinds": {
+            "estate_petition": 6
+          }
+        },
+        {
+          "year": 1412,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 288550,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1413,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 291290,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1414,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 294200,
+          "kinds": {
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1415,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 297293,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1416,
+          "attempts": 7,
+          "stateReferenceChanges": 7,
+          "asked": 7,
+          "own": 0,
+          "population": 528,
+          "cash": 300352,
+          "kinds": {
+            "estate_petition": 6,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1417,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 302896,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1418,
+          "attempts": 17,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 305256,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1419,
+          "attempts": 16,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 307844,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1420,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 310363,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1421,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 312862,
+          "kinds": {
+            "estate_petition": 5,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1422,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 315617,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1423,
+          "attempts": 15,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 317691,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1424,
+          "attempts": 18,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 320028,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1425,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 322666,
+          "kinds": {
+            "estate_petition": 5,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1426,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 324947,
+          "kinds": {
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1427,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 327055,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1428,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 329793,
+          "kinds": {
+            "estate_petition": 3,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1429,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 332399,
+          "kinds": {
+            "estate_petition": 5,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1430,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 334821,
+          "kinds": {
+            "estate_petition": 2,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1431,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 337204,
+          "kinds": {
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1432,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 339726,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1433,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 342477,
+          "kinds": {
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1434,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 345252,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1435,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 347876,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1436,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 350624,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1437,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 353363,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1438,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 355986,
+          "kinds": {
+            "estate_petition": 5
+          }
+        },
+        {
+          "year": 1439,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 358783,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1440,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 361196,
+          "kinds": {
+            "petition": 1,
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1441,
+          "attempts": 3,
+          "stateReferenceChanges": 3,
+          "asked": 3,
+          "own": 0,
+          "population": 528,
+          "cash": 363883,
+          "kinds": {
+            "estate_petition": 3
+          }
+        },
+        {
+          "year": 1442,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 528,
+          "cash": 366782,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1443,
+          "attempts": 5,
+          "stateReferenceChanges": 5,
+          "asked": 5,
+          "own": 0,
+          "population": 528,
+          "cash": 369692,
+          "kinds": {
+            "estate_petition": 4,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1444,
+          "attempts": 4,
+          "stateReferenceChanges": 4,
+          "asked": 4,
+          "own": 0,
+          "population": 528,
+          "cash": 372396,
+          "kinds": {
+            "estate_petition": 4
+          }
+        },
+        {
+          "year": 1445,
+          "attempts": 2,
+          "stateReferenceChanges": 2,
+          "asked": 2,
+          "own": 0,
+          "population": 526,
+          "cash": 374922,
+          "kinds": {
+            "estate_petition": 2
+          }
+        },
+        {
+          "year": 1446,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 526,
+          "cash": 377154,
+          "kinds": {
+            "estate_petition": 5,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1447,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 526,
+          "cash": 379346,
+          "kinds": {
+            "estate_petition": 5,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1448,
+          "attempts": 6,
+          "stateReferenceChanges": 6,
+          "asked": 6,
+          "own": 0,
+          "population": 528,
+          "cash": 381820,
+          "kinds": {
+            "estate_petition": 5,
+            "audit": 1
+          }
+        },
+        {
+          "year": 1449,
+          "attempts": 8,
+          "stateReferenceChanges": 8,
+          "asked": 8,
+          "own": 0,
+          "population": 528,
+          "cash": 384432,
+          "kinds": {
+            "estate_petition": 7,
+            "audit": 1
+          }
+        }
+      ]
+    }
+  ]
+}

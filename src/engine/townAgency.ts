@@ -11,6 +11,7 @@ import {
   FIRE_NEIGHBOUR_POINTS, LAND_REACH, LAND_STEP, MATERIAL_PENNIES, NEED_STEP, NEED_TOP, OPEN_SITES_MAX, OPPORTUNITY_KINDS, PLAN_SITE_POINTS, policyWeight,
   LOAN_NEED, OPPORTUNITY_POLICY_FACTOR, REASON_ORDER, RECEIPTS_KEPT, ROAD_TILE_PENNIES, SITE_CANDIDATES_MAX, SITE_FULL_CHECKS_MAX, SITE_SEARCH_RADIUS,
   START_SCORE, STARTS_PER_WEEK, TEMPERAMENT_SPREAD, CHOICE_SPAN, STUCK_POINTS_PER_100, SUBSIDY_POINTS_PER_10D, SUBSIDY_TREASURY_PERMILLE,
+  WALK_REUSE_IDLE_WEEKS, WALK_REUSE_TICKS,
 } from "../content/townAgencyConfig";
 import { constructionSiteId, isBuildingConstructionSite } from "../economy/construction";
 import { postLedgerEntries, treasuryBalance } from "../ledger/ledger";
@@ -38,7 +39,7 @@ import { stuckStock } from "./stuckStock";
 import { agencyDuesPermille } from "./townAgencyDues";
 import { orderTimber } from "./timberTrade";
 import type {
-  ActorKind, AgencyActor, AgencyState, ChoiceChance, EstatePolicy, LordRequest, ProjectReceipt, ProjectSubsidy, Reason, ReceiptSites, SubsidyRefusal, Temperament,
+  ActorKind, AgencyActor, AgencyState, AgencyWalk, ChoiceChance, EstatePolicy, LordRequest, ProjectReceipt, ProjectSubsidy, Reason, ReceiptSites, SubsidyRefusal, Temperament,
 } from "./townAgency.types";
 
 /** TA-1: the lord mode's town at its start. */
@@ -458,6 +459,18 @@ export function needsLayoutKey(state: GameState): string {
 }
 
 /**
+ * TA-13: what a reused walk must still match — the layout (`needsLayoutKey`), the lord's policy, subsidies and market
+ * dues, and the households living in the town. Food, money and labour enter through the season's limit and the fund
+ * threshold (spec docs/design/town-agency.md TA-13).
+ */
+export function walkKey(state: GameState): string {
+  const agency = state.agency;
+  const households = state.houses.filter(house => house.residents > 0 && house.abandonedTick === undefined).length;
+  return JSON.stringify([needsLayoutKey(state), agency?.policy ?? "", (agency?.subsidies ?? []).map(subsidy => `${subsidy.kind}:${subsidy.amount}`),
+    agency?.duesPermille ?? 1000, households]);
+}
+
+/**
  * TA-11: the charter's wall search, when it runs — a hamlet that meets the market town's requirements with no building
  * site open (the bot's era step then projects walls and their service space, the costliest step of the walk).
  */
@@ -503,11 +516,25 @@ export function advanceTownAgency(state: GameState): GameState {
   }
   // TA-11: a charter wall search that found no wall is not run again on the same layout (the walls and their service
   // space are read from it); any change to the layout searches again.
-  const searching = charterSearchRuns(week);
-  const layout = searching ? needsLayoutKey(week) : undefined;
-  const skipEra = layout !== undefined && agency.charterWallTried === layout;
-  const needs = planningNeeds(week, LORD_MODE_POLICY, skipEra ? ["era"] : []);
-  const tried = searching && (skipEra || !needs.some(need => need.action.kind === "proclaim_era")) ? layout : undefined;
+  // TA-13 (LM-E9b): in a full town (its housing lots all built), after a week that started nothing, on the same layout
+  // and the lord's same conditions, within a season of the walk and below its fund threshold, a week reuses that walk.
+  const key = walkKey(week);
+  const last = agency.lastWalk;
+  const full = week.houses.length >= LORD_MODE_POLICY.maxHousingLots;
+  const reused = full && last !== undefined && last.idleWeeks >= WALK_REUSE_IDLE_WEEKS && last.key === key && week.tick - last.tick < WALK_REUSE_TICKS
+    && (last.fundThreshold === null || treasuryBalance(week) < last.fundThreshold) ? last : undefined;
+  let needs: readonly PlanningNeed[];
+  let tried: string | undefined;
+  if (reused !== undefined) {
+    needs = reused.needs;
+    tried = reused.charterWallTried;
+  } else {
+    const searching = charterSearchRuns(week);
+    const layout = searching ? needsLayoutKey(week) : undefined;
+    const skipEra = layout !== undefined && agency.charterWallTried === layout;
+    needs = planningNeeds(week, LORD_MODE_POLICY, skipEra ? ["era"] : []);
+    tried = searching && (skipEra || !needs.some(need => need.action.kind === "proclaim_era")) ? layout : undefined;
+  }
   // FIX-14 (decision FX13-5, the user's (가)): the charter's timber the town's own stores cannot reach — the town orders
   // it from the market's traders itself (FIX-10's standing order); it is not the lord's to grant.
   const charterTimber = needs.find(need => need.planner === "era" && need.action.kind === "order_timber");
@@ -517,7 +544,8 @@ export function advanceTownAgency(state: GameState): GameState {
   const receipts: ProjectReceipt[] = [];
   let started = 0;
   let ordinal = agency.nextReceipt;
-  for (const { proposal, chance } of chanceOrder(next, townProposals(next, LORD_MODE_POLICY, needs))) {
+  const proposals = reused?.proposals ?? townProposals(next, LORD_MODE_POLICY, needs);
+  for (const { proposal, chance } of chanceOrder(next, proposals)) {
     if (started >= STARTS_PER_WEEK || open(next) >= OPEN_SITES_MAX) break;
     if (holding && proposal.action.kind === "place_building") continue;
     // TA-5: the week's second project is checked again on the town the first one left — the bot places one at a time,
@@ -546,15 +574,24 @@ export function advanceTownAgency(state: GameState): GameState {
     receipts.push({ id: `receipt-${ordinal}`, tick: next.tick, actor: proposal.actor, what: proposal.what, tx: proposal.tx, ty: proposal.ty, siteId,
       planner: proposal.planner, rank: proposal.rank, reasons, score: proposal.score, cost: proposal.cost, subsidy: paid, loan,
       decisionIds: lordDecisionIds(next, proposal.what, proposal.reasons), ...(proposal.sites === undefined ? {} : { sites: proposal.sites }),
-      chance: { project: chance, ...(proposal.siteChance === undefined ? {} : { site: proposal.siteChance }) } });
+      chance: { project: chance, ...(proposal.siteChance === undefined ? {} : { site: proposal.siteChance }) },
+      ...(reused === undefined ? {} : { reusedWalk: reused.tick }) });
     ordinal += 1;
     started += 1;
   }
   const kept = [...agency.receipts, ...receipts];
   const trimmed = kept.length <= RECEIPTS_KEPT ? kept
     : kept.filter((receipt, index) => receipt.what !== "road" || index >= kept.length - RECEIPTS_KEPT).slice(-RECEIPTS_KEPT);
-  const { charterWallTried: _tried, ...kept2 } = next.agency!;
-  return { ...next, agency: { ...kept2, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }) } };
+  const { charterWallTried: _tried, lastWalk: _walk, ...kept2 } = next.agency!;
+  // TA-13: the walk is kept only while it starts nothing (a reused one keeps its own tick, key and threshold).
+  const treasury = treasuryBalance(week);
+  const short = proposals.filter(proposal => proposal.subsidy > treasury).map(proposal => proposal.subsidy);
+  const idleWeeks = (last?.idleWeeks ?? 0) + 1;
+  const lastWalk: AgencyWalk | undefined = started > 0 ? undefined : reused !== undefined ? { ...reused, idleWeeks }
+    : { tick: week.tick, key, needs, proposals, requests, fundThreshold: short.length === 0 ? null : Math.min(...short),
+      ...(tried === undefined ? {} : { charterWallTried: tried }), idleWeeks };
+  return { ...next, agency: { ...kept2, actors, receipts: trimmed, nextReceipt: ordinal, ...(tried === undefined ? {} : { charterWallTried: tried }),
+    ...(lastWalk === undefined ? {} : { lastWalk }) } };
 }
 
 /** TA-7 API: what the town asks of its lord this week — the era's proclamation, the wall's priority, the traders'

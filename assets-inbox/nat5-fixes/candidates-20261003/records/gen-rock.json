@@ -1,0 +1,20 @@
+{
+  "id": "rock",
+  "prompt": "Edit reference1 rock ground texture into a seamless repeating subdued rock surface for the same medieval game. Reference2 grass is ONLY the surrounding ground's brightness/style guide, do not turn rocks into grass. Remove the visible horizontal/vertical central cross joins and any straight artificial seam. Retain organic irregular flat grey-brown weathered bedrock plates with fine earthy cracks, small muted lichen, no shiny bright chalk surfaces. Overall medium-dark neutral earthy grey-brown, diffuse albedo, low contrast, average luminance around95-110on0..255 scale so it sits quietly beside reference2. Absolutely seamless opposite edges in both axes, no borders, no centered symmetry/cross/quadrants, non-directional organic cracks. Handpainted soft pre-render texture, not photoreal grain/noise, top-down flat ground, full opaque square512x512target. No cast shadows, text, UI, objects, white highlights.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/public/assets/terrain/rock.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/public/assets/terrain/grass.png"
+  ],
+  "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-75b69d43-191f-402f-b44c-a172b220d9a1.png",
+  "raw_sha256": "90d7f57f8006dbece7761c4bd6c61e586e6ea4b99cf3e3de5a096cdd5b9cb070",
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/public/assets/terrain/rock.png",
+      "sha256": "ed0764412eb37b2553085b5e40e0f78561dc702d169b9370da29a75ff5e842d2"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/public/assets/terrain/grass.png",
+      "sha256": "8d5dde01bb3822d9934a44b3fab508ef21c6661c6a1eda87ba4acef585601288"
+    }
+  ]
+}

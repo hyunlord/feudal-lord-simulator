@@ -1,0 +1,1314 @@
+{
+  "status": "PROPOSAL_INDEX_NOT_CANONICAL_MERGE",
+  "canonicalCount": 650,
+  "canonicalSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "canonicalHistoryTypes": 182,
+  "canonicalLedgerCategories": 46,
+  "singleHistoryTypes": 91,
+  "singleLedgerCategories": 0,
+  "newR06ProposalCount": 206,
+  "inheritedAgeProposalCountNotIncluded": 20,
+  "proposalIdsUnique": true,
+  "canonicalIdOverlap": 0,
+  "allContextTypesComplete": false,
+  "groups": [
+    {
+      "path": "records/event-context-revised/PROPOSAL.json",
+      "sha256": "cb3cac90eeb660dd4895856feea9a5db5555ccd9ab6dfad39641d56790bd81cc",
+      "reviewPath": "records/event-context-revised-review",
+      "reviewStatus": "reviewed_18_with_2_factline_holds",
+      "count": 20,
+      "templates": [
+        "lord.wardship_begun",
+        "reorg.petitions_surge",
+        "negotiation.accepted",
+        "negotiation.withdrawn",
+        "war.favour_lost",
+        "marriage.bride_arrived",
+        "marriage.child_born",
+        "marriage.inherited"
+      ],
+      "variants": [
+        {
+          "id": "lord.wardship_begun.r06ctx.spouse",
+          "template": "lord.wardship_begun",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "lord.wardship_begun.r06ctx.adult",
+          "template": "lord.wardship_begun",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "lord.wardship_begun.r06ctx.overlord",
+          "template": "lord.wardship_begun",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "reorg.petitions_surge.r06ctx.industry",
+          "template": "reorg.petitions_surge",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "reorg.petitions_surge.r06ctx.calendar",
+          "template": "reorg.petitions_surge",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "negotiation.accepted.r06ctx.initial",
+          "template": "negotiation.accepted",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "negotiation.accepted.r06ctx.counter",
+          "template": "negotiation.accepted",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "negotiation.withdrawn.r06ctx.declined",
+          "template": "negotiation.withdrawn",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "negotiation.withdrawn.r06ctx.expired",
+          "template": "negotiation.withdrawn",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "war.favour_lost.r06ctx.refused",
+          "template": "war.favour_lost",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "war.favour_lost.r06ctx.expired",
+          "template": "war.favour_lost",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.bride_arrived.r06ctx.lord",
+          "template": "marriage.bride_arrived",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.bride_arrived.r06ctx.son",
+          "template": "marriage.bride_arrived",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.bride_arrived.r06ctx.kin",
+          "template": "marriage.bride_arrived",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.child_born.r06ctx.lord",
+          "template": "marriage.child_born",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.child_born.r06ctx.son",
+          "template": "marriage.child_born",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.child_born.r06ctx.kin",
+          "template": "marriage.child_born",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.inherited.r06ctx.lord",
+          "template": "marriage.inherited",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.inherited.r06ctx.son",
+          "template": "marriage.inherited",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "marriage.inherited.r06ctx.kin",
+          "template": "marriage.inherited",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        }
+      ]
+    },
+    {
+      "path": "records/event-context-wave2-revised/PROPOSAL.json",
+      "sha256": "87d5ef7be135418b3c13fc6969786c9d079bc78a41469309ff8bb87615acee45",
+      "reviewPath": "records/event-context-wave2-revised-review",
+      "reviewStatus": "reviewed_22_with_3_composition_holds",
+      "count": 22,
+      "templates": [
+        "reorg.textile_street",
+        "reorg.alehouse_boom",
+        "legacy.charter_refused",
+        "legacy.last_market",
+        "decision.market_town",
+        "decision.stone_town",
+        "decision.rebuild",
+        "decision.wall_expand",
+        "decision.drainage"
+      ],
+      "variants": [
+        {
+          "id": "reorg.textile_street.r06ctx2.already_recorded",
+          "template": "reorg.textile_street",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "reorg.textile_street.r06ctx2.same_tick",
+          "template": "reorg.textile_street",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "reorg.textile_street.r06ctx2.not_yet_recorded",
+          "template": "reorg.textile_street",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "reorg.alehouse_boom.r06ctx2.already_recorded",
+          "template": "reorg.alehouse_boom",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "reorg.alehouse_boom.r06ctx2.same_tick",
+          "template": "reorg.alehouse_boom",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "reorg.alehouse_boom.r06ctx2.not_yet_recorded",
+          "template": "reorg.alehouse_boom",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "legacy.charter_refused.r06ctx2.refused",
+          "template": "legacy.charter_refused",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "legacy.charter_refused.r06ctx2.expired",
+          "template": "legacy.charter_refused",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "legacy.last_market.r06ctx2.town",
+          "template": "legacy.last_market",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "legacy.last_market.r06ctx2.family",
+          "template": "legacy.last_market",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "legacy.last_market.r06ctx2.church",
+          "template": "legacy.last_market",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.market_town.r06ctx2.water_reach",
+          "template": "decision.market_town",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.market_town.r06ctx2.land_ring",
+          "template": "decision.market_town",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.stone_town.r06ctx2.all_ready",
+          "template": "decision.stone_town",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.stone_town.r06ctx2.partly_ready",
+          "template": "decision.stone_town",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.stone_town.r06ctx2.none_ready",
+          "template": "decision.stone_town",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.rebuild.r06ctx2.residents_present",
+          "template": "decision.rebuild",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.rebuild.r06ctx2.empty",
+          "template": "decision.rebuild",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.wall_expand.r06ctx2.retained",
+          "template": "decision.wall_expand",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.wall_expand.r06ctx2.moved",
+          "template": "decision.wall_expand",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.drainage.r06ctx2.sole_work",
+          "template": "decision.drainage",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        },
+        {
+          "id": "decision.drainage.r06ctx2.parallel_work",
+          "template": "decision.drainage",
+          "integrationStatus": "PROPOSED_CONTEXT_UNIMPLEMENTED"
+        }
+      ]
+    },
+    {
+      "path": "records/person-context-coverage/PROPOSALS.json",
+      "sha256": "90a970de32a6cbe9c23d8fc4b10c2987948f0bb2fca52e386f4aad06ff9ab071",
+      "reviewPath": "records/person-context-independent-review",
+      "reviewStatus": "draft_reviewed_integration_conditional",
+      "count": 13,
+      "templates": [
+        "person.arrived",
+        "person.reeve",
+        "person.expecting",
+        "person.emptied",
+        "person.steward",
+        "person.bailiff"
+      ],
+      "variants": [
+        {
+          "id": "person.arrived.r06ctx.young",
+          "template": "person.arrived",
+          "integrationStatus": "BLOCKED_CONTEXT_ADAPTER"
+        },
+        {
+          "id": "person.arrived.r06ctx.elder",
+          "template": "person.arrived",
+          "integrationStatus": "BLOCKED_CONTEXT_ADAPTER"
+        },
+        {
+          "id": "person.reeve.r06ctx.youth",
+          "template": "person.reeve",
+          "integrationStatus": "BLOCKED_CONTEXT_ADAPTER"
+        },
+        {
+          "id": "person.reeve.r06ctx.adult",
+          "template": "person.reeve",
+          "integrationStatus": "BLOCKED_CONTEXT_ADAPTER"
+        },
+        {
+          "id": "person.reeve.r06ctx.elder",
+          "template": "person.reeve",
+          "integrationStatus": "BLOCKED_CONTEXT_ADAPTER"
+        },
+        {
+          "id": "person.expecting.r06ctx.youth",
+          "template": "person.expecting",
+          "integrationStatus": "BLOCKED_CONTEXT_ADAPTER"
+        },
+        {
+          "id": "person.expecting.r06ctx.adult",
+          "template": "person.expecting",
+          "integrationStatus": "BLOCKED_CONTEXT_ADAPTER"
+        },
+        {
+          "id": "person.emptied.r06ctx.one",
+          "template": "person.emptied",
+          "integrationStatus": "BLOCKED_BASELINE_FACT_LINE_AND_NEW_FIELD"
+        },
+        {
+          "id": "person.emptied.r06ctx.many",
+          "template": "person.emptied",
+          "integrationStatus": "BLOCKED_BASELINE_FACT_LINE_AND_NEW_FIELD"
+        },
+        {
+          "id": "person.steward.r06ctx.after_death",
+          "template": "person.steward",
+          "integrationStatus": "BLOCKED_NEW_FIELD_REACHABILITY_UNVERIFIED"
+        },
+        {
+          "id": "person.steward.r06ctx.after_departure",
+          "template": "person.steward",
+          "integrationStatus": "BLOCKED_NEW_FIELD_REACHABILITY_UNVERIFIED"
+        },
+        {
+          "id": "person.bailiff.r06ctx.artisan",
+          "template": "person.bailiff",
+          "integrationStatus": "BLOCKED_NEW_FIELD"
+        },
+        {
+          "id": "person.bailiff.r06ctx.merchant",
+          "template": "person.bailiff",
+          "integrationStatus": "BLOCKED_NEW_FIELD"
+        }
+      ]
+    },
+    {
+      "path": "records/person-life-revised/PROPOSALS.json",
+      "sha256": "49d5714832c8f57b618baa54c314542926a02426a1da341302cd6478ef90dc1a",
+      "reviewPath": "records/person-life-revised-review",
+      "reviewStatus": "reviewed_18_conditional_with_2_factline_holds_136_checks",
+      "count": 20,
+      "templates": [
+        "person.leaving",
+        "person.left",
+        "person.resettled",
+        "person.burnt",
+        "person.rebuilt",
+        "person.stayed",
+        "person.hungry",
+        "person.fed",
+        "person.water",
+        "person.water_lost"
+      ],
+      "variants": [
+        {
+          "id": "person.leaving.r06life.water",
+          "template": "person.leaving",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.leaving.r06life.no_water",
+          "template": "person.leaving",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.left.r06life.one",
+          "template": "person.left",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.left.r06life.many",
+          "template": "person.left",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.resettled.r06life.early",
+          "template": "person.resettled",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.resettled.r06life.later",
+          "template": "person.resettled",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.burnt.r06life.one",
+          "template": "person.burnt",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.burnt.r06life.many",
+          "template": "person.burnt",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.rebuilt.r06life.early",
+          "template": "person.rebuilt",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.rebuilt.r06life.later",
+          "template": "person.rebuilt",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.stayed.r06life.water",
+          "template": "person.stayed",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.stayed.r06life.no_water",
+          "template": "person.stayed",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.hungry.r06life.one",
+          "template": "person.hungry",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.hungry.r06life.many",
+          "template": "person.hungry",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.fed.r06life.brief",
+          "template": "person.fed",
+          "integrationStatus": "BLOCKED_BASELINE_FACT_LINE_AND_CONTEXT"
+        },
+        {
+          "id": "person.fed.r06life.long",
+          "template": "person.fed",
+          "integrationStatus": "BLOCKED_BASELINE_FACT_LINE_AND_CONTEXT"
+        },
+        {
+          "id": "person.water.r06life.one",
+          "template": "person.water",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.water.r06life.many",
+          "template": "person.water",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.water_lost.r06life.burnt",
+          "template": "person.water_lost",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        },
+        {
+          "id": "person.water_lost.r06life.not_burnt",
+          "template": "person.water_lost",
+          "integrationStatus": "BLOCKED_NEW_EMITTER_CONTEXT"
+        }
+      ]
+    },
+    {
+      "path": "records/ledger-lawsuit-revised/PROPOSAL.json",
+      "sha256": "8a56de6ccc131c3b1bb123145276f478b6c244acac6f52d74c1767754b484b84",
+      "reviewPath": "records/ledger-lawsuit-revised-review",
+      "reviewStatus": "reviewed_4_conditional_ledger_drafts_0_review_holds",
+      "count": 4,
+      "templates": [
+
+      ],
+      "variants": [
+        {
+          "id": "lawsuit.r06context.filed",
+          "category": "lawsuit",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "lawsuit.r06context.evidence",
+          "category": "lawsuit",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "lawsuit.r06context.hearing",
+          "category": "lawsuit",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "lawsuit.r06context.enforcing",
+          "category": "lawsuit",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ],
+      "categories": [
+        "lawsuit"
+      ]
+    },
+    {
+      "path": "records/person-transitions-context/PROPOSAL.json",
+      "sha256": "df91258644cf580f461159830928c89ff18ef7cf0461b667755a2b9b8f20eabc",
+      "reviewPath": "records/person-transitions-review",
+      "reviewStatus": "reviewed_6_conditional_drafts_fills_3_semantic_gaps",
+      "count": 6,
+      "templates": [
+        "person.move_in",
+        "person.married",
+        "person.left_town"
+      ],
+      "variants": [
+        {
+          "id": "person.move_in.r06transition.one",
+          "template": "person.move_in",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "person.move_in.r06transition.several",
+          "template": "person.move_in",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "person.married.r06transition.manor",
+          "template": "person.married",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "person.married.r06transition.town_house",
+          "template": "person.married",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "person.left_town.r06transition.present",
+          "template": "person.left_town",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "person.left_town.r06transition.absent",
+          "template": "person.left_town",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/movement-context-revised/PROPOSAL.json",
+      "sha256": "801d0b11b158fefd9d4a114c44f6a5985d93154821db655c02a93a2e3a9a053a",
+      "reviewPath": "records/movement-context-revised-review",
+      "reviewStatus": "reviewed_13_conditional_drafts_0_editorial_holds",
+      "count": 13,
+      "templates": [
+        "house.withdrew",
+        "house.arrived",
+        "house.resettled",
+        "agency.timber_ordered",
+        "negotiation.rejected"
+      ],
+      "variants": [
+        {
+          "id": "house.withdrew.r06move.empty_town",
+          "template": "house.withdrew",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "house.withdrew.r06move.family_extinct",
+          "template": "house.withdrew",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "house.withdrew.r06move.decline_elapsed",
+          "template": "house.withdrew",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "house.arrived.r06move.inhabited",
+          "template": "house.arrived",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "house.arrived.r06move.empty",
+          "template": "house.arrived",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "house.resettled.r06move.granary_only",
+          "template": "house.resettled",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "house.resettled.r06move.split",
+          "template": "house.resettled",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "house.resettled.r06move.household_only",
+          "template": "house.resettled",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "agency.timber_ordered.r06move.market",
+          "template": "agency.timber_ordered",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "agency.timber_ordered.r06move.hamlet_storehouse",
+          "template": "agency.timber_ordered",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "negotiation.rejected.r06move.jointure",
+          "template": "negotiation.rejected",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "negotiation.rejected.r06move.deferred_without_jointure",
+          "template": "negotiation.rejected",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "negotiation.rejected.r06move.neither",
+          "template": "negotiation.rejected",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/fixed-context-revised/PROPOSAL.json",
+      "sha256": "007e0cd1d19464bc98f8e6334d2f9ce36241c69c212013654bd1f4ba1ef85681",
+      "reviewPath": "records/fixed-context-revised-review",
+      "reviewStatus": "reviewed_10_drafts_7_current_factline_holds",
+      "count": 10,
+      "templates": [
+        "person.came_of_age",
+        "milestone.stone_town",
+        "plague.priest_died",
+        "ledger.l4"
+      ],
+      "variants": [
+        {
+          "id": "person.came_of_age.r06fixed.co_resident",
+          "template": "person.came_of_age",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "person.came_of_age.r06fixed.not_co_resident",
+          "template": "person.came_of_age",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "milestone.stone_town.r06fixed.all_complete",
+          "template": "milestone.stone_town",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "milestone.stone_town.r06fixed.partly_complete",
+          "template": "milestone.stone_town",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "milestone.stone_town.r06fixed.none_complete",
+          "template": "milestone.stone_town",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.priest_died.r06fixed.present",
+          "template": "plague.priest_died",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.priest_died.r06fixed.absent",
+          "template": "plague.priest_died",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "ledger.l4.r06fixed.increased",
+          "template": "ledger.l4",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "ledger.l4.r06fixed.decreased",
+          "template": "ledger.l4",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "ledger.l4.r06fixed.unchanged",
+          "template": "ledger.l4",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/legacy-town-context/PROPOSAL.json",
+      "sha256": "f875b635fe66877874c6321b79752deae8185e6fa3213ced6c890875938fcce2",
+      "reviewPath": "records/legacy-town-review",
+      "reviewStatus": "reviewed_9_conditional_6_factline_holds",
+      "count": 15,
+      "templates": [
+        "legacy.staple",
+        "legacy.guild_dispute",
+        "legacy.market_fire",
+        "legacy.church_rebuilding",
+        "legacy.nave_rebuilt",
+        "legacy.deposition"
+      ],
+      "variants": [
+        {
+          "id": "legacy.staple.r06town.present",
+          "template": "legacy.staple",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.staple.r06town.absent",
+          "template": "legacy.staple",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.guild_dispute.r06town.identified",
+          "template": "legacy.guild_dispute",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.guild_dispute.r06town.unidentified",
+          "template": "legacy.guild_dispute",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.market_fire.r06town.full",
+          "template": "legacy.market_fire",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.market_fire.r06town.partial",
+          "template": "legacy.market_fire",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.market_fire.r06town.zero",
+          "template": "legacy.market_fire",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.church_rebuilding.r06town.covers_cost",
+          "template": "legacy.church_rebuilding",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.church_rebuilding.r06town.below_cost",
+          "template": "legacy.church_rebuilding",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.nave_rebuilt.r06town.full",
+          "template": "legacy.nave_rebuilt",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.nave_rebuilt.r06town.partial",
+          "template": "legacy.nave_rebuilt",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.nave_rebuilt.r06town.zero",
+          "template": "legacy.nave_rebuilt",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.deposition.r06town.toward_closer",
+          "template": "legacy.deposition",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.deposition.r06town.toward_distant",
+          "template": "legacy.deposition",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.deposition.r06town.unchanged",
+          "template": "legacy.deposition",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/legacy-government-context/PROPOSAL.json",
+      "sha256": "4dc2211947b5188958b58da3a86d106d310c879c5eb09f8b8b06e39546ad3d83",
+      "reviewPath": "records/legacy-government-review",
+      "reviewStatus": "reviewed_14_conditional_drafts",
+      "count": 14,
+      "templates": [
+        "legacy.royal_tax_envoy",
+        "legacy.royal_subsidy",
+        "legacy.city_seal",
+        "legacy.charter_sealed",
+        "legacy.family_departed",
+        "legacy.family_stayed"
+      ],
+      "variants": [
+        {
+          "id": "legacy.royal_tax_envoy.r06gov.held",
+          "template": "legacy.royal_tax_envoy",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.royal_tax_envoy.r06gov.not_held",
+          "template": "legacy.royal_tax_envoy",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.royal_subsidy.r06gov.zero",
+          "template": "legacy.royal_subsidy",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.royal_subsidy.r06gov.remaining",
+          "template": "legacy.royal_subsidy",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.city_seal.r06gov.son",
+          "template": "legacy.city_seal",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.city_seal.r06gov.daughter_husband",
+          "template": "legacy.city_seal",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.city_seal.r06gov.collateral",
+          "template": "legacy.city_seal",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.charter_sealed.r06gov.same",
+          "template": "legacy.charter_sealed",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.charter_sealed.r06gov.replacement",
+          "template": "legacy.charter_sealed",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.charter_sealed.r06gov.unnamed",
+          "template": "legacy.charter_sealed",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.family_departed.r06gov.paid",
+          "template": "legacy.family_departed",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.family_departed.r06gov.no_record",
+          "template": "legacy.family_departed",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.family_stayed.r06gov.paid",
+          "template": "legacy.family_stayed",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.family_stayed.r06gov.no_record",
+          "template": "legacy.family_stayed",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/reorg-context/PROPOSAL.json",
+      "sha256": "e3edda843789e3d91b0f2a12cac931cc4f1e52b7183fb62bc8d06eef75aaa9e5",
+      "reviewPath": "records/reorg-context-review",
+      "reviewStatus": "reviewed_9_conditional_2_factline_holds",
+      "count": 11,
+      "templates": [
+        "reorg.wage_competition",
+        "reorg.guild_founded",
+        "reorg.weavers_left",
+        "reorg.overlord_warning",
+        "reorg.autonomy_request"
+      ],
+      "variants": [
+        {
+          "id": "reorg.wage_competition.r06rg.none_recorded",
+          "template": "reorg.wage_competition",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.wage_competition.r06rg.departure_recorded",
+          "template": "reorg.wage_competition",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.guild_founded.r06rg.assigned",
+          "template": "reorg.guild_founded",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.guild_founded.r06rg.unassigned",
+          "template": "reorg.guild_founded",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.weavers_left.r06rg.refused",
+          "template": "reorg.weavers_left",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.weavers_left.r06rg.expired",
+          "template": "reorg.weavers_left",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.overlord_warning.r06rg.founded",
+          "template": "reorg.overlord_warning",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.overlord_warning.r06rg.not_founded",
+          "template": "reorg.overlord_warning",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.autonomy_request.r06rg.chased",
+          "template": "reorg.autonomy_request",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.autonomy_request.r06rg.guild_accepted",
+          "template": "reorg.autonomy_request",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "reorg.autonomy_request.r06rg.guild_not_accepted",
+          "template": "reorg.autonomy_request",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/office-context-revised/PROPOSAL.json",
+      "sha256": "ad100b4b2cf5f19cf6cdfa0aac55f9c72a323e6e329b746040081b49305d1d85",
+      "reviewPath": "records/office-context-revised-review",
+      "reviewStatus": "reviewed_6_conditional_2_factline_holds_216_checks",
+      "count": 8,
+      "templates": [
+        "lord.wardship_ended",
+        "faction.leader_succeeded",
+        "stewardship.steward_died",
+        "stewardship.began"
+      ],
+      "variants": [
+        {
+          "id": "lord.wardship_ended.r06office.named_guardian",
+          "template": "lord.wardship_ended",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "lord.wardship_ended.r06office.overlord",
+          "template": "lord.wardship_ended",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "faction.leader_succeeded.r06office.same_household",
+          "template": "faction.leader_succeeded",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "faction.leader_succeeded.r06office.different_household",
+          "template": "faction.leader_succeeded",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "stewardship.steward_died.r06office.direct",
+          "template": "stewardship.steward_died",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "stewardship.steward_died.r06office.steward",
+          "template": "stewardship.steward_died",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "stewardship.began.r06office.sole_estate",
+          "template": "stewardship.began",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "stewardship.began.r06office.multiple_estates",
+          "template": "stewardship.began",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/milestone-context/ADDITIONS.json",
+      "sha256": "4a3b258bb8c794884a4dc82ac24b05920b37d2ec429480b8bc0ef07b337dd733",
+      "reviewPath": "records/milestone-context-review",
+      "reviewStatus": "reviewed_9_conditional_1_composition_hold",
+      "count": 10,
+      "templates": [
+        "milestone.chapter_start",
+        "milestone.chapter_end",
+        "milestone.market_town",
+        "milestone.first_l4",
+        "person.grew"
+      ],
+      "variants": [
+        {
+          "id": "milestone.chapter_start.r06stage.second",
+          "template": "milestone.chapter_start",
+          "integrationStatus": "BLOCKED_TYPED_INPUT_GUARD"
+        },
+        {
+          "id": "milestone.chapter_start.r06stage.last",
+          "template": "milestone.chapter_start",
+          "integrationStatus": "BLOCKED_TYPED_INPUT_GUARD"
+        },
+        {
+          "id": "milestone.chapter_end.r06stage.first",
+          "template": "milestone.chapter_end",
+          "integrationStatus": "BLOCKED_TYPED_INPUT_GUARD"
+        },
+        {
+          "id": "milestone.chapter_end.r06stage.last",
+          "template": "milestone.chapter_end",
+          "integrationStatus": "BLOCKED_TYPED_INPUT_GUARD"
+        },
+        {
+          "id": "milestone.market_town.r06stage.market",
+          "template": "milestone.market_town",
+          "integrationStatus": "BLOCKED_NEW_CAPTURE_FIELD"
+        },
+        {
+          "id": "milestone.market_town.r06stage.stone",
+          "template": "milestone.market_town",
+          "integrationStatus": "BLOCKED_NEW_CAPTURE_FIELD"
+        },
+        {
+          "id": "milestone.first_l4.r06stage.one",
+          "template": "milestone.first_l4",
+          "integrationStatus": "BLOCKED_NEW_CAPTURE_FIELD"
+        },
+        {
+          "id": "milestone.first_l4.r06stage.several",
+          "template": "milestone.first_l4",
+          "integrationStatus": "BLOCKED_NEW_CAPTURE_FIELD"
+        },
+        {
+          "id": "person.grew.r06stage.two",
+          "template": "person.grew",
+          "integrationStatus": "BLOCKED_TYPED_INPUT_GUARD"
+        },
+        {
+          "id": "person.grew.r06stage.several",
+          "template": "person.grew",
+          "integrationStatus": "BLOCKED_TYPED_INPUT_GUARD"
+        }
+      ]
+    },
+    {
+      "path": "records/marriage-life-revised/PROPOSAL.json",
+      "sha256": "6b56f70910bb0515f594056d9ad2877eecd598ba71b2789329a9fdd21a524c7c",
+      "reviewPath": "records/marriage-life-revised-review",
+      "reviewStatus": "reviewed_17_conditional_3_factline_holds_332_checks",
+      "count": 20,
+      "templates": [
+        "marriage.brother_in_law_born",
+        "marriage.father_ill",
+        "marriage.deferred_void",
+        "marriage.will_change",
+        "marriage.will_dropped",
+        "marriage.father_died",
+        "marriage.lost",
+        "marriage.contested"
+      ],
+      "variants": [
+        {
+          "id": "marriage.brother_in_law_born.r06life.lord",
+          "template": "marriage.brother_in_law_born",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.brother_in_law_born.r06life.son",
+          "template": "marriage.brother_in_law_born",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.brother_in_law_born.r06life.kin",
+          "template": "marriage.brother_in_law_born",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.father_ill.r06life.lord",
+          "template": "marriage.father_ill",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.father_ill.r06life.son",
+          "template": "marriage.father_ill",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.father_ill.r06life.kin",
+          "template": "marriage.father_ill",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.deferred_void.r06life.lord",
+          "template": "marriage.deferred_void",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.deferred_void.r06life.son",
+          "template": "marriage.deferred_void",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.deferred_void.r06life.kin",
+          "template": "marriage.deferred_void",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.will_change.r06life.open",
+          "template": "marriage.will_change",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.will_change.r06life.absent",
+          "template": "marriage.will_change",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.will_dropped.r06life.paid",
+          "template": "marriage.will_dropped",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.will_dropped.r06life.promised",
+          "template": "marriage.will_dropped",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.father_died.r06life.son",
+          "template": "marriage.father_died",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.father_died.r06life.rival",
+          "template": "marriage.father_died",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.father_died.r06life.house",
+          "template": "marriage.father_died",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.lost.r06life.debt",
+          "template": "marriage.lost",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.lost.r06life.no_debt",
+          "template": "marriage.lost",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.contested.r06life.explicit",
+          "template": "marriage.contested",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "marriage.contested.r06life.deadline",
+          "template": "marriage.contested",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/war-plague-context/PROPOSAL.json",
+      "sha256": "48337a2a5193fced60de2a236c7afbc5f0af28c98f75325785432a329b793c52",
+      "reviewPath": "records/war-plague-review",
+      "reviewStatus": "reviewed_14_conditional_drafts_priest_died_unwritten",
+      "count": 14,
+      "templates": [
+        "war.messenger",
+        "war.beacon",
+        "war.licence",
+        "plague.rumour",
+        "plague.arrived",
+        "plague.second"
+      ],
+      "variants": [
+        {
+          "id": "war.messenger.r06wp.no_ring",
+          "template": "war.messenger",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "war.messenger.r06wp.unfinished",
+          "template": "war.messenger",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "war.messenger.r06wp.complete",
+          "template": "war.messenger",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "war.beacon.r06wp.no_ring",
+          "template": "war.beacon",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "war.beacon.r06wp.unfinished",
+          "template": "war.beacon",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "war.beacon.r06wp.complete",
+          "template": "war.beacon",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "war.licence.r06wp.no_stock",
+          "template": "war.licence",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "war.licence.r06wp.stocked",
+          "template": "war.licence",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.rumour.r06wp.no_arrival",
+          "template": "plague.rumour",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.rumour.r06wp.arrival_recorded",
+          "template": "plague.rumour",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.arrived.r06wp.prior_rumour",
+          "template": "plague.arrived",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.arrived.r06wp.no_prior_rumour",
+          "template": "plague.arrived",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.second.r06wp.filled",
+          "template": "plague.second",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.second.r06wp.vacant",
+          "template": "plague.second",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    },
+    {
+      "path": "records/current-param-candidates/ADDITIONS.json",
+      "sha256": "498b3c2d3741e7d9b671ec25ab8b1951588a9ed4af18fc586df4da234f850715",
+      "reviewPath": "records/current-param-review",
+      "reviewStatus": "reviewed_6_blocked_drafts_not_direct_merge",
+      "count": 6,
+      "templates": [
+        "plague.new_graves",
+        "plague.empty_streets",
+        "legacy.mayor_demand"
+      ],
+      "variants": [
+        {
+          "id": "plague.new_graves.r06raw.one",
+          "template": "plague.new_graves",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.new_graves.r06raw.several",
+          "template": "plague.new_graves",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.empty_streets.r06raw.one",
+          "template": "plague.empty_streets",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "plague.empty_streets.r06raw.several",
+          "template": "plague.empty_streets",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.mayor_demand.r06raw.unidentified",
+          "template": "legacy.mayor_demand",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        },
+        {
+          "id": "legacy.mayor_demand.r06raw.identified",
+          "template": "legacy.mayor_demand",
+          "integrationStatus": "PROPOSED_NOT_CANONICAL"
+        }
+      ]
+    }
+  ]
+}

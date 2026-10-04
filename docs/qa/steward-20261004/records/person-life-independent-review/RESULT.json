@@ -1,0 +1,71 @@
+{
+  "status": "18_DRAFTS_CONDITIONAL_PASS_2_FACTLINE_BLOCKS_CAPTURE_GUARD_GAP",
+  "fixturesRerun": 125,
+  "sourceFiles": 8,
+  "sourceSpans": 12,
+  "baselineSha256": "7314050459321e78ea19257fd4376ff80ab803586b0adfdaf2dd8ee159666dbf",
+  "baselineSnapshot": "baseline650.ko.json",
+  "captureGaps": {
+    "contradictoryHouseholdSubjectWithMatchingActorAccepted": true,
+    "emptyRecordIdAccepted": true
+  },
+  "correctHouseholdSubjectAccepted": true,
+  "adversarialInputs": {
+    "wrongSubject": {
+      "id": "person.leaving.r06life.water",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "household",
+        "id": "wrong-house"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    },
+    "emptyRecordId": {
+      "id": "",
+      "tick": 8000,
+      "template": "person.leaving",
+      "subject": {
+        "type": "person",
+        "id": "fixture-head"
+      },
+      "actors": [
+        {
+          "type": "household",
+          "id": "fixture-house"
+        }
+      ]
+    }
+  },
+  "adversarialContexts": {
+    "wrongSubject": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "person.leaving.r06life.water",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    },
+    "emptyRecordId": {
+      "residentsBefore": 2,
+      "residentsAfter": 2,
+      "waterAfter": true,
+      "burntAfter": false,
+      "recordId": "",
+      "capturedAtTick": 8000,
+      "householdId": "fixture-house"
+    }
+  },
+  "factLineBlocks": [
+    "person.fed.r06life.brief",
+    "person.fed.r06life.long"
+  ],
+  "runtimeExecuted": false,
+  "immutableProvenanceVerified": false
+}

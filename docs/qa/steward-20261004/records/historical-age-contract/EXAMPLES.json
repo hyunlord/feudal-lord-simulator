@@ -1,0 +1,148 @@
+{
+  "status": "offline JSON arithmetic only; not runtime adapter verification",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "sourceSave": "/Users/rexxa/fls-astra-steward/.remote-runs/astra-steward-N04-r03-5fb1aeb/N04-chalk-2-full/year-1450.fls.json",
+  "sha256": "b487a43879068c01c6db746ae604d121718114011777d347b802b599752a4ecb",
+  "scenario": "core:campaign_market_town",
+  "calendarEvidence": [
+    "src/engine/scenarioState.ts:67",
+    "src/content/scenario/coreScenarios.ts:100",
+    "src/content/balanceConfig.ts:35"
+  ],
+  "examples": [
+    {
+      "record": {
+        "tick": 593000,
+        "kind": "person",
+        "template": "person.fell_ill",
+        "severity": 0,
+        "subject": {
+          "type": "person",
+          "id": "p-002558"
+        },
+        "actors": [
+          {
+            "type": "household",
+            "id": "construction-site-000013"
+          }
+        ],
+        "place": {
+          "tx": 48,
+          "ty": 40,
+          "buildingId": "construction-site-000013"
+        },
+        "id": "h-050888"
+      },
+      "personEvidence": {
+        "id": "p-002558",
+        "birthYear": 1382,
+        "alive": false,
+        "deathYear": 1449
+      },
+      "pool": "past",
+      "derived": {
+        "eventYear": 1448,
+        "ageAtRecord": 66,
+        "ageBandAtRecord": "elder"
+      },
+      "biographyHeaderAgeWouldBe": 67
+    },
+    {
+      "record": {
+        "tick": 596000,
+        "kind": "person",
+        "template": "person.came_of_age",
+        "severity": 0,
+        "subject": {
+          "type": "person",
+          "id": "p-003579"
+        },
+        "actors": [
+          {
+            "type": "household",
+            "id": "construction-site-000011"
+          }
+        ],
+        "place": {
+          "tx": 45,
+          "ty": 40,
+          "buildingId": "construction-site-000011"
+        },
+        "id": "h-051206"
+      },
+      "personEvidence": {
+        "id": "p-003579",
+        "birthYear": 1435,
+        "alive": true
+      },
+      "pool": "people",
+      "derived": {
+        "eventYear": 1449,
+        "ageAtRecord": 14,
+        "ageBandAtRecord": "youth"
+      },
+      "biographyHeaderAgeWouldBe": 15
+    }
+  ],
+  "rejectedHouseholdExample": {
+    "tick": 6563,
+    "kind": "person",
+    "place": {
+      "tx": 49,
+      "ty": 40,
+      "buildingId": "construction-site-000005"
+    },
+    "subject": {
+      "type": "person",
+      "id": "p-000060"
+    },
+    "actors": [
+      {
+        "type": "household",
+        "id": "construction-site-000005"
+      }
+    ],
+    "template": "person.move_in",
+    "severity": 0,
+    "id": "h-000138"
+  },
+  "individualAllowlist": [
+    "person.born",
+    "person.married",
+    "person.arrived",
+    "person.steward",
+    "person.came_of_age",
+    "person.occupation",
+    "person.reeve",
+    "person.bailiff",
+    "person.fell_ill",
+    "person.injured",
+    "person.expecting",
+    "person.pilgrimage",
+    "person.recovered",
+    "person.healed",
+    "person.returned",
+    "person.died",
+    "person.left_town"
+  ],
+  "householdDenylist": [
+    "person.burnt",
+    "person.rebuilt",
+    "person.left",
+    "person.resettled",
+    "person.leaving",
+    "person.move_in",
+    "person.emptied",
+    "person.level_up",
+    "person.level_down",
+    "person.stayed",
+    "person.hungry",
+    "person.fed",
+    "person.water",
+    "person.water_lost",
+    "person.grew",
+    "person.shrank"
+  ],
+  "candidateRuntimeInstalled": false,
+  "rawSaveEngineDecodedThisTask": false
+}

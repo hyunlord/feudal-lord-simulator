@@ -1,0 +1,49 @@
+{
+  "allVariantsRequireVerifiedCapture": true,
+  "compositionHolds": [
+    {
+      "variantId": "person.came_of_age.r06fixed.co_resident",
+      "status": "HOLD_BASELINE_FACT_LINE_REVIEW",
+      "reason": "Baseline says started helping work, but producer checks age threshold only. Review combined output; no work assignment verified.",
+      "engineModified": false
+    },
+    {
+      "variantId": "person.came_of_age.r06fixed.not_co_resident",
+      "status": "HOLD_BASELINE_FACT_LINE_REVIEW",
+      "reason": "Baseline says started helping work, but producer checks age threshold only. Review combined output; no work assignment verified.",
+      "engineModified": false
+    },
+    {
+      "variantId": "milestone.stone_town.r06fixed.all_complete",
+      "status": "HOLD_BASELINE_FACT_LINE_REVIEW",
+      "reason": "Baseline stone city does not establish wall material or completion; review combined display with neutral stage wording.",
+      "engineModified": false
+    },
+    {
+      "variantId": "milestone.stone_town.r06fixed.partly_complete",
+      "status": "HOLD_BASELINE_FACT_LINE_REVIEW",
+      "reason": "Baseline stone city does not establish wall material or completion; review combined display with neutral stage wording.",
+      "engineModified": false
+    },
+    {
+      "variantId": "milestone.stone_town.r06fixed.none_complete",
+      "status": "HOLD_BASELINE_FACT_LINE_REVIEW",
+      "reason": "Baseline stone city does not establish wall material or completion; review combined display with neutral stage wording.",
+      "engineModified": false
+    },
+    {
+      "variantId": "plague.priest_died.r06fixed.present",
+      "status": "HOLD_BASELINE_FACT_LINE_REVIEW",
+      "reason": "Baseline asserts priest died of plague, but producer only creates curacy vacancy. Neutral factline patch is separate and not presumed applied.",
+      "engineModified": false
+    },
+    {
+      "variantId": "plague.priest_died.r06fixed.absent",
+      "status": "HOLD_BASELINE_FACT_LINE_REVIEW",
+      "reason": "Baseline asserts priest died of plague, but producer only creates curacy vacancy. Neutral factline patch is separate and not presumed applied.",
+      "engineModified": false
+    }
+  ],
+  "archiveCandidateLimit": "ledger.l4 has no emitter found in current searched source; one actual archive checked has zero records. Proposals are for validated original from/to only, no runtime reachability claim.",
+  "runtimeInstalled": false
+}

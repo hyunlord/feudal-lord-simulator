@@ -1,0 +1,342 @@
+{
+  "foodHud": "식량 0일",
+  "foodDays": "0",
+  "pausePressed": "true",
+  "inspector": "주택 · 생활 등급 0\n\n오두막\n×\n\n오두막 · L1 소가옥 승급 대기 · 1:00 남음\n\n다음: L1 / 첫 방해: 없음 · 승급 대기\n\nL1까지 조건 유지 1:00 남음\n\n식량 부족으로 떠날 준비\n\n생활 등급 0 · 주민 8명 / 정원 4명 · 1×1칸\n\n식구\n월터 롤린슨\n가구주 · 38살\n굶주림\n에이미스 롤린슨\n배우자 · 33살\n굶주림\n시슬리 롤린슨\n친척 · 57살\n굶주림\n애그니스 롤린슨\n친척 · 24살\n굶주림\n식구 8명 모두 보기\n건축 단계\n0단계 · 관리 양호\n물\n우물에서 3칸\n빵\n곡창에 빵이 없습니다 — 방앗간 확인\n인구\n성장 정체 — 식량 부족\n주택 발전 조건\n인접 주택 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n왼쪽 위 주택과 2×1 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n오른쪽 아래 주택과 2×1 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n철거하면 주민 8명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거",
+  "calendar": "1302년 여름",
+  "text": "봉건 영주 시뮬레이터\n1302년 여름\n인구 132\n식량 0일\n3s 10d\n\n주택 · 생활 등급 0\n\n오두막\n×\n\n오두막 · L1 소가옥 승급 대기 · 1:00 남음\n\n다음: L1 / 첫 방해: 없음 · 승급 대기\n\nL1까지 조건 유지 1:00 남음\n\n식량 부족으로 떠날 준비\n\n생활 등급 0 · 주민 8명 / 정원 4명 · 1×1칸\n\n식구\n월터 롤린슨\n가구주 · 38살\n굶주림\n에이미스 롤린슨\n배우자 · 33살\n굶주림\n시슬리 롤린슨\n친척 · 57살\n굶주림\n애그니스 롤린슨\n친척 · 24살\n굶주림\n식구 8명 모두 보기\n건축 단계\n0단계 · 관리 양호\n물\n우물에서 3칸\n빵\n곡창에 빵이 없습니다 — 방앗간 확인\n인구\n성장 정체 — 식량 부족\n주택 발전 조건\n인접 주택 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n왼쪽 위 주택과 2×1 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n오른쪽 아래 주택과 2×1 합필\n\n2단계 이상으로 발전한 주택끼리 합칠 수 있습니다.\n\n철거하면 주민 8명이 떠납니다. 자재와 보관 식량은 반환되지 않습니다.\n\n주택 철거\n일시 정지 중 · Space\n×5\n설정\n불탄 자리\n불탄 자리\n\n불이 꺼졌습니다. 집을 잃은 가구가 다시 짓기를 기다립니다\n\n불탄 집 1채\n다시 짓는 공사장 0곳\n\n불탄 집을 눌러 다시 짓기를 시작하세요\n\n위치로\n조언\n닫기\n직접\n구역\n방향\n건설\n장부\n청지기\n\n영주님, 빵 부족: 빵이 없고 곡창의 빵 재고가 없습니다",
+  "buttons": [
+    {
+      "text": "1302년 여름",
+      "label": "계절 띠 — 다가오는 일 보기",
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "testid": "hud-calendar"
+      }
+    },
+    {
+      "text": "인구 132",
+      "label": "인구 기록 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "식량 0일",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "foodDays": "0",
+        "short": "true"
+      }
+    },
+    {
+      "text": "3s 10d",
+      "label": "자원 장부 열기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "×",
+      "label": "상세 정보 닫기",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "월터 롤린슨가구주 · 38살굶주림",
+      "label": "월터 롤린슨의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-000085",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "에이미스 롤린슨배우자 · 33살굶주림",
+      "label": "에이미스 롤린슨의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-000091",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "시슬리 롤린슨친척 · 57살굶주림",
+      "label": "시슬리 롤린슨의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-000121",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "애그니스 롤린슨친척 · 24살굶주림",
+      "label": "애그니스 롤린슨의 인물 카드 열기 · 굶주림",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "person": "p-000113",
+        "portraitExact": "true"
+      }
+    },
+    {
+      "text": "식구 8명 모두 보기",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "일시 정지",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "seal": "pause"
+      }
+    },
+    {
+      "text": "",
+      "label": "1배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "normal"
+      }
+    },
+    {
+      "text": "",
+      "label": "3배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "threefold"
+      }
+    },
+    {
+      "text": "×5",
+      "label": "5배속",
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "seal": "fast"
+      }
+    },
+    {
+      "text": "설정",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "자동 발전",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {}
+    },
+    {
+      "text": "튜토리얼 끔",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "소리 켬",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "곡선 지면",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "해상도 배율",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {
+        "renderScale": "1"
+      }
+    },
+    {
+      "text": "색약 모드",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "colorblind": "off"
+      }
+    },
+    {
+      "text": "지금 저장",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "수동 저장시장도시 목표 · 15분째 · 인구 132 · 촌락 시대",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 빵이 없고 곡창의 빵 재고가 없습니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "떠날 채비 — 첫 건물 보기 · 먹을 것이 모자라 가구가 떠날 준비를 합니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "",
+      "label": "빵 부족 — 첫 건물 보기 · 빵이 없고 곡창의 빵 재고가 없습니다",
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "불탄 자리",
+      "label": "불탄 자리 — 카드 열기",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "story": "fire_aftermath"
+      }
+    },
+    {
+      "text": "위치로",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "조언",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {}
+    },
+    {
+      "text": "닫기",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": null,
+      "data": {}
+    },
+    {
+      "text": "직접",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "true",
+      "data": {
+        "layer": "direct"
+      }
+    },
+    {
+      "text": "구역",
+      "label": null,
+      "disabled": false,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "zone"
+      }
+    },
+    {
+      "text": "방향",
+      "label": null,
+      "disabled": true,
+      "expanded": null,
+      "pressed": "false",
+      "data": {
+        "layer": "direction"
+      }
+    },
+    {
+      "text": "건설",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "build"
+      }
+    },
+    {
+      "text": "장부",
+      "label": null,
+      "disabled": false,
+      "expanded": "false",
+      "pressed": null,
+      "data": {
+        "dock": "ledger"
+      }
+    },
+    {
+      "text": "청지기",
+      "label": "청지기 존 드 애시비",
+      "disabled": false,
+      "expanded": "true",
+      "pressed": null,
+      "data": {
+        "dock": "steward",
+        "speaking": "true"
+      }
+    }
+  ]
+}

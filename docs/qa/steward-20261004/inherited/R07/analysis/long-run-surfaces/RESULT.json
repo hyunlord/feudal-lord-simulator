@@ -1,0 +1,419 @@
+{
+  "status": "DERIVED_FROM_INHERITED_ANNUAL_SNAPSHOTS",
+  "newSimulation": false,
+  "rows": [
+    {
+      "run": "N02-v3-open-1-growth",
+      "source": "long-run-summary/N02-v3-open-1-growth/years.jsonl",
+      "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d",
+      "observations": 150,
+      "firstBoundaryYear": 1301,
+      "lastBoundaryYear": 1450,
+      "population": {
+        "min": 56,
+        "max": 768,
+        "final": 520
+      },
+      "trades": {
+        "baker": {
+          "min": 0,
+          "max": 3,
+          "first": 0,
+          "last": 1,
+          "observedYears": 145
+        },
+        "brewer": {
+          "min": 0,
+          "max": 4,
+          "first": 1,
+          "last": 0,
+          "observedYears": 126
+        },
+        "butcher": {
+          "min": 0,
+          "max": 3,
+          "first": 0,
+          "last": 1,
+          "observedYears": 149
+        },
+        "carpenter": {
+          "min": 1,
+          "max": 3,
+          "first": 1,
+          "last": 2,
+          "observedYears": 150
+        },
+        "carter": {
+          "min": 1,
+          "max": 3,
+          "first": 1,
+          "last": 2,
+          "observedYears": 150
+        },
+        "cooper": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 1,
+          "observedYears": 115
+        },
+        "innkeeper": {
+          "min": 0,
+          "max": 2,
+          "first": 0,
+          "last": 2,
+          "observedYears": 112
+        },
+        "mercer": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 1,
+          "observedYears": 26
+        },
+        "merchant": {
+          "min": 0,
+          "max": 3,
+          "first": 0,
+          "last": 3,
+          "observedYears": 119
+        },
+        "miller": {
+          "min": 1,
+          "max": 1,
+          "first": 1,
+          "last": 1,
+          "observedYears": 150
+        },
+        "shoemaker": {
+          "min": 0,
+          "max": 4,
+          "first": 0,
+          "last": 2,
+          "observedYears": 149
+        },
+        "smith": {
+          "min": 0,
+          "max": 2,
+          "first": 0,
+          "last": 2,
+          "observedYears": 149
+        },
+        "spicer": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 0,
+          "observedYears": 17
+        },
+        "tailor": {
+          "min": 0,
+          "max": 3,
+          "first": 0,
+          "last": 3,
+          "observedYears": 149
+        },
+        "tanner": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 1,
+          "observedYears": 131
+        },
+        "vintner": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 0,
+          "observedYears": 25
+        },
+        "wheelwright": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 1,
+          "observedYears": 100
+        }
+      },
+      "factions": {
+        "overlord": {
+          "min": -40,
+          "max": 20,
+          "first": 20,
+          "last": -40,
+          "observations": 150
+        },
+        "crown": {
+          "min": 10,
+          "max": 40,
+          "first": 10,
+          "last": 30,
+          "observations": 150
+        },
+        "neighbour_1": {
+          "min": -62,
+          "max": 0,
+          "first": 0,
+          "last": -62,
+          "observations": 150
+        },
+        "neighbour_2": {
+          "min": -100,
+          "max": 0,
+          "first": 0,
+          "last": -100,
+          "observations": 150
+        },
+        "bishop": {
+          "min": 5,
+          "max": 100,
+          "first": 10,
+          "last": 100,
+          "observations": 150
+        },
+        "merchant_house_1": {
+          "min": -100,
+          "max": 0,
+          "first": 0,
+          "last": -100,
+          "observations": 150
+        },
+        "merchant_house_2": {
+          "min": -2,
+          "max": 36,
+          "first": 0,
+          "last": 28,
+          "observations": 150
+        },
+        "town": {
+          "min": 5,
+          "max": 100,
+          "first": 5,
+          "last": 100,
+          "observations": 150
+        },
+        "commons": {
+          "min": 10,
+          "max": 100,
+          "first": 10,
+          "last": 100,
+          "observations": 150
+        }
+      },
+      "estateHolderTransitions": [
+        {
+          "year": 1313,
+          "estate": "estate-neighbour-3",
+          "before": [
+            "estate:estate-neighbour-3",
+            "estate:estate-neighbour-3"
+          ],
+          "after": [
+            "person:est-000004",
+            "person:est-000004"
+          ]
+        }
+      ],
+      "finalRetainedDeaths": {
+        "age": 3109,
+        "famine": 2059,
+        "famine_year": 13,
+        "plague": 257,
+        "fire": 2
+      },
+      "finalRetainedDeparted": 541
+    },
+    {
+      "run": "N03-v3-open-1-stability",
+      "source": "long-run-summary/N03-v3-open-1-stability/years.jsonl",
+      "sha256": "de9b265c755c7c0a6a12c1bc3e83ba265e9a7614668e92bf64d5f3a51cf7c319",
+      "observations": 150,
+      "firstBoundaryYear": 1301,
+      "lastBoundaryYear": 1450,
+      "population": {
+        "min": 32,
+        "max": 528,
+        "final": 528
+      },
+      "trades": {
+        "baker": {
+          "min": 0,
+          "max": 3,
+          "first": 0,
+          "last": 3,
+          "observedYears": 144
+        },
+        "brewer": {
+          "min": 0,
+          "max": 4,
+          "first": 0,
+          "last": 4,
+          "observedYears": 144
+        },
+        "butcher": {
+          "min": 1,
+          "max": 3,
+          "first": 1,
+          "last": 3,
+          "observedYears": 150
+        },
+        "carpenter": {
+          "min": 1,
+          "max": 2,
+          "first": 1,
+          "last": 2,
+          "observedYears": 150
+        },
+        "carter": {
+          "min": 1,
+          "max": 2,
+          "first": 1,
+          "last": 2,
+          "observedYears": 150
+        },
+        "cooper": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 1,
+          "observedYears": 68
+        },
+        "miller": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 1,
+          "observedYears": 145
+        },
+        "shoemaker": {
+          "min": 1,
+          "max": 3,
+          "first": 1,
+          "last": 3,
+          "observedYears": 150
+        },
+        "smith": {
+          "min": 0,
+          "max": 2,
+          "first": 0,
+          "last": 2,
+          "observedYears": 144
+        },
+        "tailor": {
+          "min": 0,
+          "max": 3,
+          "first": 0,
+          "last": 2,
+          "observedYears": 145
+        },
+        "tanner": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 1,
+          "observedYears": 142
+        },
+        "wheelwright": {
+          "min": 0,
+          "max": 1,
+          "first": 0,
+          "last": 0,
+          "observedYears": 66
+        }
+      },
+      "factions": {
+        "overlord": {
+          "min": -50,
+          "max": 20,
+          "first": 20,
+          "last": -50,
+          "observations": 150
+        },
+        "crown": {
+          "min": 10,
+          "max": 40,
+          "first": 10,
+          "last": 30,
+          "observations": 150
+        },
+        "neighbour_1": {
+          "min": -66,
+          "max": 0,
+          "first": 0,
+          "last": -66,
+          "observations": 150
+        },
+        "neighbour_2": {
+          "min": -100,
+          "max": 0,
+          "first": 0,
+          "last": -100,
+          "observations": 150
+        },
+        "bishop": {
+          "min": 5,
+          "max": 100,
+          "first": 10,
+          "last": 100,
+          "observations": 150
+        },
+        "merchant_house_1": {
+          "min": -100,
+          "max": 0,
+          "first": 0,
+          "last": -100,
+          "observations": 150
+        },
+        "merchant_house_2": {
+          "min": -2,
+          "max": 36,
+          "first": 0,
+          "last": 28,
+          "observations": 150
+        },
+        "town": {
+          "min": 5,
+          "max": 100,
+          "first": 5,
+          "last": 100,
+          "observations": 150
+        },
+        "commons": {
+          "min": 10,
+          "max": 100,
+          "first": 10,
+          "last": 100,
+          "observations": 150
+        }
+      },
+      "estateHolderTransitions": [
+        {
+          "year": 1313,
+          "estate": "estate-neighbour-3",
+          "before": [
+            "estate:estate-neighbour-3",
+            "estate:estate-neighbour-3"
+          ],
+          "after": [
+            "lord",
+            "lord"
+          ]
+        }
+      ],
+      "finalRetainedDeaths": {
+        "age": 1739,
+        "famine": 98,
+        "famine_year": 14,
+        "plague": 313,
+        "fire": 3
+      },
+      "finalRetainedDeparted": 2
+    }
+  ],
+  "limitations": [
+    "Job values preserve producer trades counts, not counts of all employed people.",
+    "Annual endpoints omit intra-year changes. Estate changes track estate-level holders only, not all right-piece transfers.",
+    "Retained deaths/departures are surviving state records, not complete 150-year mortality totals.",
+    "Same seed and land; policy runs are not a controlled causal comparison."
+  ]
+}

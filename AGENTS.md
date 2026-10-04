@@ -114,6 +114,7 @@
 - **장치로 막는다**(`scripts/remote/localGuard.mjs`): 전체 시험 스위트(`npm test`), 가드레일(`scripts/efficientGrowthRun.ts`), 브라우저 캡처 스크립트(`scripts/*Captures*`·`*Evidence*` 등 Playwright를 쓰는 스크립트)는 Mac에서 시작하면 거부하고 쓸 명령(`npm run remote:*`·`scripts/remote/run.sh`)을 알려 준다.
   - Mac 판별은 macOS와 `scutil --get LocalHostName`이다. Mac의 `os.hostname()`은 네트워크가 주는 이름이라 쓰지 않는다.
   - 급할 때만 `FLS_ALLOW_LOCAL=1`로 푼다. 그 경우 보고서에 반드시 적는다. 실행은 `.remote-runs/local-heavy.log`에 남는다.
+  - 개발 서버를 띄우는 스크립트는 `scripts/remote/devServers.sh`(셸 `fls_serve`)나 `scripts/serverProcess.ts`(`spawnServer`)로 띄운다. 실패·중지에도 서버가 꺼진다(결정 RR12, [원격 실행](docs/REMOTE_RUNS.md#브라우저)).
   - 새 브라우저 캡처 스크립트는 첫 import 앞에 `refuseHeavyOnMac("브라우저 캡처(<경로>)", { entry: import.meta.url })`를 넣는다.
 - **성능은 두 가지이고, 재는 곳이 다르다.**
   - **처리량 기준선**(프레임 p50·p95, 단계 시간 등): DGX 기준선(`perf/baseline-dgx-<sha>.json`)과만 비교한다. Mac 수치와 섞지 않는다.
@@ -176,6 +177,7 @@
 
 20. **개인 Claude Code 설정은 `.claude/settings.local.json`에 둔다**(git에 올리지 않음, `.gitignore`).
     - 저장소의 `.claude/settings.json`은 모든 세션이 같이 쓰는 것만 담는다: graft 훅·graft 권한, 그리고 `GRAFT_NO_STATUSLINE=1`(`env`).
+    - 같은 파일에서 oh-my-claudecode 플러그인을 이 저장소에서 끈다(`"enabledPlugins": {"oh-my-claudecode@omc": false}`, 결정 RR13). 까닭: 그 플러그인의 SubagentStop 훅(`subagent-tracker`)이 끝난 팀원 에이전트에 "Agent … completed"를 넣어 4~5초마다 다시 깨웠고, 늦게 받은 지시로 같은 일을 두 번 하게 했다(NAT-5 창고 눈·강가 바위). 그 훅 하나만 끄는 설정은 없다. 하위 에이전트는 Claude Code 자체 종류(`general-purpose`·`Explore` 등)를 쓴다.
     - 상태줄(`statusLine`·`subagentStatusLine`), 개인 권한, 개인 환경 변수는 `settings.local.json`에 넣는다.
     - 까닭: 커밋하지 않은 추적 파일 변경이 작업 트리에 남으면, DGX 실행은 "dirty" 트리로 돌고 병합 전 검사는 그 결과(예: ui-geometry)를 거부한다. 2026-10-02 엔진 세션이 이 때문에 1시간을 잃었다.
       - 원인은 graft였다. graft는 버전이 바뀔 때 저장소 연결을 다시 쓰면서 상태줄을 `.claude/settings.json`에 넣는다.

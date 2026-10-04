@@ -1,0 +1,23 @@
+{
+  "id": "r02-receipt-scope",
+  "changes": [
+    {
+      "path": "/60/choices/2/ledger",
+      "before": "법정 날마다 빈 영주의 자리: 액수 20d부터 올리되 권리는 별도 위임한다.",
+      "after": "상신 규칙: 홈 청원과 위임 영지의 20d 이상·혼인 청원은 다시 듣는다. 위임 영지의 20d 미만 비혼인 청원은 청지기가 처리한다."
+    },
+    {
+      "path": "/60/choices/2/chronicle",
+      "before": "영주는 액수 20d부터 올리되 권리는 별도 위임한다고 정했다.",
+      "after": "영주는 홈 청원과 위임 영지의 20d 이상·혼인 청원을 다시 듣고, 위임 영지의 20d 미만 비혼인 청원은 청지기에게 맡겼다."
+    }
+  ],
+  "previousSixFieldsPreserved": true,
+  "registryUnchanged": true,
+  "commandsUnchanged": true,
+  "events": 200,
+  "choices": 572,
+  "commands": 395,
+  "runtimeExecuted": false,
+  "promoted": false
+}

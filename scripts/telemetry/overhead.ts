@@ -1,7 +1,8 @@
 // The telemetry's own cost (requirement: ≤ 1 %): two dev servers of this checkout, telemetry off (FLS_TELEMETRY=0) and
 // on, the same scene A-B-A-B (hitchAudit, no trace, no proof port), paired differences of Chrome's main-thread time.
 //   PLAYWRIGHT_MODULE=… tsx scripts/telemetry/overhead.ts [--rounds 4] [--seconds 30] [--scene new-game-x3] [--headed]
-import { spawn, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
+import { spawnServer } from "../serverProcess";
 import { existsSync, mkdtempSync, readFileSync, rmSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -15,7 +16,7 @@ const rounds = Number(flag("rounds", "4")); const seconds = Number(flag("seconds
 const scene = SCENES.find(entry => entry.id === flag("scene", "new-game-x3"))!;
 const work = mkdtempSync(join(tmpdir(), "fls-tele-overhead-"));
 const servers = [["off", await freePort(), "0"], ["on", await freePort(), "1"]] as const;
-const children = servers.map(([, port, telemetry]) => spawn("node_modules/.bin/vite", ["--host", "127.0.0.1", "--port", String(port), "--strictPort"],
+const children = servers.map(([, port, telemetry]) => spawnServer("node_modules/.bin/vite", ["--host", "127.0.0.1", "--port", String(port), "--strictPort"],
   { stdio: "ignore", env: { ...process.env, FLS_TELEMETRY: telemetry, FLS_TELEMETRY_DIR: join(work, "store") } }));
 try {
   for (const [, port] of servers) for (let i = 0; i < 60; i++) { if (await fetch(`http://127.0.0.1:${port}/`).then(response => response.ok, () => false)) break; await new Promise(done => setTimeout(done, 1000)); }

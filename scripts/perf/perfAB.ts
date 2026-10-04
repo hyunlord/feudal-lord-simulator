@@ -10,7 +10,8 @@
 // t: ±3.18 standard errors at 4 pairs, ±2.26 at 10, towards ±1.96 with many), and how many rounds B was worse.
 // "나빠짐" / "좋아짐" only when the whole band is on one side of zero; otherwise "소음 안" (decision RR7: ±2 SE is the
 // many-pairs approximation; at 4 pairs it was a band of about 80 %).
-import { spawn, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
+import { spawnServer } from "../serverProcess";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -60,7 +61,7 @@ async function main() {
   const scene = SCENES.find(entry => entry.id === sceneId); if (scene === undefined) throw new Error(`no scene ${sceneId}`);
   const a = resolve(flag("a", "origin/codex/phase15-organic-ground")); const b = resolve(flag("b", "HEAD"));
   if (a === "" || b === "") throw new Error("--a / --b: not a commit");
-  const work = mkdtempSync(join(tmpdir(), "fls-perf-ab-")); const servers: ReturnType<typeof spawn>[] = []; const trees: string[] = [];
+  const work = mkdtempSync(join(tmpdir(), "fls-perf-ab-")); const servers: ReturnType<typeof spawnServer>[] = []; const trees: string[] = [];
   const started = new Date();
   const urls: Record<"A" | "B", string> = { A: "", B: "" };
   const runs: { side: "A" | "B"; round: number; summary: any; otherCpu: number }[] = [];
@@ -72,7 +73,7 @@ async function main() {
       const build = join(work, `build-${side}`);
       const built = spawnSync(join(tree, "node_modules/.bin/vite"), ["build", "--minify", "false", "--outDir", build, "--emptyOutDir"], { cwd: tree, encoding: "utf8" });
       if (built.status !== 0) throw new Error(`${side} build failed: ${built.stderr.slice(-400)}`);
-      servers.push(spawn("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" }));
+      servers.push(spawnServer("node_modules/.bin/vite", ["preview", "--outDir", build, "--host", "127.0.0.1", "--port", String(port), "--strictPort"], { stdio: "ignore" }));
       urls[side] = `http://127.0.0.1:${port}/`;
     }
     for (const url of Object.values(urls)) for (let i = 0; i < 60; i++) { if (await fetch(url).then(response => response.ok, () => false)) break; await new Promise(done => setTimeout(done, 1000)); }

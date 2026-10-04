@@ -1,0 +1,15 @@
+{
+  "id": "yard_chicken_coop",
+  "prompt": "Precise edit of supplied128x64 medieval chicken coop yard sprite. KEEP the wooden coop, woven willow cover, earth footprint, fence/supports, canvas padding and ground anchor(64,52) EXACTLY unchanged. Change ONLY the domestic chickens: currently much too large. Both visible chickens must be reduced to approximately44% of their existing height around their feet, each6.5 to9pixels high in target128x64canvas, without shrinking the coop. Buff pale hen on left and russet hen by right entrance; keep count, poses, muted feather colors and pecking attitudes. Restore any tiny newly uncovered part of soil or coop behind the smaller birds naturally. Upper-leftlight, existing soft handpainted2:1isometric style, genuine transparent background. No changes to building geometry, no recentering,cropping,mirroring, new objects,text or panel. Tiny chickens remain identifiable specks with distinct head/body/feet.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/public/assets/wave27/yards/yard_chicken_coop.png"
+  ],
+  "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-ca500d27-1422-4992-8971-b426a814a092.png",
+  "raw_sha256": "e2b582889f6137e7382e41cb3e23a931fcf40c8cbf21126336810689fd565825",
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/public/assets/wave27/yards/yard_chicken_coop.png",
+      "sha256": "da1d463a910f8da3fc5a41af064eccc71fcb2cdbeb7f584805dd4fb195871c77"
+    }
+  ]
+}

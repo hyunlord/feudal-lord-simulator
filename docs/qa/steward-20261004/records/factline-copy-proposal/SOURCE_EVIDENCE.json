@@ -1,0 +1,170 @@
+[
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 368,
+        "end": 378,
+        "text": "    if (house.abandonedTick !== undefined && old.abandonedTick === undefined) { push(\"person.left\", 1); continue; }\n    if (house.abandonedTick === undefined && old.abandonedTick !== undefined) push(\"person.resettled\", 0);\n    if (house.leavingSinceTick !== undefined && old.leavingSinceTick === undefined) push(\"person.leaving\", 0);\n    if (old.residents <= 0 && house.residents > 0 && old.abandonedTick === undefined) push(\"person.move_in\", 0);\n    if (old.residents > 0 && house.residents <= 0 && house.abandonedTick === undefined) push(\"person.emptied\", 1);\n    if (house.level > old.level && house.burntTick === undefined) push(\"person.level_up\", 0, { params: { level: house.level } });\n    if (house.level < old.level && house.burntTick === undefined) push(\"person.level_down\", 0, { params: { level: house.level } });\n    if (house.leavingSinceTick === undefined && old.leavingSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.stayed\", 0);\n    if (house.foodShortSinceTick !== undefined && old.foodShortSinceTick === undefined) push(\"person.hungry\", 0);\n    if (house.foodShortSinceTick === undefined && old.foodShortSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.fed\", 0);\n    if (house.hasWater !== old.hasWater) push(house.hasWater ? \"person.water\" : \"person.water_lost\", 0);\n"
+      },
+      {
+        "start": 368,
+        "end": 378,
+        "text": "    if (house.abandonedTick !== undefined && old.abandonedTick === undefined) { push(\"person.left\", 1); continue; }\n    if (house.abandonedTick === undefined && old.abandonedTick !== undefined) push(\"person.resettled\", 0);\n    if (house.leavingSinceTick !== undefined && old.leavingSinceTick === undefined) push(\"person.leaving\", 0);\n    if (old.residents <= 0 && house.residents > 0 && old.abandonedTick === undefined) push(\"person.move_in\", 0);\n    if (old.residents > 0 && house.residents <= 0 && house.abandonedTick === undefined) push(\"person.emptied\", 1);\n    if (house.level > old.level && house.burntTick === undefined) push(\"person.level_up\", 0, { params: { level: house.level } });\n    if (house.level < old.level && house.burntTick === undefined) push(\"person.level_down\", 0, { params: { level: house.level } });\n    if (house.leavingSinceTick === undefined && old.leavingSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.stayed\", 0);\n    if (house.foodShortSinceTick !== undefined && old.foodShortSinceTick === undefined) push(\"person.hungry\", 0);\n    if (house.foodShortSinceTick === undefined && old.foodShortSinceTick !== undefined && house.abandonedTick === undefined) push(\"person.fed\", 0);\n    if (house.hasWater !== old.hasWater) push(house.hasWater ? \"person.water\" : \"person.water_lost\", 0);\n"
+      },
+      {
+        "start": 1040,
+        "end": 1060,
+        "text": "  }\n  const plan = now.marriage;\n  if (plan !== undefined) {\n    // FIX-12 (item 2): who the groom is to the lord (a son, the widowed lord, a brother, a nephew, a cousin).\n    const groom = after.persons?.people.find(person => person.id === plan.groomId);\n    const relation = groom?.tags.find(tag => tag.startsWith(\"lord-kin:\"))?.slice(\"lord-kin:\".length) ?? (groom?.role === \"head\" ? \"widowed_lord\" : \"son\");\n    // FIX-13 (NG-5b): the groom died before the bride: her jointure (the piece for her life).\n    if (plan.jointureSettled === true && was?.marriage?.jointureSettled !== true) line(\"marriage.jointure_settled\", { bride: plan.brideId, piece: plan.jointurePieceId ?? \"\" }, 2);\n    if (was?.marriage === undefined) line(\"marriage.contracted\", { negotiation: plan.negotiationId, groom: plan.groomId, bride: plan.brideId, relation }, 3);\n    for (const [event, tick] of Object.entries(plan.events)) {\n      if (tick === undefined || tick < 0 || (was?.marriage?.events as Record<string, number | undefined> | undefined)?.[event] !== undefined) continue;\n      line(`marriage.${event}`, { bride: plan.brideId, brotherInLaw: plan.brotherInLawId ?? \"\" }, event === \"father_died\" ? 3 : 2);\n    }\n    if (was?.marriage?.stage !== plan.stage && (plan.stage === \"inherited\" || plan.stage === \"lost\" || plan.stage === \"contested\")) {\n      line(`marriage.${plan.stage}`, { estate: plan.estateId, rival: plan.rival ?? \"\" }, 3);\n      // FIX-13 (NG-5b): a debt promised after the inheritance falls away with an estate that did not come.\n      if (plan.stage === \"lost\" && (plan.deferredDebt ?? 0) > 0) line(\"marriage.deferred_void\", { amount: plan.deferredDebt ?? 0 }, 2);\n    }\n  }\n  return drafts;\n}\n"
+      },
+      {
+        "start": 925,
+        "end": 936,
+        "text": "  if (after.stewardship === before.stewardship || after.stewardship === undefined) return [];\n  const was = before.stewardship;\n  const now = after.stewardship;\n  const drafts: Draft[] = [];\n  const house = (estateId: string) => estatesOf(after).estates.find(estate => estate.id === estateId)?.name ?? estateId;\n  const line = (template: string, params: Record<string, string | number>, severity: 0 | 1 | 2 = 1) =>\n    drafts.push({ tick: after.tick, kind: \"event\", template, subject: TOWN, severity, params });\n  for (const oversight of now.oversight) {\n    if (was?.oversight.some(entry => entry.estateId === oversight.estateId) !== true) {\n      line(\"stewardship.began\", { estate: oversight.estateId, house: house(oversight.estateId), stewardId: oversight.stewardId }, 2);\n    }\n    // FIX-13 (ES-11): the steward died; the next one serves.\n"
+      },
+      {
+        "start": 696,
+        "end": 704,
+        "text": "  const came = (key: \"wageCompetitionTick\" | \"textileStreetTick\" | \"alehouseBoomTick\" | \"surgeTick\" | \"warningTick\" | \"autonomyTick\") => now[key] !== undefined && was?.[key] === undefined;\n  if (came(\"wageCompetitionTick\")) drafts.push({ ...at, ...by(\"neighbour_1\"), kind: \"event\", template: \"reorg.wage_competition\", severity: 2, cause });\n  if (came(\"textileStreetTick\")) drafts.push({ ...at, kind: \"event\", template: \"reorg.textile_street\", severity: 2, cause, thumbnail: { state: after, size: 128 } });\n  if (came(\"alehouseBoomTick\")) drafts.push({ ...at, kind: \"event\", template: \"reorg.alehouse_boom\", severity: 1, cause });\n  if (came(\"surgeTick\")) drafts.push({ ...at, ...by(\"merchant_house_1\"), kind: \"event\", template: \"reorg.petitions_surge\", severity: 2, cause });\n  if (now.guild !== undefined && was?.guild === undefined) drafts.push({ ...at, kind: \"event\", template: \"reorg.guild_founded\", severity: 3, cause, thumbnail: { state: after, size: 128 } });\n  if (now.weaverLeavers > (was?.weaverLeavers ?? 0)) drafts.push({ ...at, kind: \"event\", template: \"reorg.weavers_left\", severity: 2, params: { households: now.weaverLeavers }, cause });\n  if (came(\"warningTick\")) drafts.push({ ...at, ...by(\"overlord\"), kind: \"event\", template: \"reorg.overlord_warning\", severity: 3, params: { influence: now.influence.town ?? 0 }, cause });\n  if (now.collections > (was?.collections ?? 0)) drafts.push({ ...at, ...by(\"crown\"), kind: \"event\", template: \"reorg.poll_tax\", severity: 1, params: { amount: now.pollTax - (was?.pollTax ?? 0) }, cause });\n"
+      },
+      {
+        "start": 643,
+        "end": 654,
+        "text": "  const was = before.plague, now = after.plague;\n  if (now === undefined || was === now) return [];\n  const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];\n  const by = (id: string) => ({ actors: [{ type: \"faction\" as const, id }] });\n  const at = { tick: after.tick, subject: TOWN, ...by(\"bishop\") };\n  const cause = { type: \"event\" as const, id: `black_death@${now.eraTick}`, detail: \"black_death\" };\n  if (now.rumourTick !== undefined && was?.rumourTick === undefined) drafts.push({ ...at, kind: \"event\", template: \"plague.rumour\", severity: 2, cause });\n  if (now.first !== undefined && was?.first === undefined) drafts.push({ ...at, kind: \"event\", template: \"plague.arrived\", severity: 3, cause });\n  if (now.curacy !== undefined && was?.curacy === undefined) drafts.push({ ...at, kind: \"event\", template: \"plague.priest_died\", severity: 2, cause });\n  if (now.curacy?.filledTick !== undefined && after.tick >= now.curacy.filledTick && (was?.curacy?.filledTick === undefined || before.tick < was.curacy.filledTick)) {\n    drafts.push({ ...at, kind: \"event\", template: \"plague.priest_filled\", severity: 1, params: { by: now.curacy.by ?? \"clerk\" } });\n  }\n"
+      },
+      {
+        "start": 450,
+        "end": 463,
+        "text": "/** HL-2 ③: milestones reached (checked on the ladder's samples). */\nfunction milestoneDrafts(after: GameState, reached: ReadonlySet<string>): { readonly drafts: Draft[]; readonly ids: string[] } {\n  const drafts: Draft[] = [];\n  const ids: string[] = [];\n  const add = (id: string, template: string, params?: Readonly<Record<string, number | string>>) => {\n    if (reached.has(id)) return;\n    ids.push(id);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template, ...(params === undefined ? {} : { params }), subject: TOWN, severity: 1 });\n  };\n  for (const kind of MILESTONE_BUILDINGS) if (after.buildings.some(building => building.kind === kind)) add(`building:${kind}`, \"milestone.first_building\", { building: kind });\n  if (after.era !== \"hamlet\") add(\"market_town\", \"milestone.market_town\");\n  if (after.era === \"stone_town\") add(\"stone_town\", \"milestone.stone_town\");\n  if (after.houses.some(house => house.level === 4)) add(\"first_l4\", \"milestone.first_l4\");\n  const lots = housingLotCount(after);\n"
+      },
+      {
+        "start": 760,
+        "end": 767,
+        "text": "  // FIX-9 (LG-13): the interlude's events, the nave rebuilt.\n  for (const [id, tick] of Object.entries(now.interludes ?? {})) {\n    if (was?.interludes?.[id as keyof typeof now.interludes] !== undefined || tick !== after.tick) continue;\n    const actor = id === \"staple\" || id === \"deposition\" ? \"crown\" : id === \"church_rebuilding\" ? \"bishop\" : id === \"guild_dispute\" ? \"merchant_house_1\" : \"town\";\n    drafts.push({ ...at, ...by(actor), kind: \"event\", template: `legacy.${id}`, severity: id === \"deposition\" ? 3 : 2, cause,\n      ...(id === \"market_fire\" ? { params: { cost: LEGACY_BALANCE.marketFireRepair } } : {}) });\n  }\n  if (now.naveRebuilt === true && was?.naveRebuilt !== true) drafts.push({ ...at, ...by(\"bishop\"), kind: \"event\", template: \"legacy.nave_rebuilt\", severity: 2, cause, thumbnail: { state: after, size: 128 } });\n"
+      },
+      {
+        "start": 767,
+        "end": 767,
+        "text": "  if (now.naveRebuilt === true && was?.naveRebuilt !== true) drafts.push({ ...at, ...by(\"bishop\"), kind: \"event\", template: \"legacy.nave_rebuilt\", severity: 2, cause, thumbnail: { state: after, size: 128 } });\n"
+      },
+      {
+        "start": 751,
+        "end": 755,
+        "text": "  if (charter !== undefined && was?.answers[BOROUGH_AUTONOMY_PETITION_ID] === undefined) {\n    drafts.push(charter === \"accept\"\n      ? { ...at, ...art(\"charter_sealing\"), kind: \"event\", template: \"legacy.charter_sealed\", severity: 3, params: { mayorId: now.mayorId ?? \"\" }, cause, thumbnail: { state: after, size: 256 } }\n      : { ...at, kind: \"event\", template: \"legacy.charter_refused\", severity: 3, params: { backlash: now.backlash }, cause, thumbnail: { state: after, size: 256 } });\n  }\n"
+      },
+      {
+        "start": 403,
+        "end": 408,
+        "text": "      else if (person.role === \"steward\") personRecord(person, \"person.steward\", 1);\n      continue;\n    }\n    if (year - person.birthYear >= 14 && beforeYear - old.birthYear < 14) personRecord(person, \"person.came_of_age\", 0);\n    if (old.occupation !== person.occupation && old.occupation !== \"child\" && person.occupation !== \"labourer\") personRecord(person, \"person.occupation\", 0, { occupation: person.occupation });\n    if (!old.tags.includes(\"reeve\") && person.tags.includes(\"reeve\")) personRecord(person, \"person.reeve\", 1);\n"
+      },
+      {
+        "start": 450,
+        "end": 463,
+        "text": "/** HL-2 ③: milestones reached (checked on the ladder's samples). */\nfunction milestoneDrafts(after: GameState, reached: ReadonlySet<string>): { readonly drafts: Draft[]; readonly ids: string[] } {\n  const drafts: Draft[] = [];\n  const ids: string[] = [];\n  const add = (id: string, template: string, params?: Readonly<Record<string, number | string>>) => {\n    if (reached.has(id)) return;\n    ids.push(id);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template, ...(params === undefined ? {} : { params }), subject: TOWN, severity: 1 });\n  };\n  for (const kind of MILESTONE_BUILDINGS) if (after.buildings.some(building => building.kind === kind)) add(`building:${kind}`, \"milestone.first_building\", { building: kind });\n  if (after.era !== \"hamlet\") add(\"market_town\", \"milestone.market_town\");\n  if (after.era === \"stone_town\") add(\"stone_town\", \"milestone.stone_town\");\n  if (after.houses.some(house => house.level === 4)) add(\"first_l4\", \"milestone.first_l4\");\n  const lots = housingLotCount(after);\n"
+      },
+      {
+        "start": 865,
+        "end": 890,
+        "text": "/** HL-7 `history.query`: records matching the filter, oldest first. */\nexport function historyQuery(state: Pick<GameState, \"history\"> & PersonReader, query: HistoryQuery = {}): readonly HistoryRecord[] {\n  const kinds = query.kinds === undefined ? null : new Set<HistoryKind>(query.kinds);\n  const actors = query.actors === undefined ? null : new Set(query.actors.map(actor => `${actor.type}:${actor.id}`));\n  const from = query.range?.from ?? -Infinity;\n  const to = query.range?.to ?? Infinity;\n  const least = query.severity ?? 0;\n  const found = historyOf(state).records.filter(record => record.severity >= least && record.tick >= from && record.tick <= to\n    && (kinds === null || kinds.has(record.kind))\n    && (actors === null || actors.has(`${record.subject.type}:${record.subject.id}`) || (record.actors ?? []).some(actor => actors.has(`${actor.type}:${actor.id}`))));\n  // FIX-12 (item 4, HL-1a): a record that names a person by id comes back with the person's name now (the summary reads it).\n  return state.persons === undefined ? found : found.map(record => namesPerson(record) ? { ...record, params: historyParams(record, state) } : record);\n}\n\n/** HL-7 `history.snapshot`: a thumbnail's palette indices, or null. */\nexport function historySnapshot(state: Pick<GameState, \"history\">, id: string): { readonly size: number; readonly tick: number; readonly pixels: Uint8Array } | null {\n  const snapshot = historyOf(state).snapshots.find(entry => entry.id === id);\n  return snapshot === undefined ? null : { size: snapshot.size, tick: snapshot.tick, pixels: decodeSnapshot(snapshot) };\n}\n\n/** HL-1: the record's sentence, rebuilt from its template and parameters (FIX-12: its persons named from `state` when given). */\nexport function historySummary(record: Pick<HistoryRecord, \"template\" | \"params\">, state?: PersonReader): string {\n  const template = HISTORY_TEMPLATES[record.template];\n  return template === undefined ? record.template : template(historyParams(record, state));\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/seasonPressure.ts",
+    "sha256": "5d805dc64b372e1aded8f17753193a6179a91aa578026e9d5573697ed9be9380",
+    "spans": [
+      {
+        "start": 220,
+        "end": 230,
+        "text": "  let leaving = 0;\n  let abandoned = 0;\n  const houses = state.houses.map(house => {\n    if (house.abandonedTick !== undefined) return house;\n    // A house that starved empty is an ordinary empty house (the old rule): it has no household to be short or leave.\n    if (!householdShortOfFood(house, reserveShort, tick) && !(famineShort.has(house.buildingId) && house.residents > 0)) {\n      if (house.foodShortSinceTick === undefined && house.leavingSinceTick === undefined) return house;\n      changed = true;\n      return withoutPressure(house);\n    }\n    const since = house.foodShortSinceTick ?? tick;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "spans": [
+      {
+        "start": 474,
+        "end": 484,
+        "text": "  // inheritance is read when he dies (not at a fixed time after the contract).\n  const alive = oldLord(state)?.alive === true;\n  if (ev.brother_in_law_born === undefined && since >= t.brotherInLaw && plan.brotherInLawId === undefined) {\n    const born = alive && hashSeed(state.seed, \"marriage-brother-in-law\", plan.contractedTick) % 1000 < BROTHER_IN_LAW_PERMILLE;\n    if (!born) return withPlan(state, { ...plan, events: { ...ev, brother_in_law_born: -1 } });\n    const lord = oldLord(state);\n    const son = estatePerson(nextEstateOrdinal(state), state, { sex: \"male\", age: 0, tag: `estate:${MARRIAGE_ESTATE_ID}`,\n      ...(lord?.id === undefined ? {} : { fatherId: lord.id }), ...(lord?.surname === undefined ? {} : { surname: lord.surname }) });\n    const next = claimStrength(withEstatePeople(state, [...estatesOf(state).people, son]), plan.claimId, -BROTHER_IN_LAW_CLAIM_LOSS);\n    return withPlan(next, { ...plan, brotherInLawId: son.id, events: { ...ev, brother_in_law_born: state.tick } });\n  }\n"
+      },
+      {
+        "start": 407,
+        "end": 420,
+        "text": "/** NG-8: the old lord dies — the estate goes to his son, or the will's rival (the lord sues), or the lord by his wife. */\nfunction inheritance(state: GameState, plan: MarriagePlan): GameState {\n  const lord = oldLord(state);\n  let next = lord === undefined ? state : withEstatePeople(state, estatesOf(state).people.map(person => person.id === lord.id ? { ...person, alive: false, deathYear: currentYear(state), deathCause: \"age\" as const } : person));\n  const son = plan.brotherInLawId === undefined ? undefined : estatesOf(next).people.find(person => person.id === plan.brotherInLawId && person.alive);\n  const events = { ...plan.events, father_died: state.tick };\n  if (son !== undefined) {\n    next = claimStatus(estateTo(next, MARRIAGE_ESTATE_ID, `person:${son.id}`), plan.claimId, \"lapsed\");\n    return withPlan(next, { ...plan, stage: \"lost\", events });\n  }\n  if (plan.rival !== undefined) return withPlan(estateTo(next, MARRIAGE_ESTATE_ID, plan.rival), { ...plan, stage: \"contested\", events });\n  next = claimStatus(estateTo(next, MARRIAGE_ESTATE_ID, LORD), plan.claimId, \"won\");\n  return withPlan(deferredDebtDue(next, plan), { ...plan, stage: \"inherited\", events });\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/stewardship.ts",
+    "sha256": "e73a230a40cc61951e6173ecb9cfde2ac62144b57fb573a10f183002743abe49",
+    "spans": [
+      {
+        "start": 117,
+        "end": 135,
+        "text": "/** SW-2: the estates the lord came to hold get their oversight (direct, the most loyal candidate keeping the accounts). */\nfunction ensureOversight(state: GameState): GameState {\n  const held = heldOffMapEstates(state);\n  const current = stewardshipOf(state);\n  const missing = held.filter(estate => !current.oversight.some(entry => entry.estateId === estate.id));\n  if (missing.length === 0) return state;\n  let next = state;\n  let stewardship = current;\n  for (const estate of missing) {\n    const made = makeCandidates(next, estate.id);\n    const receiver = [...made.stewards].sort((a, b) => b.loyalty - a.loyalty || a.personId.localeCompare(b.personId))[0]!;\n    next = { ...next, estates: { ...estatesOf(next), people: [...estatesOf(next).people, ...made.people] } };\n    stewardship = { ...stewardship, stewards: [...stewardship.stewards, ...made.stewards.map(record => record === receiver ? { ...record, status: \"serving\" as const } : record)],\n      oversight: [...stewardship.oversight, { estateId: estate.id, mode: \"direct\", stewardId: receiver.personId, auditMode: \"accounts\", tenants: 0, merchants: 0,\n      undetected: 0, since: state.tick }] };\n  }\n  return withStewardship(next, stewardship);\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/reorganisation.ts",
+    "sha256": "bf8b86099535fc3b3098c774da0aa5d45d8e7c21fdd25c013e79cf58d92c0595",
+    "spans": [
+      {
+        "start": 186,
+        "end": 212,
+        "text": "const livedIn = (house: House) => house.residents > 0 && house.abandonedTick === undefined && house.burntTick === undefined;\n\n/** RG-2 / RG-5: households leave (their houses stand empty for the ladder), in `order`. */\nfunction leave(state: GameState, order: readonly House[], count: number): { readonly state: GameState; readonly left: number } {\n  const lived = state.houses.filter(livedIn);\n  const going = new Set(order.filter(livedIn).slice(0, Math.max(0, Math.min(count, lived.length - 1))).map(house => house.buildingId));\n  if (going.size === 0) return { state, left: 0 };\n  const people = state.houses.filter(house => going.has(house.buildingId)).reduce((sum, house) => sum + house.residents, 0);\n  return { state: { ...state, population: state.population - people, houses: state.houses.map(house => going.has(house.buildingId) ? abandonHouse(house, state.tick) : house) }, left: going.size };\n}\n\n/** RG-2: the poorest household first (lowest level, least bread, id). */\nfunction poorestFirst(state: GameState): readonly House[] {\n  return [...state.houses].filter(livedIn).sort((a, b) => a.level - b.level || a.breadStock - b.breadStock || a.buildingId.localeCompare(b.buildingId));\n}\n\n/** RG-5: the households nearest the weaver's houses first (the looms' street empties). */\nfunction weaversFirst(state: GameState): readonly House[] {\n  const looms = state.buildings.filter(building => building.kind === \"weaver_house\");\n  const lots = new Map(state.buildings.map(building => [building.id, building]));\n  const distance = (house: House) => {\n    const lot = lots.get(house.buildingId);\n    return lot === undefined || looms.length === 0 ? Infinity : Math.min(...looms.map(loom => Math.abs(loom.tx - lot.tx) + Math.abs(loom.ty - lot.ty)));\n  };\n  return [...state.houses].filter(livedIn).sort((a, b) => distance(a) - distance(b) || a.buildingId.localeCompare(b.buildingId));\n}\n\n"
+      },
+      {
+        "start": 468,
+        "end": 476,
+        "text": "  // RG-5: the refused guild's weavers go (the season after the answer).\n  const guildAnswer = r.answers[GUILD_CHARTER_PETITION_ID];\n  const answeredGuild = next.politics?.petitions.find(petition => petition.defId === GUILD_CHARTER_PETITION_ID)?.respondedTick;\n  if (refused(guildAnswer) && r.weaversLeftTick === undefined && answeredGuild !== undefined && tick > answeredGuild) {\n    const gone = leave(next, weaversFirst(next), B.refusedWeaverHouseholds);\n    next = gone.state;\n    r = { ...reorganisationOf(next)!, weaverLeavers: r.weaverLeavers + gone.left, weaversLeftTick: tick };\n    next = withReorganisation(next, r);\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/plague.ts",
+    "sha256": "97f424f6a7bf85c461363eb00dbeb31b7fd600f16a3f4d4d6845a15d396531db",
+    "spans": [
+      {
+        "start": 513,
+        "end": 525,
+        "text": "  plague = plagueOf(next)!;\n  if (offset === arrivalSeasonOffset(state) && plague.first === undefined) {\n    const span = PLAGUE_BALANCE.deathPermilleMax - PLAGUE_BALANCE.deathPermilleMin + 1;\n    const drawn = PLAGUE_BALANCE.deathPermilleMin + hashSeed(state.seed, \"plague:share\") % span;\n    // ARCH-1 (MA-4 ⑤): a harbour's port fever kills more (the land's coastal coefficient; a coastal town only).\n    const permille = plagueCoastal(state) ? Math.min(900, scaleByPermille(drawn, archetypeRules(state).coastalEventPermille)) : drawn;\n    next = withPlague(next, { ...plague, ...(plague.rumourTick === undefined ? { rumourTick: state.tick } : {}), first: newPestilence(next, permille),\n      curacy: { vacantSince: state.tick } });\n    next = addPetition(next, VACANT_PRIEST_PETITION_ID, \"parish\");\n  }\n  plague = plagueOf(next)!;\n  if (plague.first === undefined) return next;\n  const arrival = plague.first.arrivalTick;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "spans": [
+      {
+        "start": 70,
+        "end": 78,
+        "text": "\n/** Posts `amount` (positive: into the treasury; negative: out of it, at most what it holds); returns what moved. */\nfunction post(state: GameState, category: LedgerCategory, amount: number, sources: readonly [SourceRef, ...SourceRef[]]): { readonly state: GameState; readonly moved: number } {\n  const moved = amount < 0 ? -Math.min(-amount, Math.max(0, treasuryBalance(state))) : amount;\n  if (moved === 0) return { state, moved: 0 };\n  const posted = postLedgerEntries(state, [{ account: \"cash\", category, amount: moved, sourceRefs: sources }]);\n  return { state: { ...state, treasuryCoin: posted.treasuryCoin, ledger: posted.ledger }, moved };\n}\n\n"
+      },
+      {
+        "start": 290,
+        "end": 299,
+        "text": "  let next = state;\n  for (const due of legacyInterludes(state).filter(entry => entry.state === \"ahead\" && entry.tick <= state.tick)) {\n    const legacy = legacyOf(next)!;\n    next = withLegacy(next, { ...legacy, interludes: { ...legacy.interludes, [due.id]: state.tick } });\n    if (due.id === \"guild_dispute\") next = addPetition(next, GUILD_DISPUTE_PETITION_ID, \"craftsmen\");\n    if (due.id === \"church_rebuilding\") next = addPetition(next, CHURCH_REBUILDING_PETITION_ID, \"parish\");\n    if (due.id === \"market_fire\") next = post(next, \"construction\", -B.marketFireRepair, [TOWN_ACTOR, { type: \"claim\", id: \"market_fire\", detail: \"repair\" }]).state;\n  }\n  return next;\n}\n"
+      },
+      {
+        "start": 196,
+        "end": 202,
+        "text": "    case CHURCH_REBUILDING_PETITION_ID: {\n      // FIX-9 (LG-13): the nave rebuilt at the lord's cost (the guild's quarrel moves only the factions).\n      if (response !== \"accept\") break;\n      const paid = post(next, \"church_rebuilding\", -B.churchRebuildingCost, [{ type: \"actor\", id: \"bishop\" }, { type: \"claim\", id: \"church_rebuilding\", detail: \"nave\" }]);\n      next = withLegacy(paid.state, { ...l, naveRebuilt: true });\n      break;\n    }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/palisade.ts",
+    "sha256": "b39ec0bd60573066c5a9b17a7da06fce686e3e11be56322ff5a91bab23d5e68b",
+    "spans": [
+      {
+        "start": 274,
+        "end": 308,
+        "text": "export function projectPalisadeProclamation(\n  state: GameState,\n  candidatePath: PalisadePath,\n): GameState {\n  if (state.era !== 'hamlet' || state.palisade !== null) return state;\n  const footprints = palisadeFootprintsForState(state);\n  // FIX-15 (WP-1): a ring may take the water as its bound where it runs through it.\n  const validation = validatePalisadeCandidate(state, candidatePath, footprints, palisadeCoreFootprintsForState(state), 1, { waterReach: true });\n  if (!validation.ok) return state;\n  const ring = palisadeRingPoints(validation.candidate.path);\n  const water = waterReachSteps(state, ring);\n  const reach = water.some(Boolean);\n  const gate = chooseGate(state, ring, settlementCenter(footprints), reach ? water : undefined);\n  if (gate === null) return state;\n  const wallId = wallIdForOrdinal(state.nextConstructionOrdinal);\n  const wallSegments = reach ? landRunSegments(ring, gate, water) : orderedSegments(validation.candidate.path, gate);\n  const additionalGates = additionalRoadGates(state, validation.candidate.path, gate.point, reach ? wallSegments.map(segment => segment.path) : undefined);\n  const sites = createWallSites(wallId, wallSegments, state.tick);\n\n  return {\n    ...state,\n    era: \"palisade\",\n    eraProclaimedTick: state.tick,\n    palisade: {\n      id: wallId,\n      polygon: validation.candidate.path,\n      gate: gate.point,\n      ...(additionalGates.length > 0 ? { additionalGates } : {}),\n      segments: palisadeSegments(sites),\n    },\n    constructionSites: [...state.constructionSites, ...sites],\n    wallConstructionReserve: snapshotWallConstructionReserve(state, sites, \"timber\"),\n    nextConstructionOrdinal: state.nextConstructionOrdinal + 1,\n  };\n}\n"
+      }
+    ]
+  }
+]

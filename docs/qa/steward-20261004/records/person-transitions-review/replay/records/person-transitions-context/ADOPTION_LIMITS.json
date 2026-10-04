@@ -1,0 +1,15 @@
+{
+  "factLineHolds": [
+
+  ],
+  "runtimeExecuted": false,
+  "captureAdapterImplemented": false,
+  "draftCompleteWithoutEngineInstallation": true,
+  "notes": [
+    "move_in baseline 새 집 means newly occupied by household; do not imply newly constructed.",
+    "married baseline 가구를 이루었다 interpreted as household relationship; no new standalone household inferred. New spouse role alone is not a historical wedding ceremony audit.",
+    "left_town remaining persons are town people list at event-time, not all relatives anywhere.",
+    "Normalized oracle requires complete snapshots with extra source fields projected out; it does not prove provenance itself.",
+    "No names stored. Existing subject IDs remain IDs; renderer resolves current names. No new name formatter claimed."
+  ]
+}

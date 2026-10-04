@@ -1,0 +1,110 @@
+[
+  {
+    "id": "groomRelationAtContract",
+    "values": [
+      "widowed_lord",
+      "son",
+      "brother",
+      "nephew",
+      "cousin"
+    ],
+    "templates": [
+      "marriage.brother_in_law_born",
+      "marriage.father_ill",
+      "marriage.deferred_void"
+    ],
+    "capture": "src/engine/marriage.ts:85-111;src/engine/marriage.ts:137-149;src/engine/marriage.ts:256-276",
+    "producer": "src/engine/history.ts:1042-1055",
+    "currentRecordStorage": "contracted already stores relation, groom, bride, negotiation; later event does NOT store a unique contract reference",
+    "currentOtherStorage": "MarriagePlan negotiationId/groomId/brideId; current groom role may change and off-map groom ID materialises at contract",
+    "immutableReconstruction": "Conditional future adapter only: later record must carry an immutable contract record reference; exact unique retained contracted record and identities must agree. Existing later bride/brotherInLaw or estate/rival alone do not prove a unique join. No nearest-record join.",
+    "provenance": "immutable_contract_reference",
+    "captureRule": "Capture actual marriageCandidates relation before contract and pin original lord ID/house order/negotiation ID, before groomToManor remaps IDs. Preserve original+materialised groom IDs. Read names now, keep relation to the lord AT CONTRACT. Missing groom must not inherit current history.ts fallback son. For these later events pin original bride father ID and counterpart estate ID too. For brother birth/illness require actual emitted oldLord.id equals pinned bride fatherId and estate identity matches; otherwise unknown. For deferred_void relationship is groom to ORIGINAL lord, not the bride father or current town subject. New snapshot/reference adapter required."
+  },
+  {
+    "id": "nonInfringementOpenAtWillAttempt",
+    "templates": [
+      "marriage.will_change"
+    ],
+    "values": [
+      "open",
+      "absent"
+    ],
+    "capture": "src/engine/marriage.ts:391-397;src/engine/marriage.ts:487-490",
+    "producer": "src/engine/history.ts:1042-1058",
+    "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+    "currentOtherStorage": "Promises retain negotiationId/term/status but current status may later settle.",
+    "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "At newly positive will_change event inspect the exact source-equivalent first open promise from COUNTERPART of term inheritance_non_infringement. If found, require matching plan.negotiationId and capture promiseId -> open; no matching source find -> absent. If source-selected promise belongs elsewhere -> unknown. This is promise status at attempt, NOT actual breach: breach occurs only if later let_it_be. Capture no displayed names."
+  },
+  {
+    "id": "willDroppedConsideration",
+    "templates": [
+      "marriage.will_dropped"
+    ],
+    "values": [
+      "paid_favour",
+      "support_promised"
+    ],
+    "capture": "src/engine/marriage.ts:374-390",
+    "producer": "src/engine/history.ts:1042-1058",
+    "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+    "currentOtherStorage": "plan.willAnswer and payment ledger/promise exist; history event omits choice.",
+    "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Capture successful answerWillChange path only. favour requires actual negative payment and newly emitted will_dropped; support_promise requires newly created matching political_support promise ID. No-op insufficient cash produces no variant. support promised is not fulfilled support."
+  },
+  {
+    "id": "inheritanceRouteAtFatherDeath",
+    "templates": [
+      "marriage.father_died"
+    ],
+    "values": [
+      "living_son",
+      "rival",
+      "lord_house"
+    ],
+    "capture": "src/engine/marriage.ts:412-427",
+    "producer": "src/engine/history.ts:1042-1058",
+    "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+    "currentOtherStorage": "plan.stage and estate holder now; son alive can change; no route in father_died record.",
+    "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "Capture actual inheritance branch: found alive brotherInLawId -> living_son; otherwise plan.rival defined -> rival; else lord_house. Require oldLord exists and actual death verified, bride father/estate identity pinned. Do not infer which branch from later holder or rerun alive lookup. Missing oldLord permits source path but author adapter must yield unknown. rival means plan.rival not any rival person."
+  },
+  {
+    "id": "deferredDebtAtInheritanceLoss",
+    "templates": [
+      "marriage.lost"
+    ],
+    "values": [
+      "positive",
+      "absent"
+    ],
+    "capture": "src/engine/marriage.ts:269-275;src/engine/marriage.ts:412-420;src/engine/history.ts:1054-1058",
+    "producer": "src/engine/history.ts:1042-1058",
+    "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+    "currentOtherStorage": "plan.deferredDebt optional; outcome record estate/rival omits amount.",
+    "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+    "provenance": "emission_snapshot",
+    "captureRule": "At actual newly lost stage from son branch validate deferredDebt absent or safe integer >=0. >0 -> positive; absent/0 -> absent. Negative, fraction, unsafe -> unknown. This removes the conditional assumption promise only, not counterpart original debt."
+  },
+  {
+    "id": "willAllowedRoute",
+    "templates": [
+      "marriage.contested"
+    ],
+    "values": [
+      "explicit_let_stand",
+      "unanswered_deadline"
+    ],
+    "capture": "src/state/gameStore.ts:156;src/engine/marriage.ts:391-402;src/engine/marriage.ts:491",
+    "producer": "src/engine/history.ts:1042-1058",
+    "currentRecordStorage": "Proposed field absent; middle-event params bride/brotherInLaw, outcome params estate/rival, deferred_void amount only.",
+    "currentOtherStorage": "plan.willAnswer let_it_be merges explicit command and auto timeout; route is NOT stored.",
+    "immutableReconstruction": "Do not reconstruct from current alive/role/house state. Only an exact retained event/contract reference with ID and tick verification may restore this fact; unmatched, ambiguous, missing -> unknown.",
+    "provenance": "immutable_contract_reference",
+    "captureRule": "Capture route at successful explicit gameStore answer_will_change(let_it_be) versus automatic advanceMarriage deadline path. Bind capture to negotiationId/rivalID/answer tick and carry immutable reference to later contested emission. Require exact matching plan.rival and source inheritance rival branch. Do not infer explicit intent from same willAnswer or late tick. A bot command is explicit command route, not necessarily human intention. Missing reference unknown. ADDED DEATH/IDENTITY GUARD: For BOTH contested variants, at the inheritance operation require oldLord exists, is the same pinned bride-father person ID from the original contract, and actual death is verified at that event (alive=false with death evidence tied to the same person and transition). Match counterpart estateId, brideId, negotiationId and rivalId to the saved will-answer reference. Missing oldLord, absent/mismatched death evidence or identity -> unknown/baseline; never treat source !alive on missing lookup as proof of death. Never inspect current survivors to backfill this guard. Before/after rule: use the actual death transition with this same person present before alive=true and after alive=false, OR an exact immutable death record for that person captured earlier and verified before the contested inheritance emission. Inheritance before/after alone may already have alive=false on both sides and is not proof of a new death. A missing person on either side, no verified death record, changed estate lord or mismatched contract identity yields unknown; do not synthesize a death from lookup failure."
+  }
+]

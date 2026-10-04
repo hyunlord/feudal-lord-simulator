@@ -1,0 +1,47 @@
+{
+  "status": "ALL_SIX_UNINSTALLED",
+  "blocks": [
+    {
+      "variantId": "plague.new_graves.r06raw.one",
+      "status": "BLOCK_UNTIL_DECLARED_SELECTOR_GUARD_VERIFIED",
+      "reason": "Existing condition schema does not ensure positive finite safe integer input; gt/eq alone is not this guard.",
+      "requiresNewOperator": false,
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "plague.new_graves.r06raw.several",
+      "status": "BLOCK_UNTIL_DECLARED_SELECTOR_GUARD_VERIFIED",
+      "reason": "Existing condition schema does not ensure positive finite safe integer input; gt/eq alone is not this guard.",
+      "requiresNewOperator": false,
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "plague.empty_streets.r06raw.one",
+      "status": "BLOCK_UNTIL_DECLARED_SELECTOR_GUARD_VERIFIED",
+      "reason": "Existing condition schema does not ensure positive finite safe integer input; gt/eq alone is not this guard.",
+      "requiresNewOperator": false,
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "plague.empty_streets.r06raw.several",
+      "status": "BLOCK_UNTIL_DECLARED_SELECTOR_GUARD_VERIFIED",
+      "reason": "Existing condition schema does not ensure positive finite safe integer input; gt/eq alone is not this guard.",
+      "requiresNewOperator": false,
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "legacy.mayor_demand.r06raw.unidentified",
+      "status": "BLOCK_UNTIL_DECLARED_SELECTOR_GUARD_VERIFIED",
+      "reason": "Typed candidateId string guard required; nonempty branch also needs proposed neq operator. Never infer death from empty ID.",
+      "requiresNewOperator": false,
+      "runtimeInstalled": false
+    },
+    {
+      "variantId": "legacy.mayor_demand.r06raw.identified",
+      "status": "BLOCK_UNTIL_DECLARED_SELECTOR_GUARD_VERIFIED",
+      "reason": "Typed candidateId string guard required; nonempty branch also needs proposed neq operator. Never infer death from empty ID.",
+      "requiresNewOperator": true,
+      "runtimeInstalled": false
+    }
+  ]
+}

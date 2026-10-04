@@ -1,0 +1,23 @@
+{
+  "round": "R07",
+  "decidedAt": "2026-10-04T10:07:15+09:00",
+  "newConfirmedMediumOrHigher": 0,
+  "previousRoundNewConfirmedMediumOrHigher": 7,
+  "consecutiveZeroRounds": 1,
+  "goalComplete": false,
+  "classification": "existing correction-contract signatures deduplicated; unproven food mechanism remains HOLD",
+  "reviews": {
+    "severity": "records/severity-final-candidate-r07/REPORT.md",
+    "food": "records/food-boundary-review-r07/REPORT.md"
+  },
+  "manifestChecks": {
+    "severity": 4,
+    "food": 3
+  },
+  "notClaimed": [
+    "existing defects fixed",
+    "food mechanism harmless",
+    "all engine invariants verified",
+    "D/E installed"
+  ]
+}

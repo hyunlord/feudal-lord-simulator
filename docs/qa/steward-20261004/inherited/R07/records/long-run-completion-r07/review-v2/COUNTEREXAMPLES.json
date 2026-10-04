@@ -1,0 +1,1396 @@
+{
+  "checker_sha256": "5d669b28e48b5ee739b4f61795411d684ca842714f313e56faf7fa6a33df9a0d",
+  "source_inputs": [
+    {
+      "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/summary.json",
+      "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+    },
+    {
+      "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/metadata.json",
+      "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+    },
+    {
+      "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/controls.json",
+      "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+    },
+    {
+      "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/start.fls.json",
+      "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+    },
+    {
+      "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/final.fls.json",
+      "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+    },
+    {
+      "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/years.jsonl",
+      "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+    },
+    {
+      "path": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/save-checks.jsonl",
+      "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+    }
+  ],
+  "actual_final_state_hash": "bd669195b7d5eed67ccd076a639c9534ae617ec91f1388ab0cef7d11ea68245b",
+  "cases": [
+    {
+      "id": "baseline",
+      "mutated_files": [
+
+      ],
+      "exit": 0,
+      "stderr": "",
+      "result": {
+        "status": "PASS_BOUNDED_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": true,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "duplicate_final",
+      "mutated_files": [
+        "save-checks.jsonl"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 39,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "161b03262e40f239e41180600d1492cd8ed5477886307d55da549d85beb4f116"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "wrong_start_seed",
+      "mutated_files": [
+        "start.fls.json"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": true,
+          "start_identity": false,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "7affb9c67cdf8456404375458d7011b854cedfa1da2752c550a34c2dfe33b8e7"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "wrong_start_policy",
+      "mutated_files": [
+        "start.fls.json"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": false,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "8e126dff5160433748693ecbe3f94a315262924dc6d231ce0c7ffb29c4330454"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "wrong_scenario",
+      "mutated_files": [
+        "final.fls.json"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": false,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "1d147e3a2658b6cc3fd5c0839dd5f11718fa957c73a3059fd3e342c00c4e5d5f"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "nonhex_equal_hashes",
+      "mutated_files": [
+        "save-checks.jsonl"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": false,
+          "actual_start_final_hash": true,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "44bf666a21288e193dd7ddddcbb0e44724ea82c375d6d353ffe4952018001f03"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "positive_extra_diagnostic",
+      "mutated_files": [
+        "save-checks.jsonl"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "result": {
+        "status": "PASS_BOUNDED_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": true,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 39,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "fb0c9ebc72d30eb02ddc8882626aa4dcdb7e421c38935ad6e92692ba8f1f07f3"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "positive_reported_finding",
+      "mutated_files": [
+        "summary.json"
+      ],
+      "exit": 0,
+      "stderr": "",
+      "result": {
+        "status": "PASS_BOUNDED_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": true,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+          "synthetic completion-scope test"
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "b2c00d1a5761b9d26a3950988a909b5302db3f4e3c94e6d50ea0da01e6e7cfd7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "changed_final_cash",
+      "mutated_files": [
+        "final.fls.json"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "ad2df8b32ced4e7fabaf9b9e9cc5deb4863944d8640bb563bae5514652182ec7"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "missing_hashes",
+      "mutated_files": [
+        "summary.json",
+        "save-checks.jsonl"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": false,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "d049f73f7d3d972ddba6d8c0f32c2bb9fe30c86b576d79c4188e89502c5e3a62"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "0b6fb74d581a02bf0ecc643c01472b5f0397373b7492b3d9f8c4f241be649624"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "wrong_final_controls",
+      "mutated_files": [
+        "final.fls.json"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": false,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "7214670da3f1327871f37149cdfb108d5b0b827260fc266d631047aa86a2b210"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "final_only_codec_log",
+      "mutated_files": [
+        "save-checks.jsonl"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": false,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": false,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 1,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "7bb4221a8efdf0ab96d8f87164ff471ba82af06d2f93db6cb89eb95ed6af1f98"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "wrong_annual_calendar",
+      "mutated_files": [
+        "years.jsonl"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": true,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": false,
+          "scheduled_save_logs": true,
+          "run_config_identity": true,
+          "config_metadata_summary": true
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "f9fb97e8926da227a9d8fa888be0511bea4fcf885c9b84166ac92afd9f8d841a"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "75f4dfe9cded20492e3221ec26124639e29dbeda086b5be19b2fb29faeec2c41"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    },
+    {
+      "id": "wrong_run_metadata",
+      "mutated_files": [
+        "metadata.json"
+      ],
+      "exit": 1,
+      "stderr": "",
+      "result": {
+        "status": "FAIL_COMPLETION",
+        "checks": {
+          "exit_zero": true,
+          "target_complete": true,
+          "target_1450": true,
+          "final_tick": true,
+          "seed": true,
+          "protocol": true,
+          "initial_controls": true,
+          "annual_150": true,
+          "annual_final_controls": true,
+          "save_roundtrips": true,
+          "final_save_hash": true,
+          "no_unsupported_file": true,
+          "no_pending_waits": true,
+          "required_hashes": true,
+          "actual_start_final_hash": true,
+          "actual_start_final_controls": true,
+          "start_identity": true,
+          "scenario_identity": true,
+          "annual_calendar": true,
+          "scheduled_save_logs": true,
+          "run_config_identity": false,
+          "config_metadata_summary": false
+        },
+        "annual_rows": 150,
+        "save_checks": 38,
+        "findings": [
+
+        ],
+        "final": {
+          "year": 1450,
+          "tick": 600000,
+          "population": 520,
+          "treasury": 74830,
+          "retainedDeathsByCause": {
+            "age": 3109,
+            "famine": 2059,
+            "famine_year": 13,
+            "plague": 257,
+            "fire": 2
+          },
+          "policy": "growth",
+          "dues": 1000,
+          "subsidies": [
+
+          ]
+        },
+        "source_files": [
+          {
+            "path": "summary.json",
+            "sha256": "9adf64190ee92639f17df9cd53ddd6f415e1bea79ac5154ee9ffe9dc3214ccc7"
+          },
+          {
+            "path": "metadata.json",
+            "sha256": "a9c1f95770a87ee1455b3a7d10fe3d9ffa55ca84df18cdd6816a8d2a0f22da0c"
+          },
+          {
+            "path": "controls.json",
+            "sha256": "c4a5d49e6cb047cab4b130a2abaefdbf1d0bf44442ebcbd0acb9ccfb49f3a7a7"
+          },
+          {
+            "path": "start.fls.json",
+            "sha256": "d930415374a35c221869ba8faeadb963a8967718b081fae9df62e1f4bc69f238"
+          },
+          {
+            "path": "final.fls.json",
+            "sha256": "2f963132cb6e39d98577f8da23d8f55e41889babebf06cec39d648b1426562db"
+          },
+          {
+            "path": "years.jsonl",
+            "sha256": "93950282ea81c7e7a36337c2edc73add815fc77ca4fbb583984a0c2f2627f95d"
+          },
+          {
+            "path": "save-checks.jsonl",
+            "sha256": "f43f729735c2691d3dfdca9c06f23e924a534be7409cfcecb2b7c07f8cbf357c"
+          }
+        ],
+        "limitations": [
+          "full resource conservation",
+          "all cash movements have ledger entries",
+          "full rights transfer history",
+          "player fun",
+          "render/UI",
+          "dead actor command refusal",
+          "whole-run deterministic replay until compared externally"
+        ]
+      }
+    }
+  ],
+  "original_inputs_unchanged": true
+}

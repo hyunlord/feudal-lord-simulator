@@ -1,0 +1,270 @@
+{
+  "open": {
+    "end": {
+      "population": 768,
+      "treasury": 118342,
+      "timber": 0,
+      "foodReserveTicks": 5662,
+      "houseRecords": 24,
+      "inhabited": 24,
+      "livingTownPeople": 768,
+      "retainedDeathsByCause": {
+        "age": 2127,
+        "famine": 346,
+        "famine_year": 11,
+        "fire": 7,
+        "plague": 413
+      },
+      "claimStates": {
+        "lost": 1,
+        "lapsed": 1
+      },
+      "suitStates": {
+        "closed": 1
+      },
+      "promises": {
+        "kept": 6
+      },
+      "registry": {
+        "retainedOccurrences": 3,
+        "statuses": {
+          "answered": 2,
+          "lapsed": 1
+        },
+        "entries": {
+          "ck_evt_005": 2,
+          "ck_evt_050": 1
+        },
+        "termStatuses": {
+        },
+        "nextTerm": 1
+      }
+    },
+    "commands": {
+      "attempted": 324,
+      "changed": 210,
+      "asked": 202,
+      "own": 8,
+      "noChange": 114,
+      "zeroAttemptYears": 0,
+      "zeroChangedYears": 0,
+      "zeroAskedYears": 0,
+      "thresholds": {
+        "3": {
+          "attemptedYears": 14,
+          "changedYears": 14
+        },
+        "5": {
+          "attemptedYears": 2,
+          "changedYears": 1
+        },
+        "10": {
+          "attemptedYears": 1,
+          "changedYears": 0
+        }
+      },
+      "kinds": {
+        "suit": {
+          "attempted": 116,
+          "changed": 2
+        },
+        "estate_petition": {
+          "attempted": 166,
+          "changed": 166
+        },
+        "petition": {
+          "attempted": 21,
+          "changed": 21
+        },
+        "marriage_offer": {
+          "attempted": 1,
+          "changed": 1
+        },
+        "counter": {
+          "attempted": 1,
+          "changed": 1
+        },
+        "promise": {
+          "attempted": 5,
+          "changed": 5
+        },
+        "town_request": {
+          "attempted": 11,
+          "changed": 11
+        },
+        "registry": {
+          "attempted": 2,
+          "changed": 2
+        },
+        "famine": {
+          "attempted": 1,
+          "changed": 1
+        }
+      },
+      "pauseTicks": 102
+    },
+    "deaths": {
+      "retained": 2904,
+      "byCause": {
+        "age": 2127,
+        "famine": 346,
+        "famine_year": 11,
+        "fire": 7,
+        "plague": 413
+      },
+      "personDiedHistory": 2680,
+      "negativeAnnualCounterDiffs": [
+
+      ]
+    },
+    "houses": {
+      "4": {
+        "houses": 24,
+        "residents": 768
+      }
+    },
+    "seconds": 988
+  },
+  "fen": {
+    "end": {
+      "population": 470,
+      "treasury": 543952,
+      "timber": 0,
+      "foodReserveTicks": 4612,
+      "houseRecords": 24,
+      "inhabited": 24,
+      "livingTownPeople": 470,
+      "retainedDeathsByCause": {
+        "age": 1963,
+        "famine": 607,
+        "famine_year": 8,
+        "fire": 9,
+        "plague": 289
+      },
+      "claimStates": {
+        "lost": 1,
+        "won": 1
+      },
+      "suitStates": {
+        "closed": 1
+      },
+      "promises": {
+        "kept": 11
+      },
+      "registry": {
+        "retainedOccurrences": 2,
+        "statuses": {
+          "answered": 1,
+          "lapsed": 1
+        },
+        "entries": {
+          "ck_evt_034": 1,
+          "ck_evt_050": 1
+        },
+        "termStatuses": {
+        },
+        "nextTerm": 1
+      }
+    },
+    "commands": {
+      "attempted": 819,
+      "changed": 306,
+      "asked": 288,
+      "own": 18,
+      "noChange": 513,
+      "zeroAttemptYears": 0,
+      "zeroChangedYears": 0,
+      "zeroAskedYears": 0,
+      "thresholds": {
+        "3": {
+          "attemptedYears": 62,
+          "changedYears": 32
+        },
+        "5": {
+          "attemptedYears": 35,
+          "changedYears": 3
+        },
+        "10": {
+          "attemptedYears": 33,
+          "changedYears": 1
+        }
+      },
+      "kinds": {
+        "suit": {
+          "attempted": 116,
+          "changed": 2
+        },
+        "estate_petition": {
+          "attempted": 223,
+          "changed": 223
+        },
+        "marriage_offer": {
+          "attempted": 1,
+          "changed": 1
+        },
+        "counter": {
+          "attempted": 1,
+          "changed": 1
+        },
+        "promise": {
+          "attempted": 10,
+          "changed": 10
+        },
+        "petition": {
+          "attempted": 19,
+          "changed": 19
+        },
+        "oversight": {
+          "attempted": 5,
+          "changed": 5
+        },
+        "audit": {
+          "attempted": 440,
+          "changed": 41
+        },
+        "town_request": {
+          "attempted": 2,
+          "changed": 2
+        },
+        "famine": {
+          "attempted": 1,
+          "changed": 1
+        },
+        "registry": {
+          "attempted": 1,
+          "changed": 1
+        }
+      },
+      "pauseTicks": 129
+    },
+    "deaths": {
+      "retained": 2876,
+      "byCause": {
+        "age": 1963,
+        "famine": 607,
+        "famine_year": 8,
+        "fire": 9,
+        "plague": 289
+      },
+      "personDiedHistory": 2428,
+      "negativeAnnualCounterDiffs": [
+
+      ]
+    },
+    "houses": {
+      "3": {
+        "houses": 17,
+        "residents": 374
+      },
+      "1": {
+        "houses": 3,
+        "residents": 28
+      },
+      "2": {
+        "houses": 4,
+        "residents": 68
+      }
+    },
+    "seconds": 1184
+  }
+}

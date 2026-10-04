@@ -1,0 +1,466 @@
+id	when	headline
+decision.bundle.registry	[{"field":"params.decisionKind","op":"eq","value":"registry"},{"field":"params.count","op":"gte","value":1}]	한 철 동안 청원·사건에 답한 {decisionCount}건을 모아 적었다.
+decision.famine_response.r04.relief	[{"field":"params.chosen","op":"eq","value":"relief"}]	대기근에 구휼을 택했다.
+decision.famine_response.r04.price_control	[{"field":"params.chosen","op":"eq","value":"price_control"}]	대기근에 가격 통제를 택했다.
+decision.famine_response.r04.laissez_faire	[{"field":"params.chosen","op":"eq","value":"laissez_faire"}]	대기근에 방관을 택했다.
+decision.famine_response.r04.speculation	[{"field":"params.chosen","op":"eq","value":"speculation"}]	대기근에 투기를 택했다.
+decision.petition_response.r04.levy_accept	[{"field":"params.defId","op":"eq","value":"levy_response"},{"field":"params.chosen","op":"eq","value":"accept"}]	징집 명령에 사람을 보내기로 답했다.
+decision.petition_response.r04.levy_accept_with_price	[{"field":"params.defId","op":"eq","value":"levy_response"},{"field":"params.chosen","op":"eq","value":"accept_with_price"}]	징집 명령에 면제금을 내기로 답했다.
+decision.petition_response.r04.levy_refuse	[{"field":"params.defId","op":"eq","value":"levy_response"},{"field":"params.chosen","op":"eq","value":"refuse"}]	징집 명령을 거절했다.
+plague.priest_filled.context.19	[{"field":"params.by","op":"eq","value":"monastery"}]	수도원에서 보낸 사제가 공석을 맡았다.
+plague.priest_filled.context.20	[{"field":"params.by","op":"eq","value":"clerk"}]	평신도 서기가 교회의 기도를 맡았다.
+plague.abandoned_fields.r05c.000	[{"field":"params.dead","op":"eq","value":0},{"field":"params.manorDead","op":"eq","value":0},{"field":"params.houses","op":"eq","value":0}]	역병이 물러났다. 도시 주민과 영주관 소속 사람의 사망 기록은 없었고, 역병 집계에 남은 빈집도 없었다.
+plague.abandoned_fields.r05c.001	[{"field":"params.dead","op":"eq","value":0},{"field":"params.manorDead","op":"eq","value":0},{"field":"params.houses","op":"gt","value":0}]	역병이 물러났다. 도시 주민과 영주관 소속 사람의 사망 기록은 없었지만, 역병 집계에는 빈집이 남았다.
+plague.abandoned_fields.r05c.010	[{"field":"params.dead","op":"eq","value":0},{"field":"params.manorDead","op":"gt","value":0},{"field":"params.houses","op":"eq","value":0}]	역병이 물러났다. 도시 주민의 사망 기록은 없었지만 영주관 소속에서는 사망자가 나왔다. 역병 집계에 남은 빈집은 없었다.
+plague.abandoned_fields.r05c.011	[{"field":"params.dead","op":"eq","value":0},{"field":"params.manorDead","op":"gt","value":0},{"field":"params.houses","op":"gt","value":0}]	역병이 물러났다. 도시 주민의 사망 기록은 없었지만 영주관 소속에서는 사망자가 나왔고, 역병 집계에는 빈집이 남았다.
+plague.abandoned_fields.r05c.100	[{"field":"params.dead","op":"gt","value":0},{"field":"params.manorDead","op":"eq","value":0},{"field":"params.houses","op":"eq","value":0}]	역병이 물러났다. 도시 주민의 죽음이 기록됐지만 영주관 소속에는 사망 기록이 없었다. 역병 집계에 남은 빈집은 없었다.
+plague.abandoned_fields.r05c.101	[{"field":"params.dead","op":"gt","value":0},{"field":"params.manorDead","op":"eq","value":0},{"field":"params.houses","op":"gt","value":0}]	역병이 물러났다. 도시 주민의 죽음과 역병 집계에 남은 빈집이 기록됐다. 영주관 소속에는 사망 기록이 없었다.
+plague.abandoned_fields.r05c.110	[{"field":"params.dead","op":"gt","value":0},{"field":"params.manorDead","op":"gt","value":0},{"field":"params.houses","op":"eq","value":0}]	역병이 물러났다. 도시 주민과 영주관 소속 사람 모두의 죽음이 기록됐으나, 역병 집계에 남은 빈집은 없었다.
+plague.abandoned_fields.r05c.111	[{"field":"params.dead","op":"gt","value":0},{"field":"params.manorDead","op":"gt","value":0},{"field":"params.houses","op":"gt","value":0}]	역병이 물러났다. 도시 주민과 영주관 소속 사람 모두의 죽음이 기록됐고, 역병 집계에는 빈집도 남았다.
+plague.ordinance.r04.no_fine	[{"field":"params.fine","op":"eq","value":0}]	노동자법이 공포되었으나 이번 기록에 벌금은 없었다.
+plague.resettlement.r05c.one	[{"field":"params.households","op":"eq","value":1}]	역병 뒤 빈집 한 곳에 첫 재정착 가구가 들었다.
+plague.resettlement.r05c.many	[{"field":"params.households","op":"gte","value":2}]	역병 뒤 첫 재정착 때 여러 가구가 빈집에 들었다.
+plague.second_ended.r05b.no_deaths	[{"field":"params.dead","op":"eq","value":0}]	두 번째 역병이 물러갔고, 이번 역병의 주민 사망 집계는 0명이었다.
+plague.second_ended.r05b.deaths	[{"field":"params.dead","op":"gt","value":0}]	두 번째 역병이 물러간 뒤 이번 역병으로 잃은 주민들을 집계했다.
+plague.unanswered.petition.vacant_priest	[{"field":"params.defId","op":"eq","value":"vacant_priest"}]	빈 사제 자리를 어떻게 채울지 기한 안에 답하지 않았다.
+plague.unanswered.petition.wages	[{"field":"params.defId","op":"eq","value":"wages"}]	일꾼들의 임금 요구에 기한 안에 답하지 않았다.
+plague.unanswered.petition.land_redistribution	[{"field":"params.defId","op":"eq","value":"land_redistribution"}]	빈 필지를 나누는 문제에 기한 안에 답하지 않았다.
+plague.unanswered.petition.cash_rent	[{"field":"params.defId","op":"eq","value":"cash_rent"}]	부역을 돈으로 바꾸자는 청원에 기한 안에 답하지 않았다.
+reorg.poll_tax.r05d.zero	[{"field":"params.amount","op":"eq","value":0}]	인두세 징수 회차를 적었으나 영주의 몫은 없었다.
+reorg.poll_tax.r05d.positive	[{"field":"params.amount","op":"gte","value":1}]	인두세 징수에서 영주의 몫이 들어왔다.
+reorg.rebellion_rumour.context.22	[{"field":"params.outcome","op":"eq","value":"chased"}]	사람들이 세금 징수원을 쫓아내고 장원 법정 기록을 태웠다.
+reorg.charter.context.21	[{"field":"params.charter","op":"eq","value":"partial"}]	자치 특허로 시장과 통행세의 일부가 도시 공동체에 넘어갔다.
+reorg.unanswered.r04.guild_charter	[{"field":"params.defId","op":"eq","value":"guild_charter"}]	길드 인가 청원에 답하지 않은 채 기한이 지났다.
+reorg.unanswered.r04.tax_collection	[{"field":"params.defId","op":"eq","value":"tax_collection"}]	인두세 징수 방식에 답하지 않은 채 기한이 지났다.
+reorg.unanswered.r04.cloth_or_grain	[{"field":"params.defId","op":"eq","value":"cloth_or_grain"}]	직물과 곡물 가운데 어디에 힘을 둘지 답하지 않은 채 기한이 지났다.
+reorg.unanswered.r04.borough_charter	[{"field":"params.defId","op":"eq","value":"borough_charter"}]	자치 특허 협상에 답하지 않은 채 기한이 지났다.
+legacy.succession.context.12	[{"field":"params.age","op":"gte","value":50}]	{age}세의 영주가 후계자를 정할 때가 되었다.
+legacy.succession.context.13	[{"field":"params.age","op":"lt","value":50}]	영주가 {age}세에 후계자 선택을 앞두었다.
+legacy.heir_seated.r04.son	[{"field":"params.relation","op":"eq","value":"맏아들"}]	아들이 가문을 이었다.
+legacy.heir_seated.r04.husband	[{"field":"params.relation","op":"eq","value":"딸의 남편"}]	딸의 남편이 가문을 이었다.
+legacy.heir_seated.r04.nephew	[{"field":"params.relation","op":"eq","value":"조카"}]	조카가 가문을 이었다.
+legacy.heir_seated.r04.kinsman	[{"field":"params.relation","op":"eq","value":"먼 친척"}]	먼 친척이 가문을 이었다.
+legacy.legacy_record.r05c.town	[{"field":"params.legacy","op":"eq","value":"길드홀과 시청"}]	길드홀과 시청을 남길 유산으로 적고 봉인했다.
+legacy.legacy_record.r05c.family	[{"field":"params.legacy","op":"eq","value":"영주관·문장·혈통 기록"}]	영주관과 문장, 혈통 기록을 가문의 유산으로 적고 봉인했다.
+legacy.legacy_record.r05c.church	[{"field":"params.legacy","op":"eq","value":"교회 증축과 기도처"}]	교회 증축과 기도처를 남길 유산으로 적고 봉인했다.
+legacy.legacy_record.r05c.none	[{"field":"params.legacy","op":"eq","value":""}]	유산 기록을 봉인했다. 선택한 유산은 적혀 있지 않았다.
+legacy.unanswered.r05.royal_tax	[{"field":"params.defId","op":"eq","value":"royal_tax"}]	왕실 보조세 요구에 답하지 않은 채 기한이 지났다.
+legacy.unanswered.r05.heir_choice	[{"field":"params.defId","op":"eq","value":"heir_choice"}]	후계자 선택에 답하지 않은 채 기한이 지났다.
+legacy.unanswered.r05.borough_autonomy	[{"field":"params.defId","op":"eq","value":"borough_autonomy"}]	자치 특허의 인장에 관한 청원에 답하지 않은 채 기한이 지났다.
+legacy.unanswered.r05.legacy_choice	[{"field":"params.defId","op":"eq","value":"legacy_choice"}]	남길 유산 선택에 답하지 않은 채 기한이 지났다.
+legacy.unanswered.r05.guild_dispute	[{"field":"params.defId","op":"eq","value":"guild_dispute"}]	길드와 상인의 다툼에 답하지 않은 채 기한이 지났다.
+legacy.unanswered.r05.church_rebuilding	[{"field":"params.defId","op":"eq","value":"church_rebuilding"}]	교회 증축 청원에 답하지 않은 채 기한이 지났다.
+war.raid.r04.no_recorded_losses	[{"field":"params.burntHouses","op":"eq","value":0},{"field":"params.looted","op":"eq","value":0},{"field":"params.coin","op":"eq","value":0}]	이번 습격 기록에는 집의 화재나 물자·금전 약탈 피해가 잡히지 않았다.
+war.conscripts_left.r05b.one	[{"field":"params.men","op":"eq","value":1}]	징집된 한 사람이 도시를 떠났다.
+war.conscripts_left.r05b.several	[{"field":"params.men","op":"gte","value":2}]	징집된 사람들이 함께 도시를 떠났다.
+war.conscripts_returned.context.23	[{"field":"params.lost","op":"eq","value":0}]	징집된 {men}명이 모두 돌아왔다.
+war.conscripts_returned.context.24	[{"field":"params.lost","op":"gt","value":0}]	징집대가 귀환했으나 {lost}명은 돌아오지 못했다.
+war.unanswered.r04.levy_response	[{"field":"params.defId","op":"eq","value":"levy_response"}]	징집 명령에 답하지 않은 채 기한이 지났다.
+war.unanswered.r04.war_funding	[{"field":"params.defId","op":"eq","value":"war_funding"}]	전쟁 보조세 요구에 답하지 않은 채 기한이 지났다.
+war.unanswered.r04.refugee_admission	[{"field":"params.defId","op":"eq","value":"refugee_admission"}]	피란민의 청원에 답하지 않은 채 기한이 지났다.
+petition.representative_replaced.r05c.died	[{"field":"params.gone","op":"eq","value":"died"}]	앞선 대표가 세상을 떠나, 새 대표가 청원을 이어 맡았다.
+petition.representative_replaced.r05c.left	[{"field":"params.gone","op":"eq","value":"left"}]	앞선 대표가 마을을 떠나, 새 대표가 청원을 이어 맡았다.
+estate.person_died.r04.head	[{"field":"params.role","op":"eq","value":"head"}]	이웃 영주의 사망을 기록했다.
+estate.person_died.r04.steward	[{"field":"params.role","op":"eq","value":"steward"}]	청지기로 기록된 인물이 세상을 떠났다.
+stewardship.oversight.context.29	[{"field":"params.mode","op":"eq","value":"steward"}]	영주가 해당 영지를 청지기에게 맡겼다.
+stewardship.audit_mode.context.30	[{"field":"params.mode","op":"eq","value":"visit"}]	미카엘마스 감사에 영주가 직접 방문하기로 했다.
+stewardship.rules.r04.recurring	[{"field":"params.recurring","op":"eq","value":1}]	선례에 따른 자동 답변을 쓰지 않도록 정했다.
+stewardship.season.context.32	[{"field":"params.overloaded","op":"eq","value":1}]	영주의 눈이 충분히 닿지 않은 영지에서 한 철의 수입을 보고했다.
+manor.petition.r04.boundary_dispute	[{"field":"params.kind","op":"eq","value":"boundary_dispute"}]	이웃 영지와의 경계를 둘러싼 다툼이 영주에게 왔다.
+manor.petition.r04.road_bridge	[{"field":"params.kind","op":"eq","value":"road_bridge"}]	길과 다리 수리를 나눠 맡아 달라는 청원이 영주에게 왔다.
+manor.petition_answered.r04.road_granted	[{"field":"params.kind","op":"eq","value":"road_bridge"},{"field":"params.granted","op":"eq","value":1}]	영주가 길과 다리 수리를 나눠 맡아 달라는 청원을 받아들였다.
+manor.petition_answered.r04.road_refused	[{"field":"params.kind","op":"eq","value":"road_bridge"},{"field":"params.granted","op":"eq","value":0}]	영주가 길과 다리 수리를 나눠 맡아 달라는 청원을 물리쳤다.
+manor.petition_lapsed.r04.boundary_dispute	[{"field":"params.kind","op":"eq","value":"boundary_dispute"}]	경계 다툼의 청원이 답을 받지 못한 채 거둬졌다.
+manor.petition_lapsed.r04.road_bridge	[{"field":"params.kind","op":"eq","value":"road_bridge"}]	길과 다리 수리를 나눠 맡아 달라는 청원이 답 없이 거둬졌다.
+stewardship.precedent.r04.rent_granted	[{"field":"params.kind","op":"eq","value":"rent_relief"},{"field":"params.granted","op":"eq","value":1}]	청지기가 선례에 따라 지대 감면 청원을 허락했다.
+stewardship.precedent.r04.rent_refused	[{"field":"params.kind","op":"eq","value":"rent_relief"},{"field":"params.granted","op":"eq","value":0}]	청지기가 선례에 따라 지대 감면 청원을 기각했다.
+stewardship.steward_decided.r04.common_tenants	[{"field":"params.kind","op":"eq","value":"common_dispute"},{"field":"params.granted","op":"eq","value":1}]	청지기가 공유지 다툼에서 소작인 편을 들었다.
+stewardship.steward_decided.r04.common_merchants	[{"field":"params.kind","op":"eq","value":"common_dispute"},{"field":"params.granted","op":"eq","value":0}]	청지기가 공유지 다툼에서 상인 편을 들었다.
+stewardship.escalated.r04.amount	[{"field":"params.rule","op":"eq","value":"amount"}]	정해 둔 금액 기준에 걸린 청원을 청지기가 영주에게 올렸다.
+stewardship.escalated.r04.rights	[{"field":"params.rule","op":"eq","value":"rights"}]	권리에 관한 예외 기준에 따라 청원이 영주에게 올라왔다.
+stewardship.escalated.r04.marriage	[{"field":"params.rule","op":"eq","value":"marriage"}]	혼인에 관한 예외 기준에 따라 청원이 영주에게 올라왔다.
+stewardship.brought.context.31	[{"field":"params.late","op":"eq","value":1}]	해당 영지의 청원이 한 철 늦게 영주에게 닿았다.
+stewardship.lord_decided.r04.common_tenants	[{"field":"params.kind","op":"eq","value":"common_dispute"},{"field":"params.granted","op":"eq","value":1}]	영주가 공유지 다툼에서 소작인 편을 들었다.
+stewardship.lord_decided.r04.common_merchants	[{"field":"params.kind","op":"eq","value":"common_dispute"},{"field":"params.granted","op":"eq","value":0}]	영주가 공유지 다툼에서 상인 편을 들었다.
+stewardship.lapsed.r05c.rent_relief	[{"field":"params.kind","op":"eq","value":"rent_relief"}]	지대 경감 청원이 답을 기다리다 거둬졌다.
+stewardship.lapsed.r05c.market_dues	[{"field":"params.kind","op":"eq","value":"market_dues"}]	시장 부담에 관한 청원이 답을 기다리다 거둬졌다.
+stewardship.lapsed.r05c.repair	[{"field":"params.kind","op":"eq","value":"repair"}]	수리를 바란 청원이 답을 기다리다 거둬졌다.
+stewardship.lapsed.r05c.common_dispute	[{"field":"params.kind","op":"eq","value":"common_dispute"}]	공유지 다툼의 청원이 답을 받지 못한 채 거둬졌다.
+stewardship.lapsed.r05c.charter_request	[{"field":"params.kind","op":"eq","value":"charter_request"}]	칙허를 바란 청원이 답을 기다리다 거둬졌다.
+stewardship.lapsed.r05c.marriage_licence	[{"field":"params.kind","op":"eq","value":"marriage_licence"}]	혼인 허가 청원이 답을 기다리다 거둬졌다.
+stewardship.audit_clean.r04.visit	[{"field":"params.mode","op":"eq","value":"visit"}]	방문 감사에서 장부의 부족분이 드러나지 않았다.
+stewardship.audit_clean.r04.accounts	[{"field":"params.mode","op":"eq","value":"accounts"}]	장부 감사에서 부족분이 드러나지 않았다.
+stewardship.audit_found.r04.visit	[{"field":"params.mode","op":"eq","value":"visit"}]	방문 감사에서 장부의 부족분을 확인했다.
+stewardship.audit_found.r04.accounts	[{"field":"params.mode","op":"eq","value":"accounts"}]	장부 감사에서 부족분을 확인했다.
+stewardship.audit_answered.context.28	[{"field":"params.choice","op":"eq","value":"replaced"}]	감사 뒤 영주가 청지기를 교체했다.
+faction.relation.context.35	[{"field":"params.delta","op":"gt","value":0}]	해당 세력과의 관계가 나아졌다.
+faction.relation.context.36	[{"field":"params.delta","op":"lt","value":0}]	해당 세력과의 관계가 나빠졌다.
+decline.entered.r05.derelict	[{"field":"params.cause","op":"eq","value":"derelict"}]	빈 필지가 늘어난 끝에 영지가 쇠퇴에 들었다.
+decline.entered.r05.arrears	[{"field":"params.cause","op":"eq","value":"arrears"}]	유지비가 밀려 영지가 쇠퇴에 들었다.
+decline.entered.r05.depopulated	[{"field":"params.cause","op":"eq","value":"depopulated"}]	인구가 줄어 영지가 쇠퇴에 들었다.
+decline.entered.r05.empty	[{"field":"params.cause","op":"eq","value":"empty"}]	도시가 비면서 영지가 쇠퇴에 들었다.
+decline.recovered.r05.none	[{"field":"params.right","op":"eq","value":"none"}]	쇠퇴를 벗어났다. 이번 쇠퇴 기록에는 되찾을 권리가 적혀 있지 않았다.
+decline.recovered.r05.market	[{"field":"params.right","op":"eq","value":"market"}]	시장 좌판세를 되찾아 쇠퇴에서 벗어났다.
+decline.recovered.r05.tolls	[{"field":"params.right","op":"eq","value":"tolls"}]	통행세를 되찾아 쇠퇴에서 벗어났다.
+decline.recovered.r05.mill	[{"field":"params.right","op":"eq","value":"mill"}]	방앗간 사용료를 되찾아 쇠퇴에서 벗어났다.
+decision.estate_policy.r05.growth	[{"field":"params.chosen","op":"eq","value":"growth"}]	영지 방침을 성장에 두었다.
+decision.estate_policy.r05.revenue	[{"field":"params.chosen","op":"eq","value":"revenue"}]	영지 방침에서 세입을 앞세웠다.
+decision.estate_policy.r05.stability	[{"field":"params.chosen","op":"eq","value":"stability"}]	영지 방침에서 안정을 앞세웠다.
+decision.estate_policy.r05.defence	[{"field":"params.chosen","op":"eq","value":"defence"}]	영지 방침에서 방어를 앞세웠다.
+decision.project_subsidy.context.33	[{"field":"params.amount","op":"eq","value":0}]	해당 사업에 걸었던 장려금을 거두었다.
+decision.project_subsidy.context.34	[{"field":"params.amount","op":"gt","value":0}]	해당 사업의 장려금을 정했다. 착공 전 지출이 이루어진 것은 아니었다.
+decision.market_dues.r05b.usual	[{"field":"params.chosen","op":"eq","value":"1000"}]	시장 부담을 평소 수준으로 정했다.
+decision.market_dues.r05b.level_250	[{"field":"params.chosen","op":"eq","value":"250"}]	시장 부담을 평소의 4분의 1로 정했다.
+decision.market_dues.r05b.level_500	[{"field":"params.chosen","op":"eq","value":"500"}]	시장 부담을 평소의 절반으로 정했다.
+decision.market_dues.r05b.level_1500	[{"field":"params.chosen","op":"eq","value":"1500"}]	시장 부담을 평소의 한 배 반으로 정했다.
+decision.market_dues.r05b.level_2000	[{"field":"params.chosen","op":"eq","value":"2000"}]	시장 부담을 평소의 두 배로 정했다.
+negotiation.offered.r05.impossible	[{"field":"params.tier","op":"eq","value":"impossible"}]	성사 불가로 평가된 조건으로 혼인을 청했다.
+negotiation.offered.r05.unlikely	[{"field":"params.tier","op":"eq","value":"unlikely"}]	불리한 평가를 받은 조건으로 혼인을 청했다.
+negotiation.offered.r05.close	[{"field":"params.tier","op":"eq","value":"close"}]	박빙으로 평가된 조건으로 혼인을 청했다.
+negotiation.offered.r05.likely	[{"field":"params.tier","op":"eq","value":"likely"}]	유력하다는 평가를 받은 조건으로 혼인을 청했다.
+negotiation.offered.r05.almost_certain	[{"field":"params.tier","op":"eq","value":"almost_certain"}]	거의 확실하다는 평가를 받은 조건으로 혼인을 청했다.
+negotiation.countered.r05b.cash	[{"field":"params.changes","op":"eq","value":"cash"}]	이웃 영주가 계약금 조건을 고쳐 혼인을 다시 제안했다.
+negotiation.countered.r05b.pension	[{"field":"params.changes","op":"eq","value":"pension"}]	이웃 영주가 연금 조건을 고쳐 혼인을 다시 제안했다.
+negotiation.countered.r05b.debt_assumption	[{"field":"params.changes","op":"eq","value":"debt_assumption"}]	이웃 영주가 채무 인수 조건을 고쳐 혼인을 다시 제안했다.
+negotiation.countered.r05b.political_support	[{"field":"params.changes","op":"eq","value":"political_support"}]	이웃 영주가 정치적 지원 조건을 고쳐 혼인을 다시 제안했다.
+negotiation.countered.r05b.jointure	[{"field":"params.changes","op":"eq","value":"jointure"}]	이웃 영주가 과부산 조건을 고쳐 혼인을 다시 제안했다.
+promise.made.r04.pension	[{"field":"params.term","op":"eq","value":"pension"}]	연금을 지급할 약속 한 건을 기록했다.
+promise.made.r04.debt_assumption	[{"field":"params.term","op":"eq","value":"debt_assumption"}]	떠맡은 빚을 지급할 약속 한 건을 기록했다.
+promise.made.r04.political_support	[{"field":"params.term","op":"eq","value":"political_support"}]	정치적 지원을 제공할 약속을 기록했다.
+promise.made.r04.inheritance_non_infringement	[{"field":"params.term","op":"eq","value":"inheritance_non_infringement"}]	상속 기대권을 해치지 않겠다는 약속을 기록했다.
+promise.kept.r04.pension	[{"field":"params.term","op":"eq","value":"pension"}]	연금 지급 약속 한 건이 이행되었다.
+promise.kept.r04.debt_assumption	[{"field":"params.term","op":"eq","value":"debt_assumption"}]	떠맡은 빚의 지급 약속 한 건이 이행되었다.
+promise.kept.r04.political_support	[{"field":"params.term","op":"eq","value":"political_support"}]	정치적 지원 약속이 이행된 것으로 기록되었다.
+promise.kept.r04.inheritance_non_infringement	[{"field":"params.term","op":"eq","value":"inheritance_non_infringement"}]	상속 기대권을 해치지 않겠다는 약속이 지켜진 것으로 기록되었다.
+promise.broken.r04.pension	[{"field":"params.term","op":"eq","value":"pension"}]	연금 지급 약속 한 건이 지켜지지 않았다.
+promise.broken.r04.debt_assumption	[{"field":"params.term","op":"eq","value":"debt_assumption"}]	떠맡은 빚의 지급 약속 한 건이 지켜지지 않았다.
+promise.broken.r04.political_support	[{"field":"params.term","op":"eq","value":"political_support"}]	정치적 지원 약속이 지켜지지 않았다.
+promise.broken.r04.inheritance_non_infringement	[{"field":"params.term","op":"eq","value":"inheritance_non_infringement"}]	상속 기대권을 해치지 않겠다는 약속이 깨졌다.
+marriage.contracted.context.14	[{"field":"params.relation","op":"eq","value":"son"}]	영주의 아들과 이웃 영주의 맏딸이 혼인 계약을 맺었다.
+marriage.contracted.context.15	[{"field":"params.relation","op":"eq","value":"brother"}]	영주의 동생과 이웃 영주의 맏딸이 혼인 계약을 맺었다.
+marriage.contracted.context.16	[{"field":"params.relation","op":"eq","value":"nephew"}]	영주의 조카와 이웃 영주의 맏딸이 혼인 계약을 맺었다.
+marriage.contracted.context.17	[{"field":"params.relation","op":"eq","value":"cousin"}]	영주의 사촌과 이웃 영주의 맏딸이 혼인 계약을 맺었다.
+marriage.contracted.context.18	[{"field":"params.relation","op":"eq","value":"widowed_lord"}]	배우자를 잃었던 영주가 이웃 영주의 맏딸과 혼인 계약을 맺었다.
+marriage.jointure_settled.r05d.fishery	[{"field":"params.piece","op":"eq","value":"home:fishery"}]	남편을 먼저 보낸 아내에게 어업권의 평생 점유가 과부산으로 돌아갔다.
+marriage.jointure_settled.r05d.manor_court	[{"field":"params.piece","op":"eq","value":"home:manor_court"}]	남편을 먼저 보낸 아내에게 장원 법정 권리 조각의 평생 점유가 과부산으로 돌아갔다.
+estate.claim_raised.r05.inheritance	[{"field":"params.basis","op":"eq","value":"inheritance"}]	상속을 근거로 권리를 청구했다.
+estate.claim_raised.r05.marriage	[{"field":"params.basis","op":"eq","value":"marriage"}]	혼인을 근거로 권리를 청구했다.
+estate.claim_raised.r05.purchase_deed	[{"field":"params.basis","op":"eq","value":"purchase_deed"}]	매입 문서를 근거로 권리를 청구했다.
+estate.claim_raised.r05.grant	[{"field":"params.basis","op":"eq","value":"grant"}]	하사를 근거로 권리를 청구했다.
+estate.claim_raised.r05.old_possession	[{"field":"params.basis","op":"eq","value":"old_possession"}]	오래된 점유를 근거로 권리를 청구했다.
+estate.suit_filed.r05.whole_estate	[{"field":"params.piece","op":"eq","value":""}]	영지 전체를 놓고 소송을 냈다.
+estate.suit_stage.r05.evidence	[{"field":"params.stage","op":"eq","value":"evidence"}]	소송이 증거를 다룰 단계에 들어갔다.
+estate.suit_stage.r05.patronage	[{"field":"params.stage","op":"eq","value":"patronage"}]	소송이 후원을 구할 단계에 들어갔다.
+estate.suit_stage.r05.hearing	[{"field":"params.stage","op":"eq","value":"hearing"}]	소송이 심리 단계에 들어갔다.
+estate.suit_stage.r05.enforcing	[{"field":"params.stage","op":"eq","value":"enforcing"}]	판결 뒤 점유를 집행할 단계에 들어갔다.
+estate.suit_patron.r05.bishop	[{"field":"params.patron","op":"eq","value":"bishop"}]	주교가 소송의 후원자로 나섰다.
+estate.suit_patron.r05.overlord	[{"field":"params.patron","op":"eq","value":"overlord"}]	상위 영주가 소송의 후원자로 나섰다.
+estate.suit_patron.r05.crown	[{"field":"params.patron","op":"eq","value":"crown"}]	국왕이 소송의 후원자로 나섰다.
+estate.suit_patron.r05.neighbour_1	[{"field":"params.patron","op":"eq","value":"neighbour_1"}]	첫째 이웃 영주가 소송의 후원자로 나섰다.
+estate.suit_patron.r05.neighbour_2	[{"field":"params.patron","op":"eq","value":"neighbour_2"}]	둘째 이웃 영주가 소송의 후원자로 나섰다.
+estate.suit_judged.context.25	[{"field":"params.verdict","op":"eq","value":"plaintiff"}]	원고가 권원을 얻었다. 실제 점유는 이 판결만으로 바뀌지 않았다.
+estate.possession_enforced.context.26	[{"field":"params.succeeded","op":"eq","value":1}]	{attempt}번째 집행에서 판결에 따른 점유를 넘겨받았다.
+estate.possession_enforced.context.27	[{"field":"params.succeeded","op":"eq","value":0}]	{attempt}번째 집행이 점유자의 저항으로 막혔다.
+estate.title_changed.r04.lord	[{"field":"params.to","op":"eq","value":"lord"}]	해당 영지나 권리 조각의 권원이 영주에게 넘어왔다.
+estate.possession_changed.r04.lord	[{"field":"params.to","op":"eq","value":"lord"}]	해당 영지나 권리 조각의 점유가 영주에게 넘어왔다.
+agency.subsidy_refused.r05d.zero_limit	[{"field":"params.reason","op":"eq","value":"over_treasury_share"},{"field":"params.amount","op":"gt","value":0},{"field":"params.limit","op":"eq","value":0}]	금고 기준 장려금 한도가 없어 새 장려금을 걸지 못했다.
+agency.subsidy_refused.r05d.positive_limit	[{"field":"params.reason","op":"eq","value":"over_treasury_share"},{"field":"params.amount","op":"gt","value":0},{"field":"params.limit","op":"gte","value":1}]	장려금 합계가 금고 기준 한도를 넘어 새 장려금을 걸지 못했다.
+agency.project_started.r05.households	[{"field":"params.actor","op":"eq","value":"households"}]	가구들이 새 일에 나섰다.
+agency.project_started.r05.merchants	[{"field":"params.actor","op":"eq","value":"merchants"}]	상인 가문이 공사를 시작했다.
+agency.project_started.r05.guild	[{"field":"params.actor","op":"eq","value":"guild"}]	길드가 공사를 시작했다.
+agency.project_started.r05.community	[{"field":"params.actor","op":"eq","value":"community"}]	공동체가 공사를 시작했다.
+agency.project_started.r05.church	[{"field":"params.actor","op":"eq","value":"church"}]	교회가 공사를 시작했다.
+drainage.done.r05b.one_cell	[{"field":"params.cells","op":"eq","value":1}]	배수 공사가 끝나 웅덩이 한 칸이 풀밭으로 바뀌었다.
+drainage.done.r05b.several_cells	[{"field":"params.cells","op":"gte","value":2}]	배수 공사가 끝나 여러 칸의 웅덩이가 풀밭으로 바뀌었다.
+event.rumour.r05b.first_fire	[{"field":"params.defId","op":"eq","value":"first_fire"}]	불이 날지 모른다는 소문이 돌았다.
+event.rumour.r05b.fire	[{"field":"params.defId","op":"eq","value":"fire"}]	화재를 걱정하는 소문이 돌았다.
+event.rumour.r05b.dearth_rehearsal	[{"field":"params.defId","op":"eq","value":"dearth_rehearsal"}]	흉작이 들지 모른다는 소문이 돌았다.
+event.rumour.r05b.great_famine	[{"field":"params.defId","op":"eq","value":"great_famine"}]	큰 기근이 다가온다는 소문이 돌았다.
+event.sign.r05b.first_fire	[{"field":"params.defId","op":"eq","value":"first_fire"}]	도시에 화재의 징후가 드러났다.
+event.sign.r05b.fire	[{"field":"params.defId","op":"eq","value":"fire"}]	화재의 징후가 드러났다.
+event.sign.r05b.dearth_rehearsal	[{"field":"params.defId","op":"eq","value":"dearth_rehearsal"}]	흉작을 예고하는 징후가 드러났다.
+event.sign.r05b.great_famine	[{"field":"params.defId","op":"eq","value":"great_famine"}]	대기근을 예고하는 징후가 드러났다.
+event.arrived.r05b.first_fire	[{"field":"params.defId","op":"eq","value":"first_fire"}]	도시에 첫 화재가 일어났다.
+event.arrived.r05b.fire	[{"field":"params.defId","op":"eq","value":"fire"}]	도시에 화재가 일어났다.
+event.arrived.r05b.dearth_rehearsal	[{"field":"params.defId","op":"eq","value":"dearth_rehearsal"}]	예고되던 흉작이 닥쳤다.
+event.arrived.r05b.great_famine	[{"field":"params.defId","op":"eq","value":"great_famine"}]	예고되던 대기근이 닥쳤다.
+event.recovered.r05b.000	[{"field":"params.burntHouses","op":"eq","value":0},{"field":"params.departures","op":"eq","value":0},{"field":"params.harvestLost","op":"eq","value":0},{"field":"params.defId","op":"in","value":["first_fire","fire","dearth_rehearsal","great_famine"]}]	사건 피해 집계에는 불탄 집·떠난 가구·잃은 수확이 없었다.
+event.recovered.r05b.001	[{"field":"params.burntHouses","op":"eq","value":0},{"field":"params.departures","op":"eq","value":0},{"field":"params.harvestLost","op":"gt","value":0},{"field":"params.defId","op":"in","value":["dearth_rehearsal","great_famine"]}]	사건에서 회복한 뒤 피해 항목을 기록했다: 잃은 수확.
+event.recovered.r05b.010	[{"field":"params.burntHouses","op":"eq","value":0},{"field":"params.departures","op":"gt","value":0},{"field":"params.harvestLost","op":"eq","value":0},{"field":"params.defId","op":"in","value":["first_fire","fire","dearth_rehearsal","great_famine"]}]	사건에서 회복한 뒤 피해 항목을 기록했다: 떠난 가구.
+event.recovered.r05b.011	[{"field":"params.burntHouses","op":"eq","value":0},{"field":"params.departures","op":"gt","value":0},{"field":"params.harvestLost","op":"gt","value":0},{"field":"params.defId","op":"in","value":["dearth_rehearsal","great_famine"]}]	사건에서 회복한 뒤 피해 항목을 기록했다: 떠난 가구·잃은 수확.
+event.recovered.r05b.100	[{"field":"params.burntHouses","op":"gt","value":0},{"field":"params.departures","op":"eq","value":0},{"field":"params.harvestLost","op":"eq","value":0},{"field":"params.defId","op":"in","value":["first_fire","fire"]}]	사건에서 회복한 뒤 피해 항목을 기록했다: 불탄 집.
+event.recovered.r05b.110	[{"field":"params.burntHouses","op":"gt","value":0},{"field":"params.departures","op":"gt","value":0},{"field":"params.harvestLost","op":"eq","value":0},{"field":"params.defId","op":"in","value":["first_fire","fire"]}]	사건에서 회복한 뒤 피해 항목을 기록했다: 불탄 집·떠난 가구.
+era.entered.context.39	[{"field":"params.forced","op":"eq","value":1}]	도시가 준비를 갖추기 전에 새 시대로 넘어갔다.
+milestone.first_building.r05b.well	[{"field":"params.building","op":"eq","value":"well"}]	도시의 첫 우물 자리를 기록했다.
+milestone.first_building.r05b.granary	[{"field":"params.building","op":"eq","value":"granary"}]	도시의 첫 곡창 자리를 기록했다.
+milestone.first_building.r05b.mill	[{"field":"params.building","op":"eq","value":"mill"}]	도시의 첫 곡물 방앗간 자리를 기록했다.
+milestone.first_building.r05b.farmstead	[{"field":"params.building","op":"eq","value":"farmstead"}]	도시의 첫 헛간 자리를 기록했다.
+milestone.first_building.r05b.market	[{"field":"params.building","op":"eq","value":"market"}]	도시의 첫 장터 자리를 기록했다.
+milestone.first_building.r05b.chapel	[{"field":"params.building","op":"eq","value":"chapel"}]	도시의 첫 예배당 자리를 기록했다.
+milestone.first_building.r05b.church	[{"field":"params.building","op":"eq","value":"church"}]	도시의 첫 교회 자리를 기록했다.
+milestone.first_building.r05b.sawmill	[{"field":"params.building","op":"eq","value":"sawmill"}]	도시의 첫 제재소 자리를 기록했다.
+milestone.first_building.r05b.quarry	[{"field":"params.building","op":"eq","value":"quarry"}]	도시의 첫 채석장 자리를 기록했다.
+milestone.first_building.r05b.masonry	[{"field":"params.building","op":"eq","value":"masonry"}]	도시의 첫 석공소 자리를 기록했다.
+milestone.lots.r05b.lots_6	[{"field":"params.lots","op":"eq","value":6}]	도시의 필지가 6개에 이른 일을 기록했다.
+milestone.lots.r05b.lots_12	[{"field":"params.lots","op":"eq","value":12}]	도시의 필지가 12개에 이른 일을 기록했다.
+milestone.lots.r05b.lots_24	[{"field":"params.lots","op":"eq","value":24}]	도시의 필지가 24개에 이른 일을 기록했다.
+ledger.season.r05b.season_0	[{"field":"params.season","op":"eq","value":0}]	봄 한 철의 인구와 금고 증감을 결산했다.
+ledger.season.r05b.season_1	[{"field":"params.season","op":"eq","value":1}]	여름 한 철의 인구와 금고 증감을 결산했다.
+ledger.season.r05b.season_2	[{"field":"params.season","op":"eq","value":2}]	가을 한 철의 인구와 금고 증감을 결산했다.
+ledger.season.r05b.season_3	[{"field":"params.season","op":"eq","value":3}]	겨울 한 철의 인구와 금고 증감을 결산했다.
+ledger.population.r05b.increase	[{"field":"params.percent","op":"gte","value":5}]	한 철 사이 도시 인구가 늘었다.
+ledger.population.r05b.decrease	[{"field":"params.percent","op":"lte","value":-5}]	한 철 사이 도시 인구가 줄었다.
+ledger.treasury_turn.context.37	[{"field":"params.net","op":"gt","value":0}]	금고가 다시 늘기 시작했다.
+ledger.treasury_turn.context.38	[{"field":"params.net","op":"lt","value":0}]	금고가 줄기 시작했다.
+ledger.treasury_turn.context.zero	[{"field":"params.net","op":"eq","value":0}]	금고의 순증감이 없었다.
+ledger.departures.r05b.one	[{"field":"params.count","op":"eq","value":1}]	이번 철에는 한 가구가 도시를 떠났다.
+ledger.departures.r05b.several	[{"field":"params.count","op":"gte","value":2}]	이번 철에는 여러 가구가 도시를 떠났다.
+ledger.rollup.r05b.season_0	[{"field":"params.season","op":"eq","value":0}]	봄의 오래된 일상 기록을 한데 묶었다.
+ledger.rollup.r05b.season_1	[{"field":"params.season","op":"eq","value":1}]	여름의 오래된 일상 기록을 한데 묶었다.
+ledger.rollup.r05b.season_2	[{"field":"params.season","op":"eq","value":2}]	가을의 오래된 일상 기록을 한데 묶었다.
+ledger.rollup.r05b.season_3	[{"field":"params.season","op":"eq","value":3}]	겨울의 오래된 일상 기록을 한데 묶었다.
+person.move_in.era.early	[{"field":"date.year","op":"gte","value":1300},{"field":"date.year","op":"lte","value":1347}]	{eventYear}년, 가구가 새 집에 들었다.
+person.move_in.era.middle	[{"field":"date.year","op":"gte","value":1348},{"field":"date.year","op":"lte","value":1381}]	{eventYear}년, 가구가 새 집에 들었다.
+person.move_in.era.late	[{"field":"date.year","op":"gte","value":1382},{"field":"date.year","op":"lte","value":1450}]	{eventYear}년, 가구가 새 집에 들었다.
+person.level_up.r04.level_1	[{"field":"params.level","op":"eq","value":1}]	집이 소가옥 등급으로 올랐다.
+person.level_up.r04.level_2	[{"field":"params.level","op":"eq","value":2}]	집이 장인가옥 등급으로 올랐다.
+person.level_up.r04.level_3	[{"field":"params.level","op":"eq","value":3}]	집이 상인가옥 등급으로 올랐다.
+person.level_up.r04.level_4	[{"field":"params.level","op":"eq","value":4}]	집이 도시 대가옥 등급으로 올랐다.
+person.level_down.r04.level_0	[{"field":"params.level","op":"eq","value":0}]	집이 오두막 등급으로 내려갔다.
+person.level_down.r04.level_1	[{"field":"params.level","op":"eq","value":1}]	집이 소가옥 등급으로 내려갔다.
+person.level_down.r04.level_2	[{"field":"params.level","op":"eq","value":2}]	집이 장인가옥 등급으로 내려갔다.
+person.level_down.r04.level_3	[{"field":"params.level","op":"eq","value":3}]	집이 상인가옥 등급으로 내려갔다.
+person.born.context.7	[{"field":"params.nameFrom","op":"eq","value":"father"}]	아이가 태어나 아버지의 이름을 이어받았다.
+person.born.context.8	[{"field":"params.nameFrom","op":"eq","value":"mother"}]	아이가 태어나 어머니의 이름을 이어받았다.
+person.born.context.9	[{"field":"params.nameFrom","op":"eq","value":"grandfather"}]	아이가 태어나 할아버지의 이름을 받았다.
+person.born.context.10	[{"field":"params.nameFrom","op":"eq","value":"grandmother"}]	아이가 태어나 할머니의 이름을 받았다.
+person.born.context.11	[{"field":"params.nameFrom","op":"eq","value":"godparent"}]	아이가 태어나 대부모의 이름을 받았다.
+person.born.era.early	[{"field":"date.year","op":"gte","value":1300},{"field":"date.year","op":"lte","value":1347}]	{eventYear}년, 아이가 태어났다.
+person.born.era.middle	[{"field":"date.year","op":"gte","value":1348},{"field":"date.year","op":"lte","value":1381}]	{eventYear}년, 아이가 태어났다.
+person.born.era.late	[{"field":"date.year","op":"gte","value":1382},{"field":"date.year","op":"lte","value":1450}]	{eventYear}년, 아이가 태어났다.
+person.married.era.early	[{"field":"date.year","op":"gte","value":1300},{"field":"date.year","op":"lte","value":1347}]	{eventYear}년, 혼인하여 가구를 이루었다.
+person.married.era.middle	[{"field":"date.year","op":"gte","value":1348},{"field":"date.year","op":"lte","value":1381}]	{eventYear}년, 혼인하여 가구를 이루었다.
+person.married.era.late	[{"field":"date.year","op":"gte","value":1382},{"field":"date.year","op":"lte","value":1450}]	{eventYear}년, 혼인하여 가구를 이루었다.
+person.occupation.miller	[{"field":"params.occupation","op":"eq","value":"miller"}]	곡물 방앗간 일을 맡았다.
+person.occupation.sawyer	[{"field":"params.occupation","op":"eq","value":"sawyer"}]	제재소 일을 맡았다.
+person.occupation.mason	[{"field":"params.occupation","op":"eq","value":"mason"}]	석공소 일을 맡았다.
+person.occupation.chapman	[{"field":"params.occupation","op":"eq","value":"chapman"}]	장터 일을 맡았다.
+person.occupation.husbandman	[{"field":"params.occupation","op":"eq","value":"husbandman"}]	헛간 일을 맡았다.
+person.occupation.woodward	[{"field":"params.occupation","op":"eq","value":"woodward"}]	벌목소 일을 맡았다.
+person.occupation.quarrier	[{"field":"params.occupation","op":"eq","value":"quarrier"}]	채석장 일을 맡았다.
+person.occupation.granger	[{"field":"params.occupation","op":"eq","value":"granger"}]	곡창 일을 맡았다.
+person.occupation.storekeeper	[{"field":"params.occupation","op":"eq","value":"storekeeper"}]	창고 일을 맡았다.
+person.died.context.1	[{"field":"params.cause","op":"eq","value":"famine"}]	{age}세에 굶주림으로 목숨을 잃었다.
+person.died.context.2	[{"field":"params.cause","op":"eq","value":"famine_year"}]	{age}세에 기근 해의 병으로 세상을 떠났다.
+person.died.context.3	[{"field":"params.cause","op":"eq","value":"fire"}]	{age}세에 화재로 목숨을 잃었다.
+person.died.context.4	[{"field":"params.cause","op":"eq","value":"plague"}]	{age}세에 역병으로 목숨을 잃었다.
+person.died.context.5	[{"field":"params.cause","op":"eq","value":"captivity"}]	{age}세에 유폐 중 세상을 떠났다.
+person.died.context.6	[{"field":"params.cause","op":"eq","value":"age"}]	{age}세에 생을 마쳤다.
+person.left_town.era.early	[{"field":"date.year","op":"gte","value":1300},{"field":"date.year","op":"lte","value":1347}]	{eventYear}년, 도시를 떠났다.
+person.left_town.era.middle	[{"field":"date.year","op":"gte","value":1348},{"field":"date.year","op":"lte","value":1381}]	{eventYear}년, 도시를 떠났다.
+person.left_town.era.late	[{"field":"date.year","op":"gte","value":1382},{"field":"date.year","op":"lte","value":1450}]	{eventYear}년, 도시를 떠났다.
+person.shrank.r04.one_resident	[{"field":"params.residents","op":"eq","value":1}]	가구의 식구가 줄어 한 명만 남았다.
+registry.offered.r05d.audit	[{"field":"params.entry","op":"eq","value":"ck_evt_013"}]	연줄 있는 청지기의 감사 처분을 정해 달라는 안건이 올라왔다.
+registry.offered.r05d.enforcement	[{"field":"params.entry","op":"eq","value":"ck_evt_038"}]	판결 뒤 남은 점유 집행을 할지 정해 달라는 안건이 올라왔다.
+registry.offered.r05d.precedent	[{"field":"params.entry","op":"eq","value":"ck_evt_034"}]	되풀이되는 청원을 선례에 맡길지 다시 들을지 묻는 안건이 올라왔다.
+registry.answered.r05d.audit_punish	[{"field":"params.entry","op":"eq","value":"ck_evt_013"},{"field":"params.choice","op":"eq","value":"a"}]	감사에서 드러난 일을 징계로 다루도록 답했다.
+registry.answered.r05d.audit_tolerate	[{"field":"params.entry","op":"eq","value":"ck_evt_013"},{"field":"params.choice","op":"eq","value":"b"}]	감사에서 드러난 일을 덮고 현직을 남기는 답을 택했다.
+registry.answered.r05d.audit_replace	[{"field":"params.entry","op":"eq","value":"ck_evt_013"},{"field":"params.choice","op":"eq","value":"c"}]	드러난 돈을 회수하지 않고 청지기를 바꾸는 답을 택했다.
+registry.answered.r05d.precedent	[{"field":"params.entry","op":"eq","value":"ck_evt_034"},{"field":"params.choice","op":"eq","value":"precedent"}]	같은 청원을 다시 올리는 예외를 풀고 선례에 맡기기로 답했다.
+registry.answered.r05d.hear	[{"field":"params.entry","op":"eq","value":"ck_evt_034"},{"field":"params.choice","op":"eq","value":"hear"}]	반복된 청원도 영주에게 다시 올리도록 답했다.
+registry.answered.r05d.audit052_punish	[{"field":"params.entry","op":"eq","value":"ck_evt_052"},{"field":"params.choice","op":"eq","value":"punish"}]	빠진 돈을 회수하고 청지기를 해임하는 답을 택했다.
+registry.lapsed.r05d.audit	[{"field":"params.entry","op":"eq","value":"ck_evt_013"}]	청지기의 감사 처분 안건은 답 없이 기한을 넘겼다.
+registry.lapsed.r05d.enforcement	[{"field":"params.entry","op":"eq","value":"ck_evt_038"}]	점유 집행을 물은 안건은 답 없이 기한을 넘겼다.
+registry.lapsed.r05d.precedent	[{"field":"params.entry","op":"eq","value":"ck_evt_034"}]	반복 청원을 맡기는 방식을 묻던 안건은 답 없이 기한을 넘겼다.
+registry.term_began.market_remission	[{"field":"params.kind","op":"eq","value":"remission"},{"field":"params.what","op":"eq","value":"market_dues"},{"field":"params.years","op":"gte","value":1}]	좌판세 감면이 {termYears}년 기한으로 시작되었다.
+registry.term_began.installments	[{"field":"params.kind","op":"eq","value":"installments"},{"field":"params.years","op":"gte","value":1}]	분할 납부 약정이 {termYears}년 기한으로 시작되었다.
+registry.term_ended.remission	[{"field":"params.kind","op":"eq","value":"remission"}]	감면 약정의 기한이 끝났다.
+registry.term_ended.installments	[{"field":"params.kind","op":"eq","value":"installments"}]	분할 납부 약정의 기한이 끝났다.
+manor.petition_precedent.wardship_kin	[{"field":"params.kind","op":"eq","value":"wardship"},{"field":"params.granted","op":"eq","value":1}]	청지기가 선례대로 미성년 상속자의 후견을 친족에게 맡겼다.
+manor.petition_precedent.wardship_lord	[{"field":"params.kind","op":"eq","value":"wardship"},{"field":"params.granted","op":"eq","value":0}]	청지기가 선례대로 미성년 상속자의 후견을 영주에게 남겼다.
+opening_balance.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+opening_balance.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+opening_balance.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+opening_balance.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+market_sale.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+market_sale.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+market_sale.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+market_sale.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+construction.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+construction.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+construction.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+construction.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+upkeep.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+upkeep.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+upkeep.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+upkeep.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+toll.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+toll.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+toll.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+toll.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+stall_fee.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+stall_fee.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+stall_fee.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+stall_fee.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+rent.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+rent.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+rent.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+rent.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+mill_toll.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+mill_toll.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+mill_toll.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+mill_toll.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+demesne_sale.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+demesne_sale.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+demesne_sale.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+demesne_sale.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+project.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+project.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+project.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+project.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+famine_relief.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"},{"field":"entry.amount","op":"lt","value":0}]	
+famine_relief.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+famine_relief.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+famine_relief.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+famine_sale.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+famine_sale.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+famine_sale.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+famine_sale.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+charter_fee.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+charter_fee.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+charter_fee.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+charter_fee.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+restoration_fee.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+restoration_fee.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+restoration_fee.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+restoration_fee.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+house_change.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+house_change.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+house_change.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+house_change.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+wool_levy.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"},{"field":"entry.amount","op":"lt","value":0}]	
+wool_levy.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+wool_levy.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+wool_levy.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+war_exemption.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+war_exemption.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+war_exemption.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+war_exemption.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+war_subsidy.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+war_subsidy.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+war_subsidy.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+war_subsidy.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+war_loan.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+war_loan.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+war_loan.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+war_loan.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+war_tax.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+war_tax.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+war_tax.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+war_tax.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+raid_loot.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+raid_loot.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+raid_loot.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+raid_loot.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+purveyance.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+purveyance.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+purveyance.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+purveyance.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+refugee_fee.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+refugee_fee.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+refugee_fee.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+refugee_fee.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+murage.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+murage.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+murage.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+murage.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+wages.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+wages.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+wages.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+wages.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+statute_fine.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+statute_fine.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+statute_fine.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+statute_fine.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+church_fee.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+church_fee.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+church_fee.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+church_fee.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+entry_fine.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+entry_fine.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+entry_fine.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+entry_fine.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+fulling_toll.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+fulling_toll.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+fulling_toll.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+fulling_toll.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+ulnage.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+ulnage.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+ulnage.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+ulnage.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+cloth_toll.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+cloth_toll.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+cloth_toll.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+cloth_toll.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+poll_tax.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+poll_tax.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+poll_tax.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+poll_tax.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+fee_farm.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+fee_farm.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+fee_farm.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+fee_farm.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+royal_subsidy.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+royal_subsidy.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+royal_subsidy.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+royal_subsidy.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+succession_relief.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+succession_relief.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+succession_relief.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+succession_relief.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+legacy_endowment.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+legacy_endowment.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+legacy_endowment.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+legacy_endowment.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+church_rebuilding.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+church_rebuilding.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+church_rebuilding.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+church_rebuilding.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+timber_purchase.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+timber_purchase.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+timber_purchase.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+timber_purchase.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+project_subsidy.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+project_subsidy.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+project_subsidy.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+project_subsidy.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+lawsuit.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+lawsuit.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+lawsuit.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+lawsuit.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+marriage_portion.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+marriage_portion.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+marriage_portion.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+marriage_portion.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+promise_payment.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+promise_payment.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+promise_payment.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+promise_payment.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+estate_income.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+estate_income.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+estate_income.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+estate_income.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+audit_recovery.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+audit_recovery.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+audit_recovery.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+audit_recovery.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+registry_settlement.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+registry_settlement.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+registry_settlement.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+registry_settlement.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+instalment.in_kind	[{"field":"entry.account","op":"eq","value":"in_kind"}]	
+instalment.cash_in	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"gt","value":0}]	
+instalment.cash_out	[{"field":"entry.account","op":"eq","value":"cash"},{"field":"entry.amount","op":"lt","value":0}]	
+instalment.other	[{"field":"entry.account","op":"in","value":["cash","restricted","arrears"]}]	
+instalment.arrears_added	[{"field":"entry.account","op":"eq","value":"arrears"},{"field":"entry.amount","op":"gt","value":0}]	
+instalment.arrears_reduced	[{"field":"entry.account","op":"eq","value":"arrears"},{"field":"entry.amount","op":"lt","value":0}]	

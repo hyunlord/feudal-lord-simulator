@@ -1,0 +1,42 @@
+{
+  "status": "three_findings_corrected_static_rechecked",
+  "sourceHead": "5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b",
+  "findings": [
+    {
+      "id": "audit_detection",
+      "variantId": "stewardship.audit_clean.brief",
+      "source": "src/engine/stewardship.ts:321",
+      "reason": "hidden can remain positive while status=clean; state only non-detection",
+      "text": "미카엘마스 감사에서 장부의 부족분이 드러나지 않았다.",
+      "baselineCorrectionRequired": true
+    },
+    {
+      "id": "enforcement_conditional",
+      "variantId": "estate.suit_judged.context.25",
+      "source": "src/engine/estateSuits.ts:136",
+      "reason": "already possessed target closes suit; no unconditional enforcement duty",
+      "text": "원고가 권원을 얻었다. 실제 점유는 이 판결만으로 바뀌지 않았다."
+    },
+    {
+      "id": "first_attempt",
+      "variantId": "estate.possession_enforced.context.27",
+      "reason": "attempt=1 carries no repeated-failure implication",
+      "text": "{attempt}번째 집행이 점유자의 저항으로 막혔다."
+    },
+    {
+      "id": "in_kind_valuation_not_quantity",
+      "source": [
+        "src/engine/politics.ts:123",
+        "src/engine/war.ts:415",
+        "src/engine/pastureWool.ts:35"
+      ],
+      "before": "generic in_kind quantityExact read risk",
+      "after": "penny valuation preserved, quantity from producer-scoped sourceRefs detail only; 2 supported proposals/42 blocked",
+      "runtimeVerified": false
+    }
+  ],
+  "graftTokensSavedThisReview": 26644,
+  "runtimeVerified": false,
+  "inheritedEvidenceOnly": true,
+  "scopeNote": "이전 HEAD 검수의 보존 자료. LM-E9 독립 검수 결과는 아님."
+}

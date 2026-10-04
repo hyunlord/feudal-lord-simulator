@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "sourceFiles": 8,
+  "sourceSpans": 24,
+  "modifiedLines": 14,
+  "unchangedOtherLines": true,
+  "exactConfirmedHoldLinks": 23,
+  "holdIndexMatched": true,
+  "templateAndFunctionPrefixesPreserved": true,
+  "interpolationsPreserved": true,
+  "notTested": [
+    "TypeScript compilation",
+    "formatter runtime",
+    "context capture",
+    "UI",
+    "independent composed-line approval"
+  ]
+}

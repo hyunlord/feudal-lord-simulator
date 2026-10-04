@@ -1,0 +1,225 @@
+{
+  "fixture": "/tmp/astra-steward-r04-20261003/long-run/N02-v3-open-1-growth/year-1325.fls.json",
+  "sha256": "5a3560012282942253fa7699704dc1eb7147405ee3d755598b50dc7088644961",
+  "seed": 1,
+  "tick": 100000,
+  "petition": [
+    {
+      "id": "market_charter@25000",
+      "defId": "market_charter",
+      "petitioner": "merchants",
+      "arrivedTick": 25000,
+      "response": "accept",
+      "respondedTick": 25000,
+      "petitionerIds": [
+        "p-000004",
+        "p-000064"
+      ]
+    }
+  ],
+  "receiptTargets": [
+    {
+      "id": "receipt-98",
+      "tick": 49764,
+      "actor": "merchants",
+      "what": "storehouse",
+      "tx": 41,
+      "ty": 45,
+      "siteId": "construction-site-000039",
+      "planner": "storage",
+      "rank": 15,
+      "reasons": [
+        {
+          "name": "need",
+          "value": 46
+        },
+        {
+          "name": "cost",
+          "value": -6
+        },
+        {
+          "name": "plan",
+          "value": 4
+        },
+        {
+          "name": "access",
+          "value": -2
+        },
+        {
+          "name": "land",
+          "value": -2
+        }
+      ],
+      "score": 40,
+      "cost": 240,
+      "subsidy": 0,
+      "loan": 0,
+      "decisionIds": [
+
+      ],
+      "sites": {
+        "count": 1,
+        "planTx": 41,
+        "planTy": 45,
+        "reasons": [
+          {
+            "name": "access",
+            "value": -2
+          },
+          {
+            "name": "land",
+            "value": -2
+          },
+          {
+            "name": "plan",
+            "value": 4
+          }
+        ],
+        "runnerUp": null
+      },
+      "chance": {
+        "project": {
+          "permille": 1000,
+          "of": 1,
+          "temperament": "cautious",
+          "place": 1
+        }
+      }
+    },
+    {
+      "id": "receipt-117",
+      "tick": 75738,
+      "actor": "merchants",
+      "what": "storehouse",
+      "tx": 52,
+      "ty": 48,
+      "siteId": "construction-site-000048",
+      "planner": "storage",
+      "rank": 15,
+      "reasons": [
+        {
+          "name": "need",
+          "value": 46
+        },
+        {
+          "name": "cost",
+          "value": -6
+        },
+        {
+          "name": "access",
+          "value": 5
+        },
+        {
+          "name": "plan",
+          "value": 4
+        },
+        {
+          "name": "land",
+          "value": -1
+        }
+      ],
+      "score": 48,
+      "cost": 240,
+      "subsidy": 0,
+      "loan": 0,
+      "decisionIds": [
+
+      ],
+      "sites": {
+        "count": 1,
+        "planTx": 52,
+        "planTy": 48,
+        "reasons": [
+          {
+            "name": "access",
+            "value": 5
+          },
+          {
+            "name": "land",
+            "value": -1
+          },
+          {
+            "name": "plan",
+            "value": 4
+          }
+        ],
+        "runnerUp": null
+      },
+      "chance": {
+        "project": {
+          "permille": 1000,
+          "of": 1,
+          "temperament": "cautious",
+          "place": 1
+        }
+      }
+    }
+  ],
+  "buildings": [
+    {
+      "id": "construction-site-000039",
+      "kind": "storehouse",
+      "tx": 41,
+      "ty": 45,
+      "workers": 2,
+      "inventory": {
+        "logs": 92,
+        "timber": 4,
+        "malt": 0
+      },
+      "reserved": {
+        "logs": 8
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    },
+    {
+      "id": "construction-site-000048",
+      "kind": "storehouse",
+      "tx": 52,
+      "ty": 48,
+      "workers": 2,
+      "inventory": {
+        "logs": 100,
+        "timber": 12,
+        "malt": 0,
+        "stone": 22
+      },
+      "reserved": {
+      },
+      "stockReserved": {
+      },
+      "productionProgress": 0
+    }
+  ],
+  "marriage": {
+    "negotiationId": "negotiation-1",
+    "groomId": "m-000009",
+    "brideId": "est-000002",
+    "estateId": "estate-neighbour-3",
+    "contractedTick": 24103,
+    "stage": "lost",
+    "claimId": "claim-2",
+    "events": {
+      "bride_arrived": 25103,
+      "child_born": 28103,
+      "brother_in_law_born": 30103,
+      "father_ill": 36103,
+      "will_change": -1,
+      "father_died": 52000
+    },
+    "deferredDebt": 450,
+    "brotherInLawId": "est-000004"
+  },
+  "negotiations": [
+    {
+      "id": "negotiation-1",
+      "status": "accepted",
+      "purpose": "marriage",
+      "tick": 24025
+    }
+  ],
+  "directionUnlock": "no satisfying state: false in all tutorialAccess branches",
+  "launched": false
+}

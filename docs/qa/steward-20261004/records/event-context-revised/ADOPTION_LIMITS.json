@@ -1,0 +1,25 @@
+{
+  "status": "all_context_candidates_uninstalled",
+  "allVariantsRequireProvenanceAdapter": true,
+  "factLineReviewRequired": [
+    "marriage.inherited.r06ctx.son",
+    "marriage.inherited.r06ctx.kin"
+  ],
+  "factLineReason": "Existing baseline says 아내를 통해, which must become relation-neutral before retaining it with son/other-kin contextual headlines.",
+  "wardshipGuard": "Blank guardian ID alone never proves overlord route.",
+  "completionBoundary": "Implementation not required for this requested author draft delivery.",
+  "blocks": [
+    {
+      "variantId": "marriage.inherited.r06ctx.son",
+      "status": "BLOCK_FACT_LINE_CONFLICT",
+      "requires": "Independent approval of relation-neutral baseline factual line before contextual composition",
+      "engineModified": false
+    },
+    {
+      "variantId": "marriage.inherited.r06ctx.kin",
+      "status": "BLOCK_FACT_LINE_CONFLICT",
+      "requires": "Independent approval of relation-neutral baseline factual line before contextual composition",
+      "engineModified": false
+    }
+  ]
+}

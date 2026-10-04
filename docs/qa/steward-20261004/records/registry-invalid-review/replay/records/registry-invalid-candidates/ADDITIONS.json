@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "status": "candidate_not_installed",
+  "sourceHead": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "baselineSha256": "ac1bde4a2c92381f8adaed3b3e5c6a4cd6dbe5745098639754bb6389919aba88",
+  "additions": [
+    {
+      "template": "registry.invalid",
+      "variants": [
+        {
+          "id": "registry.invalid.r06.audit",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_013"
+            }
+          ],
+          "headline": "감사 처분을 묻던 안건은 사정이 달라져 거두어졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.invalid.r06.precedent",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_034"
+            }
+          ],
+          "headline": "반복 청원을 선례대로 처리할지 묻던 안건은 사정이 달라져 거두어졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        },
+        {
+          "id": "registry.invalid.r06.enforcement",
+          "priority": 20,
+          "when": [
+            {
+              "field": "params.entry",
+              "op": "eq",
+              "value": "ck_evt_038"
+            }
+          ],
+          "headline": "판결에 따른 점유 집행을 묻던 안건은 사정이 달라져 거두어졌다.",
+          "requiredSlots": [
+
+          ],
+          "retainFactLine": true
+        }
+      ]
+    }
+  ]
+}

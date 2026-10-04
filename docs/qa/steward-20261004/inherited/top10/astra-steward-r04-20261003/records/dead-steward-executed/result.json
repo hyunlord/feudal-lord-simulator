@@ -1,0 +1,126 @@
+{
+  "diagnosticCompleted": true,
+  "runtimeDefectObserved": true,
+  "inputHash": "413606bd72e5c1f40411ac584d14d013661d3150ca6684b1b062e3f95638e0de",
+  "head": "5fb1aebfe735592c1424c947e88388d4ffe21742",
+  "cases": [
+    {
+      "id": "natural-dead-appointment",
+      "selected": true,
+      "selectedWhileDead": true,
+      "sameReference": false
+    },
+    {
+      "id": "natural-dead-audit-explicit",
+      "selected": true,
+      "selectedWhileDead": true,
+      "sameReference": false
+    },
+    {
+      "id": "natural-dead-audit-automatic",
+      "selected": true,
+      "selectedWhileDead": true,
+      "sameReference": false
+    },
+    {
+      "id": "synthetic-alive-control-appointment",
+      "selected": true,
+      "selectedWhileDead": false,
+      "sameReference": false
+    },
+    {
+      "id": "synthetic-alive-control-audit-explicit",
+      "selected": true,
+      "selectedWhileDead": false,
+      "sameReference": false
+    },
+    {
+      "id": "synthetic-alive-control-audit-automatic",
+      "selected": true,
+      "selectedWhileDead": false,
+      "sameReference": false
+    }
+  ],
+  "saveChecks": [
+    {
+      "file": "natural-dead-appointment-before.fls.json",
+      "sha256": "aeeecef0809c8f3c09d31a14a21c1854ca5acc58c946886c53e9e66cc64338ff",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "natural-dead-appointment-after.fls.json",
+      "sha256": "9450ed94da18360960c8d7c1e1f116a1f888d079596bb63d7790e2e4e879416e",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "natural-dead-audit-explicit-before.fls.json",
+      "sha256": "6d61a1633ee777cf0156081e367d5d39d014f22d3d9bb5afe3a36795bf1167b0",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "natural-dead-audit-explicit-after.fls.json",
+      "sha256": "b9a0a2eb151f5e95e805dd354d29e51de1abccf3cb21da3cf6ca1bfdbf50e425",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "natural-dead-audit-automatic-before.fls.json",
+      "sha256": "6d61a1633ee777cf0156081e367d5d39d014f22d3d9bb5afe3a36795bf1167b0",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "natural-dead-audit-automatic-after.fls.json",
+      "sha256": "b9a0a2eb151f5e95e805dd354d29e51de1abccf3cb21da3cf6ca1bfdbf50e425",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "synthetic-alive-control-appointment-before.fls.json",
+      "sha256": "496d8f859c5be7c1650fd38ff9ca50ad897d0c6c53f100b317f00adb70979676",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "synthetic-alive-control-appointment-after.fls.json",
+      "sha256": "a49c0414b1156c658f92041f753812ae45692fcc22a244bcd7eddad0ae6f68fb",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "synthetic-alive-control-audit-explicit-before.fls.json",
+      "sha256": "0d730aa0107521bdcff14fb89557b44afd8e614e79511f6506035f408b110353",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "synthetic-alive-control-audit-explicit-after.fls.json",
+      "sha256": "5d036a0181d238f7efdcc76e536d8f88d576c30e22def8b781cf04b82f52512b",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "synthetic-alive-control-audit-automatic-before.fls.json",
+      "sha256": "0d730aa0107521bdcff14fb89557b44afd8e614e79511f6506035f408b110353",
+      "decoded": true,
+      "exactRoundTrip": true
+    },
+    {
+      "file": "synthetic-alive-control-audit-automatic-after.fls.json",
+      "sha256": "5d036a0181d238f7efdcc76e536d8f88d576c30e22def8b781cf04b82f52512b",
+      "decoded": true,
+      "exactRoundTrip": true
+    }
+  ],
+  "allSavedStatesDecodeExactly": true,
+  "limits": [
+    "Only direct appointment uses an untouched natural campaign state",
+    "Audit trigger is synthetic; no natural pending audit or UI click is claimed",
+    "Alive control toggles alive only and retains death metadata; not a historically coherent living counterpart",
+    "No advanceTick, economic continuation, UI rendering, automatic bot selection or frequency measurement",
+    "Successful command return alone is not a defect: selectedWhileDead also requires matching serving status and oversight ID"
+  ]
+}

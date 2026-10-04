@@ -1,0 +1,162 @@
+[
+  {
+    "path": "src/engine/persons.ts",
+    "sha256": "8444172872cbb7e9b5394d1fa86af7af876e7908b1c45e0ed92d10895f9858f6",
+    "spans": [
+      {
+        "start": 85,
+        "end": 87,
+        "text": "export function inTown(person: Person): boolean {\n  return person.alive && person.leftYear === undefined;\n}\n"
+      },
+      {
+        "start": 233,
+        "end": 237,
+        "text": "    // LN-10: a passing state ends with the life or the stay in town.\n    const { condition: _condition, ...kept } = person;\n    this.past.push(fate.died !== undefined\n      ? { ...kept, alive: false, deathYear: this.year, deathCause: fate.died, tags }\n      : { ...kept, leftYear: this.year, tags });\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 392,
+        "end": 410,
+        "text": "    ...(person.householdId === \"manor\" ? {} : { actors: [{ type: \"household\", id: person.householdId }] }), ...placeOf(person.householdId),\n    ...(params === undefined ? {} : { params }) });\n  for (const person of after.persons.people) {\n    const old = was.get(person.id);\n    if (old === undefined) {\n      // PERSON-1a (LN-4): the birth names the parents and where the child's name came from.\n      if (person.role === \"child\" && person.birthYear === year) personRecord(person, \"person.born\", 0, {\n        ...(person.motherId === undefined ? {} : { motherId: person.motherId }), ...(person.fatherId === undefined ? {} : { fatherId: person.fatherId }),\n        nameFrom: person.nameFrom ?? \"common\", ...(person.godparentId === undefined ? {} : { godparentId: person.godparentId }) });\n      else if (person.role === \"spouse\") personRecord(person, \"person.married\", 0);\n      else if (person.role === \"kin\") personRecord(person, \"person.arrived\", 0);\n      else if (person.role === \"steward\") personRecord(person, \"person.steward\", 1);\n      continue;\n    }\n    if (year - person.birthYear >= 14 && beforeYear - old.birthYear < 14) personRecord(person, \"person.came_of_age\", 0);\n    if (old.occupation !== person.occupation && old.occupation !== \"child\" && person.occupation !== \"labourer\") personRecord(person, \"person.occupation\", 0, { occupation: person.occupation });\n    if (!old.tags.includes(\"reeve\") && person.tags.includes(\"reeve\")) personRecord(person, \"person.reeve\", 1);\n    // PERSON-1a (LN-10): the passing states and the bailiff's office.\n    if (!old.tags.includes(\"bailiff\") && person.tags.includes(\"bailiff\")) personRecord(person, \"person.bailiff\", 1);\n"
+      },
+      {
+        "start": 451,
+        "end": 466,
+        "text": "function milestoneDrafts(after: GameState, reached: ReadonlySet<string>): { readonly drafts: Draft[]; readonly ids: string[] } {\n  const drafts: Draft[] = [];\n  const ids: string[] = [];\n  const add = (id: string, template: string, params?: Readonly<Record<string, number | string>>) => {\n    if (reached.has(id)) return;\n    ids.push(id);\n    drafts.push({ tick: after.tick, kind: \"milestone\", template, ...(params === undefined ? {} : { params }), subject: TOWN, severity: 1 });\n  };\n  for (const kind of MILESTONE_BUILDINGS) if (after.buildings.some(building => building.kind === kind)) add(`building:${kind}`, \"milestone.first_building\", { building: kind });\n  if (after.era !== \"hamlet\") add(\"market_town\", \"milestone.market_town\");\n  if (after.era === \"stone_town\") add(\"stone_town\", \"milestone.stone_town\");\n  if (after.houses.some(house => house.level === 4)) add(\"first_l4\", \"milestone.first_l4\");\n  const lots = housingLotCount(after);\n  for (const threshold of LOT_MILESTONES) if (lots >= threshold) add(`lots:${threshold}`, \"milestone.lots\", { lots: threshold });\n  return { drafts, ids };\n}\n"
+      },
+      {
+        "start": 468,
+        "end": 491,
+        "text": "/** HL-2 ④: the season that closed this tick — its bundled decisions, its line with a thumbnail, its big changes. */\nfunction seasonDrafts(after: GameState, history: HistoryState): { readonly drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[]; readonly closed: boolean } {\n  const ledgers = after.seasons?.history ?? [];\n  const last = ledgers.at(-1);\n  if (last === undefined || last.endTick !== after.tick) return { drafts: [], closed: false };\n  const drafts: (Draft & { thumbnail?: { state: GameState; size: 128 | 256 } })[] = [];\n  for (const kind of DECISION_KINDS) {\n    const count = history.seasonDecisions[kind] ?? 0;\n    if (count > 0) drafts.push({ tick: after.tick, kind: \"decision\", template: \"decision.bundle\", params: { decisionKind: kind, count }, subject: TOWN, severity: 0 });\n  }\n  const net = last.income - last.expense;\n  drafts.push({ tick: after.tick, kind: \"ledger\", template: \"ledger.season\", params: { population: after.population, popDelta: last.popDelta, net,\n    income: last.income, expense: last.expense, season: last.season, year: last.year }, subject: TOWN, severity: 0, thumbnail: { state: after, size: 128 } });\n  const startPopulation = after.population - last.popDelta;\n  const percent = startPopulation <= 0 ? 0 : Math.round(last.popDelta * 100 / startPopulation);\n  if (Math.abs(percent) >= 5) drafts.push({ tick: after.tick, kind: \"ledger\", template: \"ledger.population\", params: { percent }, subject: TOWN, severity: 1 });\n  const previous = ledgers.at(-2);\n  if (previous !== undefined && Math.sign(previous.income - previous.expense) !== Math.sign(net) && net !== 0 && previous.income - previous.expense !== 0) {\n    drafts.push({ tick: after.tick, kind: \"ledger\", template: \"ledger.treasury_turn\", params: { net }, subject: TOWN, severity: 1 });\n  }\n  const departures = last.notableEvents.reduce((sum, event) => sum + (event.kind === \"households_abandoned\" ? event.count : 0), 0);\n  if (departures > 0) drafts.push({ tick: after.tick, kind: \"ledger\", template: \"ledger.departures\", params: { count: departures }, subject: TOWN, severity: 1 });\n  return { drafts, closed: true };\n}\n"
+      },
+      {
+        "start": 649,
+        "end": 651,
+        "text": "  if (now.rumourTick !== undefined && was?.rumourTick === undefined) drafts.push({ ...at, kind: \"event\", template: \"plague.rumour\", severity: 2, cause });\n  if (now.first !== undefined && was?.first === undefined) drafts.push({ ...at, kind: \"event\", template: \"plague.arrived\", severity: 3, cause });\n  if (now.curacy !== undefined && was?.curacy === undefined) drafts.push({ ...at, kind: \"event\", template: \"plague.priest_died\", severity: 2, cause });\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/era.ts",
+    "sha256": "8610200bceff958c537ac717bd458a959ea169153342ce9ba6df1af9404c8fbf",
+    "spans": [
+      {
+        "start": 108,
+        "end": 140,
+        "text": "export function confirmStoneTownProclamation(state: GameState): GameState {\n  if (!canProclaimStoneTownEra(state)) return state;\n  const replacementSegments = state.palisade?.segments.filter((segment) => segment.completed) ?? [];\n  const replacementSites = replacementSegments.map((segment) =>\n    createStoneWallConstructionSite({\n      id: stoneReplacementSiteId(segment.id),\n      wallId: state.palisade?.id ?? \"\",\n      segmentIndex: segment.order,\n      gateDistance: segment.gateDistance ?? segment.order,\n      order: segment.order,\n      path: segment.edgePath,\n      startedTick: state.tick,\n    }),\n  ) ?? [];\n  // M-7: the project's cost is spent when it is proclaimed (the B2 prerequisite, now a real payment).\n  return {\n    ...spendStoneWallProject(state),\n    era: \"stone_town\",\n    eraProclaimedTick: state.tick,\n    palisade: state.palisade === null\n      ? null\n      : {\n          ...state.palisade,\n          segments: state.palisade.segments.map((segment) => ({\n            ...segment,\n            material: segment.material ?? \"timber\",\n            replacementConstructionSiteId: segment.completed ? stoneReplacementSiteId(segment.id) : null,\n          })),\n        },\n    constructionSites: [...state.constructionSites, ...replacementSites],\n    wallConstructionReserve: snapshotWallConstructionReserve(state, replacementSites, \"stone\"),\n  };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/engine.types.ts",
+    "sha256": "7fca0a48be1878e2189d39525c7cf0ecac7ab20c32126bb4fc60952de6c65540",
+    "spans": [
+      {
+        "start": 32,
+        "end": 43,
+        "text": "export interface PalisadeSegment {\n  readonly id: string;\n  readonly order: number;\n  readonly gateDistance?: number;\n  readonly edgePath: PalisadePath;\n  readonly tileCount: number;\n  readonly completed: boolean;\n  readonly constructionSiteId: string | null;\n  readonly material?: \"timber\" | \"stone\";\n  readonly replacementConstructionSiteId?: string | null;\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/persons.types.ts",
+    "sha256": "3db97d6ca45cdc3a2db584437ad29636a510e28ec86b22020af20d38e7879710",
+    "spans": [
+      {
+        "start": 48,
+        "end": 72,
+        "text": "  readonly surname?: string;\n  /** PS-2: byname that tells namesakes in the town apart (\"the elder\", \"le Rous\"). */\n  readonly epithet?: string;\n  readonly sex: PersonSex;\n  readonly birthYear: number;\n  /** A house's building id, or `manor`. */\n  readonly householdId: string;\n  readonly role: PersonRole;\n  readonly classBand: PersonClassBand;\n  readonly occupation: string;\n  readonly build: PersonBuild;\n  readonly hair: string;\n  readonly alive: boolean;\n  readonly deathYear?: number;\n  readonly deathCause?: DeathCause;\n  /** The year the person left the town (alive, gone). */\n  readonly leftYear?: number;\n  /** PS-5: the portrait identity (its stage follows the person's age). */\n  readonly portraitIdentity: string;\n  readonly tags: readonly string[];\n  /** PERSON-1a (LN-2): the parents, when the person was born in town (or inferred in the household, save v24). */\n  readonly motherId?: string;\n  readonly fatherId?: string;\n  /** LN-5: the lineage (the father's; a founder's own `lin:<id>`; a named lineage keeps its id). */\n  readonly lineageId: string;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/plague.ts",
+    "sha256": "97f424f6a7bf85c461363eb00dbeb31b7fd600f16a3f4d4d6845a15d396531db",
+    "spans": [
+      {
+        "start": 511,
+        "end": 522,
+        "text": "  // PL-1 the rumour; PL-2 the arrival (and PL-6 the priest dies with the first dead).\n  if (offset === PLAGUE_BALANCE.rumourSeason && plague.rumourTick === undefined) next = withPlague(next, { ...plague, rumourTick: state.tick });\n  plague = plagueOf(next)!;\n  if (offset === arrivalSeasonOffset(state) && plague.first === undefined) {\n    const span = PLAGUE_BALANCE.deathPermilleMax - PLAGUE_BALANCE.deathPermilleMin + 1;\n    const drawn = PLAGUE_BALANCE.deathPermilleMin + hashSeed(state.seed, \"plague:share\") % span;\n    // ARCH-1 (MA-4 ⑤): a harbour's port fever kills more (the land's coastal coefficient; a coastal town only).\n    const permille = plagueCoastal(state) ? Math.min(900, scaleByPermille(drawn, archetypeRules(state).coastalEventPermille)) : drawn;\n    next = withPlague(next, { ...plague, ...(plague.rumourTick === undefined ? { rumourTick: state.tick } : {}), first: newPestilence(next, permille),\n      curacy: { vacantSince: state.tick } });\n    next = addPetition(next, VACANT_PRIEST_PETITION_ID, \"parish\");\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/buildingCatalog.ts",
+    "sha256": "a1ca152f29ba05a01e7bc3277c281717159f62ae28cb792db27eaceb7a7d49f6",
+    "spans": [
+      {
+        "start": 94,
+        "end": 95,
+        "text": "  chapel: { category: \"public\", group: \"service\", glyph: \"chapel\", thumbnail: \"facility\", signIcon: \"chapel\", facilityArt: { id: \"chapel\" }, kit: \"stone_medium\",\n    body: { width: 42, height: 48, roof: 18, fill: \"parchment\", roofColor: \"earthDark\", roofShape: \"cone\" }, details: [\"flag\"] },\n"
+      },
+      {
+        "start": 113,
+        "end": 114,
+        "text": "  church: { category: \"public\", group: \"service\", glyph: \"church\", thumbnail: \"facility\", signIcon: \"chapel\", service: \"church\", facilityArt: { id: \"church\" }, kit: \"public_church\",\n    body: { width: 78, height: 92, roof: 34, fill: \"parchment\", roofColor: \"stoneDark\", roofShape: \"cone\" }, details: [\"flag\", \"door\"] },\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 159,
+        "end": 159,
+        "text": "  \"plague.priest_died\": () => \"사제가 역병으로 죽었다 — 교회가 비었다\",\n"
+      },
+      {
+        "start": 328,
+        "end": 328,
+        "text": "  \"milestone.stone_town\": () => \"석벽 도시가 되었다\",\n"
+      },
+      {
+        "start": 336,
+        "end": 336,
+        "text": "  \"ledger.l4\": params => `도시 대가옥이 ${n(params, \"from\")}채에서 ${n(params, \"to\")}채가 되었다`,\n"
+      },
+      {
+        "start": 356,
+        "end": 356,
+        "text": "  \"person.came_of_age\": () => \"어른이 되어 일을 거들기 시작했다\",\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 15,
+        "end": 20,
+        "text": "const PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).\n  deceasedId: \"deceased\",\n"
+      },
+      {
+        "start": 43,
+        "end": 54,
+        "text": "export function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 11,
+        "end": 21,
+        "text": "| 영주 | 해당 영지·권리를 가진 지배자. 귀족 작위와 별개 | lord | 모든 영주를 백작·왕으로 부르기 |\n| 상위 영주 | 플레이어보다 위의 봉건적 관계에 있는 영주 | overlord | 상급 영주, 관계명으로서 대영주 |\n| 이웃 영주 | 인접·주변 영지를 보유한 협상 상대 | neighbouring lord | 이웃 왕 |\n| 대영주 | 큰 권력·영지를 가진 유력자라는 서술 | magnate | overlord의 자동 번역 |\n| 지주층(젠트리) | 기사·에스콰이어 등을 포함하는 토지 보유 계층 | gentry | 모두 귀족 작위 보유자로 단정 |\n| 기사 | 기사 신분·칭호 | knight | 기사 영주를 곧 백작으로 취급 |\n| 에스콰이어 | 기사와 구별되는 젠트리 신분. 처음에 설명 병기 | esquire | 남작, 현대 변호사 호칭 |\n| 백작 | 작위. 가문명·백작령 이름과 구별 | earl | 왕, 모든 상위 영주의 보통명 |\n| 국왕 | 재위 중인 왕 개인 | king | 왕실과 무조건 치환 |\n| 왕실 | 국왕을 중심으로 한 제도·가솔·권력 집단 | Crown / royal household, 문맥별 | 국왕 개인의 행동으로 자동 변환 |\n| 청지기 | 영주의 위임을 받아 영지를 관리하는 직책 | steward | 집사, 집행관, 마을 대표와 혼용 |\n"
+      },
+      {
+        "start": 189,
+        "end": 192,
+        "text": "## 문장·금액·날짜·숫자 규칙\n\n1. 청지기·안내는 ‘~합니다/~하십시오’, 선택 버튼은 플레이어 행동 ‘~한다’, 연대기는 ‘~했다’로 통일한다. 인물의 개별 말투는 허용하되 한 문장 안 주체를 분명히 쓴다.\n2. 선택 결과는 `{청원 ID, 실제 선택}`으로 정한다. 저장값 `refuse`가 항상 거절은 아니다. 후계 후보·유산 방향처럼 실제 행위를 기록한다. 비용·수입·작업 시간·생산량은 명사를 생략하지 않는다.\n"
+      }
+    ]
+  }
+]

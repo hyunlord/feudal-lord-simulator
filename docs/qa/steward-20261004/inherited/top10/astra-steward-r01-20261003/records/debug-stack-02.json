@@ -1,0 +1,1833 @@
+{
+  "at": "2026-10-03T04:59:15.080Z",
+  "frames": {
+    "callFrames": [
+      {
+        "callFrameId": "-4840594965640584284.1.0",
+        "functionName": "palisadeLandEnvelopes",
+        "functionLocation": {
+          "scriptId": "226",
+          "lineNumber": 0,
+          "columnNumber": 215
+        },
+        "location": {
+          "scriptId": "226",
+          "lineNumber": 0,
+          "columnNumber": 373
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.1"
+            },
+            "name": "palisadeLandEnvelopes",
+            "startLocation": {
+              "scriptId": "226",
+              "lineNumber": 0,
+              "columnNumber": 299
+            },
+            "endLocation": {
+              "scriptId": "226",
+              "lineNumber": 0,
+              "columnNumber": 545
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.2"
+            },
+            "name": "palisadeLandEnvelopes",
+            "startLocation": {
+              "scriptId": "226",
+              "lineNumber": 0,
+              "columnNumber": 264
+            },
+            "endLocation": {
+              "scriptId": "226",
+              "lineNumber": 0,
+              "columnNumber": 546
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.3"
+            },
+            "name": "palisadeLandEnvelopes",
+            "startLocation": {
+              "scriptId": "226",
+              "lineNumber": 0,
+              "columnNumber": 215
+            },
+            "endLocation": {
+              "scriptId": "226",
+              "lineNumber": 0,
+              "columnNumber": 2846
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.4"
+            },
+            "startLocation": {
+              "scriptId": "226",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "226",
+              "lineNumber": 2,
+              "columnNumber": 4750
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.5"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.1",
+        "functionName": "computePalisadeProposal",
+        "functionLocation": {
+          "scriptId": "225",
+          "lineNumber": 0,
+          "columnNumber": 17925
+        },
+        "location": {
+          "scriptId": "225",
+          "lineNumber": 0,
+          "columnNumber": 19319
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.6"
+            },
+            "name": "computePalisadeProposal",
+            "startLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 19247
+            },
+            "endLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 19686
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.7"
+            },
+            "name": "computePalisadeProposal",
+            "startLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 19181
+            },
+            "endLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 19687
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.8"
+            },
+            "name": "computePalisadeProposal",
+            "startLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 19154
+            },
+            "endLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 19687
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.9"
+            },
+            "name": "computePalisadeProposal",
+            "startLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 17978
+            },
+            "endLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 20502
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.10"
+            },
+            "name": "computePalisadeProposal",
+            "startLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 17925
+            },
+            "endLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 20502
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.11"
+            },
+            "startLocation": {
+              "scriptId": "225",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "225",
+              "lineNumber": 2,
+              "columnNumber": 25014
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.12"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.2",
+        "functionName": "preservesAutoplayWallSpace",
+        "functionLocation": {
+          "scriptId": "369",
+          "lineNumber": 0,
+          "columnNumber": 635
+        },
+        "location": {
+          "scriptId": "369",
+          "lineNumber": 0,
+          "columnNumber": 2276
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.13"
+            },
+            "name": "preservesAutoplayWallSpace",
+            "startLocation": {
+              "scriptId": "369",
+              "lineNumber": 0,
+              "columnNumber": 635
+            },
+            "endLocation": {
+              "scriptId": "369",
+              "lineNumber": 0,
+              "columnNumber": 2498
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.14"
+            },
+            "startLocation": {
+              "scriptId": "369",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "369",
+              "lineNumber": 2,
+              "columnNumber": 2574
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.15"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.3",
+        "functionName": "autoplaySiteCheck",
+        "functionLocation": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 5931
+        },
+        "location": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 6169
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.16"
+            },
+            "name": "autoplaySiteCheck",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5971
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 6532
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.17"
+            },
+            "name": "autoplaySiteCheck",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5931
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 6532
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.18"
+            },
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 2,
+              "columnNumber": 21574
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.19"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.4",
+        "functionName": "findBuildSite",
+        "functionLocation": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 5422
+        },
+        "location": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 5750
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.20"
+            },
+            "name": "findBuildSite",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5696
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5855
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.21"
+            },
+            "name": "findBuildSite",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5664
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5855
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.22"
+            },
+            "name": "findBuildSite",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5462
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5867
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.23"
+            },
+            "name": "findBuildSite",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5422
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 5867
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.24"
+            },
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 2,
+              "columnNumber": 21574
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.25"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.5",
+        "functionName": "buildAction",
+        "functionLocation": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 10339
+        },
+        "location": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 11420
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.26"
+            },
+            "name": "buildAction",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10368
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 12457
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.27"
+            },
+            "name": "buildAction",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10339
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 12457
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.28"
+            },
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 2,
+              "columnNumber": 21574
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.29"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.6",
+        "functionName": "",
+        "functionLocation": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 10232
+        },
+        "location": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 10236
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.30"
+            },
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10232
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10267
+            }
+          },
+          {
+            "type": "closure",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.31"
+            },
+            "name": "autoplayBuildAction",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10186
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10269
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.32"
+            },
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 2,
+              "columnNumber": 21574
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.33"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.7",
+        "functionName": "runAutoplaySearch",
+        "functionLocation": {
+          "scriptId": "349",
+          "lineNumber": 0,
+          "columnNumber": 927
+        },
+        "location": {
+          "scriptId": "349",
+          "lineNumber": 0,
+          "columnNumber": 1076
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.34"
+            },
+            "name": "runAutoplaySearch",
+            "startLocation": {
+              "scriptId": "349",
+              "lineNumber": 0,
+              "columnNumber": 972
+            },
+            "endLocation": {
+              "scriptId": "349",
+              "lineNumber": 0,
+              "columnNumber": 1231
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.35"
+            },
+            "name": "runAutoplaySearch",
+            "startLocation": {
+              "scriptId": "349",
+              "lineNumber": 0,
+              "columnNumber": 927
+            },
+            "endLocation": {
+              "scriptId": "349",
+              "lineNumber": 0,
+              "columnNumber": 1231
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.36"
+            },
+            "startLocation": {
+              "scriptId": "349",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "349",
+              "lineNumber": 2,
+              "columnNumber": 1602
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.37"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.8",
+        "functionName": "autoplayBuildAction",
+        "functionLocation": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 10186
+        },
+        "location": {
+          "scriptId": "337",
+          "lineNumber": 0,
+          "columnNumber": 10214
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.38"
+            },
+            "name": "autoplayBuildAction",
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10186
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 10269
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.39"
+            },
+            "startLocation": {
+              "scriptId": "337",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "337",
+              "lineNumber": 2,
+              "columnNumber": 21574
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.40"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.9",
+        "functionName": "townProposals",
+        "functionLocation": {
+          "scriptId": "253",
+          "lineNumber": 0,
+          "columnNumber": 11906
+        },
+        "location": {
+          "scriptId": "253",
+          "lineNumber": 0,
+          "columnNumber": 14366
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.41"
+            },
+            "name": "townProposals",
+            "startLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 13977
+            },
+            "endLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 14418
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.42"
+            },
+            "name": "townProposals",
+            "startLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 13945
+            },
+            "endLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 14418
+            }
+          },
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.43"
+            },
+            "name": "townProposals",
+            "startLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 11971
+            },
+            "endLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 14551
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.44"
+            },
+            "name": "townProposals",
+            "startLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 11906
+            },
+            "endLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 14551
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.45"
+            },
+            "startLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "253",
+              "lineNumber": 2,
+              "columnNumber": 28098
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.46"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.10",
+        "functionName": "advanceTownAgency",
+        "functionLocation": {
+          "scriptId": "253",
+          "lineNumber": 0,
+          "columnNumber": 18791
+        },
+        "location": {
+          "scriptId": "253",
+          "lineNumber": 0,
+          "columnNumber": 20515
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.47"
+            },
+            "name": "advanceTownAgency",
+            "startLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 18791
+            },
+            "endLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 22708
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.48"
+            },
+            "startLocation": {
+              "scriptId": "253",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "253",
+              "lineNumber": 2,
+              "columnNumber": 28098
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.49"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.11",
+        "functionName": "advanceTick",
+        "functionLocation": {
+          "scriptId": "243",
+          "lineNumber": 0,
+          "columnNumber": 10356
+        },
+        "location": {
+          "scriptId": "243",
+          "lineNumber": 0,
+          "columnNumber": 10462
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.50"
+            },
+            "name": "advanceTick",
+            "startLocation": {
+              "scriptId": "243",
+              "lineNumber": 0,
+              "columnNumber": 10356
+            },
+            "endLocation": {
+              "scriptId": "243",
+              "lineNumber": 0,
+              "columnNumber": 10958
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.51"
+            },
+            "startLocation": {
+              "scriptId": "243",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "243",
+              "lineNumber": 2,
+              "columnNumber": 8610
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.52"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": true
+      },
+      {
+        "callFrameId": "-4840594965640584284.1.12",
+        "functionName": "main",
+        "functionLocation": {
+          "scriptId": "193",
+          "lineNumber": 0,
+          "columnNumber": 2551
+        },
+        "location": {
+          "scriptId": "193",
+          "lineNumber": 2,
+          "columnNumber": 20
+        },
+        "url": "",
+        "scopeChain": [
+          {
+            "type": "block",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.53"
+            },
+            "name": "main",
+            "startLocation": {
+              "scriptId": "193",
+              "lineNumber": 1,
+              "columnNumber": 331
+            },
+            "endLocation": {
+              "scriptId": "193",
+              "lineNumber": 5,
+              "columnNumber": 324
+            }
+          },
+          {
+            "type": "local",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.54"
+            },
+            "name": "main",
+            "startLocation": {
+              "scriptId": "193",
+              "lineNumber": 0,
+              "columnNumber": 2551
+            },
+            "endLocation": {
+              "scriptId": "193",
+              "lineNumber": 5,
+              "columnNumber": 715
+            }
+          },
+          {
+            "type": "module",
+            "object": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.55"
+            },
+            "startLocation": {
+              "scriptId": "193",
+              "lineNumber": 0,
+              "columnNumber": 0
+            },
+            "endLocation": {
+              "scriptId": "193",
+              "lineNumber": 7,
+              "columnNumber": 7354
+            }
+          },
+          {
+            "type": "global",
+            "object": {
+              "type": "object",
+              "className": "global",
+              "description": "global",
+              "objectId": "-4840594965640584284.1.56"
+            }
+          }
+        ],
+        "this": {
+          "type": "undefined"
+        },
+        "canBeRestarted": false
+      }
+    ],
+    "reason": "other",
+    "hitBreakpoints": []
+  },
+  "locals": [
+    {
+      "function": "palisadeLandEnvelopes",
+      "url": "",
+      "location": {
+        "scriptId": "226",
+        "lineNumber": 0,
+        "columnNumber": 373
+      },
+      "properties": {
+        "result": [
+          {
+            "name": "grid",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.57"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "footprints",
+            "value": {
+              "type": "object",
+              "subtype": "array",
+              "className": "Array",
+              "description": "Array(44)",
+              "objectId": "-4840594965640584284.1.58"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "margin",
+            "value": {
+              "type": "number",
+              "value": 2,
+              "description": "2"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "cells",
+            "value": {
+              "type": "object",
+              "subtype": "set",
+              "className": "Set",
+              "description": "Set(167)",
+              "objectId": "-4840594965640584284.1.59"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "bounds",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "rowBounds",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "columnBounds",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "outgoing",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "add",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "loops",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          }
+        ]
+      }
+    },
+    {
+      "function": "computePalisadeProposal",
+      "url": "",
+      "location": {
+        "scriptId": "225",
+        "lineNumber": 0,
+        "columnNumber": 19319
+      },
+      "properties": {
+        "result": [
+          {
+            "name": "grid",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.60"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "footprints",
+            "value": {
+              "type": "object",
+              "subtype": "array",
+              "className": "Array",
+              "description": "Array(45)",
+              "objectId": "-4840594965640584284.1.61"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "acceptPath",
+            "value": {
+              "type": "function",
+              "className": "Function",
+              "description": "path=>palisadePathEnclosesFootprints(path,core)&&palisadePathHasBuildingClearance(path,footprints)",
+              "objectId": "-4840594965640584284.1.62"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "margins",
+            "value": {
+              "type": "object",
+              "subtype": "array",
+              "className": "Array",
+              "description": "Array(2)",
+              "objectId": "-4840594965640584284.1.63"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "waterReach",
+            "value": {
+              "type": "boolean",
+              "value": false
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          }
+        ]
+      }
+    },
+    {
+      "function": "preservesAutoplayWallSpace",
+      "url": "",
+      "location": {
+        "scriptId": "369",
+        "lineNumber": 0,
+        "columnNumber": 2276
+      },
+      "properties": {
+        "result": [
+          {
+            "name": "state",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.64"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "kind",
+            "value": {
+              "type": "string",
+              "value": "well"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "origin",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.65"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "space",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.66"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "width",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "height",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "key",
+            "value": {
+              "type": "string",
+              "value": "5,1,1,1"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "cached",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "candidate",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "footprints",
+            "value": {
+              "type": "object",
+              "subtype": "array",
+              "className": "Array",
+              "description": "Array(55)",
+              "objectId": "-4840594965640584284.1.67"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "core",
+            "value": {
+              "type": "object",
+              "subtype": "array",
+              "className": "Array",
+              "description": "Array(110)",
+              "objectId": "-4840594965640584284.1.68"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "anchors",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "proposal",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "feasible",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          }
+        ]
+      }
+    },
+    {
+      "function": "autoplaySiteCheck",
+      "url": "",
+      "location": {
+        "scriptId": "337",
+        "lineNumber": 0,
+        "columnNumber": 6169
+      },
+      "properties": {
+        "result": [
+          {
+            "name": "state",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.69"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "kind",
+            "value": {
+              "type": "string",
+              "value": "well"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "coordinate",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.70"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "accepts",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          }
+        ]
+      }
+    },
+    {
+      "function": "findBuildSite",
+      "url": "",
+      "location": {
+        "scriptId": "337",
+        "lineNumber": 0,
+        "columnNumber": 5750
+      },
+      "properties": {
+        "result": [
+          {
+            "name": "state",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.71"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "kind",
+            "value": {
+              "type": "string",
+              "value": "well"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "accepts",
+            "value": {
+              "type": "function",
+              "className": "Function",
+              "description": "coordinate=>accepts(coordinate)&&routed(coordinate)",
+              "objectId": "-4840594965640584284.1.72"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "candidates",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          }
+        ]
+      }
+    },
+    {
+      "function": "buildAction",
+      "url": "",
+      "location": {
+        "scriptId": "337",
+        "lineNumber": 0,
+        "columnNumber": 11420
+      },
+      "properties": {
+        "result": [
+          {
+            "name": "state",
+            "value": {
+              "type": "object",
+              "className": "Object",
+              "description": "Object",
+              "objectId": "-4840594965640584284.1.73"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "kind",
+            "value": {
+              "type": "string",
+              "value": "well"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "accepts",
+            "value": {
+              "type": "function",
+              "className": "Function",
+              "description": "()=>true",
+              "objectId": "-4840594965640584284.1.74"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          }
+        ]
+      }
+    },
+    {
+      "function": "",
+      "url": "",
+      "location": {
+        "scriptId": "337",
+        "lineNumber": 0,
+        "columnNumber": 10236
+      },
+      "properties": {
+        "result": []
+      }
+    },
+    {
+      "function": "runAutoplaySearch",
+      "url": "",
+      "location": {
+        "scriptId": "349",
+        "lineNumber": 0,
+        "columnNumber": 1076
+      },
+      "properties": {
+        "result": [
+          {
+            "name": "run",
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "diagnostic",
+            "value": {
+              "type": "undefined"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          },
+          {
+            "name": "limit",
+            "value": {
+              "type": "number",
+              "value": 1920,
+              "description": "1920"
+            },
+            "writable": true,
+            "configurable": true,
+            "enumerable": true,
+            "isOwn": true
+          }
+        ]
+      }
+    }
+  ],
+  "contexts": [
+    {
+      "function": "preservesAutoplayWallSpace",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "tick": 60450,
+            "population": 528,
+            "era": "hamlet",
+            "width": 64,
+            "height": 64
+          }
+        }
+      }
+    },
+    {
+      "function": "advanceTownAgency",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "tick": 60450,
+            "population": 528,
+            "era": "hamlet",
+            "width": 64,
+            "height": 64
+          }
+        }
+      }
+    },
+    {
+      "function": "main",
+      "result": {
+        "result": {
+          "type": "object",
+          "value": {
+            "tick": 60449,
+            "population": 528,
+            "era": "hamlet",
+            "width": 64,
+            "height": 64
+          }
+        }
+      }
+    }
+  ]
+}

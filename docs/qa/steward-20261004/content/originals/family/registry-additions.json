@@ -1,0 +1,2293 @@
+{
+  "formatVersion": 1,
+  "status": "proposal_only_not_runtime_registry",
+  "sourceHead": "5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b",
+  "policy": {
+    "newContentMaxPerYear": 2,
+    "newContentMaxPerSeason": 1,
+    "minimumEnabledConsequentialChoices": 2,
+    "engineMutationOnMissingBinding": false,
+    "selection": "seeded_integer_weighted_sorted_id"
+  },
+  "entries": [
+    {
+      "id": "ck_evt_181",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_181",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1347,
+        "authoredYears": [
+          1300,
+          1312
+        ],
+        "eligibilityYears": [
+          1300,
+          1347
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI01"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI01/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI01"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI01/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI01"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI01/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI01_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "미성년 당사자·유효 후견·별도 관리 재산·확인된 수선 필요의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        },
+        {
+          "id": "NE_SR01_KI01_later_practice",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_181",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G1",
+        "G3",
+        "G7"
+      ]
+    },
+    {
+      "id": "ck_evt_182",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_182",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1347,
+        "authoredYears": [
+          1308,
+          1324
+        ],
+        "eligibilityYears": [
+          1300,
+          1347
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI02"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI02/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI02"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI02/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI02"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI02/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI02_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "후견 종료 자격·초기와 현재 재산 목록·불일치 항목의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        },
+        {
+          "id": "NE_SR01_KI02_later_practice",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_182",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G1",
+        "G3",
+        "G4"
+      ]
+    },
+    {
+      "id": "ck_evt_183",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_183",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1347,
+        "authoredYears": [
+          1312,
+          1328
+        ],
+        "eligibilityYears": [
+          1300,
+          1347
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI03"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI03/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI03"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI03/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI03"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI03/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI03_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "생존한 성인 과부·직접 확인된 의사·가족의 재혼 추진·거처 약정의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        },
+        {
+          "id": "NE_SR01_KI03_later_practice",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_183",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G5"
+      ]
+    },
+    {
+      "id": "ck_evt_184",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_184",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1347,
+        "authoredYears": [
+          1316,
+          1332
+        ],
+        "eligibilityYears": [
+          1300,
+          1347
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI04"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI04/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI04"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI04/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI04"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI04/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI04_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "실제 친족 채무·채권자·만기·등록 관할·보증 가능 재산의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_184",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "ck_evt_185",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_185",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1347,
+        "authoredYears": [
+          1320,
+          1338
+        ],
+        "eligibilityYears": [
+          1300,
+          1347
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI05"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI05/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI05"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI05/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI05"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI05/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI05_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "후견 종료·성년 당사자와 친족 관계·고지 기록·자유로운 동의 확인의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        },
+        {
+          "id": "NE_SR01_KI05_later_practice",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_185",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G3"
+      ]
+    },
+    {
+      "id": "ck_evt_186",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_186",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1347,
+        "authoredYears": [
+          1328,
+          1347
+        ],
+        "eligibilityYears": [
+          1300,
+          1347
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI06"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI06/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI06"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI06/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI06"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI06/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI06_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "가족 채무의 두 사본·기한 불일치·유효 관할 기록의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_186",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G2",
+        "G4"
+      ]
+    },
+    {
+      "id": "ck_evt_187",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_187",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1348,
+        "yearMaxInclusive": 1381,
+        "authoredYears": [
+          1348,
+          1355
+        ],
+        "eligibilityYears": [
+          1348,
+          1381
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI07"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI07/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI07"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI07/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI07"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI07/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI07_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "부모 사망이 확인된 미성년자·생존 친족·돌봄 수용 의사·별도 재산 후견 자격의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        },
+        {
+          "id": "NE_SR01_KI07_later_practice",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "1215년 규범을1300–1450 실제 집행 관행으로 일반화하지 않도록 후대·지역·신분 검토 필요."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_187",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G3",
+        "G5",
+        "G7"
+      ]
+    },
+    {
+      "id": "ck_evt_188",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_188",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1348,
+        "yearMaxInclusive": 1381,
+        "authoredYears": [
+          1350,
+          1363
+        ],
+        "eligibilityYears": [
+          1348,
+          1381
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI08"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI08/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI08"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI08/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI08"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI08/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI08_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "실제 사망·별도 유산 목록·집행 권한·확인 안 된 청구의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_188",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "ck_evt_189",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_189",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1348,
+        "yearMaxInclusive": 1381,
+        "authoredYears": [
+          1362,
+          1372
+        ],
+        "eligibilityYears": [
+          1348,
+          1381
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI09"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI09/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI09"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI09/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI09"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI09/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI09_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "법적·계약적 수입 수익자·지급 이력·이의 청구·영수증 부재의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        },
+        {
+          "id": "NE_SR01_KI09_source_fulltext",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "CS09 원문403;검색 발췌만으로 해당 관행을 확정하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_189",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G1",
+        "G4"
+      ]
+    },
+    {
+      "id": "ck_evt_190",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_190",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1348,
+        "yearMaxInclusive": 1381,
+        "authoredYears": [
+          1370,
+          1381
+        ],
+        "eligibilityYears": [
+          1348,
+          1381
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI10"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI10/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI10"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI10/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI10"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI10/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI10_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "동일 권리 조각의 실제 공동 수익자·각 지분·수선 의무·분배 분쟁의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_190",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G1",
+        "G4"
+      ]
+    },
+    {
+      "id": "ck_evt_191",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_191",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1425,
+        "yearMaxInclusive": 1435,
+        "authoredYears": [
+          1425,
+          1435
+        ],
+        "eligibilityYears": [
+          1425,
+          1435
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI11"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI11/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI11"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI11/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI11"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI11/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI11_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "영주관 실제 수선 의뢰·검증된 견적·친족 추가 공사 요구·재원 구분의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_191",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G2",
+        "G8"
+      ]
+    },
+    {
+      "id": "ck_evt_192",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_192",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1436,
+        "yearMaxInclusive": 1444,
+        "authoredYears": [
+          1436,
+          1444
+        ],
+        "eligibilityYears": [
+          1436,
+          1444
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI12"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI12/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI12"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI12/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI12"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI12/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI12_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "성인 당사자의 유효 혼인 준비·가족별 현물 기여 합의·혼인 본계약과 분리된 비용의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_192",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G2",
+        "G8"
+      ]
+    },
+    {
+      "id": "ck_evt_193",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_193",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1440,
+        "yearMaxInclusive": 1450,
+        "authoredYears": [
+          1440,
+          1450
+        ],
+        "eligibilityYears": [
+          1440,
+          1450
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI13"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI13/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI13"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI13/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI13"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI13/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI13_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "생존 성인 가족·확인된 질환 보고·현재 거처·이동 가능 여부·돌봄 수용 의사의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_193",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G6"
+      ]
+    },
+    {
+      "id": "ck_evt_194",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_194",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1440,
+        "yearMaxInclusive": 1450,
+        "authoredYears": [
+          1440,
+          1450
+        ],
+        "eligibilityYears": [
+          1440,
+          1450
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI14"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI14/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI14"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI14/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI14"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI14/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI14_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "본인이 남긴 실제 순례 약속·회복 보고·업무 담당·자발적 여행 의사의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_194",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G6"
+      ]
+    },
+    {
+      "id": "ck_evt_195",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_195",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1440,
+        "yearMaxInclusive": 1450,
+        "authoredYears": [
+          1440,
+          1450
+        ],
+        "eligibilityYears": [
+          1440,
+          1450
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "1440–1450은 가공 사건의 집필 창. 실제 편지는 after1440(?)와1435년 또는 이전이라는 편년 견해가 충돌하며 특정 연도 재현이 아니다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI15"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI15/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI15"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI15/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI15"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI15/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI15_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "귀환·구출 비용·청구인·실종된 원문·증언 가능한 생존 인물의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        },
+        {
+          "id": "NE_SR01_KI15_source_date",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "편년은after1440(?)와1435년또는이전견해가충돌한다. FA05로1450이전근거는보강했지만정확연도와사건맥락은미확정이며핵심효과차단은유지한다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_195",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G2",
+        "G4"
+      ]
+    },
+    {
+      "id": "ck_evt_196",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_196",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1430,
+        "yearMaxInclusive": 1445,
+        "authoredYears": [
+          1430,
+          1445
+        ],
+        "eligibilityYears": [
+          1430,
+          1445
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI16"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI16/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI16"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI16/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI16"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI16/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI16_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "실제 추도 약정·사제 수락·사용 가능한 가족 거처·기존 건물 입주권의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_196",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G5"
+      ]
+    },
+    {
+      "id": "ck_evt_197",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_197",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1424,
+        "yearMaxInclusive": 1440,
+        "authoredYears": [
+          1424,
+          1440
+        ],
+        "eligibilityYears": [
+          1424,
+          1440
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI17"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI17/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI17"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI17/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI17"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI17/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI17_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "성인 가족의 자금 요청·현 권원·장래 기대만 있는 재산·채권자의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_197",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G1",
+        "G2"
+      ]
+    },
+    {
+      "id": "ck_evt_198",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_198",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1436,
+        "yearMaxInclusive": 1448,
+        "authoredYears": [
+          1436,
+          1448
+        ],
+        "eligibilityYears": [
+          1436,
+          1448
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI18"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI18/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI18"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI18/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI18"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI18/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI18_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "생존 배우자·동일 업무의 중복 의뢰·서면 위임 범위·이미 든 작성비의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_198",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G4",
+        "G7"
+      ]
+    },
+    {
+      "id": "ck_evt_199",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_199",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1440,
+        "yearMaxInclusive": 1450,
+        "authoredYears": [
+          1440,
+          1450
+        ],
+        "eligibilityYears": [
+          1440,
+          1450
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI19"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI19/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI19"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI19/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI19"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI19/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI19_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "실제 자발적 방문 계획·현재 담당 업무·대리 수락 가능한 생존 성인 둘의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_199",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G6",
+        "G7"
+      ]
+    },
+    {
+      "id": "ck_evt_200",
+      "contentClass": "new_event_draft",
+      "contentRef": "events.json#ck_evt_200",
+      "sourceRevision": "SR01-family-1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1424,
+        "yearMaxInclusive": 1450,
+        "authoredYears": [
+          1424,
+          1450
+        ],
+        "eligibilityYears": [
+          1424,
+          1450
+        ],
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "windowRationale": "전기/중기는 시대 창이나 실제 상태·고증 차단은 유지한다. 후기 특정 편지·사례는 자료 연대 근처로 제한하며 시기 전체로 소급하지 않는다."
+      },
+      "conditions": {
+        "literal": false
+      },
+      "bindings": {},
+      "bindingResolution": {
+        "missing": "block_entry",
+        "reason": "가족 사례 생성·적격 대상 조회가 없다. 미지원 경로를 bindings에 만들어 넣지 않는다. 구현 뒤 살아 있는 실제 인물·권리·채무를 ID codepoint순으로 선택하며 단계마다 재검증한다."
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI20"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI20/a",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "b",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI20"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI20/b",
+          "minimumConsequentialWhenImplemented": true
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "conditions": {
+            "ast": {
+              "literal": false
+            },
+            "reason": "현재 구현된 결과 있는 선택 아님: NE_SR01_KI20"
+          },
+          "execution": "blocked_unsupported_effect",
+          "proposalRef": "new-effects.json#NE_SR01_KI20/c",
+          "minimumConsequentialWhenImplemented": true
+        }
+      ],
+      "unsupportedFilters": [
+        {
+          "id": "NE_SR01_KI20_context",
+          "status": "unsupported",
+          "onMissing": "block_entry",
+          "reason": "실제 가문 문서 목록·보관 담당·접근 분쟁·원문과 사본 식별의 적격 조건과 결과 명령이 없다. 기존 state 경로를 발명하지 않는다."
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "currentEnabledConsequentialChoices": 0,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "global_new_content"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "family_case_200",
+        "semanticFields": [],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false,
+        "crossSystemRule": "동일 가족·재산·약속이 기존 혼인/후계/유산/소송 사건의 대상이면 차단. 이 의미 비교 자체도 새 모델 도입 전 미지원."
+      },
+      "capabilityRefs": [
+        "G4"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "assigned": 8,
+  "authored": 8,
+  "remaining": [
+
+  ],
+  "excludedBranches": [
+    {
+      "template": "marriage.brother_in_law_born",
+      "reason": "No captured remarriage; do not invent a new marriage ceremony or bride mother."
+    },
+    {
+      "template": "marriage.lost",
+      "reason": "Current lost producer is son branch only; do not invent defeat in lawsuit or rival takeover as an alternate lost cause."
+    },
+    {
+      "template": "marriage.deferred_void",
+      "reason": "No zero/negative amount branch in producer; relationship context used instead."
+    }
+  ],
+  "scope": "8 templates drafted; entire E request not declared complete."
+}

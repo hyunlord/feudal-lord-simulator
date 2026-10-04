@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "tick",
+    "template"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^\\S+$"
+    },
+    "tick": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "template": {
+      "enum": [
+        "legacy.royal_tax_envoy",
+        "legacy.royal_subsidy",
+        "legacy.city_seal",
+        "legacy.charter_sealed",
+        "legacy.family_departed",
+        "legacy.family_stayed"
+      ]
+    }
+  }
+}

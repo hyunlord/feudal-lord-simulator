@@ -1,0 +1,20 @@
+{
+  "requestedTypes": 8,
+  "newVariants": 10,
+  "coveredTypes": 5,
+  "notDrafted": [
+    {
+      "template": "milestone.stone_town",
+      "reason": "No raw params. Emitter only proves era stone_town. Arbitrary city count/wealth splits would add unrelated decoration; need meaningful recorded transition cause first."
+    },
+    {
+      "template": "ledger.l4",
+      "reason": "Legacy copy retained, current producer not found. Do not conflate with monetary ledger category; from/to compare and trustworthy producer require separate contract."
+    },
+    {
+      "template": "person.came_of_age",
+      "reason": "Record emitted for crossing fixed14. No meaningful age branching; prior occupation/current role cannot be projected backward. No new fields invented solely for count."
+    }
+  ],
+  "legacyProducer": "person.grew only when after.persons is undefined; no birth or immigration cause asserted"
+}

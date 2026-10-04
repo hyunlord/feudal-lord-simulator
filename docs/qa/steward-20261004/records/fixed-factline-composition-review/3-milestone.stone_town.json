@@ -1,0 +1,29 @@
+{
+  "variantId": "milestone.stone_town.r06fixed.all_complete",
+  "template": "milestone.stone_town",
+  "headline": "석벽 사업 단계가 기록될 때, 성벽 구간들은 모두 완성 상태였다.",
+  "proposedFactLine": "석벽 도시 이정표가 기록되었다",
+  "composedText": "석벽 사업 단계가 기록될 때, 성벽 구간들은 모두 완성 상태였다.\n석벽 도시 이정표가 기록되었다",
+  "currentEngineFactLine": "석벽 도시가 되었다",
+  "proposedCompositionVerdict": "DRAFT_COMPOSITION_PASS",
+  "currentEngineHold": "RETAIN",
+  "captureContract": {
+    "id": "wallCompletionAtMilestone",
+    "templates": [
+      "milestone.stone_town"
+    ],
+    "values": [
+      "all_complete",
+      "partly_complete",
+      "none_complete"
+    ],
+    "capture": "src/engine/history.ts:451-466; src/engine/era.ts:108-140; src/engine/engine.types.ts:32-43",
+    "captureRule": "At emitted milestone require era stone_town and nonempty after.palisade.segments with unique IDs and explicit boolean completed. All true/all false/mixed determine enum. Describe segment completed only, not replacementConstructionSiteId completion or material. Null/empty/inconsistent array unknown. No timber/stone material guess, no wall ring fully sealed inference.",
+    "provenance": "emission_snapshot",
+    "currentRecordStorage": "absent: proposed event-time context",
+    "reconstruction": "Unknown for old records without this verified event-time snapshot. Never fill from current persons, estates or office holders."
+  },
+  "reason": "도시 이정표의 기록과 성벽 구간 completed 속성을 구분한다. 모든 completed가 true여도 석재 교체 완공·방어선 봉합을 뜻하지 않는다. 새 사실행은 물리 완공 단정을 제거한다.",
+  "engineExecuted": false,
+  "uiRendered": false
+}

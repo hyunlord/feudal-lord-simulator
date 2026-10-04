@@ -1,0 +1,213 @@
+[
+  {
+    "id": "known_0_0",
+    "params": {
+      "entry": "ck_evt_013"
+    },
+    "expectedVariant": "registry.invalid.r06.audit"
+  },
+  {
+    "id": "known_0_1",
+    "params": {
+      "entry": "ck_evt_013",
+      "choice": ""
+    },
+    "expectedVariant": "registry.invalid.r06.audit"
+  },
+  {
+    "id": "known_0_2",
+    "params": {
+      "entry": "ck_evt_013",
+      "choice": "punish"
+    },
+    "expectedVariant": "registry.invalid.r06.audit"
+  },
+  {
+    "id": "known_0_3",
+    "params": {
+      "entry": "ck_evt_013",
+      "reason": "death",
+      "lordId": "person-unverified",
+      "lord": "DO_NOT_CAPTURE_NAME"
+    },
+    "expectedVariant": "registry.invalid.r06.audit"
+  },
+  {
+    "id": "known_1_0",
+    "params": {
+      "entry": "ck_evt_034"
+    },
+    "expectedVariant": "registry.invalid.r06.precedent"
+  },
+  {
+    "id": "known_1_1",
+    "params": {
+      "entry": "ck_evt_034",
+      "choice": ""
+    },
+    "expectedVariant": "registry.invalid.r06.precedent"
+  },
+  {
+    "id": "known_1_2",
+    "params": {
+      "entry": "ck_evt_034",
+      "choice": "punish"
+    },
+    "expectedVariant": "registry.invalid.r06.precedent"
+  },
+  {
+    "id": "known_1_3",
+    "params": {
+      "entry": "ck_evt_034",
+      "reason": "death",
+      "lordId": "person-unverified",
+      "lord": "DO_NOT_CAPTURE_NAME"
+    },
+    "expectedVariant": "registry.invalid.r06.precedent"
+  },
+  {
+    "id": "known_2_0",
+    "params": {
+      "entry": "ck_evt_038"
+    },
+    "expectedVariant": "registry.invalid.r06.enforcement"
+  },
+  {
+    "id": "known_2_1",
+    "params": {
+      "entry": "ck_evt_038",
+      "choice": ""
+    },
+    "expectedVariant": "registry.invalid.r06.enforcement"
+  },
+  {
+    "id": "known_2_2",
+    "params": {
+      "entry": "ck_evt_038",
+      "choice": "punish"
+    },
+    "expectedVariant": "registry.invalid.r06.enforcement"
+  },
+  {
+    "id": "known_2_3",
+    "params": {
+      "entry": "ck_evt_038",
+      "reason": "death",
+      "lordId": "person-unverified",
+      "lord": "DO_NOT_CAPTURE_NAME"
+    },
+    "expectedVariant": "registry.invalid.r06.enforcement"
+  },
+  {
+    "id": "fallback_0",
+    "params": {
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_1",
+    "params": null,
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_2",
+    "params": [
+
+    ],
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_3",
+    "params": false,
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_4",
+    "params": {
+      "entry": null
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_5",
+    "params": {
+      "entry": 13
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_6",
+    "params": {
+      "entry": true
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_7",
+    "params": {
+      "entry": [
+
+      ]
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_8",
+    "params": {
+      "entry": {
+      }
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_9",
+    "params": {
+      "entry": ""
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_10",
+    "params": {
+      "entry": "ck_evt_999"
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_11",
+    "params": {
+      "entry": "ck_evt_052"
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_12",
+    "params": {
+      "entry": "ck_evt_013 "
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_13",
+    "params": {
+      "entry": "CK_EVT_013"
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_14",
+    "params": {
+      "entry": "ck_evt_013x"
+    },
+    "expectedVariant": null
+  },
+  {
+    "id": "fallback_15",
+    "params": {
+      "entry": [
+        "ck_evt_013"
+      ]
+    },
+    "expectedVariant": null
+  }
+]

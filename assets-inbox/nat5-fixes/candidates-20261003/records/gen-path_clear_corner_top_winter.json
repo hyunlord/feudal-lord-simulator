@@ -1,0 +1,20 @@
+{
+  "id": "path_clear_corner_top_winter",
+  "prompt": "One WINTER transparent footpath corner_top game sprite. Input1 is exact geometric stencil with immutable placement/orientation on squarecanvas; input2 is approved winter footpath MATERIAL. Paint the exact stencil as walked compacted damp beige-brown earth, tiny dull grey pebbles, dead straw and thin uneven offwhite frost/snow ONLY along margins. The middle remains readable earth, not fully white. Keeplargeemptytop and same128x128 target composition, pivot64,80. Ports NW,NE ONLY; NW32,64 NE96,64 SW32,96 SE96,96 through center64,80, arms8pxwide at target. Natural continuous junction, smooth central join without seams and without additional arms. Soft painterly prerender2:1isometric ground, no shadows or cartoon outline, no flip/recenter/crop. Real alpha transparency all around paths, no ground tile/background, no text or guide marks. Southern English winter.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-corner_top.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_winter.png"
+  ],
+  "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-2e23b780-3729-4c56-84c5-46cbd3a41858.png",
+  "raw_sha256": "796c5efddef5262aa4698828cdfd54231ad849e8894e0323306f7b69f5f1f8b6",
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-corner_top.png",
+      "sha256": "55a2115896d6f275026221c495ae2ab18c58a0032b9709170b923eaa63eaa99b"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_winter.png",
+      "sha256": "19fc62b1e490a6d85dd1f54deb1c85522d4c3966d6bb5c0b8344d93f4d34bb21"
+    }
+  ]
+}

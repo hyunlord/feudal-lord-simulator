@@ -1,0 +1,38 @@
+{
+  "sourceHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+  "sourceInspectionOnly": true,
+  "engineModified": false,
+  "findings": [
+    {
+      "id": "registry_bundle_raw_kind",
+      "source": [
+        "src/content/historyCopy.ko.ts:143",
+        "src/engine/history.ts:74-99"
+      ],
+      "limit": "BUNDLE에 registry 없음; fallback은 raw decisionKind를 출력한다. headline만으로 사실 줄 수정을 대체하지 않는다."
+    },
+    {
+      "id": "registry_recovered_unfilled",
+      "source": [
+        "src/content/registry/registryCopy.ko.ts:30",
+        "src/content/registry/registryCopy.ko.ts:43-45",
+        "src/engine/history.ts:1143"
+      ],
+      "limit": "ck_evt_052 punish의 {recovered}d를 원문 그대로 반환. history params의 entry/choice만으로 실제 회수액을 보충하지 않는다."
+    },
+    {
+      "id": "term_amount_mixed_units",
+      "source": [
+        "src/engine/registry.ts:248-279"
+      ],
+      "limit": "remission.market_dues는 permille, installments는 pennies. generic amount money slot 금지."
+    },
+    {
+      "id": "term_end_not_payment_proof",
+      "source": [
+        "src/engine/registry.ts:269-297"
+      ],
+      "limit": "미납은 arrears에 남고 term은 기한 종료로 ended가 된다."
+    }
+  ]
+}

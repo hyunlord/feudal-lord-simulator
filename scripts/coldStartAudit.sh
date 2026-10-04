@@ -9,9 +9,8 @@ set -euo pipefail
 out=${1:-.remote/audit}
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
 if [ "${2:-}" = "states" ]; then npx tsx scripts/ui4ChapterStates.ts 2 90000 .remote/states > .remote/states.log 2>&1; fi
-node_modules/.bin/vite --host 127.0.0.1 --port "$port" --strictPort > .remote/vite.log 2>&1 &
-vite=$!
-trap 'kill $vite 2>/dev/null' EXIT
+. scripts/remote/devServers.sh   # the server stops on any exit, failures and a stopped run included
+fls_serve .remote/vite.log --host 127.0.0.1 --port "$port" --strictPort
 for _ in $(seq 1 90); do curl -sf "http://127.0.0.1:$port/" > /dev/null && break; sleep 1; done
 curl -sf "http://127.0.0.1:$port/" > /dev/null || { echo "vite did not come up on $port"; exit 1; }
 echo "driver port $((port + 50))"

@@ -1,0 +1,20 @@
+{
+  "id": "path_clear_corner_top_summer",
+  "prompt": "Produce ONE transparent isometric game FOOTPATH JUNCTION sprite. Input1 is a precise geometry/stencil guide only: keep its EXACT location and silhouette on the square canvas, including large transparent top padding. Input2 is the approved summer worn-earth footpath material: match its muted beige-brown compacted soil, a few tiny stones, very sparse olive grass fringe and soft painterly edges. Replace flat color of Input1 with this natural path material, do NOT draw a symbol or hard graphic ribbon. Shape corner_top; connect ONLY ports NW,NE, via center(64,80) in target128x128coords, portsNW(32,64) NE(96,64) SW(32,96) SE(96,96). Each arm about8pxwidth at target128, keep2:1 ground angle; rounded natural central joint without dark seams. Paths run all the way to each specified port and stop there, no extra arms. No perspective change, no flip, no recentering, no labels/arrows/guide marks, no ground tile. Real transparent background. Upper-left diffuse light, soft handpainted medieval England1300 game asset.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-corner_top.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_summer.png"
+  ],
+  "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-a8883c5c-557f-4e82-aa81-2ef1ca460004.png",
+  "raw_sha256": "7fd4b9bbcaa56246d7ba7c79ebea67ea7c4aca4558e6add21420a682ec9d5745",
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-corner_top.png",
+      "sha256": "55a2115896d6f275026221c495ae2ab18c58a0032b9709170b923eaa63eaa99b"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_summer.png",
+      "sha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e"
+    }
+  ]
+}

@@ -132,9 +132,8 @@ perf)
     esac
   done
   raw=.remote/perf/raw; rm -rf "$OUT/perf"; mkdir -p "$raw"
-  node_modules/.bin/vite --host 127.0.0.1 --port "$FLS_REMOTE_PORT" --strictPort > "$OUT/perf/vite.log" 2>&1 &
-  vite=$!
-  trap 'kill $vite 2>/dev/null' EXIT
+  . scripts/remote/devServers.sh   # the server stops on any exit, failures and a stopped run included
+  fls_serve "$OUT/perf/vite.log" --host 127.0.0.1 --port "$FLS_REMOTE_PORT" --strictPort
   url="http://127.0.0.1:$FLS_REMOTE_PORT/"
   for _ in $(seq 1 60); do curl -sf "$url" > /dev/null && break; sleep 1; done
   curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; cat "$OUT/perf/vite.log"; exit 1; }
@@ -177,10 +176,8 @@ ui-geometry)
   fi
   # No file watching (scripts/remote/viteNoWatch.config.ts): the audit needs the dev transforms, not hot reload, and a
   # watched run folder takes thousands of the DGX's shared inotify watches. The server goes with the task on any exit.
-  node_modules/.bin/vite --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$FLS_REMOTE_PORT" --strictPort > "$OUT/ui-geometry/vite.log" 2>&1 &
-  vite=$!
-  trap 'kill $vite 2>/dev/null; wait $vite 2>/dev/null' EXIT
-  trap 'exit 130' INT TERM HUP
+  . scripts/remote/devServers.sh
+  fls_serve "$OUT/ui-geometry/vite.log" --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$FLS_REMOTE_PORT" --strictPort
   url="http://127.0.0.1:$FLS_REMOTE_PORT/"
   for _ in $(seq 1 60); do curl -sf "$url" > /dev/null && break; sleep 1; done
   curl -sf "$url" > /dev/null || { echo "vite did not come up on $url"; cat "$OUT/ui-geometry/vite.log"; exit 1; }

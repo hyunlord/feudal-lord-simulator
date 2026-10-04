@@ -1,0 +1,200 @@
+[
+  {
+    "path": "src/content/drainageConfig.ts",
+    "sha256": "be2e4462d161bb9bb1d0ab2d39f1241c6ae1929c8bc6d2605d4e09b2670211f4",
+    "spans": [
+      {
+        "start": 1,
+        "end": 17,
+        "text": "/**\n * ARCH-1b fen drainage (spec docs/design/map-archetypes.md MA-11): a still water on the fen drained to meadow by the\n * player's command — timber paid at the command, diggers for some seasons. Values are integers and a hypothesis\n * (decision MA10), to be tuned after play.\n */\nexport const DRAINAGE_BALANCE = {\n  /** The works drain the mere's cells within this many tiles (Chebyshev) of the chosen tile: at most 5 × 5. */\n  patchRadius: 2,\n  /** Timber a cell, paid from the treasury and stores at the command. */\n  timberPerCell: 5,\n  /** Digger-ticks a cell. With `diggers` men a 25-cell patch takes 2,000 ticks, two seasons. */\n  workPerCell: 320,\n  /** The most men one works takes (after the field hands; what the town has left). */\n  diggers: 4,\n  /** Works open at once. */\n  maxWorks: 2,\n} as const;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/history.ts",
+    "sha256": "e6a8d94f540f7054d3c27277ee0591dec70a5b6be844d3066af6158ec0225730",
+    "spans": [
+      {
+        "start": 198,
+        "end": 212,
+        "text": "  if (kind === \"stone_town\") {\n    return { chosen: \"proclaim\", alternatives: [\"wait\"], predicted: { treasury: now.treasury! - MONEY_BALANCE.stoneWallProjectCost, lots: now.lots! }, actualDueTick: due };\n  }\n  if (kind === \"wall_expand\") {\n    return { chosen: \"expand\", alternatives: [\"keep\"], predicted: pick(metrics(after), [\"population\", \"lots\"]), actualDueTick: due };\n  }\n  if (kind === \"market_town\") {\n    return { chosen: \"proclaim\", alternatives: [\"wait\"], predicted: pick(metrics(after), [\"population\", \"lots\"]), actualDueTick: due };\n  }\n  if (kind === \"drainage\") {\n    // ARCH-1b (MA-11): the mere drained or left; the treasury keeps its coin (the works cost timber and men).\n    return { chosen: \"drain\", alternatives: [\"leave\"], predicted: pick(now, [\"population\", \"treasury\"]), actualDueTick: due };\n  }\n  return { chosen: \"rebuild\", alternatives: [\"leave\"], predicted: pick(now, [\"population\"]), actualDueTick: due };\n}\n"
+      },
+      {
+        "start": 258,
+        "end": 264,
+        "text": "  const place = kind === \"rebuild\" ? after.buildings.find(entry => entry.id === command.buildingId) : undefined;\n  // FACTION-0 (FX-3): a petition's decision names its faction.\n  const petitioner = kind === \"petition_response\" ? before.politics?.petitions.find(petition => petition.id === command.petitionId)?.petitioner : undefined;\n  // FAIL-3 (FL-6): a restoration answered by the command ends the decline there, so its record comes with the decision.\n  return withFactionRecords(after, history, append(history, [{ tick: after.tick, kind: \"decision\", template: `decision.${kind}`, params, subject: TOWN,\n    ...(petitioner === undefined ? {} : { actors: [{ type: \"faction\" as const, id: factionOfPetitioner(petitioner) }] }),\n    ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }, ...lordshipDrafts(before, after),\n"
+      },
+      {
+        "start": 698,
+        "end": 700,
+        "text": "  if (came(\"textileStreetTick\")) drafts.push({ ...at, kind: \"event\", template: \"reorg.textile_street\", severity: 2, cause, thumbnail: { state: after, size: 128 } });\n  if (came(\"alehouseBoomTick\")) drafts.push({ ...at, kind: \"event\", template: \"reorg.alehouse_boom\", severity: 1, cause });\n  if (came(\"surgeTick\")) drafts.push({ ...at, ...by(\"merchant_house_1\"), kind: \"event\", template: \"reorg.petitions_surge\", severity: 2, cause });\n"
+      },
+      {
+        "start": 750,
+        "end": 755,
+        "text": "  const charter = now.answers[BOROUGH_AUTONOMY_PETITION_ID];\n  if (charter !== undefined && was?.answers[BOROUGH_AUTONOMY_PETITION_ID] === undefined) {\n    drafts.push(charter === \"accept\"\n      ? { ...at, ...art(\"charter_sealing\"), kind: \"event\", template: \"legacy.charter_sealed\", severity: 3, params: { mayorId: now.mayorId ?? \"\" }, cause, thumbnail: { state: after, size: 256 } }\n      : { ...at, kind: \"event\", template: \"legacy.charter_refused\", severity: 3, params: { backlash: now.backlash }, cause, thumbnail: { state: after, size: 256 } });\n  }\n"
+      },
+      {
+        "start": 769,
+        "end": 774,
+        "text": "  if (came(\"last_market\")) {\n    drafts.push({ ...at, ...art(\"last_market\"), kind: \"event\", template: \"legacy.last_market\", severity: 3, params: { ending: legacyEnding(after)?.title ?? \"\" }, cause,\n      thumbnail: { state: after, size: 256 } });\n  }\n  for (const [defId, answer] of Object.entries(now.answers)) {\n    if (answer === \"expired\" && was?.answers[defId] !== \"expired\" && (LEGACY_PETITION_IDS as readonly string[]).includes(defId)) {\n"
+      },
+      {
+        "start": 1020,
+        "end": 1027,
+        "text": "  for (const negotiation of now.negotiations) {\n    const old = was?.negotiations.find(entry => entry.id === negotiation.id);\n    if (old === undefined) {\n      line(\"negotiation.offered\", { negotiation: negotiation.id, counterpart: negotiation.counterpart, tier: negotiation.acceptance.tier, score: negotiation.acceptance.score });\n      line(`negotiation.${negotiation.status === \"countered\" ? \"countered\" : negotiation.status === \"accepted\" ? \"accepted\" : \"rejected\"}`,\n        { negotiation: negotiation.id, changes: (negotiation.counter?.changes ?? []).map(change => change.kind).join(\",\") });\n    } else if (old.status !== negotiation.status) line(`negotiation.${negotiation.status === \"accepted\" ? \"accepted\" : \"withdrawn\"}`, { negotiation: negotiation.id, changes: \"\" });\n  }\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/reorganisation.ts",
+    "sha256": "bf8b86099535fc3b3098c774da0aa5d45d8e7c21fdd25c013e79cf58d92c0595",
+    "spans": [
+      {
+        "start": 425,
+        "end": 435,
+        "text": "  // RG-1: the textile street and the alehouses, when the town has them.\n  if (r.textileStreetTick === undefined && offset >= B.textileStreetAfter\n    && next.buildings.filter(building => building.kind === \"weaver_house\").length >= B.textileStreetWeavers) next = withReorganisation(next, r = { ...r, textileStreetTick: tick });\n  if (r.alehouseBoomTick === undefined && offset >= B.alehouseBoomAfter) {\n    const ale = townAle(next);\n    if (ale.alehouses >= B.alehouseBoomAlehouses && (ale.lastSeason?.drunk ?? 0) >= B.alehouseBoomDrunk) next = withReorganisation(next, r = { ...r, alehouseBoomTick: tick });\n  }\n  // RG-1: the petitions surge the season after both, from 1368 — by 1372 at the latest.\n  if (r.surgeTick === undefined) {\n    const both = r.textileStreetTick !== undefined && r.alehouseBoomTick !== undefined && tick >= Math.max(r.textileStreetTick, r.alehouseBoomTick) + SEASON;\n    if ((both && year >= B.surgeFromYear) || tick >= seasonOf(state, B.surgeLatestYear)) next = withReorganisation(next, r = { ...r, surgeTick: tick });\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/legacy.ts",
+    "sha256": "b2d4dfbf1bcbebd1cae5b58b72dc6770f4abb78526f9053d576dc4fdb25ccbd9",
+    "spans": [
+      {
+        "start": 170,
+        "end": 193,
+        "text": "    }\n    case BOROUGH_AUTONOMY_PETITION_ID: {\n      if (response === \"accept\") {\n        // LG-2: the mayoralty and the seal to the town (and chapter 4's two lines if it had refused); the fine; the fee farm.\n        const held = new Set((next.politics?.rights ?? []).map(right => right.id));\n        const lines = [MAYORALTY_RIGHT_ID, BOROUGH_SEAL_RIGHT_ID, MARKET_TOLLS_RIGHT_ID, BRIDGE_TOLLS_RIGHT_ID].filter(id => !held.has(id));\n        if (next.politics !== undefined) next = { ...next, politics: { ...next.politics, rights: [...next.politics.rights, ...lines.map(id => ({ id, holder: \"townsfolk\" as const,\n          grantedTick: state.tick, petitionId: petition.id, stallFeePermille: id === MARKET_TOLLS_RIGHT_ID ? 0 : 1000 }))] } };\n        next = post(next, \"charter_fee\", B.charterFine, [TOWN_ACTOR, { type: \"right\", id: BOROUGH_SEAL_RIGHT_ID, detail: \"charter_fine\" }]).state;\n        if (l.answers[ROYAL_TAX_PETITION_ID] !== \"accept\") {\n          next = post(next, \"royal_subsidy\", -B.confirmationFine, [{ type: \"actor\", id: \"crown\" }, { type: \"claim\", id: \"royal_subsidy\", detail: \"confirmation\" }]).state;\n        }\n        const mayorCandidate = personOf(next, l.mayorCandidateId);\n        const mayorCandidateInTown = mayorCandidate !== undefined && inTown(mayorCandidate);\n        // FIX-11: candidate who left or died → next adult of same household, else merchantLeader.\n        const mayor = mayorCandidateInTown ? l.mayorCandidateId\n          : mayorCandidate !== undefined\n            ? ((next.persons?.people ?? []).find(p => p.householdId === mayorCandidate.householdId && ageOf(p, currentYear(next)) >= ADULT_AGE)?.id ?? merchantLeader(next))\n            : merchantLeader(next);\n        next = withLegacy(next, { ...l, backlash: 0, feeFarm: B.feeFarm, mayorId: mayor });\n      } else {\n        const town = next.reorganisation?.chapterFiveStart?.influence.town ?? next.reorganisation?.influence.town ?? 0;\n        next = withLegacy(next, { ...l, backlash: Math.min(100, Math.max(B.backlashFloor, town, l.backlash + B.backlashAgain)) });\n      }\n"
+      },
+      {
+        "start": 360,
+        "end": 384,
+        "text": "const ENDINGS: Readonly<Record<LegacyAxis, (chosen: LegacyAxis | null) => LegacyEndingId>> = {\n  town: chosen => chosen === \"town\" ? \"free_borough\" : chosen === \"family\" ? \"house_remembered\" : \"merchants_chantry\",\n  family: chosen => chosen === \"family\" ? \"house_seat\" : \"lords_town\",\n  church: () => \"pilgrim_town\",\n};\n\n/** LG-7: the ending the scores and the chosen legacy make, with the ledger records its sentence quotes. */\nfunction endingOf(state: GameState, scores: LegacyScores): LegacyEnding {\n  const legacy = legacyOf(state);\n  const highest: LegacyAxis = scores.town >= scores.family && scores.town >= scores.church ? \"town\" : scores.family >= scores.church ? \"family\" : \"church\";\n  const chosen = legacy?.legacy ?? null;\n  const decisions = recordsOf(state).filter(record => record.kind === \"decision\");\n  const quoted = (defId: string) => decisions.find(record => record.params?.defId === defId)?.id;\n  const quotes = [BOROUGH_AUTONOMY_PETITION_ID, HEIR_CHOICE_PETITION_ID, LEGACY_CHOICE_PETITION_ID].map(quoted).filter((id): id is string => id !== undefined);\n  const lordship = lordshipOf(state);\n  const charterTick = legacy?.answers[BOROUGH_AUTONOMY_PETITION_ID] === \"accept\" ? answeredAt(state, BOROUGH_AUTONOMY_PETITION_ID) : null;\n  const params = {\n    house: lordship.house.name, since: yearOf(state, lordship.house.since), charterYear: charterTick === null ? 0 : yearOf(state, charterTick),\n    mayor: nameOf(state, legacy?.mayorId), heir: nameOf(state, legacy?.heir?.personId), legacy: chosen ?? \"\",\n    generations: Math.max(1, lineageGenerations(state, `lord:${lordship.house.order}`).length),\n    town: scores.town, family: scores.family, church: scores.church,\n  };\n  return { id: ENDINGS[highest](chosen), highest, chosen, quotes, params };\n}\n\n"
+      },
+      {
+        "start": 513,
+        "end": 518,
+        "text": "  // LG-7 / LG-8: the last market day — the scores, the ending, chapter 5's end (the campaign's).\n  if (tick >= lastMarketTick(next)) {\n    next = came(next, l, \"last_market\");\n    const scores = legacyScores(next);\n    next = withLegacy(next, { ...legacyOf(next)!, scores, ending: endingOf(next, scores), endedTick: tick });\n    if (scenarioOf(next).mode === \"campaign\" && next.politics?.chapter.number === CHAPTER_FIVE.chapter) next = endChapter(next);\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/palisade.ts",
+    "sha256": "b39ec0bd60573066c5a9b17a7da06fce686e3e11be56322ff5a91bab23d5e68b",
+    "spans": [
+      {
+        "start": 266,
+        "end": 309,
+        "text": "export function confirmPalisadeProclamation(\n  state: GameState,\n  candidatePath: PalisadePath,\n): GameState {\n  if (!canProclaimPalisadeEra(state) || state.palisade !== null) return state;\n  return projectPalisadeProclamation(state, candidatePath);\n}\n\nexport function projectPalisadeProclamation(\n  state: GameState,\n  candidatePath: PalisadePath,\n): GameState {\n  if (state.era !== 'hamlet' || state.palisade !== null) return state;\n  const footprints = palisadeFootprintsForState(state);\n  // FIX-15 (WP-1): a ring may take the water as its bound where it runs through it.\n  const validation = validatePalisadeCandidate(state, candidatePath, footprints, palisadeCoreFootprintsForState(state), 1, { waterReach: true });\n  if (!validation.ok) return state;\n  const ring = palisadeRingPoints(validation.candidate.path);\n  const water = waterReachSteps(state, ring);\n  const reach = water.some(Boolean);\n  const gate = chooseGate(state, ring, settlementCenter(footprints), reach ? water : undefined);\n  if (gate === null) return state;\n  const wallId = wallIdForOrdinal(state.nextConstructionOrdinal);\n  const wallSegments = reach ? landRunSegments(ring, gate, water) : orderedSegments(validation.candidate.path, gate);\n  const additionalGates = additionalRoadGates(state, validation.candidate.path, gate.point, reach ? wallSegments.map(segment => segment.path) : undefined);\n  const sites = createWallSites(wallId, wallSegments, state.tick);\n\n  return {\n    ...state,\n    era: \"palisade\",\n    eraProclaimedTick: state.tick,\n    palisade: {\n      id: wallId,\n      polygon: validation.candidate.path,\n      gate: gate.point,\n      ...(additionalGates.length > 0 ? { additionalGates } : {}),\n      segments: palisadeSegments(sites),\n    },\n    constructionSites: [...state.constructionSites, ...sites],\n    wallConstructionReserve: snapshotWallConstructionReserve(state, sites, \"timber\"),\n    nextConstructionOrdinal: state.nextConstructionOrdinal + 1,\n  };\n}\n\n"
+      },
+      {
+        "start": 375,
+        "end": 425,
+        "text": "export function expandPalisade(state: GameState, path: PalisadePath): GameState {\n  const preview = previewPalisadeExpansion(state, path);\n  if (!preview.ok || state.palisade === null) return state;\n  const palisade = state.palisade;\n  const ring = palisadeRingPoints(preview.path);\n  const gateIndex = ring.findIndex(point => point.x === palisade.gate.x && point.y === palisade.gate.y);\n  const water = waterReachSteps(state, ring);\n  const reach = water.some(Boolean);\n  const gate = gateIndex >= 0 ? { point: palisade.gate, stepIndex: gateIndex } : chooseGate(state, ring, settlementCenter(palisadeFootprintsForState(state)), reach ? water : undefined);\n  if (gate === null) return state;\n  const reusedIds = new Set(preview.reusedSegmentIds);\n  const reused = palisade.segments.filter(segment => reusedIds.has(segment.id));\n  const removed = palisade.segments.filter(segment => !reusedIds.has(segment.id));\n  const reusedKeys = new Set(reused.flatMap(segment => pathStepKeys(segment.edgePath)));\n  // The new ring from the gate, in runs of steps not already walled; each run cut into sites of four steps at most.\n  const rotated = [...ring.slice(gate.stepIndex), ...ring.slice(0, gate.stepIndex), ring[gate.stepIndex]!];\n  const runs: { readonly start: number; readonly points: TileEdgePoint[] }[] = [];\n  let current: { start: number; points: TileEdgePoint[] } | null = null;\n  for (let index = 1; index < rotated.length; index += 1) {\n    const a = rotated[index - 1]!;\n    const b = rotated[index]!;\n    const fresh = !reusedKeys.has(stepKey(a, b)) && !(reach && isWaterReachStep(state, a, b));\n    if (fresh && (current === null || current.points.length - 1 >= PALISADE_SEGMENT_SITE_STEPS)) {\n      if (current !== null) runs.push(current);\n      current = { start: index - 1, points: [a, b] };\n    } else if (fresh && current !== null) current.points.push(b);\n    else if (current !== null) { runs.push(current); current = null; }\n  }\n  if (current !== null) runs.push(current);\n  const wallId = palisade.id;\n  const ordinal = state.nextConstructionOrdinal;\n  const firstOrder = palisade.segments.reduce((max, segment) => Math.max(max, segment.order), -1) + 1;\n  const sites = runs.map((run, index) => createPalisadeConstructionSite({\n    id: `${wallId}-x${String(ordinal).padStart(6, \"0\")}-segment-${String(index).padStart(3, \"0\")}`,\n    wallId, segmentIndex: firstOrder + index, gateDistance: Math.min(run.start, ring.length - run.start), order: firstOrder + index,\n    path: run.points, startedTick: state.tick,\n  }));\n  const removedSiteIds = new Set(removed.flatMap(segment => [segment.constructionSiteId, segment.replacementConstructionSiteId]).filter((id): id is string => typeof id === \"string\"));\n  // Sites taken down refund as a cancelled site does (M-rule: 60 % of what was delivered).\n  const refund = state.constructionSites.filter(site => removedSiteIds.has(site.id)).reduce((sum, site) => sum + (constructionCancellationRefunds(site).deliveredRefund.timber ?? 0), 0);\n  const additionalGates = additionalRoadGates(state, preview.path, gate.point,\n    reach ? [...reused.map(segment => segment.edgePath), ...sites.map(site => site.path)] : undefined);\n  return {\n    ...state,\n    treasuryTimber: state.treasuryTimber + refund,\n    palisade: {\n      id: wallId, polygon: preview.path, gate: gate.point, ...(additionalGates.length > 0 ? { additionalGates } : {}),\n      segments: [...reused, ...palisadeSegments(sites)], expansion: { tick: state.tick, arableCells: preview.enclosedArableCells },\n    },\n    constructionSites: [...state.constructionSites.filter(site => !removedSiteIds.has(site.id)), ...sites],\n    wallConstructionReserve: snapshotWallConstructionReserve(state, sites, \"timber\"),\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/era.ts",
+    "sha256": "8610200bceff958c537ac717bd458a959ea169153342ce9ba6df1af9404c8fbf",
+    "spans": [
+      {
+        "start": 94,
+        "end": 142,
+        "text": "  return state.era === \"hamlet\" && marketTownRequirements(state).every((requirement) => requirement.met);\n}\n\n/** Opens the optional stone-wall project (K4-1); never available when the scenario turns it off. */\nexport function canProclaimStoneTownEra(state: GameState): boolean {\n  return state.era === \"palisade\" && stoneWallProjectAvailable(state)\n    && stoneWallRequirements(state).every((requirement) => requirement.met)\n    && canAffordStoneWallProject(state);\n}\n\nexport function stoneReplacementSiteId(segmentId: string): string {\n  return `${segmentId}-stone`;\n}\n\nexport function confirmStoneTownProclamation(state: GameState): GameState {\n  if (!canProclaimStoneTownEra(state)) return state;\n  const replacementSegments = state.palisade?.segments.filter((segment) => segment.completed) ?? [];\n  const replacementSites = replacementSegments.map((segment) =>\n    createStoneWallConstructionSite({\n      id: stoneReplacementSiteId(segment.id),\n      wallId: state.palisade?.id ?? \"\",\n      segmentIndex: segment.order,\n      gateDistance: segment.gateDistance ?? segment.order,\n      order: segment.order,\n      path: segment.edgePath,\n      startedTick: state.tick,\n    }),\n  ) ?? [];\n  // M-7: the project's cost is spent when it is proclaimed (the B2 prerequisite, now a real payment).\n  return {\n    ...spendStoneWallProject(state),\n    era: \"stone_town\",\n    eraProclaimedTick: state.tick,\n    palisade: state.palisade === null\n      ? null\n      : {\n          ...state.palisade,\n          segments: state.palisade.segments.map((segment) => ({\n            ...segment,\n            material: segment.material ?? \"timber\",\n            replacementConstructionSiteId: segment.completed ? stoneReplacementSiteId(segment.id) : null,\n          })),\n        },\n    constructionSites: [...state.constructionSites, ...replacementSites],\n    wallConstructionReserve: snapshotWallConstructionReserve(state, replacementSites, \"stone\"),\n  };\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/fire.ts",
+    "sha256": "1ef35c35ea07093bf76e4fed95a05ab490882369c8983d3b40f55cbff386e4dc",
+    "spans": [
+      {
+        "start": 101,
+        "end": 105,
+        "text": "/** EV-4: a burnt house — level and larder lost, rent-free, no promotion; the household stays. F2-A: the raid burns so too. */\nexport function burntHouse(house: House, tick: number, eventId: string): House {\n  const { promotionTicks: _promotion, ...rest } = house;\n  return { ...rest, level: 0, builtLevel: 0, breadStock: 0, unmetRequirementTicks: 0, burntTick: tick, burntByEventId: eventId };\n}\n"
+      },
+      {
+        "start": 150,
+        "end": 174,
+        "text": "export function rebuildSiteFor(state: GameState, buildingId: string): BuildingConstructionSite | null {\n  const house = state.houses.find(candidate => candidate.buildingId === buildingId);\n  const building = state.buildings.find(candidate => candidate.id === buildingId);\n  if (house?.burntTick === undefined || building === undefined) return null;\n  if (state.constructionSites.some(site => isBuildingConstructionSite(site) && site.rebuildOf === buildingId)) return null;\n  const site = createConstructionSite({ ordinal: state.nextConstructionOrdinal, kind: \"house\", tx: building.tx, ty: building.ty, startedTick: state.wallTick });\n  const left = 1000 - FIRE_CONFIG.rebuildDonePermille;\n  const required = Object.fromEntries(Object.entries(site.required).map(([resource, amount]) => [resource, Math.ceil((amount ?? 0) * left / 1000)]));\n  return { ...site, required, builderTicks: Math.floor(site.requiredBuilderTicks * FIRE_CONFIG.rebuildDonePermille / 1000), rebuildOf: buildingId };\n}\n\n/** EV-6 action `rebuild_house`: starts rebuilding a burnt house (its tiles stay the house's). */\nexport function rebuildBurntHouse(state: GameState, buildingId: string): GameState {\n  const site = rebuildSiteFor(state, buildingId);\n  if (site === null) return state;\n  return { ...state, constructionSites: [...state.constructionSites, site], nextConstructionOrdinal: state.nextConstructionOrdinal + 1 };\n}\n\n/** EV-6: a completed rebuild clears the house's burnt state; its household moves back in at level 0. */\nexport function completeRebuild(house: House): House {\n  const { burntTick: _tick, burntByEventId: _event, ...rest } = house;\n  return rest;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/drainage.ts",
+    "sha256": "4adcb938190a3fe4899cb7f3d954ad05921501ceffb5017aaee8ff208ca62e1c",
+    "spans": [
+      {
+        "start": 46,
+        "end": 80,
+        "text": "export function drainagePlan(state: GameState, tx: number, ty: number): DrainagePlan {\n  if (stateArchetype(state)?.terrain.kind !== \"fen\") return { ok: false, reason: \"not_fen\" };\n  const { width, height } = state;\n  const still = (x: number, y: number) => x >= 0 && y >= 0 && x < width && y < height\n    && state.tiles[y * width + x]!.terrain === \"water\" && !state.tiles[y * width + x]!.hasRoad && !isFlowingWater(state, y * width + x);\n  if (!still(tx, ty) || state.river === undefined) return { ok: false, reason: \"not_still_water\" };\n  const works = state.drainage?.works ?? [];\n  if (works.length >= B.maxWorks) return { ok: false, reason: \"too_many_works\" };\n  const taken = new Set(works.flatMap(work => work.cells));\n  // The mere's cells joined to the chosen one within the patch.\n  const cells: number[] = [];\n  const seen = new Set([ty * width + tx]);\n  const queue = [ty * width + tx];\n  for (let head = 0; head < queue.length; head += 1) {\n    const index = queue[head]!;\n    cells.push(index);\n    const x = index % width, y = Math.floor(index / width);\n    for (const [dx, dy] of NEIGHBOURS) {\n      const nx = x + dx, ny = y + dy, next = ny * width + nx;\n      if (Math.abs(nx - tx) > B.patchRadius || Math.abs(ny - ty) > B.patchRadius || seen.has(next) || !still(nx, ny)) continue;\n      seen.add(next);\n      queue.push(next);\n    }\n  }\n  if (cells.some(cell => taken.has(cell))) return { ok: false, reason: \"busy\" };\n  const onBank = cells.some(cell => NEIGHBOURS.some(([dx, dy]) => {\n    const x = cell % width + dx, y = Math.floor(cell / width) + dy;\n    return x >= 0 && y >= 0 && x < width && y < height && state.tiles[y * width + x]!.terrain === \"grass\";\n  }));\n  if (!onBank) return { ok: false, reason: \"no_bank\" };\n  const timber = cells.length * B.timberPerCell;\n  const have = placementSpendableResource(state, \"timber\");\n  if (have < timber) return { ok: false, reason: \"insufficient_timber\", timberNeeded: timber, timberHave: have };\n  const workNeeded = cells.length * B.workPerCell;\n  return { ok: true, cells: cells.sort((a, b) => a - b), timber, workNeeded, seasons: Math.ceil(workNeeded / B.diggers / PRESSURE_BALANCE.seasonTicks) };\n"
+      },
+      {
+        "start": 84,
+        "end": 118,
+        "text": "export function startDrainage(state: GameState, tx: number, ty: number): GameState {\n  const plan = drainagePlan(state, tx, ty);\n  if (!plan.ok) return state;\n  const drainage = state.drainage ?? { works: [], drained: [] };\n  const work: DrainageWork = { id: `drainage-${state.tick}-${tx}-${ty}`, cells: plan.cells, startedTick: state.tick, timber: plan.timber,\n    workNeeded: plan.workNeeded, workDone: 0, origin: { tx, ty } };\n  return { ...state, ...chargeRoadTimber(state, plan.timber), drainage: { ...drainage, works: [...drainage.works, work] } };\n}\n\n/** MA-11 (LB-4, after the field hands): the men each open works takes from what is left, in the works' order. */\nexport function drainageDiggers(state: Pick<GameState, \"drainage\">, remaining: number): ReadonlyMap<string, number> {\n  const diggers = new Map<string, number>();\n  let left = Math.max(0, Math.floor(remaining));\n  for (const work of state.drainage?.works ?? []) {\n    const men = Math.min(left, B.diggers);\n    if (men > 0) diggers.set(work.id, men);\n    left -= men;\n  }\n  return diggers;\n}\n\n/** MA-11: one tick of the works — each gains its diggers' work; a finished one turns its cells to meadow. */\nexport function advanceDrainage(state: GameState, diggers: ReadonlyMap<string, number>): GameState {\n  const drainage = state.drainage;\n  if (drainage === undefined || drainage.works.length === 0) return state;\n  const open: DrainageWork[] = [];\n  const finished: DrainageWork[] = [];\n  for (const work of drainage.works) {\n    const men = diggers.get(work.id) ?? 0;\n    const { diggers: _men, ...rest } = work;\n    const next: DrainageWork = { ...rest, workDone: Math.min(work.workNeeded, work.workDone + men), ...(men > 0 ? { diggers: men } : {}) };\n    (next.workDone >= next.workNeeded ? finished : open).push(next);\n  }\n  if (finished.length === 0) return { ...state, drainage: { ...drainage, works: open } };\n  const dry = new Set(finished.flatMap(work => work.cells));\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/negotiation.ts",
+    "sha256": "5ece73ef37d8d7d28ce596864789f55d8876855a7a42b8cb6482c43a7d1a5a21",
+    "spans": [
+      {
+        "start": 203,
+        "end": 237,
+        "text": "export function counterOffer(state: GameState, proposer: string, counterpart: string, terms: readonly Term[], key: string):\n  { readonly terms: readonly Term[]; readonly changes: readonly TermChange[]; readonly acceptance: Acceptance } | null {\n  const greed = hashSeed(state.seed, \"negotiation-greed\", counterpart.length, key.length) % (GREED_MAX + 1);\n  const target = ACCEPT_THETA + COUNTER_MARGIN + greed;\n  let draft: Term[] = terms.filter(term => !redLine(state, term));\n  let acceptance = evaluateOffer(state, proposer, counterpart, draft);\n  for (const kind of COUNTER_DESIRES) {\n    if (acceptance.score >= target) break;\n    if (kind === \"political_support\") {\n      if (draft.some(term => term.kind === kind)) continue;\n      draft = [...draft, { kind, giver: \"proposer\", years: 2 }];\n    } else if (kind === \"jointure\") {\n      // FIX-13 (NG-5b): one jointure, on the first piece the lord holds that can carry it.\n      const piece = jointurePiece(state);\n      if (draft.some(term => term.kind === kind) || piece === null) continue;\n      draft = [...draft, { kind, giver: \"proposer\", pieceId: piece }];\n    } else {\n      const per = (MATERIAL_PER_PENNY[kind] ?? 0) * (kind === \"pension\" ? 5 : 1);\n      const material = acceptance.reasons.find(reason => reason.name === \"material\")?.value ?? 0;\n      const room = Math.min(target - acceptance.score, MATERIAL_CAP - material);\n      if (room <= 0 || per <= 0) continue;\n      const have = amountOf(draft, kind);\n      const more = Math.min(Math.ceil(room / per), desireRoom(state, counterpart, kind, draft) - have);\n      if (more <= 0) continue;\n      const years = kind === \"pension\" ? 5 : kind === \"debt_assumption\" ? debtInstalmentYears(state, have + more, debtInstalmentCap(state) - amountOf(draft, \"pension\")) : undefined;\n      if (years === null) continue;\n      draft = [...draft.filter(term => !(term.kind === kind && term.giver === \"proposer\")),\n        { kind, giver: \"proposer\", amount: have + more, ...(years === undefined ? {} : { years }) }];\n    }\n    acceptance = evaluateOffer(state, proposer, counterpart, draft);\n  }\n  if (acceptance.score < target) return null;\n  return { terms: draft, changes: termChanges(terms, draft), acceptance };\n}\n\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/marriage.ts",
+    "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a",
+    "spans": [
+      {
+        "start": 137,
+        "end": 150,
+        "text": "export function proposeMarriage(state: GameState, offered: readonly Term[], groomId?: string): GameState {\n  if (marriageRefusal(state, offered, groomId) !== null) return state;\n  const { groom, bride } = marriageCandidates(state, groomId);\n  const terms = withConsent(offered);\n  const diplomacy = diplomacyOf(state);\n  const ordinal = diplomacy.nextNegotiation;\n  const acceptance = evaluateOffer(state, LORD, COUNTERPART, terms);\n  const accepted = offerDraw(state, ordinal) < acceptance.permille;\n  const counter = accepted ? null : counterOffer(state, LORD, COUNTERPART, terms, `negotiation-${ordinal}`);\n  const negotiation: Negotiation = { id: `negotiation-${ordinal}`, proposer: LORD, counterpart: COUNTERPART, purpose: \"marriage\",\n    groomId: groom!.id, brideId: bride!.id, terms, acceptance, status: accepted ? \"accepted\" : counter === null ? \"rejected\" : \"countered\",\n    ...(counter === null ? {} : { counter }), tick: state.tick, deadline: state.tick + COUNTER_ANSWER_TICKS };\n  const next = withDiplomacy(state, { ...diplomacy, negotiations: [...diplomacy.negotiations, negotiation], nextNegotiation: ordinal + 1 });\n  return accepted ? contract(next, negotiation, terms) : next;\n"
+      }
+    ]
+  },
+  {
+    "path": "src/content/historyCopy.ko.ts",
+    "sha256": "f44aa5c7be34b76560947601da1d5677caf9cdf411342488d859ddd758687fcc",
+    "spans": [
+      {
+        "start": 195,
+        "end": 199,
+        "text": "  \"legacy.charter_refused\": params => `영주가 자치 특허를 거절했다 — 도시의 반발 ${n(params, \"backlash\")}`,\n  \"legacy.family_departed\": params => `${houseName(s(params, \"house\"))} 가문이 영주관을 떠나 시골 장원으로 갔다`,\n  \"legacy.family_stayed\": params => `${houseName(s(params, \"house\"))} 가문이 영주관에 남았다`,\n  \"legacy.legacy_record\": params => s(params, \"legacy\") === \"\" ? \"유산 기록을 봉인했다 — 남긴 것 없이\" : `유산 기록을 봉인했다 — ${s(params, \"legacy\")}`,\n  \"legacy.last_market\": params => `마지막 장날 — ${s(params, \"ending\")}`,\n"
+      },
+      {
+        "start": 270,
+        "end": 276,
+        "text": "  \"decision.market_town\": () => \"목책을 두르고 시장도시를 선포했다\",\n  \"decision.stone_town\": () => \"석벽 사업을 선포했다\",\n  \"decision.rebuild\": () => \"불탄 집을 다시 짓기 시작했다\",\n  \"decision.wall_expand\": () => \"목책을 넓혀 새로 두르기로 했다\",\n  // ARCH-1b (MA-11): the fen's drainage.\n  \"decision.drainage\": () => \"습지의 웅덩이를 메우는 배수 공사를 시작했다\",\n  // LM-E1 (TA-6): the lord's conditions; (TA-5) a project the town started.\n"
+      }
+    ]
+  },
+  {
+    "path": "src/engine/historyNames.ts",
+    "sha256": "c0357fffae49a1db39d09b8ddb3498c3c299b581d36183fce0894d95a3908768",
+    "spans": [
+      {
+        "start": 15,
+        "end": 54,
+        "text": "const PERSON_PARAMS: Readonly<Record<string, string>> = {\n  lordId: \"lord\", guardianId: \"guardian\", candidateId: \"candidate\", heirId: \"heir\", mayorId: \"mayor\", leaderId: \"leader\", predecessorId: \"predecessor\",\n  // LM-E4: the steward of an estate (an estate person).\n  stewardId: \"steward\",\n  // FIX-13 (ES-11): a person off the map who died (a neighbour house's, a steward).\n  deceasedId: \"deceased\",\n};\nexport type PersonReader = Partial<Pick<GameState, \"persons\" | \"factions\" | \"estates\">>;\nexport const namesPerson = (record: Pick<HistoryRecord, \"params\">) => record.params !== undefined && Object.keys(record.params).some(key => key in PERSON_PARAMS);\nconst personIndex = new WeakMap<object, { readonly factions: unknown; readonly estates: unknown; readonly byId: Map<string, Person> }>();\n\n/** The town's people (living and past), the factions' and the neighbour estates' — by id (rebuilt when one of them changes). */\nfunction personNamed(state: PersonReader, id: string): Person | undefined {\n  const key = state.persons ?? state;\n  const factions = state.factions?.people, estates = state.estates?.people;\n  let entry = personIndex.get(key);\n  if (entry === undefined || entry.factions !== factions || entry.estates !== estates) {\n    entry = { factions, estates, byId: new Map([...(estates ?? []), ...(factions ?? []), ...(state.persons?.past ?? []), ...(state.persons?.people ?? [])]\n      .map(person => [person.id, person])) };\n    personIndex.set(key, entry);\n  }\n  return entry.byId.get(id);\n}\n\n/**\n * FIX-12 (item 4) API: a record's parameters with each person named now — `lordId` gives `lord`, and so on. An id no\n * reader knows keeps the name the record was written with (a save before FIX-12) or the copy's fallback word.\n */\nexport function historyParams(record: Pick<HistoryRecord, \"params\">, state?: PersonReader): HistoryParams {\n  const params = record.params ?? {};\n  if (!namesPerson(record)) return params;\n  const named: Record<string, string | number> = { ...params };\n  for (const [idKey, nameKey] of Object.entries(PERSON_PARAMS)) {\n    const id = params[idKey];\n    if (typeof id !== \"string\") continue;\n    const person = state === undefined || id === \"\" ? undefined : personNamed(state, id);\n    named[nameKey] = person !== undefined ? personDisplayName(person) : typeof params[nameKey] === \"string\" ? params[nameKey] : PERSON_NAME_FALLBACK[nameKey] ?? \"\";\n  }\n  return named;\n}\n"
+      }
+    ]
+  },
+  {
+    "path": "docs/design/glossary.md",
+    "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181",
+    "spans": [
+      {
+        "start": 45,
+        "end": 98,
+        "text": "| 수레꾼 | 인물의 생업·직업명 | carter | 모든 carrier와 일괄 치환 |\n\n## 땅·권리·혼인·청원\n\n| 한국어 정본 | 뜻·사용 범위 | 영어 원어 | 쓰지 말 표기·혼동 |\n| --- | --- | --- | --- |\n| 영지 | 인물·가문이 보유한 토지와 권리의 묶음 | estate | 장원과 무조건 치환 |\n| 장원 | 장원 법정·관습·소작 관계의 단위 | manor | 영주관(건물), 영지 전체와 동일시 |\n| 직영지 | 영주를 위해 직접 경영하는 땅 | demesne | 모든 직할 영지와 동일시 |\n| 영주관 | 영주 가문의 거처 건물 | manor house | 장원 전체 |\n| 필지 | 구분된 토지 단위. 도시 집터는 용도 설명 | plot / burgage plot | 집·가구 |\n| 경작지 | 농작물을 기르는 구역 | arable land | 모든 경작지가 영주 직영지라고 단정 |\n| 목초지 | 가축을 먹이는 풀밭 | pasture | 공유지와 동일시 |\n| 공유지 | 공동 이용권이 적용되는 땅이라는 게임 용어 | common land | 누구나 소유·처분할 수 있는 공공 토지 |\n| 공유지 방목권 | 정해진 공동 이용권에 따른 방목 권리 | common of pasture | 무제한 방목권 |\n| 권원 | 권리를 주장하는 법적 근거·명의 | title | 점유, 귀족 작위와 무조건 통합 |\n| 점유 | 실제로 땅·권리를 쥐고 행사하는 상태 | possession | 권원의 존재가 곧 점유라는 서술 |\n| 청구권 | 권리를 요구·주장하는 근거가 있는 권리 | claim | 승소가 확정된 소유권 |\n| 장원 법정 | 장원 내 사건을 다루는 법정의 포괄 이름 | manor court | 현대 형사법원과 동일한 권한 |\n| 배심원 | 장원 법정의 배심 역할 | juror | 현대 재판의 권한을 그대로 투영 |\n| 청원 | 영주·권한자에게 판단·허가를 구하는 요청 | petition | 일방적 칙령과 자동 통합 |\n| 특허장 | 특정 권리·특전을 부여·확인하는 문서 | charter | 기술 발명 특허 |\n| 자치 특허 | 도시의 자치권을 정하는 특허·합의 | borough charter | 현대 지방자치 제도와 동일시 |\n| 시장 개설권 | 장터를 열 권리 | market right | 도시 시장(mayor) 선출권 |\n| 시장 선출권 | 도시 대표를 선출하는 권리 | right to elect a mayor | 장터 개설권 |\n| 시장 좌판세 | 시장 좌판에서 걷는 이 게임의 수입 | market stall dues | 통행세 |\n| 통행세 | 통행·운송에 따른 수입 | toll | 모든 시장세와 통합 |\n| 제분료 | 곡물 제분의 대가 | multure / milling toll | 축융료와 통합 |\n| 방앗간 사용료 | 권리 패널의 기존 포괄 명칭. 상세에서 제분료 설명 | mill dues | 모호한 방앗간세 남발 |\n| 축융 방앗간 사용료 | 모직 축융 시설 이용 수입 | fulling toll | 곡물 제분료 |\n| 성벽세 | 성벽 건설·유지 재원을 위한 해당 수입 | murage | 모든 통행세와 동일시 |\n| 직물 검정·인장세 | 직물 검사·인증에 관련된 해당 세목 | ulnage / alnage | 단순 판매세와 동일시 |\n| 직물 매매세 | 거래에 따른 이 게임의 수입 | cloth toll | 직물 검정·인장세 |\n| 성직자 추천권 | 공석 성직의 후보를 추천할 권리 | advowson | 교회 추천권, 교회 소유권 |\n| 어업권 | 특정 수역의 어업 권리 | fishery right | 수역 전체의 절대 소유권 |\n| 사냥권 | 정해진 범위의 수렵 권리 | hunting right | 모든 숲의 무제한 사용권 |\n| 지대 | 토지 사용의 대가 | rent | 모든 조세·수입 |\n| 부역 | 관습·계약에 따른 노동 의무 | labour service | 현대 자원봉사 |\n| 현금 지대 | 돈으로 내는 지대 | cash rent | 부역 자체와 동일시 |\n| 자치 연납금 | 자치권 등에 대한 도시의 정기 지급액 | fee farm | 영어만 fee farm, 권리 종류로 분류 |\n| 입주금 | 토지 보유·입주 허용에 따른 이 게임의 지급금 | entry fine | 위반 벌금으로만 번역 |\n| 상속 승인금 | 상속인의 승계를 승인받으며 내는 금액 | relief | 현대 세법의 상속세와 동일시 |\n| 사망 부과금(헤리엇) | 소작인 사망 시 관습상 납부하는 금액·물품 | heriot | relief와 무조건 같은 상속세 |\n| 혼인 부담금(머쳇) | 특정 소작 관습의 혼인 관련 부담 | merchet | 모든 주민에게 보편적인 현대 혼인세 |\n| 왕실 보조세 | 왕실의 보조세 요구를 뜻하는 포괄 명칭 | royal subsidy | 과세를 낸다 |\n| 15분의 1세·10분의 1세 | 역사적 세목명. 게임 금고 비율 수식과 구분 | fifteenth and tenth | 교회 십일조 |\n| 인두세 | 개인을 과세 대상으로 하는 세금 | poll tax | 모든 연도의 대상·세율을 동일하게 단정 |\n| 왕실 조달 | 왕실을 위한 물자 조달·징발 | purveyance | 일반 시장 구매와 항상 동일시 |\n| 지참금 | 혼인 계약에서 제공되는 재산 | dowry / marriage portion | 과부산 |\n| 과부산 | 배우자 사망 뒤 아내의 생계를 위한 재산 약정, 이 게임의 jointure | jointure | 지참금, dower와 자동 동일시 |\n| 과부 몫 | 법적·관습적 dower를 따로 설명할 때의 명칭 | dower | jointure와 근거 없이 치환 |\n| 채무 인수 | 남의 빚을 떠맡는 약정 | assumption of debt | 원채무 탕감 |\n| 조건부 의무 해제 | 조건 불성립으로 약속 이행 의무가 사라짐 | discharge of conditional obligation | 이웃의 빚이 소멸함 |\n| 후견 | 미성년자와 재산의 관리 관계 | wardship | 곧 입양이라는 표현 |\n"
+      }
+    ]
+  }
+]

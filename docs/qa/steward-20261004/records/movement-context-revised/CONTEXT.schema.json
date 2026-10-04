@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Trusted proposed adapter output; not arbitrary user input",
+  "type": "object",
+  "required": [
+    "status",
+    "recordId",
+    "recordTick",
+    "template",
+    "sourceHead",
+    "captureKind",
+    "referenceVerified",
+    "fields"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "status": {
+      "enum": [
+        "known",
+        "unknown"
+      ]
+    },
+    "recordId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "recordTick": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "template": {
+      "enum": [
+        "house.withdrew",
+        "house.arrived",
+        "house.resettled",
+        "agency.timber_ordered",
+        "negotiation.rejected"
+      ]
+    },
+    "sourceHead": {
+      "const": "5fb1aebfe735592c1424c947e88388d4ffe21742"
+    },
+    "captureKind": {
+      "enum": [
+        "emission_snapshot",
+        "immutable_contract_reference"
+      ]
+    },
+    "referenceVerified": {
+      "type": "boolean"
+    },
+    "fields": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "houseReplacementTrigger": {
+          "enum": [
+            "empty_town",
+            "family_extinct",
+            "decline_elapsed"
+          ]
+        },
+        "residentPresenceAtHouseArrival": {
+          "enum": [
+            "inhabited",
+            "empty"
+          ]
+        },
+        "settlerBreadAllocation": {
+          "enum": [
+            "granary_only",
+            "split",
+            "household_only"
+          ]
+        },
+        "charterTimberTradePoint": {
+          "enum": [
+            "market",
+            "hamlet_storehouse"
+          ]
+        },
+        "rejectedOfferCommitment": {
+          "enum": [
+            "jointure",
+            "deferred_without_jointure",
+            "neither"
+          ]
+        }
+      }
+    }
+  },
+  "anyOf": [
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "house.withdrew"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "houseReplacementTrigger"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "houseReplacementTrigger": {
+              "enum": [
+                "empty_town",
+                "family_extinct",
+                "decline_elapsed"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "house.arrived"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "residentPresenceAtHouseArrival"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "residentPresenceAtHouseArrival": {
+              "enum": [
+                "inhabited",
+                "empty"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "house.resettled"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "settlerBreadAllocation"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "settlerBreadAllocation": {
+              "enum": [
+                "granary_only",
+                "split",
+                "household_only"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "agency.timber_ordered"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "charterTimberTradePoint"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "charterTimberTradePoint": {
+              "enum": [
+                "market",
+                "hamlet_storehouse"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "known"
+        },
+        "template": {
+          "const": "negotiation.rejected"
+        },
+        "captureKind": {
+          "const": "emission_snapshot"
+        },
+        "referenceVerified": {
+          "const": true
+        },
+        "fields": {
+          "type": "object",
+          "required": [
+            "rejectedOfferCommitment"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "rejectedOfferCommitment": {
+              "enum": [
+                "jointure",
+                "deferred_without_jointure",
+                "neither"
+              ]
+            }
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "status": {
+          "const": "unknown"
+        },
+        "fields": {
+          "const": {
+          }
+        }
+      }
+    }
+  ]
+}

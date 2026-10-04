@@ -18,9 +18,9 @@ done
 mkdir -p "$out" "$traces"
 build=$(mktemp -d "${TMPDIR:-/tmp}/fls-smooth1-build.XXXXXX")
 node_modules/.bin/vite build --minify false --outDir "$build" --emptyOutDir > "$out/build.log" 2>&1 || { tail -20 "$out/build.log"; exit 1; }
-node_modules/.bin/vite preview --outDir "$build" --host 127.0.0.1 --port "$port" --strictPort > "$out/preview.log" 2>&1 &
-preview=$!
-trap 'kill $preview 2>/dev/null; rm -rf "$build"' EXIT
+. scripts/remote/devServers.sh   # the preview server stops on any exit, failures and Ctrl-C included
+fls_serve "$out/preview.log" preview --outDir "$build" --host 127.0.0.1 --port "$port" --strictPort
+fls_on_exit 'rm -rf "$build"'
 for _ in $(seq 1 60); do curl -sf "http://127.0.0.1:$port/" > /dev/null && break; sleep 1; done
 { echo "machine=$machine commit=$(git rev-parse HEAD 2>/dev/null) node=$(node -v) date=$(date -Iseconds)"; uname -a; } > "$out/run-info.txt"
 

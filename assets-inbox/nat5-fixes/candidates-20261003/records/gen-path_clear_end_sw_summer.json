@@ -1,0 +1,20 @@
+{
+  "id": "path_clear_end_sw_summer",
+  "prompt": "One transparent medieval game footpath end_sw sprite. Input1 is the exact geometric stencil: KEEP exact shape, orientation, size, position and large transparent top padding. Input2 is the summer soil/grass brushwork reference. Replace stencil's flat brown with naturally worn pale brown compacted earth, scattered tiny muted pebbles and sparse olive grass edge. NOT a vector symbol. This is a terminal path stub: entry end at named port, path wears away naturally to sparse footprints and scattered grass near center(64,80), no square cut. Connect only SW; center(64,80); NW32,64 NE96,64 SW32,96 SE96,96 target128x128. Armwidth8px target. Exact2:1isometric slopes, no mirrored asset or flipped light. Handpainted southern England1300. No extra arms, text, marks, tile base or disk. Genuine transparent background;do not crop/recenter.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-end_sw.png",
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_summer.png"
+  ],
+  "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-9ae9ed78-0c11-44df-bdac-aa1c23d66ef9.png",
+  "raw_sha256": "8a17ecdd74fcdd053f13172abccc8aa4702df61651e3c0cb9a8531c98219b97a",
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/guide-end_sw.png",
+      "sha256": "d7f4186034e855a02cfd9233a3c7a91dbdeb54983ba47946450f9cb75ebb9096"
+    },
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-wave42-land-stages-20261002-v1/assets/paths/path_clear_ne_summer.png",
+      "sha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e"
+    }
+  ]
+}

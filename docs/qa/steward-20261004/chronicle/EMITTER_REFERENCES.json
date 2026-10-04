@@ -1,0 +1,499 @@
+{
+  "status": "static_literal_occurrences_not_exhaustive_dynamic_paths",
+  "sourceHead": "c8cb7b7df78abc116437ecc4a2b6db71d97eba51",
+  "templates": {
+    "decision.bundle": [
+      "src/engine/history.ts:476",
+      "src/engine/history.ts:546"
+    ],
+    "decision.famine_response": [],
+    "decision.petition_response": [],
+    "war.messenger": [
+      "src/engine/history.ts:615"
+    ],
+    "plague.rumour": [
+      "src/engine/history.ts:649"
+    ],
+    "plague.arrived": [
+      "src/engine/history.ts:650"
+    ],
+    "plague.priest_died": [
+      "src/engine/history.ts:651"
+    ],
+    "plague.priest_filled": [
+      "src/engine/history.ts:653"
+    ],
+    "plague.new_graves": [
+      "src/engine/history.ts:657"
+    ],
+    "plague.empty_streets": [
+      "src/engine/history.ts:660"
+    ],
+    "plague.abandoned_fields": [
+      "src/engine/history.ts:663"
+    ],
+    "plague.ordinance": [
+      "src/engine/history.ts:668"
+    ],
+    "plague.resettlement": [
+      "src/engine/history.ts:670"
+    ],
+    "plague.second": [
+      "src/engine/history.ts:671"
+    ],
+    "plague.second_ended": [
+      "src/engine/history.ts:673"
+    ],
+    "plague.unanswered": [
+      "src/engine/history.ts:678"
+    ],
+    "reorg.wage_competition": [
+      "src/engine/history.ts:697"
+    ],
+    "reorg.textile_street": [
+      "src/engine/history.ts:698"
+    ],
+    "reorg.alehouse_boom": [
+      "src/engine/history.ts:699"
+    ],
+    "reorg.petitions_surge": [
+      "src/engine/history.ts:700"
+    ],
+    "reorg.guild_founded": [
+      "src/engine/history.ts:701"
+    ],
+    "reorg.weavers_left": [
+      "src/engine/history.ts:702"
+    ],
+    "reorg.overlord_warning": [
+      "src/engine/history.ts:703"
+    ],
+    "reorg.poll_tax": [
+      "src/engine/history.ts:704"
+    ],
+    "reorg.rebellion_rumour": [
+      "src/engine/history.ts:706"
+    ],
+    "reorg.autonomy_request": [
+      "src/engine/history.ts:709"
+    ],
+    "reorg.charter": [
+      "src/engine/history.ts:711"
+    ],
+    "reorg.unanswered": [
+      "src/engine/history.ts:716"
+    ],
+    "legacy.mayor_demand": [
+      "src/engine/history.ts:736"
+    ],
+    "legacy.royal_tax_envoy": [
+      "src/engine/history.ts:737"
+    ],
+    "legacy.succession": [
+      "src/engine/history.ts:740"
+    ],
+    "lord.wardship_begun": [
+      "src/engine/history.ts:592"
+    ],
+    "lord.wardship_ended": [
+      "src/engine/history.ts:597"
+    ],
+    "legacy.heir_seated": [
+      "src/engine/history.ts:746"
+    ],
+    "legacy.royal_subsidy": [
+      "src/engine/history.ts:743"
+    ],
+    "legacy.city_seal": [
+      "src/engine/history.ts:749"
+    ],
+    "legacy.charter_sealed": [
+      "src/engine/history.ts:753"
+    ],
+    "legacy.charter_refused": [
+      "src/engine/history.ts:754"
+    ],
+    "legacy.family_departed": [
+      "src/engine/history.ts:757"
+    ],
+    "legacy.family_stayed": [
+      "src/engine/history.ts:757"
+    ],
+    "legacy.legacy_record": [
+      "src/engine/history.ts:768"
+    ],
+    "legacy.last_market": [
+      "src/engine/history.ts:770"
+    ],
+    "legacy.staple": [],
+    "legacy.guild_dispute": [],
+    "legacy.market_fire": [],
+    "legacy.church_rebuilding": [],
+    "legacy.nave_rebuilt": [
+      "src/engine/history.ts:767"
+    ],
+    "legacy.deposition": [],
+    "legacy.unanswered": [
+      "src/engine/history.ts:776"
+    ],
+    "war.beacon": [
+      "src/engine/history.ts:616"
+    ],
+    "war.raid": [
+      "src/engine/history.ts:618"
+    ],
+    "war.conscripts_left": [
+      "src/engine/history.ts:622"
+    ],
+    "war.conscripts_returned": [
+      "src/engine/history.ts:624"
+    ],
+    "war.favour_lost": [
+      "src/engine/history.ts:626"
+    ],
+    "war.licence": [
+      "src/engine/history.ts:627"
+    ],
+    "war.unanswered": [
+      "src/engine/history.ts:631"
+    ],
+    "faction.leader_succeeded": [
+      "src/engine/history.ts:291"
+    ],
+    "petition.representative_replaced": [
+      "src/engine/history.ts:310"
+    ],
+    "estate.person_died": [
+      "src/engine/history.ts:1088"
+    ],
+    "stewardship.steward_died": [
+      "src/engine/history.ts:939"
+    ],
+    "stewardship.began": [
+      "src/engine/history.ts:934"
+    ],
+    "stewardship.oversight": [
+      "src/engine/history.ts:1006"
+    ],
+    "stewardship.audit_mode": [
+      "src/engine/history.ts:1008"
+    ],
+    "stewardship.rules": [
+      "src/engine/history.ts:945"
+    ],
+    "stewardship.season": [
+      "src/engine/history.ts:948"
+    ],
+    "manor.petition": [
+      "src/engine/history.ts:957"
+    ],
+    "manor.petition_answered": [
+      "src/engine/history.ts:960"
+    ],
+    "manor.petition_lapsed": [
+      "src/engine/history.ts:960"
+    ],
+    "stewardship.precedent": [
+      "src/engine/history.ts:973"
+    ],
+    "stewardship.steward_decided": [
+      "src/engine/history.ts:975"
+    ],
+    "stewardship.escalated": [
+      "src/engine/history.ts:977"
+    ],
+    "stewardship.brought": [
+      "src/engine/history.ts:979"
+    ],
+    "stewardship.lord_decided": [
+      "src/engine/history.ts:981"
+    ],
+    "stewardship.lapsed": [
+      "src/engine/history.ts:981"
+    ],
+    "stewardship.audit_clean": [
+      "src/engine/history.ts:988"
+    ],
+    "stewardship.audit_found": [
+      "src/engine/history.ts:988"
+    ],
+    "stewardship.audit_answered": [
+      "src/engine/history.ts:991"
+    ],
+    "faction.relation": [
+      "src/engine/history.ts:275",
+      "src/engine/history.ts:965",
+      "src/engine/history.ts:996",
+      "src/engine/history.ts:1036",
+      "src/engine/history.ts:1148"
+    ],
+    "decline.entered": [
+      "src/engine/history.ts:577"
+    ],
+    "decline.recovered": [
+      "src/engine/history.ts:580"
+    ],
+    "house.withdrew": [
+      "src/engine/history.ts:570"
+    ],
+    "house.arrived": [
+      "src/engine/history.ts:571"
+    ],
+    "house.resettled": [
+      "src/engine/history.ts:574"
+    ],
+    "milestone.chapter_start": [
+      "src/engine/history.ts:584"
+    ],
+    "decision.market_town": [],
+    "decision.stone_town": [],
+    "decision.rebuild": [],
+    "decision.wall_expand": [],
+    "decision.drainage": [],
+    "decision.estate_policy": [],
+    "decision.project_subsidy": [],
+    "decision.market_dues": [],
+    "negotiation.offered": [
+      "src/engine/history.ts:1023"
+    ],
+    "negotiation.accepted": [],
+    "negotiation.countered": [],
+    "negotiation.rejected": [],
+    "negotiation.withdrawn": [],
+    "promise.made": [
+      "src/engine/history.ts:1030"
+    ],
+    "promise.kept": [],
+    "promise.broken": [],
+    "marriage.contracted": [
+      "src/engine/history.ts:1048"
+    ],
+    "marriage.bride_arrived": [],
+    "marriage.child_born": [],
+    "marriage.brother_in_law_born": [],
+    "marriage.father_ill": [],
+    "marriage.will_change": [],
+    "marriage.will_dropped": [],
+    "marriage.father_died": [],
+    "marriage.inherited": [],
+    "marriage.lost": [],
+    "marriage.deferred_void": [
+      "src/engine/history.ts:1056"
+    ],
+    "marriage.jointure_settled": [
+      "src/engine/history.ts:1047"
+    ],
+    "marriage.contested": [],
+    "estate.claim_raised": [
+      "src/engine/history.ts:1073"
+    ],
+    "estate.suit_filed": [
+      "src/engine/history.ts:1077"
+    ],
+    "estate.suit_stage": [
+      "src/engine/history.ts:1079"
+    ],
+    "estate.suit_patron": [
+      "src/engine/history.ts:1081"
+    ],
+    "estate.suit_judged": [
+      "src/engine/history.ts:1078"
+    ],
+    "estate.possession_enforced": [
+      "src/engine/history.ts:1080"
+    ],
+    "estate.title_changed": [
+      "src/engine/history.ts:1095",
+      "src/engine/history.ts:1102"
+    ],
+    "estate.possession_changed": [
+      "src/engine/history.ts:1096",
+      "src/engine/history.ts:1104"
+    ],
+    "agency.subsidy_refused": [
+      "src/engine/history.ts:233"
+    ],
+    "agency.timber_ordered": [
+      "src/engine/history.ts:1116"
+    ],
+    "agency.project_started": [
+      "src/engine/history.ts:1118"
+    ],
+    "drainage.done": [
+      "src/engine/history.ts:817"
+    ],
+    "event.rumour": [
+      "src/engine/history.ts:441"
+    ],
+    "event.sign": [
+      "src/engine/history.ts:442"
+    ],
+    "event.arrived": [
+      "src/engine/history.ts:443"
+    ],
+    "event.recovered": [
+      "src/engine/history.ts:444"
+    ],
+    "era.entered": [
+      "src/engine/history.ts:789"
+    ],
+    "milestone.first_building": [
+      "src/engine/history.ts:459"
+    ],
+    "milestone.market_town": [
+      "src/engine/history.ts:460"
+    ],
+    "milestone.stone_town": [
+      "src/engine/history.ts:461"
+    ],
+    "milestone.first_l4": [
+      "src/engine/history.ts:462"
+    ],
+    "milestone.lots": [
+      "src/engine/history.ts:464"
+    ],
+    "milestone.chapter_end": [
+      "src/engine/history.ts:793"
+    ],
+    "ledger.season": [
+      "src/engine/history.ts:479",
+      "src/engine/history.ts:550"
+    ],
+    "ledger.population": [
+      "src/engine/history.ts:483"
+    ],
+    "ledger.treasury_turn": [
+      "src/engine/history.ts:486"
+    ],
+    "ledger.l4": [],
+    "ledger.departures": [
+      "src/engine/history.ts:489"
+    ],
+    "ledger.rollup": [
+      "src/engine/history.ts:496"
+    ],
+    "person.move_in": [
+      "src/engine/history.ts:371",
+      "src/engine/history.ts:498"
+    ],
+    "person.level_up": [
+      "src/engine/history.ts:373"
+    ],
+    "person.level_down": [
+      "src/engine/history.ts:374"
+    ],
+    "person.leaving": [
+      "src/engine/history.ts:370"
+    ],
+    "person.left": [
+      "src/engine/history.ts:368"
+    ],
+    "person.resettled": [
+      "src/engine/history.ts:369",
+      "src/engine/history.ts:498"
+    ],
+    "person.burnt": [
+      "src/engine/history.ts:364"
+    ],
+    "person.rebuilt": [
+      "src/engine/history.ts:367"
+    ],
+    "person.emptied": [
+      "src/engine/history.ts:372"
+    ],
+    "person.stayed": [
+      "src/engine/history.ts:375"
+    ],
+    "person.hungry": [
+      "src/engine/history.ts:376"
+    ],
+    "person.fed": [
+      "src/engine/history.ts:377"
+    ],
+    "person.water": [
+      "src/engine/history.ts:378"
+    ],
+    "person.water_lost": [
+      "src/engine/history.ts:378"
+    ],
+    "person.born": [
+      "src/engine/history.ts:398"
+    ],
+    "person.married": [
+      "src/engine/history.ts:401",
+      "src/engine/history.ts:498"
+    ],
+    "person.arrived": [
+      "src/engine/history.ts:402"
+    ],
+    "person.came_of_age": [
+      "src/engine/history.ts:406"
+    ],
+    "person.occupation": [
+      "src/engine/history.ts:407"
+    ],
+    "person.reeve": [
+      "src/engine/history.ts:408"
+    ],
+    "person.steward": [
+      "src/engine/history.ts:403"
+    ],
+    "person.died": [
+      "src/engine/history.ts:420"
+    ],
+    "person.left_town": [
+      "src/engine/history.ts:421"
+    ],
+    "person.bailiff": [
+      "src/engine/history.ts:410"
+    ],
+    "person.fell_ill": [
+      "src/engine/history.ts:427"
+    ],
+    "person.recovered": [
+      "src/engine/history.ts:428"
+    ],
+    "person.injured": [
+      "src/engine/history.ts:427"
+    ],
+    "person.healed": [
+      "src/engine/history.ts:428"
+    ],
+    "person.expecting": [
+      "src/engine/history.ts:427"
+    ],
+    "person.pilgrimage": [
+      "src/engine/history.ts:427"
+    ],
+    "person.returned": [
+      "src/engine/history.ts:428"
+    ],
+    "person.grew": [
+      "src/engine/history.ts:381"
+    ],
+    "person.shrank": [
+      "src/engine/history.ts:382"
+    ],
+    "registry.offered": [
+      "src/engine/history.ts:1136"
+    ],
+    "registry.answered": [
+      "src/engine/history.ts:1141"
+    ],
+    "registry.lapsed": [
+      "src/engine/history.ts:1141"
+    ],
+    "registry.invalid": [
+      "src/engine/history.ts:1141"
+    ],
+    "registry.term_began": [
+      "src/engine/history.ts:1156"
+    ],
+    "registry.term_ended": [
+      "src/engine/history.ts:1158"
+    ],
+    "manor.petition_precedent": [
+      "src/engine/history.ts:959"
+    ]
+  }
+}
