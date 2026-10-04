@@ -2,7 +2,7 @@
 
 **렌더 B 분리 전 시작한 작업 — 이후 세계 작업은 렌더 B**(결정 QA3-6). QA-003은 렌더 A의 마지막 세계 작업이다(사용자 2026-10-04).
 
-관문: 통과 — 목책·돌 성문 개구부(곧은·모서리) 줌 1.0·0.6 × 여름·겨울 전후, 강가·백악 바위 같은 카메라 전후 · 새 시험 `tests/qa003GatePosts.test.ts` · DGX 전체 시험 4,545/4,545(render-QA003-test3-05a5812) · 깨끗한 클론 CLONE_LINE · ui-geometry 덮어쓰기 1
+관문: 통과 — 목책·돌 성문 개구부(곧은·모서리) 줌 1.0·0.6 × 여름·겨울 전후, 강가·백악 바위 같은 카메라 전후 · 새 시험 `tests/qa003GatePosts.test.ts` · DGX 전체 시험 4,545/4,545(render-QA003-test3-05a5812) · 깨끗한 클론 4,594/4,594·타입·빌드(QA003-clone-24f52d4) · ui-geometry 덮어쓰기 1
 
 실행 위치: 둘 다.
 - DGX: 캡처(render-QA003-gates2-aa92fe0, render-QA003-river-76b30fe, render-QA003-straight-bfd76ae), 전체 시험, 깨끗한 클론.
