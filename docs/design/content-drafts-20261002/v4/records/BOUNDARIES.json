@@ -1,0 +1,608 @@
+{
+  "status": "PASS",
+  "scope": "Static edited condition fragments only; no full evaluator/runtime/frequency test",
+  "cases": 77,
+  "results": [
+    {
+      "id": "ck_evt_005",
+      "kind": "dues_only",
+      "input": 750,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_005",
+      "kind": "dues_only",
+      "input": 751,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_005",
+      "kind": "dues_only",
+      "input": 800,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_005",
+      "kind": "dues_only",
+      "input": 1100,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_005",
+      "kind": "dues_only",
+      "input": 1249,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_005",
+      "kind": "dues_only",
+      "input": 1250,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_024",
+      "kind": "dues_only",
+      "input": 750,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_024",
+      "kind": "dues_only",
+      "input": 751,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_024",
+      "kind": "dues_only",
+      "input": 800,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_024",
+      "kind": "dues_only",
+      "input": 1100,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_024",
+      "kind": "dues_only",
+      "input": 2000,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_024",
+      "kind": "dues_only",
+      "input": 2001,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_042",
+      "kind": "dues_only",
+      "input": 650,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_042",
+      "kind": "dues_only",
+      "input": 651,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_042",
+      "kind": "dues_only",
+      "input": 800,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_042",
+      "kind": "dues_only",
+      "input": 1100,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_042",
+      "kind": "dues_only",
+      "input": 1249,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_042",
+      "kind": "dues_only",
+      "input": 1250,
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_009",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_009",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_009",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_009",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_009",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_032",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_032",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_032",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_032",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_032",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_033",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_033",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_033",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_033",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_033",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_038",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_038",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_038",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_038",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_038",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_053",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_053",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_053",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_053",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_053",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_075",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_075",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_075",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_075",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_075",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_143",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_143",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_143",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_143",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_143",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_146",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_146",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_146",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_146",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_146",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_150",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_150",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_150",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_150",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_150",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_153",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_153",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_153",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_153",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_153",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_154",
+      "kind": "lawsuit_year_only",
+      "input": 1300,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_154",
+      "kind": "lawsuit_year_only",
+      "input": 1348,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_154",
+      "kind": "lawsuit_year_only",
+      "input": 1382,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_154",
+      "kind": "lawsuit_year_only",
+      "input": 1450,
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_154",
+      "kind": "new_suit_no_year_cooldown",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_009",
+      "kind": "defer_does_not_fake_effect",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_032",
+      "kind": "defer_does_not_fake_effect",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_033",
+      "kind": "defer_does_not_fake_effect",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_053",
+      "kind": "defer_does_not_fake_effect",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    }
+  ]
+}

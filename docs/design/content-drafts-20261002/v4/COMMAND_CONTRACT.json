@@ -1,0 +1,119 @@
+{
+  "sourceHead": "5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b",
+  "source": "src/state/gameStore.types.ts:13-113",
+  "status": "existing_command_names_and_fields_not_runtime_validation",
+  "commands": {
+    "set_estate_policy": {
+      "policy": [
+        "growth",
+        "stability",
+        "revenue",
+        "defence"
+      ]
+    },
+    "set_project_subsidy": {
+      "kind": "BuildingKind",
+      "amount": "integer>=0; total<=floor(treasuryBalance*250/1000); persistent setting"
+    },
+    "set_market_dues": {
+      "permille": "integer 250..2000"
+    },
+    "order_timber": {
+      "amount": "integer; actual trade point cap; persistent outstanding order"
+    },
+    "file_suit": {
+      "claimId": "live existing lord claim id"
+    },
+    "add_suit_evidence": {
+      "suitId": "existing lord suit id",
+      "evidence": [
+        "charter",
+        "deed",
+        "court_roll",
+        "witnesses",
+        "possession_years"
+      ]
+    },
+    "seek_suit_patron": {
+      "suitId": "existing lord suit id",
+      "factionId": "existing faction id"
+    },
+    "enforce_possession": {
+      "suitId": "existing enforcing lord suit id"
+    },
+    "propose_marriage": {
+      "terms": "Term[]: kind/giver/amount?/years?/pieceId?",
+      "groomId": "optional existing male candidate id"
+    },
+    "answer_counter": {
+      "negotiationId": "existing countered negotiation id",
+      "accept": "boolean"
+    },
+    "keep_promise": {
+      "promiseId": "existing open promise id"
+    },
+    "answer_will_change": {
+      "choice": [
+        "favour",
+        "support_promise",
+        "let_it_be"
+      ]
+    },
+    "set_estate_oversight": {
+      "estateId": "held offmap estate id",
+      "mode": [
+        "direct",
+        "steward"
+      ],
+      "stewardId": "optional existing estate steward personId"
+    },
+    "set_exception_rules": {
+      "rules": "{amountAtLeast:number|null,rights:boolean,marriage:boolean,recurring?:boolean}"
+    },
+    "answer_estate_petition": {
+      "petitionId": "existing reached/open home or offmap petition id",
+      "grant": "boolean"
+    },
+    "set_audit_mode": {
+      "estateId": "held offmap estate id",
+      "mode": [
+        "accounts",
+        "visit"
+      ]
+    },
+    "answer_audit": {
+      "auditId": "existing pending audit id",
+      "choice": [
+        "punish",
+        "replace",
+        "tolerate"
+      ],
+      "replacementId": "optional existing eligible estate steward personId"
+    },
+    "famine_response": {
+      "choice": [
+        "relief",
+        "price_control",
+        "laissez_faire"
+      ]
+    },
+    "petition_response": {
+      "petitionId": "existing real petition INSTANCE id, not defId",
+      "response": [
+        "accept",
+        "accept_with_price",
+        "refuse"
+      ]
+    }
+  },
+  "evidenceCostD": {
+    "charter": 40,
+    "deed": 30,
+    "court_roll": 20,
+    "witnesses": 24,
+    "possession_years": 0
+  },
+  "evidenceCostSource": "src/content/estateConfig.ts:85",
+  "allEffectsOwner": "existing_engine_handler",
+  "forbiddenPayload": "Do not spread draft effects.parameters; predicted results are not command arguments."
+}

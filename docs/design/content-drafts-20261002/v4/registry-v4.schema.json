@@ -1,0 +1,556 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:charter-and-kin:content:registry-v4",
+  "title": "v4 registry proposal sidecar, never runtime validation",
+  "type": "object",
+  "required": [
+    "formatVersion",
+    "status",
+    "sourceHead",
+    "policy",
+    "entries"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": 1
+    },
+    "status": {
+      "const": "proposal_only_not_runtime_registry"
+    },
+    "sourceHead": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "policy": {
+      "type": "object"
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 200,
+      "maxItems": 200,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "conditions",
+          "bindings",
+          "calendar",
+          "choices",
+          "unsupportedFilters",
+          "minimumEnabledConsequentialChoices",
+          "enabledInEngine"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^ck_evt_[0-9]{3}$"
+          },
+          "enabledInEngine": {
+            "const": false
+          },
+          "conditions": {
+            "$ref": "#/$defs/expr"
+          },
+          "bindings": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "$ref": "#/$defs/expr"
+                },
+                "where": {
+                  "$ref": "#/$defs/expr"
+                },
+                "select": {
+                  "enum": [
+                    "first",
+                    "all"
+                  ]
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "field": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "direction": {
+                        "enum": [
+                          "asc",
+                          "desc"
+                        ]
+                      },
+                      "collation": {
+                        "enum": [
+                          "codepoint",
+                          "engine_localeCompare"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "field",
+                      "direction"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "missing": {
+                  "const": "invalidate"
+                },
+                "sideEffects": {
+                  "const": "none"
+                },
+                "requiredForChoices": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              "required": [
+                "from",
+                "where",
+                "select",
+                "order",
+                "missing",
+                "sideEffects"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "calendar": {
+            "type": "object",
+            "required": [
+              "authoredYears",
+              "eligibilityYears",
+              "seasonIndices"
+            ],
+            "properties": {
+              "authoredYears": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1300,
+                  "maximum": 1450
+                }
+              },
+              "eligibilityYears": {
+                "type": "array",
+                "minItems": 2,
+                "maxItems": 2,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1300,
+                  "maximum": 1450
+                }
+              },
+              "seasonIndices": {
+                "type": "array",
+                "minItems": 1,
+                "maxItems": 4,
+                "uniqueItems": true,
+                "items": {
+                  "enum": [
+                    0,
+                    1,
+                    2,
+                    3
+                  ]
+                }
+              }
+            }
+          },
+          "minimumEnabledConsequentialChoices": {
+            "const": 2
+          },
+          "unsupportedFilters": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "status": {
+                  "const": "unsupported"
+                },
+                "onMissing": {
+                  "const": "block_entry"
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "id",
+                "status",
+                "onMissing",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "choices": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 4,
+            "items": {
+              "type": "object",
+              "required": [
+                "id",
+                "commands",
+                "conditions",
+                "execution"
+              ],
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "execution": {
+                  "enum": [
+                    "existing_handler_after_binding",
+                    "blocked_until_atomic_adapter",
+                    "blocked_unsupported_effect"
+                  ]
+                },
+                "commands": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": [
+                      "type",
+                      "args",
+                      "expectedEffectsOwner"
+                    ],
+                    "properties": {
+                      "type": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "args": {
+                        "type": "object"
+                      },
+                      "expectedEffectsOwner": {
+                        "const": "existing_engine_handler"
+                      }
+                    }
+                  }
+                },
+                "conditions": {
+                  "type": "object",
+                  "required": [
+                    "ast"
+                  ],
+                  "properties": {
+                    "ast": {
+                      "$ref": "#/$defs/expr"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "expr": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "field": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "field"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "literal": {
+            }
+          },
+          "required": [
+            "literal"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "call": {
+              "type": "string",
+              "minLength": 1
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/expr"
+              }
+            }
+          },
+          "required": [
+            "call",
+            "args"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "derived": {
+              "type": "string",
+              "minLength": 1
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/expr"
+              }
+            }
+          },
+          "required": [
+            "derived",
+            "args"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "operation": {
+              "enum": [
+                "add",
+                "subtract",
+                "multiply",
+                "divide",
+                "floor",
+                "max",
+                "min",
+                "coalesce",
+                "count",
+                "sum",
+                "project",
+                "mapGet",
+                "first",
+                "findBy"
+              ]
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/expr"
+              }
+            }
+          },
+          "required": [
+            "operation",
+            "args"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "all": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/expr"
+              }
+            }
+          },
+          "required": [
+            "all"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "any": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/expr"
+              }
+            }
+          },
+          "required": [
+            "any"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "not": {
+              "$ref": "#/$defs/expr"
+            }
+          },
+          "required": [
+            "not"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "exists": {
+              "$ref": "#/$defs/expr"
+            }
+          },
+          "required": [
+            "exists"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "compare": {
+              "type": "object",
+              "properties": {
+                "left": {
+                  "$ref": "#/$defs/expr"
+                },
+                "op": {
+                  "enum": [
+                    "eq",
+                    "neq",
+                    "gt",
+                    "gte",
+                    "lt",
+                    "lte",
+                    "in",
+                    "contains",
+                    "contains_all",
+                    "none_in",
+                    "not_contains",
+                    "has_year_inclusive"
+                  ]
+                },
+                "right": {
+                  "$ref": "#/$defs/expr"
+                }
+              },
+              "required": [
+                "left",
+                "op",
+                "right"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "compare"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "filter": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "$ref": "#/$defs/expr"
+                },
+                "as": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "where": {
+                  "$ref": "#/$defs/expr"
+                }
+              },
+              "required": [
+                "from",
+                "as",
+                "where"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "filter"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "every": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "$ref": "#/$defs/expr"
+                },
+                "as": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "where": {
+                  "$ref": "#/$defs/expr"
+                }
+              },
+              "required": [
+                "from",
+                "as",
+                "where"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "every"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "map": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "$ref": "#/$defs/expr"
+                },
+                "as": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "value": {
+                  "$ref": "#/$defs/expr"
+                }
+              },
+              "required": [
+                "from",
+                "as",
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "map"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}
