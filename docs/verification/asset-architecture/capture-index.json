@@ -1,5 +1,5 @@
 {
-  "purpose": "Selected exact-preservation before/core and intentional-house-install core/data JPEG previews; lossless PNG evidence and full runs retained separately. JPEG is not the pixel comparator input.",
+  "purpose": "Selected exact-preservation before/core and intentional-house-install core/data JPEG previews; lossless PNG evidence and full runs retained separately. JPEG is not the pixel comparator input. Byte-identical before/core JPEG previews share a physical file; independent capture source paths and PNG comparisons remain separate.",
   "captures": [
     {
       "phase": "before-v3",
@@ -36,34 +36,38 @@
     {
       "phase": "core-v3",
       "scene": "prepared-land-summer-fallow-z1",
-      "file": "captures/core-v3-prepared-land-summer-fallow-z1.jpg",
+      "file": "captures/before-v3-prepared-land-summer-fallow-z1.jpg",
       "source": "output/art-architecture/core-v3/prepared-land-summer-fallow-z1.jpg",
       "sha256": "673ce5e35942c323281acb45a2391050aef818ff195f74f4420a0cf98b87b27b",
-      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
     },
     {
       "phase": "core-v3",
       "scene": "prepared-land-summer-fallow-z06",
-      "file": "captures/core-v3-prepared-land-summer-fallow-z06.jpg",
+      "file": "captures/before-v3-prepared-land-summer-fallow-z06.jpg",
       "source": "output/art-architecture/core-v3/prepared-land-summer-fallow-z06.jpg",
       "sha256": "04dc0aa1bcbf6cefebacff5ddcf718b4482dec7a9d9db65307a6967af96ead38",
-      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
     },
     {
       "phase": "core-v3",
       "scene": "prepared-land-winter-fallow-z1",
-      "file": "captures/core-v3-prepared-land-winter-fallow-z1.jpg",
+      "file": "captures/before-v3-prepared-land-winter-fallow-z1.jpg",
       "source": "output/art-architecture/core-v3/prepared-land-winter-fallow-z1.jpg",
       "sha256": "782ab4f869323d84a908efc0cb5706c3271fa60401b0021c03eb32a045e43fbc",
-      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
     },
     {
       "phase": "core-v3",
       "scene": "prepared-land-winter-fallow-z06",
-      "file": "captures/core-v3-prepared-land-winter-fallow-z06.jpg",
+      "file": "captures/before-v3-prepared-land-winter-fallow-z06.jpg",
       "source": "output/art-architecture/core-v3/prepared-land-winter-fallow-z06.jpg",
       "sha256": "d79bf8de6f629b8ae77713af74ffc62a97089437639cb6050fa1a52063cf00f3",
-      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
     },
     {
       "phase": "core-v3",

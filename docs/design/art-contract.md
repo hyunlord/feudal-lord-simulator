@@ -1,6 +1,6 @@
 # 그림 묶음 계약 v1
 
-상태: **ASSET-ARCH-1 구현 중, 설치·런타임 관문 미판정**(2026-10-05). 설계 정본은 [시각 아키텍처 §4](visual-architecture.md#4-에셋-구조-제안--데이터-주도), 경계는 [foundation](foundation.md)다. 이 문서는 초안의 필드 이름을 실제 `src/render/art/artContract.ts`와 `artContract.schema.json`에 맞춘 구현 계약이다. 전체 selector 현황은 [SELECTOR_AUDIT](../verification/asset-architecture/SELECTOR_AUDIT.md)에 기록한다.
+상태: **코어·데이터 설치 런타임 검증 통과, 최종 통합 관문 진행 중**(2026-10-05). [현재 검증 기록](../verification/asset-architecture/REPORT.md)이 실행 결과와 남은 관문을 소유한다. 설계 정본은 [시각 아키텍처 §4](visual-architecture.md#4-에셋-구조-제안--데이터-주도), 경계는 [foundation](foundation.md)다. 이 문서는 초안의 필드 이름을 실제 `src/render/art/artContract.ts`와 `artContract.schema.json`에 맞춘 구현 계약이다. 전체 selector 현황은 [SELECTOR_AUDIT](../verification/asset-architecture/SELECTOR_AUDIT.md)에 기록한다.
 
 ## 1. 봉투와 좌표
 
@@ -81,9 +81,9 @@ single house 소비자는 `contractHouseArt.ts:38,54,69`에서 본체와 필요�
 
 최초 입력은 `src/render/art/catalog.json`의 **bundle 배열**이다. 새 catalog row/bundle을 배열 데이터에 추가하는 선택은 의도적이다. 묶음마다 TS import를 추가하는 목록을 설치 절차로 삼지 않는다. `wave42Registry.ts:1,6`은 이미 JSON 배열을 한 번 import하여 startup registry를 구성한다. 이 고정 진입점과 adapter를 먼저 완성한 뒤, 새로운 bundle 추가는 JSON·그림·provenance·장부·증거만 바뀌는 별도 단계로 증명한다. `bundles/footpath-layouts.json` 같은 접속 데이터와 image catalog의 책임도 구분한다.
 
-### data-only 추가 절차 — Wave20 신규 32개 계획 묶음
+### data-only 추가 절차 — Wave20 신규 32개 증명 묶음
 
-`tests/fixtures/art-house-bundle.json`에는 `wave20-era` bundle의 **36 entries = 신규 이미지 32개 + 기존 상태층 재사용 4개**가 있다. 32는 테스트 수가 아니라 신규 에셋 수다. [등록 근거](../verification/asset-architecture/wave20-registration.md)와 [설치 계획 CSV](../verification/asset-architecture/wave20-install-plan.csv)가 준비 단계의 정확한 원본/대상/해시 및 재사용 근거를 기록한다. 20개 본체, boarded-v3 6개, roof_snow-v4 6개가 신규 대상이며 L0/L1의 기존 boarded/snow 4개는 신규 수량에 포함하지 않는다. fixture 존재와 정적 선택 검증은 catalog 편입·신규 설치·제품 표시 완료가 아니다.
+`tests/fixtures/art-house-bundle.json`에는 `wave20-era` bundle의 **36 entries = 신규 이미지 32개 + 기존 상태층 재사용 4개**가 있다. 32는 테스트 수가 아니라 신규 에셋 수다. [등록 근거](../verification/asset-architecture/wave20-registration.md)와 [설치 계획 CSV](../verification/asset-architecture/wave20-install-plan.csv)가 준비 단계의 정확한 원본/대상/해시 및 재사용 근거를 기록한다. 20개 본체, boarded-v3 6개, roof_snow-v4 6개가 신규 대상이며 L0/L1의 기존 boarded/snow 4개는 신규 수량에 포함하지 않는다. 코어 `d60ababf` 뒤 데이터 `541a0811`에서 이 묶음을 실제 catalog에 넣었으며 제품 코드 변경은 0이다. DGX 준비 장면 8개에서 신규32·재사용4의 요청·디코드·실제 draw를 모두 확인했고 독립 시각 검토도 통과했다. fixture 존재만을 설치 증거로 쓰지는 않는다.
 
 1. generic consumer 변경을 먼저 고정하여 이후 data-only 단계의 비교 기준으로 삼는다. 승인된 원본 32개의 ID·정확한 inbox 경로·SHA·치수·종류/기하/조건을 확정하고 원본을 보존한다. 기존 slot과 실제 공급 필드로 표현 가능한 범위인지 확인한다. 새 엔진 사실이나 adapter가 필요하면 그 작업은 data-only 추가가 아니다.
 2. 원본 픽셀을 보존한 runtime 파일과 provenance를 준비하고 `src/render/art/catalog.json` 배열에 완전한 bundle 하나를 추가한다. 종류별 TS import/분기/ID 목록을 추가하지 않는다. 코드 변경 없이 표현되는지를 diff로 검사한다.
@@ -91,8 +91,8 @@ single house 소비자는 `contractHouseArt.ts:38,54,69`에서 본체와 필요�
 4. startup-only 계약에 따라 전체 reload 후 실제 입력 또는 명시된 준비 fixture로 선택 ID → 요청/decoded-ready → draw → 캡처를 확인한다. 모든 32개가 필요한 범위이면 각 행의 증거를 기록하고 미도달 행을 숨기지 않는다. fixture 도달과 자연 플레이 도달은 별도다.
 5. data-only 단계의 제품 실행 TS diff 0, 경계 조건/오류 검증, runtime 증거가 모인 뒤에만 provenance/설치 장부 판정을 갱신한다. 등록 수나 빈 installed_by로 완료 수량을 계산하지 않는다.
 
-## 7. 미완료 관문
+## 7. 검증의 범위
 
-이 문서 작성은 테스트 실행이나 설치 승인 기록이 아니다. 구현이 진행 중이며 최종 결과는 verification 보고서가 소유한다. 필요한 증거는 전체 bundle 거부의 원자성, 10종 유효/무효 구조, Wave42 36 ID와 16 mask의 선택·기하·시간 경계 회귀, lazy/decode 수명, 여름/겨울×줌1.0/0.6의 A/A 안정성 후 A/B RGBA 동일, 새 묶음의 제품 실행 코드 diff0, 실제 선택→load→draw coverage다. 자연 플레이와 준비 fixture는 구별한다. 장부 공란·카탈로그 행·unit 통과만으로 installed 수량을 늘리지 않는다.
+문서 작성 자체는 검증 실행을 뜻하지 않으며 최종 결과는 verification 보고서가 소유한다. 유지해야 하는 검증 항목은 전체 bundle 거부의 원자성, 10종 유효/무효 구조, Wave42 36 ID와 16 mask의 선택·기하·시간 경계 회귀, lazy/decode 수명, 여름/겨울×줌1.0/0.6의 A/A 안정성 후 A/B RGBA 동일, 새 묶음의 제품 실행 코드 diff0, 실제 선택→load→draw coverage다. 자연 플레이와 준비 fixture는 구별한다. 장부 공란·카탈로그 행·unit 통과만으로 installed 수량을 늘리지 않는다.
 
-무거운 회귀·브라우저·캡처는 최신 [CHARTER](../CHARTER.md)의 실행기 규약을 따른다(`d4973e85`, 32행): `scripts/remote/run.sh`의 동시 2개 slot과 대기열을 사용하며 작업 Mac은 단위 시험·린트·개발 서버 범위다. 현재 런타임 검증은 기준 실행 오류 수정 후 재실행 중이며, 이 문서 갱신에서 테스트를 실행하거나 통과를 판정하지 않았다.
+무거운 회귀·브라우저·캡처는 최신 [CHARTER](../CHARTER.md)의 실행기 규약을 따른다(`d4973e85`, 32행): `scripts/remote/run.sh`의 동시 2개 slot과 대기열을 사용하며 작업 Mac은 단위 시험·린트·개발 서버 범위다. DGX 기존 이전은 전후28쌍 RGBA 동일, 신규 데이터8장면은 A/A 안정성·오류0·실제사용을 통과했다. 본선 통합 뒤 UI 기하·전체 회귀·깨끗한 클론은 별도 관문이며, 미래의 모든 묶음이나 자연 플레이 도달까지 이 결과를 일반화하지 않는다.
