@@ -1,0 +1,1236 @@
+{
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "number": {
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 200
+      },
+      "id": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "^ck_evt_[0-9]{3}$"
+      },
+      "category": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "장원",
+          "도시",
+          "교회",
+          "이웃 가문",
+          "세력",
+          "자연",
+          "가문 내부"
+        ]
+      },
+      "period": {
+        "type": "string",
+        "pattern": "^1[34][0-9]{2}–1[34][0-9]{2}$"
+      },
+      "years": {
+        "type": "array",
+        "items": {
+          "type": "integer",
+          "minimum": 1300,
+          "maximum": 1450
+        },
+        "minItems": 2,
+        "maxItems": 2
+      },
+      "conditions": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "land": {
+            "type": "string",
+            "minLength": 1
+          },
+          "population": {
+            "type": "string",
+            "minLength": 1
+          },
+          "rights": {
+            "type": "string",
+            "minLength": 1
+          },
+          "relations": {
+            "type": "string",
+            "minLength": 1
+          },
+          "season": {
+            "type": "string",
+            "minLength": 1
+          },
+          "state": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "land",
+          "population",
+          "rights",
+          "relations",
+          "season",
+          "state"
+        ]
+      },
+      "sender": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "faction": {
+            "type": "string",
+            "minLength": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "faction",
+          "role"
+        ]
+      },
+      "title": {
+        "type": "string",
+        "minLength": 1
+      },
+      "body": {
+        "type": "string",
+        "minLength": 1
+      },
+      "choices": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string",
+              "minLength": 1
+            },
+            "effects": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "catalogKey": {
+                    "type": "string",
+                    "minLength": 1,
+                    "enum": [
+                      "offmap_petition.answer",
+                      "audit.mode",
+                      "steward.appoint",
+                      "no_op",
+                      "subsidy",
+                      "market_dues",
+                      "home_petition.answer",
+                      "suit.evidence",
+                      "suit.file",
+                      "marriage.offer",
+                      "audit.answer",
+                      "chapter.war",
+                      "timber.order",
+                      "chapter.famine",
+                      "marriage.jointure",
+                      "marriage.promises",
+                      "chapter.plague",
+                      "policy",
+                      "steward.precedent",
+                      "steward.exception_rules",
+                      "suit.enforce",
+                      "time.existing_progress",
+                      "chapter.reorganisation",
+                      "chapter.legacy",
+                      "petition.right",
+                      "petition.charterFee"
+                    ]
+                  },
+                  "operation": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "parameters": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "properties": {
+                      "kind": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "incomeD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "estateTenantsDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "estateMerchantsDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "baseFindPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "abilityAdjustment": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "attentionVisitLoss": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "lossYears": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "attentionReasonDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "effectiveCapacityLoss": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "mode": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "overloadedPetitionDelayTicks": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "overloadedErrorPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "amountD": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "integer"
+                            }
+                          }
+                        ]
+                      },
+                      "sPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "cashDeltaD": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "integer"
+                            }
+                          }
+                        ]
+                      },
+                      "annualValueLossPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "immediateDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "totalLimitTreasuryPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "immediateCashDeltaD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "duesPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "previousPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "townRelationDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "cashIncomeD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "cashCostD": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "integer"
+                            }
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        ]
+                      },
+                      "bishopRelationDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "evidenceWeight": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "fileCostD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "laterHearingCostD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "laterEnforcementAttemptCostD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "stageMinimumSeasons": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "pensionAnnualD": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "debtTotalD": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "contractRelationGain": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "merchantHouse1Delta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "merchantHouse2Delta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "recoverD": {
+                        "anyOf": [
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "integer"
+                            }
+                          }
+                        ]
+                      },
+                      "recoverPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "connectionFactionDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "status": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "loyaltyDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "loyaltyCap": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "baseLevyD": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "levyPerHouseD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "inKindTotalPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "instalmentSeasons": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "rounding": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "crownFactionRelationDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "factionRelationClamp": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "factionMemory": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "orderUnits": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "pricePerUnitD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "deliveryPerMarketDay": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "marketDayTicks": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "maximumTotalCostD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "unit": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "poorHouseholdsPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "treasuryLimitPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "departureCapHouseholdsPerSeason": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "commonsFactionRelationDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "bishopFactionRelationDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "foodPriceCapPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "merchantGaugePerSeason": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "newDirectCashDeltaD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "directMerchantGaugeDelta": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "terms": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "additionalProperties": false,
+                          "properties": {
+                            "kind": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "giver": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "amount": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "years": {
+                              "type": "array",
+                              "items": {
+                                "type": "integer"
+                              }
+                            },
+                            "pieceId": {
+                              "type": "string",
+                              "minLength": 1
+                            }
+                          },
+                          "required": [
+                            "kind",
+                            "giver"
+                          ]
+                        }
+                      },
+                      "contractOnlyCashCostD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "annualPensionD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "years": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "paymentIntervalTicks": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "deadlines": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "immediateCashCostD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "pieceAnnualValueD": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "trigger": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "pieceId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "possessor": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "lifeTenant": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "remainder": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "titleHolder": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "directRentPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "directDuesPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "overloadedWaitGoodwillLoss": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "candidateDisposition": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rentPermille": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "existingPensionAmountD": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "promiseStatus": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "petitionId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "grant": {
+                        "type": "boolean"
+                      },
+                      "response": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "permille": {
+                        "type": "integer"
+                      },
+                      "amount": {
+                        "anyOf": [
+                          {
+                            "type": "integer"
+                          },
+                          {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        ]
+                      },
+                      "auditId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "choice": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "replacementId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "policy": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "estateId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "stewardId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "suitId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "rules": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "amountAtLeast": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              {
+                                "type": "null"
+                              },
+                              {
+                                "type": "integer",
+                                "minimum": 0
+                              }
+                            ]
+                          },
+                          "rights": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              {
+                                "type": "boolean"
+                              }
+                            ]
+                          },
+                          "marriage": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              {
+                                "type": "boolean"
+                              }
+                            ]
+                          },
+                          "recurring": {
+                            "type": "boolean"
+                          }
+                        },
+                        "required": [
+                          "amountAtLeast",
+                          "rights",
+                          "marriage",
+                          "recurring"
+                        ]
+                      },
+                      "permilleCandidateRange": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "amountCandidateRange": {
+                        "type": "array",
+                        "items": {
+                          "type": "integer"
+                        }
+                      },
+                      "claimId": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "singleOutcome": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "right": {
+                            "anyOf": [
+                              {
+                                "type": "string",
+                                "minLength": 1
+                              },
+                              {
+                                "type": "null"
+                              }
+                            ]
+                          },
+                          "stallFeePermille": {
+                            "type": "integer"
+                          },
+                          "charterFee": {
+                            "type": "integer"
+                          },
+                          "gauge": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "right",
+                          "stallFeePermille",
+                          "charterFee",
+                          "gauge"
+                        ]
+                      },
+                      "genericFaction": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "properties": {
+                          "merchant_house_1": {
+                            "type": "integer"
+                          }
+                        },
+                        "required": [
+                          "merchant_house_1"
+                        ]
+                      }
+                    },
+                    "required": [
+
+                    ]
+                  },
+                  "rangeNote": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "preconditions": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "limits": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "codeReferences": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "properties": {
+                        "ref": {
+                          "type": "string",
+                          "minLength": 1,
+                          "pattern": "^.+:[1-9][0-9]*$"
+                        },
+                        "url": {
+                          "type": "string",
+                          "minLength": 1,
+                          "pattern": "^https://github\\.com/"
+                        }
+                      },
+                      "required": [
+                        "ref",
+                        "url"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "catalogKey",
+                  "operation",
+                  "parameters",
+                  "rangeNote",
+                  "preconditions",
+                  "limits",
+                  "codeReferences"
+                ]
+              },
+              "minItems": 1
+            },
+            "tradeoff": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ledger": {
+              "type": "string",
+              "minLength": 1
+            },
+            "chronicle": {
+              "type": "string",
+              "minLength": 1
+            },
+            "costAxes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1
+            },
+            "execution": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "rule": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "order": {
+                  "type": "array",
+                  "items": {
+                    "type": "integer"
+                  }
+                },
+                "beforeStart": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "afterEach": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "onPartialFailure": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "engineSupport": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "initialPreconditions": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "mode"
+              ]
+            },
+            "executionContract": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "preflight": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "onPartialFailure": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "timeAdvance": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "mode",
+                "preflight",
+                "onPartialFailure",
+                "timeAdvance"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "label",
+            "effects",
+            "tradeoff",
+            "ledger",
+            "chronicle",
+            "costAxes"
+          ]
+        },
+        "minItems": 2,
+        "maxItems": 4
+      },
+      "recurrence": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "allowed": {
+            "type": "boolean"
+          },
+          "cooldownYears": {
+            "anyOf": [
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              },
+              {
+                "type": "integer"
+              }
+            ]
+          },
+          "steward": {
+            "type": "string",
+            "minLength": 1
+          },
+          "exclusions": {
+            "type": "string",
+            "minLength": 1
+          },
+          "variantGroup": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "allowed",
+          "cooldownYears",
+          "steward",
+          "exclusions"
+        ]
+      },
+      "illustration": {
+        "type": "string",
+        "minLength": 1
+      },
+      "history": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "sourceIds": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1
+          },
+          "basis": {
+            "type": "string",
+            "minLength": 1
+          },
+          "inference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "limits": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sources": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "title": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "url": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "id",
+                "title",
+                "url"
+              ]
+            }
+          }
+        },
+        "required": [
+          "sourceIds",
+          "basis",
+          "inference",
+          "limits",
+          "sources"
+        ]
+      },
+      "integration": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "mode": {
+            "type": "string",
+            "minLength": 1
+          },
+          "requirements": {
+            "type": "string",
+            "minLength": 1
+          },
+          "classificationNote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "choiceDesignNote": {
+            "type": "string",
+            "minLength": 1
+          },
+          "balanceNote": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "mode",
+          "requirements"
+        ]
+      },
+      "newEffectLinks": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^NE(?:[0-9]{2,3}|_SR01_[A-Z]{2}[0-9]{2})$"
+        }
+      },
+      "contentClass": {
+        "type": "string",
+        "minLength": 1,
+        "enum": [
+          "new_event_draft",
+          "existing_petition_variant",
+          "existing_event_copy_revision"
+        ]
+      },
+      "choiceDepthNote": {
+        "type": "string",
+        "minLength": 1
+      },
+      "subtitle": {
+        "type": "string",
+        "minLength": 1
+      },
+      "existingEvent": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "displayLabel": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "ref"
+        ]
+      }
+    },
+    "required": [
+      "number",
+      "id",
+      "category",
+      "period",
+      "years",
+      "conditions",
+      "sender",
+      "title",
+      "body",
+      "choices",
+      "recurrence",
+      "illustration",
+      "history",
+      "integration",
+      "newEffectLinks",
+      "contentClass"
+    ]
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:charter-and-kin:content:events-v4",
+  "title": "Charter & Kin v4 canonical editorial corpus (200 records; not runtime definitions)",
+  "description": "A expansion schema plus B v3.1 period and nonnegative exception threshold; exactly 200. Runtime integration remains disabled.",
+  "minItems": 200,
+  "maxItems": 200
+}
