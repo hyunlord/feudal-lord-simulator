@@ -16,7 +16,7 @@ export const PETITION_COPY = {
     refuse: () => "거절합니다 · 한 해 뒤에 다시 청해 옵니다",
     /** LM-R1 (Astra B04): the treasury cannot pay this answer's price — the engine records it and restores nothing. */
     short: (price: number, treasury: number, again: string) =>
-      `${moneyFull(price)}이 필요하지만 금고는 ${moneyFull(treasury)} · ${moneyFull(price - treasury)} 모자라 지금 답하면 복원되지 않고, ${again}에 다시 청해 옵니다`,
+      `값 ${moneyFull(price)} · 금고 ${moneyFull(treasury)} · ${moneyFull(price - treasury)} 모자람: 지금 답하면 복원되지 않고, ${again}에 다시 청해 옵니다`,
   },
   wool_payment: {
     title: "양모 공납 칙령",
