@@ -1,0 +1,15 @@
+{
+  "id": "gate_jamb_timber",
+  "refs": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9b/public/assets/wall/palisade_gate_v2-v1.png"
+  ],
+  "prompt": "Precise-object-edit for medieval game sprite. Reference is approved timber palisade gate. Extract/repaint a SINGLE freestanding thick vertical gatepost matching the gate uprights wood EXACTLY: long lengthwise weathered oak grain, irregular hand-hewn split log faces, subtle knots and a shallow mortise near top. NO beam, no box, no crate, no planks wrapped around, no stone. Slightly pointed bevelled top like a stout palisade stake, simple rough endgrain, ground end straight. Same2:1 isometric viewpoint, upper left light, warm muted brown. One substantial upright post visibly taller than wide, body proportion width:height=22:30 including perspective; broad front but rounded/irregular log edges so it reads as solid timber not a rectangular storage box. Entire single post visible centered transparent background, generous padding. Final native canvas64x80, body44x60 anchored32,70. Preserve direction, no mirroring.",
+  "path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-34d39720-e4bb-44e8-baf8-0895aa6f705a.png",
+  "generatedSha256": "1cd00d301b10cd001b68fbe483c4c9ee2796b5688495df2072c270aef23f71b2",
+  "referenceSha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9b/public/assets/wall/palisade_gate_v2-v1.png",
+      "sha256": "3e664c1567fa3a3b44810953f14884072b3b15879f64adaa4cdf32e4e82984a8"
+    }
+  ]
+}
