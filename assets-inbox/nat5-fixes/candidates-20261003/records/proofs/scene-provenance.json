@@ -1,0 +1,684 @@
+{
+  "status": "game_scene_composite",
+  "sourceRepo": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9",
+  "sourceHead": "0091bcce79819c836214aad9326aedcf32cae277",
+  "missingCandidates": [],
+  "records": [
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat4/world/qa003-gate-z2.jpg",
+      "sha256": "065c5a687b2af898556612e1701bf2b0e8934635962678ebb50fca14b544057b",
+      "crop": null
+    },
+    {
+      "candidate": "wall/gate_jamb_stone.png",
+      "sha256": "992300b7c9562bfab147b3d13391a57e5f49874fae87573d561370539ab59208",
+      "canvas": [
+        64,
+        80
+      ],
+      "screenPixelsPerAssetPixel": 1,
+      "foot": [
+        186,
+        237
+      ],
+      "pivot": [
+        32,
+        70
+      ]
+    },
+    {
+      "candidate": "wall/gate_jamb_stone.png",
+      "sha256": "992300b7c9562bfab147b3d13391a57e5f49874fae87573d561370539ab59208",
+      "canvas": [
+        64,
+        80
+      ],
+      "screenPixelsPerAssetPixel": 1,
+      "foot": [
+        258,
+        210
+      ],
+      "pivot": [
+        32,
+        70
+      ]
+    },
+    {
+      "candidate": "wall/gate_jamb_timber.png",
+      "sha256": "3369632f45062cefbb14f67f9d8ae75a29332321ff3db3ea6fc7a380502262d5",
+      "canvas": [
+        64,
+        80
+      ],
+      "screenPixelsPerAssetPixel": 1,
+      "foot": [
+        186,
+        237
+      ],
+      "pivot": [
+        32,
+        70
+      ]
+    },
+    {
+      "candidate": "wall/gate_jamb_timber.png",
+      "sha256": "3369632f45062cefbb14f67f9d8ae75a29332321ff3db3ea6fc7a380502262d5",
+      "canvas": [
+        64,
+        80
+      ],
+      "screenPixelsPerAssetPixel": 1,
+      "foot": [
+        258,
+        210
+      ],
+      "pivot": [
+        32,
+        70
+      ]
+    },
+    {
+      "proof": "scene-gate.jpg",
+      "notes": "Original zoom2 preserved. Candidate native .5world px/asset px multiplied by zoom2. Placement is manual, not occlusion/runtime verification. Manual foot anchors (186,237) and (258,210), same original 520x340 capture coordinates. Alpha bounds of the stipulated 44x60 bodies are x164..207/y177..236 and x236..279/y150..209. The central passage strip x210..234/y210..238 remains uncovered by either new post. Original wall/people are not erased. This is a placement study; depth ordering and actual walk collision are unverified."
+    },
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat5/stages/gate-field-summer.jpg",
+      "sha256": "ecd99dfcfaceb664bc0298cd39f7d4cb91af2bfc62d4c9068a0939a6475a5749",
+      "crop": {
+        "left": 480,
+        "top": 16,
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "candidate": "yards/yard_rain_barrel.png",
+      "sha256": "f5064486857a24cf0745784d8c3a82c3e180f3c1c360c86e8a6a4f9f0b4bf010",
+      "canvas": [
+        128,
+        64
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        180,
+        115
+      ],
+      "pivot": [
+        64,
+        52
+      ]
+    },
+    {
+      "candidate": "yards/yard_chicken_coop.png",
+      "sha256": "3a51aa457010bcfae40f35c40f53927306141168ee862d06292a5d3a0fa379d7",
+      "canvas": [
+        128,
+        64
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        205,
+        135
+      ],
+      "pivot": [
+        64,
+        52
+      ]
+    },
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat5/installs/barrel-city-z1.0-x3.jpg",
+      "sha256": "5ce4517c6bd7c8165ed78f794bbf77310ad9d2d455f54a1c17971a58a7979aa0",
+      "crop": null
+    },
+    {
+      "proof": "scene-yard-scale.jpg",
+      "notes": "Objects added beside scenery; no original object erased. Field capture zoom1.4 reduced .5. New barrel body target16-23source px, hen6.34-9.86source px at fixed .5scale. Scene composites are not installed game captures."
+    },
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat5/stages/gate-field-summer.jpg",
+      "sha256": "ecd99dfcfaceb664bc0298cd39f7d4cb91af2bfc62d4c9068a0939a6475a5749",
+      "crop": {
+        "left": 480,
+        "top": 16,
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "candidate": "orchard/orchard_apple_c_spring-v1.png",
+      "sha256": "4303eee72a0dc9ab7f87aa13acb11a97278ea3c00823d3a11c4b068ac794268b",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        75,
+        115
+      ],
+      "pivot": [
+        128,
+        246
+      ]
+    },
+    {
+      "candidate": "orchard/orchard_apple_d_spring-v1.png",
+      "sha256": "7fc86171c09185f9485761ec639f3809eef1b797374bc6333cd57a74165789a6",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        117,
+        115
+      ],
+      "pivot": [
+        123,
+        246
+      ]
+    },
+    {
+      "candidate": "orchard/orchard_pear_e_spring-v1.png",
+      "sha256": "7544c550e2867cf51f14b46ca2718824b06f4a6ee560f08d8f0782a43c0153eb",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        159,
+        115
+      ],
+      "pivot": [
+        123,
+        246
+      ]
+    },
+    {
+      "candidate": "orchard/orchard_plum_f_spring-v1.png",
+      "sha256": "e3bb408ccee57616632bbd4bc9bdad28ee1bd3e425a11ccead868c4d304902dd",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        201,
+        115
+      ],
+      "pivot": [
+        141,
+        246
+      ]
+    },
+    {
+      "proof": "scene-orchard-spring.jpg",
+      "notes": "Spring candidate shown on actual summer-ground capture for neutral grass comparison; not a newly captured spring runtime. Same 256canvas and per-ID native anchor; rendered width43world px x .7."
+    },
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat5/stages/gate-field-winter.jpg",
+      "sha256": "42b7ff0f6b1c7e8cd490ca17ee02d9586d1224d94a9408a62f64ca5ad35f9103",
+      "crop": {
+        "left": 480,
+        "top": 16,
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "candidate": "orchard/orchard_apple_c_winter-v1.png",
+      "sha256": "c807758e1aadee94091b300baf4bd06591ecfcbcd14948fe73f132a11f975c27",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        75,
+        115
+      ],
+      "pivot": [
+        128,
+        246
+      ]
+    },
+    {
+      "candidate": "orchard/orchard_apple_d_winter-v1.png",
+      "sha256": "2578aef695aee18512c263762a3430f508106260de0daf496c590819b49cc95b",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        117,
+        115
+      ],
+      "pivot": [
+        123,
+        246
+      ]
+    },
+    {
+      "candidate": "orchard/orchard_pear_e_winter-v1.png",
+      "sha256": "eba39c296d4a3a1020a3463e98b02d5d3926bba3932c59f749585b7fffa52756",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        159,
+        115
+      ],
+      "pivot": [
+        123,
+        246
+      ]
+    },
+    {
+      "candidate": "orchard/orchard_plum_f_winter-v1.png",
+      "sha256": "d0cea21aae052eefec6cda41a4d4fa589c038907aaad142fe4c9720d139b0c93",
+      "canvas": [
+        256,
+        256
+      ],
+      "screenPixelsPerAssetPixel": 0.11757812499999999,
+      "foot": [
+        201,
+        115
+      ],
+      "pivot": [
+        141,
+        246
+      ]
+    },
+    {
+      "proof": "scene-orchard-winter.jpg",
+      "notes": "Spring candidate shown on actual summer-ground capture for neutral grass comparison; not a newly captured spring runtime. Same 256canvas and per-ID native anchor; rendered width43world px x .7."
+    },
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat5/stages/gate-field-summer.jpg",
+      "sha256": "ecd99dfcfaceb664bc0298cd39f7d4cb91af2bfc62d4c9068a0939a6475a5749",
+      "crop": {
+        "left": 480,
+        "top": 16,
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "candidate": "connections/path_clear_corner_bottom_summer.png",
+      "sha256": "62df0eb99b8d758e3c15f5ca6fc7170aed5e637b8228a689f081c5ea5e022706",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        65,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_corner_top_summer.png",
+      "sha256": "fae9aa778d5af85cd91e4f1e3a231d16f17d0bd0f3b01f67f94b40d238ee0b3d",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        106,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_cross_summer.png",
+      "sha256": "5cd0c156d611af04ad24cae1f941838d40198468219453326b9a74513a741e88",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        147,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_ne_summer.png",
+      "sha256": "460cd8904ad8eb1dbebaecfc32c9c396abaa5879c6fed6ea69cac3539c0f0f6d",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        188,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_nw_summer.png",
+      "sha256": "ea5ac703a29c785e8a8f1767e5c572c6c01cf597a98c65bb48e5afc89ef25cb2",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        229,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_se_summer.png",
+      "sha256": "b90298927efdda9f210cbbbb83402af8ce3dab9ce2c2fa89018f2194860a4d71",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        65,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_sw_summer.png",
+      "sha256": "5745ec86512afc22e81030066678aeec898352bce612dd8cc3622fddd7019bb7",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        106,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_fork_se_summer.png",
+      "sha256": "727d950457f71485d4158f8a1299183b581fc2a3292408aa37430648a959d2eb",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        147,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_fork_sw_summer.png",
+      "sha256": "09d8e68676b332e424f06969c790147774f4df3e0297cbbe2a8840f62db012c6",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        188,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "proof": "scene-paths-summer.jpg",
+      "notes": {
+        "classification": "isolated-joint scene placement; separate topology proof required",
+        "order": [
+          "path_clear_corner_bottom_summer.png",
+          "path_clear_corner_top_summer.png",
+          "path_clear_cross_summer.png",
+          "path_clear_end_ne_summer.png",
+          "path_clear_end_nw_summer.png",
+          "path_clear_end_se_summer.png",
+          "path_clear_end_sw_summer.png",
+          "path_clear_fork_se_summer.png",
+          "path_clear_fork_sw_summer.png"
+        ],
+        "effectiveGameZoom": 0.7
+      }
+    },
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat5/stages/gate-field-winter.jpg",
+      "sha256": "42b7ff0f6b1c7e8cd490ca17ee02d9586d1224d94a9408a62f64ca5ad35f9103",
+      "crop": {
+        "left": 480,
+        "top": 16,
+        "width": 480,
+        "height": 300
+      }
+    },
+    {
+      "candidate": "connections/path_clear_corner_bottom_winter.png",
+      "sha256": "0dd901d92e6bf02ffcbc8a6da5b91d00c9a344e2d875ad1391cf480b997aabdb",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        65,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_corner_top_winter.png",
+      "sha256": "7c8c0bd85628a26ed8fcc225c43f2c7d0c4c8ec76515cea8359ccc4e39d83a5e",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        106,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_cross_winter.png",
+      "sha256": "f7d45737e8c3ae6a62a6c101115ec89869986cd3d4beb1c964be128b540bb56b",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        147,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_ne_winter.png",
+      "sha256": "3b430a3fc709f5ed2d1fa80dc164d24eda8614a98d3f83859f60317ceee0ed74",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        188,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_nw_winter.png",
+      "sha256": "66f6759b41a73be2cd138ad0b3f3913e5cd42028751178af0540911baaf227c7",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        229,
+        88
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_se_winter.png",
+      "sha256": "bb82e3e39e351e6574f9c32d8a7316e92131ab004921135fb4c135253cccdd5c",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        65,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_end_sw_winter.png",
+      "sha256": "8647f5cd3fc028c3f22bf56345cbeb25d82e6600ff9ed23f845c6866beede66d",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        106,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_fork_se_winter.png",
+      "sha256": "3ecd21fda87ece61004050c7422530a13be684bbee43422b4e39a69d020fd2ea",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        147,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "candidate": "connections/path_clear_fork_sw_winter.png",
+      "sha256": "c7642509a39bd09d03f633b195d3cafbb37ddd9209ff66b14714c9e7daf3ead0",
+      "canvas": [
+        128,
+        128
+      ],
+      "screenPixelsPerAssetPixel": 0.35,
+      "foot": [
+        188,
+        119
+      ],
+      "pivot": [
+        64,
+        80
+      ]
+    },
+    {
+      "proof": "scene-paths-winter.jpg",
+      "notes": {
+        "classification": "isolated-joint scene placement; separate topology proof required",
+        "order": [
+          "path_clear_corner_bottom_winter.png",
+          "path_clear_corner_top_winter.png",
+          "path_clear_cross_winter.png",
+          "path_clear_end_ne_winter.png",
+          "path_clear_end_nw_winter.png",
+          "path_clear_end_se_winter.png",
+          "path_clear_end_sw_winter.png",
+          "path_clear_fork_se_winter.png",
+          "path_clear_fork_sw_winter.png"
+        ],
+        "effectiveGameZoom": 0.7
+      }
+    },
+    {
+      "source": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/krill-lme9/docs/verification/nat5/ground/river-rock-grass-before-after.jpg",
+      "sha256": "93b728b4706984f12c76918978979aaf608a087232d3b0ca1daa980417b27b1d",
+      "crop": {
+        "left": 566,
+        "top": 0,
+        "width": 560,
+        "height": 572
+      }
+    },
+    {
+      "proof": "scene-rock.jpg",
+      "notes": "Deliberately labelled texture patch, not engine region rendering. Native texture compositing .6 over SEMANTIC_PALETTE stone #8A8071 reproduced; manual mask feather5px is proof-only. Candidate UV512px shown at 1:1 image-pixel study; capture resize factor not independently established. Use separate repetition proof for seam validation."
+    },
+    {
+      "candidate": "terrain/rock.png",
+      "sha256": "61519f9c31202853e68a7db054d50b027ebdffcca4e04285767a0f88e44fcb26",
+      "manualMask": true,
+      "notRuntime": true
+    }
+  ]
+}

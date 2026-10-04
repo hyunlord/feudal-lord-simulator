@@ -41,7 +41,7 @@ assets-inbox/
 
 `installed_by`는 **바이트 증거가 있을 때만** 채웠다: 본선(93d0f32) `public/assets/`에 같은 바이트(또는 `caBX`를 뺀 바이트)가 있으면 그 Wave의 설치 작업 ID, UX-2 브랜치 `public/assets/`에만 있으면 `UX-2`(비고에 "본선 미병합"). INSTALL-5c·F0-V·INSTALL-7처럼 판정표상 설치 예정이지만 아직 어느 브랜치에서도 같은 바이트를 찾지 못한 것은 빈칸이고, 비고에 "설치 예정"이라고 적었다. 설치가 끝나면 그 작업이 이 칸을 채운다.
 
-## 3. 현재 장부 요약 (2026-10-03 13시 23분 갱신)
+## 3. 현재 장부 요약 (2026-10-04 15시 44분 갱신)
 
 | wave | 그림 | candidate | confirmed | rework_pending | superseded | rejected | retired | 설치 확인 |
 |---|---:|---:|---:|---:|---:|---:|---:|---:|
@@ -58,6 +58,7 @@ assets-inbox/
 | `lineage` | 374 |  | 333 |  | 41 |  |  | 260 |
 | `lineage-pilot` | 117 |  | 79 |  | 30 | 8 |  | 66 |
 | `lord-components` | 43 |  | 43 |  |  |  |  | 0 |
+| `nat5-fixes` | 43 |  | 39 | 4 |  |  |  | 0 |
 | `people-pilot1` | 33 |  | 21 |  |  | 12 |  | 0 |
 | `portrait-pool` | 340 |  | 340 |  |  |  |  | 304 |
 | `region-atlas` | 48 |  | 48 |  |  |  |  | 0 |
@@ -117,7 +118,7 @@ assets-inbox/
 | `wave9` | 52 |  | 44 |  | 5 |  | 3 | 41 |
 | `world-events` | 177 |  | 177 |  |  |  |  | 0 |
 | `zone-ground-pilot` | 7 |  |  |  |  | 7 |  | 0 |
-| **합계** | **5885** | **0** | **4365** | **3** | **338** | **1022** | **157** | **2191** |
+| **합계** | **5928** | **0** | **4404** | **7** | **338** | **1022** | **157** | **2191** |
 
 ## 4. 찾는 법
 
@@ -263,6 +264,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 | `/tmp/astra-landmark-growth-20261003.zip` (10-03 03:46) | `landmarks/candidates-20261003` | 52,769 KB | `a4039ac341ddb357…` | 160 | 12 | `references/`(도시 바탕·집·워커 등 10, 그중 4장은 기존 장부 그림과 같은 바이트) 제외 | `assets/` 완성 PNG 44는 그대로, 도시 비교판 12·같은 건물 확인판 14는 `proofs/`, `proofs/`의 문서·JSON·CSV·`reviews/`는 `records/proofs/`, `PLAN.md`·`LANDMARKS.md`·`SOURCES.md`·`README.md`·`SHA256SUMS`·`manifest.csv`와 `records/`(기하 감사·프롬프트·등록 도구)는 `records/`. 건너뜀 12: 눈가림 자극 `proofs/blind/R01–R12`(도시 비교판과 같은 바이트, 대응은 `records/proofs/answer-key.csv`). 256KB 넘는 기록 없음. PNG라 LFS
 | `/tmp/astra-world-events-20261003.zip` (10-03 03:26) | `world-events/candidates-20261003` | 38,974 KB | `97ed3819df11e5eb…` | 235 | 31 | `references/`(교회 HUD 캡처 4·기존 세계 그림 모아보기·침수 층 4) 제외 | 새 PNG 25는 `assets/new/`, 연출 목록(`EVENTS_IN_WORLD.md`)·`BLIND.md`·`REVIEW.md`·`README.md`·`SHA256SUMS`, `proofs/`(기록 그림 152 — 합성 전후·확대 116·확인판 20·눈가림 원자료 `proofs/blind/` 16)·`provenance/`·`tools/`는 `records/`, `manifest.*`는 `records/assets/`(사용자 지시). 건너뜀 31: `assets/reused/`(게임 `public/` 그림 사본 — 24는 장부 행과 같은 바이트, 7은 public 설치본이라 행 없음). 256KB 넘는 기록 없음. 새 그림은 LFS
 | `/tmp/astra-landmark-growth-v2-20261003.zip` (10-03 04:22) | `landmarks/rework-20261003` | 49,878 KB | `481cdcef8a1a4e26…` | 86 | 42 | `references/`(도시 바탕 등 10) 제외 | 다리·길드홀 수정 PNG 12는 `assets/`, 도시 비교판 12·다리 원화 격자 3·기하 확인판 18(`geometry/`)·같은 건물 확인판 4(`identity/`)는 `proofs/`, 문서·`manifest.csv`·`records/`는 `records/`. 건너뜀 42: 앞 묶음과 같은 바이트(승인된 완성 PNG 32·다른 다섯 계열 확인판 10). 256KB 넘는 기록 없음. PNG라 LFS
+| `/tmp/astra-nat5-art-fixes-20261003-lite.zip` (10-03 13:50, 경량판) | `nat5-fixes/candidates-20261003` | 3,368 KB | `6399302ea87cb719…` | 95 | 0 | 없음(생성 원본은 ZIP에 없음) | `assets/{connections,orchard,terrain,wall,yards}` 31은 그대로, 확인판 JPEG 12는 `proofs/`(JSON 2는 `records/proofs/`), `README.md`·`QA.md`·`CONNECTIONS.md`·`assets.csv`·`SHA256SUMS`·`records/`(생성 기록·가공 스크립트·바이블 사본)는 `records/`. 256KB 넘는 기록 없음. PNG와 새 JPG는 LFS
 - **제외한 것**: 각 묶음의 `sources/`(모델이 낸 원시 생성본·중간 크기본)와 `references/`(Astra에 보낸 입력), `.omx/`(작업 도구 상태). 합계 약 826MB로, 받은 PNG 전체(약 200MB)의 4배라 inbox에 넣지 않았다. 새 묶음의 `raw/`(실제 생성 결과, Wave 13부터 이 이름)도 같은 이유로 넣지 않는다. 이것들은 저장소에 넣지 않는다(2026-09-26 결정). 대신 **원본 ZIP과 작업 폴더 전체를 저장소 밖 `~/feudal-lord-analysis/astra-raw/{zips,output}/`에 복사해** `/tmp`가 지워져도 남게 한다(ZIP은 SHA로, 폴더는 `diff -r`로 확인).
 - 작업 폴더(`output/astra-*`)는 ZIP과 같은 묶음 폴더로 합쳤다. 같은 경로·같은 바이트는 한 번만, 같은 경로·다른 바이트는 `workdir-variant/` 아래에 두었다.
 
@@ -348,6 +350,7 @@ git lfs pull --include="assets-inbox/wave7/**"
 - **사건 삽화 재작업**(`event-art/rework-20261003`, 2026-10-03 판정): 탁자 문서 구도 12장(011·013·018·020·025·031·032·034·037·051·052·058)을 문서 대신 대상·행동 중심으로 다시 그린 판 `confirmed`, 비고 "재작업판(바이트 다름)". 옛 12장(`rework_pending`)은 `superseded`, `replaced_by`에 새 경로. 앞 묶음 확인판 `revisions/031-before.jpg`도 대상 031을 따라 `superseded`. 059는 `rework_pending` 그대로(콘텐츠 정리 대기), 059를 다루는 앞 묶음 확인판 2장(`revisions/059-before.jpg`, 031·059 비교판)도 그대로. 새 확인판 6은 `confirmed`.
 - **직업 세계 그림**(`trade-world/candidates-20261003`, 2026-10-03 판정): LM-E6a용 128장 — 작업장 마당 48(원형 12 × 배치 A·B × 여름·겨울, 256×128), 집 앞 표지 20(Wave 37에 없는 직업 10 × A·B), 워커 짐 40(10종 × 4방향, 32×32), 거리 그림 표지 20 — 과 확인판 56 `confirmed`, 비고 "LM-E6a 직업·작업장 원형 — 땅에 서는 구조물". 익명 판독 기록 그림 12(판독 시험 10, 지붕 수정 전 1차 판 2)도 `confirmed`. 판독 57/61(93.4%). 벽에 붙이지 않고 별도 지면에 놓으며 좌우 반전 금지 — 규격·기준점·배율은 `records/assets.csv`.
 - **성벽 띠 모서리**(`strip-corners/candidates-20261003`, 2026-10-03 판정): 기존 잡석 벽면·흉벽·목책 띠 PNG를 잘라 등각 투영한 90도 모서리 16장(4방향 × 석벽·목책 × 여름·겨울, 1024×768, 피벗 (512,544), 월드 배율 0.125) `confirmed`, 비고 "원본 띠 접합 — 눈가림 78%(2배 확대 기준), 흉벽 간격·목책 말뚝 밀집 잔여, 설치 후 줌 1.0 재확인". 확인판 26·눈가림 자극 71은 `records/`의 기록 그림으로 `confirmed`. 앞 판 목책 모서리 기둥 2장(`storehouse-corner/candidates-20261003/assets/gate_corner_palisade_{summer,winter}-v1`)과 그 확인판(`02-corner-palisade.jpg`)은 `rework_pending` → `superseded`, `replaced_by`에 새 목책 4방향(계절별)과 새 목책 확인판. **이후 2026-10-03 판정으로 16장과 기록 그림 97 모두 `retired`**, 비고 "렌더 NAT-5 그리기 이음으로 대체 — 설치 안 함"(렌더가 띠를 모서리에서 직접 이어 그려 필요 없어짐). 파일은 묶음 폴더에 그대로 두었다(설치된 적이 없어 `retired/`로 옮길 대상이 아님). 옛 목책 모서리 3행의 `replaced_by`는 그대로 이 묶음을 가리킨다.
+- **NAT-5 그림 손보기**(`nat5-fixes/candidates-20261003`, 2026-10-04 판정): 바이블 v2 기준 PNG 31장. 과수 봄·겨울 8(사과 C·D, 배 E, 자두 F), 발길 길 접속 18(위·아래 모서리 2, 갈림 2, 십자 1, 끝 4 × 여름·겨울), 성문 돌 문설주 `gate_jamb_stone` `confirmed`, 비고 "NAT-5 그림 손보기 — 바이블 v2". `yard_rain_barrel`(128×64, 0.625H)·`yard_chicken_coop`(닭장 안 두 마리 크기 수정) `confirmed`, 비고 "설치 때 실제 마당 안 크기 확인". `rock.png`(512×512 반복 바위) `rework_pending`, 비고 "포석 길처럼 보임 — 원래 바위 형태 유지·명도·이음만". `gate_jamb_timber` `rework_pending`, 비고 "나무 상자처럼 보임 — 목책 장면에서 다시". 확인판 12 가운데 바위 반복·바위 장면 2는 `rework_pending`, 10은 `confirmed`(전체 모아보기와 성문 장면은 rework 대상이 함께 보인다고 비고에 적음). 새 길 조각은 `CONNECTIONS.md`의 선택표를 렌더 등록기에 넣어야 쓰인다.
 - **랜드마크 수정판**(`landmarks/rework-20261003`, 2026-10-03 판정): 다리 B1~B3·길드홀 U1~U3의 긴 축을 2:1(±26.565°)에 맞춰 다시 그린 여름·겨울 12장 `confirmed`, 비고 "장축 26.565° — 다리 끝 잔차 0~3px, 설치 때 강 칸 맞춤". 다리 span은 물 3칸 (96,48) world px. 앞 묶음의 옛 12장과 그 둘을 담은 같은 건물 확인판 4(`rework_pending`)는 `superseded`, `replaced_by`에 같은 이름의 새 경로. 새 확인판 37(같은 건물 4·도시 비교판 12·기하 18·다리 원화 격자 3)도 `confirmed`. 승인된 32장과 다른 계열 확인판 10은 바이트가 같아 앞 묶음 행 그대로. 앞 묶음 도시 비교판 12는 옛 다리·길드홀이 보이지만 판정 지시가 없어 `confirmed` 그대로 둠. 독립 검수 91/100(긴 축·3칸 강 접속 범위 PASS, 시대 눈가림은 다시 하지 않음).
 - **랜드마크 성장 후보**(`landmarks/candidates-20261003`, 2026-10-03 판정): 7계열 22단계(교회 4·시장·성문·다리·영주 저택·길드홀·여관 각 3) × 여름·겨울 완성 PNG 44(2048×2048, 피벗 (768,1536), 월드 배율 0.25). 다리 B1·B2·B3(옛 이름 B2C, 접근부 예배당) 6장과 길드홀 U1~U3 6장은 `rework_pending`, 비고 "엄격한 2:1 투영 미통과 — 다리 장축 32~33°"(길드홀은 `records/GEOMETRY_AUDIT.md`의 길방향 축 16~19° 덧붙임 — 감사가 길드홀 축을 단계별로 나누지 않고 계열 전체로 적어 세 단계 모두 해당). 나머지 32장 `confirmed`, 비고 "시대 맞힘 24/24, 같은 건물 7/7 — 설치는 엔진 성장 조건 뒤". 같은 건물 확인판 14는 대상을 따라 다리·길드홀 4 `rework_pending`, 10 `confirmed`. 도시 비교판 12(1300·1380·1450 × 여름·겨울 × 줌 1.0·0.6)는 일곱 계열이 한 장에 함께 있어 시대 판정의 근거로 `confirmed`(비고에 다리·길드홀은 rework_pending이라 적음). 게임 미설치, 런타임 통행·가림·충돌 미검증.
 - **세계 사건 연출 후보**(`world-events/candidates-20261003`, 2026-10-03 판정): 14종 사건(세례·장터·기근·화재·홍수·장례·판결·징집·시장·순례·역병·반란·왕의 사자·혼인)을 실제 도시 배경에 보이는 연출. 새 PNG 25(독립 무리·소품 12종 × 여름·겨울, 불길 4프레임 시트 256×96) `confirmed`, 비고 "줌 1.0 판독 78.6% — 알림 카드와 함께 쓰는 연출, 먼 줌은 사건 핀"(78.6%는 `BLIND.md` 최종 C 회차 11/14). 재사용 31(기존 장부·`public/` 그림)은 행을 만들지 않았다. `records/`의 기록 그림 152(합성 전후·확대 116, 확인판 20, 눈가림 자극 16)도 `confirmed`. 합성은 오프라인이며 게임 미설치 — 사건 발생·보행·프레임 재생·깊이 정렬·성능은 미검증. 새 무리는 바이블 성인 17.6 world px 기준이라 현재 엔진 16px보다 10% 크다(`records/README.md`).

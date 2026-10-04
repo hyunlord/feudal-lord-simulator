@@ -1,0 +1,15 @@
+{
+  "id": "rock_seamrepair",
+  "prompt": "Localized texture seam repair on attached512x512rock image. This image was offset by half its width and height so original wrapping edges now meet along the central vertical x256 and horizontal y256 lines. Repaint ONLY a narrow irregular band about32px each side of those central lines: connect stone surfaces, organic cracks and muted lichen naturally across the joins. Eliminate ANY straight cross seam. Everything outside those bands, especially outermost48px of the frame, must remain precisely unchanged, no recoloring, no scale change, no rotation, no new lighting or central feature. Mean brightness should stay subdued earthy grey-brown around110/255. Same soft handpainted stone texture. Full square opaque texture only. Do not introduce a visible cross/rectangular grid, repeated mirrored rocks, blurstripe, frame or text. Keep wholecanvas alignment.",
+  "references": [
+    "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/rock-offset.png"
+  ],
+  "generated_path": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0f805-5517-7ef1-90b0-d89fd125905f/exec-dd064154-611d-4a91-9a7f-fc10f4fbcbe2.png",
+  "raw_sha256": "63ebfac0d7db2537cca335469e10b1730cb7777a7d37ef27405929049ec7e160",
+  "reference_sha256": [
+    {
+      "path": "/Users/rexxa/orca/workspaces/feudal-lord-simulator/bramble/output/astra-nat5-art-fixes-20261003/references/rock-offset.png",
+      "sha256": "65b080c8ad15d42c10db4dd84e2f5678bd3279edd2e8927c30d846da11f733f6"
+    }
+  ]
+}

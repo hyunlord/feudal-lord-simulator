@@ -1,0 +1,13 @@
+{
+  "status": "offline_composites_reviewed",
+  "reviewedFiles": ["scene-gate.jpg", "scene-yard-scale.jpg", "scene-orchard-spring.jpg", "scene-orchard-winter.jpg", "scene-paths-summer.jpg", "scene-paths-winter.jpg", "scene-rock.jpg"],
+  "observations": {
+    "gate": "New stone and timber jambs sit at the two edges of the diagonal opening; central walking strip remains visibly open. Timber is explicitly a material comparison on the existing stone scene. No depth/collision runtime claim.",
+    "yard": "Corrected barrel and coop are small relative to nearby house and fence. Moved coop off fence onto open grass. Individual chickens are very small at effective .7 camera scale; detailed size judgment needs the separate actual-size asset board.",
+    "orchard": "Four distinct crowns retain relative widths/heights. Spring blossom clusters and bare winter branches read as different seasonal forms at scene scale. Spring is over actual summer ground, clearly stated.",
+    "paths": "Summer isolated junction directions read; winter is intentionally less contrasted and tiny end caps are subtle. Pieces arranged away from main orchard canopies. This is placement evidence, not connected-network seam QA.",
+    "rock": "Candidate interior is darker and less chalk-white than old installed bright stone. Actual engine .6 opacity over #8A8071 reproduced, but manual region mask and UV phase are proof-only. Texture seam acceptance requires separate repeated tile proof."
+  },
+  "corrections": ["All board dimensions read from actual image metadata", "Coop moved to empty grass", "Path second row moved clear of the main orchard", "Rock texture composited at engine .6 opacity over stone color with an explicit manual feathered mask"],
+  "limitations": ["Not a running game installation", "No collision or depth ordering verification", "Rock scene capture resize factor and UV phase not independently reconstructed", "No source screenshot objects erased"]
+}
