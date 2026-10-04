@@ -2,6 +2,9 @@
   "env": {
     "GRAFT_NO_STATUSLINE": "1"
   },
+  "enabledPlugins": {
+    "oh-my-claudecode@omc": false
+  },
   "hooks": {
     "PostToolUse": [
       {
