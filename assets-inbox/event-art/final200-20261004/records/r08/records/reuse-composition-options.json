@@ -1,0 +1,165 @@
+{
+  "review_type": "R08 reuse composition options with actual comparator inspection",
+  "reference_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r07/records/composition-round07-final.json",
+  "reference_sha256": "c7e095c8059fa8cf9f9c35246d2a4490277da9faf63637520fd6cf6fb029fdd2",
+  "review_basis": "Five reuse sources opened in immediately preceding reuse review;19 group/comparison sources actually reopened in this followup. Frozen groups preserved; no definitions subdivided.",
+  "comparator_images_actually_viewed": [
+    "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_107.jpg",
+    "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_061.jpg",
+    "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_157.jpg",
+    "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_067.jpg",
+    "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_146.jpg",
+    "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_190.jpg",
+    "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_192.jpg",
+    "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_093.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_004.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_019.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_008.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_028.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_038.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_030.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_005.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_002.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_031.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_034.jpg",
+    "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_013.jpg"
+  ],
+  "options": [
+    {
+      "event_id": "ck_evt_012",
+      "reuse_source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/07_market_stall_dispute.jpg",
+      "reuse_source_sha256": "50c034702937118f329a6078d5438311da0ef8d7aa40d822b31c7cc6f4c44195",
+      "source_image_actually_viewed": true,
+      "existing_group_name": "낮은 판매대 안쪽에서 보는 두 전신과 그릇",
+      "frozen_group_ids": [
+        "093",
+        "192"
+      ],
+      "count_before": 2,
+      "count_if_added_without_recompose": 3,
+      "decision": "assign_existing_group",
+      "composition_evidence": "Actual093 and192 put two nearly full figures behind a low horizontal stall line, feet/lower space visible, and foreground merchandise/frame.012 has the same low-horizontal-table/full-body market composition with central table physically disputed.005 has a much larger foreground tabletop and opposing upper bodies;002 pairs observers behind work surface. Keep093group broad, adding no subdivision.",
+      "confidence": "medium",
+      "least_disruptive_later_recompose_event_id": null,
+      "later_recompose_candidate_path": null,
+      "later_recompose_candidate_sha256": null,
+      "constraints_and_alternatives": "An independent reviewer may conservatively aggregate with005 group; if so its members005024057 are all original baseline and no newly generated replacement exists. Do not quietly move frozen IDs.",
+      "preservation": "No existing image modified; original reuse source and prior generated candidate versions must remain immutable.",
+      "requires_after_change_cumulative_audit": true,
+      "approved": false
+    },
+    {
+      "event_id": "ck_evt_026",
+      "reuse_source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/10_migrant_settlement.jpg",
+      "reuse_source_sha256": "84e5585cd9011497a311e08fc84bd1ef5738ec22556e8c61485ff9f92e9d8b1e",
+      "source_image_actually_viewed": true,
+      "existing_group_name": "오른쪽 닫힌 문을 향한 바깥 접근자",
+      "frozen_group_ids": [
+        "028",
+        "034",
+        "038"
+      ],
+      "count_before": 3,
+      "count_if_added_without_recompose": 4,
+      "decision": "preservation_conflict_no_compliant_recompose_target",
+      "composition_evidence": "Reopened034 is almost the same physical camera: large left petitioner facing right gatekeeper behind upright timber barrier, pastoral gap behind.026 adds family but camera/depth/blocking unchanged.028 and038 frozen membership must remain.",
+      "confidence": "high",
+      "least_disruptive_later_recompose_event_id": null,
+      "later_recompose_candidate_path": null,
+      "later_recompose_candidate_sha256": null,
+      "constraints_and_alternatives": "All three group members belong original event-art baseline.067 belongs different close-object group, so replacing067 would not free space here. Do not manufacture gate-family subgroup or move026 to066 just to pass. No clean resolution under unchanged-original + cap3 simultaneously.",
+      "preservation": "No existing image modified; original reuse source and prior generated candidate versions must remain immutable.",
+      "requires_after_change_cumulative_audit": true,
+      "approved": false
+    },
+    {
+      "event_id": "ck_evt_045",
+      "reuse_source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave33/candidates-20260929/assets/1394-guild-dispute.png",
+      "reuse_source_sha256": "1f17de00cefb3c83ef674be507a56b2e2da25a48e841735c32be5259ad2ab6a3",
+      "source_image_actually_viewed": true,
+      "existing_group_name": "가까운 청중 집단과 계단 위 가로열 권한자",
+      "frozen_group_ids": [
+        "157"
+      ],
+      "count_before": 1,
+      "count_if_added_without_recompose": 2,
+      "decision": "assign_existing_group",
+      "composition_evidence": "Actual157 has near left foreground crowd facing raised right stair landing authority row.045 reproduces this structural hierarchy with merchants/artisans; hand gestures and banner do not warrant separate group.",
+      "confidence": "high",
+      "least_disruptive_later_recompose_event_id": null,
+      "later_recompose_candidate_path": null,
+      "later_recompose_candidate_sha256": null,
+      "constraints_and_alternatives": "No recompose needed; capacity becomes2.",
+      "preservation": "No existing image modified; original reuse source and prior generated candidate versions must remain immutable.",
+      "requires_after_change_cumulative_audit": true,
+      "approved": false
+    },
+    {
+      "event_id": "ck_evt_047",
+      "reuse_source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch5_records/ch5_decision_heir_choice.png",
+      "reuse_source_sha256": "22aac61c66641d968c1ea46dacf2836fb88151d008337b1d0f49f7ca4a58722b",
+      "source_image_actually_viewed": true,
+      "existing_group_name": "눈높이의 중앙 중재자와 좌우 상대방",
+      "frozen_group_ids": [
+        "004",
+        "019",
+        "107"
+      ],
+      "count_before": 3,
+      "count_if_added_without_recompose": 4,
+      "decision": "reuse_with_later_new_candidate_recompose",
+      "composition_evidence": "Actual004019107 all place central decision authority with left/right petitioners at near similar depth.047 directly repeats centered elder with flanking heirs. Shield versus coins/keys is only object change.",
+      "confidence": "high",
+      "least_disruptive_later_recompose_event_id": "ck_evt_107",
+      "later_recompose_candidate_path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_107.jpg",
+      "later_recompose_candidate_sha256": "e0600a480d1712a749cdcc5911b5321c08ff8e37eaf58cef4ea794ecba5bbe05",
+      "constraints_and_alternatives": "107 is the only newly generated member. Preserve004019 and entire original047 source. Later version107 must change camera/blocking, not objects; old107 preserved.",
+      "preservation": "No existing image modified; original reuse source and prior generated candidate versions must remain immutable.",
+      "requires_after_change_cumulative_audit": true,
+      "approved": false
+    },
+    {
+      "event_id": "ck_evt_060",
+      "reuse_source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch5_records/ch5_decision_legacy.png",
+      "reuse_source_sha256": "1612d7eddb3c0fbf40b35e419dabbe3daff72952d1bd878cb1e12e46ac60b42c",
+      "source_image_actually_viewed": true,
+      "existing_group_name": "중앙 전경 관찰자의 등 너머 작업 현장",
+      "frozen_group_ids": [
+        "008",
+        "031",
+        "061"
+      ],
+      "count_before": 3,
+      "count_if_added_without_recompose": 4,
+      "decision": "reuse_with_later_new_candidate_recompose",
+      "composition_evidence": "Actual061 places large right foreground back/side authority looking toward petitioning row;060 places large right foreground back-facing elder watching three representatives.031 uses centered rear authority.Outdoor panorama does not justify another group.",
+      "confidence": "high",
+      "least_disruptive_later_recompose_event_id": "ck_evt_061",
+      "later_recompose_candidate_path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_061.jpg",
+      "later_recompose_candidate_sha256": "ba44f036fa8f215c146f3c8012006cf069aeb2aa178cfc5656d847768a5c8047",
+      "constraints_and_alternatives": "061 is only newly generated member. Preserve008031 and060 source; retain previous061 version if recomposed.",
+      "preservation": "No existing image modified; original reuse source and prior generated candidate versions must remain immutable.",
+      "requires_after_change_cumulative_audit": true,
+      "approved": false
+    }
+  ],
+  "summary": {
+    "direct_existing_group_additions": [
+      "012",
+      "045"
+    ],
+    "later_new_candidate_recompose_pairs": {
+      "047": "107",
+      "060": "061"
+    },
+    "unsolved_preservation_conflict": [
+      "026"
+    ]
+  },
+  "limits": [
+    "Not full174image re-audit; targeted comparators only.",
+    "012 grouping is medium confidence and needs independent final cumulative review.",
+    "No crops produced; crop framing might affect classification.",
+    "No image edits or approved mappings made."
+  ]
+}

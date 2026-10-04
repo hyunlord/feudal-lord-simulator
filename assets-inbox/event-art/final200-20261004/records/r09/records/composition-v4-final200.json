@@ -1,0 +1,1641 @@
+{
+  "review_type": "v4_source_replacement_final200_actual_composition_audit",
+  "prior_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r09/records/composition-final200.json",
+  "prior_audit_sha256": "ee561afd0e2ec0e6e4f71431fe5811d2d295998330fe8608bee4a84d55cf214d",
+  "authorization_basis": "최신 v4 정합을 위한013032 새 버전 제작/교체 승인. 기존198 포함199개 군의 정의는 유지하며013032만 실제 이미지에 따라 재배정.",
+  "new_image_reviews": [
+    {
+      "id": "013",
+      "replacement": true,
+      "actually_viewed_fullsize": true,
+      "actual_evidence": "높은 사선 시점. 하나의 긴 계산판이 아래 절반을 대각선으로 차지하고 세 당사자가 오직 먼 긴 변에 늘어서 있다. 동전·쪼갠 탈리·닫힌 장부. 담당자는 자기 주머니를 움켜쥐고 후임 후보는 손을 모으며 후원자는 유예 손짓. 열쇠 반납이나 인물 교체 실행 없음.",
+      "source_fidelity": "감춘 돈 발견 뒤 회수·유임·교체 전의 감사 판단 장면으로 읽힌다. 후임/연줄 역할의 정확한 신원은 본문으로 보완한다.",
+      "group_name": "높은 사선의 긴 단일 계산면과 한쪽 긴 변에 늘어선 세 감사 당사자",
+      "comparison_to_other_saturated_groups": "큰 열린 문서함(009), 부감 두 물체/손(085), 네 면 네 사람 탁자(050), 장재 주위 분산 작업자(035)와 다르게 단일 계산면 한 긴 변에 세 인물이 일렬로 선다. 재료 이름만 바꾼 분할이 아니라 실제 공간 배열 차이다.",
+      "indoor_document": true,
+      "people": 3,
+      "season": "가을 낙엽과 따뜻한 낮빛",
+      "history_seam_review": "현대 문자·스팟 모피·보이는 주택 굴뚝 없음. 계산판 지지대와 손/주머니 연결에 명백한 파손 없음. 역사적 회계 관습을 특정하게 입증하는 자료로 주장하지 않는다.",
+      "composition_pass": true,
+      "history_pass": true,
+      "mandatory_corrections": [],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_013.jpg",
+      "sha256": "6799335245ba3000fcd37d837a183c9e30bdba8b2f16f521b26937db182e6d91"
+    },
+    {
+      "id": "032",
+      "replacement": true,
+      "actually_viewed_fullsize": true,
+      "actual_evidence": "지붕 없는 마당, 왼쪽 단독 앉은 인물의 옆모습과 앞뒤로 나란한 낮은 두 계산 받침. 가까운 받침에는 소수 동전, 먼 받침에는 빈 열린 돈주머니. 봉인 두루마리 두 개는 허리 가죽 가방 밖에 작은 끝부분만 보인다. 읽기·쓰기·문서 펼침·돈 지급 없음.",
+      "source_fidelity": "부족한 준비비를 가늠하는 비용 중심 장면. 봉인 기록은 부수 단서로 남아 본문과 충돌하지 않는다. 그림 단독으로 특허장 대 법정 기록의 법적 차이를 판독하거나 익명 의미 시험 통과를 주장하지 않는다.",
+      "group_name": "측면 단독 서기의 실제 필기와 앞뒤 두 작업판",
+      "comparison_to_other_saturated_groups": "198 실물도 이번에 다시 열어 확인했다. 한쪽의 단독 측면 인물이 앞뒤 두 작업판을 향하는 공통 배치를 보수적으로 같은 군에 포함. 198의 필기와 실내가 032에서는 비용 고민과 야외로 달라졌지만 기존 군 명칭/정의는 변경하지 않았다. 두 물체를 수직 부감하고 손만 잘리는085군 구조는 아니다.",
+      "indoor_document": false,
+      "document_count_reason": "야외라는 이유가 아니라 시각 주제가 동전/빈 주머니이고 문서는 허리 가방의 작은 보조 소품이며 독서/필기가 없기 때문. 문서 중심이 되면 야외여도 재산정한다.",
+      "people": 1,
+      "season": "잎이 있는 온화한 낮, 봄/초가을 정확 구분 불가",
+      "history_seam_review": "작은 두루마리 봉인이 보이며 현대 V형 봉투/읽을 수 있는 현대 글자 없음. 명백한 굴뚝·스팟 모피·현대 소품 없음. 받침 지지대 연결에 필수 교정 수준 파손 없음.",
+      "composition_pass": true,
+      "history_pass": true,
+      "mandatory_corrections": [],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_032.jpg",
+      "sha256": "c64b860189da89dc0a061da00a56d870df814daee2f21a6719dda11ca3d87340"
+    }
+  ],
+  "groups": [
+    {
+      "name": "눈높이의 중앙 중재자와 좌우 상대방",
+      "ids": [
+        "004",
+        "019",
+        "047"
+      ],
+      "count": 3
+    },
+    {
+      "name": "판매대 너머의 두 사람과 사이에 제시된 종이",
+      "ids": [
+        "005",
+        "024",
+        "057"
+      ],
+      "count": 3
+    },
+    {
+      "name": "왼쪽 전경의 두 사람과 오른쪽으로 열린 깊은 야외 장면",
+      "ids": [
+        "010",
+        "042",
+        "121"
+      ],
+      "count": 3
+    },
+    {
+      "name": "전경 작업대 뒤에 나란히 몸을 숙이는 두 사람",
+      "ids": [
+        "002",
+        "049",
+        "053"
+      ],
+      "count": 3
+    },
+    {
+      "name": "큰 열린 문서함을 사선으로 내려다보는 두 사람",
+      "ids": [
+        "009",
+        "134",
+        "017"
+      ],
+      "count": 3
+    },
+    {
+      "name": "중앙 전경 관찰자의 등 너머 작업 현장",
+      "ids": [
+        "008",
+        "031",
+        "060"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까운 두 사람 사이의 손과 직접 만지는 물건",
+      "ids": [
+        "030",
+        "067"
+      ],
+      "count": 2
+    },
+    {
+      "name": "전경 운송 상자를 열어 확인하는 주변 인물",
+      "ids": [
+        "015",
+        "188",
+        "107"
+      ],
+      "count": 3
+    },
+    {
+      "name": "거의 수직 부감의 직사각형 빈 공간과 둘레 작업자",
+      "ids": [
+        "025",
+        "062",
+        "083"
+      ],
+      "count": 3
+    },
+    {
+      "name": "측면의 소 수레가 화면을 가로지르는 운송 장면",
+      "ids": [
+        "018",
+        "086",
+        "101"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 시점의 왼쪽 큰 용기와 그 너머 인물",
+      "ids": [
+        "011",
+        "020",
+        "052"
+      ],
+      "count": 3
+    },
+    {
+      "name": "오른쪽 닫힌 문을 향한 바깥 접근자",
+      "ids": [
+        "028",
+        "034",
+        "038"
+      ],
+      "count": 3
+    },
+    {
+      "name": "넓은 현장의 기록 권한자와 여러 청자",
+      "ids": [
+        "027",
+        "176"
+      ],
+      "count": 2
+    },
+    {
+      "name": "왼쪽 전경의 말과 오른쪽 두 남자의 만남",
+      "ids": [
+        "029",
+        "123",
+        "129"
+      ],
+      "count": 3
+    },
+    {
+      "name": "계단과 말 위 인물을 따라 내려가는 대각선",
+      "ids": [
+        "037",
+        "120",
+        "170"
+      ],
+      "count": 3
+    },
+    {
+      "name": "중앙 경계석과 좌우 멀리 떨어진 작은 인물군",
+      "ids": [
+        "116",
+        "141"
+      ],
+      "count": 2
+    },
+    {
+      "name": "전경의 단독 독자와 문간의 작은 증인",
+      "ids": [
+        "033",
+        "167",
+        "175"
+      ],
+      "count": 3
+    },
+    {
+      "name": "긴 시설물의 사선을 따라 떨어져 일하는 인물들",
+      "ids": [
+        "035",
+        "051",
+        "064"
+      ],
+      "count": 3
+    },
+    {
+      "name": "목재 더미와 비어 있는 작업 공간 앞의 긴 두루마리",
+      "ids": [
+        "046"
+      ],
+      "count": 1
+    },
+    {
+      "name": "탁자 네 면을 에워싼 네 사람의 숙의",
+      "ids": [
+        "050",
+        "039",
+        "059"
+      ],
+      "count": 3
+    },
+    {
+      "name": "얼굴이 잘린 양쪽 손과 중앙 돈 또는 물건의 근접",
+      "ids": [
+        "058",
+        "068",
+        "077"
+      ],
+      "count": 3
+    },
+    {
+      "name": "갈라진 길 양쪽 오두막 문간 응답자",
+      "ids": [
+        "063",
+        "187"
+      ],
+      "count": 2
+    },
+    {
+      "name": "창고 내부 자루 너머 정면으로 들어오는 소 수레",
+      "ids": [
+        "065",
+        "136"
+      ],
+      "count": 2
+    },
+    {
+      "name": "닫힌 전경 울타리 너머 인물과 멀어지는 소",
+      "ids": [
+        "066",
+        "183",
+        "197"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 지붕 작업자 너머 낮은 시장길",
+      "ids": [
+        "069",
+        "156",
+        "163"
+      ],
+      "count": 3
+    },
+    {
+      "name": "정면 수문 위 작업자와 둑 위 두 관찰자",
+      "ids": [
+        "070",
+        "125"
+      ],
+      "count": 2
+    },
+    {
+      "name": "넓은 들판 오른쪽의 두 관찰자",
+      "ids": [
+        "071",
+        "168",
+        "171"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 부감의 마당 둘레 공동 작업",
+      "ids": [
+        "072",
+        "145",
+        "194"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 밭고랑 시점과 위쪽 인물 가로열",
+      "ids": [
+        "073",
+        "143",
+        "036"
+      ],
+      "count": 3
+    },
+    {
+      "name": "갈대 묶음과 배를 사이에 둔 세 사람",
+      "ids": [
+        "074"
+      ],
+      "count": 1
+    },
+    {
+      "name": "돌계단 손 접촉 극근접과 먼 증인",
+      "ids": [
+        "075",
+        "140",
+        "044"
+      ],
+      "count": 3
+    },
+    {
+      "name": "말 등 양쪽 가방에 봉인 꾸러미를 넣는 근접",
+      "ids": [
+        "076"
+      ],
+      "count": 1
+    },
+    {
+      "name": "전경 평기와 성형판과 후경 적재 수레",
+      "ids": [
+        "079",
+        "112"
+      ],
+      "count": 2
+    },
+    {
+      "name": "전경 목재와 오른쪽 수레 사이 운송 지시",
+      "ids": [
+        "080"
+      ],
+      "count": 1
+    },
+    {
+      "name": "좌우 두 교환 행동을 병렬로 보는 중경",
+      "ids": [
+        "078",
+        "139",
+        "152"
+      ],
+      "count": 3
+    },
+    {
+      "name": "한 사람의 얼굴 옆 인장 비교 근접",
+      "ids": [
+        "081",
+        "159",
+        "172"
+      ],
+      "count": 3
+    },
+    {
+      "name": "위층에서 내려다본 좁은 골목의 단독 전달자",
+      "ids": [
+        "082"
+      ],
+      "count": 1
+    },
+    {
+      "name": "선반 틈의 정면 얼굴과 양손 장부막대 비교",
+      "ids": [
+        "084",
+        "178"
+      ],
+      "count": 2
+    },
+    {
+      "name": "높은 부감의 두 물체 비교와 손/작은 작업자",
+      "ids": [
+        "085",
+        "090",
+        "126"
+      ],
+      "count": 3
+    },
+    {
+      "name": "긴 닫힌 점포열을 따라 분산된 정리 인물",
+      "ids": [
+        "087"
+      ],
+      "count": 1
+    },
+    {
+      "name": "높은 부감의 하천 양안 작업과 배수",
+      "ids": [
+        "089"
+      ],
+      "count": 1
+    },
+    {
+      "name": "가운데 수직 천이 가리는 양쪽 인물",
+      "ids": [
+        "091",
+        "119",
+        "155"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 판매대 안쪽에서 보는 두 전신과 그릇",
+      "ids": [
+        "093",
+        "192",
+        "012"
+      ],
+      "count": 3
+    },
+    {
+      "name": "바닥 아래에서 본 열린 마루와 위쪽 세 사람",
+      "ids": [
+        "094",
+        "144",
+        "161"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 게시자와 수레 쪽 낮은 응답자",
+      "ids": [
+        "095",
+        "142",
+        "151"
+      ],
+      "count": 3
+    },
+    {
+      "name": "넓은 강/다리 조망과 아래 작은 수레 일행",
+      "ids": [
+        "098",
+        "166",
+        "180"
+      ],
+      "count": 3
+    },
+    {
+      "name": "점포창 밖 기록자의 어깨 너머 안쪽 상인",
+      "ids": [
+        "099",
+        "158",
+        "174"
+      ],
+      "count": 3
+    },
+    {
+      "name": "지붕 사이 높은 시점의 적재 골목과 먼 빈 시장",
+      "ids": [
+        "100",
+        "016"
+      ],
+      "count": 2
+    },
+    {
+      "name": "큰 창고 바닥 양편 작업과 가운데 깊은 통로",
+      "ids": [
+        "088",
+        "148",
+        "200"
+      ],
+      "count": 3
+    },
+    {
+      "name": "큰 수직 기계 옆 낮게 앉은 단독 수리자",
+      "ids": [
+        "096",
+        "003",
+        "056"
+      ],
+      "count": 3
+    },
+    {
+      "name": "배의 긴 축을 높은 시점에서 보는 운송 장면",
+      "ids": [
+        "097"
+      ],
+      "count": 1
+    },
+    {
+      "name": "비어 있는 문틀 속 정면 단독 전신과 앞에 든 주머니",
+      "ids": [
+        "092"
+      ],
+      "count": 1
+    },
+    {
+      "name": "낮은 시점의 빈 받침 둘과 먼 끝 작은 사람",
+      "ids": [
+        "102",
+        "173",
+        "177"
+      ],
+      "count": 3
+    },
+    {
+      "name": "넓은 가로 행렬의 맹세자와 반대방향으로 떠나는 인물",
+      "ids": [
+        "103",
+        "150",
+        "185"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 부감의 교차로 양끝으로 갈라지는 작은 두 인물",
+      "ids": [
+        "104",
+        "122",
+        "138"
+      ],
+      "count": 3
+    },
+    {
+      "name": "올려다본 큰 기둥풍차 아래 작은 세 인물과 표본",
+      "ids": [
+        "105",
+        "137",
+        "160"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 잠자리 발 전경과 덮개 밖 응답자",
+      "ids": [
+        "108",
+        "193",
+        "021"
+      ],
+      "count": 3
+    },
+    {
+      "name": "문설주 사이 부분가린 여러 얼굴과 중심 전달손",
+      "ids": [
+        "109",
+        "195",
+        "061"
+      ],
+      "count": 3
+    },
+    {
+      "name": "근접 중앙 매달린 저울과 뒤쪽 세 사람",
+      "ids": [
+        "113",
+        "055"
+      ],
+      "count": 2
+    },
+    {
+      "name": "왼쪽 봉인자루 더미를 사이에 둔 차단자와 접근자",
+      "ids": [
+        "114"
+      ],
+      "count": 1
+    },
+    {
+      "name": "장터 사이를 걷는 전신 일행과 한쪽 상품을 보는 인물",
+      "ids": [
+        "115",
+        "127",
+        "164"
+      ],
+      "count": 3
+    },
+    {
+      "name": "화면 대부분의 높은 벽화 밑그림과 아래 작은 세 인물",
+      "ids": [
+        "117",
+        "191"
+      ],
+      "count": 2
+    },
+    {
+      "name": "넓은 야외 배경 앞 정면 단독 인물과 손에 든 생업 물품",
+      "ids": [
+        "106",
+        "110",
+        "132"
+      ],
+      "count": 3
+    },
+    {
+      "name": "빈짚침상옆에앉은단독성직자의다락방",
+      "ids": [
+        "111"
+      ],
+      "count": 1
+    },
+    {
+      "name": "낮은강변에서올려다본큰교량아치와상하인물",
+      "ids": [
+        "118",
+        "153"
+      ],
+      "count": 2
+    },
+    {
+      "name": "앉은 돈 소유자와 가장자리에서 압박하는 큰 부분 인물",
+      "ids": [
+        "133",
+        "184",
+        "189"
+      ],
+      "count": 3
+    },
+    {
+      "name": "빈 실내 바닥과 먼 출입 경계에 몰린 일행",
+      "ids": [
+        "124",
+        "181",
+        "196"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까이 앉은 옆얼굴 소유자와 멀리 분리된 상대",
+      "ids": [
+        "128",
+        "131",
+        "135"
+      ],
+      "count": 3
+    },
+    {
+      "name": "양쪽 출입구 사이를 옆으로 걷는 전달자",
+      "ids": [
+        "130",
+        "149"
+      ],
+      "count": 2
+    },
+    {
+      "name": "빈 자리와 벽걸이 열쇠를 향해 나란히 기다리는 전신 후보",
+      "ids": [
+        "147",
+        "199",
+        "022"
+      ],
+      "count": 3
+    },
+    {
+      "name": "야외 양편 떨어진 전신 거래인과 각자의 기록",
+      "ids": [
+        "154",
+        "186",
+        "040"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까운 청중 집단과 계단 위 가로열 권한자",
+      "ids": [
+        "157",
+        "045"
+      ],
+      "count": 2
+    },
+    {
+      "name": "낮은 수평 자재더미 양쪽 높이가 다른 전신 인물",
+      "ids": [
+        "146",
+        "190",
+        "054"
+      ],
+      "count": 3
+    },
+    {
+      "name": "양쪽 매달린 물통 사이 낮은 시점의 실제 운반자",
+      "ids": [
+        "162"
+      ],
+      "count": 1
+    },
+    {
+      "name": "빈 수레 적재칸 내부 바닥 너머 상단 두 사람",
+      "ids": [
+        "165",
+        "026"
+      ],
+      "count": 2
+    },
+    {
+      "name": "열린 시장문 안쪽의 옆모습 발화자와 깊게 분산된 점포 청자",
+      "ids": [
+        "169"
+      ],
+      "count": 1
+    },
+    {
+      "name": "야외 작은 닫힌 궤 옆에 무릎꿇은 단독 분류자",
+      "ids": [
+        "179"
+      ],
+      "count": 1
+    },
+    {
+      "name": "측면 단독 서기의 실제 필기와 앞뒤 두 작업판",
+      "ids": [
+        "198",
+        "032"
+      ],
+      "count": 2
+    },
+    {
+      "name": "낮은 가로 농기구 너머 가까운 단독 무릎 검사자",
+      "ids": [
+        "182"
+      ],
+      "count": 1
+    },
+    {
+      "name": "낮은 가축 다리 극전경과 서로 다른 깊이의 길목 당사자",
+      "ids": [
+        "001",
+        "041"
+      ],
+      "count": 2
+    },
+    {
+      "name": "양쪽 큰 용기 틈의 단독 청원자와 화면 위로 잘린 응답손",
+      "ids": [
+        "006"
+      ],
+      "count": 1
+    },
+    {
+      "name": "큰 전경 사선 건축 버팀목 너머 한쪽 끝의 작은 인물쌍",
+      "ids": [
+        "007"
+      ],
+      "count": 1
+    },
+    {
+      "name": "정면 선반 칸 전체의 재고와 양끝 작은 검사자",
+      "ids": [
+        "014"
+      ],
+      "count": 1
+    },
+    {
+      "name": "먼 전체 건물의 비스듬한 외관과 한쪽 아래 작은 관찰자",
+      "ids": [
+        "023"
+      ],
+      "count": 1
+    },
+    {
+      "name": "높은 측면 난간에서 큰 기둥 옆 밀집한 올려다보는 얼굴군",
+      "ids": [
+        "043"
+      ],
+      "count": 1
+    },
+    {
+      "name": "높은 비스듬한 목초지의 열린 문과 양쪽 불균등 가축떼",
+      "ids": [
+        "048"
+      ],
+      "count": 1
+    },
+    {
+      "name": "높은 사선의 긴 단일 계산면과 한쪽 긴 변에 늘어선 세 감사 당사자",
+      "ids": [
+        "013"
+      ],
+      "count": 1
+    }
+  ],
+  "membership_validation": {
+    "total": 200,
+    "unique": 200,
+    "duplicates": [],
+    "missing_ids": [],
+    "unexpected_ids": [],
+    "changed_assignments": [
+      {
+        "id": "013",
+        "before": "가까운 두 사람 사이의 손과 직접 만지는 물건",
+        "after": "높은 사선의 긴 단일 계산면과 한쪽 긴 변에 늘어선 세 감사 당사자"
+      },
+      {
+        "id": "032",
+        "before": "중앙 경계석과 좌우 멀리 떨어진 작은 인물군",
+        "after": "측면 단독 서기의 실제 필기와 앞뒤 두 작업판"
+      }
+    ],
+    "unchanged_assignment_count": 198
+  },
+  "group_count": 87,
+  "max_group_count": 3,
+  "over_limit_groups": [],
+  "definitions_changed": false,
+  "composition_pass": true,
+  "indoor_document": {
+    "prior_count": 19,
+    "013_added": true,
+    "032_added": false,
+    "count": 20,
+    "total": 200,
+    "fraction": 0.1,
+    "max_integer_count": 20,
+    "remaining_capacity": 0,
+    "pass": true,
+    "existing_classification_preserved": true,
+    "reservation_basis": "013 지붕 아래 회계 계산판/장부/탈리 감사는 보수적으로 포함.032는 돈이 주제이고 작은 봉인 기록은 허리 소품으로만 보임."
+  },
+  "current200_asset_hashes": {
+    "001": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_001.jpg",
+      "sha256": "b8ddd0ff2ff6e0636daf04d6aaee7fcdca0cace8d401c372a2927a7d2fb97161"
+    },
+    "002": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_002.jpg",
+      "sha256": "2c7ca7891fa7c3b714c49c29078c80516af2bac6a2a4f72a3e94f96e533f45df"
+    },
+    "003": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_003.jpg",
+      "sha256": "b26be6068016263a14a79897811bc9ee98c5d415a9b1bb03dac8254c69f87b0c"
+    },
+    "004": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_004.jpg",
+      "sha256": "913f7ed4fd38c33b9449f6a6e2d5a4f9bab4214bcb4479c50148544c05ecdd03"
+    },
+    "005": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_005.jpg",
+      "sha256": "29bd1843eac0167bbf6dba648779615dd1bf2b2f4d0770176fa18335b8577d58"
+    },
+    "006": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_006.jpg",
+      "sha256": "fa0b7bd7a33d36e0df4abc34dd32133b13e1facac1c21be7dfd0ff252804ddc8"
+    },
+    "007": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_007.jpg",
+      "sha256": "f0b7dcf339fa091ed61f003f99bb34a5a460f39384d2465f130f84611fb262d9"
+    },
+    "008": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_008.jpg",
+      "sha256": "3d64e96de5637ce2538e2792033642c2c6646a446b647caa5b8ac9fc17a54093"
+    },
+    "009": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_009.jpg",
+      "sha256": "db06ded0199ce1aaf64c5e14132d17c91e348331d82d2b6a5a7424ff36769388"
+    },
+    "010": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_010.jpg",
+      "sha256": "076043102d4c339e54d66b20eeebec74f4b23c893f5101a1ed09d62d68898808"
+    },
+    "011": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_011.jpg",
+      "sha256": "f90fbc1d4f1b17d48b489494e4279a06a46f6648c85153f4624edc29f6e48e7c"
+    },
+    "012": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_012.jpg",
+      "sha256": "50c034702937118f329a6078d5438311da0ef8d7aa40d822b31c7cc6f4c44195"
+    },
+    "013": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_013.jpg",
+      "sha256": "6799335245ba3000fcd37d837a183c9e30bdba8b2f16f521b26937db182e6d91"
+    },
+    "014": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_014.jpg",
+      "sha256": "1bb237c52b498dde08bb98627f938fe4a01d7619358b99f09b3f3878f2aa05e4"
+    },
+    "015": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_015.jpg",
+      "sha256": "56425d2f289f73449fb01bff90b5320ee456253176db1a4092c7d4887bd3d64f"
+    },
+    "016": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_016.jpg",
+      "sha256": "230e181d9ee27a782c9b4216ce7b8095d7454c00dc8c2346a2e9d5e7d3fb6796"
+    },
+    "017": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_017.jpg",
+      "sha256": "8dbe33da995073c0f94cf03abe06c875d9a8ab5695c0efb66f16a331e240dadf"
+    },
+    "018": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_018.jpg",
+      "sha256": "b85e363f1be09412cf8039dccde7c46882ab1205396343f3df0f6de0333e58e7"
+    },
+    "019": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_019.jpg",
+      "sha256": "babf57d642cb08c6347537498ed5e416fc8ebed3305cd631d0a7ba75e5f1dc4f"
+    },
+    "020": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_020.jpg",
+      "sha256": "cf878ffe1f3c1ee67a28757ccb1c3be7df305a10eb4c44f9f2b49f205dd059af"
+    },
+    "021": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_021.jpg",
+      "sha256": "c4ae3cf852cb6e4c48b2687641befed68c945a4a8433fb46ed5a875c0d541859"
+    },
+    "022": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_022.jpg",
+      "sha256": "74ae551552a12241ae74520d1159daa7cfc945396113e55578755513945ed8c8"
+    },
+    "023": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_023.jpg",
+      "sha256": "24abe4359247882831ae2cd625b3e88d9cb570fcc60472914d93c09e37fa07f9"
+    },
+    "024": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_024.jpg",
+      "sha256": "d9c3157224f84547ae28c23f5814aa0bd5640edea784539e9662fe059cfb3a08"
+    },
+    "025": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_025.jpg",
+      "sha256": "78f2b86d2a2fa6d9828e0769d6c10876a193f3a3164edd501e79818a971eb02c"
+    },
+    "027": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_027.jpg",
+      "sha256": "0d625ab0a6d3d3d4ece21a714d1bfca5b0b6912039d3e998b30216bdc3f62ebb"
+    },
+    "028": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_028.jpg",
+      "sha256": "31b4bedcf1643c148fcf93756d6a1d25cf991449b98dbfe848c8c7524195bba0"
+    },
+    "029": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_029.jpg",
+      "sha256": "51cfc104a987cf51e2ade9897a62552cdcf05a5ebadea366ad5433d029fe7564"
+    },
+    "030": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_030.jpg",
+      "sha256": "3d86649e1360905daa7a853910b8a09b958b82d4b178f771a9487703a50b2747"
+    },
+    "031": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_031.jpg",
+      "sha256": "e12ab0691ab6057179de15d6916df94061670bc289164ea3672b8c7c99e9850f"
+    },
+    "032": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_032.jpg",
+      "sha256": "c64b860189da89dc0a061da00a56d870df814daee2f21a6719dda11ca3d87340"
+    },
+    "033": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_033.jpg",
+      "sha256": "4cb06bd45e59314edcb048fb18e1bb411a3b49a204cf263070e50f533df8e335"
+    },
+    "034": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_034.jpg",
+      "sha256": "d9b29031d0515597575562e71b6a69efde9de403601f708c82fc1d1eab32c16f"
+    },
+    "035": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_035.jpg",
+      "sha256": "e6c6a6bc9910ae9e6d3567e9410b2aea0ad913b1d00607f87e03b2cfa70c8f9b"
+    },
+    "036": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_036.jpg",
+      "sha256": "27ca08cb743481679dfbe4af7228dcdbb674a4d1bb2a7e25980c61d93be9ae83"
+    },
+    "037": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_037.jpg",
+      "sha256": "74595cb81c8d885fdb5c540a050f8143fc8f39c5b93281c8207f3d644c399294"
+    },
+    "038": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_038.jpg",
+      "sha256": "b081af7c6a59639b2bf42201fe3d06e06c75ab9903070ced1309eef7d8b07524"
+    },
+    "039": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_039.jpg",
+      "sha256": "f7615757a4a3071ade9b550b8d910783eb2ebad7c5486123695cb91362894c0c"
+    },
+    "040": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_040.jpg",
+      "sha256": "c2766dc5c8360caed6c7bad553d6c5645cc5411efbea8473114351992d40023b"
+    },
+    "041": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_041.jpg",
+      "sha256": "c1d7abb041d8d99aa513d8cad5741bf8a93476997164ba8949837b3b0acd4fb0"
+    },
+    "042": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_042.jpg",
+      "sha256": "09069c0403cffd3c5970eed0ff6a37434bb9985aef241795479385f42d0ca763"
+    },
+    "043": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_043.jpg",
+      "sha256": "621398153397b0f6c19aebad19a5ce81690bd5679d04469cbee3adcce0e67f62"
+    },
+    "044": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_044.jpg",
+      "sha256": "57246fe463aff1ff91a22e93a56dfdba5b9be31027e3947bf4618c53836ae2dc"
+    },
+    "045": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_045.jpg",
+      "sha256": "92ca061fa3771c091c83ad163626c3c2fc8660d19881c75ce760f49303e35aa0"
+    },
+    "046": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_046.jpg",
+      "sha256": "492493ec98acaf56ba59e332b52a606bce99433dcc91b4419ee213c766308166"
+    },
+    "047": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_047.jpg",
+      "sha256": "1de67a238ea09fdc06a0e5776cbbafef40cd918298fe90e266ba96cec6d10abb"
+    },
+    "048": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_048.jpg",
+      "sha256": "84ac8e548c948f9d961ba7813fe6ed853234c44e969dbcecc12e06bff28049fe"
+    },
+    "049": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_049.jpg",
+      "sha256": "8bd6b7d6f65419537e146861628d9fc7ca30ed8319551231b763f990001fc2ee"
+    },
+    "050": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_050.jpg",
+      "sha256": "1048fca1523898c200cd356ed466ff85105a2e55e8fd13d7d9c2cf6b2e5010ec"
+    },
+    "051": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_051.jpg",
+      "sha256": "96ff905c347fc937af7c23bf575d5c97817a87396f1222718d6c0725bb8af390"
+    },
+    "052": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_052.jpg",
+      "sha256": "139ee5e862b066efaecc5cdef32d8e6bc0c606a9aadd4037b6ac7c0635f7b191"
+    },
+    "053": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_053.jpg",
+      "sha256": "65a15f2a00db4ef16d343d23bd26c4ea61bd851dcdc2bedd1d206ab6bba62cc8"
+    },
+    "054": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_054.jpg",
+      "sha256": "5facb542c2e29e6af53b63e46a10306aa72011eb900d5abdc0a99b2fbb3026b5"
+    },
+    "055": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_055.jpg",
+      "sha256": "9f228bef7860c9ce16c89ac09318d8867b778d35cabd9cc7501a1874173251d6"
+    },
+    "056": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_056.jpg",
+      "sha256": "05e7cda4f8654df5eeec7af464b2618be2ed3f43d35089d4728d741254353ff0"
+    },
+    "057": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/candidates-20261003/assets/ck_evt_057.jpg",
+      "sha256": "6d56c1218203afb2d118e7de1e1e572a70df34f6922081e1b316c6793629b555"
+    },
+    "058": {
+      "path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/event-art/rework-20261003/assets/ck_evt_058.jpg",
+      "sha256": "396db843e5f9543b9d259bd4dee72418b6cad5f87c7f0c63b784e4fdd0ede09e"
+    },
+    "059": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_059.jpg",
+      "sha256": "42ac36a6eeec4875d1c753ae99037b3e5ad503afe9cbe381a1ace1864955c7fc"
+    },
+    "060": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_060.jpg",
+      "sha256": "894726639c5bb1341783a464980e4bc178b73e37a88693d94f1fa299c4c76d76"
+    },
+    "061": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_061.jpg",
+      "sha256": "53d9317ef00390b0a584edf58adbf9110a9af8b1c5925b6ad616fbe737620bd6"
+    },
+    "062": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_062.jpg",
+      "sha256": "1c15b61674d748f749064ec47467c6512bc23c4af154ae443fa8100f8d5ad165"
+    },
+    "063": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_063.jpg",
+      "sha256": "bd755b4bf02310a15763eeaf5a1c454e2ab17f0d308a97f608abbe98c790633c"
+    },
+    "064": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_064.jpg",
+      "sha256": "675c8aa6e63266767afe337c65b1f569af8a720179644ba87684bf2d3ebdb5da"
+    },
+    "065": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_065.jpg",
+      "sha256": "1b1d777ef03b372c08b223f653da9bd5a07970aba6bc1177e843f0aa095fccd7"
+    },
+    "066": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_066.jpg",
+      "sha256": "54c000a79a3f204284a04163d37bc42be30b810de529e8fb2fce8b5b623c837c"
+    },
+    "067": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_067.jpg",
+      "sha256": "4eee3287e091a640966fff51485c6db78533a8e70a6c70b4f8521451fe2a4c4a"
+    },
+    "068": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_068.jpg",
+      "sha256": "d235ee0c0d41f6718835098b7cdecac2406b2017d9caef4ee34d860caa9bcabd"
+    },
+    "069": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_069.jpg",
+      "sha256": "1a291af45081b0bbd0cf85e281cde9f63838cd24e796156ebb39652d756f5f2d"
+    },
+    "070": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_070.jpg",
+      "sha256": "eb9c9fd460bc68a847b75151d4062fba4ac5bb967af5542738a1eae2f649ce68"
+    },
+    "071": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_071.jpg",
+      "sha256": "f560dc5b87db2e44a150da74e553bf5861ae25abd03525ea25f1c12c08ebca80"
+    },
+    "072": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_072.jpg",
+      "sha256": "76c80cc7611574942f9b707d70744962b41a9c6c6011b3df41b488a699c7bb06"
+    },
+    "073": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_073.jpg",
+      "sha256": "0e93a32f38602624341429f8dafacb5caa68c6a5f022b3d584f5a2b0588af29b"
+    },
+    "074": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_074.jpg",
+      "sha256": "2a15e6c9c8e23850910e5a98bc61cf49ece6c253ed9a30bd5c4e49dc05e654af"
+    },
+    "075": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_075.jpg",
+      "sha256": "cbe9751a9b821abc8abd393d6d77dfec0e6a8ffaae5f5ef0eb6942d8ca90e144"
+    },
+    "076": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_076.jpg",
+      "sha256": "181d2bd261b1d25f7cc8dcf7dcd951e272bc8fce8c00d0a5dba466af971f26e1"
+    },
+    "077": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_077.jpg",
+      "sha256": "a686366cd89f43af27050e3747fd3c5a0056add477f8457854a6fc07366bc83d"
+    },
+    "078": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_078.jpg",
+      "sha256": "05cb61eaa33b9dd1ae475599c2d5e60eff4c56b4a042bf9a03f26a743ef39b53"
+    },
+    "079": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_079.jpg",
+      "sha256": "828a431d7b0eddac1e2eb4182320db5be7d0d4f88e56f955edd3d34560c38cbd"
+    },
+    "080": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r01/assets/ck_evt_080.jpg",
+      "sha256": "dedab3b572016a4cba80b5127929b1e17b9f6eaac4cf0cce70bc0d6dedbf28e6"
+    },
+    "081": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_081.jpg",
+      "sha256": "2b62d229865710747db3eb075d656679d9530dc7ca008464f3c7effa99554896"
+    },
+    "082": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_082.jpg",
+      "sha256": "0009485f2ad36d37be88dab4e26d6f1cb95e056f08fbe6b511093726ca1d83f1"
+    },
+    "083": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_083.jpg",
+      "sha256": "6cdbf6df027b770d0480f70599bb28972403ed95d5a2c6c6c5fa438674c4b0a4"
+    },
+    "084": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_084.jpg",
+      "sha256": "967189bba8914eefada18a92755401a6452e7c772e021de2771bf85f44432e8c"
+    },
+    "085": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_085.jpg",
+      "sha256": "692df295c4d50adeac84e996d4d9300cc65d9810cdd4a098878d9710d738b95c"
+    },
+    "086": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_086.jpg",
+      "sha256": "6929f8a0bf03a5b72bf7c54d8daf41ec7627f3e6f0106ce1ac5b7fe7fe7e0353"
+    },
+    "087": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_087.jpg",
+      "sha256": "52380c3b589a128c6b20bb42796f076ae2f6837e315ba6b3e05f4add6a7e8a2d"
+    },
+    "088": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_088.jpg",
+      "sha256": "92dfe071eb19fe086276b77f8baf3c09d902b76e02ddf51bda5e6f2ee62ecf20"
+    },
+    "089": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_089.jpg",
+      "sha256": "1c72f931086d4227733fd401b922ef58fd4e496916d2d685c0bbbbfba5f6f4e1"
+    },
+    "090": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_090.jpg",
+      "sha256": "fa6f5296aca4bf49b79b4bbc633537d9dbbb6da060be64032fdc583f5210eedc"
+    },
+    "091": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_091.jpg",
+      "sha256": "2154aadf51c7cc0c4ef381340ec9dcdb2f7827644973a8180c5a7f29f0b7d849"
+    },
+    "092": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_092.jpg",
+      "sha256": "9ce0b5ede6c473d9bfb52dcd26f12fc685d0c91ed97416ca664329db174dce8a"
+    },
+    "093": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_093.jpg",
+      "sha256": "b781414c0b6b4a487e69da91f424fa71addfca288897488a14afa5fd1a5774db"
+    },
+    "094": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_094.jpg",
+      "sha256": "a32ebe35841a60750c5028eef83accbd964d48600eb52098075eeeb0eafc1bd1"
+    },
+    "095": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_095.jpg",
+      "sha256": "a5736b98cace96338f3ce06d4da0548bf9dbd6d60df923125a407d7ae56cbf57"
+    },
+    "096": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_096.jpg",
+      "sha256": "7f7d2843e151b8ae468a31842e7d3feecdf860f1d71e0c7bb14483e10a814963"
+    },
+    "097": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_097.jpg",
+      "sha256": "f16bfdd64697452946efd4ad504c1ef8dbcc7a88f84efb4c94be4c2150379bc5"
+    },
+    "098": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_098.jpg",
+      "sha256": "c7bf228b23cc1fcae74ed0bc3f887f9d0966a99544aa74c26e45848fa2a647b8"
+    },
+    "099": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_099.jpg",
+      "sha256": "338d79683530b720d0f3ae073f8995693484ee3d02f15b3ed14ff711780b94fb"
+    },
+    "100": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r02/assets/ck_evt_100.jpg",
+      "sha256": "5fc324ec087fe59f0803a521ce322f23a2ef5ff100f7835eeff2e6902d8c9ee5"
+    },
+    "101": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_101.jpg",
+      "sha256": "1e375e93b246faec016f5aa2e434c2a5d2c3d8349c13bdef85e51d5802620738"
+    },
+    "102": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_102.jpg",
+      "sha256": "6d0745206224771b9e2c29fa0842ed54d5c14456649012a897423f46edf8023f"
+    },
+    "103": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_103.jpg",
+      "sha256": "5251d8f514849d4e195d10deec28c74a8d8259f1055eb3d8d3439a906cffd8c1"
+    },
+    "104": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_104.jpg",
+      "sha256": "8099037d88b1391508a0bbebd33eeb9f564d5ea6c00ad77be9686406ff92ce0e"
+    },
+    "105": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_105.jpg",
+      "sha256": "5c5e3c64dcf239ab2ecf1c99fd7c55116dc16e5958dab82b029aca2bc67bc165"
+    },
+    "106": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_106.jpg",
+      "sha256": "9c63fa876dcf9763db1cf1fade4aacb2ae173e37fc6c05a730bcfc878d576b1b"
+    },
+    "107": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r08/assets/ck_evt_107.jpg",
+      "sha256": "eb37c4b38e897f911d62ea89bccc0788270f0fab290eaa2d02c906e5f4cf057b"
+    },
+    "108": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_108.jpg",
+      "sha256": "87f63d07f8657385cf9e65ebf9f6ed4d8964d547fa1d898f51ed89a19b486128"
+    },
+    "109": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_109.jpg",
+      "sha256": "a0f959be7f80262e9512a10702ac7db71a9ce4f86daaefb0efe67ce0cd39ca70"
+    },
+    "110": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_110.jpg",
+      "sha256": "c59de539a497cf43e29acaef4a5a549b61df74a59b4befd41a9542d4e83e33da"
+    },
+    "111": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_111.jpg",
+      "sha256": "28bdfaa272051a1f20f87817adb4c91b6ece6b8e7b4a7509683df414f4c84ede"
+    },
+    "112": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_112.jpg",
+      "sha256": "eefb1d303bca96d432919d339f7a4cdd64971939de6745a2dfea7f5da8ccccdc"
+    },
+    "113": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_113.jpg",
+      "sha256": "48fb1f6d4ddb5db0a8590a4e359594e397739d7195fe2caa0a6b69603acb7941"
+    },
+    "114": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_114.jpg",
+      "sha256": "ef73e292d2777c8566cb3b5f22e63c06f78e577f6cc172b1738945188bb12359"
+    },
+    "115": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_115.jpg",
+      "sha256": "5faa7bdb3f27daa615c7624b6f118b65b1735e3a06c27aa46e93aa49fba4d75f"
+    },
+    "116": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_116.jpg",
+      "sha256": "8771b519c6714e56414875ec1118a61d3d5229d2c8efd9674e41df618645e798"
+    },
+    "117": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_117.jpg",
+      "sha256": "7a30ca879fbab77b086bcbf675f9ffe9f8c7b071822d1e1e1703978f8adbe520"
+    },
+    "118": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_118.jpg",
+      "sha256": "b5468626909f5a9d21211111616cc2e425ba51722e877315fc9fd9783f0ec429"
+    },
+    "119": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_119.jpg",
+      "sha256": "7edc8d3ac0cd0ed4fb35619cbead5aac0319dbaaebded863439cbb18ef18f21f"
+    },
+    "120": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r03/assets/ck_evt_120.jpg",
+      "sha256": "c6274e9e913031bbd03fbbec32056732854fd4eb4478f3ca0a9967b09121ec82"
+    },
+    "121": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_121.jpg",
+      "sha256": "2d12b0a8222d41f4487bb667dcaa0000eb1686658d90667e1127ff2cd528ce0d"
+    },
+    "122": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_122.jpg",
+      "sha256": "14d0193c76e493aa1121a57b39e1cf70205a466b1f8674ac54fa3088129899ef"
+    },
+    "123": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_123.jpg",
+      "sha256": "3f16a2b2c3ce65255b4fe962164b4a33e41f853f2a152e5fc6491869df29e346"
+    },
+    "124": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_124.jpg",
+      "sha256": "b5205df6985fe25d0277f9307c346ef0648700865998e1707ca3fc0800c9a82d"
+    },
+    "125": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_125.jpg",
+      "sha256": "39d57cdcebca7728f3b3fbfe6806d37a3659f22ed985ee120348263407d4eb9d"
+    },
+    "126": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_126.jpg",
+      "sha256": "cfb8926f40d4bf3f3ca2a8dfbb03d29580afacbade9ba66808576ce44d230398"
+    },
+    "127": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_127.jpg",
+      "sha256": "e426c633ac3e251b568107a9bf67fbe7b91c5a26dd2a4d9a2443b9f3be1077c2"
+    },
+    "128": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_128.jpg",
+      "sha256": "465704faf9af45ac18a407c0e35c2d1fd0e5e2ed06976f0c125fbbe0283de59e"
+    },
+    "129": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_129.jpg",
+      "sha256": "db6d0760527ba134cd41aa89ac25a13307a18a2ad5d4d4cba7c5ac3aaaac37ae"
+    },
+    "130": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_130.jpg",
+      "sha256": "0f8ff8bf8e67c2037873726d2cb89322be16f0f6670ce89452b2958a536a77b4"
+    },
+    "131": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_131.jpg",
+      "sha256": "8b902b8aea64bc7ebfaa646795bb2d16a5534ea72c338272add6d0631af6a4e8"
+    },
+    "132": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_132.jpg",
+      "sha256": "a834d843020618e94e863312282f73f22c30aae77f1055faf5d5129ad31d771f"
+    },
+    "133": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_133.jpg",
+      "sha256": "c1c3e1506861b52315e423cd11c207a350ce53b8d0188e8ed987bcfcd43ce7ba"
+    },
+    "134": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_134.jpg",
+      "sha256": "00bf497d3987b4b8bd08816e10871a7dd6a541e61ae1b78c072c921cb5ac3bc5"
+    },
+    "135": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_135.jpg",
+      "sha256": "f47716ec7bccb9001ebe54d8cb5b3d33ae253589f737cd48601f7a24d4269546"
+    },
+    "136": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_136.jpg",
+      "sha256": "4b651ae8a7bfe235a5859444d2f3907dea69a01ac36f5e5d432f3ad15787d1cd"
+    },
+    "137": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_137.jpg",
+      "sha256": "7b8831a4006be95c6741fb278ed8cc3d3b020e995579c0643f159d64af85d81a"
+    },
+    "138": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_138.jpg",
+      "sha256": "46bcb282a0a2eb5eb6c2362138030498d3be0ddf3a74953f75ec88e9d696b04e"
+    },
+    "139": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_139.jpg",
+      "sha256": "95ed1ad49172f64fab759bc60f711010745f67abf475abfa67e379c6b6f180af"
+    },
+    "140": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r04/assets/ck_evt_140.jpg",
+      "sha256": "c4735ae2c87b891ee9a03c1a5d48b70d2cf6bd78135c313b6c77602762428632"
+    },
+    "141": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_141.jpg",
+      "sha256": "a0de1fd59581c1639cf4928ae793f3be699a122de6e12a1e6899b08d7fbbfea7"
+    },
+    "142": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_142.jpg",
+      "sha256": "2220d4a04a5683be60220bf4343868803428cb70a389a33e66bb1543b265568f"
+    },
+    "143": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_143.jpg",
+      "sha256": "a59482fc13cc4af158842dce252e4a956113e310357e90881a0bb0e10fdb9549"
+    },
+    "144": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_144.jpg",
+      "sha256": "ee5904a55fab9e0837b40d25eb9513befc219e9ff6a22e9115c7874076537143"
+    },
+    "145": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_145.jpg",
+      "sha256": "dce94a392a356dbf1678fb19790190a62fc02951d6d495b5a25e01832309654b"
+    },
+    "146": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_146.jpg",
+      "sha256": "75af73c5b4a98f04845ad82c76335232d7de750790247d83e738a7e7102a4bcb"
+    },
+    "147": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_147.jpg",
+      "sha256": "d2782c322a26cd7bb00fffb84f5d7c588d2e43e1fa67bf31e4579941b6adb99d"
+    },
+    "148": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_148.jpg",
+      "sha256": "3a01abf0aec17963926ed222aac9c40c35c375c54b4e37bfc1844a2bffa28301"
+    },
+    "149": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_149.jpg",
+      "sha256": "e8acafd44abae92b07eba4f3b324ac3ef9b6fb45f3101b97b2730bc4f976d526"
+    },
+    "150": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_150.jpg",
+      "sha256": "99e0ca0099b5b69635173d999f3cbc878bbef4e7fcb9aa586972f3e88d1d3777"
+    },
+    "151": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_151.jpg",
+      "sha256": "a30b5205cd24c187652aaa5f041c9e82d648b5bf6485a52a1f228b3e969f65e6"
+    },
+    "152": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_152.jpg",
+      "sha256": "014cca8d371124fc84ad9af82fb50ba3420ce4ff5c30e67f4d6171eef4f6deb2"
+    },
+    "153": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_153.jpg",
+      "sha256": "92cdb67271a743804eb51a7740e1cf91c2ed47445826f3c3f9df86705098054d"
+    },
+    "154": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_154.jpg",
+      "sha256": "28dc1ff3c470f56e079e035c07f567dcd866dc701c24e6a89f65554b9199c392"
+    },
+    "155": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_155.jpg",
+      "sha256": "00c1fb1a899dbc5a71ef9b28e5af55c04a2f5c7623cb55c9f38efdce66943b64"
+    },
+    "156": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_156.jpg",
+      "sha256": "2e048d3dcf7a17dd81d20128cba7272650e61793a24096fa98ed75dd0af41ea6"
+    },
+    "157": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_157.jpg",
+      "sha256": "a773ea7518e7d29deb54fc2780e5e126709ba9d7c2ccf7322ba7d86e5a284251"
+    },
+    "158": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_158.jpg",
+      "sha256": "71a0868512c67c124cfa901d58023351e7222f3dd5d37711ffc504235302dd42"
+    },
+    "159": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_159.jpg",
+      "sha256": "0077c180f564ef79c943dab03e5dfd73a74fd687c4b0e9822ad123817749c5a1"
+    },
+    "160": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/assets/ck_evt_160.jpg",
+      "sha256": "4e673d929bbf6ea1c0d92ba2f24102fd7dc747d117a500290b710534266132aa"
+    },
+    "161": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_161.jpg",
+      "sha256": "3964fa39cf4de55e0d0df67554f5b30b6907064f406653036df1215d2653a908"
+    },
+    "162": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_162.jpg",
+      "sha256": "a52895cc7367161be6e1753daafba3ea25c0768172bedea60524b2d52560fc3c"
+    },
+    "163": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_163.jpg",
+      "sha256": "3879fb4c6408ca1f10c201bf060a5a55b8c125967fd1e0d276e590c46c9ec3b7"
+    },
+    "164": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_164.jpg",
+      "sha256": "9bf54515f9fe15745cf38754215d47c261d2db045b57a0bb4af7a95615502419"
+    },
+    "165": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_165.jpg",
+      "sha256": "d92fb56a25e06d7e0be9fe6a6b42a0e802d8f0faba3e3562fc9bf8438b226b96"
+    },
+    "166": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_166.jpg",
+      "sha256": "6e0d51d539b1a4270d354f3679aa79d73f37d73ea92176a76a82b0876586cde0"
+    },
+    "167": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_167.jpg",
+      "sha256": "f7e863a2486e36d8c31c98d2139d576b47b454f8c710a989b594214e8f598b16"
+    },
+    "168": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_168.jpg",
+      "sha256": "4260e3a8ec473b791f022b718aaa6de1dce35720162d5f9f6d88da95dc99820e"
+    },
+    "169": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_169.jpg",
+      "sha256": "ec709222093751f291d973ce1bcbfa0e611d6ec877661b103db2a88030b59999"
+    },
+    "170": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_170.jpg",
+      "sha256": "d4ee1490bf93db1d2ea0fdc6ff81bd63eadaaf12b03900e10204a296c39e2d7d"
+    },
+    "171": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_171.jpg",
+      "sha256": "15504ccbc702a9db7ba10d43b045ba880ced495bb0eaafad2d968612ac8e6469"
+    },
+    "172": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_172.jpg",
+      "sha256": "c430994c8339a700a1bfc5823bb5e56ca8bcd8d0f9791f1f53983854c61c1e2d"
+    },
+    "173": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_173.jpg",
+      "sha256": "b5f77b0ebbfba79639c52541cf8c6f8cf0602a80526da40338c3992a27c44e84"
+    },
+    "174": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_174.jpg",
+      "sha256": "5e6f4020aa3ed711dd7f7d077225aef32fcf8bc9879f0aa1d5bb4596f5932e18"
+    },
+    "175": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_175.jpg",
+      "sha256": "c8473fccc085d4f970f7c729d05bf0178a44d1b90573b9a6a657101f11f49504"
+    },
+    "176": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_176.jpg",
+      "sha256": "8e4212a700f8f87cd792b23243625de6b0c8ccb2e0a731e824ef961760e21c04"
+    },
+    "177": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_177.jpg",
+      "sha256": "006b63199be39ae052b06987ec3be77ea0044d31e424e901f0f288e3caeab7c6"
+    },
+    "178": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_178.jpg",
+      "sha256": "9b2638167bbfc6e2df542a14fdf406f418d91401256ab5ad952475df6938c1e9"
+    },
+    "179": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_179.jpg",
+      "sha256": "e7cf485e37a91b2b9edaf289b52630fde846a1cc1d6e603fcf6f0f87d44cfaee"
+    },
+    "180": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r06/assets/ck_evt_180.jpg",
+      "sha256": "9903f2b0881f94b67f6522028bee717f0bbb1836a82640f25400bc856c8b2a49"
+    },
+    "181": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_181.jpg",
+      "sha256": "9e35dd9b4b6c62788b3cc5597cb837c9662a90cf824ca31d5c531c94c554f67f"
+    },
+    "182": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_182.jpg",
+      "sha256": "00744f20690b4e4d4fb0f166b50db043587068c90b19fd8bb0f3254018d2104b"
+    },
+    "183": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_183.jpg",
+      "sha256": "717d8f82aaf813a5d060cb81fb7e29f18c877a3a46968a9bba9ca413cb2ce13a"
+    },
+    "184": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_184.jpg",
+      "sha256": "a4cb1766b1db37ede89ef03bf043c28976dda433906f9ce62bbd6dbf4e322b0a"
+    },
+    "185": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_185.jpg",
+      "sha256": "ecc2e61634fcc8f01515759854f0b81e4aa78bef34233cd377729f728589ff43"
+    },
+    "186": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_186.jpg",
+      "sha256": "1aabf8f5853e7bd710a73c2c34230e70104191b0e43f4eb073cf15d36ccd2305"
+    },
+    "187": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_187.jpg",
+      "sha256": "5c2edfab877600757ee0d2d3a193a9acc7ff0ac32138b54f8e649e424d53a4e6"
+    },
+    "188": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_188.jpg",
+      "sha256": "65b96da525f5b9a68d41ef5b8db1c267981d7a43541f030d6639976afe0ea7f1"
+    },
+    "189": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_189.jpg",
+      "sha256": "6b7d3a2dfe06d3a3ed35093ab7a9dc637a94645fcaa5c92bf87563a0611208d4"
+    },
+    "190": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_190.jpg",
+      "sha256": "f269b6d2c04c50f3afd46dc8f29b3773e9e0d2de76134719cff7ddddb6c3b8a4"
+    },
+    "191": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_191.jpg",
+      "sha256": "293e78d057881b49f09c4f2d04e51f5ecffe69f4e21680fb6096a753d9507105"
+    },
+    "192": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_192.jpg",
+      "sha256": "e10043726e89b9f5439397c3fe6c4e58b4f66d516bf1a8be91c1be1d8f9ed4ea"
+    },
+    "193": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_193.jpg",
+      "sha256": "9377329980ec70bde76f17aff52cbe1f903476ae9846cdb69bcbfd173b481027"
+    },
+    "194": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_194.jpg",
+      "sha256": "3474e86b0ae62dfc2bab1d394a17e12a35c319a7ef40b866b8e20c2a0e93e79f"
+    },
+    "195": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_195.jpg",
+      "sha256": "bcf526587de4d5600d28ec0b96d17f4ef5f4fc261df731c7348e032382ce521e"
+    },
+    "196": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_196.jpg",
+      "sha256": "d21208169be79a2b5d4a0c68a6d17a857f885a69930da194b4ccbfbbd0843fd2"
+    },
+    "197": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_197.jpg",
+      "sha256": "b1717ae4f2d4975633223772fe2192fff0f3d8fb2c7a78af17aa360c21d0ebea"
+    },
+    "198": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_198.jpg",
+      "sha256": "eea650da8ee7b141693ed77e2385537c464f33ec49acf98b524f159330acd4d6"
+    },
+    "199": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_199.jpg",
+      "sha256": "1b6d8dc3342dd0680db0c07e95b343857aeaa859977862568f9f2daba4d4ece8"
+    },
+    "200": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r07/assets/ck_evt_200.jpg",
+      "sha256": "709ae75f2d2f3f8d53cb9b1fedc22f810a1a4bdcbb724263cf13cbf7cbc79fd2"
+    },
+    "026": {
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_026.jpg",
+      "sha256": "1b8277c21b47e1f2157507b49772bf8142e3b90a34343d758e264eee4889f33c"
+    }
+  },
+  "hash_validation": {
+    "all200_recomputed_from_actual_files": true,
+    "changed_from_prior": [
+      "013",
+      "032"
+    ],
+    "unchanged_count": 198,
+    "expected_only013032_changed": true
+  },
+  "mandatory_composition_redraw_ids": [],
+  "mandatory_history_cleanup_ids": [],
+  "mandatory_source_state_fix_ids": [],
+  "required_revision_union": [],
+  "visual_audit_pass": true,
+  "semantic_test_status": "부모가 후속 독립 익명 시험에서013을 책임 사임,032를 빈 세금 판매대로 읽었다고 보고. 감사자는 답안/키를 직접 열지 않음. 기존 실물 구도 판정은 보존하며 두 이미지 의미 교정 재제작 대기.",
+  "overall_delivery_complete": false,
+  "remaining_limits": [
+    "기존198 군 명칭의 필기는 원래 대표 장면 설명이다.032의 행동을 필기로 잘못 기록하지 않았으며 실제 공통 카메라와 앞뒤 두 판 배치로 보수적 합산했다.",
+    "새013032 및 비교198만 이번에 재열람. 나머지197장은 이전 누적 실제 검수 기록을 유지하며 파일SHA만 재계산했다.",
+    "문서 비율은 상한20/200에 도달. 추가 문서 중심 교체가 생기면 다시 계산해야 한다.",
+    "v4-visual-alignment.json에 남긴034037의 간접 표현,053 문장 장식 등 비차단 한계를 유지한다.",
+    "제품 설치·런타임 적용·최종 패키지 검증 완료를 의미하지 않는다."
+  ],
+  "semantic_rework_pending_ids": [
+    "013",
+    "032"
+  ],
+  "next_plan_only_document_budget": {
+    "013_without_any_documents": "실물에서 장부/탈리/문서가 모두 사라지고 숨긴 돈과 당사자 행동이 중심일 때만0 가능. 계획만으로현재20을19로감산하지않음.",
+    "032_litigation_documents": "실제 비교 문서가 중심이면야외라도+1.013의실제감산과함께성립하면총20.",
+    "needs_actual_review": true
+  }
+}

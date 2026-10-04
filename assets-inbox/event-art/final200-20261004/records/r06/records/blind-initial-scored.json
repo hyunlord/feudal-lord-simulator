@@ -1,0 +1,231 @@
+[
+  {
+    "image": "P01",
+    "title": "빈손으로 돌아온 수확 일꾼",
+    "confidence": 0.58,
+    "reason": "넓은 익은 밀밭에 소수 일꾼이 주저앉아 있고 한 사람이 낫을 건넨다. 수확 노동의 부족이나 중단은 보이지만 빈손 귀환 자체는 직접 드러나지 않는다.",
+    "alternatives": [
+      "또다시 들려온 병 소식",
+      "값을 못 받는 흉작 뒤"
+    ],
+    "id": "ck_evt_168",
+    "expected": "빈손으로 돌아온 수확 일꾼",
+    "correct": true
+  },
+  {
+    "image": "P02",
+    "title": "바람철 앞의 얇은 지붕",
+    "confidence": 0.98,
+    "reason": "가을 나무 아래 낡은 초가지붕에 올라 목재를 대어 수리하고 사다리 아래 사람이 돕는다.",
+    "alternatives": [],
+    "id": "ck_evt_163",
+    "expected": "바람철 앞의 얇은 지붕",
+    "correct": true
+  },
+  {
+    "image": "P03",
+    "title": "마른 여름에 두 물통",
+    "confidence": 0.99,
+    "reason": "마른 흙길에서 여인이 멜대 양쪽 물통 두 개를 메고 우물로 향한다.",
+    "alternatives": [],
+    "id": "ck_evt_162",
+    "expected": "마른 여름에 두 물통",
+    "correct": true
+  },
+  {
+    "image": "P04",
+    "title": "기한은 남았는데 일꾼이 없다",
+    "confidence": 0.92,
+    "reason": "여러 목공 작업대와 도구가 비어 있고 유일한 사람이 손가락을 세며 서 있다.",
+    "alternatives": [
+      "두 사업에 남은 장려금"
+    ],
+    "id": "ck_evt_177",
+    "expected": "기한은 남았는데 일꾼이 없다",
+    "correct": true
+  },
+  {
+    "image": "P05",
+    "title": "눈길에 앞서 올린 주문",
+    "confidence": 0.57,
+    "reason": "벌거벗은 나무가 있는 목재 작업장에서 빈 운반함을 가리키는 사람과 장부를 든 사람이 주문을 의논하는 듯하다. 눈길과 선행 주문의 시간 관계는 그림만으로 확정하기 어렵다.",
+    "alternatives": [
+      "값을 못 받는 흉작 뒤",
+      "추위가 먼저 온다는 말"
+    ],
+    "id": "ck_evt_165",
+    "expected": "눈길에 앞서 올린 주문",
+    "correct": true
+  },
+  {
+    "image": "P06",
+    "title": "봄비 전에 남겨 둘 마른 자리",
+    "confidence": 0.94,
+    "reason": "봄꽃과 먹구름 사이에 곡식 자루를 올린 고상 창고의 바닥과 받침돌을 사람이 점검한다.",
+    "alternatives": [
+      "일손 적은 해의 두 창고"
+    ],
+    "id": "ck_evt_161",
+    "expected": "봄비 전에 남겨 둘 마른 자리",
+    "correct": true
+  },
+  {
+    "image": "P07",
+    "title": "또다시 들려온 병 소식",
+    "confidence": 0.53,
+    "reason": "어두운 실내의 근심 어린 사람 앞에 봉인된 전갈 여러 개가 있고 문밖에 방문자가 있다. 소식의 반복은 서류로 암시되지만 병이라는 내용은 보이지 않는다.",
+    "alternatives": [
+      "눈길에 앞서 올린 주문",
+      "결산하지 못한 사람의 서랍"
+    ],
+    "id": "ck_evt_178",
+    "expected": "또다시 들려온 병 소식",
+    "correct": true
+  },
+  {
+    "image": "P08",
+    "title": "추위가 먼저 온다는 말",
+    "confidence": 0.87,
+    "reason": "서리나 옅은 눈이 내린 미완성 공사터에 작업자 없이 두 사람이 멈춰 서 있다.",
+    "alternatives": [
+      "기한은 남았는데 일꾼이 없다",
+      "마른 겨울의 석재 주문"
+    ],
+    "id": "ck_evt_171",
+    "expected": "추위가 먼저 온다는 말",
+    "correct": true
+  },
+  {
+    "image": "P09",
+    "title": "비가 그친 뒤에도 남은 먼 길",
+    "confidence": 0.99,
+    "reason": "햇빛이 돌아온 마을에서 물통을 든 사람들이 넓은 물웅덩이와 진창길을 걸어간다.",
+    "alternatives": [],
+    "id": "ck_evt_180",
+    "expected": "비가 그친 뒤에도 남은 먼 길",
+    "correct": true
+  },
+  {
+    "image": "P10",
+    "title": "마른 겨울의 석재 주문",
+    "confidence": 0.97,
+    "reason": "눈이나 서리가 묻은 큰 석재와 석조 공사장에서 석공이 돌의 치수를 잰다.",
+    "alternatives": [
+      "추위가 먼저 온다는 말"
+    ],
+    "id": "ck_evt_173",
+    "expected": "마른 겨울의 석재 주문",
+    "correct": true
+  },
+  {
+    "image": "P11",
+    "title": "서리 전에 거둘 것과 빻을 것",
+    "confidence": 0.99,
+    "reason": "가을길에 낫과 밀다발을 든 수확자, 밀가루 묻은 앞치마와 자루를 든 제분자가 나란히 있고 뒤에 풍차가 보인다.",
+    "alternatives": [],
+    "id": "ck_evt_164",
+    "expected": "서리 전에 거둘 것과 빻을 것",
+    "correct": true
+  },
+  {
+    "image": "P12",
+    "title": "빙판 소식과 방문 감사",
+    "confidence": 0.93,
+    "reason": "눈 덮인 길에서 도착한 방문자가 장부를 안은 관리에게 이야기하며 밖에는 말이 서 있다.",
+    "alternatives": [
+      "눈길에 앞서 올린 주문",
+      "또다시 들려온 병 소식"
+    ],
+    "id": "ck_evt_174",
+    "expected": "빙판 소식과 방문 감사",
+    "correct": true
+  },
+  {
+    "image": "P13",
+    "title": "값을 못 받는 흉작 뒤",
+    "confidence": 0.73,
+    "reason": "밀다발 옆 농민이 빈 주머니를 펼쳐 보고 다른 농민도 장부를 쓰는 관리에게 주머니를 내민다. 수확 뒤 돈 부족은 직접 보이나 흉작 자체는 불명확하다.",
+    "alternatives": [
+      "빈손으로 돌아온 수확 일꾼"
+    ],
+    "id": "ck_evt_176",
+    "expected": "값을 못 받는 흉작 뒤",
+    "correct": true
+  },
+  {
+    "image": "P14",
+    "title": "결산하지 못한 사람의 서랍",
+    "confidence": 0.94,
+    "reason": "서류 묶음을 들여다보는 사람 뒤로 빈 의자와 열린 책상 서랍이 보인다.",
+    "alternatives": [
+      "또다시 들려온 병 소식"
+    ],
+    "id": "ck_evt_167",
+    "expected": "결산하지 못한 사람의 서랍",
+    "correct": true
+  },
+  {
+    "image": "P15",
+    "title": "배가 뜨지 않는다는 전갈",
+    "confidence": 0.99,
+    "reason": "배가 없는 겨울 선착장에서 사람이 편지를 읽으며 부두의 밧줄 기둥이 강조된다.",
+    "alternatives": [],
+    "id": "ck_evt_175",
+    "expected": "배가 뜨지 않는다는 전갈",
+    "correct": true
+  },
+  {
+    "image": "P16",
+    "title": "급류가 잦아들 때까지",
+    "confidence": 0.99,
+    "reason": "거친 급류와 떠내려가는 통나무 앞에서 사람들이 멈춰 서고 다리 옆에 공사 목재가 놓여 있다.",
+    "alternatives": [],
+    "id": "ck_evt_166",
+    "expected": "급류가 잦아들 때까지",
+    "correct": true
+  },
+  {
+    "image": "P17",
+    "title": "일손 적은 해의 두 창고",
+    "confidence": 0.98,
+    "reason": "위쪽 곡물 창고와 아래쪽 목재 창고 사이에서 두 사람이 각각 자루와 널빤지를 나른다.",
+    "alternatives": [],
+    "id": "ck_evt_170",
+    "expected": "일손 적은 해의 두 창고",
+    "correct": true
+  },
+  {
+    "image": "P18",
+    "title": "두 사업에 남은 장려금",
+    "confidence": 0.95,
+    "reason": "직조 작업장과 양이 있는 마당 사이에서 사람이 상자 위 동전과 두 돈주머니를 정리한다.",
+    "alternatives": [
+      "결산하지 못한 사람의 서랍"
+    ],
+    "id": "ck_evt_179",
+    "expected": "두 사업에 남은 장려금",
+    "correct": true
+  },
+  {
+    "image": "P19",
+    "title": "병 소문과 닫지 않은 장터",
+    "confidence": 0.93,
+    "reason": "열린 장터 입구에서 여행자가 상인들에게 말을 건네고 가판대와 거래 활동은 계속된다. 병 소문의 내용은 직접 보이지 않는다.",
+    "alternatives": [
+      "또다시 들려온 병 소식"
+    ],
+    "id": "ck_evt_169",
+    "expected": "병 소문과 닫지 않은 장터",
+    "correct": true
+  },
+  {
+    "image": "P20",
+    "title": "씨앗까지 먹을 수는 없다는 말",
+    "confidence": 0.99,
+    "reason": "걱정스러운 여인이 곡식 종자를 두 손에 소중히 모아 들고 앞에는 종자 바구니와 자루가 놓여 있다.",
+    "alternatives": [],
+    "id": "ck_evt_172",
+    "expected": "씨앗까지 먹을 수는 없다는 말",
+    "correct": true
+  }
+]

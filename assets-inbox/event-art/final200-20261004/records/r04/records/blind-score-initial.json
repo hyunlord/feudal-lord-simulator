@@ -1,0 +1,193 @@
+{
+  "correct": 20,
+  "total": 20,
+  "matches": [
+    {
+      "image": "P01",
+      "title": "T19",
+      "confidence": "high",
+      "reason": "혼례 복장의 남녀와 꽃다발, 짐상자가 법정 의자처럼 보이는 큰 좌석이 있는 홀 입구에 있고 관리가 손을 들어 막는다. 혼인과 법정 진입 요구가 한 장면에 함께 보인다.",
+      "event_id": "ck_evt_124",
+      "expected": "T19",
+      "correct": true
+    },
+    {
+      "image": "P02",
+      "title": "T11",
+      "confidence": "medium",
+      "reason": "화려한 잔과 천을 다루는 여성, 여러 선물 꾸러미와 돈주머니 앞에서 고민하는 남성이 대비된다. 선물은 명확하지만 오래 지속될 약속 자체는 보이지 않는다.",
+      "event_id": "ck_evt_139",
+      "expected": "T11",
+      "correct": true
+    },
+    {
+      "image": "P03",
+      "title": "T15",
+      "confidence": "high",
+      "reason": "큰 나무 옆 도끼를 든 남성과 어린 묘목을 심거나 보호하는 젊은이가 마주 본다. 벌목과 땅의 미래를 남기는 의무의 대비가 선명하다.",
+      "event_id": "ck_evt_137",
+      "expected": "T15",
+      "correct": true
+    },
+    {
+      "image": "P04",
+      "title": "T14",
+      "confidence": "high",
+      "reason": "삽을 멘 노동자들과 냄비·침구 등 살림짐을 든 사람들이 함께 마을길을 걷는다. 일하러 오는 이동과 살림을 옮기는 이주를 구별하는 제목에 가깝다.",
+      "event_id": "ck_evt_127",
+      "expected": "T14",
+      "correct": true
+    },
+    {
+      "image": "P05",
+      "title": "T08",
+      "confidence": "low",
+      "reason": "빈 돈주머니를 기울이는 남성 뒤에 다른 젊은 남성이 서 있고 오른쪽 인물이 손을 내민다. 뒤에 선 사람이 보증인이라는 해석은 가능하지만 서명·문서가 없어 제목과의 직접 연결은 약하다.",
+      "event_id": "ck_evt_121",
+      "expected": "T08",
+      "correct": true
+    },
+    {
+      "image": "P06",
+      "title": "T06",
+      "confidence": "high",
+      "reason": "닫힌 가축 우리 안의 소와 문 밖에서 고삐를 내밀며 요청하는 여성이 중심이다. 가축을 되찾거나 돌려보내 달라는 청으로 읽힌다.",
+      "event_id": "ck_evt_129",
+      "expected": "T06",
+      "correct": true
+    },
+    {
+      "image": "P07",
+      "title": "T05",
+      "confidence": "high",
+      "reason": "배경의 석교에 비계와 수리 인부가 있고 전경에서는 짐을 실은 말과 여행자가 창고 또는 숙소로 안내받는다. 다리 수리 중 방문객을 맞는 장면이다.",
+      "event_id": "ck_evt_136",
+      "expected": "T05",
+      "correct": true
+    },
+    {
+      "image": "P08",
+      "title": "T12",
+      "confidence": "medium",
+      "reason": "말 탄 사람과 지팡이를 든 보행자가 언덕에서 먼 농지와 마을을 내려다본다. 원거리 토지 시찰은 뚜렷하지만 비용 자체는 시각화되지 않았다.",
+      "event_id": "ck_evt_140",
+      "expected": "T12",
+      "correct": true
+    },
+    {
+      "image": "P09",
+      "title": "T02",
+      "confidence": "medium",
+      "reason": "복도에 있는 방문자가 옆방의 고위 인물과 책상이 있는 공간으로 향하고 다른 남성이 그쪽을 가리킨다. 권리 문제를 집무실로 가져오라는 안내로 해석했다.",
+      "event_id": "ck_evt_130",
+      "expected": "T02",
+      "correct": true
+    },
+    {
+      "image": "P10",
+      "title": "T18",
+      "confidence": "high",
+      "reason": "고민하는 남성 앞에 봉인된 문서 두 장과 홈이 새겨진 나무 계산 막대가 나란히 있다. 두 장의 채무 기록을 대조하는 장면에 가장 가깝다.",
+      "event_id": "ck_evt_126",
+      "expected": "T18",
+      "correct": true
+    },
+    {
+      "image": "P11",
+      "title": "T20",
+      "confidence": "low",
+      "reason": "격식 있는 건물 계단에서 평민이 고위 인물에게 청하고 주변 사람들이 대화한다. 법정과 사회적 보증을 구하는 장면으로 읽었으나 이름을 빌리는 행동이나 증언의 직접 표지는 없다.",
+      "event_id": "ck_evt_135",
+      "expected": "T20",
+      "correct": true
+    },
+    {
+      "image": "P12",
+      "title": "T13",
+      "confidence": "high",
+      "reason": "울타리로 나뉜 가축 우리와 집 사이 좁은 길에서 인물이 울타리 부품을 운반하며 멀리 부서진 울타리도 보인다. 울타리 안쪽 수선 작업의 접근로가 중심이다.",
+      "event_id": "ck_evt_122",
+      "expected": "T13",
+      "correct": true
+    },
+    {
+      "image": "P13",
+      "title": "T04",
+      "confidence": "high",
+      "reason": "전경의 다리 널판은 크게 깨져 있고 뒤쪽 일부는 남아 있으며 두 인물이 손상 부위를 가리킨다. 반쪽만 쓸 수 있는 다리의 수선이나 가치 분쟁에 맞는다.",
+      "event_id": "ck_evt_125",
+      "expected": "T04",
+      "correct": true
+    },
+    {
+      "image": "P14",
+      "title": "T07",
+      "confidence": "high",
+      "reason": "시장 좌판 사이에서 남성이 적은 동전을 세고 전경의 다른 인물은 큰 돈주머니를 들고 있다. 장날의 유통 자금과 누군가의 빚을 연결하는 장면으로 읽힌다.",
+      "event_id": "ck_evt_133",
+      "expected": "T07",
+      "correct": true
+    },
+    {
+      "image": "P15",
+      "title": "T10",
+      "confidence": "high",
+      "reason": "구부러진 길에 붉은 타일을 실은 수레와 각재를 실은 수레가 이어져 있다. 제목에 명시된 서로 다른 두 운송품이 직접 보인다.",
+      "event_id": "ck_evt_138",
+      "expected": "T10",
+      "correct": true
+    },
+    {
+      "image": "P16",
+      "title": "T03",
+      "confidence": "high",
+      "reason": "큰 목재 운반대 앞에서 한 인물이 천 위 동전을 세고 다른 인물이 기다린다. 목재를 현금으로 결제해 들여오는 모습이 직접 드러난다.",
+      "event_id": "ck_evt_123",
+      "expected": "T03",
+      "correct": true
+    },
+    {
+      "image": "P17",
+      "title": "T01",
+      "confidence": "low",
+      "reason": "여성이 과수원 안에서 열매와 바구니를 곁에 두고 편히 앉아 있고 젊은 남성은 닫힌 문 밖에 있다. 현재 거주자에게 생전 수익 몫을 남기는 관계로 해석했지만 생존 기간의 권리 자체는 보이지 않는다.",
+      "event_id": "ck_evt_128",
+      "expected": "T01",
+      "correct": true
+    },
+    {
+      "image": "P18",
+      "title": "T16",
+      "confidence": "medium",
+      "reason": "수도사처럼 보이는 인물이 돈주머니 두 개가 든 상자를 잠그고 바깥에는 두 남성이 마주 서 있다. 분쟁 당사자 사이에서 지대를 별도 보관하는 장면으로 해석했다.",
+      "event_id": "ck_evt_134",
+      "expected": "T16",
+      "correct": true
+    },
+    {
+      "image": "P19",
+      "title": "T17",
+      "confidence": "low",
+      "reason": "여성이 울타리 안의 텃밭에서 수확 바구니를 들고 있고 남성은 입구 밖에 서 있다. 여성에게 남겨 둔 몫이라는 해석은 가능하나 이름·권리 귀속의 표시는 없고 다른 정원 장면과 의미가 겹친다.",
+      "event_id": "ck_evt_132",
+      "expected": "T17",
+      "correct": true
+    },
+    {
+      "image": "P20",
+      "title": "T09",
+      "confidence": "high",
+      "reason": "열쇠를 꽉 쥔 노인이 집 앞 의자에 앉아 뒤쪽 젊은 사람들의 돈주머니 거래를 지켜본다. 아버지가 생존한 동안 소유와 결정권을 유지하는 구도로 읽힌다.",
+      "event_id": "ck_evt_131",
+      "expected": "T09",
+      "correct": true
+    }
+  ],
+  "limitations": [
+    "판독 자료는 허용된 익명 JPG 20장, 익명 보드 4장, titles.json뿐이며 개별 JPG 20장 모두 view_image로 확인했다.",
+    "제목은 각 1회씩 대응했다. 이는 선택지 제한에 따른 강제 대응을 포함하며 정답률을 의미하지 않는다.",
+    "P05와 P11은 서명·증언·보증 관계가 직접 묘사되지 않아 서로 가까운 두 제목의 판별 확신이 낮다.",
+    "P17과 P19는 여성의 정원 이용과 문밖 남성이라는 구도가 유사하여 생전 몫과 기명된 몫을 장면만으로 확정하기 어렵다.",
+    "약속의 지속 기간, 비용, 지대의 법적 성격과 같은 추상 조건은 이미지에 직접 드러나지 않는 경우가 있다."
+  ]
+}

@@ -1,0 +1,363 @@
+{
+  "review_type": "R05_read_only_pre_generation_composition_history_document_preflight",
+  "plan_path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/scene-plan.json",
+  "plan_sha256": "694a2e05ff725649f2f6436828b8d6b3a20da9612b0643007ff32b2486518a28",
+  "frozen_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r04/records/composition-audit-after-semantic.json",
+  "frozen_audit_sha256": "bdf61941d4cf83af5eed141c9ec46cd052f56b66dccef119307c7cfd37d83b3a",
+  "frozen_csv": "/Users/rexxa/fls-astra-eventart200-delivery/r04/CUMULATIVE.csv",
+  "frozen_csv_rows": 114,
+  "frozen_source_hash_mismatches": [],
+  "frozen_group_memberships_unchanged": true,
+  "scope": "141-160 planned20; frozen114; eventual cumulative134",
+  "evidence_limit": "Plan text only. No R05 generated assets inspected. These are positive-layout risks and conditional budgets, not observed failures or final approved memberships. Historical review is project-rule preflight, not external historical authentication.",
+  "reviews": [
+    {
+      "id": "ck_evt_141",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "032",
+        "116"
+      ],
+      "planned_evidence": "Small central chest/large empty intervals/separated groups matches broad boundary-separated composition, conservatively third.",
+      "minimal_revision": "",
+      "generation_guard": "Chest must remain small middle-distance; no low giant foreground chest or centered mediator. Do not render two equal close exchanges, since078/139 plus152 already reach3."
+    },
+    {
+      "id": "ck_evt_142",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "013",
+        "030",
+        "067"
+      ],
+      "planned_evidence": "Straight-on close two faces either side of small seal box with keys entering center still resembles saturated close two-person hand/object family. Kneeling versus standing alone does not remove this.",
+      "minimal_revision": "Place niche high on LEFT wall, standing custodian reaches upward in side profile while second custodian kneels well BELOW/RIGHT at floor, both bodies visible. Camera wide, seal remains in niche; vertically separated custody actions, not two faces flanking central box.",
+      "generation_guard": "Avoid making niche/box enormous left opaque foreground with tiny people beyond. Description says two boxes but prompt says one two-lock box: use one box with two locks consistently; body concerns divided custody, not number of boxes."
+    },
+    {
+      "id": "ck_evt_143",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "103",
+        "073"
+      ],
+      "planned_evidence": "Loose arc viewed from one end can be materially different from central mediator row; nearest analog is103 dispersed oath/witness row, currently1.",
+      "minimal_revision": "",
+      "generation_guard": "Keep perspective curve and different directions of attention; no single clerk centrally answering flanking witnesses. If furrow fills foreground, count with073 rather than inventing new category."
+    },
+    {
+      "id": "ck_evt_144",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "094"
+      ],
+      "planned_evidence": "Low view from below work floor with workers above/below can share094 floor-opening upward view, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Must actually show vertical saw relationship, not overhead empty pit025/062/083 or long diagonal beam035/051/064. Wooden manual pitsaw; no powered blade. Merchant small side-on, no large foreground back observer."
+    },
+    {
+      "id": "ck_evt_145",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "072"
+      ],
+      "planned_evidence": "Multiple household tasks around an open courtyard can share072 dispersed/U-shaped yard activity, projected2.",
+      "minimal_revision": "",
+      "generation_guard": "Maintain three/four different depths; do not reduce to equal two left-right transactions. No cottage chimney or modern wheel; distaff/spindle explicitly visible. Ember vessel must not turn into modern metal heater."
+    },
+    {
+      "id": "ck_evt_146",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "069"
+      ],
+      "planned_evidence": "Downward roof-hole framing and people below can share elevated roof-to-lower-scene vocabulary069 conservatively; with156 upper budget3.",
+      "minimal_revision": "",
+      "generation_guard": "Keep damaged rafter and roof-hole frame, not a large back-facing observer. Subject field says open purse but prompt closed: closed offered purse is adequate; no completed payment. Uncertain exact roof construction is not authenticated by preflight."
+    },
+    {
+      "id": "ck_evt_147",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "075",
+        "140"
+      ],
+      "planned_evidence": "Large high foreground keys with small candidates below resembles near object/body-part versus distant people in075/140 if extreme enough, potentially third.",
+      "minimal_revision": "",
+      "generation_guard": "Do not make huge empty stool/chest lower-left foreground. Book/tallies under covered arcade are conservative indoor-document borderline: keep vacancy/keys clearly dominant, not book review. Do not add a fourth extreme foreground prop/distant-witness scene elsewhere."
+    },
+    {
+      "id": "ck_evt_148",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "096",
+        "088"
+      ],
+      "planned_evidence": "Window frame/loom-through depth can share096 tall loom plus workers or088 interior aisle, both have spare capacity.",
+      "minimal_revision": "",
+      "generation_guard": "Avoid loom filling left while two equal full figures transact on right:029/129/123 already3. Keep people small at DIFFERENT depths, visible through the open loom structure, not giant solid left object. No center hanging cloth; no eye-level counter with aligned bent heads."
+    },
+    {
+      "id": "ck_evt_149",
+      "status": "revise_setting_for_document_margin",
+      "related_frozen_ids": [
+        "075",
+        "140",
+        "147"
+      ],
+      "planned_evidence": "Knee-height worn threshold plus book and inner lord can become another extreme foreground extremity/distant-witness composition after147 uses third. Closed precedent book at threshold also raises indoor-document conservative exposure.",
+      "minimal_revision": "Move hearing to an OPEN-SKY exterior forecourt, show full petitioner body and clerk beside door in profile with worn threshold small, lord at open doorway behind. Book stays closed at hip and secondary to listening; do not crop prominently to giant boots.",
+      "generation_guard": "If a large seated lord dominates near foreground with distant petitioner,128/131/135 already3. Do not show visitor facing large closed right door028/034/038."
+    },
+    {
+      "id": "ck_evt_150",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "103"
+      ],
+      "planned_evidence": "Visible oath profile, separate bench purse and distant witness are compatible with103 dispersed witness/oath family, projected up to3 with143.",
+      "minimal_revision": "",
+      "generation_guard": "Keep raised hand on principal, clerk displaced/back and witness small; avoid central frontal oath mediator. Purse separated and no transfer. No claim that exact oath posture proves legal status."
+    },
+    {
+      "id": "ck_evt_151",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "004",
+        "019",
+        "107"
+      ],
+      "planned_evidence": "Three same-scale standing figures with clerk lowering blocking arm gives the clerk a physical middle-arbitration role; negative phrase no mediator cannot erase this arrangement.",
+      "minimal_revision": "Place craftsman kneeling low at tools in near RIGHT, guild officer at far LEFT gatepost with blocking arm. Clerk stands one step ABOVE officer on gate stair, seen in profile demonstrating empty sleeve without touching either person. Empty center shows work space; faces and heights separated.",
+      "generation_guard": "Do not put clerk in middle at same eye level or pose all three in a shallow row. Covered gateway should not turn empty sleeve into central written charter. Do not add royal arms/letters."
+    },
+    {
+      "id": "ck_evt_152",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "078",
+        "139"
+      ],
+      "planned_evidence": "Two parallel independent livelihood actions resemble078/139 regardless different depth. Conservatively reserve third slot.",
+      "minimal_revision": "",
+      "generation_guard": "Keep no table/two leaning figures and tub small. Do not isolate as a unique tanning category just to allow another two-work-zone image. Use manual fleshing beam; no chemical labels/modern barrels."
+    },
+    {
+      "id": "ck_evt_153",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "004",
+        "019",
+        "107",
+        "066"
+      ],
+      "planned_evidence": "Three same-plane merchant/blocking clerk/waiting traveler risks another central stop-gesture arbitration even though bridge is background.",
+      "minimal_revision": "Put barrier and merchant sideways in near LOWER LEFT; clerk higher on right bank points to removable barrier while traveler is tiny far along approach, clearly behind action. Camera diagonal across barrier, not frontal row; bridge small side background.",
+      "generation_guard": "May conservatively share066 foreground barrier/distant people, available capacity. Do not build a long diagonal facility with workers spaced along it035/051/064, or large left solid object with two close right people029/129/123."
+    },
+    {
+      "id": "ck_evt_154",
+      "status": "revise_setting_for_document_margin",
+      "related_frozen_ids": [
+        "005",
+        "024",
+        "057",
+        "010",
+        "042",
+        "121"
+      ],
+      "planned_evidence": "Open-sided awning with large ledger and competing debt papers is the clearest new document-centered covered-space borderline. Three figures can also drift into saturated paper presentation or left-pair/deep-right family.",
+      "minimal_revision": "Remove awning entirely: full OPEN SKY roadside beyond city. Keep rural and city trader on opposite sides of broad path, full bodies at different depths; books/bundle closed against bodies, clerk distant at one side. No counter or shared extended document.",
+      "generation_guard": "Records remain legitimate core subject; do not hide them merely to manipulate count. Outdoor camera/setting must actually be clear. This change alone reduces strict worst-case14 to13/134."
+    },
+    {
+      "id": "ck_evt_155",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "002",
+        "049",
+        "053",
+        "058",
+        "068",
+        "077"
+      ],
+      "planned_evidence": "Long horizontal cloth/bench with people/faces behind reproduces counter/worktop grammar; foreground shears and low camera do not reliably remove it. Cropping faces could instead hit saturated faceless-hand group.",
+      "minimal_revision": "Use full-height VERTICAL tenter frame seen from oblique side; one dresser in full profile clips wool with spring shears at chest height, framed entirely on one side. Guild worker and merchant stand small and separated beyond far end, not both leaning behind same cloth edge.",
+      "generation_guard": "Do not let hanging cloth become central flat curtain with people equally flanking it;091/119 has one slot but would be3 if unavoidable. No modern finger-loop scissors. New scene must show finishing action, not dye vat."
+    },
+    {
+      "id": "ck_evt_156",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "069",
+        "146"
+      ],
+      "planned_evidence": "Elevated roof-side worker above lower courtyard is same broad roof/lower-scene family069; with146 conservatively3.",
+      "minimal_revision": "",
+      "generation_guard": "Near carpenter face/profile visible, not large back observer008/031/061. Show roof opening and different levels rather than diagonal beam with spaced workers035/051/064. Do not use high route map104/122/138."
+    },
+    {
+      "id": "ck_evt_157",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "078",
+        "139",
+        "152"
+      ],
+      "planned_evidence": "Two foreground taxpayers each linked to their own candidate may collapse into two parallel transactions, a family already filled by planned152.",
+      "minimal_revision": "Keep foreground taxpayers grouped TOGETHER on left at different depths, both faces visible; candidates tiny and offset behind them, one near wall and one deeper near gate, no paired receiving hands. Materials carried, not being collected.",
+      "generation_guard": "No giant left mass with two right people. Distinction must be actual unequal four-person nomination arrangement, not two symmetric payment stalls. If generated as parallel collection scenes, redraw rather than relabel."
+    },
+    {
+      "id": "ck_evt_158",
+      "status": "proceed_with_guard",
+      "related_frozen_ids": [
+        "109",
+        "099"
+      ],
+      "planned_evidence": "Open window framing faces can share109 faces behind door/window frames, spare capacity; tailor centered is not necessarily a mediator if clearly working.",
+      "minimal_revision": "",
+      "generation_guard": "No close shoulder/back of clerk foreground. Keep cutting action and neighbor recognition primary. Closed royal ledger at side may still be counted as conservative indoor-document borderline if prominent. Plan people3 contradicts tailor+2neighbors+clerk=4; resolve to4 or omit visible clerk."
+    },
+    {
+      "id": "ck_evt_159",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "025",
+        "062",
+        "083"
+      ],
+      "planned_evidence": "High near-overhead ring encircled by people risks saturated central bounded-space/perimeter-figures group. Circular versus rectangular alone is not sufficient; purchased material inside helps but cannot be assumed to dominate.",
+      "minimal_revision": "Use LOW side cutaway at incomplete wall gap: stacked paid materials occupy floor inside, two funding figures visible ABOVE rim at different heights and steward further outside side. Keep whole faces. Change camera/people relationship rather than only ring shape.",
+      "generation_guard": "Can share094/144 below-floor/above-people relationship as third if actually realized; no large low-left opaque chest. No finished building claim."
+    },
+    {
+      "id": "ck_evt_160",
+      "status": "revise_before_generation",
+      "related_frozen_ids": [
+        "004",
+        "019",
+        "107",
+        "078",
+        "139",
+        "152"
+      ],
+      "planned_evidence": "Central concerned householder between same-level left quarryman/right mason risks saturated mediator row; simply deleting central person yields two parallel work actions, which planned152 brings to3 already.",
+      "minimal_revision": "Put quarryman HIGH on upper-left quarry ledge working raw seam; mason on LOWER RIGHT ground squaring stone below. Householder tiny and far down a lower path at edge, no position between workers. Strong vertical height difference, faces turned toward own work, not toward householder.",
+      "generation_guard": "Do not form long diagonal facility with spaced workers. May conservatively share105/137 upward large rock/structure with workers only if low-angle generated, third. Otherwise actual vertical quarry scene reviewed anew; no automatic singleton. Body takes priority over title mentioning kiln."
+    }
+  ],
+  "priority_revisions": [
+    "ck_evt_142",
+    "ck_evt_151",
+    "ck_evt_153",
+    "ck_evt_155",
+    "ck_evt_159",
+    "ck_evt_160"
+  ],
+  "setting_or_document_margin_revisions": [
+    "ck_evt_149",
+    "ck_evt_154"
+  ],
+  "additional_pairing_guard_revision": [
+    "ck_evt_157"
+  ],
+  "indoor_document_budget": {
+    "frozen_definite": 7,
+    "frozen_conservative": 10,
+    "planned_clear_definite_additions": 0,
+    "potential_borderline_new": [
+      "147",
+      "149",
+      "154",
+      "158"
+    ],
+    "conditional_upper_count": 14,
+    "conditional_upper_fraction": 0.1044776119402985,
+    "limit": 0.1,
+    "max_allowed_count_at134": 13,
+    "conditional_upper_pass": false,
+    "after154_clearly_outdoor_upper": 13,
+    "after149_and154_clearly_outdoor_upper": 12,
+    "after_both_fraction": 0.08955223880597014,
+    "basis": "147 book/tallies in covered arcade;149 closed precedent book at manor threshold;154 two forms of debt records under awning;158 clerk ledger at workshop window. Not all are definitely document-centered: this is conservative possible exposure.142 seal/key box no paperwork;143 charter outdoors;151 empty sleeve/tools not itself document-focused indoor;others no central documents. Do not omit a clearly central record solely to obtain numeric pass."
+  },
+  "cross_new_conditional_budgets": [
+    {
+      "ids": [
+        "078",
+        "139",
+        "152"
+      ],
+      "count": 3,
+      "risk": "157 and160 must not become another pair of parallel work/exchange actions."
+    },
+    {
+      "ids": [
+        "069",
+        "146",
+        "156"
+      ],
+      "count": 3,
+      "risk": "Roof/high-work/lower-yard family conservatively shared;no location-based split."
+    },
+    {
+      "ids": [
+        "075",
+        "140",
+        "147"
+      ],
+      "count": 3,
+      "risk": "149 must not repeat extreme near prop/feet against distant figures."
+    },
+    {
+      "ids": [
+        "103",
+        "143",
+        "150"
+      ],
+      "count": 3,
+      "risk": "Witness/oath dispersed row;actual curved or close variants reassessed without relabeling old members."
+    },
+    {
+      "ids": [
+        "032",
+        "116",
+        "141"
+      ],
+      "count": 3,
+      "risk": "Wide boundary/project-separated groups at capacity."
+    },
+    {
+      "ids": [
+        "094",
+        "144",
+        "159"
+      ],
+      "count": 3,
+      "risk": "159 recommended low cutaway rewrite can use third below-floor/above-people slot."
+    },
+    {
+      "ids": [
+        "105",
+        "137",
+        "160"
+      ],
+      "count": 3,
+      "risk": "Only if160 new actual low-view vertical structure layout; not a preapproved classification."
+    }
+  ],
+  "history_and_subject_guards": [
+    "No ordinary-cottage chimney/chimney pots,modern machines,modern readable marks,unapproved spotted ermine.",
+    "144 manual pitsaw,152 manual hide scraping,155 spring shears without modern finger loops.",
+    "142 unlettered seal,no fake crown/heraldry;custody division must remain legible.",
+    "145 thatched domestic shelter chimney-free;do not convert small ember vessel to modern heater.",
+    "146 closed offered purse versus subject open purse is a minor prompt inconsistency,not body contradiction.",
+    "158 actual people count4 versus listed3 must be resolved.",
+    "160 kiln title conflicts with raw/dressed stone body; depict stone processing as prompt does,flag editorial mismatch rather than adding unrequested kiln.",
+    "Season targets should be enforced visually;prior round repeatedly collapsed winter/overcast into sunny leafy gold."
+  ],
+  "approval_status": "revise_flagged_layouts_before_unconditional_generation_then_actual_visual_audit",
+  "blind_data_accessed": false,
+  "write_scope": "r05/records/preflight-composition.json only"
+}
