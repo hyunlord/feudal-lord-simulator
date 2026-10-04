@@ -16,7 +16,7 @@ import { getTerrainPattern, TERRAIN_TEXTURE_COMPOSITE_OPACITY, type TerrainPatte
 // tile) repeating along the staircase: the small black squares. The rock tiles are now laid as the ground around them
 // (groundTileAs: the grass, under a new land's fill), and the rock is one region over the ground, outlined as the land
 // fills are (marching squares, Chaikin, the land's warp at ROCK_WARP_SCALE: archetypeGroundRegions.ts smoothRegionLoop),
-// filled with the rock texture (Wave 41's ENV-07 rework, public/assets/terrain/rock.png) unturned over the rock colour
+// filled with the rock texture (the NAT-5 revision of Wave 41's ENV-07 rework, terrain/rock.png) unturned over the rock colour
 // (the tile pass's 0.6 texture over the colour), once ROCK_RIM tiles wider at ROCK_RIM_ALPHA first, so the rock's edge
 // fades into the ground instead of a cut line. No pebble marks (drawGroundChunk).
 // Cache (AGENTS rule 10): a new land's rock lives on its land layer (archetypeGroundModel.ts: the terrain is in that

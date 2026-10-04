@@ -99,10 +99,11 @@ test("Given the spike in wall strips When the items draw their modules Then the 
   assert.equal(rest.length, 0);
   assert.deepEqual({ kind: pier?.kind, point: pier?.point, gateEnd: pier !== undefined && "gateEnd" in pier }, { kind: "terminal", point: at(-0.95, 0.95), gateEnd: true });
   assert.deepEqual(cornerGateModules(node, unitEdgeKey(at(-2, 0), at(-1, 0))), [], "a farther edge draws neither");
-  // The stone end cap is the painted pillar; a plain terminal keeps its masonry pier.
+  // The stone end cap is the stone gate jamb (QA-003; the painted pillar before it); a plain terminal keeps its masonry pier.
   const capped = recordingCanvas(1024, 1024);
   drawWallModules(capped.context, [pier!], [], "stone", 1);
-  assert.match(capped.canvas.ops.join("\n"), /drawImage\(stone_pillar_135[^_]/);
+  assert.match(capped.canvas.ops.join("\n"), /drawImage\(gate_jamb_stone,/);
+  assert.doesNotMatch(capped.canvas.ops.join("\n"), /stone_pillar_135/);
   const plain = recordingCanvas(1024, 1024);
   drawWallModules(plain.context, [{ ...node, kind: "terminal", point: at(-0.95, 0.95), neighbors: [] }], [], "stone", 1);
   assert.doesNotMatch(plain.canvas.ops.join("\n"), /stone_pillar_135/);

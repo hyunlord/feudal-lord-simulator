@@ -15,8 +15,9 @@ function drawnLast(point: TileEdgePoint, arms: readonly TileEdgePoint[], materia
   return (order[order.length - 1] as { key: string }).key;
 }
 
-/** The end module capping a corner gate's off-axis arm (drawWallModules draws it as the painted pillar). */
-export type GateEndNode = WallNode & { readonly gateEnd: true };
+/** The end module capping a gate's arm (drawWallModules: a corner gate's off-axis pier, QA-003 the jamb or door post),
+ * with the gate it stands by. */
+export type GateEndNode = WallNode & { readonly gateEnd: true; readonly gate: TileEdgePoint };
 
 /** The modules the wall item of unit edge `key` draws for a corner gate with art (its piers as end modules, in draw
  * order), or null for any other node. */
@@ -32,6 +33,6 @@ export function cornerGateModules(node: WallNode, key: string): readonly WallNod
   const offKey = unitEdgeKey(node.point, offArm);
   const artKey = piers.behind.length > 0 ? drawnLast(node.point, [axisArm, offArm], node.materials.includes("stone") ? "stone" : "timber")
     : unitEdgeKey(node.point, axisArm);
-  const pier = (point: TileEdgePoint): GateEndNode => ({ ...node, kind: "terminal", point, neighbors: [], gateEnd: true });
+  const pier = (point: TileEdgePoint): GateEndNode => ({ ...node, kind: "terminal", point, neighbors: [], gateEnd: true, gate: node.point });
   return [...(key === offKey ? piers.behind.map(pier) : []), ...(key === artKey ? [node] : []), ...(key === offKey ? piers.front.map(pier) : [])];
 }
