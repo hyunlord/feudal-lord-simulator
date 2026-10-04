@@ -1,0 +1,18 @@
+{
+  "method": "2-image supplemental title selection from 8 choices, not full20 retest",
+  "correct": 2,
+  "total": 2,
+  "expected": {
+    "S01.jpg": "한 해에 두 사람의 장부",
+    "S02.jpg": "길드 인가 청원"
+  },
+  "versions": {
+    "S01.jpg": "107v4",
+    "S02.jpg": "039v3"
+  },
+  "limitations": [
+    "039 initial mismatch corrected and retested",
+    "045 approved original edit decision pending",
+    "107 identifies accounting but year and full handover need body text"
+  ]
+}

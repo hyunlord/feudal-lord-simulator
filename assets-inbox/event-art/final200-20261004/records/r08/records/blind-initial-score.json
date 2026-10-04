@@ -1,0 +1,167 @@
+{
+  "correct": 18,
+  "total": 20,
+  "rows": [
+    {
+      "label": "P01",
+      "id": "ck_evt_023",
+      "title": "먼 장원의 기울어진 헛간",
+      "answer": "먼 장원의 기울어진 헛간",
+      "correct": true,
+      "confidence": 0.98
+    },
+    {
+      "label": "P02",
+      "id": "ck_evt_022",
+      "title": "빈 사제 자리",
+      "answer": "빈 사제 자리",
+      "correct": true,
+      "confidence": 0.98
+    },
+    {
+      "label": "P03",
+      "id": "ck_evt_007",
+      "title": "성소 지붕을 받치는 임시 기둥",
+      "answer": "성소 지붕을 받치는 임시 기둥",
+      "correct": true,
+      "confidence": 0.99
+    },
+    {
+      "label": "P04",
+      "id": "ck_evt_012",
+      "title": "장터 입구의 같은 자리",
+      "answer": "장터 입구의 같은 자리",
+      "correct": true,
+      "confidence": 0.94
+    },
+    {
+      "label": "P05",
+      "id": "ck_evt_003",
+      "title": "다음 장날까지 버틸 지붕",
+      "answer": "다음 장날까지 버틸 지붕",
+      "correct": true,
+      "confidence": 0.87
+    },
+    {
+      "label": "P06",
+      "id": "ck_evt_048",
+      "title": "소의 수보다 앞서는 관습",
+      "answer": "소의 수보다 앞서는 관습",
+      "correct": true,
+      "confidence": 0.89
+    },
+    {
+      "label": "P07",
+      "id": "ck_evt_016",
+      "title": "곡창 앞의 기다림",
+      "answer": "곡창 앞의 기다림",
+      "correct": true,
+      "confidence": 0.99
+    },
+    {
+      "label": "P08",
+      "id": "ck_evt_036",
+      "title": "먼 방앗간까지 들고 간 곡물",
+      "answer": "먼 방앗간까지 들고 간 곡물",
+      "correct": true,
+      "confidence": 0.99
+    },
+    {
+      "label": "P09",
+      "id": "ck_evt_006",
+      "title": "에일값보다 큰 벌금",
+      "answer": "에일값보다 큰 벌금",
+      "correct": true,
+      "confidence": 0.91
+    },
+    {
+      "label": "P10",
+      "id": "ck_evt_014",
+      "title": "양모 공납 칙령",
+      "answer": "양모 공납 칙령",
+      "correct": true,
+      "confidence": 0.98
+    },
+    {
+      "label": "P11",
+      "id": "ck_evt_021",
+      "title": "장례 뒤에 남은 부담금",
+      "answer": "장례 뒤에 남은 부담금",
+      "correct": true,
+      "confidence": 0.98
+    },
+    {
+      "label": "P12",
+      "id": "ck_evt_044",
+      "title": "길가의 새 말뚝",
+      "answer": "길가의 새 말뚝",
+      "correct": true,
+      "confidence": 0.99
+    },
+    {
+      "label": "P13",
+      "id": "ck_evt_047",
+      "title": "영주의 후계자",
+      "answer": "영주의 후계자",
+      "correct": true,
+      "confidence": 0.97
+    },
+    {
+      "label": "P14",
+      "id": "ck_evt_041",
+      "title": "숲의 돼지와 가을 납부금",
+      "answer": "숲의 돼지와 가을 납부금",
+      "correct": true,
+      "confidence": 0.99
+    },
+    {
+      "label": "P15",
+      "id": "ck_evt_017",
+      "title": "소를 잃은 집의 지대",
+      "answer": "소를 잃은 집의 지대",
+      "correct": true,
+      "confidence": 0.96
+    },
+    {
+      "label": "P16",
+      "id": "ck_evt_040",
+      "title": "인두세 징수 방식",
+      "answer": "인두세 징수 방식",
+      "correct": true,
+      "confidence": 0.51
+    },
+    {
+      "label": "P17",
+      "id": "ck_evt_043",
+      "title": "교회 증축 청원",
+      "answer": "교회 증축 청원",
+      "correct": true,
+      "confidence": 0.85
+    },
+    {
+      "label": "P18",
+      "id": "ck_evt_001",
+      "title": "쟁기 길 끝의 풀밭",
+      "answer": "쟁기 길 끝의 풀밭",
+      "correct": true,
+      "confidence": 0.71
+    },
+    {
+      "label": "P19",
+      "id": "ck_evt_039",
+      "title": "길드 인가 청원",
+      "answer": "길드와 상인의 다툼",
+      "correct": false,
+      "confidence": 0.96
+    },
+    {
+      "label": "P20",
+      "id": "ck_evt_045",
+      "title": "길드와 상인의 다툼",
+      "answer": "길드 인가 청원",
+      "correct": false,
+      "confidence": 0.98
+    }
+  ],
+  "scope": "initial20 R08, excludes supplemental107"
+}

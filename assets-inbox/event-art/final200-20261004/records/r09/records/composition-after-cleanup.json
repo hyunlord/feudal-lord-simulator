@@ -1,0 +1,1015 @@
+{
+  "review_type": "R09_after054055059_cleanup_actual_audit",
+  "baseline_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r08/records/composition-semanticfix.json",
+  "baseline_sha256": "e7e922c1c72f2b30e3ca535baf1b099d80650dec7915fbae91c6990c6de480c9",
+  "baseline_unique_count": 194,
+  "new_image_reviews": [
+    {
+      "id": "054",
+      "anchor": "146",
+      "composition_pass": true,
+      "history_pass": true,
+      "people": 2,
+      "season": "late_summer_or_early_autumn_rain",
+      "evidence": "낮은 가로 젖은 건초더미 옆 무릎 소작인과 오른쪽 서있는 청지기의 높이가 다른 전신.146/190군3.전경같은작업대뒤두상반신은없음.",
+      "source": "흐르는빗물/눅눅한건초/작은닫힌기록/듣는청지기.지대감면전상태유지.기록소지자는계획청지기대신소작인이지만원문illustration과양립.",
+      "indoor_document": false,
+      "group_name": "낮은 수평 자재더미 양쪽 높이가 다른 전신 인물",
+      "group_members_after": [
+        "146",
+        "190",
+        "054"
+      ],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_054.jpg",
+      "sha256": "5facb542c2e29e6af53b63e46a10306aa72011eb900d5abdc0a99b2fbb3026b5",
+      "fullsize_actually_viewed": true,
+      "prior_sha256": "d5c3ee0046331c4e7c74e99af241869f05d7bacffba0cb8694b0eb7c2214e008",
+      "version": "v2",
+      "cleanup_observation": "배경장원주택굴뚝제거실제확인.젖은건초에서물이흐르고무릎소작인/서있는청지기/작은기록/비갠장면은보존.",
+      "actually_reopened_this_review": true,
+      "season_provenance": {
+        "id": "054",
+        "independent_preflight_season": "summer",
+        "independent_preflight_time": "비 갠 흐린 늦은 오후",
+        "parent_scene_plan_season": "늦여름 비 갠 오후",
+        "observed_season": "late_summer_or_early_autumn_rain",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": false
+      }
+    },
+    {
+      "id": "055",
+      "anchor": "113",
+      "composition_pass": true,
+      "history_pass": true,
+      "people": {
+        "principal": 3,
+        "background": "at_least4",
+        "total": "at_least7",
+        "count_confidence": "작은배경겹침으로정확총수불확실"
+      },
+      "season": "autumn",
+      "evidence": "중앙큰양팔저울/앞두접시가구도를지배하고그뒤세주인물과왼쪽짐수레.113군2.청지기가중앙이지만앞저울프레임이주축으로얕은중재자004군과구별.",
+      "source": "상인대표가수레기여를가리키고청지기가닫힌기록을보유,여성장사꾼이함께듣는다.부담감면의정확한의미는본문필요.상품저울질이나징수완료없음.",
+      "indoor_document": false,
+      "group_name": "근접 중앙 매달린 저울과 뒤쪽 세 사람",
+      "group_members_after": [
+        "113",
+        "055"
+      ],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_055.jpg",
+      "sha256": "9f228bef7860c9ce16c89ac09318d8867b778d35cabd9cc7501a1874173251d6",
+      "fullsize_actually_viewed": true,
+      "prior_sha256": "4491648a1868e5298a9dbbd244a23cbd30e4fd990832d284783383dfcd21a7df",
+      "version": "v2",
+      "cleanup_observation": "오른쪽배경지붕굴뚝과주황늑골호박제거확인.해당바구니는연한둥근뿌리채소형태로교체.저울·세주인물·수레·배경추가인물구도유지.",
+      "actually_reopened_this_review": true,
+      "season_provenance": {
+        "id": "055",
+        "independent_preflight_season": "spring",
+        "independent_preflight_time": "차가운 아침",
+        "parent_scene_plan_season": "가을 흐린 오전",
+        "observed_season": "autumn",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": true
+      },
+      "independent_preflight_season_mismatch": "spring morning 대신 단풍/낙엽/흐린가을"
+    },
+    {
+      "id": "056",
+      "anchor": "096",
+      "composition_pass": true,
+      "history_pass": true,
+      "people": 1,
+      "season": "spring",
+      "evidence": "큰수직수레바퀴가오른쪽을차지하고왼쪽아래단독무릎리브가고랑을짚음.096/003의수직구조옆낮은단독검사자군3.좌우반전은별도군근거아님.",
+      "source": "수레바퀴가깊은진흙에빠져통행문제를보임.닫힌기록과손상지시,수선완료/새포장없음.",
+      "indoor_document": false,
+      "group_name": "큰 수직 기계 옆 낮게 앉은 단독 수리자",
+      "group_members_after": [
+        "096",
+        "003",
+        "056"
+      ],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_056.jpg",
+      "sha256": "05e7cda4f8654df5eeec7af464b2618be2ed3f43d35089d4728d741254353ff0",
+      "fullsize_actually_viewed": true,
+      "actually_reopened_this_review": false,
+      "fullsize_prior_evidence_reused_with_hash_match": true,
+      "season_provenance": {
+        "id": "056",
+        "independent_preflight_season": "autumn",
+        "independent_preflight_time": "비 직후 흐린 정오",
+        "parent_scene_plan_season": "봄 비 갠 오후",
+        "observed_season": "spring",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": true
+      },
+      "independent_preflight_season_mismatch": "autumn 대신 꽃/연한잎/맑은봄빛"
+    },
+    {
+      "id": "059",
+      "anchor": "050",
+      "composition_pass": true,
+      "history_pass": true,
+      "source_fidelity_pass": true,
+      "people": 4,
+      "season": "autumn",
+      "evidence": "사각작업판네면에네사람/앞등인물도같은판을직접짚음.050/039군3.단순멀리현장보는등관찰008군아님.",
+      "source": "열쇠/닫힌장부는탁자중앙미인도상태.영주가손을거두고후보둘이기다려선택전비교가복원됨.능력과충성도교차는본문에서확인해야함.",
+      "indoor_document": false,
+      "group_name": "탁자 네 면을 에워싼 네 사람의 숙의",
+      "group_members_after": [
+        "050",
+        "039",
+        "059"
+      ],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_059.jpg",
+      "sha256": "42ac36a6eeec4875d1c753ae99037b3e5ad503afe9cbe381a1ace1864955c7fc",
+      "fullsize_actually_viewed": true,
+      "prior_sha256": "99dd29639cdbb80357b557fd5678006f07d4e1fa7627dc3e757d0df9c6db34c6",
+      "version": "v2",
+      "cleanup_observation": "열쇠가탁자중앙에놓이고영주두손은허리로거둠.오른쪽후보는고개를들어대기.열쇠인도/임명수락처럼읽히던동작해소.네면네사람구도와닫힌기록은유지.",
+      "actually_reopened_this_review": true,
+      "season_provenance": {
+        "id": "059",
+        "independent_preflight_season": "winter",
+        "independent_preflight_time": "맑고 차가운 오전",
+        "parent_scene_plan_season": "초가을 오전",
+        "observed_season": "autumn",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": true
+      },
+      "independent_preflight_season_mismatch": "winter 대신 노란잎과따뜻한가을빛"
+    },
+    {
+      "id": "061",
+      "version": "v2",
+      "anchor": "109",
+      "composition_pass": true,
+      "history_pass": true,
+      "people": 3,
+      "season": "autumn",
+      "evidence": "두굵은문설주가여성과중앙남성/오른쪽청지기의얼굴및몸일부를실제로가림.가운데틈주민손의작은말린청원,청지기미수령손/듣는옆얼굴,깊은마당끝열린법정안빈의자.109/195군3.013의가림없는근접두얼굴과다르고큰등권한자008군은실제없어짐.",
+      "source": "주민은먼빈영주자리쪽을가리키며청지기는받아판결하지않고듣는다.원문부재영주가작은관습청원도직접들어달라는관계보존.책임이양/임명장면아님.돈액수가작음/관습쟁점의구체내용은본문필요.",
+      "indoor_document": false,
+      "document_basis": "주인물/말린청원은열린야외마당쪽,실내기록작업이나펼친장부없음.먼법정실내빈의자만으로실내문서추가하지않음.",
+      "group_name": "문설주 사이 부분가린 여러 얼굴과 중심 전달손",
+      "group_members_after": [
+        "109",
+        "195",
+        "061"
+      ],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_061.jpg",
+      "sha256": "53d9317ef00390b0a584edf58adbf9110a9af8b1c5925b6ad616fbe737620bd6",
+      "fullsize_actually_viewed": true,
+      "actually_reopened_this_review": false,
+      "fullsize_prior_evidence_reused_with_hash_match": true
+    },
+    {
+      "id": "060",
+      "reuse": true,
+      "anchor": "008",
+      "composition_pass": true,
+      "history_pass": true,
+      "people": 4,
+      "season": "summer_or_early_autumn",
+      "time": "sunset",
+      "evidence": "오른쪽큰등진노년영주가왼쪽세대표를바라보는현재가로재사용본.008/031/060군3.061실제새구도검수완료후에만원래군에서교체.",
+      "source": "도시열쇠/가문방패/교회책대표셋과듣는영주,아직하나선택하거나기부/건축완료없음.",
+      "history_limits": "기존원본배경건축·장식보존.먼작은지붕돌출부의세부고증까지이축소본만으로인증하지않음.",
+      "indoor_document": false,
+      "group_name": "중앙 전경 관찰자의 등 너머 작업 현장",
+      "group_members_after": [
+        "008",
+        "031",
+        "060"
+      ],
+      "path": "/Users/rexxa/fls-astra-eventart200-delivery/r09/assets/ck_evt_060.jpg",
+      "sha256": "894726639c5bb1341783a464980e4bc178b73e37a88693d94f1fa299c4c76d76",
+      "fullsize_actually_viewed": true,
+      "actually_reopened_this_review": false,
+      "fullsize_prior_evidence_reused_with_hash_match": true
+    }
+  ],
+  "groups": [
+    {
+      "name": "눈높이의 중앙 중재자와 좌우 상대방",
+      "ids": [
+        "004",
+        "019",
+        "047"
+      ],
+      "count": 3
+    },
+    {
+      "name": "판매대 너머의 두 사람과 사이에 제시된 종이",
+      "ids": [
+        "005",
+        "024",
+        "057"
+      ],
+      "count": 3
+    },
+    {
+      "name": "왼쪽 전경의 두 사람과 오른쪽으로 열린 깊은 야외 장면",
+      "ids": [
+        "010",
+        "042",
+        "121"
+      ],
+      "count": 3
+    },
+    {
+      "name": "전경 작업대 뒤에 나란히 몸을 숙이는 두 사람",
+      "ids": [
+        "002",
+        "049",
+        "053"
+      ],
+      "count": 3
+    },
+    {
+      "name": "큰 열린 문서함을 사선으로 내려다보는 두 사람",
+      "ids": [
+        "009",
+        "134",
+        "017"
+      ],
+      "count": 3
+    },
+    {
+      "name": "중앙 전경 관찰자의 등 너머 작업 현장",
+      "ids": [
+        "008",
+        "031",
+        "060"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까운 두 사람 사이의 손과 직접 만지는 물건",
+      "ids": [
+        "013",
+        "030",
+        "067"
+      ],
+      "count": 3
+    },
+    {
+      "name": "전경 운송 상자를 열어 확인하는 주변 인물",
+      "ids": [
+        "015",
+        "188",
+        "107"
+      ],
+      "count": 3
+    },
+    {
+      "name": "거의 수직 부감의 직사각형 빈 공간과 둘레 작업자",
+      "ids": [
+        "025",
+        "062",
+        "083"
+      ],
+      "count": 3
+    },
+    {
+      "name": "측면의 소 수레가 화면을 가로지르는 운송 장면",
+      "ids": [
+        "018",
+        "086",
+        "101"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 시점의 왼쪽 큰 용기와 그 너머 인물",
+      "ids": [
+        "011",
+        "020",
+        "052"
+      ],
+      "count": 3
+    },
+    {
+      "name": "오른쪽 닫힌 문을 향한 바깥 접근자",
+      "ids": [
+        "028",
+        "034",
+        "038"
+      ],
+      "count": 3
+    },
+    {
+      "name": "넓은 현장의 기록 권한자와 여러 청자",
+      "ids": [
+        "027",
+        "176"
+      ],
+      "count": 2
+    },
+    {
+      "name": "왼쪽 전경의 말과 오른쪽 두 남자의 만남",
+      "ids": [
+        "029",
+        "123",
+        "129"
+      ],
+      "count": 3
+    },
+    {
+      "name": "계단과 말 위 인물을 따라 내려가는 대각선",
+      "ids": [
+        "037",
+        "120",
+        "170"
+      ],
+      "count": 3
+    },
+    {
+      "name": "중앙 경계석과 좌우 멀리 떨어진 작은 인물군",
+      "ids": [
+        "032",
+        "116",
+        "141"
+      ],
+      "count": 3
+    },
+    {
+      "name": "전경의 단독 독자와 문간의 작은 증인",
+      "ids": [
+        "033",
+        "167",
+        "175"
+      ],
+      "count": 3
+    },
+    {
+      "name": "긴 시설물의 사선을 따라 떨어져 일하는 인물들",
+      "ids": [
+        "035",
+        "051",
+        "064"
+      ],
+      "count": 3
+    },
+    {
+      "name": "목재 더미와 비어 있는 작업 공간 앞의 긴 두루마리",
+      "ids": [
+        "046"
+      ],
+      "count": 1
+    },
+    {
+      "name": "탁자 네 면을 에워싼 네 사람의 숙의",
+      "ids": [
+        "050",
+        "039",
+        "059"
+      ],
+      "count": 3
+    },
+    {
+      "name": "얼굴이 잘린 양쪽 손과 중앙 돈 또는 물건의 근접",
+      "ids": [
+        "058",
+        "068",
+        "077"
+      ],
+      "count": 3
+    },
+    {
+      "name": "갈라진 길 양쪽 오두막 문간 응답자",
+      "ids": [
+        "063",
+        "187"
+      ],
+      "count": 2
+    },
+    {
+      "name": "창고 내부 자루 너머 정면으로 들어오는 소 수레",
+      "ids": [
+        "065",
+        "136"
+      ],
+      "count": 2
+    },
+    {
+      "name": "닫힌 전경 울타리 너머 인물과 멀어지는 소",
+      "ids": [
+        "066",
+        "183",
+        "197"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 지붕 작업자 너머 낮은 시장길",
+      "ids": [
+        "069",
+        "156",
+        "163"
+      ],
+      "count": 3
+    },
+    {
+      "name": "정면 수문 위 작업자와 둑 위 두 관찰자",
+      "ids": [
+        "070",
+        "125"
+      ],
+      "count": 2
+    },
+    {
+      "name": "넓은 들판 오른쪽의 두 관찰자",
+      "ids": [
+        "071",
+        "168",
+        "171"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 부감의 마당 둘레 공동 작업",
+      "ids": [
+        "072",
+        "145",
+        "194"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 밭고랑 시점과 위쪽 인물 가로열",
+      "ids": [
+        "073",
+        "143",
+        "036"
+      ],
+      "count": 3
+    },
+    {
+      "name": "갈대 묶음과 배를 사이에 둔 세 사람",
+      "ids": [
+        "074"
+      ],
+      "count": 1
+    },
+    {
+      "name": "돌계단 손 접촉 극근접과 먼 증인",
+      "ids": [
+        "075",
+        "140",
+        "044"
+      ],
+      "count": 3
+    },
+    {
+      "name": "말 등 양쪽 가방에 봉인 꾸러미를 넣는 근접",
+      "ids": [
+        "076"
+      ],
+      "count": 1
+    },
+    {
+      "name": "전경 평기와 성형판과 후경 적재 수레",
+      "ids": [
+        "079",
+        "112"
+      ],
+      "count": 2
+    },
+    {
+      "name": "전경 목재와 오른쪽 수레 사이 운송 지시",
+      "ids": [
+        "080"
+      ],
+      "count": 1
+    },
+    {
+      "name": "좌우 두 교환 행동을 병렬로 보는 중경",
+      "ids": [
+        "078",
+        "139",
+        "152"
+      ],
+      "count": 3
+    },
+    {
+      "name": "한 사람의 얼굴 옆 인장 비교 근접",
+      "ids": [
+        "081",
+        "159",
+        "172"
+      ],
+      "count": 3
+    },
+    {
+      "name": "위층에서 내려다본 좁은 골목의 단독 전달자",
+      "ids": [
+        "082"
+      ],
+      "count": 1
+    },
+    {
+      "name": "선반 틈의 정면 얼굴과 양손 장부막대 비교",
+      "ids": [
+        "084",
+        "178"
+      ],
+      "count": 2
+    },
+    {
+      "name": "높은 부감의 두 물체 비교와 손/작은 작업자",
+      "ids": [
+        "085",
+        "090",
+        "126"
+      ],
+      "count": 3
+    },
+    {
+      "name": "긴 닫힌 점포열을 따라 분산된 정리 인물",
+      "ids": [
+        "087"
+      ],
+      "count": 1
+    },
+    {
+      "name": "높은 부감의 하천 양안 작업과 배수",
+      "ids": [
+        "089"
+      ],
+      "count": 1
+    },
+    {
+      "name": "가운데 수직 천이 가리는 양쪽 인물",
+      "ids": [
+        "091",
+        "119",
+        "155"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 판매대 안쪽에서 보는 두 전신과 그릇",
+      "ids": [
+        "093",
+        "192",
+        "012"
+      ],
+      "count": 3
+    },
+    {
+      "name": "바닥 아래에서 본 열린 마루와 위쪽 세 사람",
+      "ids": [
+        "094",
+        "144",
+        "161"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 게시자와 수레 쪽 낮은 응답자",
+      "ids": [
+        "095",
+        "142",
+        "151"
+      ],
+      "count": 3
+    },
+    {
+      "name": "넓은 강/다리 조망과 아래 작은 수레 일행",
+      "ids": [
+        "098",
+        "166",
+        "180"
+      ],
+      "count": 3
+    },
+    {
+      "name": "점포창 밖 기록자의 어깨 너머 안쪽 상인",
+      "ids": [
+        "099",
+        "158",
+        "174"
+      ],
+      "count": 3
+    },
+    {
+      "name": "지붕 사이 높은 시점의 적재 골목과 먼 빈 시장",
+      "ids": [
+        "100",
+        "016"
+      ],
+      "count": 2
+    },
+    {
+      "name": "큰 창고 바닥 양편 작업과 가운데 깊은 통로",
+      "ids": [
+        "088",
+        "148",
+        "200"
+      ],
+      "count": 3
+    },
+    {
+      "name": "큰 수직 기계 옆 낮게 앉은 단독 수리자",
+      "ids": [
+        "096",
+        "003",
+        "056"
+      ],
+      "count": 3
+    },
+    {
+      "name": "배의 긴 축을 높은 시점에서 보는 운송 장면",
+      "ids": [
+        "097"
+      ],
+      "count": 1
+    },
+    {
+      "name": "비어 있는 문틀 속 정면 단독 전신과 앞에 든 주머니",
+      "ids": [
+        "092"
+      ],
+      "count": 1
+    },
+    {
+      "name": "낮은 시점의 빈 받침 둘과 먼 끝 작은 사람",
+      "ids": [
+        "102",
+        "173",
+        "177"
+      ],
+      "count": 3
+    },
+    {
+      "name": "넓은 가로 행렬의 맹세자와 반대방향으로 떠나는 인물",
+      "ids": [
+        "103",
+        "150",
+        "185"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 부감의 교차로 양끝으로 갈라지는 작은 두 인물",
+      "ids": [
+        "104",
+        "122",
+        "138"
+      ],
+      "count": 3
+    },
+    {
+      "name": "올려다본 큰 기둥풍차 아래 작은 세 인물과 표본",
+      "ids": [
+        "105",
+        "137",
+        "160"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 잠자리 발 전경과 덮개 밖 응답자",
+      "ids": [
+        "108",
+        "193",
+        "021"
+      ],
+      "count": 3
+    },
+    {
+      "name": "문설주 사이 부분가린 여러 얼굴과 중심 전달손",
+      "ids": [
+        "109",
+        "195",
+        "061"
+      ],
+      "count": 3
+    },
+    {
+      "name": "근접 중앙 매달린 저울과 뒤쪽 세 사람",
+      "ids": [
+        "113",
+        "055"
+      ],
+      "count": 2
+    },
+    {
+      "name": "왼쪽 봉인자루 더미를 사이에 둔 차단자와 접근자",
+      "ids": [
+        "114"
+      ],
+      "count": 1
+    },
+    {
+      "name": "장터 사이를 걷는 전신 일행과 한쪽 상품을 보는 인물",
+      "ids": [
+        "115",
+        "127",
+        "164"
+      ],
+      "count": 3
+    },
+    {
+      "name": "화면 대부분의 높은 벽화 밑그림과 아래 작은 세 인물",
+      "ids": [
+        "117",
+        "191"
+      ],
+      "count": 2
+    },
+    {
+      "name": "넓은 야외 배경 앞 정면 단독 인물과 손에 든 생업 물품",
+      "ids": [
+        "106",
+        "110",
+        "132"
+      ],
+      "count": 3
+    },
+    {
+      "name": "빈짚침상옆에앉은단독성직자의다락방",
+      "ids": [
+        "111"
+      ],
+      "count": 1
+    },
+    {
+      "name": "낮은강변에서올려다본큰교량아치와상하인물",
+      "ids": [
+        "118",
+        "153"
+      ],
+      "count": 2
+    },
+    {
+      "name": "앉은 돈 소유자와 가장자리에서 압박하는 큰 부분 인물",
+      "ids": [
+        "133",
+        "184",
+        "189"
+      ],
+      "count": 3
+    },
+    {
+      "name": "빈 실내 바닥과 먼 출입 경계에 몰린 일행",
+      "ids": [
+        "124",
+        "181",
+        "196"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까이 앉은 옆얼굴 소유자와 멀리 분리된 상대",
+      "ids": [
+        "128",
+        "131",
+        "135"
+      ],
+      "count": 3
+    },
+    {
+      "name": "양쪽 출입구 사이를 옆으로 걷는 전달자",
+      "ids": [
+        "130",
+        "149"
+      ],
+      "count": 2
+    },
+    {
+      "name": "빈 자리와 벽걸이 열쇠를 향해 나란히 기다리는 전신 후보",
+      "ids": [
+        "147",
+        "199",
+        "022"
+      ],
+      "count": 3
+    },
+    {
+      "name": "야외 양편 떨어진 전신 거래인과 각자의 기록",
+      "ids": [
+        "154",
+        "186",
+        "040"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까운 청중 집단과 계단 위 가로열 권한자",
+      "ids": [
+        "157",
+        "045"
+      ],
+      "count": 2
+    },
+    {
+      "name": "낮은 수평 자재더미 양쪽 높이가 다른 전신 인물",
+      "ids": [
+        "146",
+        "190",
+        "054"
+      ],
+      "count": 3
+    },
+    {
+      "name": "양쪽 매달린 물통 사이 낮은 시점의 실제 운반자",
+      "ids": [
+        "162"
+      ],
+      "count": 1
+    },
+    {
+      "name": "빈 수레 적재칸 내부 바닥 너머 상단 두 사람",
+      "ids": [
+        "165"
+      ],
+      "count": 1
+    },
+    {
+      "name": "열린 시장문 안쪽의 옆모습 발화자와 깊게 분산된 점포 청자",
+      "ids": [
+        "169"
+      ],
+      "count": 1
+    },
+    {
+      "name": "야외 작은 닫힌 궤 옆에 무릎꿇은 단독 분류자",
+      "ids": [
+        "179"
+      ],
+      "count": 1
+    },
+    {
+      "name": "측면 단독 서기의 실제 필기와 앞뒤 두 작업판",
+      "ids": [
+        "198"
+      ],
+      "count": 1
+    },
+    {
+      "name": "낮은 가로 농기구 너머 가까운 단독 무릎 검사자",
+      "ids": [
+        "182"
+      ],
+      "count": 1
+    },
+    {
+      "name": "낮은 가축 다리 극전경과 서로 다른 깊이의 길목 당사자",
+      "ids": [
+        "001",
+        "041"
+      ],
+      "count": 2
+    },
+    {
+      "name": "양쪽 큰 용기 틈의 단독 청원자와 화면 위로 잘린 응답손",
+      "ids": [
+        "006"
+      ],
+      "count": 1
+    },
+    {
+      "name": "큰 전경 사선 건축 버팀목 너머 한쪽 끝의 작은 인물쌍",
+      "ids": [
+        "007"
+      ],
+      "count": 1
+    },
+    {
+      "name": "정면 선반 칸 전체의 재고와 양끝 작은 검사자",
+      "ids": [
+        "014"
+      ],
+      "count": 1
+    },
+    {
+      "name": "먼 전체 건물의 비스듬한 외관과 한쪽 아래 작은 관찰자",
+      "ids": [
+        "023"
+      ],
+      "count": 1
+    },
+    {
+      "name": "높은 측면 난간에서 큰 기둥 옆 밀집한 올려다보는 얼굴군",
+      "ids": [
+        "043"
+      ],
+      "count": 1
+    },
+    {
+      "name": "높은 비스듬한 목초지의 열린 문과 양쪽 불균등 가축떼",
+      "ids": [
+        "048"
+      ],
+      "count": 1
+    }
+  ],
+  "membership_validation": {
+    "total": 199,
+    "unique": 199,
+    "duplicates": [],
+    "changed_existing_assignments": [
+      "061"
+    ],
+    "authorized_recomposition": "061",
+    "excluded_unresolved026": true
+  },
+  "group_count": 86,
+  "max_group_count": 3,
+  "over_limit_groups": [],
+  "composition_pass": true,
+  "indoor_document": {
+    "prior_count": 19,
+    "new_additions": [],
+    "count": 19,
+    "total": 199,
+    "fraction": 0.09547738693467336,
+    "maximum_integer_count": 19,
+    "remaining_capacity": 0,
+    "pass": true,
+    "note": "061야외부분가림청원,059야외닫힌기록.20번째실내문서는200장확정전허용안됨."
+  },
+  "mandatory_composition_redraw_ids": [],
+  "mandatory_history_cleanup_ids": [],
+  "mandatory_source_state_fix_ids": [],
+  "required_revision_union": [],
+  "overall_complete": false,
+  "semantic_validation_status": "not_performed_by_this_review",
+  "remaining_limits": [
+    "누적199장86군최대3,실내문서19/199유지.",
+    "현재여섯파일SHA재계산,교정3장만변경확인.나머지3장기존fullsize증거는해시일치로재사용.",
+    "055배경군중을포함한인원은여전히계획3명보다많고계절계획차이정정으로인원차이를숨기지않음.",
+    "독립의미식별시험/전체누적모아보기/최종패키징완료는이감사에서주장하지않음."
+  ],
+  "prior_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r09/records/composition-first-images.json",
+  "prior_audit_sha256": "2a37c32ed60f0820477ea16d1378f6f3a496fe8aa5d9c9e87e46e4e8a6e26058",
+  "parent_scene_plan": "/Users/rexxa/fls-astra-eventart200-delivery/r09/scene-plan.json",
+  "parent_scene_plan_sha256": "9255182a15d8a5d36b93eb3095fb54a5900b2f3697db5c9ccc4fbd8329a5cd57",
+  "changed_ids_this_review": [
+    "054",
+    "055",
+    "059"
+  ],
+  "current_r09_asset_hashes": {
+    "054": "5facb542c2e29e6af53b63e46a10306aa72011eb900d5abdc0a99b2fbb3026b5",
+    "055": "9f228bef7860c9ce16c89ac09318d8867b778d35cabd9cc7501a1874173251d6",
+    "056": "05e7cda4f8654df5eeec7af464b2618be2ed3f43d35089d4728d741254353ff0",
+    "059": "42ac36a6eeec4875d1c753ae99037b3e5ad503afe9cbe381a1ace1864955c7fc",
+    "061": "53d9317ef00390b0a584edf58adbf9110a9af8b1c5925b6ad616fbe737620bd6",
+    "060": "894726639c5bb1341783a464980e4bc178b73e37a88693d94f1fa299c4c76d76"
+  },
+  "season_plan_provenance": {
+    "rows": [
+      {
+        "id": "054",
+        "independent_preflight_season": "summer",
+        "independent_preflight_time": "비 갠 흐린 늦은 오후",
+        "parent_scene_plan_season": "늦여름 비 갠 오후",
+        "observed_season": "late_summer_or_early_autumn_rain",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": false
+      },
+      {
+        "id": "055",
+        "independent_preflight_season": "spring",
+        "independent_preflight_time": "차가운 아침",
+        "parent_scene_plan_season": "가을 흐린 오전",
+        "observed_season": "autumn",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": true
+      },
+      {
+        "id": "056",
+        "independent_preflight_season": "autumn",
+        "independent_preflight_time": "비 직후 흐린 정오",
+        "parent_scene_plan_season": "봄 비 갠 오후",
+        "observed_season": "spring",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": true
+      },
+      {
+        "id": "059",
+        "independent_preflight_season": "winter",
+        "independent_preflight_time": "맑고 차가운 오전",
+        "parent_scene_plan_season": "초가을 오전",
+        "observed_season": "autumn",
+        "parent_plan_consistent": true,
+        "independent_preflight_discrepancy": true
+      }
+    ],
+    "note": "이전감사의계절불일치는독립검토자의사전제안과비교한것이었다.부모scene-plan현재파일은055가을056봄059초가을로명시해실물과일치한다.부모가이계획을생성전에정했다고보고했음을구분해기록하며파일이력을독립복원하여작성시각을증명한것은아니다.실물에맞춰독립preflight원문또는부모계획을수정하지않았다."
+  },
+  "resolved_history_ids": [
+    "054",
+    "055"
+  ],
+  "resolved_source_state_ids": [
+    "059"
+  ],
+  "visual_audit_pass": true
+}

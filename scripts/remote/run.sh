@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Remote runner (REMOTE-1): edit on the Mac, run heavy verification on the DGX Spark, bring back only the results.
 #
-#   scripts/remote/run.sh <label> [--slot guardrail] [--detach] [--keep] -- <command ...>
+#   scripts/remote/run.sh <label> [--heavy|--light] [--detach] [--keep] -- <command ...>
 #   scripts/remote/run.sh --task test|guardrail|browser|perf|ui-geometry|clone-check|trend [task args ...]   (label: $FLS_REMOTE_LABEL or branch)
 #   scripts/remote/run.sh --attach <run>     follow a detached/interrupted run, then fetch its results
 #   scripts/remote/run.sh --fetch <run>      fetch results only
@@ -14,7 +14,11 @@
 #     (--copy-dest + --checksum), so only edits cross the network. Commits not on origin travel as a git bundle.
 #  2. On the DGX, scripts/remote/remote-exec.sh runs inside a systemd user scope in fls-runs.slice
 #     (MemoryMax=48G, CPUQuota=1200% = 12 of 20 cores, nice 10): git metadata for the run folder, node_modules from the
-#     lockfile-hash cache, a port from 4300-4399, a guardrail slot (2 at a time), then the command.
+#     lockfile-hash cache, two ports from 4300-4399 (FLS_REMOTE_PORT and FLS_REMOTE_BASE_PORT), a heavy-run slot when
+#     the run is heavy (at most 2 heavy runs at once across all sessions; the others wait in line and log their place),
+#     then the command. Heavy: --task test|guardrail|ui-geometry|clone-check, and a command run with --heavy or
+#     --detach or calling a known heavy script (uiGeometryAudit, efficientGrowthRun) unless --light. Light: --task
+#     browser|perf|trend (measuring never waits, RR3), single test files and short probes.
 #  3. The run's .remote/ folder (logs, summaries, guardrail/perf raw) comes back to .remote-runs/<run>/, and files the
 #     command created or changed under docs/ seeds/ perf/ output/ fixtures/ come back into this working tree
 #     (rsync --update: a file edited here during the run is never overwritten).
@@ -83,7 +87,8 @@ finish() {
 case "${1:-}" in
   ""|-h|--help) sed -n '2,24p' "$0"; exit 0 ;;
   --status)
-    rsh "systemctl --user list-units 'fls-run-*' --no-pager --no-legend; systemctl --user status fls-runs.slice --no-pager 2>/dev/null | sed -n '1,8p'; ls -1t $RROOT | grep -v '^_'; echo '== kept:'; ls -1t $RROOT/_kept 2>/dev/null"
+    rsh "systemctl --user list-units 'fls-run-*' --no-pager --no-legend; systemctl --user status fls-runs.slice --no-pager 2>/dev/null | sed -n '1,8p'; ls -1t $RROOT | grep -v '^_'; echo '== kept:'; ls -1t $RROOT/_kept 2>/dev/null
+      echo '== heavy slots (at most 2 heavy runs at once):'; for f in $RROOT/_slots/heavy.*.lock; do [ -e \"\$f\" ] && ! flock -n \"\$f\" true && tr '\\t' ' ' < \"\${f%.lock}.info\"; done; echo '== waiting in line:'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//'"
     exit 0 ;;
   --release) [ -n "${2:-}" ] || die "--release <run>"
     rsh "rm -rf $RROOT/_kept/${2:?}; rm -f $RROOT/${2:?}/.remote/keep"; echo "remote: released $2"; exit 0 ;;
@@ -91,13 +96,13 @@ case "${1:-}" in
   --attach) [ -n "${2:-}" ] || die "--attach <run>"; follow "$2" || true; finish "$2"; exit $? ;;
 esac
 
-SLOT=""; DETACH=0; KEEP_RUN=${FLS_REMOTE_KEEP_RUN:-0}
+SLOT=""; DETACH=0; KEEP_RUN=${FLS_REMOTE_KEEP_RUN:-0}; WEIGHT=
 if [ "$1" = "--task" ]; then
   TASK=${2:-}; shift 2 || die "--task <name>"
   LABEL=${FLS_REMOTE_LABEL:-$(default_label)}
   case "$TASK" in
-    guardrail) SLOT=guardrail ;;
-    test|browser|perf|ui-geometry|clone-check|trend) ;;
+    guardrail|test|ui-geometry|clone-check) SLOT=heavy ;;
+    browser|perf|trend) ;;
     *) die "unknown task: $TASK (test|guardrail|browser|perf|ui-geometry|clone-check|trend)" ;;
   esac
   [ "${FLS_REMOTE_DETACH:-0}" = 1 ] && DETACH=1
@@ -106,14 +111,23 @@ else
   LABEL=$1; shift
   while [ $# -gt 0 ] && [ "$1" != "--" ]; do
     case "$1" in
-      --slot) SLOT=${2:-}; shift 2 ;;
+      --slot) SLOT=heavy; shift 2 ;;   # the old --slot guardrail: a heavy run
+      --heavy) WEIGHT=heavy; shift ;;
+      --light) WEIGHT=light; shift ;;
       --detach) DETACH=1; shift ;;
       --keep) KEEP_RUN=1; shift ;;
       *) die "unknown option $1 (did you forget -- before the command?)" ;;
     esac
   done
-  [ "${1:-}" = "--" ] || die "usage: run.sh <label> [--slot guardrail] [--detach] [--keep] -- <command ...>"
+  [ "${1:-}" = "--" ] || die "usage: run.sh <label> [--heavy|--light] [--detach] [--keep] -- <command ...>"
   shift
+  # Heavy-run cap (scripts/remote/heavySlots.sh, decision RR14): explicit, or a detached run (runs over 20 minutes go
+  # detached), or a known heavy script; --light keeps a short run outside the cap.
+  case "$WEIGHT" in
+    heavy) SLOT=heavy ;;
+    light) SLOT="" ;;
+    *) if [ "$SLOT" = heavy ] || [ "$DETACH" = 1 ] || printf '%s ' "$@" | grep -Eq 'uiGeometryAudit|efficientGrowthRun|tasks\.sh (test|guardrail|ui-geometry|clone-check)'; then SLOT=heavy; fi ;;
+  esac
 fi
 [ $# -gt 0 ] || die "no command"
 echo "$LABEL" | grep -Eq '^[A-Za-z0-9][A-Za-z0-9._-]{0,60}$' || die "label must match [A-Za-z0-9][A-Za-z0-9._-]* (e.g. render-F0V): '$LABEL'"
@@ -159,7 +173,7 @@ state=$(rsh "mkdir -p $RROOT/$RUN/.remote-in && \
 PREV=$(printf '%s\n' "$state" | sed -n 's/^PREV=//p')
 COPY_DEST=""; [ -n "$PREV" ] && COPY_DEST="--copy-dest=../$PREV"
 
-echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}) -> $HOST"
+echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}${SLOT:+, heavy: waits in line when 2 heavy runs are going}) -> $HOST"
 rsync -a --checksum $COPY_DEST -e "ssh $SSH_OPTS" --files-from="$TMP/files.txt" "$REPO/" "$HOST:$RROOT/$RUN/"
 rsync -a -e "ssh $SSH_OPTS" "$TMP/meta.env" "$TMP/in-files.txt" $( [ -f "$TMP/head.bundle" ] && echo "$TMP/head.bundle" ) "$HOST:$RROOT/$RUN/.remote-in/"
 SYNC_S=$(since "$T0")

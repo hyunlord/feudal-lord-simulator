@@ -1,0 +1,935 @@
+{
+  "review_type": "independent_actual_cumulative_composition_history_subject_audit",
+  "review_stage": "r04_after_semantic121v4_135v5",
+  "reviewed_total": 114,
+  "prior_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r03/records/composition-audit-final.json",
+  "prior_audit_sha256": "c78cbb57d6e3b4fc47cc26da829eabe4f6a4f8dcb836f8f56c93edde30841461",
+  "frozen94_csv": "/Users/rexxa/fls-astra-eventart200-delivery/r03/CUMULATIVE.csv",
+  "prior94_current_source_hash_mismatches": [],
+  "scene_plan": "/Users/rexxa/fls-astra-eventart200-delivery/r04/scene-plan.json",
+  "scene_plan_sha256": "3816f476e337a24bc68cd89e2d7edd26ab9393e26078628d0a676d24ac9d4110",
+  "visual_basis": "Current121v4 and135v5 opened directly at960x540; all6 cumulative-final sheets inspected. Other112 actual-image findings reused after hashes checked. Previous audits preserved. Blind files/keys/results not accessed or used.",
+  "blinding": "No blind folders, keys or answer data accessed. Authorized scene-plan/body used; not a blind matching test.",
+  "groups": [
+    {
+      "name": "눈높이의 중앙 중재자와 좌우 상대방",
+      "ids": [
+        "004",
+        "019",
+        "107"
+      ],
+      "visual_basis": "눈높이의 중경~전신 카메라로 주요 인물을 얕은 가로열에 둔다. 중앙 권한자가 양쪽 상대에게 손이나 작은 물건을 내밀고 주변 인물은 그를 향해 정지한다. 최종052는 등지고 걸어가며, 최종058은 얼굴을 모두 잘라 손만 보여 주므로 이 대면 계열에 더 이상 속하지 않는다. 수정068은 얼굴이 잘린 물건/손 근접 장면으로 바뀌었으므로 제외한다. 107의 중앙성직자와좌우인계자/떠나는발동작은기존가로중재자배치와같아추가한다.",
+      "count": 3
+    },
+    {
+      "name": "판매대 너머의 두 사람과 사이에 제시된 종이",
+      "ids": [
+        "005",
+        "024",
+        "057"
+      ],
+      "visual_basis": "눈높이에서 두 상반신을 좌우에 두고 종이를 몸 사이에 보여 준다. 아래쪽의 판매대가 전경을 가로막는다. 005·024의 빈 판매대와 057의 천 진열대는 물건 양의 차이이며, 두 인물-종이-가로 판매대의 구조는 같다.",
+      "count": 3
+    },
+    {
+      "name": "왼쪽 전경의 두 사람과 오른쪽으로 열린 깊은 야외 장면",
+      "ids": [
+        "010",
+        "042",
+        "121"
+      ],
+      "visual_basis": "두 인물이 왼쪽에 붙고 밝은 문서를 그 사이에서 보인다. 화면 오른쪽 절반 이상은 멀리 이어지는 강 또는 길과 작은 사람·수레에 열려 있다. 005·024·057의 대칭적 가까운 판매대 구도와 분리하는 이유는 장소 이름이 아니라 비대칭의 여백과 깊은 배경이다. 수정121은 왼쪽 전경에 채무자/앉은 보증인 두 사람과 밝은 문서가 모이고 오른쪽 절반은 비어 있는 야외 길/마당 깊이로 열린다.서기/앉기 차이는 있지만010/042의 왼쪽 가까운 두 사람-문서와 오른쪽 깊은 여백이라는 기준으로 보수 합산3.두 사람이 가로 판매대 뒤 대칭으로 서거나 문서를 양쪽에서 내미는005계열은 아니다.",
+      "count": 3
+    },
+    {
+      "name": "전경 작업대 뒤에 나란히 몸을 숙이는 두 사람",
+      "ids": [
+        "002",
+        "049",
+        "053"
+      ],
+      "visual_basis": "크게 보이는 수평 작업대가 아래쪽을 채우며 뒤쪽 두 인물이 비슷한 크기로 숙여 자료나 천을 살핀다. 049는 천 다루는 손의 동작이 더 크지만 눈높이 카메라, 작업대의 비중, 두 인물의 위치가 이 계열과 유사하다. 문서 모티프와는 별도로 구도만을 비교했다.",
+      "count": 3
+    },
+    {
+      "name": "큰 열린 문서함을 사선으로 내려다보는 두 사람",
+      "ids": [
+        "009",
+        "134"
+      ],
+      "visual_basis": "비스듬히 내려다보는 시점에서 뚜껑 열린 문서함이 중심에 있고 두 인물이 위와 오른쪽을 둘러싼다. 단순한 책상 정면 시점과 구분된다. 최종134는 높은 부감에서 열린궤 내부의 두 돈주머니,옆의 수도사 얼굴,멀리 문간 두 당사자를 내려다본다.009의 위에서 보는 열린함/내용물 검토와 보수 합산2.궤 안은 돈주머니로 채워지고 주변 인물은 둘레를 에워싸지 않아025/062/083의 중앙 빈 직사각 공간군과 다르다.",
+      "count": 2
+    },
+    {
+      "name": "중앙 전경 관찰자의 등 너머 작업 현장",
+      "ids": [
+        "008",
+        "031",
+        "061"
+      ],
+      "visual_basis": "큰 뒷모습을 전경에 놓고 그 너머 여러 거리의 인물과 일을 본다. 008은 전경 두 명, 031은 한 명이지만 역방향 시선과 깊이 배치가 공통이다. 061의 오른쪽 큰 뒷모습과 중앙 의자 너머 청원자를 보수적으로 같은 역방향 관찰 계열에 포함한다. 수정067에는 뒷모습 관찰자가 없어 제외한다. R04 final123 now genuinely changes camera/foreground relationship and is excluded; original membership and criterion unchanged.",
+      "count": 3
+    },
+    {
+      "name": "가까운 두 사람 사이의 손과 직접 만지는 물건",
+      "ids": [
+        "013",
+        "030",
+        "067"
+      ],
+      "visual_basis": "두 상반신이 화면 좌우에서 마주하고 손과 실제 만지는 물건을 중앙으로 내민다. 종이나 판매대가 중심이 아니라 손으로 수행하는 교환·검사가 중심이다. 수정067은 앉은 두 인물이지만 가까운 좌우 인물의 손을 중앙 열쇠에 내미는 구조를 공유하므로 같은 계열로 보수 합산한다. 수정077은 얼굴이 모두 잘린 극근접이므로 아래058계열로 이동한다.",
+      "count": 3
+    },
+    {
+      "name": "전경 운송 상자를 열어 확인하는 주변 인물",
+      "ids": [
+        "015"
+      ],
+      "visual_basis": "상자의 뚜껑과 내부 짐이 중심이며 인물들이 뒤와 옆에서 이를 살핀다. 025의 거의 수직 부감과는 카메라 차이가 크다.",
+      "count": 1
+    },
+    {
+      "name": "거의 수직 부감의 직사각형 빈 공간과 둘레 작업자",
+      "ids": [
+        "025",
+        "062",
+        "083"
+      ],
+      "visual_basis": "025는 빈 상자,수정062는 깊은 톱질 구덩이지만 거의 수직 부감과 중앙 직사각형 열린 공간 및 둘레/내부 사람의 위치가 같은 계열이다. 물체 종류만으로 별도 분리하지 않고2장으로 묶었다.062의 구덩이 위아래 사람과 톱의 축은 실제로 새롭게 보인다. 수정083의 높은 부감에서도 가운데 비운 직사각형 영역을 둘레 인물이 에워싼다.깊은 구덩이 대신 지면 줄로 표시된 영역이지만 부감-중앙 빈 직사각 공간-둘레 인물이라는 기준을 보수 유지해025/062/083으로 합산한다.",
+      "count": 3
+    },
+    {
+      "name": "측면의 소 수레가 화면을 가로지르는 운송 장면",
+      "ids": [
+        "018",
+        "086",
+        "101"
+      ],
+      "visual_basis": "소와 수레의 긴 옆모습이 주실루엣이며 인물은 앞뒤에 분산된다. 수정086은 수레의 큰 두 바퀴와 긴 옆모습이 화면을 가로지르고 위/오른쪽 사람은 작게 배치된다.018의 측면 소수레 운송과 같이 분류한다.전신 높이차와 수레 실루엣이 지배하여 이전013/030/067 손 대면에서 실제로 벗어났다. 101의 짐말 몸통은 중앙을 가로지르는 수평 운송 실루엣이고 양옆에 사람이 작게 분산된다.수레/짐말 차이만으로 새 운송구도를 만들지 않아018/086/101로 합산한다.",
+      "count": 3
+    },
+    {
+      "name": "낮은 시점의 왼쪽 큰 용기와 그 너머 인물",
+      "ids": [
+        "011",
+        "020",
+        "052"
+      ],
+      "visual_basis": "바닥 가까운 카메라에서 왼쪽 전경의 상자 또는 통을 크게 두고, 사람을 그 너머 중경·원경에 배치한다. 011은 큰 상자와 가로 문 너머 작은 인물 및 오른쪽으로 나가는 말, 020은 큰 상자 너머 문턱의 두 사람, 052는 빈 통 옆을 지나 멀어지는 두 사람이다. 인물 행동과 문 유무는 다르지만 왼쪽 큰 용기-낮은 카메라-깊이 방향 인물이라는 공통 구조로 보수적으로 함께 묶었다. 모두 새12장 안에 있으며 이 계열은 3장이다. 최종092는 왼쪽 전경 용기와 선반이 제거되어 이 군에서 빠진다. R04 final134 now genuinely changes camera/foreground relationship and is excluded; original membership and criterion unchanged.",
+      "count": 3
+    },
+    {
+      "name": "오른쪽 닫힌 문을 향한 바깥 접근자",
+      "ids": [
+        "028",
+        "034",
+        "038"
+      ],
+      "visual_basis": "오른쪽의 문과 벽이 큰 면을 이루며 바깥 인물이 그 면을 향한다. 034는 더 가까운 상반신이며 038은 종이를 들고 있지만 인물과 문 사이의 경계 대면 구조는 같다.",
+      "count": 3
+    },
+    {
+      "name": "넓은 현장의 기록 권한자와 여러 청자",
+      "ids": [
+        "027"
+      ],
+      "visual_basis": "눈높이의 넓은 장면에서 기록 권한자를 중앙왼쪽 또는 왼쪽에 두고 주변 청자와 수레·탁자 등 큰 물건을 여러 거리로 분산한다. 059의 앉은 인물과027의 선 인물 차이가 있는 느슨한2장 계열이다. 넓은 모티프에서는004·019와 다자 협상으로 함께 집계하되 가까운 가로 대면열과는 구별했다.",
+      "count": 1
+    },
+    {
+      "name": "왼쪽 전경의 말과 오른쪽 두 남자의 만남",
+      "ids": [
+        "029",
+        "129",
+        "123"
+      ],
+      "visual_basis": "말이 왼쪽의 큰 덩어리를 차지하고 오른쪽에서 두 남자가 선 채 물품과 두루마리를 든다. 129 큰 왼쪽 소와 오른쪽 사람/손/빗장.동물종과 우리 문을 이유로 구도를 쪼개지 않고029 큰 왼쪽 동물-오른쪽 상대 계열2. 최종123은 왼쪽 절반의 크고 높은 널판 덩어리와 오른쪽 두 전신의 대면이다.029/129의 큰 왼쪽 덩어리-오른쪽 대면인물이라는 더 넓은 공간구조와 보수 합산해3으로 센다.동물 대신 목재라는 이유만으로 독립군을 발명하지 않는다.기존 그룹명은 원래 대표장면의 명칭으로 보존한다.013/030/067은 좌우 상반신이 화면 양가장자리를 채워 중앙 손/물건으로 모이는 근접이고,123은 널판이 왼쪽 약절반을 점유하며 두 전신 모두 오른쪽 같은 깊이에 서 있으므로 그 포화 근접군에 들어가지 않는다.낮은 용기 너머 작은 인물을 보는011군이나 등진관찰008군도 아니다.",
+      "count": 3
+    },
+    {
+      "name": "계단과 말 위 인물을 따라 내려가는 대각선",
+      "ids": [
+        "037",
+        "120"
+      ],
+      "visual_basis": "계단의 높낮이, 왼쪽 높은 인물, 중앙 기마 인물, 오른쪽 아래 인물이 대각선 이동 방향을 만든다. 말이 있다는 이유만으로 029와 같은 구도로 보지 않는다. 수정120은계단을따라좌하단에서우상단으로올라가는전신이주축이며양끝공간의상자/문으로이동을보인다.037의계단높낮이와기마/보행인물대각선계열과보수합산한다.말의유무만으로별도구도화하지않는다. 수정135의 주인물은 더 이상 계단에서 오르내리지 않아 제외한다.배경 법정계단 자체만으로 이 군에 남기지 않는다.",
+      "count": 2
+    },
+    {
+      "name": "중앙 경계석과 좌우 멀리 떨어진 작은 인물군",
+      "ids": [
+        "032",
+        "116"
+      ],
+      "visual_basis": "넓은 밭과 중앙 전경의 돌이 주도하며 인물군은 좌우 먼 거리로 나뉜다. 수정116은넓은빈중앙경계와멀리떨어진좌우인물군이다.032의중앙경계석/넓은밭과좌우분리인물처럼거리가주된갈등표현이며,석벽/열린대문/닫힌교회문은실제장소단서.큰전경뒷모습은없으므로008군에서제외하되경계분리구도032와보수합산한다.",
+      "count": 2
+    },
+    {
+      "name": "전경의 단독 독자와 문간의 작은 증인",
+      "ids": [
+        "033"
+      ],
+      "visual_basis": "한 사람이 가까이 세로 종이를 읽고 뒤쪽의 두 사람은 작고 멀다. 서 있는 두 사람이 문서를 주고받는 구도와 다르다.",
+      "count": 1
+    },
+    {
+      "name": "긴 시설물의 사선을 따라 떨어져 일하는 인물들",
+      "ids": [
+        "035",
+        "051",
+        "064"
+      ],
+      "visual_basis": "목재 또는 물속 울타리가 전경에서 중경으로 길게 이어지고 인물들이 그 방향을 따라 서로 떨어져 작업한다.064의 큰 사선 쟁기 들보와 분산 인물을 포함한다.최종106은 정면 단독 여성과 수평 배경 울타리로 바뀌어 긴 깊이축 작업물·분산 작업자가 없어졌다.실제 구도 변경에 따라 제외하며 기존 세 장의 기준은 유지한다.",
+      "count": 3
+    },
+    {
+      "name": "목재 더미와 비어 있는 작업 공간 앞의 긴 두루마리",
+      "ids": [
+        "046"
+      ],
+      "visual_basis": "왼쪽 아래 목재 더미, 가운데 두 인물, 오른쪽 빈 작업 공간의 비대칭 구조다. 긴 세로 문서를 들지만 정면 판매대나 왼쪽 전경에 붙은 두 사람 구도와는 물체 위계가 다르다.",
+      "count": 1
+    },
+    {
+      "name": "탁자 네 면을 에워싼 네 사람의 숙의",
+      "ids": [
+        "050"
+      ],
+      "visual_basis": "네 사람이 야외 탁자 앞뒤와 양옆을 둘러싸고 그 위의 문서를 본다. 두 사람이 작업대 뒤에 나란히 놓이는002·049·053과 인물 배치가 다르다. 넓은 탁자 검토 모티프는 공유한다.",
+      "count": 1
+    },
+    {
+      "name": "얼굴이 잘린 양쪽 손과 중앙 돈 또는 물건의 근접",
+      "ids": [
+        "058",
+        "068",
+        "077"
+      ],
+      "visual_basis": "058 돈주머니와 짐,수정068 돈상자/게시 종이/닫는 주머니,수정077 동전/닫힌 문빗장이 다르지만 얼굴을 제외하고 양쪽 가장자리에서 손과 몸이 들어와 물체를 크게 다루는 근접 구조가 같다.068의 배경 우물,077의 목초지 차이로 구도를 쪼개지 않고3장으로 합산한다.",
+      "count": 3
+    },
+    {
+      "name": "갈라진 길 양쪽 오두막 문간 응답자",
+      "ids": [
+        "063"
+      ],
+      "visual_basis": "전경 전달자의 등 뒤에서 두 갈래 길 양쪽 문간 인물을 함께 본다.028/034/038의 오른쪽 벽이 화면을 막는 가까운 대면과는 공간·깊이 구조가 다르다.",
+      "count": 1
+    },
+    {
+      "name": "창고 내부 자루 너머 정면으로 들어오는 소 수레",
+      "ids": [
+        "065",
+        "136"
+      ],
+      "visual_basis": "어두운 내부 프레임과 전경 자루 사이로 소 수레가 정면 진입하고 전경 유도자가 손을 든다.018의 긴 측면 운송과 다르다. 136은 양쪽 큰 전경 짐 사이 정면 짐말 진입과 창고인물.065의 전경짐-정면운송-창고 구조와 보수2.",
+      "count": 2
+    },
+    {
+      "name": "닫힌 전경 울타리 너머 인물과 멀어지는 소",
+      "ids": [
+        "066"
+      ],
+      "visual_basis": "크게 가로막는 전경 울타리,중경 오른쪽 전신,원경 왼쪽 소와 사람이 깊이 방향으로 나뉜다.",
+      "count": 1
+    },
+    {
+      "name": "높은 지붕 작업자 너머 낮은 시장길",
+      "ids": [
+        "069"
+      ],
+      "visual_basis": "왼쪽 지붕 위 큰 두 인물과 아래쪽 길을 오가는 사람이 높낮이 대각선을 만든다.",
+      "count": 1
+    },
+    {
+      "name": "정면 수문 위 작업자와 둑 위 두 관찰자",
+      "ids": [
+        "070",
+        "125"
+      ],
+      "visual_basis": "수평 수문과 정면 물길이 중심이며 왼쪽 높은 작업자와 오른쪽 인물 둘이 분리된다.051과 물가 모티프는 공유하나 긴 사선 울타리를 따라 인물이 배치된 구도와 다르다. 125는 낮은 정면 물길/교면축과 좌우 위쪽 인물.070의 정면 수문/물길과 양쪽 사람 계열로 보수2.긴 사선축에 분산된 작업자가 아님.",
+      "count": 2
+    },
+    {
+      "name": "넓은 들판 오른쪽의 두 관찰자",
+      "ids": [
+        "071"
+      ],
+      "visual_basis": "두 인물은 오른쪽에 몰리고 넓은 밭 파노라마가 대부분을 차지한다.008과 뒤에서 풍경을 보는 모티프는 강하게 겹치나 맞은편 작업자 대면이 없다.",
+      "count": 1
+    },
+    {
+      "name": "높은 부감의 마당 둘레 공동 작업",
+      "ids": [
+        "072"
+      ],
+      "visual_basis": "마당을 비워 두고 부엌·작업 인물을 U자 둘레에 배치한다.",
+      "count": 1
+    },
+    {
+      "name": "낮은 밭고랑 시점과 위쪽 인물 가로열",
+      "ids": [
+        "073"
+      ],
+      "visual_basis": "큰 흙고랑이 아래 절반을 채우고 인물 넷은 먼 위쪽 한 줄에 놓인다.004/019 협상 모티프를 공유하지만 카메라 높이와 땅 비중 차이가 명확하다.",
+      "count": 1
+    },
+    {
+      "name": "갈대 묶음과 배를 사이에 둔 세 사람",
+      "ids": [
+        "074"
+      ],
+      "visual_basis": "낮은 배와 큰 갈대 묶음이 전경을 차지하고 두 작업자와 오른쪽 권한자가 삼각형을 만든다.",
+      "count": 1
+    },
+    {
+      "name": "돌계단 손 접촉 극근접과 먼 증인",
+      "ids": [
+        "075",
+        "140"
+      ],
+      "visual_basis": "왼쪽 크게 잘린 손과 닳은 계단이 중심이고 두 인물은 높은 뒤쪽에 멀리 있다. 140 극근접 잘린 부츠/지팡이/경계석과 먼 기마자.075 가까운 신체일부/돌과 먼 인물이라는 깊이 대비로2.",
+      "count": 2
+    },
+    {
+      "name": "말 등 양쪽 가방에 봉인 꾸러미를 넣는 근접",
+      "ids": [
+        "076"
+      ],
+      "visual_basis": "중앙 말 등의 긴 깊이축 양옆에 두 사람과 봉인 꾸러미가 대칭 배치된다.029/037의 말 옆 전신 대화와 다르다.",
+      "count": 1
+    },
+    {
+      "name": "전경 평기와 성형판과 후경 적재 수레",
+      "ids": [
+        "079",
+        "112"
+      ],
+      "visual_basis": "넓은 기와판 위 근접 노동자와 그 뒤 오른쪽 적재 수레/운반자가 다른 깊이에 놓인다. 112는 기와 더미를 전경 아래에 크게 놓고 가까운 작업자,뒤쪽 중앙 지시자,오른쪽 적재수레를 깊이별 배치한다.079의 전경 기와-작업자-후경 적재수레와 실제 구도/물체계열을 공유해2장으로 합산한다.",
+      "count": 2
+    },
+    {
+      "name": "전경 목재와 오른쪽 수레 사이 운송 지시",
+      "ids": [
+        "080"
+      ],
+      "visual_basis": "왼쪽 앞 긴 각재,중앙 지시자,오른쪽 뒤 말수레의 비대칭 삼각형이며 강이 후경이다.",
+      "count": 1
+    },
+    {
+      "name": "좌우 두 교환 행동을 병렬로 보는 중경",
+      "ids": [
+        "078",
+        "139"
+      ],
+      "visual_basis": "왼쪽 천과 저울의 두 사람,오른쪽 곡물 자루의 두 사람이 울타리로 분리된 병렬 장면이다.수정 전078도 병렬 행동 구도였으나 구체적 행동은 수레 밀기/부축에서 거래로 바뀌었다.한 조의 좌우 손 교환 근접군이나 중앙 중재자가 있는 단일 가로 협상열과 인물/공간 구조가 다르다. 139 왼쪽 선물천/잔 행동과 오른쪽 앉은 돈주머니 검토가 기둥으로 분리된 병렬장면.078 좌우 별개 행동 구조와2.뒤 혼수짐/말은 반복 모티프이나 주요 구도를 뒤집지 않음.",
+      "count": 2
+    },
+    {
+      "name": "한 사람의 얼굴 옆 인장 비교 근접",
+      "ids": [
+        "081"
+      ],
+      "visual_basis": "큰 왼쪽 얼굴과 오른쪽 높이 든 봉인 두 개/손이 비대칭으로 놓인다.두 사람이 좌우에서 물건을 내미는013계열과 다르다.",
+      "count": 1
+    },
+    {
+      "name": "위층에서 내려다본 좁은 골목의 단독 전달자",
+      "ids": [
+        "082"
+      ],
+      "visual_basis": "높은 시점에서 골목 아래 사람이 위 창을 올려다본다.문과 대면하는028/034/038/090의 눈높이보다 높이 관계가 분명히 다르다.",
+      "count": 1
+    },
+    {
+      "name": "선반 틈의 정면 얼굴과 양손 장부막대 비교",
+      "ids": [
+        "084"
+      ],
+      "visual_basis": "선반의 위아래 수평 프레임 안에 얼굴 한 명,양손의 막대 두 개가 나란히 놓인다.081도 비교 행위지만 얼굴 방향과 프레임/물체축이 다르다.",
+      "count": 1
+    },
+    {
+      "name": "높은 부감의 두 물체 비교와 손/작은 작업자",
+      "ids": [
+        "085",
+        "090",
+        "126"
+      ],
+      "visual_basis": "얼굴은 없지만 위에서 내려다본 빈 통과 곡물 자루 두 덩어리가 화면을 좌우로 나눈다.058/068/077의 눈높이 양쪽 손-중앙 단일 교환물 구조와 구분한다.025/062의 중앙 직사각형 빈 공간과 둘레 사람도 아니며,물체 종류만 달라서 분리한 것이 아니다. 수정090은 높은 부감에서 낡은 문짝과 새 판재가 두 큰 비교 대상을 이룬다.085의 좌우 용기 비교와 사선/모양은 다르지만 부감-두 대상 비교-손/작은 사람이라는 계열로 보수적으로 합산한다.수직 부감의 단일 빈 직사각 공간025/062/083과는 비교 대상 두 개가 꽉 찬다는 차이가 있다. 126은 계획보다 낮은 사선이지만 내려다보이는 두 문서와 탈리 비교가 중심.085/090의 두 물체 비교와 가까운 작업자 계열을 보수 적용해3.실내 문서 중심 추가.",
+      "count": 3
+    },
+    {
+      "name": "긴 닫힌 점포열을 따라 분산된 정리 인물",
+      "ids": [
+        "087"
+      ],
+      "visual_basis": "점포열의 소실점이 왼쪽 멀리 이어지고 오른쪽 가까운 여성이 양팔을 벌려 문을 다룬다.중경 다른 두 사람은 물건을 정리한다.028군의 단일 문을 마주하는 가까운 대면보다 넓고 긴 장소축이 지배한다.",
+      "count": 1
+    },
+    {
+      "name": "높은 부감의 하천 양안 작업과 배수",
+      "ids": [
+        "089"
+      ],
+      "visual_basis": "하천의 사선 흐름이 화면을 나누고 오른쪽 가까운 배수자와 왼쪽 먼 취수자가 높이/거리를 달리한다.051의 눈높이 긴 시설물축보다 높은 하천 조망이다.",
+      "count": 1
+    },
+    {
+      "name": "가운데 수직 천이 가리는 양쪽 인물",
+      "ids": [
+        "091",
+        "119"
+      ],
+      "visual_basis": "천이 화면 중앙의 큰 세로 막을 이루고 양쪽 사람이 천의 양끝을 잡는다.030의 허리 아래 천/통과 가운데 드러난 손동작보다 수직 면이 우세하다.두 사람이 천을 본다는 이유만으로013/030군에 강제 합산하지 않는다. 119의 벽에 걸린 넓은 천이 가운데 상단을 가리고 양옆/앞에 인물이 놓인다.091의 큰 중앙 수직천과 양쪽인물 배치를 넓게 보수 합산한다.119는 사람을 더 작게 그리고 동전탁자를 추가했으나 별개 ID만으로 완전히 새로운 천구도라 하지 않는다.",
+      "count": 2
+    },
+    {
+      "name": "낮은 판매대 안쪽에서 보는 두 전신과 그릇",
+      "ids": [
+        "093"
+      ],
+      "visual_basis": "낮은 카메라에 판매대의 가로틀이 가슴 아래를 가르고 위쪽 두 사람의 얼굴과 아래 발이 함께 보인다.002/049/053/088의 눈높이 작업면 뒤 상반신과 카메라 높이/보이는 몸 범위가 다르다.",
+      "count": 1
+    },
+    {
+      "name": "바닥 아래에서 본 열린 마루와 위쪽 세 사람",
+      "ids": [
+        "094"
+      ],
+      "visual_basis": "땅 단면과 열린 바닥이 화면 아래를 차지하고 위쪽 세 인물이 내려다본다.062의 수직 부감 구덩이와 정반대 높이 관계.",
+      "count": 1
+    },
+    {
+      "name": "높은 게시자와 수레 쪽 낮은 응답자",
+      "ids": [
+        "095"
+      ],
+      "visual_basis": "왼쪽 발판의 큰 게시자와 오른쪽 아래 수레/사람이 높낮이 사선을 만든다.문서가 있어도 눈높이 두 사람 문서교환과 다르다.",
+      "count": 1
+    },
+    {
+      "name": "넓은 강/다리 조망과 아래 작은 수레 일행",
+      "ids": [
+        "098"
+      ],
+      "visual_basis": "강과 다리/여울의 경로 비교가 대부분이며 인물과 수레는 아래 오른쪽 작게 있다.071과 파노라마 관찰 모티프는 공유하나071의 큰 전경 인물보다 인물 비중이 훨씬 작다.",
+      "count": 1
+    },
+    {
+      "name": "점포창 밖 기록자의 어깨 너머 안쪽 상인",
+      "ids": [
+        "099"
+      ],
+      "visual_basis": "왼쪽 잘린 등/기록부와 맞은편 중심 상인이 창틀로 나뉜다.005/024/057의 얼굴 두 개가 좌우에 같은 크기로 놓인 종이 제시와 실제 비대칭 어깨너머 카메라가 다르다.",
+      "count": 1
+    },
+    {
+      "name": "지붕 사이 높은 시점의 적재 골목과 먼 빈 시장",
+      "ids": [
+        "100"
+      ],
+      "visual_basis": "양옆 지붕이 프레임이고 아래 골목에 자루를 나르는 여러 사람과 수레,뒤쪽 높은 빈 시장이 있다.080의 전경 목재-중앙 지시자-수레보다 훨씬 높은 도시 조망이다.",
+      "count": 1
+    },
+    {
+      "name": "큰 창고 바닥 양편 작업과 가운데 깊은 통로",
+      "ids": [
+        "088"
+      ],
+      "visual_basis": "왼쪽 넓은 곡물바닥,오른쪽 자루/가루와 뒤쪽 작은 작업자 두 명이 가운데 통로 양편으로 분리된다.기존002/049/053의 가까운 비슷한 크기 두 상반신과 수평 작업면이 아니다.065의 어두운 창고 전경/정면 수레 진입과도 물체 위계가 다르다.",
+      "count": 1
+    },
+    {
+      "name": "큰 수직 기계 옆 낮게 앉은 단독 수리자",
+      "ids": [
+        "096"
+      ],
+      "visual_basis": "왼쪽 베틀의 전체 높이와 오른쪽 무릎꿇은 사람을 측면에서 보여준다.부러진 가로목 접합 행동이며 전경 작업면 뒤 두 인물 검사 구도에서 벗어났다.",
+      "count": 1
+    },
+    {
+      "name": "배의 긴 축을 높은 시점에서 보는 운송 장면",
+      "ids": [
+        "097"
+      ],
+      "visual_basis": "왼쪽 아래 노젓는 등진 인물,중앙 짐,오른쪽 위 마주 앉은 두 사람이 배의 긴 축을 따라 층층이 놓인다.등진 사람은 현장 관찰자가 아니라 실제 노젓는 동작이며 배 내부 운송축이 주도한다.074의 낮은 갈대배 옆 세 인물과도 카메라/공간축이 다르다.",
+      "count": 1
+    },
+    {
+      "name": "비어 있는 문틀 속 정면 단독 전신과 앞에 든 주머니",
+      "ids": [
+        "092"
+      ],
+      "count": 1,
+      "visual_basis": "큰 전경 통과 선반이 모두 사라졌다.문틀 좌우의 세로틀 안에 정면 전신 한 명과 주머니가 중앙에 놓이고 앞 바닥은 비어 있다.011/020/052의 큰 왼쪽 용기와 깊이 다른 인물의 크기 대비가 없어졌다.028/034/038은 바깥 인물이 오른쪽 닫힌 문을 향하는 측면 대면이므로 실내에서 바깥의 정면 전신을 보는092와 방향/프레임 구조가 다르다."
+    },
+    {
+      "name": "낮은 시점의 빈 받침 둘과 먼 끝 작은 사람",
+      "ids": [
+        "102"
+      ],
+      "visual_basis": "큰 왼쪽 A형받침과 오른쪽 먼 받침 사이가 비어 있고 작은 두 사람은 끝에 있다.011/020/052의 불투명 큰 용기-깊이 인물과 넓은 모티프는 공유하나 이 장면은 받침의 열린 음영/비어 있는 중간 공간이 중심이다.035/051/064처럼 실제 길게 이어진 작업물과 그 축을 따라 분산된 작업자도 없다.단순 나무라는 재료 차이 대신 연결물이 없다는 물체구조로 분리.",
+      "count": 1
+    },
+    {
+      "name": "넓은 가로 행렬의 맹세자와 반대방향으로 떠나는 인물",
+      "ids": [
+        "103"
+      ],
+      "visual_basis": "왼쪽 큰 맹세 팔,중앙 성직자/권한자,오른쪽 떨어져 걸어나가는 농부가 이어지는 넓은 행렬.중앙 중재자 좌우에서 모두 멈춘 가까운 얕은 대면열과 달리 떠나는 사람/도랑의 분리거리가 중심.",
+      "count": 1
+    },
+    {
+      "name": "높은 부감의 교차로 양끝으로 갈라지는 작은 두 인물",
+      "ids": [
+        "104",
+        "122",
+        "138"
+      ],
+      "visual_basis": "큰 X형 길과 중앙 십자가가 지배하고 두 성직자는 좌상/우하로 멀어진다.063의 지상 눈높이 문간 두 인물 대면과 다르고025/062/083의 중앙 직사각형 둘레 배치도 아니다. 122의 높은 시점 S통로와 양끝 작은 사람은104의 큰 경로/작은 이동자 구조와 보수 합산.직사각형 빈 공간 둘레 배치가 아님. 138의 가파른 부감 U길과 작은 수레도 큰 경로와 작은 이동체를 보는 계열로3.운송물 차이만으로 새 구도화하지 않는다.",
+      "count": 3
+    },
+    {
+      "name": "올려다본 큰 기둥풍차 아래 작은 세 인물과 표본",
+      "ids": [
+        "105",
+        "137"
+      ],
+      "visual_basis": "기둥풍차의 큰 몸체/날개/계단이 위쪽 대부분을 차지하고 아래왼쪽에 세 인물이 작게 표본을 본다.표본을 살피는 손 자체보다 대형 시설의 수직 높이와 아래 사람이 중심. 137 극저각 큰 뿌리와 수직 나무 몸통 아래/양쪽 작은 인물.105 거대 수직 구조를 올려다보는 인물 계열과 보수2.",
+      "count": 2
+    },
+    {
+      "name": "낮은 잠자리 발 전경과 덮개 밖 응답자",
+      "ids": [
+        "108"
+      ],
+      "visual_basis": "큰 누운 발/담요를 왼쪽 아래에 두고 부모의 앉은 등을 거쳐 바깥 서 있는 성직자를 본다.역방향 시선 모티프는 있으나 전신 관찰자 대신 누운 수평신체/덮개가 전경을 지배한다.",
+      "count": 1
+    },
+    {
+      "name": "문설주 사이 부분가린 여러 얼굴과 중심 전달손",
+      "ids": [
+        "109"
+      ],
+      "visual_basis": "가까운 양문설주가 양쪽 얼굴을 부분가리고 가운데 손/봉인소환장을 드러낸다.058계열과 달리 얼굴4개가 보이며028/034/038의 오른쪽 닫힌문-바깥 접근자와 달리 카메라가 안에서 밖을 보는 열린 쌍프레임.",
+      "count": 1
+    },
+    {
+      "name": "근접 중앙 매달린 저울과 뒤쪽 세 사람",
+      "ids": [
+        "113"
+      ],
+      "visual_basis": "큰 저울의 수직축/좌우 접시가 전경중앙을 나누고 인물은 그 뒤 좌우에 배치된다.중앙 사람이 양쪽을 중재하는004군과 달리 실제 저울이 중앙 전경의 독립 구조.",
+      "count": 1
+    },
+    {
+      "name": "왼쪽 봉인자루 더미를 사이에 둔 차단자와 접근자",
+      "ids": [
+        "114"
+      ],
+      "visual_basis": "왼쪽앞 큰 자루/봉인,중앙왼쪽 손을 든 관리인,오른쪽 가까이 다가온 두 사람이 비대칭 깊이를 만든다.011/020/052의 낮은 바닥시점과 먼 작은 인물이 아니라 눈높이 가까운 대면.",
+      "count": 1
+    },
+    {
+      "name": "장터 사이를 걷는 전신 일행과 한쪽 상품을 보는 인물",
+      "ids": [
+        "115",
+        "127"
+      ],
+      "visual_basis": "가운데 길을 따라 여러 전신이 걸어오고 오른쪽 인물이 천을 만진다.중앙 판단자를 둘러싸 멈춘 손짓 대면과는 이동방향/행동이 다름. 127의 전신 일행이 시장길을 따라 다가오고 오른쪽 문간 행동이 붙는다.115 시장 행렬과 같은 계열2.",
+      "count": 2
+    },
+    {
+      "name": "화면 대부분의 높은 벽화 밑그림과 아래 작은 세 인물",
+      "ids": [
+        "117"
+      ],
+      "visual_basis": "밝은 벽 위 그림이 위2/3를 차지하고 인물은 낮은 가로열로 벽을 올려다본다.전경 뒷모습 너머 먼 현장보다 납작한 큰 벽면과 작은 사람 비율이 지배.종이가 아닌 실제 회벽 그림.",
+      "count": 1
+    },
+    {
+      "name": "넓은 야외 배경 앞 정면 단독 인물과 손에 든 생업 물품",
+      "ids": [
+        "106",
+        "110",
+        "132"
+      ],
+      "visual_basis": "106의 단독 여성은 목재 묶음과 못주머니를 든 채 전신으로 서며 수평 울타리와 교회가 뒤에 놓인다.110의 단독 여성은 곡식단과 열린 돈주머니를 정면으로 보이고 경작지가 뒤에 펼쳐진다.몸 크기·좌우 위치·장소가 다르지만 정면 단독 인물,손의 생업 물품,열린 야외 배경이라는 구조를 보수 합산한다.092의 실내에서 바깥을 보는 큰 문틀/전신 프레임과는 공간 구조가 다르다. 132 정면 전신 여성/식량바구니와 넓은 야외 배경,작은 먼 중개인.106/110의 단독 전경 생업물품 인물과 보수3.",
+      "count": 3
+    },
+    {
+      "name": "빈짚침상옆에앉은단독성직자의다락방",
+      "ids": [
+        "111"
+      ],
+      "visual_basis": "왼쪽긴짚침상과오른쪽앉은성직자/짐을정면비스듬히본다.뒷모습관찰자가없고잠자리비중이큼.108의누운가족발전경/밖의성직자와도인물방향/프레임차이.",
+      "count": 1
+    },
+    {
+      "name": "낮은강변에서올려다본큰교량아치와상하인물",
+      "ids": [
+        "118"
+      ],
+      "visual_basis": "큰 교량 아치가 화면을 가르고 왼쪽 아래 석공과 위쪽 성직자가 높이를 달리한다.최종 돈궤는 왼쪽 아래 석공 바로 옆 강변 지면에 작게 놓인다.얼굴 없는 돈/손 근접 구도나 먼 다리 파노라마와 다르며 열린 궤 추가로 지배적 구도가 바뀌지 않았다.",
+      "count": 1
+    },
+    {
+      "name": "앉은 돈 소유자와 가장자리에서 압박하는 큰 부분 인물",
+      "ids": [
+        "133"
+      ],
+      "visual_basis": "133은 앉은 징수인의 적은 동전과 화면 가장자리의 큰 채무주머니 소유자가 대조된다.수정121은 가장자리 채권자가 없어지고 왼쪽 두 사람이 문서/봉인을 함께 보는 구도로 바뀌어 제외한다.",
+      "count": 1
+    },
+    {
+      "name": "빈 실내 바닥과 먼 출입 경계에 몰린 일행",
+      "ids": [
+        "124"
+      ],
+      "visual_basis": "124는 바닥의 큰 빈 공간,왼쪽 중경 문간 일행,오른쪽 벽에 붙은 작은 판관석.큰 전경 가구가 없고 등진 관리인은 먼 문간에 있어 전경 역관찰이나 큰용기군이 아니다.",
+      "count": 1
+    },
+    {
+      "name": "가까이 앉은 옆얼굴 소유자와 멀리 분리된 상대",
+      "ids": [
+        "128",
+        "131",
+        "135"
+      ],
+      "visual_basis": "128 오른쪽 앉은 여성/과실과 왼쪽 먼 문밖 후계자,131 오른쪽 큰 앉은 아버지/열쇠와 왼쪽 먼 아들/채권자.얼굴이 보이는 근경 프로필이 먼 상대와 분리되는 구조로 함께2.물품과 과수원/현관 차이로 쪼개지 않음. 수정135는 왼쪽 가까운 앉은 후원자와 넓은 빈 바닥 건너 오른쪽 서 있는 청원자를 옆얼굴/전신으로 나눈다.128/131의 근경 앉은 권한자와 떨어진 상대라는 관계를 좌우반전/실내로 옮긴 형태로 보수 합산3.뒤 법정석/기록자는 작고 주된 전경 등진 관찰자가 없으므로008군과 다르다.",
+      "count": 3
+    },
+    {
+      "name": "양쪽 출입구 사이를 옆으로 걷는 전달자",
+      "ids": [
+        "130"
+      ],
+      "visual_basis": "좌측 문간 지시자,중앙 옆모습 보행자,오른쪽 방 안의 먼 영주.중앙인물은 양쪽 분쟁을 중재하지 않고 한 방향으로 걷고 깊이가 다르므로004/019/107의 멈춘 얕은 중재열과 구별.",
+      "count": 1
+    }
+  ],
+  "max_group_count": 3,
+  "composition_limit": 3,
+  "composition_limit_pass": true,
+  "over_limit_groups": [],
+  "group_membership_validation": {
+    "total_memberships": 114,
+    "unique_ids": 114,
+    "missing_ids": [],
+    "extra_ids": [],
+    "held059_excluded": true,
+    "frozen94_memberships_unchanged": true
+  },
+  "indoor_document_ids": [
+    "002",
+    "009",
+    "033",
+    "053",
+    "084",
+    "109",
+    "126"
+  ],
+  "indoor_document_count": 7,
+  "indoor_document_fraction": 0.06140350877192982,
+  "indoor_document_conservative_additional_ids": [
+    "076",
+    "099",
+    "135"
+  ],
+  "indoor_document_conservative_count": 10,
+  "indoor_document_conservative_fraction": 0.08771929824561403,
+  "indoor_document_limit_pass": true,
+  "indoor_document_basis": "Definite indoor paper-centered7 unchanged.121 document-centered but explicitly outdoors at stable yard, so not indoor.135 is indoors; foreground seated patron/standing litigant and empty floor dominate, while rear judges/clerks have visible records. Not definite document-centered, but added to conservative borderline set alongside076/099. Upper10/114=8.77%; definite7/114=6.14%.",
+  "new_image_reviews": [
+    {
+      "id": "121",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "야외 왼쪽 채무자는 빈 주머니를 보이고,앉은 보증인은 무릎의 밝은 문서와 둥근 인장도구를 검토한다.문서 아래 붉은 기존 봉인과 흰 미봉인 탭이 구별된다.채권자/직접 동전지급은 없어 보증 참여를 생각하는 장면이 전보다 구체적.손의 작은 둥근 물체는 썸네일에서 동전처럼 보일 여지가 있고 정확한 연대책임은 본문 필요.문서가 핵심이나 실외라 실내 문서에 포함하지 않음.010/042군과3.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "122",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "S통로/부러진 울타리/수선재 운반자가 보임.일회 통행과 영구권의 구별은 글 필요.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "123",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "눈높이에서 왼쪽 큰 수직 널판과 오른쪽 같은 깊이의 두 전신이 현금 지급.등진 전경인물/하역수레가 없어졌다.029/129의 왼쪽 큰덩어리-오른쪽 대면군과 보수 합산3.좌우 상반신 근접손교환이나 낮은전경용기군으로 분류하지 않는 실제 공간 근거를 기록.동전은 손에서 손으로 떨어지는 지급 동작으로 보임.미래 선택을 현재 사례로 보여주는 삽화이며 본문과 정면 충돌하지 않음.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "124",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "빈 판관석/문간 거절/밖 혼수궤 분리.백합깃발 제거 확인.혼례복·꽃은 혼담을 실제 결혼식으로 읽힐 여지가 있으나 본문을 정면 부정하지 않는 비차단 의미 모호함.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "125",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "손상된 앞 교면과 뒤 건전 교면 및 두 권한자.초가 지붕 굴뚝은 현재 보이지 않음.겨울 계획과 달리 잎 무성한 따뜻한 날.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "126",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "봉인 문서 둘과 갈라진 탈리,한 검토자 명확.원본/갱신의 시간 순서는 문구 없이 식별 불가.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "127",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "노동도구·살림냄비·침구가 함께 보여 통근/정착 주제 읽힘.빈 숙소인지 단지 출입문 수선인지 일부 모호.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "128",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "현재 수혜자의 과실과 문밖 후계자 분리.정확한 생존기간 권리조건은 본문 필요.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "129",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "우리 안 소,닫힌 빗장,주인이 내민 고삐,밟힌 곡식과 농부 명확.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "130",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "청지기 지시를 받아 영주 쪽으로 걷는 사람.복도/방유리가 보이지만 상급 저택이고 일반 초가집 금지와 동일시하지 않음.서신·현대문자 없음.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "131",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "살아 있는 아버지가 열쇠를 쥐고 먼 아들/채권자를 봄.현재 초가 굴뚝 식별되지 않음.갈색 무늬없는 모피,흰 점박이 어민 아님.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "132",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "여성 전신/얼굴과 식량바구니,먼 중개인 명확.106/110과 구도3 상한.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "133",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "적은 손안 동전과 가장자리 큰 지갑 대조.장날 수입과 상대 빚이라는 출처는 본문 필요.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "134",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "실제 높은 부감으로 궤 상면/내부와 수도사 얼굴이 보인다.두 주머니는 궤 내부,밖 두 당사자와 분리.009 열린함 부감검토군2로 합산.잠금 열쇠 자체는 뚜렷하지 않지만 궤의 중립보관이 핵심이며 필수 재작업 사유는 아님.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "135",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "앞 왼쪽 앉은 갈색모피 후원자와 오른쪽 서 있는 소송자가 서로 보며,뒤 높은 법정석의 판사/기록자는 별도로 존재한다.앞 인물이 판사가 아님을 보여주는 역할 분리 개선.후원 수락이나 판결 선고의 확정 동작은 없지만 단순 알현으로 읽힐 여지는 남아 정확한 후원관계는 본문 필요.무늬없는 갈색계열 모피,흰 점박이 어민 없음;현대 로프 대기줄 없음.뒷 문서/필기자는 작지만 보수 실내문서 경계에 포함.128/131군과3.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "136",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "다리 비계·들어온 짐말·창고 공간은 명확.계획과 달리 문 열림;본문은 보관소 청구이지 닫힌 문 자체가 필수는 아님.부담 인하 단서는 약함.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "137",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "아직 선 큰 나무,멈춘 도끼,어린 참나무 보호가 명확.나무 생존사용권/빚의 구체적 법맥락은 글 필요.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "138",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "기와수레/말이 오른쪽 굽이를 앞서고 목재수레/말이 같은 방향으로 뒤따른다.뒤 말의 몸통/다리가 노출되고 목재수레에서 앞으로 뻗은 끌채가 몸 옆으로 이어져,말과 짐이 한 덩어리로 합쳐지거나 끌채가 끊긴 명확 오류는 보이지 않는다.앞 말도 수레 앞에 연결됨.고부감 경로104/122/138군3 유지.작은 끈과 차축의 세부 기계구조까지 고증 인증한 것은 아님.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "139",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "왼쪽 혼인 선물잔과 오른쪽 세 돈주머니를 각각 다루는 장면 명확.뒤 혼수짐/말/여성 추가는 반복 배경 모티프지만 주 구도는078 병렬행동군2.일회 세꾸러미와 반복지급의 차이는 글 필요.",
+      "clear_new_history_violation_observed": false
+    },
+    {
+      "id": "140",
+      "visual_status": "visual_pass_with_noted_limits",
+      "notes": "진흙부츠/지팡이와 경계석,기마자와 먼 영지.계획 겨울 대신 잎있는 온화한 가을처럼 보임.현대 측량기구 없음.",
+      "clear_new_history_violation_observed": false
+    }
+  ],
+  "required_redraws": [],
+  "history_verdict": "Current121/135 show no definite new chimney, modern readable text/object, or white spotted ermine.135 fur reads plain brown with natural tonal variation and no rope queue.Court windows are institutional, not ordinary cottage evidence.121 background window grids are too small to establish reflective glazing rather than lattice; no categorical glass claim. Detailed seal practice/court furnishings not historically authenticated by external sources.",
+  "repetition_concerns": [
+    {
+      "ids": [
+        "078",
+        "139"
+      ],
+      "severity": "nonblocking",
+      "finding": "Separate left/right actions combined2;139 background transport/bridal goods repeat vocabulary, not evidence of exact same complete layout."
+    },
+    {
+      "ids": [
+        "008",
+        "031",
+        "061"
+      ],
+      "severity": "at_limit",
+      "finding": "Former123 back-observer overflow resolved by actual redraw;3 remain."
+    },
+    {
+      "ids": [
+        "011",
+        "020",
+        "052"
+      ],
+      "severity": "at_limit",
+      "finding": "Former134 low-container overflow resolved by real overhead camera;3 remain."
+    },
+    {
+      "ids": [
+        "029",
+        "129",
+        "123"
+      ],
+      "severity": "at_limit",
+      "finding": "Conservative large-left-mass/right-pair grouping3;123 not granted an isolated new category."
+    },
+    {
+      "ids": [
+        "009",
+        "134"
+      ],
+      "severity": "nonblocking",
+      "finding": "Open-chest overhead inspection2."
+    },
+    {
+      "ids": [
+        "128",
+        "131",
+        "135"
+      ],
+      "severity": "at_limit",
+      "finding": "Seated authority profile separated from other party now3, despite outdoor/interior and left/right reversal."
+    },
+    {
+      "ids": [
+        "010",
+        "042",
+        "121"
+      ],
+      "severity": "at_limit",
+      "finding": "Left-near pair/document with deep open right exterior now3."
+    }
+  ],
+  "face_background_and_season_review": "Strong recurring warm golden light, leafy rural lanes, distant square church towers, thatch/courtyard architecture and brown-capped bearded male types. No exact copied face established, but variety is visibly weaker than20 subject titles suggest.125 explicitly winter plan is leafy warm daylight;130 winter interior has no persuasive cold-season cues;134 winter plan shows leafy bright exterior;140 winter plan reads mild autumn.133 market closure has warm low light but not strongly distinct twilight. This is plan/variety drift, not a fabricated numerical season quota or proof of historical impossibility.",
+  "semantic_advisories": [
+    {
+      "id": "121",
+      "finding": "야외 왼쪽 채무자는 빈 주머니를 보이고,앉은 보증인은 무릎의 밝은 문서와 둥근 인장도구를 검토한다.문서 아래 붉은 기존 봉인과 흰 미봉인 탭이 구별된다.채권자/직접 동전지급은 없어 보증 참여를 생각하는 장면이 전보다 구체적.손의 작은 둥근 물체는 썸네일에서 동전처럼 보일 여지가 있고 정확한 연대책임은 본문 필요.문서가 핵심이나 실외라 실내 문서에 포함하지 않음.010/042군과3."
+    },
+    {
+      "id": "124",
+      "finding": "빈 판관석/문간 거절/밖 혼수궤 분리.백합깃발 제거 확인.혼례복·꽃은 혼담을 실제 결혼식으로 읽힐 여지가 있으나 본문을 정면 부정하지 않는 비차단 의미 모호함."
+    },
+    {
+      "id": "126",
+      "finding": "봉인 문서 둘과 갈라진 탈리,한 검토자 명확.원본/갱신의 시간 순서는 문구 없이 식별 불가."
+    },
+    {
+      "id": "127",
+      "finding": "노동도구·살림냄비·침구가 함께 보여 통근/정착 주제 읽힘.빈 숙소인지 단지 출입문 수선인지 일부 모호."
+    },
+    {
+      "id": "128",
+      "finding": "현재 수혜자의 과실과 문밖 후계자 분리.정확한 생존기간 권리조건은 본문 필요."
+    },
+    {
+      "id": "131",
+      "finding": "살아 있는 아버지가 열쇠를 쥐고 먼 아들/채권자를 봄.현재 초가 굴뚝 식별되지 않음.갈색 무늬없는 모피,흰 점박이 어민 아님."
+    },
+    {
+      "id": "133",
+      "finding": "적은 손안 동전과 가장자리 큰 지갑 대조.장날 수입과 상대 빚이라는 출처는 본문 필요."
+    },
+    {
+      "id": "135",
+      "finding": "앞 왼쪽 앉은 갈색모피 후원자와 오른쪽 서 있는 소송자가 서로 보며,뒤 높은 법정석의 판사/기록자는 별도로 존재한다.앞 인물이 판사가 아님을 보여주는 역할 분리 개선.후원 수락이나 판결 선고의 확정 동작은 없지만 단순 알현으로 읽힐 여지는 남아 정확한 후원관계는 본문 필요.무늬없는 갈색계열 모피,흰 점박이 어민 없음;현대 로프 대기줄 없음.뒷 문서/필기자는 작지만 보수 실내문서 경계에 포함.128/131군과3."
+    },
+    {
+      "id": "136",
+      "finding": "다리 비계·들어온 짐말·창고 공간은 명확.계획과 달리 문 열림;본문은 보관소 청구이지 닫힌 문 자체가 필수는 아님.부담 인하 단서는 약함."
+    },
+    {
+      "id": "139",
+      "finding": "왼쪽 혼인 선물잔과 오른쪽 세 돈주머니를 각각 다루는 장면 명확.뒤 혼수짐/말/여성 추가는 반복 배경 모티프지만 주 구도는078 병렬행동군2.일회 세꾸러미와 반복지급의 차이는 글 필요."
+    },
+    {
+      "id": "140",
+      "finding": "진흙부츠/지팡이와 경계석,기마자와 먼 영지.계획 겨울 대신 잎있는 온화한 가을처럼 보임.현대 측량기구 없음."
+    }
+  ],
+  "overall_pass": true,
+  "remaining_limits": [
+    "114 unique memberships and maximum3; no required composition redraw.",
+    "Definite indoor-document7/114=6.14%; conservative10/114=8.77% after adding135 background-records borderline.",
+    "121 guarantee liability and135 patronage status still require text; observed role cues improved, no independent blind-match accuracy claim.",
+    "Unchanged warm/leafy season-background repetition and previous nonblocking semantic limits remain.",
+    "No image edits, no blind files read, no installation or runtime verification."
+  ],
+  "new_source_sha256": {
+    "ck_evt_121": "2d12b0a8222d41f4487bb667dcaa0000eb1686658d90667e1127ff2cd528ce0d",
+    "ck_evt_122": "14d0193c76e493aa1121a57b39e1cf70205a466b1f8674ac54fa3088129899ef",
+    "ck_evt_123": "3f16a2b2c3ce65255b4fe962164b4a33e41f853f2a152e5fc6491869df29e346",
+    "ck_evt_124": "b5205df6985fe25d0277f9307c346ef0648700865998e1707ca3fc0800c9a82d",
+    "ck_evt_125": "39d57cdcebca7728f3b3fbfe6806d37a3659f22ed985ee120348263407d4eb9d",
+    "ck_evt_126": "cfb8926f40d4bf3f3ca2a8dfbb03d29580afacbade9ba66808576ce44d230398",
+    "ck_evt_127": "e426c633ac3e251b568107a9bf67fbe7b91c5a26dd2a4d9a2443b9f3be1077c2",
+    "ck_evt_128": "465704faf9af45ac18a407c0e35c2d1fd0e5e2ed06976f0c125fbbe0283de59e",
+    "ck_evt_129": "db6d0760527ba134cd41aa89ac25a13307a18a2ad5d4d4cba7c5ac3aaaac37ae",
+    "ck_evt_130": "0f8ff8bf8e67c2037873726d2cb89322be16f0f6670ce89452b2958a536a77b4",
+    "ck_evt_131": "8b902b8aea64bc7ebfaa646795bb2d16a5534ea72c338272add6d0631af6a4e8",
+    "ck_evt_132": "a834d843020618e94e863312282f73f22c30aae77f1055faf5d5129ad31d771f",
+    "ck_evt_133": "c1c3e1506861b52315e423cd11c207a350ce53b8d0188e8ed987bcfcd43ce7ba",
+    "ck_evt_134": "00bf497d3987b4b8bd08816e10871a7dd6a541e61ae1b78c072c921cb5ac3bc5",
+    "ck_evt_135": "f47716ec7bccb9001ebe54d8cb5b3d33ae253589f737cd48601f7a24d4269546",
+    "ck_evt_136": "4b651ae8a7bfe235a5859444d2f3907dea69a01ac36f5e5d432f3ad15787d1cd",
+    "ck_evt_137": "7b8831a4006be95c6741fb278ed8cc3d3b020e995579c0643f159d64af85d81a",
+    "ck_evt_138": "46bcb282a0a2eb5eb6c2362138030498d3be0ddf3a74953f75ec88e9d696b04e",
+    "ck_evt_139": "95ed1ad49172f64fab759bc60f711010745f67abf475abfa67e379c6b6f180af",
+    "ck_evt_140": "c4735ae2c87b891ee9a03c1a5d48b70d2cf6bd78135c313b6c77602762428632"
+  },
+  "proof_sha256": {
+    "proofs/cumulative-final-1.jpg": "afef596edb31334aa81093a2ce7917b07b0a32d43f28ed8eeb8d3a0852399c9e",
+    "proofs/cumulative-final-2.jpg": "e5eabd22f6566b44800f592f6ce0e71c6c923de227a5fb1d6de3ef79c084f95a",
+    "proofs/cumulative-final-3.jpg": "a90c3bf191b373855e8d29d5f952f8558538160365282dcff2c0a3447a301873",
+    "proofs/cumulative-final-4.jpg": "43e71ff7caf8ec3aba936ed2044563a5fd7ffc3533e36ed6523a74e1d82fee9c",
+    "proofs/cumulative-final-5.jpg": "0b61ad6a3bdae1e636ccefa6cc6f148d59ba4ce2f472675fe49898e5b2804096",
+    "proofs/cumulative-final-6.jpg": "064bed6ee09b503458d489fa60d642ffb1671dbc1eaa6de6cf0d645eb280fc00"
+  },
+  "previous_round_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r04/records/composition-audit-final.json",
+  "previous_round_audit_sha256": "769d629a42b2b813ef0335d009e7ad71e8fb41a4c2382e65dc4d5464e1c9ca70",
+  "specific_revision_evidence": {
+    "123": "눈높이에서 왼쪽 큰 수직 널판과 오른쪽 같은 깊이의 두 전신이 현금 지급.등진 전경인물/하역수레가 없어졌다.029/129의 왼쪽 큰덩어리-오른쪽 대면군과 보수 합산3.좌우 상반신 근접손교환이나 낮은전경용기군으로 분류하지 않는 실제 공간 근거를 기록.동전은 손에서 손으로 떨어지는 지급 동작으로 보임.미래 선택을 현재 사례로 보여주는 삽화이며 본문과 정면 충돌하지 않음.",
+    "134": "실제 높은 부감으로 궤 상면/내부와 수도사 얼굴이 보인다.두 주머니는 궤 내부,밖 두 당사자와 분리.009 열린함 부감검토군2로 합산.잠금 열쇠 자체는 뚜렷하지 않지만 궤의 중립보관이 핵심이며 필수 재작업 사유는 아님.",
+    "138": "기와수레/말이 오른쪽 굽이를 앞서고 목재수레/말이 같은 방향으로 뒤따른다.뒤 말의 몸통/다리가 노출되고 목재수레에서 앞으로 뻗은 끌채가 몸 옆으로 이어져,말과 짐이 한 덩어리로 합쳐지거나 끌채가 끊긴 명확 오류는 보이지 않는다.앞 말도 수레 앞에 연결됨.고부감 경로104/122/138군3 유지.작은 끈과 차축의 세부 기계구조까지 고증 인증한 것은 아님.",
+    "121": "야외 왼쪽 채무자는 빈 주머니를 보이고,앉은 보증인은 무릎의 밝은 문서와 둥근 인장도구를 검토한다.문서 아래 붉은 기존 봉인과 흰 미봉인 탭이 구별된다.채권자/직접 동전지급은 없어 보증 참여를 생각하는 장면이 전보다 구체적.손의 작은 둥근 물체는 썸네일에서 동전처럼 보일 여지가 있고 정확한 연대책임은 본문 필요.문서가 핵심이나 실외라 실내 문서에 포함하지 않음.010/042군과3.",
+    "135": "앞 왼쪽 앉은 갈색모피 후원자와 오른쪽 서 있는 소송자가 서로 보며,뒤 높은 법정석의 판사/기록자는 별도로 존재한다.앞 인물이 판사가 아님을 보여주는 역할 분리 개선.후원 수락이나 판결 선고의 확정 동작은 없지만 단순 알현으로 읽힐 여지는 남아 정확한 후원관계는 본문 필요.무늬없는 갈색계열 모피,흰 점박이 어민 없음;현대 로프 대기줄 없음.뒷 문서/필기자는 작지만 보수 실내문서 경계에 포함.128/131군과3."
+  },
+  "classification_method": "Frozen94 memberships/names preserved. Only121/135 reassigned after actual redraw:121 joins010/042 left-near pair/document with open-right exterior;135 joins128/131 near seated authority versus separated standing party. No old group split or membership shifted to create a pass. Earlier123/134/138 classifications unchanged.",
+  "changed_source_ids_since_initial": [
+    "ck_evt_123",
+    "ck_evt_134",
+    "ck_evt_138"
+  ],
+  "changed_source_ids_since_previous_final": [
+    "ck_evt_121",
+    "ck_evt_135"
+  ]
+}

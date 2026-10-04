@@ -1,0 +1,17 @@
+{
+  "correct": 1,
+  "total": 1,
+  "event_id": "ck_evt_199",
+  "expected_title": "병문안과 집안의 빈자리",
+  "answer": {
+    "picture": "S",
+    "title": "병문안과 집안의 빈자리",
+    "confidence": 0.53,
+    "evidence": "앞쪽의 큰 빈 의자가 두드러지고, 두 남자가 빈 자리 쪽으로 손짓한다. 뒤에서는 짐을 실은 말을 탄 인물이 문을 통과하며 집안 사람의 부재와 방문 또는 이동을 암시한다. 다만 병문안을 직접 보여 주는 환자나 병상은 보이지 않아 확신은 낮다.",
+    "alternatives": [
+      "가족을 위한 사제의 숙소",
+      "아픈 친족의 귀가"
+    ]
+  },
+  "limitation": "single-image supplementary retest, not full20 final retest"
+}

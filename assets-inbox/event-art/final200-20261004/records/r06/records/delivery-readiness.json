@@ -1,0 +1,25 @@
+{
+  "assets": 20,
+  "total_coverage": 154,
+  "format_all_pass": true,
+  "first_blind": {
+    "correct": 20,
+    "total": 20
+  },
+  "details_blind": {
+    "correct": 2,
+    "total": 3
+  },
+  "corrected_semantic_retest": {
+    "correct": 1,
+    "total": 1
+  },
+  "final_full20_retested": false,
+  "max_composition_group": 3,
+  "composition_overflow": 0,
+  "conservative_indoor_document": 15,
+  "total": 154,
+  "independent_visual_audit": "composition-round06-after-semantic.json",
+  "semantic_pending_in_independent_audit_resolved_by": "blind-last-scored.json",
+  "product_installed": false
+}

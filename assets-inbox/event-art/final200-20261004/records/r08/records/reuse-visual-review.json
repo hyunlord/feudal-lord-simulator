@@ -1,0 +1,379 @@
+{
+  "review_type": "R08 independent actual fullsize source reuse review",
+  "reviewed_proposal_rows": 16,
+  "unique_images_actually_viewed": 15,
+  "source_events": "/Users/rexxa/fls-astra-eventart200-delivery/r08/remaining26-source.json",
+  "frozen_composition_reference": "/Users/rexxa/fls-astra-eventart200-delivery/r07/records/composition-round07-final.json",
+  "frozen_composition_sha256": "c7e095c8059fa8cf9f9c35246d2a4490277da9faf63637520fd6cf6fb029fdd2",
+  "recommendation_counts": {
+    "reuse": 3,
+    "crop": 2,
+    "edit": 7,
+    "new": 4
+  },
+  "limits": [
+    "Only existing candidates reviewed, no final crops rendered because authorized write scope is this JSON only.",
+    "Composition flags based on actual source images plus frozen group definitions/IDs; frozen174images not reopened, so this is preflight not final cumulative visual verdict.",
+    "All recommendations remain unapproved and contribute zero confirmed coverage until leader validates mapping/actual derivative/composition.",
+    "022 and040 downgraded from prior semantic-only proposals after stricter current pending-state comparison.",
+    "Nine prior no-match events andheld059 are outside requested16proposal review."
+  ],
+  "reviews": [
+    {
+      "event_id": "ck_evt_001",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg",
+      "source_sha256": "47b89f4a7adb04421ff63b21498bcd962567bda1b7f8f01931c96734aed6650f",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Two large men at hurdle point at numerous sheep behind them; no cow, cart, or blocked track.",
+      "pending_state_fidelity": "The required competing cattle-through-route and market-cart use is absent. Cropping cannot add it.",
+      "recommended_action": "new",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "013/030/067 close facing figures already3;066/183/197 barrier depth already3",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_006",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/05_ale_assize.jpg",
+      "source_sha256": "1018645944d480c6b416e568a5ae937dfad5b85f01646727873a76d1a36a1b78",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Man actively tastes ale from cup; woman holds dripping ladle above huge vat and gestures defensively;three onlookers.",
+      "pending_state_fidelity": "Regulatory inspection precedes the already-assessed fine appeal. Replace tasting action with pending appeal and relevant closed fine record; do not imply payment.",
+      "recommended_action": "edit",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "013/030/067 close opposed faces/actions already3; vat is not sufficient basis to invent a new group",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_012",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/07_market_stall_dispute.jpg",
+      "source_sha256": "50c034702937118f329a6078d5438311da0ef8d7aa40d822b31c7cc6f4c44195",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Two opposed men hold opposite ends of one empty stall table; tense faces; spectators and market stock behind.",
+      "pending_state_fidelity": "No verdict, allocation, or settlement complete. Family identity needs caption. Bilateral physical claim fits current pending dispute.",
+      "recommended_action": "reuse",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "Native16:9 reuse",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "Near two-figures-horizontal-table saturated005/024/057 and002/049/053; not auto-fail but actual cumulative side-by-side review required",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_021",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/03_heriot.jpg",
+      "source_sha256": "491234c5d458192738b9484c6013c1ad93b039cac7d9821060b5cb053e410653",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Grieving woman at left, young man holds healthy cow rope centrally, official reaches open hand from right.",
+      "pending_state_fidelity": "No rope transfer yet, but specific healthy-cow heriot payment is unsupported by current monetary remission request. Replace cow/handover with mourning cloth and pending amount record; preserve widow dignity.",
+      "recommended_action": "edit",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "004/019/107 central subject with flanking figures already3; broad exchange repeat risk",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_022",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/candidates-v1/assets/ch3_records/ch3_decision_vacant_priest.png",
+      "source_sha256": "8f5a34b2581363f54ac3230c7687d6bca667a491b41624838778d8962d92e08b",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "scene_evidence": "Empty ornate priest chair behind seated decision maker; hooded monk at left with book; lay clerk at right with paper; seated parishioners foreground.",
+      "pending_state_fidelity": "Current monastery representative is an actual monk already inside church, whereas text says sending one costs time/travel. For literal pending-state fidelity remove present monk and use sealed arrival request/empty place. Vacant chair remains clearly empty.",
+      "recommended_action": "edit",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": {
+        "left": 0,
+        "top": 30,
+        "width": 640,
+        "height": 360
+      },
+      "crop_status": "Geometrically judged on full original; NOT rendered or pixel-QA verified",
+      "output_geometry": "If crop:640x360 then uniform1.5x upscale to960x540; never stretch640x480. Upscale adds no detail.",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "004/019/107 central decision maker with flanking alternatives saturated3; foreground congregation does not automatically exempt",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_026",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/10_migrant_settlement.jpg",
+      "source_sha256": "84e5585cd9011497a311e08fc84bd1ef5738ec22556e8c61485ff9f92e9d8b1e",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Family with rolled bedding/bundles stands outside wooden gate; father appeals with open palm to keeper who rests arms on gate. No keys or assigned house.",
+      "pending_state_fidelity": "Settlement remains pending. Gate does not show completed move-in. Fee and neighbouring ownership remain textual.",
+      "recommended_action": "reuse",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "Native16:9 reuse",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "028/034/038 right barrier facing approachers already3;066/183/197 closed foreground barrier also3. High cumulative blocking risk",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_036",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/02_suit_of_mill.jpg",
+      "source_sha256": "fafb5c7a76a8623c040391f38d71f65bac7c2458cfc47f57a2aac6fa23992313",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Woman kneels at rotary hand quern; doorway man points accusingly at grinding; grain sack and indoor hearth.",
+      "pending_state_fidelity": "Illegal domestic grinding is not carrying grain to a distant required mill; crop/edit small details cannot repair core action.",
+      "recommended_action": "new",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "Right interior worker and doorway official also overlaps saturated doorway motifs",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_039",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch4_events/ch4_event_guild_foundation.png",
+      "source_sha256": "3a59fe029c82a810e7a37fe2053e298109e8b90d677299222e84cc27da9a3120",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Organized artisan procession carries large scissors-emblem banner and tools through town; multiple marchers.",
+      "pending_state_fidelity": "Reads as established guild collective, not pending sanction. Existing art basis can support edit to waiting artisans and unused seal; cannot count unchanged as petition.",
+      "recommended_action": "edit",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "115/127/164 walking market group3 and103/150/185 oath/procession3; requires composition change",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_040",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch4_records/ch4_decision_tax_collection.png",
+      "source_sha256": "daa819eaff781e9a5f743e065718d5f4d8d3868747027176450592925a9d7baf",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "scene_evidence": "Left householder visibly puts coin toward collector; center men carry shared coffer toward right bailiff.",
+      "pending_state_fidelity": "Two collection methods are already enacted, while current question asks who may collect. Replace performed payment/delivery with separated pending proposals/closed coffer. Crop alone cannot repair.",
+      "recommended_action": "edit",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": {
+        "left": 0,
+        "top": 75,
+        "width": 640,
+        "height": 360
+      },
+      "crop_status": "Geometrically judged on full original; NOT rendered or pixel-QA verified",
+      "output_geometry": "If crop:640x360 then uniform1.5x upscale to960x540; never stretch640x480. Upscale adds no detail.",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "078/139/152 two parallel exchanges saturated3: current image very direct match",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_043",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave33/candidates-20260929/assets/1396-church-extension.png",
+      "source_sha256": "1f352a2a4f6b86fcb0ad8b22c465c6f56447e300d69ad6a85d8a90410b75c460",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Masons lay stones on new arches, lift blocks with pulley and work on scaffold while priest and patron stand below.",
+      "pending_state_fidelity": "Undeniably active extension, not permission/funding request before work. Crop cannot remove all work without losing church subject. Keep original intact; new pending petition scene needed.",
+      "recommended_action": "new",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "069/156/163 roof-level work and105/137/160 towering structure groups saturated3",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_044",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg",
+      "source_sha256": "7162f14d848c4f47264edcbb918718ac4b9e4f8ab808561090e449176639d411",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Three men around old mossy stone in ploughed field; central reeve holds measuring rod.",
+      "pending_state_fidelity": "Current dispute is newly planted roadside posts blocking passage and two estate officials. Convert stone/field to actual obstructed route/posts and keep unresolved gestures.",
+      "recommended_action": "edit",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "004/019/107 central mediator group3;032/116/141 distant boundary groups3 but this source is close,not same exact group",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_045",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave33/candidates-20260929/assets/1394-guild-dispute.png",
+      "source_sha256": "1f17de00cefb3c83ef674be507a56b2e2da25a48e841735c32be5259ad2ab6a3",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Artisans with tools banner argue below guildhall steps against well-dressed merchants above; both palms open; no violence or agreement.",
+      "pending_state_fidelity": "Same1394 dispute remains unresolved. No bolts of cloth/trade ledgers;cloth-sale issue conveyed by title/body. Outdoor hearing differs from illustration note but not state.",
+      "recommended_action": "reuse",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "Native16:9 reuse",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "157 close listeners and elevated authority row currently1; strongest plausible assignment permits total2, pending full audit",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_047",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch5_records/ch5_decision_heir_choice.png",
+      "source_sha256": "22aac61c66641d968c1ea46dacf2836fb88151d008337b1d0f49f7ca4a58722b",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "scene_evidence": "Older lord centrally holds heraldic shield; young man and woman on either side extend hands but neither receives shield.",
+      "pending_state_fidelity": "Choice not completed. Names, relations and approval fee remain textual. Geometric crop preserves three heads, hands and complete shield.",
+      "recommended_action": "crop",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": {
+        "left": 0,
+        "top": 30,
+        "width": 640,
+        "height": 360
+      },
+      "crop_status": "Geometrically judged on full original; NOT rendered or pixel-QA verified",
+      "output_geometry": "If crop:640x360 then uniform1.5x upscale to960x540; never stretch640x480. Upscale adds no detail.",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "004/019/107 central decider and flanking alternatives already3: adding047 likely4. Crop cannot cure this",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_048",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg",
+      "source_sha256": "47b89f4a7adb04421ff63b21498bcd962567bda1b7f8f01931c96734aed6650f",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Two large men disagree across hurdle with extensive sheep flock behind; no cattle or distinguishable two herd sizes.",
+      "pending_state_fidelity": "Generic overgrazing agrees but cattle specifically required by title and illustration. Replace sheep with separate small/large cattle herds;do not duplicate001 source unchanged.",
+      "recommended_action": "edit",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "013/030/067 close pair3 and066/183/197 hurdle group3;edit must address layout not just animal swap",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_056",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg",
+      "source_sha256": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        960,
+        540
+      ],
+      "scene_evidence": "Four villagers argue by broken wooden footbridge spanning stream; snapped decking and river occupy right half.",
+      "pending_state_fidelity": "Current problem is deeply rutted market road and cart wheel. No bridge/stream in source event. Core scenery change needed; no honest crop fix.",
+      "recommended_action": "new",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": null,
+      "crop_status": "No crop needed geometrically; state correction cannot be achieved by crop",
+      "output_geometry": "960x540 native",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "010/042/121 left pair/open right depth3; here4 near people but broad scene arrangement still similar",
+      "approved": false,
+      "counts_as_coverage": false
+    },
+    {
+      "event_id": "ck_evt_060",
+      "source_path": "/Users/rexxa/fls-astra-eventart200/assets-inbox/wave21/rework-20260927/assets/ch5_records/ch5_decision_legacy.png",
+      "source_sha256": "1612d7eddb3c0fbf40b35e419dabbe3daff72952d1bd878cb1e12e46ac60b42c",
+      "actually_viewed_fullsize": true,
+      "source_dimensions": [
+        640,
+        480
+      ],
+      "scene_evidence": "Elder lord seen from behind/right faces three representatives: civic key, heir shield, cleric closed book; town below. No handover.",
+      "pending_state_fidelity": "Unresolved three-way legacy choice faithfully preserved. Outdoor vista substitutes for manor table. Safe strip retains objects,faces and deciding hand.",
+      "recommended_action": "crop",
+      "source_preservation": "Do not overwrite source; recommendation only, no edit/new action executed.",
+      "crop_box_xywh": {
+        "left": 0,
+        "top": 60,
+        "width": 640,
+        "height": 360
+      },
+      "crop_status": "Geometrically judged on full original; NOT rendered or pixel-QA verified",
+      "output_geometry": "If crop:640x360 then uniform1.5x upscale to960x540; never stretch640x480. Upscale adds no detail.",
+      "history_observation": "No obvious modern object, readable lettering, chimney pot or blue reflective domestic glass observed at provided size. Conventional wool/linen and timber/stone; not independent historical-source certification. Church stained glass in022 is ecclesiastical, not banned domestic glazing.",
+      "composition_preflight": "008/031/061 rear observer watching scene saturated3. Viewpoint/landscape different in detail, but strong collision to review",
+      "approved": false,
+      "counts_as_coverage": false
+    }
+  ]
+}

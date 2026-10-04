@@ -1,0 +1,21 @@
+# 사건 삽화 200 최종 후보
+
+> 저장소 메모(INBOX, 2026-10-04): 200장 가운데 장부에 이미 같은 바이트가 있는 33장은 넣지 않았다 — ck_evt_002(`event-art/candidates-20261003/assets/ck_evt_002.jpg`) · ck_evt_004(`event-art/candidates-20261003/assets/ck_evt_004.jpg`) · ck_evt_005(`event-art/candidates-20261003/assets/ck_evt_005.jpg`) · ck_evt_008(`event-art/candidates-20261003/assets/ck_evt_008.jpg`) · ck_evt_009(`event-art/candidates-20261003/assets/ck_evt_009.jpg`) · ck_evt_010(`event-art/candidates-20261003/assets/ck_evt_010.jpg`) · ck_evt_011(`event-art/rework-20261003/assets/ck_evt_011.jpg`) · ck_evt_012(`wave44/candidates-20261002/assets/07_market_stall_dispute.jpg`) · ck_evt_015(`event-art/candidates-20261003/assets/ck_evt_015.jpg`) · ck_evt_018(`event-art/rework-20261003/assets/ck_evt_018.jpg`) · ck_evt_019(`event-art/candidates-20261003/assets/ck_evt_019.jpg`) · ck_evt_020(`event-art/rework-20261003/assets/ck_evt_020.jpg`) · ck_evt_024(`event-art/candidates-20261003/assets/ck_evt_024.jpg`) · ck_evt_025(`event-art/rework-20261003/assets/ck_evt_025.jpg`) · ck_evt_027(`event-art/candidates-20261003/assets/ck_evt_027.jpg`) · ck_evt_028(`event-art/candidates-20261003/assets/ck_evt_028.jpg`) · ck_evt_029(`event-art/candidates-20261003/assets/ck_evt_029.jpg`) · ck_evt_030(`event-art/candidates-20261003/assets/ck_evt_030.jpg`) · ck_evt_031(`event-art/rework-20261003/assets/ck_evt_031.jpg`) · ck_evt_033(`event-art/candidates-20261003/assets/ck_evt_033.jpg`) · ck_evt_034(`event-art/rework-20261003/assets/ck_evt_034.jpg`) · ck_evt_035(`event-art/candidates-20261003/assets/ck_evt_035.jpg`) · ck_evt_037(`event-art/rework-20261003/assets/ck_evt_037.jpg`) · ck_evt_038(`event-art/candidates-20261003/assets/ck_evt_038.jpg`) · ck_evt_042(`event-art/candidates-20261003/assets/ck_evt_042.jpg`) · ck_evt_046(`event-art/candidates-20261003/assets/ck_evt_046.jpg`) · ck_evt_049(`event-art/candidates-20261003/assets/ck_evt_049.jpg`) · ck_evt_050(`event-art/candidates-20261003/assets/ck_evt_050.jpg`) · ck_evt_051(`event-art/rework-20261003/assets/ck_evt_051.jpg`) · ck_evt_052(`event-art/rework-20261003/assets/ck_evt_052.jpg`) · ck_evt_053(`event-art/candidates-20261003/assets/ck_evt_053.jpg`) · ck_evt_057(`event-art/candidates-20261003/assets/ck_evt_057.jpg`) · ck_evt_058(`event-art/rework-20261003/assets/ck_evt_058.jpg`). 나머지 167장은 `../assets/`, 확인판은 `../proofs/`, 최상위 문서·CSV·`index.html`·`SHA256SUMS`와 `records/`는 이 `records/`. 256KB 넘는 기록 1개는 안내 파일. 회차 ZIP R08·R09는 astra-raw에만.
+
+**200/200 대응 완료. 게임 미설치·사용자 검토용.**
+
+- 최종 회차 R08: 신규20사건+107보충=21파일, 전체 익명20/20(100%).
+- 최종 회차 R09: 신규6사건+061·013·032·145보충=10파일, 신규6장 익명6/6(100%).
+- 마지막 두 회차의 본 시험은 각각100%. 보충 교정 시험은 별도: v4 1/3→2/3→0/1→1/1. 모든 오답은 교정·재판독;013최종확신0.43,032최종0.72를 공개. 보충 전체를 한번에100%재시험했다고 주장하지 않는다.
+- 누적 실물 감사87구도군, 최대3, 초과0. 실내·문서중심20/200(10%). 9페이지 전체모아보기와 교정145의 7페이지 재검토 완료.
+- 최신 정본 v4(a84bc778) 대응. 그림 관련문구 변경9건을 대조하고013·032새판제작. canonical period와 depiction_period를 분리;발동가능시대확장이모든연도의복식동일고증을뜻하지않는다.
+- 판단: 승인본을 덮어쓰지 않고 새판을 만들며 옛 판은 해당사건 매핑에서대체로 표시.045는039와구분,026은새구도.107·061구도교정,013·032정본정합,145작은호박제거. REPLACEMENTS.csv에원본·선택판SHA를기록.
+
+## 보기와 사용
+index.html은200장개별보기. proofs/final200-overview.jpg는전체한장, cumulative-01~09.jpg는큰모아보기. assets/는960×540 RGB JPG정확히200장. ASSETS.csv/CUMULATIVE.csv는최종선택,과거회차ZIP보다우선. SHA256SUMS는현재묶음모든파일검증용.
+
+## 한계
+에이전트가제목후보를보고맞힌시험이며사람사용자시험·순수자유판독이아니다. 추상정책/권리/소송의세부차이는본문이필요하다. 032는가문증서사건과부차적모호성이남는다. 얼굴유형·따뜻한빛·먼교회탑은반복될수있으며구도군제한통과가모든시각적유사성제거를뜻하지않는다. 일부계절/인물수는최초계획과다른생성편차가있어이력에기록. 게임설치·런타임·UI가림검증은하지않았다.
+
+## 이력 보존
+records/r01~r09는실패와재시험을포함하며,이전final/pending파일명이현재판정을덮지않는다. 현재판정은records/FINAL-COMPOSITION.json과cumulative-final-review.json이다. 고해상도원본PNG는로컬회차originals/에보존하고경량ZIP에서는제외. 원본저장소·제품코드에변경/커밋/푸시하지않았다.

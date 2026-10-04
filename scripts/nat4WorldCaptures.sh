@@ -6,6 +6,7 @@
 set -euo pipefail
 base_sha=$1; out=$2; shift 2
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
+base_port=${FLS_REMOTE_BASE_PORT:?run through scripts/remote/run.sh (its second port)}
 . scripts/remote/devServers.sh   # every server started here stops on any exit, failures and a stopped run included
 serve() { fls_serve "$1" ${3:+--in "$3"} --config scripts/remote/viteNoWatch.config.ts --host 127.0.0.1 --port "$2" --strictPort; }  # <log> <port> [dir]
 up() { for _ in $(seq 1 90); do curl -sf "$1" > /dev/null && return 0; sleep 1; done; echo "vite did not come up on $1"; return 1; }
@@ -18,11 +19,11 @@ if [ "$base_sha" != "-" ]; then
   ln -sfn "$PWD/node_modules" "$dir/node_modules"
   # The base serves its own tree with this run's no-watch config (the base may predate it).
   cp scripts/remote/viteNoWatch.config.ts "$dir/scripts/remote/viteNoWatch.config.ts"
-  serve .remote/vite-base.log $((port + 50)) "$dir"
+  serve .remote/vite-base.log $base_port "$dir"
 fi
 up "http://127.0.0.1:$port/"
 node_modules/.bin/tsx scripts/nat4WorldCaptures.ts "http://127.0.0.1:$port/" "$out" after "$@"
 if [ "$base_sha" != "-" ]; then
-  up "http://127.0.0.1:$((port + 50))/"
-  node_modules/.bin/tsx scripts/nat4WorldCaptures.ts "http://127.0.0.1:$((port + 50))/" "$out" before "$@"
+  up "http://127.0.0.1:$base_port/"
+  node_modules/.bin/tsx scripts/nat4WorldCaptures.ts "http://127.0.0.1:$base_port/" "$out" before "$@"
 fi

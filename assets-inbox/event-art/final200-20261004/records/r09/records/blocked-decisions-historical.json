@@ -1,0 +1,35 @@
+{
+  "status": "blocked_audit_ready",
+  "completed_delivery": 174,
+  "candidate_coverage": 199,
+  "missing_event": "ck_evt_026",
+  "blocking_decisions": [
+    {
+      "id": "026",
+      "conflict": "preserve approved original vs same-composition maximum3; all3 existing members approved originals",
+      "question_sent": true,
+      "answer_received": false
+    },
+    {
+      "id": "045",
+      "conflict": "redraw wrong blind pair vs do not redraw existing approved source",
+      "question_sent": true,
+      "answer_received": false
+    }
+  ],
+  "same_blockers_recurred_goal_turns_at_least": 3,
+  "independent_work_completed": [
+    "R08current20 drafts+107revision",
+    "R09remaining5 drafts+061revision",
+    "199sourcehashesverified",
+    "9pagecumulativeindependentreview",
+    "R08andR09pendingreviewarchivesCRC+SHAverified"
+  ],
+  "not_complete": [
+    "026asset decision and production",
+    "045approved-source correction decision",
+    "finalroundgates and final200montage",
+    "finalrounddeliveryandsummary"
+  ],
+  "no_rule_relaxation": true
+}
