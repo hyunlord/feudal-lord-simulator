@@ -1,0 +1,106 @@
+{
+  "review_type": "R05_batch1_actual_visual_audit",
+  "scope": [
+    "141",
+    "143",
+    "144"
+  ],
+  "excluded": [
+    "142 generation in progress; not reviewed"
+  ],
+  "frozen_audit": "/Users/rexxa/fls-astra-eventart200-delivery/r04/records/composition-audit-after-semantic.json",
+  "frozen_audit_sha256": "bdf61941d4cf83af5eed141c9ec46cd052f56b66dccef119307c7cfd37d83b3a",
+  "scene_plan": "/Users/rexxa/fls-astra-eventart200-delivery/r05/scene-plan.json",
+  "scene_plan_sha256": "53863ad7689e70ae3e48670f36e3709859da989f6bd627f6962f3f9c7f96c5d6",
+  "visual_basis": "All three current assets individually viewed at960x540. Compared against frozen114 visual grouping and prior image evidence. No blind title test performed; provided body used only for action plausibility.",
+  "frozen114_memberships_changed": false,
+  "reviews": [
+    {
+      "id": "141",
+      "status": "composition_pass_with_history_uncertainty",
+      "composition_group_frozen_ids": [
+        "032",
+        "116"
+      ],
+      "prospective_group_ids": [
+        "032",
+        "116",
+        "141"
+      ],
+      "prospective_count": 3,
+      "evidence": "Small closed chest isolated center on low stone; two bucket women left beside well, two sack men right beside storehouse; wide center separation. Same broad separated-party/boundary-object structure, not a central human mediator or low-left oversized box.",
+      "action_review": "Well and storage priorities clear; money remains locked, no completed disbursement. Large existing buildings do not show literal new construction but can illustrate targeted projects.",
+      "history_review": "No readable modern text, modern machinery or spotted ermine. A tiny paired roof-end projection on distant right-of-center stone building is visually ambiguous between finial/vent/chimney. It is not established as an ordinary cottage chimney at this view.",
+      "history_followup": "Inspect generation original/architectural intent for tiny distant roof projection; remove if intended as a domestic chimney. Do not report categorically history-perfect.",
+      "document_count_addition": 0
+    },
+    {
+      "id": "143",
+      "status": "composition_revision_required",
+      "composition_group_frozen_ids": [
+        "008",
+        "031",
+        "061"
+      ],
+      "prospective_group_ids": [
+        "008",
+        "031",
+        "061",
+        "143"
+      ],
+      "prospective_count": 4,
+      "evidence": "Large foreground woman right seen predominantly from behind, and large left near figure, frame ditch and farther pointing witness/clerk. Pointing does not by itself escape the established reverse-observer category:008 also contains foreground observers surveying land.",
+      "action_review": "Different witness directions toward tree/land/stream and small closed charter visible. No obvious single adjudicating central person.",
+      "minimal_revision": "Remove the large near right back-facing woman from foreground; place her sideways with visible face at middle distance along far bank, and shrink/move near left figure similarly if needed. Preserve ditch void and varied directions, without substituting another close foreground observer. A changed actual camera/human-depth relation is required.",
+      "history_review": "No definite cottage chimney, modern text/machine or spotted ermine observed.",
+      "document_count_addition": 0
+    },
+    {
+      "id": "144",
+      "status": "visual_pass_with_noted_limits",
+      "composition_group_frozen_ids": [
+        "094"
+      ],
+      "prospective_group_ids": [
+        "094",
+        "144"
+      ],
+      "prospective_count": 2,
+      "evidence": "Low pit-side camera shows lower worker actively holding saw handle, upper sawyer on support, and merchant farther right beside finished timber. Vertical above/below work is dominant. Lower worker back is functional saw operation, not passive framing observer; consistent with097 active rower exclusion.",
+      "action_review": "Both ends of vertical manual saw held by upper/lower workers, beam supported across pit, sawdust marks cutting; finished boards contrast active conversion. Fourth distant helper beyond planned3 is nonblocking. Exact saw teeth/rigging mechanics not historically authenticated.",
+      "history_review": "Manual saw, no powered wheel or modern machine, no readable lettering or spotted ermine. No definite cottage chimney observed.",
+      "document_count_addition": 0
+    }
+  ],
+  "required_redraws": [
+    {
+      "id": "143",
+      "reason": "Fourth reverse-observer layout; explicit actual foreground-depth change needed."
+    }
+  ],
+  "nonblocking_history_uncertainties": [
+    {
+      "id": "141",
+      "finding": "Tiny distant paired roof projection not definitively identifiable; requires original-resolution architectural check if claiming no chimney risk."
+    }
+  ],
+  "indoor_document_budget": {
+    "frozen_conservative": 10,
+    "these_three_additions": 0,
+    "partial_cumulative_reviewed_count": 117,
+    "partial_fraction": 0.08547008547008547,
+    "note": "No estimate for unreviewed17 R05 assets; three images do not establish final134 denominator compliance."
+  },
+  "overall_batch_pass": false,
+  "new_source_sha256": {
+    "ck_evt_141": "a0de1fd59581c1639cf4928ae793f3be699a122de6e12a1e6899b08d7fbbfea7",
+    "ck_evt_143": "7c267e9df4d35e832fd2dfa3e979c6c3700867d3dded651dc41f1ae56e8a818d",
+    "ck_evt_144": "ee5904a55fab9e0837b40d25eb9513befc219e9ff6a22e9115c7874076537143"
+  },
+  "blind_data_accessed": false,
+  "remaining_limits": [
+    "Only three actual R05 images inspected;142 and later assets not approved.",
+    "Other planned group reservations remain conditional.",
+    "No exact historical apparatus authentication,no image edits,no runtime verification."
+  ]
+}

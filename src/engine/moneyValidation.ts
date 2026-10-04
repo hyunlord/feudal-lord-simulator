@@ -8,7 +8,9 @@ const isCountRecord = (value: unknown) => typeof value === "object" && value !==
 /**
  * Save-load check of the money-rule state (M-9): count records of whole non-negative numbers, an arrears
  * queue in tick order whose sum is the `arrears` account balance, and `upkeepUnpaid` only on buildings
- * that are in the queue (and every building in the queue marked). Returns the first problem, or null.
+ * that are in the queue. FIX-17 (SAVE01): a building in the queue need not be marked — since FIX-4 E3 only this
+ * period's unpaid upkeep idles a building, and an old debt stays queued on a building that paid this period (the
+ * settlement clears its mark). Requiring the mark refused such saves. Returns the first problem, or null.
  */
 export function moneyStateProblem(state: Readonly<Record<string, unknown>>): string | null {
   const buildings = Array.isArray(state.buildings) ? state.buildings as Record<string, unknown>[] : [];
@@ -33,9 +35,7 @@ export function moneyStateProblem(state: Readonly<Record<string, unknown>>): str
     previousTick = arrear.tick;
     owed += arrear.amount;
   }
-  if ([...marked].some(id => !queued.has(id)) || [...queued].some(id => buildings.some(building => building.id === id) && !marked.has(id))) {
-    return "unpaid buildings do not match the arrears queue";
-  }
+  if ([...marked].some(id => !queued.has(id))) return "unpaid buildings do not match the arrears queue";
   const ledger = state.ledger as Ledger | undefined;
   const balance = ledger === undefined ? 0 : accountBalance(ledger, "arrears");
   return balance === owed ? null : "money arrears do not match the arrears account";

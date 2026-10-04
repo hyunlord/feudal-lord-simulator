@@ -1,0 +1,586 @@
+{
+  "review_type": "pre_generation_plan_only_composition_and_document_budget",
+  "round": "r06",
+  "scope": "161–180,20 planned candidates; existing134 frozen",
+  "image_generation_or_visual_review_performed": false,
+  "basis": "Read scene-plan.json and PLAN.md and frozen r05 final actual134 group definitions. No R06 images exist for this review;all placements/collisions are prospective,not actual-image passes. Blinddata not accessed.",
+  "scene_plan_sha256": "eecd84e26339164b405c84564926346c974c558333d6d72dffc02288d9079a26",
+  "plan_md_sha256": "56c3b12dc8ebf84b0203841a0063eaf234c5063a25024a1c732103bf52649ca0",
+  "frozen_audit_path": "/Users/rexxa/fls-astra-eventart200-delivery/r05/records/composition-audit-final.json",
+  "frozen_audit_sha256": "3c332998b1cf5d02e7eb62f572db19e648cd859d547633dcf96e9a1051459a7e",
+  "frozen_total": 134,
+  "frozen_group_count": 73,
+  "frozen_assignments_modified": false,
+  "frozen_saturated_groups": [
+    {
+      "name": "눈높이의 중앙 중재자와 좌우 상대방",
+      "ids": [
+        "004",
+        "019",
+        "107"
+      ],
+      "count": 3
+    },
+    {
+      "name": "판매대 너머의 두 사람과 사이에 제시된 종이",
+      "ids": [
+        "005",
+        "024",
+        "057"
+      ],
+      "count": 3
+    },
+    {
+      "name": "왼쪽 전경의 두 사람과 오른쪽으로 열린 깊은 야외 장면",
+      "ids": [
+        "010",
+        "042",
+        "121"
+      ],
+      "count": 3
+    },
+    {
+      "name": "전경 작업대 뒤에 나란히 몸을 숙이는 두 사람",
+      "ids": [
+        "002",
+        "049",
+        "053"
+      ],
+      "count": 3
+    },
+    {
+      "name": "중앙 전경 관찰자의 등 너머 작업 현장",
+      "ids": [
+        "008",
+        "031",
+        "061"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까운 두 사람 사이의 손과 직접 만지는 물건",
+      "ids": [
+        "013",
+        "030",
+        "067"
+      ],
+      "count": 3
+    },
+    {
+      "name": "거의 수직 부감의 직사각형 빈 공간과 둘레 작업자",
+      "ids": [
+        "025",
+        "062",
+        "083"
+      ],
+      "count": 3
+    },
+    {
+      "name": "측면의 소 수레가 화면을 가로지르는 운송 장면",
+      "ids": [
+        "018",
+        "086",
+        "101"
+      ],
+      "count": 3
+    },
+    {
+      "name": "낮은 시점의 왼쪽 큰 용기와 그 너머 인물",
+      "ids": [
+        "011",
+        "020",
+        "052"
+      ],
+      "count": 3
+    },
+    {
+      "name": "오른쪽 닫힌 문을 향한 바깥 접근자",
+      "ids": [
+        "028",
+        "034",
+        "038"
+      ],
+      "count": 3
+    },
+    {
+      "name": "왼쪽 전경의 말과 오른쪽 두 남자의 만남",
+      "ids": [
+        "029",
+        "129",
+        "123"
+      ],
+      "count": 3
+    },
+    {
+      "name": "중앙 경계석과 좌우 멀리 떨어진 작은 인물군",
+      "ids": [
+        "032",
+        "116",
+        "141"
+      ],
+      "count": 3
+    },
+    {
+      "name": "긴 시설물의 사선을 따라 떨어져 일하는 인물들",
+      "ids": [
+        "035",
+        "051",
+        "064"
+      ],
+      "count": 3
+    },
+    {
+      "name": "얼굴이 잘린 양쪽 손과 중앙 돈 또는 물건의 근접",
+      "ids": [
+        "058",
+        "068",
+        "077"
+      ],
+      "count": 3
+    },
+    {
+      "name": "좌우 두 교환 행동을 병렬로 보는 중경",
+      "ids": [
+        "078",
+        "139",
+        "152"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 부감의 두 물체 비교와 손/작은 작업자",
+      "ids": [
+        "085",
+        "090",
+        "126"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가운데 수직 천이 가리는 양쪽 인물",
+      "ids": [
+        "091",
+        "119",
+        "155"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 게시자와 수레 쪽 낮은 응답자",
+      "ids": [
+        "095",
+        "142",
+        "151"
+      ],
+      "count": 3
+    },
+    {
+      "name": "높은 부감의 교차로 양끝으로 갈라지는 작은 두 인물",
+      "ids": [
+        "104",
+        "122",
+        "138"
+      ],
+      "count": 3
+    },
+    {
+      "name": "올려다본 큰 기둥풍차 아래 작은 세 인물과 표본",
+      "ids": [
+        "105",
+        "137",
+        "160"
+      ],
+      "count": 3
+    },
+    {
+      "name": "넓은 야외 배경 앞 정면 단독 인물과 손에 든 생업 물품",
+      "ids": [
+        "106",
+        "110",
+        "132"
+      ],
+      "count": 3
+    },
+    {
+      "name": "가까이 앉은 옆얼굴 소유자와 멀리 분리된 상대",
+      "ids": [
+        "128",
+        "131",
+        "135"
+      ],
+      "count": 3
+    }
+  ],
+  "plan_reviews": [
+    {
+      "id": "161",
+      "title": "봄비 전에 남겨 둘 마른 자리",
+      "status": "guarded",
+      "collision_evidence": "낮은 처마를 따라 긴 선반/작업자가 배열되면035/051/064 포화군 위험.계획은 긴 시설보다 처마 단면과 안팎 이동이므로 자동초과로 단정하지 않음.",
+      "concrete_revision_or_guard": "정면에 가까운 수평 단면,선반은 짧게.세사람이 선반 긴 사선을 따라 나열되지 않게 안/밖/아래로 분리.094/144처럼 바닥아래 보는 카메라를 택한다면 마지막1슬롯만 가능.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "봄 장터의 처마 아래 곡물 자루를 모아 두고 주민이 헛간과 곡창을 가리킨다."
+    },
+    {
+      "id": "162",
+      "title": "마른 여름에 두 물통",
+      "status": "guarded",
+      "collision_evidence": "양끝 큰 물통 프레임 자체는 새로운 실제 형태가 될 수 있으나 바닥 가까운 왼쪽 큰 용기-먼작은사람으로 단순화되면011군4.등진사람이 단순관찰자로 바뀌면008군4.",
+      "concrete_revision_or_guard": "양쪽 물통이 실제 멍에에 연결되어 동일 한사람이 운반 중임을 보이고 한쪽 통만 거대하게 하지 않음.사람은 걷는 운반자,구경꾼 없음.양끝 물체 사이 카메라의 기하가 실제 가능한지 생성후검사.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "여름의 외곽 집에서 물통 둘을 메고 먼 우물 길을 바라보는 주민."
+    },
+    {
+      "id": "163",
+      "title": "바람철 앞의 얇은 지붕",
+      "status": "revise_before_generation_high_risk",
+      "collision_evidence": "거대한 들보/박공을 바닥에서 올려보는 작은 인물은105/137/160 거대수직구조 올려보기군4 위험.높은사다리작업자와아래응답자만 강조하면095/142/151군4.",
+      "concrete_revision_or_guard": "카메라를 지붕높이의 바깥쪽으로 옮겨 가까운 목수가 얇은 서까래와 굵은 견본을 옆에 놓고 아래 작은 주민에게 보여주는 하향시점.069/156 높은지붕작업군의 마지막1슬롯(합3)을 사용.177은 이 시점으로 생성하지 말고 아래 별도교정 적용.",
+      "document_treatment": "indoor_no_document",
+      "source_illustration_preserved": "바람철 앞에 목수가 얇은 지붕 아래 들보를 살피고 목재 견본을 내민다."
+    },
+    {
+      "id": "164",
+      "title": "서리 전에 거둘 것과 빻을 것",
+      "status": "revise_before_generation",
+      "collision_evidence": "오른쪽 가까운 앉은 농부와 왼쪽 멀리 분리된 방앗간지기는128/131/135 근경 앉은소유자-먼상대군에4번째.도구와밭으로 분리하면 안 됨.",
+      "concrete_revision_or_guard": "둘 모두 전신으로 걷게 변경:자루 운송길을 따라 카메라쪽으로 오는 농부는 낫/씨앗단,방앗간지기는 곡물삽과자루를 듦.원경 작은 기둥풍차.115/127 보행일행군 마지막1슬롯(합3).앉은근경인물/큰전경 자루/거대풍차 올려보기는 제외.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "가을 아침의 밀 자루 옆에서 농사꾼과 방앗간지기가 서로 다른 연장을 든다."
+    },
+    {
+      "id": "165",
+      "title": "눈길에 앞서 올린 주문",
+      "status": "guarded",
+      "collision_evidence": "빈 수레 안 시점은 측면운송018군과 다르지만 위에서 빈직사각짐칸둘레를 보면025/062/083군4.",
+      "concrete_revision_or_guard": "현재처럼 바닥수평에 가까운 적재칸 내부에서 뒤끝 먼두사람을 봄.수직부감 금지.빈바닥 깊이가2/3이고 인물은 작은끝점.장부는 닫고 야외수레를 지붕있는 실내상담방으로 바꾸지 않음.",
+      "document_treatment": "outdoor_document_excluded",
+      "source_illustration_preserved": "눈 오기 전 장날에 목재 주문 장부와 빈 수레를 놓고 수레꾼이 상인과 의논한다."
+    },
+    {
+      "id": "166",
+      "title": "급류가 잦아들 때까지",
+      "status": "guarded",
+      "collision_evidence": "큰 강물/작은 안전한 인물은098 넓은수변조망 또는089 하천부감과 충돌여유가 있음.강가 중앙석재를 두고 양쪽사람군이면032 포화.",
+      "concrete_revision_or_guard": "하단급류3/4,한쪽 위 둑에만 작은3인과 자재.098군으로 보수예산1추가(기존1에서2),180도같은수변파노라마가되면합3까지.다리파손/피해자 추가금지.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "급한 강물에서 물러선 주민들이 다리 끝의 목재 더미를 바라본다. 피해가 난 사람은 그리지 않는다."
+    },
+    {
+      "id": "167",
+      "title": "결산하지 못한 사람의 서랍",
+      "status": "revise_before_generation",
+      "collision_evidence": "낮은 가까운 큰 서랍/함 너머 빈의자와작은담당자는011/020/052 큰전경용기군4가 될 가능성이 높음.단순서랍이라는소품차이는 회피근거아님.",
+      "concrete_revision_or_guard": "서랍 내부 카메라 폐기.새 담당자 한사람을 전경에 세워 미결묶음 하나를 가슴높이 검토;멀리 빈관리의자와 열린작은서랍을 두어 빈자리단서를 보조화.033 단독독자+먼증인/문간관계군 현재1,최대2로예산.큰수평책상/상자·두독자 금지.",
+      "document_treatment": "definite_indoor_document",
+      "source_illustration_preserved": "비어 있는 관리의 의자 옆에서 새 담당자가 미결 장부 묶음을 정리한다."
+    },
+    {
+      "id": "168",
+      "title": "빈손으로 돌아온 수확 일꾼",
+      "status": "guarded",
+      "collision_evidence": "넓은밭이대부분이고오른쪽작은일꾼은071군에합산가능.도구교환을가까이당기면013군4.",
+      "concrete_revision_or_guard": "계획의 먼작은3인 유지;낫이기계처럼크게보이지 않게.071 넓은들판우측관찰/인물군으로 예산추가1;171까지합3이므로같은구도추가금지.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "거둘 밭과 방앗간 사이에서 적은 수의 일꾼이 농기구를 나누어 든다."
+    },
+    {
+      "id": "169",
+      "title": "병 소문과 닫지 않은 장터",
+      "status": "guarded",
+      "collision_evidence": "가까운오른쪽말하는상인과먼왼쪽군중은 등관찰008군 또는 가까운권한자/먼상대128군으로 쉽게 수렴.현재상인은서있고말하는주체라자동으로그두군은아님.",
+      "concrete_revision_or_guard": "상인은옆/정면얼굴과말하는손을보이며중간크기 전신;등전체전경 금지.운영중점포가깊이를만들고중앙석물/판관/종이없음.최종 실제크기와행동으로 분류.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "여행 상인이 닫히지 않은 장터 입구에서 소식을 전하고 주민들은 거리를 두고 듣는다."
+    },
+    {
+      "id": "170",
+      "title": "일손 적은 해의 두 창고",
+      "status": "revise_before_generation_high_risk",
+      "collision_evidence": "높이가다른두착지점에멈춰각문을가리키는 정지한 상하인물은095/142/151군4 위험.",
+      "concrete_revision_or_guard": "037/120 계단의대각선이동군 마지막1슬롯 사용:두운반자가 서로다른계단높이에서 실제걸음을옮기며 짐을운반하고 각기다른두창고로 향함.정지한상하대면/손짓 대신 발걸음과 이동방향 명료.각문표지글자 대신곡물/판재내용물.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "곡물 자루를 든 주민과 건축 자재를 든 주민이 서로 다른 저장 건물을 가리킨다."
+    },
+    {
+      "id": "171",
+      "title": "추위가 먼저 온다는 말",
+      "status": "guarded",
+      "collision_evidence": "오른쪽두사람/무릎종이와왼쪽깊은열린공간을가깝게보면010/042/121 좌우반전4,앉은사람과먼상대면128군4.",
+      "concrete_revision_or_guard": "둘모두 멀리작게 우측끝에 모으고 넓은빈공사토지가 주화면.종이는작은보조,얼굴근접/큰무릎문서없음.071군으로168과함께예산3.계획 FAR RIGHT는 화면위치뿐 아니라원거리라고 명시.",
+      "document_treatment": "outdoor_document_excluded",
+      "source_illustration_preserved": "추위를 대비해 옷깃을 여민 주민이 사업 장부와 목재 주문서를 함께 올린다."
+    },
+    {
+      "id": "172",
+      "title": "씨앗까지 먹을 수는 없다는 말",
+      "status": "revise_before_generation",
+      "collision_evidence": "부감의한작업자/두물체 먹을그릇과파종바구니 비교는085/090/126군4.한명이어도090/126 이미한명이라회피안됨.",
+      "concrete_revision_or_guard": "낮은중경측면으로 한사람이 바구니를닫아자기뒤선반에올리고 다른손으로낮은먹을그릇에조금곡물떨어뜨림.카메라얼굴높이,바구니/그릇다른높이와깊이,공유평면부감금지.더확실한 대안은081/159 한얼굴옆손의씨앗근접군 마지막1슬롯:온전한옆얼굴옆씨앗한줌,먼아래에먹을그릇/파종바구니.정면전신106군금지.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "작은 곡물 자루 곁에서 소작인이 먹을 그릇과 파종 바구니를 따로 놓는다."
+    },
+    {
+      "id": "173",
+      "title": "마른 겨울의 석재 주문",
+      "status": "guarded",
+      "collision_evidence": "양쪽바위프레임/먼단독일꾼은102 빈받침둘/먼사람과보수합산가능.하나의거대왼쪽불투명돌+먼사람이면011군4.",
+      "concrete_revision_or_guard": "두불규칙돌의열린틈을대등한프레임으로유지하고중간빈바닥과실제측정행동명료.102군현재1+173+교정177을최대3으로 예약.정면단독소품소유자106군처럼가까이세우지않음.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "서리 낀 마당에서 석공이 다듬은 돌과 원석 더미의 양을 살핀다."
+    },
+    {
+      "id": "174",
+      "title": "빙판 소식과 방문 감사",
+      "status": "revise_before_generation",
+      "collision_evidence": "왼쪽큰말옆구리와오른쪽두사람은029/129/123군4가 거의직접적.말배아래보이는길은기존큰왼쪽덩어리-우측두사람관계를제거하지않음.",
+      "concrete_revision_or_guard": "말은멀리문밖겨울길에작게옮김.바깥가까운청지기어깨/고삐너머 문안서기얼굴·닫힌책을보는 비대칭경계구도로변경.099/158 창밖기록자/창안상대군을뒤집은같은프레임관계로보수3까지.두얼굴동급근접/중앙책제시금지.이책/실내경계는문서보수1추가유지.",
+      "document_treatment": "conservative_mixed_indoor_document",
+      "source_illustration_preserved": "겨울길 쪽에 세운 말과 실내의 장부 탁자 사이에서 감사 방문 여부를 논의한다."
+    },
+    {
+      "id": "175",
+      "title": "배가 뜨지 않는다는 전갈",
+      "status": "guarded",
+      "collision_evidence": "큰계류말뚝/밧줄+먼전달자.극근접전경물체075/140과의유사성은있지만그기준은신체접촉극근접이므로현재계획을자동동일분류하지않음.",
+      "concrete_revision_or_guard": "말뚝은오른쪽가장자리,중앙은실제비어있는물.전달자는작고전체얼굴있게멀리좌측.크게다가온왼쪽두사람/문서+오른쪽빈강이면010군4.물얼음/난파·확정취소장면 금지.",
+      "document_treatment": "outdoor_document_excluded",
+      "source_illustration_preserved": "강가 거래인이 빈 계류장을 가리키며 목재 주문서를 전한다. 결빙·도착 지연은 미확인 소식으로 연출한다."
+    },
+    {
+      "id": "176",
+      "title": "값을 못 받는 흉작 뒤",
+      "status": "guarded",
+      "collision_evidence": "좌우독립납부/두지갑은078/139/152 병렬교환군4로수렴할위험.가운데앉은징수인이대칭두납부자를맞으면004군4.",
+      "concrete_revision_or_guard": "두납부자는한쪽에서깊이차로이어지는비대칭단일대기축;가까운사람은옆얼굴/전체빈주머니,다른사람은멀고징수인은가장먼끝.별도두판매대·각각마주선쌍 금지.열린문서는바깥작은발판위.손만크게자르지않음.",
+      "document_treatment": "outdoor_document_excluded",
+      "source_illustration_preserved": "소작인과 장터 상인이 빈 돈주머니를 각각 다른 납부 장부 위에 놓는다."
+    },
+    {
+      "id": "177",
+      "title": "기한은 남았는데 일꾼이 없다",
+      "status": "revise_to_avoid_new_round_collision",
+      "collision_evidence": "원래높은서까래시점은069/156군마지막슬롯을쓰며교정163도같은군이면4.반복작업대에실제긴들보를연결하면035군4.",
+      "concrete_revision_or_guard": "102 빈받침들/먼작은사람군으로:눈높이보다낮은수평시점,서로연결되지않은비어있는받침3개,먼끝단독목수의얼굴과손가락.지붕높이내려보기와긴연속들보제외.173와함께102군3까지.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "수선 연장을 놓은 빈 작업자리 앞에서 목수가 남은 일정을 세어 본다."
+    },
+    {
+      "id": "178",
+      "title": "또다시 들려온 병 소식",
+      "status": "revise_before_generation",
+      "collision_evidence": "양쪽가까운두얼굴사이 종이/손을중앙비교하면005/024/057 또는013/030/067포화군4.선반슬롯명칭만으로피할수없음.",
+      "concrete_revision_or_guard": "선반틈 정면에는서기얼굴하나만,두전갈은그아래깊이가다른칸.주민은훨씬먼열린문간에작게전신.084 선반틈얼굴/기록비교군1에서2.두번째큰얼굴/양쪽손대면/얼굴잘린근접없음.낡은봉인과새봉인의마모차이만,질병상징표식이나읽히는문자 금지.",
+      "document_treatment": "definite_indoor_document",
+      "source_illustration_preserved": "낡은 병 소식 문서 옆에 새 전갈을 놓고 서기와 주민이 차분히 비교한다."
+    },
+    {
+      "id": "179",
+      "title": "두 사업에 남은 장려금",
+      "status": "guarded",
+      "collision_evidence": "낮은열린금고의내용물검토는015 열린운송상자군1에서2가능.부감두지갑/서류가주제가되면085군4;왼쪽거대상자너머먼사람이면011군4.",
+      "concrete_revision_or_guard": "측면중경한사람과작은열린금고,얼굴/몸같은초점.지갑·봉인묶음은작게금고와함께.빈짐칸수직부감도아님.열린뚜껑위에소품이공중에떠있지않게 실제접지확인.야외나무밑유지.",
+      "document_treatment": "outdoor_document_excluded",
+      "source_illustration_preserved": "여러 사업의 장려금 문서가 금고 뚜껑 위에 겹쳐 있고 주민이 종류별로 나눈다."
+    },
+    {
+      "id": "180",
+      "title": "비가 그친 뒤에도 남은 먼 길",
+      "status": "guarded",
+      "collision_evidence": "큰물면/작은먼운반자파노라마는166과비슷한수변조망군으로보수합산할수있음.큰S길높은부감으로바뀌면104/122/138군4.",
+      "concrete_revision_or_guard": "가로로길고낮은물웅덩이 반사면과중경옆으로걷는작은2인유지.높은지도형길기하금지.098+166+180으로최대3 예산.162같은큰양끝물통이나한근경등관찰자로바꾸지않음.",
+      "document_treatment": "outdoor_no_document",
+      "source_illustration_preserved": "비가 그친 외곽 길에서 물통을 든 주민이 먼 우물 쪽으로 걸어간다."
+    }
+  ],
+  "revise_before_generation_ids": [
+    "163",
+    "164",
+    "167",
+    "170",
+    "172",
+    "174",
+    "177",
+    "178"
+  ],
+  "strongest_direct_collision_ids": [
+    "164",
+    "167",
+    "172",
+    "174",
+    "178"
+  ],
+  "conditional_slot_reservations_after_revisions": [
+    {
+      "frozen_group": "높은 지붕 작업자 너머 낮은 시장길",
+      "frozen_ids": [
+        "069",
+        "156"
+      ],
+      "conditional_new_ids": [
+        "163"
+      ],
+      "projected_total_if_actual_matches": 3
+    },
+    {
+      "frozen_group": "장터 사이를 걷는 전신 일행과 한쪽 상품을 보는 인물",
+      "frozen_ids": [
+        "115",
+        "127"
+      ],
+      "conditional_new_ids": [
+        "164"
+      ],
+      "projected_total_if_actual_matches": 3
+    },
+    {
+      "frozen_group": "전경의 단독 독자와 문간의 작은 증인",
+      "frozen_ids": [
+        "033"
+      ],
+      "conditional_new_ids": [
+        "167"
+      ],
+      "projected_total_if_actual_matches": 2
+    },
+    {
+      "frozen_group": "넓은 들판 오른쪽의 두 관찰자",
+      "frozen_ids": [
+        "071"
+      ],
+      "conditional_new_ids": [
+        "168",
+        "171"
+      ],
+      "projected_total_if_actual_matches": 3
+    },
+    {
+      "frozen_group": "계단과 말 위 인물을 따라 내려가는 대각선",
+      "frozen_ids": [
+        "037",
+        "120"
+      ],
+      "conditional_new_ids": [
+        "170"
+      ],
+      "projected_total_if_actual_matches": 3
+    },
+    {
+      "frozen_group": "한 사람의 얼굴 옆 인장 비교 근접",
+      "frozen_ids": [
+        "081",
+        "159"
+      ],
+      "conditional_new_ids": [
+        "172"
+      ],
+      "projected_total_if_actual_matches": 3
+    },
+    {
+      "frozen_group": "낮은 시점의 빈 받침 둘과 먼 끝 작은 사람",
+      "frozen_ids": [
+        "102"
+      ],
+      "conditional_new_ids": [
+        "173",
+        "177"
+      ],
+      "projected_total_if_actual_matches": 3
+    },
+    {
+      "frozen_group": "점포창 밖 기록자의 어깨 너머 안쪽 상인",
+      "frozen_ids": [
+        "099",
+        "158"
+      ],
+      "conditional_new_ids": [
+        "174"
+      ],
+      "projected_total_if_actual_matches": 3
+    },
+    {
+      "frozen_group": "선반 틈의 정면 얼굴과 양손 장부막대 비교",
+      "frozen_ids": [
+        "084"
+      ],
+      "conditional_new_ids": [
+        "178"
+      ],
+      "projected_total_if_actual_matches": 2
+    },
+    {
+      "frozen_group": "전경 운송 상자를 열어 확인하는 주변 인물",
+      "frozen_ids": [
+        "015"
+      ],
+      "conditional_new_ids": [
+        "179"
+      ],
+      "projected_total_if_actual_matches": 2
+    },
+    {
+      "frozen_group": "넓은 강/다리 조망과 아래 작은 수레 일행",
+      "frozen_ids": [
+        "098"
+      ],
+      "conditional_new_ids": [
+        "166",
+        "180"
+      ],
+      "projected_total_if_actual_matches": 3
+    }
+  ],
+  "slot_reservation_note": "These are conservative planning reservations,not finalgroup labels.Actualimages can land in othergroups.163/177 and168/171 and173/177 and166/180 must be coordinated so newround does not overflow itself.172 reservation refers to the singleface/seed close-up alternative,not unspecified lowmedium fallback.161 not reserved094 unless that camera is actually chosen.",
+  "document_budget": {
+    "frozen_definite_ids": [
+      "002",
+      "009",
+      "033",
+      "053",
+      "084",
+      "109",
+      "126"
+    ],
+    "frozen_conservative_additional_ids": [
+      "076",
+      "099",
+      "135",
+      "147",
+      "158"
+    ],
+    "frozen_conservative_count": 12,
+    "new_definite_indoor_ids": [
+      "167",
+      "178"
+    ],
+    "new_conservative_mixed_id": [
+      "174"
+    ],
+    "projected_total_images": 154,
+    "projected_definite_count": 9,
+    "projected_conservative_count": 15,
+    "projected_conservative_fraction": 0.09740259740259741,
+    "maximum_integer_count_at_10_percent": 15,
+    "extra_indoor_document_headroom_after_plan": 0,
+    "one_extra_indoor_document_fraction": 0.1038961038961039,
+    "planned_upper_bound_pass": true,
+    "important_conditions": "165171175176179 and154prior are explicitly outdoors;do not silently add enclosed rooms,roofed record desks or close indoor meetings.174 remains counted even if ledgerclosed, because indoorclerk/threshold is semantically recordcentered.167178 cannot be omitted because paperbundle/notwriting wording.15/154=9.74%;16/154=10.39% fails.",
+    "sequential_if_numeric_generation_order": "With161–180 in IDorder,167 adds firstdoc at141total (13/141),174 adds second at148total(14/148),178 third at152total(15/152).No intermediate numeric-order batch cap violation projected,assuming no unexpected extraindoor scene."
+  },
+  "historical_and_subject_guards": [
+    "All ordinary thatch/urban household roof backgrounds chimney/pot-free;institutional towers preserved and not mistaken for chimneys.",
+    "No spotted ermine on unnamed stewards,clerks,merchants;plain fur or wool only.",
+    "Medieval handtools,post windmills,wooden buckets/yokes and simple carts;no powered saw or modern tool markings.",
+    "Avoid unrequested fleur-de-lis/royal banners or fantasy plague insignia.",
+    "161163165166169174175178 discuss forecasts/reports or choices;do not invent local plague bodies,confirmed frozen river,collapsed bridge or completed future disaster.",
+    "172 grain for seed vs food must remain visibly distinct;179 subsidychoices are pending promises,not completed payouts.",
+    "Thinroof163 isinspection beforewindseason,not full collapse.166 currentfastwater is legitimate obstacle but bridge staysintact."
+  ],
+  "plan_internal_discrepancies": [
+    "162 one carrier must physically connect both suspendedbuckets to one shoulder yoke;verylowview must not create floating bucketframes.",
+    "164 miller described as standing while carrying towardmill;revision should make locomotion unambiguous if using walkinggroup.",
+    "171 FAR RIGHT denotesbothdistance andposition in revisedprompt;otherwise nearpair+openbackground collides010.",
+    "179 open strongbox lid supporting objects must have plausiblephysical orientation;flatopenhorizontal lid or adjacentclosedsection explicitly needed."
+  ],
+  "decision": "revise_plan_before_generation_for_listed8;remaining12 require stated guards and actual-image audit. No visual or cumulative acceptance claim."
+}

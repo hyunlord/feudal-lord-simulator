@@ -13,7 +13,7 @@ import { HOME_PETITION_ORDER } from "../src/content/stewardshipConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { estatePortfolio, estatesOf } from "../src/engine/estates";
 import { fileSuit } from "../src/engine/estateSuits";
-import { advanceRegistry, applyChoice, DEFAULT_LORD_HOUSE, entryProblem, initialRegistry, lordHouse, registryLoad, registryOf } from "../src/engine/registry";
+import { advanceRegistry, applyChoice, DEFAULT_LORD_HOUSE, enabledChoices, entryProblem, initialRegistry, lordHouse, registryLoad, registryOf } from "../src/engine/registry";
 import { advanceStewardship, answerEstatePetition, lordEstatePetitions, precedentReport, setExceptionRules, stewardshipOf } from "../src/engine/stewardship";
 import { initialAgency } from "../src/engine/townAgency";
 import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
@@ -58,6 +58,19 @@ test("ER-4 a choice's effects apply whole or not at all", () => {
   assert.equal(applyChoice(poor, twoSteps, "pay-then-pay", "", "occ"), null, "the second payment fails, so the first is not kept");
   const paid = applyChoice(funded(town, 100), twoSteps, "pay-then-pay", "", "occ")!;
   assert.equal(treasuryBalance(paid), 92);
+});
+
+test("FIX-17 (A05) a refused command makes the whole choice fail: subsidies 7 + 9 against a limit of 15", () => {
+  const town = funded({ ...load("population-176"), agency: initialAgency() }, 60);
+  const both = entry({ choices: [{ id: "a", effects: [{ command: "none" }] },
+    { id: "split", effects: [{ command: "set_project_subsidy", kind: "granary", amount: 7 }, { command: "set_project_subsidy", kind: "mill", amount: 9 }] },
+    { id: "fits", effects: [{ command: "set_project_subsidy", kind: "granary", amount: 7 }, { command: "set_project_subsidy", kind: "mill", amount: 8 }] }] });
+  assert.equal(applyChoice(town, both, "split", "", "occ"), null, "the mill's 9 is refused (7 + 9 > 15), so the granary's 7 is not kept");
+  assert.ok(!enabledChoices(town, both, "", "occ").includes("split"), "and the choice is not offered");
+  const fits = applyChoice(town, both, "fits", "", "occ")!;
+  assert.deepEqual(fits.agency!.subsidies.map(subsidy => `${subsidy.kind}:${subsidy.amount}`), ["granary:7", "mill:8"]);
+  const refusedFirst = entry({ choices: [{ id: "a", effects: [{ command: "none" }] }, { id: "big", effects: [{ command: "set_project_subsidy", kind: "granary", amount: 16 }] }] });
+  assert.equal(applyChoice(town, refusedFirst, "big", "", "occ"), null, "a refusal recorded on the state is not an effect");
 });
 
 test("ER-5 the home petitions are registry entries in FIX-14's order and chance", () => {

@@ -1,0 +1,187 @@
+{
+  "correct": 18,
+  "total": 20,
+  "accuracy": 0.9,
+  "rows": [
+    {
+      "image": "P01.jpg",
+      "title_key": "T19",
+      "confidence": 0.97,
+      "reason": "두 사람이 구덩이 위아래에서 통나무를 켜고, 잘 차려입은 인물이 완성 널빤지 곁에 서 있어 상인의 지원을 받은 제재 장면으로 읽힌다. 자금 제공 자체는 직접 보이지 않는다.",
+      "id": "ck_evt_144",
+      "expected": "T19",
+      "correct": true
+    },
+    {
+      "image": "P02.jpg",
+      "title_key": "T04",
+      "confidence": 0.99,
+      "reason": "앞쪽의 가죽 긁기와 걸린 생가죽, 바로 옆 텃밭에서 일하는 사람이 함께 보여 가죽업과 농업의 병행이 분명하다.",
+      "id": "ck_evt_152",
+      "expected": "T04",
+      "correct": true
+    },
+    {
+      "image": "P03.jpg",
+      "title_key": "T05",
+      "confidence": 0.78,
+      "reason": "성문 밖 사람을 장부를 든 고위 인물과 기록하는 관리가 대면한다. 장부 등록 여부를 확인하는 장면으로 해석했으나 왕실 소속과 이름 누락은 직접 확인되지 않는다.",
+      "id": "ck_evt_154",
+      "expected": "T09",
+      "correct": false
+    },
+    {
+      "image": "P04.jpg",
+      "title_key": "T15",
+      "confidence": 0.66,
+      "reason": "곡물 자루와 돈주머니를 든 여러 사람이 계단 위 권위자들 앞에서 대표를 통해 말한다. 납부자들의 공동 추천으로 추정했지만 청지기 후보가 누구인지는 그림만으로 불분명하다.",
+      "id": "ck_evt_157",
+      "expected": "T15",
+      "correct": true
+    },
+    {
+      "image": "P05.jpg",
+      "title_key": "T09",
+      "confidence": 0.57,
+      "reason": "재단 작업장 창구에서 손님들과 장인이 대화하고 뒤에 장부를 든 인물이 있어 개별 점포의 거래와 신용 관계를 떠올리게 한다. 외상이나 채권의 주체는 명확히 드러나지 않아 확신은 낮다.",
+      "id": "ck_evt_158",
+      "expected": "T05",
+      "correct": false
+    },
+    {
+      "image": "P06.jpg",
+      "title_key": "T18",
+      "confidence": 0.79,
+      "reason": "공사 현장에서 여성이 눈금이 새겨진 막대 두 조각을 보이고 상대는 주머니와 빈손을 내민다. 지원금의 채무 기록을 둘러싼 장면으로 읽히지만 공동체 자금인지 선물인지는 그림만으로 확정하기 어렵다.",
+      "id": "ck_evt_159",
+      "expected": "T18",
+      "correct": true
+    },
+    {
+      "image": "P07.jpg",
+      "title_key": "T07",
+      "confidence": 0.96,
+      "reason": "벽 속 작은 상자에 둥근 인장처럼 보이는 물건이 있고 두 사람이 각각 상자와 열쇠를 맡는다. 다른 사람들의 입회까지 보여 공동 인장 관리라는 제목과 잘 맞는다.",
+      "id": "ck_evt_142",
+      "expected": "T07",
+      "correct": true
+    },
+    {
+      "image": "P08.jpg",
+      "title_key": "T01",
+      "confidence": 0.7,
+      "reason": "큰 작업장이 대부분 비어 있고 직조틀과 천을 옮기는 몇 사람만 남아 있어 빈 작업장이라는 단서가 강하다. 두 이름이나 경쟁하는 두 신청자의 관계는 시각적으로 확인되지 않는다.",
+      "id": "ck_evt_148",
+      "expected": "T01",
+      "correct": true
+    },
+    {
+      "image": "P09.jpg",
+      "title_key": "T16",
+      "confidence": 0.84,
+      "reason": "허름한 남자가 높은 발코니의 권위자에게 손을 벌려 호소하고 옆 관리가 장부를 들고 있다. 청원 장면은 분명하지만 같은 청원이 반복되었다는 시간적 정보는 보이지 않는다.",
+      "id": "ck_evt_149",
+      "expected": "T16",
+      "correct": true
+    },
+    {
+      "image": "P10.jpg",
+      "title_key": "T14",
+      "confidence": 0.72,
+      "reason": "여러 이웃이 하천과 토지 경계를 가리키며 문서를 든 인물에게 설명한다. 공동 증언이나 소송 준비로 읽히지만 실제 법정에 함께 서는 장면은 아니다.",
+      "id": "ck_evt_143",
+      "expected": "T14",
+      "correct": true
+    },
+    {
+      "image": "P11.jpg",
+      "title_key": "T20",
+      "confidence": 0.89,
+      "reason": "천과 돈주머니를 곁에 둔 상인으로 보이는 인물이 법정 같은 문 앞에서 손을 들어 선서한다. 증인 역할은 잘 드러나지만 계약 상대 역할까지는 직접 보이지 않는다.",
+      "id": "ck_evt_150",
+      "expected": "T20",
+      "correct": true
+    },
+    {
+      "image": "P12.jpg",
+      "title_key": "T03",
+      "confidence": 0.97,
+      "reason": "숲의 베어낸 목재 앞에서 부유한 인물이 동전이 보이는 주머니를 내민다. 숲의 산물을 현금으로 바꾸자는 제안이 매우 직접적으로 읽힌다.",
+      "id": "ck_evt_146",
+      "expected": "T03",
+      "correct": true
+    },
+    {
+      "image": "P13.jpg",
+      "title_key": "T13",
+      "confidence": 0.9,
+      "reason": "다리 입구에 돈주머니와 그릇을 둔 인물이 차단 시설을 다루고, 위의 권위자는 제지한다. 비용 부담을 근거로 통행 관련 권리를 행사하려는 갈등으로 읽히나 출자 이력은 추정이다.",
+      "id": "ck_evt_153",
+      "expected": "T13",
+      "correct": true
+    },
+    {
+      "image": "P14.jpg",
+      "title_key": "T12",
+      "confidence": 0.95,
+      "reason": "닫힌 큰 금고를 중심으로 우물의 물통을 든 사람들과 곡물 자루를 든 사람들이 양편에 서 있다. 공동 자금을 서로 다른 필요에 배분하는 문제를 명확히 암시한다.",
+      "id": "ck_evt_141",
+      "expected": "T12",
+      "correct": true
+    },
+    {
+      "image": "P15.jpg",
+      "title_key": "T11",
+      "confidence": 0.59,
+      "reason": "장부와 기록 막대를 든 인물, 천과 저울을 든 젊은 인물이 나란히 열쇠 쪽을 바라본다. 직무 인계와 후임 후보를 연상하지만 먼저 떠난 관리나 추천 행위는 명확하지 않아 다른 제목과의 상대적 비교를 포함했다.",
+      "id": "ck_evt_147",
+      "expected": "T11",
+      "correct": true
+    },
+    {
+      "image": "P16.jpg",
+      "title_key": "T06",
+      "confidence": 0.7,
+      "reason": "천을 마무리하는 여성 뒤에서 노동자와 부유한 인물이 완성 직물을 확인한다. 일을 배정하는 쪽과 실제 작업자의 관계로 해석되지만 길드와 보수 결정권은 그림만으로 구별하기 어렵다.",
+      "id": "ck_evt_155",
+      "expected": "T06",
+      "correct": true
+    },
+    {
+      "image": "P17.jpg",
+      "title_key": "T10",
+      "confidence": 0.46,
+      "reason": "채석장에서 두 사람이 망치와 쐐기로 돌을 다듬어 망치 노동의 단서는 강하다. 그러나 가마, 청원, 지원 우선순위가 보이지 않아 남은 제목과의 일대일 대응에서 선택했으며 확신이 낮다.",
+      "id": "ck_evt_160",
+      "expected": "T10",
+      "correct": true
+    },
+    {
+      "image": "P18.jpg",
+      "title_key": "T17",
+      "confidence": 0.8,
+      "reason": "손상된 목재 지붕 아래로 여러 사람이 수선용 널빤지를 운반한다. 수선 작업은 분명하지만 도시 명의의 청구라는 행정적 단서는 직접 드러나지 않는다.",
+      "id": "ck_evt_156",
+      "expected": "T17",
+      "correct": true
+    },
+    {
+      "image": "P19.jpg",
+      "title_key": "T08",
+      "confidence": 0.98,
+      "reason": "한 집에서 실잣기, 바구니 짜기, 음식 준비가 동시에 이루어지고 농기구는 걸려 있다. 농사 외 여러 생업으로 생활하는 가구라는 제목과 잘 맞는다.",
+      "id": "ck_evt_145",
+      "expected": "T08",
+      "correct": true
+    },
+    {
+      "image": "P20.jpg",
+      "title_key": "T02",
+      "confidence": 0.94,
+      "reason": "성문에서 석공이 공구 상자를 챙기고, 관리가 문서를 펼치며 다른 인물이 손으로 제지한다. 문서를 근거로 장인의 출입 또는 이동을 막는 상황이 직접적으로 읽힌다.",
+      "id": "ck_evt_151",
+      "expected": "T02",
+      "correct": true
+    }
+  ]
+}

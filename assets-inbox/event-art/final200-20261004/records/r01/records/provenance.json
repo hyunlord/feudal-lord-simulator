@@ -1,0 +1,14 @@
+{
+  "source_head": "7e0c93c34b1c6e090716f88ed7337a33cf5400f2",
+  "source_events": "docs/qa/steward-20261004/content/events.json",
+  "source_sha256": "5768c312c5a73338bf2bcd7f860e69b30941352212511a8458aab6e1c0bb2fc4",
+  "v4_present": false,
+  "tool": "image_gen.imagegen builtin",
+  "model_version": "not_reported",
+  "seed": "not_reported",
+  "reference_role": "style only",
+  "reference": "assets-inbox/wave40/candidates-20261001/assets/03_bride_arrival.jpg",
+  "postprocess": "Single Lanczos resize to960x540;RGB JPEG quality90,optimize; full generated PNG preserved separately. No scene repaint or compositing.",
+  "installation": "not installed",
+  "review_scope": "offline narrative art; not runtime gameplay"
+}
