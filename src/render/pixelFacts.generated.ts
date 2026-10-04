@@ -13,6 +13,7 @@ export const IMAGE_OPAQUE_BOUNDS: Readonly<Record<string, OpaqueBoundsFacts>> = 
   "assets/buildings/historical-gate/palisade_straight_nw_se.png": {"width":512,"height":512,"left":25,"top":21,"right":495,"bottom":483},
   "assets/buildings/historical-wall/stone_wall_straight_ne_sw-v3.png": {"width":512,"height":512,"left":33,"top":43,"right":502,"bottom":480},
   "assets/buildings/historical-wall/stone_wall_straight_nw_se-v3.png": {"width":512,"height":512,"left":17,"top":49,"right":481,"bottom":489},
+  "assets/wall/gate_jamb_stone-v1.png": {"width":64,"height":80,"left":10,"top":10,"right":54,"bottom":70},
   "assets/wall/palisade_face_a-v2.png": {"width":512,"height":128,"left":0,"top":0,"right":512,"bottom":128},
   "assets/wall/palisade_face_b-v2.png": {"width":512,"height":128,"left":0,"top":0,"right":512,"bottom":128},
   "assets/wall/palisade_face_diag_top-v1.png": {"width":512,"height":64,"left":0,"top":23,"right":512,"bottom":41},
