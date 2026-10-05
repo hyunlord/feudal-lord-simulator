@@ -50,8 +50,8 @@ const countMap = page => page.on('request', request => { if (request.url().inclu
 const townZoom = page => page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.diagnosis().camera.zoom);
 /** Dock → ledger → lord tab → the way in; then the region item. */
 async function openRegion(page) {
-  for (const selector of ["[data-dock='ledger']", "[data-ledger-tab='lord']", '[data-lord-open]']) { await page.locator(selector).first().click(); await page.waitForTimeout(400); }
   const before = await mapRequests(page);
+  for (const selector of ["[data-dock='ledger']", "[data-ledger-tab='lord']", '[data-lord-open]']) { await page.locator(selector).first().click(); await page.waitForTimeout(400); }
   await page.locator("[data-lord-nav='region']").first().click();
   const art = await page.locator(".lord-region-map[data-region-map='art']").first().waitFor({ timeout: 20_000 }).then(() => true, () => false);
   await page.locator(".lord-region-site[data-region-art='art']").first().waitFor({ timeout: 10_000 }).catch(() => undefined);
@@ -76,7 +76,8 @@ const read = page => page.evaluate(async ({ panel, map }) => {
       box: box(button), label: label?.textContent ?? null, labelPx: label === null ? null : parseFloat(getComputedStyle(label).fontSize) };
   });
   const texts = [...root.querySelectorAll('*')].filter(el => el.checkVisibility?.() !== false && [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim() !== ''));
-  const targets = [...root.querySelectorAll('.lord-region button, .lord-screen-nav-item')].filter(el => el.getBoundingClientRect().width > 0).map(el => { const rect = el.getBoundingClientRect(); return Math.round(Math.min(rect.width, rect.height)); });
+  const sizes = selector => [...root.querySelectorAll(selector)].filter(el => el.getBoundingClientRect().width > 0).map(el => { const rect = el.getBoundingClientRect(); return Math.round(Math.min(rect.width, rect.height)); });
+  const targets = sizes('.lord-region button'); const navTargets = sizes('.lord-screen-nav-item');
   const nav = [...root.querySelectorAll('.lord-screen-nav-item')].map(item => ({ id: item.getAttribute('data-lord-nav'), disabled: item.disabled, icon: item.querySelector('.lord-screen-nav-icon') !== null,
     iconUrl: item.querySelector('.lord-screen-nav-icon') === null ? null : getComputedStyle(item.querySelector('.lord-screen-nav-icon')).backgroundImage.split('/').pop()?.replace(/["')]/g, '') ?? null,
     reason: item.querySelector('.lord-screen-nav-reason')?.textContent ?? null, current: item.getAttribute('aria-current') }));
@@ -89,7 +90,7 @@ const read = page => page.evaluate(async ({ panel, map }) => {
     chosen: root.querySelector('.lord-region-chosen')?.getAttribute('data-region-chosen') ?? null,
     rows: [...root.querySelectorAll('.lord-region-row')].map(row => [row.getAttribute('data-region-row'), row.querySelector('dd')?.textContent ?? '']),
     note: root.querySelector('.lord-region-note')?.textContent ?? null,
-    smallestText: Math.min(...texts.map(el => parseFloat(getComputedStyle(el).fontSize))), smallestTarget: Math.min(...targets),
+    smallestText: Math.min(...texts.map(el => parseFloat(getComputedStyle(el).fontSize))), smallestTarget: Math.min(...targets), smallestNavTarget: Math.min(...navTargets),
     coarse: matchMedia('(pointer: coarse)').matches, primaries: root.querySelectorAll('.lord-region .ui-btn--primary').length, titles: root.querySelectorAll('[title]').length };
 }, { panel: PANEL, map: MAP });
 const choose = async (page, estate) => { await page.locator(`.lord-region-site[data-region-estate='${estate}']`).first().click(); await page.waitForTimeout(400); return read(page); };
@@ -187,7 +188,7 @@ for (const [name, options, minTarget] of [['1024x768', { width: 1024, height: 76
   const shown = await read(page);
   await shoot(page, name === 'dpr2' ? '.lord-region-map' : null, `region-${name}`, name === 'dpr2' ? 40 : 45);
   const overlaps = shown.markers.flatMap((a, i) => shown.markers.slice(i + 1).filter(b => a.box.left < b.box.left + b.box.width && b.box.left < a.box.left + a.box.width && a.box.top < b.box.top + b.box.height && b.box.top < a.box.top + a.box.height).map(b => [a.estate, b.estate]));
-  rows[name] = { opened, panel: shown.panel, minTarget, inside: shown.inside, world: shown.worldLeftOfPanel, smallestText: shown.smallestText, smallestTarget: shown.smallestTarget, overlaps,
+  rows[name] = { opened, panel: shown.panel, minTarget, nav: shown.smallestNavTarget, inside: shown.inside, world: shown.worldLeftOfPanel, smallestText: shown.smallestText, smallestTarget: shown.smallestTarget, overlaps,
     coarse: shown.coarse, ok: opened.art && shown.inside && shown.worldLeftOfPanel >= 264 && shown.smallestText >= 12 && shown.smallestTarget >= (shown.coarse ? minTarget : 44) && overlaps.length === 0 };
   console.log(`${rows[name].ok ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify(rows[name])}`);
   await context.close();

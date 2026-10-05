@@ -49,7 +49,8 @@
 .app-shell .lord-region-row dt { color: var(--palette-ink-muted); }
 .app-shell .lord-region-row dd { margin: 0; word-break: keep-all; overflow-wrap: anywhere; }
 .app-shell .lord-region-open { justify-self: start; min-height: 44px; font-size: 13px; }
+/* 48 px on a touch screen: `!important` like the kit's own touch rule, above the 44 px !important floor (uiBoundaries.css). */
 @media (pointer: coarse) {
-  .app-shell .lord-region-zoom, .app-shell .lord-region-site-listed, .app-shell .lord-region-open { min-height: 48px; }
-  .app-shell .ui-btn.ui-btn--surface.lord-region-site { min-width: 48px; min-height: 48px; }
+  .app-shell :is(.lord-region-zoom, .lord-region-site-listed, .lord-region-open) { min-height: 48px !important; }
+  .app-shell .ui-btn.ui-btn--surface.lord-region-site { min-width: 48px !important; min-height: 48px !important; }
 }
