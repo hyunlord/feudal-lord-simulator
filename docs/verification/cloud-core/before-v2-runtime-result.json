@@ -1,0 +1,633 @@
+{
+  "status": "RUNTIME_NUMERIC_PASS_NATIVE_VISUAL_PENDING",
+  "run": "astra-cloud2-before-v2-bd84351",
+  "head": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "freezeSha256": "5775c0b31c134120ba3d1cfab3b66dac6cd83903dad9f250b82f3f2be368fad6",
+  "exit": 0,
+  "submissions": 1,
+  "fetches": 1,
+  "slot": "1/2",
+  "waitSeconds": 0,
+  "prepareSeconds": 6.6,
+  "commandSeconds": 168.5,
+  "views": 10,
+  "AA": 10,
+  "errors": 0,
+  "positive8FrozenFirstRepeatPaint": "PASS",
+  "negative2CumulativeAbsence": "PASS",
+  "grassControl": "PASS",
+  "fullPresentedAndViewIdentity": "PASS",
+  "deltas": [
+    {
+      "name": "summer-normal-z1-t0",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 364,
+        "/assets/wave23/weather/cloud_shadow_b.png": 260
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 413,
+        "/assets/wave23/weather/cloud_shadow_b.png": 295
+      }
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 459,
+        "/assets/wave23/weather/cloud_shadow_b.png": 255
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 459,
+        "/assets/wave23/weather/cloud_shadow_b.png": 255
+      }
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 459,
+        "/assets/wave23/weather/cloud_shadow_b.png": 408
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 558,
+        "/assets/wave23/weather/cloud_shadow_b.png": 496
+      }
+    },
+    {
+      "name": "summer-normal-z06-t5000",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 450,
+        "/assets/wave23/weather/cloud_shadow_b.png": 400
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 486,
+        "/assets/wave23/weather/cloud_shadow_b.png": 432
+      }
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 434,
+        "/assets/wave23/weather/cloud_shadow_b.png": 310
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 532,
+        "/assets/wave23/weather/cloud_shadow_b.png": 380
+      }
+    },
+    {
+      "name": "winter-normal-z1-t5000",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 522,
+        "/assets/wave23/weather/cloud_shadow_b.png": 290
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 576,
+        "/assets/wave23/weather/cloud_shadow_b.png": 320
+      }
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 522,
+        "/assets/wave23/weather/cloud_shadow_b.png": 464
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 603,
+        "/assets/wave23/weather/cloud_shadow_b.png": 536
+      }
+    },
+    {
+      "name": "winter-normal-z06-t5000",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 504,
+        "/assets/wave23/weather/cloud_shadow_b.png": 448
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 468,
+        "/assets/wave23/weather/cloud_shadow_b.png": 416
+      }
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 0,
+        "/assets/wave23/weather/cloud_shadow_b.png": 0
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 0,
+        "/assets/wave23/weather/cloud_shadow_b.png": 0
+      }
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "first": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 0,
+        "/assets/wave23/weather/cloud_shadow_b.png": 0
+      },
+      "repeat": {
+        "/assets/wave23/weather/cloud_shadow_a.png": 0,
+        "/assets/wave23/weather/cloud_shadow_b.png": 0
+      }
+    }
+  ],
+  "prePost": {
+    "tracked": 26854,
+    "inputs": 26881,
+    "exported": 26882,
+    "lfsHydrated": 6384,
+    "headExact": true,
+    "trackedClean": true,
+    "allInputBytesExact": true,
+    "preExtras": 0,
+    "postGeneratedExtras": 74
+  },
+  "external": {
+    "preexisting": 5488,
+    "unchanged": 5488,
+    "deleted": 0,
+    "modified": 0,
+    "added": 15,
+    "vite": 13,
+    "keyart": 2,
+    "additions": {
+      ".cache/keyart-derivatives/977163c2c58e3d57acae3e8bbb22b5b6f410be35c3f9c284aa6013adf6b82845-v1-png-half": {
+        "type": "file",
+        "bytes": 96265,
+        "sha256": "ce76b925e2a5c0745ad8e30222858cd25119932a0c8eab78c2a30f8d4fef0729"
+      },
+      ".cache/keyart-derivatives/9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b-v1-jpeg-q70": {
+        "type": "file",
+        "bytes": 315323,
+        "sha256": "c9c39668fbf4b8508c7a61c245e9c5c0bffdeef673d951fa9ec051db38e1434a"
+      },
+      ".vite/deps/_metadata.json": {
+        "type": "file",
+        "bytes": 1089,
+        "sha256": "cc567344d7ea562eb2cb5ddf26db0c0d3b4efa29b96c0c71599f107636882ab4"
+      },
+      ".vite/deps/package.json": {
+        "type": "file",
+        "bytes": 23,
+        "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+      },
+      ".vite/deps/react-dom.js": {
+        "type": "file",
+        "bytes": 14535,
+        "sha256": "86295b7f3a447555e08cf9ebb5d34b72a699fb2863fde30dbe505c846102b4c0"
+      },
+      ".vite/deps/react-dom.js.map": {
+        "type": "file",
+        "bytes": 25602,
+        "sha256": "392f5943639eba2d0113930cf7ec4a78f6cb660cd60083c83c81a29a223a81fd"
+      },
+      ".vite/deps/react-dom_client.js": {
+        "type": "file",
+        "bytes": 820711,
+        "sha256": "3c0fcd691cd26e901ed362fa403e3f8953509cefae20152e2335c23c62bf8b67"
+      },
+      ".vite/deps/react-dom_client.js.map": {
+        "type": "file",
+        "bytes": 1498893,
+        "sha256": "6476738af93e6f431c0587f299b4e509ba5e7be30eb6cb152ccfd2966b2d9b8d"
+      },
+      ".vite/deps/react.js": {
+        "type": "file",
+        "bytes": 38246,
+        "sha256": "d825799114c356286938056830da0314c2680d1fb304c3390cd56c0bef023101"
+      },
+      ".vite/deps/react.js.map": {
+        "type": "file",
+        "bytes": 68787,
+        "sha256": "512b5b4cb2d03e310293282adf8f7e12986bad182dbe364b53730b5f8f477fcc"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js": {
+        "type": "file",
+        "bytes": 10466,
+        "sha256": "f583c333ee04c86c5706e0499464d898d978e784cdb743b2db6f386f463ba885"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js.map": {
+        "type": "file",
+        "bytes": 18068,
+        "sha256": "a2cbbfc95fa5cbd63b00e1524fa38ba7d3cc8efc794e36e23278b4b1b16ffad3"
+      },
+      ".vite/deps/react_jsx-runtime.js": {
+        "type": "file",
+        "bytes": 10743,
+        "sha256": "f441d0cfcdaed154914d32ef0304199ea84b25e3f85fcea9653ce911369dadde"
+      },
+      ".vite/deps/react_jsx-runtime.js.map": {
+        "type": "file",
+        "bytes": 18636,
+        "sha256": "9ca0503453f56908949c3be7dcfe64eb4a63c6e0fa38dde4a9ef74119934fa6f"
+      },
+      ".vite/deps/rolldown-runtime-BvCyGRYZ.js": {
+        "type": "file",
+        "bytes": 192,
+        "sha256": "8857aad4f904253f9a8bb160ae7ca249376498df7c3510b0cd92b4e5a2c3b6cb"
+      }
+    }
+  },
+  "localPost": {
+    "pass": true,
+    "phase": "local",
+    "head": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+    "trackedClean": true,
+    "tracked": 26854,
+    "exported": null,
+    "verifiedFiles": 26881,
+    "lfsHydrated": 6384,
+    "manifestSha256": "5775c0b31c134120ba3d1cfab3b66dac6cd83903dad9f250b82f3f2be368fad6",
+    "extras": [],
+    "external": null
+  },
+  "raw": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1",
+  "rawFiles": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/receipts/final.json",
+      "bytes": 3218,
+      "sha256": "64a5992bd8a9eba247088ec5497067b5dac2d8f753baf9f9aa7911532ec0a629"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/receipts/numeric-check.json",
+      "bytes": 23776,
+      "sha256": "f0300027c82e255415146dfd2faa732a1e99f92f173957f5322e9c8d9ae17b31"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/receipts/post.json",
+      "bytes": 1192637,
+      "sha256": "6bfa9545d00c85c472f6e85a061917f05fab511f819415a92684f1ee0265a0cd"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/receipts/pre.json",
+      "bytes": 1183150,
+      "sha256": "935e30c0f31b3a8afc7bafa31c327aff63a091785972674ebff4877557470e65"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/captures.json",
+      "bytes": 11466619,
+      "sha256": "4b3cea2d9c43ba262df2d197ec5482e5b0c390a42a580d78548a78535d019652"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/progress.jsonl",
+      "bytes": 38796,
+      "sha256": "47601b786774e2e9f6812733c2c61962a61be3d3e6faefc98d21e254e553fc1b"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/spring-wet-negative-z1-t0.jpg",
+      "bytes": 245834,
+      "sha256": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/spring-wet-negative-z1-t0.png",
+      "bytes": 2766202,
+      "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/spring-wet-negative-z1-t0.presented.json",
+      "bytes": 297708,
+      "sha256": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z06-t0.jpg",
+      "bytes": 202959,
+      "sha256": "08f40a1499171083129381971cb8d6e7c4497bfe532265e62a42ab6261472c04"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z06-t0.png",
+      "bytes": 2556089,
+      "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z06-t0.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z06-t5000.jpg",
+      "bytes": 202442,
+      "sha256": "5a192008c166e51fd87c572953e0a5b73b9417af4b931ba36beae050b30d8656"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z06-t5000.png",
+      "bytes": 2555186,
+      "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z06-t5000.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z1-t0.jpg",
+      "bytes": 236713,
+      "sha256": "c99c1513367719525d87777381aee8daa925991cdb9bee445d783865aecc6caf"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z1-t0.png",
+      "bytes": 2360581,
+      "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z1-t0.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z1-t5000.jpg",
+      "bytes": 236769,
+      "sha256": "6e3e901db01cbd9be57b2f27488646cfd3decf6de904b6f64ed431235a36f5bf"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z1-t5000.png",
+      "bytes": 2358446,
+      "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-normal-z1-t5000.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-off-negative-z1-t0.jpg",
+      "bytes": 237265,
+      "sha256": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-off-negative-z1-t0.png",
+      "bytes": 2341314,
+      "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/summer-off-negative-z1-t0.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z06-t0.jpg",
+      "bytes": 172428,
+      "sha256": "e74f577efee1915b4ccb45845577ecdca6ed46e97098f9becacb813a36ea37eb"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z06-t0.png",
+      "bytes": 2312083,
+      "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z06-t0.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z06-t5000.jpg",
+      "bytes": 173224,
+      "sha256": "41e8a23f39fa1b41c74395b3eadda21d48910b5558a3b9b17b846d2ff6adee9a"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z06-t5000.png",
+      "bytes": 2311614,
+      "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z06-t5000.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z1-t0.jpg",
+      "bytes": 206053,
+      "sha256": "8fb64e624e21a93f63985922d6c2ed38a023149610f40ea0f6066418cbe6c9ee"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z1-t0.png",
+      "bytes": 2496029,
+      "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z1-t0.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z1-t5000.jpg",
+      "bytes": 207077,
+      "sha256": "1f36a4ee242ffa9170a6c485ad04499bf56c707eaa33d6121450f59e00592f02"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z1-t5000.png",
+      "bytes": 2492457,
+      "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/repeat/winter-normal-z1-t5000.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/spring-wet-negative-z1-t0.engine.json",
+      "bytes": 297708,
+      "sha256": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/spring-wet-negative-z1-t0.jpg",
+      "bytes": 245834,
+      "sha256": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/spring-wet-negative-z1-t0.png",
+      "bytes": 2766202,
+      "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/spring-wet-negative-z1-t0.presented.json",
+      "bytes": 297708,
+      "sha256": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t0.engine.json",
+      "bytes": 1858012,
+      "sha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t0.jpg",
+      "bytes": 202959,
+      "sha256": "08f40a1499171083129381971cb8d6e7c4497bfe532265e62a42ab6261472c04"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t0.png",
+      "bytes": 2556089,
+      "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t0.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t5000.engine.json",
+      "bytes": 1858012,
+      "sha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t5000.jpg",
+      "bytes": 202442,
+      "sha256": "5a192008c166e51fd87c572953e0a5b73b9417af4b931ba36beae050b30d8656"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t5000.png",
+      "bytes": 2555186,
+      "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z06-t5000.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t0.engine.json",
+      "bytes": 1858012,
+      "sha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t0.jpg",
+      "bytes": 236713,
+      "sha256": "c99c1513367719525d87777381aee8daa925991cdb9bee445d783865aecc6caf"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t0.png",
+      "bytes": 2360581,
+      "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t0.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t5000.engine.json",
+      "bytes": 1858012,
+      "sha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t5000.jpg",
+      "bytes": 236769,
+      "sha256": "6e3e901db01cbd9be57b2f27488646cfd3decf6de904b6f64ed431235a36f5bf"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t5000.png",
+      "bytes": 2358446,
+      "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-normal-z1-t5000.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-off-negative-z1-t0.engine.json",
+      "bytes": 1858012,
+      "sha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-off-negative-z1-t0.jpg",
+      "bytes": 237265,
+      "sha256": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-off-negative-z1-t0.png",
+      "bytes": 2341314,
+      "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/summer-off-negative-z1-t0.presented.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t0.engine.json",
+      "bytes": 879569,
+      "sha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t0.jpg",
+      "bytes": 172428,
+      "sha256": "e74f577efee1915b4ccb45845577ecdca6ed46e97098f9becacb813a36ea37eb"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t0.png",
+      "bytes": 2312083,
+      "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t0.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t5000.engine.json",
+      "bytes": 879569,
+      "sha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t5000.jpg",
+      "bytes": 173224,
+      "sha256": "41e8a23f39fa1b41c74395b3eadda21d48910b5558a3b9b17b846d2ff6adee9a"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t5000.png",
+      "bytes": 2311614,
+      "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z06-t5000.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t0.engine.json",
+      "bytes": 879569,
+      "sha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t0.jpg",
+      "bytes": 206053,
+      "sha256": "8fb64e624e21a93f63985922d6c2ed38a023149610f40ea0f6066418cbe6c9ee"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t0.png",
+      "bytes": 2496029,
+      "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t0.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t5000.engine.json",
+      "bytes": 879569,
+      "sha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t5000.jpg",
+      "bytes": 207077,
+      "sha256": "1f36a4ee242ffa9170a6c485ad04499bf56c707eaa33d6121450f59e00592f02"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t5000.png",
+      "bytes": 2492457,
+      "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-before/output/art-architecture/cloud2-before-v1/results/winter-normal-z1-t5000.presented.json",
+      "bytes": 880129,
+      "sha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e"
+    }
+  ],
+  "limits": [
+    "Native visual review pending; source draw-call evidence does not prove final visible alpha/occlusion.",
+    "Full admitted engine snapshot is offline; actual full presented snapshot measured; live engine reference equality unobserved.",
+    "Negative absence uses first-open cumulative sets; no universal future-frame absence claim.",
+    "Local offline checker import via stdin was refused by localGuard (exit3); no browser ran and no bypass attempted. Actual numeric checker completed remotely; local frozen source guard passed.",
+    "Runner setup reported14 paths differ before hydration; actual pre/post guard proves hydrated tracked clean, exact HEAD and full exported bytes.",
+    "v1 precondition failure preserved separately; v2 output path remains cloud2-before-v1 by frozen design."
+  ]
+}
