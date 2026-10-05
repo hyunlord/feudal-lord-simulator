@@ -11,6 +11,10 @@
 #   3. _kept/<run>/ that no file of the trunk names (searched in the mirror) and older than DC_KEPT_DAYS (3) is packed
 #      into _kept/_archive/<run>.tar.zst and removed; a run a report names stays as it is.
 #   4. _clones/<run>/ left by a clean clone that is not going (lock free) goes.
+#   5. the game's leftovers in $DC_TMP (/tmp, added 2026-10-06 when they held 24 GB): a source tree of a commit
+#      (fls-src-<sha>-<pid>, scripts/perf/sourceTree.ts for perf:ab and the trend) goes once its process is gone and no
+#      process works in it; tsx's compile cache (tsx-<uid>) loses the files nobody read for DC_TSX_DAYS (3) days (tsx
+#      compiles a missing one again). /tmp is shared, so nothing else there is touched.
 # tight (free space under DC_LOW_GB, 300, before a heavy run): rule 1 takes every finished folder (age 0) and rule 2
 # halves the cap.
 DC_RUN_HOURS=${DC_RUN_HOURS:-24}
@@ -18,6 +22,8 @@ DC_RUNS_CAP_GB=${DC_RUNS_CAP_GB:-250}
 DC_KEPT_DAYS=${DC_KEPT_DAYS:-3}
 DC_LOW_GB=${DC_LOW_GB:-300}
 DC_TRUNK=${DC_TRUNK:-codex/phase15-organic-ground}
+DC_TMP=${DC_TMP:-/tmp}
+DC_TSX_DAYS=${DC_TSX_DAYS:-3}
 
 dc__free_gb() { if [ -n "${DC_FREE_GB:-}" ]; then echo "$DC_FREE_GB"; else df --output=avail -BG "$BASE" | tail -1 | tr -dc 0-9; fi; }
 dc__locked() { [ -e "$BASE/_locks/$1.lock" ] && ! ( flock -n 9 ) 9< "$BASE/_locks/$1.lock"; }
@@ -98,6 +104,8 @@ dc__clean() {
   fi
   # 3. kept results nobody names
   dc__archive_kept
+  # 5. the game's leftovers in /tmp
+  dc__clean_tmp
   after=$(dc__free_gb)
   echo "== disk: ${after} GB free after cleaning ($why)"
 }
@@ -122,4 +130,34 @@ dc__archive_kept() {
       rm -f "$BASE/_kept/_archive/$name.tar.zst.tmp"
     fi
   done
+}
+
+# A process works in the folder: its working directory or an argument is under it.
+dc__tmp_busy() {
+  local pid cwd
+  for pid in $(pgrep -u "$(id -u)" . 2> /dev/null); do
+    cwd=$(readlink "/proc/$pid/cwd" 2> /dev/null) || continue
+    case "$cwd/" in "$1"/*) return 0 ;; esac
+    tr '\0' '\n' < "/proc/$pid/cmdline" 2> /dev/null | grep -qF "$1/" && return 0
+  done
+  return 1
+}
+dc__clean_tmp() {
+  local dir pid mb tsx files
+  for dir in "$DC_TMP"/fls-src-*-*/; do
+    [ -d "$dir" ] || continue
+    dir=${dir%/}; pid=${dir##*-}
+    case "$pid" in ''|*[!0-9]*) continue ;; esac
+    [ -e "/proc/$pid" ] && continue          # its trend or perf:ab is still going
+    dc__tmp_busy "$dir" && continue
+    mb=$(dc__mb "$dir")
+    rm -rf "${dir:?}" && echo "== disk: removed $dir (${mb:-?} MB, its process $pid is gone)"
+  done
+  tsx=$DC_TMP/tsx-$(id -u)
+  [ -d "$tsx" ] || return 0
+  # -atime +N: not read for more than N whole days (relatime moves atime at most once a day, so a file read in the last
+  # N days is never taken; sizes are the blocks freed, %k). Only regular files: the folder and the live .pipe sockets stay.
+  files=$(find "$tsx" -mindepth 1 -maxdepth 1 -type f -atime +"$DC_TSX_DAYS" -printf '%k\n' -delete 2> /dev/null | awk '{ n++; s += $1 } END { printf "%d %d", n, s / 1024 }')
+  [ "${files%% *}" -gt 0 ] && echo "== disk: tsx cache: removed ${files%% *} file(s) not read for ${DC_TSX_DAYS} days (${files##* } MB)"
+  return 0
 }
