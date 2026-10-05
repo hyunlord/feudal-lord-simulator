@@ -1,0 +1,537 @@
+{
+ "url": "http://127.0.0.1:4304/",
+ "ok": true,
+ "bytes": 792467,
+ "shots": {
+  "region-inherited-1280x800": 129461,
+  "menu": 8871,
+  "chosen-direct": 51948,
+  "chosen-delegated": 50978,
+  "chosen-neighbour": 52085,
+  "zoom-full": 43970,
+  "site-manor": 5457,
+  "site-market": 6328,
+  "site-mill": 6900,
+  "chosen-direct-offmap": 52195,
+  "flag-empty-base": 4895,
+  "flag-neighbour-arms": 5028,
+  "neighbour-suit-line": 7042,
+  "region-1024x768": 92890,
+  "region-tablet": 113191,
+  "region-dpr2": 133625,
+  "map-missing": 27603
+ },
+ "held": {
+  "map_abbey": "no engine estate is a religious house (EstateKind manor | market_town | mill_estate | fishery); LM-E10"
+ },
+ "rows": {
+  "inherited": {
+   "opened": {
+    "mapRequestsBefore": 0,
+    "art": true
+   },
+   "first": {
+    "panel": {
+     "left": 512,
+     "top": 76,
+     "width": 760,
+     "height": 599
+    },
+    "worldLeftOfPanel": 512,
+    "map": "art",
+    "background": "map_region_1600x1000.png",
+    "loaded": [
+     1600,
+     1000
+    ],
+    "nav": [
+     {
+      "id": "character",
+      "disabled": true,
+      "icon": true,
+      "iconUrl": "nav_character_40x40.png",
+      "reason": "준비 중",
+      "current": null
+     },
+     {
+      "id": "dynasty",
+      "disabled": true,
+      "icon": true,
+      "iconUrl": "nav_dynasty_40x40.png",
+      "reason": "준비 중",
+      "current": null
+     },
+     {
+      "id": "region",
+      "disabled": false,
+      "icon": true,
+      "iconUrl": "nav_region_40x40.png",
+      "reason": null,
+      "current": "page"
+     },
+     {
+      "id": "estates",
+      "disabled": true,
+      "icon": true,
+      "iconUrl": "nav_estates_40x40.png",
+      "reason": "준비 중",
+      "current": null
+     },
+     {
+      "id": "council",
+      "disabled": true,
+      "icon": true,
+      "iconUrl": "nav_council_40x40.png",
+      "reason": "준비 중",
+      "current": null
+     },
+     {
+      "id": "marriage",
+      "disabled": true,
+      "icon": true,
+      "iconUrl": "nav_marriage_40x40.png",
+      "reason": "준비 중",
+      "current": null
+     },
+     {
+      "id": "ledger",
+      "disabled": true,
+      "icon": false,
+      "iconUrl": null,
+      "reason": "준비 중",
+      "current": null
+     },
+     {
+      "id": "petitions",
+      "disabled": true,
+      "icon": true,
+      "iconUrl": "nav_petitions_40x40.png",
+      "reason": "준비 중",
+      "current": null
+     },
+     {
+      "id": "military",
+      "disabled": true,
+      "icon": true,
+      "iconUrl": "nav_military_40x40.png",
+      "reason": "규칙 없음",
+      "current": null
+     }
+    ],
+    "markers": [
+     {
+      "estate": "estate-home",
+      "flag": "direct",
+      "site": "market",
+      "chosen": "false",
+      "siteArt": "map_market_96x96.png",
+      "flagArt": "flag_direct_64x96.png",
+      "arms": "de Fauconval",
+      "armsDrawn": true,
+      "armsOnFlag": true,
+      "box": {
+       "left": 1075,
+       "top": 278,
+       "width": 84,
+       "height": 101
+      },
+      "label": "본 영지 · 직할",
+      "labelPx": 12
+     },
+     {
+      "estate": "estate-neighbour-1",
+      "flag": "neighbour",
+      "site": "manor",
+      "chosen": "false",
+      "siteArt": "map_manor_96x96.png",
+      "flagArt": "flag_neighbor_64x96.png",
+      "arms": "de Ivrecourt",
+      "armsDrawn": true,
+      "armsOnFlag": true,
+      "box": {
+       "left": 742,
+       "top": 289,
+       "width": 115,
+       "height": 101
+      },
+      "label": "de Ivrecourt · 이웃",
+      "labelPx": 12
+     },
+     {
+      "estate": "estate-neighbour-2",
+      "flag": "neighbour",
+      "site": "mill",
+      "chosen": "false",
+      "siteArt": "map_mill_96x96.png",
+      "flagArt": "flag_neighbor_64x96.png",
+      "arms": "de Ambreth",
+      "armsDrawn": true,
+      "armsOnFlag": true,
+      "box": {
+       "left": 1034,
+       "top": 406,
+       "width": 114,
+       "height": 101
+      },
+      "label": "de Ambreth · 이웃",
+      "labelPx": 12
+     },
+     {
+      "estate": "estate-neighbour-3",
+      "flag": "delegated",
+      "site": "manor",
+      "chosen": "false",
+      "siteArt": "map_manor_96x96.png",
+      "flagArt": "flag_delegated_64x96.png",
+      "arms": "de Fauconval",
+      "armsDrawn": true,
+      "armsOnFlag": true,
+      "box": {
+       "left": 728,
+       "top": 462,
+       "width": 118,
+       "height": 101
+      },
+      "label": "de Kestevale · 위임",
+      "labelPx": 12
+     }
+    ],
+    "smallestText": 12,
+    "smallestTarget": 44,
+    "primaries": 0,
+    "titles": 0
+   },
+   "mapRequestsAfter": 1,
+   "chosen": {
+    "direct": {
+     "estate": "estate-home",
+     "chosen": "estate-home",
+     "flag": "direct",
+     "rows": [
+      [
+       "kind",
+       "시장 도시"
+      ],
+      [
+       "flag",
+       "직할 — 영주가 직접 다스립니다"
+      ],
+      [
+       "possessor",
+       "de Fauconval 가문"
+      ],
+      [
+       "value",
+       "£3 8s"
+      ]
+     ]
+    },
+    "delegated": {
+     "estate": "estate-neighbour-3",
+     "chosen": "estate-neighbour-3",
+     "flag": "delegated",
+     "rows": [
+      [
+       "kind",
+       "장원"
+      ],
+      [
+       "flag",
+       "위임 — 관리인에게 맡겼습니다"
+      ],
+      [
+       "possessor",
+       "de Fauconval 가문"
+      ],
+      [
+       "steward",
+       "토머스 아트레인"
+      ],
+      [
+       "value",
+       "£16 13s"
+      ]
+     ]
+    },
+    "neighbour": {
+     "estate": "estate-neighbour-1",
+     "chosen": "estate-neighbour-1",
+     "flag": "neighbour",
+     "rows": [
+      [
+       "kind",
+       "장원"
+      ],
+      [
+       "flag",
+       "이웃 — 이웃 가문의 땅입니다"
+      ],
+      [
+       "possessor",
+       "de Ivrecourt 가문"
+      ],
+      [
+       "value",
+       "£26 13s"
+      ]
+     ]
+    }
+   },
+   "zoom": {
+    "town": [
+     1.1,
+     1.1
+    ],
+    "canvas": {
+     "fit": 596,
+     "half": 800,
+     "full": 1600
+    }
+   },
+   "sites": {
+    "manor": [
+     {
+      "estate": "estate-neighbour-1",
+      "siteArt": "map_manor_96x96.png",
+      "flag": "neighbour",
+      "flagArt": "flag_neighbor_64x96.png",
+      "arms": "de Ivrecourt",
+      "armsOnFlag": true
+     },
+     {
+      "estate": "estate-neighbour-3",
+      "siteArt": "map_manor_96x96.png",
+      "flag": "delegated",
+      "flagArt": "flag_delegated_64x96.png",
+      "arms": "de Fauconval",
+      "armsOnFlag": true
+     }
+    ],
+    "market": [
+     {
+      "estate": "estate-home",
+      "siteArt": "map_market_96x96.png",
+      "flag": "direct",
+      "flagArt": "flag_direct_64x96.png",
+      "arms": "de Fauconval",
+      "armsOnFlag": true
+     }
+    ],
+    "mill": [
+     {
+      "estate": "estate-neighbour-2",
+      "siteArt": "map_mill_96x96.png",
+      "flag": "neighbour",
+      "flagArt": "flag_neighbor_64x96.png",
+      "arms": "de Ambreth",
+      "armsOnFlag": true
+     }
+    ]
+   },
+   "armsAll": [
+    [
+     "estate-home",
+     "de Fauconval",
+     true,
+     true
+    ],
+    [
+     "estate-neighbour-1",
+     "de Ivrecourt",
+     true,
+     true
+    ],
+    [
+     "estate-neighbour-2",
+     "de Ambreth",
+     true,
+     true
+    ],
+    [
+     "estate-neighbour-3",
+     "de Fauconval",
+     true,
+     true
+    ]
+   ],
+   "ok": true
+  },
+  "overloaded": {
+   "opened": {
+    "mapRequestsBefore": 0,
+    "art": true
+   },
+   "marker": {
+    "estate": "estate-neighbour-3",
+    "flag": "direct",
+    "site": "manor",
+    "chosen": "true",
+    "siteArt": "map_manor_96x96.png",
+    "flagArt": "flag_direct_64x96.png",
+    "arms": "de Fauconval",
+    "armsDrawn": true,
+    "armsOnFlag": true,
+    "box": {
+     "left": 726,
+     "top": 286,
+     "width": 123,
+     "height": 101
+    },
+    "label": "de Kestevale · 직할",
+    "labelPx": 12
+   },
+   "rows": [
+    [
+     "kind",
+     "장원"
+    ],
+    [
+     "flag",
+     "직할 — 영주가 직접 다스립니다"
+    ],
+    [
+     "possessor",
+     "de Fauconval 가문"
+    ],
+    [
+     "value",
+     "£16 13s"
+    ]
+   ],
+   "ok": true
+  },
+  "emptyBase": {
+   "opened": {
+    "mapRequestsBefore": 0,
+    "art": true
+   },
+   "markers": [
+    [
+     "estate-home",
+     "direct",
+     "flag_direct_64x96.png",
+     "de Fauconval"
+    ],
+    [
+     "estate-neighbour-1",
+     "neighbour",
+     "flag_neighbor_64x96.png",
+     "de Ivrecourt"
+    ],
+    [
+     "estate-neighbour-2",
+     "neighbour",
+     "flag_neighbor_64x96.png",
+     "de Ambreth"
+    ],
+    [
+     "estate-neighbour-3",
+     "neighbour",
+     "flag_neighbor_64x96.png",
+     null
+    ]
+   ],
+   "ok": true
+  },
+  "neighbourSuit": {
+   "opened": {
+    "mapRequestsBefore": 0,
+    "art": true
+   },
+   "rows": [
+    [
+     "kind",
+     "장원"
+    ],
+    [
+     "flag",
+     "이웃 — 이웃 가문의 땅입니다"
+    ],
+    [
+     "possessor",
+     "de Ivrecourt 가문"
+    ],
+    [
+     "value",
+     "£26 13s"
+    ],
+    [
+     "lordPieces",
+     "어업권, 사냥권"
+    ]
+   ],
+   "ok": true
+  },
+  "1024x768": {
+   "opened": {
+    "mapRequestsBefore": 0,
+    "art": true
+   },
+   "panel": {
+    "left": 272,
+    "top": 76,
+    "width": 744,
+    "height": 567
+   },
+   "minTarget": 44,
+   "nav": 44,
+   "inside": true,
+   "world": 272,
+   "smallestText": 12,
+   "smallestTarget": 44,
+   "overlaps": [],
+   "coarse": false,
+   "ok": true
+  },
+  "tablet": {
+   "opened": {
+    "mapRequestsBefore": 0,
+    "art": true
+   },
+   "panel": {
+    "left": 412,
+    "top": 80,
+    "width": 760,
+    "height": 615
+   },
+   "minTarget": 48,
+   "nav": 44,
+   "inside": true,
+   "world": 412,
+   "smallestText": 12,
+   "smallestTarget": 48,
+   "overlaps": [],
+   "coarse": true,
+   "ok": true
+  },
+  "dpr2": {
+   "opened": {
+    "mapRequestsBefore": 0,
+    "art": true
+   },
+   "panel": {
+    "left": 512,
+    "top": 76,
+    "width": 760,
+    "height": 599
+   },
+   "minTarget": 44,
+   "nav": 44,
+   "inside": true,
+   "world": 512,
+   "smallestText": 12,
+   "smallestTarget": 44,
+   "overlaps": [],
+   "coarse": false,
+   "ok": true
+  },
+  "missing": {
+   "requests": 1,
+   "map": "plain",
+   "note": "지도 그림을 불러오지 못해 빈 지도에 영지만 표시합니다.",
+   "markers": 4,
+   "chosen": "estate-neighbour-3",
+   "ok": true
+  }
+ }
+}
