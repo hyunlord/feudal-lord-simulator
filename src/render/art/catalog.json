@@ -14492,5 +14492,342 @@
       }
     ],
     "rules": []
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "lord-region",
+    "entries": [
+      {
+        "id": "lord.region.map_region",
+        "kind": "regional-map",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_region_1600x1000.png",
+          "width": 1600,
+          "height": 1000
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_region_1600x1000.png",
+          "sourceSha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8",
+          "runtimeSha256": "54d6ad354a71de8ace6a1029dc163b3758ff9a6330e7b030318661e961db71c8"
+        },
+        "mapId": "map_region",
+        "landTypes": [
+          "southern-district"
+        ],
+        "coordinateSpace": {
+          "width": 1600,
+          "height": 1000
+        },
+        "slots": [
+          {
+            "id": "manor",
+            "x": 360,
+            "y": 270,
+            "landType": "southern-district"
+          },
+          {
+            "id": "manor.flag",
+            "x": 388,
+            "y": 255,
+            "landType": "southern-district"
+          },
+          {
+            "id": "market",
+            "x": 1210,
+            "y": 240,
+            "landType": "southern-district"
+          },
+          {
+            "id": "market.flag",
+            "x": 1238,
+            "y": 225,
+            "landType": "southern-district"
+          },
+          {
+            "id": "mill",
+            "x": 1140,
+            "y": 585,
+            "landType": "southern-district"
+          },
+          {
+            "id": "mill.flag",
+            "x": 1168,
+            "y": 570,
+            "landType": "southern-district"
+          },
+          {
+            "id": "abbey",
+            "x": 325,
+            "y": 735,
+            "landType": "southern-district"
+          },
+          {
+            "id": "abbey.flag",
+            "x": 353,
+            "y": 720,
+            "landType": "southern-district"
+          }
+        ]
+      },
+      {
+        "id": "lord.region.map_manor",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_manor_96x96.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_manor_96x96.png",
+          "sourceSha256": "35865158992c50355ac8b48917e0c70161d5abaee709b938cd6404a88c012191",
+          "runtimeSha256": "35865158992c50355ac8b48917e0c70161d5abaee709b938cd6404a88c012191"
+        },
+        "cssWidths": [
+          48,
+          96
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.map_market",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_market_96x96.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_market_96x96.png",
+          "sourceSha256": "eb3d02cfc97067d724e4bb970d7e48bfb03e65c86d058ba279b7ebab9c299852",
+          "runtimeSha256": "eb3d02cfc97067d724e4bb970d7e48bfb03e65c86d058ba279b7ebab9c299852"
+        },
+        "cssWidths": [
+          48,
+          96
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.map_mill",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/map_mill_96x96.png",
+          "width": 96,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/map_mill_96x96.png",
+          "sourceSha256": "409dd604f4e90ec06833b681c3994a30ec8e8b4505e806029bc915f68a3fbc59",
+          "runtimeSha256": "409dd604f4e90ec06833b681c3994a30ec8e8b4505e806029bc915f68a3fbc59"
+        },
+        "cssWidths": [
+          48,
+          96
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.flag_direct",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/flag_direct_64x96.png",
+          "width": 64,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/flag_direct_64x96.png",
+          "sourceSha256": "58dd104a0b86b6de0cdb99fd7927de3d51d04655522555dd14275a815cd85dc3",
+          "runtimeSha256": "58dd104a0b86b6de0cdb99fd7927de3d51d04655522555dd14275a815cd85dc3"
+        },
+        "cssWidths": [
+          32,
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.flag_delegated",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/flag_delegated_64x96.png",
+          "width": 64,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/flag_delegated_64x96.png",
+          "sourceSha256": "0162b7020a5f4b23bbedeea05fd39c9a79aca97b43b2f10b3444e13e09751586",
+          "runtimeSha256": "0162b7020a5f4b23bbedeea05fd39c9a79aca97b43b2f10b3444e13e09751586"
+        },
+        "cssWidths": [
+          32,
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.region.flag_neighbor",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/flag_neighbor_64x96.png",
+          "width": 64,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/flag_neighbor_64x96.png",
+          "sourceSha256": "194b0c66af75a0a182805aabc6deec2ca34b4b89fb466ea2f982a231d223e686",
+          "runtimeSha256": "194b0c66af75a0a182805aabc6deec2ca34b4b89fb466ea2f982a231d223e686"
+        },
+        "cssWidths": [
+          32,
+          64
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.character",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_character_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_character_40x40.png",
+          "sourceSha256": "a0d76420159cd06a5e4ed489887ca034cb3a48accbcd00615a592e524dfb4030",
+          "runtimeSha256": "a0d76420159cd06a5e4ed489887ca034cb3a48accbcd00615a592e524dfb4030"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.council",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_council_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_council_40x40.png",
+          "sourceSha256": "00728c910fc607c4bfdd36af5751d262f60a3588ff90a417ad26ead168439be1",
+          "runtimeSha256": "00728c910fc607c4bfdd36af5751d262f60a3588ff90a417ad26ead168439be1"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.dynasty",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_dynasty_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_dynasty_40x40.png",
+          "sourceSha256": "e0c271d508536a85b225d89300f3f0d52463293386647706e8e0220d954ad0b1",
+          "runtimeSha256": "e0c271d508536a85b225d89300f3f0d52463293386647706e8e0220d954ad0b1"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.estates",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_estates_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_estates_40x40.png",
+          "sourceSha256": "d2808687a00f1fd191b0791187473001e0bb3081e334e214f0e49946fb1833b8",
+          "runtimeSha256": "d2808687a00f1fd191b0791187473001e0bb3081e334e214f0e49946fb1833b8"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.marriage",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_marriage_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_marriage_40x40.png",
+          "sourceSha256": "f403b7e38ab41118da6143340dc87f2bfa13192116cd11feff7fcd11d730ca78",
+          "runtimeSha256": "f403b7e38ab41118da6143340dc87f2bfa13192116cd11feff7fcd11d730ca78"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.military",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_military_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_military_40x40.png",
+          "sourceSha256": "c293fcddf758a191e5b8aad3fb9fb48bfe01c4733aeab4d67b1d90fb2d14fa32",
+          "runtimeSha256": "c293fcddf758a191e5b8aad3fb9fb48bfe01c4733aeab4d67b1d90fb2d14fa32"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.petitions",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_petitions_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_petitions_40x40.png",
+          "sourceSha256": "327d23448cc69d14115dffa2fe54ca3bfa2757cf6ef5f946e114d227c32f47e4",
+          "runtimeSha256": "327d23448cc69d14115dffa2fe54ca3bfa2757cf6ef5f946e114d227c32f47e4"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      },
+      {
+        "id": "lord.nav.region",
+        "kind": "ui-image",
+        "image": {
+          "url": "assets/lord-ui/lord-components-region/nav_region_40x40.png",
+          "width": 40,
+          "height": 40
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/lord-components/candidates-20261002/assets/nav_region_40x40.png",
+          "sourceSha256": "f6e3a193451dd011b64d59237dc6b054993d0084bc2105a7f6170fbb4b8cb754",
+          "runtimeSha256": "f6e3a193451dd011b64d59237dc6b054993d0084bc2105a7f6170fbb4b8cb754"
+        },
+        "cssWidths": [
+          40
+        ],
+        "derivatives": []
+      }
+    ],
+    "rules": []
   }
 ]
