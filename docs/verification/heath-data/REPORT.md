@@ -1,6 +1,6 @@
 # HEATH B/C DATA2 — 실제 DATA30 수락 및 신규2 승격
 
-**상태: DATA30 및 독립 native 검토 PASS, 신규2 승격 적용.** 실제 work-branch commit `fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5`의 B/C2를 검증한 뒤 부모 승인으로 provenance2를 runtime, ledger2를 `RENDER-B-HEATH2`로 변경했다. post-promotion reference4와 최종 geometry·최종 HEAD clean clone·publication은 pending이다. 본 문서는 trunk 게시 완료 주장이 아니다.
+**상태: DATA30 및 독립 native 검토 PASS, 신규2 승격 적용.** 실제 work-branch commit `fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5`의 B/C2를 검증한 뒤 부모 승인으로 provenance2를 runtime, ledger2를 `RENDER-B-HEATH2`로 변경했다. post-promotion reference4도 PASS이며 최종 geometry·최종 HEAD clean clone·publication은 pending이다. 본 문서는 trunk 게시 완료 주장이 아니다.
 
 ## 적용 범위와 보존 증거
 
@@ -63,4 +63,12 @@ DATA [export attestation](data-export-attestation.json)은 fd68 전체 tracked e
 
 승격 전후 code+catalog2601, public1665, source2 SHA는 동일하다. catalog105/97과 PNG는 승격에서 변경하지 않았다. source-candidates.csv, candidate-application.json과 최초 static 기록은 **승격 전 역사 자료**로 보존한다. 현재 status는 promotion.json을 따른다.
 
-준비 fixture42파일은 state/save40 byte 보존, regular positive12 ABC, summer chunk/map edge2 BC만, negative16 객체/sidecar 불변이다. FIELD coverage를 새로 주장하지 않는다. **post-promotion reference4, 최종 신규public14 전체 geometry, 최종 HEAD clean clone 및 publication은 pending**이며 별도 영수증으로만 닫는다.
+준비 fixture42파일은 state/save40 byte 보존, regular positive12 ABC, summer chunk/map edge2 BC만, negative16 객체/sidecar 불변이다. FIELD coverage를 새로 주장하지 않는다. **최종 신규public14 전체 geometry, 최종 HEAD clean clone 및 publication은 pending**이며 별도 영수증으로만 닫는다. 승격 영수증의 reference4 pending은 적용 당시 기록으로 보존하며 아래 실제 검증이 해당 관문을 닫는다.
+
+## 승격 후 reference4 실제 검증 — PASS
+
+승격 work-branch commit `db17321a907b5c0c72560fe2fab29966f38963d1`을 candidate `fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5`의 실제 DATA 화면과 비교했다. [원본 수치 영수증](reference4-summary.json)은 여름·겨울 zoom1/0.6의 full identity4/RGBA 차이0/A-A4/errors0과 B/C request·decode·actual paint4를 기록한다. [부모의 독립12PNG 재계산 및 native AFTER4 열람](reference4-parent-check.json)도 PASS다. 수치 영수증의 executor native 미수행 표시는 그대로 보존하며 별도 부모 열람 기록을 구분한다.
+
+run `astra-heath-promotion-reference-db17321`은 prepare8.1s/wait0s/command47.7s, exit0이다. [실제 export 원문](reference4-export-attestation.txt)은 정확 db173 tracked-clean을 확인하며 runtime/fixture4311 동일·retired6 부재 PASS다. 과거 core 문서 drift는 변경하지 않는다. [view별 실제 경로·PNG/RGBA/JPEG SHA](reference4-views.json)에 db173 원본 위치를 보존했다. 기존 DATA AFTER JPEG4는 이번 reference JPEG와 각각 byte 동일함을 확인하여 위 링크를 재사용했으며 중복 이미지는 추가하지 않았다.
+
+이 네 화면은 고정 준비 장면의 승격 후 smoke다. FIELD spring coverage, natural play, 모든 occlusion 또는 repeat 소비 부재 증거가 아니다. 최종 geometry·최종 HEAD clone·publication 관문은 이 reference4로 대신하지 않는다.

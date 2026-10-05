@@ -1,0 +1,1709 @@
+{
+  "status": "METADATA_REQUEST_ONLY_NOT_REGISTRATION_OR_A1_APPROVAL",
+  "snapshot": "cd399e4abb26fc04b37dc27b5c61bec270934a7d + isolated approved A1 patch",
+  "runtimeApproval": false,
+  "newArtRequested": false,
+  "scopeCount": {
+    "ageSheets": 8,
+    "staticCrowd": 1,
+    "funeralBearerSheet": 1,
+    "bierProps": 2,
+    "totalFinishedAssets": 12
+  },
+  "coordinateConvention": {
+    "origin": "native canvas top-left",
+    "x": "right",
+    "y": "down",
+    "unit": "source pixels",
+    "sheet": "74x74 local cell, explicit NE/SE/SW/NW and gait0/1; include cell origin",
+    "pixelCenterConvention": "must declare; not inferred",
+    "unknown": "null plus reason, never guessed"
+  },
+  "requests": {
+    "age": [
+      "authored bare-head crown and support sole/ground per direction/gait; distinguish hat/hair/shoe from anatomical landmarks",
+      "adult reference native source and approved age-relative convention; child ratio unset; elder upright identity versus stooped pose distinction",
+      "visible/measured versus source-author confirmed hidden landmarks; no inferred alpha bbox as anatomical truth"
+    ],
+    "crowd": [
+      "actual per-person census with stable region IDs, age category or unknown, crown/sole/support baseline and occlusion",
+      "prompt says 12 people but does not prove actual count; do not derive scale from whole crowd bbox",
+      "adult reference and shared scene ground registration; concealed landmarks may remain unknown"
+    ],
+    "funeral": [
+      "bearer per-frame hand grip center/contact region and support foot/crown",
+      "NE/NW bier pole graspable spans, handle centers, pole axis and depth ordering; direction mapping to four bearer directions",
+      "declare compatibility for current one-bearer draw; generation prompt twice-instantiated intent is not runtime evidence; no added second actor in request execution"
+    ]
+  },
+  "assets": [
+    {
+      "id": "wk_child_f_01",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_child_f_01-v1.png",
+        "sha256": "a8ddff1cf198dbac1606f739b450f06969a7a116661f5de112b395942b5a8c40",
+        "bytes": 15489,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_child_f_01-v1.png",
+        "sha256": "a8ddff1cf198dbac1606f739b450f06969a7a116661f5de112b395942b5a8c40",
+        "bytes": 15489,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.5,
+            "y": 66.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 45
+            },
+            "right": {
+              "x": 44,
+              "y": 48
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 44.0,
+            "y": 66.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 49
+            },
+            "right": {
+              "x": 45,
+              "y": 46
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 31.0,
+            "y": 66.0
+          },
+          "figureHeight": 41.0,
+          "hands": {
+            "left": {
+              "x": 29,
+              "y": 46
+            },
+            "right": {
+              "x": 41,
+              "y": 47
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.0,
+            "y": 66.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 29,
+              "y": 49
+            },
+            "right": {
+              "x": 39,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.0,
+            "y": 64.0
+          },
+          "figureHeight": 41.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 44
+            },
+            "right": {
+              "x": 44,
+              "y": 47
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 45.0,
+            "y": 63.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 35,
+              "y": 43
+            },
+            "right": {
+              "x": 46,
+              "y": 43
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 27.5,
+            "y": 63.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 43
+            },
+            "right": {
+              "x": 38,
+              "y": 43
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 64.0
+          },
+          "figureHeight": 41.0,
+          "hands": {
+            "left": {
+              "x": 30,
+              "y": 48
+            },
+            "right": {
+              "x": 40,
+              "y": 44
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "wk_child_f_02",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_child_f_02-v1.png",
+        "sha256": "85f48c179ace72804705910d60d804a12bc6705e4784e3a83a62a853f0830287",
+        "bytes": 15370,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_child_f_02-v1.png",
+        "sha256": "85f48c179ace72804705910d60d804a12bc6705e4784e3a83a62a853f0830287",
+        "bytes": 15370,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.5,
+            "y": 66.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 45
+            },
+            "right": {
+              "x": 44,
+              "y": 48
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 44.0,
+            "y": 66.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 49
+            },
+            "right": {
+              "x": 45,
+              "y": 46
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 31.0,
+            "y": 66.0
+          },
+          "figureHeight": 41.0,
+          "hands": {
+            "left": {
+              "x": 29,
+              "y": 46
+            },
+            "right": {
+              "x": 41,
+              "y": 47
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 38.0,
+            "y": 66.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 29,
+              "y": 49
+            },
+            "right": {
+              "x": 39,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 34.0,
+            "y": 64.0
+          },
+          "figureHeight": 41.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 44
+            },
+            "right": {
+              "x": 44,
+              "y": 47
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 45.0,
+            "y": 63.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 35,
+              "y": 43
+            },
+            "right": {
+              "x": 46,
+              "y": 43
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 27.5,
+            "y": 63.0
+          },
+          "figureHeight": 42.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 43
+            },
+            "right": {
+              "x": 38,
+              "y": 43
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 64.0
+          },
+          "figureHeight": 41.0,
+          "hands": {
+            "left": {
+              "x": 30,
+              "y": 48
+            },
+            "right": {
+              "x": 40,
+              "y": 44
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "wk_child_m_01",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_child_m_01-v1.png",
+        "sha256": "7d696a0d530e95b63f91965c5e57843f4abbbea2e3d009c993cec2504bd8089d",
+        "bytes": 17053,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_child_m_01-v1.png",
+        "sha256": "7d696a0d530e95b63f91965c5e57843f4abbbea2e3d009c993cec2504bd8089d",
+        "bytes": 17053,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 41.0,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 37,
+              "y": 44
+            },
+            "right": {
+              "x": 51,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 45.5,
+            "y": 67.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 45
+            },
+            "right": {
+              "x": 46,
+              "y": 47
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 29.0,
+            "y": 67.0
+          },
+          "figureHeight": 45.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 46
+            },
+            "right": {
+              "x": 40,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 32.0,
+            "y": 67.0
+          },
+          "figureHeight": 45.0,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 47
+            },
+            "right": {
+              "x": 36,
+              "y": 44
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 66.0
+          },
+          "figureHeight": 45.0,
+          "hands": {
+            "left": {
+              "x": 37,
+              "y": 43
+            },
+            "right": {
+              "x": 52,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 46.0,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 44
+            },
+            "right": {
+              "x": 47,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.5,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 46
+            },
+            "right": {
+              "x": 41,
+              "y": 44
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 32.0,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 21,
+              "y": 45
+            },
+            "right": {
+              "x": 36,
+              "y": 43
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "wk_child_m_02",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_child_m_02-v1.png",
+        "sha256": "d4f23c093d9dea2ee81b9cde6e34c48c72aebc99609610a971d6e7b858e16e6d",
+        "bytes": 17490,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_child_m_02-v1.png",
+        "sha256": "d4f23c093d9dea2ee81b9cde6e34c48c72aebc99609610a971d6e7b858e16e6d",
+        "bytes": 17490,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 41.0,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 37,
+              "y": 44
+            },
+            "right": {
+              "x": 51,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 45.5,
+            "y": 67.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 45
+            },
+            "right": {
+              "x": 46,
+              "y": 47
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 29.0,
+            "y": 67.0
+          },
+          "figureHeight": 45.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 46
+            },
+            "right": {
+              "x": 40,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 32.0,
+            "y": 67.0
+          },
+          "figureHeight": 45.0,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 47
+            },
+            "right": {
+              "x": 36,
+              "y": 44
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 66.0
+          },
+          "figureHeight": 45.0,
+          "hands": {
+            "left": {
+              "x": 37,
+              "y": 43
+            },
+            "right": {
+              "x": 52,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 46.0,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 44
+            },
+            "right": {
+              "x": 47,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.5,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 46
+            },
+            "right": {
+              "x": 41,
+              "y": 44
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 32.0,
+            "y": 66.0
+          },
+          "figureHeight": 44.0,
+          "hands": {
+            "left": {
+              "x": 21,
+              "y": 45
+            },
+            "right": {
+              "x": 36,
+              "y": 43
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "wk_elder_f_01",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_elder_f_01-v1.png",
+        "sha256": "846cfdc955ce5c9f0a4d29bd53e0848a7893694570c7c27ad6c8a62a4d11adc9",
+        "bytes": 28555,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_elder_f_01-v1.png",
+        "sha256": "846cfdc955ce5c9f0a4d29bd53e0848a7893694570c7c27ad6c8a62a4d11adc9",
+        "bytes": 28555,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.5,
+            "y": 66.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 38
+            },
+            "right": {
+              "x": 50,
+              "y": 40
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.5,
+            "y": 66.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 40
+            },
+            "right": {
+              "x": 47,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.5,
+            "y": 66.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 40
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 37.5,
+            "y": 66.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 40
+            },
+            "right": {
+              "x": 42,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.5,
+            "y": 64.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 35
+            },
+            "right": {
+              "x": 51,
+              "y": 39
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 44.5,
+            "y": 63.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.0,
+            "y": 63.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 35
+            },
+            "right": {
+              "x": 45,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.5,
+            "y": 64.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 40
+            },
+            "right": {
+              "x": 41,
+              "y": 36
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "wk_elder_f_02",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_elder_f_02-v1.png",
+        "sha256": "4de53017b97ffba24e91e0d42057c4d9d5a6c78f081ec503e6a1dfbc2923adbc",
+        "bytes": 28293,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_elder_f_02-v1.png",
+        "sha256": "4de53017b97ffba24e91e0d42057c4d9d5a6c78f081ec503e6a1dfbc2923adbc",
+        "bytes": 28293,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.5,
+            "y": 66.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 38
+            },
+            "right": {
+              "x": 50,
+              "y": 40
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.5,
+            "y": 66.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 40
+            },
+            "right": {
+              "x": 47,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.5,
+            "y": 66.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 40
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 37.5,
+            "y": 66.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 40
+            },
+            "right": {
+              "x": 42,
+              "y": 45
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.5,
+            "y": 64.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 32,
+              "y": 35
+            },
+            "right": {
+              "x": 51,
+              "y": 39
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 44.5,
+            "y": 63.0
+          },
+          "figureHeight": 57.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 48,
+              "y": 34
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.0,
+            "y": 63.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 35
+            },
+            "right": {
+              "x": 45,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.5,
+            "y": 64.0
+          },
+          "figureHeight": 56.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 40
+            },
+            "right": {
+              "x": 41,
+              "y": 36
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "wk_elder_m_01",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_elder_m_01-v1.png",
+        "sha256": "6e5a58e4cb9d1413a76b3eb93c557f1fc9a4045c141cc49baed3ea9ed7179a12",
+        "bytes": 29133,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_elder_m_01-v1.png",
+        "sha256": "6e5a58e4cb9d1413a76b3eb93c557f1fc9a4045c141cc49baed3ea9ed7179a12",
+        "bytes": 29133,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 41.5,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 37
+            },
+            "right": {
+              "x": 58,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 45.5,
+            "y": 67.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 37
+            },
+            "right": {
+              "x": 47,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 29.0,
+            "y": 67.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 36
+            },
+            "right": {
+              "x": 48,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 32.0,
+            "y": 67.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 38
+            },
+            "right": {
+              "x": 40,
+              "y": 38
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 36
+            },
+            "right": {
+              "x": 59,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 46.0,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.5,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 36
+            },
+            "right": {
+              "x": 49,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 32.0,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 36
+            },
+            "right": {
+              "x": 40,
+              "y": 36
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "wk_elder_m_02",
+      "role": "age-registration",
+      "runtime": {
+        "path": "public/assets/walkers-v2/wk_elder_m_02-v1.png",
+        "sha256": "57c60fa33495d0b2182aee495e404eb7094f993446761d29ae7aabfc9f0a90fe",
+        "bytes": 29235,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave5c/candidates-20260925/assets/actors/wk_elder_m_02-v1.png",
+        "sha256": "57c60fa33495d0b2182aee495e404eb7094f993446761d29ae7aabfc9f0a90fe",
+        "bytes": 29235,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "existingFrames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 41.5,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 37
+            },
+            "right": {
+              "x": 58,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 45.5,
+            "y": 67.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 37
+            },
+            "right": {
+              "x": 47,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 29.0,
+            "y": 67.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 36
+            },
+            "right": {
+              "x": 48,
+              "y": 37
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 32.0,
+            "y": 67.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 38
+            },
+            "right": {
+              "x": 40,
+              "y": 38
+            }
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 36
+            },
+            "right": {
+              "x": 59,
+              "y": 35
+            }
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 46.0,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 35
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.5,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 36
+            },
+            "right": {
+              "x": 49,
+              "y": 36
+            }
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 32.0,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 14,
+              "y": 36
+            },
+            "right": {
+              "x": 40,
+              "y": 36
+            }
+          }
+        }
+      ],
+      "existingMeasurement": "Generated alpha bounds and heuristic hands, not authored barefoot landmarks",
+      "requestedLandmarks": null,
+      "ageRelativeRatio": null
+    },
+    {
+      "id": "event_crowd_manor_gate",
+      "role": "crowd-person-registration",
+      "runtime": {
+        "path": "public/assets/wave9/event/crowd_manor_gate-v1.png",
+        "sha256": "4702bfbc032f2c8d0b7ad94503fe4381704890122a64a699011997cf104939d1",
+        "bytes": 31497,
+        "nativeCanvas": [
+          192,
+          128
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave9/candidates-20260925/assets/event/crowd_manor_gate-v1.png",
+        "sha256": "4702bfbc032f2c8d0b7ad94503fe4381704890122a64a699011997cf104939d1",
+        "bytes": 31497,
+        "nativeCanvas": [
+          192,
+          128
+        ]
+      },
+      "requestedLandmarks": null
+    },
+    {
+      "id": "wk_funeral_bearers",
+      "role": "funeral-contact-registration",
+      "runtime": {
+        "path": "public/assets/wave9/walker/wk_funeral_bearers-v1.png",
+        "sha256": "8e51b570cd335df31af90ddaff625102d4db57beb31ee04784a17f10c0dcee68",
+        "bytes": 36061,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave9/candidates-20260925/assets/wk_funeral_bearers-v1.png",
+        "sha256": "8e51b570cd335df31af90ddaff625102d4db57beb31ee04784a17f10c0dcee68",
+        "bytes": 36061,
+        "nativeCanvas": [
+          296,
+          148
+        ]
+      },
+      "requestedLandmarks": null
+    },
+    {
+      "id": "prop_bier_shroud_ne",
+      "role": "funeral-contact-registration",
+      "runtime": {
+        "path": "public/assets/wave9/prop/bier_shroud_ne-v1.png",
+        "sha256": "5726d1eb760a2fe604616766f221b10a63270c7f94a9a7a92c9d2b4974884fa7",
+        "bytes": 2158,
+        "nativeCanvas": [
+          64,
+          32
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave9/rework-20260926/assets/prop/bier_shroud_ne-v1.png",
+        "sha256": "5726d1eb760a2fe604616766f221b10a63270c7f94a9a7a92c9d2b4974884fa7",
+        "bytes": 2158,
+        "nativeCanvas": [
+          64,
+          32
+        ]
+      },
+      "requestedLandmarks": null
+    },
+    {
+      "id": "prop_bier_shroud_nw",
+      "role": "funeral-contact-registration",
+      "runtime": {
+        "path": "public/assets/wave9/prop/bier_shroud_nw-v1.png",
+        "sha256": "0431d99caf69ce82867f313c214f5751f7090d698b6b36b06b32d15a39393533",
+        "bytes": 2147,
+        "nativeCanvas": [
+          64,
+          32
+        ]
+      },
+      "canonicalFinishedSource": {
+        "path": "assets-inbox/wave9/rework-20260926/assets/prop/bier_shroud_nw-v1.png",
+        "sha256": "0431d99caf69ce82867f313c214f5751f7090d698b6b36b06b32d15a39393533",
+        "bytes": 2147,
+        "nativeCanvas": [
+          64,
+          32
+        ]
+      },
+      "requestedLandmarks": null
+    }
+  ],
+  "referenceSources": [
+    {
+      "path": "assets-inbox/derived-templates/actor_child_template_m-v1.png",
+      "sha256": "650c7b66d5284ed76f416f6195aecfc515f7a138b3f549d2c0b9282109363cc8",
+      "bytes": 17126,
+      "nativeCanvas": [
+        296,
+        148
+      ]
+    },
+    {
+      "path": "assets-inbox/derived-templates/actor_child_template_f-v1.png",
+      "sha256": "7261328d417fa7b614575190cac8ad11241aeeb65a216e9c16ef3f97a6deec81",
+      "bytes": 17007,
+      "nativeCanvas": [
+        296,
+        148
+      ]
+    },
+    {
+      "path": "assets-inbox/derived-templates/actor_elder_template_m-v1.png",
+      "sha256": "7221d225988a2c5feca5fa19fcc2940182029d418849f6623e98cfdface59a2d",
+      "bytes": 30708,
+      "nativeCanvas": [
+        296,
+        148
+      ]
+    },
+    {
+      "path": "assets-inbox/derived-templates/actor_elder_template_f-v1.png",
+      "sha256": "6a38760f141748164e992eec208c015ecd2dd5b91bd0c972504c109a5af9e3b9",
+      "bytes": 31330,
+      "nativeCanvas": [
+        296,
+        148
+      ]
+    },
+    {
+      "path": "public/assets/runtime-actors-v1/actor_civilian_man-v1.png",
+      "sha256": "6af57236a7983a58a37378a36c6312fe4db6aca4163b85b9e44d37bea3949269",
+      "bytes": 34664,
+      "nativeCanvas": [
+        294,
+        147
+      ]
+    },
+    {
+      "path": "public/assets/runtime-actors-v1/actor_civilian_woman-v1.png",
+      "sha256": "823e3c51dbbcecfc695d1c28c0220677757a888a04b90dbfe491ead5242a15fb",
+      "bytes": 35990,
+      "nativeCanvas": [
+        312,
+        156
+      ]
+    }
+  ],
+  "sourcePins": [
+    {
+      "path": "scripts/buildWalkerSheetManifest.py",
+      "sha256": "1ae92fa69aa17ad33e9c2f46368bc3bbd4a0a93bc577ee299da307a5a4a19e02",
+      "bytes": 20367
+    },
+    {
+      "path": "scripts/installWave9and16.py",
+      "sha256": "660226336f19552d119f40a83e82d09d6b76bca623f189ff5adcd8a5002777e5",
+      "bytes": 9322
+    },
+    {
+      "path": "src/render/walkerSheetManifest.generated.ts",
+      "sha256": "2233ec82c78df5529dacbba8b4cac7310d77f289eac4937b202b3f0d42ed62fe",
+      "bytes": 100252
+    },
+    {
+      "path": "src/render/wave9ArtManifest.generated.ts",
+      "sha256": "75e178e655d95c7d57bb77395197b81ff3987a97686967350b9b993b47eb99ae",
+      "bytes": 6468
+    },
+    {
+      "path": "src/render/walkerComposer.ts",
+      "sha256": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+      "bytes": 17882,
+      "sourceRoot": "/Users/rexxa/fls-astra-renderB-height-prep",
+      "snapshot": "cd399e4abb26fc04b37dc27b5c61bec270934a7d + isolated approved A1 working-tree patch (not main deployment)"
+    },
+    {
+      "path": "src/render/walkerLook.ts",
+      "sha256": "ec8998af2061f9edc28520b2cf1a5fa630e2f45aa15689bdf90e5c4d8db1f53e",
+      "bytes": 11962
+    },
+    {
+      "path": "src/render/storyWorldProps.ts",
+      "sha256": "4de4a84d8c9aadec3ca9d6299cfca1ae472fae9462fd99c10128ebfd3f7bea9a",
+      "bytes": 7495
+    },
+    {
+      "path": "src/render/plagueWorldProps.ts",
+      "sha256": "d66131f9e47409b6e0610e859aebed552a13ecda8913ce924adfa64e3d4ed276",
+      "bytes": 12759
+    },
+    {
+      "path": "assets-inbox/derived-templates/measurements.json",
+      "sha256": "352e41ca33dfbda274ce3ee99ce83e8fb44ceb7fb3e2687a77a9a41144d1e109",
+      "bytes": 34675
+    },
+    {
+      "path": "assets-inbox/derived-templates/provenance-derived-templates.csv",
+      "sha256": "725d37a49754ccb2cc5728401a54cf65170e4017df76bbe4be59cfe65a1e4dad",
+      "bytes": 4419
+    },
+    {
+      "path": "assets-inbox/wave5c/candidates-20260925/records/assets.csv",
+      "sha256": "52ac515e90a1ff00d028119467ffdc786d610040c844c87c863618cf8605fc07",
+      "bytes": 34778
+    },
+    {
+      "path": "assets-inbox/wave9/candidates-20260925/records/assets.csv",
+      "sha256": "5d3a4f970d30171043bb57001ddd366b95ef0a4cf95ee673af218583a8b9c427",
+      "bytes": 56645
+    },
+    {
+      "path": "assets-inbox/wave9/rework-20260926/records/assets.csv",
+      "sha256": "86319c743cf665025a14d906d62fdb35e59d9d7b46a7cf7f85acd081fdd3c639",
+      "bytes": 12286
+    },
+    {
+      "path": "docs/requests/render-human-scale-art-request.json",
+      "sha256": "88c361993ea1ff6455444ed389eccad8f53c3ff7d0cfc66ac80f802c6c9c2c2c",
+      "bytes": 42558
+    }
+  ],
+  "acceptanceBoundary": "Supplement does not reopen narrow A1. No registration PASS, source edits, implementation, new capture, or installation. Door23 request remains separate.",
+  "scaleScope": {
+    "publishedTrunk90d9b586AndRenderBWorktreeDb17321a": "VILLAGER_WORLD_SCALE=0.5; WALKER_FIGURE_PX=16; funeral bearer scale16/65",
+    "isolatedA1Candidate": "WALKER_FIGURE_PX=17.6; equivalent VILLAGER_WORLD_SCALE=0.55; funeral bearer scale17.6/65",
+    "deployment": "Published trunk90d9b586 and RenderB worktree db17321a both retain registered height16; isolated A1 candidate17.6 is not deployed to either. These labels identify commits/worktrees, not a branch named main."
+  },
+  "approvalBoundary": "This request does not approve narrow A1, installation, visibility, anatomy17.6, or runtime contact. Existing runtime receipts remain separate evidence; door23 remains separate.",
+  "reproduction": {
+    "repositoryRelativePaths": "All asset/reference/source pin paths are relative to the repository checkout root unless sourceRoot explicitly identifies the isolated working tree.",
+    "isolatedSourceRoot": "The absolute sourceRoot preserves the actual audited local worktree location; it is provenance, not a portable required checkout location.",
+    "isolatedSnapshot": "Base commit cd399e4abb26fc04b37dc27b5c61bec270934a7d plus the isolated A1 working-tree patch; the base commit alone does not reproduce the modified composer. Reproduce using the retained A1 patch and require exact pinned SHA256.",
+    "pinAcceptance": "Require native source bytes and each pinned source SHA to match before reusing this request; do not silently substitute published trunk or RenderB worktree source.",
+    "scopeTerminology": "The historical sourcePins snapshot phrase not main deployment means not deployed to published trunk90d9b586 or RenderB worktree db17321a; it does not identify a branch named main."
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "verdict": "PASS_BOUNDED_NUMERIC_AND_PROVENANCE",
+  "checkedAt": "2026-10-05T00:37:31.393201+00:00",
+  "run": "astra-phase2-final-geometry-fd68f12",
+  "measuredHead": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "currentMainHead": "db17321a907b5c0c72560fe2fab29966f38963d1",
+  "remoteExit": 0,
+  "fetchExit": 0,
+  "measuredConditions": 2202,
+  "registryRows": 122,
+  "declaredUnreachable": {
+    "hud.goal-help": {
+      "reason": "the help seal shows only on a tutorial card whose step has an advisor line; the opening card, the one after it and the chapter goal cards (tutorial off) carry none, and later steps need buildings finished (UI-AUDIT-1 smoke runs)",
+      "conditions": 10
+    },
+    "hud.unlock-banner": {
+      "reason": "shows only when a tutorial step unlocks a tool; no scripted path completes one (survey §2: no browser script reaches it)",
+      "conditions": 10
+    },
+    "hud.era-ceremony": {
+      "reason": "shows only on the tick an era is entered; no cached state sits on that tick (survey §2: static contrast check only)",
+      "conditions": 20
+    },
+    "hud.build-details": {
+      "reason": "the HUD's build drawer is controlled, which hides the details' toggle (BuildMenu.tsx: `open !== undefined`); nothing opens it in play",
+      "conditions": 20
+    }
+  },
+  "declaredUnreachableConditionRecords": 60,
+  "totalStoredConditionRecords": 2262,
+  "failures": 0,
+  "warnings": 693,
+  "pageErrors": 0,
+  "retryCount": 0,
+  "unopened": 0,
+  "unregisteredFramed": 0,
+  "screenshots": 0,
+  "baseline": {
+    "entries": 0,
+    "counted": 0,
+    "excepted": 0,
+    "exceptions": 0,
+    "added": 0,
+    "fixed": 0
+  },
+  "sourceFilesRehashed": 4277,
+  "nativeInputsRecomputed": 1977,
+  "nativeInputHash": "0cb88b8e55d305f886f513ca36952ea784ab0d93bf92860bbe3641a490b9b58a",
+  "sourceAddedMissingOrDrift": 0,
+  "privateFixtureRoots": 8,
+  "privateFixtureBytesRehashedFiles": 126,
+  "privateFixtureStartEndDrift": 0,
+  "actualExportTrackedClean": true,
+  "remoteStartEndAttestationPass": true,
+  "remoteTrackedChanges": [
+    "docs/verification/uiaudit1/geometry.json"
+  ],
+  "durationSeconds": 4827,
+  "axes": {
+    "viewports": [
+      "1280x800",
+      "1920x1080",
+      "tablet-1180x820",
+      "1024x768",
+      "1280x720"
+    ],
+    "copies": [
+      "normal",
+      "long"
+    ],
+    "numbers": [
+      "normal",
+      "extreme"
+    ]
+  },
+  "ownerReceiptHashesIndependentlyRechecked": 13,
+  "freezeTimestampDifferenceOnly": {
+    "prepared": "2026-10-04T23:07:45.498Z",
+    "export": "2026-10-04T23:10:40.251Z"
+  },
+  "sourceSHA256": {
+    ".omo/evidence/phase2-geometry-source-freeze.json": "4d13d2ac7d2d55933a4cc23636ed0a9823a0f7c20d0696f89bd0731a75498074",
+    ".omo/evidence/phase2-geometry-export-freeze.json": "68f65231913c21efdee660a67a5c8a71c5fd905f19d8c9fb4f4d035131ec1ca4",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/source-freeze.json": "4d13d2ac7d2d55933a4cc23636ed0a9823a0f7c20d0696f89bd0731a75498074",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/start.json": "2620ca0478b826a66e8910e5fe042ea12e6275b04b9f8e55995a95ff5f098b79",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/final.json": "623e3d47855da43ee5e052f7ad0d73e4f3a92369acd01298c7572eeed4d0c252",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/fixtures-start.json": "c9122165ba149aaddc31a123485d93139df8d747dee0fc653157108be63b772a",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/fixtures-end.json": "fa1c220c22dd3759df9b4509361fd08f83de673292fab6af1464f84febc3bea2",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/exit-code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "docs/verification/uiaudit1/geometry.json": "7ed28b0d8b883b7697e0b493342afff465efdc28cb17960eaf4797ebf7e3e09c",
+    "docs/verification/uiaudit1/geometry/astra-phase2-final-geometry-fd68f12/geometry.json": "c4f372dcf8eef95abe9189ac53e04f7225596152b64f4430bcf4b2f8072eb71b",
+    ".omo/evidence/phase2-geometry-final-summary.json": "adfbf0a3777fab9c9ff37f2c31045fb0de163b9047642d941358b69144d40a6b"
+  },
+  "limitations": [
+    "No new capture, fetch, browser or DGX execution",
+    "Numeric geometry is not all-human visual acceptance; screenshots 0",
+    "693 empty-space warnings retained separately",
+    "Four declared unreachable rows are not measured successes",
+    "Measured fd68 retained; db173 linkage is byte/input identity not a new measured run",
+    "Remote source end equality is attested by frozen wrapper; local main and fetched private bytes independently rehashed",
+    "Future final commit/check:merge/clean clone/publication remain parent gates"
+  ]
+}

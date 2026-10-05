@@ -1,6 +1,6 @@
-# HEATH core — 실제 core30 수치 통과·독립 시각 대기
+# HEATH core — 실제 core30 수치·독립 시각 통과
 
-**MAIN CORE16 APPLIED / BEFORE30 PASS / MAIN LOCAL305 PASS / CORE30 NUMERIC PASS / VISUAL PENDING.** 실제 기준선은 FIELD3 승격/reference4 뒤 `d367382392a4806e683b91463f3996b7654704d6`. 옛 detached before/core/data30을 이번 main 증거로 쓰지 않는다.
+**MAIN CORE16 APPLIED / BEFORE30 PASS / MAIN LOCAL305 PASS / CORE30 NUMERIC PASS / INDEPENDENT VISUAL PASS WITH LIMITS.** 실제 기준선은 FIELD3 승격/reference4 뒤 `d367382392a4806e683b91463f3996b7654704d6`. 옛 detached before/core/data30을 이번 main 증거로 쓰지 않는다.
 
 ## 실제 fresh main 기준선
 

@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "pass": true,
+  "checkedAt": "2026-10-05T00:35:11.305Z",
+  "run": "astra-phase2-final-geometry-fd68f12",
+  "measuredHead": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "currentMainHead": "db17321a907b5c0c72560fe2fab29966f38963d1",
+  "remoteExit": 0,
+  "fetchExit": 0,
+  "durationSeconds": 4827,
+  "registryRows": 122,
+  "conditions": 2202,
+  "measured": 2202,
+  "failures": 0,
+  "unopened": 0,
+  "unregisteredFrames": 0,
+  "pageErrors": [],
+  "retries": [],
+  "warningCount": 693,
+  "warningMeaning": "Empty-space warning; retained separately from zero failure keys",
+  "unreachableByDesign": [
+    "hud.goal-help",
+    "hud.unlock-banner",
+    "hud.era-ceremony",
+    "hud.build-details"
+  ],
+  "unreachableConditionRecords": 60,
+  "totalStoredConditionRecords": 2262,
+  "axes": {
+    "viewports": [
+      "1280x800",
+      "1920x1080",
+      "tablet-1180x820",
+      "1024x768",
+      "1280x720"
+    ],
+    "copies": [
+      "normal",
+      "long"
+    ],
+    "numbers": [
+      "normal",
+      "extreme"
+    ]
+  },
+  "baseline": {
+    "entries": 0,
+    "counted": 0,
+    "excepted": 0,
+    "exceptions": 0,
+    "added": 0,
+    "fixed": 0
+  },
+  "actualExportTrackedClean": true,
+  "actualSourceStartEndEqual": true,
+  "currentMainRuntimeMatches": true,
+  "currentProtectedAddedOrMissing": [],
+  "protectedFileCount": 4277,
+  "nativeInputCount": 1977,
+  "nativeInputHash": "0cb88b8e55d305f886f513ca36952ea784ab0d93bf92860bbe3641a490b9b58a",
+  "privateFixtureRoots": 8,
+  "privateFixtureFiles": 126,
+  "privateFixtureStartEndAndFetchedBytesEqual": true,
+  "onlyRemoteTrackedOutputChanged": [
+    "docs/verification/uiaudit1/geometry.json"
+  ],
+  "proofSHA256": {
+    ".omo/evidence/phase2-geometry-wrapper.mjs": "9fb78b58e4f7ceeeb8feaf8ae087f38e7a7e6000ba08c7b2d5205495edf1fc87",
+    ".omo/evidence/phase2-geometry-export-freeze.json": "68f65231913c21efdee660a67a5c8a71c5fd905f19d8c9fb4f4d035131ec1ca4",
+    "docs/verification/uiaudit1/geometry.json": "7ed28b0d8b883b7697e0b493342afff465efdc28cb17960eaf4797ebf7e3e09c",
+    "docs/verification/uiaudit1/geometry/astra-phase2-final-geometry-fd68f12/geometry.json": "c4f372dcf8eef95abe9189ac53e04f7225596152b64f4430bcf4b2f8072eb71b",
+    "docs/verification/uiaudit1/geometry/astra-phase2-final-geometry-fd68f12/geometry.md": "3317ef1af7f81e730f1a6689dae071ce4adada76b639a0c427db1f017c2e6ff7",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/final.json": "623e3d47855da43ee5e052f7ad0d73e4f3a92369acd01298c7572eeed4d0c252",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/start.json": "2620ca0478b826a66e8910e5fe042ea12e6275b04b9f8e55995a95ff5f098b79",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/source-freeze.json": "4d13d2ac7d2d55933a4cc23636ed0a9823a0f7c20d0696f89bd0731a75498074",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/fixtures-start.json": "c9122165ba149aaddc31a123485d93139df8d747dee0fc653157108be63b772a",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/phase2-geometry/fixtures-end.json": "fa1c220c22dd3759df9b4509361fd08f83de673292fab6af1464f84febc3bea2",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/exit-code": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    ".remote-runs/astra-phase2-final-geometry-fd68f12/ui-geometry/audit.log": "9e3544e857f985f70b70a84f5a78a2bb34f63dc3dca9a58975573066ce5fd9e2",
+    ".omo/evidence/phase2-geometry-fetch.log": "1df4adc284571b0b4cfad76146e55c2121485eb5f134afb9e3d94b88b3f532d8"
+  },
+  "limits": [
+    "Measured commit remains candidate fd68; do not relabel it as current/final HEAD",
+    "Final evidence commit, check:merge, clean clone and publication remain parent-owned later gates",
+    "Registry geometry coverage is not a claim of natural-play or all gameplay coverage"
+  ]
+}

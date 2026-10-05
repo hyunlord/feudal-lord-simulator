@@ -1,0 +1,230 @@
+{
+  "status": "DOCUMENT_EVIDENCE_AUDIT_PASS_WITH_PUBLICATION_GATES_PENDING",
+  "head": "db17321a907b5c0c72560fe2fab29966f38963d1",
+  "packages": [
+    {
+      "name": "wave37-reconcile",
+      "trackedFiles": 14,
+      "trackedBytes": 1208064,
+      "prospectivePublishedFiles": 15,
+      "prospectiveBytes": 1210477,
+      "under3MiB": true,
+      "hashIndexExists": true,
+      "indexEntries": 14,
+      "missing": [],
+      "hashMismatch": [],
+      "unindexed": [],
+      "indexedNotYetTracked": [],
+      "jpegCount": 6,
+      "referenceCoverageByFilename": {
+        "summer-z1": true,
+        "summer-z06": true,
+        "winter-z1": true,
+        "winter-z06": true
+      },
+      "indexSha256": "c418d8e52951bcde3aa62df70129dff9e0d0a07130c7ec17cb546001eaaf2221"
+    },
+    {
+      "name": "season-core",
+      "trackedFiles": 24,
+      "trackedBytes": 2891921,
+      "prospectivePublishedFiles": 24,
+      "prospectiveBytes": 2891921,
+      "under3MiB": true,
+      "hashIndexExists": true,
+      "indexEntries": 23,
+      "missing": [],
+      "hashMismatch": [],
+      "unindexed": [],
+      "indexedNotYetTracked": [],
+      "jpegCount": 14,
+      "referenceCoverageByFilename": {
+        "summer-z1": true,
+        "summer-z06": true,
+        "winter-z1": true,
+        "winter-z06": true
+      },
+      "indexSha256": "606afbf6b86ddadfd6841ae92cc9e0a8d5ad687c23ce623c3d144e2c1879bd2c"
+    },
+    {
+      "name": "spring9-data",
+      "trackedFiles": 27,
+      "trackedBytes": 1742850,
+      "prospectivePublishedFiles": 27,
+      "prospectiveBytes": 1742850,
+      "under3MiB": true,
+      "hashIndexExists": true,
+      "indexEntries": 26,
+      "missing": [],
+      "hashMismatch": [],
+      "unindexed": [],
+      "indexedNotYetTracked": [],
+      "jpegCount": 10,
+      "referenceCoverageByFilename": {
+        "summer-z1": true,
+        "summer-z06": true,
+        "winter-z1": true,
+        "winter-z06": true
+      },
+      "indexSha256": "841aa51398f5cb75bad39b9cddc96d002442e50e92e1c7f96f9a8be7fa1fbc72"
+    },
+    {
+      "name": "field-core",
+      "trackedFiles": 26,
+      "trackedBytes": 2344601,
+      "prospectivePublishedFiles": 26,
+      "prospectiveBytes": 2344601,
+      "under3MiB": true,
+      "hashIndexExists": true,
+      "indexEntries": 25,
+      "missing": [],
+      "hashMismatch": [],
+      "unindexed": [],
+      "indexedNotYetTracked": [],
+      "jpegCount": 7,
+      "referenceCoverageByFilename": {
+        "summer-z1": true,
+        "summer-z06": true,
+        "winter-z1": true,
+        "winter-z06": true
+      },
+      "indexSha256": "13497245e57d3ccbb774cac06902ba52baf99ac7755576a80793fcdd18e2ccdf"
+    },
+    {
+      "name": "field-spring3-data",
+      "trackedFiles": 34,
+      "trackedBytes": 2053610,
+      "prospectivePublishedFiles": 34,
+      "prospectiveBytes": 2053610,
+      "under3MiB": true,
+      "hashIndexExists": true,
+      "indexEntries": 33,
+      "missing": [],
+      "hashMismatch": [],
+      "unindexed": [],
+      "indexedNotYetTracked": [],
+      "jpegCount": 12,
+      "referenceCoverageByFilename": {
+        "summer-z1": true,
+        "summer-z06": true,
+        "winter-z1": true,
+        "winter-z06": true
+      },
+      "indexSha256": "37934ddc6b0c5b4874f00e392749c9d6bb53ad3b245fd28ff41ccc715459abb9"
+    },
+    {
+      "name": "heath-core",
+      "trackedFiles": 40,
+      "trackedBytes": 1423909,
+      "prospectivePublishedFiles": 40,
+      "prospectiveBytes": 1423909,
+      "under3MiB": true,
+      "hashIndexExists": true,
+      "indexEntries": 39,
+      "missing": [],
+      "hashMismatch": [],
+      "unindexed": [],
+      "indexedNotYetTracked": [],
+      "jpegCount": 7,
+      "referenceCoverageByFilename": {
+        "summer-z1": true,
+        "summer-z06": true,
+        "winter-z1": true,
+        "winter-z06": true
+      },
+      "indexSha256": "ee682759085cfd0d7d597e8a09073d5a12b92795cebfa903b0bfaed1564abbc1"
+    },
+    {
+      "name": "heath-data",
+      "trackedFiles": 31,
+      "trackedBytes": 1530619,
+      "prospectivePublishedFiles": 35,
+      "prospectiveBytes": 1548703,
+      "under3MiB": true,
+      "hashIndexExists": true,
+      "indexEntries": 34,
+      "missing": [],
+      "hashMismatch": [],
+      "unindexed": [],
+      "indexedNotYetTracked": [
+        "reference4-export-attestation.txt",
+        "reference4-parent-check.json",
+        "reference4-summary.json",
+        "reference4-views.json"
+      ],
+      "jpegCount": 8,
+      "referenceCoverageByFilename": {
+        "summer-z1": true,
+        "summer-z06": true,
+        "winter-z1": true,
+        "winter-z06": true
+      },
+      "indexSha256": "549ada92cfea612ee9823cb238ce75492cb59678ad1adecf4f7f79b34c7a44ca"
+    }
+  ],
+  "brokenMarkdownLinks": [],
+  "scope": "Read-only current working-tree prospective publication plus tracked-only size; no visual re-review or execution",
+  "auditedAt": "2026-10-05T00:27:10.900773+00:00",
+  "packageCapBytes": 3145728,
+  "closedFindings": [
+    {
+      "id": "D1",
+      "path": "docs/verification/heath-core/REPORT.md",
+      "finding": "Current heading retained VISUAL PENDING despite appended final visual PASS.",
+      "resolution": "Parent corrected heading and current summary to independent VISUAL PASS WITH LIMITS; report and regenerated inventory independently rechecked. Original run history and NON_RUNTIME_DOCUMENT_DRIFT retained."
+    },
+    {
+      "id": "D2",
+      "path": "docs/verification/wave37-reconcile/SHA256SUMS.json",
+      "finding": "Capture index covered image rows but no package-wide hash inventory.",
+      "resolution": "Parent added self-excluding 14-entry inventory; all entries independently rehashed and package closure checked."
+    }
+  ],
+  "openDocumentDefects": [],
+  "publicationDependencies": [
+    "docs/verification/wave37-reconcile/SHA256SUMS.json",
+    "docs/verification/heath-data/reference4-export-attestation.txt",
+    "docs/verification/heath-data/reference4-parent-check.json",
+    "docs/verification/heath-data/reference4-summary.json",
+    "docs/verification/heath-data/reference4-views.json",
+    "docs/requests/render-human-registration-request.md",
+    "docs/requests/render-human-registration-request.json"
+  ],
+  "pendingGates": [
+    "Final geometry run was RUNNING_OR_QUEUED in existing watcher; not independently polled.",
+    "Final merge, clean clone verification and phase2 push/publication remain pending.",
+    "Parent must include current modified docs and all publication dependencies in final staged set."
+  ],
+  "preservedLimitations": [
+    "HEATH core actual export had NON_RUNTIME_DOCUMENT_DRIFT: runtime product 4308 exact at 931d780e, absent 8 and driver 2 separately classified; no overall clean-export claim.",
+    "HEATH negative16 first-open absence is proved; repeat absence is not.",
+    "FIELD promotion protected4259 count is executor-reported; no individual raw4259 verification claimed in this audit.",
+    "JPEGs are reference previews; no native image re-review in this task. Pixel claims remain tied to existing raw comparator receipts.",
+    "Full raw captures/source freezes referenced outside compact packages remain local archival dependencies.",
+    "HEIGHT milestone and UI rendering/handoff closure are not implied by phase2 art asset receipts."
+  ],
+  "censusConsistency": {
+    "originalCensus": 425,
+    "currentMarked": 153,
+    "currentRuntime": 157,
+    "heath2OutsideOriginal425": true,
+    "note": "Document cross-consistency checked, not a new full provenance census execution."
+  },
+  "wave37CaptureIndexCheck": {
+    "logicalRows": 10,
+    "physicalJpegs": 6,
+    "rowFileHashMismatches": 0
+  },
+  "measuredCommits": {
+    "wave37": "bc29f6b254292a7e2080aebc0c23b3cd4368a9f6",
+    "seasonCore": "208c622222b2d2a2b7d0aa883d6a598984b25ca4",
+    "spring9": "70c153211187f5e7dedef538147136b22afdd8fc",
+    "spring9Reference": "c8089d606ace9ae1543e197fcfa981483906343a",
+    "fieldCore": "a392694c3056b93812a0bcc3de767a387f2f3f3b",
+    "fieldSpring3": "cd399e4abb26fc04b37dc27b5c61bec270934a7d",
+    "fieldSpring3Reference": "d367382392a4806e683b91463f3996b7654704d6",
+    "heathCore": "931d780e37307a7dd2f85a697b122656cb29359d",
+    "heathData": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+    "heathDataReference": "db17321a907b5c0c72560fe2fab29966f38963d1"
+  }
+}

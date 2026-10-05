@@ -1,0 +1,22 @@
+{
+  "state": "RUNNING_OR_QUEUED",
+  "owner": "/root/capture_harness_executor",
+  "run": "astra-phase2-final-geometry-fd68f12",
+  "submitted": true,
+  "fetched": false,
+  "pollSeconds": 60,
+  "wrapper": ".omo/evidence/phase2-geometry-wrapper.mjs",
+  "wrapperSHA256": "9fb78b58e4f7ceeeb8feaf8ae087f38e7a7e6000ba08c7b2d5205495edf1fc87",
+  "verification": "Local syntax PASS; actual exported source/HEAD/cleanliness verified",
+  "submissionExit": 0,
+  "actualExportTrackedClean": true,
+  "sourceFiles": 4277,
+  "nativeInputs": 1977,
+  "inputHash": "0cb88b8e55d305f886f513ca36952ea784ab0d93bf92860bbe3641a490b9b58a",
+  "head": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "exportCheckedAt": "2026-10-04T23:10:58.160Z",
+  "watchStartedAt": "2026-10-04T23:11:50.642Z",
+  "checkedAt": "2026-10-05T00:31:23.758Z",
+  "sshExit": 0,
+  "latest": "EXIT=PENDING\nhud.command-pins tablet-1180x820/long/normal: measured 0 failure(s) \nhud.command-pins 1024x768/normal/normal: measured 0 failure(s) \nhud.command-pins 1024x768/long/normal: measured 0 failure(s) \n"
+}
