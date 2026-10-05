@@ -1,0 +1,29 @@
+{
+  "implementationCommit": "8f463a2069dd1062008bf81580cf1dd25c417ce8",
+  "repairCommit": "cda5764fceb6694110663e485b903e5249bf6c47",
+  "cleanClone": {
+    "passed": true,
+    "run": "astra-SEASONS-repair-clone-cda5764",
+    "exitCode": 0,
+    "tests": 5024,
+    "failed": 0,
+    "typecheck": "passed",
+    "build": "passed"
+  },
+  "geometry": {
+    "passed": true,
+    "run": "astra-SEASONS-repair-geometry-cda5764",
+    "exitCode": 0,
+    "measured": 2262,
+    "failures": 0,
+    "unopened": 0,
+    "warnings": 693,
+    "inputHash": "027a4ca67b182da7dac42fb3c8c3eaec119d804f344b56ae58efb29b0ea72736"
+  },
+  "checkMerge": {
+    "passed": true,
+    "commit": "7e8aa71f",
+    "receipt": "delivery ZIP check-merge.txt and protected-push.txt",
+    "note": "Final documentation-only commit is checked again before protected push."
+  }
+}
