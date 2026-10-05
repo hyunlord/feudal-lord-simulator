@@ -14,6 +14,13 @@ import { POLICY_COPY as COPY } from "./policyCopy.ko";
 // Lord mode only (null otherwise).
 
 export const POLICIES: readonly EstatePolicy[] = ["growth", "revenue", "stability", "defence"];
+/** LM-R2 (wave35-operations): each policy's icon (64 px, shown at 32) and the notice of a subsidy on offer (192 × 256, shown
+ *  at 96) — the `lord-estates` bundle's ui-image entries (scripts/installLmr2Estates.ts). */
+export const policyIconId = (policy: EstatePolicy): string => `lord.estates.policy_${policy}`;
+export const POLICY_ICON_WIDTH = 32;
+export const SUBSIDY_NOTICE_ID = "lord.estates.subsidy_notice";
+export const SUBSIDY_NOTICE_WIDTH = 96;
+export const POLICY_ART_IDS: readonly string[] = [...POLICIES.map(policyIconId), SUBSIDY_NOTICE_ID];
 /** The kinds a subsidy can back (the actors propose them as opportunities when a subsidy or the policy backs them). */
 export const SUBSIDY_KINDS: readonly BuildingKind[] = OPPORTUNITY_KINDS;
 export const SUBSIDY_STEP = 10;

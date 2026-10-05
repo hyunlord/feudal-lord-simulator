@@ -75,3 +75,10 @@
   .app-shell .lord-estates-rule, .app-shell .lord-estates-step { min-height: 48px; }
   .app-shell .lord-estates-step { min-width: 48px; }
 }
+/* LM-R2 (wave35-operations) in LM-R1's policy tab (src/ui/lord/LordPolicyPanel.tsx): a policy's icon beside its name and
+   weights, the notice of a subsidy on offer above its list. Without the pictures the tab is LM-R1's own. */
+.app-shell .lord-policy-option[data-policy-art]:not([data-policy-art="none"]) { grid-template-columns: 32px minmax(0, 1fr); column-gap: 8px; }
+.app-shell .lord-policy-option-icon { grid-row: 1 / span 2; align-self: center; }
+.app-shell .lord-policy-option[data-policy-art]:not([data-policy-art="none"]) .lord-policy-option-name,
+.app-shell .lord-policy-option[data-policy-art]:not([data-policy-art="none"]) .lord-policy-option-weights { grid-column: 2; }
+.app-shell .lord-policy-notice { display: block; justify-self: start; }

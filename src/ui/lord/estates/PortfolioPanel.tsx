@@ -81,7 +81,7 @@ function EstateCard({ state, card, parts }: { readonly state: GameState; readonl
     ["value", COPY.annualValue, card.annualValueLine], ["burdens", COPY.burdens, card.burdensLine], ["claims", COPY.claims, card.claimsLine],
   ];
   return <Card className="lord-estates-card" data-estate-card={card.estateId} data-picture={card.picture} data-overlay={card.overlay ? "true" : "false"}
-    aria-label={card.name}>
+    data-possessor={card.possessorId} data-annual-value={card.annualValue} aria-label={card.name}>
     <div className="lord-estates-card-top">
       <div className="lord-estates-picture" data-art={picture === null ? "none" : card.picture} style={picture ?? undefined}>
         {overlay === null ? null : <span className="lord-estates-overlay" data-art="integrated_overlay" style={overlay} />}
