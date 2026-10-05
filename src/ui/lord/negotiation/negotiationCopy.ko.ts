@@ -93,7 +93,6 @@ export const NEGOTIATION_COPY = {
   // --- the counter ---------------------------------------------------------------------------------------------------
   counterIntro: "바뀐 조항과 빠진 조항만 표시했습니다. 상대는 받아들이면 제 조건을 지킵니다.",
   marks: { same: "그대로", changed: "바뀜", rejected: "빠짐" },
-  changeAdded: (to: string) => `새로 요구: ${to}`,
   changeAddedPlain: "새로 요구",
   changeRaised: (from: string, to: string) => `${from} → ${to}`,
   changeRemoved: "상대가 뺐습니다",

@@ -31,12 +31,16 @@ function Seal({ parts, seal }: { readonly parts: Parts; readonly seal: "empty" |
   return <span className="lord-neg-seal" aria-hidden="true" data-seal={seal} data-art={art === null ? "none" : "drawn"} style={art ?? undefined} />;
 }
 
+/** A clause in its row frame; what the counter did to it is written under the frame (the rejected row's art strikes
+ * through its middle, so nothing but the struck clause sits inside it). */
 function Row({ parts, row, mark = "same", extra }: { readonly parts: Parts; readonly row: TreatyRow; readonly mark?: Mark; readonly extra?: ReactElement | null }): ReactElement {
   const art = parts.frame(NEGOTIATION_ART.rows[mark]);
   return (
-    <li className="lord-neg-row" data-clause={row.kind} data-mark={mark} data-frame={art?.dataFrame ?? "record"} style={art?.style}>
-      <span className="lord-neg-row-name">{row.name}</span>
-      {row.value === null ? null : <span className="lord-neg-row-value">{row.value}</span>}
+    <li className="lord-neg-row-item">
+      <div className="lord-neg-row" data-clause={row.kind} data-mark={mark} data-frame={art?.dataFrame ?? "record"} style={art?.style}>
+        <span className="lord-neg-row-name">{row.name}</span>
+        {row.value === null ? null : <span className="lord-neg-row-value">{row.value}</span>}
+      </div>
       {extra ?? null}
     </li>
   );

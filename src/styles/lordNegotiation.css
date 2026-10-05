@@ -47,7 +47,9 @@
 .app-shell .lord-neg-rows { display: grid; gap: 4px; }
 .app-shell .lord-neg-row { display: grid; gap: 0 6px; min-height: 44px; align-content: center; background: none; border-image: var(--frame-record-art); }
 .app-shell .lord-neg-row-name { font-weight: 600; }
+.app-shell .lord-neg-row-item { display: grid; gap: 2px; }
 .app-shell .lord-neg-row-value, .app-shell .lord-neg-row-change { font-size: 12px; }
+.app-shell .lord-neg-row-change { padding: 0 4px; }
 .app-shell .lord-neg-row-mark { font-weight: 700; }
 .app-shell .lord-neg-row[data-mark="rejected"] .lord-neg-row-name { text-decoration: line-through; }
 .app-shell .lord-neg-empty { font-size: 12px; color: var(--palette-ink-muted); }

@@ -257,7 +257,8 @@ export function counterRows(negotiation: Negotiation): readonly CounterRow[] {
     const row = treatyRow((after ?? before)!);
     if (change === undefined) return { ...row, mark: "same", markWord: COPY.marks.same, change: null };
     if (change.change === "removed") return { ...row, mark: "rejected", markWord: COPY.marks.rejected, change: COPY.changeRemoved };
-    const words = change.change === "added" ? (row.value === null ? COPY.changeAddedPlain : COPY.changeAdded(row.value))
+    // An added clause's value is already in its row: the mark says only that it is new.
+    const words = change.change === "added" ? COPY.changeAddedPlain
       : COPY.changeRaised(money(change.from ?? 0), money(change.to ?? 0));
     return { ...row, mark: "changed", markWord: COPY.marks.changed, change: words };
   });
