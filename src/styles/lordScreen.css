@@ -1,0 +1,31 @@
+/* LM-R2: the lord screen host (src/ui/lord/screen/LordScreen.tsx) — lord mode only, in the panel slot (S-30) on the
+   right. Wide enough for a map or a contract, never the whole screen: at least 264 px of the town stays in view on the
+   1024 px floor. The left menu and the screen scroll on their own; the frame (the slot token) stays put. Text ≥ 12 px
+   (tests/lmr2LordScreen.test.ts reads every lord*.css). */
+.app-shell .slot-panel.lord-screen {
+  display: flex; flex-direction: column; box-sizing: border-box; overflow: hidden;
+  width: min(760px, calc(100% - 280px));
+  height: min(720px, calc(100% - var(--hud-right-top) - var(--hud-right-bottom))); max-height: none;
+}
+.app-shell .lord-screen-open { min-height: 44px; margin: 4px 0 6px; font-size: 13px; }
+.app-shell .lord-screen-body { display: grid; grid-template-columns: 136px minmax(0, 1fr); gap: 8px; flex: 1 1 auto; min-height: 0; margin-top: 6px; }
+.app-shell .lord-screen-nav { display: grid; align-content: start; gap: 4px; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.app-shell .lord-screen-nav-item { display: flex; align-items: center; gap: 6px; min-height: 44px; padding: 4px 6px; text-align: left; }
+/* The open screen's item wears the kit's selected tab (the kit keys it on aria-selected; a menu says aria-current). */
+:root .app-shell .ui-btn.ui-btn--tab.lord-screen-nav-item[aria-current="page"] {
+  --ui-btn-art: var(--button-tab-selected-art); --ui-btn-hover-art: var(--button-tab-selected-art); --ui-btn-pressed-art: var(--button-tab-selected-art);
+  box-shadow: inset 3px 0 0 var(--status-warn); font-weight: 700;
+}
+.app-shell .lord-screen-nav-icon { flex: 0 0 auto; }
+.app-shell .lord-screen-nav-text { display: grid; min-width: 0; }
+.app-shell .lord-screen-nav-label { font-size: 13px; line-height: 1.3; word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .lord-screen-nav-reason { font-size: 12px; font-weight: 400; line-height: 1.3; }
+.app-shell .lord-screen-content { min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
+.app-shell .lord-screen-empty, .app-shell .lord-screen-soon { margin: 8px 0 0; font-size: 13px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
+@media (pointer: coarse) {
+  .app-shell .lord-screen-nav-item, .app-shell .lord-screen-open { min-height: 48px; }
+}
+/* The crisis bells and the event chips step left of the open lord screen (NAT-2 QA-013, as for the other slots). */
+@media (min-width: 720px) {
+  .app-shell [data-slot="lord"] { --slot-clear: calc(min(760px, 100% - 280px) + 8px); }
+}

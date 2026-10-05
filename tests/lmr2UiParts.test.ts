@@ -140,3 +140,13 @@ test("LM-R2: an area's bundle goes into the catalog by bundleId (rerunnable), on
     assert.throws(() => upsertCatalogBundle(root, base, { ...bundle([{ ...part, id: "other-icon" }]), bundleId: "lord-test" }), ArtRegistryError, "duplicate id across bundles");
   } finally { rmSync(root, { recursive: true, force: true }); }
 });
+
+test("LM-R2: the parts' CSS sets no type (the 12 px floor stays the screens' own)", async () => {
+  const art = createUiPartArt(createArtRegistry([bundle([frame, icon, icon64])]), { baseUrl: "/",
+    createImage: fakeImages({ "/assets/lord/frame.png": [512, 384], "/assets/lord/icon_32.png": [32, 32], "/assets/lord/icon_64.png": [64, 64] }) });
+  await art.settled(["frame", "icon", "icon-64"]); await flush();
+  for (const style of [art.frame("frame")?.style, art.image("icon", 32)]) {
+    assert.ok(style !== undefined && style !== null);
+    assert.deepEqual(Object.keys(style).filter(key => /^font|lineHeight/.test(key)), []);
+  }
+});

@@ -99,6 +99,8 @@ import { personRow, stewardPerson } from "./ui/persons/personModels";
 import { useStoryPresentation } from "./ui/hud/useStoryPresentation";
 import { guidanceSampleKey } from "./ui/hud/guidanceSample";
 import { AppModals } from "./ui/screens/AppModals";
+import { LordScreen } from "./ui/lord/screen/LordScreen";
+import type { LordScreenId } from "./ui/lord/screen/lordScreenTypes";
 import { readWelcomeDismissed, WelcomeParchment, writeWelcomeDismissed } from "./ui/screens/WelcomeScreen";
 import { isDefaultLand, landStartCommand, type LandChoice } from "./ui/landChoice";
 import { showChapterLoading, useChapterLoading } from "./ui/chapterLoadingStore";
@@ -157,6 +159,11 @@ export function App() {
   const openInspector = useCallback((id: string) => { setInspectedId(id); sendUi({ type: "select" }); }, [sendUi]);
   const openConditions = useCallback(() => { setLedgerStart("lord"); if (uiRef.current.mode !== "ledger") sendUi({ type: "toggle_ledger" }); }, [sendUi, uiRef]);
   useEffect(() => { if (ui.mode !== "ledger") setLedgerStart("stock"); }, [ui.mode]);
+  // LM-R2 (lord mode): the lord screen host in the panel slot — which screen, on which engine id (a deep link).
+  const [lordView, setLordView] = useState<{ readonly screen: LordScreenId | null; readonly focus: string | null }>({ screen: null, focus: null });
+  const openLord = useCallback((screen: LordScreenId | null = null, focus: string | null = null) => {
+    setLordView({ screen, focus }); if (uiRef.current.mode !== "lord") sendUi({ type: "open_lord" });
+  }, [sendUi, uiRef]);
   // The map's own selection card (GameCanvas) takes the same slot; closing it there leaves the selection state.
   const onCanvasSelection = useCallback((open: boolean) => { if (open) sendUi({ type: "select" }); else if (uiRef.current.mode === "selection") sendUi({ type: "deselect" }); }, [sendUi, uiRef]);
   const palisadeDraftRef = useRef(palisadeDraft);
@@ -494,7 +501,7 @@ export function App() {
       <div
         className="app-interaction-layer"
         // NAT-2 (QA-013): the open panel slot, so the crisis icons and event chips step left of it (hudShell.css).
-        data-slot={ui.mode === "goals" || ui.mode === "population" || ui.mode === "selection" || ui.mode === "ledger" ? ui.mode : undefined}
+        data-slot={ui.mode === "goals" || ui.mode === "population" || ui.mode === "selection" || ui.mode === "ledger" || ui.mode === "lord" ? ui.mode : undefined}
         inert={welcomeVisible ? true : undefined}
         aria-hidden={welcomeVisible ? true : undefined}
       >
@@ -565,7 +572,11 @@ export function App() {
         {ui.mode === "ledger" ? <LedgerDrawer state={state} onInspect={openInspector} onClose={() => sendUi({ type: "toggle_ledger" })} key={ledgerStart} initialTab={ledgerStart}
           history={storeHistoryRef.current} food={{ days: pillModel.foodDays }} highlighted={ledgerHighlight} onHighlight={setLedgerHighlight}
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
-          mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} onPerson={openPerson} /> : null}
+          mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} onPerson={openPerson}
+          onOpenLord={lord ? () => openLord() : undefined} /> : null}
+        {/* LM-R2: the lord screens (lord mode only), a side panel in the slot: the town stays in view and runs. */}
+        {lord && ui.mode === "lord" ? <LordScreen state={state} dispatch={dispatch} screen={lordView.screen} focus={lordView.focus}
+          onOpen={(screen, focus) => openLord(screen, focus ?? null)} onClose={() => sendUi({ type: "toggle_lord" })} onPerson={openPerson} /> : null}
         <UnlockBanner text={tutorial.banner} />
         {tutorial.banner === null ? <UnlockBanner text={startHint} icon={false} /> : null}
         {toastVisible && completionToast !== null ? <div className="completion-toast" data-frame="toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>
