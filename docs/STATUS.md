@@ -1,3 +1,5 @@
+- **RB-PHASE2 게시 마감**: 지역 봄 지면 4장 추가, 기존 구름 2장 계약 이전(새 그림 0장). 실제 전후17쌍·현재 기하2,202조건 실패0. 사용자 지시에 따라 기존 깨끗한 클론 `be576dbe` 4,886/4,886을 재사용하며 최신 커밋의 재실행으로 주장하지 않는다. 추가 독립 승인·입력 동결 절차를 제거하고 저장소 병합 검사 후 게시한다. 증거 `db7f98f5`. 다음은 직업 연결72장, 미해결56장은 별도 목록.
+
 # 현재 상태 — Charter & Kin · 인장과 가문
 
 게임 이름: 영어 **Charter & Kin**, 한국어 **인장과 가문**(2026-10-02 결정 TITLE-1, 가제 "봉건 영주 시뮬레이터" 대체). 출시 전 상표 확인 필요(로드맵 TRADEMARK). 게임 안의 타이틀 화면·창 제목은 렌더가 정식 로고가 오면 바꾼다.
@@ -9,7 +11,8 @@
 
 ## 현재 단계
 
-- **렌더 B 게시 전 문서 정리**: 실제 `ed83fe44` DGX merge·clean clone4,886/4,886·타입/build·source LFS14/public14 검증 PASS. 아래 이전 대기 문구는 각 측정 시점 기록이며, 완료된 계절/봄9/FIELD/HEATH/W37 일곱 구현은 장부에 체크했다. 이 문서 후속 최종 HEAD는 다시 검사한 뒤 보호 게시한다. 게시 완료·설치1~3단계 전체 완료는 아직 아니다. [관문 영수증](verification/renderb-phase2/REPORT.md).
+- **DGX 디스크 관리(DISK-UPKEEP) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 실행이 끝날 때마다 끝난 실행 폴더(하루 뒤, `--keep` 결과는 `_kept`에)·용량 상한·보고서가 부르지 않는 오래된 `_kept` 압축·남은 클론을 치우고, 무거운 실행은 여유가 300 GB 아래면 먼저 정리한다(결정 RR15, 기록은 `== disk:`). LFS는 `_cache/lfs` 공유. 그날 225 → 704 GB.
+- **렌더 B 2단계 본선 게시 완료**: 최종 `be576dbe` DGX merge·깨끗한 클론4,886/4,886·타입/build·source LFS14/public14 검증 뒤 보호 push와 원격 exact HEAD 확인까지 통과했다. 신규 봄9·밭3·황야2와 W37 장부16 범위이며 설치1~3단계 전체 완료는 아니다. 아래 이전 대기 문구는 각 측정 시점 기록이다. [관문·게시 영수증](verification/renderb-phase2/REPORT.md).
 
 - **FIELD core — 실제 main 20쌍 통과, 최종 게시 대기**: `3e722109`→`a392694c` 전체 identity20·RGBA 차이0·양쪽 A/A20·오류0, core 원격 입력4,165 해시 일치·실행/수집 exit0. 독립 원본40장 검토 PASS WITH LIMITS(기존 가림·저배율 한계 유지). 12번째 ground-texture kind·기존4개 이전, catalog95→99·신규 이미지0·장부0, main196/196·타입/린트 및 보호이관22/22 PASS. spring9·retired6·C25 보존. 최종 가지 회귀·클론·게시 관문은 별도 대기. [증거](verification/field-core/REPORT.md).
 - **렌더 B 2단계 게시 준비 — 전체 기하 통과**: 실제 `fd68f124` DGX 기하가 2,202/2,202조건·실패/미개방/미등록/페이지오류/재시도0을 통과했다. 기존 빈 공간 경고693과 설계상 미도달4행60조건은 보존했다. 실행 전후 보호4,277파일·native1,977입력·private fixture126파일이 같고 현 `db17321a` 실행 입력과의 동일성도 독립 확인했다. 측정 커밋을 미래 HEAD로 바꾸지 않는다. 신규 봄9·밭3·황무지2와 W37 장부16의 최종 check:merge/clean clone/게시 관문은 대기다. [종합 증거](verification/renderb-phase2/REPORT.md).
@@ -18,9 +21,11 @@
 - **FIELD 봄3 — 실제 main20·시각 통과, 정확3행 표시**: `cd399e4a` / `astra-field-main-spring3-cd399e4`에서 A/A20·오류0, 봄8 새3 request/decode/paint 및 의도 변화·비봄12 identity/RGBA0, 원격4,168 SHA 일치·독립 시각 PASS WITH LIMITS. catalog102·정적196/196·타입·출처5/5/2,387 통과. 이후 정확3행 provenance/installed_by 승격; 원본425 marked153/runtime157/physical157, 코드·public4,259 및 다른 행 보존. 승격 `d3673823` 뒤 실제 reference4 identity/RGBA0·A/A4·오류0, 원격4,281 해시 일치. 최종 게시 대기. [증거](verification/field-spring3-data/REPORT.md).
 
 - **설치 1~3단계 — 진행 중**: UI 계약 인계260행은 데이터 준비와 실제 화면 사용을 구분한다([인계](requests/ui-contract-handoff.md)). 자연·계절 묶음은 아래 실제 검증 뒤 최종 게시 관문 대기이며, 3단계는 본선90d9b586의 시대집32 데이터 설치 외 나머지 의미·등록·배치 관문이 남아 있다. 전체 설치 완료가 아니다.
-- **REGION core — 후속 격리 검증**: 별도 가지 후보 `442b7182`는 기존 지형30만 계약으로 옮겼다. 정적174/type/lint/catalog135와 실제18쌍 identity/RGBA 동일·독립 원본18 검토를 통과했고, 빠진 여름·겨울 zoom.6 두 쌍도 동일했다. 후속 `1e7d1569`는 canonical30 시험·core 증거만, `bd84351a`는 정확6경로의 봄4 데이터 후보만 커밋했다. DATA20 실제 판정은 대기이며, 현 게시 후보 `db17321a`의 코드·public·장부는 바꾸지 않았다.
+- **CLOUD CORE — 기존 구름 그림 2장 계약 이전, 신규 그림 0장**: 격리 실제 10개 장면과 후속 통합 17쌍 중 구름 7개 장면의 픽셀 동일성을 확인했다. 독립 검수자는 전후 원본 34개를 열어 새 파손·가림을 관찰하지 않았다. 구름의 충분한 가시성·이동은 불확실하며 새 DATA2는 [HOLD](verification/cloud-data2-hold/REPORT.md)다. v1/v2 실패와 v3 미실행 기록을 보존한다. [기존 검증](verification/cloud-core/REPORT.md)·[통합 증거](verification/renderb-region-cloud-height/README.md). 세계 실행 기준은 `718dce4b`; 현재 UI `2fdbb11d`의 전체 기하 2,202조건은 실패 0·소스 동일로 통과했다. 최종 클론·본선 게시 관문은 대기다.
 
-- **HEIGHT-1 — 격리 비교 진행, 본선 배율16 보존**: A1 후보 겨울16쌍은 A/A32·오류0과 제한된 가시성 검토를 통과했다. 여름 짐 운반4방향도 A/A8·오류0을 확인했고 실제 가림 때문에 접촉은 UNCERTAIN으로 유지했다. 여름zoom1/.6의 본선 이관 검증을 준비하며, 전체 접촉·맨발17.6 실측·문·무리 정합의 완료 판정은 아니다. [문23 아트 요청](requests/render-human-scale-art-request.md)과 별도 [신체·군중·운구12 metadata 요청](requests/render-human-registration-request.md)을 준비했다. 알려지지 않은 신체점·연령 비율은 null로 두며 PNG·설치 장부를 바꾸지 않았다.
+- **REGION core30·봄4 — 지역 봄 지면 4장 통합 장면 검토 완료, 미게시**: 백악 구릉·해안 항구·배수 습지·숲 가장자리의 봄 줌 0.6 장면에 지역별 봄 지면이 나타난다. 통합 전후 17쌍은 양쪽 A/A 17개씩 통과했고 봄 4개만 달라졌으며 나머지 13개는 전체 RGBA가 같다. 독립 원본 검토에서 봄 변화와 접점의 새 파손 없음이 확인됐다. [격리 검증](verification/region-spring4-data/REPORT.md)·[통합 증거](verification/renderb-region-cloud-height/README.md). 장부 4행은 이미 `RENDER-B-REGION4`이며 앞서 본선 `be576dbe`에 게시한 14장과 별개다. 현재 기하 2,202조건 실패 0·소스 동일 확인. 최종 클론·본선 게시 대기.
+
+- **HEIGHT-1 — 등록 높이 17.6 기준 통합, 문·무리 정합 미완료**: `38be7e4a`에 합친 등록 높이 17.6px/.55의 근거는 [A1 여름 운반 2개 장면](verification/height-a1/REPORT.md)과 별도로 보존한 역사적 겨울 16개·여름 4개 장면이다. 이번 통합 BEFORE에도 이미 같은 높이가 들어 있어 여름 줌 1.0·0.6의 2쌍 동일성은 외형 보존만 입증한다. 맨발 실측·가려진 접촉·[문 23종](requests/render-human-scale-art-request.md)·[신체·군중·운구 12종](requests/render-human-registration-request.md)은 미완료다. [통합 증거](verification/renderb-region-cloud-height/README.md). 현재 기하 2,202조건 실패 0·소스 동일 확인. 최종 클론·본선 게시 대기.
 
 - **렌더 B · ASSET-ARCH-1 — 완료·본선 게시**(Astra): [그림 계약](design/art-contract.md)과 [검증 보고서](verification/asset-architecture/REPORT.md). 코어 `d60ababf` 뒤 데이터 `541a0811`: Wave42 36장 전후28쌍 RGBA 차이0, 신규 시대 집32장+재사용층4장8장면 소비·독립 시각 검토, 제품 코드1,039파일 SHA 동일. 역사적4151d15f smoke4/4를 보존하며 QA003 통합 후 `ab67dcb8` 재촬영4/4·A/A0차이·오류0, clean `1da2327e` 전체 기하122행/2202조건 실패0·미개방0·미등록0·page error0(선언 도달불가4·경고693)을 확인했다. d6776f2 check:merge는 통과했으나 같은 HEAD clone 전체4820시험 중 출처 목록 집계1건이 실패했다(4819통과, 빌드 미실행). catalog 누락68경로를 기존 열거기에 추가해 관련11시험·타입·린트와2381/2381 집계를 확인했으며, 수정92a566d7 뒤 실제 smoke4/4·이전RGBA 차이0도 확인했다. 최종 clean `90d9b5865bee4dc012f49f6eded135ac85975e78`의 독립 clone은 4820/4820 시험·타입·build PASS, 최종 check:merge PASS였고 보호된 본선 push도 exit0(`bba59ece → 90d9b586`)으로 완료했다. UI 실제 연결 전체, 남은425 전체, 계절·밭·Wave37 후속 설치를 이번 완료 범위에 포함하지 않는다.
 - **계절 기존20 계약 이전 — core 커밋 실제10뷰 통과, 최종 가지 관문 대기**(Astra 렌더 B): `208c6222`의 실제 DGX10뷰는 baseline과 identity·RGBA 동일, A/A10·오류0·기존20 URL 도달을 확인했고 원격 입력4137개가 일치했다. core의 legacy45+contract20=65 선택·기하·preload 순서를 보존한다. 새 봄9는 별도 후보 데이터 단계다. 최종 가지 회귀·clean clone·게시 관문은 남아 있다. [증거](verification/season-core/REPORT.md).
@@ -63,6 +68,12 @@
   - 넘김: 012는 NAT-3, 003·026·RUN-02 그림은 Astra, RUN-01·UI-01·UI-02는 LM-R1.
 
 - **LAND-UI 땅 고르기·지면·여울·배수(렌더) — 완료, 본선 병합**(Claude Code, 렌더 세션, 연쇄 F 4번·연쇄 G 1번): [보고서](verification/landui/REPORT.md), 결정 LU-D1~D10(사용자 승인 2026-10-02 — D1은 임시, D7은 NAT-4에서 숫자 칸 + 무작위로 바꿈). 새 게임에서 땅 다섯(미리보기·지도 번호), Wave 22 지면·Wave 28 돌담·Wave 29 강 흐름·물레 도랑·Wave 34 여울·배수 단계, 배수 도구, "흐르는 물가" 문구. 강가 그림 그대로. 지면 띠는 렌더가 넓고 부드럽게(NAT-4), 숲 가장자리 띠는 Astra(LU-D11).
+
+- **LM-E9b 콘텐츠 정본 v4 들이기 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 승인 범위): [보고서](verification/lm-e9b/REPORT.md), 명세 [ER-13~ER-22](design/registry.md), 결정 LME9B-1~8, 저장 v49.
+  - v4 200개를 생성기로 등록기에 들였다. 식 언어 평가기(결측 규칙·허용 읽기 27·파생 38), 조건이 맞는 첫 조합 바인딩(R2), 명령 결과 확인·복합 원자성(R4), 보류는 대가가 있을 때만(R3).
+  - 세계가 상황을 만든다: 이웃의 청구(NW07)·다툼 있는 승계(NW08)·Paston 되찾기(옛 가문이 차지된 조각을 청구·소송). 한 번뿐인 사건은 남은 해에 나눠 쓴다.
+  - 125년 판 seed 셋: 63·59·74건, 1351년 뒤 23·21·36건, 한 해 최대 23·22·13, 켜진 사건 70(나온 것 40). 종류는 이웃 가문 쏠림(콘텐츠 몫).
+  - 다음: [LM-E9c 묶음 표](design/lm-e9c-bundles.md)(새 효과 87개 체계별·끝내 나오지 않은 30개). 렌더: v4 카드(`offerChoices`·`V4_COPY`·`occurrence.bound`·`hold`).
 
 - **FIX-17 Astra 감독관 엔진 결함 — 완료, 본선 병합**(Claude Code, 엔진 세션, 사용자 지시): [보고서](verification/fix17/REPORT.md), 결정 FX17-1~4.
   - SAVE01: 저장 검사가 "큐에 있는 건물은 모두 미납 표시"를 요구해 1440년 저장(seed 1 t560000)을 거부했다. 표시된 건물만 큐에 있으면 된다. Astra 저장 30개 30/30 불러옴.
@@ -822,7 +833,7 @@
 
 ## 다음 작업
 
-- **엔진 LM-E9b**(사용자 지시 2026-10-03): AMBIGUOUS 엔진 몫(나·다, 새 청원 057·058), 이웃의 새 청구·소송·채무를 연례 규칙으로(이웃 세계 설계), 세율이 바뀌어도 시장 부담 초안, Astra 콘텐츠 v3 들이기. 관문: 125년 판 seed 셋에서 새 사건이 시대·종류별로 고르게, 한 해 최대 30 미만.
+- **엔진 다음**: LM-E9c는 [묶음 표](design/lm-e9c-bundles.md)로 사용자가 순서를 정한 뒤 시작. MANOR-1(영주관 3×3, 렌더 LM-R1 넘김) 대기. LM-E10(이웃 16가문·가문 재정, NW09·NW11·채무).
 - **엔진 2장 작업(사용자 지시 순서, C4는 판정으로 뒤로)**: FAIL-3 완료 → F2-A 완료 → FACTION-0 완료 → FIX-5 완료 → C4 완료. 다음 엔진 후보는 관계를 읽는 규칙(RIGHTS)이다. 작업마다 본선 병합·브랜치 삭제.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").

@@ -1,0 +1,39 @@
+{
+  "verdict": "PASS_TEST_ONLY_CORRECTION",
+  "scope": "Canonical30 migration assertion; not DATA4/runtime approval",
+  "head": "442b71822c189a245877cc1da1af86831e19448a",
+  "path": "tests/archetypeGroundDraw.test.ts",
+  "afterSha256": "8da742d7ac84200a68e841a3f9e54ecabf261ea7f3faf17faaa4400b79d47d66",
+  "patchSha256": "b039db3bc69e8c2371d9dddcfa3bafd49fab439be985e4e3d8c84acee361b443",
+  "independentChecks": {
+    "actualDiffEqualsReceiptPatch": true,
+    "baselineTestShaMatches": true,
+    "afterTestShaMatches": true,
+    "migrationFixtureEqualsHEAD": true,
+    "baseline135CanonicalDeepEquality": true,
+    "current139CanonicalDeepEquality": true,
+    "missingCanonicalRejectedPerCatalog": 30,
+    "sameCountWrongUrlRejectedBoth": true,
+    "data6ProtectedHashesMatch": true,
+    "sourceFreezeCount": 2285,
+    "sourceFreezeDifferences": [
+      "tests/archetypeGroundDraw.test.ts"
+    ]
+  },
+  "reportedNotRerun": {
+    "focusedTests": "33/33",
+    "typecheckExit": 0,
+    "lintExit": 0,
+    "registryMutationRejections": "30/30 on each catalog"
+  },
+  "limitations": [
+    "Reviewer independently reproduced JSON canonical comparisons/mutations, not the tsx registry mutation runner or full focused tests.",
+    "This test intentionally no longer asserts total region entry count30; optional source allowance is intentional. Exact DATA4 inventory and runtime need separate proof.",
+    "Original failure log retention is reported by receipt; original log was not located/read in this review."
+  ],
+  "blockingFindings": [],
+  "changedByReviewer": [
+    ".omo/drafts/region-core-test-fix-review.md",
+    ".omo/drafts/region-core-test-fix-review.json"
+  ]
+}

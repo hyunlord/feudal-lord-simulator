@@ -135,16 +135,17 @@ test("drawWalkers renders procedural figures with cargo above the head", () => {
     walkers: [carter(), distributor()],
   });
 
-  // At the villager world scale (NAT-4 BLD-07: 0.5; the snapped rectangles follow it).
+  // FND-3 registers adults at 17.6px; literal rectangles lock the snapped pixel placement.
   const scale = VILLAGER_WORLD_SCALE;
+  assert.equal(scale, 17.6 / 32);
   assert.ok(context.calls.includes(`ellipse:48,62,${5 * scale},${2 * scale}`));
-  assert.ok(context.calls.includes("fillRect:46,52,4,7"));
+  assert.ok(context.calls.includes("fillRect:46,50,4,8"));
   assert.ok(context.calls.includes(`arc:${48 + 2 * scale},${62 - 28 * scale + scale},${4 * scale}`));
-  assert.ok(context.calls.includes("fillRect:47,43,3,3"));
-  assert.ok(context.calls.includes("fillRect:-1,19,3,3"));
+  assert.ok(context.calls.includes("fillRect:47,41,3,3"));
+  assert.ok(context.calls.includes("fillRect:-1,17,3,3"));
   assert.ok(context.calls.includes(`ellipse:0,${38 - 14 * scale},${5 * scale},${3 * scale}`));
-  assert.ok(context.calls.includes("fillRect:45,53,7,2"));
-  assert.ok(context.calls.includes("fillRect:46,56,5,1"));
+  assert.ok(context.calls.includes("fillRect:44,52,8,2"));
+  assert.ok(context.calls.includes("fillRect:45,55,6,1"));
 });
 
 test("walker outlines stay one screen pixel across camera zoom", () => {

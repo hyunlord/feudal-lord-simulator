@@ -23,7 +23,7 @@ import type { EstatePolicy } from "./townAgency.types";
 import { AGENCY_WEEK_TICKS } from "../content/townAgencyConfig";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { HOME_PETITION_KINDS } from "../content/stewardshipConfig";
-import { enabledChoices, openRegistryOffers, registryEntry } from "./registry";
+import { offerChoices, openRegistryOffers } from "./registry";
 import { hashSeed } from "./prng";
 import type { HomePetitionKind } from "./stewardship.types";
 
@@ -72,9 +72,7 @@ export function lordBotCommands(state: GameState): readonly LordBotCommand[] {
 /** LM-E9 (ER-4): an open registry offer answered with one of the choices that can be carried out (by the seed). */
 function registryMoves(state: GameState): LordBotCommand[] {
   return openRegistryOffers(state).flatMap(offer => {
-    const entry = registryEntry(offer.entryId);
-    if (entry === undefined) return [];
-    const enabled = enabledChoices(state, entry, offer.boundId, offer.id);
+    const enabled = offerChoices(state, offer);
     if (enabled.length === 0) return [];
     const choiceId = enabled[hashSeed(state.seed, `lord-bot-registry:${offer.id}`) % enabled.length]!;
     return [{ kind: "registry" as const, command: { type: "answer_registry_offer" as const, occurrenceId: offer.id, choiceId } }];

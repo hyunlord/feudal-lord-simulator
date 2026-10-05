@@ -1,0 +1,105 @@
+{
+  "status": "NUMERIC_PASS_NATIVE_REVIEW_PENDING",
+  "runs": {
+    "before": "astra-region-reference2-before-fd68f12",
+    "core": "astra-region-reference2-core-442b718"
+  },
+  "submissions": "exactly once each, sequential official heavy FIFO",
+  "counts": {
+    "before": {
+      "views": 2,
+      "aa": 2,
+      "errors": 0,
+      "inputHashes": 26928,
+      "actualExport": 26929,
+      "remotePrePostGuard": "PASS",
+      "localPostInputUnchanged": true
+    },
+    "core": {
+      "views": 2,
+      "aa": 2,
+      "errors": 0,
+      "inputHashes": 26949,
+      "actualExport": 26950,
+      "remotePrePostGuard": "PASS",
+      "localPostInputUnchanged": true
+    }
+  },
+  "totalViews": 4,
+  "independentOpens": 8,
+  "fullIdentityPairsEqual": 2,
+  "fullRgbaPairsEqual": 2,
+  "sourceUrlViewReceipts": [
+    {
+      "phase": "before",
+      "view": "region4-chalk_downs-summer-z06",
+      "url": "/assets/wave22/terrain/chalk_down_summer_a.png",
+      "requestDecodePaint": true
+    },
+    {
+      "phase": "before",
+      "view": "region4-chalk_downs-summer-z06",
+      "url": "/assets/wave22/terrain/chalk_down_summer_b.png",
+      "requestDecodePaint": true
+    },
+    {
+      "phase": "before",
+      "view": "region4-chalk_downs-winter-z06",
+      "url": "/assets/wave22/terrain/chalk_down_winter_a.png",
+      "requestDecodePaint": true
+    },
+    {
+      "phase": "before",
+      "view": "region4-chalk_downs-winter-z06",
+      "url": "/assets/wave22/terrain/chalk_down_winter_b.png",
+      "requestDecodePaint": true
+    },
+    {
+      "phase": "core",
+      "view": "region4-chalk_downs-summer-z06",
+      "url": "/assets/wave22/terrain/chalk_down_summer_a.png",
+      "requestDecodePaint": true
+    },
+    {
+      "phase": "core",
+      "view": "region4-chalk_downs-summer-z06",
+      "url": "/assets/wave22/terrain/chalk_down_summer_b.png",
+      "requestDecodePaint": true
+    },
+    {
+      "phase": "core",
+      "view": "region4-chalk_downs-winter-z06",
+      "url": "/assets/wave22/terrain/chalk_down_winter_a.png",
+      "requestDecodePaint": true
+    },
+    {
+      "phase": "core",
+      "view": "region4-chalk_downs-winter-z06",
+      "url": "/assets/wave22/terrain/chalk_down_winter_b.png",
+      "requestDecodePaint": true
+    }
+  ],
+  "rows": [
+    {
+      "name": "region4-chalk_downs-summer-z06",
+      "identityEqual": true,
+      "fullRgbaEqual": true,
+      "differingPixels": 0,
+      "before": "/Users/rexxa/fls-astra-renderB-region-before/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-summer-z06.png",
+      "core": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-summer-z06.png",
+      "rgbaSHA": "6fd7bb742f387f2dd0129aa338a3cf718c060d7ad1bd67f3830077f48688edb9"
+    },
+    {
+      "name": "region4-chalk_downs-winter-z06",
+      "identityEqual": true,
+      "fullRgbaEqual": true,
+      "differingPixels": 0,
+      "before": "/Users/rexxa/fls-astra-renderB-region-before/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-winter-z06.png",
+      "core": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-winter-z06.png",
+      "rgbaSHA": "b065d43f33f9c66b1561e1659594c7854c113837fb02cea3db32b9899ceb5d45"
+    }
+  ],
+  "original18Evidence": "preserved unchanged, not recaptured",
+  "future20Views": "output/art-architecture/region-core-reference2/views20-future-data-negative.json; spring DATA expectations not yet rewritten; appended2 are negatives",
+  "nativeReview": "NOT_PERFORMED_BY_THIS_TASK"
+}

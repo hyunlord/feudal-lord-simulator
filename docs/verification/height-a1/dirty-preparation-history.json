@@ -1,0 +1,98 @@
+{
+  "status": "ISOLATED_A1_AFTER_PREP_OFFLINE_PASS_RUNTIME_NOT_RUN",
+  "root": "/Users/rexxa/fls-astra-renderB-height-ed83-after",
+  "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+  "committed": false,
+  "trackedClean": false,
+  "exactApprovedTrackedDelta": [
+    {
+      "path": "src/render/walkerComposer.ts",
+      "before": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+      "after": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f"
+    },
+    {
+      "path": "tests/asset2Scales.test.ts",
+      "before": "5bbf07752148250236b5dacbe92bd710fc3d9370b30ceb0e7a671ec750bdc717",
+      "after": "a32598a822facfbfd4a148adbc5db3f82baf22d842d0de8848e39493fc1ca98a"
+    },
+    {
+      "path": "tests/phase35Rendering.test.ts",
+      "before": "236999a671ca7130217cb16732e97757879cf3f29c0657baa118cf739b8b2845",
+      "after": "3d89aa0c390e0d5d33d897252580074224770bfc18736dd0ea9b75ce9fb54208"
+    }
+  ],
+  "unrelatedTrackedUnchanged": 26838,
+  "patchSHA256": "a3d657ec717e21976dbf1bd69c5a6db9fb22ace701642c7d198573018412038d",
+  "patchBytes": 5818,
+  "freeze": {
+    "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/.omo/evidence/height-ed83-after-runtime-freeze.json",
+    "sha256": "22e5015abc09d5204f8d7d2e46386ec7be7ff099c970ea90e1497926bd0edba9",
+    "tracked": 26841,
+    "inputs": 26895,
+    "exports": 26896,
+    "lfs": 6384,
+    "expectedTrackedStatus": " M src/render/walkerComposer.ts\n M tests/asset2Scales.test.ts\n M tests/phase35Rendering.test.ts\n"
+  },
+  "baseline": {
+    "run": "astra-height-ed83-before-v1-ed83fe4",
+    "freezeSHA": "d8d85af257b9bba07763aa784f2cbbe1308569380674d7ba3a83dadfbe57eb8b",
+    "count": 18,
+    "allOriginalBytesEqual": true,
+    "bindingPath": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/baseline-binding.json",
+    "bindingSHA": "014d8f1aa5ed0d6c6de68e83ac97dcb16014dac638cc8faaa16fae29f86552f4"
+  },
+  "harness": [
+    {
+      "path": ".omo/evidence/height-ed83-after-runtime-guard.mjs",
+      "sha256": "86b69284ddb1d90e303dfd05a3cebc7322f6300c3d57433a207661f6135a17e4"
+    },
+    {
+      "path": ".omo/evidence/height-ed83-after-runtime-check.mjs",
+      "sha256": "ad4d2ff170dee16be4f803cb7a6503592e3b8901e5ed961c62980734af07a898"
+    },
+    {
+      "path": ".omo/evidence/height-ed83-after-runtime-run.mjs",
+      "sha256": "cefec9ac9529fb3c4a9b14f709e4057b3e36512faa7dee8f66ab917eb2ed039b"
+    },
+    {
+      "path": ".omo/evidence/height-ed83-after-runtime-test.mjs",
+      "sha256": "08ed6fe6655cc3f0434742d9e1ce736e8cba8b942cbb99793cf376d36fc416f5"
+    }
+  ],
+  "checks": {
+    "redApprovedTestsBeforeProduct": "exit1 intended old16 vs approved17.6 assertions",
+    "focused35": "PASS35/35",
+    "helperAndFixture": "PASS10/10",
+    "typecheck": 0,
+    "lint": 0,
+    "diffCheck": 0,
+    "syntax": "guard/check PASS"
+  },
+  "commands": {
+    "focused": "node_modules/.bin/tsx --test tests/asset2Scales.test.ts tests/nat4WalkerGait.test.ts tests/phase35Rendering.test.ts tests/runtimeActorAssets.test.ts tests/ui9b.test.ts tests/ui9bWalkers.test.ts tests/walkerComposer.test.ts",
+    "helpers": "node_modules/.bin/tsx --test output/height-a1-summer-zooms/verify.test.ts .omo/evidence/height-ed83-after-runtime-test.mjs",
+    "typecheck": "node_modules/.bin/tsc --noEmit",
+    "lint": "/Users/rexxa/fls-astra-renderB/tools/eslint/node_modules/.bin/eslint -c /Users/rexxa/fls-astra-renderB/tools/eslint/eslint.config.mjs --suppressions-location /Users/rexxa/fls-astra-renderB/tools/eslint/eslint-suppressions.json --max-warnings 0 src/render/walkerComposer.ts tests/asset2Scales.test.ts tests/phase35Rendering.test.ts",
+    "futureRuntime": "node_modules/.bin/tsx .omo/evidence/height-ed83-after-runtime-run.mjs 22e5015abc09d5204f8d7d2e46386ec7be7ff099c970ea90e1497926bd0edba9"
+  },
+  "runtimeContract": {
+    "variant": "after",
+    "figure": 17.6,
+    "worldScale": 0.55,
+    "zoomFloor": 0.65,
+    "payloadLOD": 0.8,
+    "views": 2,
+    "AA": "required independently2",
+    "AB": "same fullidentity except exact composerSHA; sameSize required, RGBA delta measured but equality not required",
+    "actorAndFootAnchor": "same admitted/fullpresented actor and screen center; approved realframe destination test proves1.1 aroundsourcefoot"
+  },
+  "limits": [
+    "No browser/DGX/commit/main product transfer. Parent separate review and execution authority required.",
+    "Current candidate contains exactly3 tracked edits and is NOT clean-commit evidence. Guard intentionally pins exact dirty status plus all bytes. A future commit requires explicit new HEAD/status freeze; current freeze must not be relabeled clean.",
+    "Baseline actual18 fully hash-bound. Historical winter remains prior evidence, not fresh ed83 after proof.",
+    "17.6/11.44 are nominal registration, not anatomical height. Cumulative URL lineage is not target pixel/window paint proof; lowzoom payload eligibilityfalse is not an actual negative-pixel claim.",
+    "A/B pixel differences are reported, not spatially declared safe automatically. Native review must judge changed body/cart visibility/contact; no automatic contact acceptance.",
+    "Full admitted engine offline vs actual full presented state remain separate.",
+    "Main publication/latest-HEAD migration validation remains a later gate."
+  ]
+}

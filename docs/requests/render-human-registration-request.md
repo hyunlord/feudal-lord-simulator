@@ -60,3 +60,14 @@ story child는 `storyWorldProps.ts:75–76,108–109`에서 family와 같은 배
 [JSON sidecar](render-human-registration-request.json)는 실제 검토한 sourceRoot 절대경로를 출처로 보존한다. 이는 다른 기계가 같은 경로를 만들어야 한다는 요구가 아니다. 나머지 paths는 repository root 기준 상대경로다. 격리 composer는 base commit `cd399e4abb26fc04b37dc27b5c61bec270934a7d`에 당시 A1 working-tree patch를 적용한 파일이며, base commit만으로 재현된다고 주장하지 않는다. 해당 patch와 고정 SHA256이 모두 일치할 때만 같은 snapshot으로 취급한다. 게시 본선 또는 렌더B 작업트리의 현행 파일로 조용히 대체하지 않는다.
 
 기존 [문23 요청](render-human-scale-art-request.md)과 [문23 JSON](render-human-scale-art-request.json)은 별도 건물 개구부·레이어 호환 범위다. 이 신체 등록 요청은 그 요청이나 기존 runtime 원본 영수증을 대체하지 않으며, A1 승인·아트 설치·실제 가시성 승인은 여전히 이 문서의 범위 밖이다.
+
+
+## 작업 가지 현행 배율 보충 — 등록 요청 범위 유지
+
+2026-10-05 작업 가지 상태 보충. Render B 작업 가지 `astra/renderB-region-cloud-height`의 기준은 `f03bde017f914123a373a6e2f62382c2312e110d`, runtime 기준은 `718dce4b60c5cb0c5be0178284034ed49bfc67f7`이다. 보호 본선 `d169d3fa`는 여전히 `VILLAGER_WORLD_SCALE=0.5`, `WALKER_FIGURE_PX=32*VILLAGER_WORLD_SCALE`로 등록 높이16을 사용한다. 작업 가지17.6은 본선 게시 상태가 아니다. HEIGHT/REGION/CLOUD 통합17 실제 검증은 대기 중이며 수락 완료가 아니다. 앞 절의 a392/90d9/db173 본선16 및 cd399+A1 격리17.6 설명은 해당 시점의 역사 기록이다. 이 작업 가지의 `src/render/walkerComposer.ts:32–35`는 `WALKER_FIGURE_PX=17.6`, `VILLAGER_WORLD_SCALE=17.6/32`를 사용한다. 이전 snapshot·패치·SHA·런타임 영수증을 현재 파일로 바꾸거나 기존 좁은 A1 증거를 소급 실패 처리하지 않는다.
+
+이는 등록 figure height의 적용 상태이며 모자·신발을 제외한 맨발 정수리–발바닥17.6 실측 증명이 아니다. 개별 story 인물은 같은 상수를 소비하지만 `storyWorldProps.ts:66`의 정적 manor 군중 전체는 독립0.55이며 사람별 등록이 미완료다. `plagueWorldProps.ts:211–226`의 bearer는17.6/65, bier는 별도0.65와 기존 offset±10/+6이다. 운구 손잡이 접촉, child/elder 상대 신체 기준, 실제 가림은 별도 미해결이다. ordinary 저줌 floor와 story의 기존 정책을 이 보충으로 변경하지 않는다.
+
+동반 JSON의12개 ID(일반 child/elder8·manor 군중1·bearer1·bier2), 원본/공개 SHA와 등록 요청은 변경하지 않는다. 해당 JSON의 historical snapshot·sourceRoot·A1 patch 재현 정보는 그대로 보존하며 현재 snapshot이라고 재표기하지 않는다. bare-head crown/sole/ground·지지 상태·연령 상대 기준·군중 사람별 region/가림·bier pole/grip 요청과 visible-measured/author-confirmed-hidden/unknown 구분도 유지한다. 미확정 점/비율은 null이며 alpha 끝점이나 prompt 인원수를 해부학/실제 인원 근거로 치환하지 않는다.
+
+이번 보충은 현행 배율 설명만 추가한다. 새 그림·원본 수정·두 번째 bearer·엔진 actor·제품 등록을 요청하지 않는다. 12개 authored 등록 B와23개 문 아트 C, story 저줌 정책 A2는 각각 별도이며 완료로 표시하지 않는다. 기존 좁은 A1 수락과 전체 신체/문/접촉 수락을 구분한다.

@@ -1,0 +1,528 @@
+{
+  "logicalBefore": 10,
+  "logicalCore": 10,
+  "physicalJPEG": 10,
+  "reencoded": false,
+  "rows": [
+    {
+      "name": "summer-normal-z1-t0",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z1-t0.png",
+          "bytes": 2360581,
+          "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z1-t0.jpg",
+          "bytes": 236713,
+          "sha256": "c99c1513367719525d87777381aee8daa925991cdb9bee445d783865aecc6caf"
+        },
+        "packagedJPEG": "images/summer-normal-z1-t0.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t0.png",
+          "bytes": 2360581,
+          "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t0.jpg",
+          "bytes": 236713,
+          "sha256": "c99c1513367719525d87777381aee8daa925991cdb9bee445d783865aecc6caf"
+        },
+        "packagedJPEG": "images/summer-normal-z1-t0.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/summer-normal-z1-t0.png",
+          "bytes": 2360581,
+          "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z1-t0.png",
+          "bytes": 2360581,
+          "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z1-t5000.png",
+          "bytes": 2358446,
+          "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z1-t5000.jpg",
+          "bytes": 236769,
+          "sha256": "6e3e901db01cbd9be57b2f27488646cfd3decf6de904b6f64ed431235a36f5bf"
+        },
+        "packagedJPEG": "images/summer-normal-z1-t5000.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t5000.png",
+          "bytes": 2358446,
+          "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t5000.jpg",
+          "bytes": 236769,
+          "sha256": "6e3e901db01cbd9be57b2f27488646cfd3decf6de904b6f64ed431235a36f5bf"
+        },
+        "packagedJPEG": "images/summer-normal-z1-t5000.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/summer-normal-z1-t5000.png",
+          "bytes": 2358446,
+          "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z1-t5000.png",
+          "bytes": 2358446,
+          "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z06-t0.png",
+          "bytes": 2556089,
+          "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z06-t0.jpg",
+          "bytes": 202959,
+          "sha256": "08f40a1499171083129381971cb8d6e7c4497bfe532265e62a42ab6261472c04"
+        },
+        "packagedJPEG": "images/summer-normal-z06-t0.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t0.png",
+          "bytes": 2556089,
+          "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t0.jpg",
+          "bytes": 202959,
+          "sha256": "08f40a1499171083129381971cb8d6e7c4497bfe532265e62a42ab6261472c04"
+        },
+        "packagedJPEG": "images/summer-normal-z06-t0.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/summer-normal-z06-t0.png",
+          "bytes": 2556089,
+          "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z06-t0.png",
+          "bytes": 2556089,
+          "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "summer-normal-z06-t5000",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z06-t5000.png",
+          "bytes": 2555186,
+          "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z06-t5000.jpg",
+          "bytes": 202442,
+          "sha256": "5a192008c166e51fd87c572953e0a5b73b9417af4b931ba36beae050b30d8656"
+        },
+        "packagedJPEG": "images/summer-normal-z06-t5000.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t5000.png",
+          "bytes": 2555186,
+          "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t5000.jpg",
+          "bytes": 202442,
+          "sha256": "5a192008c166e51fd87c572953e0a5b73b9417af4b931ba36beae050b30d8656"
+        },
+        "packagedJPEG": "images/summer-normal-z06-t5000.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/summer-normal-z06-t5000.png",
+          "bytes": 2555186,
+          "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z06-t5000.png",
+          "bytes": 2555186,
+          "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z1-t0.png",
+          "bytes": 2496029,
+          "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z1-t0.jpg",
+          "bytes": 206053,
+          "sha256": "8fb64e624e21a93f63985922d6c2ed38a023149610f40ea0f6066418cbe6c9ee"
+        },
+        "packagedJPEG": "images/winter-normal-z1-t0.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t0.png",
+          "bytes": 2496029,
+          "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t0.jpg",
+          "bytes": 206053,
+          "sha256": "8fb64e624e21a93f63985922d6c2ed38a023149610f40ea0f6066418cbe6c9ee"
+        },
+        "packagedJPEG": "images/winter-normal-z1-t0.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/winter-normal-z1-t0.png",
+          "bytes": 2496029,
+          "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z1-t0.png",
+          "bytes": 2496029,
+          "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "winter-normal-z1-t5000",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z1-t5000.png",
+          "bytes": 2492457,
+          "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z1-t5000.jpg",
+          "bytes": 207077,
+          "sha256": "1f36a4ee242ffa9170a6c485ad04499bf56c707eaa33d6121450f59e00592f02"
+        },
+        "packagedJPEG": "images/winter-normal-z1-t5000.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t5000.png",
+          "bytes": 2492457,
+          "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t5000.jpg",
+          "bytes": 207077,
+          "sha256": "1f36a4ee242ffa9170a6c485ad04499bf56c707eaa33d6121450f59e00592f02"
+        },
+        "packagedJPEG": "images/winter-normal-z1-t5000.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/winter-normal-z1-t5000.png",
+          "bytes": 2492457,
+          "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z1-t5000.png",
+          "bytes": 2492457,
+          "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z06-t0.png",
+          "bytes": 2312083,
+          "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z06-t0.jpg",
+          "bytes": 172428,
+          "sha256": "e74f577efee1915b4ccb45845577ecdca6ed46e97098f9becacb813a36ea37eb"
+        },
+        "packagedJPEG": "images/winter-normal-z06-t0.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t0.png",
+          "bytes": 2312083,
+          "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t0.jpg",
+          "bytes": 172428,
+          "sha256": "e74f577efee1915b4ccb45845577ecdca6ed46e97098f9becacb813a36ea37eb"
+        },
+        "packagedJPEG": "images/winter-normal-z06-t0.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/winter-normal-z06-t0.png",
+          "bytes": 2312083,
+          "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z06-t0.png",
+          "bytes": 2312083,
+          "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "winter-normal-z06-t5000",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z06-t5000.png",
+          "bytes": 2311614,
+          "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z06-t5000.jpg",
+          "bytes": 173224,
+          "sha256": "41e8a23f39fa1b41c74395b3eadda21d48910b5558a3b9b17b846d2ff6adee9a"
+        },
+        "packagedJPEG": "images/winter-normal-z06-t5000.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t5000.png",
+          "bytes": 2311614,
+          "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t5000.jpg",
+          "bytes": 173224,
+          "sha256": "41e8a23f39fa1b41c74395b3eadda21d48910b5558a3b9b17b846d2ff6adee9a"
+        },
+        "packagedJPEG": "images/winter-normal-z06-t5000.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/winter-normal-z06-t5000.png",
+          "bytes": 2311614,
+          "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z06-t5000.png",
+          "bytes": 2311614,
+          "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/spring-wet-negative-z1-t0.png",
+          "bytes": 2766202,
+          "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/spring-wet-negative-z1-t0.jpg",
+          "bytes": 245834,
+          "sha256": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011"
+        },
+        "packagedJPEG": "images/spring-wet-negative-z1-t0.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/spring-wet-negative-z1-t0.png",
+          "bytes": 2766202,
+          "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/spring-wet-negative-z1-t0.jpg",
+          "bytes": 245834,
+          "sha256": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011"
+        },
+        "packagedJPEG": "images/spring-wet-negative-z1-t0.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/spring-wet-negative-z1-t0.png",
+          "bytes": 2766202,
+          "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/spring-wet-negative-z1-t0.png",
+          "bytes": 2766202,
+          "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "before": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-off-negative-z1-t0.png",
+          "bytes": 2341314,
+          "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-off-negative-z1-t0.jpg",
+          "bytes": 237265,
+          "sha256": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f"
+        },
+        "packagedJPEG": "images/summer-off-negative-z1-t0.jpg"
+      },
+      "core": {
+        "native": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-off-negative-z1-t0.png",
+          "bytes": 2341314,
+          "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+        },
+        "jpeg": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-off-negative-z1-t0.jpg",
+          "bytes": 237265,
+          "sha256": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f"
+        },
+        "packagedJPEG": "images/summer-off-negative-z1-t0.jpg"
+      },
+      "repeat": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/repeat/summer-off-negative-z1-t0.png",
+          "bytes": 2341314,
+          "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+        },
+        "core": {
+          "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-off-negative-z1-t0.png",
+          "bytes": 2341314,
+          "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+        }
+      },
+      "dedupReason": "before/core JPEG SHA256 identical; copied original bytes once",
+      "rgbaDelta": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identityEqual": true,
+      "commonSemanticsEqual": true
+    }
+  ]
+}

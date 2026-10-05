@@ -1,0 +1,2204 @@
+{
+  "status": "PREPARED_REQUEST_NOT_PUBLISHED",
+  "head": "c20375d215a2d518df0fced580bd8a73386bbde8",
+  "purpose": "Engine/read-model binding inquiry; not instruction to implement all facilities",
+  "destinationRecommendation": "Append one facilities49 subsection to existing docs/requests/render-art-read-models.md if parent approves; keep this exact49 inventory sidecar",
+  "counts": {
+    "total": 49,
+    "body": 25,
+    "active": 24,
+    "authoredRegistrationPresent": 49,
+    "engineImplementationRequested": 0,
+    "assetRedrawRequested": 0,
+    "chapelSpecialCase": 2,
+    "marketCrossSpecialCase": 4,
+    "otherGrouped": 43
+  },
+  "existingRequestOverlap": [
+    {
+      "path": "docs/requests/render-art-read-models.md",
+      "lines": "41–57",
+      "overlap": "landmark44 bridge chapel/inn identities; reuse query semantics, distinct source IDs, no double-count."
+    },
+    {
+      "path": "docs/requests/render-art-read-models.md",
+      "lines": "73–85",
+      "overlap": "pasture3 placement principles only, different assets."
+    },
+    {
+      "path": "docs/requests/trades-art.md",
+      "overlap": "household trades are not independent facility identities."
+    }
+  ],
+  "sourceDocuments": {
+    "docs/requests/render-art-read-models.md": "5e0a3b518bbb8655f800261676ef5bcde9cc06bb2a6381aba9a11823eec7d73c",
+    "docs/requests/trades-art.md": "effa70f7ccc89e1e7e60525b067cf262ea9eb12b2105839b3812649046c48f47",
+    "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md": "1c1630c8842f93062b655f527c8fc607742720e333a3b688aa76ffb395766671"
+  },
+  "groups": [
+    {
+      "id": "chapel_visual",
+      "count": 2,
+      "originalIds": [
+        "I0213",
+        "I0243"
+      ],
+      "facilities": [
+        "chantry_chapel"
+      ],
+      "minimumReadMeaning": "시각 대체 판단을 우선: 일반 chapel 본체로 허용되는지. active는 별도로 실제 예식/문개방 등 대상 귀속 활동 필요.",
+      "existingMismatch": "chapel은1×1이지만 productionnull/workers0; 본체만은 새엔진 없이 renderer 판단 가능."
+    },
+    {
+      "id": "market_cross",
+      "count": 4,
+      "originalIds": [
+        "I0225",
+        "I0226",
+        "I0251",
+        "I0252"
+      ],
+      "facilities": [
+        "market_cross_stone",
+        "market_cross_wood"
+      ],
+      "minimumReadMeaning": "실제 market에 귀속되는cross 존재/사용허용 공간·방향, stone/wood 의미. active는 기존 sale 후보 사실을 사용할 수 있는지 원본 의미 확인.",
+      "existingMismatch": "현재2×2market 전체그림과 원본1×1cross가 다름. 기존sale predicate 있음; 신규activity를 일괄 요구하지 않음."
+    },
+    {
+      "id": "production",
+      "count": 22,
+      "originalIds": [
+        "I0206",
+        "I0207",
+        "I0208",
+        "I0209",
+        "I0212",
+        "I0214",
+        "I0215",
+        "I0217",
+        "I0222",
+        "I0228",
+        "I0230",
+        "I0231",
+        "I0232",
+        "I0233",
+        "I0234",
+        "I0242",
+        "I0245",
+        "I0256",
+        "I0257",
+        "I0258",
+        "I0259",
+        "I0260"
+      ],
+      "facilities": [
+        "communal_oven",
+        "charcoal_clamp",
+        "lime_kiln",
+        "pottery_kiln",
+        "smithy_a",
+        "smithy_b",
+        "cordwainer",
+        "tailor",
+        "tannery_a",
+        "tannery_b",
+        "butcher_shambles"
+      ],
+      "minimumReadMeaning": "실재 시설/작업장 대상ID 및 기능 의미, 부지 귀속; active가 나타내는 현재 작업의 유효성/종료/정지 이유. 이미 존재하는 작업모델이면 selector경로만 응답.",
+      "existingMismatch": "malt_kiln은맥아, mill은제분, dyehouse는직물염색; timber/stone/household직업으로 다른생산시설을 만들지 않음."
+    },
+    {
+      "id": "inn",
+      "count": 4,
+      "originalIds": [
+        "I0220",
+        "I0221",
+        "I0247",
+        "I0248"
+      ],
+      "facilities": [
+        "inn_a",
+        "inn_b"
+      ],
+      "minimumReadMeaning": "실제 여관 대상/영업 의미·부지. active의 사람/문/난방 신호가 어떤 실제상태를 표현하는지. 기존landmark 여관요청과 같은binding을 재사용.",
+      "existingMismatch": "L4 inn 외형/alehouse occupation만으로3×2여관 영업 사실이 아님."
+    },
+    {
+      "id": "institutions",
+      "count": 10,
+      "originalIds": [
+        "I0210",
+        "I0219",
+        "I0229",
+        "I0235",
+        "I0236",
+        "I0240",
+        "I0246",
+        "I0254",
+        "I0261",
+        "I0262"
+      ],
+      "facilities": [
+        "almshouse",
+        "hospital",
+        "priory_cell",
+        "tithe_barn",
+        "tolbooth"
+      ],
+      "minimumReadMeaning": "기존기관이 있다면 안정대상ID·기관종류·사용부지와 각 active 신호의 실제활동/사용 의미. 집계만 존재하면 특정건물로의 연결부재를 명시.",
+      "existingMismatch": "chapel/church/manor/granary/market로 구빈·치료·수도원·십일조·통행세기관을 대신하지 않음."
+    },
+    {
+      "id": "infrastructure",
+      "count": 5,
+      "originalIds": [
+        "I0211",
+        "I0216",
+        "I0218",
+        "I0241",
+        "I0244"
+      ],
+      "facilities": [
+        "conduit_house",
+        "ditch_drain",
+        "bridge_chapel"
+      ],
+      "minimumReadMeaning": "실제 수도시설/배수segment/다리부속 대상과 공간·연결/축. bridge_chapel은 기존landmark bridge요청과 대상관계를 공유하되 원본module은별도.",
+      "existingMismatch": "well/물terrain/bridge존재만으로 conduit/drain/bridge chapel 존재를 확정하지 않음. ditch는active없음."
+    },
+    {
+      "id": "shrine",
+      "count": 2,
+      "originalIds": [
+        "I0227",
+        "I0253"
+      ],
+      "facilities": [
+        "pilgrim_shrine"
+      ],
+      "minimumReadMeaning": "실제성소 대상·허용자리; active에 그려진 순례/촛불행위를 나타낼 수 있는 실제사용상태.",
+      "existingMismatch": "church/chapel 존재·달력만으로 순례활동 생성 금지."
+    }
+  ],
+  "responseContract": [
+    "Existing selector/type path and fact provenance, or explicit unsupported. No new API/field mandated.",
+    "Actual target linkage and meaning; source of completion/activity and cancellation. Static bodies need no invented activity.",
+    "Actual admitted save/witness where available; no mocked occupation/facility/tick to claim reachability.",
+    "Rendering coordinates/art IDs/scale remain Render B-owned; do not store PNG names in engine."
+  ],
+  "rows": [
+    {
+      "originalId": "I0206",
+      "originalCsvLine": 207,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/active/charcoal_clamp-active-v1.png",
+      "sourceSHA256": "013db6798c3b4a4710399056f4ff5d540238f0bd2245c1b69959b445523c60c4",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "charcoal_clamp",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        74,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "logging_camp timber와 charcoal 생산 다름; charcoal kind/stock 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:13",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:386",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:23"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0207",
+      "originalCsvLine": 208,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/active/communal_oven-active-v1.png",
+      "sourceSHA256": "ab8c32bac0c297e70d1549b54005fb4a238bc3c17f669048c21ea657fb1a4e9f",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "communal_oven",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        91,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "mill flour와 공동제빵 서비스는 다름; bread 생산/oven kind 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:4",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:74",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:24"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0208",
+      "originalCsvLine": 209,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/active/lime_kiln-active-v1.png",
+      "sourceSHA256": "3edba3473dc0f33debbaaa79a4d940f3f7580ec3a88749c97050b2b6c340599b",
+      "pngNativeCanvas": [
+        288,
+        264
+      ],
+      "facility": "lime_kiln",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        133,
+        255
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "malt_kiln barley→malt와 석회생산 다름; masonry/stone 대체도 아님. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:12",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:351",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:25"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0209",
+      "originalCsvLine": 210,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/active/pottery_kiln-active-v1.png",
+      "sourceSHA256": "5acdfdd6c899e6587de8a49152139e28f27bd9132ff8d0ee831ba09231925101",
+      "pngNativeCanvas": [
+        288,
+        252
+      ],
+      "facility": "pottery_kiln",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        201,
+        243
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "malt kiln과 도기생산 다름; 도기 kind/production 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:14",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:421",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:26"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0210",
+      "originalCsvLine": 211,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/almshouse-v1.png",
+      "sourceSHA256": "9f756b1011dba1d33dca6b87f55079bc8a8ca491edad479d69b39fa4aa5e4a33",
+      "pngNativeCanvas": [
+        288,
+        200
+      ],
+      "facility": "almshouse",
+      "layer": "body",
+      "authoredPivot": [
+        76,
+        191
+      ],
+      "authoredFootprint": [
+        3,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "구빈기관 kind/입소/가동 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:18",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:561",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:27"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0211",
+      "originalCsvLine": 212,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/bridge_chapel-v1.png",
+      "sourceSHA256": "aac61294b358f64235c0aff7b75a52a8f500add8bc3155dce91b732580468f2e",
+      "pngNativeCanvas": [
+        160,
+        192
+      ],
+      "facility": "bridge_chapel",
+      "layer": "body",
+      "authoredPivot": [
+        59,
+        183
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "new intended module footprint: 1x1 chapel, adjacent bridge excluded",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "chapel1×1과 숫자만 같음. 인접다리 부착/접근 방향 사실·placement 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:26",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:841",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:28"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "infrastructure"
+    },
+    {
+      "originalId": "I0212",
+      "originalCsvLine": 213,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/butcher_shambles-v1.png",
+      "sourceSHA256": "4c6e2cdc1b1bb0939cf45a4270fa5b4b34ff3ff55b63e4fffa763d3e0d16c281",
+      "pngNativeCanvas": [
+        224,
+        176
+      ],
+      "facility": "butcher_shambles",
+      "layer": "body",
+      "authoredPivot": [
+        67,
+        167
+      ],
+      "authoredFootprint": [
+        2,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market sale가 도축생산/정육시설 사실은 아님.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:15",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:456",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:29"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0213",
+      "originalCsvLine": 214,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/chantry_chapel-v1.png",
+      "sourceSHA256": "080b53329b83c2d15b6493208379072481adba7abcdf93175ec2aefc7d41be47",
+      "pngNativeCanvas": [
+        160,
+        176
+      ],
+      "facility": "chantry_chapel",
+      "layer": "body",
+      "authoredPivot": [
+        64,
+        167
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "chapel 후보는1×1이나 chantry 전용 설립/예식 의미와 active 문개방 사실 없음. 일반chapel 동일시 미승인.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:20",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:631",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:30"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "chapel_visual"
+    },
+    {
+      "originalId": "I0214",
+      "originalCsvLine": 215,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/charcoal_clamp-v1.png",
+      "sourceSHA256": "97aedc00809bdf89ad68f8e3faa2cbf4ef94cd5a4d7e41e7a59408967cdfd35e",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "charcoal_clamp",
+      "layer": "body",
+      "authoredPivot": [
+        74,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "logging_camp timber와 charcoal 생산 다름; charcoal kind/stock 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:13",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:386",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:31"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0215",
+      "originalCsvLine": 216,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/communal_oven-v1.png",
+      "sourceSHA256": "4b1b0960e9654539b4ecb3f3bc4358ab993742b3ad10b408571ca448d30dd43b",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "communal_oven",
+      "layer": "body",
+      "authoredPivot": [
+        91,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "mill flour와 공동제빵 서비스는 다름; bread 생산/oven kind 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:4",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:74",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:32"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0216",
+      "originalCsvLine": 217,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/conduit_house-v1.png",
+      "sourceSHA256": "42811aca431c3be1bc0daf9c28f8b7fea6626c5e6e6f2c24158a4b073d356d31",
+      "pngNativeCanvas": [
+        160,
+        176
+      ],
+      "facility": "conduit_house",
+      "layer": "body",
+      "authoredPivot": [
+        69,
+        167
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "well은 물 공급점이며 수도관/급수관집 동일 의미·연결 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:27",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:873",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:33"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "infrastructure"
+    },
+    {
+      "originalId": "I0217",
+      "originalCsvLine": 218,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/cordwainer-v1.png",
+      "sourceSHA256": "44567853642d5ecb8ee19d9ec4e0f41897736ca8ac5d5745a9dfdd64e2d89b9f",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "cordwainer",
+      "layer": "body",
+      "authoredPivot": [
+        82,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "household 직업이 독립 제화시설/생산 사실을 제공하지 않음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:8",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:211",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:34"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0218",
+      "originalCsvLine": 219,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/ditch_drain-v1.png",
+      "sourceSHA256": "a31bd52910edbc49843a36c4fa40be5dae334874129d60f536bb664a2be62d9c",
+      "pngNativeCanvas": [
+        128,
+        64
+      ],
+      "facility": "ditch_drain",
+      "layer": "body",
+      "authoredPivot": [
+        81,
+        52
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "new intended module footprint: 1x1 envelope for128x64 repeat module",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "반복1×1배수module; BuildingKind가 아니며 수로 방향/연결/활성 의미 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:5",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:109",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:35"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "infrastructure"
+    },
+    {
+      "originalId": "I0219",
+      "originalCsvLine": 220,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/hospital-v1.png",
+      "sourceSHA256": "05a89e58b2ed323514db85c52016051f568c3a4c2c0e312818b574821a061fdb",
+      "pngNativeCanvas": [
+        352,
+        272
+      ],
+      "facility": "hospital",
+      "layer": "body",
+      "authoredPivot": [
+        273,
+        263
+      ],
+      "authoredFootprint": [
+        3,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "병원 kind/입원/치료활동 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:19",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:596",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:36"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0220",
+      "originalCsvLine": 221,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/inn_a-v1.png",
+      "sourceSHA256": "805ee5d3aa8739018a7495dc4034f47b29f309c74acd337d7e197722f824ed9f",
+      "pngNativeCanvas": [
+        352,
+        280
+      ],
+      "facility": "inn_a",
+      "layer": "body",
+      "authoredPivot": [
+        164,
+        271
+      ],
+      "authoredFootprint": [
+        3,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "여관 kind/투숙/마구간 활동 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:2",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:4",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:37"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "inn"
+    },
+    {
+      "originalId": "I0221",
+      "originalCsvLine": 222,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/inn_b-v1.png",
+      "sourceSHA256": "bf5d87b560373de18c3250bd2ff4944ade46594e12bb79714472820c489755a6",
+      "pngNativeCanvas": [
+        352,
+        280
+      ],
+      "facility": "inn_b",
+      "layer": "body",
+      "authoredPivot": [
+        206,
+        271
+      ],
+      "authoredFootprint": [
+        3,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "여관 kind/투숙/마구간 활동 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:3",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:39",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:38"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "inn"
+    },
+    {
+      "originalId": "I0222",
+      "originalCsvLine": 223,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/lime_kiln-v1.png",
+      "sourceSHA256": "423509fe49d224d68ed75a02c783226efeaa61d36bb02b0fd8a49b6c7faaffe3",
+      "pngNativeCanvas": [
+        288,
+        264
+      ],
+      "facility": "lime_kiln",
+      "layer": "body",
+      "authoredPivot": [
+        133,
+        255
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "malt_kiln barley→malt와 석회생산 다름; masonry/stone 대체도 아님.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:12",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:351",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:39"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0225",
+      "originalCsvLine": 226,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/market_cross_stone-v1.png",
+      "sourceSHA256": "5583e11a0d6693e93e237d127e2b2fd2a53b8935cfd502a7407b42039b33a858",
+      "pngNativeCanvas": [
+        144,
+        176
+      ],
+      "facility": "market_cross_stone",
+      "layer": "body",
+      "authoredPivot": [
+        71,
+        167
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market2×2 stall 본체와 다른1×1 독립cross. stone/wood 선택 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:17",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:526",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:40"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "market_cross"
+    },
+    {
+      "originalId": "I0226",
+      "originalCsvLine": 227,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/market_cross_wood-v1.png",
+      "sourceSHA256": "0c4ac1e67a74162bce14e7d11f1e536d6921a02ce3cbff8719e31ff6fc6fdd2c",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "market_cross_wood",
+      "layer": "body",
+      "authoredPivot": [
+        69,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market2×2 stall 본체와 다른1×1 독립cross. 실제sale predicate는 있으나 cross 소유/위치/교체 의미 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:16",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:491",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:41"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "market_cross"
+    },
+    {
+      "originalId": "I0227",
+      "originalCsvLine": 228,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/pilgrim_shrine-v1.png",
+      "sourceSHA256": "27f9a582e783549658e29ad34409eb95f2099214e955aeec603d9859e616a509",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "pilgrim_shrine",
+      "layer": "body",
+      "authoredPivot": [
+        72,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "chapel/church 존재는 순례자 활동이나 성소 placement 사실이 아님.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:29",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:943",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:42"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "shrine"
+    },
+    {
+      "originalId": "I0228",
+      "originalCsvLine": 229,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/pottery_kiln-v1.png",
+      "sourceSHA256": "eff1cb20173f85c47bab95f1225524136a84a27727add880a5ee4cb2a101a643",
+      "pngNativeCanvas": [
+        288,
+        252
+      ],
+      "facility": "pottery_kiln",
+      "layer": "body",
+      "authoredPivot": [
+        201,
+        243
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "malt kiln과 도기생산 다름; 도기 kind/production 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:14",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:421",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:43"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0229",
+      "originalCsvLine": 230,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/priory_cell-v1.png",
+      "sourceSHA256": "0a212871e6f9396557e2db1798e10065275ab405603d3cf3088b3c305b3e0c5d",
+      "pngNativeCanvas": [
+        480,
+        352
+      ],
+      "facility": "priory_cell",
+      "layer": "body",
+      "authoredPivot": [
+        284,
+        343
+      ],
+      "authoredFootprint": [
+        4,
+        3
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "church와4×3수도원 부속기관 의미·활동 다름.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:28",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:908",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:44"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0230",
+      "originalCsvLine": 231,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/smithy_a-v1.png",
+      "sourceSHA256": "f915bfe2b4fea0d6e2dff33f0a766a6b271b66cd6f726764a25434ada68efed9",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "smithy_a",
+      "layer": "body",
+      "authoredPivot": [
+        80,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "대장간 kind/metal 생산/가동 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:6",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:141",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:45"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0231",
+      "originalCsvLine": 232,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/smithy_b-v1.png",
+      "sourceSHA256": "e214148379a8394dd3da2c4c28a415ddcb5902d5a1f0d560396b11a4dce6d6ac",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "smithy_b",
+      "layer": "body",
+      "authoredPivot": [
+        83,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "대장간 kind/metal 생산/가동 사실 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:7",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:176",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:46"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0232",
+      "originalCsvLine": 233,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/tailor-v1.png",
+      "sourceSHA256": "aa9b26d7203f1c6814cfe2a26d0f97c6ab1ac1da0bad053f4dab18e3005f0146",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "tailor",
+      "layer": "body",
+      "authoredPivot": [
+        76,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "weaver_house textile 생산 및 household tailor occupation이 독립tailor시설 가동 사실은 아님.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:9",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:246",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:47"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0233",
+      "originalCsvLine": 234,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/tannery_a-v1.png",
+      "sourceSHA256": "251c4094f59a11eae6df6cfd3ef10db9262ac34fcc77b90a1149c7055e2ec88c",
+      "pngNativeCanvas": [
+        288,
+        228
+      ],
+      "facility": "tannery_a",
+      "layer": "body",
+      "authoredPivot": [
+        249,
+        219
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "dyehouse cloth/dyes와 무두질은 다름; 물가 tannery kind/가동 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:10",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:281",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:48"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0234",
+      "originalCsvLine": 235,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/tannery_b-v1.png",
+      "sourceSHA256": "e34ed3dcb6f5874f7ac7c0ca0cb34c9fa68281243e98c967afe48583d07c90e5",
+      "pngNativeCanvas": [
+        288,
+        228
+      ],
+      "facility": "tannery_b",
+      "layer": "body",
+      "authoredPivot": [
+        172,
+        219
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "dyehouse cloth/dyes와 무두질은 다름; 물가 tannery kind/가동 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:11",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:316",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:49"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0235",
+      "originalCsvLine": 236,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/tithe_barn-v1.png",
+      "sourceSHA256": "22e65f05f11bf018a02027eceb038146e5bd5533dff856d04be8a7c9f98bd9ff",
+      "pngNativeCanvas": [
+        416,
+        264
+      ],
+      "facility": "tithe_barn",
+      "layer": "body",
+      "authoredPivot": [
+        116,
+        255
+      ],
+      "authoredFootprint": [
+        4,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "granary/storage와 달리 십일조 기관 의미·4×2소유 footprint 없음.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:25",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:806",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:50"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0236",
+      "originalCsvLine": 237,
+      "sourcePath": "assets-inbox/wave12/candidates-20260926/assets/bld/tolbooth-v1.png",
+      "sourceSHA256": "4443717041eec611380cceab5df39050223ae4d4c981bce160a54ec33dbcfea7",
+      "pngNativeCanvas": [
+        288,
+        292
+      ],
+      "facility": "tolbooth",
+      "layer": "body",
+      "authoredPivot": [
+        104,
+        283
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market/manor와 toll기관 의미·가동 다름.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:24",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:771",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:51"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0240",
+      "originalCsvLine": 241,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/almshouse-active-v1.png",
+      "sourceSHA256": "e0724b8f8bd638d52401fd8fe0b3b5e3420992de44239c276a7272f5150993cd",
+      "pngNativeCanvas": [
+        288,
+        200
+      ],
+      "facility": "almshouse",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        76,
+        191
+      ],
+      "authoredFootprint": [
+        3,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "구빈기관 kind/입소/가동 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:18",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:561",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:52"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0241",
+      "originalCsvLine": 242,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/bridge_chapel-active-v1.png",
+      "sourceSHA256": "124418e425dec3508e8d8b6c3df4499c7e24e339183a69efec5ad6bc12324b6a",
+      "pngNativeCanvas": [
+        160,
+        192
+      ],
+      "facility": "bridge_chapel",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        59,
+        183
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "new intended module footprint: 1x1 chapel, adjacent bridge excluded",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "chapel1×1과 숫자만 같음. 인접다리 부착/접근 방향 사실·placement 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:26",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:841",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:53"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "infrastructure"
+    },
+    {
+      "originalId": "I0242",
+      "originalCsvLine": 243,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/butcher_shambles-active-v1.png",
+      "sourceSHA256": "b632fe95d17587aa1513f4dda7e0b561277e8e35ffda900ef48110805793f0cd",
+      "pngNativeCanvas": [
+        224,
+        176
+      ],
+      "facility": "butcher_shambles",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        67,
+        167
+      ],
+      "authoredFootprint": [
+        2,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market sale가 도축생산/정육시설 사실은 아님. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:15",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:456",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:54"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0243",
+      "originalCsvLine": 244,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/chantry_chapel-active-v1.png",
+      "sourceSHA256": "fa1c59ea6be1df15ae47182b813074aba2bf33fd04bdc4fcf25c3e361707f1d9",
+      "pngNativeCanvas": [
+        160,
+        176
+      ],
+      "facility": "chantry_chapel",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        64,
+        167
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "chapel 후보는1×1이나 chantry 전용 설립/예식 의미와 active 문개방 사실 없음. 일반chapel 동일시 미승인. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:20",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:631",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:55"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "chapel_visual"
+    },
+    {
+      "originalId": "I0244",
+      "originalCsvLine": 245,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/conduit_house-active-v1.png",
+      "sourceSHA256": "c02601948d7ce1ea3cf36e9c835f4e04ad5359454411775b1fd3c7cc085bb58a",
+      "pngNativeCanvas": [
+        160,
+        176
+      ],
+      "facility": "conduit_house",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        69,
+        167
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "well은 물 공급점이며 수도관/급수관집 동일 의미·연결 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:27",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:873",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:56"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "infrastructure"
+    },
+    {
+      "originalId": "I0245",
+      "originalCsvLine": 246,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/cordwainer-active-v1.png",
+      "sourceSHA256": "3a81e27ca3bba621a40323e1880bbb4c87aeda244786c37ac01cbae120881ea2",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "cordwainer",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        82,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "household 직업이 독립 제화시설/생산 사실을 제공하지 않음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:8",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:211",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:57"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0246",
+      "originalCsvLine": 247,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/hospital-active-v1.png",
+      "sourceSHA256": "2ec3e41f070a60dc657de4b21c0c467384e70fa65a41dccebfa8676306fb3078",
+      "pngNativeCanvas": [
+        352,
+        272
+      ],
+      "facility": "hospital",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        273,
+        263
+      ],
+      "authoredFootprint": [
+        3,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "병원 kind/입원/치료활동 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:19",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:596",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:58"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0247",
+      "originalCsvLine": 248,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/inn_a-active-v1.png",
+      "sourceSHA256": "ad89cf31f453338a18fe194e11d2cc497fd0d6eee8e0238b1dae640d340f9f3c",
+      "pngNativeCanvas": [
+        352,
+        280
+      ],
+      "facility": "inn_a",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        164,
+        271
+      ],
+      "authoredFootprint": [
+        3,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "여관 kind/투숙/마구간 활동 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:2",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:4",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:59"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "inn"
+    },
+    {
+      "originalId": "I0248",
+      "originalCsvLine": 249,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/inn_b-active-v1.png",
+      "sourceSHA256": "71ea2a73d401f913bc364637ee76317f21ae80fecad901ee1cda3814fd349b67",
+      "pngNativeCanvas": [
+        352,
+        280
+      ],
+      "facility": "inn_b",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        206,
+        271
+      ],
+      "authoredFootprint": [
+        3,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "여관 kind/투숙/마구간 활동 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:3",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:39",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:60"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "inn"
+    },
+    {
+      "originalId": "I0251",
+      "originalCsvLine": 252,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/market_cross_stone-active-v1.png",
+      "sourceSHA256": "e8c53a1d203e425dab2ab592f10aee41fa00fd0e4b7285dcab4db944430d775d",
+      "pngNativeCanvas": [
+        144,
+        176
+      ],
+      "facility": "market_cross_stone",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        71,
+        167
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market2×2 stall 본체와 다른1×1 독립cross. stone/wood 선택 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:17",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:526",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:61"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "market_cross"
+    },
+    {
+      "originalId": "I0252",
+      "originalCsvLine": 253,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/market_cross_wood-active-v1.png",
+      "sourceSHA256": "af6f4cb7b5d0c987478ba800fc387446974e1da2ba0fd4425e37ca648b84dfff",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "market_cross_wood",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        69,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market2×2 stall 본체와 다른1×1 독립cross. 실제sale predicate는 있으나 cross 소유/위치/교체 의미 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:16",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:491",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:62"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "market_cross"
+    },
+    {
+      "originalId": "I0253",
+      "originalCsvLine": 254,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/pilgrim_shrine-active-v1.png",
+      "sourceSHA256": "f6369e0b4f43cef0dc6b3a1e5831ed22045e69c6846a37d992b1b8e111ee5ff9",
+      "pngNativeCanvas": [
+        144,
+        160
+      ],
+      "facility": "pilgrim_shrine",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        72,
+        151
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "chapel/church 존재는 순례자 활동이나 성소 placement 사실이 아님. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:29",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:943",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:63"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "shrine"
+    },
+    {
+      "originalId": "I0254",
+      "originalCsvLine": 255,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/priory_cell-active-v1.png",
+      "sourceSHA256": "5ddfef85574ebfbf8c5295784da0546eece27525ec59ae432956c9b4a8900c29",
+      "pngNativeCanvas": [
+        480,
+        352
+      ],
+      "facility": "priory_cell",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        284,
+        343
+      ],
+      "authoredFootprint": [
+        4,
+        3
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "church와4×3수도원 부속기관 의미·활동 다름. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:28",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:908",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:64"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0256",
+      "originalCsvLine": 257,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/smithy_a-active-v1.png",
+      "sourceSHA256": "631d9528384e7ab2a4cfb7703b60684a28f3814122eb44424bc7d46e52ed868d",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "smithy_a",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        80,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "대장간 kind/metal 생산/가동 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:6",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:141",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:65"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0257",
+      "originalCsvLine": 258,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/smithy_b-active-v1.png",
+      "sourceSHA256": "9205e881425e0defe85a552668b4df9ad661527b98fb13cc636c9dbe1839c2fc",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "smithy_b",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        83,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "대장간 kind/metal 생산/가동 사실 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:7",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:176",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:66"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0258",
+      "originalCsvLine": 259,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/tailor-active-v1.png",
+      "sourceSHA256": "2dafff1d474cea7cb6bae0f39c242b11d7e7059c6efe9a2ff6cbaba533274eae",
+      "pngNativeCanvas": [
+        137,
+        137
+      ],
+      "facility": "tailor",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        76,
+        128
+      ],
+      "authoredFootprint": [
+        1,
+        1
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "weaver_house textile 생산 및 household tailor occupation이 독립tailor시설 가동 사실은 아님. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:9",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:246",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:67"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0259",
+      "originalCsvLine": 260,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/tannery_a-active-v1.png",
+      "sourceSHA256": "b90d6a38994e844ac624d1403ef1bf2c4a282ec747d1890208a7161a0325c612",
+      "pngNativeCanvas": [
+        288,
+        228
+      ],
+      "facility": "tannery_a",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        249,
+        219
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "dyehouse cloth/dyes와 무두질은 다름; 물가 tannery kind/가동 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:10",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:281",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:68"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0260",
+      "originalCsvLine": 261,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/tannery_b-active-v1.png",
+      "sourceSHA256": "74e4af65e6016e376f301a9874d995601a69e5f1ee99aa7d9ed0565380dcf9ec",
+      "pngNativeCanvas": [
+        288,
+        228
+      ],
+      "facility": "tannery_b",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        172,
+        219
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "dyehouse cloth/dyes와 무두질은 다름; 물가 tannery kind/가동 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:11",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:316",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:69"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "production"
+    },
+    {
+      "originalId": "I0261",
+      "originalCsvLine": 262,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/tithe_barn-active-v1.png",
+      "sourceSHA256": "8e00c4ad287a489766531eaf02c0dffc7626358779b111047d0ccc4099a496b4",
+      "pngNativeCanvas": [
+        416,
+        264
+      ],
+      "facility": "tithe_barn",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        116,
+        255
+      ],
+      "authoredFootprint": [
+        4,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "granary/storage와 달리 십일조 기관 의미·4×2소유 footprint 없음. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:25",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:806",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:70"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    },
+    {
+      "originalId": "I0262",
+      "originalCsvLine": 263,
+      "sourcePath": "assets-inbox/wave12/rework-20260926/assets/active/tolbooth-active-v1.png",
+      "sourceSHA256": "889843c7e3aef31ccf43f4506a08c9dfa5b246a6db2c938bdeb4180713fb7248",
+      "pngNativeCanvas": [
+        288,
+        292
+      ],
+      "facility": "tolbooth",
+      "layer": "active-overlay",
+      "authoredPivot": [
+        104,
+        283
+      ],
+      "authoredFootprint": [
+        2,
+        2
+      ],
+      "footprintBasis": "original brief",
+      "authoredScaleBasis": "128×64 source tile to64×32 world tile; uniform0.5 derived from authored README:15, not runtime-tested",
+      "pivotBasis": "candidate front lowest opaque contact measured in source delivery, not inferred during this audit",
+      "authoredRegistrationPresent": true,
+      "directExistingBuildingKind": false,
+      "ready": false,
+      "blocker": "market/manor와 toll기관 의미·가동 다름. active는 투명 overlay이므로 완성active PNG를 대체하지 못하며 현재 state-overlay에는 activity layer가 없다.",
+      "registrationRefs": [
+        "assets-inbox/wave12/rework-20260926/records/buildings.csv:24",
+        "assets-inbox/wave12/candidates-20260926/records/registration.json:771",
+        "assets-inbox/wave12/rework-20260926/records/README.md:15",
+        "docs/ops/install-plan-20261003/SPECS/wave12-facilities.md:71"
+      ],
+      "consumerRefs": [
+        "src/content/buildingConfig.ts:6",
+        "src/content/buildingCatalog.ts:49",
+        "src/render/historicalFacilityAssets.ts:108",
+        "src/render/historicalFacilityAssets.ts:134",
+        "src/render/art/artContract.ts:30"
+      ],
+      "requestGroup": "institutions"
+    }
+  ],
+  "runtime": false,
+  "installation": false,
+  "parentOwnsPublication": true
+}

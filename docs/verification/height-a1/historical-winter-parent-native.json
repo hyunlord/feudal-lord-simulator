@@ -1,0 +1,16 @@
+{
+  "reviewer": "parent /root independent of capture executor",
+  "at": "2026-10-04T23:15:30.001167+00:00",
+  "nativeSheetsActuallyViewed": 8,
+  "sourceCropsByteVerified": 32,
+  "verdict": "PASS_BOUNDED_A1_VISIBILITY_ONLY",
+  "contact": "UNCERTAIN; no full HEIGHT acceptance",
+  "observations": [
+    "gait0 zoom2 body, exposed feet and empty cart are visible before and after; relative scale increase readable",
+    "gait1 secondary actual actor occludes hand/cart region",
+    "zoom0.5/0.6 anatomical grip and sole not readable",
+    "no source crop resampling or actor substitution detected"
+  ],
+  "unchangedMain": true,
+  "sourceReceiptSHA256": "0d8aca15d70f7107376d5c8fa308cd8c50cf0f511db5a9e7cd8f336ba4df4e51"
+}

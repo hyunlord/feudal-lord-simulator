@@ -1,0 +1,49 @@
+{
+  "verdict": "PASS_WITH_LIMITS",
+  "actualAfterHead": "a5ae207a4625b6bd3e7780bdb468369dd8ee204f",
+  "actualBeforeHead": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "views": [
+    {
+      "view": "region4-chalk_downs-summer-z1.png",
+      "before": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z1.png",
+      "after": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-summer-z1.png",
+      "repeat": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/repeat/region4-chalk_downs-summer-z1.png",
+      "sha256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+      "rgbaEqual": true,
+      "parentOpenedNative": true
+    },
+    {
+      "view": "region4-chalk_downs-summer-z06.png",
+      "before": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z06.png",
+      "after": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-summer-z06.png",
+      "repeat": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/repeat/region4-chalk_downs-summer-z06.png",
+      "sha256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+      "rgbaEqual": true,
+      "parentOpenedNative": true
+    },
+    {
+      "view": "region4-chalk_downs-winter-z1.png",
+      "before": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z1.png",
+      "after": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-winter-z1.png",
+      "repeat": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/repeat/region4-chalk_downs-winter-z1.png",
+      "sha256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+      "rgbaEqual": true,
+      "parentOpenedNative": true
+    },
+    {
+      "view": "region4-chalk_downs-winter-z06.png",
+      "before": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z06.png",
+      "after": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-winter-z06.png",
+      "repeat": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/repeat/region4-chalk_downs-winter-z06.png",
+      "sha256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+      "rgbaEqual": true,
+      "parentOpenedNative": true
+    }
+  ],
+  "notes": [
+    "Parent opened all four actual AFTER1280x800 originals; summer wet ground/rain and winter leafless trees/snow remain readable, no missing tile/image or new blank region.",
+    "Hard shore edges and repeating ground details remain existing limitations, not new changes.",
+    "Full RGBA before/after/repeat exact for four reference views; this is unchanged non-spring behavior, not evidence that new spring4 draw here.",
+    "No autumn/DPR2/natural-play/repeat URL absence claim."
+  ]
+}

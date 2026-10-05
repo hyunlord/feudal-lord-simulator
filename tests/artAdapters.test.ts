@@ -97,3 +97,13 @@ test('ready world draw uses the existing unsnapped smoothed crop primitive witho
   assert.deepEqual(calls, [[imageElement, 0, 0, 64, 64, 84, 170, 32, 32]]);
   assert.equal(saves, 1); assert.equal(restores, 1); assert.equal(context.imageSmoothingEnabled, true);
 });
+
+// Weather scheduling/alpha are owned by the cloud consumer, never by a generic blit.
+test('weather-shadow exposes only a source descriptor to generic adapters', async () => {
+  const { default: shadows } = await import('./fixtures/weather-shadow-migration.json');
+  const art = createArtAdapters(createArtRegistry([shadows]), { createImage: null, baseUrl: '/' });
+  const id = shadows.entries[0]?.id; assert.ok(id);
+  assert.equal(art.placement(id, { at: { x: 0, y: 0 } })?.type, 'weather-shadow-source');
+  const context: CanvasRenderingContext2D = Object.assign(Object.create(null), { drawImage() { throw new Error('Unexpected generic weather paint'); } });
+  assert.equal(art.draw(context, id, { at: { x: 0, y: 0 } }), false);
+});

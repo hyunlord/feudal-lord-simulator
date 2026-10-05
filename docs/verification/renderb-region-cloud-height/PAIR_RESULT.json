@@ -1,0 +1,229 @@
+{
+  "pass": true,
+  "equal": 13,
+  "intended": 4,
+  "rows": [
+    {
+      "name": "region4-chalk_downs-spring-z06",
+      "expectedChange": true,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 481939,
+        "maxChannelDelta": 53
+      }
+    },
+    {
+      "name": "region4-chalk_downs-summer-z1",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "region4-chalk_downs-winter-z1",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "region4-coastal_port-spring-z06",
+      "expectedChange": true,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 204026,
+        "maxChannelDelta": 60
+      }
+    },
+    {
+      "name": "region4-fen_drainage-spring-z06",
+      "expectedChange": true,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 202308,
+        "maxChannelDelta": 54
+      }
+    },
+    {
+      "name": "region4-forest_edge-spring-z06",
+      "expectedChange": true,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 144683,
+        "maxChannelDelta": 54
+      }
+    },
+    {
+      "name": "region4-chalk_downs-summer-z06",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "region4-chalk_downs-winter-z06",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "summer-normal-z1-t0",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "summer-ne-z1",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    },
+    {
+      "name": "summer-ne-z0p6",
+      "expectedChange": false,
+      "fullPhysicalIdentity": true,
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    }
+  ],
+  "nativeReview": "PENDING"
+}

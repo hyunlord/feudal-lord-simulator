@@ -1,0 +1,36 @@
+{
+  "pass": true,
+  "remote": true,
+  "head": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "trackedClean": true,
+  "inputCount": 27053,
+  "exportCount": 27054,
+  "viewCount": 20,
+  "fullInputMapSHA256": "b0054c259f40f4801f97293d5b8717f6704ec434ebc8b185f3ea0805390dc8a7",
+  "externalInputs": {
+    "node": {
+      "path": "/home/hyunlord/fls-runs/_tools/node/bin/node",
+      "sha256": "0f8949d1028f6d61506b2d5bc57e7e6fe893d7b1997509b7847294fc9c616584"
+    },
+    "chromium": {
+      "path": "/home/hyunlord/.cache/ms-playwright/chromium-1234/chrome-linux/chrome",
+      "sha256": "f48b8e30d70593004542b4d5c16a8f2f8ec5d540111670ecc5f4715df8210eaa"
+    },
+    "playwrightShim": {
+      "path": "/home/hyunlord/fls-runs/astra-region-data-v1-bd84351/scripts/remote/playwright-chrome-shim.mjs",
+      "sha256": "01525ebd1843067aa50f926aabc66c81a1b7043d0e9f842a004bff56691a5baf"
+    },
+    "playwrightCore": {
+      "path": "/home/hyunlord/fls-runs/_tools/node_modules/playwright-core/index.mjs",
+      "sha256": "3d36e2132d3c8b62397d23f0bb4177336aaee503203ae2a2c90fbeb5bf3317dd"
+    },
+    "nodeVersion": "v24.21.0",
+    "chromiumVersion": "Chromium 151.0.7922.34",
+    "nmKey": "26dc99ffc28b42fb-node24.21.0-aarch64",
+    "nodeModulesFiles": 5503,
+    "nodeModulesMapSHA256": "a2cbddfd0c55b6fa8ec21bee7bc03761d820daf95dfc8bfb0274e25affcdc322",
+    "playwrightFiles": 111,
+    "playwrightMapSHA256": "6d974f446ef5e1630c44c6f54e4af2dd1cced514d8ed3f5810f26ddb28f60e36"
+  },
+  "externalLimit": "External runtime/cache bytes measured here, not claimed equal to local macOS binaries; browser/font/system rendering remains host-specific."
+}
