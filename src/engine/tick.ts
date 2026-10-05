@@ -35,6 +35,7 @@ import { advanceEvents } from "./events";
 import { advancePolitics, endChapterFive, endChapterFour, endChapterThree, endChapterTwo } from "./politics";
 import { advanceLordship } from "./lordship";
 import { advanceEstates } from "./estates";
+import { advanceNeighbourRules } from "./neighbourRules";
 import { advanceSuits } from "./estateSuits";
 import { advanceDiplomacy } from "./marriage";
 import { advanceStewardship } from "./stewardship";
@@ -293,6 +294,6 @@ export function advanceTick(state: GameState): GameState {
   // LM-E6a (TR-4…TR-8): lord mode's trades after the town agency — the season's trades and the carters' haulage.
   // LM-E9 (ER-3, ER-7): then the registry's season — terms at the year's turn, lapses, the season's offer.
   return advanceHistory(state, advanceRegistry(advanceTrades(advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
-    advanceWarTick(advanceLand(advanceStewardship(advanceDiplomacy(advanceSuits(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 }))))))))))))))))),
+    advanceWarTick(advanceLand(advanceStewardship(advanceDiplomacy(advanceSuits(advanceNeighbourRules(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))))))))),
   )))))))));
 }

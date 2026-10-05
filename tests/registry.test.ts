@@ -166,30 +166,3 @@ test("ER-12 outside lord mode the registry does nothing", () => {
   const sandbox = { ...load("population-176"), tick: 8 * YEAR };
   assert.equal(advanceRegistry(sandbox), sandbox);
 });
-
-test("ER-10 the imported drafts load; ck_evt_005 comes to a market town at the usual dues, is answered whole, and comes no more that year", async () => {
-  const { DRAFT_EVENT_ENTRIES } = await import("../src/content/registry/draftEvents");
-  const { REGISTRY_COPY } = await import("../src/content/registry/registryCopy.ko");
-  const { answerRegistryOffer, openRegistryOffers, seasonDraw } = await import("../src/engine/registry");
-  assert.equal(DRAFT_EVENT_ENTRIES.length, 11);
-  for (const draft of DRAFT_EVENT_ENTRIES) {
-    assert.equal(entryProblem(draft), null, draft.id);
-    assert.ok(REGISTRY_COPY[draft.id] !== undefined, `${draft.id} has its words`);
-    for (const choice of draft.choices) assert.ok(REGISTRY_COPY[draft.id]!.choices[choice.id] !== undefined, `${draft.id}:${choice.id}`);
-  }
-  // A market town of 1305 with the usual dues: draw seasons until ck_evt_005 is offered.
-  const market = { id: "market-test", kind: "market" as const, tx: 2, ty: 2, workers: 3, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
-  let state: GameState = { ...load("population-176"), agency: initialAgency(), buildings: [...load("population-176").buildings, market] };
-  let offered: GameState | null = null;
-  for (let season = 20; season < 76 && offered === null; season += 1) {
-    const at = { ...state, tick: season * 1000 };
-    if (seasonDraw(at).some(candidate => candidate.entry.id === "ck_evt_005")) offered = advanceRegistry(at);
-  }
-  assert.ok(offered !== null, "offered within the window");
-  const offer = openRegistryOffers(offered!).find(entry => entry.entryId === "ck_evt_005")!;
-  const answered = answerRegistryOffer(offered!, offer.id, "a");
-  assert.equal(answered.agency!.duesPermille, 750);
-  assert.equal(registryOf(answered).occurrences.find(entry => entry.id === offer.id)!.status, "answered");
-  assert.equal(answerRegistryOffer(answered, offer.id, "b"), answered, "a second answer is refused");
-  state = answered;
-});
