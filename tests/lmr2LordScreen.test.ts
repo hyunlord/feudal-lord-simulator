@@ -100,6 +100,6 @@ test("each area's rows file is spread into the registry and read by the registry
     "src/ui/lord/estates/EstateCard.tsx": "export const A = () => <section className=\"estate-card\" data-frame=\"slot\">x</section>;",
     "src/ui/lord/ledger/LedgerPanel.tsx": "export const B = () => <section className=\"promise-card\" data-frame=\"slot\">y</section>;",
   };
-  const result = unregisteredSurfaces({ list: () => Object.keys(files), read: (path: string) => files[path]! });
-  assert.deepEqual([...new Set(result.missing.map((row: { names: string[] }) => row.names.join(".")))], ["promise-card"]);
+  const result = unregisteredSurfaces({ list: () => Object.keys(files), read: path => files[path]! });
+  assert.deepEqual([...new Set(result.missing.map(row => row.names.join(".")))], ["promise-card"]);
 });
