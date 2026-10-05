@@ -1,0 +1,537 @@
+{
+  "reviewer": "integrated_native_review",
+  "createdUtc": "2026-10-05T05:23:31.359828+00:00",
+  "verdict": "APPROVE_BOUNDED_PAIRED_VISUAL_REVIEW",
+  "scope": "제공된 BEFORE/AFTER 17쌍의 원본 PNG를 전부 직접 열람한 독립 시각검수. 제품 전체 승인이나 현재 병합 HEAD의 UI 검증이 아니다.",
+  "sourceNumericReceipt": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/region-cloud-height-paired-result.json",
+    "sha256": "aa71e1a2b9a145ddbb6b93986e30e726a33a78bbdc45c27365eca2ddd21f308e"
+  },
+  "openedImageCount": 34,
+  "viewCount": 17,
+  "numeric": {
+    "independentlyDecodedRgbaEqual": 13,
+    "changed": 4,
+    "reportedDifferingPixelsVerifiedIndependently": false
+  },
+  "visual": {
+    "expectedSpringChangesAccepted": 4,
+    "unchangedViewsAccepted": 13,
+    "newObviousBreakageOrOcclusionObserved": 0
+  },
+  "limitations": [
+    "구름 그림자 가시성·이동 판정 불확실. 픽셀 동일성은 구름 효과의 충분한 가시성 증명이 아니다.",
+    "HEIGHT 두 화면은 외형 보존만 확인. 사람 해부·키·문 비율을 측정하지 않았고 개선을 입증하지 않는다.",
+    "단일 고정 화면의 판정이며 다른 카메라·계절·시간으로 일반화하지 않는다.",
+    "반복 캡처 PNG는 이번 독립 시각검수에서 열지 않았다. 34개 원본만 열람했다."
+  ],
+  "classificationFindings": [
+    {
+      "classification": "참",
+      "claim": "봄 지면 4장 변화가 읽히며 제공된 범위에서 접점의 새 파손은 보이지 않는다."
+    },
+    {
+      "classification": "오탐",
+      "claim": "13개의 동일 화면을 이번 변경 때문에 새로 깨진 화면이라고 해석하는 것. 독립 RGBA 비교에서 동일하다."
+    },
+    {
+      "classification": "불확실",
+      "claim": "구름 그림자 효과의 충분한 가시성 및 사람 해부·문 대비 키 적합성."
+    }
+  ],
+  "rows": [
+    {
+      "view": "region4-chalk_downs-spring-z06",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-chalk_downs-spring-z06.png",
+          "sha256": "faa8a663baed5ffb1548de169d44d86899b221b955e41503d8654d284cba9f3c",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-chalk_downs-spring-z06.png",
+          "sha256": "ca174a3a0b65c843a481c56f78549974f356808475dce61fc7618812edfdf89d",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": false,
+      "reportedDifferingPixels": 481939,
+      "expectedChange": true,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "의도한 봄 지면 변화와 새 가림·깨짐 없음",
+      "observation": "회황색 바닥이 새싹 녹색의 촘촘한 질감으로 바뀐다. 강둑·암반·경작지 경계와 건물 발밑이 이어지고 새 빈틈이나 덮어씌운 사각형은 보이지 않는다."
+    },
+    {
+      "view": "region4-chalk_downs-summer-z1",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-chalk_downs-summer-z1.png",
+          "sha256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-chalk_downs-summer-z1.png",
+          "sha256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "여름의 비·웅덩이 또는 겨울의 적설·맨가지와 지면, 강, 건물 위치가 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다."
+    },
+    {
+      "view": "region4-chalk_downs-winter-z1",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-chalk_downs-winter-z1.png",
+          "sha256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-chalk_downs-winter-z1.png",
+          "sha256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "여름의 비·웅덩이 또는 겨울의 적설·맨가지와 지면, 강, 건물 위치가 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다."
+    },
+    {
+      "view": "region4-coastal_port-spring-z06",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-coastal_port-spring-z06.png",
+          "sha256": "8ab736a88553b46c3a1f61954ba6b1df3cccd45664f76b55b5a8d9ee9f077c1c",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-coastal_port-spring-z06.png",
+          "sha256": "02d2e914faa50815a90b4c3ef15cb0ce3f3d0934e1077da46b5f12ac2aeb6a4a",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": false,
+      "reportedDifferingPixels": 204026,
+      "expectedChange": true,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "의도한 봄 지면 변화와 새 가림·깨짐 없음",
+      "observation": "해안 육지의 밝은 잔디 질감이 늘고 해수와 하구·숲 위치는 유지된다. 물 가장자리가 새 지면에 가려지지 않는다."
+    },
+    {
+      "view": "region4-fen_drainage-spring-z06",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-fen_drainage-spring-z06.png",
+          "sha256": "d27116217e50be8e862736110f2c9ea4e545017aea370dba92c0a182c3b6d6f8",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-fen_drainage-spring-z06.png",
+          "sha256": "52fca676f42ba55417b7a7d43f749428f362c76d786d2f537bf94fec3c528abb",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": false,
+      "reportedDifferingPixels": 202308,
+      "expectedChange": true,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "의도한 봄 지면 변화와 새 가림·깨짐 없음",
+      "observation": "습지 바닥에 어두운 초록 반점 질감이 생긴다. 반복 무늬는 더 읽히지만 물 구멍과 육지 사이를 끊는 새 직선 이음은 관찰되지 않는다."
+    },
+    {
+      "view": "region4-forest_edge-spring-z06",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-forest_edge-spring-z06.png",
+          "sha256": "5a358dced8faa3777496b81de0bf1fb28e60f6b11aec2090dc07877c188c817d",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-forest_edge-spring-z06.png",
+          "sha256": "c9938eb6a7126fea614900cc4e9ddb755677d05085ce4ef6dad9626dacf2839d",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": false,
+      "reportedDifferingPixels": 144683,
+      "expectedChange": true,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "의도한 봄 지면 변화와 새 가림·깨짐 없음",
+      "observation": "숲 밑 갈색 바닥의 녹색 얼룩과 결이 늘어난다. 큰 영역 경계는 여전히 읽히며 완전히 무경계라는 뜻은 아니다. 나무·건물·돌 접점에 새 틈이나 가림은 보이지 않는다."
+    },
+    {
+      "view": "region4-chalk_downs-summer-z06",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-chalk_downs-summer-z06.png",
+          "sha256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-chalk_downs-summer-z06.png",
+          "sha256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "여름의 비·웅덩이 또는 겨울의 적설·맨가지와 지면, 강, 건물 위치가 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다."
+    },
+    {
+      "view": "region4-chalk_downs-winter-z06",
+      "group": "region",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/region/region4-chalk_downs-winter-z06.png",
+          "sha256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/region/region4-chalk_downs-winter-z06.png",
+          "sha256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "여름의 비·웅덩이 또는 겨울의 적설·맨가지와 지면, 강, 건물 위치가 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다."
+    },
+    {
+      "view": "summer-normal-z1-t0",
+      "group": "cloud",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/cloud/summer-normal-z1-t0.png",
+          "sha256": "1d38b2a2ba4fe647b0c3709195902a6cfb8e94698664d09305af5e05c7a3c987",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/cloud/summer-normal-z1-t0.png",
+          "sha256": "1d38b2a2ba4fe647b0c3709195902a6cfb8e94698664d09305af5e05c7a3c987",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "숲·도시·강과 계절 표현이 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다. 구름 그림자의 독립 식별 및 시간에 따른 이동은 이 정지 화면 비교만으로 확정하지 않는다."
+    },
+    {
+      "view": "summer-normal-z1-t5000",
+      "group": "cloud",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/cloud/summer-normal-z1-t5000.png",
+          "sha256": "4aefbcb2d979c567c390c83446a27435fb022e321c1c3dd41641255cd6fe8114",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/cloud/summer-normal-z1-t5000.png",
+          "sha256": "4aefbcb2d979c567c390c83446a27435fb022e321c1c3dd41641255cd6fe8114",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "숲·도시·강과 계절 표현이 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다. 구름 그림자의 독립 식별 및 시간에 따른 이동은 이 정지 화면 비교만으로 확정하지 않는다."
+    },
+    {
+      "view": "summer-normal-z06-t0",
+      "group": "cloud",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/cloud/summer-normal-z06-t0.png",
+          "sha256": "7db3e2ce8f598df154b1cc32f74c05402dda196c366db0d0baf022ec6735b995",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/cloud/summer-normal-z06-t0.png",
+          "sha256": "7db3e2ce8f598df154b1cc32f74c05402dda196c366db0d0baf022ec6735b995",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "숲·도시·강과 계절 표현이 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다. 구름 그림자의 독립 식별 및 시간에 따른 이동은 이 정지 화면 비교만으로 확정하지 않는다."
+    },
+    {
+      "view": "winter-normal-z1-t0",
+      "group": "cloud",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/cloud/winter-normal-z1-t0.png",
+          "sha256": "52ec7185b63c9bc8134efcc04f5e74626596cbb9f916abc54f68769c9c8b4677",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/cloud/winter-normal-z1-t0.png",
+          "sha256": "52ec7185b63c9bc8134efcc04f5e74626596cbb9f916abc54f68769c9c8b4677",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "숲·도시·강과 계절 표현이 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다. 구름 그림자의 독립 식별 및 시간에 따른 이동은 이 정지 화면 비교만으로 확정하지 않는다."
+    },
+    {
+      "view": "winter-normal-z06-t0",
+      "group": "cloud",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/cloud/winter-normal-z06-t0.png",
+          "sha256": "00874c19bdec5a0c29ea86fbd867a5395f8db6ae3c915ebb58ba5624e8a19c44",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/cloud/winter-normal-z06-t0.png",
+          "sha256": "00874c19bdec5a0c29ea86fbd867a5395f8db6ae3c915ebb58ba5624e8a19c44",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "숲·도시·강과 계절 표현이 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다. 구름 그림자의 독립 식별 및 시간에 따른 이동은 이 정지 화면 비교만으로 확정하지 않는다."
+    },
+    {
+      "view": "spring-wet-negative-z1-t0",
+      "group": "cloud",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/cloud/spring-wet-negative-z1-t0.png",
+          "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/cloud/spring-wet-negative-z1-t0.png",
+          "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "숲·도시·강과 계절 표현이 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다. 구름 그림자의 독립 식별 및 시간에 따른 이동은 이 정지 화면 비교만으로 확정하지 않는다."
+    },
+    {
+      "view": "summer-off-negative-z1-t0",
+      "group": "cloud",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/cloud/summer-off-negative-z1-t0.png",
+          "sha256": "d09adbaa4a34ff55134fb999be5c530bb515e08aca88189981b54c7107e1adda",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/cloud/summer-off-negative-z1-t0.png",
+          "sha256": "d09adbaa4a34ff55134fb999be5c530bb515e08aca88189981b54c7107e1adda",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1280,
+        800
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "숲·도시·강과 계절 표현이 전후 동일하게 보인다. 새 깨짐이나 가림은 관찰되지 않는다. 구름 그림자의 독립 식별 및 시간에 따른 이동은 이 정지 화면 비교만으로 확정하지 않는다."
+    },
+    {
+      "view": "summer-ne-z1",
+      "group": "height",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/height/summer-ne-z1.png",
+          "sha256": "175afd9bcaa051a4c80fabd827bcea475cceaa95ac3749873d66f74493633011",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/height/summer-ne-z1.png",
+          "sha256": "175afd9bcaa051a4c80fabd827bcea475cceaa95ac3749873d66f74493633011",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "밀집 도시, 길, 나무, 건물과 작은 사람 실루엣이 전후 동일하게 보인다. 기존 표식이 일부 건물을 가리는 상태도 같다. 사람 해부·실제 키·문 대비 비율은 이 화면으로 측정하지 않았다."
+    },
+    {
+      "view": "summer-ne-z0p6",
+      "group": "height",
+      "images": {
+        "before": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-before/output/art-architecture/integrated-before-v1/results/height/summer-ne-z0p6.png",
+          "sha256": "0396e3129259446ebbb932e8bde6d056ee150f71af2c13327b7239a96241f5ab",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        },
+        "after": {
+          "path": "/Users/rexxa/fls-astra-renderB-integrated-after/output/art-architecture/integrated-after-v1/results/height/summer-ne-z0p6.png",
+          "sha256": "0396e3129259446ebbb932e8bde6d056ee150f71af2c13327b7239a96241f5ab",
+          "openedWith": "tools.view_image",
+          "visuallyInspected": true
+        }
+      },
+      "dimensions": [
+        1600,
+        1100
+      ],
+      "independentRgbaIdentical": true,
+      "reportedDifferingPixels": 0,
+      "expectedChange": false,
+      "visualVerdict": "PASS_BOUNDED",
+      "classification": "참",
+      "claim": "전후 시각적 동일성과 새 가림·깨짐 없음",
+      "observation": "밀집 도시, 길, 나무, 건물과 작은 사람 실루엣이 전후 동일하게 보인다. 기존 표식이 일부 건물을 가리는 상태도 같다. 사람 해부·실제 키·문 대비 비율은 이 화면으로 측정하지 않았다."
+    }
+  ]
+}
