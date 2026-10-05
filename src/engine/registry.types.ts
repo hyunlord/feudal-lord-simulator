@@ -44,15 +44,8 @@ export interface RegistryTerm {
   readonly status: "running" | "ended";
 }
 
-/** ER-9: the player's house — its name and arms (lord mode's new game). */
-export interface LordHouse {
-  readonly name: string;
-  readonly arms: string;
-}
-
 export interface RegistryState {
   readonly occurrences: readonly RegistryOccurrence[];
   readonly terms: readonly RegistryTerm[];
   readonly nextTerm: number;
-  readonly house: LordHouse;
 }

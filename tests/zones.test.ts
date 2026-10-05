@@ -24,6 +24,7 @@ import {
 import type { ZoneKind, ZoneStroke } from "../src/zones/zone.types";
 import { canonicalStateHash } from "../scripts/verifySaveDeterminism";
 import { placeManorSite } from "../src/state/openingVillage";
+import { migrateV49ToV50 } from "../src/save/migrations/v49ToV50";
 
 function grassGrid(width: number, height: number, water: readonly number[] = []): ZoneGrid & Pick<GameState, "tiles"> {
   return {
@@ -60,9 +61,11 @@ test("Z-1 a new game and every migrated save start with no zone and ordinal 1", 
   const { coinLedger: _coinLedger, ...originalRest } = original;
   // v6 -> v7 (B3) then swaps the income window for a ledger holding the opening balance.
   // v9 -> v10 (C1c-2) then turns the wheat farms into arable fields and farmsteads (spec AF-12); v10 -> v11 adds households; v11 -> v12 opens the season and enters the due eras (FP-1, FP-5).
-  // FIX-11: v34 -> v35 gives the town its manor house (MH-2).
-  assert.deepEqual(v5.envelope.state, placeManorSite(migrateStateV15ToV16(migrateStateV11ToV12(migrateStateV10ToV11(migrateStateV9ToV10({ ...originalRest, zones: [], nextZoneOrdinal: 1, ledger: { entries: [{ id: "ledger-000001", tick: original.tick, account: "cash", category: "opening_balance", amount: original.treasuryCoin,
-    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } }))))));
+  // FIX-11: v34 -> v35 gives the town its manor house (MH-2, 2×2); MANOR-1: v49 -> v50 makes it 3×3 (MH-5) and writes the
+  // lordship the save had not yet written (HOUSE-1).
+  const v50 = (state: GameState) => (migrateV49ToV50({ state }) as { state: GameState }).state;
+  assert.deepEqual(v5.envelope.state, v50(placeManorSite(migrateStateV15ToV16(migrateStateV11ToV12(migrateStateV10ToV11(migrateStateV9ToV10({ ...originalRest, zones: [], nextZoneOrdinal: 1, ledger: { entries: [{ id: "ledger-000001", tick: original.tick, account: "cash", category: "opening_balance", amount: original.treasuryCoin,
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } })))), { width: 2, height: 2 })));
 });
 
 test("Z-1 empty zones do not change the simulation: a migrated save runs 1,200 ticks to the same state", () => {

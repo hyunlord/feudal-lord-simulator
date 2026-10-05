@@ -118,7 +118,7 @@ function openRestoration(state: GameState): PetitionRecord | undefined {
 /** FL-7: the house withdraws; a new one takes the town, its treasury halved, the merchants' grudge half forgotten. */
 function changeHouse(state: GameState, lordship: LordshipState): GameState {
   const order = lordship.house.order + 1;
-  const house = { order, name: lordHouseName(state.seed, order), heraldrySeed: lordHouseHeraldrySeed(state.seed, order), since: state.tick };
+  const house = { order, name: lordHouseName(state.seed, order, lordship.house.name), heraldrySeed: lordHouseHeraldrySeed(state.seed, order), since: state.tick };
   const loss = Math.floor(Math.max(0, treasuryBalance(state)) * LORDSHIP_BALANCE.houseChangeTreasuryLossPermille / 1000);
   let next: GameState = state;
   if (loss > 0) {

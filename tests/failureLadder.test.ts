@@ -105,12 +105,12 @@ test("F3 (FL-3) below the lines no decline: 29 % derelict, three periods owed, a
   const base = city();
   assert.equal(declineCause(derelict(base, 7)), null, "7 of 24 = 29 %");
   assert.equal(declineCause(inArrears(base, 3)), null);
-  assert.equal(atSeasonStart(derelict(base, 7)).lordship, undefined, "nothing changes");
+  assert.deepEqual(atSeasonStart(derelict(base, 7)).lordship, derelict(base, 7).lordship, "nothing changes");
   const small = { ...base, houses: base.houses.slice(0, 7) };
   assert.equal(derelictPermille(derelict(small, 5)), null);
   // Off a season's start the ladder does not step.
   const ruined = derelict(base, 8);
-  assert.equal(advanceLordship({ ...ruined, tick: ruined.tick - ruined.tick % SEASON + 1 }).lordship, undefined);
+  assert.deepEqual(advanceLordship({ ...ruined, tick: ruined.tick - ruined.tick % SEASON + 1 }).lordship, ruined.lordship);
 });
 
 test("F4 (FL-6) the cause cleared: the holder offers the right back — bought, haggled or refused", () => {

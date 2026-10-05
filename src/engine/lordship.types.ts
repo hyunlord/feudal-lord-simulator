@@ -22,8 +22,10 @@ export interface LordHouse {
   readonly order: number;
   /** An English surname (`LORD_HOUSE_NAMES`). */
   readonly name: string;
-  /** The seed of the house's arms (the first house's is the game seed). */
+  /** The seed of the house's arms (MANOR-1: the first house's is `armsHeraldrySeed(arms)`; a later house's by seed). */
   readonly heraldrySeed: number;
+  /** MANOR-1 (HOUSE-1): the arms' id the player chose (the first house only; a later house's arms are by seed). */
+  readonly arms?: string;
   readonly since: number;
   /** The tick it withdrew (past houses only). */
   readonly until?: number;

@@ -13,7 +13,9 @@ import { HOME_PETITION_ORDER } from "../src/content/stewardshipConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { estatePortfolio, estatesOf } from "../src/engine/estates";
 import { fileSuit } from "../src/engine/estateSuits";
-import { advanceRegistry, applyChoice, DEFAULT_LORD_HOUSE, enabledChoices, entryProblem, initialRegistry, lordHouse, registryLoad, registryOf } from "../src/engine/registry";
+import { advanceRegistry, applyChoice, enabledChoices, entryProblem, initialRegistry, registryLoad, registryOf } from "../src/engine/registry";
+import { DEFAULT_PLAYER_HOUSE } from "../src/content/lordshipConfig";
+import { armsHeraldrySeed, lordHouse } from "../src/engine/lordshipState";
 import { advanceStewardship, answerEstatePetition, lordEstatePetitions, precedentReport, setExceptionRules, stewardshipOf } from "../src/engine/stewardship";
 import { initialAgency } from "../src/engine/townAgency";
 import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
@@ -152,14 +154,18 @@ test("ER-8 a ruling narrows a right's scope: the piece keeps its share of the ye
   assert.equal(applyChoice(suing, ruling, "narrow", "suit-none", "occ-rule"), null, "no suit, no ruling");
 });
 
-test("ER-9 the player's house: de Haverel by default, the new game's choice otherwise; the campaign keeps none", () => {
-  const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
-  assert.deepEqual(lordHouse(lord), DEFAULT_LORD_HOUSE);
-  assert.equal(DEFAULT_LORD_HOUSE.name, "de Haverel");
-  const named = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1, house: { name: "de Wyke", arms: "wyke" } })!;
-  assert.deepEqual(lordHouse(named), { name: "de Wyke", arms: "wyke" });
-  const campaign = newGameState({ scenarioId: "core:campaign_market_town", seed: 1 });
-  assert.equal(campaign?.registry, undefined);
+test("ER-9, MANOR-1 (HOUSE-1) the player's house is the lord's first house: de Haverel by default, the new game's choice otherwise, in lord mode and the campaign alike", () => {
+  for (const scenarioId of [LORD_SLICE_SCENARIO_ID, "core:campaign_market_town"]) {
+    for (const seed of [1, 2, 3]) {
+      const house = lordHouse(newGameState({ scenarioId, seed })!);
+      assert.deepEqual([house.order, house.name, house.arms, house.heraldrySeed], [1, "de Haverel", "haverel", armsHeraldrySeed("haverel")], `${scenarioId} ${seed}`);
+    }
+    const named = newGameState({ scenarioId, seed: 1, house: { name: "de Wyke", arms: "wyke" } })!;
+    assert.deepEqual([lordHouse(named).name, lordHouse(named).arms, lordHouse(named).heraldrySeed], ["de Wyke", "wyke", armsHeraldrySeed("wyke")], scenarioId);
+  }
+  assert.equal(DEFAULT_PLAYER_HOUSE.name, "de Haverel");
+  assert.notEqual(armsHeraldrySeed("haverel"), armsHeraldrySeed("wyke"), "the arms' id draws the arms");
+  assert.equal(newGameState({ scenarioId: "core:campaign_market_town", seed: 1 })?.registry, undefined);
 });
 
 test("ER-12 outside lord mode the registry does nothing", () => {

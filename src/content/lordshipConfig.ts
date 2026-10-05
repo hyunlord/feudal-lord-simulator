@@ -49,3 +49,9 @@ export const TITLE_RANKS = ["manor", "market", "borough"] as const satisfies rea
 
 /** FL-7: the lord's houses (by seed and order) — invented Anglo-Norman surnames (FIX-5, decision FN11). */
 export const LORD_HOUSE_NAMES = LORD_HOUSE_SURNAMES;
+
+/**
+ * MANOR-1 (HOUSE-1): the player's house — the lord's first house in every game — when the new game names none: its
+ * name (one of `LORD_HOUSE_NAMES`) and its arms' id (the arms are drawn from `armsHeraldrySeed(arms)`).
+ */
+export const DEFAULT_PLAYER_HOUSE = { name: "de Haverel", arms: "haverel" } as const;

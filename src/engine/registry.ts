@@ -16,7 +16,7 @@ import { estatesOf } from "./estates";
 import { addSuitEvidence, enforcePossession, fileSuit } from "./estateSuits";
 import { EMPTY_MONEY, type UpkeepArrear } from "./money.types";
 import { hashSeed } from "./prng";
-import type { LordHouse, RegistryOccurrence, RegistryState, RegistryTerm } from "./registry.types";
+import type { RegistryOccurrence, RegistryState, RegistryTerm } from "./registry.types";
 import { stateCalendar } from "./scenarioState";
 import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode, setEstateOversight, setExceptionRules, stewardshipOf } from "./stewardship";
 import { orderTimber } from "./timberTrade";
@@ -31,8 +31,6 @@ export const REGISTRY_EVENTS_PER_YEAR = 2;
 /** ER-4: an offer is answered within a season. */
 export const REGISTRY_ANSWER_TICKS = 1_000;
 const MAX_OCCURRENCES_KEPT = 400;
-/** ER-9: the player's house by default (the user's decision 2026-10-02). */
-export const DEFAULT_LORD_HOUSE: LordHouse = { name: "de Haverel", arms: "haverel" };
 
 // --- ER-2 load and validation ----------------------------------------------------------------------------------------
 
@@ -101,18 +99,14 @@ export function registryEntry(id: string): RegistryEntry | undefined {
 
 // --- state --------------------------------------------------------------------------------------------------------------
 
-export function initialRegistry(house: LordHouse = DEFAULT_LORD_HOUSE): RegistryState {
-  return { occurrences: [], terms: [], nextTerm: 1, house };
+export function initialRegistry(): RegistryState {
+  return { occurrences: [], terms: [], nextTerm: 1 };
 }
 
 export function registryOf(state: Pick<GameState, "registry">): RegistryState {
   return state.registry ?? initialRegistry();
 }
 
-/** ER-9 API: the player's house — its name and arms. */
-export function lordHouse(state: Pick<GameState, "registry">): LordHouse {
-  return registryOf(state).house;
-}
 
 // --- ER-1 the read model ----------------------------------------------------------------------------------------------
 
@@ -500,7 +494,3 @@ export function answerRegistryOffer(state: GameState, occurrenceId: string, choi
     ? { ...item, status: "answered" as const, choiceId, settledTick: state.tick } : item) } };
 }
 
-/** ER-9: a lord-mode game's registry with the player's house (the new game's option). */
-export function withLordHouse(state: GameState, house: LordHouse): GameState {
-  return { ...state, registry: { ...registryOf(state), house } };
-}
