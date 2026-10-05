@@ -1,0 +1,739 @@
+{
+  "status": "RUNTIME_FAILED_HARNESS_NATIVE_TRACE_BYPASS",
+  "run": "astra-cloud2-data-v1-66b8e1e",
+  "actualHEAD": "66b8e1ef2d5e4e9ec8d610cc21c583fbfd56bf6b",
+  "baselineHEAD": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+  "submissionCount": 1,
+  "retryCount": 0,
+  "exitCode": 1,
+  "fetchedResultFiles": 75,
+  "counts": {
+    "views": 10,
+    "aaPass": 10,
+    "errors": 16,
+    "positiveChanged": 8,
+    "negativeRgbaEqual": 2,
+    "positiveFrozenBothSourcesBothOpens": 16,
+    "missingNativeTracePositiveOpens": 16
+  },
+  "errors": [
+    "summer-normal-z1-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z1-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z1-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z1-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z1-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z1-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z1-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z1-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch"
+  ],
+  "guard": {
+    "prePass": true,
+    "postPass": true,
+    "freezeSha256": "fa59cbb097d928fe0180deed7b736aa646ca7d54c99846c8ed5589ff5b2afdb4",
+    "tracked": 26887,
+    "inputs": 27167,
+    "exportIncludingSelf": 27168,
+    "lfsHydrated": 6384,
+    "preExtras": 0,
+    "postAllowedExtras": 73,
+    "localPostSourceVerify": true
+  },
+  "execution": {
+    "slot": "1/2",
+    "port": 4300,
+    "syncSeconds": 30.4,
+    "prepareSeconds": 7,
+    "waitSeconds": 0,
+    "commandSeconds": 164.5
+  },
+  "external": {
+    "preexistingFiles": 5488,
+    "additions": {
+      ".cache/keyart-derivatives/977163c2c58e3d57acae3e8bbb22b5b6f410be35c3f9c284aa6013adf6b82845-v1-png-half": {
+        "type": "file",
+        "bytes": 96265,
+        "sha256": "ce76b925e2a5c0745ad8e30222858cd25119932a0c8eab78c2a30f8d4fef0729"
+      },
+      ".cache/keyart-derivatives/9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b-v1-jpeg-q70": {
+        "type": "file",
+        "bytes": 315323,
+        "sha256": "c9c39668fbf4b8508c7a61c245e9c5c0bffdeef673d951fa9ec051db38e1434a"
+      },
+      ".vite/deps/_metadata.json": {
+        "type": "file",
+        "bytes": 1089,
+        "sha256": "4b09ff56abb882a6fce55ba8c84aedbd3157f164b0b43f765abbcfe351fd7399"
+      },
+      ".vite/deps/package.json": {
+        "type": "file",
+        "bytes": 23,
+        "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+      },
+      ".vite/deps/react-dom.js": {
+        "type": "file",
+        "bytes": 14535,
+        "sha256": "86295b7f3a447555e08cf9ebb5d34b72a699fb2863fde30dbe505c846102b4c0"
+      },
+      ".vite/deps/react-dom.js.map": {
+        "type": "file",
+        "bytes": 25602,
+        "sha256": "392f5943639eba2d0113930cf7ec4a78f6cb660cd60083c83c81a29a223a81fd"
+      },
+      ".vite/deps/react-dom_client.js": {
+        "type": "file",
+        "bytes": 820711,
+        "sha256": "3c0fcd691cd26e901ed362fa403e3f8953509cefae20152e2335c23c62bf8b67"
+      },
+      ".vite/deps/react-dom_client.js.map": {
+        "type": "file",
+        "bytes": 1498893,
+        "sha256": "6476738af93e6f431c0587f299b4e509ba5e7be30eb6cb152ccfd2966b2d9b8d"
+      },
+      ".vite/deps/react.js": {
+        "type": "file",
+        "bytes": 38246,
+        "sha256": "d825799114c356286938056830da0314c2680d1fb304c3390cd56c0bef023101"
+      },
+      ".vite/deps/react.js.map": {
+        "type": "file",
+        "bytes": 68787,
+        "sha256": "512b5b4cb2d03e310293282adf8f7e12986bad182dbe364b53730b5f8f477fcc"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js": {
+        "type": "file",
+        "bytes": 10466,
+        "sha256": "f583c333ee04c86c5706e0499464d898d978e784cdb743b2db6f386f463ba885"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js.map": {
+        "type": "file",
+        "bytes": 18068,
+        "sha256": "a2cbbfc95fa5cbd63b00e1524fa38ba7d3cc8efc794e36e23278b4b1b16ffad3"
+      },
+      ".vite/deps/react_jsx-runtime.js": {
+        "type": "file",
+        "bytes": 10743,
+        "sha256": "f441d0cfcdaed154914d32ef0304199ea84b25e3f85fcea9653ce911369dadde"
+      },
+      ".vite/deps/react_jsx-runtime.js.map": {
+        "type": "file",
+        "bytes": 18636,
+        "sha256": "9ca0503453f56908949c3be7dcfe64eb4a63c6e0fa38dde4a9ef74119934fa6f"
+      },
+      ".vite/deps/rolldown-runtime-BvCyGRYZ.js": {
+        "type": "file",
+        "bytes": 192,
+        "sha256": "8857aad4f904253f9a8bb160ae7ca249376498df7c3510b0cd92b4e5a2c3b6cb"
+      }
+    }
+  },
+  "rows": [
+    {
+      "name": "summer-normal-z1-t0",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 301,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 215
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 294,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 210
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "d0e696b14ea77fc92bb6b8631d348f5fcfe9af91f810266f5ceb2c199d669ca8",
+      "repeatRgba": "d0e696b14ea77fc92bb6b8631d348f5fcfe9af91f810266f5ceb2c199d669ca8"
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 405,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 225
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 423,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 235
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "ea71c90650e3c0c7c527501a48faf7b3f7085b12d4fc8f0d0a408327cb0fbba5",
+      "repeatRgba": "ea71c90650e3c0c7c527501a48faf7b3f7085b12d4fc8f0d0a408327cb0fbba5"
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 486,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 432
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 585,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 520
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "f144944a3cf9373ad0415fbd8e1d3984dd74cc8444e1890f98b237a29d0ca190",
+      "repeatRgba": "f144944a3cf9373ad0415fbd8e1d3984dd74cc8444e1890f98b237a29d0ca190"
+    },
+    {
+      "name": "summer-normal-z06-t5000",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 468,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 416
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 477,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 424
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "8738f75f2601cf631e3ff5c57e308d995f2815aae216d46ea358b1c6361aac6c",
+      "repeatRgba": "8738f75f2601cf631e3ff5c57e308d995f2815aae216d46ea358b1c6361aac6c"
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 427,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 305
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 385,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 275
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "7429abd0c330118636fd59c2bcb73c50b6d64f0ae1b2bb47ccfd614c1e6789b4",
+      "repeatRgba": "7429abd0c330118636fd59c2bcb73c50b6d64f0ae1b2bb47ccfd614c1e6789b4"
+    },
+    {
+      "name": "winter-normal-z1-t5000",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 603,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 335
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 486,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 270
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "b312e7efe5e302ec88809a0330526c5ef4c5456bfc5291ccd0b6fea5608760c6",
+      "repeatRgba": "b312e7efe5e302ec88809a0330526c5ef4c5456bfc5291ccd0b6fea5608760c6"
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 414,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 368
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 450,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 400
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "fb57cca1f4db41ef64f1110e616075c114e4e732127f024e1abb80dbaa0e808c",
+      "repeatRgba": "fb57cca1f4db41ef64f1110e616075c114e4e732127f024e1abb80dbaa0e808c"
+    },
+    {
+      "name": "winter-normal-z06-t5000",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 450,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 400
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [
+            "DATA pair/source/rect/transform/opacity native trace mismatch"
+          ],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 504,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 448
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "865139183127c95412edc2d42290d87d1467c7eb15e8e299a12caf9660cdbce9",
+      "repeatRgba": "865139183127c95412edc2d42290d87d1467c7eb15e8e299a12caf9660cdbce9"
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 0
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 0
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "6c2e46a8835003e9627b713766ffdc75b2a56fc1da4dd8763f579bc4ed885077",
+      "repeatRgba": "6c2e46a8835003e9627b713766ffdc75b2a56fc1da4dd8763f579bc4ed885077"
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "opens": [
+        {
+          "repeat": false,
+          "errors": [],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 0
+          }
+        },
+        {
+          "repeat": true,
+          "errors": [],
+          "nativeTraceCount": 0,
+          "frozenPaintIncrements": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_a-v1.png": 0,
+            "/assets/wave39/rain/rain_cloud_shadow_b-v1.png": 0
+          }
+        }
+      ],
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgba": "6886683657e1f9d494c8e08e809d5273bbb41d8af3296ab9acd19ad6937c09e4",
+      "repeatRgba": "6886683657e1f9d494c8e08e809d5273bbb41d8af3296ab9acd19ad6937c09e4"
+    }
+  ],
+  "rawFiles": {
+    "output/art-architecture/cloud2-data-v1/results/spring-wet-negative-z1-t0.presented.json": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+    "output/art-architecture/cloud2-data-v1/results/summer-off-negative-z1-t0.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t5000.png": "8d0a4b61bc2ba26acaadc6ada2de7c2b978e941f21d5d90d64b1def78e685fd7",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t5000.jpg": "2931f9b0faccdb0f6c7952c4adfb90542aea1bc439a0cbd285378a685c8b78df",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t0.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v1/results/captures.json": "a0252d6fb78eeb03ca580823f7028ba24d31ac7dc79711fef94eb74ea7ac5b12",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/summer-off-negative-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/progress.jsonl": "b5f27728d24d0f6cb9eac568c6bc47c097f8082f175ee32a80dd773f7bb22972",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t5000.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t0.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t0.jpg": "b2a17fa3f9c117c363823363e9d71549f714ffdc1c07f8b4bd34282f1f1554f0",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t0.png": "41aebb5aed17fc4286d8ca36820af255b0a5d18d98ec4317dba0287b74e00532",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t5000.jpg": "5149f2ec1a6fe0a61ddf128f7079d20873432482172734076de89f821c912783",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t5000.png": "a68cccbc1462cb58a245051cbcc99e99cfdac4f5b592c5d084dd8f76202d17a0",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t5000.png": "4968c037944e18284511aca3573f533f22f8c86a7caca834427af974072c0d80",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t5000.jpg": "9d84731ee0d64be935e59e6b8a02710d039f91aa74a8819227802a25daf26cbc",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t0.png": "efc91244c68de19356517169eb849730e83edebecf07418673318061c7bf0c98",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t0.jpg": "a9a68b5a5cdfed1c86e2ef712eea8cf635fa1ecd703a701f0f079efa16e608b0",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t0.png": "594b796d6002e3f8d049bfa8fa86fa5122b6ba795c1681bce7f721ee3c86e7fb",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t0.jpg": "15091d34af37092778ca1ca55a9b89d005d12c9c506cc6d31cccffce83b741b7",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t5000.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t5000.jpg": "3a05abf5b1b4ec902cdb7bf95d1362deeb72ecd11814edf55fc84e2625e05550",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t5000.png": "386d0874c997e1305541edb426a6b7a5c4e4d6b5fcb29d228816beccc7ce71b2",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t0.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t5000.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v1/results/spring-wet-negative-z1-t0.engine.json": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t0.jpg": "7cc04b499e3b60811d70209722d69ffbcde2ffce9db16948e9e14af1f3f82658",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z06-t0.png": "b112ca9fd876127228037acc44b9638f97cd80010853896754972e6ad7a46cee",
+    "output/art-architecture/cloud2-data-v1/results/spring-wet-negative-z1-t0.jpg": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z06-t5000.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v1/results/spring-wet-negative-z1-t0.png": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1",
+    "output/art-architecture/cloud2-data-v1/results/winter-normal-z1-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/summer-off-negative-z1-t0.jpg": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f",
+    "output/art-architecture/cloud2-data-v1/results/summer-off-negative-z1-t0.png": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f",
+    "output/art-architecture/cloud2-data-v1/results/summer-normal-z1-t0.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v1/results/repeat/spring-wet-negative-z1-t0.presented.json": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z06-t5000.png": "8d0a4b61bc2ba26acaadc6ada2de7c2b978e941f21d5d90d64b1def78e685fd7",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z06-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z06-t5000.jpg": "2931f9b0faccdb0f6c7952c4adfb90542aea1bc439a0cbd285378a685c8b78df",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-off-negative-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z1-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z1-t0.jpg": "b2a17fa3f9c117c363823363e9d71549f714ffdc1c07f8b4bd34282f1f1554f0",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z1-t0.png": "41aebb5aed17fc4286d8ca36820af255b0a5d18d98ec4317dba0287b74e00532",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z1-t5000.jpg": "5149f2ec1a6fe0a61ddf128f7079d20873432482172734076de89f821c912783",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z1-t5000.png": "a68cccbc1462cb58a245051cbcc99e99cfdac4f5b592c5d084dd8f76202d17a0",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z06-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z1-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z06-t5000.png": "4968c037944e18284511aca3573f533f22f8c86a7caca834427af974072c0d80",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z06-t5000.jpg": "9d84731ee0d64be935e59e6b8a02710d039f91aa74a8819227802a25daf26cbc",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z1-t0.png": "efc91244c68de19356517169eb849730e83edebecf07418673318061c7bf0c98",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z1-t0.jpg": "a9a68b5a5cdfed1c86e2ef712eea8cf635fa1ecd703a701f0f079efa16e608b0",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z06-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z06-t0.png": "594b796d6002e3f8d049bfa8fa86fa5122b6ba795c1681bce7f721ee3c86e7fb",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z06-t0.jpg": "15091d34af37092778ca1ca55a9b89d005d12c9c506cc6d31cccffce83b741b7",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z1-t5000.jpg": "3a05abf5b1b4ec902cdb7bf95d1362deeb72ecd11814edf55fc84e2625e05550",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z1-t5000.png": "386d0874c997e1305541edb426a6b7a5c4e4d6b5fcb29d228816beccc7ce71b2",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z06-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z06-t0.jpg": "7cc04b499e3b60811d70209722d69ffbcde2ffce9db16948e9e14af1f3f82658",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-normal-z06-t0.png": "b112ca9fd876127228037acc44b9638f97cd80010853896754972e6ad7a46cee",
+    "output/art-architecture/cloud2-data-v1/results/repeat/spring-wet-negative-z1-t0.jpg": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011",
+    "output/art-architecture/cloud2-data-v1/results/repeat/spring-wet-negative-z1-t0.png": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1",
+    "output/art-architecture/cloud2-data-v1/results/repeat/winter-normal-z1-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-off-negative-z1-t0.jpg": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f",
+    "output/art-architecture/cloud2-data-v1/results/repeat/summer-off-negative-z1-t0.png": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f",
+    "output/art-architecture/cloud2-data-v1/receipts/final.json": "99e31c366dae51c53c7a228e7f1edb07977e3ec3d66d1e34c90dde0fe1515381",
+    "output/art-architecture/cloud2-data-v1/receipts/pre.json": "437fe6dd7b9918c609dd2be9b8053ebcb287fe7b567e8e2ad1e375fe414236fc",
+    "output/art-architecture/cloud2-data-v1/receipts/post.json": "433b02d4ff73ba4d3d9b49773d59cd03069b478ff934646c49431d9b15d576dc"
+  },
+  "diagnosticRecheckPath": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-runtime-diagnostic-recheck.json",
+  "diagnosticRecheckSha256": "b10c964a5112e3facba8aa4841c4dabe79c229a628b1f629fb32310fc5162400",
+  "diagnosis": {
+    "reproduced": true,
+    "actualProductFunction": "installRenderStageProbe",
+    "hasOwnDrawImageDuringProof": true,
+    "latePrototypeTraceCount": 0,
+    "nativeCallsAfterFirst": 1,
+    "traceAfterDispose": 1,
+    "scope": "bounded Node native-like boundary repro, no browser rerun or input edits; source and actual empty runtime trace support this cause"
+  },
+  "diagnosisEvidence": {
+    "src/render/renderStageProbe.ts": {
+      "line": 115,
+      "sha256": "11d012b8cb228001c16b4a715d8f16edca4d15c933f4267ac03e19eb4ac8c02d"
+    },
+    "src/testing/phase10ProofRuntime.ts": {
+      "line": 169,
+      "sha256": "0b059d251fbc8f789c57b5566a2d95f88937cadd99adde2ed50dc4c4c4bb04a1"
+    },
+    "scripts/renderCommitProbe.mjs": {
+      "line": 88,
+      "sha256": "36b7209f7c8a50a807ddcd906ede44e86057547d210ff0633e10ba1a84076522"
+    }
+  },
+  "minimalProposedFix": "Install supplementary observer via context.addInitScript before openScene/proof installation; keep recorder disarmed until atomic freeze clear+arm. Preserve original paint observer and product. Test using actual installRenderStageProbe own-method wrapping after init observer, then clear/arm; native call must reach both unchanged counter and geometry trace. Late-prototype installation remains negative regression.",
+  "remaining": [
+    "Independent harness-only fix review before any new run",
+    "Exact actual native sourceRect/targetRect/transform/opacity verification remains FAILED/unproven",
+    "Independent actual visual/readability and performance not passed",
+    "No source/runtime PNG or alpha adjustment; no installation/ledger promotion"
+  ],
+  "originalFinal": {
+    "pass": false,
+    "captureExit": 1,
+    "checkPass": false,
+    "error": "AssertionError [ERR_ASSERTION]: Capture failed\n\n1 !== 0\n",
+    "externalComparison": {
+      "preexistingFiles": 5488,
+      "additions": {
+        ".cache/keyart-derivatives/977163c2c58e3d57acae3e8bbb22b5b6f410be35c3f9c284aa6013adf6b82845-v1-png-half": {
+          "type": "file",
+          "bytes": 96265,
+          "sha256": "ce76b925e2a5c0745ad8e30222858cd25119932a0c8eab78c2a30f8d4fef0729"
+        },
+        ".cache/keyart-derivatives/9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b-v1-jpeg-q70": {
+          "type": "file",
+          "bytes": 315323,
+          "sha256": "c9c39668fbf4b8508c7a61c245e9c5c0bffdeef673d951fa9ec051db38e1434a"
+        },
+        ".vite/deps/_metadata.json": {
+          "type": "file",
+          "bytes": 1089,
+          "sha256": "4b09ff56abb882a6fce55ba8c84aedbd3157f164b0b43f765abbcfe351fd7399"
+        },
+        ".vite/deps/package.json": {
+          "type": "file",
+          "bytes": 23,
+          "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+        },
+        ".vite/deps/react-dom.js": {
+          "type": "file",
+          "bytes": 14535,
+          "sha256": "86295b7f3a447555e08cf9ebb5d34b72a699fb2863fde30dbe505c846102b4c0"
+        },
+        ".vite/deps/react-dom.js.map": {
+          "type": "file",
+          "bytes": 25602,
+          "sha256": "392f5943639eba2d0113930cf7ec4a78f6cb660cd60083c83c81a29a223a81fd"
+        },
+        ".vite/deps/react-dom_client.js": {
+          "type": "file",
+          "bytes": 820711,
+          "sha256": "3c0fcd691cd26e901ed362fa403e3f8953509cefae20152e2335c23c62bf8b67"
+        },
+        ".vite/deps/react-dom_client.js.map": {
+          "type": "file",
+          "bytes": 1498893,
+          "sha256": "6476738af93e6f431c0587f299b4e509ba5e7be30eb6cb152ccfd2966b2d9b8d"
+        },
+        ".vite/deps/react.js": {
+          "type": "file",
+          "bytes": 38246,
+          "sha256": "d825799114c356286938056830da0314c2680d1fb304c3390cd56c0bef023101"
+        },
+        ".vite/deps/react.js.map": {
+          "type": "file",
+          "bytes": 68787,
+          "sha256": "512b5b4cb2d03e310293282adf8f7e12986bad182dbe364b53730b5f8f477fcc"
+        },
+        ".vite/deps/react_jsx-dev-runtime.js": {
+          "type": "file",
+          "bytes": 10466,
+          "sha256": "f583c333ee04c86c5706e0499464d898d978e784cdb743b2db6f386f463ba885"
+        },
+        ".vite/deps/react_jsx-dev-runtime.js.map": {
+          "type": "file",
+          "bytes": 18068,
+          "sha256": "a2cbbfc95fa5cbd63b00e1524fa38ba7d3cc8efc794e36e23278b4b1b16ffad3"
+        },
+        ".vite/deps/react_jsx-runtime.js": {
+          "type": "file",
+          "bytes": 10743,
+          "sha256": "f441d0cfcdaed154914d32ef0304199ea84b25e3f85fcea9653ce911369dadde"
+        },
+        ".vite/deps/react_jsx-runtime.js.map": {
+          "type": "file",
+          "bytes": 18636,
+          "sha256": "9ca0503453f56908949c3be7dcfe64eb4a63c6e0fa38dde4a9ef74119934fa6f"
+        },
+        ".vite/deps/rolldown-runtime-BvCyGRYZ.js": {
+          "type": "file",
+          "bytes": 192,
+          "sha256": "8857aad4f904253f9a8bb160ae7ca249376498df7c3510b0cd92b4e5a2c3b6cb"
+        }
+      }
+    },
+    "head": "66b8e1ef2d5e4e9ec8d610cc21c583fbfd56bf6b",
+    "manifestSha256": "fa59cbb097d928fe0180deed7b736aa646ca7d54c99846c8ed5589ff5b2afdb4",
+    "runtime": true
+  }
+}

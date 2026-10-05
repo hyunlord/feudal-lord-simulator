@@ -18,7 +18,7 @@
 - **FIELD 봄3 — 실제 main20·시각 통과, 정확3행 표시**: `cd399e4a` / `astra-field-main-spring3-cd399e4`에서 A/A20·오류0, 봄8 새3 request/decode/paint 및 의도 변화·비봄12 identity/RGBA0, 원격4,168 SHA 일치·독립 시각 PASS WITH LIMITS. catalog102·정적196/196·타입·출처5/5/2,387 통과. 이후 정확3행 provenance/installed_by 승격; 원본425 marked153/runtime157/physical157, 코드·public4,259 및 다른 행 보존. 승격 `d3673823` 뒤 실제 reference4 identity/RGBA0·A/A4·오류0, 원격4,281 해시 일치. 최종 게시 대기. [증거](verification/field-spring3-data/REPORT.md).
 
 - **설치 1~3단계 — 진행 중**: UI 계약 인계260행은 데이터 준비와 실제 화면 사용을 구분한다([인계](requests/ui-contract-handoff.md)). 자연·계절 묶음은 아래 실제 검증 뒤 최종 게시 관문 대기이며, 3단계는 본선90d9b586의 시대집32 데이터 설치 외 나머지 의미·등록·배치 관문이 남아 있다. 전체 설치 완료가 아니다.
-- **CLOUD CORE — 기존 그림2 계약 이전 작업 가지 통합**: 격리 cd24 실제10뷰 identity/RGBA0·A/A10·독립 시각 검토 뒤 `718dce4b`에 합쳤다. 통합 관련116시험·타입·린트·catalog141 정적 검사 통과. [기존 구름 이전 증거](verification/cloud-core/REPORT.md). 구름 가독성·움직임은 UNCERTAIN이며 새 DATA2는 계측 검증 실패 보존·후속 수정 준비 중으로 설치 완료가 아니다. 통합 실제17쌍·최종 관문 대기.
+- **CLOUD CORE — 기존 그림2 계약 이전 작업 가지 통합**: 격리 cd24 실제10뷰 identity/RGBA0·A/A10·독립 시각 검토 뒤 `718dce4b`에 합쳤다. 통합 관련116시험·타입·린트·catalog141 정적 검사 통과. [기존 구름 이전 증거](verification/cloud-core/REPORT.md). 구름 가독성·움직임은 UNCERTAIN이며 새 DATA2는 독립 원본20장 검토에서 식별 실패로 [HOLD](verification/cloud-data2-hold/REPORT.md). v1/v2 계측 실패를 보존했고 v3는 준비만 완료·미실행이다. 통합 실제17쌍·최종 관문 대기.
 
 - **REGION core30·봄4 — 후속 작업 가지 통합**: 격리 CORE20 identity/RGBA0, DATA20의 봄8 변화·비대상12 동일·A/A20·새4 실제 소비·독립 시각 검토, 승격 후 reference4 동일을 통과했다. 증거 `8953622f`를 작업 가지 `5bc29c6b`에 합치며 기존 HEATH runtime 행과 다른 장부 셀을 보존했다. [CORE](verification/region-core/REPORT.md)·[DATA](verification/region-spring4-data/REPORT.md). 현재 통합17쌍 캡처·최종 관문·본선 게시 대기.
 

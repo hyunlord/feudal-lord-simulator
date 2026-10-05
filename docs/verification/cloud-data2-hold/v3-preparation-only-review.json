@@ -1,0 +1,26 @@
+{
+  "verdict": "APPROVE_PREPARATION_ONLY",
+  "blockers": [],
+  "head": "66b8e1ef2d5e4e9ec8d610cc21c583fbfd56bf6b",
+  "freezeSha256": "0cad800795fad49a26eed2fa78ccffaae26b8521d99fa13f6dc40af891d61bda",
+  "tests": {
+    "pass": 23,
+    "fail": 0,
+    "skip": 0
+  },
+  "tracked": 26887,
+  "frozenInputs": 27518,
+  "exportIncludingSelf": 27519,
+  "hydratedLFS": 6384,
+  "previousV2PinnedFilesVerified": 27342,
+  "failedRawFilesVerified": {
+    "v1": 75,
+    "v2": 75
+  },
+  "actualV2TraceSetsValidated": 20,
+  "scope": "Only exact expected double OR exact Math.fround per transform component; other draw and identity fields remain strict",
+  "runtimeV3": "NOT_RUN",
+  "nativeReadability": "NOT_PROVEN",
+  "performance": "NOT_PROVEN",
+  "reviewedPrepSHA256": "e0de65d2ca3df3015676aed436b632578ba798200422efadacc5185c8a0c0c3a"
+}
