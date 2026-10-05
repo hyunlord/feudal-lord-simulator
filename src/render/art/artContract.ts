@@ -91,12 +91,20 @@ export type SeasonVariantEntry = EntryBase & {
   readonly base: { readonly namespace: 'world-sprite' | 'zone-prop'; readonly key: string };
   readonly season: ArtSeason; readonly geometry: Pick<ArtGeometry, 'pivot' | 'scale' | 'allowMirror'>;
 };
-export type GroundTextureEntry = EntryBase & {
+export type FieldGroundTextureEntry = EntryBase & {
   readonly kind: 'ground-texture';
   readonly mapping: { readonly repeat: 'x'; readonly sourcePixelsPerTile: 128; readonly origin: { readonly x: 0; readonly y: 0 } };
   readonly composition: { readonly joinFadeSourcePx: 40; readonly wash: 'legacy-stage' | 'none' };
   readonly allowMirror: false;
 };
+export type RegionGroundTextureEntry = EntryBase & {
+  readonly kind: 'ground-texture'; readonly baseId: string;
+  readonly mapping: { readonly repeat: 'xy'; readonly sourcePixelsPerTile: { readonly u: 128; readonly v: 64 }; readonly origin: { readonly x: 0; readonly y: 0 } };
+  readonly composition: { readonly wash: 'none' }; readonly allowMirror: false;
+};
+export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEntry;
+export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
+export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
 export type ArtEntry = BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
   | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry;
 export type ArtScalar = string | number | boolean;

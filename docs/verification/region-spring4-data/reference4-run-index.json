@@ -1,0 +1,50 @@
+{
+  "status": "PREPARED_OUTSIDE_TRACKED_NOT_COMMITTED",
+  "run": "astra-region-promotion-reference-a5ae207",
+  "preserveExistingProofHistory": true,
+  "existingImagesReused": 4,
+  "newImages": 0,
+  "independentReview": "pending separate receipt",
+  "rows": [
+    {
+      "name": "region4-chalk_downs-summer-z1",
+      "reuseExistingJPEG": "docs/verification/region-spring4-data/images/region4-chalk_downs-summer-z1-before.jpg",
+      "reuseJpegSHA256": "0c0f70d6bece7b2080e9383f248b057740fd91cc83152f82565a39172168a2af",
+      "beforePng": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z1.png",
+      "afterPng": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-summer-z1.png",
+      "beforePngSHA256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+      "afterPngSHA256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+      "byteReuse": true
+    },
+    {
+      "name": "region4-chalk_downs-winter-z1",
+      "reuseExistingJPEG": "docs/verification/region-spring4-data/images/region4-chalk_downs-winter-z1-before.jpg",
+      "reuseJpegSHA256": "cbe6481c1f233ca38688d7ad4143621b4d0ff2d024277b7786fa2fa0fe10c139",
+      "beforePng": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z1.png",
+      "afterPng": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-winter-z1.png",
+      "beforePngSHA256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+      "afterPngSHA256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+      "byteReuse": true
+    },
+    {
+      "name": "region4-chalk_downs-summer-z06",
+      "reuseExistingJPEG": "docs/verification/region-spring4-data/images/region4-chalk_downs-summer-z06-before.jpg",
+      "reuseJpegSHA256": "85695568a45448fff0e208a03ca3a55e5b20f187cc380dc316e80dec48b0e84e",
+      "beforePng": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z06.png",
+      "afterPng": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-summer-z06.png",
+      "beforePngSHA256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+      "afterPngSHA256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+      "byteReuse": true
+    },
+    {
+      "name": "region4-chalk_downs-winter-z06",
+      "reuseExistingJPEG": "docs/verification/region-spring4-data/images/region4-chalk_downs-winter-z06-before.jpg",
+      "reuseJpegSHA256": "478360e19a4e7f2f6d84b31ca443c7476c9ca58f3328b455a22519c476cffc9c",
+      "beforePng": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z06.png",
+      "afterPng": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference/captures/region4-chalk_downs-winter-z06.png",
+      "beforePngSHA256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+      "afterPngSHA256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+      "byteReuse": true
+    }
+  ]
+}

@@ -15,7 +15,7 @@ export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string
   'event-scene': { eventId: text, group: text, placement: text, active: { type: 'boolean', unit: 'boolean' } },
   'event-illustration': { eventId: text },
   portrait: { personId: text, pool: text, lineage: text, ageStage: text, era: text },
-  'ground-texture': { fieldState: text, season: text },
+  'ground-texture': { fieldState: text, baseId: text, season: text },
   'season-variant': { baseKey: text, season: text },
   'regional-map': { mapId: text, landType: text },
 });

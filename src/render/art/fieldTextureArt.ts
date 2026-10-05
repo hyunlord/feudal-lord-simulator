@@ -1,20 +1,21 @@
-import type { ArtSeason, GroundTextureEntry } from './artContract';
+import type { ArtSeason, FieldGroundTextureEntry } from './artContract';
+import { isFieldTexture } from './artContract';
 import type { ArtRegistry } from './artRegistry';
 import { createArtImageLoader, type ArtImageEnvironment } from './artImageLoader';
 import { joinStripImages } from '../stripJoin';
 import { FIELD_TEXTURE_STATES } from './fieldTextureValidation';
 
 export type FieldTextureRequest = { readonly fieldState: string; readonly season: ArtSeason };
-export type FieldTexturePair = readonly [GroundTextureEntry, GroundTextureEntry];
+export type FieldTexturePair = readonly [FieldGroundTextureEntry, FieldGroundTextureEntry];
 export type FieldTextureSelection = { readonly base: FieldTexturePair; readonly seasonal: FieldTexturePair | null };
 export type PreparedFieldTexture = {
   readonly image: CanvasImageSource; readonly sourceIds: readonly [string, string];
-  readonly mapping: GroundTextureEntry['mapping']; readonly composition: GroundTextureEntry['composition'];
+  readonly mapping: FieldGroundTextureEntry['mapping']; readonly composition: FieldGroundTextureEntry['composition'];
   readonly token: string;
 };
 /** Read-only frame snapshot: neither token nor draw access starts loading or retries composition. */
 export type FieldTextureSnapshot = { readonly get: (request: FieldTextureRequest) => PreparedFieldTexture | null };
-export type FieldTextureJoin = (images: readonly [HTMLImageElement, HTMLImageElement], entry: GroundTextureEntry, onFailure: (reason: string) => void) => CanvasImageSource | null;
+export type FieldTextureJoin = (images: readonly [HTMLImageElement, HTMLImageElement], entry: FieldGroundTextureEntry, onFailure: (reason: string) => void) => CanvasImageSource | null;
 const strictJoin: FieldTextureJoin = (images, entry, onFailure) => joinStripImages(images, entry.image.width, entry.image.height, entry.composition.joinFadeSourcePx, { mode: 'strict', onFailure });
 const requestKey = (request: FieldTextureRequest): string => JSON.stringify([request.fieldState, request.season]);
 export function fieldTextureToken(snapshot: FieldTextureSnapshot, request: FieldTextureRequest): string {
@@ -30,7 +31,7 @@ export function createFieldTextureArt(registry: ArtRegistry, environment?: ArtIm
   const pair = (role: 'base' | 'season', request: FieldTextureRequest): FieldTexturePair | null => {
     const a = registry.select('ground-texture', `field-ridge-${role}-a`, request, 0);
     const b = registry.select('ground-texture', `field-ridge-${role}-b`, request, 0);
-    return a?.kind === 'ground-texture' && b?.kind === 'ground-texture' ? Object.freeze([a, b]) : null;
+    return a !== null && b !== null && isFieldTexture(a) && isFieldTexture(b) ? Object.freeze([a, b]) : null;
   };
   const resolve = (request: FieldTextureRequest): FieldTextureSelection | null => {
     if (!FIELD_TEXTURE_STATES.some(state => state === request.fieldState)) return null;
