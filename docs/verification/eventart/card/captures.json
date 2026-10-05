@@ -1,0 +1,506 @@
+{
+ "url": "http://127.0.0.1:4304/",
+ "ok": true,
+ "bytes": 238466,
+ "offer": {
+  "id": "registry:ck_evt_005::38",
+  "entryId": "ck_evt_005",
+  "receipt": {
+   "draw": 242,
+   "chancePermille": 500,
+   "conditions": [
+    "{\"all\":[{\"field\":\"market.exists\",\"op\":\"eq\",\"value\":true},{\"field\":\"market.duesPermille\",\"op\":\"eq\",\"value\":1000}]}"
+   ]
+  }
+ },
+ "shipped": [
+  "ck_evt_005",
+  "ck_evt_009",
+  "ck_evt_013",
+  "ck_evt_027",
+  "ck_evt_032",
+  "ck_evt_033",
+  "ck_evt_034",
+  "ck_evt_038",
+  "ck_evt_050",
+  "ck_evt_052",
+  "ck_evt_053"
+ ],
+ "rows": {
+  "drawn": {
+   "opened": true,
+   "card": {
+    "entry": "ck_evt_005",
+    "title": "빈 좌판 곁의 세금 장부",
+    "court": "1309년 가을 · 국왕 에드워드 2세 · 영주 조앤 드 메로언(19살) · 후견인 앨리스 드 메로언",
+    "kicker": "보낸 쪽 · 피어슨 상인 가문 · 답을 기다림 · 90일 남음(1309년 겨울까지)",
+    "body": "상인들은 새 좌판이 늘기 전에 시장 좌판세부터 낮춰 달라고 합니다. 수입관리인은 그 돈으로 다른 지출을 치러야 한다고 답합니다.",
+    "why": [
+     "장터가 서 있습니다",
+     "시장 좌판세가 기본의 100%입니다",
+     "이번 철 추첨에 뽑혔습니다(이 일이 올 가능성 50%)"
+    ],
+    "lapse": "답하지 않으면 기한이 지나 그대로 넘어갑니다",
+    "art": "ck_evt_005",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_005.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "answers": [
+     {
+      "choice": "a",
+      "enabled": "true",
+      "disabled": false,
+      "primary": false,
+      "text": "시장 좌판세를 낮춘다금고 변화 없음",
+      "treasury": "0",
+      "height": 54
+     },
+     {
+      "choice": "b",
+      "enabled": "true",
+      "disabled": false,
+      "primary": false,
+      "text": "시장 좌판세를 높여 세입을 구한다금고 변화 없음",
+      "treasury": "0",
+      "height": 54
+     },
+     {
+      "choice": "c",
+      "enabled": "true",
+      "disabled": false,
+      "primary": false,
+      "text": "기존 세율을 지키며 다음 거래를 지켜본다금고 변화 없음",
+      "treasury": "0",
+      "height": 54
+     }
+    ],
+    "later": 44,
+    "box": {
+     "left": 280,
+     "top": 55,
+     "right": 1000,
+     "bottom": 745,
+     "inside": true
+    },
+    "smallestText": 12
+   },
+   "bytes": 42723,
+   "choice": "a",
+   "status": "answered",
+   "choiceId": "a",
+   "dues": [
+    1000,
+    750
+   ],
+   "treasury": 0,
+   "shownTreasury": 0,
+   "closed": true,
+   "ok": true
+  },
+  "chip": {
+   "chipShown": true,
+   "opened": true,
+   "ok": true
+  },
+  "pictures": {
+   "ck_evt_005": {
+    "injected": true,
+    "entry": "ck_evt_005",
+    "opened": true,
+    "art": "ck_evt_005",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_005.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "빈 좌판 곁의 세금 장부",
+    "answers": [
+     [
+      "a",
+      "true"
+     ],
+     [
+      "b",
+      "true"
+     ],
+     [
+      "c",
+      "true"
+     ]
+    ],
+    "bytes": 10473,
+    "ok": true
+   },
+   "ck_evt_009": {
+    "injected": true,
+    "entry": "ck_evt_009",
+    "opened": true,
+    "art": "ck_evt_009",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_009.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "수도원 문서함에서 고를 증거",
+    "answers": [
+     [
+      "a",
+      "false"
+     ],
+     [
+      "b",
+      "false"
+     ],
+     [
+      "c",
+      "false"
+     ]
+    ],
+    "bytes": 9883,
+    "ok": true
+   },
+   "ck_evt_013": {
+    "injected": true,
+    "entry": "ck_evt_013",
+    "opened": true,
+    "art": "ck_evt_013",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_013.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "연줄 있는 청지기의 빈 장부",
+    "answers": [
+     [
+      "a",
+      "false"
+     ],
+     [
+      "b",
+      "false"
+     ],
+     [
+      "c",
+      "false"
+     ]
+    ],
+    "bytes": 11354,
+    "ok": true
+   },
+   "ck_evt_027": {
+    "injected": true,
+    "entry": "ck_evt_027",
+    "opened": true,
+    "art": "ck_evt_027",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_027.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "왕의 징발을 기다리는 길목",
+    "answers": [
+     [
+      "defence",
+      "true"
+     ],
+     [
+      "growth",
+      "true"
+     ],
+     [
+      "supply",
+      "true"
+     ]
+    ],
+    "bytes": 13047,
+    "ok": true
+   },
+   "ck_evt_032": {
+    "injected": true,
+    "entry": "ck_evt_032",
+    "opened": true,
+    "art": "ck_evt_032",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_032.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "두 묶음의 증거",
+    "answers": [
+     [
+      "charter",
+      "false"
+     ],
+     [
+      "roll",
+      "false"
+     ],
+     [
+      "both",
+      "false"
+     ]
+    ],
+    "bytes": 9711,
+    "ok": true
+   },
+   "ck_evt_033": {
+    "injected": true,
+    "entry": "ck_evt_033",
+    "opened": true,
+    "art": "ck_evt_033",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_033.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "교회 궤짝에 맡긴 증서",
+    "answers": [
+     [
+      "deed",
+      "false"
+     ],
+     [
+      "witnesses",
+      "false"
+     ],
+     [
+      "both",
+      "false"
+     ]
+    ],
+    "bytes": 10073,
+    "ok": true
+   },
+   "ck_evt_034": {
+    "injected": true,
+    "entry": "ck_evt_034",
+    "opened": true,
+    "art": "ck_evt_034",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_034.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "같은 청원이 또 올라오다",
+    "answers": [
+     [
+      "precedent",
+      "false"
+     ],
+     [
+      "hear",
+      "true"
+     ],
+     [
+      "rights_only",
+      "false"
+     ]
+    ],
+    "bytes": 11176,
+    "ok": true
+   },
+   "ck_evt_038": {
+    "injected": true,
+    "entry": "ck_evt_038",
+    "opened": true,
+    "art": "ck_evt_038",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_038.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "판결 뒤에도 닫힌 문",
+    "answers": [
+     [
+      "enforce",
+      "false"
+     ],
+     [
+      "defer",
+      "true"
+     ]
+    ],
+    "bytes": 9426,
+    "ok": true
+   },
+   "ck_evt_050": {
+    "injected": true,
+    "entry": "ck_evt_050",
+    "opened": true,
+    "art": "ck_evt_050",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_050.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "교구의 살림을 먼저 봐 주십시오",
+    "answers": [
+     [
+      "stability",
+      "true"
+     ],
+     [
+      "growth",
+      "true"
+     ],
+     [
+      "revenue",
+      "false"
+     ]
+    ],
+    "bytes": 12432,
+    "ok": true
+   },
+   "ck_evt_052": {
+    "injected": true,
+    "entry": "ck_evt_052",
+    "opened": true,
+    "art": "ck_evt_052",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_052.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "빠진 돈과 청지기의 후원자",
+    "answers": [
+     [
+      "punish",
+      "false"
+     ],
+     [
+      "replace",
+      "false"
+     ],
+     [
+      "tolerate",
+      "false"
+     ]
+    ],
+    "bytes": 11899,
+    "ok": true
+   },
+   "ck_evt_053": {
+    "injected": true,
+    "entry": "ck_evt_053",
+    "opened": true,
+    "art": "ck_evt_053",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_053.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     320,
+     180
+    ],
+    "title": "할머니의 증서와 장원 법정 기록",
+    "answers": [
+     [
+      "deed",
+      "false"
+     ],
+     [
+      "roll",
+      "false"
+     ],
+     [
+      "both",
+      "false"
+     ]
+    ],
+    "bytes": 11664,
+    "ok": true
+   }
+  },
+  "1024x768": {
+   "opened": true,
+   "box": {
+    "left": 152,
+    "top": 71,
+    "right": 872,
+    "bottom": 697,
+    "inside": true
+   },
+   "smallestText": 12,
+   "answers": [
+    54,
+    54,
+    54
+   ],
+   "later": 44,
+   "bytes": 34511,
+   "ok": true
+  },
+  "tablet": {
+   "opened": true,
+   "box": {
+    "left": 230,
+    "top": 65,
+    "right": 950,
+    "bottom": 755,
+    "inside": true
+   },
+   "smallestText": 12,
+   "answers": [
+    54,
+    54,
+    54
+   ],
+   "later": 44,
+   "bytes": 40094,
+   "ok": true
+  },
+  "campaign": {
+   "chips": 0,
+   "cards": 0,
+   "agency": false,
+   "ok": true
+  }
+ }
+}

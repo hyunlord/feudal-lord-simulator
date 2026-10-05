@@ -60,14 +60,21 @@ let bytes = 0;
 const shoot = async (page, selector, name, quality) => { const path = join(out, `${name}.jpg`); await page.locator(selector).first().screenshot({ path, type: 'jpeg', quality }); const size = statSync(path).size; bytes += size; return size; };
 const open = (state, options = {}) => openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
   query: '&story-delay=3000', loadTimeout: 90_000, zoom: 1.1, ...options });
-/** The registry card; any other card that opened first (a petition, a home petition) put off, as a player would. */
-const waitCard = async page => {
+/** The registry card; anything that opened first (the season's card, a petition, a home petition) put off or closed, as a
+ *  player would. Not opened: a picture of the page for the record. */
+const OTHERS = ['.petition-card:not([data-registry-offer]) .story-modal-later', '.season-ledger-resume', '.chronicle-page .chronicle-keep'];
+const waitCard = async (page, name = 'unopened') => {
   for (let waited = 0; waited < 30_000; waited += 500) {
     if (await page.locator(`${CARD} >> visible=true`).count() > 0) return true;
-    const other = page.locator('.petition-card:not([data-registry-offer]) .story-modal-later >> visible=true');
-    if (await other.count() > 0) await other.first().click();
+    for (const selector of OTHERS) {
+      const other = page.locator(`${selector} >> visible=true`);
+      if (await other.count() > 0) { await other.first().click(); break; }
+    }
     await page.waitForTimeout(500);
   }
+  await page.screenshot({ path: join(out, `debug-${name}.jpg`), type: 'jpeg', quality: 30 });
+  console.log(`not opened (${name}): modals ${JSON.stringify(await page.locator('.story-modal, .season-ledger-card, [role=dialog]').evaluateAll(nodes => nodes.map(node => node.className)))}`
+    + ` chips ${JSON.stringify(await page.locator('.event-chip').evaluateAll(nodes => nodes.map(node => node.getAttribute('data-story'))))}`);
   return false;
 };
 const base = scene(flags.states, 'registry-offer');
@@ -77,7 +84,8 @@ const rows = {};
 // 1. The offer as drawn: the card by itself, then an answer through it.
 {
   const { context, page } = await open(base);
-  const opened = await waitCard(page);
+  const opened = await waitCard(page, 'drawn');
+  if (!opened) { await browser.close(); process.exit(1); }
   const shown = await card(page);
   const size = await shoot(page, CARD, `card-${offer.entryId}`, 45);
   const before = await proof(page);

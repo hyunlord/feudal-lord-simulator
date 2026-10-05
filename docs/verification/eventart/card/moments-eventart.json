@@ -1,0 +1,25 @@
+{
+ "seed": 3,
+ "tick": 38000,
+ "year": 1309,
+ "season": 2,
+ "offer": {
+  "id": "registry:ck_evt_005::38",
+  "entryId": "ck_evt_005",
+  "boundId": "",
+  "offeredTick": 38000,
+  "deadline": 39000,
+  "status": "offered",
+  "receipt": {
+   "draw": 242,
+   "chancePermille": 500,
+   "conditions": [
+    "{\"all\":[{\"field\":\"market.exists\",\"op\":\"eq\",\"value\":true},{\"field\":\"market.duesPermille\",\"op\":\"eq\",\"value\":1000}]}"
+   ]
+  }
+ },
+ "dues": 1000,
+ "market": [
+  "construction-site-000020"
+ ]
+}
