@@ -50,7 +50,7 @@ test("TA-13 in a full town a week after one that started nothing reuses the walk
   assert.deepEqual(second.agency!.requests, first.agency!.requests);
 });
 
-test("TA-13 the lord's policy, subsidies or dues, and the households, walk again the next week", () => {
+test("TA-13 the lord's policy, subsidies or dues, the households and (RECOVER-1 RC-7) the hungry households walk again the next week", () => {
   const first = idle();
   const agency = first.agency!;
   const changes: Record<string, GameState> = {
@@ -58,6 +58,7 @@ test("TA-13 the lord's policy, subsidies or dues, and the households, walk again
     subsidy: { ...first, agency: { ...agency, subsidies: [...agency.subsidies, { id: "subsidy-test", kind: "well", amount: 20 }] } },
     dues: { ...first, agency: { ...agency, duesPermille: agency.duesPermille + 100 } },
     households: { ...first, houses: first.houses.map((house, index) => index === 0 ? { ...house, residents: 0 } : house) },
+    hungry: { ...first, houses: first.houses.map((house, index) => index === 1 ? { ...house, foodShortSinceTick: first.tick } : house) },
   };
   for (const [what, changed] of Object.entries(changes)) {
     assert.notEqual(walkKey(changed), walkKey(first), `${what} changes the key`);

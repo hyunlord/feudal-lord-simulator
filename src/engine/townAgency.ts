@@ -466,8 +466,10 @@ export function needsLayoutKey(state: GameState): string {
 export function walkKey(state: GameState): string {
   const agency = state.agency;
   const households = state.houses.filter(house => house.residents > 0 && house.abandonedTick === undefined).length;
+  // RECOVER-1 (RC-7, B3): households short of food are a reason to walk again — the planner's food steps see them.
+  const hungry = state.houses.filter(house => house.foodShortSinceTick !== undefined && house.abandonedTick === undefined).length;
   return JSON.stringify([needsLayoutKey(state), agency?.policy ?? "", (agency?.subsidies ?? []).map(subsidy => `${subsidy.kind}:${subsidy.amount}`),
-    agency?.duesPermille ?? 1000, households]);
+    agency?.duesPermille ?? 1000, households, hungry]);
 }
 
 /**
