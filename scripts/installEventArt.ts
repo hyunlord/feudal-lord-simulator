@@ -8,18 +8,19 @@
  * Every picture: its ledger row confirmed with no replaced_by, its SHA-256 = ASSETS.csv's = the ledger's, 960 × 540 from
  * the JPEG frame header, no APPn JUMBF / C2PA segment. The build ships each re-encoded as a smaller baseline JPEG
  * (scripts/keyartDerivatives.ts, format jpeg-reencoded — user decision 2026-10-05: the received files and the ledger stay
- * as they are; no public/ copy), loaded when its card opens — and only the pictures of entries the engine registry has (src/ui/eventArtSelection.ts
- * `shippedEventArtIds`: the registry's own list, so an entry the engine adds ships its picture with no hand list; the dist
- * budget's illustrations cap is 25 MB and all 200 are about 41 MB).
+ * as they are; no public/ copy), loaded when its card opens — and only the pictures of entries the registry can offer as the card (src/ui/eventArtSelection.ts
+ * `shippedEventArtIds`: the canon v4 entries the registry runs, so an entry it turns on ships its picture with no hand
+ * list; they are measured on demand, outside the first load — EVA-D1, EVA-D2).
  * Writes:
  *   src/ui/eventArtManifest.generated.ts  (all 200: path, width, height, title, source — `path`, not `url`: only the shipped
  *                                          ones are runtime assets, scripts/provenanceLedgerAssets.ts adds them)
  *   docs/provenance/assets.csv            (one row per shipped picture; earlier event-art/ rows replaced)
  *   docs/provenance/prompts/              (one .txt per shipped picture: its generation prompt and any edit prompts)
- *   assets-inbox/INBOX_LEDGER.csv         (only with --mark-installed: installed_by = EVENT-ART on the shipped pictures' rows,
- *                                          set after the copy, the card and a capture are confirmed — INSTALL_PROTOCOL 6;
- *                                          CRLF kept; a row another task installed is left as it is)
- * Run: node_modules/.bin/tsx scripts/installEventArt.ts [--mark-installed]
+ *   assets-inbox/INBOX_LEDGER.csv         (only with --mark-installed <captures.json>: installed_by = EVENT-ART on the rows of
+ *                                          the shipped pictures that capture shows drawn by the real card — INSTALL_PROTOCOL 6;
+ *                                          cleared on an event picture's row that is not; CRLF kept; a row another task
+ *                                          installed is left as it is)
+ * Run: node_modules/.bin/tsx scripts/installEventArt.ts [--mark-installed docs/verification/eventart/v4/captures.json]
  */
 import { createHash } from "node:crypto";
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
@@ -36,7 +37,7 @@ const MANIFEST = "src/ui/eventArtManifest.generated.ts";
 const INSTALLED_BY = "EVENT-ART";
 const INSTALLED_ON = "2026-10-05";
 const SIZE = [960, 540] as const;
-const USED_IN = "src/ui/eventArtManifest.generated.ts (EVENT-ART: the lord-mode registry event card and its story chip, by the entry's id or its artId; re-encoded at build, loaded when its card opens)";
+const USED_IN = "src/ui/eventArtManifest.generated.ts (EVENT-ART: the lord-mode registry event card and its story chip, by the canon v4 entry's id; re-encoded at build, loaded when its card opens)";
 
 const read = (relative: string) => readFileSync(path.join(ROOT, relative));
 const text = (relative: string) => read(relative).toString("utf8");
@@ -85,11 +86,33 @@ function generation(picture: Picture): { version: string; tool: string; prompt: 
     for (const round of rounds) {
       const assets = `${PACK}/records/${round}/ASSETS.csv`;
       if (!existsSync(path.join(ROOT, assets))) continue;
-      const row = table(assets).find(entry => entry.event_id === picture.id && entry.sha256 === picture.sha256 && entry.selected_version !== undefined);
+      const row = table(assets).find(entry => entry.event_id === picture.id && entry.sha256 === picture.sha256);
       if (row === undefined) continue;
-      const prompt = `${PACK}/records/${round}/prompts/${picture.id}-${row.selected_version}.txt`;
-      if (!existsSync(path.join(ROOT, prompt))) throw new Error(`${picture.id}: ${round} selected ${row.selected_version} but ${prompt} is missing`);
-      return { version: row.selected_version!, tool: `not recorded in the ${round} records`, prompt: text(prompt).trim(), references: "not recorded",
+      // A round names its version "v2" or plainly "2" (the prompt file is …-v2.txt); "existing_reuse" took an earlier
+      // round's; r03 and r04 keep one prompt per picture (…/prompts/<id>.txt) and no version, so the round stands for it.
+      const version = row.selected_version === undefined ? round : /^\d+$/.test(row.selected_version) ? `v${row.selected_version}` : row.selected_version;
+      const prompt = `${PACK}/records/${round}/prompts/${picture.id}${row.selected_version === undefined ? "" : `-${version}`}.txt`;
+      if (!existsSync(path.join(ROOT, prompt))) {
+        if (version === "existing_reuse") continue;
+        throw new Error(`${picture.id}: ${round} selected ${row.selected_version} but ${prompt} is missing`);
+      }
+      if (row.selected_version === undefined) {
+        // r03/r04: the generation prompt, then every other prompt the round kept for this picture (redraws and edits),
+        // each under its file name; the round's records (…-paths.json, edits-*.json) say which edit was kept.
+        const others = readdirSync(path.join(ROOT, PACK, "records", round, "prompts")).filter(name => name.startsWith(`${picture.id}-`)).sort();
+        const selected = (["composition", "semantic"] as const).flatMap(kind => {
+          const file = path.join(ROOT, PACK, "records", round, "records", `${kind}-edit-paths.json`);
+          if (!existsSync(file)) return [];
+          const paths = JSON.parse(readFileSync(file, "utf8")) as { selected?: Record<string, { version: string }>; edits?: Record<string, { version: string }> };
+          const chosen = (paths.selected ?? paths.edits ?? {})[String(Number(picture.id.slice("ck_evt_".length)))];
+          return chosen === undefined ? [] : [`${kind}-${chosen.version}`];
+        });
+        return { version: selected.at(-1) ?? round, tool: `not recorded in the ${round} records`,
+          prompt: [text(prompt).trim(), ...others.map(name => `[${name}] ${text(`${PACK}/records/${round}/prompts/${name}`).trim()}`)].join("\n\n"), references: "not recorded",
+          edits: `${round} as delivered${selected.length === 0 ? "" : ` (selected edit ${selected.join(", ")} in records/${round}/records/*-edit-paths.json)`}; `
+            + `${others.length} further prompt(s) of the round for this picture kept in the prompt file (final200 records/${round}/ASSETS.csv)` };
+      }
+      return { version, tool: `not recorded in the ${round} records`, prompt: text(prompt).trim(), references: "not recorded",
         edits: `${round} ${row.selected_version} as selected (final200 records/${round}/ASSETS.csv)` };
     }
     throw new Error(`${picture.id}: no round record selects ${picture.sha256}`);
@@ -104,7 +127,10 @@ function generation(picture: Picture): { version: string; tool: string; prompt: 
 }
 
 function main(): void {
-  const mark = process.argv.includes("--mark-installed");
+  const at = process.argv.indexOf("--mark-installed");
+  const mark = at < 0 ? null : process.argv[at + 1] ?? null;
+  if (at >= 0 && mark === null) throw new Error("--mark-installed needs the captures.json that shows each picture drawn by the card");
+  let marked = 0;
   const assets = table(`${PACK}/records/ASSETS.csv`);
   const ids = assets.map(row => row.event_id!);
   const expected = Array.from({ length: 200 }, (_, index) => `ck_evt_${String(index + 1).padStart(3, "0")}`);
@@ -167,22 +193,28 @@ function main(): void {
   const kept = rows.filter(row => !row.assetId.startsWith("event-art/") && !ours.some(mine => mine.runtimePath === row.runtimePath));
   writeFileSync(path.join(ROOT, LEDGER), stringifyCsv([...kept, ...ours]), "utf8");
 
-  if (mark) {
+  if (mark !== null) {
+    // INSTALL_PROTOCOL 6: installed_by only for a picture a capture showed drawn by the real card (scripts/eventArtCaptures.mjs
+    // captures.json `rows.pictures[id].ok`); a picture no longer shipped, or not shown, loses this task's mark.
+    const captured = JSON.parse(text(mark)) as { rows: { pictures: Record<string, { ok: boolean }> } };
+    const drawn = new Set(shipped.filter(id => captured.rows.pictures[id]?.ok === true));
+    const ours = new Map(pictures.map(picture => [picture.file.slice("assets-inbox/".length), picture.id]));
     const ledger = text(INBOX_LEDGER);
-    const files = new Set(shipped.map(id => byId.get(id)!.file.slice("assets-inbox/".length)));
     const crlf = ledger.split("\n", 1)[0]!.endsWith("\r");
     const eol = crlf ? "\r\n" : "\n";
-    // Only the installed_by field (the last column) of the shipped rows changes; every other byte stays.
+    // Only the installed_by field (the last column) of the event pictures' rows changes; every other byte stays.
     const lines = ledger.split(eol).map(line => {
-      const file = line.split(",")[1] ?? "";
-      if (files.has(file)) {
+      const id = ours.get(line.split(",")[1] ?? "");
+      if (id === undefined) return line;
+      if (drawn.has(id)) {
         if (line.endsWith(",")) return `${line}${INSTALLED_BY}`;
-        if (!line.endsWith(`,${INSTALLED_BY}`)) process.stderr.write(`left as it is (installed by another task): ${file}\n`);
+        if (!line.endsWith(`,${INSTALLED_BY}`)) process.stderr.write(`left as it is (installed by another task): ${id}\n`);
         return line;
       }
       return line.endsWith(`,${INSTALLED_BY}`) ? line.slice(0, -INSTALLED_BY.length) : line;
     });
     writeFileSync(path.join(ROOT, INBOX_LEDGER), lines.join(eol), "utf8");
+    marked = drawn.size;
   }
 
   const literal = (value: Readonly<Record<string, string | number>>) => `{${Object.entries(value).map(([key, field]) => `${JSON.stringify(key)}: ${JSON.stringify(field)}`).join(", ")}}`;
@@ -196,7 +228,7 @@ function main(): void {
   const derivedBytes = ours.reduce((sum, row) => sum + Number(/jpeg-reencoded: (\d+) bytes/.exec(row.notes)![1]), 0);
   const allBytes = pictures.reduce((sum, picture) => sum + picture.bytes, 0);
   console.log(`event-art ${pictures.length} pictures (${(allBytes / 1e6).toFixed(2)} MB); shipped ${shipped.length} (received ${(shippedBytes / 1e6).toFixed(2)} MB, built ${(derivedBytes / 1e6).toFixed(2)} MB): ${shipped.join(" ")}`
-    + `${mark ? "; installed_by set" : ""}`);
+    + `${mark === null ? "" : `; installed_by ${INSTALLED_BY} on ${marked} rows`}`);
 }
 
 main();
