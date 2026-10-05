@@ -1,0 +1,2620 @@
+{
+ "url": "http://127.0.0.1:4304/",
+ "ok": true,
+ "bytes": 528323,
+ "offer": {
+  "id": "registry:ck_evt_124:marriage.offer|kin:1:1|est-000002:13",
+  "entryId": "ck_evt_124",
+  "receipt": {
+   "draw": 951,
+   "chancePermille": 1000,
+   "conditions": []
+  }
+ },
+ "shipped": [
+  "ck_evt_002",
+  "ck_evt_004",
+  "ck_evt_005",
+  "ck_evt_008",
+  "ck_evt_009",
+  "ck_evt_010",
+  "ck_evt_013",
+  "ck_evt_015",
+  "ck_evt_018",
+  "ck_evt_019",
+  "ck_evt_020",
+  "ck_evt_024",
+  "ck_evt_025",
+  "ck_evt_027",
+  "ck_evt_028",
+  "ck_evt_029",
+  "ck_evt_030",
+  "ck_evt_031",
+  "ck_evt_032",
+  "ck_evt_033",
+  "ck_evt_034",
+  "ck_evt_035",
+  "ck_evt_037",
+  "ck_evt_038",
+  "ck_evt_042",
+  "ck_evt_046",
+  "ck_evt_049",
+  "ck_evt_051",
+  "ck_evt_052",
+  "ck_evt_053",
+  "ck_evt_059",
+  "ck_evt_101",
+  "ck_evt_102",
+  "ck_evt_105",
+  "ck_evt_108",
+  "ck_evt_111",
+  "ck_evt_113",
+  "ck_evt_115",
+  "ck_evt_117",
+  "ck_evt_123",
+  "ck_evt_124",
+  "ck_evt_127",
+  "ck_evt_128",
+  "ck_evt_130",
+  "ck_evt_131",
+  "ck_evt_132",
+  "ck_evt_133",
+  "ck_evt_136",
+  "ck_evt_138",
+  "ck_evt_139",
+  "ck_evt_140",
+  "ck_evt_141",
+  "ck_evt_143",
+  "ck_evt_144",
+  "ck_evt_145",
+  "ck_evt_150",
+  "ck_evt_155",
+  "ck_evt_156",
+  "ck_evt_157",
+  "ck_evt_160",
+  "ck_evt_161",
+  "ck_evt_162",
+  "ck_evt_163",
+  "ck_evt_164",
+  "ck_evt_165",
+  "ck_evt_171",
+  "ck_evt_173",
+  "ck_evt_174",
+  "ck_evt_179",
+  "ck_evt_180"
+ ],
+ "rows": {
+  "drawn": {
+   "opened": true,
+   "card": {
+    "entry": "ck_evt_124",
+    "occurrence": "registry:ck_evt_124:marriage.offer|kin:1:1|est-000002:13",
+    "title": "혼인 한 장으로 법정까지 달라는 말",
+    "court": "1303년 여름 · 국왕 에드워드 1세 · 영주 월터 드 포콩발(48살)",
+    "kicker": "보낸 쪽 · 혼인 조건을 정리하는 청지기(이웃 가문 측) · 답을 기다림 · 90일 남음(1303년 가을까지)",
+    "body": "영주님, 혼인 조건에 상대 장원 법정의 사용까지 넣자는 말이 나왔습니다. 상대는 그 선을 넘지 않겠다고 합니다. 우리가 내놓을 부담부터 다시 정해야 합니다.",
+    "why": [
+     "이번 철 영지의 형편이 이 일의 조건에 맞았습니다",
+     "혼담의 신랑: 리처드 드 포콩발",
+     "혼담의 신부: 앨리스 드 케스트베일",
+     "상대 가문: 드 케스트베일",
+     "한 판에 한 번만 오는 일입니다",
+     "이번 철 추첨에 뽑혔습니다(이 일이 올 가능성 100%)"
+    ],
+    "lapse": "답하지 않으면 기한이 지나 그대로 넘어갑니다",
+    "art": "ck_evt_124",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_124.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "answers": [
+     {
+      "choice": "a",
+      "enabled": "false",
+      "hold": "false",
+      "cost": null,
+      "line": "지금은 고를 수 없습니다: 지금은 혼담을 낼 수 없습니다",
+      "disabled": true,
+      "primary": false,
+      "text": "현금 80d와 동의만 제안한다지금은 고를 수 없습니다: 지금은 혼담을 낼 수 없습니다",
+      "treasury": null,
+      "height": 54
+     },
+     {
+      "choice": "b",
+      "enabled": "true",
+      "hold": "false",
+      "cost": null,
+      "line": "현금 부담을 줄이는 대신 기한 있는 정치적 지지 약속이 생길 수 있다.",
+      "disabled": false,
+      "primary": false,
+      "text": "현금 40d와 정치적 지지를 제안한다현금 부담을 줄이는 대신 기한 있는 정치적 지지 약속이 생길 수 있다.",
+      "treasury": "0",
+      "height": 54
+     },
+     {
+      "choice": "c",
+      "enabled": "true",
+      "hold": "false",
+      "cost": null,
+      "line": "당장 쓸 돈은 남지만 향후 연 20d 의무가 3년 이어질 수 있다. 성사는 보장하지 않는다.",
+      "disabled": false,
+      "primary": false,
+      "text": "현금 30d와 3년 연금을 제안한다당장 쓸 돈은 남지만 향후 연 20d 의무가 3년 이어질 수 있다. 성사는 보장하지 않는다.",
+      "treasury": "0",
+      "height": 54
+     }
+    ],
+    "later": 44,
+    "box": {
+     "left": 280,
+     "top": 72,
+     "right": 1000,
+     "bottom": 728,
+     "inside": true
+    },
+    "smallestText": 12
+   },
+   "bytes": 44810,
+   "choice": "b",
+   "status": "answered",
+   "choiceId": "b",
+   "dues": [
+    800,
+    800
+   ],
+   "treasury": 0,
+   "shownTreasury": 0,
+   "closed": true,
+   "ok": true
+  },
+  "chip": {
+   "chipShown": true,
+   "opened": true,
+   "ok": true
+  },
+  "hold": {
+   "opened": true,
+   "entry": "ck_evt_053",
+   "offer": "registry:ck_evt_053:suit.evidence|suit-3:77",
+   "shownOffer": "registry:ck_evt_053:suit.evidence|suit-3:77",
+   "choice": "defer",
+   "cost": "보류하면 이 청구의 힘이 5 줄어듭니다",
+   "line": "당장 준비비를 쓰지 않지만 증거를 보탤 기회를 놓칠 수 있다. 기다리기는 별도의 상태 변화나 기한 연장이 아니다.",
+   "status": "answered",
+   "kept": {
+    "claimId": "claim-4",
+    "weakened": 5
+   },
+   "closed": true,
+   "bytes": 49100,
+   "ok": true
+  },
+  "pictures": {
+   "ck_evt_002": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_002",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_002.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "가을 장부에 없는 곡물 자루",
+    "answers": [
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5016,
+    "ok": true
+   },
+   "ck_evt_004": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_004",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_004.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "우물과 곡창의 두 장려금",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5550,
+    "ok": true
+   },
+   "ck_evt_005": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_005",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_005.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "빈 좌판 곁의 세금 장부",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4981,
+    "ok": true
+   },
+   "ck_evt_008": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_008",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_008.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "멀어진 예배당까지의 길",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5080,
+    "ok": true
+   },
+   "ck_evt_009": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_009",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_009.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "수도원 문서함에서 고를 증거",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4546,
+    "ok": true
+   },
+   "ck_evt_010": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_010",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_010.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "저쪽 강둑에서 거둔 고기값",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5614,
+    "ok": true
+   },
+   "ck_evt_013": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_013",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_013.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "연줄 있는 회계 담당자의 빈 장부",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4914,
+    "ok": true
+   },
+   "ck_evt_015": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_015",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_015.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "모자란 목재와 미뤄진 들보",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5199,
+    "ok": true
+   },
+   "ck_evt_018": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_018",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_018.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "지참금은 지금인가 해마다인가",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ],
+     [
+      "d",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5762,
+    "ok": true
+   },
+   "ck_evt_019": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_019",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_019.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "새 영지의 열쇠를 누구에게",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4961,
+    "ok": true
+   },
+   "ck_evt_020": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_020",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_020.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "기한보다 먼저 온 연금 청구",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4331,
+    "ok": true
+   },
+   "ck_evt_024": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_024",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_024.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "비어 있는 노점의 몫",
+    "answers": [
+     [
+      "lower",
+      "false",
+      "false"
+     ],
+     [
+      "market_promise",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5167,
+    "ok": true
+   },
+   "ck_evt_025": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_025",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_025.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "오래된 청지기의 빠진 돈",
+    "answers": [
+     [
+      "punish",
+      "false",
+      "false"
+     ],
+     [
+      "replace",
+      "false",
+      "false"
+     ],
+     [
+      "tolerate",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4331,
+    "ok": true
+   },
+   "ck_evt_027": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_027",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_027.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "왕의 징발을 기다리는 길목",
+    "answers": [
+     [
+      "defence",
+      "false",
+      "false"
+     ],
+     [
+      "growth",
+      "false",
+      "false"
+     ],
+     [
+      "supply",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5709,
+    "ok": true
+   },
+   "ck_evt_028": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_028",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_028.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "병이 다시 들어온 마을",
+    "answers": [
+     [
+      "stability",
+      "false",
+      "false"
+     ],
+     [
+      "revenue",
+      "false",
+      "false"
+     ],
+     [
+      "granary_promise",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4750,
+    "ok": true
+   },
+   "ck_evt_029": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_029",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_029.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "미카엘마스에 갈 곳",
+    "answers": [
+     [
+      "accounts",
+      "false",
+      "false"
+     ],
+     [
+      "visit",
+      "false",
+      "false"
+     ],
+     [
+      "replace_accounts",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5223,
+    "ok": true
+   },
+   "ck_evt_030": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_030",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_030.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "축융공이 내민 견본",
+    "answers": [
+     [
+      "cloth",
+      "false",
+      "false"
+     ],
+     [
+      "grain",
+      "false",
+      "false"
+     ],
+     [
+      "divide",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5444,
+    "ok": true
+   },
+   "ck_evt_031": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_031",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_031.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "청지기를 갈아야 할 때",
+    "answers": [
+     [
+      "able",
+      "false",
+      "false"
+     ],
+     [
+      "loyal",
+      "false",
+      "false"
+     ],
+     [
+      "direct",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4681,
+    "ok": true
+   },
+   "ck_evt_032": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_032",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_032.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "소송 서기가 권하는 증거",
+    "answers": [
+     [
+      "charter",
+      "false",
+      "false"
+     ],
+     [
+      "roll",
+      "false",
+      "false"
+     ],
+     [
+      "both",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4680,
+    "ok": true
+   },
+   "ck_evt_033": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_033",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_033.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "교회 궤짝에 맡긴 증서",
+    "answers": [
+     [
+      "deed",
+      "false",
+      "false"
+     ],
+     [
+      "witnesses",
+      "false",
+      "false"
+     ],
+     [
+      "both",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4662,
+    "ok": true
+   },
+   "ck_evt_034": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_034",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_034.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "청원을 어디까지 직접 들을까",
+    "answers": [
+     [
+      "precedent",
+      "false",
+      "false"
+     ],
+     [
+      "hear",
+      "false",
+      "false"
+     ],
+     [
+      "rights_only",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4978,
+    "ok": true
+   },
+   "ck_evt_035": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_035",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_035.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "바람 뒤에 찾는 목재",
+    "answers": [
+     [
+      "larger",
+      "false",
+      "false"
+     ],
+     [
+      "smaller",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5581,
+    "ok": true
+   },
+   "ck_evt_037": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_037",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_037.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "가문의 책상에 남은 장부",
+    "answers": [
+     [
+      "direct",
+      "false",
+      "false"
+     ],
+     [
+      "delegate_visit",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5246,
+    "ok": true
+   },
+   "ck_evt_038": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_038",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_038.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "판결 뒤에도 닫힌 문",
+    "answers": [
+     [
+      "enforce",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4147,
+    "ok": true
+   },
+   "ck_evt_042": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_042",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_042.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "옆 시장으로 향하는 수레",
+    "answers": [
+     [
+      "light",
+      "false",
+      "false"
+     ],
+     [
+      "firm",
+      "false",
+      "false"
+     ],
+     [
+      "encourage",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5528,
+    "ok": true
+   },
+   "ck_evt_046": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_046",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_046.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "바람이 잦아든 뒤의 주문서",
+    "answers": [
+     [
+      "trim",
+      "false",
+      "false"
+     ],
+     [
+      "cancel",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5420,
+    "ok": true
+   },
+   "ck_evt_049": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_049",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_049.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "천을 짜는 집, 천을 다듬는 물길",
+    "answers": [
+     [
+      "weave",
+      "false",
+      "false"
+     ],
+     [
+      "full",
+      "false",
+      "false"
+     ],
+     [
+      "share",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5135,
+    "ok": true
+   },
+   "ck_evt_051": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_051",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_051.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "오래된 어업 청구권",
+    "answers": [
+     [
+      "file",
+      "false",
+      "false"
+     ],
+     [
+      "file_with_deed",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4881,
+    "ok": true
+   },
+   "ck_evt_052": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_052",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_052.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "빠진 돈과 회계 담당자의 후원자",
+    "answers": [
+     [
+      "punish",
+      "false",
+      "false"
+     ],
+     [
+      "replace",
+      "false",
+      "false"
+     ],
+     [
+      "tolerate",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5220,
+    "ok": true
+   },
+   "ck_evt_053": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_053",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_053.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "가문의 증서와 장원 법정 기록",
+    "answers": [
+     [
+      "deed",
+      "false",
+      "false"
+     ],
+     [
+      "roll",
+      "false",
+      "false"
+     ],
+     [
+      "both",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5277,
+    "ok": true
+   },
+   "ck_evt_059": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_059",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_059.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "직접 감독을 내려놓을 때",
+    "answers": [
+     [
+      "delegate",
+      "false",
+      "false"
+     ],
+     [
+      "direct",
+      "false",
+      "false"
+     ],
+     [
+      "loyal_candidate",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5384,
+    "ok": true
+   },
+   "ck_evt_101": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_101",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_101.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "수도원으로 갈 자루, 마을에 남을 자루",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5202,
+    "ok": true
+   },
+   "ck_evt_102": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_102",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_102.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "숲의 허락보다 늦게 오는 들보",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5059,
+    "ok": true
+   },
+   "ck_evt_105": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_105",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_105.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "밀가루로 받을 것인가",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 5381,
+    "ok": true
+   },
+   "ck_evt_108": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_108",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_108.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "일할 손이 머물 집",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4312,
+    "ok": true
+   },
+   "ck_evt_111": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_111",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_111.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "미사를 맡을 사람의 잠자리",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 3432,
+    "ok": true
+   },
+   "ck_evt_113": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_113",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_113.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "양모를 재는 날의 마당",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5311,
+    "ok": true
+   },
+   "ck_evt_115": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_115",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_115.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "품삯만으로 남지 않는 사람들",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5160,
+    "ok": true
+   },
+   "ck_evt_117": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_117",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_117.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "벽에 남길 이야기",
+    "answers": [
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4246,
+    "ok": true
+   },
+   "ck_evt_123": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_123",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_123.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "외상 없이 들여올 목재",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 5261,
+    "ok": true
+   },
+   "ck_evt_124": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_124",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_124.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "혼인 한 장으로 법정까지 달라는 말",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "true",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 4199,
+    "ok": true
+   },
+   "ck_evt_127": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_127",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_127.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "일하러 오는 것과 이사 오는 것",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5471,
+    "ok": true
+   },
+   "ck_evt_128": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_128",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_128.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "살아 있는 동안의 몫",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "true",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 5449,
+    "ok": true
+   },
+   "ck_evt_130": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_130",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_130.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "권리 이야기는 내 책상으로",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4302,
+    "ok": true
+   },
+   "ck_evt_131": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_131",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_131.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "아버지가 살아 있는 동안",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "true",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 5120,
+    "ok": true
+   },
+   "ck_evt_132": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_132",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_132.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "남겨 둘 몫에 붙은 이름",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "true",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 5382,
+    "ok": true
+   },
+   "ck_evt_133": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_133",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_133.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "이웃의 빚, 우리 장날의 돈",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "true",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 5127,
+    "ok": true
+   },
+   "ck_evt_136": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_136",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_136.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "다리를 고치는 동안 올 손님",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5056,
+    "ok": true
+   },
+   "ck_evt_138": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_138",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_138.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "타일 수레 뒤의 목재 수레",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5205,
+    "ok": true
+   },
+   "ck_evt_139": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_139",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_139.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "선물보다 오래 남는 약속",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5355,
+    "ok": true
+   },
+   "ck_evt_140": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_140",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_140.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "멀리 있는 땅을 보는 비용",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5173,
+    "ok": true
+   },
+   "ck_evt_141": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_141",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_141.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "공동 금고를 누가 먼저 쓸까",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4967,
+    "ok": true
+   },
+   "ck_evt_143": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_143",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_143.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "법정에 함께 서자는 이웃들",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5038,
+    "ok": true
+   },
+   "ck_evt_144": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_144",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_144.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "상인 돈으로 켠 널빤지",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 4846,
+    "ok": true
+   },
+   "ck_evt_145": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_145",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_145.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "논밭 밖에서도 먹고사는 집",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "true",
+      "false"
+     ]
+    ],
+    "bytes": 4580,
+    "ok": true
+   },
+   "ck_evt_150": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_150",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_150.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "증인이 될 상인, 계약을 맺을 상인",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4745,
+    "ok": true
+   },
+   "ck_evt_155": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_155",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_155.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "일을 맡긴 길드가 돈도 정하나",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5191,
+    "ok": true
+   },
+   "ck_evt_156": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_156",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_156.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "도시 이름으로 낸 수선 청구",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4867,
+    "ok": true
+   },
+   "ck_evt_157": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_157",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_157.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "청지기 후보를 추천한 납부자들",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5292,
+    "ok": true
+   },
+   "ck_evt_160": {
+    "injected": true,
+    "bound": true,
+    "opened": true,
+    "art": "ck_evt_160",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_160.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "가마보다 망치를 먼저 돕자는 청원",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5403,
+    "ok": true
+   },
+   "ck_evt_161": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_161",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_161.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "봄비 전에 남겨 둘 마른 자리",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5180,
+    "ok": true
+   },
+   "ck_evt_162": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_162",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_162.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "마른 여름에 두 물통",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5420,
+    "ok": true
+   },
+   "ck_evt_163": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_163",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_163.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "바람철 앞의 얇은 지붕",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5331,
+    "ok": true
+   },
+   "ck_evt_164": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_164",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_164.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "서리 전에 거둘 것과 빻을 것",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5261,
+    "ok": true
+   },
+   "ck_evt_165": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_165",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_165.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "눈길에 앞서 올린 주문",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4117,
+    "ok": true
+   },
+   "ck_evt_171": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_171",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_171.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "추위가 먼저 온다는 말",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4602,
+    "ok": true
+   },
+   "ck_evt_173": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_173",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_173.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "마른 겨울의 석재 주문",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4763,
+    "ok": true
+   },
+   "ck_evt_174": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_174",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_174.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "빙판 소식과 방문 감사",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 4691,
+    "ok": true
+   },
+   "ck_evt_179": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_179",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_179.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "두 사업에 남은 장려금",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5354,
+    "ok": true
+   },
+   "ck_evt_180": {
+    "injected": true,
+    "bound": false,
+    "opened": true,
+    "art": "ck_evt_180",
+    "src": "http://127.0.0.1:4304/assets/event-art/ck_evt_180.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "artBox": [
+     240,
+     135
+    ],
+    "title": "비가 그친 뒤에도 남은 먼 길",
+    "answers": [
+     [
+      "a",
+      "false",
+      "false"
+     ],
+     [
+      "b",
+      "false",
+      "false"
+     ],
+     [
+      "c",
+      "false",
+      "false"
+     ]
+    ],
+    "bytes": 5362,
+    "ok": true
+   }
+  },
+  "1024x768": {
+   "opened": true,
+   "box": {
+    "left": 152,
+    "top": 74,
+    "right": 872,
+    "bottom": 694,
+    "inside": true
+   },
+   "smallestText": 12,
+   "answers": [
+    54,
+    54,
+    54
+   ],
+   "later": 44,
+   "bytes": 40673,
+   "ok": true
+  },
+  "tablet": {
+   "opened": true,
+   "box": {
+    "left": 230,
+    "top": 82,
+    "right": 950,
+    "bottom": 738,
+    "inside": true
+   },
+   "smallestText": 12,
+   "answers": [
+    54,
+    54,
+    54
+   ],
+   "later": 44,
+   "bytes": 42129,
+   "ok": true
+  },
+  "campaign": {
+   "chips": 0,
+   "cards": 0,
+   "agency": false,
+   "ok": true
+  }
+ }
+}

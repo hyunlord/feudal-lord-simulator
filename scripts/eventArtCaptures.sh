@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-# EVENT-ART on the DGX: build the registry offer state (scripts/eventArtStates.ts) into $LORD_STATES (~/fls-lord-states)
-# when it is missing, then the registry's event card in the browser (scripts/eventArtCaptures.mjs).
-#   scripts/remote/run.sh render-EVENTART-card -- bash scripts/eventArtCaptures.sh [out]
+# EVENT-ART on the DGX: build the registry offer states (scripts/eventArtStates.ts: registry-offer, registry-offer-hold)
+# into $LORD_STATES (~/fls-lord-states) when one is missing (or EVENTART_REBUILD_STATES=1), then the registry's event card
+# in the browser (scripts/eventArtCaptures.mjs).
+#   scripts/remote/run.sh render-EVENTART-v4 -- bash scripts/eventArtCaptures.sh [out]
 set -u
-out=${1:-docs/verification/eventart/card}
+out=${1:-docs/verification/eventart/v4}
 states=${LORD_STATES:-$HOME/fls-lord-states}
 states5=${UI5_STATES:-$HOME/fls-ui5-states-v22}
-if [ ! -f "$states/registry-offer.json" ] || [ "${EVENTART_REBUILD_STATES:-0}" = 1 ]; then
+if [ ! -f "$states/registry-offer.json" ] || [ ! -f "$states/registry-offer-hold.json" ] || [ "${EVENTART_REBUILD_STATES:-0}" = 1 ]; then
   node_modules/.bin/tsx scripts/eventArtStates.ts "$states" 2>&1 | tee .remote/eventart-states.log || exit 1
 fi
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}

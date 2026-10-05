@@ -169,7 +169,7 @@ ui-geometry)
     "$states9/reorg.alehouse_boom.json" "$states9/chapter4-end.json" "$states9/borough_charter.json" "$states9/rumour-chased.json" "$states9/reorg.wage_competition.json" \
     "$states10/chapter5-end.json" "$states10/borough_autonomy.json" "$extra/heir_choice.json" "$lands/fen_drainage-summer.json" \
     "$petitions/home-boundary_dispute.json" "$petitions/precedent.json" "$petitions/request.json" "$petitions/guardian.json" "$lord/lord-receipts.json" \
-    "$lord/registry-offer.json" "$moments/lawsuit_filed.json"; do
+    "$lord/registry-offer.json" "$lord/registry-offer-hold.json" "$moments/lawsuit_filed.json"; do
     [ -f "$f" ] || missing="$missing $f"
   done
   if [ -n "$missing" ]; then

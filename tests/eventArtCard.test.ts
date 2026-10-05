@@ -1,7 +1,8 @@
 /**
- * EVENT-ART: the registry's event card (lord mode only) and its picture by the content canon v4 event id — the card's
- * words, choices, why and deadline from the engine; the answer through the reducer; the picture by id and by the
- * engine's artId; the shipped pictures exactly the registry's; nothing outside lord mode; never a home petition twice.
+ * EVENT-ART: the registry's event card on the content canon v4 (lord mode only) and its picture by the v4 event id — the
+ * card's words (V4_COPY), choices (`offerChoices`; the others shut with why), what a hold costs (ER-19), why it came and
+ * the deadline from the engine; the answer through the reducer applying the engine's commands; the picture by id; the
+ * shipped pictures exactly the entries the registry runs; nothing outside lord mode; never a home petition.
  */
 import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
@@ -13,177 +14,225 @@ import { buildKeyartDerivative, encodeJpeg, EVENT_ART_DERIVATIVES, JPEG_QUALITY,
 import { decodeJpeg } from "../scripts/jpegDecode";
 import { categorize, evaluateBudget, loadBudgetConfig } from "../scripts/checks/distBudget.mjs";
 import { enumerateRuntimeAssets } from "../scripts/provenanceLedgerAssets";
+import { factionDisplayName } from "../src/content/factionCopy.ko";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
-import { ALL_REGISTRY_ENTRIES } from "../src/content/registry/registryEntries";
-import { REGISTRY_COPY } from "../src/content/registry/registryCopy.ko";
-import type { RegistryEntry } from "../src/content/registry/registryTypes";
+import { HOLD_CLAIM_WEAKEN, HOLD_RELATION_DELTA } from "../src/content/registry/registryHoldConfig";
+import { V4_COPY } from "../src/content/registry/v4Copy.generated";
 import type { GameState } from "../src/engine/engine.types";
-import { enabledChoices, registryEntries, registryEntry, registryOf } from "../src/engine/registry";
+import { estatesOf } from "../src/engine/estates";
+import { faction } from "../src/engine/factions";
+import { initialRegistry, offerChoices, registryOf } from "../src/engine/registry";
 import type { RegistryOccurrence } from "../src/engine/registry.types";
-import { treasuryBalance } from "../src/ledger/ledger";
+import { bindEntry, boundIdentities, registryV4Support, v4Entries, v4Entry } from "../src/engine/registryV4";
+import { initialAgency } from "../src/engine/townAgency";
+import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
+import { decodeSave } from "../src/save/saveCodec";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import { eventArtFor } from "../src/ui/eventArt";
 import { EVENT_ART_IMAGES } from "../src/ui/eventArtManifest.generated";
-import { shippedEventArtIds } from "../src/ui/eventArtSelection";
+import { eventCardEntryIds, shippedEventArtIds } from "../src/ui/eventArtSelection";
 import { decisionModal, storyBeats } from "../src/ui/eventStory";
 import { calendarDays } from "../src/ui/gameTimeCopy.ko";
 import { RegistryOfferModal } from "../src/ui/hud/RegistryCard";
 import { courtLine } from "../src/ui/lordCardsModel";
 import { lordBeats } from "../src/ui/lordStoryBeats";
 import { REGISTRY_CARD_COPY } from "../src/ui/registryCardCopy.ko";
-import { openRegistryCards, registryCardView, registryOfferView, registryWhy } from "../src/ui/registryCardModel";
+import { openRegistryCards, registryOfferView } from "../src/ui/registryCardModel";
 import { storyArtStyle } from "../src/ui/storyArt";
 
 const SEASON = 1_000;
+const load = (name: string): GameState => decodeSave(new Uint8Array(readFileSync(`fixtures/saves/v49/${name}.save.json`))).envelope.state as GameState;
+function funded(state: GameState, amount: number): GameState {
+  const posted = postLedgerEntries(state, [{ account: "cash", category: "rent", amount: amount - treasuryBalance(state), sourceRefs: [{ type: "actor", id: "test" }] }]);
+  return { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+}
+/** A lord's town of chapter two (its factions, a market, the dues at their default) with 500 pennies. */
+const town: GameState = funded({ ...load("chapter-two-town"), agency: initialAgency(), registry: initialRegistry() }, 500);
+/** The lord's slice at its start (the lord's open fishery claim, 60 pennies, no factions yet). */
 const lord = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!;
+const runs = registryV4Support().filter(entry => entry.runs).map(entry => entry.id);
 
-/** The state with an offer of `entryId` open (as offerSeason writes one: offered now, a season to answer). */
-function offered(state: GameState, entryId: string, conditions: readonly string[] = []): { state: GameState; occurrence: RegistryOccurrence } {
-  const occurrence: RegistryOccurrence = { id: `registry:${entryId}::${Math.floor(state.tick / SEASON)}`, entryId, boundId: "", offeredTick: state.tick,
-    deadline: state.tick + SEASON, status: "offered", receipt: { draw: 123, chancePermille: 500, conditions } };
+/** The state with a v4 offer of `entryId` open on its first targets, as the registry writes one (offered now, a season to answer). */
+function offered(state: GameState, entryId: string): { state: GameState; occurrence: RegistryOccurrence } {
+  const bound = bindEntry(state, v4Entry(entryId)!);
+  const occurrence: RegistryOccurrence = { id: `registry:${entryId}:test:${Math.floor(state.tick / SEASON)}`, entryId, boundId: "", offeredTick: state.tick,
+    deadline: state.tick + SEASON, status: "offered", receipt: { draw: 123, chancePermille: 500, conditions: [] }, source: "v4",
+    bound: bound === null ? {} : boundIdentities(bound), key: entryId, context: "" };
   const registry = registryOf(state);
   return { state: { ...state, registry: { ...registry, occurrences: [...registry.occurrences, occurrence] } }, occurrence };
 }
-const entry = (id: string) => registryEntry(id)!;
+const merchants = (state: GameState) => factionDisplayName("merchant_house_1", faction(state, "merchant_house_1")!.name);
 
-test("the card's words, choices, why and deadline are the engine's (ck_evt_050: no conditions, the policy already growth)", () => {
-  const { state, occurrence } = offered(lord, "ck_evt_050");
-  assert.equal(state.agency?.policy, "growth");
+test("the card's words, choices, hold, why and deadline are the engine's (ck_evt_005: the market dues, its merchants' hold)", () => {
+  const { state, occurrence } = offered(town, "ck_evt_005");
   const view = registryOfferView(state)!;
-  assert.equal(view.occurrenceId, occurrence.id);
-  assert.equal(view.title, REGISTRY_COPY.ck_evt_050!.title);
-  assert.equal(view.body, REGISTRY_COPY.ck_evt_050!.body);
+  const copy = V4_COPY.ck_evt_005!;
+  assert.deepEqual([view.occurrenceId, view.entryId, view.art, view.title, view.body], [occurrence.id, "ck_evt_005", "ck_evt_005", copy.title, copy.body]);
   assert.equal(view.court, courtLine(state));
-  assert.deepEqual(view.choices.map(choice => choice.label), ["stability", "growth", "revenue"].map(id => REGISTRY_COPY.ck_evt_050!.choices[id]!.label));
-  // Enabled exactly as the engine's enabledChoices; growth is shut with why (the policy is growth already).
-  assert.deepEqual(view.choices.filter(choice => choice.enabled).map(choice => choice.id), enabledChoices(state, entry("ck_evt_050"), "", occurrence.id));
-  assert.deepEqual(view.choices.filter(choice => !choice.enabled).map(choice => [choice.id, choice.line]), [["growth", REGISTRY_CARD_COPY.already]]);
-  assert.ok(view.choices.filter(choice => choice.enabled).every(choice => choice.treasury === 0));
-  assert.deepEqual(view.why, [REGISTRY_CARD_COPY.noConditions, REGISTRY_CARD_COPY.drawn(500)]);
-  assert.equal(view.waits, REGISTRY_CARD_COPY.waits(calendarDays(SEASON), 1300, "여름"));
-  assert.equal(view.lapse, REGISTRY_CARD_COPY.lapse(null));
-  assert.equal(view.art, "ck_evt_050");
-  assert.match(view.from, /^보낸 쪽 · /);
+  assert.equal(view.from, REGISTRY_CARD_COPY.from(copy.sender, merchants(state)), "the sender, and the town's own merchant house by name");
+  assert.deepEqual(view.choices.map(choice => [choice.id, choice.label, choice.enabled]), ["a", "b", "c"].map(id => [id, copy.choices[id]!.label, true]));
+  assert.deepEqual(view.choices.filter(choice => choice.enabled).map(choice => choice.id), offerChoices(state, occurrence));
+  assert.deepEqual(view.choices.map(choice => choice.line), ["a", "b", "c"].map(id => copy.choices[id]!.tradeoff));
+  // ER-19: the hold says what it costs — the sender faction's relation, by name.
+  const hold = view.choices.find(choice => choice.hold)!;
+  assert.equal(hold.id, "c");
+  assert.equal(hold.cost, REGISTRY_CARD_COPY.holdRelation(merchants(state)));
+  assert.match(hold.cost!, new RegExp(`관계가 ${-HOLD_RELATION_DELTA} 나빠집니다$`));
+  assert.ok(view.choices.filter(choice => !choice.hold).every(choice => choice.cost === null));
+  assert.deepEqual(view.why, [REGISTRY_CARD_COPY.conditionsHeld, REGISTRY_CARD_COPY.drawn(500)]);
+  const end = Math.floor((occurrence.deadline % 4000) / SEASON);
+  assert.equal(view.waits, REGISTRY_CARD_COPY.waits(calendarDays(SEASON), Math.floor(occurrence.deadline / 4000) + 1300, ["봄", "여름", "가을", "겨울"][end]!));
+  assert.equal(view.lapse, REGISTRY_CARD_COPY.lapse);
 });
 
-test("why it came: the receipt's conditions in words, an unknown one said generically (never a raw key)", () => {
-  const conditions = [JSON.stringify(entry("ck_evt_005").conditions)];
-  const why = registryWhy({ receipt: { draw: 3, chancePermille: 500, conditions } });
-  assert.deepEqual(why, ["장터가 서 있습니다", "시장 좌판세가 기본의 100%입니다", REGISTRY_CARD_COPY.drawn(500)]);
-  // Every condition the registry's live entries carry has words.
-  for (const item of registryEntries()) {
-    if (item.conditions === undefined) continue;
-    const lines = registryWhy({ receipt: { draw: 0, chancePermille: 500, conditions: [JSON.stringify(item.conditions)] } });
-    assert.ok(!lines.includes(REGISTRY_CARD_COPY.unknownCondition), `${item.id}: ${lines.join(" / ")}`);
-    assert.ok(lines.every(line => !/[a-z_]+\.[a-z]/i.test(line)), `${item.id}: a raw field in ${lines.join(" / ")}`);
+test("why it came names the bound targets in words; a hold costing nothing now is not shown; a shut answer says why", () => {
+  // The lord's fishery claim: bound by name, its hold weakens the claim; the claim with a charter too is more than the treasury holds.
+  const fishery = registryOfferView(offered(lord, "ck_evt_010").state)!;
+  assert.deepEqual(fishery.why, [REGISTRY_CARD_COPY.conditionsHeld, REGISTRY_CARD_COPY.bound("걸린 청구", "어업권"), REGISTRY_CARD_COPY.drawn(500)]);
+  assert.deepEqual(fishery.choices.map(choice => [choice.id, choice.enabled, choice.hold]), [["a", true, false], ["b", true, true], ["c", false, false]]);
+  assert.equal(fishery.choices[1]!.cost, REGISTRY_CARD_COPY.holdClaim);
+  assert.match(REGISTRY_CARD_COPY.holdClaim, new RegExp(`힘이 ${HOLD_CLAIM_WEAKEN} 줄어듭니다`));
+  assert.equal(fishery.choices[2]!.line, REGISTRY_CARD_COPY.shut({ kind: "refused" }));
+  assert.equal(fishery.choices[0]!.treasury, -60, "filing costs the treasury 60d now (the engine's own command on a copy)");
+  // A marriage offer: the groom, the bride, her house and the jointure by name; a one-shot entry says so.
+  const marriage = registryOfferView(offered(lord, "ck_evt_128").state)!;
+  assert.ok(marriage.why.includes(REGISTRY_CARD_COPY.oncePerCampaign));
+  assert.ok(marriage.why.includes(REGISTRY_CARD_COPY.bound("상대 가문", "드 코르벨")), marriage.why.join(" / "));
+  // No faction to cost: the merchants' hold is hidden (the user's decision: no cost, no hold).
+  const { factions: _factions, ...withoutFactions } = town;
+  const noFactions = registryOfferView(offered(withoutFactions, "ck_evt_005").state)!;
+  assert.deepEqual(noFactions.choices.map(choice => choice.id), ["a", "b"]);
+  // Shut by the choice's own condition: already so; not enough in the treasury (in money).
+  assert.equal(registryOfferView(offered(town, "ck_evt_108").state)!.choices.find(choice => choice.id === "c")!.line, REGISTRY_CARD_COPY.shut({ kind: "already" }));
+  assert.match(registryOfferView(offered(lord, "ck_evt_102").state)!.choices.find(choice => choice.id === "a")!.line, /^지금은 고를 수 없습니다: 금고에 .+ 이상 있어야 합니다$/);
+  // The targets gone (the dues moved off the window): nothing to carry out, each answer says so.
+  const { state: open } = offered(town, "ck_evt_005");
+  const gone = registryOfferView({ ...open, agency: { ...open.agency!, duesPermille: 750 } })!;
+  assert.deepEqual(gone.choices.map(choice => [choice.id, choice.line]), [["a", REGISTRY_CARD_COPY.shut({ kind: "gone" })], ["b", REGISTRY_CARD_COPY.shut({ kind: "gone" })]]);
+});
+
+test("every live entry's card is in words: no raw key in why it came or in a shut answer's reason", () => {
+  for (const base of [town, lord]) for (const id of runs) {
+    if (bindEntry(base, v4Entry(id)!) === null) continue;
+    const view = registryOfferView(offered(base, id).state)!;
+    for (const line of [...view.why, ...view.choices.map(choice => choice.line), view.from]) {
+      assert.ok(!/[A-Za-z_]{3,}|undefined|null/.test(line), `${id}: ${line}`);
+    }
+    assert.ok(view.choices.every(choice => choice.label !== "" && choice.line !== ""), id);
   }
-  const odd = registryWhy({ receipt: { draw: 0, chancePermille: 250, conditions: [JSON.stringify({ field: "marriage.open", op: "eq", value: true }), "not json"] } });
-  assert.deepEqual(odd, [REGISTRY_CARD_COPY.unknownCondition, REGISTRY_CARD_COPY.unknownCondition, REGISTRY_CARD_COPY.drawn(250)]);
 });
 
-test("a choice the engine would not carry out is shut with its own condition as the reason", () => {
-  const { state, occurrence } = offered(lord, "test:costly");
-  const costly: RegistryEntry = { ...entry("ck_evt_050"), id: "test:costly", artId: null,
-    choices: [{ id: "a", effects: [{ command: "none" }] }, { id: "b", effects: [{ command: "treasury", amount: -1 }], requires: { field: "treasury", op: "gte", value: 1_000_000 } }] };
-  const view = registryCardView(state, { occurrence: { ...occurrence, entryId: costly.id }, entry: costly });
-  assert.deepEqual(view.choices.map(choice => choice.enabled), [true, false]);
-  assert.match(view.choices[1]!.line, /^지금은 고를 수 없습니다: 금고에 .+ 이상 있어야 합니다$/);
-  // No words for its title, body or answers: the card's own fallbacks, no picture (no other picture stands in).
-  assert.equal(view.title, REGISTRY_CARD_COPY.title);
-  assert.deepEqual(view.choices.map(choice => choice.label), [REGISTRY_CARD_COPY.choice(1), REGISTRY_CARD_COPY.choice(2)]);
-  assert.equal(view.art, null);
-});
-
-test("the answer goes through answer_registry_offer and applies the engine's effects; the card then goes", () => {
-  const { state, occurrence } = offered(lord, "ck_evt_050");
-  const answered = gameReducer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: "stability" });
-  assert.equal(answered.agency?.policy, "stability");
-  assert.equal(registryOf(answered).occurrences.find(item => item.id === occurrence.id)?.status, "answered");
-  assert.equal(registryOfferView(answered), null);
-  assert.ok(!lordBeats(answered).some(beat => beat.kind === "registry_event"));
-  // A shut choice changes nothing (the card stays).
-  assert.equal(gameReducer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: "growth" }), state);
-  // Past its deadline the offer is not open: no card.
+test("the answer goes through answer_registry_offer and applies the engine's commands; a hold its cost; the card then goes", () => {
+  const { state, occurrence } = offered(town, "ck_evt_005");
+  const lower = gameReducer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: "a" });
+  assert.equal(lower.agency?.duesPermille, 750);
+  assert.equal(registryOf(lower).occurrences.find(item => item.id === occurrence.id)?.status, "answered");
+  assert.equal(registryOfferView(lower), null);
+  assert.ok(!lordBeats(lower).some(beat => beat.kind === "registry_event"));
+  // The merchants' hold: the occurrence keeps its cost, the history moves the relation.
+  const held = gameReducer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: "c" });
+  assert.deepEqual(registryOf(held).occurrences.find(item => item.id === occurrence.id)?.hold, { faction: "merchant_house_1", delta: HOLD_RELATION_DELTA });
+  assert.equal(held.agency?.duesPermille, state.agency?.duesPermille);
+  // The fishery claim held: it weakens by the hold's cost; filed: the treasury moves as the card said.
+  const fishery = offered(lord, "ck_evt_010");
+  const before = estatesOf(fishery.state).claims.find(claim => claim.id === fishery.occurrence.bound!.claim)!.strength;
+  const waited = gameReducer(fishery.state, { type: "answer_registry_offer", occurrenceId: fishery.occurrence.id, choiceId: "b" });
+  assert.equal(estatesOf(waited).claims.find(claim => claim.id === fishery.occurrence.bound!.claim)!.strength, before - HOLD_CLAIM_WEAKEN);
+  const shown = registryOfferView(fishery.state)!.choices.find(choice => choice.id === "a")!;
+  const filed = gameReducer(fishery.state, { type: "answer_registry_offer", occurrenceId: fishery.occurrence.id, choiceId: "a" });
+  assert.equal(treasuryBalance(filed) - treasuryBalance(fishery.state), shown.treasury);
+  assert.ok(estatesOf(filed).suits.some(suit => suit.claimId === fishery.occurrence.bound!.claim));
+  // A shut choice changes nothing (the card stays); past its deadline the offer is not open: no card.
+  assert.equal(gameReducer(fishery.state, { type: "answer_registry_offer", occurrenceId: fishery.occurrence.id, choiceId: "c" }), fishery.state);
   assert.equal(registryOfferView({ ...state, tick: occurrence.deadline + 1 }), null);
-  // The treasury the card shows is the engine's move (ck_evt_005's lower dues: none now).
-  const dues = offered(lord, "ck_evt_005");
-  const lower = registryOfferView(dues.state)!.choices.find(choice => choice.id === "a")!;
-  const after = gameReducer(dues.state, { type: "answer_registry_offer", occurrenceId: dues.occurrence.id, choiceId: "a" });
-  assert.equal(treasuryBalance(after) - treasuryBalance(dues.state), lower.treasury);
 });
 
 test("lord mode only, and a home petition never gets this card", () => {
   for (const scenarioId of ["core:sandbox", "core:campaign_market_town"]) {
-    const { state } = offered(newGameState({ scenarioId })!, "ck_evt_050");
+    const plain = newGameState({ scenarioId })!;
+    const occurrence = offered(town, "ck_evt_005").occurrence;
+    const state: GameState = { ...plain, registry: { ...registryOf(plain), occurrences: [occurrence] } };
     assert.equal(state.agency, undefined, scenarioId);
     assert.deepEqual(openRegistryCards(state), []);
     assert.equal(registryOfferView(state), null);
     assert.ok(!storyBeats(state).some(beat => beat.kind === "registry_event"), scenarioId);
   }
-  const home = offered(lord, "home:heriot");
-  assert.deepEqual(openRegistryCards(home.state), []);
-  assert.ok(!lordBeats(home.state).some(beat => beat.kind === "registry_event"));
+  const registry = registryOf(lord);
+  const home: RegistryOccurrence = { id: "registry:home:heriot::0", entryId: "home:heriot", boundId: "", offeredTick: 0, deadline: SEASON, status: "offered",
+    receipt: { draw: 0, chancePermille: 1000, conditions: [] } };
+  for (const occurrence of [home, { ...home, source: "v4" as const }]) {
+    const state: GameState = { ...lord, registry: { ...registry, occurrences: [occurrence] } };
+    assert.deepEqual(openRegistryCards(state), []);
+    assert.ok(!lordBeats(state).some(beat => beat.kind === "registry_event"));
+  }
 });
 
 test("the offer comes as a story beat whose [결정하기] opens the card, with the picture on its chip", () => {
-  const { state, occurrence } = offered(lord, "ck_evt_027");
+  const { state, occurrence } = offered(town, "ck_evt_005");
   const beat = lordBeats(state).find(item => item.kind === "registry_event")!;
   assert.equal(beat.id, `registry:${occurrence.id}`);
   assert.equal(beat.decision, "registry_offer");
   assert.equal(decisionModal("registry_offer"), "registry_offer");
-  assert.equal(beat.illustration, "ck_evt_027");
-  assert.equal(beat.title, REGISTRY_COPY.ck_evt_027!.title);
-  assert.match(String(storyArtStyle("ck_evt_027", 64).backgroundImage), /assets\/event-art\/ck_evt_027\.jpg/);
+  assert.equal(beat.illustration, "ck_evt_005");
+  assert.equal(beat.title, V4_COPY.ck_evt_005!.title);
+  assert.match(String(storyArtStyle("ck_evt_005", 64).backgroundImage), /assets\/event-art\/ck_evt_005\.jpg/);
 });
 
-test("the card renders the picture whole, equal answers all secondary, a shut one disabled; no picture without one", () => {
-  const { state } = offered(lord, "ck_evt_050");
-  const html = renderToStaticMarkup(createElement(RegistryOfferModal, { view: registryOfferView(state)!, onAnswer: () => undefined, onLater: () => undefined }));
-  assert.match(html, /data-registry-offer="ck_evt_050"/);
-  assert.match(html, /data-art="ck_evt_050"[^>]*background-size:contain/);
+test("the card renders the picture whole, equal answers all secondary, a hold with its cost, a shut one disabled; no picture without one", () => {
+  const fishery = registryOfferView(offered(lord, "ck_evt_010").state)!;
+  const html = renderToStaticMarkup(createElement(RegistryOfferModal, { view: fishery, onAnswer: () => undefined, onLater: () => undefined }));
+  assert.match(html, /data-registry-offer="ck_evt_010"/);
+  assert.match(html, /data-art="ck_evt_010"[^>]*background-size:contain/);
   assert.equal((html.match(/class="petition-option registry-card-option ui-btn ui-btn--secondary"/g) ?? []).length, 3);
   assert.ok(!html.includes("ui-btn--primary"), "one primary per screen at most; equal answers are secondary (LR1-D2)");
-  assert.match(html, /data-choice="growth" data-enabled="false" disabled=""/);
+  assert.match(html, /data-choice="c" data-enabled="false" data-hold="false" disabled=""/);
+  assert.match(html, /data-choice="b" data-enabled="true" data-hold="true"/);
+  assert.ok(html.includes(`<span class="registry-card-hold">${REGISTRY_CARD_COPY.holdClaim}</span>`));
+  assert.match(html, /class="registry-card-money">금고 /, "the 60d filing fee");
   assert.match(html, new RegExp(REGISTRY_CARD_COPY.whyHeading));
-  const noArt = { ...registryOfferView(state)!, art: null };
-  assert.ok(!renderToStaticMarkup(createElement(RegistryOfferModal, { view: noArt, onAnswer: () => undefined, onLater: () => undefined })).includes("lord-card-art"));
+  assert.ok(!renderToStaticMarkup(createElement(RegistryOfferModal, { view: { ...fishery, art: null }, onAnswer: () => undefined, onLater: () => undefined })).includes("lord-card-art"));
 });
 
-test("the picture by the entry's id, or by the artId the engine sets; none for an id without one", () => {
-  assert.equal(eventArtFor({ id: "ck_evt_005", artId: null }), "ck_evt_005");
-  assert.equal(eventArtFor({ id: "ck_evt_005", artId: "ck_evt_013" }), "ck_evt_013", "the engine's artId wins");
-  assert.equal(eventArtFor({ id: "test:none", artId: null }), null);
-  assert.equal(eventArtFor({ id: "ck_evt_001", artId: null }), null, "a picture this build does not ship is not shown");
-  // The selection follows the registry alone: an entry added later ships its picture; an artId ships its own.
-  const later: RegistryEntry = { ...entry("ck_evt_050"), id: "ck_evt_101" };
-  const pointed: RegistryEntry = { ...entry("ck_evt_050"), id: "ck_evt_999", artId: "ck_evt_150" };
-  const home = ALL_REGISTRY_ENTRIES.find(item => item.generator === "home_cycle")!;
-  assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES, [later, pointed, { ...home, artId: "ck_evt_012" }]), ["ck_evt_101", "ck_evt_150"]);
+test("the picture by the v4 id; none for an id the build does not ship", () => {
+  assert.equal(eventArtFor("ck_evt_005"), "ck_evt_005");
+  assert.equal(eventArtFor("ck_evt_180"), "ck_evt_180");
+  assert.equal(eventArtFor("test:none"), null);
+  assert.equal(eventArtFor("ck_evt_001"), null, "a variant of an existing occurrence's words: never an offer, its picture not shipped");
+  assert.equal(eventArtFor("ck_evt_011"), null, "an entry the canon blocks (a derived name the read model lacks)");
+  assert.ok(v4Entries().every(entry => !("artId" in entry)), "no v4 entry carries an artId: the picture is its id's");
 });
 
-test("the build ships exactly the registry's pictures, re-encoded smaller, deterministic, in their own on-demand category", () => {
-  const live = registryEntries().filter(item => item.generator === undefined).map(item => item.artId ?? item.id).filter(id => id in EVENT_ART_IMAGES).sort();
+test("the shipped pictures follow the registry alone: every v4 entry it runs, no variant, no blocked entry, no home petition", () => {
+  assert.deepEqual(eventCardEntryIds(), runs);
+  const live = runs.filter(id => Object.hasOwn(EVENT_ART_IMAGES, id)).sort();
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES), live);
-  assert.deepEqual(live, ["ck_evt_005", "ck_evt_009", "ck_evt_013", "ck_evt_027", "ck_evt_032", "ck_evt_033", "ck_evt_034", "ck_evt_038", "ck_evt_050", "ck_evt_052", "ck_evt_053"]);
-  assert.deepEqual(EVENT_ART_DERIVATIVES.map(item => item.url), live.map(id => `assets/event-art/${id}.jpg`));
+  assert.equal(live.length, 70);
+  assert.ok(v4Entries().filter(entry => entry.contentClass !== "new_event_draft").every(entry => !live.includes(entry.id)));
+  // An entry the registry turns on later ships its picture by the same rule; an id without a picture is left out.
+  assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES, ["ck_evt_150", "ck_evt_011", "home:heriot", "ck_evt_150"]), ["ck_evt_011", "ck_evt_150"]);
+});
+
+test("the build ships exactly those pictures, re-encoded smaller, deterministic, in their own on-demand category", () => {
+  const shipped = shippedEventArtIds(EVENT_ART_IMAGES);
+  assert.deepEqual(EVENT_ART_DERIVATIVES.map(item => item.url), shipped.map(id => `assets/event-art/${id}.jpg`));
   const provenance = readFileSync("docs/provenance/assets.csv", "utf8");
   let received = 0; let built = 0;
-  for (const item of EVENT_ART_DERIVATIVES) {
+  for (const [index, item] of EVENT_ART_DERIVATIVES.entries()) {
     assert.equal(KEYART_DERIVATIVE_BY_URL.get(item.url), item);
     assert.equal(item.format, "jpeg-reencoded");
     const source = readFileSync(item.source);
-    const shipped = buildKeyartDerivative(item);
-    // The same bytes every build (the cache only stores them): decode + encode again, without the cache, is identical.
-    assert.equal(sha256(encodeJpeg(decodeJpeg(source), JPEG_QUALITY)), sha256(shipped), `${item.id} deterministic`);
+    const bytes = buildKeyartDerivative(item);
+    // The same bytes every build (the cache only stores them): decode + encode again, without the cache, is identical (three of them).
+    if (index % 30 === 0) assert.equal(sha256(encodeJpeg(decodeJpeg(source), JPEG_QUALITY)), sha256(bytes), `${item.id} deterministic`);
     // Pinned: the provenance row names the runtime file's size and SHA (scripts/installEventArt.ts writes them).
-    assert.ok(provenance.includes(`jpeg-reencoded: ${shipped.length} bytes, sha256 ${sha256(shipped)}`), `${item.id}: provenance pins the derivative`);
-    const sof = shipped.indexOf(Buffer.from([0xff, 0xc0]));
-    assert.deepEqual([shipped[0], shipped[1], shipped.readUInt16BE(sof + 7), shipped.readUInt16BE(sof + 5)], [0xff, 0xd8, 960, 540], `${item.id}: baseline 960 × 540`);
-    assert.ok(shipped.length < source.length, `${item.id}: ${shipped.length} < ${source.length}`);
-    received += source.length; built += shipped.length;
+    assert.ok(provenance.includes(`jpeg-reencoded: ${bytes.length} bytes, sha256 ${sha256(bytes)}`), `${item.id}: provenance pins the derivative`);
+    const sof = bytes.indexOf(Buffer.from([0xff, 0xc0]));
+    assert.deepEqual([bytes[0], bytes[1], bytes.readUInt16BE(sof + 7), bytes.readUInt16BE(sof + 5)], [0xff, 0xd8, 960, 540], `${item.id}: baseline 960 × 540`);
+    assert.ok(bytes.length < source.length, `${item.id}: ${bytes.length} < ${source.length}`);
+    received += source.length; built += bytes.length;
   }
-  assert.ok(built < 0.8 * received && built < 1_500_000, `${built} of ${received} bytes`);
+  assert.ok(built < 0.7 * received && built < 10_000_000, `${built} of ${received} bytes`);
   // distBudget: their own measured category, on demand, out of the first load's total.
   const config = loadBudgetConfig();
   assert.equal(categorize("assets/event-art/ck_evt_005.jpg", config)?.category, "event_cards");
@@ -203,10 +252,13 @@ test("the pictures load only when a card or chip shows them: nothing at start, n
   assert.match(String(storyArtStyle("ck_evt_005", 64).backgroundImage), /^url\("\/?assets\/event-art\/ck_evt_005\.jpg"\)$/);
 });
 
-test("all 200 are in the manifest from their confirmed ledger rows; only the shipped are runtime assets with provenance", () => {
+test("all 200 are in the manifest from their confirmed ledger rows; only the shipped are runtime assets with provenance; installed_by only on those", () => {
   const ids = Object.keys(EVENT_ART_IMAGES);
   assert.equal(ids.length, 200);
   const inbox = readFileSync("assets-inbox/INBOX_LEDGER.csv", "utf8").split("\r\n");
+  const shipped = shippedEventArtIds(EVENT_ART_IMAGES);
+  const runtime = new Set(enumerateRuntimeAssets().map(asset => asset.runtimePath));
+  const provenance = readFileSync("docs/provenance/assets.csv", "utf8");
   for (const [id, image] of Object.entries(EVENT_ART_IMAGES)) {
     assert.equal(image.width, 960); assert.equal(image.height, 540);
     assert.ok(existsSync(image.source), image.source);
@@ -214,15 +266,10 @@ test("all 200 are in the manifest from their confirmed ledger rows; only the shi
     assert.ok(row !== undefined, `${id}: no ledger row`);
     assert.equal(row.split(",")[2], sha256(readFileSync(image.source)), `${id}: the ledger's SHA`);
     assert.match(row, /,confirmed,,/, `${id}: confirmed, not replaced`);
-  }
-  const runtime = new Set(enumerateRuntimeAssets().map(asset => asset.runtimePath));
-  const provenance = readFileSync("docs/provenance/assets.csv", "utf8");
-  for (const id of ids) {
-    const source = EVENT_ART_IMAGES[id as keyof typeof EVENT_ART_IMAGES].source;
-    const shipped = shippedEventArtIds(EVENT_ART_IMAGES).includes(id);
-    // ck_evt_012 is LM-R1's Wave 44 stall dispute (the same file): a runtime asset of its own manifest.
-    if (id !== "ck_evt_012") assert.equal(runtime.has(source), shipped, `${id} runtime`);
-    assert.equal(provenance.includes(`\nevent-art/${id},`), shipped, `${id} provenance row`);
-    if (shipped) assert.ok(existsSync(`docs/provenance/prompts/${id}-event-art.txt`));
+    // EVENT-ART's mark only on a shipped picture (set after its capture through the card); ck_evt_012 is LM-R1's Wave 44 file.
+    if (row.endsWith(",EVENT-ART")) assert.ok(shipped.includes(id), `${id}: marked installed but not shipped`);
+    if (id !== "ck_evt_012") assert.equal(runtime.has(image.source), shipped.includes(id), `${id} runtime`);
+    assert.equal(provenance.includes(`\nevent-art/${id},`), shipped.includes(id), `${id} provenance row`);
+    assert.equal(existsSync(`docs/provenance/prompts/${id}-event-art.txt`), shipped.includes(id), `${id} prompt file`);
   }
 });

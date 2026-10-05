@@ -1,0 +1,94 @@
+{
+ "registry-offer": {
+  "seed": 1,
+  "tick": 13000,
+  "year": 1303,
+  "season": 1,
+  "offer": {
+   "id": "registry:ck_evt_124:marriage.offer|kin:1:1|est-000002:13",
+   "entryId": "ck_evt_124",
+   "boundId": "kin:1:1",
+   "offeredTick": 13000,
+   "deadline": 14000,
+   "status": "offered",
+   "receipt": {
+    "draw": 951,
+    "chancePermille": 1000,
+    "conditions": []
+   },
+   "source": "v4",
+   "bound": {
+    "groom": "kin:1:1",
+    "bride": "est-000002",
+    "counterpart": "estate-neighbour-3"
+   },
+   "key": "marriage.offer|kin:1:1|est-000002",
+   "context": ""
+  },
+  "choices": [
+   [
+    "a",
+    false,
+    false
+   ],
+   [
+    "b",
+    true,
+    false
+   ],
+   [
+    "c",
+    true,
+    false
+   ]
+  ]
+ },
+ "registry-offer-hold": {
+  "seed": 1,
+  "tick": 77000,
+  "year": 1319,
+  "season": 1,
+  "offer": {
+   "id": "registry:ck_evt_053:suit.evidence|suit-3:77",
+   "entryId": "ck_evt_053",
+   "boundId": "suit-3",
+   "offeredTick": 77000,
+   "deadline": 78000,
+   "status": "offered",
+   "receipt": {
+    "draw": 553,
+    "chancePermille": 1000,
+    "conditions": []
+   },
+   "source": "v4",
+   "bound": {
+    "suit": "suit-3",
+    "claim": "claim-4"
+   },
+   "key": "suit.evidence|suit-3",
+   "context": "suit-3"
+  },
+  "choices": [
+   [
+    "deed",
+    false,
+    false
+   ],
+   [
+    "roll",
+    true,
+    false
+   ],
+   [
+    "both",
+    false,
+    false
+   ],
+   [
+    "defer",
+    true,
+    true
+   ]
+  ]
+ }
+}
