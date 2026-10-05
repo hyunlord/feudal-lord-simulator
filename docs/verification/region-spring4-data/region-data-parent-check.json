@@ -1,0 +1,162 @@
+{
+  "pass": true,
+  "measuredHead": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "decodedOriginalPNG": 60,
+  "identityPairs": 20,
+  "AA": 20,
+  "positiveChanged": 8,
+  "negativeIdentical": 12,
+  "parentNativeOpened": {
+    "after": 8,
+    "baseline": 4,
+    "scope": "All four spring regions at zoom1/.6 after, zoom1 before; independent reviewer covers all20."
+  },
+  "parentVisual": "PASS_WITH_LIMITS: New spring chalk and coast are more textured/green; fen has darker rough ground and woodland warmer brown. Existing shore/grid transitions remain. No obvious new tile seams, missing sprites or obstructed roads/buildings in these12 originals. Not a natural-play or all-season claim.",
+  "limits": [
+    "Independent full20 native verdict remains separate",
+    "Repeat source arrays not persisted; no repeat absence claim",
+    "No autumn/chapter4/DPR2 coverage"
+  ],
+  "rows": [
+    {
+      "name": "region4-chalk_downs-spring-z1",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "76b333da099fc794740e512eca1afae491c9d75f4a7f1ce6ea3d95663dea7c68"
+    },
+    {
+      "name": "region4-chalk_downs-spring-z06",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "ca174a3a0b65c843a481c56f78549974f356808475dce61fc7618812edfdf89d"
+    },
+    {
+      "name": "region4-chalk_downs-summer-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16"
+    },
+    {
+      "name": "region4-chalk_downs-winter-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e"
+    },
+    {
+      "name": "region4-coastal_port-spring-z1",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "109bfa19a381bea69a56ca647be8749bcec14e06b54c07346b2860fb51ce43cd"
+    },
+    {
+      "name": "region4-coastal_port-spring-z06",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "02d2e914faa50815a90b4c3ef15cb0ce3f3d0934e1077da46b5f12ac2aeb6a4a"
+    },
+    {
+      "name": "region4-coastal_port-summer-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "aef60a126167953d98def513aaea583b2534c72da283dc62ff8ad35cfa0ce38f"
+    },
+    {
+      "name": "region4-coastal_port-winter-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "ee111ec78fba266f31c8b26f4dcc78a7835b934ac0e04f159c9c0438b1dc0eee"
+    },
+    {
+      "name": "region4-fen_drainage-spring-z1",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "6df2470f976d924dc99294866782eba3fb2dc9e65bcb27b028113ccc8730dcfe"
+    },
+    {
+      "name": "region4-fen_drainage-spring-z06",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "52fca676f42ba55417b7a7d43f749428f362c76d786d2f537bf94fec3c528abb"
+    },
+    {
+      "name": "region4-fen_drainage-summer-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "6b8d55a28ca581464235cab374d3a5577363de60440ef675641fba42657fec12"
+    },
+    {
+      "name": "region4-fen_drainage-winter-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "51daeb1b841abcf5c2153e34fb4a74bf70055b0a754726fcd759b65f9e5f0473"
+    },
+    {
+      "name": "region4-forest_edge-spring-z1",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "01ff590174b62c44ddf461baa54e52607a86c1a84c8ae5f8d822c778d7371205"
+    },
+    {
+      "name": "region4-forest_edge-spring-z06",
+      "positive": true,
+      "aaEqual": true,
+      "baselineEqual": false,
+      "pngSHA256": "c9938eb6a7126fea614900cc4e9ddb755677d05085ce4ef6dad9626dacf2839d"
+    },
+    {
+      "name": "region4-forest_edge-summer-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "08e05ad61c37b01e0e07d10ee9d6865e8daf9f0e43aec2ee5234ae3a607cc204"
+    },
+    {
+      "name": "region4-forest_edge-winter-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "5d6fc840ed5ee69166d37667f50d7508ae75e92df123f3b73139ca71a3f79761"
+    },
+    {
+      "name": "region4-open_field-spring-z1",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "eec09f1dce85c4b49da8ee59a26556f4412a70b58abcf39aa6537dedd5b09b5a"
+    },
+    {
+      "name": "region4-open_field-spring-z06",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "cfbca1bc0f1ac7969732657b497fb2ff5b52d96e4809b7116146d0c2db92a623"
+    },
+    {
+      "name": "region4-chalk_downs-summer-z06",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102"
+    },
+    {
+      "name": "region4-chalk_downs-winter-z06",
+      "positive": false,
+      "aaEqual": true,
+      "baselineEqual": true,
+      "pngSHA256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9"
+    }
+  ]
+}
