@@ -71,6 +71,8 @@ export interface DeliveryStepInput {
   readonly wallConstructionPriority?: import("../domain/wallReserve").WallConstructionPriority;
   readonly inventory: DeliveryInventoryPort;
   readonly routes: DeliveryRoutePort;
+  /** RECOVER-1 (RC-5): lord mode — a mill pulls its wheat by its round trip (reorder point, more intake carts). */
+  readonly millPull?: boolean;
 }
 
 export interface DeliveryStepResult {

@@ -14,3 +14,15 @@ export const RECOVERY_BALANCE = {
   /** RC-2: an abandoned house stands empty at least this long before newcomers take it (the family just left). */
   abandonedWaitTicks: PRESSURE_BALANCE.resettleAfterTicks,
 } as const;
+
+/**
+ * RECOVER-1 (RC-5, B2): in lord mode the short side pulls. A mill reorders wheat at what it grinds during a round trip
+ * to its nearest wheat (× the margin), never below the old fixed target; a round trip longer than one cart's load
+ * lasts sends more intake carts at once, up to the cap. Game estimates.
+ */
+export const MILL_PULL = {
+  /** Reorder point = round-trip ticks × wheat per tick × this, permille. */
+  marginPermille: 1500,
+  /** Intake carts one mill may have out at once. */
+  maxIntakeCarts: 3,
+} as const;
