@@ -19,6 +19,8 @@ export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string
   'ground-texture': { fieldState: text, baseId: text, season: text },
   'season-variant': { baseKey: text, season: text },
   'regional-map': { mapId: text, landType: text },
+  'ui-frame': { state: text },
+  'ui-image': { state: text },
 });
 for (const fields of Object.values(ART_CONTEXT_FIELDS)) {
   for (const field of Object.values(fields)) Object.freeze(field);
