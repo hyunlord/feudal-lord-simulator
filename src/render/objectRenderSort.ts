@@ -96,6 +96,8 @@ function renderSortY(item: SortableRenderItem): number {
       return item.prop.ty;
     case "village_life":
       return item.life.y;
+    case "trade_prop":
+      return item.prop.y;
     case "door_sign":
       return item.sign.y;
     case "ale_drinker":

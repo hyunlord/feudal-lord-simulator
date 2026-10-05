@@ -23,6 +23,7 @@ import { withCountryside } from "./countrysideDraw";
 import { withReorgProps } from "./reorgWorldProps";
 import { withAlehouseCrowd } from "./alehouseCrowd";
 import { withLandFallow } from "./landStageItems";
+import { withTradeWorldProps } from "./tradeWorldDraw";
 import { withDoorSigns } from "./doorSigns";
 
 type ObjectRenderFrameInput = {
@@ -48,7 +49,8 @@ const staticObjectRenderCache = new WeakMap<readonly Tile[], StaticObjectRenderC
 export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
-  const staticItems = withDoorSigns(withLandFallow(withAlehouseCrowd(withCountryside(withVillageLife(withWarProps(withReorgProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input.state, input.range), input), input), input.state, input.range), input.state, input.range), input.state, input.range), input.state, input.range); // + INSTALL-28, UI-8, UI-9, NAT-2 alehouse crowd, NAT-5 fallow, LM-R1 door signs
+  const baseItems = withDoorSigns(withLandFallow(withAlehouseCrowd(withCountryside(withVillageLife(withWarProps(withReorgProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input.state, input.range), input), input), input.state, input.range), input.state, input.range), input.state, input.range), input.state, input.range); // + INSTALL-28, UI-8, UI-9, NAT-2 alehouse crowd, NAT-5 fallow, LM-R1 door signs
+  const staticItems = withTradeWorldProps(baseItems, input.state, input.range);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
