@@ -1,0 +1,33 @@
+{
+  "entries": 16,
+  "enabled": 16,
+  "commands": 40,
+  "holds": 16,
+  "commandFailures": [],
+  "originalUnchanged": true,
+  "dues": [
+    [
+      "ck_evt_201",
+      true
+    ],
+    [
+      "ck_evt_204",
+      true
+    ],
+    [
+      "ck_evt_211",
+      true
+    ]
+  ],
+  "recurrence": 16,
+  "recurrenceFailures": [],
+  "windows": 144,
+  "windowFails": [],
+  "newBoundaryCount": 69,
+  "newBoundaryFailures": [],
+  "inputSHA256": {
+    "events": "fce914fe651dd22000ff33d6975e8fb7ad8ed9479cce062b89e21054ff619ab1",
+    "registry": "886860c9f182707ccf7ad4c5dae1a17781791d884c581df84a0511e844bdd503"
+  },
+  "finalRecheck": "After correcting only ck_evt_214 history.inference actor, re-ran qa.mjs: 16 fixture entries and 144 windows. Display copy, sender, registry, commands unchanged; prior boundary/surface evidence remains applicable."
+}
