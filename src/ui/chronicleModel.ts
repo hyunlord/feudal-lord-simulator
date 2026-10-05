@@ -11,6 +11,8 @@ import type { StoryIllustration } from "./storyArt";
 import { chapterIntro } from "./wave31Art";
 import type { Wave21ImageId } from "./wave21Art";
 import { interludeImageId, type Wave33ImageId } from "./wave33Art";
+import { wave40RecordArt } from "./wave40Art";
+import { lordMode } from "../engine/townAgency";
 
 // UI-4 chronicle page (CHRONICLE_DESIGN 2.1 timeline v0, one chapter): at the end of chapter 1 (F0-C1 `chapterEnd`),
 // the chapter as a timeline edited from the F0-C2 history ledger (`history.query`: the chapter's records of severity 1
@@ -173,7 +175,9 @@ export function chronicleView(state: GameState): ChronicleView | null {
   return {
     chapter: end.chapter,
     title: CHRONICLE_COPY.title(end.chapter, end.chronicle.fromYear, end.chronicle.toYear),
-    entries: chosen.map(record => ({ id: record.id, date: dateOf(record.tick), sentence: recordSentence(state, record), illustration: chronicleIllustration(record) })),
+    // EVENT-ART: in lord mode the lord's ledger moments (marriage, suit, wardship) show their Wave 40 picture.
+    entries: chosen.map(record => ({ id: record.id, date: dateOf(record.tick), sentence: recordSentence(state, record),
+      illustration: (lordMode(state) ? wave40RecordArt(record) : null) ?? chronicleIllustration(record) })),
     // UI-10: chapter 5's page also quotes its own cards' answers the engine's three left out (chapterQuotes).
     decisions: chapterQuotes(state, end.chapter, end.chronicle.decisions, end.tick).map(quote => {
       // UI-6: a petition's quote by its kind (the war's demands are not the merchants' charter) and that kind's answer.

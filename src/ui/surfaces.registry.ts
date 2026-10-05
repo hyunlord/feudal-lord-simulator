@@ -15,8 +15,9 @@
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
- * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord";
+ * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice;
+ * EVENT-ART adds `registry-offer` and `registry-offer-hold` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments). */
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -182,6 +183,12 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ wait: ".event-chip", timeout: 90_000 }, { pause: 500 }], data: "chapter 4's alehouse boom beat" },
   { id: "hud.event-card", extends: "hud.event-chips", root: ".event-card", frame: "css", scene: { kind: "state", set: "ui9", name: "reorg.alehouse_boom", tile: "keep", zoom: 1.1, query: "&story-delay=0" },
     open: [{ click: ".event-chip" }, { pause: 600 }], scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "the alehouse boom's story card" },
+  // EVENT-ART (wave40): a lord-mode moment's card (src/ui/lordMomentBeats.ts) on scripts/wave40MomentStates.ts's `moments` states —
+  // the suit filed (Wave 40 09), the ledger's own sentence as its line, [조언] and [닫기] (no decision, no place off the map).
+  { id: "hud.event-card.lord-moment", root: ".event-card[data-story='lord_moment']", frame: "css",
+    scene: { kind: "state", set: "moments", name: "lawsuit_filed", tile: "house", zoom: 1.1, query: "&story-delay=0" },
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "the lord's suit filed: its Wave 40 picture and the ledger's sentence" },
   { id: "hud.goal-chips", root: ".goal-chip-rail .goal-card", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ pause: 600 }],
     data: "the tutorial's first goal card" },
   { id: "hud.goal-help", extends: "hud.goal-chips", root: ".goal-card-help > p", frame: "css", scene: { kind: "new-game" }, numbers: false,
@@ -429,6 +436,20 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.lord-card[data-lord-request]", frameSlots: [],
     requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".story-modal-later"],
     scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }], data: "the town's request (a proclamation waiting)" },
+  // EVENT-ART: the registry's event card (src/ui/hud/RegistryCard.tsx) on scripts/eventArtStates.ts's states — the lord's
+  // slice played by the lord bot to the first content canon v4 offer the registry draws, and to the first whose card has a
+  // hold (ER-19: its cost under its tradeoff); it opens by itself after the world, as a petition does. The picture is not
+  // a required element (as above).
+  { id: "modal.lord.registry", ...PETITION, root: ".story-modal.petition-card.lord-card[data-registry-offer]", frameSlots: [],
+    siblingsNoOverlap: [".petition-option", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".registry-card-why li", ".petition-option", ".lord-card-forecast", ".lord-card-precedent", ".story-modal-later"],
+    scene: petitionScene("lord", "registry-offer", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
+    data: "the first v4 offer the registry drew in the lord's slice: its why, each answer's tradeoff" },
+  { id: "modal.lord.registry-hold", ...PETITION, root: ".story-modal.petition-card.lord-card[data-registry-offer]", frameSlots: [],
+    siblingsNoOverlap: [".petition-option", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".registry-card-why li", ".petition-option", ".lord-card-forecast", ".registry-card-hold", ".story-modal-later"],
+    scene: petitionScene("lord", "registry-offer-hold", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
+    data: "the first v4 offer with a hold the lord can choose: the hold's cost in words under its tradeoff" },
   // LM-R1 receipt: lord mode's "왜 여기?" receipt beside a selected building's card, and the ledger drawer's lord tab
   // (scripts/lmr1LordStates.ts: the lord's slice with the stability policy, dues 80% and a 10d farmstead subsidy).
   { id: "map.selection.lord-farmstead", root: ".diagnostic-card", frame: "css", scene: LORD_TOWN, open: [LORD_PICK], scroll: "y",

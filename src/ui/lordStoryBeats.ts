@@ -3,11 +3,15 @@ import { lordMode } from "../engine/townAgency";
 import type { StoryBeat } from "./eventStory";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
 import { homePetitionView, lordRequestView, precedentView, type LordRequestView } from "./lordCardsModel";
+import { lordMomentBeats } from "./lordMomentBeats";
+import { REGISTRY_CARD_COPY } from "./registryCardCopy.ko";
+import { registryHeadline } from "./registryCardModel";
 import type { StoryIllustration } from "./storyArt";
 
 // LM-R1 (petitions): the lord's cards as story beats (lord mode only), so each comes the way the political petitions
 // do — the world first, then its chip; the chip's [결정하기] opens the card (eventStory `decisionModal`). A home petition
-// also opens its card once by itself (useStoryPresentation), as a political petition does.
+// also opens its card once by itself (useStoryPresentation), as a political petition does. EVENT-ART: a registry offer
+// (an event entry) the same way, with its picture on the chip (none when the entry has no picture).
 
 /** The manor house (the lord's seat, where his court sits), else the keep: where [위치로] looks. */
 function seatTile(state: GameState) {
@@ -34,10 +38,17 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: `home-precedent:${precedent.key}`, kind: "home_precedent", illustration: precedent.art, tile: seatTile(state), decision: "precedent",
       title: LORD_CARDS_COPY.precedentTitle, line: LORD_CARDS_COPY.precedentLine, facts: precedent.items, advice: LORD_CARDS_COPY.precedentHint });
   }
+  const offer = registryHeadline(state);
+  if (offer !== null) {
+    beats.push({ id: `registry:${offer.occurrenceId}`, kind: "registry_event", illustration: offer.art, tile: seatTile(state), decision: "registry_offer",
+      title: offer.title, line: offer.body, facts: [offer.waits], advice: REGISTRY_CARD_COPY.advice });
+  }
   const request = lordRequestView(state);
   if (request !== null && request.command !== null) {
     beats.push({ id: `lord-request:${request.key}`, kind: "lord_request", illustration: requestArt(request.kind), tile: seatTile(state),
       decision: "lord_request", title: request.title, line: request.demand, facts: request.more === "" ? [] : [request.more], advice: LORD_CARDS_COPY.requestAdvice });
   }
+  // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record.
+  beats.push(...lordMomentBeats(state, seatTile(state)));
   return beats;
 }

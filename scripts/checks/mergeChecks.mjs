@@ -159,7 +159,7 @@ function budgetStep(dir) {
     const mb = bytes => (bytes / result.megabyte).toFixed(2);
     const over = result.over.map(id => { const row = id === 'total' ? { name: '전체', ...result.total } : result.categories.find(category => category.id === id);
       return `${row.name} ${mb(row.bytes)} MB > ${mb(row.budgetBytes)} MB`; });
-    const summary = `budget: ${mb(result.total.bytes)} MB of ${mb(result.total.budgetBytes)} MB, ${result.pass ? 'within budget' : `OVER (${over.join(', ')})`}` +
+    const summary = `budget: first load ${mb(result.total.bytes)} MB of ${mb(result.total.budgetBytes)} MB, ${result.pass ? 'within budget' : `OVER (${over.join(', ')})`}` +
       ` (build ${(buildMs / 1000).toFixed(1)} s, step ${((Date.now() - started) / 1000).toFixed(1)} s)`;
     return ['budget', result.pass, `${summary}\n${indent(formatBudgetTable(result))}`];
   } catch (error) {
