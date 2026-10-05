@@ -1,0 +1,29 @@
+{
+  "status": "PARENT_NATIVE_AFTER2_AND_RAW18_RGBA_CHECK_PASS_WITH_LIMITS",
+  "head": "af879b364c00f04611778f53f389251514f981d3",
+  "sourceResultSHA256": "61aff291c552f78b6ee21951747418cd3892ebd3e5ce0c811683dc1f54b5ebfe",
+  "rawFilesVerified": 18,
+  "decodedPNG": 6,
+  "rows": [
+    {
+      "name": "summer-ne-z1",
+      "differingPixels": 4728,
+      "AA": 0
+    },
+    {
+      "name": "summer-ne-z0p6",
+      "differingPixels": 2035,
+      "AA": 0
+    }
+  ],
+  "nativeOpened": [
+    "before2 earlier",
+    "after2 this review"
+  ],
+  "observation": "Small actor changes with preserved town/terrain/building scene; no obvious whole-scene displacement or broken sprite.",
+  "limits": [
+    "Center actor/cart overlap prevents contact certification.",
+    "17.6 is registered nominal figure size, not anatomical measurement.",
+    "Doors, event crowd and missing authored metadata remain unresolved."
+  ]
+}

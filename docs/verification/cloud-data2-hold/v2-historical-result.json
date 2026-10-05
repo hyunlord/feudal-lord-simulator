@@ -1,0 +1,707 @@
+{
+  "status": "RUNTIME_FAILED_FLOAT32_TRANSFORM_ORACLE",
+  "run": "astra-cloud2-data-v2-66b8e1e",
+  "actualHEAD": "66b8e1ef2d5e4e9ec8d610cc21c583fbfd56bf6b",
+  "baselineHEAD": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+  "v2Submissions": 1,
+  "automaticRetries": 0,
+  "priorRun": "astra-cloud2-data-v1-66b8e1e (FAIL preserved)",
+  "exitCode": 1,
+  "counts": {
+    "views": 10,
+    "aa": 10,
+    "errors": 8,
+    "positiveChanged": 8,
+    "negativeRgbaEqual": 2,
+    "nativeTracePositiveOpens": 16,
+    "all20TraceSetsExactExceptFloat32Transform": true
+  },
+  "errors": [
+    "summer-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "summer-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t0: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch",
+    "winter-normal-z06-t5000: DATA pair/source/rect/transform/opacity native trace mismatch"
+  ],
+  "rawFiles": {
+    "output/art-architecture/cloud2-data-v2/results/spring-wet-negative-z1-t0.presented.json": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+    "output/art-architecture/cloud2-data-v2/results/summer-off-negative-z1-t0.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t5000.png": "8d0a4b61bc2ba26acaadc6ada2de7c2b978e941f21d5d90d64b1def78e685fd7",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t5000.jpg": "2931f9b0faccdb0f6c7952c4adfb90542aea1bc439a0cbd285378a685c8b78df",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t0.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v2/results/captures.json": "de30790fe7d69c97f820fa335f39b3c933a550d25cef84ef420187d8e7112981",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/summer-off-negative-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/progress.jsonl": "88422163fd8530d2637bd3b1135e7ee3d0e19d17d467686b5d4f46b3e498682c",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t5000.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t0.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t0.jpg": "b2a17fa3f9c117c363823363e9d71549f714ffdc1c07f8b4bd34282f1f1554f0",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t0.png": "41aebb5aed17fc4286d8ca36820af255b0a5d18d98ec4317dba0287b74e00532",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t5000.jpg": "5149f2ec1a6fe0a61ddf128f7079d20873432482172734076de89f821c912783",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t5000.png": "a68cccbc1462cb58a245051cbcc99e99cfdac4f5b592c5d084dd8f76202d17a0",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t5000.png": "4968c037944e18284511aca3573f533f22f8c86a7caca834427af974072c0d80",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t5000.jpg": "9d84731ee0d64be935e59e6b8a02710d039f91aa74a8819227802a25daf26cbc",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t0.png": "efc91244c68de19356517169eb849730e83edebecf07418673318061c7bf0c98",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t0.jpg": "a9a68b5a5cdfed1c86e2ef712eea8cf635fa1ecd703a701f0f079efa16e608b0",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t0.png": "594b796d6002e3f8d049bfa8fa86fa5122b6ba795c1681bce7f721ee3c86e7fb",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t0.jpg": "15091d34af37092778ca1ca55a9b89d005d12c9c506cc6d31cccffce83b741b7",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t5000.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t5000.jpg": "3a05abf5b1b4ec902cdb7bf95d1362deeb72ecd11814edf55fc84e2625e05550",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t5000.png": "386d0874c997e1305541edb426a6b7a5c4e4d6b5fcb29d228816beccc7ce71b2",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t0.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t5000.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v2/results/spring-wet-negative-z1-t0.engine.json": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t0.jpg": "7cc04b499e3b60811d70209722d69ffbcde2ffce9db16948e9e14af1f3f82658",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t0.png": "b112ca9fd876127228037acc44b9638f97cd80010853896754972e6ad7a46cee",
+    "output/art-architecture/cloud2-data-v2/results/spring-wet-negative-z1-t0.jpg": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t5000.engine.json": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+    "output/art-architecture/cloud2-data-v2/results/spring-wet-negative-z1-t0.png": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1",
+    "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/summer-off-negative-z1-t0.jpg": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f",
+    "output/art-architecture/cloud2-data-v2/results/summer-off-negative-z1-t0.png": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f",
+    "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t0.engine.json": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+    "output/art-architecture/cloud2-data-v2/results/repeat/spring-wet-negative-z1-t0.presented.json": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t5000.png": "8d0a4b61bc2ba26acaadc6ada2de7c2b978e941f21d5d90d64b1def78e685fd7",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t5000.jpg": "2931f9b0faccdb0f6c7952c4adfb90542aea1bc439a0cbd285378a685c8b78df",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-off-negative-z1-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t0.jpg": "b2a17fa3f9c117c363823363e9d71549f714ffdc1c07f8b4bd34282f1f1554f0",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t0.png": "41aebb5aed17fc4286d8ca36820af255b0a5d18d98ec4317dba0287b74e00532",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t5000.jpg": "5149f2ec1a6fe0a61ddf128f7079d20873432482172734076de89f821c912783",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t5000.png": "a68cccbc1462cb58a245051cbcc99e99cfdac4f5b592c5d084dd8f76202d17a0",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t5000.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t5000.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t5000.png": "4968c037944e18284511aca3573f533f22f8c86a7caca834427af974072c0d80",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t5000.jpg": "9d84731ee0d64be935e59e6b8a02710d039f91aa74a8819227802a25daf26cbc",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t0.png": "efc91244c68de19356517169eb849730e83edebecf07418673318061c7bf0c98",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t0.jpg": "a9a68b5a5cdfed1c86e2ef712eea8cf635fa1ecd703a701f0f079efa16e608b0",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t0.png": "594b796d6002e3f8d049bfa8fa86fa5122b6ba795c1681bce7f721ee3c86e7fb",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t0.jpg": "15091d34af37092778ca1ca55a9b89d005d12c9c506cc6d31cccffce83b741b7",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t5000.jpg": "3a05abf5b1b4ec902cdb7bf95d1362deeb72ecd11814edf55fc84e2625e05550",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t5000.png": "386d0874c997e1305541edb426a6b7a5c4e4d6b5fcb29d228816beccc7ce71b2",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t0.presented.json": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t0.jpg": "7cc04b499e3b60811d70209722d69ffbcde2ffce9db16948e9e14af1f3f82658",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t0.png": "b112ca9fd876127228037acc44b9638f97cd80010853896754972e6ad7a46cee",
+    "output/art-architecture/cloud2-data-v2/results/repeat/spring-wet-negative-z1-t0.jpg": "aa9e928ac59933a2df623762d119834ae2f7583948e7e7e1d2033734d7c84011",
+    "output/art-architecture/cloud2-data-v2/results/repeat/spring-wet-negative-z1-t0.png": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1",
+    "output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t0.presented.json": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-off-negative-z1-t0.jpg": "d82a306dfa87adce2c084feccf7d668cf750a2142ebbaab9e1778d296845c48f",
+    "output/art-architecture/cloud2-data-v2/results/repeat/summer-off-negative-z1-t0.png": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f",
+    "output/art-architecture/cloud2-data-v2/receipts/final.json": "d49410720f0c7f154bc6e2040932ec2b03ded87afb7a3a2d5ec821fc8265f093",
+    "output/art-architecture/cloud2-data-v2/receipts/pre.json": "895b18ce2ae1d4f404572c6355b7bb29a5e8ca9da46899babc12d117aafe0556",
+    "output/art-architecture/cloud2-data-v2/receipts/post.json": "91c64eaebc042fa14418f52618cea9a1bbb1e35c5db49162f0614eddfbb37cfc"
+  },
+  "guard": {
+    "prePass": true,
+    "postPass": true,
+    "tracked": 26887,
+    "exported": 27343,
+    "inputs": 27342,
+    "lfs": 6384,
+    "freeze": "e54a25883ca102536ae1836eb9a1e204e42ea850735e912850a109880518005a",
+    "localPostRecheck": true
+  },
+  "external": {
+    "preexistingFiles": 5488,
+    "additions": {
+      ".cache/keyart-derivatives/977163c2c58e3d57acae3e8bbb22b5b6f410be35c3f9c284aa6013adf6b82845-v1-png-half": {
+        "type": "file",
+        "bytes": 96265,
+        "sha256": "ce76b925e2a5c0745ad8e30222858cd25119932a0c8eab78c2a30f8d4fef0729"
+      },
+      ".cache/keyart-derivatives/9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b-v1-jpeg-q70": {
+        "type": "file",
+        "bytes": 315323,
+        "sha256": "c9c39668fbf4b8508c7a61c245e9c5c0bffdeef673d951fa9ec051db38e1434a"
+      },
+      ".vite/deps/_metadata.json": {
+        "type": "file",
+        "bytes": 1089,
+        "sha256": "498b5f80bff13edce603ec1e12fc5d259f95633567e09bd01b1fa90ab91690ce"
+      },
+      ".vite/deps/package.json": {
+        "type": "file",
+        "bytes": 23,
+        "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+      },
+      ".vite/deps/react-dom.js": {
+        "type": "file",
+        "bytes": 14535,
+        "sha256": "86295b7f3a447555e08cf9ebb5d34b72a699fb2863fde30dbe505c846102b4c0"
+      },
+      ".vite/deps/react-dom.js.map": {
+        "type": "file",
+        "bytes": 25602,
+        "sha256": "392f5943639eba2d0113930cf7ec4a78f6cb660cd60083c83c81a29a223a81fd"
+      },
+      ".vite/deps/react-dom_client.js": {
+        "type": "file",
+        "bytes": 820711,
+        "sha256": "3c0fcd691cd26e901ed362fa403e3f8953509cefae20152e2335c23c62bf8b67"
+      },
+      ".vite/deps/react-dom_client.js.map": {
+        "type": "file",
+        "bytes": 1498893,
+        "sha256": "6476738af93e6f431c0587f299b4e509ba5e7be30eb6cb152ccfd2966b2d9b8d"
+      },
+      ".vite/deps/react.js": {
+        "type": "file",
+        "bytes": 38246,
+        "sha256": "d825799114c356286938056830da0314c2680d1fb304c3390cd56c0bef023101"
+      },
+      ".vite/deps/react.js.map": {
+        "type": "file",
+        "bytes": 68787,
+        "sha256": "512b5b4cb2d03e310293282adf8f7e12986bad182dbe364b53730b5f8f477fcc"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js": {
+        "type": "file",
+        "bytes": 10466,
+        "sha256": "f583c333ee04c86c5706e0499464d898d978e784cdb743b2db6f386f463ba885"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js.map": {
+        "type": "file",
+        "bytes": 18068,
+        "sha256": "a2cbbfc95fa5cbd63b00e1524fa38ba7d3cc8efc794e36e23278b4b1b16ffad3"
+      },
+      ".vite/deps/react_jsx-runtime.js": {
+        "type": "file",
+        "bytes": 10743,
+        "sha256": "f441d0cfcdaed154914d32ef0304199ea84b25e3f85fcea9653ce911369dadde"
+      },
+      ".vite/deps/react_jsx-runtime.js.map": {
+        "type": "file",
+        "bytes": 18636,
+        "sha256": "9ca0503453f56908949c3be7dcfe64eb4a63c6e0fa38dde4a9ef74119934fa6f"
+      },
+      ".vite/deps/rolldown-runtime-BvCyGRYZ.js": {
+        "type": "file",
+        "bytes": 192,
+        "sha256": "8857aad4f904253f9a8bb160ae7ca249376498df7c3510b0cd92b4e5a2c3b6cb"
+      }
+    }
+  },
+  "diagnosticRecheck": ".omo/evidence/cloud-data2-runtime-v2-diagnostic-recheck.json",
+  "diagnosticSha256": "5f6c9f3c7a56fb37ce9d72b40d61bb12b4e1c9d0c4257b4b8a5fdeba407697af",
+  "traceDifferences": [
+    {
+      "name": "summer-normal-z1-t0",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 12,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 12,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        }
+      ]
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 14,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 14,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        }
+      ]
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        }
+      ]
+    },
+    {
+      "name": "summer-normal-z06-t5000",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 12,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 12,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z1-t5000",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 14,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 14,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ],
+          "expectedDoubleTransform": [
+            1,
+            0,
+            0,
+            1,
+            640,
+            -624
+          ]
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z06-t5000",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        },
+        {
+          "repeat": true,
+          "count": 17,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            640,
+            -214.39999389648438
+          ],
+          "expectedDoubleTransform": [
+            0.6,
+            0,
+            0,
+            0.6,
+            640,
+            -214.39999999999998
+          ]
+        }
+      ]
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 0,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": null,
+          "expectedDoubleTransform": null
+        },
+        {
+          "repeat": true,
+          "count": 0,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": null,
+          "expectedDoubleTransform": null
+        }
+      ]
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "pixels": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "trace": [
+        {
+          "repeat": false,
+          "count": 0,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": null,
+          "expectedDoubleTransform": null
+        },
+        {
+          "repeat": true,
+          "count": 0,
+          "exactExceptFloat32Transform": true,
+          "actualTransform": null,
+          "expectedDoubleTransform": null
+        }
+      ]
+    }
+  ],
+  "execution": {
+    "slot": "2/2",
+    "port": 4303,
+    "syncSeconds": 50.1,
+    "prepareSeconds": 7,
+    "waitSeconds": 0,
+    "commandSeconds": 175.4
+  },
+  "limits": [
+    "Frozen runtime validator FAIL remains; posthoc exact Float32 explanation is diagnosis, not retrospective PASS",
+    "Native visibility/readability and performance unpassed",
+    "No input/product/alpha/provenance/ledger mutations or automatic retry"
+  ]
+}

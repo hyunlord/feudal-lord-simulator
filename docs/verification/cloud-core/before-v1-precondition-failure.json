@@ -1,0 +1,52 @@
+{
+  "status": "FAILED_PRECONDITION_NO_CAPTURE_STARTED",
+  "run": "astra-cloud2-before-v1-bd84351",
+  "head": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "freezeSha256": "fcae54af1b3c182eabca85b2c0fe8e15e262a831b77ac7b4178bc7e876707f3c",
+  "submissions": 1,
+  "fetches": 1,
+  "exitCode": 1,
+  "heavySlot": "2/2",
+  "slotWaitSeconds": 0,
+  "commandSeconds": 10.6,
+  "prepareSeconds": 10.9,
+  "failure": "fs.readdirSync('') ENOENT in remote census walk('') at guard.mjs:44–45 before pre receipt/browser creation",
+  "cause": "Author helper root normalization bug; offline verify(remote=false) skipped census branch",
+  "captureStarted": false,
+  "capturedViews": 0,
+  "numericGate": "NOT_RUN",
+  "visualGate": "NOT_RUN",
+  "remotePreReceipt": "NOT_EMITTED",
+  "remotePostReceipt": "NOT_RUN",
+  "remoteMetadata": {
+    "commit": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+    "startDirty": 0,
+    "runnerEarlyGitDifferenceCount": 9,
+    "node": "v24.21.0",
+    "nodeModulesKey": "26dc99ffc28b42fb-node24.21.0-aarch64",
+    "note": "Runner early git difference line retained. No complete remote pre attestation; no overall clean success claim."
+  },
+  "localPost": {
+    "pass": true,
+    "phase": "local",
+    "head": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+    "trackedClean": true,
+    "tracked": 26854,
+    "exported": null,
+    "verifiedFiles": 26876,
+    "lfsHydrated": 6384,
+    "manifestSha256": "fcae54af1b3c182eabca85b2c0fe8e15e262a831b77ac7b4178bc7e876707f3c",
+    "extras": [],
+    "external": null
+  },
+  "evidence": {
+    "/Users/rexxa/fls-astra-renderB-cloud-before/.omo/evidence/cloud2-before-runtime-status.log": "634ebdc4c8a6034835263d49feaa3ad84cefe67e9dd0b9e19a660e6da438994f",
+    "/Users/rexxa/fls-astra-renderB-cloud-before/.omo/evidence/cloud2-before-runtime-submit.log": "d06c0d135379b1ffe9460a5bd9c733bd6ceb94a13f90245f3c3595adc2b28afc",
+    "/Users/rexxa/fls-astra-renderB-cloud-before/.omo/evidence/cloud2-before-runtime-watch.log": "c2b3971d048cbf6e13d3de1562f40ba3510cbfcf4ac46d7d61ac21f20a66d096",
+    "/Users/rexxa/fls-astra-renderB-cloud-before/.remote-runs/astra-cloud2-before-v1-bd84351/run.log": "51bdf4288f56acf965d48bbb45f73fd5f3ce8d030dc6bb42ccb75adb5f3fbee9",
+    "/Users/rexxa/fls-astra-renderB-cloud-before/.remote-runs/astra-cloud2-before-v1-bd84351/exit-code": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+    "/Users/rexxa/fls-astra-renderB-cloud-before/.remote-runs/astra-cloud2-before-v1-bd84351/timing.env": "5618dc35055c95a760ded50c07660658859e37ae8c51a0e86e3c00723975dacb"
+  },
+  "remoteKept": "~/fls-runs/_kept/astra-cloud2-before-v1-bd84351",
+  "noRetry": true
+}

@@ -1,4 +1,5 @@
-import type { ArtBundle, GroundTextureEntry } from './artContract';
+import type { ArtBundle } from './artContract';
+import { isFieldTexture } from './artContract';
 import type { ArtSchemaIssue } from './schemaValidation';
 import { matches } from './artSelection';
 
@@ -8,8 +9,8 @@ export const FIELD_TEXTURE_SEASONS = ['spring', 'summer', 'autumn', 'winter'] as
 const ROLES = ['field-ridge-base-a', 'field-ridge-base-b', 'field-ridge-season-a', 'field-ridge-season-b'] as const;
 /** Finite startup validation precedes all image requests and factory publication. */
 export function validateFieldTextures(bundles: readonly ArtBundle[]): readonly ArtSchemaIssue[] {
-  const entries = bundles.flatMap(bundle => bundle.entries).filter((entry): entry is GroundTextureEntry => entry.kind === 'ground-texture');
-  const rules = bundles.flatMap(bundle => bundle.rules).filter(rule => rule.kind === 'ground-texture');
+  const entries = bundles.flatMap(bundle => bundle.entries).filter(isFieldTexture);
+  const rules = bundles.flatMap(bundle => bundle.rules).filter(rule => rule.kind === 'ground-texture' && !rule.slot.startsWith('land-region-'));
   if (entries.length === 0 && rules.length === 0) return [];
   const issues: ArtSchemaIssue[] = [];
   const byId = new Map(entries.map(entry => [entry.id, entry]));

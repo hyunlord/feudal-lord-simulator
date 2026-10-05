@@ -1,0 +1,31 @@
+{
+  "status": "PASSED_CURRENT_2FDB_FULL_GEOMETRY",
+  "head": "2fdbb11d55ccc2d7206798002554e1b3117bd79a",
+  "run": "astra-integrated-geometry-40037-2fdbb11",
+  "inputHash": "4f130d374a97cbbc8298115c163ab90ee1a4232d0c5bf63edd5d09278d9488a7",
+  "geometry": {
+    "rows": 122,
+    "reachable": 2202,
+    "unreachableRows": 4,
+    "unreachableRecords": 60,
+    "warnings": 693,
+    "retried": []
+  },
+  "sourceUnchanged": true,
+  "errors": [],
+  "wrapperPass": true,
+  "failures": 0,
+  "unopened": 0,
+  "remoteExit": 0,
+  "sourceFinalReceipt": "/Users/rexxa/fls-astra-renderB-integrated-geometry-40037/.remote-runs/astra-integrated-geometry-40037-2fdbb11/integrated-geometry-40037/final.json",
+  "sourceFinalSHA256": "cea7ae13bf14011ac53479120bfdf0290436252f3784bf8a47df866d5be300f8",
+  "sourceSummary": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/integrated-geometry-40037-runtime-result.json",
+    "sha256": "5bafe6d7d78cd5a04bfe1b9c59fcee98e3701e28c77858ca4ccc7da5cc5c386c"
+  },
+  "committedGeometrySummary": {
+    "path": "docs/verification/uiaudit1/geometry.json",
+    "sha256": "a338d0d7a039313cf0936942b17df9d89a11d66a719beaa47a0d476d69a2e05a"
+  },
+  "notice": "Current merged2fdb geometry passed; final-HEAD merge/clean-clone/publication remain separate gates."
+}

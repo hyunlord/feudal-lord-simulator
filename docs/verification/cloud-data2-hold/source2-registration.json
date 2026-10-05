@@ -1,0 +1,124 @@
+{
+  "status": "HOLD_RUNTIME_CANDIDATES_NOT_SOURCE_REJECTION",
+  "sources": [
+    {
+      "id": "N0354",
+      "source": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_cloud_shadow_a-v1.png",
+      "target": "public/assets/wave39/rain/rain_cloud_shadow_a-v1.png",
+      "sourceSha256": "044da6c343ffd5e00a6d036eebb8405be71efaabe7af674ef187bdb98f27d8cd",
+      "runtimeSha256": "044da6c343ffd5e00a6d036eebb8405be71efaabe7af674ef187bdb98f27d8cd",
+      "rawGenerationSha256": "d8a2d6d1e7cb2ee6903f9422eab53b227126512184a27ca3921bf6fa7e74c146",
+      "headLfsPointer": "version https://git-lfs.github.com/spec/v1\noid sha256:044da6c343ffd5e00a6d036eebb8405be71efaabe7af674ef187bdb98f27d8cd\nsize 11516\n",
+      "chunks": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ],
+      "removedChunks": [],
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        35
+      ],
+      "alphaBounds": [
+        13,
+        70,
+        489,
+        198
+      ],
+      "rgbaSha256": "233f4f73f13b9bc0237a1ab0be1f2348f103482c1d1fd26eeb0be8a47fb272dd",
+      "sourceRuntimePixelsEqual": true,
+      "nativeViewed": true,
+      "nativeNote": "Very faint silhouette on tool background; no runtime visibility claim. B alpha reaches right edge; preserve received canvas, inspect actual motion/crop at runtime.",
+      "ledgerUnchangedInstalledBy": "",
+      "ledgerSourceShaVerified": true
+    },
+    {
+      "id": "N0355",
+      "source": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_cloud_shadow_b-v1.png",
+      "target": "public/assets/wave39/rain/rain_cloud_shadow_b-v1.png",
+      "sourceSha256": "032389a56c42d81067f77a354e35895b1558d73f5285ae3ab77799a19c159f58",
+      "runtimeSha256": "032389a56c42d81067f77a354e35895b1558d73f5285ae3ab77799a19c159f58",
+      "rawGenerationSha256": "160d8f7cac40152758b5e0298b208f5360594adb782da55619d6fb7cea5c968e",
+      "headLfsPointer": "version https://git-lfs.github.com/spec/v1\noid sha256:032389a56c42d81067f77a354e35895b1558d73f5285ae3ab77799a19c159f58\nsize 19618\n",
+      "chunks": [
+        "IHDR",
+        "IDAT",
+        "IEND"
+      ],
+      "removedChunks": [],
+      "width": 512,
+      "height": 256,
+      "pivot": [
+        256,
+        128
+      ],
+      "alphaExtrema": [
+        0,
+        35
+      ],
+      "alphaBounds": [
+        3,
+        36,
+        512,
+        223
+      ],
+      "rgbaSha256": "545421380f7c64597e4900858f6cce25bf316e6cdb6b658ecff5c5f2389dc043",
+      "sourceRuntimePixelsEqual": true,
+      "nativeViewed": true,
+      "nativeNote": "Very faint silhouette on tool background; no runtime visibility claim. B alpha reaches right edge; preserve received canvas, inspect actual motion/crop at runtime.",
+      "ledgerUnchangedInstalledBy": "",
+      "ledgerSourceShaVerified": true
+    }
+  ],
+  "registration": {
+    "deckMapping": {
+      "N0354": "lower",
+      "N0355": "upper"
+    },
+    "nativeCanvas": [
+      512,
+      256
+    ],
+    "pivot": [
+      256,
+      128
+    ],
+    "catalogScale": 1,
+    "deckWorldWidths": [
+      614.4,
+      819.2
+    ],
+    "effectiveUniformScales": [
+      1.2,
+      1.6
+    ],
+    "destinationSizes": [
+      [
+        614.4,
+        307.2
+      ],
+      [
+        819.2,
+        409.6
+      ]
+    ],
+    "alpha": 0.12,
+    "peakEncodedAlpha": 35,
+    "maxEffectivePerDeckOpacity": 0.01647058823529412,
+    "blend": "multiply",
+    "weather": "normal",
+    "capPermille": 380,
+    "policyUnchanged": true
+  },
+  "v1": "FAIL_NATIVE_TRACE_BYPASS",
+  "v2": "FAIL_FLOAT32_ORACLE; INDEPENDENT_VISUAL_FAIL",
+  "v3": "PREPARATION_REVIEW_APPROVED_NOT_RUN",
+  "performance": "NOTVERIFIED",
+  "promotion": false
+}

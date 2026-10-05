@@ -1,0 +1,126 @@
+{
+  "classification": "historical captured source remains immutable; official proof created after runtime",
+  "head": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+  "baselineHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "references": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/.omo/evidence/cloud2-core-runtime-freeze.json",
+      "bytes": 8757813,
+      "sha256": "c208c147a67421347be3e67ea00476e27a8256021141279f5b2cf4cfd795279e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/receipts/pre.json",
+      "bytes": 1183146,
+      "sha256": "07d7f02d8dcc6bc5e339dcf141fe5999b5fd0d52cf3626ed06bc431f8a416bd0"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/receipts/post.json",
+      "bytes": 1192570,
+      "sha256": "1d2266a56317ce865d472e763eb3471b7a66f589ff814a0f2e3c5d6566707c3c"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/captures.json",
+      "bytes": 11493316,
+      "sha256": "d44fb4f245badf517dac03ed89f045d0d631a4f394bc46c6fcb7d19379b3250f"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/captures.json",
+      "bytes": 11466619,
+      "sha256": "4b3cea2d9c43ba262df2d197ec5482e5b0c390a42a580d78548a78535d019652"
+    }
+  ],
+  "pre": {
+    "head": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+    "clean": true,
+    "tracked": 26859,
+    "inputs": 26961,
+    "exports": 26962,
+    "lfs": 6384,
+    "freeze": "c208c147a67421347be3e67ea00476e27a8256021141279f5b2cf4cfd795279e"
+  },
+  "post": {
+    "head": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+    "clean": true,
+    "tracked": 26859,
+    "inputs": 26961,
+    "exports": 26962,
+    "lfs": 6384,
+    "freeze": "c208c147a67421347be3e67ea00476e27a8256021141279f5b2cf4cfd795279e"
+  },
+  "copiedEvidence": [
+    {
+      "packaged": "core-runtime-result.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud2-core-runtime-result.json",
+      "bytes": 34846,
+      "sha256": "e5fd85eeb49f9c1b1b3ff896582ac9404bbf8f9c9a3615b0f517d8687af2dca9"
+    },
+    {
+      "packaged": "before-v2-runtime-result.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud2-before-runtime-v2-result.json",
+      "bytes": 28456,
+      "sha256": "f263085f0e28b5d6bffd1f85531ebc107d9f92acc84041e2c37c33ad59ec7ff5"
+    },
+    {
+      "packaged": "before-v1-precondition-failure.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud2-before-runtime-result.json",
+      "bytes": 2642,
+      "sha256": "97081e91c0e5a695ea39599ee9c69bd27c8a1a03e3e3684980be402f04c479aa"
+    },
+    {
+      "packaged": "before-v2-guard-correction.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud2-before-runtime-v2-prep.json",
+      "bytes": 2437,
+      "sha256": "0d64d4bf05da7e0da3c5fef366bc830bbe0c336bca0e1920006f66a2efcb0b90"
+    },
+    {
+      "packaged": "core-native-review.md",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud2-core-native-review.md",
+      "bytes": 2169,
+      "sha256": "9e92e73a9d7f00388c3dfcd85ee736acccee44b5fa7b81247f607e0b7047398b"
+    },
+    {
+      "packaged": "core-native-review.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud2-core-native-review.json",
+      "bytes": 11885,
+      "sha256": "b195d67d526a4169c8eeb69f494b58b8bb9720e3234a282dd9e30092bc7f0d51"
+    },
+    {
+      "packaged": "before-native-review.md",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud2-before-native-review.md",
+      "bytes": 2151,
+      "sha256": "a883add6f373fe7b4b0be4677dbd69dc02e6dd4a7b6ecb039133ba2dfd3d126b"
+    },
+    {
+      "packaged": "before-native-review.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud2-before-native-review.json",
+      "bytes": 8994,
+      "sha256": "58f1f7894beacff5019ede1fe3e135889c357974f11de7ceb60d7a8c20cdd958"
+    },
+    {
+      "packaged": "parent-check.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud2-core-parent-check.json",
+      "bytes": 726,
+      "sha256": "91115e9d6cd8bab8ecc7860326ece101240416efdc1b266332426c8b80c9b42e"
+    },
+    {
+      "packaged": "core-final.json",
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/receipts/final.json",
+      "bytes": 3218,
+      "sha256": "76498095cf4041673e82ba97bead1fe64f712eaeea882d20a8a3ddaa1891d6cd"
+    },
+    {
+      "packaged": "core-numeric-check.json",
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/receipts/numeric-check.json",
+      "bytes": 23774,
+      "sha256": "31a2525ef6e915794a54694b5f16dcf1099ae192bc79f6e29d71b80142834ffa"
+    },
+    {
+      "packaged": "baseline-core-comparison.json",
+      "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/receipts/baseline-core-comparison.json",
+      "bytes": 4293,
+      "sha256": "33f31f16a69573ffb176f937a9943382a51f12f390552a625bfce432f924da16"
+    }
+  ],
+  "rawIndex": "core-runtime-result.json#rawFiles",
+  "baselineRawIndex": "before-v2-runtime-result.json#rawFiles"
+}
