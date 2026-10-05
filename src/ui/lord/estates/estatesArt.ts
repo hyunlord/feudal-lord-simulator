@@ -27,6 +27,9 @@ export const AUDIT_PICTURE_ID = ID("annual_audit");
 export const AUDIT_PICTURE_WIDTH = 240;
 
 const PICTURES: readonly EstatePicture[] = ["ordinary", "poor", "wealthy", "declining", "hunting", "riverside_mill"];
-/** Every id the portfolio screen may draw (the hook loads them once). */
-export const PORTFOLIO_ART_IDS: readonly string[] = [...PICTURES.map(estatePictureId), ESTATE_OVERLAY_ID, officeIconId("receiver"), officeIconId("steward"),
-  traitIconId("merchant_friendly"), traitIconId("peasant_friendly"), alertIconId("deadline"), alertIconId("rights"), alertIconId("urgent"), AUDIT_PICTURE_ID];
+/** Every id the portfolio screen may draw, the icons' smaller copies too (the hook re-renders once all have settled: an
+ *  icon is drawn only when its own file and its copy are ready). */
+export const PORTFOLIO_ART_IDS: readonly string[] = [...PICTURES.map(estatePictureId), ESTATE_OVERLAY_ID,
+  ...(["receiver", "steward"] as const).flatMap(office => [officeIconId(office), `${officeIconId(office)}_32`]),
+  ...(["merchant_friendly", "peasant_friendly"] as const).flatMap(trait => [traitIconId(trait), `${traitIconId(trait)}_24`]),
+  alertIconId("deadline"), alertIconId("rights"), alertIconId("urgent"), AUDIT_PICTURE_ID];

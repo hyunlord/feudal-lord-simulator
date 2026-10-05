@@ -81,6 +81,7 @@ const screen = page => page.evaluate(async () => {
     summaries: root.querySelectorAll('.lord-estates-summaries tbody tr').length, totals: texts('.lord-estates-total dd'),
     worldVisible: Math.round(panel.left), panelInside: panel.left >= 0 && panel.right <= innerWidth && panel.bottom <= innerHeight,
     smallestText: Math.min(...[...root.querySelectorAll('*')].filter(el => [...el.childNodes].some(n => n.nodeType === 3 && n.textContent.trim() !== '')).map(el => parseFloat(getComputedStyle(el).fontSize))),
+    coarse: matchMedia('(pointer: coarse)').matches,
     smallestButton: Math.min(...[...root.querySelectorAll('.ui-btn')].map(el => Math.round(el.getBoundingClientRect().height))),
   };
 });
@@ -90,8 +91,10 @@ const intoEstates = async page => {
   await page.locator("[data-lord-nav='estates']").first().click(); await page.waitForTimeout(600);
 };
 const choose = async (page, estateId) => { await page.locator(`[data-estate='${estateId}']`).first().click(); await page.waitForTimeout(500); };
-const shoot = async (page, name, selector = '.slot-panel.lord-screen') => {
+/** The panel as the player sees it, scrolled so `section` (what the shot is about) starts at the top of the screen's scroller. */
+const shoot = async (page, name, selector = '.slot-panel.lord-screen', section = null) => {
   const path = join(out, `${name}.jpg`);
+  if (section !== null) { await page.locator(section).first().evaluate(el => el.scrollIntoView({ block: 'start' })); await page.waitForTimeout(200); }
   if (selector === null) await page.screenshot({ path, type: 'jpeg', quality: QUALITY }); else await page.locator(selector).first().screenshot({ path, type: 'jpeg', quality: QUALITY });
   return statSync(path).size;
 };
@@ -112,7 +115,7 @@ for (const [name, state, id, picture, overlay] of [['estate-home', 'inherited', 
   const { context, page } = await open(scene(state));
   await intoEstates(page); if (id !== HOME) await choose(page, id);
   const shown = await screen(page); const engine = await proof(page);
-  const size = await shoot(page, name, name === 'estate-home' ? null : '.slot-panel.lord-screen');
+  const size = await shoot(page, name, name === 'estate-home' ? null : '.slot-panel.lord-screen', name === 'estate-delegated' ? '.lord-estates-card' : name === 'estate-home' ? null : '.lord-estates-picker');
   const overlayOk = overlay ? Array.isArray(shown?.overlay?.size) && shown.overlay.size[0] === 480 && shown.overlayFlag === 'true' : shown?.overlay === null && shown?.overlayFlag === 'false';
   const extra = name === 'estate-home' ? { worldVisible: shown.worldVisible, alerts: shown.alerts.map(a => a?.size), smallestText: shown.smallestText, smallestButton: shown.smallestButton }
     : name === 'estate-delegated' ? { oversight: shown.oversight, office: shown.office, officeIcon: shown.officeIcon?.size, dispositions: shown.dispositions, traits: shown.traits.map(t => t?.size) } : null;
@@ -129,16 +132,16 @@ for (const [name, options] of [['estate-home-tablet', { width: 1180, height: 820
   await intoEstates(page);
   const shown = await screen(page);
   const size = await shoot(page, name);
-  record(name, { shown: { picture: shown?.picture, art: shown?.art, pictureLoaded: shown?.pictureLoaded }, bytes: size, extra: { panelInside: shown?.panelInside, smallestButton: shown?.smallestButton, smallestText: shown?.smallestText } },
-    pictureOk(shown, 'ordinary') && shown.panelInside && shown.smallestText >= 12 && shown.smallestButton >= (options.hasTouch ? 48 : 44));
+  record(name, { shown: { picture: shown?.picture, art: shown?.art, pictureLoaded: shown?.pictureLoaded }, bytes: size, extra: { coarse: shown?.coarse, panelInside: shown?.panelInside, smallestButton: shown?.smallestButton, smallestText: shown?.smallestText } },
+    pictureOk(shown, 'ordinary') && shown.panelInside && shown.smallestText >= 12 && shown.smallestButton >= (shown.coarse ? 48 : 44));
   await context.close();
 }
 // 3. Delegation 0 / 1 / over the attention; a candidate appointed; the audit's mode.
 {
   const { context, page } = await open(scene('promises'));
   await intoEstates(page); await choose(page, N3);
-  const shown = await screen(page); const size = await shoot(page, 'delegation-0');
-  record('delegation-0', { shown, bytes: size, extra: { oversight: shown?.oversight, office: shown?.office, attention: shown?.attention } },
+  const shown = await screen(page); const size = await shoot(page, 'delegation-0', undefined, '.lord-estates-oversight');
+  record('delegation-0', { shown, bytes: size, extra: { oversight: shown?.oversight, office: shown?.office, officeIcon: shown?.officeIcon?.size, attention: shown?.attention } },
     shown?.oversight === 'direct' && shown.office === 'receiver' && Array.isArray(shown.officeIcon?.size) && shown.overloaded === 'false');
   await context.close();
 }
@@ -154,7 +157,7 @@ for (const [name, options] of [['estate-home-tablet', { width: 1180, height: 820
   await page.locator("[data-rule='amount']").first().click(); await page.waitForTimeout(400);
   await page.locator("[data-rule-step='more']").first().click(); await page.waitForTimeout(400);
   const ruled = await proof(page);
-  const shown = await screen(page); const size = await shoot(page, 'delegation-1');
+  const shown = await screen(page); const size = await shoot(page, 'delegation-1', undefined, '.lord-estates-oversight');
   const n3 = state => state.oversight.find(o => o.estateId === N3);
   record('delegation-1', { shown, bytes: size, extra: { before: n3(before), candidate, appointed: n3(appointed), audited: n3(audited), rules: ruled.rules } },
     n3(before).mode === 'steward' && n3(appointed).stewardId === candidate && n3(appointed).mode === 'steward' && n3(audited).auditMode === 'accounts'
@@ -173,7 +176,7 @@ for (const [name, options] of [['estate-home-tablet', { width: 1180, height: 820
 {
   const { context, page } = await open(scene('audit-pending'));
   await intoEstates(page); await choose(page, N3);
-  const shown = await screen(page); const size = await shoot(page, 'audit-visit');
+  const shown = await screen(page); const size = await shoot(page, 'audit-visit', undefined, '.lord-estates-pending');
   record('audit-visit', { shown, bytes: size, extra: { pending: shown?.pending, text: shown?.pendingText, art: shown?.auditArt?.size } },
     shown?.pending === 'visit' && Array.isArray(shown.auditArt?.size) && shown.auditArt.size[0] === 960 && shown.alerts.some(a => Array.isArray(a?.size)));
   await context.close();
@@ -185,7 +188,7 @@ for (const [name, options] of [['estate-home-tablet', { width: 1180, height: 820
   const audit = pendingAudits(state)[0];
   const { context, page } = await open(state);
   await intoEstates(page); await choose(page, N3);
-  const shown = await screen(page); const size = await shoot(page, 'audit-accounts');
+  const shown = await screen(page); const size = await shoot(page, 'audit-accounts', undefined, '.lord-estates-pending');
   record('audit-accounts', { shown, bytes: size, extra: { played, audit: audit === undefined ? null : { id: audit.id, mode: audit.mode, kept: audit.revealedKept, errors: audit.revealedErrors }, text: shown?.pendingText } },
     audit?.mode === 'accounts' && shown?.pending === 'accounts');
   await context.close();
