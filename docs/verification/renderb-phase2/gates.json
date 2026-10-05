@@ -1,5 +1,5 @@
 {
-  "status": "OFFICIAL_EVIDENCE_FINAL_PUBLICATION_PENDING",
+  "status": "ED83_GATES_PASS_DOCUMENT_CLOSURE_SUCCESSOR_PENDING",
   "futureHEAD": null,
   "measuredRuntimeHEAD": "db17321a907b5c0c72560fe2fab29966f38963d1",
   "geometryMeasuredHEAD": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
@@ -20,18 +20,20 @@
     "review": "phase2-final-geometry-review.json"
   },
   "checkMerge": {
-    "status": "PENDING",
-    "receiptSlot": "final-merge-receipt.json"
+    "status": "PASS_EXACT_ED83_SUCCESSOR_RECHECK_REQUIRED",
+    "receipt": "ed83-merge-receipt.json",
+    "historicalFailure": "dd46-merge-failure.json"
   },
   "cleanClone": {
-    "status": "PENDING",
+    "status": "PASS_EXACT_ED83_SUCCESSOR_RECHECK_REQUIRED",
     "receiptSlot": "final-clean-clone-receipt.json",
     "required": [
       "exact actual inner clone HEAD and clean tracked state",
       "real origin LFS pull and source14 bytes",
       "public14 ordinary Git bytes",
       "actual TAP count/type/build results"
-    ]
+    ],
+    "receipt": "ed83-clean-clone-receipt.json"
   },
   "protectedPush": {
     "status": "PENDING",
@@ -65,5 +67,6 @@
     "REGION",
     "CLOUD"
   ],
-  "preparedArtifactsArePassedGates": false
+  "preparedArtifactsArePassedGates": false,
+  "verifiedGateHEAD": "ed83fe44abc688ee688cb4069bfc636382f5e313"
 }

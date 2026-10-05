@@ -9,6 +9,8 @@
 
 ## 현재 단계
 
+- **렌더 B 게시 전 문서 정리**: 실제 `ed83fe44` DGX merge·clean clone4,886/4,886·타입/build·source LFS14/public14 검증 PASS. 아래 이전 대기 문구는 각 측정 시점 기록이며, 완료된 계절/봄9/FIELD/HEATH/W37 일곱 구현은 장부에 체크했다. 이 문서 후속 최종 HEAD는 다시 검사한 뒤 보호 게시한다. 게시 완료·설치1~3단계 전체 완료는 아직 아니다. [관문 영수증](verification/renderb-phase2/REPORT.md).
+
 - **FIELD core — 실제 main 20쌍 통과, 최종 게시 대기**: `3e722109`→`a392694c` 전체 identity20·RGBA 차이0·양쪽 A/A20·오류0, core 원격 입력4,165 해시 일치·실행/수집 exit0. 독립 원본40장 검토 PASS WITH LIMITS(기존 가림·저배율 한계 유지). 12번째 ground-texture kind·기존4개 이전, catalog95→99·신규 이미지0·장부0, main196/196·타입/린트 및 보호이관22/22 PASS. spring9·retired6·C25 보존. 최종 가지 회귀·클론·게시 관문은 별도 대기. [증거](verification/field-core/REPORT.md).
 - **렌더 B 2단계 게시 준비 — 전체 기하 통과**: 실제 `fd68f124` DGX 기하가 2,202/2,202조건·실패/미개방/미등록/페이지오류/재시도0을 통과했다. 기존 빈 공간 경고693과 설계상 미도달4행60조건은 보존했다. 실행 전후 보호4,277파일·native1,977입력·private fixture126파일이 같고 현 `db17321a` 실행 입력과의 동일성도 독립 확인했다. 측정 커밋을 미래 HEAD로 바꾸지 않는다. 신규 봄9·밭3·황무지2와 W37 장부16의 최종 check:merge/clean clone/게시 관문은 대기다. [종합 증거](verification/renderb-phase2/REPORT.md).
 - **HEATH B/C2 — 실제 data30·독립 시각 통과, 정확2행 표시**: 작업 커밋 `fd68f124`의 DGX 실제30뷰에서 A/A30·오류0, 적용14의 B/C 요청·디코드·paint와 픽셀 변화, 비대상16의 full identity/RGBA0·첫 진입 ABC 부재를 확인했다. 새 export는 tracked-clean·실행 입력4,310 SHA 일치이며 core의 문서2 drift와 구분한다. AFTER30·BEFORE14 독립 원본 검토 뒤 정확2행 runtime/RENDER-B-HEATH2 승격, 다른 출처2,430행·장부6,120행과 코드·public 보존. 원425 밖 두 장이므로 원425 표시153/runtime157은 그대로다. 승격 `db17321a` 뒤 실제 reference4도 full identity/RGBA0·A/A4·오류0·clean4,311 SHA 및 부모 원본4 검토를 통과했다. 반복 진입 소비 부재는 미증명이며 전체 기하·최종 회귀/clean clone·게시 관문은 남아 있다. [증거](verification/heath-data/REPORT.md).

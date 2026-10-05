@@ -1,6 +1,6 @@
 # Phase 2 증거 조립 상태
 
-**공식 증거 이관, 최종 게시 관문 대기.** 기존 실제 측정과 새 실행이 필요한 관문을 분리한다. 이 작업은 이 공식 증거 폴더만 변경했으며 제품·원격·Git 상태는 변경하지 않았다.
+**ed83 실제 merge·깨끗한 클론 통과, 게시 문서 정리.** 제품은 db173 이후 바뀌지 않았다. 실제 검사 커밋과 이 문서 후속 커밋을 구분하며, 게시 대상 최종 HEAD 검사는 별도로 수행한다.
 
 | 항목 | 확인 범위 / 상태 |
 |---|---|
@@ -13,7 +13,8 @@
 | 최신 실제 통합 참조 | db17321a: 여름·겨울 × 1/.6, identity 4 / RGBA 동일 4 / A-A 4 / 오류 0, B/C paint; FIELD 봄 증거 아님 |
 | 기하 | fd68f124 실제 측정 PASS: 2,202/2,202, 실패 0, WARN 693; 독립 검토 PASS |
 | fd68 → db173 연결 | 보호 입력 4,277 동일, native hash 동일; 중간 연결이며 미래 HEAD 증명 아님 |
-| 최종 merge / clean clone / push | 전부 PENDING, futureHEAD null |
+| merge / clean clone | 실제 ed83 PASS: 4,886/4,886·타입·build·LFS14/public14; 문서 후속 HEAD는 재검사 대상 |
+| 보호 push | PENDING, futureHEAD null; 실제 원격 ref 확인 전 게시 완료라고 하지 않음 |
 
 ## 기존 일곱 증거 폴더
 
@@ -35,13 +36,13 @@
 
 HEATH core의 931d780e 실행은 runtime 4,308 및 별도 driver가 고정되었으나 proof 문서 두 개가 수출 중 달라진 `NON_RUNTIME_DOCUMENT_DRIFT`였다. 전체 clean export였다고 주장하지 않는다. HEATH negative 16의 첫 열림 부재는 증명되었지만 repeat 부재는 저장되지 않아 미증명이다. FIELD protected 4,259 수는 closure 감사에서 각 원본을 재검산한 결과가 아니다.
 
-새로운 시각 검사나 테스트·원격 실행을 이 패키지 조립 중 수행하지 않았다. 과거 실제 runtime/독립 native 검토는 각 패키지에 귀속된다. UI handoff, HEIGHT, REGION, CLOUD 완료를 이 Phase 2 증거로 주장하지 않는다. 원본 PNG·대형 freeze·로그는 외부 경로에 남아 있으며 원본 영수증의 SHA로 연결한다.
+초기 패키지 조립 중에는 새로운 시각 검사나 테스트·원격 실행을 수행하지 않았다. 후속 실제 ed83 관문은 아래 별도 절에 기록한다. 과거 실제 runtime/독립 native 검토는 각 패키지에 귀속된다. UI handoff, HEIGHT, REGION, CLOUD 완료를 이 Phase 2 증거로 주장하지 않는다. 원본 PNG·대형 freeze·로그는 외부 경로에 남아 있으며 원본 영수증의 SHA로 연결한다.
 
 ## 남은 관문
 
 - [x] 실제 fd68 기하 종료·수집 영수증 추가
 - [x] 독립 기하 검토 사본 추가
-- [ ] 게시 대상 문서 및 감사의 publication dependencies 포함 확인
+- [x] 게시 대상 문서 및 감사의 publication dependencies 포함 확인
 - [ ] 확정 최종 HEAD에 대한 check:merge 실제 결과
 - [ ] 확정 최종 HEAD의 clean clone, real-origin LFS 14 및 public 14 실제 검증
 - [ ] 보호된 정상 push와 실제 게시 HEAD 검증
@@ -57,3 +58,11 @@ HEATH core의 931d780e 실행은 runtime 4,308 및 별도 driver가 고정되었
 기존 watch·closure 감사 사본의 PENDING 문구는 당시 기록으로 보존한다. 현재 기하 상태는 새 영수증과 `gates.json`에 표시하며 과거 문서를 덮어쓰지 않는다.
 
 [독립 기하 검토](phase2-final-geometry-review.md)는 source 4,277 실제 바이트·native 1,977 목록/해시·private 126 바이트를 재검산했다. prepared/export freeze의 차이는 createdAt만이며 source drift가 아니다. shots 0을 보존하며 이 결과를 새 native 이미지 검토로 해석하지 않는다.
+
+## 실제 ed83 관문과 문서 후속 커밋
+
+DGX `astra-phase2-final-merge-ed83fe4`는 exit0, 기하 실패/예외/override0, 변경37파일 린트·타입·build 예산94.40/150MB를 통과했다. 추이115커밋 지연 경고는 비차단이며 보존한다. dd46의 C25 봄 지문 사유 누락 실패는 [원래 영수증](dd46-merge-failure.json)으로 남기고, ed83에서 결정 RB-SPRING9-PIN1만 추가했다.
+
+DGX `astra-phase2-final-clone-ed83fe4`는 실제 내부 HEAD ed83·tracked clean, real-origin source LFS14 및 public 일반PNG14 바이트, 시험4,886/4,886(실패·취소·skip·todo0), 타입·build를 통과했다. 외부 입력26,845와 tracked26,841/LFS6,384의 전후 동결도 일치했다. [클론 영수증](ed83-clean-clone-receipt.json)·[병합 검사 영수증](ed83-merge-receipt.json)은 실제 실행 HEAD를 고정한다.
+
+이 문서 정리는 완료된 일곱 설치/이전 항목을 작업 장부에 반영하고 STATUS·ROADMAP을 함께 갱신한다. 체크는 해당 구현·실제 장면 검증 완료를 뜻하며 본선 게시 완료는 뜻하지 않는다. 이 문서까지 포함한 후속 HEAD는 다시 최종 검사와 깨끗한 클론을 거친 뒤 보호 push하며, 그 실행을 ed83 결과로 대체하지 않는다. 전체 설치1~3단계·REGION·CLOUD·HEIGHT는 계속 미완료다.

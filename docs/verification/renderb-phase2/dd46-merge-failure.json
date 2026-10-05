@@ -1,0 +1,38 @@
+{
+  "pass": false,
+  "run": "astra-phase2-final-merge-dd46aa3",
+  "head": "dd46aa3bbc161ea58a62c17125221a097ed0c4f5",
+  "remoteExit": 1,
+  "fetchExit": 1,
+  "blockingCheck": "pins",
+  "blockingPath": "tests/fixtures/boundary/c25-board.json",
+  "reason": "Changed pinned fixture lacks recognized decision entry naming this file in docs/decisions/README.md or docs/DECISIONS.md",
+  "postGuardErrors": [],
+  "postTrackedClean": true,
+  "postTrackedCount": 26841,
+  "postExportedCount": 26845,
+  "postLfsCount": 6384,
+  "passed": [
+    "lint-exceptions",
+    "ledger",
+    "korean-new-strings",
+    "decision-id-uniqueness",
+    "evidence-size",
+    "surfaces",
+    "ui-geometry",
+    "eslint",
+    "typecheck",
+    "budget"
+  ],
+  "budgetMB": 94.4,
+  "budgetLimitMB": 150,
+  "warnings": [
+    "15 known Korean strings no longer occur",
+    "Perf trend114commits behind, nonblocking",
+    "Remote tree lacks origin tracking ref used by trend warning"
+  ],
+  "rawLog": "/Users/rexxa/fls-astra-renderB-phase2-gates/.remote-runs/astra-phase2-final-merge-dd46aa3/run.log",
+  "rawLogBytes": 9551,
+  "rawLogSHA256": "7a05ee0d7799590e785abc7b87f5746be8f8ffdb2b4e58ce8c857a699935b40a",
+  "autoRetry": false
+}
