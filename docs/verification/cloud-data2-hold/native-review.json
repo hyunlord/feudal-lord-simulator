@@ -1,0 +1,698 @@
+{
+  "verdict": "DATA_VISUAL_FAIL_UNREADABLE_AT_APPROVED_ALPHA",
+  "runtimeRunStatusUnchanged": "RUNTIME_FAILED_FLOAT32_TRANSFORM_ORACLE",
+  "runtimeExitCode": 1,
+  "runtimeErrors": 8,
+  "run": "astra-cloud2-data-v2-66b8e1e",
+  "actualHEAD": "66b8e1ef2d5e4e9ec8d610cc21c583fbfd56bf6b",
+  "baselineHEAD": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+  "summarySHA": "4540f5f4ea12c31a56fbe17d61839c64206ef3c723d54c48c4c6cf815f8757fb",
+  "manifestSHA": "de30790fe7d69c97f820fa335f39b3c933a550d25cef84ef420187d8e7112981",
+  "planSHA": "52cf363dba0f5081f64892ff465c1dd2a23758b3c60182824543aa65a28c41b0",
+  "rawPinsVerified": 75,
+  "nativePNGsIndividuallyOpened": 20,
+  "sourcesIndividuallyOpened": 2,
+  "method": "Original1280x800 PNGs opened with image tool detail=original; no rescale/crop/contrast enhancement/composite. Pillow+NumPy decoded whole PNG RGBA for independent raw comparisons, no generated images.",
+  "counts": {
+    "positiveUnreadable": 8,
+    "negativePreserved": 2,
+    "afterAAEqual": 10,
+    "beforeAAEqual": 10,
+    "positiveABChanged": 8,
+    "negativeABEqual": 2
+  },
+  "sources": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB/assets-inbox/wave39/candidates-20260930/assets/rain/rain_cloud_shadow_a-v1.png",
+      "publicPath": "/Users/rexxa/fls-astra-renderB-cloud-core/public/assets/wave39/rain/rain_cloud_shadow_a-v1.png",
+      "sha256": "044da6c343ffd5e00a6d036eebb8405be71efaabe7af674ef187bdb98f27d8cd",
+      "dimensions": [
+        512,
+        256
+      ],
+      "peakAlpha": 35,
+      "nonzeroAlphaPixels": 39616,
+      "viewedOriginal": true,
+      "sourceViewLimit": "Transparent original viewed on tool background only; no alpha/contrast enhancement, cannot substitute for runtime visibility"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB/assets-inbox/wave39/candidates-20260930/assets/rain/rain_cloud_shadow_b-v1.png",
+      "publicPath": "/Users/rexxa/fls-astra-renderB-cloud-core/public/assets/wave39/rain/rain_cloud_shadow_b-v1.png",
+      "sha256": "032389a56c42d81067f77a354e35895b1558d73f5285ae3ab77799a19c159f58",
+      "dimensions": [
+        512,
+        256
+      ],
+      "peakAlpha": 35,
+      "nonzeroAlphaPixels": 62851,
+      "viewedOriginal": true,
+      "sourceViewLimit": "Transparent original viewed on tool background only; no alpha/contrast enhancement, cannot substitute for runtime visibility"
+    }
+  ],
+  "views": [
+    {
+      "name": "summer-normal-z1-t0",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 1,
+      "nowMs": 0,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t0.png",
+        "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t0.png",
+        "sha256": "41aebb5aed17fc4286d8ca36820af255b0a5d18d98ec4317dba0287b74e00532"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z1-t0.png",
+        "sha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t0.png",
+        "sha256": "41aebb5aed17fc4286d8ca36820af255b0a5d18d98ec4317dba0287b74e00532"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 143797,
+        "maxChannelDelta": 17,
+        "meanAbsoluteRGBDelta": 0.3838115234375,
+        "changedBBoxHalfOpen": [
+          676,
+          0,
+          1280,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "상단 중앙 바위·빽빽한 숲, 좌하단 잔디, 우하단 지붕에서 새 구름의 독립된 윤곽/중심을 안정적으로 찾지 못함. 풍경은 보이지만 구름 그림자 판독은 실패.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 1,
+      "nowMs": 5000,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t5000.png",
+        "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t5000.png",
+        "sha256": "a68cccbc1462cb58a245051cbcc99e99cfdac4f5b592c5d084dd8f76202d17a0"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z1-t5000.png",
+        "sha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z1-t5000.png",
+        "sha256": "a68cccbc1462cb58a245051cbcc99e99cfdac4f5b592c5d084dd8f76202d17a0"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 135515,
+        "maxChannelDelta": 15,
+        "meanAbsoluteRGBDelta": 0.36592447916666665,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1280,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "상단 중앙 바위·빽빽한 숲, 좌하단 잔디, 우하단 지붕에서 새 구름의 독립된 윤곽/중심을 안정적으로 찾지 못함. 풍경은 보이지만 구름 그림자 판독은 실패.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 0.6,
+      "nowMs": 0,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t0.png",
+        "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t0.png",
+        "sha256": "b112ca9fd876127228037acc44b9638f97cd80010853896754972e6ad7a46cee"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z06-t0.png",
+        "sha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t0.png",
+        "sha256": "b112ca9fd876127228037acc44b9638f97cd80010853896754972e6ad7a46cee"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 213539,
+        "maxChannelDelta": 16,
+        "meanAbsoluteRGBDelta": 0.5070234375,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1116,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "전체 지도와 수면·좌하단 열린 잔디가 드러나지만 숲/지형 명암과 분리되는 새 그림자 실루엣을 읽지 못함. 축소뷰에서 두 deck을 구별할 수 없음.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "summer-normal-z06-t5000",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 0.6,
+      "nowMs": 5000,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t5000.png",
+        "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t5000.png",
+        "sha256": "8d0a4b61bc2ba26acaadc6ada2de7c2b978e941f21d5d90d64b1def78e685fd7"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-normal-z06-t5000.png",
+        "sha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/summer-normal-z06-t5000.png",
+        "sha256": "8d0a4b61bc2ba26acaadc6ada2de7c2b978e941f21d5d90d64b1def78e685fd7"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 236321,
+        "maxChannelDelta": 16,
+        "meanAbsoluteRGBDelta": 0.5692301432291667,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1156,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "전체 지도와 수면·좌하단 열린 잔디가 드러나지만 숲/지형 명암과 분리되는 새 그림자 실루엣을 읽지 못함. 축소뷰에서 두 deck을 구별할 수 없음.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 1,
+      "nowMs": 0,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t0.png",
+        "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t0.png",
+        "sha256": "efc91244c68de19356517169eb849730e83edebecf07418673318061c7bf0c98"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z1-t0.png",
+        "sha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t0.png",
+        "sha256": "efc91244c68de19356517169eb849730e83edebecf07418673318061c7bf0c98"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 152751,
+        "maxChannelDelta": 19,
+        "meanAbsoluteRGBDelta": 0.48879069010416665,
+        "changedBBoxHalfOpen": [
+          672,
+          0,
+          1280,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "좌측 밝은 겨울 공터와 우측 숲/눈 덮인 지붕을 비교해도 새 그림자 가장자리/중심이 확실하지 않음. 원래 지면 타일 명암과 구별할 수 없음.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "winter-normal-z1-t5000",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 1,
+      "nowMs": 5000,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t5000.png",
+        "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t5000.png",
+        "sha256": "386d0874c997e1305541edb426a6b7a5c4e4d6b5fcb29d228816beccc7ce71b2"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z1-t5000.png",
+        "sha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z1-t5000.png",
+        "sha256": "386d0874c997e1305541edb426a6b7a5c4e4d6b5fcb29d228816beccc7ce71b2"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 144418,
+        "maxChannelDelta": 20,
+        "meanAbsoluteRGBDelta": 0.4625836588541667,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1280,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "좌측 밝은 겨울 공터와 우측 숲/눈 덮인 지붕을 비교해도 새 그림자 가장자리/중심이 확실하지 않음. 원래 지면 타일 명암과 구별할 수 없음.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 0.6,
+      "nowMs": 0,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t0.png",
+        "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t0.png",
+        "sha256": "594b796d6002e3f8d049bfa8fa86fa5122b6ba795c1681bce7f721ee3c86e7fb"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z06-t0.png",
+        "sha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t0.png",
+        "sha256": "594b796d6002e3f8d049bfa8fa86fa5122b6ba795c1681bce7f721ee3c86e7fb"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 222595,
+        "maxChannelDelta": 19,
+        "meanAbsoluteRGBDelta": 0.65035546875,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1120,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "넓은 밝은 겨울 벌판과 아래 수면이 보이나 구름 형태가 확실히 읽히지 않음. 희미한 넓은 명암을 새 구름이라고 특정할 수 없음.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "winter-normal-z06-t5000",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 0.6,
+      "nowMs": 5000,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t5000.png",
+        "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t5000.png",
+        "sha256": "4968c037944e18284511aca3573f533f22f8c86a7caca834427af974072c0d80"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/winter-normal-z06-t5000.png",
+        "sha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/winter-normal-z06-t5000.png",
+        "sha256": "4968c037944e18284511aca3573f533f22f8c86a7caca834427af974072c0d80"
+      },
+      "ab": {
+        "equal": false,
+        "differingPixels": 244005,
+        "maxChannelDelta": 20,
+        "meanAbsoluteRGBDelta": 0.7346393229166667,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1156,
+          800
+        ]
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "FAIL_UNREADABLE",
+      "observation": "넓은 밝은 겨울 벌판과 아래 수면이 보이나 구름 형태가 확실히 읽히지 않음. 희미한 넓은 명암을 새 구름이라고 특정할 수 없음.",
+      "ratioCenter": "UNCERTAIN: silhouette not readable; no visual geometry PASS",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "UNCERTAIN: no reliably identifiable cloud displacement in native t0/t5000 pair"
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 1,
+      "nowMs": 0,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/spring-wet-negative-z1-t0.png",
+        "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/spring-wet-negative-z1-t0.png",
+        "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/spring-wet-negative-z1-t0.png",
+        "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/spring-wet-negative-z1-t0.png",
+        "sha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1"
+      },
+      "ab": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "참_NEGATIVE_PRESERVED",
+      "observation": "비 줄기와 지면 파문, 바위·숲·건물은 전후 동일하게 보임. 새 구름 그림자나 추가 화면 손상은 관찰하지 못함.",
+      "ratioCenter": "NOT_APPLICABLE",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "NOT_APPLICABLE"
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "viewedIndividuallyAtOriginalSize": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "dpr": 1,
+      "zoom": 1,
+      "nowMs": 0,
+      "before": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-off-negative-z1-t0.png",
+        "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+      },
+      "after": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/summer-off-negative-z1-t0.png",
+        "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+      },
+      "beforeRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/repeat/summer-off-negative-z1-t0.png",
+        "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+      },
+      "afterRepeat": {
+        "path": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-data-v2/results/repeat/summer-off-negative-z1-t0.png",
+        "sha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f"
+      },
+      "ab": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "beforeAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "afterAA": {
+        "equal": true,
+        "differingPixels": 0,
+        "maxChannelDelta": 0,
+        "meanAbsoluteRGBDelta": 0.0,
+        "changedBBoxHalfOpen": null
+      },
+      "verdict": "참_NEGATIVE_PRESERVED",
+      "observation": "weatherFx-off의 여름 바위·숲·집·잔디가 전후 동일하게 보임. 새 구름 그림자나 추가 화면 손상은 관찰하지 못함.",
+      "ratioCenter": "NOT_APPLICABLE",
+      "bandingClipping": "No obvious new harsh band or rectangle cutoff observed; insufficient visibility prevents a fine clipping/banding clearance",
+      "motion": "NOT_APPLICABLE"
+    }
+  ],
+  "phaseComparisons": [
+    {
+      "pair": "summer-normal-z1",
+      "dataPhasePixelDifference": {
+        "equal": false,
+        "differingPixels": 57463,
+        "maxChannelDelta": 178,
+        "meanAbsoluteRGBDelta": 0.1328671875,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1280,
+          800
+        ]
+      },
+      "interpretation": "All rendered phase changes; not cloud-specific motion evidence. Visible natural water/snow/vegetation changes cannot be assigned to cloud movement."
+    },
+    {
+      "pair": "summer-normal-z06",
+      "dataPhasePixelDifference": {
+        "equal": false,
+        "differingPixels": 131879,
+        "maxChannelDelta": 152,
+        "meanAbsoluteRGBDelta": 0.239806640625,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1280,
+          800
+        ]
+      },
+      "interpretation": "All rendered phase changes; not cloud-specific motion evidence. Visible natural water/snow/vegetation changes cannot be assigned to cloud movement."
+    },
+    {
+      "pair": "winter-normal-z1",
+      "dataPhasePixelDifference": {
+        "equal": false,
+        "differingPixels": 138321,
+        "maxChannelDelta": 170,
+        "meanAbsoluteRGBDelta": 2.234424153645833,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1280,
+          800
+        ]
+      },
+      "interpretation": "All rendered phase changes; not cloud-specific motion evidence. Visible natural water/snow/vegetation changes cannot be assigned to cloud movement."
+    },
+    {
+      "pair": "winter-normal-z06",
+      "dataPhasePixelDifference": {
+        "equal": false,
+        "differingPixels": 176842,
+        "maxChannelDelta": 169,
+        "meanAbsoluteRGBDelta": 1.5616126302083333,
+        "changedBBoxHalfOpen": [
+          0,
+          0,
+          1280,
+          800
+        ]
+      },
+      "interpretation": "All rendered phase changes; not cloud-specific motion evidence. Visible natural water/snow/vegetation changes cannot be assigned to cloud movement."
+    }
+  ],
+  "limits": [
+    "Native still pairs do not prove smooth motion or absence of subpixel jitter",
+    "No dependable visual cloud contour, ratio or center measurement; geometry trace is separate evidence",
+    "Baseline old shadows were already subtle; no claim that baseline readability passed",
+    "No obvious new gross banding/clipping observed, but near-invisibility is not a successful artifact clearance",
+    "Numeric AA/paint/pixel differences do not override visual unreadability or v2 exit1"
+  ],
+  "recommendation": "Hold DATA2 visual acceptance under approved plan; do not boost alpha/edit originals/change weather conditions. An oracle-only v3 with identical renderer/assets/settings cannot remedy this visual finding, so another runtime is unnecessary for resolving readability. Preserve v2 failure; future action needs an explicit art/contract decision."
+}

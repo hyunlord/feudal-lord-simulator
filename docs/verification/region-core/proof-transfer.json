@@ -1,0 +1,18 @@
+{
+  "status": "OFFICIAL_PROOF_TRANSFERRED_NOT_STAGED",
+  "destination": "/Users/rexxa/fls-astra-renderB-region-core/docs/verification/region-core",
+  "capturedCoreCommit": "442b71822c189a245877cc1da1af86831e19448a",
+  "beforeCommit": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "sourcePackageInventorySHA256": "3c0e860bcdadf13df5055724f684f098209334f85eb8ef2f4eb217f85b63388a",
+  "protectedData6AndTest1": {
+    "src/render/art/catalog.json": "bacfda4e3bb6b4156d070d96d9aa6c35e0d31f0a60a4c24415e8d129b3da8a11",
+    "docs/provenance/assets.csv": "1275f329f07c89d64bb9c5c2b7a42b668c27743a60588cf40418dc61e8220b2d",
+    "public/assets/wave43/ground/chalk_down_spring_a-v1.png": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+    "public/assets/wave43/ground/coastal_grass_spring_a-v1.png": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+    "public/assets/wave43/ground/fen_spring_a-v1.png": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+    "public/assets/wave43/ground/woodland_floor_spring_a-v1.png": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+    "tests/archetypeGroundDraw.test.ts": "8da742d7ac84200a68e841a3f9e54ecabf261ea7f3faf17faaa4400b79d47d66"
+  },
+  "allSevenUnchanged": true,
+  "scope": "Only docs/verification/region-core; no product/main/stage/commit/remote writes"
+}

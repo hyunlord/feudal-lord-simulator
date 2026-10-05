@@ -1,0 +1,160 @@
+[
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-runtime-result.md",
+    "target": "v1-historical-result.md",
+    "sha256": "f0ccdc47d00bafe146859f50ac3ef9a29503d1da1851d236791751b46c0983a1",
+    "bytes": 6995
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-runtime-result.json",
+    "target": "v1-historical-result.json",
+    "sha256": "357f77d1d4c0699b9f6eb0f345b9399f568c33b64ad091a92a2042f26aabf661",
+    "bytes": 36181
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v1/receipts/final.json",
+    "target": "v1-final.json.gz",
+    "sourceSha256": "99e31c366dae51c53c7a228e7f1edb07977e3ec3d66d1e34c90dde0fe1515381",
+    "compressedSha256": "233e0939128efbb97b44ad1fa9e2abe6ac89e79f3d73cb01f8b91baa53bbff7f",
+    "lossless": true,
+    "bytes": 1248
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v1/receipts/pre.json",
+    "target": "v1-pre.json.gz",
+    "sourceSha256": "437fe6dd7b9918c609dd2be9b8053ebcb287fe7b567e8e2ad1e375fe414236fc",
+    "compressedSha256": "ef041ed2fd2b73cb2e417edabb9e1ebeb89477488b5f8991754a872477660137",
+    "lossless": true,
+    "bytes": 268583
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v1/receipts/post.json",
+    "target": "v1-post.json.gz",
+    "sourceSha256": "433b02d4ff73ba4d3d9b49773d59cd03069b478ff934646c49431d9b15d576dc",
+    "compressedSha256": "a233e40cf95fdcee3bea9ce56ef784ac207f67079e6e4a88845c1c88ce65d892",
+    "lossless": true,
+    "bytes": 269975
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-runtime-v2-result.md",
+    "target": "v2-historical-result.md",
+    "sha256": "4091902040c4b44f84882c8f0fb526a0cf262312bb2214d254d14e29259c9e40",
+    "bytes": 2024
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-runtime-v2-result.json",
+    "target": "v2-historical-result.json",
+    "sha256": "4540f5f4ea12c31a56fbe17d61839c64206ef3c723d54c48c4c6cf815f8757fb",
+    "bytes": 27092
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v2/receipts/final.json",
+    "target": "v2-final.json.gz",
+    "sourceSha256": "d49410720f0c7f154bc6e2040932ec2b03ded87afb7a3a2d5ec821fc8265f093",
+    "compressedSha256": "69343513bbdbe7fbcd3e84fc1680dc126e9acd1f697628e9d1f0c2ee397811be",
+    "lossless": true,
+    "bytes": 1247
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v2/receipts/pre.json",
+    "target": "v2-pre.json.gz",
+    "sourceSha256": "895b18ce2ae1d4f404572c6355b7bb29a5e8ca9da46899babc12d117aafe0556",
+    "compressedSha256": "39d31298c704beb3a85ab066c438aa834b899803374fe6b4989e654bcacae9d3",
+    "lossless": true,
+    "bytes": 268582
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v2/receipts/post.json",
+    "target": "v2-post.json.gz",
+    "sourceSha256": "91c64eaebc042fa14418f52618cea9a1bbb1e35c5db49162f0614eddfbb37cfc",
+    "compressedSha256": "5e94141273b459e4337ff465926c5fe467349eec0f891ea4082c038259aa5a14",
+    "lossless": true,
+    "bytes": 269971
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud-data2-v2-native-review.md",
+    "target": "native-review.md",
+    "sha256": "8f447b041f0722db2e482981a21c89ff6e40de6df8d4cdb4a2afff45bba896ec",
+    "bytes": 6471,
+    "sourceSha256": "934c6295eeb97dcefa7a51368f46fcc3f7514082c61d089dd461f3b35e47c4f6",
+    "publicationTransform": {
+      "kind": "exact-link-only",
+      "from": "](cloud-data2-v2-native-review.json)",
+      "to": "](native-review.json)",
+      "occurrences": 1,
+      "originalPreserved": true
+    }
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud-data2-v2-native-review.json",
+    "target": "native-review.json",
+    "sha256": "45e733066b37b2014d01966c6aa4600ce8f8c9d6ba5e5aee689001ab28ef5bc5",
+    "bytes": 29229
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-v2-parent-native.json",
+    "target": "parent-six-native.json",
+    "sha256": "c86babdbd20ff925c8fe30c8cd0586b17e09734a533988c50df6bcc4e1d66b94",
+    "bytes": 2026
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-runtime-v3-prep.md",
+    "target": "v3-unexecuted-prep.md",
+    "sha256": "9b192316fae1a88148183e743b9782c10888c944a4a301b275cb22789420a513",
+    "bytes": 1757
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/evidence/cloud-data2-runtime-v3-prep.json",
+    "target": "v3-unexecuted-prep.json",
+    "sha256": "e0de65d2ca3df3015676aed436b632578ba798200422efadacc5185c8a0c0c3a",
+    "bytes": 4343
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud-data2-runtime-v3-prep-review.md",
+    "target": "v3-preparation-only-review.md",
+    "sha256": "00d8176bbf4bd6f07b23bef04bc2b33e3f2a8d25a334dddb68f5d9a29293f6b1",
+    "bytes": 2103
+  },
+  {
+    "source": "/Users/rexxa/fls-astra-renderB/.omo/drafts/cloud-data2-runtime-v3-prep-review.json",
+    "target": "v3-preparation-only-review.json",
+    "sha256": "e64a5d5bf8558c4f17c4f0bf5f4dbbbcd2b9e07b544993f7988d0fb11ced529a",
+    "bytes": 823
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v2/results/summer-normal-z1-t0.jpg",
+    "target": "previews/after-summer-normal-z1-t0.jpg",
+    "sha256": "b2a17fa3f9c117c363823363e9d71549f714ffdc1c07f8b4bd34282f1f1554f0",
+    "bytes": 237201
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v2/results/summer-normal-z06-t0.jpg",
+    "target": "previews/after-summer-normal-z06-t0.jpg",
+    "sha256": "7cc04b499e3b60811d70209722d69ffbcde2ffce9db16948e9e14af1f3f82658",
+    "bytes": 203552
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v2/results/winter-normal-z1-t0.jpg",
+    "target": "previews/after-winter-normal-z1-t0.jpg",
+    "sha256": "a9a68b5a5cdfed1c86e2ef712eea8cf635fa1ecd703a701f0f079efa16e608b0",
+    "bytes": 206684
+  },
+  {
+    "source": "output/art-architecture/cloud2-data-v2/results/winter-normal-z06-t0.jpg",
+    "target": "previews/after-winter-normal-z06-t0.jpg",
+    "sha256": "15091d34af37092778ca1ca55a9b89d005d12c9c506cc6d31cccffce83b741b7",
+    "bytes": 172878
+  },
+  {
+    "source": "output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t0.jpg",
+    "target": "previews/before-summer-normal-z1-t0.jpg",
+    "sha256": "c99c1513367719525d87777381aee8daa925991cdb9bee445d783865aecc6caf",
+    "bytes": 236713
+  },
+  {
+    "source": "output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t0.jpg",
+    "target": "previews/before-winter-normal-z1-t0.jpg",
+    "sha256": "8fb64e624e21a93f63985922d6c2ed38a023149610f40ea0f6066418cbe6c9ee",
+    "bytes": 206053
+  }
+]

@@ -1,5 +1,5 @@
 {
-  "status": "ED83_GATES_PASS_DOCUMENT_CLOSURE_SUCCESSOR_PENDING",
+  "status": "BE576_EXACT_GATES_AND_PROTECTED_PUBLICATION_PASS",
   "futureHEAD": null,
   "measuredRuntimeHEAD": "db17321a907b5c0c72560fe2fab29966f38963d1",
   "geometryMeasuredHEAD": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
@@ -20,24 +20,27 @@
     "review": "phase2-final-geometry-review.json"
   },
   "checkMerge": {
-    "status": "PASS_EXACT_ED83_SUCCESSOR_RECHECK_REQUIRED",
-    "receipt": "ed83-merge-receipt.json",
-    "historicalFailure": "dd46-merge-failure.json"
+    "status": "PASS_EXACT_BE576",
+    "receipt": "be576-merge-receipt.json",
+    "historicalFailure": "dd46-merge-failure.json",
+    "previousPassedReceipt": "ed83-merge-receipt.json"
   },
   "cleanClone": {
-    "status": "PASS_EXACT_ED83_SUCCESSOR_RECHECK_REQUIRED",
-    "receiptSlot": "final-clean-clone-receipt.json",
+    "status": "PASS_EXACT_BE576",
+    "receiptSlot": "be576-clean-clone-receipt.json",
     "required": [
       "exact actual inner clone HEAD and clean tracked state",
       "real origin LFS pull and source14 bytes",
       "public14 ordinary Git bytes",
       "actual TAP count/type/build results"
     ],
-    "receipt": "ed83-clean-clone-receipt.json"
+    "receipt": "be576-clean-clone-receipt.json",
+    "previousPassedReceipt": "ed83-clean-clone-receipt.json"
   },
   "protectedPush": {
-    "status": "PENDING",
-    "receiptSlot": "publication-receipt.json"
+    "status": "PASS_EXACT_REMOTE_BE576",
+    "receiptSlot": "publication.json",
+    "receipt": "publication.json"
   },
   "publicationDependenciesFromAudit": [
     "docs/verification/wave37-reconcile/SHA256SUMS.json",
@@ -68,5 +71,7 @@
     "CLOUD"
   ],
   "preparedArtifactsArePassedGates": false,
-  "verifiedGateHEAD": "ed83fe44abc688ee688cb4069bfc636382f5e313"
+  "verifiedGateHEAD": "be576dbee826fc9e02a0336bb98cae4209fa5279",
+  "previousClosureStatus": "ED83_GATES_PASS_DOCUMENT_CLOSURE_SUCCESSOR_PENDING",
+  "publishedHEAD": "be576dbee826fc9e02a0336bb98cae4209fa5279"
 }

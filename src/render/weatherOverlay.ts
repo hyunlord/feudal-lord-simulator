@@ -1,8 +1,9 @@
+import { WEATHER_SHADOW_ART } from './art/weatherShadowArt';
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import { presentationPreference } from "./presentationPreferences";
 import { drawWeatherSprite, weatherFrameCount, weatherImage, weatherMeanColour, weatherMeta, weatherPattern } from "./weatherArt";
-import { engineWeather, RAIN_DRAW, weatherLayers, type WeatherLayer } from "./weatherLayers";
+import { engineWeather, RAIN_DRAW, weatherLayers, type WeatherLayer, type LegacyWeatherLayer } from "./weatherLayers";
 import { CLOUD_DECKS, cloudSprites, fogAnchors, fogRect, landSpots, laneSprites, rectsMeet, type FogAnchor, type LandSpot, type Rect } from "./weatherPlacement";
 import { weatherProofOverride } from "./weatherProof";
 
@@ -65,19 +66,19 @@ const centred = (spot: { readonly x: number; readonly y: number }, size: { reado
   ({ x: spot.x - size.width / 2, y: spot.y - size.height / 2, ...size });
 
 /** Runs `draw` with the layer's alpha and blend, only when all its art is loaded. */
-function withLayer(context: CanvasRenderingContext2D, layer: WeatherLayer, draw: () => void): void {
+function withLayer(context: CanvasRenderingContext2D, layer: LegacyWeatherLayer, draw: () => void): void {
   if (layer.assets.some(key => weatherImage(key) === null)) return;
   context.save();
   context.globalAlpha = layer.alphaPermille / 1000;
   context.globalCompositeOperation = layer.blend;
-  draw();
-  context.restore();
+  try { draw(); } finally { context.restore(); }
 }
 
 export function drawWeatherGround(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], zoom: number, nowMs: number): void {
   if (zoom < WEATHER_GROUND_MIN_ZOOM) return;
   const layers = presentedWeatherLayers(state).filter(layer => layer.pass === "ground");
   for (const layer of layers) {
+    if (layer.placement === "clouds") continue;
     withLayer(context, layer, () => {
       const key = layer.assets[0]!;
       if (layer.id === "cracked_ground") { for (const spot of crackSpots(state, tiles)) drawWeatherSprite(context, key, 0, centred(spot, CRACK_SIZE)); return; }
@@ -89,7 +90,7 @@ export function drawWeatherGround(context: CanvasRenderingContext2D, state: Game
   }
 }
 
-function drawFill(context: CanvasRenderingContext2D, layer: WeatherLayer, viewport: { readonly width: number; readonly height: number }, pixelRatio: number, nowMs: number): void {
+function drawFill(context: CanvasRenderingContext2D, layer: LegacyWeatherLayer, viewport: { readonly width: number; readonly height: number }, pixelRatio: number, nowMs: number): void {
   const key = layer.assets[0]!;
   const rain = key === "drizzle_sheet" || key === "storm_rain_sheet" ? RAIN_DRAW[key] : null;
   // A tint is its flat mean colour (weatherMeanColour's cache note); rain is its sheet's cells repeated, falling.
@@ -112,7 +113,7 @@ function drawFill(context: CanvasRenderingContext2D, layer: WeatherLayer, viewpo
   context.fillRect(0, 0, viewport.width, viewport.height);
 }
 
-function drawLanes(context: CanvasRenderingContext2D, layer: WeatherLayer, viewport: { readonly width: number; readonly height: number }, pixelRatio: number, nowMs: number): void {
+function drawLanes(context: CanvasRenderingContext2D, layer: LegacyWeatherLayer, viewport: { readonly width: number; readonly height: number }, pixelRatio: number, nowMs: number): void {
   const spec = LANES[layer.id];
   if (spec === undefined) return;
   context.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
@@ -128,7 +129,21 @@ export function drawWeatherSky(context: CanvasRenderingContext2D, state: GameSta
   const pixelRatio = transform.a / zoom;
   // The world rect in view (world px), for the anchored layers.
   const view: Rect = { x: -transform.e / transform.a, y: -transform.f / transform.d, width: viewport.width * pixelRatio / transform.a, height: viewport.height * pixelRatio / transform.d };
+  const shadows = layers.some(layer => layer.placement === 'clouds') ? WEATHER_SHADOW_ART.resolve('normal') : null;
   for (const layer of [...layers].sort((a, b) => (SKY_ORDER[a.id] ?? 0) - (SKY_ORDER[b.id] ?? 0))) {
+    if (layer.placement === 'clouds') {
+      if (shadows === null || shadows[layer.deck] === null) continue;
+      const deck = CLOUD_DECKS[layer.deck === 'upper' ? 1 : 0];
+      if (deck === undefined) continue;
+      context.save();
+      try {
+        context.globalAlpha = layer.alphaPermille / 1000;
+        context.globalCompositeOperation = layer.blend;
+        for (const cloud of cloudSprites(deck, view, nowMs)) WEATHER_SHADOW_ART.drawResolved(context, shadows, layer.deck,
+          { origin: { x: cloud.x, y: cloud.y }, size: deck.size });
+      } finally { context.restore(); }
+      continue;
+    }
     withLayer(context, layer, () => {
       if (layer.placement === "fill") drawFill(context, layer, viewport, pixelRatio, nowMs);
       else if (layer.placement === "lanes") drawLanes(context, layer, viewport, pixelRatio, nowMs);
@@ -137,9 +152,6 @@ export function drawWeatherSky(context: CanvasRenderingContext2D, state: GameSta
           if (!rectsMeet(anchor.reach, view)) continue;
           drawWeatherSprite(context, layer.assets[anchor.hash % layer.assets.length]!, 0, fogRect(anchor, nowMs));
         }
-      } else if (layer.placement === "clouds") {
-        const deck = CLOUD_DECKS[layer.id === "cloud_shadows_high" ? 1 : 0]!;
-        for (const cloud of cloudSprites(deck, view, nowMs)) drawWeatherSprite(context, layer.assets[0]!, 0, { x: cloud.x, y: cloud.y, width: deck.size, height: deck.size });
       }
     });
   }

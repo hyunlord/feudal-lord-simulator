@@ -55,6 +55,7 @@ finish() {
   keep_results
   stop_dev_servers
   prune_runs
+  clean_disk "after $RUN"
   exit "$rc"
 }
 # A run used for a judgement (run.sh --keep): its results survive the prune — in _kept/<run>/ even if an older copy of
@@ -68,6 +69,11 @@ keep_results() {
   echo "remote-exec: kept results in _kept/$RUN (release: run.sh --release $RUN)"
 }
 fail() { echo "remote-exec: $*" >&2; finish 2; }
+
+# Disk upkeep (scripts/remote/diskClean.sh, decision RR15): every run cleans after itself; a heavy run checks the free
+# space before it starts and, under DC_LOW_GB, cleans tight first.
+# shellcheck disable=SC1091
+. "$RUN_DIR/scripts/remote/diskClean.sh"
 
 # Dev servers left behind (2026-10-03: capture scripts that did not stop their Vite left 24 on the DGX, each holding a
 # port of 4300-4399): a node process running vite whose working directory is in a run folder ($BASE/<run>/… or
@@ -154,6 +160,8 @@ if git -C "$MIRROR" cat-file -e "$FULL_SHA^{commit}" 2>/dev/null; then
   git init -q . && echo "$MIRROR/objects" > .git/objects/info/alternates
   git update-ref refs/heads/remote-run "$FULL_SHA" && git symbolic-ref HEAD refs/heads/remote-run
   git remote add origin "$GITHUB_URL"
+  # One LFS object store for every run folder (a run that pulls LFS files kept 1.6 GB of them in its own .git/lfs).
+  mkdir -p "$BASE/_cache/lfs" && git config lfs.storage "$BASE/_cache/lfs"
   if command -v git-lfs >/dev/null; then
     git config filter.lfs.clean 'git-lfs clean -- %f'; git config filter.lfs.smudge 'git-lfs smudge -- %f'
     git config filter.lfs.process 'git-lfs filter-process'; git config filter.lfs.required true
@@ -196,6 +204,7 @@ PREPARE_S=$(elapsed "$T_START")
 T_WAIT=$(date +%s.%N)
 case "$SLOT" in
   heavy|guardrail)
+    if [ "$(dc__free_gb)" -lt "$DC_LOW_GB" ]; then clean_disk "before the heavy run $RUN: under $DC_LOW_GB GB free" tight; fi
     # shellcheck disable=SC1091
     . "$RUN_DIR/scripts/remote/heavySlots.sh"
     heavy_take_slot "$BASE" "$RUN" "$LABEL: ${CMD:0:120}" ;;

@@ -1,0 +1,128 @@
+{
+  "status": "ISOLATED_REGION4_PROMOTED_POST_PROMOTION_REFERENCE_PENDING",
+  "workBranchHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "targetRoot": "/Users/rexxa/fls-astra-renderB-region-core",
+  "authorization": "Parent authorized exact8cells isolated bd843 only after actual DATA20, independent native PASS and parent60PNG decode; no stage/commit/publication",
+  "recipeSHA256": "82a85a62bee9e8854c17f05220654f16fc44e7230f18aa2449cf21a37c1bf7f3",
+  "gates": {
+    "/Users/rexxa/fls-astra-renderB/.omo/evidence/region-data-runtime-result.json": "3b3e085f546917753f5c5565413ab83053f7d9f39d29df119b1f92a4a591575b",
+    "/Users/rexxa/fls-astra-renderB/.omo/drafts/region-data-native-review.json": "5a4511da46a48cd16dd0e01a0bfc7f3844de23988f561574880e0e49eb77a744",
+    "/Users/rexxa/fls-astra-renderB/.omo/evidence/region-data-parent-check.json": "89055cdf3504ef63c0f088f9a431043bf20baee1ae1a6c652cebccfd6881f2c1"
+  },
+  "targets": [
+    {
+      "path": "docs/provenance/assets.csv",
+      "beforeSHA256": "1275f329f07c89d64bb9c5c2b7a42b668c27743a60588cf40418dc61e8220b2d",
+      "afterSHA256": "24dc203b36f15ad3b0b8d58285f2c331ba4a0d9a0fa9a61533327069d85f5102",
+      "rows": 2436,
+      "crlfBefore": 4,
+      "crlfAfter": 4,
+      "edits": [
+        {
+          "row": 2433,
+          "key": "public/assets/wave43/ground/chalk_down_spring_a-v1.png",
+          "field": "status",
+          "old": "candidate",
+          "new": "runtime",
+          "start": 3139277,
+          "end": 3139286
+        },
+        {
+          "row": 2434,
+          "key": "public/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+          "field": "status",
+          "old": "candidate",
+          "new": "runtime",
+          "start": 3141055,
+          "end": 3141064
+        },
+        {
+          "row": 2435,
+          "key": "public/assets/wave43/ground/fen_spring_a-v1.png",
+          "field": "status",
+          "old": "candidate",
+          "new": "runtime",
+          "start": 3142632,
+          "end": 3142641
+        },
+        {
+          "row": 2436,
+          "key": "public/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+          "field": "status",
+          "old": "candidate",
+          "new": "runtime",
+          "start": 3144541,
+          "end": 3144550
+        }
+      ]
+    },
+    {
+      "path": "assets-inbox/INBOX_LEDGER.csv",
+      "beforeSHA256": "ea61889f1afe6226b46092ff43b932a82faf6d43756a4d0cbe921931b6211e2a",
+      "afterSHA256": "b27d1257b483c47bd6f856a8ad544324d351dc7bc3095df174aa3666c52b9f9e",
+      "rows": 6122,
+      "crlfBefore": 6123,
+      "crlfAfter": 6123,
+      "edits": [
+        {
+          "row": 5155,
+          "key": "wave43/candidates-20261002/assets/ground/chalk_down_spring_a-v1.png",
+          "field": "installed_by",
+          "old": "",
+          "new": "RENDER-B-REGION4",
+          "start": 1251759,
+          "end": 1251759
+        },
+        {
+          "row": 5156,
+          "key": "wave43/candidates-20261002/assets/ground/coastal_grass_spring_a-v1.png",
+          "field": "installed_by",
+          "old": "",
+          "new": "RENDER-B-REGION4",
+          "start": 1251953,
+          "end": 1251953
+        },
+        {
+          "row": 5157,
+          "key": "wave43/candidates-20261002/assets/ground/fen_spring_a-v1.png",
+          "field": "installed_by",
+          "old": "",
+          "new": "RENDER-B-REGION4",
+          "start": 1252137,
+          "end": 1252137
+        },
+        {
+          "row": 5162,
+          "key": "wave43/candidates-20261002/assets/ground/woodland_floor_spring_a-v1.png",
+          "field": "installed_by",
+          "old": "",
+          "new": "RENDER-B-REGION4",
+          "start": 1253158,
+          "end": 1253158
+        }
+      ]
+    }
+  ],
+  "sourceIds": [
+    "N0411",
+    "N0412",
+    "N0413",
+    "N0418"
+  ],
+  "provenanceRows": 2436,
+  "provenanceOtherLiteralRowsPreserved": 2432,
+  "ledgerRows": 6122,
+  "ledgerOtherLiteralRowsPreserved": 6118,
+  "protectedFilesUnchanged": 4289,
+  "notesAndVerdictNoteUnchanged": true,
+  "sourcePublicCodeUnchanged": true,
+  "original425": {
+    "denominator": 425,
+    "installedByCountObservedAfter": 157,
+    "runtimeCount": "NOT_RECOUNTED; no inferred161 claim"
+  },
+  "mainCSVLedgerUntouched": true,
+  "postPromotionReference4": "PENDING",
+  "trunkIntegrationPublication": "PENDING",
+  "committed": false
+}

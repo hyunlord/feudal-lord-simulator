@@ -14,6 +14,7 @@ import hashlib
 import json
 import shutil
 import struct
+import subprocess
 import sys
 from pathlib import Path
 
@@ -54,6 +55,13 @@ def main() -> None:
     inbox = list(csv.DictReader(open(INBOX_LEDGER, encoding="utf-8")))
     by_file = {row["file"]: row for row in inbox}
     records = list(csv.DictReader(open(BATCH / "records/assets.csv", encoding="utf-8-sig")))
+    # Pure ownership check precedes any writes; canonical82 is read anew on every invocation.
+    canonical = [{"key": runtime_stem(Path(record["file"]).stem),
+                  "url": f"assets/wave23/{Path(record['file']).parent.name}/{runtime_stem(Path(record['file']).stem)}.png",
+                  "sha256": record["sha256"]} for record in records]
+    legacy_keys = set(json.loads(subprocess.check_output(
+        [str(ROOT / "node_modules/.bin/tsx"), str(ROOT / "scripts/wave23CloudOwnership.ts"),
+         str(ROOT / "src/render/art/catalog.json")], input=json.dumps(canonical), text=True, cwd=ROOT)))
     rows, installed, images = [], set(), {}
     for record in records:
         source = BATCH / record["file"]
@@ -64,6 +72,8 @@ def main() -> None:
         assert not C2PA_CHUNKS & chunks(source.read_bytes()), f"{record['file']} carries a C2PA chunk"
         group = source.parent.name
         key = runtime_stem(source.stem)
+        if key not in legacy_keys:
+            continue
         runtime = RUNTIME / group / f"{key}.png"
         runtime.parent.mkdir(parents=True, exist_ok=True)
         shutil.copyfile(source, runtime)
@@ -89,7 +99,7 @@ def main() -> None:
                               f"2026-09-28 from {BATCH.relative_to(ROOT)}; no C2PA chunk, received bytes = runtime bytes"
                               + (f"; installed as {key} (renamed from {source.stem})." if renamed else ".")})
         installed.add(inbox_key)
-    assert len(images) == 82, len(images)
+    assert len(images) == 80, len(images)
     header = next(csv.reader(open(LEDGER, encoding="utf-8")))
     ours = {row["runtimePath"] for row in rows}
     kept = [row for row in csv.DictReader(open(LEDGER, encoding="utf-8")) if row["runtimePath"] not in ours]

@@ -1,3 +1,4 @@
+import { TRADE_WORLD_ART, tradeWorldHeldCargoForWalker } from "./tradeWorldArt";
 import { BLOCKS_MAX_ZOOM } from "./buildingVisualState";
 import { PALETTE, SEMANTIC_PALETTE, type PaletteColor } from "../content/palette";
 import type { ResourceType } from "../content/resourceConfig";
@@ -95,11 +96,13 @@ export function drawWalker(
       presentation,
     });
   }
-  const loafInHand = composed && walkerAppearance(state!, walker).prop === "loaf";
+  const held = state === null ? null : tradeWorldHeldCargoForWalker(walker);
+  const heldInHand = composed && held !== null && TRADE_WORLD_ART.image(held.assetId) !== null;
+  const loafInHand = composed && state !== null && walkerAppearance(state, walker).prop === "loaf";
   // F0-V: no colour square over the head. Goods the cart does not show (grain, bread, coin) get their resource icon
   // at the close zoom only (1.35); below it the walker, its cart and its payload say enough.
   const onCart = composed && walker.kind === "carter" && walker.cargo !== null && cartLoadArt(walker.cargo.resource, presentation.direction) !== null;
-  if (walker.kind !== "builder" && walker.cargo !== null && !loafInHand && !onCart) {
+  if (walker.kind !== "builder" && walker.cargo !== null && !loafInHand && !heldInHand && !onCart) {
     if (zoom >= CLOSE_ZOOM) drawCargoIcon(context, footX, footY, walker.cargo.resource, scale);
     else if (!composed) drawCargo(context, footX, footY, cargoColor(walker.cargo.resource), scale, zoom, transform);
   }

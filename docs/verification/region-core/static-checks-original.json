@@ -1,0 +1,83 @@
+{
+  "status": "READY_FOR_INDEPENDENT_REVIEW_STATIC_ONLY",
+  "baseHead": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "worktree": "/Users/rexxa/fls-astra-renderB-region-core",
+  "freeze": "region-core-prep-freeze.json",
+  "freezeSha256": "7e9484e18540b207f4e3881bed54ce91a88864c52ffc6adbcc431ee6178f72b0",
+  "checks": [
+    {
+      "name": "focused",
+      "command": "node_modules/.bin/tsx --test tests/regionTextureContract.test.ts tests/regionTextureArt.test.ts tests/regionTextureReadiness.test.ts tests/installWave22Ownership.test.ts tests/archetypeGroundDraw.test.ts tests/artSchemaValidation.test.ts tests/artRegistry.test.ts tests/artImageLoader.test.ts tests/fieldTextureContract.test.ts tests/fieldTextureArt.test.ts tests/fieldTextureConsumers.test.ts tests/fieldTextureZoneBridge.test.ts tests/artLandDecal.test.ts tests/artWave42Migration.test.ts",
+      "exit": 0,
+      "testFiles": 14,
+      "tests": 174,
+      "passed": 174,
+      "log": "region-core-prep-focused-verified.log",
+      "sha256": "acd2abf4500ef91229f5a5cb5ebb25828dbcc2c5caccadcf96ac1a9f9ed84f4d"
+    },
+    {
+      "name": "typecheck",
+      "command": "node_modules/.bin/tsc --noEmit",
+      "exit": 0,
+      "log": "region-core-prep-type-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "lint",
+      "command": "tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --suppressions-location tools/eslint/eslint-suppressions.json --max-warnings 0 src/render/archetypeGroundDraw.ts src/render/archetypeGroundModel.ts src/render/art/artContract.ts src/render/art/artRegistryValidation.ts src/render/art/artSelection.ts src/render/art/fieldTextureArt.ts src/render/art/fieldTextureValidation.ts src/render/art/regionTextureArt.ts src/render/art/regionTextureValidation.ts src/render/wave22GroundManifest.generated.ts",
+      "exit": 0,
+      "log": "region-core-prep-lint-final.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "catalog",
+      "command": "node_modules/.bin/tsx scripts/checkArtCatalog.ts",
+      "exit": 0,
+      "entries": 135,
+      "log": "region-core-prep-catalog.log",
+      "sha256": "27a0208292d480daf30304e86c19680f98f790ff67619df54c0c694bd091e3eb"
+    },
+    {
+      "name": "diff",
+      "command": "git diff --check",
+      "exit": 0
+    },
+    {
+      "name": "reversePatchCheck",
+      "command": "git apply --reverse --check /Users/rexxa/fls-astra-renderB/.omo/evidence/region-core-prep.patch",
+      "exit": 0
+    },
+    {
+      "name": "pythonSyntax",
+      "command": "python3 ast.parse scripts/installWave22.py",
+      "exit": 0
+    }
+  ],
+  "count": {
+    "core": 14,
+    "testsAndFixture": 6,
+    "focused": 174,
+    "catalog": 135,
+    "unchangedExistingCatalog": 105,
+    "source30Preserved": 30,
+    "canonical": 79,
+    "owned": 31,
+    "legacy": 48
+  },
+  "graftEstimatedTokensSaved": 16967,
+  "history": {
+    "initialRedLog": "region-core-prep-red.log",
+    "initialRedLimitation": "Initial fixture used wrong fallback representation; not valid feature RED evidence.",
+    "correctedBaselineRegression": "region-core-prep-baseline-regression.log",
+    "correctedBaselineClassification": "Completed valid fixture against exact fd68 schema has30 issues/current schema0; reconstructed regression rather than original test-first execution.",
+    "wrongCliAttempt": "validateArtCatalog.ts did not exist; actual scripts/checkArtCatalog.ts subsequently passed135/135.",
+    "focusedListCorrection": "Earlier169 PASS run named two absent LandDecal test filenames (tsx silently ignored). Final14 verified-existing files includes actual artLandDecal.test.ts;174/174 PASS."
+  },
+  "runtime": {
+    "regionCore": "NOT_RUN",
+    "data4": "NOT_INSTALLED",
+    "before18": "Separate candidate_audit_retry report, not core evidence",
+    "fixtureReceipt": "region4-fixture-prep.md"
+  },
+  "futureIntegration": "Re-pin latest published baseline/source hashes; fd68 isolated prep cannot be silently applied across later changes."
+}

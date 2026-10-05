@@ -9,6 +9,7 @@ import type {
 } from "./treeLayout";
 
 export type ObjectRenderItem =
+  | { readonly kind: "trade_prop"; readonly id: string; readonly prop: import("./tradeWorldGround").TradeWorldProp; readonly depth: number; readonly anchorTx: number }
   | {
       readonly kind: "tree";
       readonly id: string;

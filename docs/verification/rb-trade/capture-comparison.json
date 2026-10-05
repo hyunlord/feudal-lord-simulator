@@ -1,0 +1,71 @@
+{
+  "before": "6fd89016132a880dfae0bb2a93bfdb557ab385c7",
+  "after": "0355416323a47ee587c976f6bd51e2a0510c0c63",
+  "views": [
+    {
+      "view": "summer-z1",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "beforePngSHA256": "a61ddca1863e765f0030499c64488d5a0ce2fccf93d6ce903652752be48147b2",
+      "afterPngSHA256": "fd212ccb4fbeb2d242bb17e519977ef0ba54a54c7250ac81674b311f4b0ead59",
+      "differentPixels": 708,
+      "differenceBounds": [
+        624,
+        369,
+        871,
+        433
+      ]
+    },
+    {
+      "view": "summer-z0.6",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "beforePngSHA256": "44f28daab1907844f72b015aff72e1e434bacb77867cc5420d6ea7c8cc7f96b6",
+      "afterPngSHA256": "7dc0559254a2ddaa0f52388269093739a620df1006f33f5dd8747aa8c36a2e84",
+      "differentPixels": 291,
+      "differenceBounds": [
+        630,
+        382,
+        779,
+        420
+      ]
+    },
+    {
+      "view": "winter-z1",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "beforePngSHA256": "a1e97432e287c6dc2803b6b156d25f909a6bb4be81a87b1ae2766c88d472cf6b",
+      "afterPngSHA256": "0e8b666c3a8bf70d4f7d7906d3a8a2cfa298d3ada5acaf9c5cbe26e025d353b2",
+      "differentPixels": 772,
+      "differenceBounds": [
+        624,
+        378,
+        1151,
+        467
+      ]
+    },
+    {
+      "view": "winter-z0.6",
+      "dimensions": [
+        1280,
+        800
+      ],
+      "beforePngSHA256": "c250f36d08f5b51fb0f3f235bf13406ec3cf1816fdf556dafabaa70f347c4aae",
+      "afterPngSHA256": "d4a13b49e6d11258dccfdf81ea1af63ff9d4b20b1e4992146a8166a802e3ed68",
+      "differentPixels": 319,
+      "differenceBounds": [
+        630,
+        387,
+        947,
+        440
+      ]
+    }
+  ],
+  "interpretation": "Actual game pairs, not pixel identity: world props intentionally differ; transient UI messages and winter particles can also differ. These views prove two representative front props, not every installed asset."
+}

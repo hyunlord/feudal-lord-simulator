@@ -1,0 +1,1953 @@
+{
+  "views": [
+    {
+      "name": "region4-chalk_downs-spring-z1",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-chalk_downs-spring",
+        "savedStateSHA": "83c9d8c7d1736cf966c6b4361c0bf0f8e15088f403151abcf655cb95316e2ae5",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "/assets/wave22/terrain/chalk_down_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-chalk_downs-spring",
+        "savedStateSHA": "83c9d8c7d1736cf966c6b4361c0bf0f8e15088f403151abcf655cb95316e2ae5",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/chalk_down_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-spring-z1.png",
+        "sha256": "35948763d5b8c7fa9d84965426d460378fed153206538d895751aa05b1c976f2",
+        "bytes": 2045576
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-spring-z1.png",
+        "sha256": "76b333da099fc794740e512eca1afae491c9d75f4a7f1ce6ea3d95663dea7c68",
+        "bytes": 1895161
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-spring-z1.jpg",
+        "sha256": "65e33e2b349a80d34d01fd8d9e8c2e2662ea07f6cd4c6645f286adc2f01b03d5",
+        "bytes": 165135
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-spring-z1.jpg",
+        "sha256": "f467822f780c0ff900d16bd8e9aef3eec8a01327df756690a451aa9480a7641e",
+        "bytes": 198437
+      },
+      "beforeRGBA": "faacb6241d9bddb4f7cd4474a0f4bb7663dc897baee14a6929faf2df24a95f27",
+      "afterRGBA": "cb99dcdc328b747af2364e504c08b5f300a8caf78aca789bf952d91931517ba7",
+      "repeatRGBA": "cb99dcdc328b747af2364e504c08b5f300a8caf78aca789bf952d91931517ba7",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 677171,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/chalk_down_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-chalk_downs-spring-z06",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-chalk_downs-spring",
+        "savedStateSHA": "83c9d8c7d1736cf966c6b4361c0bf0f8e15088f403151abcf655cb95316e2ae5",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "/assets/wave22/terrain/chalk_down_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-chalk_downs-spring",
+        "savedStateSHA": "83c9d8c7d1736cf966c6b4361c0bf0f8e15088f403151abcf655cb95316e2ae5",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/chalk_down_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-spring-z06.png",
+        "sha256": "faa8a663baed5ffb1548de169d44d86899b221b955e41503d8654d284cba9f3c",
+        "bytes": 2145129
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-spring-z06.png",
+        "sha256": "ca174a3a0b65c843a481c56f78549974f356808475dce61fc7618812edfdf89d",
+        "bytes": 2180017
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-spring-z06.jpg",
+        "sha256": "fb39a171a3a6417c90bbec8832fcb2377f80f03fab5e8b6bc93620ce3da270fd",
+        "bytes": 145017
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-spring-z06.jpg",
+        "sha256": "e78de52acaeaa439f7211c67bf52477bf3f06e80da64dec817f6d8ebd99ceed9",
+        "bytes": 172053
+      },
+      "beforeRGBA": "7807c4988390a6d926d1785c5cc69725a371b108779a6d07a3cfa0258fbb9db1",
+      "afterRGBA": "64c2478a83f4b1790ed1994868ddc5808fa84b4be1886ecc5668bf1a49689ac0",
+      "repeatRGBA": "64c2478a83f4b1790ed1994868ddc5808fa84b4be1886ecc5668bf1a49689ac0",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 481939,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/chalk_down_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-chalk_downs-summer-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-chalk_downs-summer",
+        "savedStateSHA": "cf32f50319fe0e58f4fec7df7e89769911f2849c68bc1e05374305cd7392a6b8",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "/assets/wave22/terrain/chalk_down_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-chalk_downs-summer",
+        "savedStateSHA": "cf32f50319fe0e58f4fec7df7e89769911f2849c68bc1e05374305cd7392a6b8",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "/assets/wave22/terrain/chalk_down_summer_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-summer-z1.png",
+        "sha256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+        "bytes": 2042294
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z1.png",
+        "sha256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+        "bytes": 2042294
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-summer-z1.jpg",
+        "sha256": "0c0f70d6bece7b2080e9383f248b057740fd91cc83152f82565a39172168a2af",
+        "bytes": 156036
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z1.jpg",
+        "sha256": "0c0f70d6bece7b2080e9383f248b057740fd91cc83152f82565a39172168a2af",
+        "bytes": 156036
+      },
+      "beforeRGBA": "ee40bfaba025f53f7fbfcaa4f4b3fb730827a3d288d5756b8a21bbb49ca15348",
+      "afterRGBA": "ee40bfaba025f53f7fbfcaa4f4b3fb730827a3d288d5756b8a21bbb49ca15348",
+      "repeatRGBA": "ee40bfaba025f53f7fbfcaa4f4b3fb730827a3d288d5756b8a21bbb49ca15348",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/chalk_down_summer_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-chalk_downs-winter-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-chalk_downs-winter",
+        "savedStateSHA": "e45744da606bc0f55febf2f76eb40cde5aac956a3a9c45d48d5c7f9e9f46c9c7",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_winter_a.png",
+          "/assets/wave22/terrain/chalk_down_winter_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-chalk_downs-winter",
+        "savedStateSHA": "e45744da606bc0f55febf2f76eb40cde5aac956a3a9c45d48d5c7f9e9f46c9c7",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_winter_a.png",
+          "/assets/wave22/terrain/chalk_down_winter_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-winter-z1.png",
+        "sha256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+        "bytes": 2122769
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z1.png",
+        "sha256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+        "bytes": 2122769
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-winter-z1.jpg",
+        "sha256": "cbe6481c1f233ca38688d7ad4143621b4d0ff2d024277b7786fa2fa0fe10c139",
+        "bytes": 182023
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z1.jpg",
+        "sha256": "cbe6481c1f233ca38688d7ad4143621b4d0ff2d024277b7786fa2fa0fe10c139",
+        "bytes": 182023
+      },
+      "beforeRGBA": "ead27964a4887289bd8de656884b5d52dcb6efee80af5833723a6ddc51a4d7de",
+      "afterRGBA": "ead27964a4887289bd8de656884b5d52dcb6efee80af5833723a6ddc51a4d7de",
+      "repeatRGBA": "ead27964a4887289bd8de656884b5d52dcb6efee80af5833723a6ddc51a4d7de",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/chalk_down_winter_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/chalk_down_winter_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-coastal_port-spring-z1",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-coastal_port-spring",
+        "savedStateSHA": "b3da467940095e80968a1d5082c9b6da3821ae49d81f9a54507e3434ac03df23",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/coastal_grass_summer_a.png",
+          "/assets/wave22/terrain/coastal_grass_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-coastal_port-spring",
+        "savedStateSHA": "b3da467940095e80968a1d5082c9b6da3821ae49d81f9a54507e3434ac03df23",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/coastal_grass_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-spring-z1.png",
+        "sha256": "1413633ba4ba68779de9c944a0b6efbdd4adf897b590fce734c23b5d1be0c393",
+        "bytes": 2047114
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-spring-z1.png",
+        "sha256": "109bfa19a381bea69a56ca647be8749bcec14e06b54c07346b2860fb51ce43cd",
+        "bytes": 1936858
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-spring-z1.jpg",
+        "sha256": "33463eedc5c1230deba28678d28281f8cc8f5ca0fb0f827b796833c561b319f5",
+        "bytes": 155365
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-spring-z1.jpg",
+        "sha256": "ae97ce94be06956efc7f2220aa0aae288acf8ee903f42873199ae98b8a9ada9b",
+        "bytes": 177744
+      },
+      "beforeRGBA": "20eb17cf6d14d8834c7cb33c1f46ca46b8502d2691ad1e7cf5c9783a31bd450d",
+      "afterRGBA": "509558029dc5b96419a87c571c479a374fb1d338432620b66cddf5b7e1204416",
+      "repeatRGBA": "509558029dc5b96419a87c571c479a374fb1d338432620b66cddf5b7e1204416",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 389109,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-coastal_port-spring-z06",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-coastal_port-spring",
+        "savedStateSHA": "b3da467940095e80968a1d5082c9b6da3821ae49d81f9a54507e3434ac03df23",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/coastal_grass_summer_a.png",
+          "/assets/wave22/terrain/coastal_grass_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-coastal_port-spring",
+        "savedStateSHA": "b3da467940095e80968a1d5082c9b6da3821ae49d81f9a54507e3434ac03df23",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/coastal_grass_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-spring-z06.png",
+        "sha256": "8ab736a88553b46c3a1f61954ba6b1df3cccd45664f76b55b5a8d9ee9f077c1c",
+        "bytes": 1881490
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-spring-z06.png",
+        "sha256": "02d2e914faa50815a90b4c3ef15cb0ce3f3d0934e1077da46b5f12ac2aeb6a4a",
+        "bytes": 1910202
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-spring-z06.jpg",
+        "sha256": "9325ca2d7e5ef6f491af255e1e221c7df581e7df3bcd4210a03eb150a474ee70",
+        "bytes": 133582
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-spring-z06.jpg",
+        "sha256": "8fd8741e4de6ee2369a7a95f4b7e1b9a8f0b5bb7d1f050a2a8fef409c5569897",
+        "bytes": 144599
+      },
+      "beforeRGBA": "1c00d8898b0af96187ef362604701bd4ce26fc4ddcbdc95e45a593fd034f5e92",
+      "afterRGBA": "d0ba23169e123b9d43d5ecd6162f190904365d2b29790a91eeb54c28b7f145e9",
+      "repeatRGBA": "d0ba23169e123b9d43d5ecd6162f190904365d2b29790a91eeb54c28b7f145e9",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 204026,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-coastal_port-summer-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-coastal_port-summer",
+        "savedStateSHA": "d179effb59a7920eff6c0d49998f22f148e275a4d727c395f795360ddbd31e38",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/coastal_grass_summer_a.png",
+          "/assets/wave22/terrain/coastal_grass_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-coastal_port-summer",
+        "savedStateSHA": "d179effb59a7920eff6c0d49998f22f148e275a4d727c395f795360ddbd31e38",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/coastal_grass_summer_a.png",
+          "/assets/wave22/terrain/coastal_grass_summer_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-summer-z1.png",
+        "sha256": "aef60a126167953d98def513aaea583b2534c72da283dc62ff8ad35cfa0ce38f",
+        "bytes": 2114413
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-summer-z1.png",
+        "sha256": "aef60a126167953d98def513aaea583b2534c72da283dc62ff8ad35cfa0ce38f",
+        "bytes": 2114413
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-summer-z1.jpg",
+        "sha256": "cc709c038295aa701ddeef6b5e003b6568531c90ba24b52aea177eedbc06fbe6",
+        "bytes": 147377
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-summer-z1.jpg",
+        "sha256": "cc709c038295aa701ddeef6b5e003b6568531c90ba24b52aea177eedbc06fbe6",
+        "bytes": 147377
+      },
+      "beforeRGBA": "011f443dcb8f8238ad8c00210576c98760e3b65549de1daa1bc39c6ef4d83ef9",
+      "afterRGBA": "011f443dcb8f8238ad8c00210576c98760e3b65549de1daa1bc39c6ef4d83ef9",
+      "repeatRGBA": "011f443dcb8f8238ad8c00210576c98760e3b65549de1daa1bc39c6ef4d83ef9",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/coastal_grass_summer_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/coastal_grass_summer_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-coastal_port-winter-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-coastal_port-winter",
+        "savedStateSHA": "f3fbccf9585526dcff9927e5df71bbb69c964c2eb9531a94344e98213eeb5773",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/coastal_grass_winter_a.png",
+          "/assets/wave22/terrain/coastal_grass_winter_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-coastal_port-winter",
+        "savedStateSHA": "f3fbccf9585526dcff9927e5df71bbb69c964c2eb9531a94344e98213eeb5773",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          14,
+          20
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/coastal_grass_winter_a.png",
+          "/assets/wave22/terrain/coastal_grass_winter_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-winter-z1.png",
+        "sha256": "ee111ec78fba266f31c8b26f4dcc78a7835b934ac0e04f159c9c0438b1dc0eee",
+        "bytes": 2045260
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-winter-z1.png",
+        "sha256": "ee111ec78fba266f31c8b26f4dcc78a7835b934ac0e04f159c9c0438b1dc0eee",
+        "bytes": 2045260
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-winter-z1.jpg",
+        "sha256": "243f0c13fbddcf6f817e7e989a67c624ce661d128dfe44ee6a03a3ecfd8f55d5",
+        "bytes": 157378
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-coastal_port-winter-z1.jpg",
+        "sha256": "243f0c13fbddcf6f817e7e989a67c624ce661d128dfe44ee6a03a3ecfd8f55d5",
+        "bytes": 157378
+      },
+      "beforeRGBA": "f618bab93462de9ab524b522a36ca6ecf555716c48a8ff275c0874e2de3ad347",
+      "afterRGBA": "f618bab93462de9ab524b522a36ca6ecf555716c48a8ff275c0874e2de3ad347",
+      "repeatRGBA": "f618bab93462de9ab524b522a36ca6ecf555716c48a8ff275c0874e2de3ad347",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/coastal_grass_winter_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/coastal_grass_winter_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-fen_drainage-spring-z1",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-fen_drainage-spring",
+        "savedStateSHA": "50a0ae79cabdc8ba6f06742fc412e090737663814ef548475a52b0a959dc94fd",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/fen_summer_a.png",
+          "/assets/wave22/terrain/fen_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-fen_drainage-spring",
+        "savedStateSHA": "50a0ae79cabdc8ba6f06742fc412e090737663814ef548475a52b0a959dc94fd",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/fen_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-spring-z1.png",
+        "sha256": "d28f9ae21cbbf6758d1c82224c43bea7efaf0bdeac467d4ff556bfa86893a0c6",
+        "bytes": 2205907
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-spring-z1.png",
+        "sha256": "6df2470f976d924dc99294866782eba3fb2dc9e65bcb27b028113ccc8730dcfe",
+        "bytes": 2143730
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-spring-z1.jpg",
+        "sha256": "c0dd09d0634bb8113b3c3fab593b29a3ff5a3c80ba9b08564a4f61f25676ee9a",
+        "bytes": 144425
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-spring-z1.jpg",
+        "sha256": "75150e4d705d432c9031e6b6c6a9775a422e370ebc4120da8d830bc25820deee",
+        "bytes": 158100
+      },
+      "beforeRGBA": "c4fbb2313f4652ad5eb913a236a466a450c9257a032edb0477c9ce51ea7cfd7b",
+      "afterRGBA": "1b4309ded9b3b2e6101448bbe8d7323eba2bf0bbbdfbe4a64e593e6775932460",
+      "repeatRGBA": "1b4309ded9b3b2e6101448bbe8d7323eba2bf0bbbdfbe4a64e593e6775932460",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 386547,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/fen_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-fen_drainage-spring-z06",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-fen_drainage-spring",
+        "savedStateSHA": "50a0ae79cabdc8ba6f06742fc412e090737663814ef548475a52b0a959dc94fd",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/fen_summer_a.png",
+          "/assets/wave22/terrain/fen_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-fen_drainage-spring",
+        "savedStateSHA": "50a0ae79cabdc8ba6f06742fc412e090737663814ef548475a52b0a959dc94fd",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/fen_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-spring-z06.png",
+        "sha256": "d27116217e50be8e862736110f2c9ea4e545017aea370dba92c0a182c3b6d6f8",
+        "bytes": 1788463
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-spring-z06.png",
+        "sha256": "52fca676f42ba55417b7a7d43f749428f362c76d786d2f537bf94fec3c528abb",
+        "bytes": 1822663
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-spring-z06.jpg",
+        "sha256": "ec6c49cde3187af38153e3fae07c54a8b8fcb13ffbf68b66f578431e5d76d4a7",
+        "bytes": 113167
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-spring-z06.jpg",
+        "sha256": "17f7d4d5b6e48702d44d849f3a4332aad392965822635fc7756baaee09459f9a",
+        "bytes": 120681
+      },
+      "beforeRGBA": "d2b2e752a7eaccc3bd873abdad14ffff57e8338baeb873075f2d267edb0661a5",
+      "afterRGBA": "4337c2b2502e27013cc9ae30dcba97289eca6ec10d93a4c9c78e9834a93ca609",
+      "repeatRGBA": "4337c2b2502e27013cc9ae30dcba97289eca6ec10d93a4c9c78e9834a93ca609",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 202308,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/fen_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-fen_drainage-summer-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-fen_drainage-summer",
+        "savedStateSHA": "dbaa46f9a866cc8d75f289daf2baa2ab8ff50aad206732e6f3fed2e3586cbc6e",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/fen_summer_a.png",
+          "/assets/wave22/terrain/fen_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-fen_drainage-summer",
+        "savedStateSHA": "dbaa46f9a866cc8d75f289daf2baa2ab8ff50aad206732e6f3fed2e3586cbc6e",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/fen_summer_a.png",
+          "/assets/wave22/terrain/fen_summer_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-summer-z1.png",
+        "sha256": "6b8d55a28ca581464235cab374d3a5577363de60440ef675641fba42657fec12",
+        "bytes": 2153082
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-summer-z1.png",
+        "sha256": "6b8d55a28ca581464235cab374d3a5577363de60440ef675641fba42657fec12",
+        "bytes": 2153082
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-summer-z1.jpg",
+        "sha256": "687e2ecaa4f548c0237651b8c0bd0016b2b90ef00bde6966da52cb9c0bdd4536",
+        "bytes": 134018
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-summer-z1.jpg",
+        "sha256": "687e2ecaa4f548c0237651b8c0bd0016b2b90ef00bde6966da52cb9c0bdd4536",
+        "bytes": 134018
+      },
+      "beforeRGBA": "99a1f846e8c13e86f29c9313c1217094a1edcd273e3f23eff32daaf3c9fdc416",
+      "afterRGBA": "99a1f846e8c13e86f29c9313c1217094a1edcd273e3f23eff32daaf3c9fdc416",
+      "repeatRGBA": "99a1f846e8c13e86f29c9313c1217094a1edcd273e3f23eff32daaf3c9fdc416",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/fen_summer_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/fen_summer_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-fen_drainage-winter-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-fen_drainage-winter",
+        "savedStateSHA": "436586249a8780716b62a855be5554a2dff2a65c718c4682f2558d84ee5d3f39",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/fen_winter_a.png",
+          "/assets/wave22/terrain/fen_winter_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-fen_drainage-winter",
+        "savedStateSHA": "436586249a8780716b62a855be5554a2dff2a65c718c4682f2558d84ee5d3f39",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          16,
+          45
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/fen_winter_a.png",
+          "/assets/wave22/terrain/fen_winter_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-winter-z1.png",
+        "sha256": "51daeb1b841abcf5c2153e34fb4a74bf70055b0a754726fcd759b65f9e5f0473",
+        "bytes": 2157006
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-winter-z1.png",
+        "sha256": "51daeb1b841abcf5c2153e34fb4a74bf70055b0a754726fcd759b65f9e5f0473",
+        "bytes": 2157006
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-winter-z1.jpg",
+        "sha256": "c4b3f476ad238ba32f590a660556e739ba14174403da5992b07353324f9a50a1",
+        "bytes": 149310
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-fen_drainage-winter-z1.jpg",
+        "sha256": "c4b3f476ad238ba32f590a660556e739ba14174403da5992b07353324f9a50a1",
+        "bytes": 149310
+      },
+      "beforeRGBA": "7d1d658a44d98d26aee04041efb172103b7f40cfbcd41ef148cd033de5af0cdd",
+      "afterRGBA": "7d1d658a44d98d26aee04041efb172103b7f40cfbcd41ef148cd033de5af0cdd",
+      "repeatRGBA": "7d1d658a44d98d26aee04041efb172103b7f40cfbcd41ef148cd033de5af0cdd",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/fen_winter_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/fen_winter_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-forest_edge-spring-z1",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-forest_edge-spring",
+        "savedStateSHA": "1970c452b9dedd77bd8179c99d46eca7135541cc2257a27721c35f3e0ca14023",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/woodland_floor_summer_a.png",
+          "/assets/wave22/terrain/woodland_floor_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-forest_edge-spring",
+        "savedStateSHA": "1970c452b9dedd77bd8179c99d46eca7135541cc2257a27721c35f3e0ca14023",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/woodland_floor_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-spring-z1.png",
+        "sha256": "a41acb2007a61a5132381d92de63d0b9653d3c9567a2e5baa39c3918db7dba21",
+        "bytes": 2448996
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-spring-z1.png",
+        "sha256": "01ff590174b62c44ddf461baa54e52607a86c1a84c8ae5f8d822c778d7371205",
+        "bytes": 2359029
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-spring-z1.jpg",
+        "sha256": "bd3870a62aeb45812326045f2ceb44df8a43f9bb5511ade89e864748df341c04",
+        "bytes": 177943
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-spring-z1.jpg",
+        "sha256": "b3c360750e9329be43f0d22ab193179c14c906c8c5e428757bb134abac767e6e",
+        "bytes": 173292
+      },
+      "beforeRGBA": "d3163f883f90b6cc157527e37f75ac2dda22757d7014f4fb5542bb0b00c073bf",
+      "afterRGBA": "896c85eae3884c81340cf6d75b026f9664202083412321269bae02f1cac3a06f",
+      "repeatRGBA": "896c85eae3884c81340cf6d75b026f9664202083412321269bae02f1cac3a06f",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 303443,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-forest_edge-spring-z06",
+      "positive": true,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-forest_edge-spring",
+        "savedStateSHA": "1970c452b9dedd77bd8179c99d46eca7135541cc2257a27721c35f3e0ca14023",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/woodland_floor_summer_a.png",
+          "/assets/wave22/terrain/woodland_floor_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-forest_edge-spring",
+        "savedStateSHA": "1970c452b9dedd77bd8179c99d46eca7135541cc2257a27721c35f3e0ca14023",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/ground/woodland_floor_spring_a-v1.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-spring-z06.png",
+        "sha256": "5a358dced8faa3777496b81de0bf1fb28e60f6b11aec2090dc07877c188c817d",
+        "bytes": 2139229
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-spring-z06.png",
+        "sha256": "c9938eb6a7126fea614900cc4e9ddb755677d05085ce4ef6dad9626dacf2839d",
+        "bytes": 2132300
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-spring-z06.jpg",
+        "sha256": "63f4aa86285801f627fb283271bd40bc360da6822b27ad60879ec69dd13ec4c4",
+        "bytes": 165095
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-spring-z06.jpg",
+        "sha256": "2951d852e7d834efcccda0eb8c4a9890a588b4cd9f4af01f199b6997316d71ab",
+        "bytes": 164792
+      },
+      "beforeRGBA": "dbfb04cbd7a0960170eaed9d3b36d1b8f617f273e4c7179c304bfa560d210017",
+      "afterRGBA": "1e0249d0ec9fdf0bffba8da0419f8fe6440e217aa4d70e50d520d70c85ac0f18",
+      "repeatRGBA": "1e0249d0ec9fdf0bffba8da0419f8fe6440e217aa4d70e50d520d70c85ac0f18",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 144683,
+      "newPaintAbsent": null,
+      "sources": [
+        {
+          "url": "/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-forest_edge-summer-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-forest_edge-summer",
+        "savedStateSHA": "09e69570aad5b2348a7fc42aa0f52fcb33a681396d3973f1d1e34b2cd3ae5baa",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/woodland_floor_summer_a.png",
+          "/assets/wave22/terrain/woodland_floor_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-forest_edge-summer",
+        "savedStateSHA": "09e69570aad5b2348a7fc42aa0f52fcb33a681396d3973f1d1e34b2cd3ae5baa",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/woodland_floor_summer_a.png",
+          "/assets/wave22/terrain/woodland_floor_summer_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-summer-z1.png",
+        "sha256": "08e05ad61c37b01e0e07d10ee9d6865e8daf9f0e43aec2ee5234ae3a607cc204",
+        "bytes": 2417415
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-summer-z1.png",
+        "sha256": "08e05ad61c37b01e0e07d10ee9d6865e8daf9f0e43aec2ee5234ae3a607cc204",
+        "bytes": 2417415
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-summer-z1.jpg",
+        "sha256": "3255054adf938c9ce8eb163c633179c6588fafe38b91d71c424920db00a564b7",
+        "bytes": 168129
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-summer-z1.jpg",
+        "sha256": "3255054adf938c9ce8eb163c633179c6588fafe38b91d71c424920db00a564b7",
+        "bytes": 168129
+      },
+      "beforeRGBA": "09a5a36a950e28cbe4f968516ed20ee43ab2cc43dfa6b2495b271df1e1db921f",
+      "afterRGBA": "09a5a36a950e28cbe4f968516ed20ee43ab2cc43dfa6b2495b271df1e1db921f",
+      "repeatRGBA": "09a5a36a950e28cbe4f968516ed20ee43ab2cc43dfa6b2495b271df1e1db921f",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/woodland_floor_summer_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/woodland_floor_summer_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-forest_edge-winter-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-forest_edge-winter",
+        "savedStateSHA": "efa3b968cf92f3426c64257725de005cdf45f7087244ff68b40355705e9d8a63",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/woodland_floor_winter_a.png",
+          "/assets/wave22/terrain/woodland_floor_winter_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-forest_edge-winter",
+        "savedStateSHA": "efa3b968cf92f3426c64257725de005cdf45f7087244ff68b40355705e9d8a63",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          47,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/woodland_floor_winter_a.png",
+          "/assets/wave22/terrain/woodland_floor_winter_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-winter-z1.png",
+        "sha256": "5d6fc840ed5ee69166d37667f50d7508ae75e92df123f3b73139ca71a3f79761",
+        "bytes": 2374014
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-winter-z1.png",
+        "sha256": "5d6fc840ed5ee69166d37667f50d7508ae75e92df123f3b73139ca71a3f79761",
+        "bytes": 2374014
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-winter-z1.jpg",
+        "sha256": "617bd223dac15063fbc706a1d8b9f6c958853127addf26d725bbdd5ff7e101e9",
+        "bytes": 175136
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-forest_edge-winter-z1.jpg",
+        "sha256": "617bd223dac15063fbc706a1d8b9f6c958853127addf26d725bbdd5ff7e101e9",
+        "bytes": 175136
+      },
+      "beforeRGBA": "668e1816187f69d384cefa7c3e4a0c20d70e64b6f9260cc51dcbcf2fec16df8e",
+      "afterRGBA": "668e1816187f69d384cefa7c3e4a0c20d70e64b6f9260cc51dcbcf2fec16df8e",
+      "repeatRGBA": "668e1816187f69d384cefa7c3e4a0c20d70e64b6f9260cc51dcbcf2fec16df8e",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/woodland_floor_winter_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/woodland_floor_winter_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-open_field-spring-z1",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-open_field-spring",
+        "savedStateSHA": "c144de63a3a5eb29e15a6b1c8131436ba4a8df684f1155774b2eb00c6e9408f8",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          38,
+          53
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/terrain/grass.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-open_field-spring",
+        "savedStateSHA": "c144de63a3a5eb29e15a6b1c8131436ba4a8df684f1155774b2eb00c6e9408f8",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          38,
+          53
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/terrain/grass.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-open_field-spring-z1.png",
+        "sha256": "eec09f1dce85c4b49da8ee59a26556f4412a70b58abcf39aa6537dedd5b09b5a",
+        "bytes": 2117544
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-open_field-spring-z1.png",
+        "sha256": "eec09f1dce85c4b49da8ee59a26556f4412a70b58abcf39aa6537dedd5b09b5a",
+        "bytes": 2117544
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-open_field-spring-z1.jpg",
+        "sha256": "f028a44c977770720cdb541c09b2a295c88fa365bf10006f4939c0d2e097ef19",
+        "bytes": 153268
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-open_field-spring-z1.jpg",
+        "sha256": "f028a44c977770720cdb541c09b2a295c88fa365bf10006f4939c0d2e097ef19",
+        "bytes": 153268
+      },
+      "beforeRGBA": "800516eb32d938bbab5c9394191d2b03a4b411b69d45a1989792ddd40bdc22a7",
+      "afterRGBA": "800516eb32d938bbab5c9394191d2b03a4b411b69d45a1989792ddd40bdc22a7",
+      "repeatRGBA": "800516eb32d938bbab5c9394191d2b03a4b411b69d45a1989792ddd40bdc22a7",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/terrain/grass.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-open_field-spring-z06",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-open_field-spring",
+        "savedStateSHA": "c144de63a3a5eb29e15a6b1c8131436ba4a8df684f1155774b2eb00c6e9408f8",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          38,
+          53
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/terrain/grass.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-open_field-spring",
+        "savedStateSHA": "c144de63a3a5eb29e15a6b1c8131436ba4a8df684f1155774b2eb00c6e9408f8",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          38,
+          53
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/terrain/grass.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-open_field-spring-z06.png",
+        "sha256": "cfbca1bc0f1ac7969732657b497fb2ff5b52d96e4809b7116146d0c2db92a623",
+        "bytes": 1951015
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-open_field-spring-z06.png",
+        "sha256": "cfbca1bc0f1ac7969732657b497fb2ff5b52d96e4809b7116146d0c2db92a623",
+        "bytes": 1951015
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-open_field-spring-z06.jpg",
+        "sha256": "0f6e9a45fa554931eda9a130195c8798066317c888bac45b00adace4c8feaae5",
+        "bytes": 159033
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-open_field-spring-z06.jpg",
+        "sha256": "0f6e9a45fa554931eda9a130195c8798066317c888bac45b00adace4c8feaae5",
+        "bytes": 159033
+      },
+      "beforeRGBA": "35623de3d410b6d5a784a108ee9da4e960b87df2782cff4cd0762d02110810d7",
+      "afterRGBA": "35623de3d410b6d5a784a108ee9da4e960b87df2782cff4cd0762d02110810d7",
+      "repeatRGBA": "35623de3d410b6d5a784a108ee9da4e960b87df2782cff4cd0762d02110810d7",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/terrain/grass.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-chalk_downs-summer-z06",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-chalk_downs-summer",
+        "savedStateSHA": "cf32f50319fe0e58f4fec7df7e89769911f2849c68bc1e05374305cd7392a6b8",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "/assets/wave22/terrain/chalk_down_summer_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-chalk_downs-summer",
+        "savedStateSHA": "cf32f50319fe0e58f4fec7df7e89769911f2849c68bc1e05374305cd7392a6b8",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "/assets/wave22/terrain/chalk_down_summer_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-summer-z06.png",
+        "sha256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+        "bytes": 2164645
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z06.png",
+        "sha256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+        "bytes": 2164645
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-summer-z06.jpg",
+        "sha256": "85695568a45448fff0e208a03ca3a55e5b20f187cc380dc316e80dec48b0e84e",
+        "bytes": 141878
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-summer-z06.jpg",
+        "sha256": "85695568a45448fff0e208a03ca3a55e5b20f187cc380dc316e80dec48b0e84e",
+        "bytes": 141878
+      },
+      "beforeRGBA": "6fd7bb742f387f2dd0129aa338a3cf718c060d7ad1bd67f3830077f48688edb9",
+      "afterRGBA": "6fd7bb742f387f2dd0129aa338a3cf718c060d7ad1bd67f3830077f48688edb9",
+      "repeatRGBA": "6fd7bb742f387f2dd0129aa338a3cf718c060d7ad1bd67f3830077f48688edb9",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/chalk_down_summer_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/chalk_down_summer_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    },
+    {
+      "name": "region4-chalk_downs-winter-z06",
+      "positive": false,
+      "beforeHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+      "afterHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+      "beforeIdentity": {
+        "state": "region4-chalk_downs-winter",
+        "savedStateSHA": "e45744da606bc0f55febf2f76eb40cde5aac956a3a9c45d48d5c7f9e9f46c9c7",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_winter_a.png",
+          "/assets/wave22/terrain/chalk_down_winter_b.png"
+        ]
+      },
+      "afterIdentity": {
+        "state": "region4-chalk_downs-winter",
+        "savedStateSHA": "e45744da606bc0f55febf2f76eb40cde5aac956a3a9c45d48d5c7f9e9f46c9c7",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          37,
+          19
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/terrain/chalk_down_winter_a.png",
+          "/assets/wave22/terrain/chalk_down_winter_b.png"
+        ]
+      },
+      "beforePNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-winter-z06.png",
+        "sha256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+        "bytes": 2175478
+      },
+      "afterPNG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z06.png",
+        "sha256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+        "bytes": 2175478
+      },
+      "beforeJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-winter-z06.jpg",
+        "sha256": "478360e19a4e7f2f6d84b31ca443c7476c9ca58f3328b455a22519c476cffc9c",
+        "bytes": 153076
+      },
+      "afterJPEG": {
+        "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-data-v1/captures/region4-chalk_downs-winter-z06.jpg",
+        "sha256": "478360e19a4e7f2f6d84b31ca443c7476c9ca58f3328b455a22519c476cffc9c",
+        "bytes": 153076
+      },
+      "beforeRGBA": "b065d43f33f9c66b1561e1659594c7854c113837fb02cea3db32b9899ceb5d45",
+      "afterRGBA": "b065d43f33f9c66b1561e1659594c7854c113837fb02cea3db32b9899ceb5d45",
+      "repeatRGBA": "b065d43f33f9c66b1561e1659594c7854c113837fb02cea3db32b9899ceb5d45",
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "differingPixels": 0,
+      "newPaintAbsent": true,
+      "sources": [
+        {
+          "url": "/assets/wave22/terrain/chalk_down_winter_a.png",
+          "requestDecodePaint": true
+        },
+        {
+          "url": "/assets/wave22/terrain/chalk_down_winter_b.png",
+          "requestDecodePaint": true
+        }
+      ]
+    }
+  ],
+  "note": "Original PNG/JPEG files hashed at assembly; RGBA claims retain actual capture metadata. No re-encoding or new visual review."
+}

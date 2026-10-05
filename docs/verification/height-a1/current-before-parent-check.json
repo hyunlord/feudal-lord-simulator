@@ -1,0 +1,27 @@
+{
+  "status": "BASELINE_PARENT_NATIVE_OPENED_2_AND_RAW18_HASHES_PASS",
+  "sourceResultSHA256": "c6d6b2c5795a84a8069f6a57eff01f62c2b747ba7ef406c7bca78bb60819414a",
+  "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+  "nativeOpened": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z0p6.png",
+      "bytes": 2978942,
+      "sha256": "a13167047ce77f0f55d948078e1cf011588784b8a10e6a908e531035376d0f78"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z1.png",
+      "bytes": 3610279,
+      "sha256": "7e5ff0d2673d425d3578300b93ae52a47e6513d6486ddbeb7f05cd9f71e9d709"
+    }
+  ],
+  "rawFilesVerified": 18,
+  "observations": [
+    "Both actual full native scenes opened; city, actors and terrain rendered without blank scene.",
+    "Zoom0.6 actors are very small and overlapping buildings limit contact judgment."
+  ],
+  "limits": [
+    "No anatomical height or cart-hand contact certification.",
+    "No target-specific payload absence claim from eligibility false.",
+    "A1 17.6 AFTER not yet executed."
+  ]
+}

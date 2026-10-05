@@ -1,3 +1,5 @@
+import { TRADE_WORLD_ART, tradeWorldHeldCargoForWalker } from "./tradeWorldArt";
+import type { WalkerCargoEntry } from "./art/artContract";
 import type { GameState } from "../engine/engine.types";
 import { kitWorker } from "./constructionKits";
 import { aleWorkerSheet } from "./aleWorldArt";
@@ -28,13 +30,10 @@ import { constructionStageIndex, constructionWorkProgress } from "./construction
 //  - Looks: computed from the state (walkerLooks) the first time a walker is drawn and kept for that walker id while
 //    it lives (pruned when the walkers array no longer holds it), so a look never flips during a walk.
 
-/**
- * A villager's world scale; the composer draws each figure 32 × this tall (16 px at zoom 1). NAT-4 BLD-07: 0.55
- * (17.6 px) made an adult taller than the basic house's door (L0 / L1 doors about 12.5 / 12.0 world px, art audit
- * 2026-10-02: door / adult 0.71 / 0.68); at 0.5 the ratio is about 0.78 / 0.75, the house art unchanged.
- */
-export const VILLAGER_WORLD_SCALE = 0.5;
-export const WALKER_FIGURE_PX = 32 * VILLAGER_WORLD_SCALE;
+/** FND-3 registered figure height; anatomical barefoot height remains a separate art measurement. */
+export const WALKER_FIGURE_PX = 17.6;
+/** Compatibility scale for the existing 32-unit actor drawing API. */
+export const VILLAGER_WORLD_SCALE = WALKER_FIGURE_PX / 32;
 export const WALKER_CELL = 74;
 export const WALKER_PAD = 17;
 export const WALKER_COMPOSED_CELL = WALKER_CELL + 2 * WALKER_PAD;
@@ -80,7 +79,7 @@ function lookImages(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: 
 // for 81–113 looks in the biggest town: 270 composes and 206 evictions a minute, 4,400 canvases and bitmaps). Its
 // bytes are entries of the canvas budget (canvasBudget.ts): a cell not drawn in the last frames may be pushed out, and
 // its canvas goes back to the pool for the next cell.
-type CellKey = `${WalkerSheetId}|${WalkerPropKind | "-"}|${WalkerCloakKind | "-"}|${WalkerPresentationDirection}${number}`;
+type CellKey = `${WalkerSheetId}|${string}|${WalkerCloakKind | "-"}|${WalkerPresentationDirection}${number}`;
 type Cell = OffscreenCanvas | HTMLCanvasElement;
 const CELL_BYTES = WALKER_COMPOSED_CELL * WALKER_COMPOSED_CELL * 4;
 const cells = new Map<CellKey, Cell>();
@@ -112,8 +111,8 @@ const cellOwner: BudgetOwner = {
 
 /** The composed cell of a look in one direction and gait frame, or null while the look's images load. */
 function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak: WalkerCloakKind | null,
-  direction: WalkerPresentationDirection, gaitFrame: number): Cell | null {
-  const key: CellKey = `${sheetId}|${prop ?? "-"}|${cloak ?? "-"}|${direction}${gaitFrame}`;
+  direction: WalkerPresentationDirection, gaitFrame: number, held: WalkerCargoEntry | null = null): Cell | null {
+  const key: CellKey = `${sheetId}|${held?.id ?? prop ?? "-"}|${cloak ?? "-"}|${direction}${gaitFrame}`;
   const nowMs = typeof performance === "undefined" ? 0 : performance.now();
   sweepStaleCells(nowMs);
   const hit = cells.get(key);
@@ -137,6 +136,16 @@ function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak
   const column = DIRECTION_COLUMN[direction]; const row = gaitFrame;
   const near = direction === "SE" || direction === "NE";
   const drawProp = () => {
+    if (held !== null) {
+      const hand = rightHand(frame);
+      // Contract scale is world/source; the composed cell uses the sheet figure registration.
+      const factor = frame.figureHeight / WALKER_FIGURE_PX;
+      context.save(); context.scale(factor, factor);
+      TRADE_WORLD_ART.draw(context, held.id, { at: { x: 0, y: 0 }, elapsedMs: 0,
+        grip: { x: (WALKER_PAD + hand.x) / factor, y: (WALKER_PAD + hand.y) / factor } });
+      context.restore();
+      return;
+    }
     if (prop === null || images.props === null) return;
     const entry = walkerPropManifest[prop][direction];
     // INSTALL-7: a Wave 7 work prop carries Astra's attachment point in the 74 px frame and is drawn at its own
@@ -225,7 +234,9 @@ export function drawComposedWalker(context: CanvasRenderingContext2D, state: Gam
   const { look, prop, cloak } = walkerAppearance(state, walker);
   const frame = walkerSheet(look.sheetId).frames.find(candidate => candidate.direction === presentation.direction && candidate.gaitFrame === presentation.gaitFrame);
   if (frame === undefined) return false;
-  const cell = composedCell(look.sheetId, prop, cloak, presentation.direction, presentation.gaitFrame);
+  const held = tradeWorldHeldCargoForWalker(walker);
+  const readyHeld = held !== null && TRADE_WORLD_ART.image(held.assetId) !== null ? held.entry : null;
+  const cell = composedCell(look.sheetId, readyHeld === null ? prop : null, cloak, presentation.direction, presentation.gaitFrame, readyHeld);
   if (cell === null) return false;
   const factor = 32 * scale / frame.figureHeight;
   drawCroppedWorldSprite(context, cell, { x: 0, y: 0, width: WALKER_COMPOSED_CELL, height: WALKER_COMPOSED_CELL }, {

@@ -1,0 +1,312 @@
+{
+  "verdict": "PASS_BOUNDED_SETTLED_CORE18_NATIVE",
+  "head": "442b71822c189a245877cc1da1af86831e19448a",
+  "beforeHead": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "run": "astra-region-core-v1-442b718",
+  "nativeOriginalsIndividuallyOpened": 18,
+  "independentPngDecodes": 54,
+  "fullIdentityEqual": 18,
+  "fullRgbaEqual": 18,
+  "aaEqual": 18,
+  "errors": 0,
+  "expectedUrlViewPairsRequestDecodePaint": 34,
+  "captureSha256": "3c50856dd7701e742a660e778eea229fa6d9c2b18ac2afa1eecafd527c9b5e06",
+  "receiptSha256": {
+    "region-core-runtime-prep-run.json": "0127ff5d9be653bc99d2335af5a990a78baf648c6c7c70f94f183fd6bf46978b",
+    "region-core-runtime-prep-pre-guard.json": "347a91417e2a6579f877861ca5ba8d774b2e2e8c7855ef5ce7c82488f124dd54",
+    "region-core-runtime-prep-post-guard.json": "34d81978a84a188a15bf0f1717e63984c208bc9659e71b5ea906399eaed52b8c",
+    "region-core-runtime-prep-full-freeze.json": "04d3f663e94e4835133d72da02f0adbe75cc01695abb97b026f5d1a32a1581a6"
+  },
+  "export": {
+    "trackedClean": true,
+    "actualExportCount": 26858,
+    "verifiedLocalInputHashes": 26857,
+    "mismatches": 0,
+    "selfManifestUnhashedExtra": ".omo/evidence/region-core-runtime-prep-full-freeze.json",
+    "remoteEvidence": "Preserved pre/post guards PASS; no new remote verification performed.",
+    "fullInputMapSHA256": "d785523d7363326c6360f2933d762dccc0001a14eb612e8377c99fae419dc9a0"
+  },
+  "rows": [
+    {
+      "inspectionOrder": 1,
+      "name": "region4-chalk_downs-spring-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-spring-z1.png",
+      "pngSHA256": "35948763d5b8c7fa9d84965426d460378fed153206538d895751aa05b1c976f2",
+      "rgbaSHA256": "faacb6241d9bddb4f7cd4474a0f4bb7663dc897baee14a6929faf2df24a95f27",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "올리브 바탕·강굽이·갈색 섬 경계가 연속적이며 빈 fill 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 2,
+      "name": "region4-chalk_downs-spring-z06",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-spring-z06.png",
+      "pngSHA256": "faa8a663baed5ffb1548de169d44d86899b221b955e41503d8654d284cba9f3c",
+      "rgbaSHA256": "7807c4988390a6d926d1785c5cc69725a371b108779a6d07a3cfa0258fbb9db1",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "축소된 지도 외곽·암반·강 경계 유지; 새 사각 패턴판 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 3,
+      "name": "region4-chalk_downs-summer-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-summer-z1.png",
+      "pngSHA256": "641356a66cf70ff9635993db497d782ef78a1b68d9561d11a11197bf80afdc16",
+      "rgbaSHA256": "ee40bfaba025f53f7fbfcaa4f4b3fb730827a3d288d5756b8a21bbb49ca15348",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "여름 비/물웅덩이 아래 기존 올리브 fill과 강 윤곽 유지.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 4,
+      "name": "region4-chalk_downs-winter-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-chalk_downs-winter-z1.png",
+      "pngSHA256": "11b0de9816f6d8ac48c05999feb332c8c801dcc82b031cf77ee6214b6430715e",
+      "rgbaSHA256": "ead27964a4887289bd8de656884b5d52dcb6efee80af5833723a6ddc51a4d7de",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "밝고 거친 겨울 입자와 짙은 heath 섬 대비는 baseline 동일; 새 틈 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 5,
+      "name": "region4-coastal_port-spring-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-spring-z1.png",
+      "pngSHA256": "1413633ba4ba68779de9c944a0b6efbdd4adf897b590fce734c23b5d1be0c393",
+      "rgbaSHA256": "20eb17cf6d14d8834c7cb33c1f46ca46b8502d2691ad1e7cf5c9783a31bd450d",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "해안의 밝은 가는 테두리와 내륙 녹지 경계 유지; 해상 대각 격자 기존.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 6,
+      "name": "region4-coastal_port-spring-z06",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-spring-z06.png",
+      "pngSHA256": "8ab736a88553b46c3a1f61954ba6b1df3cccd45664f76b55b5a8d9ee9f077c1c",
+      "rgbaSHA256": "1c00d8898b0af96187ef362604701bd4ce26fc4ddcbdc95e45a593fd034f5e92",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "해안/숲/지도 모서리를 포함한 축소 화면에서 새 직사각 누출 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 7,
+      "name": "region4-coastal_port-summer-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-summer-z1.png",
+      "pngSHA256": "aef60a126167953d98def513aaea583b2534c72da283dc62ff8ad35cfa0ce38f",
+      "rgbaSHA256": "011f443dcb8f8238ad8c00210576c98760e3b65549de1daa1bc39c6ef4d83ef9",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "비 아래 해안 fill과 물가 윤곽 연속; 녹지 경계 기존.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 8,
+      "name": "region4-coastal_port-winter-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-coastal_port-winter-z1.png",
+      "pngSHA256": "ee111ec78fba266f31c8b26f4dcc78a7835b934ac0e04f159c9c0438b1dc0eee",
+      "rgbaSHA256": "f618bab93462de9ab524b522a36ca6ecf555716c48a8ff275c0874e2de3ad347",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "흰 입자 해안 fill과 옅은 내륙 녹지 대비가 강하나 baseline 동일.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 9,
+      "name": "region4-fen_drainage-spring-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-spring-z1.png",
+      "pngSHA256": "d28f9ae21cbbf6758d1c82224c43bea7efaf0bdeac467d4ff556bfa86893a0c6",
+      "rgbaSHA256": "c4fbb2313f4652ad5eb913a236a466a450c9257a032edb0477c9ce51ea7cfd7b",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "청회 습지 연결띠가 연못을 연결; 녹지섬·갈대 경계 연속.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 10,
+      "name": "region4-fen_drainage-spring-z06",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-spring-z06.png",
+      "pngSHA256": "d27116217e50be8e862736110f2c9ea4e545017aea370dba92c0a182c3b6d6f8",
+      "rgbaSHA256": "d2b2e752a7eaccc3bd873abdad14ffff57e8338baeb873075f2d267edb0661a5",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "저줌 지도 가장자리와 여러 습지/연못 연결 유지; 빈 쐐기 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 11,
+      "name": "region4-fen_drainage-summer-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-summer-z1.png",
+      "pngSHA256": "6b8d55a28ca581464235cab374d3a5577363de60440ef675641fba42657fec12",
+      "rgbaSHA256": "99a1f846e8c13e86f29c9313c1217094a1edcd273e3f23eff32daaf3c9fdc416",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "비 아래 습지 fill·연못·마른 녹지 경계 위치 유지.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 12,
+      "name": "region4-fen_drainage-winter-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-fen_drainage-winter-z1.png",
+      "pngSHA256": "51daeb1b841abcf5c2153e34fb4a74bf70055b0a754726fcd759b65f9e5f0473",
+      "rgbaSHA256": "7d1d658a44d98d26aee04041efb172103b7f40cfbcd41ef148cd033de5af0cdd",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "겨울 청회 입자와 갈대 톱니 경계 뚜렷하나 기존; 물/땅 누출 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 13,
+      "name": "region4-forest_edge-spring-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-spring-z1.png",
+      "pngSHA256": "a41acb2007a61a5132381d92de63d0b9653d3c9567a2e5baa39c3918db7dba21",
+      "rgbaSHA256": "d3163f883f90b6cc157527e37f75ac2dda22757d7014f4fb5542bb0b00c073bf",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "갈색 숲바닥과 초록 마을/초지 경계 유지; 나무 아래 fill 누락 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 14,
+      "name": "region4-forest_edge-spring-z06",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-spring-z06.png",
+      "pngSHA256": "5a358dced8faa3777496b81de0bf1fb28e60f6b11aec2090dc07877c188c817d",
+      "rgbaSHA256": "dbfb04cbd7a0960170eaed9d3b36d1b8f617f273e4c7179c304bfa560d210017",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "숲 둘레·암반·지도 모서리 축소 화면에서 새 타일 사각 경계 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 15,
+      "name": "region4-forest_edge-summer-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-summer-z1.png",
+      "pngSHA256": "08e05ad61c37b01e0e07d10ee9d6865e8daf9f0e43aec2ee5234ae3a607cc204",
+      "rgbaSHA256": "09a5a36a950e28cbe4f968516ed20ee43ab2cc43dfa6b2495b271df1e1db921f",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "여름 비 아래 갈색 숲바닥·마을 초지 및 밭/건물 배치 유지.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 16,
+      "name": "region4-forest_edge-winter-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-forest_edge-winter-z1.png",
+      "pngSHA256": "5d6fc840ed5ee69166d37667f50d7508ae75e92df123f3b73139ca71a3f79761",
+      "rgbaSHA256": "668e1816187f69d384cefa7c3e4a0c20d70e64b6f9260cc51dcbcf2fec16df8e",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "회색 겨울 숲바닥/옅은 초지 고대비와 눈층은 기존; 신규 seam 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 17,
+      "name": "region4-open_field-spring-z1",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-open_field-spring-z1.png",
+      "pngSHA256": "eec09f1dce85c4b49da8ee59a26556f4412a70b58abcf39aa6537dedd5b09b5a",
+      "rgbaSHA256": "800516eb32d938bbab5c9394191d2b03a4b411b69d45a1989792ddd40bdc22a7",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "음성 open_field 녹지 연속; 별도 지역 fill판 보이지 않음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    },
+    {
+      "inspectionOrder": 18,
+      "name": "region4-open_field-spring-z06",
+      "nativeOriginalIndividuallyOpened": true,
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-v1/captures/region4-open_field-spring-z06.png",
+      "pngSHA256": "cfbca1bc0f1ac7969732657b497fb2ff5b52d96e4809b7116146d0c2db92a623",
+      "rgbaSHA256": "35623de3d410b6d5a784a108ee9da4e960b87df2782cff4cd0762d02110810d7",
+      "size": [
+        1280,
+        800
+      ],
+      "observation": "음성 저줌 녹지·지도 모서리·숲 경계 연속; 새 누락 없음.",
+      "verdict": "PASS_BASELINE_PARITY",
+      "baselineRgbaExactIndependentlyVerified": true
+    }
+  ],
+  "newBlockingFindings": [],
+  "limits": [
+    "Settled core output parity only; cold-loading timing is intentionally not equal.",
+    "DATA4 not installed or accepted; successful optional seasonal pair has no new DATA runtime proof here.",
+    "No future HEAD/main transfer acceptance.",
+    "Spring zoom1/.6, summer/winter zoom1 DPR1 only; no autumn, chapter4/1380 or actual drainage action proof.",
+    "First-open request/decode/draw arrays verified; repeat arrays not persisted, so repeat lineage independently unproved.",
+    "Paint lineage does not attribute every visible texel to individual A/B sources.",
+    "Legacy sharp edges, winter grain and water grid remain baseline aesthetic limitations.",
+    "Remote binary/cache identity is receipt-based; no macOS host rendering equivalence claim."
+  ]
+}

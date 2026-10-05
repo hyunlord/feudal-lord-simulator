@@ -1,0 +1,351 @@
+{
+  "status": "RUNTIME_NUMERIC_PASS_NATIVE_REVIEW_PENDING",
+  "run": "astra-height-af879-after-v1-af879b3",
+  "submissionCount": 1,
+  "retryCount": 0,
+  "actualHEAD": "af879b364c00f04611778f53f389251514f981d3",
+  "baselineHEAD": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+  "exitCode": 0,
+  "fetchedResultFiles": 18,
+  "statusBefore": {
+    "heavy": [
+      "astra-phase2-final-clone-be576db"
+    ],
+    "waiting": 0
+  },
+  "execution": {
+    "slot": "2/2",
+    "port": 4302,
+    "syncSeconds": 18.7,
+    "prepareSeconds": 7.2,
+    "waitSeconds": 0,
+    "commandSeconds": 46.3
+  },
+  "counts": {
+    "views": 2,
+    "aaPass": 2,
+    "errors": 0,
+    "identityEqualExceptExactComposerSHA": 2,
+    "registeredFigurePx": 17.6,
+    "worldScale": 0.55,
+    "zoomFloor": 0.65,
+    "payloadLOD": 0.8
+  },
+  "freeze": {
+    "sha256": "5577de9747031dfd7b36be66bf16d1bcd6c1141b90d219a80e583ddb2b63742d",
+    "tracked": 26841,
+    "inputs": 26896,
+    "exported": 26897,
+    "lfsHydrated": 6384,
+    "remotePrePostPass": true,
+    "remotePrePostClean": true,
+    "fetchedGuardsValidated": true,
+    "localPostVerify": true,
+    "fetchedNumericPixelRecheck": true,
+    "prePath": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/pre.json",
+    "postPath": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/post.json"
+  },
+  "external": {
+    "preexistingFiles": 5488,
+    "preexistingChangedOrDeleted": 0,
+    "allowedNew": 15,
+    "additions": {
+      ".cache/keyart-derivatives/977163c2c58e3d57acae3e8bbb22b5b6f410be35c3f9c284aa6013adf6b82845-v1-png-half": {
+        "type": "file",
+        "bytes": 96265,
+        "sha256": "ce76b925e2a5c0745ad8e30222858cd25119932a0c8eab78c2a30f8d4fef0729"
+      },
+      ".cache/keyart-derivatives/9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b-v1-jpeg-q70": {
+        "type": "file",
+        "bytes": 315323,
+        "sha256": "c9c39668fbf4b8508c7a61c245e9c5c0bffdeef673d951fa9ec051db38e1434a"
+      },
+      ".vite/deps/_metadata.json": {
+        "type": "file",
+        "bytes": 1089,
+        "sha256": "b80891e2414481a784aaa70cd71c624c943ce060877cff46031a50797dde0a22"
+      },
+      ".vite/deps/package.json": {
+        "type": "file",
+        "bytes": 23,
+        "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+      },
+      ".vite/deps/react-dom.js": {
+        "type": "file",
+        "bytes": 14535,
+        "sha256": "86295b7f3a447555e08cf9ebb5d34b72a699fb2863fde30dbe505c846102b4c0"
+      },
+      ".vite/deps/react-dom.js.map": {
+        "type": "file",
+        "bytes": 25602,
+        "sha256": "392f5943639eba2d0113930cf7ec4a78f6cb660cd60083c83c81a29a223a81fd"
+      },
+      ".vite/deps/react-dom_client.js": {
+        "type": "file",
+        "bytes": 820711,
+        "sha256": "3c0fcd691cd26e901ed362fa403e3f8953509cefae20152e2335c23c62bf8b67"
+      },
+      ".vite/deps/react-dom_client.js.map": {
+        "type": "file",
+        "bytes": 1498893,
+        "sha256": "6476738af93e6f431c0587f299b4e509ba5e7be30eb6cb152ccfd2966b2d9b8d"
+      },
+      ".vite/deps/react.js": {
+        "type": "file",
+        "bytes": 38246,
+        "sha256": "d825799114c356286938056830da0314c2680d1fb304c3390cd56c0bef023101"
+      },
+      ".vite/deps/react.js.map": {
+        "type": "file",
+        "bytes": 68787,
+        "sha256": "512b5b4cb2d03e310293282adf8f7e12986bad182dbe364b53730b5f8f477fcc"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js": {
+        "type": "file",
+        "bytes": 10466,
+        "sha256": "f583c333ee04c86c5706e0499464d898d978e784cdb743b2db6f386f463ba885"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js.map": {
+        "type": "file",
+        "bytes": 18068,
+        "sha256": "a2cbbfc95fa5cbd63b00e1524fa38ba7d3cc8efc794e36e23278b4b1b16ffad3"
+      },
+      ".vite/deps/react_jsx-runtime.js": {
+        "type": "file",
+        "bytes": 10743,
+        "sha256": "f441d0cfcdaed154914d32ef0304199ea84b25e3f85fcea9653ce911369dadde"
+      },
+      ".vite/deps/react_jsx-runtime.js.map": {
+        "type": "file",
+        "bytes": 18636,
+        "sha256": "9ca0503453f56908949c3be7dcfe64eb4a63c6e0fa38dde4a9ef74119934fa6f"
+      },
+      ".vite/deps/rolldown-runtime-BvCyGRYZ.js": {
+        "type": "file",
+        "bytes": 192,
+        "sha256": "8857aad4f904253f9a8bb160ae7ca249376498df7c3510b0cd92b4e5a2c3b6cb"
+      }
+    },
+    "otherRuntimeAndPlaywrightUnchanged": true
+  },
+  "rows": [
+    {
+      "name": "summer-ne-z1",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "ab": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 4728,
+        "maxChannelDelta": 183
+      },
+      "identity": {
+        "state": "summer-loaded",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          48,
+          35.73999999999997
+        ],
+        "zoom": 1,
+        "width": 1600,
+        "height": 1100,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": "height-a1-summer-zooms-v1",
+        "admittedEngineStateSHA": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "expectedPresentedStateSHA": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "productComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+        "expectedRequests": [
+          "/assets/runtime-actors-v1/cart_hand-v4.png",
+          "/assets/walkers-v2/wk_artisan_m_01-v1.png",
+          "/assets/wave7/cart/cart_load_timber_ne-v2.png"
+        ]
+      },
+      "registration": {
+        "figurePx": 17.6,
+        "worldScale": 0.55,
+        "zoomScale": 0.55,
+        "repeatFigurePx": 17.6,
+        "repeatWorldScale": 0.55,
+        "payloadDrawEligible": true
+      },
+      "beforePNG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/baseline/results/summer-ne-z1.png",
+      "afterPNG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z1.png",
+      "afterJPEG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z1.jpg",
+      "repeatPNG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/repeat/summer-ne-z1.png"
+    },
+    {
+      "name": "summer-ne-z0p6",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "ab": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 2035,
+        "maxChannelDelta": 141
+      },
+      "identity": {
+        "state": "summer-loaded",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          48,
+          35.73999999999997
+        ],
+        "zoom": 0.6,
+        "width": 1600,
+        "height": 1100,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": "height-a1-summer-zooms-v1",
+        "admittedEngineStateSHA": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "expectedPresentedStateSHA": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "productComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+        "expectedRequests": [
+          "/assets/runtime-actors-v1/cart_hand-v4.png",
+          "/assets/walkers-v2/wk_artisan_m_01-v1.png"
+        ]
+      },
+      "registration": {
+        "figurePx": 17.6,
+        "worldScale": 0.55,
+        "zoomScale": 0.5958333333333334,
+        "repeatFigurePx": 17.6,
+        "repeatWorldScale": 0.55,
+        "payloadDrawEligible": false
+      },
+      "beforePNG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/baseline/results/summer-ne-z0p6.png",
+      "afterPNG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z0p6.png",
+      "afterJPEG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z0p6.jpg",
+      "repeatPNG": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/repeat/summer-ne-z0p6.png"
+    }
+  ],
+  "rawFiles": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/final.json",
+      "bytes": 3218,
+      "sha256": "dbb151cdb306081d40fe05e5c8f80db7a1713381b9bddda4a2bcc19792452185"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/numeric-check.json",
+      "bytes": 3167,
+      "sha256": "54fedcd3380a6b147753627f51702527e02329784ad79e4b8d6d3fd91fc1566e"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/post.json",
+      "bytes": 1187118,
+      "sha256": "258d984fbe08ba9bc3f9859cb7245642ed94eef880cdcc4c016b4bffcc8a61dc"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/pre.json",
+      "bytes": 1183183,
+      "sha256": "020f44a22c8a9aa0e3dfd4cc92daa6bea99e47095c873d701a44d367ad99b2c3"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/captures.json",
+      "bytes": 2299975,
+      "sha256": "1413548df0e41202a299e9e75907ca333a447b6210688464634e83229daf3f24"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/progress.jsonl",
+      "bytes": 8041,
+      "sha256": "f90ddabf5aeb2f34361830c30d577dcb35460bcd74fddb24a92098a8f8451ecc"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/repeat/summer-ne-z0p6.jpg",
+      "bytes": 233256,
+      "sha256": "2dd91a193a888f47bbd66e867d44557d94c17720f197a999dfa4edc3f77d2f57"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/repeat/summer-ne-z0p6.png",
+      "bytes": 2979104,
+      "sha256": "0396e3129259446ebbb932e8bde6d056ee150f71af2c13327b7239a96241f5ab"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/repeat/summer-ne-z1.jpg",
+      "bytes": 285161,
+      "sha256": "b71394d1df1d1010c1bc91a686907f38eb566d63b7e7aac4809964e7d73137d8"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/repeat/summer-ne-z1.png",
+      "bytes": 3610880,
+      "sha256": "175afd9bcaa051a4c80fabd827bcea475cceaa95ac3749873d66f74493633011"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z0p6-first-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z0p6-repeat-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z0p6.jpg",
+      "bytes": 233256,
+      "sha256": "2dd91a193a888f47bbd66e867d44557d94c17720f197a999dfa4edc3f77d2f57"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z0p6.png",
+      "bytes": 2979104,
+      "sha256": "0396e3129259446ebbb932e8bde6d056ee150f71af2c13327b7239a96241f5ab"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z1-first-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z1-repeat-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z1.jpg",
+      "bytes": 285161,
+      "sha256": "b71394d1df1d1010c1bc91a686907f38eb566d63b7e7aac4809964e7d73137d8"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/summer-ne-z1.png",
+      "bytes": 3610880,
+      "sha256": "175afd9bcaa051a4c80fabd827bcea475cceaa95ac3749873d66f74493633011"
+    }
+  ],
+  "limits": [
+    "Actual new summer NE loaded actor2 views only; no fresh winter or other-direction proof",
+    "A/B changes measured, not auto spatial/contact acceptance; native review pending",
+    "Registration height is nominal, not anatomical height",
+    "Low zoom payload eligibility false is not a negative pixel claim",
+    "No main transfer/product/ledger/commit change; historical dirty helper/freeze preserved"
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "status": "TEST_ONLY_FIX_READY_NOT_STAGED",
+  "head": "442b71822c189a245877cc1da1af86831e19448a",
+  "path": "tests/archetypeGroundDraw.test.ts",
+  "beforeSha256": "f4fb1564ef5d295a3e0deaa8b93d16c1927beb38abc7eb40251b4a0afc9be35b",
+  "afterSha256": "8da742d7ac84200a68e841a3f9e54ecabf261ea7f3faf17faaa4400b79d47d66",
+  "patchSha256": "b039db3bc69e8c2371d9dddcfa3bafd49fab439be985e4e3d8c84acee361b443",
+  "checks": {
+    "focused": {
+      "exit": 0,
+      "tests": 33,
+      "passed": 33,
+      "command": "node_modules/.bin/tsx --test tests/archetypeGroundDraw.test.ts tests/landRegionWarp.test.ts tests/regionTextureArt.test.ts tests/regionTextureContract.test.ts tests/regionTextureReadiness.test.ts"
+    },
+    "typecheck": {
+      "exit": 0,
+      "command": "node_modules/.bin/tsc --noEmit"
+    },
+    "lint": {
+      "exit": 0,
+      "command": "tools/eslint/node_modules/.bin/eslint -c tools/eslint/eslint.config.mjs --suppressions-location tools/eslint/eslint-suppressions.json --max-warnings 0 tests/archetypeGroundDraw.test.ts"
+    },
+    "scopedDiffCheck": {
+      "exit": 0
+    }
+  },
+  "baselineAndDataMutationChecks": {
+    "pass": true,
+    "cases": [
+      {
+        "entries": 135,
+        "canonical": 30,
+        "missingCanonicalAssertionRejected": 30,
+        "missingCanonicalRegistryRejected": 30,
+        "sameCountWrongUrlsRejected": true
+      },
+      {
+        "entries": 139,
+        "canonical": 30,
+        "missingCanonicalAssertionRejected": 30,
+        "missingCanonicalRegistryRejected": 30,
+        "sameCountWrongUrlsRejected": true
+      }
+    ]
+  },
+  "protectedDataFiles": [
+    {
+      "path": "src/render/art/catalog.json",
+      "beforeSHA256": "9be2d7b7329032d2fd00ed2e23b0ea3c8954d0d7e3d141a7cb78f670c13a5f69",
+      "afterSHA256": "bacfda4e3bb6b4156d070d96d9aa6c35e0d31f0a60a4c24415e8d129b3da8a11",
+      "bytes": 235283
+    },
+    {
+      "path": "docs/provenance/assets.csv",
+      "beforeSHA256": "5ad1ecac51d02b5915b059b9c8f9dbd7e405f525df2e34335ba9f37a4a387a2e",
+      "afterSHA256": "1275f329f07c89d64bb9c5c2b7a42b668c27743a60588cf40418dc61e8220b2d",
+      "bytes": 3144769
+    },
+    {
+      "path": "public/assets/wave43/ground/chalk_down_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+      "bytes": 86376
+    },
+    {
+      "path": "public/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+      "bytes": 86719
+    },
+    {
+      "path": "public/assets/wave43/ground/fen_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+      "bytes": 79489
+    },
+    {
+      "path": "public/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+      "bytes": 71612
+    }
+  ],
+  "data6BytesUnchanged": true,
+  "frozenSourceFiles": 2285,
+  "frozenSourceDifferences": [
+    "tests/archetypeGroundDraw.test.ts"
+  ],
+  "runtimeProductSourceChangesFromCapturedCore": 0,
+  "testOnlyChangeCount": 1,
+  "runtimeEvidenceReuse": "This test is not imported by runtime. Captured442b core runtime source bytes remain identical, so test-only commit does not invalidate historical core20 runtime bytes. Existing DATA6 remains a separate pending runtime candidate; its catalog4/PNG4 delta is not covered by core capture.",
+  "oldFailureLog": "region4-data-apply-focused.log",
+  "noStage": true,
+  "noCommit": true,
+  "noDGX": true
+}

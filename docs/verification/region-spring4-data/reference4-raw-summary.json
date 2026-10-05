@@ -1,0 +1,116 @@
+{
+  "run": "astra-region-promotion-reference-a5ae207",
+  "actualHEAD": "a5ae207a4625b6bd3e7780bdb468369dd8ee204f",
+  "baselineHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "exitCode": 0,
+  "counts": {
+    "views": 4,
+    "aaPass": 4,
+    "errors": 0,
+    "fullIdentityEqual": 4,
+    "rgbaEqual": 4,
+    "differingPixels": 0,
+    "newSourceFirstPaint": 0,
+    "requestDecodePaintPairs": 8
+  },
+  "queue": {
+    "statusBeforeSubmission": "clone dd46 only, no waiting",
+    "positionAtEnqueue": 1,
+    "occupiedAtEnqueue": [
+      "clone-dd46aa3",
+      "merge-ed83fe4"
+    ],
+    "slot": "2/2",
+    "waitSeconds": 20.1
+  },
+  "timing": {
+    "syncSeconds": 35,
+    "prepareSeconds": 12.7,
+    "commandSeconds": 66.6,
+    "port": 4302
+  },
+  "freezeSHA256": "681bd3b12cf7c3ea72f005e999776ba76103d3de92e3a3a000a3bf17673875a9",
+  "guards": [
+    {
+      "pass": true,
+      "mode": "pre",
+      "freezeSHA256": "681bd3b12cf7c3ea72f005e999776ba76103d3de92e3a3a000a3bf17673875a9",
+      "head": "a5ae207a4625b6bd3e7780bdb468369dd8ee204f",
+      "trackedClean": true,
+      "trackedCount": 26887,
+      "exportedCount": 27186,
+      "inputMapSHA256": "1fb5fdc70fe199ca6f96bee19dd6c1ac508373ff10ab54a1aebca452360b2d89",
+      "lfsHydrated": 6384,
+      "viewCount": 4,
+      "externalInputs": {
+        "node": {
+          "path": "/home/hyunlord/fls-runs/_tools/node-v24.21.0-linux-arm64/bin/node",
+          "kind": "file",
+          "bytes": 122893672,
+          "sha256": "0f8949d1028f6d61506b2d5bc57e7e6fe893d7b1997509b7847294fc9c616584"
+        },
+        "chromium": {
+          "path": "/home/hyunlord/.cache/ms-playwright/chromium-1234/chrome-linux/chrome",
+          "kind": "file",
+          "bytes": 487637856,
+          "sha256": "f48b8e30d70593004542b4d5c16a8f2f8ec5d540111670ecc5f4715df8210eaa"
+        },
+        "playwrightShim": {
+          "path": "/home/hyunlord/fls-runs/astra-region-promotion-reference-a5ae207/scripts/remote/playwright-chrome-shim.mjs",
+          "kind": "file",
+          "bytes": 1518,
+          "sha256": "01525ebd1843067aa50f926aabc66c81a1b7043d0e9f842a004bff56691a5baf"
+        },
+        "playwrightCore": {
+          "path": "/home/hyunlord/fls-runs/_tools/node_modules/playwright-core/index.mjs",
+          "kind": "file",
+          "bytes": 1063,
+          "sha256": "3d36e2132d3c8b62397d23f0bb4177336aaee503203ae2a2c90fbeb5bf3317dd"
+        }
+      },
+      "externalLimit": "Measured runtime binary/module bytes; external dependency caches, OS and fonts are not frozen equal to local macOS."
+    },
+    {
+      "pass": true,
+      "mode": "post",
+      "freezeSHA256": "681bd3b12cf7c3ea72f005e999776ba76103d3de92e3a3a000a3bf17673875a9",
+      "head": "a5ae207a4625b6bd3e7780bdb468369dd8ee204f",
+      "trackedClean": true,
+      "trackedCount": 26887,
+      "exportedCount": 27186,
+      "inputMapSHA256": "1fb5fdc70fe199ca6f96bee19dd6c1ac508373ff10ab54a1aebca452360b2d89",
+      "lfsHydrated": 6384,
+      "viewCount": 4,
+      "externalInputs": {
+        "node": {
+          "path": "/home/hyunlord/fls-runs/_tools/node-v24.21.0-linux-arm64/bin/node",
+          "kind": "file",
+          "bytes": 122893672,
+          "sha256": "0f8949d1028f6d61506b2d5bc57e7e6fe893d7b1997509b7847294fc9c616584"
+        },
+        "chromium": {
+          "path": "/home/hyunlord/.cache/ms-playwright/chromium-1234/chrome-linux/chrome",
+          "kind": "file",
+          "bytes": 487637856,
+          "sha256": "f48b8e30d70593004542b4d5c16a8f2f8ec5d540111670ecc5f4715df8210eaa"
+        },
+        "playwrightShim": {
+          "path": "/home/hyunlord/fls-runs/astra-region-promotion-reference-a5ae207/scripts/remote/playwright-chrome-shim.mjs",
+          "kind": "file",
+          "bytes": 1518,
+          "sha256": "01525ebd1843067aa50f926aabc66c81a1b7043d0e9f842a004bff56691a5baf"
+        },
+        "playwrightCore": {
+          "path": "/home/hyunlord/fls-runs/_tools/node_modules/playwright-core/index.mjs",
+          "kind": "file",
+          "bytes": 1063,
+          "sha256": "3d36e2132d3c8b62397d23f0bb4177336aaee503203ae2a2c90fbeb5bf3317dd"
+        }
+      },
+      "externalLimit": "Measured runtime binary/module bytes; external dependency caches, OS and fonts are not frozen equal to local macOS."
+    }
+  ],
+  "rawRoot": "/Users/rexxa/fls-astra-renderB-region-core/.remote-runs/astra-region-promotion-reference-a5ae207/region-promotion-reference",
+  "sourceResultSHA256": "bcfe72f8236f2053f09933c2f876e6adfc66a1288533aec9a54a4ecdb8a06f98",
+  "visualBoundary": "Parent independently PASS_WITH_LIMITS; see region-promotion-reference-parent-check.json. This agent did not make a native visual judgment."
+}

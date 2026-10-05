@@ -14,6 +14,8 @@ import {
   roadConnectionArms,
 } from "../src/render/terrainDetails";
 import { walkerScaleForZoom } from "../src/render/drawWalkers";
+import { actorFrameDestination } from "../src/render/runtimeActorAssets";
+import { runtimeActorManifest } from "../src/render/runtimeActorManifest.generated";
 import type { Tile } from "../src/world/world.types";
 
 function building(id: string, kind: BuildingKind, tx: number, ty: number): Building {
@@ -113,17 +115,31 @@ test("road arms distinguish a straight run from a junction and reject diagonals"
   assert.deepEqual(junction, ["north", "east", "south"]);
 });
 
-test("villagers use cottage proportions while retaining a readable zoomed-out height", () => {
-  // NAT-4 BLD-07 (art audit 2026-10-02): the world scale 0.55 → 0.5 (16 px, door / adult about 0.78 on the L0 house)
-  // and the far-zoom floor 0.8 → 0.65 (people at zoom 0.5 are 1.3 × their world size, not 1.6 ×), two separate knobs.
-  assert.equal(walkerScaleForZoom(1), 0.5);
-  assert.equal(walkerScaleForZoom(0.8), 0.5);
-  assert.equal(walkerScaleForZoom(0.65), 0.5);
-  assert.ok(Math.abs(walkerScaleForZoom(0.5) - 0.65) < 0.000_001);
-  assert.ok(32 * walkerScaleForZoom(1) <= 16);
+test("villagers use the FND-3 registered height while retaining the existing zoom floor", () => {
+  // Given the camera's actual .5–2 range and the unchanged .65 floor.
+  for (const zoom of [0.65, 0.8, 1, 1.4, 2]) assert.equal(walkerScaleForZoom(zoom), 0.55);
+  // When the existing draw scale is projected to screen pixels.
   for (const zoom of [0.5, 0.55, 0.6, 0.65]) {
     const screenHeight = 32 * walkerScaleForZoom(zoom) * zoom;
-    assert.ok(Math.abs(screenHeight - 10.4) < 0.000_001, `zoom ${zoom}: ${screenHeight} px`);
+    // Then the FND-3 figure keeps the old floor policy, with its new registered height.
+    assert.ok(Math.abs(screenHeight - 11.44) < 0.000_001, `zoom ${zoom}: ${screenHeight} px`);
   }
-  for (const zoom of [0.7, 0.8, 1]) assert.ok(Math.abs(32 * walkerScaleForZoom(zoom) * zoom - 16 * zoom) < 0.000_001);
+  for (const zoom of [0.650001, 0.7, 0.8, 1, 1.4, 2]) {
+    assert.ok(Math.abs(32 * walkerScaleForZoom(zoom) * zoom - 17.6 * zoom) < 0.000_001);
+  }
+  assert.ok(Math.abs(32 * walkerScaleForZoom(0.649999) * 0.649999 - 11.44) < 0.000_001);
+});
+
+test("registered actor destinations enlarge once while preserving each source foot anchor", () => {
+  // Given the real actor crops and feet in all roles, directions and gait frames.
+  for (const actor of runtimeActorManifest) for (const frame of actor.frames) {
+    const before = actorFrameDestination(frame, 123, 456, 0.5);
+    // When the renderer's actual zoom-one scale reaches the destination adapter.
+    const after = actorFrameDestination(frame, 123, 456, walkerScaleForZoom(1));
+    // Then width and registered height grow by 10%, around the same registered foot.
+    assert.ok(Math.abs(after.height - 17.6) < 1e-9);
+    assert.ok(Math.abs(after.width / before.width - 1.1) < 1e-9);
+    assert.ok(Math.abs(after.x + (frame.foot.x - frame.source.x) * after.width / frame.source.width - 123) < 1e-8);
+    assert.ok(Math.abs(after.y + (frame.foot.y - frame.source.y) * after.height / frame.source.height - 456) < 1e-8);
+  }
 });

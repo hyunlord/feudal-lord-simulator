@@ -1,0 +1,100 @@
+{
+  "status": "CANDIDATE_APPLIED_EXACT6_ONE_EXISTING_TEST_COUNT_FAILURE",
+  "coreHEAD": "442b71822c189a245877cc1da1af86831e19448a",
+  "coreRoot": "/Users/rexxa/fls-astra-renderB-region-core",
+  "authorization": "Parent explicit isolated DATA4 application after core18+reference2 runtime/native PASS",
+  "packageInventorySHA256": "e9e09e144e5e0358fd06264a3990fb1ae2858fbf3ccf0f4bbb63b23e8c59bdf3",
+  "changes": [
+    {
+      "path": "src/render/art/catalog.json",
+      "beforeSHA256": "9be2d7b7329032d2fd00ed2e23b0ea3c8954d0d7e3d141a7cb78f670c13a5f69",
+      "afterSHA256": "bacfda4e3bb6b4156d070d96d9aa6c35e0d31f0a60a4c24415e8d129b3da8a11",
+      "bytes": 235283
+    },
+    {
+      "path": "docs/provenance/assets.csv",
+      "beforeSHA256": "5ad1ecac51d02b5915b059b9c8f9dbd7e405f525df2e34335ba9f37a4a387a2e",
+      "afterSHA256": "1275f329f07c89d64bb9c5c2b7a42b668c27743a60588cf40418dc61e8220b2d",
+      "bytes": 3144769
+    },
+    {
+      "path": "public/assets/wave43/ground/chalk_down_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+      "bytes": 86376
+    },
+    {
+      "path": "public/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+      "bytes": 86719
+    },
+    {
+      "path": "public/assets/wave43/ground/fen_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+      "bytes": 79489
+    },
+    {
+      "path": "public/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+      "bytes": 71612
+    }
+  ],
+  "preserved": {
+    "priorEntries": 135,
+    "allPriorRules": true,
+    "literalCSVRecords": 2432,
+    "literalCSVPrefixSHA256": "5ad1ecac51d02b5915b059b9c8f9dbd7e405f525df2e34335ba9f37a4a387a2e",
+    "ledgerSHA256": "ea61889f1afe6226b46092ff43b932a82faf6d43756a4d0cbe921931b6211e2a",
+    "codeFiles": 2426,
+    "allTrackedNeighbours": 26793,
+    "allTrackedNeighbourChanges": 0,
+    "sourceFiles": 4
+  },
+  "excluded": [
+    "N0417"
+  ],
+  "noMainProductWrites": true,
+  "noCommit": true,
+  "checks": {
+    "catalog": {
+      "exit": 0,
+      "entries": 139
+    },
+    "provenance": {
+      "exit": 0,
+      "runtimeAssets": 2393
+    },
+    "typecheck": {
+      "exit": 0
+    },
+    "focused": {
+      "exit": 1,
+      "failure": "tests/archetypeGroundDraw.test.ts:73 expected REGION entries30; actual34 after source4 append",
+      "noTestOrProductRepairAttempted": true,
+      "tests": 33,
+      "passed": 32,
+      "failed": 1
+    },
+    "diffCheckCRAtEOL": 0,
+    "trackedModifiedPaths": [
+      "docs/provenance/assets.csv",
+      "src/render/art/catalog.json"
+    ],
+    "untrackedRuntimePNG": [
+      "public/assets/wave43/ground/chalk_down_spring_a-v1.png",
+      "public/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+      "public/assets/wave43/ground/fen_spring_a-v1.png",
+      "public/assets/wave43/ground/woodland_floor_spring_a-v1.png"
+    ]
+  },
+  "logs": {
+    "region4-data-apply-catalog.json": "f8d9696e077a28fab9c6004c4a8c9d2cfde041ac7e8f903f001248749d7ac68f",
+    "region4-data-apply-catalog.log": "cc50e5fcf4092203ff2389895c2faf7d90ed4f53e9d162ce9c7630caad55c387",
+    "region4-data-apply-provenance.log": "272bba945d5a0992a9e6188b48b2537e46d535a13137e7e708114ef9762d44f2",
+    "region4-data-apply-focused.log": "868851e165901f854b56c433233e6111348bdb66133b13e6306b7b5b7e35c43e",
+    "region4-data-apply-typecheck.log": "8e2b48acf136e415152f5aea074726101698f6c447bf8c8491e59d1af60930ff"
+  }
+}

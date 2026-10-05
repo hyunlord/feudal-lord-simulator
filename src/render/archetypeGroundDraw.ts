@@ -1,3 +1,5 @@
+import { REGION_TEXTURE_ART } from './art/regionTextureArt';
+import { REGION_SEASONS } from './art/regionTextureValidation';
 import { LAND_DECAL_ART } from './art/landDecalArt';
 import type { BoundaryBounds, BoundaryPoint } from "../world/boundary/boundaryGeometry";
 import type { Shoreline } from "../world/boundary/shoreline";
@@ -10,7 +12,7 @@ import { wallStripsEnabled } from "./renderWallStripsFlag";
 import type { SeasonIndex } from "./seasonArt";
 import { WAVE22_GROUND_IMAGES, type Wave22GroundKey } from "./wave22GroundManifest.generated";
 import { GROUND_CHUNK_TILES, TILE_RING, chunkTileBounds, type GroundChunkPlan } from "./groundSceneParts";
-import { chunkHash, fillArtKey, fillVariant, isWaterStrip, landArtKeys, landStripLoops, loopStrips, type LandGround, type StripFamily } from "./archetypeGroundModel";
+import { chunkHash, fillVariant, isWaterStrip, landArtKeys, landStripLoops, loopStrips, type LandGround, type StripFamily } from "./archetypeGroundModel";
 import { chunkRegions, type ChunkRegion } from "./archetypeGroundRegions";
 import type { ShoreStripOverride } from "./drawShoreline";
 
@@ -52,7 +54,7 @@ export function landArtReadiness(land: LandGround, season: SeasonIndex): string 
   // Asked for every chunk request of every frame: once all the season's files are ready the bits cannot change.
   const ready = land.cache.allReady.get(season);
   if (ready !== undefined) return ready;
-  const bits = landArtKeys(land, season).map(request => ((request.owner === 'catalog' ? LAND_DECAL_ART.image(request.key) : art.art(request.key)) === null ? 0 : 1)).join("") + forestEdgeReadiness(land.fillBase, season);
+  const bits = landArtKeys(land, season).map(request => ((request.owner === 'region' ? REGION_TEXTURE_ART.image(request.key) : request.owner === 'catalog' ? LAND_DECAL_ART.image(request.key) : art.art(request.key)) === null ? 0 : 1)).join("") + forestEdgeReadiness(land.fillBase, season);
   if (!bits.includes("0")) land.cache.allReady.set(season, bits);
   return bits;
 }
@@ -65,7 +67,8 @@ export function landArtReadiness(land: LandGround, season: SeasonIndex): string 
 function preloadLandArt(land: LandGround): void {
   if (land.cache.preloaded === true) return;
   for (const season of [0, 1, 2, 3] as const) for (const request of landArtKeys(land, season)) {
-    if (request.owner === 'catalog') LAND_DECAL_ART.image(request.key); else art.art(request.key);
+    if (request.owner === 'region') REGION_TEXTURE_ART.image(request.key);
+    else if (request.owner === 'catalog') LAND_DECAL_ART.image(request.key); else art.art(request.key);
   }
   land.cache.preloaded = true;
 }
@@ -98,6 +101,19 @@ function patternOf(context: CanvasRenderingContext2D, image: CanvasImageSource):
   return map.get(image) ?? null;
 }
 
+/** A failed region pattern is terminal for this context only, using the existing image/context cache. */
+export function regionPatternOf(context: CanvasRenderingContext2D, image: HTMLImageElement): CanvasPattern | null {
+  try {
+    const pattern = patternOf(context, image);
+    if (pattern !== null) pattern.setTransform({ a: 0.25, b: 0.125, c: -0.5, d: 0.25, e: 0, f: -TILE_H / 2 });
+    return pattern;
+  } catch {
+    const map = patterns.get(context) ?? new Map<CanvasImageSource, CanvasPattern | null>();
+    map.set(image, null); patterns.set(context, map);
+    return null;
+  }
+}
+
 /** Traces a chunk's part of a fill region (its loops, plus the chunk's box when the chunk lies inside): fill "evenodd". */
 function traceRegion(context: CanvasRenderingContext2D, part: ChunkRegion, box: ScreenBox): void {
   context.beginPath();
@@ -115,12 +131,11 @@ export function drawLandFills(context: CanvasRenderingContext2D, land: LandGroun
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   let passes = 0;
   for (const part of parts) {
+    const pair = REGION_TEXTURE_ART.patterns({ baseId: part.region.base, season: REGION_SEASONS[season] }, image => regionPatternOf(context, image));
     for (const variant of ["a", "b"] as const) {
-      const image = art.art(fillArtKey(part.region.base, season, variant));
-      const pattern = image === null ? null : patternOf(context, image);
+      const pattern = pair[variant === 'a' ? 0 : 1];
       if (pattern === null) continue;
       // Pattern px (u, v) -> tile (u / 128 - 0.5, v / 64 - 0.5) -> iso screen: 2 x 2 tiles per repeat, origin on a block corner.
-      pattern.setTransform({ a: 0.25, b: 0.125, c: -0.5, d: 0.25, e: 0, f: -TILE_H / 2 });
       context.save();
       traceRegion(context, part, box);
       if (variant === "b") {

@@ -48,7 +48,8 @@ fetch_results() {
   mkdir -p "$local_dir"
   local src="$RROOT/$run"
   # A kept run whose folder was pruned (by an older copy of remote-exec.sh) is read from _kept/.
-  rsh "[ -d $src/.remote ]" 2>/dev/null || { rsh "[ -d $RROOT/_kept/$run/.remote ]" 2>/dev/null && src="$RROOT/_kept/$run"; }
+  # A kept run packed by the disk upkeep (scripts/remote/diskClean.sh) is unpacked from _kept/_archive/ first.
+  rsh "[ -d $src/.remote ]" 2>/dev/null || { rsh "[ -d $RROOT/_kept/$run/.remote ] || { [ -f $RROOT/_kept/_archive/$run.tar.zst ] && tar -C $RROOT/_kept --zstd -xf $RROOT/_kept/_archive/$run.tar.zst && rm -f $RROOT/_kept/_archive/$run.tar.zst; }" 2>/dev/null && rsh "[ -d $RROOT/_kept/$run/.remote ]" 2>/dev/null && src="$RROOT/_kept/$run"; }
   rsync -a -e "ssh $SSH_OPTS" "$HOST:$src/.remote/" "$local_dir/" || { echo "remote: could not fetch $run/.remote" >&2; return 1; }
   if [ -s "$local_dir/changed-files.txt" ]; then
     # --update: never replace a file that is newer here (edited while the run was going).
