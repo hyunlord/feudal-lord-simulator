@@ -37,6 +37,7 @@
 - 본선 합치기: 작업 브랜치 → 관문 → 깨끗한 클론 → merge·push → 브랜치 삭제. 본선이 움직였으면 양쪽을 살린다. C25 판·문서·STATUS 갱신.
 - 판정이 필요한 선택지는 물어보고, 기다리는 동안 다른 일을 한다. 판정 전제(예: "N일")가 게임 구조와 안 맞으면 지적하고 대안을 제시한다.
 - 시간 표기는 달력 도착점("봄 말쯤"). 틱·게임초 금지. 새 문구는 `*.ko.ts`.
+- **확장성**: 새로 짜는 코드는 [extensibility.md](docs/design/extensibility.md) 원칙 1~6을 지킨다 — 코어에 배경 단어 금지, 종류는 데이터·열린 id, 특수 체계는 모듈, 문구는 키, 그림은 팩의 계약, 저장은 팩을 앎(결정 EXT-D1).
 
 ### 5. 에셋 규칙
 - 규격 `ASSET_PIPELINE_SPEC_v1.md`. 워커 = 승인 템플릿 재스킨, 동물 = 다리만 다른 2프레임, 초상 = 완성 초상 풀 + 노화 사슬(레이어 합성 금지).
@@ -47,7 +48,7 @@
 
 ### 6. 문서
 - 로드맵·상태: `docs/ROADMAP.html`(작업 상태는 TASKS 배열), `docs/STATUS.md`(세션별 현재·다음).
-- 기초 설계서: `docs/design/foundation.md`(게임·개발 방향·아키텍처의 정본, 이 헌장은 그 요약), `docs/design/visual-architecture.md`(시각·에셋).
+- 기초 설계서: `docs/design/foundation.md`(게임·개발 방향·아키텍처의 정본, 이 헌장은 그 요약), `docs/design/visual-architecture.md`(시각·에셋), `docs/design/extensibility.md`(확장성: 코어·모듈·팩·모드).
 - 설계서: `docs/design/DESIGN_MASTER.md`, `CONTENT_DESIGN.md`, `PLAYER_FLOW_DESIGN.md`, `VISIBILITY_DESIGN.md`, `CHRONICLE_DESIGN.md`, `lord-mode.md`, (예정) `UI_STATE_DESIGN.md`, `PERSON_DESIGN.md`.
 - 결정 목록: 규칙·기준을 바꿀 때마다 ID와 이유. 조사 결과는 `docs/research/`.
 - 용어: 게임 문구는 docs/design/glossary.md의 용어 정본을 따른다. 새 용어가 필요하면 정본에 먼저 추가한다.

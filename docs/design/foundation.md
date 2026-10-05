@@ -69,6 +69,8 @@
 | 작업 추적 | docs/ops/DISPATCH_LEDGER.md + ROADMAP.html |
 | 결정 | docs/decisions/README.md |
 
+**확장성: [extensibility.md](extensibility.md)** — 코어(배경 무관) + 규칙 모듈 + 설정 팩, 본편도 `core` 팩으로 모드와 같은 길로 들어간다. 새로 짜는 코드는 그 원칙 1~6을 지킨다(확정 2026-10-06, 결정 EXT-D1~D3).
+
 ---
 # 3부. 개발의 방향
 

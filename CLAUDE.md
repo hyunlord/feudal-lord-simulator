@@ -78,6 +78,7 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
   - 시간은 달력 도착점("봄 말쯤")으로 쓴다. 틱·게임초는 쓰지 않는다.
   - 새 문구는 영역별 `*.ko.ts`에 넣는다.
   - 용어: 게임 문구는 docs/design/glossary.md의 용어 정본을 따른다. 새 용어가 필요하면 정본에 먼저 추가한다.
+- **확장성**: 새로 짜는 코드는 [extensibility.md](docs/design/extensibility.md) 원칙 1~6을 지킨다 — 코어에 배경 단어 금지, 종류는 데이터·열린 id, 특수 체계는 모듈, 문구는 키, 그림은 팩의 계약, 저장은 팩을 앎(결정 EXT-D1).
 
 ## 레인(세션 범위)
 기초 설계서 8절과 결정 FND-2. 파일 경계는 AGENTS.md "레인과 파일 경계".
@@ -97,7 +98,7 @@ Claude Code 세션이 시작할 때 읽는 요약이다.
 - **로드맵·상태**: [docs/ROADMAP.html](docs/ROADMAP.html)(비전·화면·시스템 지도·한 판·로드맵·작업 방식, 작업 상태는 `TASKS`), [docs/STATUS.md](docs/STATUS.md)
 - **헌장·규칙**: [docs/CHARTER.md](docs/CHARTER.md), [AGENTS.md](AGENTS.md)
 - **설계서**
-  - [기초 설계서](docs/design/foundation.md)(방향·아키텍처·레인, 정본) · [시각·에셋 아키텍처](docs/design/visual-architecture.md)
+  - [기초 설계서](docs/design/foundation.md)(방향·아키텍처·레인, 정본) · [시각·에셋 아키텍처](docs/design/visual-architecture.md) · [확장성](docs/design/extensibility.md)(코어·모듈·팩·모드)
   - [DESIGN_MASTER](docs/design/DESIGN_MASTER.md)
   - [CONTENT_DESIGN](docs/design/CONTENT_DESIGN.md)
   - [플레이어 흐름](docs/design/player-flow.md)(헌장의 PLAYER_FLOW_DESIGN)
