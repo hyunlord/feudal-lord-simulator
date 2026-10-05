@@ -199,7 +199,8 @@ test("the picture by the v4 id; none for an id the build does not ship", () => {
   assert.equal(eventArtFor("ck_evt_180"), "ck_evt_180");
   assert.equal(eventArtFor("test:none"), null);
   assert.equal(eventArtFor("ck_evt_001"), null, "a variant of an existing occurrence's words: never an offer, its picture not shipped");
-  assert.equal(eventArtFor("ck_evt_011"), null, "an entry the canon blocks (a derived name the read model lacks)");
+  // RECOVER-1 (engine, render file updated as an exception — render takes it over): v4.1 fixed 011's derived name, so it runs.
+  assert.equal(eventArtFor("ck_evt_011"), "ck_evt_011", "v4.1 unblocked it: the registry runs it and its picture ships");
   assert.ok(v4Entries().every(entry => !("artId" in entry)), "no v4 entry carries an artId: the picture is its id's");
 });
 
@@ -207,7 +208,7 @@ test("the shipped pictures follow the registry alone: every v4 entry it runs, no
   assert.deepEqual(eventCardEntryIds(), runs);
   const live = runs.filter(id => Object.hasOwn(EVENT_ART_IMAGES, id)).sort();
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES), live);
-  assert.equal(live.length, 70);
+  assert.equal(live.length, 71);
   assert.ok(v4Entries().filter(entry => entry.contentClass !== "new_event_draft").every(entry => !live.includes(entry.id)));
   // An entry the registry turns on later ships its picture by the same rule; an id without a picture is left out.
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES, ["ck_evt_150", "ck_evt_011", "home:heriot", "ck_evt_150"]), ["ck_evt_011", "ck_evt_150"]);
