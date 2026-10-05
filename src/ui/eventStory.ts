@@ -46,7 +46,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // EVENT-ART (lord mode): a ledger moment with its Wave 40 picture — the marriage, the suit, the wardship (lordMomentBeats.ts).
   | "lord_moment"
   // EVENT-ART (lord mode): an offer of the engine's registry (an event entry, not a home petition).
-  | "registry_event";
+  | "registry_event"
+  // LM-R2 (lord mode): the lord's decision cards — the father's will, the contested inheritance, an audit, an off-map petition.
+  | "lord_decision";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -59,8 +61,10 @@ export type StoryBeat = Readonly<{
   facts: readonly string[];
   advice: string;
   /** The beat is a decision the lord answers in a modal (the famine, a petition; LM-R1: a home petition, the steward's
-   * precedents, the town's request; EVENT-ART: a registry offer). */
-  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | "registry_offer" | null;
+   * precedents, the town's request; EVENT-ART: a registry offer; LM-R2: the lord's decision cards). */
+  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | "registry_offer"
+    /** LM-R2 (lord mode): the father's will or the contested inheritance, an audit's finding, an off-map estate's petition. */
+    | "marriage_decision" | "audit_decision" | "estate_petition_offmap" | null;
 }>;
 
 /** The modal a decision beat's [결정하기] opens. */

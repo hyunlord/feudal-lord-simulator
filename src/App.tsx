@@ -636,7 +636,8 @@ export function App() {
       {/* CODE-1c: the modal screens (ui/screens/AppModals), reading the game themselves while one is up. */}
       <AppModals ui={ui} sendUi={sendUi} personCardId={personCardId} chroniclePersonId={chroniclePersonId} onChroniclePerson={setChroniclePersonId}
         steward={steward} onPerson={openPerson} ledgerAuto={ledgerAuto} onLedgerAuto={chooseLedgerAuto} ledgerFirst={ledgerFirst}
-        onMenuRequest={setMenuRequest} tutorial={tutorial} chapterGoalsView={chapterGoalsView} />
+        onMenuRequest={setMenuRequest} tutorial={tutorial} chapterGoalsView={chapterGoalsView}
+        {...(lord ? { onOpenLord: (screen: LordScreenId, focus: string) => openLord(screen, focus) } : {})} />
       {chapterLoading ? <div className="chapter-loading" role="status" style={{ backgroundImage: `url("${wave8Url("keyart_title_bg")}")` }}>
         <p className="chapter-loading-title">{TITLE_COPY.chapter(stateCalendar(state).year)}</p><p className="chapter-loading-line">{TITLE_COPY.chapterLine}</p></div> : null}
       {welcomeVisible ? <WelcomeParchment

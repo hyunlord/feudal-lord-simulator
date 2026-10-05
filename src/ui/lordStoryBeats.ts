@@ -1,6 +1,9 @@
 import type { GameState } from "../engine/engine.types";
+import { diplomacyOf } from "../engine/negotiation";
 import { lordMode } from "../engine/townAgency";
 import type { StoryBeat } from "./eventStory";
+import { DECISION_CARDS_COPY } from "./lord/decisions/decisionCardsCopy.ko";
+import { auditDecisionView, marriageDecisionView, offMapPetitionView } from "./lord/decisions/decisionCardsModel";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
 import { homePetitionView, lordRequestView, precedentView, type LordRequestView } from "./lordCardsModel";
 import { lordMomentBeats } from "./lordMomentBeats";
@@ -25,6 +28,9 @@ const REQUEST_ART: Readonly<Record<LordRequestView["kind"], StoryIllustration | 
 };
 export const requestArt = (kind: LordRequestView["kind"]): StoryIllustration | null => REQUEST_ART[kind];
 
+/** The will-change attempt's Wave 40 moment (lordMomentBeats `marriage.will_change`). */
+const WILL_MOMENT = "moment_attempted_will_change" as const;
+
 export function lordBeats(state: GameState): readonly StoryBeat[] {
   if (!lordMode(state)) return [];
   const beats: StoryBeat[] = [];
@@ -48,7 +54,25 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: `lord-request:${request.key}`, kind: "lord_request", illustration: requestArt(request.kind), tile: seatTile(state),
       decision: "lord_request", title: request.title, line: request.demand, facts: request.more === "" ? [] : [request.more], advice: LORD_CARDS_COPY.requestAdvice });
   }
+  // LM-R2: the lord's decision cards. The will's chip wears the will's Wave 40 moment and stands for it (one chip).
+  const marriage = marriageDecisionView(state);
+  if (marriage !== null) {
+    beats.push({ id: `marriage-decision:${marriage.kind}:${diplomacyOf(state).marriage?.claimId ?? ""}`, kind: "lord_decision",
+      illustration: marriage.kind === "will_change" ? WILL_MOMENT : null, tile: null, decision: "marriage_decision",
+      title: marriage.title, line: marriage.line, facts: marriage.kind === "contested" ? [marriage.suit] : [], advice: marriage.kind === "contested" ? DECISION_CARDS_COPY.contestOpen : DECISION_CARDS_COPY.willAdvice });
+  }
+  const audit = auditDecisionView(state);
+  if (audit !== null) {
+    beats.push({ id: `audit:${audit.auditId}`, kind: "lord_decision", illustration: null, tile: null, decision: "audit_decision",
+      title: audit.title, line: audit.line, facts: [audit.kicker, audit.waits], advice: DECISION_CARDS_COPY.auditAdvice });
+  }
+  const offMap = offMapPetitionView(state);
+  if (offMap !== null) {
+    beats.push({ id: `estate-petition:${offMap.petitionId}`, kind: "lord_decision", illustration: null, tile: null, decision: "estate_petition_offmap",
+      title: offMap.title, line: offMap.line, facts: offMap.why === "" ? [offMap.waits] : [offMap.waits, offMap.why], advice: DECISION_CARDS_COPY.petitionAdvice });
+  }
   // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record.
-  beats.push(...lordMomentBeats(state, seatTile(state)));
+  const moments = lordMomentBeats(state, seatTile(state));
+  beats.push(...(marriage?.kind === "will_change" ? moments.filter(beat => beat.illustration !== WILL_MOMENT) : moments));
   return beats;
 }
