@@ -148,6 +148,29 @@ test("the suit track: file a claim, bring evidence; each press is the game's com
   assert.ok(!view(filed).claims.some(row => row.id === open.id), "a filed claim leaves the claims list");
 });
 
+test("a deep link selects its row: a suit by its id or its claim's, a claim not yet filed by its own", () => {
+  const state = slice();
+  const claim = view(state).claims.find(row => row.refusal === null)!;
+  assert.equal(view(state, claim.id).claims.find(row => row.id === claim.id)?.focused, true, "an unfiled claim's id");
+  assert.match(html(state, claim.id), new RegExp(`data-claim="${claim.id}" data-focused="true"`));
+  const filed = gameReducer(state, { type: "file_suit", claimId: claim.id });
+  const suit = view(filed).suits.find(row => row.claimId === claim.id)!;
+  for (const focus of [suit.id, claim.id]) {
+    const rows = view(filed, focus);
+    assert.deepEqual(rows.suits.filter(row => row.focused).map(row => row.id), [suit.id], `focus ${focus}`);
+    assert.equal(rows.promises.open.some(row => row.focused) || rows.claims.some(row => row.focused), false);
+  }
+  assert.equal(view(filed, "suit-none").suits.some(row => row.focused), false);
+});
+
+test("estates read in Korean (GENTRY_NAMES_KO), never the engine's Latin name", () => {
+  const state = slice();
+  for (const row of [...view(state).claims, ...view(gameReducer(state, { type: "file_suit", claimId: view(state).claims[0]!.id })).suits]) {
+    assert.doesNotMatch(row.what, /\bde [A-Z]|[A-Za-z]{3,}/, row.what);
+    assert.match(row.what, / 영지 · /, row.what);
+  }
+});
+
 test("no engine rule is copied: the ledger reads no cost, weight or threshold from the configs", () => {
   for (const file of ["src/ui/lord/ledger/ledgerModel.ts", "src/ui/lord/ledger/LedgerPanel.tsx", "src/ui/lord/ledger/ledgerCopy.ko.ts"]) {
     const text = readFileSync(file, "utf8");
