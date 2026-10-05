@@ -1,0 +1,1075 @@
+{
+ "rows": [
+  {
+   "name": "empty-offer",
+   "file": "empty-offer.jpg",
+   "state": "lord/lord-receipts",
+   "phase": "draft",
+   "tier": "unlikely",
+   "refusal": "no_terms",
+   "sendShut": true,
+   "answer": null,
+   "rows": [
+    "consent:same"
+   ],
+   "reasons": [
+    "urgency:plus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 1,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "tier-impossible",
+   "file": "tier-impossible.jpg",
+   "phase": "draft",
+   "tier": "impossible",
+   "refusal": null,
+   "sendShut": false,
+   "answer": null,
+   "rows": [
+    "inheritance_non_infringement:same",
+    "residence:same",
+    "consent:same"
+   ],
+   "reasons": [
+    "urgency:plus",
+    "concession:minus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 1,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "tier-close",
+   "file": "tier-close.jpg",
+   "phase": "draft",
+   "tier": "close",
+   "refusal": null,
+   "sendShut": false,
+   "answer": null,
+   "rows": [
+    "political_support:same",
+    "consent:same"
+   ],
+   "reasons": [
+    "urgency:plus",
+    "base:plus",
+    "inheritance_risk:minus",
+    "political:plus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 1,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "tier-likely",
+   "file": "tier-likely.jpg",
+   "phase": "draft",
+   "tier": "likely",
+   "refusal": null,
+   "sendShut": false,
+   "answer": null,
+   "rows": [
+    "debt_after_inheritance:same",
+    "consent:same"
+   ],
+   "reasons": [
+    "urgency:plus",
+    "material:plus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 1,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "divider-long",
+   "file": "divider-long.jpg",
+   "phase": "draft",
+   "tier": "almost_certain",
+   "refusal": null,
+   "sendShut": false,
+   "answer": null,
+   "rows": [
+    "cash:same",
+    "debt_after_inheritance:same",
+    "jointure:same",
+    "pension:same",
+    "political_support:same",
+    "inheritance_non_infringement:same",
+    "residence:same",
+    "consent:same"
+   ],
+   "reasons": [
+    "material:plus",
+    "urgency:plus",
+    "concession:minus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 1,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "counter-rejected",
+   "file": "counter-rejected.jpg",
+   "phase": "countered",
+   "tier": "likely",
+   "refusal": null,
+   "sendShut": null,
+   "answer": "countered",
+   "rows": [
+    "debt_assumption:changed",
+    "debt_after_inheritance:changed",
+    "wardship:rejected",
+    "consent:same"
+   ],
+   "reasons": [
+    "urgency:plus",
+    "material:plus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 0,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "answer-accept",
+   "file": "answer-accept.jpg",
+   "phase": "contract",
+   "tier": null,
+   "refusal": null,
+   "sendShut": null,
+   "answer": "accepted",
+   "rows": [
+    "debt_assumption:same",
+    "debt_after_inheritance:same",
+    "consent:same"
+   ],
+   "reasons": [],
+   "seal": "stamped",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": null,
+   "stage": "contracted",
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 0,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "counter-changed",
+   "file": "counter-changed.jpg",
+   "state": "lord2/offer-countered",
+   "phase": "countered",
+   "tier": "likely",
+   "refusal": null,
+   "sendShut": null,
+   "answer": "countered",
+   "rows": [
+    "cash:same",
+    "debt_after_inheritance:changed",
+    "inheritance_non_infringement:same",
+    "residence:same",
+    "consent:same"
+   ],
+   "reasons": [
+    "material:plus",
+    "urgency:plus",
+    "concession:minus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 0,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "answer-refuse",
+   "file": "answer-refuse.jpg",
+   "phase": "draft",
+   "tier": "unlikely",
+   "refusal": "no_terms",
+   "sendShut": true,
+   "answer": "withdrawn",
+   "rows": [
+    "consent:same"
+   ],
+   "reasons": [
+    "urgency:plus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "broken",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 1,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "counter-tablet-dpr2",
+   "file": "counter-tablet-dpr2.jpg",
+   "viewport": "1180x820",
+   "dpr": 2,
+   "phase": "countered",
+   "tier": "likely",
+   "refusal": null,
+   "sendShut": null,
+   "answer": "countered",
+   "rows": [
+    "cash:same",
+    "debt_after_inheritance:changed",
+    "inheritance_non_infringement:same",
+    "residence:same",
+    "consent:same"
+   ],
+   "reasons": [
+    "material:plus",
+    "urgency:plus",
+    "concession:minus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 0,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "timeline-will-change",
+   "file": "timeline-will-change.jpg",
+   "state": "lord2/will-change",
+   "phase": "contract",
+   "tier": null,
+   "refusal": null,
+   "sendShut": null,
+   "answer": null,
+   "rows": [
+    "cash:same",
+    "debt_after_inheritance:same",
+    "inheritance_non_infringement:same",
+    "residence:same",
+    "consent:same"
+   ],
+   "reasons": [],
+   "seal": "stamped",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": null,
+   "stage": "will_change",
+   "due": "will_change",
+   "suit": null,
+   "natives": 0,
+   "primaries": 0,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "timeline-contested",
+   "file": "timeline-contested.jpg",
+   "state": "lord2/contested",
+   "phase": "contract",
+   "tier": null,
+   "refusal": null,
+   "sendShut": null,
+   "answer": null,
+   "rows": [
+    "cash:same",
+    "debt_after_inheritance:same",
+    "inheritance_non_infringement:same",
+    "residence:same",
+    "consent:same"
+   ],
+   "reasons": [],
+   "seal": "stamped",
+   "sealArt": "drawn",
+   "treatyArt": "drawn",
+   "treatyFrame": "flat",
+   "treatyBorderImage": "treaty_frame.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": null,
+   "stage": "contested",
+   "due": "contested",
+   "suit": "suit-1",
+   "natives": 0,
+   "primaries": 0,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  },
+  {
+   "name": "open-suit",
+   "file": null,
+   "suit": "suit-1",
+   "shownScreen": "marriage",
+   "note": "the ledger screen is lmr2-ledger's; on this branch its gate is the scaffold's 준비 중, so the host shows the first open screen"
+  },
+  {
+   "name": "art-missing",
+   "file": "art-missing.jpg",
+   "phase": "draft",
+   "tier": "unlikely",
+   "refusal": "no_terms",
+   "sendShut": true,
+   "answer": null,
+   "rows": [
+    "consent:same"
+   ],
+   "reasons": [
+    "urgency:plus",
+    "base:plus",
+    "inheritance_risk:minus"
+   ],
+   "seal": "empty",
+   "sealArt": "drawn",
+   "treatyArt": "none",
+   "treatyFrame": "light",
+   "treatyBorderImage": "frame_panel_light.png",
+   "divider": {
+    "width": 16,
+    "height": 256
+   },
+   "dividerArt": "drawn",
+   "scaleArt": "drawn",
+   "stage": null,
+   "due": null,
+   "suit": null,
+   "natives": 0,
+   "primaries": 1,
+   "art": [
+    [
+     "lord-ui/wave35-negotiation/treaty_divider.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/treaty_frame.png",
+     404
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_empty.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/acceptance_scale.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_plus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/reason_chip_minus.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_changed.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_stamped.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/clause_row_rejected.png",
+     200
+    ],
+    [
+     "lord-ui/wave35-negotiation/seal_broken.png",
+     200
+    ]
+   ]
+  }
+ ],
+ "failures": []
+}
