@@ -1,5 +1,8 @@
 import assert from "node:assert/strict";
-import test from "node:test";
+import test, { mock } from "node:test";
+import { WEATHER_SHADOW_ART } from "../src/render/art/weatherShadowArt";
+import { createArtRegistry } from "../src/render/art/artRegistry";
+import shadows from "./fixtures/weather-shadow-migration.json";
 
 import type { WeatherKind } from "../src/content/eventConfig";
 import { CORE_SCENARIOS } from "../src/content/scenario/coreScenarios";
@@ -29,13 +32,16 @@ test("Given every weather at every tick of its season When the layers are listed
 
     // Then
     assert.ok(stackedPermille(layers) <= WEATHER_ALPHA_CAP_PERMILLE, `${weather} at ${seasonTick}: ${stackedPermille(layers)}`);
-    for (const layer of layers) for (const key of layer.assets) {
+    for (const layer of layers) {
+      if (layer.placement === "clouds") { assert.ok(layer.alphaPermille <= 120); assert.equal(layer.blend, "multiply"); continue; }
+      for (const key of layer.assets) {
       const meta = WAVE23_IMAGES[key];
       assert.equal(meta.group, "weather", key);
       // INSTALL-23b: the rain is outside the artist's caps (user judgement); every other layer, the ripples included, is under its art's.
       if (layer.rain !== true) assert.ok(layer.alphaPermille <= Math.round(meta.opacityMax * 1000), `${layer.id} ${key} ${layer.alphaPermille} > ${meta.opacityMax}`);
       assert.equal(layer.blend, meta.blend === "normal" ? "source-over" : meta.blend, `${key} blend`);
     }
+  }
   }
   // Only the rain and the ripples are outside the cap; the drizzle is 0.55 through a wet season, the storm 0.7 at its height.
   const outside = new Set(KINDS.flatMap(weather => weatherLayers({ weather, seasonTick: 575, ...on }).concat(weatherLayers({ weather, seasonTick: 300, ...on })))
@@ -163,6 +169,14 @@ test("Given the seed 2 map When the weather is placed Then fog banks never meet 
 });
 
 function stubArt(): void {
+  const registry = createArtRegistry([shadows]);
+  const ready = (deck: 'lower' | 'upper') => {
+    const entry = registry.select('weather-shadow', `cloud-base-${deck}`, { weather: 'normal' }, 0);
+    assert.ok(entry?.kind === 'weather-shadow');
+    const image: HTMLImageElement = Object.assign(Object.create(null), { label: entry.id, width: 512, height: 512 });
+    return { entry, image };
+  };
+  mock.method(WEATHER_SHADOW_ART, 'resolve', () => ({ family: 'base', lower: ready('lower'), upper: ready('upper') }));
   setWeatherArtForTest((key: Wave23Key) => ({ label: key, width: WAVE23_IMAGES[key].width, height: WAVE23_IMAGES[key].height }) as unknown as CanvasImageSource);
 }
 function drawBoth(state: ReturnType<typeof c25BoardState>): readonly string[] {
@@ -209,7 +223,29 @@ test("Given loaded weather art When a weather season is drawn Then each layer dr
     for (let season = 0; season < 4; season += 1) assert.deepEqual(drawBoth({ ...still, tick: summer + season * 1_000 }), []);
   } finally {
     setWeatherArtForTest(null);
+    mock.restoreAll();
   }
   // Without the art (Node, the C25 board): no call at all.
   assert.deepEqual(drawBoth({ ...c25BoardState(), tick: 1_300 }), []);
+});
+
+test('cloud sky resolves once per frame and restores layer state when its native paint throws', () => {
+  stubArt();
+  try {
+    const board = c25BoardState();
+    const state = { ...board, tick: Math.floor(board.tick / 4000) * 4000 + 1300 };
+    assert.equal(engineWeather(state).weather, 'normal');
+    const originalResolve = WEATHER_SHADOW_ART.resolve;
+    let resolves = 0;
+    mock.method(WEATHER_SHADOW_ART, 'resolve', () => { resolves++; return originalResolve('normal'); });
+    const recording = recordingCanvas(1280, 800);
+    recording.context.setTransform(1, 0, 0, 1, 0, 0);
+    drawWeatherSky(recording.context, state, { width: 1280, height: 800 }, 1, 5000);
+    assert.equal(resolves, 1);
+    mock.method(WEATHER_SHADOW_ART, 'drawResolved', () => { throw new Error('native cloud paint failed'); });
+    const before = recording.context.globalAlpha;
+    assert.throws(() => drawWeatherSky(recording.context, state, { width: 1280, height: 800 }, 1, 5000), /native cloud paint failed/);
+    assert.equal(recording.context.globalAlpha, before);
+    assert.equal(recording.canvas.ops.at(-1), 'restore()');
+  } finally { setWeatherArtForTest(null); mock.restoreAll(); }
 });

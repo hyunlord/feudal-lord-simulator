@@ -1493,6 +1493,9 @@
         },
         {
           "$ref": "#/$defs/ground-texture"
+        },
+        {
+          "$ref": "#/$defs/weather-shadow"
         }
       ]
     },
@@ -1517,7 +1520,8 @@
             "portrait",
             "regional-map",
             "season-variant",
-            "ground-texture"
+            "ground-texture",
+            "weather-shadow"
           ]
         },
         "slot": {
@@ -1871,6 +1875,67 @@
           }
         }
       ]
+    },
+    "weather-shadow": {
+      "type": "object",
+      "required": [
+        "id",
+        "kind",
+        "image",
+        "provenance",
+        "geometry",
+        "deck",
+        "blend",
+        "opacityMax"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "weather-shadow"
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "geometry": {
+          "type": "object",
+          "required": [
+            "pivot",
+            "scale",
+            "allowMirror"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "pivot": {
+              "$ref": "#/$defs/point"
+            },
+            "scale": {
+              "const": 1
+            },
+            "allowMirror": {
+              "const": false
+            }
+          }
+        },
+        "deck": {
+          "enum": [
+            "lower",
+            "upper"
+          ]
+        },
+        "blend": {
+          "const": "multiply"
+        },
+        "opacityMax": {
+          "const": 0.12
+        }
+      }
     }
   }
 }

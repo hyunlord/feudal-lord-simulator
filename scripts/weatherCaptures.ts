@@ -88,7 +88,7 @@ for (const { name, weather, tick } of WEATHERS) {
   }
   result[name] = {
     seasonTick: tick,
-    layers: layers.map(layer => ({ element: layer.id, art: layer.assets, blend: layer.blend, alpha: layer.alphaPermille / 1000, moving: layer.moving,
+    layers: layers.map(layer => ({ element: layer.id, art: layer.placement === "clouds" ? { deck: layer.deck } : layer.assets, blend: layer.blend, alpha: layer.alphaPermille / 1000, moving: layer.moving,
       space: layer.space, pass: layer.pass, zone: layer.zone, placement: layer.placement })),
     stackedAlpha: stackedPermille(layers) / 1000,
     shots,

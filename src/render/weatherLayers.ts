@@ -52,10 +52,9 @@ export type WeatherBlend = "source-over" | "multiply" | "screen";
 export type WeatherZone = "all" | "water" | "land";
 export type WeatherPlacement = "fill" | "lanes" | "shore" | "lattice" | "clouds";
 
-export interface WeatherLayer {
+interface WeatherLayerCommon {
   readonly id: string;
   /** The art drawn (one or alternating variants). */
-  readonly assets: readonly Wave23Key[];
   readonly blend: WeatherBlend;
   readonly alphaPermille: number;
   readonly moving: boolean;
@@ -64,12 +63,15 @@ export interface WeatherLayer {
   /** "ground": drawn in the ground pass (under buildings); "sky": over the world after the objects. */
   readonly pass: "ground" | "sky";
   readonly zone: WeatherZone;
-  readonly placement: WeatherPlacement;
   /** Only rain: the rain switch ("rainOverlay") drops it. */
   readonly rain?: true;
   /** Outside the 0.38 cap (INSTALL-23b): the rain streaks and the puddle ripples. */
   readonly overCap?: true;
 }
+
+export type LegacyWeatherLayer = WeatherLayerCommon & { readonly placement: Exclude<WeatherPlacement, 'clouds'>; readonly assets: readonly Wave23Key[] };
+export type CloudWeatherLayer = WeatherLayerCommon & { readonly placement: 'clouds'; readonly deck: 'lower' | 'upper' };
+export type WeatherLayer = LegacyWeatherLayer | CloudWeatherLayer;
 
 export interface WeatherInput {
   /** The engine weather of the season, or null when the scenario has no weather. */
@@ -82,7 +84,7 @@ export interface WeatherInput {
   readonly rain: boolean;
 }
 
-type Def = Omit<WeatherLayer, "alphaPermille">;
+type Def = Omit<LegacyWeatherLayer, "alphaPermille"> | Omit<CloudWeatherLayer, "alphaPermille">;
 const DEFS = {
   overcast: { id: "overcast", assets: ["overcast_tint"], blend: "multiply", moving: false, space: "view", pass: "sky", zone: "all", placement: "fill" },
   drizzle: { id: "drizzle", assets: ["drizzle_sheet"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "fill", rain: true, overCap: true },
@@ -95,8 +97,8 @@ const DEFS = {
   frost: { id: "frost_tint", assets: ["frost_morning_tint"], blend: "source-over", moving: false, space: "view", pass: "sky", zone: "all", placement: "fill" },
   mist: { id: "cold_mist", assets: ["fog_bank_c", "fog_bank_b"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "lanes" },
   mistHigh: { id: "cold_mist_high", assets: ["fog_bank_a"], blend: "source-over", moving: true, space: "view", pass: "sky", zone: "all", placement: "lanes" },
-  clouds: { id: "cloud_shadows", assets: ["cloud_shadow_a"], blend: "multiply", moving: true, space: "world", pass: "sky", zone: "all", placement: "clouds" },
-  cloudsHigh: { id: "cloud_shadows_high", assets: ["cloud_shadow_b"], blend: "multiply", moving: true, space: "world", pass: "sky", zone: "all", placement: "clouds" },
+  clouds: { id: "cloud_shadows", deck: "lower", blend: "multiply", moving: true, space: "world", pass: "sky", zone: "all", placement: "clouds" },
+  cloudsHigh: { id: "cloud_shadows_high", deck: "upper", blend: "multiply", moving: true, space: "world", pass: "sky", zone: "all", placement: "clouds" },
 } as const satisfies Record<string, Def>;
 
 const clamp01 = (value: number): number => Math.max(0, Math.min(1, value));
@@ -133,7 +135,7 @@ function wetLayers(seasonTick: number): readonly WeatherLayer[] {
 /** The share of the view the rain layers present cover: each sheet's streak share (pixels over RAIN_ALPHA_FLOOR, its
  * fullest cell) summed over the rain layers drawn (a bound: two sheets cross-fading may overlap). */
 export function rainArea(layers: readonly WeatherLayer[], streakShare: (key: Wave23Key) => number): number {
-  return layers.filter(entry => entry.rain === true).reduce((total, entry) => total + Math.max(...entry.assets.map(streakShare)), 0);
+  return layers.filter(entry => entry.rain === true).reduce((total, entry) => total + (entry.placement === "clouds" ? 0 : Math.max(...entry.assets.map(streakShare))), 0);
 }
 
 const LAYERS: Readonly<Record<Exclude<WeatherKind, "wet">, readonly WeatherLayer[]>> = {

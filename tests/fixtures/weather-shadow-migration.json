@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "wave23-weather-shadows",
+  "entries": [
+    {
+      "id": "wave23-cloud-shadow-a",
+      "kind": "weather-shadow",
+      "image": {
+        "url": "assets/wave23/weather/cloud_shadow_a.png",
+        "width": 512,
+        "height": 512
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave23/candidates-20260928/assets/weather/cloud_shadow_a.png",
+        "sourceSha256": "e4dfd75d9d447ee2bd4073208ea1b9a475e3d456bcff920a8acc49cc01e7ecd1",
+        "runtimeSha256": "e4dfd75d9d447ee2bd4073208ea1b9a475e3d456bcff920a8acc49cc01e7ecd1"
+      },
+      "geometry": {
+        "pivot": {
+          "x": 256,
+          "y": 256
+        },
+        "scale": 1,
+        "allowMirror": false
+      },
+      "deck": "lower",
+      "blend": "multiply",
+      "opacityMax": 0.12
+    },
+    {
+      "id": "wave23-cloud-shadow-b",
+      "kind": "weather-shadow",
+      "image": {
+        "url": "assets/wave23/weather/cloud_shadow_b.png",
+        "width": 512,
+        "height": 512
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave23/candidates-20260928/assets/weather/cloud_shadow_b.png",
+        "sourceSha256": "4c843f0710d4359c38299cd04d419f38a535e32547cb3542928b6cc2bd3fb63c",
+        "runtimeSha256": "4c843f0710d4359c38299cd04d419f38a535e32547cb3542928b6cc2bd3fb63c"
+      },
+      "geometry": {
+        "pivot": {
+          "x": 256,
+          "y": 256
+        },
+        "scale": 1,
+        "allowMirror": false
+      },
+      "deck": "upper",
+      "blend": "multiply",
+      "opacityMax": 0.12
+    }
+  ],
+  "rules": [
+    {
+      "id": "cloud-base-lower",
+      "kind": "weather-shadow",
+      "slot": "cloud-base-lower",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "weather",
+          "value": "normal"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "wave23-cloud-shadow-a",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    },
+    {
+      "id": "cloud-base-upper",
+      "kind": "weather-shadow",
+      "slot": "cloud-base-upper",
+      "priority": 0,
+      "conditions": [
+        {
+          "op": "eq",
+          "field": "weather",
+          "value": "normal"
+        }
+      ],
+      "variants": [
+        {
+          "assetId": "wave23-cloud-shadow-b",
+          "weight": 1
+        }
+      ],
+      "fallback": "none"
+    }
+  ]
+}
