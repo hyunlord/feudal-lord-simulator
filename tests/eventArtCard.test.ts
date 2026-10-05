@@ -9,7 +9,9 @@ import test from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
-import { buildKeyartDerivative, EVENT_ART_DERIVATIVES, KEYART_DERIVATIVE_BY_URL, sha256 } from "../scripts/keyartDerivatives";
+import { buildKeyartDerivative, encodeJpeg, EVENT_ART_DERIVATIVES, JPEG_QUALITY, KEYART_DERIVATIVE_BY_URL, sha256 } from "../scripts/keyartDerivatives";
+import { decodeJpeg } from "../scripts/jpegDecode";
+import { categorize, evaluateBudget, loadBudgetConfig } from "../scripts/checks/distBudget.mjs";
 import { enumerateRuntimeAssets } from "../scripts/provenanceLedgerAssets";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import { ALL_REGISTRY_ENTRIES } from "../src/content/registry/registryEntries";
@@ -160,21 +162,45 @@ test("the picture by the entry's id, or by the artId the engine sets; none for a
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES, [later, pointed, { ...home, artId: "ck_evt_012" }]), ["ck_evt_101", "ck_evt_150"]);
 });
 
-test("the build ships exactly the registry's pictures, as received, inside the illustrations budget", () => {
+test("the build ships exactly the registry's pictures, re-encoded smaller, deterministic, in their own on-demand category", () => {
   const live = registryEntries().filter(item => item.generator === undefined).map(item => item.artId ?? item.id).filter(id => id in EVENT_ART_IMAGES).sort();
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES), live);
   assert.deepEqual(live, ["ck_evt_005", "ck_evt_009", "ck_evt_013", "ck_evt_027", "ck_evt_032", "ck_evt_033", "ck_evt_034", "ck_evt_038", "ck_evt_050", "ck_evt_052", "ck_evt_053"]);
   assert.deepEqual(EVENT_ART_DERIVATIVES.map(item => item.url), live.map(id => `assets/event-art/${id}.jpg`));
-  let bytes = 0;
+  const provenance = readFileSync("docs/provenance/assets.csv", "utf8");
+  let received = 0; let built = 0;
   for (const item of EVENT_ART_DERIVATIVES) {
     assert.equal(KEYART_DERIVATIVE_BY_URL.get(item.url), item);
+    assert.equal(item.format, "jpeg-reencoded");
+    const source = readFileSync(item.source);
     const shipped = buildKeyartDerivative(item);
-    assert.equal(sha256(shipped), sha256(readFileSync(item.source)), `${item.id} ships as received`);
-    bytes += shipped.length;
+    // The same bytes every build (the cache only stores them): decode + encode again, without the cache, is identical.
+    assert.equal(sha256(encodeJpeg(decodeJpeg(source), JPEG_QUALITY)), sha256(shipped), `${item.id} deterministic`);
+    // Pinned: the provenance row names the runtime file's size and SHA (scripts/installEventArt.ts writes them).
+    assert.ok(provenance.includes(`jpeg-reencoded: ${shipped.length} bytes, sha256 ${sha256(shipped)}`), `${item.id}: provenance pins the derivative`);
+    const sof = shipped.indexOf(Buffer.from([0xff, 0xc0]));
+    assert.deepEqual([shipped[0], shipped[1], shipped.readUInt16BE(sof + 7), shipped.readUInt16BE(sof + 5)], [0xff, 0xd8, 960, 540], `${item.id}: baseline 960 × 540`);
+    assert.ok(shipped.length < source.length, `${item.id}: ${shipped.length} < ${source.length}`);
+    received += source.length; built += shipped.length;
   }
-  assert.ok(bytes < 2_500_000, `${bytes} bytes shipped`);
-  const budget = JSON.parse(readFileSync("scripts/checks/distBudget.config.json", "utf8")) as { rules: { category: string; patterns: string[] }[] };
-  assert.ok(budget.rules.some(rule => rule.category === "illustrations" && rule.patterns.includes("assets/event-art/**")));
+  assert.ok(built < 0.8 * received && built < 1_500_000, `${built} of ${received} bytes`);
+  // distBudget: their own measured category, on demand, out of the first load's total.
+  const config = loadBudgetConfig();
+  assert.equal(categorize("assets/event-art/ck_evt_005.jpg", config)?.category, "event_cards");
+  const category = config.categories.find(entry => entry.id === "event_cards") as { budgetMB: number | null; onDemand?: boolean; name: string };
+  assert.deepEqual([category.budgetMB, category.onDemand, category.name], [null, true, "사건 삽화(카드에서 불러옴)"]);
+  const result = evaluateBudget([{ path: "assets/event-art/ck_evt_005.jpg", bytes: 1000 }, { path: "index.html", bytes: 10 }], config);
+  assert.deepEqual([result.total.bytes, result.total.files, result.onDemand.bytes, result.onDemand.files], [10, 1, 1000, 1]);
+});
+
+test("the pictures load only when a card or chip shows them: nothing at start, nothing imported into the bundle", () => {
+  // No preload names them, and no module imports a picture file (only the manifest's strings reach the bundle).
+  for (const file of ["src/render/preloadGameArt.ts", "scripts/checks/startupArtList.ts"]) assert.ok(!/event-?art/i.test(readFileSync(file, "utf8")), file);
+  for (const file of ["src/ui/eventArt.ts", "src/ui/storyArt.ts", "src/ui/hud/RegistryCard.tsx", "src/ui/eventArtManifest.generated.ts"]) {
+    assert.ok(!/import[^;]*\.(jpe?g|png|webp)["']/.test(readFileSync(file, "utf8")), file);
+  }
+  // The url is set as the card's (or chip's) background only when it renders.
+  assert.match(String(storyArtStyle("ck_evt_005", 64).backgroundImage), /^url\("\/?assets\/event-art\/ck_evt_005\.jpg"\)$/);
 });
 
 test("all 200 are in the manifest from their confirmed ledger rows; only the shipped are runtime assets with provenance", () => {

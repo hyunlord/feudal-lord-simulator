@@ -3,6 +3,8 @@
 // for a file no rule matches, listed by name) and compares them with the budgets. Categories, rules and budgets are
 // one data file, scripts/checks/distBudget.config.json: the first rule whose pattern matches a file's dist-relative
 // path decides its category. MB = 1,000,000 bytes. Fails (exit 1) when the total or a budgeted category is over.
+// EVENT-ART (user decision 2026-10-05): a category marked `onDemand` (the event pictures, loaded when their card opens)
+// is measured but left out of the total, which is the first load; the result's `onDemand` sums them.
 //   --dist <dir>  measure an existing build (default: dist)
 //   --build       build this checkout into a temporary folder with `vite build --outDir`, measure it, delete it
 //                 (the working tree's dist is left alone)
@@ -158,11 +160,14 @@ export function evaluateBudget(files, config) {
     if (rule === null) unmatched.push(file);
   }
   for (const category of categories) category.pass = category.budgetBytes === null || category.bytes <= category.budgetBytes;
-  const bytes = files.reduce((sum, file) => sum + file.bytes, 0);
+  const lazy = new Set(config.categories.filter(category => category.onDemand === true).map(category => category.id));
+  const later = categories.filter(category => lazy.has(category.id));
+  const onDemand = { bytes: later.reduce((sum, category) => sum + category.bytes, 0), files: later.reduce((sum, category) => sum + category.files, 0) };
+  const bytes = files.reduce((sum, file) => sum + file.bytes, 0) - onDemand.bytes;
   const totalBudget = toBytes(config.totalBudgetMB, config);
-  const total = { bytes, files: files.length, budgetBytes: totalBudget, pass: totalBudget === null || bytes <= totalBudget };
+  const total = { bytes, files: files.length - onDemand.files, budgetBytes: totalBudget, pass: totalBudget === null || bytes <= totalBudget };
   const over = [...(total.pass ? [] : ['total']), ...categories.filter(category => !category.pass).map(category => category.id)];
-  return { megabyte: config.megabyte, categories, total, unmatched, over, pass: over.length === 0 };
+  return { megabyte: config.megabyte, categories, total, onDemand, unmatched, over, pass: over.length === 0 };
 }
 
 const mb = (bytes, megabyte) => (bytes / megabyte).toFixed(2);
@@ -180,6 +185,7 @@ export function formatBudgetTable(result) {
     lines.push(`${name}${String(row.files).padStart(7)}${mb(row.bytes, megabyte).padStart(9)}${budget.padStart(9)}${headroom.padStart(10)}  ${row.budgetBytes === null ? '' : row.pass ? 'ok' : 'OVER'}`);
   }
   lines.push(`MB = ${megabyte.toLocaleString('en-US')} bytes`);
+  if (result.onDemand !== undefined && result.onDemand.files > 0) lines.push(`전체 = first load; on demand, not in it: ${result.onDemand.files} files ${mb(result.onDemand.bytes, megabyte)} MB`);
   const art = result.startupArt;
   if (art !== undefined && art !== null) {
     const world = memory => memory.byCategory.find(row => row.category === 'world')?.bytes ?? 0;
@@ -209,9 +215,12 @@ export function formatBudgetMarkdown(result, { sha, buildMs }) {
     '| 범주 | 파일 | 크기 | 예산 | 남은 폭 | 판정 |',
     '|---|---:|---:|---:|---:|---|',
   ];
-  for (const row of [...result.categories, { name: '**전체**', ...result.total }]) {
+  for (const row of [...result.categories, { name: '**전체(첫 로드)**', ...result.total }]) {
     const headroom = row.budgetBytes === null ? '—' : cell(row.budgetBytes - row.bytes);
     lines.push(`| ${row.name} | ${row.files} | ${cell(row.bytes)} | ${cell(row.budgetBytes)} | ${headroom} | ${row.budgetBytes === null ? '—' : row.pass ? '통과' : '초과'} |`);
+  }
+  if (result.onDemand !== undefined && result.onDemand.files > 0) {
+    lines.push('', `전체는 첫 로드다: 화면이 필요할 때만 불러오는 범주(사건 삽화, 카드가 열릴 때 — EVENT-ART 사용자 판정 2026-10-05) ${result.onDemand.files}개 ${cell(result.onDemand.bytes)}는 재기만 하고 뺀다.`);
   }
   lines.push('', '글꼴은 woff2만 싣는다(BUDGET-1b 판정 2026-09-28, Electron·최신 브라우저 대상): `scripts/woff2OnlyFonts.ts`가 @fontsource CSS의 woff 대체 경로를 빌드 전에 지운다.');
   lines.push('', '범주 안의 구성:', '');
