@@ -10,6 +10,7 @@ import { LORD_SLICE_SCENARIO_ID } from "../src/content/lordSliceConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
+import { treasuryBalance } from "../src/ledger/ledger";
 import { advanceTick } from "../src/engine/tick";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
@@ -39,6 +40,13 @@ function yearRow(state: GameState) {
     wall: state.palisade === null ? "none" : `${state.palisade.segments.filter(segment => segment.completed).length}/${state.palisade.segments.length}`,
     buildings: state.buildings.length, kinds, idleWorkers: state.idleWorkers,
     needs: walk?.needs.map(need => `${need.planner}:${need.action.kind}`) ?? [], proposals: walk?.proposals.length ?? 0,
+    // Why a town shrinks: households short of food, preparing to leave, gone (the house empty), and the town's stock.
+    foodShort: state.houses.filter(house => house.foodShortSinceTick !== undefined).length,
+    leaving: state.houses.filter(house => house.leavingSinceTick !== undefined && house.abandonedTick === undefined).length,
+    abandoned: state.houses.filter(house => house.abandonedTick !== undefined).length,
+    stock: Object.fromEntries(["wheat", "flour", "bread", "timber", "stone"].map(item => [item,
+      state.buildings.reduce((sum, building) => sum + ((building.inventory as Record<string, number | undefined>)[item] ?? 0), 0)])),
+    treasury: treasuryBalance(state),
   };
 }
 
