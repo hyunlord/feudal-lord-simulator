@@ -1,6 +1,6 @@
 # REGION 봄 4종 실제 DATA20
 
-**PASS WITH LIMITS — isolated runtime4 승격 적용 / post-promotion reference4·trunk 통합·publication PENDING.** BEFORE `442b71822c189a245877cc1da1af86831e19448a`, AFTER `bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d`. 원본20 각각의 PNG/JPEG 경로·SHA·capture identity·RGBA는 [raw20-index](raw20-index.json)에 있다. BEFORE18은 core-v1, 추가 chalk 여름·겨울 .6 두뷰는 core-reference2 실제 실행이다. 미래 HEAD는 null이다.
+**PASS WITH LIMITS — isolated runtime4 승격 및 post-promotion reference4 PASS / trunk 통합·publication PENDING.** BEFORE `442b71822c189a245877cc1da1af86831e19448a`, AFTER `bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d`. 원본20 각각의 PNG/JPEG 경로·SHA·capture identity·RGBA는 [raw20-index](raw20-index.json)에 있다. BEFORE18은 core-v1, 추가 chalk 여름·겨울 .6 두뷰는 core-reference2 실제 실행이다. 미래 HEAD는 null이다.
 
 | 검사 | 실제 결과 |
 |---|---|
@@ -24,4 +24,10 @@ repeat source 배열 미저장으로 repeat 새4 부재는 미관측이다. autu
 
 부모의 실제 DATA20·독립 native PASS·parent60PNG 검사에 대한 승인을 받아 `bd84351a` 작업본에서 N0411/N0412/N0413/N0418 provenance status4를 runtime으로, ledger installed_by4만 RENDER-B-REGION4로 변경했다. [promotion receipt](promotion.json)에 before/after SHA와 gate SHA를 고정했다. notes/verdict_note 및 그 외2432 provenance/6118 ledger literal행과 CRLF는 보존됐다. code/public/source를 포함한4289 보호 파일 SHA는 불변이다. 원래425 분모 설치 표기는 실제157개로 재집계했으며, 별도 runtime161 수치는 추정하지 않았다.
 
-이 변경은 격리 작업본 metadata 승격이며 새 PNG·제품 변경이나 게시 본선 설치 주장이 아니다. main 작업본의 HEATH B/C runtime은 건드리지 않았다. 과거 candidate/NOT_RUN receipt는 그대로 보존한다. post-promotion reference4, commit 및 trunk 통합·게시 관문은 아직 PENDING이다.
+이 변경은 격리 작업본 metadata 승격이며 새 PNG·제품 변경이나 게시 본선 설치 주장이 아니다. main 작업본의 HEATH B/C runtime은 건드리지 않았다. 과거 candidate/NOT_RUN receipt는 그대로 보존한다. 승격은 a5ae207a에 커밋됐다. 아래 후속 참조 검증까지 완료했으며 trunk 통합·게시 관문은 아직 PENDING이다.
+
+## 승격 뒤 실제 참조4
+
+`astra-region-promotion-reference-a5ae207`은 실제 a5ae207a의 tracked clean 입력에서 여름·겨울 × 줌1/.6 네 뷰를 재촬영했다. bd843 기준과 전체 저장된 capture identity·RGBA4 동일, A/A4·오류0·새 봄4 first-open paint 부재를 확인했다. 기존 계절 URL8쌍 request/decode/paint가 기록됐고 부모와 독립 검수자가 원본4를 각각 열었다. 신규 봄4의 양성 증명은 위 DATA20에 있으며 이 음성 참조로 대체하지 않는다.
+
+전후 guard는 tracked26,887/export입력27,186 및 freeze자체1/LFS6,384의 실제 바이트와 clean HEAD를 확인했다. 대기20.1초·실행66.6초, exit0. 외부 실행파일 기록은 같으며 OS·폰트·전체 외부 캐시 동등성은 주장하지 않는다. 반복 paint 부재·autumn·DPR2·자연 플레이는 미검증이다. [원실행 요약](reference4-raw-summary.json) · [부모 대조](reference4-parent-check.json) · [기존 JPEG 재사용과 원본 인덱스](reference4-run-index.json) · [독립 판정](region-promotion-reference-native-review.md). 기존 JPEG4와 새 JPEG4는 실제 SHA가 같아 파일을 중복하지 않았다.
