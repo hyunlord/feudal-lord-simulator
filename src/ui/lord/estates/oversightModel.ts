@@ -9,6 +9,7 @@ import { moneyFull } from "../../money.ko";
 import { lordPersonRow, type LordPersonRow } from "../screen/lordPortrait";
 import { ESTATES_COPY as COPY } from "./estatesCopy.ko";
 import { estateCards, type EstateCardView } from "./estatesModel";
+import { perState } from "../../perState";
 
 // LM-R2 (estates area, SW-8): the portfolio's operations — the attention (SW-1), each held estate's oversight with its
 // steward and candidates (SW-2, SW-3), the audit (SW-6), the season summaries (SW-7), the lord's exceptions (SW-5) and
@@ -163,7 +164,9 @@ export function rulesCommand(state: GameState, change: Partial<ExceptionRules>):
 export const ruleAmountStep = (amount: number | null, direction: -1 | 1): number | null =>
   amount === null ? null : Math.min(RULE_MAX, Math.max(RULE_MIN, amount + direction * RULE_STEP));
 
-export function portfolioView(state: GameState): PortfolioView {
+/** Once per state (`perState`): the 영지 screen re-renders on clock and UI events within a tick; this walks every estate,
+ * its oversight, candidates and eight summaries (0.3-0.8 ms on the lord2 states, Mac). It holds only text and ids. */
+export const portfolioView = perState((state: GameState): PortfolioView => {
   const cards = estateCards(state);
   const held = cards.filter(card => card.home || card.oversight !== null);
   const now = attentionView(state);
@@ -182,4 +185,4 @@ export function portfolioView(state: GameState): PortfolioView {
         line: COPY.petitionLine(names.get(petition.estateId) ?? petition.estateId, COPY.petitionKinds[petition.kind], moneyFull(petition.amount), days) };
     }),
   };
-}
+});

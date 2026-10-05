@@ -576,7 +576,8 @@ export function App() {
           onOpenLord={lord ? () => openLord() : undefined} /> : null}
         {/* LM-R2: the lord screens (lord mode only), a side panel in the slot: the town stays in view and runs. */}
         {lord && ui.mode === "lord" ? <LordScreen state={state} dispatch={dispatch} screen={lordView.screen} focus={lordView.focus}
-          onOpen={(screen, focus) => openLord(screen, focus ?? null)} onClose={() => sendUi({ type: "toggle_lord" })} onPerson={openPerson} /> : null}
+          onOpen={(screen, focus) => openLord(screen, focus ?? null)} onClose={() => sendUi({ type: "toggle_lord" })} onPerson={openPerson}
+          onDecide={modal => sendUi({ type: "push_modal", modal })} /> : null}
         <UnlockBanner text={tutorial.banner} />
         {tutorial.banner === null ? <UnlockBanner text={startHint} icon={false} /> : null}
         {toastVisible && completionToast !== null ? <div className="completion-toast" data-frame="toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>

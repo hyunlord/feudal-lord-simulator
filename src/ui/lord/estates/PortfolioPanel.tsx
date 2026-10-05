@@ -6,7 +6,8 @@ import { lordMode } from "../../../engine/townAgency";
 import type { GameAction } from "../../../state/gameStore.types";
 import { Button, Card, Toggle } from "../../kit";
 import { lordPersonRow, lordPortraitStyle, type LordPersonRow } from "../screen/lordPortrait";
-import type { LordNavGate, LordPanelProps } from "../screen/lordScreenTypes";
+import { DecideButton } from "../screen/DecideButton";
+import type { LordDecisionModal, LordNavGate, LordPanelProps } from "../screen/lordScreenTypes";
 import { useUiParts } from "../uiPartArt";
 import {
   ALERT_WIDTH, alertIconId, AUDIT_PICTURE_ID, AUDIT_PICTURE_WIDTH, ESTATE_OVERLAY_ID, ESTATE_PICTURE_WIDTH, estatePictureId, OFFICE_WIDTH, officeIconId,
@@ -21,7 +22,7 @@ import {
 // LM-R2 (estates area): the lord screen's 영지 — the portfolio (ES-10) and its operations (SW-8). The estates as a row of
 // choices; the chosen one's card (picture, title and possession, worth, burdens, pieces, grants, claims); a held estate's
 // oversight (mode, the keeper and candidates, the audit, the last eight seasons); the attention; the exceptions; the
-// petitions waiting for the lord (listed: their decision cards are the lead's). Every control sends the engine's own
+// petitions waiting for the lord (listed; the first of each kind opens its decision card, the lead's modals). Every control sends the engine's own
 // command; no button here is primary (the choices are equal, LR1-D2). A deep link's estateId selects its card.
 
 type Parts = ReturnType<typeof useUiParts>;
@@ -131,7 +132,11 @@ function Person({ row, parts, office }: { readonly row: CandidateRow; readonly p
   </div>;
 }
 
-function Oversight({ panel, parts, command }: { readonly panel: OversightPanel; readonly parts: Parts; readonly command: (action: GameAction) => void }): ReactElement {
+type Decide = LordPanelProps["onDecide"];
+
+function Oversight({ state, panel, parts, command, onDecide }: {
+  readonly state: GameState; readonly panel: OversightPanel; readonly parts: Parts; readonly command: (action: GameAction) => void; readonly onDecide: Decide;
+}): ReactElement {
   const picture = panel.pending === null ? null : parts.image(AUDIT_PICTURE_ID, AUDIT_PICTURE_WIDTH);
   return <section className="lord-estates-oversight" aria-label={`${panel.estateName} ${COPY.oversightHeading}`} data-oversight={panel.mode}>
     <h4>{COPY.oversightHeading}</h4>
@@ -159,6 +164,7 @@ function Oversight({ panel, parts, command }: { readonly panel: OversightPanel; 
       {picture === null ? null : <span className="lord-estates-audit-art" data-art="annual_audit" aria-hidden="true" style={picture} />}
       <p className="lord-estates-pending-head">{alert(parts, "deadline")}<strong>{COPY.auditPending}</strong></p>
       <p className="lord-estates-line">{panel.pending.line}</p>
+      <DecideButton state={state} modal="audit_decision" id={panel.pending.auditId} onDecide={onDecide} />
     </div>}
     <p className="lord-estates-line" data-last-audit="true">{COPY.lastAudit}: {panel.lastAudit === null ? COPY.noAuditYet : panel.lastAudit.line}</p>
     {panel.lastAudit?.found == null ? null : <p className="lord-estates-line">{panel.lastAudit.found}</p>}
@@ -200,17 +206,21 @@ function Rules({ state, view, command }: { readonly state: GameState; readonly v
   </section>;
 }
 
-function Petitions({ view, parts }: { readonly view: PortfolioView; readonly parts: Parts }): ReactElement {
+/** A petition's card: a home estate's is LM-R1's, an off-map estate's the LM-R2 one. */
+const petitionModal = (estateId: string): LordDecisionModal => estateId === HOME_ESTATE_ID ? "estate_petition" : "estate_petition_offmap";
+
+function Petitions({ state, view, parts, onDecide }: { readonly state: GameState; readonly view: PortfolioView; readonly parts: Parts; readonly onDecide: Decide }): ReactElement {
   return <section className="lord-estates-petitions" aria-label={COPY.petitionsHeading}>
     <h4>{COPY.petitionsHeading}</h4>
     {view.petitions.length === 0 ? <p className="lord-estates-line">{COPY.petitionsNone}</p>
       : <ul>{view.petitions.map(petition => <li key={petition.id} data-petition={petition.id} data-petition-estate={petition.estateId}>
         {petition.rights ? alert(parts, "rights") : null}{petition.days <= 30 ? alert(parts, "deadline") : null}<span>{petition.line}</span>
+        <DecideButton state={state} modal={petitionModal(petition.estateId)} id={petition.id} onDecide={onDecide} />
       </li>)}</ul>}
   </section>;
 }
 
-export function PortfolioPanel({ state, dispatch, focus }: LordPanelProps): ReactElement {
+export function PortfolioPanel({ state, dispatch, focus, onDecide }: LordPanelProps): ReactElement {
   const parts = useUiParts(PORTFOLIO_ART_IDS);
   const [selected, setSelected] = useState<string>(focus ?? HOME_ESTATE_ID);
   useEffect(() => { if (focus !== null) setSelected(focus); }, [focus]);
@@ -225,8 +235,8 @@ export function PortfolioPanel({ state, dispatch, focus }: LordPanelProps): Reac
     <Attention view={view} parts={parts} />
     <Picker cards={view.cards} selected={card.estateId} onSelect={setSelected} />
     <EstateCard state={state} card={card} parts={parts} />
-    {panel === null ? null : <Oversight panel={panel} parts={parts} command={command} />}
+    {panel === null ? null : <Oversight state={state} panel={panel} parts={parts} command={command} onDecide={onDecide} />}
     <Rules state={state} view={view} command={command} />
-    <Petitions view={view} parts={parts} />
+    <Petitions state={state} view={view} parts={parts} onDecide={onDecide} />
   </div>;
 }

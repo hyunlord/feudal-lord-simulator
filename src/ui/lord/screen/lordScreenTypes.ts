@@ -15,7 +15,12 @@ export type LordPanelProps = {
   /** Open another lord screen, optionally on one of its ids (a contested marriage → its suit; a map site → its estate card). */
   readonly onOpen: (screen: LordScreenId, focus?: string) => void;
   readonly onPerson: ((personId: string) => void) | undefined;
+  /** Open one of the lord's decision cards (the lead's modals; each shows the first waiting decision of its kind). */
+  readonly onDecide?: (modal: LordDecisionModal) => void;
 };
+
+/** The decision cards a lord screen can open: an audit's finding, a home estate's petition, an off-map estate's petition. */
+export type LordDecisionModal = "audit_decision" | "estate_petition" | "estate_petition_offmap";
 
 /** Whether the item opens: null, or the reason it is shut (player copy from a *.ko.ts), read from the game each render. */
 export type LordNavGate = (state: GameState) => string | null;

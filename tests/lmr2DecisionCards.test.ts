@@ -2,17 +2,22 @@ import assert from "node:assert/strict";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import test from "node:test";
+import { createElement } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 
 import { DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import type { GameState } from "../src/engine/engine.types";
 import { answerWillChange } from "../src/engine/marriage";
 import { diplomacyOf } from "../src/engine/negotiation";
-import { answerAudit, answerEstatePetition, pendingAudits } from "../src/engine/stewardship";
+import { answerAudit, answerEstatePetition, lordEstatePetitions, pendingAudits } from "../src/engine/stewardship";
 import { advanceTick } from "../src/engine/tick";
 import { treasuryBalance } from "../src/ledger/ledger";
 import { newGameState } from "../src/state/newGame";
 import { decisionModal } from "../src/ui/eventStory";
-import { auditDecisionView, marriageDecisionView, offMapPetitionView, openOffMapPetitions } from "../src/ui/lord/decisions/decisionCardsModel";
+import { auditDecisionHead, auditDecisionView, marriageDecisionView, offMapPetitionView, openOffMapPetitions } from "../src/ui/lord/decisions/decisionCardsModel";
+import { PortfolioPanel } from "../src/ui/lord/estates/PortfolioPanel";
+import { decidingId } from "../src/ui/lord/screen/DecideButton";
+import type { LordDecisionModal } from "../src/ui/lord/screen/lordScreenTypes";
 import { lordBeats } from "../src/ui/lordStoryBeats";
 
 // LM-R2: the lord's decision cards (the father's will, the contested inheritance, an audit's finding, an off-map
@@ -93,4 +98,21 @@ test("an off-map estate's petition gets its card; the home estate's keep LM-R1's
     assert.notEqual(offMapPetitionView(answerEstatePetition(state, view.petitionId, true))?.petitionId, view.petitionId, `${name}: answered, it goes`);
   }
   t.diagnostic(`${seen} of ${found.length} lord2 states hold an off-map petition`);
+});
+
+test("from the 영지 screen, the first waiting audit and petition open their cards; nothing without onDecide", t => {
+  const state = lord2("audit-pending");
+  if (state === null) { t.skip(NO_STATES); return; }
+  const opened: string[] = [];
+  const render = (onDecide?: (modal: LordDecisionModal) => void) => renderToStaticMarkup(createElement(PortfolioPanel,
+    { state, dispatch: () => undefined, focus: "estate-neighbour-3", onOpen: () => undefined, onPerson: undefined, ...(onDecide === undefined ? {} : { onDecide }) }));
+  const html = render(modal => opened.push(modal));
+  const audit = auditDecisionHead(state)!;
+  assert.match(html, new RegExp(`data-decide="audit_decision" data-decide-id="${audit.auditId}"`));
+  for (const petition of lordEstatePetitions(state)) {
+    const shown = decidingId(state, petition.estateId === "estate-home" ? "estate_petition" : "estate_petition_offmap");
+    if (shown === petition.id) assert.match(html, new RegExp(`data-decide-id="${petition.id}"`), petition.id);
+    else assert.doesNotMatch(html, new RegExp(`data-decide-id="${petition.id}"`), `${petition.id}: behind another`);
+  }
+  assert.doesNotMatch(render(), /data-decide=/, "no way to a card without the host's onDecide");
 });

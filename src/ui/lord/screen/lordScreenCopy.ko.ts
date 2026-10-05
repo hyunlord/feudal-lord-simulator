@@ -17,4 +17,7 @@ export const LORD_SCREEN_COPY = {
   /** The ledger drawer's lord tab: the way in. */
   open: "영주 집무 열기",
   openLabel: "영주 집무 열기: 영지·혼인·약속·지역 화면",
+  /** A waiting decision on a lord screen: its card opens; one behind another of its kind waits for that one first. */
+  decide: "결정하기",
+  decideAfter: "앞의 결정을 먼저 합니다",
 } as const;

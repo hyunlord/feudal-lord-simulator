@@ -38,7 +38,7 @@ export function shownScreen(state: GameState, asked: LordScreenId | null): LordS
   return open.find(item => item.id === asked)?.id ?? open[0]?.id ?? null;
 }
 
-export function LordScreen({ state, dispatch, screen, focus, onOpen, onClose, onPerson }: Omit<LordPanelProps, "focus"> & {
+export function LordScreen({ state, dispatch, screen, focus, onOpen, onClose, onPerson, onDecide }: Omit<LordPanelProps, "focus"> & {
   readonly screen: LordScreenId | null; readonly focus: string | null; readonly onClose: () => void;
 }): ReactElement {
   const parts = useUiParts(NAV_ICONS);
@@ -63,7 +63,7 @@ export function LordScreen({ state, dispatch, screen, focus, onOpen, onClose, on
         </nav>
         <section className="lord-screen-content" aria-label={shown === null ? COPY.title : COPY.labels[shown]}>
           {Panel === null ? <p className="lord-screen-empty">{COPY.none}</p>
-            : <Panel state={state} dispatch={dispatch} focus={shown === screen ? focus : null} onOpen={onOpen} onPerson={onPerson} />}
+            : <Panel state={state} dispatch={dispatch} focus={shown === screen ? focus : null} onOpen={onOpen} onPerson={onPerson} {...(onDecide === undefined ? {} : { onDecide })} />}
         </section>
       </div>
     </aside>

@@ -32,3 +32,7 @@
 
 /* LM-R2: the contested inheritance's one act (the way to the suit) under its line, as the cards' answers sit. */
 .lord-card .lord-decision-open { align-self: flex-start; margin-block: 8px 4px; }
+
+/* LM-R2: a waiting decision's way to its card on a lord screen (DecideButton), and the note on one that waits behind. */
+.lord-decide { align-self: flex-start; margin-block-start: 4px; }
+.lord-decide-after { display: block; margin-block-start: 4px; font-size: 12px; }
