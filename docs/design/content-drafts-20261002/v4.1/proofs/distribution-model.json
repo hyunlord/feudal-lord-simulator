@@ -1,0 +1,502 @@
+{
+  "kind": "assumption_based_editorial_sensitivity_model_NOT_world_simulation",
+  "notes": [
+    "q and context counts are not measured",
+    "selection includes competition and stale contexts, not validated",
+    "0.9 is an assumed spacing correction, not exact cooldown integration",
+    "new 011 neighbor appearances excluded; recalculate target after installation"
+  ],
+  "scenarios": [
+    {
+      "name": "low",
+      "selection": 0.25,
+      "categoryAdditions": {
+        "도시": 11.070767566637505,
+        "자연": 8.663562500000001,
+        "세력": 7.354885000000001
+      },
+      "lateAdditions": 13.182201020200004,
+      "rows": [
+        {
+          "id": "ck_evt_201",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.8
+          },
+          "additional125": 2.4525076228875027,
+          "additionalLate": 0
+        },
+        {
+          "id": "ck_evt_202",
+          "category": "도시",
+          "assumptions": {
+            "contexts": 20,
+            "reach": 0.8
+          },
+          "additional125": 4,
+          "additionalLate": 1.408
+        },
+        {
+          "id": "ck_evt_203",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 0.8167500000000003,
+          "additionalLate": 0.8167500000000003
+        },
+        {
+          "id": "ck_evt_204",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.5
+          },
+          "additional125": 1.3736250000000005,
+          "additionalLate": 1.3736250000000005
+        },
+        {
+          "id": "ck_evt_205",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.2
+          },
+          "additional125": 1.4172074437500015,
+          "additionalLate": 0.4988570202000005
+        },
+        {
+          "id": "ck_evt_206",
+          "category": "자연",
+          "assumptions": {
+            "contexts": 10
+          },
+          "additional125": 2.5,
+          "additionalLate": 0.88
+        },
+        {
+          "id": "ck_evt_207",
+          "category": "자연",
+          "assumptions": {
+            "q": 0.25
+          },
+          "additional125": 1.7578125,
+          "additionalLate": 0.61875
+        },
+        {
+          "id": "ck_evt_208",
+          "category": "자연",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 1.9057500000000003,
+          "additionalLate": 1.9057500000000003
+        },
+        {
+          "id": "ck_evt_209",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.15
+          },
+          "additional125": 1.0106775000000003,
+          "additionalLate": 0.2988090000000001
+        },
+        {
+          "id": "ck_evt_210",
+          "category": "자연",
+          "assumptions": {
+            "contexts": 10
+          },
+          "additional125": 2.5,
+          "additionalLate": 0.88
+        },
+        {
+          "id": "ck_evt_211",
+          "category": "세력",
+          "assumptions": {
+            "contexts": 4
+          },
+          "additional125": 1,
+          "additionalLate": 0.352
+        },
+        {
+          "id": "ck_evt_212",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 3.403125,
+          "additionalLate": 1.1979
+        },
+        {
+          "id": "ck_evt_213",
+          "category": "세력",
+          "assumptions": {
+            "contexts": 3
+          },
+          "additional125": 0.75,
+          "additionalLate": 0.75
+        },
+        {
+          "id": "ck_evt_214",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.15
+          },
+          "additional125": 0.14256000000000002,
+          "additionalLate": 0.14256000000000002
+        },
+        {
+          "id": "ck_evt_215",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.8
+          },
+          "additional125": 2.0592,
+          "additionalLate": 2.0592
+        }
+      ]
+    },
+    {
+      "name": "middle",
+      "selection": 0.4,
+      "categoryAdditions": {
+        "도시": 17.71322810662001,
+        "자연": 13.8617,
+        "세력": 11.767816000000002
+      },
+      "lateAdditions": 21.091521632320003,
+      "rows": [
+        {
+          "id": "ck_evt_201",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.8
+          },
+          "additional125": 3.924012196620004,
+          "additionalLate": 0
+        },
+        {
+          "id": "ck_evt_202",
+          "category": "도시",
+          "assumptions": {
+            "contexts": 20,
+            "reach": 0.8
+          },
+          "additional125": 6.4,
+          "additionalLate": 2.2528
+        },
+        {
+          "id": "ck_evt_203",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 1.3068000000000006,
+          "additionalLate": 1.3068000000000006
+        },
+        {
+          "id": "ck_evt_204",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.5
+          },
+          "additional125": 2.197800000000001,
+          "additionalLate": 2.197800000000001
+        },
+        {
+          "id": "ck_evt_205",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.2
+          },
+          "additional125": 2.2675319100000024,
+          "additionalLate": 0.7981712323200009
+        },
+        {
+          "id": "ck_evt_206",
+          "category": "자연",
+          "assumptions": {
+            "contexts": 10
+          },
+          "additional125": 4,
+          "additionalLate": 1.408
+        },
+        {
+          "id": "ck_evt_207",
+          "category": "자연",
+          "assumptions": {
+            "q": 0.25
+          },
+          "additional125": 2.8125,
+          "additionalLate": 0.9900000000000001
+        },
+        {
+          "id": "ck_evt_208",
+          "category": "자연",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 3.0492000000000004,
+          "additionalLate": 3.0492000000000004
+        },
+        {
+          "id": "ck_evt_209",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.15
+          },
+          "additional125": 1.6170840000000006,
+          "additionalLate": 0.47809440000000014
+        },
+        {
+          "id": "ck_evt_210",
+          "category": "자연",
+          "assumptions": {
+            "contexts": 10
+          },
+          "additional125": 4,
+          "additionalLate": 1.408
+        },
+        {
+          "id": "ck_evt_211",
+          "category": "세력",
+          "assumptions": {
+            "contexts": 4
+          },
+          "additional125": 1.6,
+          "additionalLate": 0.5632
+        },
+        {
+          "id": "ck_evt_212",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 5.445000000000001,
+          "additionalLate": 1.91664
+        },
+        {
+          "id": "ck_evt_213",
+          "category": "세력",
+          "assumptions": {
+            "contexts": 3
+          },
+          "additional125": 1.2000000000000002,
+          "additionalLate": 1.2000000000000002
+        },
+        {
+          "id": "ck_evt_214",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.15
+          },
+          "additional125": 0.22809600000000005,
+          "additionalLate": 0.22809600000000005
+        },
+        {
+          "id": "ck_evt_215",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.8
+          },
+          "additional125": 3.2947200000000003,
+          "additionalLate": 3.2947200000000003
+        }
+      ]
+    },
+    {
+      "name": "high",
+      "selection": 0.6,
+      "categoryAdditions": {
+        "도시": 26.569842159930012,
+        "자연": 20.79255,
+        "세력": 17.651723999999998
+      },
+      "lateAdditions": 31.63728244848001,
+      "rows": [
+        {
+          "id": "ck_evt_201",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.8
+          },
+          "additional125": 5.886018294930007,
+          "additionalLate": 0
+        },
+        {
+          "id": "ck_evt_202",
+          "category": "도시",
+          "assumptions": {
+            "contexts": 20,
+            "reach": 0.8
+          },
+          "additional125": 9.6,
+          "additionalLate": 3.3792
+        },
+        {
+          "id": "ck_evt_203",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 1.9602000000000008,
+          "additionalLate": 1.9602000000000008
+        },
+        {
+          "id": "ck_evt_204",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.5
+          },
+          "additional125": 3.2967000000000013,
+          "additionalLate": 3.2967000000000013
+        },
+        {
+          "id": "ck_evt_205",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.2
+          },
+          "additional125": 3.401297865000003,
+          "additionalLate": 1.1972568484800012
+        },
+        {
+          "id": "ck_evt_206",
+          "category": "자연",
+          "assumptions": {
+            "contexts": 10
+          },
+          "additional125": 6,
+          "additionalLate": 2.112
+        },
+        {
+          "id": "ck_evt_207",
+          "category": "자연",
+          "assumptions": {
+            "q": 0.25
+          },
+          "additional125": 4.21875,
+          "additionalLate": 1.4849999999999999
+        },
+        {
+          "id": "ck_evt_208",
+          "category": "자연",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 4.5738,
+          "additionalLate": 4.5738
+        },
+        {
+          "id": "ck_evt_209",
+          "category": "도시",
+          "assumptions": {
+            "q": 0.15
+          },
+          "additional125": 2.4256260000000007,
+          "additionalLate": 0.7171416000000002
+        },
+        {
+          "id": "ck_evt_210",
+          "category": "자연",
+          "assumptions": {
+            "contexts": 10
+          },
+          "additional125": 6,
+          "additionalLate": 2.112
+        },
+        {
+          "id": "ck_evt_211",
+          "category": "세력",
+          "assumptions": {
+            "contexts": 4
+          },
+          "additional125": 2.4,
+          "additionalLate": 0.8448
+        },
+        {
+          "id": "ck_evt_212",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.55
+          },
+          "additional125": 8.1675,
+          "additionalLate": 2.87496
+        },
+        {
+          "id": "ck_evt_213",
+          "category": "세력",
+          "assumptions": {
+            "contexts": 3
+          },
+          "additional125": 1.7999999999999998,
+          "additionalLate": 1.7999999999999998
+        },
+        {
+          "id": "ck_evt_214",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.15
+          },
+          "additional125": 0.342144,
+          "additionalLate": 0.342144
+        },
+        {
+          "id": "ck_evt_215",
+          "category": "세력",
+          "assumptions": {
+            "q": 0.8
+          },
+          "additional125": 4.94208,
+          "additionalLate": 4.94208
+        }
+      ]
+    }
+  ],
+  "baseline": [
+    {
+      "seed": 1,
+      "total": 63,
+      "byCategory": {
+        "이웃 가문": 28,
+        "교회": 14,
+        "가문 내부": 7,
+        "세력": 7,
+        "도시": 2,
+        "자연": 5
+      },
+      "early": 55,
+      "late": 8,
+      "source": "lm-e9b/runs/v4e-run-1.json"
+    },
+    {
+      "seed": 2,
+      "total": 59,
+      "byCategory": {
+        "이웃 가문": 33,
+        "가문 내부": 6,
+        "교회": 8,
+        "도시": 2,
+        "자연": 3,
+        "세력": 7
+      },
+      "early": 51,
+      "late": 8,
+      "source": "lm-e9b/runs/v4e-run-2.json"
+    },
+    {
+      "seed": 3,
+      "total": 74,
+      "byCategory": {
+        "도시": 2,
+        "이웃 가문": 31,
+        "자연": 6,
+        "가문 내부": 11,
+        "교회": 17,
+        "세력": 7
+      },
+      "early": 58,
+      "late": 16,
+      "source": "lm-e9b/runs/v4e-run-3.json"
+    }
+  ]
+}

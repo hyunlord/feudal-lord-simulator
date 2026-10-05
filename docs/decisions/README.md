@@ -463,7 +463,7 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | QA3-6 | 렌더 B 분리 전 시작한 작업 — 이후 세계 작업은 렌더 B (QA-003은 렌더 A의 마지막 세계 작업: 목책 개구부의 겹친 끝 말뚝, 돌 개구부의 gate_jamb_stone, 바위 재수정판) | 사용자 결정(2026-10-04) |
 | QA3-7 | QA-003: 곧은 목책 성문에는 겹기둥을 그리지 않음 — 성문 틀의 제 기둥이 개구부 양쪽에 서므로 겹침. 겹기둥은 성문 틀이 없는 곳에만: 모서리 성문의 두 팔 끝(대각 개구부의 양쪽)과 그림 없는 성문의 팔(`gateArtPostArms`: 축 밖 기둥이 없는 곧은 성문은 없음). QA3-1의 "곧은 성문의 두 팔"을 대체 | 사용자 결정(2026-10-05) |
 | QA3-8 | QA-003: 모서리 성문의 대각 개구부는 열린 채 두 기둥 사이의 통로로 읽힘(QA3-3) — 승인 | 사용자 결정(2026-10-05) |
-| LR1-D1 | LM-R1 Wave 38 seal_slot(UI-02): 설치했지만 그리는 곳 없음(키트가 `.build-seal`·`.speed-seal`에 `background: none`), installed_by 비움 — 은퇴할지 그릴 자리를 정할지 | 사용자 결정(2026-10-05): 은퇴 — global.css의 인장 슬롯 배경을 지움(LR1-D, 공개 파일은 UI 생성 묶음에 남음), 장부 행은 INBOX가 retired로 |
+| LR1-D1 | LM-R1 Wave 38 seal_slot(UI-02): 설치했지만 그리는 곳 없음(키트가 `.build-seal`·`.speed-seal`에 `background: none`), installed_by 비움 — 은퇴할지 그릴 자리를 정할지 | 결정 2026-10-05(사용자): **retired** — 장부 행 `wave41/candidates-20261002/assets/27-seal_slot-wave41-v1.png` 퇴역(INBOX-4a). 설치본·`global.css` 참조·`courtConsoleContracts` 고정 정리는 렌더 · 코드: global.css의 건설·속도 인장 뒤 seal_slot 배경을 지움(LR1-D, 공개 파일은 UI 생성 묶음에 남음) |
 | LR1-D2 | LM-R1 Wave 38: 건설 서랍 카드는 키트 기본(primary) — 어두운 참나무에 밝은 글자(양피지는 `BuildMenu.tsx` secondary) | 사용자 결정(2026-10-05): 서랍 카드는 보조(양피지), 주 버튼은 화면마다 가장 중요한 행동 하나만(LR1-D) |
 | LR1-D3 | LM-R1 영주관: Wave 12 A/B·빈 영주관 그림을 모든 모드에 씀(RUN-01 자리 그림 버그가 모든 모드에 있었음, 빈 영주관은 5장 결말 그림) | 사용자 승인(2026-10-05) |
 | LR1-D4 | LM-R1 영주관: 엔진 2×2 발자국(채움 0.87)으로 그림 — Astra 그림은 3×3 기준, 발자국을 바꾸면 엔진 넘김 | 사용자 결정(2026-10-05): 발자국 3×3 — 엔진 요청 docs/requests/engine-lr1d-manor-house.md |
