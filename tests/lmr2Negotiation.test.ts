@@ -56,6 +56,7 @@ test("the empty draft: no terms (the engine's refusal), the consent row alone, t
   assert.ok(view.bride !== null);
   assert.equal(view.last, null);
   assert.equal(view.seal, "empty");
+  assert.ok(!/de [A-Z]|Fitz/.test(view.houses), `the houses in Korean: ${view.houses}`);
 });
 
 test("every edit's preview is the engine's: impossible, close and likely by clauses alone", () => {
