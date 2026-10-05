@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "lord-ledger",
+  "entries": [
+    {
+      "id": "lord.ledger.ledger_book",
+      "kind": "ui-frame",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/ledger_book.png",
+        "width": 768,
+        "height": 512
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/ledger_book.png",
+        "sourceSha256": "2a5205f5cb450813014d03ce105c13857f1ae7127b3669f2ab6582940303e040",
+        "runtimeSha256": "2a5205f5cb450813014d03ce105c13857f1ae7127b3669f2ab6582940303e040"
+      },
+      "slice": {
+        "top": 72,
+        "right": 72,
+        "bottom": 72,
+        "left": 72
+      },
+      "scale": 0.375,
+      "contentInset": {
+        "top": 72,
+        "right": 72,
+        "bottom": 72,
+        "left": 72
+      },
+      "centre": "fill",
+      "repeat": "stretch"
+    },
+    {
+      "id": "lord.ledger.ledger_spine",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/ledger_spine.png",
+        "width": 24,
+        "height": 384
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/ledger_spine.png",
+        "sourceSha256": "c362c599e75dcfee5fd17f92cf14ad5d458ba26789a36adb2fbd933a5bad26a2",
+        "runtimeSha256": "c362c599e75dcfee5fd17f92cf14ad5d458ba26789a36adb2fbd933a5bad26a2"
+      },
+      "cssWidths": [
+        24
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.promise_active",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/promise_active.png",
+        "width": 64,
+        "height": 64
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_active.png",
+        "sourceSha256": "cef311cd372f54cc75e87dc8f66ed0eb615a55cf4fe5ee812ecb1e075ddf789f",
+        "runtimeSha256": "cef311cd372f54cc75e87dc8f66ed0eb615a55cf4fe5ee812ecb1e075ddf789f"
+      },
+      "cssWidths": [
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.promise_due",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/promise_due.png",
+        "width": 64,
+        "height": 64
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_due.png",
+        "sourceSha256": "2b69f532987007e9639eb6b2ceedd1330088a275cf7a3801ef989985022eb47c",
+        "runtimeSha256": "2b69f532987007e9639eb6b2ceedd1330088a275cf7a3801ef989985022eb47c"
+      },
+      "cssWidths": [
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.promise_kept",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/promise_kept.png",
+        "width": 64,
+        "height": 64
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_kept.png",
+        "sourceSha256": "f9c388ba345e0ba0e67a28a54171bf67c9c6110dde61ed3328ae742d62c83259",
+        "runtimeSha256": "f9c388ba345e0ba0e67a28a54171bf67c9c6110dde61ed3328ae742d62c83259"
+      },
+      "cssWidths": [
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.promise_broken",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/promise_broken.png",
+        "width": 64,
+        "height": 64
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/promise_broken.png",
+        "sourceSha256": "4019cb7e43c35794f4540e0b69300870b3718d5421614b64622b979884cce96d",
+        "runtimeSha256": "4019cb7e43c35794f4540e0b69300870b3718d5421614b64622b979884cce96d"
+      },
+      "cssWidths": [
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.deadline_marker",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/deadline_marker.png",
+        "width": 64,
+        "height": 64
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/deadline_marker.png",
+        "sourceSha256": "eb9cdc22a28b4c969a970bf0b76854b64699570f87561009416f6b4660220ef5",
+        "runtimeSha256": "eb9cdc22a28b4c969a970bf0b76854b64699570f87561009416f6b4660220ef5"
+      },
+      "cssWidths": [
+        24
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.witness_seal",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/witness_seal.png",
+        "width": 64,
+        "height": 64
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/witness_seal.png",
+        "sourceSha256": "749f53e93e0a6b623281a38e80cb5215a1022b97a5a97a3509f5b94d4526589b",
+        "runtimeSha256": "749f53e93e0a6b623281a38e80cb5215a1022b97a5a97a3509f5b94d4526589b"
+      },
+      "cssWidths": [
+        24
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.debt_note",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/lord-ui/wave35-promises/debt_note.png",
+        "width": 128,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/C_promises/debt_note.png",
+        "sourceSha256": "23a2bf0b8584dfce71fa1365f0a2ae3ccd3ceba5c6cd2e366ced217b337e7c61",
+        "runtimeSha256": "23a2bf0b8584dfce71fa1365f0a2ae3ccd3ceba5c6cd2e366ced217b337e7c61"
+      },
+      "cssWidths": [
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "lord.ledger.litigation_track",
+      "kind": "ui-frame",
+      "image": {
+        "url": "assets/lord-ui/wave35-operations/litigation_track.png",
+        "width": 640,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave35/candidates-20260930/assets/D_operations/litigation_track.png",
+        "sourceSha256": "d58284acf4511c21ab6111a4b7c6882f6735aa50698ddc31fe50b67ca253943d",
+        "runtimeSha256": "d58284acf4511c21ab6111a4b7c6882f6735aa50698ddc31fe50b67ca253943d"
+      },
+      "slice": {
+        "top": 20,
+        "right": 72,
+        "bottom": 20,
+        "left": 72
+      },
+      "scale": 0.5,
+      "contentInset": {
+        "top": 20,
+        "right": 72,
+        "bottom": 20,
+        "left": 72
+      },
+      "centre": "fill",
+      "repeat": "stretch"
+    }
+  ],
+  "rules": []
+}
