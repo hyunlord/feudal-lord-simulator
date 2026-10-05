@@ -130,14 +130,14 @@ export function LedgerPanel({ state, dispatch, focus }: LordPanelProps): ReactEl
         <header className="lord-ledger-heading"><h3>{COPY.promisesHeading}</h3><span className="lord-ledger-treasury" data-treasury="true">{view.treasury}</span></header>
         {view.promises.none ? <p className="lord-ledger-empty" data-empty="promises">{COPY.noPromises}</p> : null}
         <div className="lord-ledger-book" data-frame={book?.dataFrame ?? "light"} data-book-art={book === null ? "none" : "ledger_book"} style={book?.style}>
-          <div className="lord-ledger-page" data-page="open">
+          <div className="lord-ledger-leaf" data-leaf="open">
             <h4>{COPY.openPage}</h4>
             {view.promises.open.length === 0 ? <p className="lord-ledger-empty">{COPY.noOpen}</p>
               : <ul className="lord-ledger-promises">{view.promises.open.map(row => <PromiseItem key={row.id} row={row} parts={parts} onKeep={keep} />)}</ul>}
           </div>
           <span className="lord-ledger-spine" aria-hidden="true" data-spine-art={spine === null ? "none" : "ledger_spine"}
             style={spine === null ? undefined : { ...spine, height: "auto" }} />
-          <div className="lord-ledger-page" data-page="past">
+          <div className="lord-ledger-leaf" data-leaf="past">
             <h4>{COPY.pastPage}</h4>
             {view.promises.past.length === 0 ? <p className="lord-ledger-empty">{COPY.noPast}</p>
               : <ul className="lord-ledger-promises">{view.promises.past.map(row => <PromiseItem key={row.id} row={row} parts={parts} onKeep={keep} />)}</ul>}

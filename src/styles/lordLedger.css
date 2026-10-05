@@ -23,7 +23,7 @@
   background-color: var(--palette-vellum); min-height: 120px;
 }
 .app-shell .lord-ledger-book[data-book-art="ledger_book"] { background-color: transparent; }
-.app-shell .lord-ledger-page { display: grid; align-content: start; gap: 8px; min-width: 0; }
+.app-shell .lord-ledger-leaf { display: grid; align-content: start; gap: 8px; min-width: 0; }
 .app-shell .lord-ledger-spine { width: 24px; min-height: 100%; justify-self: center; border-left: 1px solid var(--palette-parchment-dark); border-right: 1px solid var(--palette-parchment-dark); box-sizing: border-box; }
 .app-shell .lord-ledger-spine[data-spine-art="ledger_spine"] { border: 0; }
 .app-shell .lord-ledger-promises { display: grid; gap: 10px; }

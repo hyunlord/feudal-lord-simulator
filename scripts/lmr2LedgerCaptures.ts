@@ -84,7 +84,7 @@ const facts = (page: Page) => page.evaluate(() => {
       deadline: li.querySelector(".lord-ledger-deadline")?.textContent ?? null, deadlineMark: bg(li.querySelector(".lord-ledger-deadline .lord-ledger-inline-icon")),
       dueToday: li.querySelector(".lord-ledger-deadline")?.getAttribute("data-due-today") ?? null,
       keep: li.querySelector(".lord-ledger-keep") === null ? null : (li.querySelector(".lord-ledger-keep") as HTMLButtonElement).disabled ? "shut" : "open",
-      page: li.closest(".lord-ledger-page")?.getAttribute("data-page") ?? null })),
+      page: li.closest(".lord-ledger-leaf")?.getAttribute("data-leaf") ?? null })),
     suits: [...(root?.querySelectorAll(".lord-ledger-suit") ?? [])].map(li => ({ id: li.getAttribute("data-suit"), stage: li.getAttribute("data-stage"), neighbour: li.getAttribute("data-neighbour"),
       now: li.querySelector(".lord-ledger-step[data-at='now']")?.textContent ?? null, track: li.querySelector(".lord-ledger-track")?.getAttribute("data-frame") ?? null,
       trackArt: getComputedStyle(li.querySelector(".lord-ledger-track")!).borderImageSource.match(/lord-ui\/[^")]+/)?.[0] ?? null,
@@ -166,7 +166,7 @@ await view("p4-due-today", P("promise-due-today"), null, {}, async (opened, seen
   if (due === undefined) return;
   const before = await engine(opened.page);
   await opened.page.locator(`[data-keep='${due.id}']`).first().click();
-  const { seen: after, game } = await again(opened, "p5-kept-now", ".lord-ledger-page[data-page='past']");
+  const { seen: after, game } = await again(opened, "p5-kept-now", ".lord-ledger-leaf[data-leaf='past']");
   const moved = Object.keys(before.promises).filter(id => before.promises[id] !== game.promises[id]);
   expect("p5-kept-now", moved.length === 1 && moved[0] === due.id && game.promises[due.id!] === "kept", `moved ${JSON.stringify(moved)} → ${game.promises[due.id!]}`);
   expect("p5-kept-now", after.promises.find(row => row.id === due.id)?.state === "kept" && after.promises.find(row => row.id === due.id)?.keep === null, "the kept row has no button");
