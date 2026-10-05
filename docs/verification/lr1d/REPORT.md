@@ -23,7 +23,8 @@
 - 주 버튼으로 남는 것(그 화면의 가장 중요한 행동 하나): 시작 화면의 영주 모드, 시대 선포, 다시 짓기, 장려금 걸기, 이어서(일시 정지·계절 결산), 결정하기(사건 카드), 튜토리얼 카드의 행동, 목표 고정의 행동, 도시 요청의 받아들임, 연대기 책 넘기기·결말의 책 열기, 장 미리보기 계속, 식량 분해의 가장 급한 곳.
 
 ## 3. D1 인장 슬롯 은퇴
-- `global.css`의 건설·속도 인장 뒤 `seal_slot` 배경을 지웠다(키트의 Wave 38 그림이 인장을 그림). 계약 시험은 이제 그것이 없음을 고정한다. 공개 파일은 UI 생성 묶음(검증·생성 시험)에 남는다. 장부 행은 INBOX가 retired로.
+- `global.css`의 건설·속도 인장 뒤 `seal_slot` 배경을 지웠다(키트의 Wave 38 그림이 인장을 그림). 계약 시험은 이제 그것이 없음을 고정한다.
+- 장부 행은 INBOX-4a가 retired로 했고 설치본 정리를 렌더에 넘겼다: `public/assets/ui/seal_slot.png`(LM-R1이 덮어쓴 Wave 41 재작업)와 그 출처 행을 지우고 런타임 목록(`provenanceLedgerAssets.ts`)에서 뺐다 — ASSET-2가 다른 넷을 은퇴시킨 방식. Phase 13 생성기·검사기의 키 목록은 기록으로 남는다.
 
 ## 4. D5 홈 청원 카드의 문장 원
 - 프레임의 빈 원(왼쪽 위)에 영주 가문의 문장 — 영주권 화면이 그리는 것과 같은 문장(`lordHouseArms`). 기하 줄 셋이 원을 프레임 칸으로 잰다.
@@ -38,4 +39,4 @@
 - **Mac**: 타입 검사 깨끗, ESLint(`tools/eslint`) 바꾼 파일 깨끗, 시험: 시작 화면(`landPicker`·`onboardingUi`: 영주 모드 맨 앞·주 버튼 하나·"처음이라면"·목표 연수 없는 두 줄, 시작 뒤 한 줄의 저장소), 계약(`courtConsoleContracts`: seal_slot 없음), 홈 청원 문장 원(`lmr1Petitions`), 바꾼 화면의 이웃 시험 192개.
 - **기하 감사**(DGX LR1D-geom-68b456c): 바뀐 화면 — screen.welcome, modal.chapter-loading, hud.build-drawer(+습지), hud.placement-confirm, hud.steward-bubble, hud.goal-chips, hud.unlock-banner, slot.ledger.steward, modal.famine, modal.petition.*, modal.lord.*, hud.time-cluster(속도 인장 뒤 배경) — 454칸 실패 0·열지 못함 0·새 실패 0.
 - **깨끗한 클론**(DGX LR1D-clone-a5233a8): 4,889/4,889, 타입, 빌드.
-- **ui-geometry 덮어쓰기 1**: 사유 — LR1-D가 바꾼 화면 전부를 68b456cb에서 재 454칸 실패 0·열지 못함 0; 그 뒤 커밋은 캡처 스크립트의 출력 폴더 인자·캡처·보고서뿐; 깨끗한 클론 4,889/4,889.
+- **ui-geometry 덮어쓰기 1**: 사유 — LR1-D가 바꾼 화면 전부를 68b456cb에서 재 454칸 실패 0·열지 못함 0; 그 뒤 커밋은 캡처 스크립트의 출력 폴더 인자·캡처·보고서와 아무 화면도 그리지 않는 seal_slot.png 삭제뿐; 깨끗한 클론 4,889/4,889.

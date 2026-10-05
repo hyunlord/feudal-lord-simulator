@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ASSET-2 (2026-09-28): four of this Phase 13 generator's five outputs (scroll_frame, wood_console, parchment_texture,
 # illumination_corner) are retired from the runtime — no screen has drawn them since UI-KIT-1 — and their files are
-# gone from public/assets/ui; seal_slot is the one still in use. The tool and its fixture tests stay as the record.
+# gone from public/assets/ui; seal_slot followed (LR1-D1, 2026-10-05). The tool and its fixture tests stay as the record.
 from __future__ import annotations
 
 import argparse
