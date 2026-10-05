@@ -1,3 +1,4 @@
+import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import { BALANCE } from "../../../content/balanceConfig";
 import { ACCEPT_THETA, DEBT_INSTALMENT_MAX_YEARS, JOINTURE_PIECES, PROMISE_SUPPORT_TICKS } from "../../../content/diplomacyConfig";
 import { GROOM_RELATION_KO } from "../../../content/historyCopy.ko";
@@ -229,7 +230,10 @@ export type TimelineView = Readonly<{
 export type NegotiationScreenView = DraftView | CounterView | TimelineView;
 
 function houses(state: GameState): string {
-  return COPY.houses(lordshipOf(state).house.name, counterpartEstate(state, COUNTERPART)?.house?.name ?? COPY.theirHouseFallback);
+  // Houses by their Korean reading (GENTRY_NAMES_KO, the registry card's and the other lord screens' rule).
+  const ko = (name: string) => GENTRY_NAMES_KO[name] ?? name;
+  const theirs = counterpartEstate(state, COUNTERPART)?.house?.name;
+  return COPY.houses(ko(lordshipOf(state).house.name), theirs === undefined ? COPY.theirHouseFallback : ko(theirs));
 }
 
 export function draftView(state: GameState, draft: Draft): DraftView {
