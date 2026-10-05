@@ -10,7 +10,8 @@
 //    lord's house (no arms in the engine, offer-countered) keeps its base empty;
 //  - the world visible behind the panel (the town canvas to its left);
 //  - the map's zoom apart from the town's (the town camera's zoom unchanged by the map's zoom steps);
-//  - labels ≥ 12 px at the fitted scale; touch targets ≥ 44 px (48 on the tablet); 1024 × 768, the tablet, DPR 2;
+//  - labels ≥ 12 px at the fitted scale; touch targets ≥ 44 px (48 where the page reports a coarse pointer: the screens'
+//    48 px rules are `(pointer: coarse)`, which Playwright's hasTouch alone may not set); 1024 × 768, the tablet, DPR 2;
 //  - a map picture that fails: the plain map with the estates on it, one request, no reload.
 //   scripts/remote/run.sh render-LMR2-region-<sha7> -- bash scripts/lmr2RegionCaptures.sh
 //   (PLAYWRIGHT_MODULE=… node_modules/.bin/tsx scripts/lmr2RegionCaptures.mjs <out> --url <url> --states <dir>)
@@ -40,9 +41,12 @@ const shoot = async (page, selector, name, quality = 45) => {
   else await page.locator(selector).first().screenshot({ path, type: 'jpeg', quality });
   const size = statSync(path).size; bytes += size; shots[name] = size; return size;
 };
-const open = (state, options = {}) => openScene(browser, { state, tile: houseTile(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
-  query: '&story-delay=600000', loadTimeout: 90_000, zoom: 1.1, ...options });
-const mapRequests = page => page.evaluate(map => performance.getEntriesByType('resource').filter(entry => entry.name.includes(map)).length, MAP);
+const open = async (state, options = {}) => { const opened = await openScene(browser, { state, tile: houseTile(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
+  query: '&story-delay=600000', loadTimeout: 90_000, zoom: 1.1, ...options }); countMap(opened.page); return opened; };
+// The map's requests, counted by the browser context (the page's resource timing buffer fills with the town's art first).
+const requested = new WeakMap();
+const mapRequests = page => requested.get(page) ?? 0;
+const countMap = page => page.on('request', request => { if (request.url().includes(MAP)) requested.set(page, (requested.get(page) ?? 0) + 1); });
 const townZoom = page => page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.diagnosis().camera.zoom);
 /** Dock → ledger → lord tab → the way in; then the region item. */
 async function openRegion(page) {
@@ -86,7 +90,7 @@ const read = page => page.evaluate(async ({ panel, map }) => {
     rows: [...root.querySelectorAll('.lord-region-row')].map(row => [row.getAttribute('data-region-row'), row.querySelector('dd')?.textContent ?? '']),
     note: root.querySelector('.lord-region-note')?.textContent ?? null,
     smallestText: Math.min(...texts.map(el => parseFloat(getComputedStyle(el).fontSize))), smallestTarget: Math.min(...targets),
-    primaries: root.querySelectorAll('.lord-region .ui-btn--primary').length, titles: root.querySelectorAll('[title]').length };
+    coarse: matchMedia('(pointer: coarse)').matches, primaries: root.querySelectorAll('.lord-region .ui-btn--primary').length, titles: root.querySelectorAll('[title]').length };
 }, { panel: PANEL, map: MAP });
 const choose = async (page, estate) => { await page.locator(`.lord-region-site[data-region-estate='${estate}']`).first().click(); await page.waitForTimeout(400); return read(page); };
 const rows = {};
@@ -103,7 +107,7 @@ const NO_SCREEN = ['character', 'dynasty', 'council', 'petitions', 'military'];
   for (const [flag, estate] of [['direct', 'estate-home'], ['delegated', 'estate-neighbour-3'], ['neighbour', 'estate-neighbour-1']]) {
     const shown = await choose(page, estate);
     chosen[flag] = { estate, chosen: shown.chosen, flag: shown.markers.find(marker => marker.estate === estate)?.flag ?? null, rows: shown.rows };
-    await shoot(page, '.lord-region', `chosen-${flag}`, 45);
+    await shoot(page, PANEL, `chosen-${flag}`, 45);
   }
   const zoomBefore = await townZoom(page);
   await page.locator("[data-region-zoom-step='full']").first().click(); await page.waitForTimeout(700);
@@ -144,7 +148,7 @@ const NO_SCREEN = ['character', 'dynasty', 'council', 'petitions', 'military'];
   const { context, page } = await open(scene('attention-overloaded'));
   const opened = await openRegion(page);
   const shown = await choose(page, 'estate-neighbour-3');
-  await shoot(page, '.lord-region', 'chosen-direct-offmap', 45);
+  await shoot(page, PANEL, 'chosen-direct-offmap', 45);
   const marker = shown.markers.find(entry => entry.estate === 'estate-neighbour-3');
   rows.overloaded = { opened, marker, rows: shown.rows, ok: opened.art && marker?.flag === 'direct' && marker.flagArt === 'flag_direct_64x96.png' && shown.chosen === 'estate-neighbour-3' };
   console.log(`${rows.overloaded.ok ? 'ok ' : 'BAD'} overloaded: ${JSON.stringify({ flag: marker?.flag, art: marker?.flagArt })}`);
@@ -183,8 +187,8 @@ for (const [name, options, minTarget] of [['1024x768', { width: 1024, height: 76
   const shown = await read(page);
   await shoot(page, name === 'dpr2' ? '.lord-region-map' : null, `region-${name}`, name === 'dpr2' ? 40 : 45);
   const overlaps = shown.markers.flatMap((a, i) => shown.markers.slice(i + 1).filter(b => a.box.left < b.box.left + b.box.width && b.box.left < a.box.left + a.box.width && a.box.top < b.box.top + b.box.height && b.box.top < a.box.top + a.box.height).map(b => [a.estate, b.estate]));
-  rows[name] = { opened, panel: shown.panel, inside: shown.inside, world: shown.worldLeftOfPanel, smallestText: shown.smallestText, smallestTarget: shown.smallestTarget, overlaps,
-    ok: opened.art && shown.inside && shown.worldLeftOfPanel >= 264 && shown.smallestText >= 12 && shown.smallestTarget >= minTarget && overlaps.length === 0 };
+  rows[name] = { opened, panel: shown.panel, minTarget, inside: shown.inside, world: shown.worldLeftOfPanel, smallestText: shown.smallestText, smallestTarget: shown.smallestTarget, overlaps,
+    coarse: shown.coarse, ok: opened.art && shown.inside && shown.worldLeftOfPanel >= 264 && shown.smallestText >= 12 && shown.smallestTarget >= (shown.coarse ? minTarget : 44) && overlaps.length === 0 };
   console.log(`${rows[name].ok ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify(rows[name])}`);
   await context.close();
 }
@@ -197,7 +201,7 @@ for (const [name, options, minTarget] of [['1024x768', { width: 1024, height: 76
   await page.locator('.lord-region-note').first().waitFor({ timeout: 15_000 }).catch(() => undefined);
   await page.waitForTimeout(3_000);
   const shown = await choose(page, 'estate-neighbour-3');
-  await shoot(page, '.lord-region', 'map-missing', 40);
+  await shoot(page, PANEL, 'map-missing', 40);
   rows.missing = { requests, map: shown.map, note: shown.note, markers: shown.markers.length, chosen: shown.chosen,
     ok: shown.map === 'plain' && shown.note !== null && shown.markers.length === 4 && shown.chosen === 'estate-neighbour-3' && requests <= 1 };
   console.log(`${rows.missing.ok ? 'ok ' : 'BAD'} missing map: ${JSON.stringify(rows.missing)}`);

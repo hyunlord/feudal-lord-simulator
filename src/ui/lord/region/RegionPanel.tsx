@@ -66,6 +66,9 @@ export function RegionPanel({ state, focus, onOpen }: LordPanelProps): ReactElem
   const line = chosen === null ? null : regionChosen(state, chosen);
   const size = map.entry?.coordinateSpace ?? { width: 1600, height: 1000 };
   const scroller = useRef<HTMLDivElement | null>(null);
+  const chosenLine = useRef<HTMLElement | null>(null);
+  // A press on the map shows the chosen estate's line (it sits under the map; the screen scrolls only as far as needed).
+  const choose = (estateId: string) => { setChosen(estateId); requestAnimationFrame(() => chosenLine.current?.scrollIntoView({ block: "nearest" })); };
   // A zoom keeps the chosen estate (or the home) in the middle of the map's view.
   const centred = chosen ?? estates.find(view => view.home)?.estateId ?? null;
   const centre = estates.find(view => view.estateId === centred)?.slot?.site ?? null;
@@ -87,18 +90,18 @@ export function RegionPanel({ state, focus, onOpen }: LordPanelProps): ReactElem
       <div className="lord-region-map" ref={scroller} role="group" aria-label={COPY.map} data-region-map={map.url === null ? "plain" : "art"}>
         <div className="lord-region-canvas" style={{ width: zoom === "fit" ? "100%" : MAP_WIDTH[zoom], aspectRatio: `${size.width} / ${size.height}`,
           backgroundImage: map.url === null ? undefined : `url("${map.url}")` }}>
-          {placed.map(view => <Marker key={view.estateId} view={view} scale={MARKER_SCALE[zoom]} chosen={chosen === view.estateId} parts={parts} size={size} onChoose={setChosen} />)}
+          {placed.map(view => <Marker key={view.estateId} view={view} scale={MARKER_SCALE[zoom]} chosen={chosen === view.estateId} parts={parts} size={size} onChoose={choose} />)}
         </div>
       </div>
       {map.failed ? <p className="lord-region-note">{COPY.noPicture}</p> : null}
       {listed.length === 0 ? null : <div className="lord-region-listed">
         {listed.map(view => <Button key={view.estateId} type="button" variant="toggle" size="sm" className="lord-region-site-listed" data-region-estate={view.estateId}
-          data-region-flag={view.flag} aria-pressed={chosen === view.estateId} onPress={() => setChosen(view.estateId)}>{view.label}</Button>)}
+          data-region-flag={view.flag} aria-pressed={chosen === view.estateId} onPress={() => choose(view.estateId)}>{view.label}</Button>)}
       </div>}
       <ul className="lord-region-keys" aria-label={COPY.legend}>
         {(["direct", "delegated", "neighbour"] as const).map(flag => <FlagKey key={flag} flag={flag} parts={parts} />)}
       </ul>
-      <section className="lord-region-chosen" aria-label={COPY.chosen} data-region-chosen={line?.estateId ?? "none"}>
+      <section ref={chosenLine} className="lord-region-chosen" aria-label={COPY.chosen} data-region-chosen={line?.estateId ?? "none"}>
         {line === null ? <p className="lord-region-pick">{COPY.pick}</p> : <>
           <h4>{line.name}</h4>
           <dl className="lord-region-rows">
