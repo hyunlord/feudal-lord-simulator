@@ -174,7 +174,7 @@ export function clearedTreeTileKeys(
   return keys;
 }
 
-function isTreeCandidate(tile: Tile, clearedTiles: ReadonlySet<string>): boolean {
+export function isTreeCandidate(tile: Tile, clearedTiles: ReadonlySet<string>): boolean {
   return (
     tile.buildingId === null &&
     !tile.hasRoad &&

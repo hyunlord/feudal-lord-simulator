@@ -1,0 +1,37 @@
+{
+  "commit": "6685d294cde689a2fefe00785f8b87ff89697c66",
+  "location": "DGX",
+  "cloneRun": "astra-NAT3-merged-clone-6685d294-6685d29",
+  "geometryRun": "astra-NAT3-merged-geometry-6685d294-6685d29",
+  "clonePassed": true,
+  "typecheckPassed": true,
+  "buildPassed": true,
+  "tests": {
+    "tests": 4997,
+    "pass": 4997,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "geometry": {
+    "inputHash": "ccf728567f9d9f7ccfdb29bd115b593b712f78a0ee087b1a34d00123cbf55199",
+    "measured": 2262,
+    "conditions": 2262,
+    "failures": 0,
+    "unopened": 0,
+    "warnings": 693,
+    "baseline": {
+      "entries": 0,
+      "counted": 0,
+      "excepted": 0,
+      "exceptions": 0,
+      "added": 0,
+      "fixed": 0
+    },
+    "measuredAt": "2026-10-05T14:49:27.308Z"
+  },
+  "mergeCheck": "recorded in publication ZIP after final commit",
+  "captureHead": "fbdb5cddb441f4ffc40e34262fbba2ef3907df45",
+  "worldRendererChangesSinceCapture": false,
+  "uiChangesSinceCapture": "EVENT-ART upstream d041e9ff merged; combined-head clone and geometry verified"
+}

@@ -1,0 +1,1412 @@
+{
+  "head": "461dd5e118d34199d6f3fa375ee54abb4c98e52b",
+  "rawSHA256": "68e026c2721b70888a12f5e656db0a9d6e4eb5bb682545b233d4544531969740",
+  "errors": [
+    "summer-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "autumn-early-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "autumn-late-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "falling-leaves-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "falling-leaves-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "falling-leaves-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+  ],
+  "views": [
+    {
+      "name": "summer",
+      "zoom": 1,
+      "saveSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+      "tick": 21000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-021000.save.json",
+        "sourceSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 21000,
+          "screenshotEndTick": 21000,
+          "stateSHA256": "efac255d78a1bd0299002dfb4181d21359c6dcfe9c076c40edc3f1ad8965c66a",
+          "stateFile": "summer-z1-000.state.json",
+          "png": "summer-z1-000.png",
+          "jpeg": "summer-z1-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "e73a487f3c439f87872c573d02219c43d3c966e56f5c73301a8cc19bd762d5c9"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "summer",
+      "zoom": 0.6,
+      "saveSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+      "tick": 21000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-021000.save.json",
+        "sourceSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 21000,
+          "screenshotEndTick": 21000,
+          "stateSHA256": "efac255d78a1bd0299002dfb4181d21359c6dcfe9c076c40edc3f1ad8965c66a",
+          "stateFile": "summer-z0.6-000.state.json",
+          "png": "summer-z0.6-000.png",
+          "jpeg": "summer-z0.6-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "02b42740a02ef7a34910588e26025eb81b1c3f8a0437ecee093408a5bc8ab502"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "winter",
+      "zoom": 1,
+      "saveSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+      "tick": 23000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-023000.save.json",
+        "sourceSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 23000,
+          "screenshotEndTick": 23000,
+          "stateSHA256": "36e7c3df7499595c86d30081dfd7dfb560443dc6f3a658c26af120542e4621af",
+          "stateFile": "winter-z1-000.state.json",
+          "png": "winter-z1-000.png",
+          "jpeg": "winter-z1-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "806eb336fcdada326229acb48ecde012b6ef93c2a1e5b25c255327721b54edb9"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "winter",
+      "zoom": 0.6,
+      "saveSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+      "tick": 23000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-023000.save.json",
+        "sourceSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 23000,
+          "screenshotEndTick": 23000,
+          "stateSHA256": "36e7c3df7499595c86d30081dfd7dfb560443dc6f3a658c26af120542e4621af",
+          "stateFile": "winter-z0.6-000.state.json",
+          "png": "winter-z0.6-000.png",
+          "jpeg": "winter-z0.6-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "de39a5fa54cf5db8be06ad6663f12b0c5447d2f0beb361f63b8b971a6d43514c"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-early",
+      "zoom": 1,
+      "saveSHA256": "c735d66e0154dbac1caa114f13e8782bb34e02eecc499ef9c5eda97942e5c95e",
+      "tick": 22100,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 100,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22100,
+          "screenshotEndTick": 22100,
+          "stateSHA256": "dbf58c782a1c5a246ff56799fce895196e28f1da9eb9e4e045782356d6c4fa44",
+          "stateFile": "autumn-early-z1-000.state.json",
+          "png": "autumn-early-z1-000.png",
+          "jpeg": "autumn-early-z1-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "642644ee1540b3f23c082187d5a7dd73f1a1af095b9d60c35521a4cf90b1a1df"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-early",
+      "zoom": 0.6,
+      "saveSHA256": "c735d66e0154dbac1caa114f13e8782bb34e02eecc499ef9c5eda97942e5c95e",
+      "tick": 22100,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 100,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22100,
+          "screenshotEndTick": 22100,
+          "stateSHA256": "dbf58c782a1c5a246ff56799fce895196e28f1da9eb9e4e045782356d6c4fa44",
+          "stateFile": "autumn-early-z0.6-000.state.json",
+          "png": "autumn-early-z0.6-000.png",
+          "jpeg": "autumn-early-z0.6-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "040d43a0ea9caec6b187d98fcd99e660ef799cecab0053f04204057c31978b24"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-late",
+      "zoom": 1,
+      "saveSHA256": "caad060d007dc332d7c640bef17907834b97d6771bc9993ad216d39545b7d4d9",
+      "tick": 22850,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 850,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22850,
+          "screenshotEndTick": 22850,
+          "stateSHA256": "3f08584e8fbb512e8c6caaae48a5983c4990cf10285c1e55025d29ad966f2acf",
+          "stateFile": "autumn-late-z1-000.state.json",
+          "png": "autumn-late-z1-000.png",
+          "jpeg": "autumn-late-z1-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "bcd9a76cd694131ef87a0043b081932fb406885d39f9803cec30421e6e10f9fa"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-late",
+      "zoom": 0.6,
+      "saveSHA256": "caad060d007dc332d7c640bef17907834b97d6771bc9993ad216d39545b7d4d9",
+      "tick": 22850,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 850,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22850,
+          "screenshotEndTick": 22850,
+          "stateSHA256": "3f08584e8fbb512e8c6caaae48a5983c4990cf10285c1e55025d29ad966f2acf",
+          "stateFile": "autumn-late-z0.6-000.state.json",
+          "png": "autumn-late-z0.6-000.png",
+          "jpeg": "autumn-late-z0.6-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "2e2e66eebb7e3e9d09ccb14dfa7950b95e859fa8d8dd8db1d209eb90082d19b1"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "falling-leaves",
+      "zoom": 1,
+      "saveSHA256": "448872d1c9e13900e6d6db67c403e463cafe07fb432c4380925a615082961464",
+      "tick": 22300,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 300,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22300,
+          "screenshotEndTick": 22300,
+          "stateSHA256": "e92307eaa932ae2cff5dea22f0c832142237723c6ee1a6892e32f72e13dabc08",
+          "stateFile": "falling-leaves-z1-000.state.json",
+          "png": "falling-leaves-z1-000.png",
+          "jpeg": "falling-leaves-z1-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "a25db2137668c01091f53a74f8c6aa1c0cb06a5520e7d52de590550591249a54"
+        },
+        {
+          "index": 1,
+          "tick": 22313,
+          "screenshotEndTick": 22324,
+          "stateSHA256": "7c10ce4cb55bc8519f20e62c848f5d94b9d581a3ad117bb4468864979cf4412b",
+          "stateFile": "falling-leaves-z1-001.state.json",
+          "png": "falling-leaves-z1-001.png",
+          "jpeg": "falling-leaves-z1-001.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "6ca86eedd1db274d7162655420dd7af1a976d50ac389b0f15013dae196ef8f36"
+        },
+        {
+          "index": 2,
+          "tick": 22325,
+          "screenshotEndTick": 22335,
+          "stateSHA256": "a955d93ad73d223359417d77534f0bb86ec6a5a56e0d4efdb034193e5914099a",
+          "stateFile": "falling-leaves-z1-002.state.json",
+          "png": "falling-leaves-z1-002.png",
+          "jpeg": "falling-leaves-z1-002.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "1b7a6d856fdc9c8436931998a18782ed7933dfab662f6fa32b8ebaca7a7c0325"
+        },
+        {
+          "index": 3,
+          "tick": 22336,
+          "screenshotEndTick": 22346,
+          "stateSHA256": "eddb3a2f9336fb4d315cf63c54b5f2d17b17d0d6c4aa62d5ade9ec6666e66617",
+          "stateFile": "falling-leaves-z1-003.state.json",
+          "png": "falling-leaves-z1-003.png",
+          "jpeg": "falling-leaves-z1-003.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "a81d94910d20fe16c2974955c2926cbf49b3e4065222e575fbf9bceca712fa8f"
+        },
+        {
+          "index": 4,
+          "tick": 22347,
+          "screenshotEndTick": 22357,
+          "stateSHA256": "c0d6b189f57c71abacd536cb35e229357ab5d96791a7b2368d26c6247d0f3265",
+          "stateFile": "falling-leaves-z1-004.state.json",
+          "png": "falling-leaves-z1-004.png",
+          "jpeg": "falling-leaves-z1-004.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "49ba9c31c5e3ed76fc9dac578b8d58bea27f9637eadd9f515114b5711b2873d5"
+        },
+        {
+          "index": 5,
+          "tick": 22359,
+          "screenshotEndTick": 22369,
+          "stateSHA256": "177633244fef7c9236476317a8c895afc63c129b38d501aa415f2a7a26cce0cf",
+          "stateFile": "falling-leaves-z1-005.state.json",
+          "png": "falling-leaves-z1-005.png",
+          "jpeg": "falling-leaves-z1-005.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "97f12ea06b952b97da37b167f635d35d946a238ad0232d339a0e973beadde7cd"
+        },
+        {
+          "index": 6,
+          "tick": 22371,
+          "screenshotEndTick": 22379,
+          "stateSHA256": "6425843ea6a458820b95e79f438ad55cfb1715e9493dbbb18fdc55c2841f3f60",
+          "stateFile": "falling-leaves-z1-006.state.json",
+          "png": "falling-leaves-z1-006.png",
+          "jpeg": "falling-leaves-z1-006.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "8cbc72707b6c0d3edd1b48346bdb53c694d803317a57776fa1a5d5b95ffc00c3"
+        },
+        {
+          "index": 7,
+          "tick": 22381,
+          "screenshotEndTick": 22396,
+          "stateSHA256": "31e82d16209e76a5afa6ecb2d4f9c4f4f56209a3b68f8ca7f6d82bfd7620142b",
+          "stateFile": "falling-leaves-z1-007.state.json",
+          "png": "falling-leaves-z1-007.png",
+          "jpeg": "falling-leaves-z1-007.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "3841596b97e2482b7e697e0f997fcfe6e86df9626f1d0e0db5a2ba1d279bcc95"
+        },
+        {
+          "index": 8,
+          "tick": 22398,
+          "screenshotEndTick": 22408,
+          "stateSHA256": "05791891eca99cd0ac33de608d1dcc2bd24435a09cdf2e47027dd528fddd022d",
+          "stateFile": "falling-leaves-z1-008.state.json",
+          "png": "falling-leaves-z1-008.png",
+          "jpeg": "falling-leaves-z1-008.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "497f32efdfa8dcd0519281aaa01f31710cad24d2aaba6b8c5bf3d7974fa3b705"
+        },
+        {
+          "index": 9,
+          "tick": 22410,
+          "screenshotEndTick": 22421,
+          "stateSHA256": "2a92d4cb088cb74933109d1631e492e6bf66f2e26719db37d78c31918fe8fd4f",
+          "stateFile": "falling-leaves-z1-009.state.json",
+          "png": "falling-leaves-z1-009.png",
+          "jpeg": "falling-leaves-z1-009.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "3544f6e6680125a31ed197e274b11e87df5e57c92bcf996dc7c08aac3553556e"
+        },
+        {
+          "index": 10,
+          "tick": 22423,
+          "screenshotEndTick": 22431,
+          "stateSHA256": "c642a78a978e03e94cb9204529559041f9c6d33c67959531c5bd4c30515bf785",
+          "stateFile": "falling-leaves-z1-010.state.json",
+          "png": "falling-leaves-z1-010.png",
+          "jpeg": "falling-leaves-z1-010.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "6b4aa25dd93d706d804ee9af5fb4fc56988822421666fd237586155d64463520"
+        },
+        {
+          "index": 11,
+          "tick": 22432,
+          "screenshotEndTick": 22441,
+          "stateSHA256": "a1d89b6dd6b7ffdb7e525b22704460f9c812b10ae514d7a418e27e275fb85f61",
+          "stateFile": "falling-leaves-z1-011.state.json",
+          "png": "falling-leaves-z1-011.png",
+          "jpeg": "falling-leaves-z1-011.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "d6da6241a90f38c552adcf26b4936f44cd5f84c3ccb077a790bdd57edf52c971"
+        },
+        {
+          "index": 12,
+          "tick": 22443,
+          "screenshotEndTick": 22453,
+          "stateSHA256": "2434bd2ead2d12ed3aeec8b6c4187b0f4a64ec6b2290f52b137bed203d73fc93",
+          "stateFile": "falling-leaves-z1-012.state.json",
+          "png": "falling-leaves-z1-012.png",
+          "jpeg": "falling-leaves-z1-012.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "d65ebdc03de0bfb42b347c2d41cb00f83907e933acbedcd6b284cda16b8b6110"
+        },
+        {
+          "index": 13,
+          "tick": 22454,
+          "screenshotEndTick": 22462,
+          "stateSHA256": "6b4f0278da487d3d4dc390f98d4955451001e93be572a69db66b2200c01f640d",
+          "stateFile": "falling-leaves-z1-013.state.json",
+          "png": "falling-leaves-z1-013.png",
+          "jpeg": "falling-leaves-z1-013.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "61fad50de057f2de9ea3263fa936aacd6b3b2cb10bd65be49455bc78407a19a1"
+        },
+        {
+          "index": 14,
+          "tick": 22469,
+          "screenshotEndTick": 22480,
+          "stateSHA256": "4e18bd44f1c2602fa6b1683d813bf63546890828eb4ac6a5d285ef61bc554bd8",
+          "stateFile": "falling-leaves-z1-014.state.json",
+          "png": "falling-leaves-z1-014.png",
+          "jpeg": "falling-leaves-z1-014.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "52b49ddf995642802800162a0f1ef396e59ef1f45c4de9d27a5d24ab5ccc0ce8"
+        },
+        {
+          "index": 15,
+          "tick": 22482,
+          "screenshotEndTick": 22492,
+          "stateSHA256": "ecfdac1e95d82eb089db271edfa224f0a77e63350cce20daa8c24987a4d3a496",
+          "stateFile": "falling-leaves-z1-015.state.json",
+          "png": "falling-leaves-z1-015.png",
+          "jpeg": "falling-leaves-z1-015.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "f0ba7afb68a9030671f45e72e908560a7a580856eb84a51103b61f4145eb7577"
+        },
+        {
+          "index": 16,
+          "tick": 22494,
+          "screenshotEndTick": 22504,
+          "stateSHA256": "0e19a4513adb98601d20c9508b25070338a96df671e06392030bab3c246f9145",
+          "stateFile": "falling-leaves-z1-016.state.json",
+          "png": "falling-leaves-z1-016.png",
+          "jpeg": "falling-leaves-z1-016.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "7ea5e5d2bd4ab22eb266211a6d50e1203a6b30ae617e5492a3a653befc5de675"
+        },
+        {
+          "index": 17,
+          "tick": 22506,
+          "screenshotEndTick": 22514,
+          "stateSHA256": "e0a038dbd5982a7f3c1726af83e30815334b9d7aa70d17bad7ec8bb4d9b83ee1",
+          "stateFile": "falling-leaves-z1-017.state.json",
+          "png": "falling-leaves-z1-017.png",
+          "jpeg": "falling-leaves-z1-017.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "b8626f1af5485507de6e62b6b418a58d6e498048a98ce942de8f770b677c52bf"
+        },
+        {
+          "index": 18,
+          "tick": 22516,
+          "screenshotEndTick": 22525,
+          "stateSHA256": "24ef5acf9f3d0bd21dbd1024ef27e34111b845a94f4dca7aa0ce924090caa084",
+          "stateFile": "falling-leaves-z1-018.state.json",
+          "png": "falling-leaves-z1-018.png",
+          "jpeg": "falling-leaves-z1-018.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "000cc397d28d15770c23095b36125bc5ffe6bbaff881d5a695920698fe321bb5"
+        },
+        {
+          "index": 19,
+          "tick": 22527,
+          "screenshotEndTick": 22536,
+          "stateSHA256": "82539cf0b1c13664b4b39ccf41bea411ae9e7434875b649ef148eee9ca9b0c99",
+          "stateFile": "falling-leaves-z1-019.state.json",
+          "png": "falling-leaves-z1-019.png",
+          "jpeg": "falling-leaves-z1-019.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "d49558a86cd248bd8927b6cf0f02d9d1178a5aa9461390ca0a577fd6b5e6935a"
+        },
+        {
+          "index": 20,
+          "tick": 22538,
+          "screenshotEndTick": 22552,
+          "stateSHA256": "eafbd0c52eaa983cf79a695dfe9daeb4174c5f3a12233c546eae6a5f976da99b",
+          "stateFile": "falling-leaves-z1-020.state.json",
+          "png": "falling-leaves-z1-020.png",
+          "jpeg": "falling-leaves-z1-020.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "6d89bd18ba1708eac98163923ae7bad56084a62765096e27edb5ee140a14ee40"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "rain-band",
+      "zoom": 1,
+      "saveSHA256": "d5d7b5c1bd82fa93b7eb83c4aa68eb3102aead29a6bf87df56e3b2e9a85844e2",
+      "tick": 20550,
+      "weather": "wet",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-020000.save.json",
+        "sourceSHA256": "7f745cc2f58a33a49d74c54be9491c3844a2ca3214c8f4ad9f7925347aeaca6a",
+        "engineTicks": 550,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 20550,
+          "screenshotEndTick": 20550,
+          "stateSHA256": "c5be6e717642e652c5b5dd282ddddab161e668a7d187ff29b82b3ecab1092126",
+          "stateFile": "rain-band-z1-000.state.json",
+          "png": "rain-band-z1-000.png",
+          "jpeg": "rain-band-z1-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "9636d1a0633f01e47ee8474c4eca450d4721defd1ed03f1c93327feaf2228f33"
+        },
+        {
+          "index": 1,
+          "tick": 20560,
+          "screenshotEndTick": 20568,
+          "stateSHA256": "a690281e1934f93400858fc72bd2a6ee1cee2154e7047d977a279c1f2c9baf27",
+          "stateFile": "rain-band-z1-001.state.json",
+          "png": "rain-band-z1-001.png",
+          "jpeg": "rain-band-z1-001.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "10ee0af3226adcf5a57621464f15c1c76a210e49e63ac137d2134cd50b5d49bf"
+        },
+        {
+          "index": 2,
+          "tick": 20570,
+          "screenshotEndTick": 20577,
+          "stateSHA256": "b211607808d13cc17197515618870e209c66d839122e36344b7ee18d0b262575",
+          "stateFile": "rain-band-z1-002.state.json",
+          "png": "rain-band-z1-002.png",
+          "jpeg": "rain-band-z1-002.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "978cb964992f65ae02468a65d30f19197975ee99caf49a97b971207ff28fc0b1"
+        },
+        {
+          "index": 3,
+          "tick": 20580,
+          "screenshotEndTick": 20587,
+          "stateSHA256": "5b0234b708c263cf26a27c391a9e2cfc5023da81054b81036306e0a345aecf2e",
+          "stateFile": "rain-band-z1-003.state.json",
+          "png": "rain-band-z1-003.png",
+          "jpeg": "rain-band-z1-003.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "008d5b7ea2ed2816ac390e2e7d2d2132e0ef64cd5e6bfe0880471078c10ab8fd"
+        },
+        {
+          "index": 4,
+          "tick": 20590,
+          "screenshotEndTick": 20599,
+          "stateSHA256": "37bf5142a157024f0b0f9377260381aca4f26414c652738f0fd33e31ba94c1cf",
+          "stateFile": "rain-band-z1-004.state.json",
+          "png": "rain-band-z1-004.png",
+          "jpeg": "rain-band-z1-004.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "d8d59a5ca10f44ad20f376364b2fb72930761a42e2729351cd91d22ae3107c28"
+        },
+        {
+          "index": 5,
+          "tick": 20600,
+          "screenshotEndTick": 20608,
+          "stateSHA256": "2377ef16a4a12e62732e2dfd3c32049fb07b590e452b6463b44c0c550928573a",
+          "stateFile": "rain-band-z1-005.state.json",
+          "png": "rain-band-z1-005.png",
+          "jpeg": "rain-band-z1-005.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "896915a108872432f80706001080c111101522010fbbde4ab0de68868593d313"
+        },
+        {
+          "index": 6,
+          "tick": 20610,
+          "screenshotEndTick": 20617,
+          "stateSHA256": "b35360b28889d2b1965ace1468b62d5b9b8bdb7970ba0bdccb3ea8ec3be7bce8",
+          "stateFile": "rain-band-z1-006.state.json",
+          "png": "rain-band-z1-006.png",
+          "jpeg": "rain-band-z1-006.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "55c2681cf8add113396201aa61dab245481a2b591867b61d2b1283f610e3a6a2"
+        },
+        {
+          "index": 7,
+          "tick": 20620,
+          "screenshotEndTick": 20627,
+          "stateSHA256": "ed9ece87aeeaf586eec18149fbf834e4c978029639d16dd1c23419f8009fe864",
+          "stateFile": "rain-band-z1-007.state.json",
+          "png": "rain-band-z1-007.png",
+          "jpeg": "rain-band-z1-007.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "8819915bc518a270ba1029f9f1786ddfe593570679508697aee3ab58f01ba14e"
+        },
+        {
+          "index": 8,
+          "tick": 20630,
+          "screenshotEndTick": 20637,
+          "stateSHA256": "3b6319c3927e841f4a464d7d4ca25039875da572125f3589d5c81723986d0d21",
+          "stateFile": "rain-band-z1-008.state.json",
+          "png": "rain-band-z1-008.png",
+          "jpeg": "rain-band-z1-008.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "907001182ac50856a23d8ec14aa33ba3b0ece2783f55e4da28f3803567053e1f"
+        },
+        {
+          "index": 9,
+          "tick": 20640,
+          "screenshotEndTick": 20646,
+          "stateSHA256": "114bccea46b9b58ef097297025d2783dff3de70d8fbd55c7d511fb99398c7356",
+          "stateFile": "rain-band-z1-009.state.json",
+          "png": "rain-band-z1-009.png",
+          "jpeg": "rain-band-z1-009.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "cf714c55db7b11d54d2bb99d4a5a0c00a7f703a0a5d908e44c7db8d5e3d2ec3d"
+        },
+        {
+          "index": 10,
+          "tick": 20650,
+          "screenshotEndTick": 20656,
+          "stateSHA256": "e23da6156c928e7333c954cdff75c2c034b5d7d5fcf076f68a03b56ca25cfdcb",
+          "stateFile": "rain-band-z1-010.state.json",
+          "png": "rain-band-z1-010.png",
+          "jpeg": "rain-band-z1-010.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "f715aadecef5a0f691164913d4f100fdb878b4efb67d13a3f553e5b912a61bd7"
+        },
+        {
+          "index": 11,
+          "tick": 20660,
+          "screenshotEndTick": 20668,
+          "stateSHA256": "c2645082bcce4c74c0b69b63642dcde2f828b27506b63fb3fed49331ab3f6450",
+          "stateFile": "rain-band-z1-011.state.json",
+          "png": "rain-band-z1-011.png",
+          "jpeg": "rain-band-z1-011.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "9b3913652e1be4555ead786e0915b2b10ef0761d9c20d878a7a87422f4a167b5"
+        },
+        {
+          "index": 12,
+          "tick": 20670,
+          "screenshotEndTick": 20677,
+          "stateSHA256": "409cdad930b21bf5fc7a844fcc7c6decbb0ea8d763229e2a5d0e85eaf89104a3",
+          "stateFile": "rain-band-z1-012.state.json",
+          "png": "rain-band-z1-012.png",
+          "jpeg": "rain-band-z1-012.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "44da44d2449903135ee6f141b1f689f21112cbf211c4526e99c3e48c51d159a5"
+        },
+        {
+          "index": 13,
+          "tick": 20680,
+          "screenshotEndTick": 20688,
+          "stateSHA256": "991fd0296eff5ffff29373fd05167a5338ddb45a966afc9f832bcd065bd916b1",
+          "stateFile": "rain-band-z1-013.state.json",
+          "png": "rain-band-z1-013.png",
+          "jpeg": "rain-band-z1-013.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "38352a889c1b22e0ad5d1e3f45ab506ac9a2b804dc314af1f882eb1c4c685c3c"
+        },
+        {
+          "index": 14,
+          "tick": 20690,
+          "screenshotEndTick": 20697,
+          "stateSHA256": "47c659c17941baf2ede31f2df461193e79e400c53312ac6f308b01e023556b16",
+          "stateFile": "rain-band-z1-014.state.json",
+          "png": "rain-band-z1-014.png",
+          "jpeg": "rain-band-z1-014.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "03cfcfe1710f2effb3dcb93b72133dcddb916cbf314a1eaf0f4d4a0dc89dd854"
+        },
+        {
+          "index": 15,
+          "tick": 20700,
+          "screenshotEndTick": 20707,
+          "stateSHA256": "13fa9682cd2f3e647e0aeab1ea3580e911b57acfa498e42efaa9c68558d7ce3e",
+          "stateFile": "rain-band-z1-015.state.json",
+          "png": "rain-band-z1-015.png",
+          "jpeg": "rain-band-z1-015.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "b40077f7d0bee19675320a881d7b21627519f5ae31d3a17ec02eac5b09d2e49d"
+        },
+        {
+          "index": 16,
+          "tick": 20710,
+          "screenshotEndTick": 20716,
+          "stateSHA256": "8c5bd019a7b29a143236642ee0ce58a2965b9bd68194501095c3bca8883a23cf",
+          "stateFile": "rain-band-z1-016.state.json",
+          "png": "rain-band-z1-016.png",
+          "jpeg": "rain-band-z1-016.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "4314641b068d82478822f12bc8f90be519dc82ed51cbff4ebf373768a4aad181"
+        },
+        {
+          "index": 17,
+          "tick": 20720,
+          "screenshotEndTick": 20727,
+          "stateSHA256": "7af0154b6f3c6af53db617a375e390ebebe86fbff8761f7f37eef7e6e5176eb9",
+          "stateFile": "rain-band-z1-017.state.json",
+          "png": "rain-band-z1-017.png",
+          "jpeg": "rain-band-z1-017.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "6bcddd35c7cf5280aa0fdb139db7d8a4c2f84be8cbf0b5fae5d0bc919d1ccc97"
+        },
+        {
+          "index": 18,
+          "tick": 20730,
+          "screenshotEndTick": 20739,
+          "stateSHA256": "7e6ad5e54d76f6d11d25ec78cbc61f83c872396a600a4e2625d97a02ac992ea0",
+          "stateFile": "rain-band-z1-018.state.json",
+          "png": "rain-band-z1-018.png",
+          "jpeg": "rain-band-z1-018.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "d488122148a5d5408dc4bf027cbf618481fda161e828de73da3424038628184d"
+        },
+        {
+          "index": 19,
+          "tick": 20740,
+          "screenshotEndTick": 20748,
+          "stateSHA256": "03f9a7079628ad8db367a083f9fe0d2c2d1fdefb4ba470aa682bb215863d7fe2",
+          "stateFile": "rain-band-z1-019.state.json",
+          "png": "rain-band-z1-019.png",
+          "jpeg": "rain-band-z1-019.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "30b3896adcfd1b914927b784ecb8b213b0d4de32ae06c50337612923ef526719"
+        },
+        {
+          "index": 20,
+          "tick": 20750,
+          "screenshotEndTick": 20757,
+          "stateSHA256": "61c895f4a7295423791cc6b44650fd242b3ac238aac86c09d14a76f1167041f5",
+          "stateFile": "rain-band-z1-020.state.json",
+          "png": "rain-band-z1-020.png",
+          "jpeg": "rain-band-z1-020.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "0571bdba04d48d5bf30a9790c01229fe40233c88d16f09a5723f22a45efa0746"
+        }
+      ],
+      "interaction": {
+        "paused": {
+          "tick": 20759,
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 640,
+            "clientY": 400
+          }
+        },
+        "held": {
+          "tick": 20759,
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 640,
+            "clientY": 400
+          }
+        },
+        "zoomed": {
+          "tick": 20759,
+          "camera": {
+            "zoom": 1.1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 640,
+            "clientY": 400
+          }
+        },
+        "panned": {
+          "tick": 20759,
+          "camera": {
+            "zoom": 1.1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 719.9999999999999,
+            "clientY": 430
+          }
+        },
+        "resumed": {
+          "tick": 20761,
+          "camera": {
+            "zoom": 1.1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 719.9999999999999,
+            "clientY": 430
+          }
+        },
+        "screenshot": "rain-band-z1-interaction.jpg",
+        "method": "actual UI speed buttons, mouse wheel, middle-button drag; proof port read-only"
+      }
+    },
+    {
+      "name": "rain-band",
+      "zoom": 0.6,
+      "saveSHA256": "d5d7b5c1bd82fa93b7eb83c4aa68eb3102aead29a6bf87df56e3b2e9a85844e2",
+      "tick": 20550,
+      "weather": "wet",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-020000.save.json",
+        "sourceSHA256": "7f745cc2f58a33a49d74c54be9491c3844a2ca3214c8f4ad9f7925347aeaca6a",
+        "engineTicks": 550,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 20550,
+          "screenshotEndTick": 20550,
+          "stateSHA256": "c5be6e717642e652c5b5dd282ddddab161e668a7d187ff29b82b3ecab1092126",
+          "stateFile": "rain-band-z0.6-000.state.json",
+          "png": "rain-band-z0.6-000.png",
+          "jpeg": "rain-band-z0.6-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "0d7f68745ca887f2b69139ce36a577a82d01b0d3cd569415267d3c262a7739b4"
+        },
+        {
+          "index": 1,
+          "tick": 20560,
+          "screenshotEndTick": 20572,
+          "stateSHA256": "a690281e1934f93400858fc72bd2a6ee1cee2154e7047d977a279c1f2c9baf27",
+          "stateFile": "rain-band-z0.6-001.state.json",
+          "png": "rain-band-z0.6-001.png",
+          "jpeg": "rain-band-z0.6-001.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "baa0c2ce82ae5be3005e7ccd3e55d696e0f28ce5dfac67d1a5fb48f0a353d842"
+        },
+        {
+          "index": 2,
+          "tick": 20574,
+          "screenshotEndTick": 20586,
+          "stateSHA256": "c425f021f750c2c0bb1e566c30bd45b3f9508172965bf9403bdab0014acd1016",
+          "stateFile": "rain-band-z0.6-002.state.json",
+          "png": "rain-band-z0.6-002.png",
+          "jpeg": "rain-band-z0.6-002.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "fa8a2479af9d0e3eba43a6b92f6c92e6a9b99d07866577bf63c20e8d87bacdd2"
+        },
+        {
+          "index": 3,
+          "tick": 20588,
+          "screenshotEndTick": 20600,
+          "stateSHA256": "8ebfe6a9626a4f34e357960691d575e77b6a471a687cdfeaee7171931613f9ed",
+          "stateFile": "rain-band-z0.6-003.state.json",
+          "png": "rain-band-z0.6-003.png",
+          "jpeg": "rain-band-z0.6-003.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "c93bc344bee9cecc765256b69c82d290fc9d843c6ec3d6265bdd598de406044e"
+        },
+        {
+          "index": 4,
+          "tick": 20603,
+          "screenshotEndTick": 20613,
+          "stateSHA256": "cb43b083f5ec3caf492d134b5f601870eec42eb0a8c536fb7e76f7db4fca0c81",
+          "stateFile": "rain-band-z0.6-004.state.json",
+          "png": "rain-band-z0.6-004.png",
+          "jpeg": "rain-band-z0.6-004.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "32c91e34d2b18ed867321c4fc70b0a17d147362248fd5e19fae5d7c4b5aceddf"
+        },
+        {
+          "index": 5,
+          "tick": 20615,
+          "screenshotEndTick": 20625,
+          "stateSHA256": "52c1907760a8cddf101dd6bfb2713459395ade6b4bdd688d149b458607b8082f",
+          "stateFile": "rain-band-z0.6-005.state.json",
+          "png": "rain-band-z0.6-005.png",
+          "jpeg": "rain-band-z0.6-005.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "a6b913909658024804551e95695fdf49eca8036701c13370988e5211b541ef65"
+        },
+        {
+          "index": 6,
+          "tick": 20627,
+          "screenshotEndTick": 20637,
+          "stateSHA256": "d1ae0fa92133b26f1f6f3332bc493dbe1a9f79e546d40cb2f140ea66b97788da",
+          "stateFile": "rain-band-z0.6-006.state.json",
+          "png": "rain-band-z0.6-006.png",
+          "jpeg": "rain-band-z0.6-006.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "b9e0c143c1ce9d11bdeeb8ae7c976a34bd1b6b4ca73858b0102af5ef2a0e2512"
+        },
+        {
+          "index": 7,
+          "tick": 20639,
+          "screenshotEndTick": 20650,
+          "stateSHA256": "9744d4d40f592a8d1b23509ee153ec90d99104d96619f5b8f74c3ece8812db05",
+          "stateFile": "rain-band-z0.6-007.state.json",
+          "png": "rain-band-z0.6-007.png",
+          "jpeg": "rain-band-z0.6-007.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "5f773da2300dda17f0fca7115b81832b44e95ea2660d0c30a6cd43febc795df5"
+        },
+        {
+          "index": 8,
+          "tick": 20652,
+          "screenshotEndTick": 20665,
+          "stateSHA256": "7917ba68d935a18e11e40f5eb4aeb0cc1b199a9dc46a2779c5cd2ff6ac158f3b",
+          "stateFile": "rain-band-z0.6-008.state.json",
+          "png": "rain-band-z0.6-008.png",
+          "jpeg": "rain-band-z0.6-008.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "d5e7927f50133fcefc9351046af83c05c90a049e1c0778675e7e4c1c384351a3"
+        },
+        {
+          "index": 9,
+          "tick": 20667,
+          "screenshotEndTick": 20678,
+          "stateSHA256": "c79c4550874e97ddc1ef5011ba675d7b83e8f6f319b4be0a6d1a98e9060d3c9a",
+          "stateFile": "rain-band-z0.6-009.state.json",
+          "png": "rain-band-z0.6-009.png",
+          "jpeg": "rain-band-z0.6-009.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "fef7a2fda8941127961492f80c6c1c723876a1aac2b235bde4995f47a855f20a"
+        },
+        {
+          "index": 10,
+          "tick": 20680,
+          "screenshotEndTick": 20691,
+          "stateSHA256": "991fd0296eff5ffff29373fd05167a5338ddb45a966afc9f832bcd065bd916b1",
+          "stateFile": "rain-band-z0.6-010.state.json",
+          "png": "rain-band-z0.6-010.png",
+          "jpeg": "rain-band-z0.6-010.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "b61fb66cb83568105682f417de4109b803217430a1069ec63ed69ad7a3bb9af4"
+        },
+        {
+          "index": 11,
+          "tick": 20693,
+          "screenshotEndTick": 20704,
+          "stateSHA256": "07021ff967383648786d9bccf1dfc6927896628952bf795246e326bce351f696",
+          "stateFile": "rain-band-z0.6-011.state.json",
+          "png": "rain-band-z0.6-011.png",
+          "jpeg": "rain-band-z0.6-011.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "03a00a9375f9c3dceb19594868951ea919668ccc21403c28ea64e9c6c860e9e1"
+        },
+        {
+          "index": 12,
+          "tick": 20706,
+          "screenshotEndTick": 20716,
+          "stateSHA256": "a3f195522e7b04472fd6b1e0bae55617990b1400b124c67b3f7165410378e185",
+          "stateFile": "rain-band-z0.6-012.state.json",
+          "png": "rain-band-z0.6-012.png",
+          "jpeg": "rain-band-z0.6-012.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "869affad450bebbacfc6b6f029ae2971444f0a7dcf8488724e6f1c76af2d7dbd"
+        },
+        {
+          "index": 13,
+          "tick": 20718,
+          "screenshotEndTick": 20728,
+          "stateSHA256": "0d9e39b7963070f9b1f853b5d2f303b340110a2cecbab5e3b3a119557b430256",
+          "stateFile": "rain-band-z0.6-013.state.json",
+          "png": "rain-band-z0.6-013.png",
+          "jpeg": "rain-band-z0.6-013.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "a06c7dadfb269df7f22bc7db499a88015fb17704c8ec50ac4cd2c871c950e8c0"
+        },
+        {
+          "index": 14,
+          "tick": 20731,
+          "screenshotEndTick": 20741,
+          "stateSHA256": "29fc3d943072b0cc97eb296f2639a2a0909fc856c7be02b3f9b473e9bc0795f3",
+          "stateFile": "rain-band-z0.6-014.state.json",
+          "png": "rain-band-z0.6-014.png",
+          "jpeg": "rain-band-z0.6-014.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "be0cfe2e0749e848e35c78d538de732112d50137b7907c7aab879caff298bf2c"
+        },
+        {
+          "index": 15,
+          "tick": 20742,
+          "screenshotEndTick": 20752,
+          "stateSHA256": "6a9428e4e7461bf92a52aedd89f0a498a0ac1a8db81c101a096deda473464a95",
+          "stateFile": "rain-band-z0.6-015.state.json",
+          "png": "rain-band-z0.6-015.png",
+          "jpeg": "rain-band-z0.6-015.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "548b8c3e3c3717c010b9eb7ed3928f6bba159aa5ffd73850320c1eefa152939f"
+        },
+        {
+          "index": 16,
+          "tick": 20754,
+          "screenshotEndTick": 20765,
+          "stateSHA256": "82f7665abb21d2b27031e926fb2bf03f71c2d03b8db1d492e943948d4a6e600e",
+          "stateFile": "rain-band-z0.6-016.state.json",
+          "png": "rain-band-z0.6-016.png",
+          "jpeg": "rain-band-z0.6-016.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "b48905732ead19f20ad1e689b22b4f7ad1ceb25d5aaa421f963666fd310b77df"
+        },
+        {
+          "index": 17,
+          "tick": 20767,
+          "screenshotEndTick": 20778,
+          "stateSHA256": "9388785b796791fed04108e88c80f4c0881bec58603c7e667e19d1f4e4015437",
+          "stateFile": "rain-band-z0.6-017.state.json",
+          "png": "rain-band-z0.6-017.png",
+          "jpeg": "rain-band-z0.6-017.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "6679966525f299114fee8d276000af4ca56ea8f154d9da42e7810d0be7de7345"
+        },
+        {
+          "index": 18,
+          "tick": 20780,
+          "screenshotEndTick": 20790,
+          "stateSHA256": "3e9af6998751112a127e90c500692eff12153ead33f89e5c62924f5a7ebe842c",
+          "stateFile": "rain-band-z0.6-018.state.json",
+          "png": "rain-band-z0.6-018.png",
+          "jpeg": "rain-band-z0.6-018.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "5129b01aa81b9fa611dd3dd5f54127aed66fef3b0639a515a76238b5da9190f0"
+        },
+        {
+          "index": 19,
+          "tick": 20792,
+          "screenshotEndTick": 20802,
+          "stateSHA256": "eea54885732474c91a1993352acb91d6f0df19d36526f5fbce880dfdbaa04066",
+          "stateFile": "rain-band-z0.6-019.state.json",
+          "png": "rain-band-z0.6-019.png",
+          "jpeg": "rain-band-z0.6-019.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "a3cfdbb440567c2542079c9e1a4eecdacadbf774b21c87e0b79f6f4b80042357"
+        },
+        {
+          "index": 20,
+          "tick": 20805,
+          "screenshotEndTick": 20817,
+          "stateSHA256": "8c706e7240d66361341abd9a5d38dfd1315731f8d3e817acc8acff2ce2566f1f",
+          "stateFile": "rain-band-z0.6-020.state.json",
+          "png": "rain-band-z0.6-020.png",
+          "jpeg": "rain-band-z0.6-020.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "75b970a37a96adfff2591c54a13340bbab0d2a29cc58a72e1350927f1e52899d"
+        }
+      ],
+      "interaction": null
+    }
+  ],
+  "limits": [
+    "Motion uses normal 1x simulation; frame tick thresholds may overshoot and are recorded. Compare exact initial states, not assumed identical live frame states.",
+    "Requested and loaded images do not prove visible drawing. Draw samples are bounded.",
+    "No video is synthesized: numbered actual-game PNG/JPEG frames are the moving evidence."
+  ],
+  "classification": "Original recorded errors retained. Telemetry POST cancellation is separate from game/image failures; root cause not established."
+}

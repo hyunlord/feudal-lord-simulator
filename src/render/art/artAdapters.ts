@@ -72,6 +72,11 @@ export function createArtAdapters(registry: ArtRegistry, environment?: ArtImageE
         if (entry.layout !== 'single') return { type: 'land-primitive', entry, image: loader.image(id) };
         return blit(entry.geometry.crop ?? { x: 0, y: 0, width: entry.image.width, height: entry.image.height },
           { anchor: input.at, pivot: { x: entry.geometry.pivot.x - (entry.geometry.crop?.x ?? 0), y: entry.geometry.pivot.y - (entry.geometry.crop?.y ?? 0) }, scale: entry.geometry.scale });
+      case 'weather-particle': {
+        if (input.elapsedMs === undefined) throw new ArtAdapterError('Weather frames require explicit elapsedMs');
+        const frame = artFrameAt(entry.frames, input.elapsedMs);
+        return blit(frame.sourceRect, { anchor: input.at, pivot: frame.pivot, scale: entry.geometry.scale });
+      }
       case 'event-scene': {
         if (entry.frames !== undefined) {
           if (input.elapsedMs === undefined) throw new ArtAdapterError('Event frames require explicit elapsedMs');

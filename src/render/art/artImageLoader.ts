@@ -1,3 +1,4 @@
+import type { ArtEntry } from './artContract';
 import type { ArtRegistry } from './artRegistry';
 import { assetUrlForBase } from '../worldAssets';
 
@@ -14,6 +15,17 @@ type LoadedImage = { image: HTMLImageElement | null; state: ArtImageState;
 function errorText(error: unknown): string {
   try { return String(error); }
   catch { return 'Unprintable thrown value'; }
+}
+
+
+function usesOnloadReadiness(entry: ArtEntry): boolean {
+  return entry.kind === 'ground-prop' && entry.placement === 'seasonal-ground';
+}
+function dimensionsMatch(image: HTMLImageElement, entry: ArtEntry): boolean {
+  return image.naturalWidth === entry.image.width && image.naturalHeight === entry.image.height;
+}
+function dimensionError(image: HTMLImageElement, entry: ArtEntry): string {
+  return `Decoded size ${image.naturalWidth}x${image.naturalHeight} differs from ${entry.image.width}x${entry.image.height}`;
 }
 
 /** One startup registry owns one lazy cache. No lookup validates data or starts another entry's load. */
@@ -69,14 +81,18 @@ export function createArtImageLoader(registry: ArtRegistry, environment: ArtImag
       const element = environment.createImage(); created.image = element;
       element.onload = () => {
         if (created.state.status !== 'loading') return;
+        if (usesOnloadReadiness(entry)) {
+          const matches = dimensionsMatch(element, entry);
+          settle(created, matches ? { status: 'ready', reason: null } : { status: 'missing', reason: dimensionError(element, entry) });
+          if (matches) notify(id, element);
+          return;
+        }
         try {
           void element.decode().then(() => {
             if (created.state.status !== 'loading') return;
-            const dimensionsMatch = element.naturalWidth === entry.image.width && element.naturalHeight === entry.image.height;
-            settle(created, dimensionsMatch
-              ? { status: 'ready', reason: null }
-              : { status: 'missing', reason: `Decoded size ${element.naturalWidth}x${element.naturalHeight} differs from ${entry.image.width}x${entry.image.height}` });
-            if (dimensionsMatch) notify(id, element);
+            const matches = dimensionsMatch(element, entry);
+            settle(created, matches ? { status: 'ready', reason: null } : { status: 'missing', reason: dimensionError(element, entry) });
+            if (matches) notify(id, element);
           }, error => { settle(created, { status: 'missing', reason: `Image decode failed: ${errorText(error)}` }); });
         } catch (error) { settle(created, { status: 'missing', reason: `Image decode failed: ${errorText(error)}` }); }
       };

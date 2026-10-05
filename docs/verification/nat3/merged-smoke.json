@@ -1,0 +1,31 @@
+{
+  "run": "astra-NAT3-merged-smoke-6685d29",
+  "head": "6685d294cde689a2fefe00785f8b87ff89697c66",
+  "exitCode": 0,
+  "errors": [],
+  "views": [
+    {
+      "name": "autumn-late",
+      "tick": 22850,
+      "saveSHA256": "caad060d007dc332d7c640bef17907834b97d6771bc9993ad216d39545b7d4d9",
+      "stateSHA256": "3f08584e8fbb512e8c6caaae48a5983c4990cf10285c1e55025d29ad966f2acf",
+      "sameSaveAsOriginalAfter": true,
+      "sameStateAsOriginalAfter": true,
+      "jpeg": "autumn-late-z1-000.jpg",
+      "jpegSHA256": "4434338438e5b4033c9e38b5d50223a687e69fad25190d8a8916281bced065b7",
+      "errors": []
+    },
+    {
+      "name": "rain-band",
+      "tick": 20550,
+      "saveSHA256": "d5d7b5c1bd82fa93b7eb83c4aa68eb3102aead29a6bf87df56e3b2e9a85844e2",
+      "stateSHA256": "c5be6e717642e652c5b5dd282ddddab161e668a7d187ff29b82b3ecab1092126",
+      "sameSaveAsOriginalAfter": true,
+      "sameStateAsOriginalAfter": true,
+      "jpeg": "rain-band-z1-000.jpg",
+      "jpegSHA256": "c37a9598fe95a5ee09e696c6f8dd7f5858ff95cc60b6c4d53e1cd269c0c26e50",
+      "errors": []
+    }
+  ],
+  "visualVerdict": "Actual game captures show autumn litter and fine world rain, with readable HUD; no new visible integration break. Static 2-scene smoke, not another moving sequence."
+}

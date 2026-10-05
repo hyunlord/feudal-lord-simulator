@@ -1,3 +1,5 @@
+import { drawNatureLeafFlight } from './natureLeaves';
+import { calendarProgress } from './calendarProgress';
 import type { GameState } from "../engine/engine.types";
 import { hashNumbers } from "../world/boundary/boundaryGeometry";
 import { groundBoundaryScene } from "./groundBoundaryScene";
@@ -34,6 +36,12 @@ export function seasonFxAt(state: Pick<GameState, "tick" | "scenarioId">): "leav
 
 export function drawSeasonFx(context: CanvasRenderingContext2D, state: GameState, viewport: { readonly width: number; readonly height: number },
   zoom: number, nowMs: number): void {
+  if (presentationPreference("seasonFx") && calendarProgress(state).season === 2 && typeof context.getTransform === "function") {
+    const matrix = context.getTransform();
+    const ratio = matrix.a / zoom;
+    const view = { x: -matrix.e / matrix.a, y: -matrix.f / matrix.d, width: viewport.width * ratio / matrix.a, height: viewport.height * ratio / matrix.d };
+    if (drawNatureLeafFlight(context, state, zoom, view)) return;
+  }
   const fx = seasonFxAt(state);
   if (fx === null || !presentationPreference("seasonFx")) return;
   if (fx === "leaves") {

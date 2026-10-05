@@ -1,3 +1,6 @@
+import { drawNatureGroundContacts } from './natureContacts';
+import { drawNatureWetGround } from './natureWetGround';
+import { drawWorldRain } from './worldRain';
 import { WEATHER_SHADOW_ART } from './art/weatherShadowArt';
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
@@ -76,9 +79,11 @@ function withLayer(context: CanvasRenderingContext2D, layer: LegacyWeatherLayer,
 
 export function drawWeatherGround(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], zoom: number, nowMs: number): void {
   if (zoom < WEATHER_GROUND_MIN_ZOOM) return;
+  const natureWet = drawNatureWetGround(context, state, tiles, zoom);
+  drawNatureGroundContacts(context, state, tiles, zoom);
   const layers = presentedWeatherLayers(state).filter(layer => layer.pass === "ground");
   for (const layer of layers) {
-    if (layer.placement === "clouds") continue;
+    if (layer.placement === "clouds" || (natureWet && (layer.id === "wet_sheen" || layer.id === "puddle_ripples"))) continue;
     withLayer(context, layer, () => {
       const key = layer.assets[0]!;
       if (layer.id === "cracked_ground") { for (const spot of crackSpots(state, tiles)) drawWeatherSprite(context, key, 0, centred(spot, CRACK_SIZE)); return; }
@@ -130,7 +135,13 @@ export function drawWeatherSky(context: CanvasRenderingContext2D, state: GameSta
   // The world rect in view (world px), for the anchored layers.
   const view: Rect = { x: -transform.e / transform.a, y: -transform.f / transform.d, width: viewport.width * pixelRatio / transform.a, height: viewport.height * pixelRatio / transform.d };
   const shadows = layers.some(layer => layer.placement === 'clouds') ? WEATHER_SHADOW_ART.resolve('normal') : null;
+  const rainIntensity = layers.filter(layer => layer.rain === true).reduce((sum, layer) => sum + layer.alphaPermille / 1000, 0);
+  let worldRain: boolean | undefined;
   for (const layer of [...layers].sort((a, b) => (SKY_ORDER[a.id] ?? 0) - (SKY_ORDER[b.id] ?? 0))) {
+    if (layer.rain === true) {
+      worldRain ??= drawWorldRain(context, state, view, zoom, rainIntensity);
+      if (worldRain) continue;
+    }
     if (layer.placement === 'clouds') {
       if (shadows === null || shadows[layer.deck] === null) continue;
       const deck = CLOUD_DECKS[layer.deck === 'upper' ? 1 : 0];
