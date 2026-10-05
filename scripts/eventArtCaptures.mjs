@@ -59,7 +59,9 @@ const card = page => page.evaluate(async selector => {
 let bytes = 0;
 const shoot = async (page, selector, name, quality) => { const path = join(out, `${name}.jpg`); await page.locator(selector).first().screenshot({ path, type: 'jpeg', quality }); const size = statSync(path).size; bytes += size; return size; };
 const open = (state, options = {}) => openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
-  query: '&story-delay=3000', loadTimeout: 90_000, zoom: 1.1, ...options });
+  // 8 s: on a cold dev server the card can open before openScene's own Escape (after the load), which puts it off as a
+  // player's Escape does — then it would not open by itself again (the probe saw this on a run folder's first load).
+  query: '&story-delay=8000', loadTimeout: 90_000, zoom: 1.1, ...options });
 /** The registry card; anything that opened first (the season's card, a petition, a home petition) put off or closed, as a
  *  player would. Not opened: a picture of the page for the record. */
 const OTHERS = ['.petition-card:not([data-registry-offer]) .story-modal-later', '.season-ledger-resume', '.chronicle-page .chronicle-keep'];
@@ -68,7 +70,7 @@ const waitCard = async (page, name = 'unopened') => {
     if (await page.locator(`${CARD} >> visible=true`).count() > 0) return true;
     for (const selector of OTHERS) {
       const other = page.locator(`${selector} >> visible=true`);
-      if (await other.count() > 0) { await other.first().click(); break; }
+      if (await other.count() > 0) { console.log(`  (${name}) put off ${selector} at ${waited} ms`); await other.first().click(); break; }
     }
     await page.waitForTimeout(500);
   }
