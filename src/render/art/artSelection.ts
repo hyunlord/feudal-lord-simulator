@@ -8,7 +8,7 @@ const number = (unit: string): ArtContextField => ({ type: 'number', unit });
 export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string, ArtContextField>>>> = Object.freeze({
   'building-body': { buildingKind: text, level: number('level'), season: text, calendarYear: number('calendar-year'), lot: text, eligible: { type: 'boolean', unit: 'boolean' } },
   'state-overlay': { bodyId: text, layer: text, season: text, vacant: { type: 'boolean', unit: 'boolean' }, ageYears: number('engine-year'), wealth: number('engine-wealth'), era: text },
-  'ground-prop': { baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text },
+  'ground-prop': { baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text, role: text, group: text },
   'walker-cargo': { role: text, cargoKind: text, facing: text, frame: number('frame-index') },
   'land-stage': { family: text, stage: text, season: text, layout: text, connectionMask: number('connection-mask'), ageYears: number('engine-year'), stageProgress: number('stage-fraction'), parity: number('cell-hash-modulo-2'), plot: { type: 'boolean', unit: 'boolean' } },
   landmark: { family: text, growthStage: text, season: text },
@@ -16,6 +16,7 @@ export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string
   'event-illustration': { eventId: text },
   portrait: { personId: text, pool: text, lineage: text, ageStage: text, era: text },
   'weather-shadow': { weather: text },
+  'weather-particle': { role: text, group: text },
   'ground-texture': { fieldState: text, baseId: text, season: text },
   'season-variant': { baseKey: text, season: text },
   'regional-map': { mapId: text, landType: text },

@@ -37,7 +37,7 @@ function run(dir: string, name: string, { finishedHoursAgo, keep = false, folder
 function hold(lock: string): ChildProcess { return spawn("bash", ["-c", `exec 9>"$1"; flock -n 9 || exit 1; exec sleep 600`, "hold", lock], { stdio: "ignore" }); }
 function clean(dir: string, mode: string, env: Record<string, string> = {}) {
   return execFileSync("bash", ["-c", `BASE=${JSON.stringify(dir)}; . ${JSON.stringify(helper)}; clean_disk test ${mode}`],
-    { encoding: "utf8", env: { ...process.env, DC_FREE_GB: "1000", ...env } });
+    { encoding: "utf8", env: { ...process.env, DC_FREE_GB: "1000", DC_TMP: join(dir, "_no-tmp"), ...env } });   // never the real /tmp
 }
 async function untilHeld(lock: string) {
   for (let i = 0; i < 3000 && spawnSync("bash", ["-c", `( flock -n 9 ) 9<"$1"`, "c", lock]).status === 0; i++) await new Promise(done => setTimeout(done, 20));
@@ -72,6 +72,31 @@ test("finished run folders go after a day (kept results copied first); running, 
     assert.equal(existsSync(join(dir, "running-1111111")), true);
     assert.match(tight, /\(test, tight\)/);
   } finally { for (const h of holders) h.kill("SIGKILL"); rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("the game's /tmp leftovers: a source tree whose process is gone goes, tsx cache files unread for three days go; the rest stays", { skip: !linux && "needs Linux flock, /proc and zstd" }, async () => {
+  const dir = base(); const tmp = mkdtempSync(join(tmpdir(), "fls-disk-tmp-")); const holders: ChildProcess[] = [];
+  try {
+    const gone = spawnSync("true").pid!;                     // a pid that has exited
+    for (const pid of [gone, process.pid]) mkdirSync(join(tmp, `fls-src-0123456789ab-${pid}`, "src"), { recursive: true });
+    const worked = join(tmp, `fls-src-ba9876543210-${gone}`); mkdirSync(worked);
+    const sleeper = spawn("sleep", ["600"], { cwd: worked, stdio: "ignore" }); holders.push(sleeper);
+    for (let i = 0; i < 3000 && spawnSync("readlink", [`/proc/${sleeper.pid}/cwd`], { encoding: "utf8" }).stdout.trim() !== worked; i++) await new Promise(done => setTimeout(done, 20));
+    const uid = execFileSync("id", ["-u"], { encoding: "utf8" }).trim();
+    const tsx = join(tmp, `tsx-${uid}`); mkdirSync(tsx);
+    for (const [name, daysAgo] of [["stale", 5], ["read-yesterday", 1]] as const) {
+      writeFileSync(join(tsx, name), "compiled\n");
+      execFileSync("touch", ["-a", "-d", `@${Math.floor(Date.now() / 1000 - daysAgo * 86400)}`, join(tsx, name)]);
+    }
+    const log = clean(dir, "normal", { DC_TMP: tmp });
+    assert.equal(existsSync(join(tmp, `fls-src-0123456789ab-${gone}`)), false);
+    assert.equal(existsSync(join(tmp, `fls-src-0123456789ab-${process.pid}`)), true, "its process is alive");
+    assert.equal(existsSync(worked), true, "a process works in it");
+    assert.equal(existsSync(join(tsx, "stale")), false);
+    assert.equal(existsSync(join(tsx, "read-yesterday")), true);
+    assert.match(log, new RegExp(`removed ${tmp}/fls-src-0123456789ab-${gone} .*process ${gone} is gone`));
+    assert.match(log, /tsx cache: removed 1 file\(s\) not read for 3 days/);
+  } finally { for (const h of holders) h.kill("SIGKILL"); rmSync(dir, { recursive: true, force: true }); rmSync(tmp, { recursive: true, force: true }); }
 });
 
 test("kept results no report names are packed after three days; named and young ones stay", { skip: !linux && "needs Linux flock, /proc and zstd" }, () => {

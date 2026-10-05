@@ -1,0 +1,21 @@
+{
+  "results": [
+    {
+      "side": "before",
+      "telemetryRequestCancellations": 13,
+      "otherRecordedErrors": [],
+      "all11InitialStatesCompared": true,
+      "motionSequences": 3,
+      "rawToolExit": 1
+    },
+    {
+      "side": "after",
+      "telemetryRequestCancellations": 10,
+      "otherRecordedErrors": [],
+      "all11InitialStatesCompared": true,
+      "motionSequences": 3,
+      "rawToolExit": 1
+    }
+  ],
+  "interpretation": "Both versions completed all captures and input checks. Raw exit1 retained. Cancelled dev telemetry POSTs occurred in baseline too; cancellation cause remains unknown. This does not assert zero network errors."
+}

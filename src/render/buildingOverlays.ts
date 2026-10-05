@@ -1,3 +1,4 @@
+import { drawNatureRoof } from './natureRoof';
 import { contractHouseArt, type ContractHouseDraw } from './art/contractHouseArt';
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
@@ -76,6 +77,7 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
   if (building.kind === "granary") drawWave32GranaryLayers(context, state, building, fittedBuildingSpriteRect("barn", building));
   if (building.kind === "storehouse") drawStorehouseSnow(context, state, building);
   if (!props) return;
+  drawNatureRoof(context, state, building, drawn);
   drawStockPiles(context, state, building);
   drawStoryProps(context, state, building); // UI-4 petition crowd, S12 leaving family
 }

@@ -1,3 +1,7 @@
+import { natureWetGroundReady } from './natureWetGround';
+import { presentationPreference } from './presentationPreferences';
+import { drawAccumulatedLeaves } from './natureLeaves';
+import { calendarProgress } from './calendarProgress';
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import { seasonBlend } from "./seasonTransition";
@@ -89,15 +93,17 @@ const PUDDLES: readonly Wave9Key[] = ["decal_puddle_a", "decal_puddle_b"];
 export function drawSeasonalDecals(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], zoom: number, items: readonly RenderQueueItem[] = []): void {
   if (zoom < DECAL_MIN_ZOOM) return;
   // INSTALL-15: while the season turns, the old season's decals fade out as the new ones fade in (seasonBlend).
+  const progress = calendarProgress(state);
+  const natureLeaves = (progress.season === 2 || progress.season === 3) && drawAccumulatedLeaves(context, state, tiles, zoom);
   const blend = seasonBlend(state);
-  if (blend.from === null) { drawDecalsOf(context, state, tiles, items, blend.season); return; }
+  if (blend.from === null) { drawDecalsOf(context, state, tiles, items, blend.season, natureLeaves); return; }
   const alpha = context.globalAlpha;
-  context.globalAlpha = alpha * (1 - blend.t); drawDecalsOf(context, state, tiles, items, blend.from);
-  context.globalAlpha = alpha * blend.t; drawDecalsOf(context, state, tiles, items, blend.season);
+  context.globalAlpha = alpha * (1 - blend.t); drawDecalsOf(context, state, tiles, items, blend.from, natureLeaves);
+  context.globalAlpha = alpha * blend.t; drawDecalsOf(context, state, tiles, items, blend.season, natureLeaves);
   context.globalAlpha = alpha;
 }
 
-function drawDecalsOf(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], items: readonly RenderQueueItem[], season: 0 | 1 | 2 | 3): void {
+function drawDecalsOf(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], items: readonly RenderQueueItem[], season: 0 | 1 | 2 | 3, natureLeaves = false): void {
   if (season === 0) {
     for (const tile of tiles) {
       const key = wave15GroundDecal(state.seed, tile, season);
@@ -113,6 +119,7 @@ function drawDecalsOf(context: CanvasRenderingContext2D, state: GameState, tiles
     return;
   }
   if (season === 1 && wetSummer(state)) {
+    if (presentationPreference("weatherFx") && natureWetGroundReady()) return;
     for (const tile of tiles) {
       const key = seasonalDecal(state.seed, tile, season);
       if (key === null) continue;
@@ -129,6 +136,7 @@ function drawDecalsOf(context: CanvasRenderingContext2D, state: GameState, tiles
     }
     return;
   }
+  if (season === 2 && natureLeaves) return;
   for (const tile of tiles) {
     const at = tileToScreen(tile.tx, tile.ty);
     const ice = season === 3 ? wave15GroundDecal(state.seed, tile, season) : null;

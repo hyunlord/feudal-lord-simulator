@@ -1,0 +1,2705 @@
+{
+  "head": "fbdb5cddb441f4ffc40e34262fbba2ef3907df45",
+  "rawSHA256": "c3136444247893a24dc0e78a4e753565bd23718f706be961a0496b217a815876",
+  "errors": [
+    "summer-z1: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "falling-leaves-z1: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "falling-leaves-z1: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "falling-leaves-z1: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z1: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z1: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z1: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z0.6: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z0.6: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+    "rain-band-z0.6: http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED"
+  ],
+  "views": [
+    {
+      "name": "summer",
+      "zoom": 1,
+      "saveSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+      "tick": 21000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-021000.save.json",
+        "sourceSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 21000,
+          "screenshotEndTick": 21000,
+          "stateSHA256": "efac255d78a1bd0299002dfb4181d21359c6dcfe9c076c40edc3f1ad8965c66a",
+          "stateFile": "summer-z1-000.state.json",
+          "png": "summer-z1-000.png",
+          "jpeg": "summer-z1-000.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 134157,
+            "wave39/puddles/puddle_large_b-v1.png": 2270,
+            "wave39/puddles/puddle_small_b-v1.png": 1816,
+            "wave39/puddles/puddle_medium_b-v1.png": 1816,
+            "wave39/puddles/puddle_medium_a-v1.png": 1135,
+            "wave39/puddles/puddle_large_a-v1.png": 2043,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 4540,
+            "wave39/puddles/puddle_small_a-v1.png": 1362
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "83c6bd0fa24af5981acf9ec9fd1ab154e6cf1989c63d54b3a45ee110bfec920f"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "summer",
+      "zoom": 0.6,
+      "saveSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+      "tick": 21000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-021000.save.json",
+        "sourceSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 21000,
+          "screenshotEndTick": 21000,
+          "stateSHA256": "efac255d78a1bd0299002dfb4181d21359c6dcfe9c076c40edc3f1ad8965c66a",
+          "stateFile": "summer-z0.6-000.state.json",
+          "png": "summer-z0.6-000.png",
+          "jpeg": "summer-z0.6-000.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 143785,
+            "wave39/puddles/puddle_large_a-v1.png": 2086,
+            "wave39/puddles/puddle_large_b-v1.png": 2086,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 2980
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "1c24a53242e0bce526d4d1a69744ebe09d576597acac071914e3e84d5cd3c0a7"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "winter",
+      "zoom": 1,
+      "saveSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+      "tick": 23000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-023000.save.json",
+        "sourceSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 23000,
+          "screenshotEndTick": 23000,
+          "stateSHA256": "36e7c3df7499595c86d30081dfd7dfb560443dc6f3a658c26af120542e4621af",
+          "stateFile": "winter-z1-000.state.json",
+          "png": "winter-z1-000.png",
+          "jpeg": "winter-z1-000.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 528,
+            "wave39/debris/ground_leaves_large-v1.png": 264,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 264,
+            "wave39/debris/ground_leaves_small-v1.png": 264,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 264
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "df74aff3ae3ed1ca1a9422f8ef4a9344299ac24a1c8444cd870ac32ab80a2487"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "winter",
+      "zoom": 0.6,
+      "saveSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+      "tick": 23000,
+      "weather": "normal",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-023000.save.json",
+        "sourceSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+        "engineTicks": 0,
+        "classification": "existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 23000,
+          "screenshotEndTick": 23000,
+          "stateSHA256": "36e7c3df7499595c86d30081dfd7dfb560443dc6f3a658c26af120542e4621af",
+          "stateFile": "winter-z0.6-000.state.json",
+          "png": "winter-z0.6-000.png",
+          "jpeg": "winter-z0.6-000.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 716,
+            "wave39/debris/ground_leaves_large-v1.png": 358
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "a87010c3e38fb97fb3bbde7b6e2f28f3829bc3944af989a969b3035277acb658"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-early",
+      "zoom": 1,
+      "saveSHA256": "c735d66e0154dbac1caa114f13e8782bb34e02eecc499ef9c5eda97942e5c95e",
+      "tick": 22100,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 100,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22100,
+          "screenshotEndTick": 22100,
+          "stateSHA256": "dbf58c782a1c5a246ff56799fce895196e28f1da9eb9e4e045782356d6c4fa44",
+          "stateFile": "autumn-early-z1-000.state.json",
+          "png": "autumn-early-z1-000.png",
+          "jpeg": "autumn-early-z1-000.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 203,
+            "wave39/debris/ground_leaves_small-v1.png": 203,
+            "wave39/leaves/falling_birch_orange-v1.png": 2222,
+            "wave39/leaves/falling_beech_orange-v1.png": 5454,
+            "wave39/leaves/falling_birch_brown-v1.png": 3030,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 3232,
+            "wave39/leaves/falling_oak_brown-v1.png": 3030,
+            "wave39/leaves/falling_oak_yellow-v1.png": 4040,
+            "wave39/leaves/falling_oak_orange-v1.png": 3434,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 2626,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 4040,
+            "wave39/leaves/falling_beech_yellow-v1.png": 5252,
+            "wave39/leaves/falling_beech_brown-v1.png": 4646,
+            "wave39/leaves/falling_birch_yellow-v1.png": 2222
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "e78ced4fa53e113972a28914f168a07f44c62a10197fbd3a1c9c6281696f1421"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-early",
+      "zoom": 0.6,
+      "saveSHA256": "c735d66e0154dbac1caa114f13e8782bb34e02eecc499ef9c5eda97942e5c95e",
+      "tick": 22100,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 100,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22100,
+          "screenshotEndTick": 22100,
+          "stateSHA256": "dbf58c782a1c5a246ff56799fce895196e28f1da9eb9e4e045782356d6c4fa44",
+          "stateFile": "autumn-early-z0.6-000.state.json",
+          "png": "autumn-early-z0.6-000.png",
+          "jpeg": "autumn-early-z0.6-000.jpg",
+          "wave39Draws": {},
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "2bcd8b0e7b40a6ac4aeeef3de696e1f8e50e05e597776cd4194aa30ae5753a25"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-late",
+      "zoom": 1,
+      "saveSHA256": "caad060d007dc332d7c640bef17907834b97d6771bc9993ad216d39545b7d4d9",
+      "tick": 22850,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 850,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22850,
+          "screenshotEndTick": 22850,
+          "stateSHA256": "3f08584e8fbb512e8c6caaae48a5983c4990cf10285c1e55025d29ad966f2acf",
+          "stateFile": "autumn-late-z1-000.state.json",
+          "png": "autumn-late-z1-000.png",
+          "jpeg": "autumn-late-z1-000.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 756,
+            "wave39/debris/ground_leaves_large-v1.png": 378,
+            "wave39/debris/ground_leaves_small-v1.png": 756,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 945,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 189,
+            "wave39/leaves/falling_birch_orange-v1.png": 2820,
+            "wave39/leaves/falling_oak_brown-v1.png": 3572,
+            "wave39/leaves/falling_birch_yellow-v1.png": 2256,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 2632,
+            "wave39/leaves/falling_oak_orange-v1.png": 3760,
+            "wave39/leaves/falling_beech_brown-v1.png": 4888,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 3008,
+            "wave39/leaves/falling_birch_brown-v1.png": 2068,
+            "wave39/leaves/falling_beech_orange-v1.png": 4136,
+            "wave39/debris/wind_leaves_group_b-v1.png": 1504,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 2820,
+            "wave39/leaves/falling_beech_yellow-v1.png": 3572,
+            "wave39/debris/wind_leaves_group_a-v1.png": 2820,
+            "wave39/leaves/falling_oak_yellow-v1.png": 3948
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "1ba71778e763dc8df6f03981580393ddd2c36e24c6620ddf6f79420a24a7869c"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "autumn-late",
+      "zoom": 0.6,
+      "saveSHA256": "caad060d007dc332d7c640bef17907834b97d6771bc9993ad216d39545b7d4d9",
+      "tick": 22850,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 850,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22850,
+          "screenshotEndTick": 22850,
+          "stateSHA256": "3f08584e8fbb512e8c6caaae48a5983c4990cf10285c1e55025d29ad966f2acf",
+          "stateFile": "autumn-late-z0.6-000.state.json",
+          "png": "autumn-late-z0.6-000.png",
+          "jpeg": "autumn-late-z0.6-000.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 792,
+            "wave39/debris/ground_leaves_large-v1.png": 396
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "9be7ddd16d0ad8a2e86ef72bb56aae64b61510818b6ccc2831196a5c55a8f25c"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "falling-leaves",
+      "zoom": 1,
+      "saveSHA256": "448872d1c9e13900e6d6db67c403e463cafe07fb432c4380925a615082961464",
+      "tick": 22300,
+      "weather": "normal",
+      "tile": [
+        28,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-022000.save.json",
+        "sourceSHA256": "12ce64faee40ba0fa63c40abdc458b3b9d4d8d96c02bebd8e6bb5610b3678057",
+        "engineTicks": 300,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 22300,
+          "screenshotEndTick": 22300,
+          "stateSHA256": "e92307eaa932ae2cff5dea22f0c832142237723c6ee1a6892e32f72e13dabc08",
+          "stateFile": "falling-leaves-z1-000.state.json",
+          "png": "falling-leaves-z1-000.png",
+          "jpeg": "falling-leaves-z1-000.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 398,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 398,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 199,
+            "wave39/debris/ground_leaves_small-v1.png": 199,
+            "wave39/leaves/falling_birch_brown-v1.png": 2388,
+            "wave39/leaves/falling_beech_brown-v1.png": 4776,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 2985,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 3980,
+            "wave39/leaves/falling_oak_yellow-v1.png": 4577,
+            "wave39/leaves/falling_oak_brown-v1.png": 4776,
+            "wave39/debris/wind_leaves_group_a-v1.png": 2985,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 2587,
+            "wave39/leaves/falling_oak_orange-v1.png": 4975,
+            "wave39/leaves/falling_birch_orange-v1.png": 2388,
+            "wave39/leaves/falling_birch_yellow-v1.png": 2786,
+            "wave39/leaves/falling_beech_yellow-v1.png": 2587,
+            "wave39/debris/wind_leaves_group_b-v1.png": 3184,
+            "wave39/leaves/falling_beech_orange-v1.png": 3781
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "b9192f8f27968728616daa6a8d30aeb517a7839beb5dbcb497332874804e736a"
+        },
+        {
+          "index": 1,
+          "tick": 22313,
+          "screenshotEndTick": 22321,
+          "stateSHA256": "7c10ce4cb55bc8519f20e62c848f5d94b9d581a3ad117bb4468864979cf4412b",
+          "stateFile": "falling-leaves-z1-001.state.json",
+          "png": "falling-leaves-z1-001.png",
+          "jpeg": "falling-leaves-z1-001.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 542,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 542,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 271,
+            "wave39/debris/ground_leaves_small-v1.png": 271,
+            "wave39/leaves/falling_birch_brown-v1.png": 3175,
+            "wave39/leaves/falling_beech_brown-v1.png": 6592,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 4268,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 5372,
+            "wave39/leaves/falling_oak_yellow-v1.png": 5863,
+            "wave39/leaves/falling_oak_brown-v1.png": 6371,
+            "wave39/debris/wind_leaves_group_a-v1.png": 3909,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 3489,
+            "wave39/leaves/falling_oak_orange-v1.png": 6944,
+            "wave39/leaves/falling_birch_orange-v1.png": 3406,
+            "wave39/leaves/falling_birch_yellow-v1.png": 3596,
+            "wave39/leaves/falling_beech_yellow-v1.png": 3661,
+            "wave39/debris/wind_leaves_group_b-v1.png": 4144,
+            "wave39/leaves/falling_beech_orange-v1.png": 5257
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "3476b9eeb454f556d1a9b9f6b3b5928692f8307eadfa7eee38943a47afaa32aa"
+        },
+        {
+          "index": 2,
+          "tick": 22322,
+          "screenshotEndTick": 22331,
+          "stateSHA256": "819a92a045a58318d665129f1f326685f95231d2f87a7b61536037e214f96cbd",
+          "stateFile": "falling-leaves-z1-002.state.json",
+          "png": "falling-leaves-z1-002.png",
+          "jpeg": "falling-leaves-z1-002.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 614,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 614,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 307,
+            "wave39/debris/ground_leaves_small-v1.png": 307,
+            "wave39/leaves/falling_birch_brown-v1.png": 3581,
+            "wave39/leaves/falling_beech_brown-v1.png": 7430,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 4893,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 6043,
+            "wave39/leaves/falling_oak_yellow-v1.png": 6446,
+            "wave39/leaves/falling_oak_brown-v1.png": 7069,
+            "wave39/debris/wind_leaves_group_a-v1.png": 4174,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 3896,
+            "wave39/leaves/falling_oak_orange-v1.png": 7997,
+            "wave39/leaves/falling_birch_orange-v1.png": 4106,
+            "wave39/leaves/falling_birch_yellow-v1.png": 3883,
+            "wave39/leaves/falling_beech_yellow-v1.png": 4277,
+            "wave39/debris/wind_leaves_group_b-v1.png": 4320,
+            "wave39/leaves/falling_beech_orange-v1.png": 6077
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "202d7ae31610ef26bbad8b9b578fec0ad5fd6065da0ecb76e54e596381b037b7"
+        },
+        {
+          "index": 3,
+          "tick": 22332,
+          "screenshotEndTick": 22340,
+          "stateSHA256": "599a322fc9768f6a24bd9a371df0c50870dcf38d2e01ee5ebb8c7df67329d04e",
+          "stateFile": "falling-leaves-z1-003.state.json",
+          "png": "falling-leaves-z1-003.png",
+          "jpeg": "falling-leaves-z1-003.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 688,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 688,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 344,
+            "wave39/debris/ground_leaves_small-v1.png": 355,
+            "wave39/leaves/falling_birch_brown-v1.png": 4150,
+            "wave39/leaves/falling_beech_brown-v1.png": 8140,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 5483,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 6654,
+            "wave39/leaves/falling_oak_yellow-v1.png": 7206,
+            "wave39/leaves/falling_oak_brown-v1.png": 7633,
+            "wave39/debris/wind_leaves_group_a-v1.png": 4198,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 4344,
+            "wave39/leaves/falling_oak_orange-v1.png": 8955,
+            "wave39/leaves/falling_birch_orange-v1.png": 4716,
+            "wave39/leaves/falling_birch_yellow-v1.png": 4237,
+            "wave39/leaves/falling_beech_yellow-v1.png": 4970,
+            "wave39/debris/wind_leaves_group_b-v1.png": 4328,
+            "wave39/leaves/falling_beech_orange-v1.png": 7128
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "5bce9c790a1f237f8b65d28e2f7b2f1008595d2df31576373ebbdc20d2f8b8c8"
+        },
+        {
+          "index": 4,
+          "tick": 22342,
+          "screenshotEndTick": 22350,
+          "stateSHA256": "35b20c2b70162871fa1d6f270b944a8d81a51e3054ffe264805e28c9ace1aaa3",
+          "stateFile": "falling-leaves-z1-004.state.json",
+          "png": "falling-leaves-z1-004.png",
+          "jpeg": "falling-leaves-z1-004.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 762,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 762,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 381,
+            "wave39/debris/ground_leaves_small-v1.png": 429,
+            "wave39/leaves/falling_birch_brown-v1.png": 4815,
+            "wave39/leaves/falling_beech_brown-v1.png": 8778,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 5938,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 7163,
+            "wave39/leaves/falling_oak_yellow-v1.png": 8185,
+            "wave39/leaves/falling_oak_brown-v1.png": 8248,
+            "wave39/debris/wind_leaves_group_a-v1.png": 4463,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 4861,
+            "wave39/leaves/falling_oak_orange-v1.png": 9717,
+            "wave39/leaves/falling_birch_orange-v1.png": 5303,
+            "wave39/leaves/falling_birch_yellow-v1.png": 4686,
+            "wave39/leaves/falling_beech_yellow-v1.png": 5616,
+            "wave39/debris/wind_leaves_group_b-v1.png": 4443,
+            "wave39/leaves/falling_beech_orange-v1.png": 8224
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "b094a8a45bbee19686ca4333fff019c74a3390e03d2efe98590e1e8279a704ea"
+        },
+        {
+          "index": 5,
+          "tick": 22351,
+          "screenshotEndTick": 22360,
+          "stateSHA256": "2a7f528f6b6bfd3caffee391eb1db9ecf73118d2b92527356c5aaaf6104f19c4",
+          "stateFile": "falling-leaves-z1-005.state.json",
+          "png": "falling-leaves-z1-005.png",
+          "jpeg": "falling-leaves-z1-005.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 836,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 836,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 418,
+            "wave39/debris/ground_leaves_small-v1.png": 503,
+            "wave39/leaves/falling_birch_brown-v1.png": 5647,
+            "wave39/leaves/falling_beech_brown-v1.png": 9538,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 6253,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 7664,
+            "wave39/leaves/falling_oak_yellow-v1.png": 9245,
+            "wave39/leaves/falling_oak_brown-v1.png": 8850,
+            "wave39/debris/wind_leaves_group_a-v1.png": 5002,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 5405,
+            "wave39/leaves/falling_oak_orange-v1.png": 10400,
+            "wave39/leaves/falling_birch_orange-v1.png": 5768,
+            "wave39/leaves/falling_birch_yellow-v1.png": 5211,
+            "wave39/leaves/falling_beech_yellow-v1.png": 6322,
+            "wave39/debris/wind_leaves_group_b-v1.png": 4909,
+            "wave39/leaves/falling_beech_orange-v1.png": 9149
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "aca12b2ae4995f9b4f2db3768b6932a1ade7c417950239249163df326ab5f8bb"
+        },
+        {
+          "index": 6,
+          "tick": 22361,
+          "screenshotEndTick": 22370,
+          "stateSHA256": "61d28a763fde37f0aa10fa2981a08ed907aa90d358472285c39f92abf6759a17",
+          "stateFile": "falling-leaves-z1-006.state.json",
+          "png": "falling-leaves-z1-006.png",
+          "jpeg": "falling-leaves-z1-006.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 908,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 908,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 454,
+            "wave39/debris/ground_leaves_small-v1.png": 603,
+            "wave39/leaves/falling_birch_brown-v1.png": 6394,
+            "wave39/leaves/falling_beech_brown-v1.png": 10276,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 6508,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 8160,
+            "wave39/leaves/falling_oak_yellow-v1.png": 10228,
+            "wave39/leaves/falling_oak_brown-v1.png": 9480,
+            "wave39/debris/wind_leaves_group_a-v1.png": 5416,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 6055,
+            "wave39/leaves/falling_oak_orange-v1.png": 11137,
+            "wave39/leaves/falling_birch_orange-v1.png": 6191,
+            "wave39/leaves/falling_birch_yellow-v1.png": 5736,
+            "wave39/leaves/falling_beech_yellow-v1.png": 7040,
+            "wave39/debris/wind_leaves_group_b-v1.png": 5323,
+            "wave39/leaves/falling_beech_orange-v1.png": 9951
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "2517c6b569ae866630c419dbcb51d7661a8c1d56e73495aefb2a642b761ce218"
+        },
+        {
+          "index": 7,
+          "tick": 22371,
+          "screenshotEndTick": 22380,
+          "stateSHA256": "6425843ea6a458820b95e79f438ad55cfb1715e9493dbbb18fdc55c2841f3f60",
+          "stateFile": "falling-leaves-z1-007.state.json",
+          "png": "falling-leaves-z1-007.png",
+          "jpeg": "falling-leaves-z1-007.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 984,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 984,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 492,
+            "wave39/debris/ground_leaves_small-v1.png": 717,
+            "wave39/leaves/falling_birch_brown-v1.png": 6930,
+            "wave39/leaves/falling_beech_brown-v1.png": 11066,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 6742,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 8738,
+            "wave39/leaves/falling_oak_yellow-v1.png": 11193,
+            "wave39/leaves/falling_oak_brown-v1.png": 10203,
+            "wave39/debris/wind_leaves_group_a-v1.png": 6028,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 6886,
+            "wave39/leaves/falling_oak_orange-v1.png": 11950,
+            "wave39/leaves/falling_birch_orange-v1.png": 6754,
+            "wave39/leaves/falling_birch_yellow-v1.png": 6262,
+            "wave39/leaves/falling_beech_yellow-v1.png": 7924,
+            "wave39/debris/wind_leaves_group_b-v1.png": 5687,
+            "wave39/leaves/falling_beech_orange-v1.png": 10640
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "bbe3367fa7f6d54a13ab3675da3fbdf657e39486f5b3480789e97c35c19803d5"
+        },
+        {
+          "index": 8,
+          "tick": 22381,
+          "screenshotEndTick": 22395,
+          "stateSHA256": "31e82d16209e76a5afa6ecb2d4f9c4f4f56209a3b68f8ca7f6d82bfd7620142b",
+          "stateFile": "falling-leaves-z1-008.state.json",
+          "png": "falling-leaves-z1-008.png",
+          "jpeg": "falling-leaves-z1-008.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1056,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1056,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 528,
+            "wave39/debris/ground_leaves_small-v1.png": 825,
+            "wave39/leaves/falling_birch_brown-v1.png": 7277,
+            "wave39/leaves/falling_beech_brown-v1.png": 11865,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 7033,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 9346,
+            "wave39/leaves/falling_oak_yellow-v1.png": 11880,
+            "wave39/leaves/falling_oak_brown-v1.png": 10913,
+            "wave39/debris/wind_leaves_group_a-v1.png": 6536,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 7697,
+            "wave39/leaves/falling_oak_orange-v1.png": 12744,
+            "wave39/leaves/falling_birch_orange-v1.png": 7352,
+            "wave39/leaves/falling_birch_yellow-v1.png": 6703,
+            "wave39/leaves/falling_beech_yellow-v1.png": 8809,
+            "wave39/debris/wind_leaves_group_b-v1.png": 6295,
+            "wave39/leaves/falling_beech_orange-v1.png": 11373
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "c9a0bf9cf3963fdbddbc15cba543704fbf39b6de7a5d59c468ae19324703b9c6"
+        },
+        {
+          "index": 9,
+          "tick": 22396,
+          "screenshotEndTick": 22405,
+          "stateSHA256": "982a6bbd78b68db237a2c7bfbf8cbc5bb6046db02036b3e8e295e8ba977af2a9",
+          "stateFile": "falling-leaves-z1-009.state.json",
+          "png": "falling-leaves-z1-009.png",
+          "jpeg": "falling-leaves-z1-009.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1128,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1128,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 564,
+            "wave39/debris/ground_leaves_small-v1.png": 933,
+            "wave39/leaves/falling_birch_brown-v1.png": 7573,
+            "wave39/leaves/falling_beech_brown-v1.png": 12764,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 7420,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 9931,
+            "wave39/leaves/falling_oak_yellow-v1.png": 12421,
+            "wave39/leaves/falling_oak_brown-v1.png": 11717,
+            "wave39/debris/wind_leaves_group_a-v1.png": 7038,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 8418,
+            "wave39/leaves/falling_oak_orange-v1.png": 13419,
+            "wave39/leaves/falling_birch_orange-v1.png": 8022,
+            "wave39/leaves/falling_birch_yellow-v1.png": 7140,
+            "wave39/leaves/falling_beech_yellow-v1.png": 9608,
+            "wave39/debris/wind_leaves_group_b-v1.png": 6734,
+            "wave39/leaves/falling_beech_orange-v1.png": 12263
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "fad29c81ecc95b1c4c8bdca13934d2b0791a81ef50847fdd9a29f741717f71d8"
+        },
+        {
+          "index": 10,
+          "tick": 22406,
+          "screenshotEndTick": 22415,
+          "stateSHA256": "9f9465365935fc7bbf9ba3d7c931690cc868ec651d1dcfc6ca25f0491331da7a",
+          "stateFile": "falling-leaves-z1-010.state.json",
+          "png": "falling-leaves-z1-010.png",
+          "jpeg": "falling-leaves-z1-010.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1202,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1202,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 601,
+            "wave39/debris/ground_leaves_small-v1.png": 1044,
+            "wave39/leaves/falling_birch_brown-v1.png": 8040,
+            "wave39/leaves/falling_beech_brown-v1.png": 13772,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 7835,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 10442,
+            "wave39/leaves/falling_oak_yellow-v1.png": 13023,
+            "wave39/leaves/falling_oak_brown-v1.png": 12437,
+            "wave39/debris/wind_leaves_group_a-v1.png": 7578,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 9003,
+            "wave39/leaves/falling_oak_orange-v1.png": 14064,
+            "wave39/leaves/falling_birch_orange-v1.png": 8666,
+            "wave39/leaves/falling_birch_yellow-v1.png": 7700,
+            "wave39/leaves/falling_beech_yellow-v1.png": 10298,
+            "wave39/debris/wind_leaves_group_b-v1.png": 7229,
+            "wave39/leaves/falling_beech_orange-v1.png": 13334
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "d05c3cc8a961f6c32a15f4750bb547e14ea5d1502d9cede08c11d7a8e81aabd2"
+        },
+        {
+          "index": 11,
+          "tick": 22416,
+          "screenshotEndTick": 22425,
+          "stateSHA256": "9b40cb4876ed8011f0e5a180d28339d67ff0c7d496dd811c8503a4f7a7fab6ff",
+          "stateFile": "falling-leaves-z1-011.state.json",
+          "png": "falling-leaves-z1-011.png",
+          "jpeg": "falling-leaves-z1-011.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1278,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1278,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 639,
+            "wave39/debris/ground_leaves_small-v1.png": 1187,
+            "wave39/leaves/falling_birch_brown-v1.png": 8680,
+            "wave39/leaves/falling_beech_brown-v1.png": 14882,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 8293,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 10988,
+            "wave39/leaves/falling_oak_yellow-v1.png": 13741,
+            "wave39/leaves/falling_oak_brown-v1.png": 13169,
+            "wave39/debris/wind_leaves_group_a-v1.png": 8089,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 9454,
+            "wave39/leaves/falling_oak_orange-v1.png": 14719,
+            "wave39/leaves/falling_birch_orange-v1.png": 9188,
+            "wave39/leaves/falling_birch_yellow-v1.png": 8351,
+            "wave39/leaves/falling_beech_yellow-v1.png": 10852,
+            "wave39/debris/wind_leaves_group_b-v1.png": 7890,
+            "wave39/leaves/falling_beech_orange-v1.png": 14429
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "deee0708b72d3a573e57cba333a8985be7512d884731fb0b729165ce4469bdbc"
+        },
+        {
+          "index": 12,
+          "tick": 22426,
+          "screenshotEndTick": 22435,
+          "stateSHA256": "bce38243b98a661c5f5d7e05993f2ea64e5a48512395d52778e8e3f586dd8091",
+          "stateFile": "falling-leaves-z1-012.state.json",
+          "png": "falling-leaves-z1-012.png",
+          "jpeg": "falling-leaves-z1-012.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1352,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1352,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 676,
+            "wave39/debris/ground_leaves_small-v1.png": 1335,
+            "wave39/leaves/falling_birch_brown-v1.png": 9413,
+            "wave39/leaves/falling_beech_brown-v1.png": 15952,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 8645,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 11542,
+            "wave39/leaves/falling_oak_yellow-v1.png": 14385,
+            "wave39/leaves/falling_oak_brown-v1.png": 13785,
+            "wave39/debris/wind_leaves_group_a-v1.png": 8539,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 9866,
+            "wave39/leaves/falling_oak_orange-v1.png": 15400,
+            "wave39/leaves/falling_birch_orange-v1.png": 9715,
+            "wave39/leaves/falling_birch_yellow-v1.png": 8955,
+            "wave39/leaves/falling_beech_yellow-v1.png": 11527,
+            "wave39/debris/wind_leaves_group_b-v1.png": 8421,
+            "wave39/leaves/falling_beech_orange-v1.png": 15479
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "632cca745a3b239d9233c7dd4d9a66538d82eefdbef48a938be7251a985d230b"
+        },
+        {
+          "index": 13,
+          "tick": 22437,
+          "screenshotEndTick": 22445,
+          "stateSHA256": "92f5adfc3fe3209f057518d0c5104c07500f9d33d571605da3d8163b1fb7a813",
+          "stateFile": "falling-leaves-z1-013.state.json",
+          "png": "falling-leaves-z1-013.png",
+          "jpeg": "falling-leaves-z1-013.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1424,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1424,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 712,
+            "wave39/debris/ground_leaves_small-v1.png": 1479,
+            "wave39/leaves/falling_birch_brown-v1.png": 10125,
+            "wave39/leaves/falling_beech_brown-v1.png": 16862,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 9078,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 12018,
+            "wave39/leaves/falling_oak_yellow-v1.png": 15071,
+            "wave39/leaves/falling_oak_brown-v1.png": 14324,
+            "wave39/debris/wind_leaves_group_a-v1.png": 8958,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 10288,
+            "wave39/leaves/falling_oak_orange-v1.png": 15956,
+            "wave39/leaves/falling_birch_orange-v1.png": 10265,
+            "wave39/leaves/falling_birch_yellow-v1.png": 9458,
+            "wave39/leaves/falling_beech_yellow-v1.png": 12342,
+            "wave39/debris/wind_leaves_group_b-v1.png": 8611,
+            "wave39/leaves/falling_beech_orange-v1.png": 16581
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "a83785e6f96048574e039a45134fa6808cebdfceb3d1b7889d04fcd319899c75"
+        },
+        {
+          "index": 14,
+          "tick": 22447,
+          "screenshotEndTick": 22455,
+          "stateSHA256": "de34d04874e7ff023d0a25d74e3a7327e37adb3be48b1590862e995bc5642526",
+          "stateFile": "falling-leaves-z1-014.state.json",
+          "png": "falling-leaves-z1-014.png",
+          "jpeg": "falling-leaves-z1-014.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1498,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1498,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 749,
+            "wave39/debris/ground_leaves_small-v1.png": 1627,
+            "wave39/leaves/falling_birch_brown-v1.png": 10786,
+            "wave39/leaves/falling_beech_brown-v1.png": 17821,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 9564,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 12498,
+            "wave39/leaves/falling_oak_yellow-v1.png": 15806,
+            "wave39/leaves/falling_oak_brown-v1.png": 14890,
+            "wave39/debris/wind_leaves_group_a-v1.png": 9086,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 10776,
+            "wave39/leaves/falling_oak_orange-v1.png": 16482,
+            "wave39/leaves/falling_birch_orange-v1.png": 10890,
+            "wave39/leaves/falling_birch_yellow-v1.png": 9900,
+            "wave39/leaves/falling_beech_yellow-v1.png": 13274,
+            "wave39/debris/wind_leaves_group_b-v1.png": 8709,
+            "wave39/leaves/falling_beech_orange-v1.png": 17599
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "de41e0ed54cfc9e6e72b1c201fd4a68eb155a12bd029b734023c3434c3e267d6"
+        },
+        {
+          "index": 15,
+          "tick": 22457,
+          "screenshotEndTick": 22469,
+          "stateSHA256": "da19cfece75ed4722cd841248b05feee6ab8f2e42d845d10b395ade22aa36beb",
+          "stateFile": "falling-leaves-z1-015.state.json",
+          "png": "falling-leaves-z1-015.png",
+          "jpeg": "falling-leaves-z1-015.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1562,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1562,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 781,
+            "wave39/debris/ground_leaves_small-v1.png": 1755,
+            "wave39/leaves/falling_birch_brown-v1.png": 11220,
+            "wave39/leaves/falling_beech_brown-v1.png": 18691,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 10127,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 12888,
+            "wave39/leaves/falling_oak_yellow-v1.png": 16528,
+            "wave39/leaves/falling_oak_brown-v1.png": 15359,
+            "wave39/debris/wind_leaves_group_a-v1.png": 9128,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 11235,
+            "wave39/leaves/falling_oak_orange-v1.png": 16960,
+            "wave39/leaves/falling_birch_orange-v1.png": 11428,
+            "wave39/leaves/falling_birch_yellow-v1.png": 10268,
+            "wave39/leaves/falling_beech_yellow-v1.png": 14043,
+            "wave39/debris/wind_leaves_group_b-v1.png": 8728,
+            "wave39/leaves/falling_beech_orange-v1.png": 18387
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "a3099fd8f9ef67c2cbdadb7cf8a25466b0eb9cdae627a2dc67b1487390083c2e"
+        },
+        {
+          "index": 16,
+          "tick": 22470,
+          "screenshotEndTick": 22480,
+          "stateSHA256": "f14e4c3edb0e29eb3eb2171c94961ea7bf725ea5271d7af5b45b3c8aab6cdaa7",
+          "stateFile": "falling-leaves-z1-016.state.json",
+          "png": "falling-leaves-z1-016.png",
+          "jpeg": "falling-leaves-z1-016.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1632,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1632,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 816,
+            "wave39/debris/ground_leaves_small-v1.png": 1895,
+            "wave39/leaves/falling_birch_brown-v1.png": 11553,
+            "wave39/leaves/falling_beech_brown-v1.png": 19671,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 10819,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 13460,
+            "wave39/leaves/falling_oak_yellow-v1.png": 17464,
+            "wave39/leaves/falling_oak_brown-v1.png": 15836,
+            "wave39/debris/wind_leaves_group_a-v1.png": 9631,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 11663,
+            "wave39/leaves/falling_oak_orange-v1.png": 17411,
+            "wave39/leaves/falling_birch_orange-v1.png": 12013,
+            "wave39/leaves/falling_birch_yellow-v1.png": 10668,
+            "wave39/leaves/falling_beech_yellow-v1.png": 14803,
+            "wave39/debris/wind_leaves_group_b-v1.png": 9155,
+            "wave39/leaves/falling_beech_orange-v1.png": 19263
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "2205348f95ffa5a1d7254edd39dfdc5ffdfae7a66aa79d923ebff196e0fa01c7"
+        },
+        {
+          "index": 17,
+          "tick": 22481,
+          "screenshotEndTick": 22490,
+          "stateSHA256": "011e60831339468a5185fe56df1cd666d0d15f3b32ddda2b6b24a0988a232451",
+          "stateFile": "falling-leaves-z1-017.state.json",
+          "png": "falling-leaves-z1-017.png",
+          "jpeg": "falling-leaves-z1-017.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1702,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1702,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 851,
+            "wave39/debris/ground_leaves_small-v1.png": 2035,
+            "wave39/leaves/falling_birch_brown-v1.png": 11894,
+            "wave39/leaves/falling_beech_brown-v1.png": 20613,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 11472,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 14063,
+            "wave39/leaves/falling_oak_yellow-v1.png": 18407,
+            "wave39/leaves/falling_oak_brown-v1.png": 16404,
+            "wave39/debris/wind_leaves_group_a-v1.png": 10035,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 12106,
+            "wave39/leaves/falling_oak_orange-v1.png": 18016,
+            "wave39/leaves/falling_birch_orange-v1.png": 12541,
+            "wave39/leaves/falling_birch_yellow-v1.png": 11110,
+            "wave39/leaves/falling_beech_yellow-v1.png": 15439,
+            "wave39/debris/wind_leaves_group_b-v1.png": 9556,
+            "wave39/leaves/falling_beech_orange-v1.png": 20049
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "65f8b1fc892dd406a2b45fbf8a1f792ac63d1f412c6b94e4e113d5c90705c78e"
+        },
+        {
+          "index": 18,
+          "tick": 22491,
+          "screenshotEndTick": 22500,
+          "stateSHA256": "f3547a67c1342d7598e87ae9289356aa9ea75e65cfae5c9e75141517072ffb77",
+          "stateFile": "falling-leaves-z1-018.state.json",
+          "png": "falling-leaves-z1-018.png",
+          "jpeg": "falling-leaves-z1-018.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1774,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1774,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 887,
+            "wave39/debris/ground_leaves_small-v1.png": 2179,
+            "wave39/leaves/falling_birch_brown-v1.png": 12399,
+            "wave39/leaves/falling_beech_brown-v1.png": 21532,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 12074,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 14666,
+            "wave39/leaves/falling_oak_yellow-v1.png": 19181,
+            "wave39/leaves/falling_oak_brown-v1.png": 17104,
+            "wave39/debris/wind_leaves_group_a-v1.png": 10620,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 12489,
+            "wave39/leaves/falling_oak_orange-v1.png": 18621,
+            "wave39/leaves/falling_birch_orange-v1.png": 13036,
+            "wave39/leaves/falling_birch_yellow-v1.png": 11618,
+            "wave39/leaves/falling_beech_yellow-v1.png": 16078,
+            "wave39/debris/wind_leaves_group_b-v1.png": 9907,
+            "wave39/leaves/falling_beech_orange-v1.png": 21020
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "9478322bab0aad3e869053c75180fa56f24f6270c64f6b8cec672c9a1501db1a"
+        },
+        {
+          "index": 19,
+          "tick": 22501,
+          "screenshotEndTick": 22510,
+          "stateSHA256": "338b92ac2259937b4b9ea9cf2c8f44fe4e41afdd7f07ced556ff3f97145f7317",
+          "stateFile": "falling-leaves-z1-019.state.json",
+          "png": "falling-leaves-z1-019.png",
+          "jpeg": "falling-leaves-z1-019.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1844,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1844,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 922,
+            "wave39/debris/ground_leaves_small-v1.png": 2319,
+            "wave39/leaves/falling_birch_brown-v1.png": 13073,
+            "wave39/leaves/falling_beech_brown-v1.png": 22367,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 12473,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 15166,
+            "wave39/leaves/falling_oak_yellow-v1.png": 19961,
+            "wave39/leaves/falling_oak_brown-v1.png": 17800,
+            "wave39/debris/wind_leaves_group_a-v1.png": 11130,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 12840,
+            "wave39/leaves/falling_oak_orange-v1.png": 19283,
+            "wave39/leaves/falling_birch_orange-v1.png": 13572,
+            "wave39/leaves/falling_birch_yellow-v1.png": 12168,
+            "wave39/leaves/falling_beech_yellow-v1.png": 16777,
+            "wave39/debris/wind_leaves_group_b-v1.png": 10540,
+            "wave39/leaves/falling_beech_orange-v1.png": 21828,
+            "wave39/debris/ground_leaves_large-v1.png": 34
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "c9142a5542a325811620dd117293b47420ee58d17832935e566b72ae3ed9f1c2"
+        },
+        {
+          "index": 20,
+          "tick": 22512,
+          "screenshotEndTick": 22520,
+          "stateSHA256": "7ecca4e0bb561f020d0d759bfad328ece4ee0d897e115a90f2be6c7454565d18",
+          "stateFile": "falling-leaves-z1-020.state.json",
+          "png": "falling-leaves-z1-020.png",
+          "jpeg": "falling-leaves-z1-020.jpg",
+          "wave39Draws": {
+            "wave39/debris/ground_leaves_windrow_b-v1.png": 1916,
+            "wave39/debris/ground_leaves_medium_oak_beech-v1.png": 1916,
+            "wave39/debris/ground_leaves_medium_birch_maple-v1.png": 958,
+            "wave39/debris/ground_leaves_small-v1.png": 2463,
+            "wave39/leaves/falling_birch_brown-v1.png": 13798,
+            "wave39/leaves/falling_beech_brown-v1.png": 23098,
+            "wave39/leaves/falling_fieldmaple_brown-v1.png": 12844,
+            "wave39/leaves/falling_fieldmaple_orange-v1.png": 15564,
+            "wave39/leaves/falling_oak_yellow-v1.png": 20761,
+            "wave39/leaves/falling_oak_brown-v1.png": 18687,
+            "wave39/debris/wind_leaves_group_a-v1.png": 11563,
+            "wave39/leaves/falling_fieldmaple_yellow-v1.png": 13207,
+            "wave39/leaves/falling_oak_orange-v1.png": 20018,
+            "wave39/leaves/falling_birch_orange-v1.png": 14206,
+            "wave39/leaves/falling_birch_yellow-v1.png": 12769,
+            "wave39/leaves/falling_beech_yellow-v1.png": 17539,
+            "wave39/debris/wind_leaves_group_b-v1.png": 11076,
+            "wave39/leaves/falling_beech_orange-v1.png": 22521,
+            "wave39/debris/ground_leaves_large-v1.png": 70
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "b91ea729144b07d4c98dfa9efcde1f2b6fe2f6483e366649b3ebb9887080eb51"
+        }
+      ],
+      "interaction": null
+    },
+    {
+      "name": "rain-band",
+      "zoom": 1,
+      "saveSHA256": "d5d7b5c1bd82fa93b7eb83c4aa68eb3102aead29a6bf87df56e3b2e9a85844e2",
+      "tick": 20550,
+      "weather": "wet",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-020000.save.json",
+        "sourceSHA256": "7f745cc2f58a33a49d74c54be9491c3844a2ca3214c8f4ad9f7925347aeaca6a",
+        "engineTicks": 550,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 20550,
+          "screenshotEndTick": 20550,
+          "stateSHA256": "c5be6e717642e652c5b5dd282ddddab161e668a7d187ff29b82b3ecab1092126",
+          "stateFile": "rain-band-z1-000.state.json",
+          "png": "rain-band-z1-000.png",
+          "jpeg": "rain-band-z1-000.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 118200,
+            "wave39/puddles/puddle_large_b-v1.png": 2000,
+            "wave39/puddles/puddle_small_b-v1.png": 1600,
+            "wave39/puddles/puddle_medium_b-v1.png": 1600,
+            "wave39/puddles/puddle_medium_a-v1.png": 1000,
+            "wave39/puddles/puddle_large_a-v1.png": 1800,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 4000,
+            "wave39/puddles/puddle_small_a-v1.png": 1200,
+            "wave39/rain/rain_splash_soil_small-v1.png": 400,
+            "wave39/rain/rain_splash_soil_large-v1.png": 800,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 8159,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 6965,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 6567,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 4975,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 5373,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 8159,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 7363,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 9154,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 5970,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 9552,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 6368,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 8159
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "9bb7fb75f2f5524848f5f10e117c3cf9b4494bd3eaf59259733342159749788b"
+        },
+        {
+          "index": 1,
+          "tick": 20560,
+          "screenshotEndTick": 20567,
+          "stateSHA256": "a690281e1934f93400858fc72bd2a6ee1cee2154e7047d977a279c1f2c9baf27",
+          "stateFile": "rain-band-z1-001.state.json",
+          "png": "rain-band-z1-001.png",
+          "jpeg": "rain-band-z1-001.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 163707,
+            "wave39/puddles/puddle_large_b-v1.png": 2770,
+            "wave39/puddles/puddle_small_b-v1.png": 2216,
+            "wave39/puddles/puddle_medium_b-v1.png": 2216,
+            "wave39/puddles/puddle_medium_a-v1.png": 1385,
+            "wave39/puddles/puddle_large_a-v1.png": 2493,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 5540,
+            "wave39/puddles/puddle_small_a-v1.png": 1662,
+            "wave39/rain/rain_splash_soil_small-v1.png": 521,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1056,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 11038,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 9729,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 8761,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 7294,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 8076,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 10881,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 9955,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 11872,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 8402,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 12516,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 8767,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 11142
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "53b722c45bdf16c635e2d9d921ce0b8b66332c14ad1ed02615ea3aaa334c3eee"
+        },
+        {
+          "index": 2,
+          "tick": 20570,
+          "screenshotEndTick": 20578,
+          "stateSHA256": "b211607808d13cc17197515618870e209c66d839122e36344b7ee18d0b262575",
+          "stateFile": "rain-band-z1-002.state.json",
+          "png": "rain-band-z1-002.png",
+          "jpeg": "rain-band-z1-002.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 187347,
+            "wave39/puddles/puddle_large_b-v1.png": 3170,
+            "wave39/puddles/puddle_small_b-v1.png": 2536,
+            "wave39/puddles/puddle_medium_b-v1.png": 2536,
+            "wave39/puddles/puddle_medium_a-v1.png": 1585,
+            "wave39/puddles/puddle_large_a-v1.png": 2853,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 6340,
+            "wave39/puddles/puddle_small_a-v1.png": 1902,
+            "wave39/rain/rain_splash_soil_small-v1.png": 595,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1180,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 12179,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 11083,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 9900,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 8621,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 9651,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 12136,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 11475,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 13162,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 9799,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 13629,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 10121,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 12384
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "afae05d0c248d07661ddf248b159ae56e086ea997f27fd178f9996dc3b87eb45"
+        },
+        {
+          "index": 3,
+          "tick": 20580,
+          "screenshotEndTick": 20590,
+          "stateSHA256": "5b0234b708c263cf26a27c391a9e2cfc5023da81054b81036306e0a345aecf2e",
+          "stateFile": "rain-band-z1-003.state.json",
+          "png": "rain-band-z1-003.png",
+          "jpeg": "rain-band-z1-003.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 209214,
+            "wave39/puddles/puddle_large_b-v1.png": 3540,
+            "wave39/puddles/puddle_small_b-v1.png": 2832,
+            "wave39/puddles/puddle_medium_b-v1.png": 2832,
+            "wave39/puddles/puddle_medium_a-v1.png": 1770,
+            "wave39/puddles/puddle_large_a-v1.png": 3186,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 7080,
+            "wave39/puddles/puddle_small_a-v1.png": 2124,
+            "wave39/rain/rain_splash_soil_small-v1.png": 643,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1279,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 13332,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 12177,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 10981,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 9789,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 10877,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 13402,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 12660,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 14313,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 10924,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 14627,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 11328,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 13572
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "8c56a08a0aebdcbc7dfb0ff3c0d96e9fb3f0a7f7558e7b724b6ad21613a37ced"
+        },
+        {
+          "index": 4,
+          "tick": 20591,
+          "screenshotEndTick": 20599,
+          "stateSHA256": "f31b127ea0c81001261713dc938f0f6dea47a552bc542d810ab71e2c3ebc80eb",
+          "stateFile": "rain-band-z1-004.state.json",
+          "png": "rain-band-z1-004.png",
+          "jpeg": "rain-band-z1-004.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 229899,
+            "wave39/puddles/puddle_large_b-v1.png": 3890,
+            "wave39/puddles/puddle_small_b-v1.png": 3112,
+            "wave39/puddles/puddle_medium_b-v1.png": 3112,
+            "wave39/puddles/puddle_medium_a-v1.png": 1945,
+            "wave39/puddles/puddle_large_a-v1.png": 3501,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 7780,
+            "wave39/puddles/puddle_small_a-v1.png": 2334,
+            "wave39/rain/rain_splash_soil_small-v1.png": 681,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1318,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 14158,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 13129,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 12143,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 10698,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 12072,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 14464,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 13615,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 15436,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 11906,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 15685,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 12522,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 14509
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "dcc08feab1a8232fd4bbb0a18861e6148e7057d0e84aadb8aa0cf702c394f606"
+        },
+        {
+          "index": 5,
+          "tick": 20600,
+          "screenshotEndTick": 20608,
+          "stateSHA256": "2377ef16a4a12e62732e2dfd3c32049fb07b590e452b6463b44c0c550928573a",
+          "stateFile": "rain-band-z1-005.state.json",
+          "png": "rain-band-z1-005.png",
+          "jpeg": "rain-band-z1-005.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 251175,
+            "wave39/puddles/puddle_large_b-v1.png": 4250,
+            "wave39/puddles/puddle_small_b-v1.png": 3400,
+            "wave39/puddles/puddle_medium_b-v1.png": 3400,
+            "wave39/puddles/puddle_medium_a-v1.png": 2125,
+            "wave39/puddles/puddle_large_a-v1.png": 3825,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 8500,
+            "wave39/puddles/puddle_small_a-v1.png": 2550,
+            "wave39/rain/rain_splash_soil_small-v1.png": 748,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1470,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 15067,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 14097,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 13313,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 11594,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 13023,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 15649,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 14884,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 16499,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 13076,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 16893,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 13340,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 15694
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "12b584161e23a330aaab2095176b00ae86c0304959d1950edf94477803976204"
+        },
+        {
+          "index": 6,
+          "tick": 20610,
+          "screenshotEndTick": 20618,
+          "stateSHA256": "b35360b28889d2b1965ace1468b62d5b9b8bdb7970ba0bdccb3ea8ec3be7bce8",
+          "stateFile": "rain-band-z1-006.state.json",
+          "png": "rain-band-z1-006.png",
+          "jpeg": "rain-band-z1-006.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 273042,
+            "wave39/puddles/puddle_large_b-v1.png": 4620,
+            "wave39/puddles/puddle_small_b-v1.png": 3696,
+            "wave39/puddles/puddle_medium_b-v1.png": 3696,
+            "wave39/puddles/puddle_medium_a-v1.png": 2310,
+            "wave39/puddles/puddle_large_a-v1.png": 4158,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 9240,
+            "wave39/puddles/puddle_small_a-v1.png": 2772,
+            "wave39/rain/rain_splash_soil_small-v1.png": 784,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1512,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 16015,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 15131,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 14340,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 12865,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 14092,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 16887,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 15896,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 17745,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 14339,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 18042,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 14429,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 16740
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "2c51e4630dd4928c8a423fa22ed99f3f27d3e2a276e2aa2a43e384b21fb8adc1"
+        },
+        {
+          "index": 7,
+          "tick": 20620,
+          "screenshotEndTick": 20627,
+          "stateSHA256": "ed9ece87aeeaf586eec18149fbf834e4c978029639d16dd1c23419f8009fe864",
+          "stateFile": "rain-band-z1-007.state.json",
+          "png": "rain-band-z1-007.png",
+          "jpeg": "rain-band-z1-007.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 295500,
+            "wave39/puddles/puddle_large_b-v1.png": 5000,
+            "wave39/puddles/puddle_small_b-v1.png": 4000,
+            "wave39/puddles/puddle_medium_b-v1.png": 4000,
+            "wave39/puddles/puddle_medium_a-v1.png": 2500,
+            "wave39/puddles/puddle_large_a-v1.png": 4500,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 10000,
+            "wave39/puddles/puddle_small_a-v1.png": 3000,
+            "wave39/rain/rain_splash_soil_small-v1.png": 902,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1724,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 16864,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 16175,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 15390,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 14111,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 15411,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 17803,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 17140,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 18970,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 15591,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 19094,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 15504,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 17855
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "3771afb58b90c8c89f1c5e44b7999bb2b1832d1cd2cbeea03c6cc871ad544a1b"
+        },
+        {
+          "index": 8,
+          "tick": 20630,
+          "screenshotEndTick": 20638,
+          "stateSHA256": "3b6319c3927e841f4a464d7d4ca25039875da572125f3589d5c81723986d0d21",
+          "stateFile": "rain-band-z1-008.state.json",
+          "png": "rain-band-z1-008.png",
+          "jpeg": "rain-band-z1-008.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 319140,
+            "wave39/puddles/puddle_large_b-v1.png": 5400,
+            "wave39/puddles/puddle_small_b-v1.png": 4320,
+            "wave39/puddles/puddle_medium_b-v1.png": 4320,
+            "wave39/puddles/puddle_medium_a-v1.png": 2700,
+            "wave39/puddles/puddle_large_a-v1.png": 4860,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 10800,
+            "wave39/puddles/puddle_small_a-v1.png": 3240,
+            "wave39/rain/rain_splash_soil_small-v1.png": 940,
+            "wave39/rain/rain_splash_soil_large-v1.png": 1786,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 17984,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 17512,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 16736,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 15316,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 16613,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 19125,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 18272,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 20506,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 17055,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 20556,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 16895,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 19162
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "8d621fd1bf9058c5789d8c7d15223232362dc97abaef3c4a9f1c1c84ebbab1cb"
+        },
+        {
+          "index": 9,
+          "tick": 20640,
+          "screenshotEndTick": 20648,
+          "stateSHA256": "114bccea46b9b58ef097297025d2783dff3de70d8fbd55c7d511fb99398c7356",
+          "stateFile": "rain-band-z1-009.state.json",
+          "png": "rain-band-z1-009.png",
+          "jpeg": "rain-band-z1-009.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 341598,
+            "wave39/puddles/puddle_large_b-v1.png": 5780,
+            "wave39/puddles/puddle_small_b-v1.png": 4624,
+            "wave39/puddles/puddle_medium_b-v1.png": 4624,
+            "wave39/puddles/puddle_medium_a-v1.png": 2890,
+            "wave39/puddles/puddle_large_a-v1.png": 5202,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 11560,
+            "wave39/puddles/puddle_small_a-v1.png": 3468,
+            "wave39/rain/rain_splash_soil_small-v1.png": 1201,
+            "wave39/rain/rain_splash_soil_large-v1.png": 2049,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 19363,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 18517,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 18237,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 16468,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 17611,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 20630,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 19434,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 21768,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 18247,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 21753,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 18270,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 20507
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "5bfe27ac4c6b6edc54de0c48b268f7f2eff01f0d3f52d4313828592847aa110f"
+        },
+        {
+          "index": 10,
+          "tick": 20650,
+          "screenshotEndTick": 20657,
+          "stateSHA256": "e23da6156c928e7333c954cdff75c2c034b5d7d5fcf076f68a03b56ca25cfdcb",
+          "stateFile": "rain-band-z1-010.state.json",
+          "png": "rain-band-z1-010.png",
+          "jpeg": "rain-band-z1-010.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 364056,
+            "wave39/puddles/puddle_large_b-v1.png": 6160,
+            "wave39/puddles/puddle_small_b-v1.png": 4928,
+            "wave39/puddles/puddle_medium_b-v1.png": 4928,
+            "wave39/puddles/puddle_medium_a-v1.png": 3080,
+            "wave39/puddles/puddle_large_a-v1.png": 5544,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 12320,
+            "wave39/puddles/puddle_small_a-v1.png": 3696,
+            "wave39/rain/rain_splash_soil_small-v1.png": 1285,
+            "wave39/rain/rain_splash_soil_large-v1.png": 2187,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 20628,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 19765,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 19253,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 17829,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 18992,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 22026,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 20860,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 23278,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 19454,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 22933,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 19569,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 21694
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "f66d020cc9d49d36cc11f14945146b0c54b9edc636fd9e3737886e6e079499af"
+        },
+        {
+          "index": 11,
+          "tick": 20660,
+          "screenshotEndTick": 20672,
+          "stateSHA256": "c2645082bcce4c74c0b69b63642dcde2f828b27506b63fb3fed49331ab3f6450",
+          "stateFile": "rain-band-z1-011.state.json",
+          "png": "rain-band-z1-011.png",
+          "jpeg": "rain-band-z1-011.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 385923,
+            "wave39/puddles/puddle_large_b-v1.png": 6530,
+            "wave39/puddles/puddle_small_b-v1.png": 5224,
+            "wave39/puddles/puddle_medium_b-v1.png": 5224,
+            "wave39/puddles/puddle_medium_a-v1.png": 3265,
+            "wave39/puddles/puddle_large_a-v1.png": 5877,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 13060,
+            "wave39/puddles/puddle_small_a-v1.png": 3918,
+            "wave39/rain/rain_splash_soil_small-v1.png": 1562,
+            "wave39/rain/rain_splash_soil_large-v1.png": 2466,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 22092,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 20870,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 20511,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 19034,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 20272,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 23504,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 22020,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 24811,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 20569,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 24146,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 20932,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 23049
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "70c22331881686c0b92faf416b6618e22f70e03b3af0f0d3523ef025a76b0019"
+        },
+        {
+          "index": 12,
+          "tick": 20673,
+          "screenshotEndTick": 20681,
+          "stateSHA256": "037048e3558880d1503b3a67977181a67c1ef0b0f44c1f45adaf4890c734f6c6",
+          "stateFile": "rain-band-z1-012.state.json",
+          "png": "rain-band-z1-012.png",
+          "jpeg": "rain-band-z1-012.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 407199,
+            "wave39/puddles/puddle_large_b-v1.png": 6890,
+            "wave39/puddles/puddle_small_b-v1.png": 5512,
+            "wave39/puddles/puddle_medium_b-v1.png": 5512,
+            "wave39/puddles/puddle_medium_a-v1.png": 3445,
+            "wave39/puddles/puddle_large_a-v1.png": 6201,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 13780,
+            "wave39/puddles/puddle_small_a-v1.png": 4134,
+            "wave39/rain/rain_splash_soil_small-v1.png": 1929,
+            "wave39/rain/rain_splash_soil_large-v1.png": 2904,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 23287,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 22173,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 21772,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 20541,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 21439,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 24871,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 23003,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 26091,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 21793,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 25680,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 22197,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 24083
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "a73d0d234673c696b83bf968424d529650034d4f40d9bc6f54e54b6a93ffb7ce"
+        },
+        {
+          "index": 13,
+          "tick": 20682,
+          "screenshotEndTick": 20690,
+          "stateSHA256": "7e05a0d8302beda3cef9550f0c651fa7d26ea0932883978ce4266b0b59419cd1",
+          "stateFile": "rain-band-z1-013.state.json",
+          "png": "rain-band-z1-013.png",
+          "jpeg": "rain-band-z1-013.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 427293,
+            "wave39/puddles/puddle_large_b-v1.png": 7230,
+            "wave39/puddles/puddle_small_b-v1.png": 5784,
+            "wave39/puddles/puddle_medium_b-v1.png": 5784,
+            "wave39/puddles/puddle_medium_a-v1.png": 3615,
+            "wave39/puddles/puddle_large_a-v1.png": 6507,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 14460,
+            "wave39/puddles/puddle_small_a-v1.png": 4338,
+            "wave39/rain/rain_splash_soil_small-v1.png": 1984,
+            "wave39/rain/rain_splash_soil_large-v1.png": 2974,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 24643,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 23130,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 22887,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 21608,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 22518,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 25959,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 23822,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 27365,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 23039,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 26774,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 23328,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 25303
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "caba485a868562eb2f40fb2d8143bd169bab637e963eac0404617cc5f5373bbe"
+        },
+        {
+          "index": 14,
+          "tick": 20691,
+          "screenshotEndTick": 20700,
+          "stateSHA256": "a8a5b742744e737779560d8a8860c1c72c2dc1a348026166f47208b9f8eb30cf",
+          "stateFile": "rain-band-z1-014.state.json",
+          "png": "rain-band-z1-014.png",
+          "jpeg": "rain-band-z1-014.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 449751,
+            "wave39/puddles/puddle_large_b-v1.png": 7610,
+            "wave39/puddles/puddle_small_b-v1.png": 6088,
+            "wave39/puddles/puddle_medium_b-v1.png": 6088,
+            "wave39/puddles/puddle_medium_a-v1.png": 3805,
+            "wave39/puddles/puddle_large_a-v1.png": 6849,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 15220,
+            "wave39/puddles/puddle_small_a-v1.png": 4566,
+            "wave39/rain/rain_splash_soil_small-v1.png": 2371,
+            "wave39/rain/rain_splash_soil_large-v1.png": 3483,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 25797,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 24283,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 23989,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 22884,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 23427,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 27158,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 24851,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 28578,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 24306,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 27935,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 24468,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 26581
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "61e74bd20408a17fe55c674ab404e5e25fa45124fed0cce7927bdb0ec2c3e71c"
+        },
+        {
+          "index": 15,
+          "tick": 20702,
+          "screenshotEndTick": 20709,
+          "stateSHA256": "4f8127174eb153bbafcf0241faec3601370d5c890ff9590a38532da68bace409",
+          "stateFile": "rain-band-z1-015.state.json",
+          "png": "rain-band-z1-015.png",
+          "jpeg": "rain-band-z1-015.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 471027,
+            "wave39/puddles/puddle_large_b-v1.png": 7970,
+            "wave39/puddles/puddle_small_b-v1.png": 6376,
+            "wave39/puddles/puddle_medium_b-v1.png": 6376,
+            "wave39/puddles/puddle_medium_a-v1.png": 3985,
+            "wave39/puddles/puddle_large_a-v1.png": 7173,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 15940,
+            "wave39/puddles/puddle_small_a-v1.png": 4782,
+            "wave39/rain/rain_splash_soil_small-v1.png": 2394,
+            "wave39/rain/rain_splash_soil_large-v1.png": 3542,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 26924,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 25401,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 25194,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 23919,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 24529,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 28297,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 25753,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 29842,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 25434,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 29078,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 25793,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 27769
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "fbc1004be49ad70d926e9aba556ce90542e8133ffc2967d5f78d0cba14f19b7c"
+        },
+        {
+          "index": 16,
+          "tick": 20711,
+          "screenshotEndTick": 20718,
+          "stateSHA256": "4c7c8e5d05f6857da2c22ae8f7f89d52e67bdf7b14ebfb7352273f64e6547fe2",
+          "stateFile": "rain-band-z1-016.state.json",
+          "png": "rain-band-z1-016.png",
+          "jpeg": "rain-band-z1-016.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 491712,
+            "wave39/puddles/puddle_large_b-v1.png": 8320,
+            "wave39/puddles/puddle_small_b-v1.png": 6656,
+            "wave39/puddles/puddle_medium_b-v1.png": 6656,
+            "wave39/puddles/puddle_medium_a-v1.png": 4160,
+            "wave39/puddles/puddle_large_a-v1.png": 7488,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 16640,
+            "wave39/puddles/puddle_small_a-v1.png": 4992,
+            "wave39/rain/rain_splash_soil_small-v1.png": 2692,
+            "wave39/rain/rain_splash_soil_large-v1.png": 3992,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 27905,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 26502,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 26258,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 25061,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 25663,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 29551,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 27138,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 30831,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 26429,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 30239,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 27081,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 28985
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "e56d07fae359aacf02b685a0e536193f0217edd4e973821ac32c3a7f644e4cb1"
+        },
+        {
+          "index": 17,
+          "tick": 20720,
+          "screenshotEndTick": 20727,
+          "stateSHA256": "7af0154b6f3c6af53db617a375e390ebebe86fbff8761f7f37eef7e6e5176eb9",
+          "stateFile": "rain-band-z1-017.state.json",
+          "png": "rain-band-z1-017.png",
+          "jpeg": "rain-band-z1-017.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 512397,
+            "wave39/puddles/puddle_large_b-v1.png": 8670,
+            "wave39/puddles/puddle_small_b-v1.png": 6936,
+            "wave39/puddles/puddle_medium_b-v1.png": 6936,
+            "wave39/puddles/puddle_medium_a-v1.png": 4335,
+            "wave39/puddles/puddle_large_a-v1.png": 7803,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 17340,
+            "wave39/puddles/puddle_small_a-v1.png": 5202,
+            "wave39/rain/rain_splash_soil_small-v1.png": 2706,
+            "wave39/rain/rain_splash_soil_large-v1.png": 4025,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 28710,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 27554,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 27574,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 26395,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 26734,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 30564,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 28126,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 32058,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 27382,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 31236,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 28133,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 30170
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "657a8e664159793c48561bc8a35b6b72d2abda2d1cf69ca7b55a6c6dbdf54a83"
+        },
+        {
+          "index": 18,
+          "tick": 20730,
+          "screenshotEndTick": 20737,
+          "stateSHA256": "7e6ad5e54d76f6d11d25ec78cbc61f83c872396a600a4e2625d97a02ac992ea0",
+          "stateFile": "rain-band-z1-018.state.json",
+          "png": "rain-band-z1-018.png",
+          "jpeg": "rain-band-z1-018.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 535446,
+            "wave39/puddles/puddle_large_b-v1.png": 9060,
+            "wave39/puddles/puddle_small_b-v1.png": 7248,
+            "wave39/puddles/puddle_medium_b-v1.png": 7248,
+            "wave39/puddles/puddle_medium_a-v1.png": 4530,
+            "wave39/puddles/puddle_large_a-v1.png": 8154,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 18120,
+            "wave39/puddles/puddle_small_a-v1.png": 5436,
+            "wave39/rain/rain_splash_soil_small-v1.png": 2940,
+            "wave39/rain/rain_splash_soil_large-v1.png": 4433,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 29967,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 28544,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 28769,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 27429,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 28327,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 31663,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 29393,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 33352,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 28509,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 32530,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 29311,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 31467
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "7574a04e7168925e14911231929eef53a8079fbcc8e3311af22400ef65bc93ec"
+        },
+        {
+          "index": 19,
+          "tick": 20740,
+          "screenshotEndTick": 20747,
+          "stateSHA256": "03f9a7079628ad8db367a083f9fe0d2c2d1fdefb4ba470aa682bb215863d7fe2",
+          "stateFile": "rain-band-z1-019.state.json",
+          "png": "rain-band-z1-019.png",
+          "jpeg": "rain-band-z1-019.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 559086,
+            "wave39/puddles/puddle_large_b-v1.png": 9460,
+            "wave39/puddles/puddle_small_b-v1.png": 7568,
+            "wave39/puddles/puddle_medium_b-v1.png": 7568,
+            "wave39/puddles/puddle_medium_a-v1.png": 4730,
+            "wave39/puddles/puddle_large_a-v1.png": 8514,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 18920,
+            "wave39/puddles/puddle_small_a-v1.png": 5676,
+            "wave39/rain/rain_splash_soil_small-v1.png": 2988,
+            "wave39/rain/rain_splash_soil_large-v1.png": 4519,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 31033,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 29880,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 30000,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 28598,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 29622,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 33256,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 30707,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 34712,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 29477,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 33665,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 30411,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 33095
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "69e7057f987a47f82d63ff2d910bb40856fdb5aa16d457214cd0f525849818ec"
+        },
+        {
+          "index": 20,
+          "tick": 20750,
+          "screenshotEndTick": 20757,
+          "stateSHA256": "61c895f4a7295423791cc6b44650fd242b3ac238aac86c09d14a76f1167041f5",
+          "stateFile": "rain-band-z1-020.state.json",
+          "png": "rain-band-z1-020.png",
+          "jpeg": "rain-band-z1-020.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 580953,
+            "wave39/puddles/puddle_large_b-v1.png": 9830,
+            "wave39/puddles/puddle_small_b-v1.png": 7864,
+            "wave39/puddles/puddle_medium_b-v1.png": 7864,
+            "wave39/puddles/puddle_medium_a-v1.png": 4915,
+            "wave39/puddles/puddle_large_a-v1.png": 8847,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 19660,
+            "wave39/puddles/puddle_small_a-v1.png": 5898,
+            "wave39/rain/rain_splash_soil_small-v1.png": 3087,
+            "wave39/rain/rain_splash_soil_large-v1.png": 4750,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 32157,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 30992,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 31415,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 29893,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 30704,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 34344,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 31698,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 35839,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 30210,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 34529,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 31615,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 34265
+          },
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "pngSHA256": "79a6c0caf5f51687e4cc1f4ee85228b2ee19d5632c005d2450fcd60b877987e9"
+        }
+      ],
+      "interaction": {
+        "paused": {
+          "tick": 20760,
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 640,
+            "clientY": 400
+          }
+        },
+        "held": {
+          "tick": 20760,
+          "camera": {
+            "zoom": 1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 640,
+            "clientY": 400
+          }
+        },
+        "zoomed": {
+          "tick": 20760,
+          "camera": {
+            "zoom": 1.1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 640,
+            "clientY": 400
+          }
+        },
+        "panned": {
+          "tick": 20760,
+          "camera": {
+            "zoom": 1.1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 719.9999999999999,
+            "clientY": 430
+          }
+        },
+        "resumed": {
+          "tick": 20763,
+          "camera": {
+            "zoom": 1.1,
+            "lod": "full"
+          },
+          "anchor": {
+            "clientX": 719.9999999999999,
+            "clientY": 430
+          }
+        },
+        "screenshot": "rain-band-z1-interaction.jpg",
+        "method": "actual UI speed buttons, mouse wheel, middle-button drag; proof port read-only"
+      }
+    },
+    {
+      "name": "rain-band",
+      "zoom": 0.6,
+      "saveSHA256": "d5d7b5c1bd82fa93b7eb83c4aa68eb3102aead29a6bf87df56e3b2e9a85844e2",
+      "tick": 20550,
+      "weather": "wet",
+      "tile": [
+        41,
+        44
+      ],
+      "provenance": {
+        "source": ".omo/trade72-capture/states/tick-020000.save.json",
+        "sourceSHA256": "7f745cc2f58a33a49d74c54be9491c3844a2ca3214c8f4ad9f7925347aeaca6a",
+        "engineTicks": 550,
+        "classification": "engine-advanced-from-existing-game-save",
+        "overrides": []
+      },
+      "errors": [
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED",
+        "http://127.0.0.1:4300/@fls-telemetry/sample: net::ERR_ABORTED"
+      ],
+      "frames": [
+        {
+          "index": 0,
+          "tick": 20550,
+          "screenshotEndTick": 20550,
+          "stateSHA256": "c5be6e717642e652c5b5dd282ddddab161e668a7d187ff29b82b3ecab1092126",
+          "stateFile": "rain-band-z0.6-000.state.json",
+          "png": "rain-band-z0.6-000.png",
+          "jpeg": "rain-band-z0.6-000.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 129310,
+            "wave39/puddles/puddle_large_a-v1.png": 1876,
+            "wave39/puddles/puddle_large_b-v1.png": 1876,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 2680,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 14740,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 12864,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 9246,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 10586,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 13132,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 11524,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 12998,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 13400,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 14204,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 13936,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 15544,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 14740
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "6c868bc0fda233f5e0fccae6b384a34d7b9a848b3a2684fa61a1dbe6f164f586"
+        },
+        {
+          "index": 1,
+          "tick": 20560,
+          "screenshotEndTick": 20573,
+          "stateSHA256": "a690281e1934f93400858fc72bd2a6ee1cee2154e7047d977a279c1f2c9baf27",
+          "stateFile": "rain-band-z0.6-001.state.json",
+          "png": "rain-band-z0.6-001.png",
+          "jpeg": "rain-band-z0.6-001.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 186245,
+            "wave39/puddles/puddle_large_a-v1.png": 2702,
+            "wave39/puddles/puddle_large_b-v1.png": 2702,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 3860,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 20742,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 18196,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 14675,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 16075,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 18925,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 17112,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 18492,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 19253,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 20056,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 19899,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 21793,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 20557
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "5eec1841090f1e5a4be3328035d9a5af2c462ed25ad6b77cea39d4d8182e3f82"
+        },
+        {
+          "index": 2,
+          "tick": 20575,
+          "screenshotEndTick": 20588,
+          "stateSHA256": "81364f1ca1e1e418e3582add39d21b4aea26cbec8f5f03b7c97141d42a1c7958",
+          "stateFile": "rain-band-z0.6-002.state.json",
+          "png": "rain-band-z0.6-002.png",
+          "jpeg": "rain-band-z0.6-002.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 218090,
+            "wave39/puddles/puddle_large_a-v1.png": 3164,
+            "wave39/puddles/puddle_large_b-v1.png": 3164,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 4520,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 23830,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 21276,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 17918,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 19405,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 22233,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 20627,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 21860,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 22505,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 23422,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 23023,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 25066,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 23925
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "f043997bca729eb45b421a1cc68261424234de1561df8ba373246867205e25c8"
+        },
+        {
+          "index": 3,
+          "tick": 20590,
+          "screenshotEndTick": 20603,
+          "stateSHA256": "37bf5142a157024f0b0f9377260381aca4f26414c652738f0fd33e31ba94c1cf",
+          "stateFile": "rain-band-z0.6-003.state.json",
+          "png": "rain-band-z0.6-003.png",
+          "jpeg": "rain-band-z0.6-003.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 249935,
+            "wave39/puddles/puddle_large_a-v1.png": 3626,
+            "wave39/puddles/puddle_large_b-v1.png": 3626,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 5180,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 27187,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 24524,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 21171,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 22473,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 25683,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 23899,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 25156,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 25887,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 26582,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 26320,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 28369,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 27606
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "4c1e7aa3e9ba35cf14b3dcb9f19ab65dbd839556b8e545a83781ec2595ad8ad3"
+        },
+        {
+          "index": 4,
+          "tick": 20605,
+          "screenshotEndTick": 20618,
+          "stateSHA256": "a369ffd166e7036b58e86fb4960ec98485f5cfc309e5efd1c9a45495b41b9c67",
+          "stateFile": "rain-band-z0.6-004.state.json",
+          "png": "rain-band-z0.6-004.png",
+          "jpeg": "rain-band-z0.6-004.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 280815,
+            "wave39/puddles/puddle_large_a-v1.png": 4074,
+            "wave39/puddles/puddle_large_b-v1.png": 4074,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 5820,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 30199,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 27920,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 24468,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 25746,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 28997,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 27200,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 28461,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 28842,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 29909,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 29451,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 31759,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 30850
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "5752027428fc69f1db818627ba538bad458d257eef7c44dbf782b5bc8edfd5bb"
+        },
+        {
+          "index": 5,
+          "tick": 20620,
+          "screenshotEndTick": 20633,
+          "stateSHA256": "ed9ece87aeeaf586eec18149fbf834e4c978029639d16dd1c23419f8009fe864",
+          "stateFile": "rain-band-z0.6-005.state.json",
+          "png": "rain-band-z0.6-005.png",
+          "jpeg": "rain-band-z0.6-005.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 311695,
+            "wave39/puddles/puddle_large_a-v1.png": 4522,
+            "wave39/puddles/puddle_large_b-v1.png": 4522,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 6460,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 33274,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 30848,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 27673,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 28978,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 32109,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 30704,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 31857,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 31907,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 33083,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 32847,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 34970,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 34101
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "e50df9bc3342c1e4c63014df50e9fb8d96b0c612ee494650d06b759620ace6e5"
+        },
+        {
+          "index": 6,
+          "tick": 20635,
+          "screenshotEndTick": 20647,
+          "stateSHA256": "cbd697eaef66fc668ca2e09a85e7aeea10879c8dfe616c6d3fe4d2c814df408f",
+          "stateFile": "rain-band-z0.6-006.state.json",
+          "png": "rain-band-z0.6-006.png",
+          "jpeg": "rain-band-z0.6-006.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 342575,
+            "wave39/puddles/puddle_large_a-v1.png": 4970,
+            "wave39/puddles/puddle_large_b-v1.png": 4970,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 7100,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 36414,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 34157,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 30603,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 32255,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 35378,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 33761,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 34840,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 34790,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 36656,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 36022,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 38197,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 37445
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "83c59da4b42d9e4f4a3be74f4a3bced4aadc7c8ebff692fb5f93304858c0398d"
+        },
+        {
+          "index": 7,
+          "tick": 20649,
+          "screenshotEndTick": 20662,
+          "stateSHA256": "2ac95e78baaa36e977620b6a45e25108c88bb028c2876ee20cf08bd36683876a",
+          "stateFile": "rain-band-z0.6-007.state.json",
+          "png": "rain-band-z0.6-007.png",
+          "jpeg": "rain-band-z0.6-007.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 373455,
+            "wave39/puddles/puddle_large_a-v1.png": 5418,
+            "wave39/puddles/puddle_large_b-v1.png": 5418,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 7740,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 39421,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 37256,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 33732,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 35062,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 38081,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 36825,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 38120,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 37831,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 39582,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 39190,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 41392,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 40352
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "7049ca1d9943d00a3135b73267bc52da77652cab418ddb44e09067bfc6998f53"
+        },
+        {
+          "index": 8,
+          "tick": 20664,
+          "screenshotEndTick": 20677,
+          "stateSHA256": "810811ecab9738d823203813db004a64f8fd0a8516ffa35ccd2624591009669c",
+          "stateFile": "rain-band-z0.6-008.state.json",
+          "png": "rain-band-z0.6-008.png",
+          "jpeg": "rain-band-z0.6-008.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 404335,
+            "wave39/puddles/puddle_large_a-v1.png": 5866,
+            "wave39/puddles/puddle_large_b-v1.png": 5866,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 8380,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 42345,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 40168,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 36173,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 37897,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 41047,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 39572,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 40668,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 40583,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 42211,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 42075,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 44217,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 43195
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "9fbc61a2e5b014f7cf07399411cd0fc6d6c6937f205a6c27de1d981737c14a8c"
+        },
+        {
+          "index": 9,
+          "tick": 20679,
+          "screenshotEndTick": 20692,
+          "stateSHA256": "3a5b5202a6c7a1b689f05eb25f17f11b002931c491671e4b9f22c6cbb4f1bdd0",
+          "stateFile": "rain-band-z0.6-009.state.json",
+          "png": "rain-band-z0.6-009.png",
+          "jpeg": "rain-band-z0.6-009.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 435215,
+            "wave39/puddles/puddle_large_a-v1.png": 6314,
+            "wave39/puddles/puddle_large_b-v1.png": 6314,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 9020,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 44982,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 42690,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 38331,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 40447,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 43594,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 41669,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 43304,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 42896,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 44495,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 44781,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 46683,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 45652
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "017ca5d9def4c6c6b4db017929bf6079584d2d2d59c04a49aa9d710247457175"
+        },
+        {
+          "index": 10,
+          "tick": 20693,
+          "screenshotEndTick": 20706,
+          "stateSHA256": "07021ff967383648786d9bccf1dfc6927896628952bf795246e326bce351f696",
+          "stateFile": "rain-band-z0.6-010.state.json",
+          "png": "rain-band-z0.6-010.png",
+          "jpeg": "rain-band-z0.6-010.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 466095,
+            "wave39/puddles/puddle_large_a-v1.png": 6762,
+            "wave39/puddles/puddle_large_b-v1.png": 6762,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 9660,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 47174,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 45058,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 40282,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 42598,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 45837,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 43811,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 45601,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 45048,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 46623,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 47281,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 48913,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 47765
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "9c4ad53e521be9ab5924d47a3a0933f0148756bc0a0590e1e7ec2ab1760d07ed"
+        },
+        {
+          "index": 11,
+          "tick": 20708,
+          "screenshotEndTick": 20720,
+          "stateSHA256": "3c4b6ec8040f7bd362e2b9bc980fe723099018fea189cf1f1da6efda92100088",
+          "stateFile": "rain-band-z0.6-011.state.json",
+          "png": "rain-band-z0.6-011.png",
+          "jpeg": "rain-band-z0.6-011.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 496975,
+            "wave39/puddles/puddle_large_a-v1.png": 7210,
+            "wave39/puddles/puddle_large_b-v1.png": 7210,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 10300,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 49403,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 47394,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 42282,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 44751,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 48250,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 46174,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 47545,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 47301,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 48753,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 49545,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 51186,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 50249
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "c9919da12d4bafbd37f45ffec60dcbe73a33a32a2d991b81e953d466fa9bba40"
+        },
+        {
+          "index": 12,
+          "tick": 20722,
+          "screenshotEndTick": 20734,
+          "stateSHA256": "0237f7bdabba4c82ded8c32af34ed5bdfb6af10149f4a5d55a2208ab49b03a9d",
+          "stateFile": "rain-band-z0.6-012.state.json",
+          "png": "rain-band-z0.6-012.png",
+          "jpeg": "rain-band-z0.6-012.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 527855,
+            "wave39/puddles/puddle_large_a-v1.png": 7658,
+            "wave39/puddles/puddle_large_b-v1.png": 7658,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 10940,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 51707,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 49410,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 44598,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 46997,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 50299,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 48561,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 49782,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 49326,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 51231,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 51617,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 53532,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 52500
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "8ecee10711506568c0c60c17d822dd637351a9f64c1b03bf2efc01aa2fafab8d"
+        },
+        {
+          "index": 13,
+          "tick": 20736,
+          "screenshotEndTick": 20749,
+          "stateSHA256": "887c9671ff65fccfdba7c82fcdc47ccf1a5a58e86328d27d6c2e40de0c576c3c",
+          "stateFile": "rain-band-z0.6-013.state.json",
+          "png": "rain-band-z0.6-013.png",
+          "jpeg": "rain-band-z0.6-013.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 558735,
+            "wave39/puddles/puddle_large_a-v1.png": 8106,
+            "wave39/puddles/puddle_large_b-v1.png": 8106,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 11580,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 53880,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 51912,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 46970,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 49261,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 52523,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 51036,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 51838,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 51768,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 53525,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 54083,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 56292,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 54610
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "9fafd3839262dc0015db17e17a41157f438aa82a08da18ecb73e38d505b548a7"
+        },
+        {
+          "index": 14,
+          "tick": 20751,
+          "screenshotEndTick": 20763,
+          "stateSHA256": "70024ce98d96b7ab603d0b8cb68defc6641495954c22b4a0a8229d75f9784de9",
+          "stateFile": "rain-band-z0.6-014.state.json",
+          "png": "rain-band-z0.6-014.png",
+          "jpeg": "rain-band-z0.6-014.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 589615,
+            "wave39/puddles/puddle_large_a-v1.png": 8554,
+            "wave39/puddles/puddle_large_b-v1.png": 8554,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 12220,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 55862,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 54136,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 49156,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 51771,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 54733,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 53266,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 53997,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 54558,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 55935,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 56517,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 58475,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 56914
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "607e3b70dc01f08debd85a5866119fd369f95e7849fb75198c4c59e0625686de"
+        },
+        {
+          "index": 15,
+          "tick": 20765,
+          "screenshotEndTick": 20777,
+          "stateSHA256": "282e220e5fded28cfeb846924cf86d927000475233ab2b248a46be4453479483",
+          "stateFile": "rain-band-z0.6-015.state.json",
+          "png": "rain-band-z0.6-015.png",
+          "jpeg": "rain-band-z0.6-015.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 620495,
+            "wave39/puddles/puddle_large_a-v1.png": 9002,
+            "wave39/puddles/puddle_large_b-v1.png": 9002,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 12860,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 58236,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 56437,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 51664,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 54200,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 57145,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 55943,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 56513,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 56855,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 58062,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 58727,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 60998,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 59218
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "7c90abbc5c8867cd8194117d2f74574811566bd0344aeba9c87b1b5799405c3d"
+        },
+        {
+          "index": 16,
+          "tick": 20779,
+          "screenshotEndTick": 20792,
+          "stateSHA256": "2e6a50a78baef845fa76a89e18a3b8e821e446dba7e679849d2e3c08a287683c",
+          "stateFile": "rain-band-z0.6-016.state.json",
+          "png": "rain-band-z0.6-016.png",
+          "jpeg": "rain-band-z0.6-016.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 651375,
+            "wave39/puddles/puddle_large_a-v1.png": 9450,
+            "wave39/puddles/puddle_large_b-v1.png": 9450,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 13500,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 60705,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 58999,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 54120,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 56645,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 59617,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 58187,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 59062,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 59149,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 60614,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 61383,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 63253,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 61614
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "db495cfe8f757a391914edf2fa660f34a524589e7ad40f78a1931f8b8dac658d"
+        },
+        {
+          "index": 17,
+          "tick": 20794,
+          "screenshotEndTick": 20807,
+          "stateSHA256": "d11019dcc42fc1ed8d69aae3a4d3a6d29be1264340c65382af47fe48958e3889",
+          "stateFile": "rain-band-z0.6-017.state.json",
+          "png": "rain-band-z0.6-017.png",
+          "jpeg": "rain-band-z0.6-017.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 683220,
+            "wave39/puddles/puddle_large_a-v1.png": 9912,
+            "wave39/puddles/puddle_large_b-v1.png": 9912,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 14160,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 63074,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 61703,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 56776,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 59108,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 62100,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 61118,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 61982,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 61417,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 63269,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 64064,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 65860,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 64620
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "7393a93dbe356b1b719d274838ee7303e58e32388d1c055caccdf0d9878e423e"
+        },
+        {
+          "index": 18,
+          "tick": 20809,
+          "screenshotEndTick": 20823,
+          "stateSHA256": "2e15d292cb9efe640290ca70c5229def26813b920997ddab199a84366c14661f",
+          "stateFile": "rain-band-z0.6-018.state.json",
+          "png": "rain-band-z0.6-018.png",
+          "jpeg": "rain-band-z0.6-018.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 714100,
+            "wave39/puddles/puddle_large_a-v1.png": 10360,
+            "wave39/puddles/puddle_large_b-v1.png": 10360,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 14800,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 65491,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 64277,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 59302,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 61435,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 64873,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 63463,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 64537,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 63926,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 65908,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 66620,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 68897,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 67103
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "f3df8c602ebc5a63a78a3d1bf017cbd5f3b244a8da379903868913335caaf99f"
+        },
+        {
+          "index": 19,
+          "tick": 20825,
+          "screenshotEndTick": 20838,
+          "stateSHA256": "85bb8eb37031c2d6572d43c6d35dd76155b8c7002b79252c999b2aac6fd865b4",
+          "stateFile": "rain-band-z0.6-019.state.json",
+          "png": "rain-band-z0.6-019.png",
+          "jpeg": "rain-band-z0.6-019.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 744980,
+            "wave39/puddles/puddle_large_a-v1.png": 10808,
+            "wave39/puddles/puddle_large_b-v1.png": 10808,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 15440,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 68005,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 66830,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 61851,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 63820,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 67240,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 65989,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 67198,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 66458,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 68663,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 68962,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 71278,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 69740
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "9fcf335eda5d29b7837f5629dac4cc6495729ef727b833c5064ff7426c8a4a90"
+        },
+        {
+          "index": 20,
+          "tick": 20840,
+          "screenshotEndTick": 20853,
+          "stateSHA256": "ad440235a9c50bd879728c4c4e73479974cacdc5c90bf6a6c1092cb2a6c1169f",
+          "stateFile": "rain-band-z0.6-020.state.json",
+          "png": "rain-band-z0.6-020.png",
+          "jpeg": "rain-band-z0.6-020.jpg",
+          "wave39Draws": {
+            "wave39/rain/rain_wet_mask_grass-v1.png": 775860,
+            "wave39/puddles/puddle_large_a-v1.png": 11256,
+            "wave39/puddles/puddle_large_b-v1.png": 11256,
+            "wave39/rain/rain_wet_mask_soil-v1.png": 16080,
+            "wave39/rain/rain_streak_4px_1px_faint-v1.png": 70377,
+            "wave39/rain/rain_streak_7px_1px_strong-v1.png": 69155,
+            "wave39/rain/rain_streak_7px_2px_strong-v1.png": 64172,
+            "wave39/rain/rain_streak_10px_2px_faint-v1.png": 66065,
+            "wave39/rain/rain_streak_10px_2px_strong-v1.png": 69781,
+            "wave39/rain/rain_streak_4px_2px_strong-v1.png": 68666,
+            "wave39/rain/rain_streak_4px_2px_faint-v1.png": 69725,
+            "wave39/rain/rain_streak_4px_1px_strong-v1.png": 69027,
+            "wave39/rain/rain_streak_7px_2px_faint-v1.png": 71330,
+            "wave39/rain/rain_streak_10px_1px_faint-v1.png": 71346,
+            "wave39/rain/rain_streak_7px_1px_faint-v1.png": 73690,
+            "wave39/rain/rain_streak_10px_1px_strong-v1.png": 72321
+          },
+          "camera": {
+            "zoom": 0.6,
+            "lod": "full"
+          },
+          "pngSHA256": "5267d79691c8b62ddad029017e3e58c40e497350b46669fa7c919cd451a4670b"
+        }
+      ],
+      "interaction": null
+    }
+  ],
+  "limits": [
+    "Motion uses normal 1x simulation; frame tick thresholds may overshoot and are recorded. Compare exact initial states, not assumed identical live frame states.",
+    "Requested and loaded images do not prove visible drawing. Draw samples are bounded.",
+    "No video is synthesized: numbered actual-game PNG/JPEG frames are the moving evidence."
+  ],
+  "classification": "Original recorded errors retained. Telemetry POST cancellation is separate from game/image failures; root cause not established."
+}

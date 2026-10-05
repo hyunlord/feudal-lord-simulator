@@ -1,12 +1,12 @@
 {
  "schema": 1,
- "run": "astra-RB-TRADE72-fixed-gates-7702333",
- "commit": "770233331585c1c0d4eb3698c10b2d9600da9809",
+ "run": "astra-NAT3-merged-geometry-6685d294-6685d29",
+ "commit": "6685d294cde689a2fefe00785f8b87ff89697c66",
  "dirty": false,
- "inputs": 2054,
- "inputHash": "fc5ad575d0b7201136d41be1d5a303c91b5c5768e8f2a9f107292894d06f45b2",
- "measuredAt": "2026-10-05T10:59:17.756Z",
- "report": "docs/verification/uiaudit1/geometry/astra-RB-TRADE72-fixed-gates-7702333/geometry.json",
+ "inputs": 2115,
+ "inputHash": "ccf728567f9d9f7ccfdb29bd115b593b712f78a0ee087b1a34d00123cbf55199",
+ "measuredAt": "2026-10-05T14:49:27.308Z",
+ "report": "docs/verification/uiaudit1/geometry/astra-NAT3-merged-geometry-6685d294-6685d29/geometry.json",
  "axes": {
   "viewports": [
    "1280x800",
@@ -24,9 +24,9 @@
    "extreme"
   ]
  },
- "rows": 122,
- "conditions": 2202,
- "measured": 2202,
+ "rows": 125,
+ "conditions": 2262,
+ "measured": 2262,
  "failures": 0,
  "unopened": 0,
  "unreachable": [
@@ -114,6 +114,11 @@
    "byCheck": {}
   },
   "hud.event-card": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "hud.event-card.lord-moment": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}
@@ -599,6 +604,16 @@
    "byCheck": {}
   },
   "modal.lord.request": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry": {
+   "failures": 0,
+   "unopened": 0,
+   "byCheck": {}
+  },
+  "modal.lord.registry-hold": {
    "failures": 0,
    "unopened": 0,
    "byCheck": {}

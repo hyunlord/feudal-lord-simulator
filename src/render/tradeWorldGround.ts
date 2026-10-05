@@ -50,7 +50,7 @@ export function tradeWorldGroundProps(state: GameState): readonly TradeWorldProp
       const entry = ART_REGISTRY.select('ground-prop', `rb-trade-${consumer}`, {
         occupation: household.tradeId, archetype: candidate.archetypes[0], placement: candidate.placement, season,
       }, yardHash(`${building.id}|${consumer}`, 73));
-      if (entry === null || entry.kind !== 'ground-prop' || entry.placement === 'land') continue;
+      if (entry === null || entry.kind !== 'ground-prop' || entry.placement === 'land' || !('occupations' in entry)) continue;
       const back = entry.placement === 'back-yard' || entry.placement === 'yard';
       const waterside = entry.archetypes.includes('waterside_workshop');
       const cells = waterside ? tradeWatersideCells(state, building) : back ? ownYard?.spill ?? [] : front === null ? [] : yardBackRow(building, front).flatMap(cell =>

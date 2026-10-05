@@ -1,0 +1,13 @@
+{
+  "run": "astra-NAT3-gates-fbdb5cd",
+  "commit": "fbdb5cddb441f4ffc40e34262fbba2ef3907df45",
+  "tests": 4975,
+  "passed": 4973,
+  "failed": 2,
+  "cause": "50 installed runtime images were absent from provenance at the tested code-only commit. The two provenance coverage tests failed. No other failures.",
+  "summary": "clone: exit 0 (323s)\nnpm-ci: exit 0 (2s)\ntypecheck: exit 0 (1s)\ntest: exit 1 (832s)\n",
+  "testLogSHA256": "01deb559eee6fc38ac8239f339c1b78aaaefd2d7f7d4e40d17fc750b8d5a60e9",
+  "build": "not run after test failure",
+  "geometry": "not run after test failure",
+  "fix": "Include all50 prepared provenance/ledger records in the next tested commit; local five provenance tests now pass."
+}
