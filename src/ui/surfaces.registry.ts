@@ -16,7 +16,7 @@
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
  * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice). */
-export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord";
+export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
 export type SceneRef =
@@ -182,6 +182,12 @@ export const SURFACES: readonly SurfaceRow[] = [
     open: [{ wait: ".event-chip", timeout: 90_000 }, { pause: 500 }], data: "chapter 4's alehouse boom beat" },
   { id: "hud.event-card", extends: "hud.event-chips", root: ".event-card", frame: "css", scene: { kind: "state", set: "ui9", name: "reorg.alehouse_boom", tile: "keep", zoom: 1.1, query: "&story-delay=0" },
     open: [{ click: ".event-chip" }, { pause: 600 }], scroll: "y", requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "the alehouse boom's story card" },
+  // EVENT-ART (wave40): a lord-mode moment's card (src/ui/lordMomentBeats.ts) on scripts/wave40MomentStates.ts's `moments` states —
+  // the suit filed (Wave 40 09), the ledger's own sentence as its line, [조언] and [닫기] (no decision, no place off the map).
+  { id: "hud.event-card.lord-moment", root: ".event-card[data-story='lord_moment']", frame: "css",
+    scene: { kind: "state", set: "moments", name: "lawsuit_filed", tile: "house", zoom: 1.1, query: "&story-delay=0" },
+    open: [{ wait: ".event-chip[data-story='lord_moment']", timeout: 90_000 }, { click: ".event-chip[data-story='lord_moment']" }, { pause: 600 }], scroll: "y",
+    requires: ["h2", ".event-card-line", ".event-card-actions .ui-btn"], data: "the lord's suit filed: its Wave 40 picture and the ledger's sentence" },
   { id: "hud.goal-chips", root: ".goal-chip-rail .goal-card", frame: "css", scene: { kind: "new-game" }, numbers: false, open: [{ pause: 600 }],
     data: "the tutorial's first goal card" },
   { id: "hud.goal-help", extends: "hud.goal-chips", root: ".goal-card-help > p", frame: "css", scene: { kind: "new-game" }, numbers: false,

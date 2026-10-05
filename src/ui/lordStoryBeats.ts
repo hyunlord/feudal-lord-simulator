@@ -3,6 +3,7 @@ import { lordMode } from "../engine/townAgency";
 import type { StoryBeat } from "./eventStory";
 import { LORD_CARDS_COPY } from "./lordCardsCopy.ko";
 import { homePetitionView, lordRequestView, precedentView, type LordRequestView } from "./lordCardsModel";
+import { lordMomentBeats } from "./lordMomentBeats";
 import type { StoryIllustration } from "./storyArt";
 
 // LM-R1 (petitions): the lord's cards as story beats (lord mode only), so each comes the way the political petitions
@@ -39,5 +40,7 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: `lord-request:${request.key}`, kind: "lord_request", illustration: requestArt(request.kind), tile: seatTile(state),
       decision: "lord_request", title: request.title, line: request.demand, facts: request.more === "" ? [] : [request.more], advice: LORD_CARDS_COPY.requestAdvice });
   }
+  // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record.
+  beats.push(...lordMomentBeats(state, seatTile(state)));
   return beats;
 }

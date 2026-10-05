@@ -28,6 +28,8 @@ import type { Wave17ImageId } from "../wave17Art";
 import type { Wave21ImageId } from "../wave21Art";
 import { chapterIntro, type Wave31ImageId } from "../wave31Art";
 import type { Wave33ImageId } from "../wave33Art";
+import { wave40RecordArt, type Wave40ImageId } from "../wave40Art";
+import { lordMode } from "../../engine/townAgency";
 import { WAVE33_IMAGES } from "../wave33ArtManifest.generated";
 import { CHRONICLE_SCREEN_COPY, OCCUPATION_TITLES } from "./chronicleScreenCopy.ko";
 import { recordSentence } from "../legacy/chapterRecords";
@@ -241,6 +243,7 @@ export type ChronicleArt = Readonly<{ kind: "wave16"; id: Wave16ImageId }> | Rea
   | Readonly<{ kind: "wave21"; id: Wave21ImageId }>
   | Readonly<{ kind: "wave31"; id: Wave31ImageId }>
   | Readonly<{ kind: "wave33"; id: Wave33ImageId }>
+  | Readonly<{ kind: "wave40"; id: Wave40ImageId }>
   | Readonly<{ kind: "portrait"; portraitId: string }> | Readonly<{ kind: "emblem"; emblem: EmblemSpec }> | null;
 export type RecordCard = Readonly<{
   id: string; kind: HistoryKind; frame: RecordFrameId; date: string; sentence: string; numbers: string | null; art: ChronicleArt;
@@ -407,7 +410,10 @@ function chapterThreeArt(_state: unknown, record: HistoryRecord): ChronicleArt {
   return null;
 }
 
-export function recordArt(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions">>, record: HistoryRecord): ChronicleArt {
+export function recordArt(state: Pick<GameState, "persons" | "scenarioId" | "seed"> & Partial<Pick<GameState, "lordship" | "factions" | "agency">>, record: HistoryRecord): ChronicleArt {
+  // EVENT-ART (lord mode): the lord's ledger moments — marriage, suit, wardship — with their Wave 40 picture.
+  const moment = lordMode(state) ? wave40RecordArt(record) : null;
+  if (moment !== null) return { kind: "wave40", id: moment };
   if (record.template === "decision.stone_town") return { kind: "wave17", id: "stonewall_start" };
   if (record.template === "milestone.stone_town") return { kind: "wave17", id: "stonewall_complete" };
   // UI-10: chapter 5's records first (its petitions share decision.petition_response).

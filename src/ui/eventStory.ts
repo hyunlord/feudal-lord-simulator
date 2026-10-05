@@ -42,7 +42,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   | "legacy_departure" | "legacy_record" | "legacy_last_market"
   | "interlude_staple" | "interlude_guild_dispute" | "interlude_market_fire" | "interlude_church_rebuilding" | "interlude_deposition"
   // LM-R1 (lord mode): a home estate's petition, the steward's answers by precedent, the town's request (lordStoryBeats.ts).
-  | "home_petition" | "home_precedent" | "lord_request";
+  | "home_petition" | "home_precedent" | "lord_request"
+  // EVENT-ART (lord mode): a ledger moment with its Wave 40 picture — the marriage, the suit, the wardship (lordMomentBeats.ts).
+  | "lord_moment";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
