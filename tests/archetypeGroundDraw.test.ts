@@ -1,3 +1,4 @@
+import regionMigration from './fixtures/region-texture-migration.json';
 import { isRegionTexture } from '../src/render/art/artContract';
 import { ART_REGISTRY } from '../src/render/art/wave42Registry';
 /**
@@ -70,7 +71,11 @@ test("the installed set is exactly what the layer can name: no v1 fill, no unnam
   assert.equal(keys.length, 48);
   assert.ok(keys.every(key => !/-v[0-9]$/.test(key) && !key.includes("heath_patch_b") && !key.includes("heath_patch_c")));
   assert.equal(keys.filter(key => key.startsWith("terrain/")).length, 0);
-  assert.equal(ART_REGISTRY.entries().filter(isRegionTexture).length, 30);
+  const canonicalIds = new Set(regionMigration.entries.map(entry => entry.id));
+  assert.equal(canonicalIds.size, 30);
+  const canonical = ART_REGISTRY.entries().filter(entry => canonicalIds.has(entry.id));
+  const byId = (left: { id: string }, right: { id: string }) => left.id.localeCompare(right.id);
+  assert.deepEqual([...canonical].sort(byId), [...regionMigration.entries].sort(byId));
   for (const key of keys) {
     const meta = WAVE22_GROUND_IMAGES[key as Wave22GroundKey];
     if (meta.folder === "decals" || meta.folder === "props") assert.deepEqual(meta.pivot, { x: meta.width / 2, y: meta.height - 8 }, key);

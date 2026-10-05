@@ -1,0 +1,122 @@
+{
+  "status": "PASS_BOUNDED_CORE_PARITY",
+  "viewCount": 18,
+  "decodedPNGs": 54,
+  "rows": [
+    {
+      "name": "region4-chalk_downs-spring-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "faacb6241d9bddb4f7cd4474a0f4bb7663dc897baee14a6929faf2df24a95f27"
+    },
+    {
+      "name": "region4-chalk_downs-spring-z06",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "7807c4988390a6d926d1785c5cc69725a371b108779a6d07a3cfa0258fbb9db1"
+    },
+    {
+      "name": "region4-chalk_downs-summer-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "ee40bfaba025f53f7fbfcaa4f4b3fb730827a3d288d5756b8a21bbb49ca15348"
+    },
+    {
+      "name": "region4-chalk_downs-winter-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "ead27964a4887289bd8de656884b5d52dcb6efee80af5833723a6ddc51a4d7de"
+    },
+    {
+      "name": "region4-coastal_port-spring-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "20eb17cf6d14d8834c7cb33c1f46ca46b8502d2691ad1e7cf5c9783a31bd450d"
+    },
+    {
+      "name": "region4-coastal_port-spring-z06",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "1c00d8898b0af96187ef362604701bd4ce26fc4ddcbdc95e45a593fd034f5e92"
+    },
+    {
+      "name": "region4-coastal_port-summer-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "011f443dcb8f8238ad8c00210576c98760e3b65549de1daa1bc39c6ef4d83ef9"
+    },
+    {
+      "name": "region4-coastal_port-winter-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "f618bab93462de9ab524b522a36ca6ecf555716c48a8ff275c0874e2de3ad347"
+    },
+    {
+      "name": "region4-fen_drainage-spring-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "c4fbb2313f4652ad5eb913a236a466a450c9257a032edb0477c9ce51ea7cfd7b"
+    },
+    {
+      "name": "region4-fen_drainage-spring-z06",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "d2b2e752a7eaccc3bd873abdad14ffff57e8338baeb873075f2d267edb0661a5"
+    },
+    {
+      "name": "region4-fen_drainage-summer-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "99a1f846e8c13e86f29c9313c1217094a1edcd273e3f23eff32daaf3c9fdc416"
+    },
+    {
+      "name": "region4-fen_drainage-winter-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "7d1d658a44d98d26aee04041efb172103b7f40cfbcd41ef148cd033de5af0cdd"
+    },
+    {
+      "name": "region4-forest_edge-spring-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "d3163f883f90b6cc157527e37f75ac2dda22757d7014f4fb5542bb0b00c073bf"
+    },
+    {
+      "name": "region4-forest_edge-spring-z06",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "dbfb04cbd7a0960170eaed9d3b36d1b8f617f273e4c7179c304bfa560d210017"
+    },
+    {
+      "name": "region4-forest_edge-summer-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "09a5a36a950e28cbe4f968516ed20ee43ab2cc43dfa6b2495b271df1e1db921f"
+    },
+    {
+      "name": "region4-forest_edge-winter-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "668e1816187f69d384cefa7c3e4a0c20d70e64b6f9260cc51dcbcf2fec16df8e"
+    },
+    {
+      "name": "region4-open_field-spring-z1",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "800516eb32d938bbab5c9394191d2b03a4b411b69d45a1989792ddd40bdc22a7"
+    },
+    {
+      "name": "region4-open_field-spring-z06",
+      "fullIdentityEqual": true,
+      "rgbaEqualBeforeAndRepeat": true,
+      "rgbaSHA": "35623de3d410b6d5a784a108ee9da4e960b87df2782cff4cd0762d02110810d7"
+    }
+  ],
+  "parentOpenedNative": [
+    "region4-chalk_downs-spring-z1",
+    "region4-coastal_port-spring-z06",
+    "region4-fen_drainage-summer-z1",
+    "region4-forest_edge-winter-z1"
+  ],
+  "limits": "Existing water grid lines and sharp region/winter grain retained; no cold timing, DATA4 or drainage simulation claim."
+}

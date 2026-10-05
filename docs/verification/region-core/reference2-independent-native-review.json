@@ -1,0 +1,68 @@
+{
+  "verdict": "PASS_BOUNDED_REFERENCE2_SETTLED_PARITY",
+  "beforeCommit": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "coreCommit": "442b71822c189a245877cc1da1af86831e19448a",
+  "nativeOriginalsIndividuallyOpened": 4,
+  "pngsIndependentlyDecoded": 8,
+  "fullIdentityPairsEqual": 2,
+  "fullRgbaPairsEqual": 2,
+  "aaPairs": 4,
+  "errors": 0,
+  "sourceUrlViewPairsRequestDecodePaint": 8,
+  "resultReceiptSha256": "6146430eafb582eedfa8f2e09fb82681749efc6768d95230af8f0d720dd6dc2d",
+  "reportSha256": "623f057deb2d8ccee95d543d4f7397414f1c0629857b8bc028f09fbb00a25065",
+  "captureHashes": {
+    "before": "8dcf5711fcf49a8123c75358541f416edeecc03f6328fbce097008e17579f987",
+    "core": "e82fd65c71ea3850d6fba505c99fabc890736e5de8b85e2b49608022ffd071eb"
+  },
+  "rows": [
+    {
+      "phase": "before",
+      "name": "region4-chalk_downs-summer-z06",
+      "path": "/Users/rexxa/fls-astra-renderB-region-before/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-summer-z06.png",
+      "nativeOriginalIndividuallyOpened": true,
+      "pngSha256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+      "rgbaSha256": "6fd7bb742f387f2dd0129aa338a3cf718c060d7ad1bd67f3830077f48688edb9",
+      "aaExact": true
+    },
+    {
+      "phase": "core",
+      "name": "region4-chalk_downs-summer-z06",
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-summer-z06.png",
+      "nativeOriginalIndividuallyOpened": true,
+      "pngSha256": "def6272f79c958634a0d4812e5ebaca3ddeea332fcef1c74c3ca9afd63e01102",
+      "rgbaSha256": "6fd7bb742f387f2dd0129aa338a3cf718c060d7ad1bd67f3830077f48688edb9",
+      "aaExact": true
+    },
+    {
+      "phase": "before",
+      "name": "region4-chalk_downs-winter-z06",
+      "path": "/Users/rexxa/fls-astra-renderB-region-before/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-winter-z06.png",
+      "nativeOriginalIndividuallyOpened": true,
+      "pngSha256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+      "rgbaSha256": "b065d43f33f9c66b1561e1659594c7854c113837fb02cea3db32b9899ceb5d45",
+      "aaExact": true
+    },
+    {
+      "phase": "core",
+      "name": "region4-chalk_downs-winter-z06",
+      "path": "/Users/rexxa/fls-astra-renderB-region-core/output/art-architecture/region-core-reference2/captures/region4-chalk_downs-winter-z06.png",
+      "nativeOriginalIndividuallyOpened": true,
+      "pngSha256": "fc87233d3e93fdc21fc9ebf97eec86e3ed6cb36306cec6e9e5e48e15c38c2ab9",
+      "rgbaSha256": "b065d43f33f9c66b1561e1659594c7854c113837fb02cea3db32b9899ceb5d45",
+      "aaExact": true
+    }
+  ],
+  "observations": {
+    "summer": "비/물웅덩이 아래 올리브 fill, 강 윤곽, 갈색 heath 섬과 지도 모서리가 동일. 새 빈 영역·사각 누출·반복 이음 이동 없음.",
+    "winter": "밝은 겨울 입자·갈색 섬 대비·눈과 잎 없는 나무가 동일. 기존 선명한 지형 경계는 남지만 신규 회귀 없음."
+  },
+  "guards": "Pre/post export and input counts accepted from supplied run receipt; this review did not repeat full input hashing or remote execution.",
+  "limits": [
+    "Only chalk_downs summer/winter zoom.6 DPR1, same camera37,19 and1280x800.",
+    "DATA4 installation and future DATA20 selectors/expectations remain unproved.",
+    "Cold-loading timing equivalence and future HEAD/main integration not accepted.",
+    "First-open lineage arrays checked; repeat lineage arrays are not persisted.",
+    "Existing18 review files unchanged."
+  ]
+}
