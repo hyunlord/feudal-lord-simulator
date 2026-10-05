@@ -41,6 +41,9 @@
 - **성능 추이 자동 갱신(TREND-AUTO) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 작업 브랜치에 본선을 합칠 때 [추이 문서](verification/perf-trend/README.md)가 10개 넘게 뒤처졌으면 병합 뒤 훅이 `perf:trend`를 돌려 그 폴더만 따로 커밋한다(결정 RR4, `FLS_TREND_AUTO=0`으로 끔). 설치는 `npm run hooks:install`(npm ci·install이 함께). 결정 HOUSE-1: 플레이어 가문 기본 이름 드 해버럴(새 게임에서 이름·문장 변경 가능).
 - **시각 검사기 홀드아웃(VISION-HOLDOUT) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 홀드아웃에서 교정 성능 재현 실패 — QA 후보 생성 보조용, 병합 관문 아님. [`tools/vision-check/`](../tools/vision-check/README.md)의 검출기 상태는 **이음새만 사용, 나머지 다섯은 실험**이고, 각 검출기에 홀드아웃·교정·무작위 50 수치를 적었다. 보조 도구로 고정했고 다듬기는 멈췄다. 보조 도구라 `npm test`·`check:merge`에 들어가지 않는다.
 
+- **EVENT-ART 사건 삽화와 등록기 사건 카드 — 완료, 본선 병합**(Claude Code, 렌더 A): [보고서](verification/eventart/REPORT.md), 결정 EVA-D1~D3(D1·D2 사용자 결정).
+  - 영주 모드 등록기 사건 카드(v4 발생: 문구 V4_COPY, 선택 offerChoices, 닫힌 선택의 까닭, 보류의 대가, 왜 왔나), 그림은 v4 id로 — 엔진이 돌리는 70장만 싣는다. Wave 40 열넷은 혼인·소송·후견의 순간에. 사건 그림은 카드를 열 때 불러오고 빌드 산출물만 재압축(첫 로딩 예산).
+
 - **LR1-D LM-R1 판정 반영 — 완료, 본선 병합**(Claude Code, 렌더 A, EVENT-ART 앞): [보고서](verification/lr1d/REPORT.md), 결정 LR1-D1~D7 사용자 결정 기록.
   - 시작 화면은 기초 설계서대로(영주 모드 맨 앞·"처음이라면 이 모드로"·단추로만 시작, 건설 안내는 샌드박스 뒤, 목표 연수는 영주 모드 뒤), 주 버튼은 화면마다 하나(서랍 카드 보조), 인장 슬롯 은퇴, 홈 청원 문장 원에 영주 가문 문장. 엔진 요청: 영주관 3×3·고른 가문 = 영주권 가문.
 
