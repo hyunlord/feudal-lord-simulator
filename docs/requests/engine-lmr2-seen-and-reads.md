@@ -17,6 +17,10 @@ LM-R2(협상·약속 장부·영지 포트폴리오·소송·혼인 진행) 화�
 - `suitActions(state, suitId)` → `{ evidence: { kind, cost, weight, refusal: "stage" | "given" | "treasury" | null }[]; patrons: { factionId, support, refusal: "stage" | "chosen" | "relation" | null }[]; enforce: { cost, force, hold, refusal: "stage" | "treasury" | null } | null; nextStageTick: number | null }`
 - `keepPromiseRefusal(state, promiseId)` → `"not_open" | "not_lord" | "late" | "treasury" | null` (지금 `keepPromise`는 거절하면 상태를 그대로 돌려줄 뿐 까닭을 말하지 않는다).
 - `answerCounterRefusal(state, negotiationId)` → `"late" | "treasury" | "not_countered" | null`.
+- 결정 카드(유언 변경·감사·지도 밖 청원)가 답마다 결과를 보이도록, 지금 모듈 안에 있는 계산을 읽기로:
+  - `estatePetitionEffect(state, petitionId, grant)` → `{ income, tenants, merchants, neglect } | null` (`petitionEffect`를 그 청원의 영지 청지기 성향으로; 열린 청원이 아니면 null).
+  - `auditAnswerEffect(state, auditId, choice)` → `{ recovered, tenants, loyalty, successorId: string | null } | null` (`answerAudit`가 할 일; 받아들여지지 않을 답이면 null).
+  - `willChangeRefusal(state, choice)` → `"not_due" | "treasury" | null` (호의 120d가 모자라면 "treasury").
 
 ## 3. 같은 말 (복사 표)
 `src/content/historyCopy.ko.ts`의 모듈 안 표 `TIER_KO`·`TERM_KO`(jointure·debt_after_inheritance 포함)·`HOLDER_KO`·`PIECE_KO`·`CLAIM_BASIS_KO`·`SUIT_STAGE_KO`를 내보내 주면(또는 화면 쪽 사본을 허락하면) 화면과 원장이 같은 말을 쓴다.
