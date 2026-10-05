@@ -21,6 +21,7 @@ import { REGION_COPY } from "../src/ui/lord/region/regionCopy.ko";
 import { assignSlots, MARKER_SCALE, markerLayout, regionChosen, regionEstates, regionFlag, type RegionFlag } from "../src/ui/lord/region/regionModel";
 import { REGION_SURFACES } from "../src/ui/lord/region/surfaces";
 import { readPng } from "../scripts/processBuildingSprite";
+import { GENTRY_NAMES_KO } from "../src/content/gentryNames";
 
 // LM-R2 (region area): the lord screen's single region map — the catalog bundle (slots measured on the records' assembly
 // proof), the flags from the engine's possession and oversight, the arms only on a flag's empty base, the markers'
@@ -102,8 +103,9 @@ test("the opening: the home market town direct with the lord's arms, three neigh
   ]);
   const factions = state.factions!.factions;
   assert.equal(views[0]!.arms?.emblem.kind, "arms");
-  assert.equal(views[1]!.arms?.house, factions.find(faction => faction.id === "neighbour_1")!.name);
-  assert.equal(views[2]!.arms?.house, factions.find(faction => faction.id === "neighbour_2")!.name);
+  assert.equal(views[1]!.arms?.house, GENTRY_NAMES_KO[factions.find(faction => faction.id === "neighbour_1")!.name], "the house by its Korean reading");
+  assert.equal(views[2]!.arms?.house, GENTRY_NAMES_KO[factions.find(faction => faction.id === "neighbour_2")!.name], "the house by its Korean reading");
+  for (const view of views) assert.doesNotMatch(view.label, /\b(de|Fitz)[ A-Z]/, `${view.estateId}: Korean on the map`);
   assert.equal(views[3]!.arms, null, "the old lord's house has no arms in the engine");
   assert.ok(views.every(view => view.label.length > 0 && view.label.includes(REGION_COPY.flags[view.flag])));
   assert.deepEqual(regionEstates(state, null).map(view => view.slot), [null, null, null, null], "no map entry: the estates are listed, not placed");

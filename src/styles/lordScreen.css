@@ -23,7 +23,8 @@
 .app-shell .lord-screen-content { min-width: 0; min-height: 0; overflow-y: auto; overscroll-behavior: contain; }
 .app-shell .lord-screen-empty, .app-shell .lord-screen-soon { margin: 8px 0 0; font-size: 13px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
 @media (pointer: coarse) {
-  .app-shell .lord-screen-nav-item, .app-shell .lord-screen-open { min-height: 48px; }
+  /* !important: the 44 px touch floor (uiBoundaries.css) is !important, so a 48 px tablet target must be too (the kit's own rule). */
+  .app-shell .lord-screen-nav-item, .app-shell .lord-screen-open { min-height: 48px !important; }
 }
 /* The crisis bells and the event chips step left of the open lord screen (NAT-2 QA-013, as for the other slots). */
 @media (min-width: 720px) {
