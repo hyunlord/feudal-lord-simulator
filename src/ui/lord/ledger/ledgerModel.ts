@@ -1,6 +1,6 @@
-import { LORD_HOUSE_NAMES_KO } from "../../../content/historyCopy.ko";
 import { BALANCE } from "../../../content/balanceConfig";
 import { factionDisplayName } from "../../../content/factionCopy.ko";
+import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import { SCENARIO_COPY } from "../../../content/scenario/scenarioCopy.ko";
 import type { PromiseRecord } from "../../../engine/diplomacy.types";
 import type { GameState } from "../../../engine/engine.types";
@@ -91,11 +91,12 @@ export function dateLabel(state: GameState, tick: number): string {
   return COPY.date(date.year, SCENARIO_COPY.seasons[date.season], date.dayOfYear - date.season * 90);
 }
 
-const houseWord = (name: string): string => LORD_HOUSE_NAMES_KO[name] ?? name;
+/** A neighbour's name in Korean (the engine keeps the Latin one): "de Heronel" → "드 헤로넬". */
+const houseWord = (name: string): string => GENTRY_NAMES_KO[name] ?? name;
 
 function estateWord(estate: Estate | undefined, estateId: string): string {
   if (estate === undefined) return estateId;
-  return estate.offMap ? COPY.estateName(houseWord(estate.house?.name ?? estate.name)) : COPY.homeEstate;
+  return estate.offMap ? COPY.estateName(houseWord(estate.name)) : COPY.homeEstate;
 }
 
 /** A holder's name (ES-1 HolderId): the lord, a faction, a person, a neighbour estate's house. */
