@@ -1,4 +1,5 @@
 import { HOME_ESTATE_ID, MARK_PENNIES } from "../../../content/estateConfig";
+import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import type { GameState } from "../../../engine/engine.types";
 import { estatePortfolio, estatePerson, LORD, type EstateView } from "../../../engine/estates";
 import type { EstateBurdens, EstateKind, HolderId, PossessionLoss, RightPieceKind } from "../../../engine/estates.types";
@@ -8,6 +9,7 @@ import { oversightViews } from "../../../engine/stewardship";
 import type { OversightMode } from "../../../engine/stewardship.types";
 import { moneyFull } from "../../money.ko";
 import { ESTATES_COPY as COPY } from "./estatesCopy.ko";
+import { perState } from "../../perState";
 
 // LM-R2 (estates area, ES-10/SW-8): the portfolio card of one estate, read from the engine's `estatePortfolio` and
 // `oversightViews` only. The region map (src/ui/lord/region) reads these types; the signature of `estateCardView`
@@ -44,7 +46,7 @@ export type EstateGrantRow = Readonly<{ id: string; line: string }>;
 
 export type EstateCardView = Readonly<{
   estateId: string;
-  /** The card's name (the home estate under the ruling house's name). */
+  /** The card's name: "<house in Korean> 영지" (the home estate: the ruling house's 본영). */
   name: string;
   home: boolean;
   offMap: boolean;
@@ -70,10 +72,13 @@ export type EstateCardView = Readonly<{
 }>;
 
 const yearOf = (state: GameState, tick: number): number => currentYear({ ...state, tick });
+/** A house's name as the screens say it (the registry card's and the lead's decision cards' rule): Korean where the
+ *  name table has it, the engine's name otherwise. */
+export const houseNameKo = (name: string): string => GENTRY_NAMES_KO[name] ?? name;
 
 /** A holder as the card names it: the lord's house, a faction or a house by its name, a person by theirs. */
 export function holderLabel(state: GameState, holder: HolderId): string {
-  if (holder === LORD) return COPY.lordHolder(lordHouse(state).name);
+  if (holder === LORD) return COPY.lordHolder(houseNameKo(lordHouse(state).name));
   if (holder.startsWith("person:")) {
     const id = holder.slice("person:".length);
     const person = estatePerson(state, id) ?? state.persons?.people.find(entry => entry.id === id) ?? state.persons?.past?.find(entry => entry.id === id);
@@ -81,10 +86,10 @@ export function holderLabel(state: GameState, holder: HolderId): string {
   }
   if (holder.startsWith("estate:")) {
     const name = estatePortfolio(state).find(estate => estate.id === holder.slice("estate:".length))?.house?.name;
-    return name === undefined ? COPY.estateHolder : COPY.houseHolder(name);
+    return name === undefined ? COPY.estateHolder : COPY.houseHolder(houseNameKo(name));
   }
   const faction = state.factions?.factions.find(entry => entry.id === holder);
-  return COPY.holders[holder] ?? (faction === undefined ? holder : faction.name);
+  return COPY.holders[holder] ?? (faction === undefined ? holder : houseNameKo(faction.name));
 }
 
 /** The card's picture from the Estate's fields (the order in the header). */
@@ -123,7 +128,7 @@ function cardOf(state: GameState, estate: EstateView, modes: ReadonlyMap<string,
   const claims = estate.claims.length + estate.pieces.reduce((sum, piece) => sum + piece.claims.length, 0);
   const { debt, rentCharges, repairs } = estate.burdens;
   return {
-    estateId: estate.id, name: home ? COPY.homeName(lordHouse(state).name) : estate.name, home, offMap: estate.offMap,
+    estateId: estate.id, name: home ? COPY.homeName(houseNameKo(lordHouse(state).name)) : COPY.estateName(houseNameKo(estate.name)), home, offMap: estate.offMap,
     kind: estate.kind, kindName: COPY.kinds[estate.kind],
     standing, standingLine: home ? COPY.homeStanding : COPY.standing[standing], oversight,
     titleHolderId: estate.titleHolder, titleHolder: holderLabel(state, estate.titleHolder),
@@ -146,14 +151,14 @@ function cardOf(state: GameState, estate: EstateView, modes: ReadonlyMap<string,
 const oversightModes = (state: GameState): ReadonlyMap<string, OversightMode> =>
   new Map(oversightViews(state).map(view => [view.estateId, view.oversight.mode]));
 
-/** Every estate's card, in the portfolio's order (home first, then the neighbours). */
-export function estateCards(state: GameState): readonly EstateCardView[] {
+/** Every estate's card, in the portfolio's order (home first, then the neighbours). Once per state (`perState`): the
+ * lord screens re-render on clock and UI events within a tick, and the portfolio walks the ledger's year. */
+export const estateCards = perState((state: GameState): readonly EstateCardView[] => {
   const modes = oversightModes(state);
   return estatePortfolio(state).map(estate => cardOf(state, estate, modes));
-}
+});
 
 /** One estate's card (the region map's selected site opens the same estateId), or null for an unknown id. */
 export function estateCardView(state: GameState, estateId: string): EstateCardView | null {
-  const estate = estatePortfolio(state).find(entry => entry.id === estateId);
-  return estate === undefined ? null : cardOf(state, estate, oversightModes(state));
+  return estateCards(state).find(card => card.estateId === estateId) ?? null;
 }

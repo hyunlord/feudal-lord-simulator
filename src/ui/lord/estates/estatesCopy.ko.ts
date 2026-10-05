@@ -10,6 +10,7 @@ export const ESTATES_COPY = {
   intro: "직할과 위임을 나누고, 권원과 점유를 따로 살핍니다.",
   shut: "아직 영지의 장부가 없습니다",
   homeName: (house: string) => `${house} 가문의 본영`,
+  estateName: (house: string) => `${house} 영지`,
   /** The portfolio's top line. */
   totals: { estates: "보유 영지", value: "연간 가치", attention: "직접 주의력", audit: "다음 감사" },
   estateCount: (count: number) => `${count}곳`,
