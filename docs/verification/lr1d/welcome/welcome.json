@@ -1,0 +1,140 @@
+[
+ {
+  "viewport": "1280x720",
+  "copy": "normal",
+  "shot": "welcome-1280x720.jpg",
+  "parchment": [
+   200,
+   217,
+   880,
+   488
+  ],
+  "scrolls": false,
+  "modes": [
+   {
+    "id": "core:lord_slice",
+    "box": [
+     360,
+     602,
+     128,
+     44
+    ],
+    "text": "영주 모드로 시작"
+   },
+   {
+    "id": "core:campaign_market_town",
+    "box": [
+     578,
+     581,
+     125,
+     44
+    ],
+    "text": "목표형으로 시작"
+   },
+   {
+    "id": "core:sandbox",
+    "box": [
+     794,
+     581,
+     125,
+     44
+    ],
+    "text": "샌드박스로 시작"
+   }
+  ],
+  "centre": "div.welcome-dismiss-layer.title-screen",
+  "centreInParchment": false
+ },
+ {
+  "viewport": "1280x720",
+  "copy": "long",
+  "shot": null,
+  "parchment": [
+   200,
+   165,
+   880,
+   540
+  ],
+  "scrolls": false,
+  "modes": [
+   {
+    "id": "core:lord_slice",
+    "box": [
+     330,
+     581,
+     187,
+     44
+    ],
+    "text": "영주 모드로 시작가뇨뗐를"
+   },
+   {
+    "id": "core:campaign_market_town",
+    "box": [
+     556,
+     560,
+     169,
+     44
+    ],
+    "text": "목표형으로 시작가뇨뗐"
+   },
+   {
+    "id": "core:sandbox",
+    "box": [
+     772,
+     560,
+     169,
+     44
+    ],
+    "text": "샌드박스로 시작가뇨뗐"
+   }
+  ],
+  "centre": "div.welcome-dismiss-layer.title-screen",
+  "centreInParchment": false
+ },
+ {
+  "viewport": "1280x800",
+  "copy": "normal",
+  "shot": null,
+  "parchment": [
+   200,
+   296,
+   880,
+   488
+  ],
+  "scrolls": false,
+  "modes": [
+   {
+    "id": "core:lord_slice",
+    "box": [
+     360,
+     680,
+     128,
+     44
+    ],
+    "text": "영주 모드로 시작"
+   },
+   {
+    "id": "core:campaign_market_town",
+    "box": [
+     578,
+     660,
+     125,
+     44
+    ],
+    "text": "목표형으로 시작"
+   },
+   {
+    "id": "core:sandbox",
+    "box": [
+     794,
+     660,
+     125,
+     44
+    ],
+    "text": "샌드박스로 시작"
+   }
+  ],
+  "centre": "div.welcome-dismiss-layer.title-screen",
+  "centreInParchment": false
+ }
+]
