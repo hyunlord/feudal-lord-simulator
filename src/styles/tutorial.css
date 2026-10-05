@@ -207,6 +207,8 @@
 .tutorial-switch[aria-checked="true"] { font-weight: 700; color: var(--palette-vellum); background-color: var(--palette-ink); }
 .tutorial-toggle small { flex-basis: 100%; font-size: 12px; }
 .welcome-mode-line { margin: 2px 0 8px; font-size: 13px; }
+/* LR1-D7: "처음이라면 이 모드로" over the default (lord) mode. */
+.welcome-mode-first { margin: 0 0 2px; font-size: 12px; font-weight: 700; }
 
 @media (max-width: 900px) {
   .steward-advisor { top: auto; bottom: 214px; width: calc(100% - 24px); }

@@ -101,7 +101,7 @@ const flows = {};
     welcome: await page.locator(".welcome-parchment").count() === 1 };
   await page.locator(".welcome-parchment .tutorial-switch").click();
   flows.proofDefaultValue = await value();
-  await page.locator(".welcome-parchment [data-scenario]").first().click(); await page.waitForTimeout(800);
+  await page.locator(".welcome-parchment [data-scenario='core:campaign_market_town']").click(); await page.waitForTimeout(800);
   flows.defaultModeButton = await land();
   await fresh();
   await page.locator(".welcome-seed-random").click();
@@ -119,7 +119,7 @@ const flows = {};
   await fresh();
   await page.locator(".welcome-seed-field").fill("118");
   // aria-disabled: Playwright waits for an enabled element, so the refused press is forced (it still reaches the button).
-  await page.locator(".welcome-parchment [data-scenario]").first().click({ force: true }); await centre(); await page.waitForTimeout(500);
+  await page.locator(".welcome-parchment [data-scenario='core:campaign_market_town']").click({ force: true }); await centre(); await page.waitForTimeout(500);
   flows.unbuildableRefused = { welcome: await page.locator(".welcome-parchment").count() === 1, problem: await page.locator(".welcome-seed-problem").textContent() };
   await page.locator(".welcome-seed-field").fill("");
   await centre(); await page.waitForTimeout(300);

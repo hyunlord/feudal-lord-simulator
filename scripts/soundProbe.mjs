@@ -16,7 +16,7 @@ const page = await (await browser.newContext({ viewport: { width: 1280, height: 
 await page.routeWebSocket('**', socket => socket.close());
 await page.goto(`${url}?phase10-proof=1`);
 await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-await page.locator('.welcome-parchment [data-scenario]').first().click();
+await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
 await page.waitForTimeout(1_000);
 const engine = () => page.evaluate(async () => { const m = await import('/src/audio/audioEngine.ts'); return { played: m.playedSounds().map(entry => entry.id), loops: m.activeLoops(), settings: m.audioSettings() }; });
 for (let press = 0; press < 30; press += 1) {

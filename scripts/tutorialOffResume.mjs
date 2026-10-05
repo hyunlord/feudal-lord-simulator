@@ -27,7 +27,7 @@ const snapshot = () => page.evaluate(() => ({
   tick: window.__FEUDAL_PHASE10_PROOF__.state().tick,
 }));
 await page.goto(`${url}?phase10-proof=1`); await ready();
-await page.locator('.welcome-parchment [data-scenario]').first().click(); await page.waitForTimeout(800);
+await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click(); await page.waitForTimeout(800);
 for (let i = 0; i < presses; i += 1) { await page.locator('[data-tutorial-cta]').first().click(); await page.waitForTimeout(600); }
 await page.waitForTimeout(1_600);
 const beforeSave = await snapshot();

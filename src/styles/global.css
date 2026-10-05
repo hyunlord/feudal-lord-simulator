@@ -87,10 +87,10 @@ button {
   word-break: keep-all;
 }
 
-/* contrast-audit selector=".welcome-dismiss" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.welcome-dismiss {
+/* LR1-D7: the welcome's "click anywhere" line is gone (a mode button starts); its place is the default mode's note. */
+/* contrast-audit selector=".welcome-mode-first" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
+.welcome-mode-first {
   color: var(--palette-ink);
-  font-size: var(--font-body);
 }
 
 .era-ceremony {
