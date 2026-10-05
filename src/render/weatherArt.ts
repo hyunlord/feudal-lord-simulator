@@ -6,6 +6,7 @@ import { RAIN_DRAW, type RainSheet } from "./weatherLayers";
 import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 
+// Catalog weather-shadow sources are owned exclusively by weatherShadowArt, not this legacy cache.
 // INSTALL-23 weather art (public/assets/wave23/weather): the browser image cache, a sheet's frame cells and the repeat
 // patterns. Node has no Image, so every weather draw returns before touching the context there (the C25 board and the
 // render tests stay as they were); tests stand images in with setWeatherArtForTest.
