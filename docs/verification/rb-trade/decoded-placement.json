@@ -1,0 +1,512 @@
+[
+  {
+    "name": "tick-021000.save.json",
+    "inputSchema": 48,
+    "decodedSchema": 49,
+    "props": [
+      {
+        "prop": {
+          "id": "trade:front:construction-site-000006",
+          "buildingId": "construction-site-000006",
+          "assetId": "front_shoemaker_a",
+          "consumer": "front",
+          "x": 41,
+          "y": 44,
+          "cell": {
+            "tx": 41,
+            "ty": 44
+          },
+          "cells": [
+            {
+              "tx": 41,
+              "ty": 44
+            }
+          ]
+        },
+        "rawBuilding": {
+          "id": "construction-site-000006",
+          "kind": "house",
+          "tx": 43,
+          "ty": 42,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "decodedBuilding": {
+          "id": "construction-site-000006",
+          "kind": "house",
+          "tx": 43,
+          "ty": 42,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "front": {
+          "tx": 0,
+          "ty": -1
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "row": [
+          {
+            "tx": 43,
+            "ty": 41
+          }
+        ],
+        "expanded": [
+          {
+            "tx": 42,
+            "ty": 41
+          },
+          {
+            "tx": 44,
+            "ty": 41
+          }
+        ],
+        "catalogPlacement": "back-yard",
+        "catalogArchetypes": [
+          "rear_workshop"
+        ],
+        "actualSelectionPath": "ownYard.spill",
+        "ownYard": {
+          "buildingId": "construction-site-000006",
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 43
+            },
+            {
+              "tx": 43,
+              "ty": 43
+            }
+          ],
+          "spill": [
+            {
+              "tx": 41,
+              "ty": 42
+            },
+            {
+              "tx": 42,
+              "ty": 42
+            },
+            {
+              "tx": 43,
+              "ty": 42
+            },
+            {
+              "tx": 44,
+              "ty": 42
+            },
+            {
+              "tx": 41,
+              "ty": 43
+            },
+            {
+              "tx": 44,
+              "ty": 43
+            },
+            {
+              "tx": 41,
+              "ty": 44
+            },
+            {
+              "tx": 42,
+              "ty": 44
+            },
+            {
+              "tx": 43,
+              "ty": 44
+            },
+            {
+              "tx": 44,
+              "ty": 44
+            }
+          ]
+        },
+        "backSide": {
+          "tx": 0,
+          "ty": 1
+        },
+        "backSideDot": 2,
+        "selectedInSpill": true
+      },
+      {
+        "prop": {
+          "id": "trade:front:construction-site-000022",
+          "buildingId": "construction-site-000022",
+          "assetId": "front_cooper_a",
+          "consumer": "front",
+          "x": 42,
+          "y": 45,
+          "cell": {
+            "tx": 42,
+            "ty": 45
+          },
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        },
+        "rawBuilding": {
+          "id": "construction-site-000022",
+          "kind": "house",
+          "tx": 44,
+          "ty": 43,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "decodedBuilding": {
+          "id": "construction-site-000022",
+          "kind": "house",
+          "tx": 44,
+          "ty": 43,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "front": {
+          "tx": 1,
+          "ty": 0
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "row": [
+          {
+            "tx": 45,
+            "ty": 43
+          }
+        ],
+        "expanded": [
+          {
+            "tx": 45,
+            "ty": 42
+          },
+          {
+            "tx": 45,
+            "ty": 44
+          }
+        ],
+        "catalogPlacement": "yard",
+        "catalogArchetypes": [
+          "large_yard"
+        ],
+        "actualSelectionPath": "ownYard.spill",
+        "ownYard": {
+          "buildingId": "construction-site-000022",
+          "cells": [
+            {
+              "tx": 43,
+              "ty": 44
+            },
+            {
+              "tx": 44,
+              "ty": 44
+            }
+          ],
+          "spill": [
+            {
+              "tx": 42,
+              "ty": 43
+            },
+            {
+              "tx": 43,
+              "ty": 43
+            },
+            {
+              "tx": 44,
+              "ty": 43
+            },
+            {
+              "tx": 42,
+              "ty": 44
+            },
+            {
+              "tx": 45,
+              "ty": 44
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        },
+        "backSide": {
+          "tx": -1,
+          "ty": 0
+        },
+        "backSideDot": 2,
+        "selectedInSpill": true
+      }
+    ]
+  },
+  {
+    "name": "tick-023000.save.json",
+    "inputSchema": 48,
+    "decodedSchema": 49,
+    "props": [
+      {
+        "prop": {
+          "id": "trade:front:construction-site-000006",
+          "buildingId": "construction-site-000006",
+          "assetId": "front_shoemaker_a",
+          "consumer": "front",
+          "x": 41,
+          "y": 44,
+          "cell": {
+            "tx": 41,
+            "ty": 44
+          },
+          "cells": [
+            {
+              "tx": 41,
+              "ty": 44
+            }
+          ]
+        },
+        "rawBuilding": {
+          "id": "construction-site-000006",
+          "kind": "house",
+          "tx": 43,
+          "ty": 42,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "decodedBuilding": {
+          "id": "construction-site-000006",
+          "kind": "house",
+          "tx": 43,
+          "ty": 42,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "front": {
+          "tx": 0,
+          "ty": -1
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "row": [
+          {
+            "tx": 43,
+            "ty": 41
+          }
+        ],
+        "expanded": [
+          {
+            "tx": 42,
+            "ty": 41
+          },
+          {
+            "tx": 44,
+            "ty": 41
+          }
+        ],
+        "catalogPlacement": "back-yard",
+        "catalogArchetypes": [
+          "rear_workshop"
+        ],
+        "actualSelectionPath": "ownYard.spill",
+        "ownYard": {
+          "buildingId": "construction-site-000006",
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 43
+            },
+            {
+              "tx": 43,
+              "ty": 43
+            }
+          ],
+          "spill": [
+            {
+              "tx": 41,
+              "ty": 42
+            },
+            {
+              "tx": 42,
+              "ty": 42
+            },
+            {
+              "tx": 43,
+              "ty": 42
+            },
+            {
+              "tx": 44,
+              "ty": 42
+            },
+            {
+              "tx": 41,
+              "ty": 43
+            },
+            {
+              "tx": 44,
+              "ty": 43
+            },
+            {
+              "tx": 41,
+              "ty": 44
+            },
+            {
+              "tx": 42,
+              "ty": 44
+            },
+            {
+              "tx": 43,
+              "ty": 44
+            },
+            {
+              "tx": 44,
+              "ty": 44
+            }
+          ]
+        },
+        "backSide": {
+          "tx": 0,
+          "ty": 1
+        },
+        "backSideDot": 2,
+        "selectedInSpill": true
+      },
+      {
+        "prop": {
+          "id": "trade:front:construction-site-000022",
+          "buildingId": "construction-site-000022",
+          "assetId": "front_cooper_a",
+          "consumer": "front",
+          "x": 42,
+          "y": 45,
+          "cell": {
+            "tx": 42,
+            "ty": 45
+          },
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        },
+        "rawBuilding": {
+          "id": "construction-site-000022",
+          "kind": "house",
+          "tx": 44,
+          "ty": 43,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "decodedBuilding": {
+          "id": "construction-site-000022",
+          "kind": "house",
+          "tx": 44,
+          "ty": 43,
+          "workers": 0,
+          "inventory": {},
+          "reserved": {},
+          "stockReserved": {},
+          "productionProgress": 0
+        },
+        "front": {
+          "tx": 1,
+          "ty": 0
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "row": [
+          {
+            "tx": 45,
+            "ty": 43
+          }
+        ],
+        "expanded": [
+          {
+            "tx": 45,
+            "ty": 42
+          },
+          {
+            "tx": 45,
+            "ty": 44
+          }
+        ],
+        "catalogPlacement": "yard",
+        "catalogArchetypes": [
+          "large_yard"
+        ],
+        "actualSelectionPath": "ownYard.spill",
+        "ownYard": {
+          "buildingId": "construction-site-000022",
+          "cells": [
+            {
+              "tx": 43,
+              "ty": 44
+            },
+            {
+              "tx": 44,
+              "ty": 44
+            }
+          ],
+          "spill": [
+            {
+              "tx": 42,
+              "ty": 43
+            },
+            {
+              "tx": 43,
+              "ty": 43
+            },
+            {
+              "tx": 44,
+              "ty": 43
+            },
+            {
+              "tx": 42,
+              "ty": 44
+            },
+            {
+              "tx": 45,
+              "ty": 44
+            },
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        },
+        "backSide": {
+          "tx": -1,
+          "ty": 0
+        },
+        "backSideDot": 2,
+        "selectedInSpill": true
+      }
+    ]
+  }
+]

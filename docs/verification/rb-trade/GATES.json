@@ -1,0 +1,25 @@
+{
+  "run": "astra-RB-TRADE72-fixed-gates-7702333",
+  "commit": "770233331585c1c0d4eb3698c10b2d9600da9809",
+  "location": "DGX",
+  "clonePassed": true,
+  "typecheckPassed": true,
+  "buildPassed": true,
+  "tests": 4958,
+  "passed": 4958,
+  "failed": 0,
+  "cancelled": 0,
+  "skipped": 0,
+  "summarySha256": "03a92547fd07926819ef733e2a1334708c836252f0089d18b0aff6644b05c660",
+  "geometry": {
+    "run": "astra-RB-TRADE72-fixed-gates-7702333",
+    "commit": "770233331585c1c0d4eb3698c10b2d9600da9809",
+    "inputHash": "fc5ad575d0b7201136d41be1d5a303c91b5c5768e8f2a9f107292894d06f45b2",
+    "measured": 2202,
+    "failures": 0,
+    "unopened": 0,
+    "measuredAt": "2026-10-05T10:59:17.756Z"
+  },
+  "remoteExit": 0,
+  "mergeCheck": "pending"
+}

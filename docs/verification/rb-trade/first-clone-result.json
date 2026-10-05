@@ -1,0 +1,22 @@
+{
+  "run": "astra-RB-TRADE72-gates-0355416",
+  "commit": "0355416323a47ee587c976f6bd51e2a0510c0c63",
+  "location": "DGX",
+  "exit": 1,
+  "tests": 4955,
+  "passed": 4953,
+  "failed": 2,
+  "buildRan": false,
+  "geometryRan": false,
+  "failures": [
+    "phase13Part6Rendering.test.ts: stale body rectangle and shadow mistaken for house paint; reproduced before installation",
+    "renderSourceGuards.test.ts: renderObjectFrameCache.ts pureLoc252 exceeded250"
+  ],
+  "fixCommit": "770233331585c1c0d4eb3698c10b2d9600da9809",
+  "focusedTestsAfterFix": 42,
+  "logs": {
+    "clone-test.log": "f71eb77c9c62549cc3ae38ecf433d73be06448263e543e75916096a645b39989",
+    "run.log": "a815412313433dc84aa017a69644689a4d7acf89473efca613278e6d52dae312",
+    "summary.txt": "e5181c668bcc60e4e583ae61870ef9006e0e92d249477bbae7df3063bb29f5f2"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "head": "0355416323a47ee587c976f6bd51e2a0510c0c63",
+  "views": [
+    {
+      "name": "summer-z1",
+      "save": "tick-021000.save.json",
+      "saveSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+      "tile": [
+        41,
+        44
+      ],
+      "zoom": 1,
+      "clockMs": 50000,
+      "actualPropCandidates": [
+        {
+          "id": "trade:front:construction-site-000006",
+          "buildingId": "construction-site-000006",
+          "assetId": "front_shoemaker_a",
+          "consumer": "front",
+          "x": 41,
+          "y": 44,
+          "cell": {
+            "tx": 41,
+            "ty": 44
+          },
+          "cells": [
+            {
+              "tx": 41,
+              "ty": 44
+            }
+          ]
+        },
+        {
+          "id": "trade:front:construction-site-000022",
+          "buildingId": "construction-site-000022",
+          "assetId": "front_cooper_a",
+          "consumer": "front",
+          "x": 42,
+          "y": 45,
+          "cell": {
+            "tx": 42,
+            "ty": 45
+          },
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        }
+      ],
+      "hints": {
+        "errors": [],
+        "draws": [],
+        "requests": [],
+        "tick": 21000,
+        "diagnosis": {
+          "zoom": 1,
+          "lod": "full"
+        }
+      }
+    },
+    {
+      "name": "summer-z0.6",
+      "save": "tick-021000.save.json",
+      "saveSHA256": "8da3362904f00b29bccd1844c5529a8bd4cd2290132919a6f04ca4cfa059180b",
+      "tile": [
+        41,
+        44
+      ],
+      "zoom": 0.6,
+      "clockMs": 50000,
+      "actualPropCandidates": [
+        {
+          "id": "trade:front:construction-site-000006",
+          "buildingId": "construction-site-000006",
+          "assetId": "front_shoemaker_a",
+          "consumer": "front",
+          "x": 41,
+          "y": 44,
+          "cell": {
+            "tx": 41,
+            "ty": 44
+          },
+          "cells": [
+            {
+              "tx": 41,
+              "ty": 44
+            }
+          ]
+        },
+        {
+          "id": "trade:front:construction-site-000022",
+          "buildingId": "construction-site-000022",
+          "assetId": "front_cooper_a",
+          "consumer": "front",
+          "x": 42,
+          "y": 45,
+          "cell": {
+            "tx": 42,
+            "ty": 45
+          },
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        }
+      ],
+      "hints": {
+        "errors": [],
+        "draws": [],
+        "requests": [],
+        "tick": 21000,
+        "diagnosis": {
+          "zoom": 0.6,
+          "lod": "full"
+        }
+      }
+    },
+    {
+      "name": "winter-z1",
+      "save": "tick-023000.save.json",
+      "saveSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+      "tile": [
+        41,
+        44
+      ],
+      "zoom": 1,
+      "clockMs": 50000,
+      "actualPropCandidates": [
+        {
+          "id": "trade:front:construction-site-000006",
+          "buildingId": "construction-site-000006",
+          "assetId": "front_shoemaker_a",
+          "consumer": "front",
+          "x": 41,
+          "y": 44,
+          "cell": {
+            "tx": 41,
+            "ty": 44
+          },
+          "cells": [
+            {
+              "tx": 41,
+              "ty": 44
+            }
+          ]
+        },
+        {
+          "id": "trade:front:construction-site-000022",
+          "buildingId": "construction-site-000022",
+          "assetId": "front_cooper_a",
+          "consumer": "front",
+          "x": 42,
+          "y": 45,
+          "cell": {
+            "tx": 42,
+            "ty": 45
+          },
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        }
+      ],
+      "hints": {
+        "errors": [],
+        "draws": [],
+        "requests": [],
+        "tick": 23000,
+        "diagnosis": {
+          "zoom": 1,
+          "lod": "full"
+        }
+      }
+    },
+    {
+      "name": "winter-z0.6",
+      "save": "tick-023000.save.json",
+      "saveSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+      "tile": [
+        41,
+        44
+      ],
+      "zoom": 0.6,
+      "clockMs": 50000,
+      "actualPropCandidates": [
+        {
+          "id": "trade:front:construction-site-000006",
+          "buildingId": "construction-site-000006",
+          "assetId": "front_shoemaker_a",
+          "consumer": "front",
+          "x": 41,
+          "y": 44,
+          "cell": {
+            "tx": 41,
+            "ty": 44
+          },
+          "cells": [
+            {
+              "tx": 41,
+              "ty": 44
+            }
+          ]
+        },
+        {
+          "id": "trade:front:construction-site-000022",
+          "buildingId": "construction-site-000022",
+          "assetId": "front_cooper_a",
+          "consumer": "front",
+          "x": 42,
+          "y": 45,
+          "cell": {
+            "tx": 42,
+            "ty": 45
+          },
+          "cells": [
+            {
+              "tx": 42,
+              "ty": 45
+            }
+          ]
+        }
+      ],
+      "hints": {
+        "errors": [],
+        "draws": [
+          {
+            "urls": [
+              "http://127.0.0.1:4300/assets/trade-world/front/front_shoemaker_a.png"
+            ],
+            "args": [
+              0,
+              0,
+              128,
+              96,
+              -113.37846,
+              1337.17456,
+              33.20064000000001,
+              24.900480000000005
+            ],
+            "canvas": [
+              1280,
+              800
+            ]
+          },
+          {
+            "urls": [
+              "http://127.0.0.1:4300/assets/trade-world/front/front_cooper_a.png"
+            ],
+            "args": [
+              0,
+              0,
+              128,
+              96,
+              -116.49102,
+              1369.17456,
+              33.20064000000001,
+              24.900480000000005
+            ],
+            "canvas": [
+              1280,
+              800
+            ]
+          }
+        ],
+        "requests": [],
+        "tick": 23000,
+        "diagnosis": {
+          "zoom": 0.6,
+          "lod": "full"
+        }
+      }
+    }
+  ],
+  "errors": []
+}
