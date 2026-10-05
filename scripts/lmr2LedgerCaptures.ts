@@ -7,7 +7,7 @@
 //  p4-due-today       the same on its deadline's day; then 약속 지키기 pressed: p5-kept-now — that promise alone moved to
 //                     kept (the game's own statuses before and after), its button gone (a second press cannot happen)
 //  p6-kept-broken     kept and broken promises beside the open ones (lord2 promises)
-//  p7-tablet-dpr2     the same at 1180 × 820, DPR 2, by touch
+//  p7-tablet-dpr2     the same at 1180 × 820, DPR 2, by touch (a coarse pointer: the 48 px targets)
 //  p8-art-missing     the book's and the kept mark's pictures answered 404: the kit frame and the text labels stand
 //  s1-filed           the contested inheritance's suit just filed (lord2 contested); a deed brought by its button:
 //                     s2-evidence-given (the claim holds the deed, its weight shown); s1-tablet-dpr2 the track at DPR 2
@@ -56,7 +56,7 @@ const expect = (name: string, ok: boolean, what: string) => { if (!ok) failures.
 type View = { width?: number; height?: number; dpr?: number; touch?: boolean; block?: readonly string[] };
 async function open(state: GameState, view: View = {}): Promise<Opened & { art: [string, number][] }> {
   const { width = 1280, height = 800, dpr = 1, touch = false, block = [] } = view;
-  const opened = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, width, height, dpr, zoom: 1.1, run: false, hasTouch: touch,
+  const opened = await openScene(browser, { state, tile: seatTile(state), baseUrl: url, width, height, dpr, zoom: 1.1, run: false, hasTouch: touch, isMobile: touch,
     loadTimeout: 120_000, initScript: INIT, query: "&story-delay=600000" }) as unknown as Opened;
   const art: [string, number][] = [];
   opened.page.on("response", response => { if (response.url().includes("assets/lord-ui/")) art.push([response.url().replace(/^.*assets\//, ""), response.status()]); });
@@ -99,6 +99,7 @@ const facts = (page: Page) => page.evaluate(() => {
     smallestText: Math.min(...texts.map(el => parseFloat(getComputedStyle(el).fontSize))),
     smallestButton: Math.min(...[...(root?.querySelectorAll("button") ?? [])].map(button => button.getBoundingClientRect().height)),
     natives: root?.querySelectorAll("input, select, [title]").length ?? null,
+    coarse: matchMedia("(pointer: coarse)").matches,
     panel: { left: Math.round(panel.left), right: Math.round(panel.right), top: Math.round(panel.top), bottom: Math.round(panel.bottom), viewport: innerWidth },
   };
 });
@@ -115,7 +116,7 @@ async function shot(page: Page, name: string, focus: string | null, dpr: number,
   await page.waitForTimeout(300);
   const box = whole ? { x: 0, y: 0, ...page.viewportSize() } : await page.locator(".slot-panel.lord-screen").first().boundingBox();
   const file = `${name}.jpg`;
-  await writeFile(file, await page.screenshot({ type: "jpeg", quality: whole ? 35 : dpr === 2 ? 28 : 50,
+  await writeFile(file, await page.screenshot({ type: "jpeg", quality: whole ? 35 : dpr === 2 ? 26 : 45,
     clip: { x: Math.max(0, box!.x), y: Math.max(0, box!.y), width: box!.width, height: box!.height } }));
   return file;
 }
@@ -175,7 +176,7 @@ await view("p4-due-today", P("promise-due-today"), null, {}, async (opened, seen
 await view("p6-kept-broken", L("promises"), null, {}, async (_opened, seen) => {
   expect("p6-kept-broken", ["kept", "broken", "open"].every(state => seen.promises.some(row => row.state === state)), JSON.stringify(seen.promises.map(row => row.state))); });
 await view("p7-tablet-dpr2", L("promises"), null, { width: 1180, height: 820, dpr: 2, touch: true }, async (_opened, seen) => {
-  expect("p7-tablet-dpr2", seen.smallestButton >= 48, `touch button ${seen.smallestButton}`); });
+  expect("p7-tablet-dpr2", seen.coarse && seen.smallestButton >= 48, `touch (coarse ${seen.coarse}) button ${seen.smallestButton}`); });
 await view("p8-art-missing", L("promises"), null, { block: ["lord-ui/wave35-promises/ledger_book.png", "lord-ui/wave35-promises/promise_kept.png"] }, async (_opened, seen) => {
   expect("p8-art-missing", seen.book === "none" && seen.promises.filter(row => row.state === "kept").every(row => row.mark === null && row.label !== null), JSON.stringify({ book: seen.book, kept: seen.promises.filter(row => row.state === "kept") })); });
 
