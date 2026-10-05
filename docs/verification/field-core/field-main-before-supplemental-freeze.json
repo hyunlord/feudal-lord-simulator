@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "classification": "POST_EXPORT_READONLY_ATTESTATION_NONEXECUTED_TEST_ONLY",
+  "head": "3e722109194cfea10e9fd53a1b870ebfc26a2dfe",
+  "path": "tests/artCapturePattern.test.ts",
+  "localSHA": "3b4a22c37327429af3f36a27849e607d7642f151a7f3c97c3cc166372471b8bd",
+  "remoteWorktreeSHA": "3b4a22c37327429af3f36a27849e607d7642f151a7f3c97c3cc166372471b8bd",
+  "remoteHeadBlobSHA": "3b4a22c37327429af3f36a27849e607d7642f151a7f3c97c3cc166372471b8bd",
+  "launchFreezeCount": 4150,
+  "combinedCount": 4151,
+  "note": "New test absent from inherited launch hash list; production capture .mjs was launch-verified. Original freeze unchanged; no runtime result inferred from this test."
+}

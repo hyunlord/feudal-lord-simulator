@@ -1,0 +1,6643 @@
+[
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave42",
+    "entries": [
+      {
+        "id": "abandoned_bramble_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_bramble_summer.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/bramble-v3-20261002/assets/abandoned/abandoned_bramble_summer.png",
+          "sourceSha256": "4d22bfa28bd6b259f78513fe195f8d32e021840af50114560c053d5c98c6e0fd",
+          "runtimeSha256": "4d22bfa28bd6b259f78513fe195f8d32e021840af50114560c053d5c98c6e0fd"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "fallow",
+        "stage": "abandoned_bramble",
+        "layout": "single"
+      },
+      {
+        "id": "abandoned_bramble_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_bramble_winter.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/bramble-v3-20261002/assets/abandoned/abandoned_bramble_winter.png",
+          "sourceSha256": "649277ae59fb2e8070129a283232db4f4aa25443b306d6fbde00ee3a9b0674eb",
+          "runtimeSha256": "649277ae59fb2e8070129a283232db4f4aa25443b306d6fbde00ee3a9b0674eb"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "fallow",
+        "stage": "abandoned_bramble",
+        "layout": "single"
+      },
+      {
+        "id": "abandoned_grass_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_grass_summer.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/rework-20261002/assets/abandoned/abandoned_grass_summer.png",
+          "sourceSha256": "7347638527587c2e7371cb63945ba6db7a0b815be86e7711c6e38dbcb1549f59",
+          "runtimeSha256": "7347638527587c2e7371cb63945ba6db7a0b815be86e7711c6e38dbcb1549f59"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "fallow",
+        "stage": "abandoned_grass",
+        "layout": "single"
+      },
+      {
+        "id": "abandoned_grass_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_grass_winter.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/rework-20261002/assets/abandoned/abandoned_grass_winter.png",
+          "sourceSha256": "d0902241fd3b0dcfb558a4b4a3feb9f8d1845d7a4f776f6c4c9bf980a34b0472",
+          "runtimeSha256": "d0902241fd3b0dcfb558a4b4a3feb9f8d1845d7a4f776f6c4c9bf980a34b0472"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "fallow",
+        "stage": "abandoned_grass",
+        "layout": "single"
+      },
+      {
+        "id": "abandoned_overgrown_furrows_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_overgrown_furrows_summer.png",
+          "sourceSha256": "e7abb17baec0db1c350f73c78f6cc4e06c45bf446ab8a00f53b17f1821659060",
+          "runtimeSha256": "e7abb17baec0db1c350f73c78f6cc4e06c45bf446ab8a00f53b17f1821659060"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "fallow",
+        "stage": "abandoned_overgrown_furrows",
+        "layout": "single"
+      },
+      {
+        "id": "abandoned_overgrown_furrows_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_overgrown_furrows_winter.png",
+          "sourceSha256": "2ab606668c931308e16cb1008e4b0b9a8d72e71baf54515748b835d5bc1635af",
+          "runtimeSha256": "2ab606668c931308e16cb1008e4b0b9a8d72e71baf54515748b835d5bc1635af"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "fallow",
+        "stage": "abandoned_overgrown_furrows",
+        "layout": "single"
+      },
+      {
+        "id": "abandoned_saplings_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_saplings_summer.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_saplings_summer.png",
+          "sourceSha256": "2eb6013b25d601aefc954c82ad427f51c621ceacb0f96c1d84e43b0b1d20bfb3",
+          "runtimeSha256": "2eb6013b25d601aefc954c82ad427f51c621ceacb0f96c1d84e43b0b1d20bfb3"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "fallow",
+        "stage": "abandoned_saplings",
+        "layout": "single"
+      },
+      {
+        "id": "abandoned_saplings_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/abandoned/abandoned_saplings_winter.png",
+          "width": 128,
+          "height": 160
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/abandoned/abandoned_saplings_winter.png",
+          "sourceSha256": "b2a7e5ebaa54124570eec6c25e4d57d01c2f1fc39baaa1adae12ebe640881f34",
+          "runtimeSha256": "b2a7e5ebaa54124570eec6c25e4d57d01c2f1fc39baaa1adae12ebe640881f34"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 120
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "fallow",
+        "stage": "abandoned_saplings",
+        "layout": "single"
+      },
+      {
+        "id": "path_clear_corner_ne_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_corner_ne_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_corner_ne_summer.png",
+          "sourceSha256": "001a6ab3a10174007e15f2f8c903d64a248b6e9053e5a1ff8fa7bcb667945641",
+          "runtimeSha256": "001a6ab3a10174007e15f2f8c903d64a248b6e9053e5a1ff8fa7bcb667945641"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "path",
+        "stage": "path_clear_corner_ne",
+        "layout": "connector",
+        "ports": {
+          "SW": {
+            "x": 32,
+            "y": 96
+          },
+          "NW": {
+            "x": 32,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_corner_ne_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_corner_ne_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_corner_ne_winter.png",
+          "sourceSha256": "bb8f1a7ab36e0c70fe92809f657e7aeedb5e8dda897df4211f8d79fdd300d986",
+          "runtimeSha256": "bb8f1a7ab36e0c70fe92809f657e7aeedb5e8dda897df4211f8d79fdd300d986"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "path",
+        "stage": "path_clear_corner_ne",
+        "layout": "connector",
+        "ports": {
+          "SW": {
+            "x": 32,
+            "y": 96
+          },
+          "NW": {
+            "x": 32,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_corner_nw_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_corner_nw_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_corner_nw_summer.png",
+          "sourceSha256": "9a99f06a80b20ec9dd8422a6943438f5564be25c5d13fa34cbc55287a04eb8fe",
+          "runtimeSha256": "9a99f06a80b20ec9dd8422a6943438f5564be25c5d13fa34cbc55287a04eb8fe"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "path",
+        "stage": "path_clear_corner_nw",
+        "layout": "connector",
+        "ports": {
+          "SE": {
+            "x": 96,
+            "y": 96
+          },
+          "NE": {
+            "x": 96,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_corner_nw_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_corner_nw_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_corner_nw_winter.png",
+          "sourceSha256": "77ae0653feea9536c369b159d22a338bf856ed0657aabb719fa467fc5dd803ba",
+          "runtimeSha256": "77ae0653feea9536c369b159d22a338bf856ed0657aabb719fa467fc5dd803ba"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "path",
+        "stage": "path_clear_corner_nw",
+        "layout": "connector",
+        "ports": {
+          "SE": {
+            "x": 96,
+            "y": 96
+          },
+          "NE": {
+            "x": 96,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_fork_ne_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_fork_ne_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_fork_ne_summer.png",
+          "sourceSha256": "acbbc91698c1c03264c4a409fe9637430a35feb0a73e5a1d7ba7ae5f3c8435eb",
+          "runtimeSha256": "acbbc91698c1c03264c4a409fe9637430a35feb0a73e5a1d7ba7ae5f3c8435eb"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "path",
+        "stage": "path_clear_fork_ne",
+        "layout": "connector",
+        "ports": {
+          "SW": {
+            "x": 32,
+            "y": 96
+          },
+          "NE": {
+            "x": 96,
+            "y": 64
+          },
+          "NW": {
+            "x": 32,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_fork_ne_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_fork_ne_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_fork_ne_winter.png",
+          "sourceSha256": "09cc1cc3c40f90cfd4baac4cd5380a9ff39ccd9716a9c1e942f85d777172b10c",
+          "runtimeSha256": "09cc1cc3c40f90cfd4baac4cd5380a9ff39ccd9716a9c1e942f85d777172b10c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "path",
+        "stage": "path_clear_fork_ne",
+        "layout": "connector",
+        "ports": {
+          "SW": {
+            "x": 32,
+            "y": 96
+          },
+          "NE": {
+            "x": 96,
+            "y": 64
+          },
+          "NW": {
+            "x": 32,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_fork_nw_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_fork_nw_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_fork_nw_summer.png",
+          "sourceSha256": "f2d82deab6a19765b25858955a0a1dca454f809c23a401667aa04eab1c3e4301",
+          "runtimeSha256": "f2d82deab6a19765b25858955a0a1dca454f809c23a401667aa04eab1c3e4301"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "path",
+        "stage": "path_clear_fork_nw",
+        "layout": "connector",
+        "ports": {
+          "SE": {
+            "x": 96,
+            "y": 96
+          },
+          "NW": {
+            "x": 32,
+            "y": 64
+          },
+          "NE": {
+            "x": 96,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_fork_nw_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/connections/path_clear_fork_nw_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/connections/path_clear_fork_nw_winter.png",
+          "sourceSha256": "069e0750100008367c60385ada12c1f7df261120ac8bd47f6f6a29045bab559b",
+          "runtimeSha256": "069e0750100008367c60385ada12c1f7df261120ac8bd47f6f6a29045bab559b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 80
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "path",
+        "stage": "path_clear_fork_nw",
+        "layout": "connector",
+        "ports": {
+          "SE": {
+            "x": 96,
+            "y": 96
+          },
+          "NW": {
+            "x": 32,
+            "y": 64
+          },
+          "NE": {
+            "x": 96,
+            "y": 64
+          }
+        }
+      },
+      {
+        "id": "path_clear_ne_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/paths/path_clear_ne_summer.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/paths/path_clear_ne_summer.png",
+          "sourceSha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e",
+          "runtimeSha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 256,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "path",
+        "stage": "path_clear_ne",
+        "layout": "strip",
+        "ports": {
+          "start": {
+            "x": 0,
+            "y": 32
+          },
+          "end": {
+            "x": 512,
+            "y": 32
+          }
+        }
+      },
+      {
+        "id": "path_clear_ne_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/paths/path_clear_ne_winter.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/paths/path_clear_ne_winter.png",
+          "sourceSha256": "19fc62b1e490a6d85dd1f54deb1c85522d4c3966d6bb5c0b8344d93f4d34bb21",
+          "runtimeSha256": "19fc62b1e490a6d85dd1f54deb1c85522d4c3966d6bb5c0b8344d93f4d34bb21"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 256,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "path",
+        "stage": "path_clear_ne",
+        "layout": "strip",
+        "ports": {
+          "start": {
+            "x": 0,
+            "y": 32
+          },
+          "end": {
+            "x": 512,
+            "y": 32
+          }
+        }
+      },
+      {
+        "id": "path_clear_nw_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/paths/path_clear_nw_summer.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/paths/path_clear_nw_summer.png",
+          "sourceSha256": "a544206298a01f3206d10231f2bebc702cc2a50c8e380f3ceda53fdea0d02399",
+          "runtimeSha256": "a544206298a01f3206d10231f2bebc702cc2a50c8e380f3ceda53fdea0d02399"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 256,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "path",
+        "stage": "path_clear_nw",
+        "layout": "strip",
+        "ports": {
+          "start": {
+            "x": 0,
+            "y": 32
+          },
+          "end": {
+            "x": 512,
+            "y": 32
+          }
+        }
+      },
+      {
+        "id": "path_clear_nw_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/paths/path_clear_nw_winter.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/paths/path_clear_nw_winter.png",
+          "sourceSha256": "5a5cf0a4640350fc74aff0381468b10911219f045a49c4be95d0a6e3e36d3bdc",
+          "runtimeSha256": "5a5cf0a4640350fc74aff0381468b10911219f045a49c4be95d0a6e3e36d3bdc"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 256,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "path",
+        "stage": "path_clear_nw",
+        "layout": "strip",
+        "ports": {
+          "start": {
+            "x": 0,
+            "y": 32
+          },
+          "end": {
+            "x": 512,
+            "y": 32
+          }
+        }
+      },
+      {
+        "id": "sapling_1to3_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/sapling_1to3_summer.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/rework-20261002/assets/regrowth/sapling_1to3_summer.png",
+          "sourceSha256": "af99e860759eeb79d8486caed3052df5db021fefdbc4a570fe98f6086ad80537",
+          "runtimeSha256": "af99e860759eeb79d8486caed3052df5db021fefdbc4a570fe98f6086ad80537"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "sapling_1to3",
+        "layout": "single"
+      },
+      {
+        "id": "sapling_1to3_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/sapling_1to3_winter.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/rework-20261002/assets/regrowth/sapling_1to3_winter.png",
+          "sourceSha256": "1dd81fca48173ecb10665de88f8275df1699cb6d15c8074dddcd82532000cf68",
+          "runtimeSha256": "1dd81fca48173ecb10665de88f8275df1699cb6d15c8074dddcd82532000cf68"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "sapling_1to3",
+        "layout": "single"
+      },
+      {
+        "id": "sapling_4to8_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/sapling_4to8_summer.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/rework-20261002/assets/regrowth/sapling_4to8_summer.png",
+          "sourceSha256": "f4209411e46a57ac1def5158dd6d42d1070bbcaef95d1480cf5ec604dcf1d816",
+          "runtimeSha256": "f4209411e46a57ac1def5158dd6d42d1070bbcaef95d1480cf5ec604dcf1d816"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "sapling_4to8",
+        "layout": "single"
+      },
+      {
+        "id": "sapling_4to8_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/sapling_4to8_winter.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/rework-20261002/assets/regrowth/sapling_4to8_winter.png",
+          "sourceSha256": "1f448d2494b949faf7a07d77876d537a3836dda28a79bc8f4a8e205eafa46704",
+          "runtimeSha256": "1f448d2494b949faf7a07d77876d537a3836dda28a79bc8f4a8e205eafa46704"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "sapling_4to8",
+        "layout": "single"
+      },
+      {
+        "id": "stump_ash_small_fresh_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_ash_small_fresh_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_ash_small_fresh_summer.png",
+          "sourceSha256": "c3992b93fd9b545a9c38f9c5617e3979f2f688995b45c59efa115f33a8ce4243",
+          "runtimeSha256": "c3992b93fd9b545a9c38f9c5617e3979f2f688995b45c59efa115f33a8ce4243"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "stump_ash_small_fresh",
+        "layout": "single"
+      },
+      {
+        "id": "stump_ash_small_fresh_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_ash_small_fresh_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_ash_small_fresh_winter.png",
+          "sourceSha256": "4459146d2ed36dcf3c41256b6cc7d1a2c041ec6a4d35bd7b9bf88e25d5f52358",
+          "runtimeSha256": "4459146d2ed36dcf3c41256b6cc7d1a2c041ec6a4d35bd7b9bf88e25d5f52358"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "stump_ash_small_fresh",
+        "layout": "single"
+      },
+      {
+        "id": "stump_ash_small_mossy_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_ash_small_mossy_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_ash_small_mossy_summer.png",
+          "sourceSha256": "7a20afe25ef87bc5325330f2665ffecb9337b3b11bb48c88304bd6690fb3fe8b",
+          "runtimeSha256": "7a20afe25ef87bc5325330f2665ffecb9337b3b11bb48c88304bd6690fb3fe8b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "stump_ash_small_mossy",
+        "layout": "single"
+      },
+      {
+        "id": "stump_ash_small_mossy_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_ash_small_mossy_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_ash_small_mossy_winter.png",
+          "sourceSha256": "4f3272df1212c99843f7eef622f4f849fa44e5bbf04d93724812be3321ba3a60",
+          "runtimeSha256": "4f3272df1212c99843f7eef622f4f849fa44e5bbf04d93724812be3321ba3a60"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "stump_ash_small_mossy",
+        "layout": "single"
+      },
+      {
+        "id": "stump_oak_large_fresh_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_oak_large_fresh_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_oak_large_fresh_summer.png",
+          "sourceSha256": "9236fc3ddd41f0c2c929ea4f0c85dbb449355e23b9423ca21f05f39641fd382c",
+          "runtimeSha256": "9236fc3ddd41f0c2c929ea4f0c85dbb449355e23b9423ca21f05f39641fd382c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "stump_oak_large_fresh",
+        "layout": "single"
+      },
+      {
+        "id": "stump_oak_large_fresh_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_oak_large_fresh_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_oak_large_fresh_winter.png",
+          "sourceSha256": "4565cc354a1f2031cbccbecfa6995742a8fce4ed2c6c99670f75504b1e94043c",
+          "runtimeSha256": "4565cc354a1f2031cbccbecfa6995742a8fce4ed2c6c99670f75504b1e94043c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "stump_oak_large_fresh",
+        "layout": "single"
+      },
+      {
+        "id": "stump_oak_large_mossy_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_oak_large_mossy_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_oak_large_mossy_summer.png",
+          "sourceSha256": "117e542bcf59b88eab4fc11fc7d911ce28f69183cbecd32a3c6a81e3c7f1ce0c",
+          "runtimeSha256": "117e542bcf59b88eab4fc11fc7d911ce28f69183cbecd32a3c6a81e3c7f1ce0c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "stump_oak_large_mossy",
+        "layout": "single"
+      },
+      {
+        "id": "stump_oak_large_mossy_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/stumps/stump_oak_large_mossy_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/stumps/stump_oak_large_mossy_winter.png",
+          "sourceSha256": "05aded1c7d0a412d13db315b44e778b3c2c8f91b1736ebd0ea3f3eae74dcd36d",
+          "runtimeSha256": "05aded1c7d0a412d13db315b44e778b3c2c8f91b1736ebd0ea3f3eae74dcd36d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "stump_oak_large_mossy",
+        "layout": "single"
+      },
+      {
+        "id": "young_wood_a_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/young_wood_a_summer.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/young_wood_a_summer.png",
+          "sourceSha256": "a480f58fe5a678ec5d1991032226e4e67e09a1e5982e2577b93fa0fd2b08cdbf",
+          "runtimeSha256": "a480f58fe5a678ec5d1991032226e4e67e09a1e5982e2577b93fa0fd2b08cdbf"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "young_wood_a",
+        "layout": "single"
+      },
+      {
+        "id": "young_wood_a_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/young_wood_a_winter.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/young_wood_a_winter.png",
+          "sourceSha256": "f42b85ab4d1fab9f54bd95609f4fc2f6de9641d9d911649e3bfba2792d3d7a21",
+          "runtimeSha256": "f42b85ab4d1fab9f54bd95609f4fc2f6de9641d9d911649e3bfba2792d3d7a21"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "young_wood_a",
+        "layout": "single"
+      },
+      {
+        "id": "young_wood_b_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/young_wood_b_summer.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/young_wood_b_summer.png",
+          "sourceSha256": "976f5abdd71d3cd51d1bfef97382ce5e5ccb0d941e97deab815d178fdf96618a",
+          "runtimeSha256": "976f5abdd71d3cd51d1bfef97382ce5e5ccb0d941e97deab815d178fdf96618a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "tree",
+        "stage": "young_wood_b",
+        "layout": "single"
+      },
+      {
+        "id": "young_wood_b_winter",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/regrowth/young_wood_b_winter.png",
+          "width": 128,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/young_wood_b_winter.png",
+          "sourceSha256": "b759cd34e097ae7112b2091dce5c9ad3b29feb0f11bedea7da5ff75eb51d72e1",
+          "runtimeSha256": "b759cd34e097ae7112b2091dce5c9ad3b29feb0f11bedea7da5ff75eb51d72e1"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 172
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "winter",
+        "family": "tree",
+        "stage": "young_wood_b",
+        "layout": "single"
+      }
+    ],
+    "rules": [
+      {
+        "id": "tree-stump_oak_large_fresh-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 0
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "max": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_oak_large_fresh_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-stump_oak_large_mossy-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 0
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "min": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_oak_large_mossy_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-young_wood_a-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grown"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 0
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "young_wood_a_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-stump_ash_small_fresh-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 1
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "max": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_ash_small_fresh_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-stump_ash_small_mossy-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 1
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "min": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_ash_small_mossy_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-young_wood_b-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grown"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "young_wood_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-sapling_1to3-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "sapling"
+          },
+          {
+            "op": "range",
+            "field": "stageProgress",
+            "max": 0.5
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "sapling_1to3_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-sapling_4to8-summer",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "sapling"
+          },
+          {
+            "op": "range",
+            "field": "stageProgress",
+            "min": 0.5
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "sapling_4to8_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_overgrown_furrows-summer",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grass"
+          },
+          {
+            "op": "eq",
+            "field": "plot",
+            "value": false
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_overgrown_furrows_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_grass-summer",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grass"
+          },
+          {
+            "op": "eq",
+            "field": "plot",
+            "value": true
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_grass_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_bramble-summer",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "scrub"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_bramble_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_saplings-summer",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "sapling"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_saplings_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_ne-summer",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_ne"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_ne_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_nw-summer",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_nw"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_nw_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_corner_ne-summer",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_corner_ne"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_corner_ne_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_corner_nw-summer",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_corner_nw"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_corner_nw_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_fork_ne-summer",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_fork_ne"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_fork_ne_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_fork_nw-summer",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_fork_nw"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_fork_nw_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-stump_oak_large_fresh-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 0
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "max": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_oak_large_fresh_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-stump_oak_large_mossy-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 0
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "min": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_oak_large_mossy_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-young_wood_a-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grown"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 0
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "young_wood_a_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-stump_ash_small_fresh-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 1
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "max": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_ash_small_fresh_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-stump_ash_small_mossy-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "stump"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 1
+          },
+          {
+            "op": "range",
+            "field": "ageYears",
+            "min": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "stump_ash_small_mossy_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-young_wood_b-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grown"
+          },
+          {
+            "op": "eq",
+            "field": "parity",
+            "value": 1
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "young_wood_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-sapling_1to3-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "sapling"
+          },
+          {
+            "op": "range",
+            "field": "stageProgress",
+            "max": 0.5
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "sapling_1to3_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "tree-sapling_4to8-winter",
+        "kind": "land-stage",
+        "slot": "tree",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "tree"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "sapling"
+          },
+          {
+            "op": "range",
+            "field": "stageProgress",
+            "min": 0.5
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "sapling_4to8_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_overgrown_furrows-winter",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grass"
+          },
+          {
+            "op": "eq",
+            "field": "plot",
+            "value": false
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_overgrown_furrows_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_grass-winter",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "grass"
+          },
+          {
+            "op": "eq",
+            "field": "plot",
+            "value": true
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_grass_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_bramble-winter",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "scrub"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_bramble_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "fallow-abandoned_saplings-winter",
+        "kind": "land-stage",
+        "slot": "fallow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "fallow"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "sapling"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "abandoned_saplings_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_ne-winter",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_ne"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_ne_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_nw-winter",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_nw"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_nw_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_corner_ne-winter",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_corner_ne"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_corner_ne_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_corner_nw-winter",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_corner_nw"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_corner_nw_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_fork_ne-winter",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_fork_ne"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_fork_ne_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-path_clear_fork_nw-winter",
+        "kind": "land-stage",
+        "slot": "path",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "path_clear_fork_nw"
+          },
+          {
+            "op": "in",
+            "field": "season",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_fork_nw_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-strip-ne-summer",
+        "kind": "land-stage",
+        "slot": "path-strip",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "ne"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_ne_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-strip-ne-winter",
+        "kind": "land-stage",
+        "slot": "path-strip",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "ne"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_ne_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-strip-nw-summer",
+        "kind": "land-stage",
+        "slot": "path-strip",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "nw"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_nw_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "path-strip-nw-winter",
+        "kind": "land-stage",
+        "slot": "path-strip",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "nw"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_clear_nw_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave20-era",
+    "entries": [
+      {
+        "id": "wave20/house_l0_1350_a-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l0_1350_a-v1.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1350_a-v1.png",
+          "sourceSha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+          "runtimeSha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.4995704948646125,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          0
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l0_1350_b-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l0_1350_b-v1.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1350_b-v1.png",
+          "sourceSha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+          "runtimeSha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.4995704948646125,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          0
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l0_1400_a-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l0_1400_a-v1.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1400_a-v1.png",
+          "sourceSha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+          "runtimeSha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.4995704948646125,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          0
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l0_1400_b-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l0_1400_b-v1.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1400_b-v1.png",
+          "sourceSha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+          "runtimeSha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.4995704948646125,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          0
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l1_1350_a-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l1_1350_a-v1.png",
+          "width": 139,
+          "height": 139
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1350_a-v1.png",
+          "sourceSha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+          "runtimeSha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 71.66148325358851,
+            "y": 125.92025518341308
+          },
+          "scale": 0.4986217267599071,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 139,
+            "height": 139
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          1
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l1_1350_b-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l1_1350_b-v1.png",
+          "width": 139,
+          "height": 139
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1350_b-v1.png",
+          "sourceSha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+          "runtimeSha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 71.66148325358851,
+            "y": 125.92025518341308
+          },
+          "scale": 0.4986217267599071,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 139,
+            "height": 139
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          1
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l1_1400_a-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l1_1400_a-v1.png",
+          "width": 139,
+          "height": 139
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1400_a-v1.png",
+          "sourceSha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+          "runtimeSha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 71.66148325358851,
+            "y": 125.92025518341308
+          },
+          "scale": 0.4986217267599071,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 139,
+            "height": 139
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          1
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l1_1400_b-v1",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l1_1400_b-v1.png",
+          "width": 139,
+          "height": 139
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1400_b-v1.png",
+          "sourceSha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+          "runtimeSha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 71.66148325358851,
+            "y": 125.92025518341308
+          },
+          "scale": 0.4986217267599071,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 139,
+            "height": 139
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          1
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l2_1350_a-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l2_1350_a-v2.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l2_1350_a-v2.png",
+          "sourceSha256": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55",
+          "runtimeSha256": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          2
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l2_1350_b-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l2_1350_b-v2.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l2_1350_b-v2.png",
+          "sourceSha256": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9",
+          "runtimeSha256": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          2
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l2_1400_a-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l2_1400_a-v2.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l2_1400_a-v2.png",
+          "sourceSha256": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6",
+          "runtimeSha256": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          2
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l2_1400_b-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l2_1400_b-v2.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l2_1400_b-v2.png",
+          "sourceSha256": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b",
+          "runtimeSha256": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          2
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l3_1350_a-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l3_1350_a-v2.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l3_1350_a-v2.png",
+          "sourceSha256": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7",
+          "runtimeSha256": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          3
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l3_1350_b-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l3_1350_b-v2.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l3_1350_b-v2.png",
+          "sourceSha256": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084",
+          "runtimeSha256": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          3
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l3_1400_a-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l3_1400_a-v2.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l3_1400_a-v2.png",
+          "sourceSha256": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9",
+          "runtimeSha256": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          3
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l3_1400_b-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l3_1400_b-v2.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l3_1400_b-v2.png",
+          "sourceSha256": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68",
+          "runtimeSha256": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          3
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l4_1350_a-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l4_1350_a-v2.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l4_1350_a-v2.png",
+          "sourceSha256": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8",
+          "runtimeSha256": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          4
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l4_1350_b-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l4_1350_b-v2.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l4_1350_b-v2.png",
+          "sourceSha256": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631",
+          "runtimeSha256": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          4
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/house_l4_1400_a-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l4_1400_a-v2.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l4_1400_a-v2.png",
+          "sourceSha256": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b",
+          "runtimeSha256": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          4
+        ],
+        "variantId": "a"
+      },
+      {
+        "id": "wave20/house_l4_1400_b-v2",
+        "kind": "building-body",
+        "image": {
+          "url": "assets/wave20/houses/house_l4_1400_b-v2.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/houses/house_l4_1400_b-v2.png",
+          "sourceSha256": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7",
+          "runtimeSha256": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "buildingKinds": [
+          "house"
+        ],
+        "levels": [
+          4
+        ],
+        "variantId": "b"
+      },
+      {
+        "id": "wave20/boarded_l2_1350-v3",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/overlays/boarded_l2_1350-v3.png",
+          "sourceSha256": "5746b6d65c42a49794270491cecbbc49e071b5fddfac3d4e8ce489f3be5e2c39",
+          "runtimeSha256": "5746b6d65c42a49794270491cecbbc49e071b5fddfac3d4e8ce489f3be5e2c39"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l2_1350_a-v2",
+          "wave20/house_l2_1350_b-v2"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/boarded_l2_1400-v3",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/boarded_l2_1400-v3.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/overlays/boarded_l2_1400-v3.png",
+          "sourceSha256": "126a09ae77818cb16dbc0879c5bbc4bf0b58f750ed314faeb88df47a7ea03787",
+          "runtimeSha256": "126a09ae77818cb16dbc0879c5bbc4bf0b58f750ed314faeb88df47a7ea03787"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l2_1400_a-v2",
+          "wave20/house_l2_1400_b-v2"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/boarded_l3_1350-v3",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/overlays/boarded_l3_1350-v3.png",
+          "sourceSha256": "70433fae506ec25fadb70648f2922fc79a7d0ac63e32a7859a426cd07bc314e4",
+          "runtimeSha256": "70433fae506ec25fadb70648f2922fc79a7d0ac63e32a7859a426cd07bc314e4"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l3_1350_a-v2",
+          "wave20/house_l3_1350_b-v2"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/boarded_l3_1400-v3",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/boarded_l3_1400-v3.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/overlays/boarded_l3_1400-v3.png",
+          "sourceSha256": "1da3f94fe23acd56326b9156342fc44309f4f84bcfb72a910455dae6de97516c",
+          "runtimeSha256": "1da3f94fe23acd56326b9156342fc44309f4f84bcfb72a910455dae6de97516c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l3_1400_a-v2",
+          "wave20/house_l3_1400_b-v2"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/boarded_l4_1350-v3",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/overlays/boarded_l4_1350-v3.png",
+          "sourceSha256": "2d839d7571c0d7991c771324edc89c370e5da4e57dd6b8eb76caf8143c3aac3e",
+          "runtimeSha256": "2d839d7571c0d7991c771324edc89c370e5da4e57dd6b8eb76caf8143c3aac3e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l4_1350_a-v2",
+          "wave20/house_l4_1350_b-v2"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/boarded_l4_1400-v3",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/boarded_l4_1400-v3.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/rework-20260927/assets/overlays/boarded_l4_1400-v3.png",
+          "sourceSha256": "75b48f6b52e74a7014d9da683686457fcbf8a5eb1aaacd0678084a37f2410403",
+          "runtimeSha256": "75b48f6b52e74a7014d9da683686457fcbf8a5eb1aaacd0678084a37f2410403"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l4_1400_a-v2",
+          "wave20/house_l4_1400_b-v2"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/roof_snow_l2_1350-v4",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/snow-v4-20260927/assets/overlays/roof_snow_l2_1350-v4.png",
+          "sourceSha256": "9766c06a55f69cbfa94813401f6b4c7d8a4777719e39ab36ecc5e98dea4fc3dd",
+          "runtimeSha256": "9766c06a55f69cbfa94813401f6b4c7d8a4777719e39ab36ecc5e98dea4fc3dd"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l2_1350_a-v2",
+          "wave20/house_l2_1350_b-v2"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      },
+      {
+        "id": "wave20/roof_snow_l2_1400-v4",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/roof_snow_l2_1400-v4.png",
+          "width": 137,
+          "height": 137
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/snow-v4-20260927/assets/overlays/roof_snow_l2_1400-v4.png",
+          "sourceSha256": "0058445ce889fd9aea12d69ce52f842f159adc6afa44b9a20a0fc42407590c94",
+          "runtimeSha256": "0058445ce889fd9aea12d69ce52f842f159adc6afa44b9a20a0fc42407590c94"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 70.95813397129186,
+            "y": 132.08373205741626
+          },
+          "scale": 0.4980801861842801,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 137,
+            "height": 137
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l2_1400_a-v2",
+          "wave20/house_l2_1400_b-v2"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      },
+      {
+        "id": "wave20/roof_snow_l3_1350-v4",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/snow-v4-20260927/assets/overlays/roof_snow_l3_1350-v4.png",
+          "sourceSha256": "19dcf99f2eb1c4f1ae950f867a329c6c9f511a4f8853e21515ba8ddd93f31d8a",
+          "runtimeSha256": "19dcf99f2eb1c4f1ae950f867a329c6c9f511a4f8853e21515ba8ddd93f31d8a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l3_1350_a-v2",
+          "wave20/house_l3_1350_b-v2"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      },
+      {
+        "id": "wave20/roof_snow_l3_1400-v4",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/roof_snow_l3_1400-v4.png",
+          "width": 142,
+          "height": 142
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/snow-v4-20260927/assets/overlays/roof_snow_l3_1400-v4.png",
+          "sourceSha256": "29d986787eabb4fbc22191548980b5be52d7476f83ccf24297299e9d095b21a0",
+          "runtimeSha256": "29d986787eabb4fbc22191548980b5be52d7476f83ccf24297299e9d095b21a0"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74.39712918660287,
+            "y": 138.03668261562999
+          },
+          "scale": 0.4983578424454543,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 142,
+            "height": 142
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l3_1400_a-v2",
+          "wave20/house_l3_1400_b-v2"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      },
+      {
+        "id": "wave20/roof_snow_l4_1350-v4",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/snow-v4-20260927/assets/overlays/roof_snow_l4_1350-v4.png",
+          "sourceSha256": "c209486d793a6f109b2a90ba3c0c11885c20025259e2889f022b7bdb35ebfca6",
+          "runtimeSha256": "c209486d793a6f109b2a90ba3c0c11885c20025259e2889f022b7bdb35ebfca6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l4_1350_a-v2",
+          "wave20/house_l4_1350_b-v2"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      },
+      {
+        "id": "wave20/roof_snow_l4_1400-v4",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave20/overlays/roof_snow_l4_1400-v4.png",
+          "width": 161,
+          "height": 161
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave20/snow-v4-20260927/assets/overlays/roof_snow_l4_1400-v4.png",
+          "sourceSha256": "7f7729b3e2aedfe5a060fd1f5c66d65efa76f4339791649d667e81b4a5789954",
+          "runtimeSha256": "7f7729b3e2aedfe5a060fd1f5c66d65efa76f4339791649d667e81b4a5789954"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 81.97647527910686,
+            "y": 157.40510366826157
+          },
+          "scale": 0.49791865539583047,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 161,
+            "height": 161
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l4_1400_a-v2",
+          "wave20/house_l4_1400_b-v2"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      },
+      {
+        "id": "wave20/reused-boarded_l0-v2",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave7/overlay/boarded_l0-v2.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave7/rework-v1/assets/overlay/boarded_l0-v2.png",
+          "sourceSha256": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa",
+          "runtimeSha256": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.4995704948646125,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l0_1350_a-v1",
+          "wave20/house_l0_1350_b-v1",
+          "wave20/house_l0_1400_a-v1",
+          "wave20/house_l0_1400_b-v1"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/reused-roof_snow_l0-v2",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave7/season/roof_snow_l0-v2.png",
+          "width": 153,
+          "height": 153
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave7/rework-v1/assets/season/roof_snow_l0-v2.png",
+          "sourceSha256": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c",
+          "runtimeSha256": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 77.35406698564593,
+            "y": 139.57894736842104
+          },
+          "scale": 0.4995704948646125,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 153,
+            "height": 153
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l0_1350_a-v1",
+          "wave20/house_l0_1350_b-v1",
+          "wave20/house_l0_1400_a-v1",
+          "wave20/house_l0_1400_b-v1"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      },
+      {
+        "id": "wave20/reused-boarded_l1-v2",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave7/overlay/boarded_l1-v2.png",
+          "width": 139,
+          "height": 139
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave7/rework-v1/assets/overlay/boarded_l1-v2.png",
+          "sourceSha256": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8",
+          "runtimeSha256": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 71.66148325358851,
+            "y": 125.92025518341308
+          },
+          "scale": 0.4986217267599071,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 139,
+            "height": 139
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l1_1350_a-v1",
+          "wave20/house_l1_1350_b-v1",
+          "wave20/house_l1_1400_a-v1",
+          "wave20/house_l1_1400_b-v1"
+        ],
+        "layer": "boarded",
+        "transform": "inherit-body",
+        "order": 10
+      },
+      {
+        "id": "wave20/reused-roof_snow_l1-v2",
+        "kind": "state-overlay",
+        "image": {
+          "url": "assets/wave7/season/roof_snow_l1-v2.png",
+          "width": 139,
+          "height": 139
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave7/rework-v1/assets/season/roof_snow_l1-v2.png",
+          "sourceSha256": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e",
+          "runtimeSha256": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 71.66148325358851,
+            "y": 125.92025518341308
+          },
+          "scale": 0.4986217267599071,
+          "crop": {
+            "x": 0,
+            "y": 0,
+            "width": 139,
+            "height": 139
+          },
+          "footprint": {
+            "width": 1,
+            "height": 1
+          },
+          "allowMirror": false
+        },
+        "targetBodyIds": [
+          "wave20/house_l1_1350_a-v1",
+          "wave20/house_l1_1350_b-v1",
+          "wave20/house_l1_1400_a-v1",
+          "wave20/house_l1_1400_b-v1"
+        ],
+        "layer": "snow",
+        "transform": "inherit-body",
+        "order": 20
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave20/rule/body-l0-1350",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 0
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1350,
+            "max": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l0_1350_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l0_1350_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l0-1400",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 0
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l0_1400_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l0_1400_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l1-1350",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 1
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1350,
+            "max": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l1_1350_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l1_1350_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l1-1400",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 1
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l1_1400_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l1_1400_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l2-1350",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 2
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1350,
+            "max": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l2_1350_a-v2",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l2_1350_b-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l2-1400",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 2
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l2_1400_a-v2",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l2_1400_b-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l3-1350",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 3
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1350,
+            "max": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l3_1350_a-v2",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l3_1350_b-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l3-1400",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 3
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l3_1400_a-v2",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l3_1400_b-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l4-1350",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 4
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1350,
+            "max": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l4_1350_a-v2",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l4_1350_b-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/body-l4-1400",
+        "kind": "building-body",
+        "slot": "house-body",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "buildingKind",
+            "value": "house"
+          },
+          {
+            "op": "eq",
+            "field": "level",
+            "value": 4
+          },
+          {
+            "op": "range",
+            "field": "calendarYear",
+            "min": 1400
+          },
+          {
+            "op": "eq",
+            "field": "lot",
+            "value": "single"
+          },
+          {
+            "op": "eq",
+            "field": "eligible",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/house_l4_1400_a-v2",
+            "weight": 1
+          },
+          {
+            "assetId": "wave20/house_l4_1400_b-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/boarded_l2_1350-v3",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l2_1350_a-v2",
+              "wave20/house_l2_1350_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/boarded_l2_1350-v3",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/boarded_l2_1400-v3",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l2_1400_a-v2",
+              "wave20/house_l2_1400_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/boarded_l2_1400-v3",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/boarded_l3_1350-v3",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l3_1350_a-v2",
+              "wave20/house_l3_1350_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/boarded_l3_1350-v3",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/boarded_l3_1400-v3",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l3_1400_a-v2",
+              "wave20/house_l3_1400_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/boarded_l3_1400-v3",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/boarded_l4_1350-v3",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l4_1350_a-v2",
+              "wave20/house_l4_1350_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/boarded_l4_1350-v3",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/boarded_l4_1400-v3",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l4_1400_a-v2",
+              "wave20/house_l4_1400_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/boarded_l4_1400-v3",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/roof_snow_l2_1350-v4",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l2_1350_a-v2",
+              "wave20/house_l2_1350_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/roof_snow_l2_1350-v4",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/roof_snow_l2_1400-v4",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l2_1400_a-v2",
+              "wave20/house_l2_1400_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/roof_snow_l2_1400-v4",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/roof_snow_l3_1350-v4",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l3_1350_a-v2",
+              "wave20/house_l3_1350_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/roof_snow_l3_1350-v4",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/roof_snow_l3_1400-v4",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l3_1400_a-v2",
+              "wave20/house_l3_1400_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/roof_snow_l3_1400-v4",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/roof_snow_l4_1350-v4",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l4_1350_a-v2",
+              "wave20/house_l4_1350_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/roof_snow_l4_1350-v4",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/roof_snow_l4_1400-v4",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l4_1400_a-v2",
+              "wave20/house_l4_1400_b-v2"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/roof_snow_l4_1400-v4",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/reused-boarded_l0",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l0_1350_a-v1",
+              "wave20/house_l0_1350_b-v1",
+              "wave20/house_l0_1400_a-v1",
+              "wave20/house_l0_1400_b-v1"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/reused-boarded_l0-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/reused-roof_snow_l0",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l0_1350_a-v1",
+              "wave20/house_l0_1350_b-v1",
+              "wave20/house_l0_1400_a-v1",
+              "wave20/house_l0_1400_b-v1"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/reused-roof_snow_l0-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/reused-boarded_l1",
+        "kind": "state-overlay",
+        "slot": "house-boarded",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l1_1350_a-v1",
+              "wave20/house_l1_1350_b-v1",
+              "wave20/house_l1_1400_a-v1",
+              "wave20/house_l1_1400_b-v1"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "boarded"
+          },
+          {
+            "op": "eq",
+            "field": "vacant",
+            "value": true
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/reused-boarded_l1-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave20/rule/reused-roof_snow_l1",
+        "kind": "state-overlay",
+        "slot": "house-snow",
+        "priority": 100,
+        "conditions": [
+          {
+            "op": "in",
+            "field": "bodyId",
+            "values": [
+              "wave20/house_l1_1350_a-v1",
+              "wave20/house_l1_1350_b-v1",
+              "wave20/house_l1_1400_a-v1",
+              "wave20/house_l1_1400_b-v1"
+            ]
+          },
+          {
+            "op": "eq",
+            "field": "layer",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave20/reused-roof_snow_l1-v2",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave15-season-migration",
+    "entries": [
+      {
+        "id": "orchard_apple_c_winter",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+          "width": 256,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_winter-v1.png",
+          "sourceSha256": "9f8364ec8898da73ae1c2112aa0682ff9bae848260de5d2097374cc1cc2fd041",
+          "runtimeSha256": "9f8364ec8898da73ae1c2112aa0682ff9bae848260de5d2097374cc1cc2fd041"
+        },
+        "base": {
+          "namespace": "zone-prop",
+          "key": "orchard_apple_c"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 246
+          },
+          "scale": 0.16796875,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "orchard_pear_e_winter",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+          "width": 256,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_winter-v1.png",
+          "sourceSha256": "7ee905876ef9788d504ecf9439b3b4b131cfc8e22d4cc916bd7a19f20df3e98a",
+          "runtimeSha256": "7ee905876ef9788d504ecf9439b3b4b131cfc8e22d4cc916bd7a19f20df3e98a"
+        },
+        "base": {
+          "namespace": "zone-prop",
+          "key": "orchard_pear_e"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 123,
+            "y": 246
+          },
+          "scale": 0.16796875,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "orchard_plum_f_winter",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/orchard/orchard_plum_f_winter-v1.png",
+          "width": 256,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_winter-v1.png",
+          "sourceSha256": "a6e7f742931607b36ef2e85eaf40cb654b76644bdb85d403a9899f88a4555c8f",
+          "runtimeSha256": "a6e7f742931607b36ef2e85eaf40cb654b76644bdb85d403a9899f88a4555c8f"
+        },
+        "base": {
+          "namespace": "zone-prop",
+          "key": "orchard_plum_f"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 141,
+            "y": 246
+          },
+          "scale": 0.16796875,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_birch_autumn",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_birch_autumn-v1.png",
+          "width": 60,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_autumn-v1.png",
+          "sourceSha256": "15583e03f2cd6ec5647ed971d9be2c3119efbeed0dfd9852b8e69340159aa2f7",
+          "runtimeSha256": "15583e03f2cd6ec5647ed971d9be2c3119efbeed0dfd9852b8e69340159aa2f7"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_birch"
+        },
+        "season": "autumn",
+        "geometry": {
+          "pivot": {
+            "x": 30,
+            "y": 96
+          },
+          "scale": 0.6666666666666666,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_birch_winter",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_birch_winter-v1.png",
+          "width": 60,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_winter-v1.png",
+          "sourceSha256": "1a25b3117593314473da1366246f95daaca1b9301590c30f1385d6b2823fb062",
+          "runtimeSha256": "1a25b3117593314473da1366246f95daaca1b9301590c30f1385d6b2823fb062"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_birch"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 30,
+            "y": 96
+          },
+          "scale": 0.6666666666666666,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_dead_winter_snow",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+          "width": 56,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_dead_winter_snow-v1.png",
+          "sourceSha256": "b1a05c875d08439ec40c95e24f5fc3bb0ca1aef303ead50f830a4599049d581d",
+          "runtimeSha256": "b1a05c875d08439ec40c95e24f5fc3bb0ca1aef303ead50f830a4599049d581d"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_dead"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 28,
+            "y": 80
+          },
+          "scale": 0.8,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_oak_large_autumn",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_oak_large_autumn-v1.png",
+          "width": 88,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_autumn-v1.png",
+          "sourceSha256": "787293e80a7b38c9e58e1010f182ad17db769ed574fc4f328d6ff64d6961c5c2",
+          "runtimeSha256": "787293e80a7b38c9e58e1010f182ad17db769ed574fc4f328d6ff64d6961c5c2"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_large"
+        },
+        "season": "autumn",
+        "geometry": {
+          "pivot": {
+            "x": 44,
+            "y": 112
+          },
+          "scale": 0.5714285714285714,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_oak_large_winter",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_oak_large_winter-v1.png",
+          "width": 88,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_winter-v1.png",
+          "sourceSha256": "c5fa00e8fdc8cb5e2f8862f8a7e406e13983e62c9213734f589b88ef84273ba5",
+          "runtimeSha256": "c5fa00e8fdc8cb5e2f8862f8a7e406e13983e62c9213734f589b88ef84273ba5"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_large"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 44,
+            "y": 112
+          },
+          "scale": 0.5714285714285714,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_oak_large_winter_snow",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+          "width": 88,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_winter_snow-v1.png",
+          "sourceSha256": "62d0fc2d98a766399efea9f63fb68078356e7fcd7bb48ab45282d70126edb155",
+          "runtimeSha256": "62d0fc2d98a766399efea9f63fb68078356e7fcd7bb48ab45282d70126edb155"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_large"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 44,
+            "y": 112
+          },
+          "scale": 0.5714285714285714,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_oak_small_autumn",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_oak_small_autumn-v1.png",
+          "width": 64,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_autumn-v1.png",
+          "sourceSha256": "b82666a899d226207376168da8d588bcbb19f97923d661358110e205025915ea",
+          "runtimeSha256": "b82666a899d226207376168da8d588bcbb19f97923d661358110e205025915ea"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_small"
+        },
+        "season": "autumn",
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 80
+          },
+          "scale": 0.8,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_oak_small_winter",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_oak_small_winter-v1.png",
+          "width": 64,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_winter-v1.png",
+          "sourceSha256": "cac1f5fd486df83f721d6fb0e2621f7f9e653e9810bf2d5dd38d429324ae6f3b",
+          "runtimeSha256": "cac1f5fd486df83f721d6fb0e2621f7f9e653e9810bf2d5dd38d429324ae6f3b"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_small"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 80
+          },
+          "scale": 0.8,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_oak_small_winter_snow",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+          "width": 64,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_winter_snow-v1.png",
+          "sourceSha256": "d266dfb9bc77403e443d029cbe8b04c7ba040b9665d650e67683fcb2bcd48c41",
+          "runtimeSha256": "d266dfb9bc77403e443d029cbe8b04c7ba040b9665d650e67683fcb2bcd48c41"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_small"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 80
+          },
+          "scale": 0.8,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_pine_short_winter_snow",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+          "width": 56,
+          "height": 88
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_pine_short_winter_snow-v1.png",
+          "sourceSha256": "7671687bf3ebccbba08d85d213f5eae4e34546e1736bfdc56feef31980c31ec8",
+          "runtimeSha256": "7671687bf3ebccbba08d85d213f5eae4e34546e1736bfdc56feef31980c31ec8"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_pine_short"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 28,
+            "y": 88
+          },
+          "scale": 0.7272727272727273,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "tree_pine_tall_winter_snow",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+          "width": 64,
+          "height": 120
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_pine_tall_winter_snow-v1.png",
+          "sourceSha256": "7b35b71faec923571e56d50b730e805c427603c0fb4afd04fb5d7a6ad3a4bd67",
+          "runtimeSha256": "7b35b71faec923571e56d50b730e805c427603c0fb4afd04fb5d7a6ad3a4bd67"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_pine_tall"
+        },
+        "season": "winter",
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 120
+          },
+          "scale": 0.5333333333333333,
+          "allowMirror": false
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave15-season-orchard_apple_c-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "orchard_apple_c"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "orchard_apple_c_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-orchard_pear_e-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "orchard_pear_e"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "orchard_pear_e_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-orchard_plum_f-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "orchard_plum_f"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "orchard_plum_f_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_birch-autumn",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_birch"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_birch_autumn",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_birch-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_birch"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_birch_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_dead-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_dead"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_dead_winter_snow",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_oak_large-autumn",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_oak_large"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_oak_large_autumn",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_oak_large-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_oak_large"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_oak_large_winter",
+            "weight": 1
+          },
+          {
+            "assetId": "tree_oak_large_winter_snow",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_oak_small-autumn",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_oak_small"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "autumn"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_oak_small_autumn",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_oak_small-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_oak_small"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_oak_small_winter",
+            "weight": 1
+          },
+          {
+            "assetId": "tree_oak_small_winter_snow",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_pine_short-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_pine_short"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_pine_short_winter_snow",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave15-season-tree_pine_tall-winter",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_pine_tall"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "tree_pine_tall_winter_snow",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave43-spring-nine",
+    "entries": [
+      {
+        "id": "wave43-orchard_apple_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/orchard/orchard_apple_spring.png",
+          "width": 256,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_apple_spring.png",
+          "sourceSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+          "runtimeSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449"
+        },
+        "base": {
+          "namespace": "zone-prop",
+          "key": "orchard_apple_c"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 246
+          },
+          "scale": 0.16796875,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-orchard_pear_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/orchard/orchard_pear_spring.png",
+          "width": 256,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_pear_spring.png",
+          "sourceSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+          "runtimeSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156"
+        },
+        "base": {
+          "namespace": "zone-prop",
+          "key": "orchard_pear_e"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 123,
+            "y": 246
+          },
+          "scale": 0.16796875,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-orchard_plum_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/orchard/orchard_plum_spring.png",
+          "width": 256,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_plum_spring.png",
+          "sourceSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+          "runtimeSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee"
+        },
+        "base": {
+          "namespace": "zone-prop",
+          "key": "orchard_plum_f"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 141,
+            "y": 246
+          },
+          "scale": 0.16796875,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-tree_birch_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/trees_broadleaf/tree_birch_spring.png",
+          "width": 60,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_birch_spring.png",
+          "sourceSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+          "runtimeSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_birch"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 30,
+            "y": 96
+          },
+          "scale": 0.6666666666666666,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-tree_dead_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/trees_other/tree_dead_spring.png",
+          "width": 56,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_dead_spring.png",
+          "sourceSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+          "runtimeSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_dead"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 28,
+            "y": 80
+          },
+          "scale": 0.8,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-tree_oak_large_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+          "width": 88,
+          "height": 112
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_large_spring.png",
+          "sourceSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+          "runtimeSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_large"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 44,
+            "y": 112
+          },
+          "scale": 0.5714285714285714,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-tree_oak_small_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+          "width": 64,
+          "height": 80
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_small_spring.png",
+          "sourceSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+          "runtimeSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_oak_small"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 80
+          },
+          "scale": 0.8,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-tree_pine_short_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/trees_other/tree_pine_short_spring.png",
+          "width": 56,
+          "height": 88
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_short_spring.png",
+          "sourceSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+          "runtimeSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_pine_short"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 28,
+            "y": 88
+          },
+          "scale": 0.7272727272727273,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave43-tree_pine_tall_spring",
+        "kind": "season-variant",
+        "image": {
+          "url": "assets/wave43/trees_other/tree_pine_tall_spring.png",
+          "width": 64,
+          "height": 120
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_tall_spring.png",
+          "sourceSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+          "runtimeSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a"
+        },
+        "base": {
+          "namespace": "world-sprite",
+          "key": "tree_pine_tall"
+        },
+        "season": "spring",
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 120
+          },
+          "scale": 0.5333333333333333,
+          "allowMirror": false
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave43-season-orchard_apple_c-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "orchard_apple_c"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-orchard_apple_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-orchard_pear_e-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "orchard_pear_e"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-orchard_pear_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-orchard_plum_f-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "orchard_plum_f"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-orchard_plum_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-tree_birch-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_birch"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-tree_birch_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-tree_dead-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_dead"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-tree_dead_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-tree_oak_large-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_oak_large"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-tree_oak_large_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-tree_oak_small-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_oak_small"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-tree_oak_small_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-tree_pine_short-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_pine_short"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-tree_pine_short_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-season-tree_pine_tall-spring",
+        "kind": "season-variant",
+        "slot": "season-replacement",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "baseKey",
+            "value": "tree_pine_tall"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-tree_pine_tall_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "field-ridge-baseline",
+    "entries": [
+      {
+        "id": "ridge_ploughed_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_ploughed_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_ploughed_a-v1.png",
+          "sourceSha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829",
+          "runtimeSha256": "3b015936bb7877df7ec5aedc9c22e73e01b30d874f3b9de55851e2157377f829"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "ridge_ploughed_b",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_ploughed_b-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_ploughed_b-v1.png",
+          "sourceSha256": "80eda18980bfc507dc30568f938ef7cb53f4c7c8d1c5097a659de1bc7168f257",
+          "runtimeSha256": "80eda18980bfc507dc30568f938ef7cb53f4c7c8d1c5097a659de1bc7168f257"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "ridge_seedling_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_seedling_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_seedling_a-v1.png",
+          "sourceSha256": "37a43cb4b850df354e217aab065cd0dfb20147891c65afd4c0e165ee1170e44e",
+          "runtimeSha256": "37a43cb4b850df354e217aab065cd0dfb20147891c65afd4c0e165ee1170e44e"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "ridge_seedling_b",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/fields/ridge_seedling_b-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave4b/field/ridge_seedling_b-v1.png",
+          "sourceSha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf",
+          "runtimeSha256": "c573ebc854983abd7eb3ecc875a68d7662b9a1e551ab1d8c9cf533641da10faf"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "legacy-stage"
+        },
+        "allowMirror": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "field-ploughed-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_ploughed_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "field-ploughed-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_ploughed_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "field-seedling-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_seedling_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "field-seedling-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-base-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "ridge_seedling_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave43-field-spring3",
+    "entries": [
+      {
+        "id": "wave43-ridge_ploughed_spring_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/ridge_ploughed_spring_a-v1.png",
+          "sourceSha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9",
+          "runtimeSha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave43-ridge_seedling_spring_a",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/ridge_seedling_spring_a-v1.png",
+          "sourceSha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045",
+          "runtimeSha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave43-ridge_seedling_spring_b",
+        "kind": "ground-texture",
+        "image": {
+          "url": "assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/ridge_seedling_spring_b-v1.png",
+          "sourceSha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2",
+          "runtimeSha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2"
+        },
+        "mapping": {
+          "repeat": "x",
+          "sourcePixelsPerTile": 128,
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "joinFadeSourcePx": 40,
+          "wash": "none"
+        },
+        "allowMirror": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave43-field-ploughed-spring-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_ploughed_spring_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-field-ploughed-spring-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "ploughed"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_ploughed_spring_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-field-seedling-spring-a",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_seedling_spring_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave43-field-seedling-spring-b",
+        "kind": "ground-texture",
+        "slot": "field-ridge-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "fieldState",
+            "value": "seedling"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-ridge_seedling_spring_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave22-land-decals",
+    "entries": [
+      {
+        "id": "wave22-heath-patch-a",
+        "kind": "ground-prop",
+        "placement": "land",
+        "baseId": "decals/heath_patch_a",
+        "archetypes": [
+          "core:chalk_downs"
+        ],
+        "image": {
+          "url": "assets/wave22/decals/heath_patch_a.png",
+          "width": 64,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_a-v1.png",
+          "sourceSha256": "dc24ac33e8869c47977d1adea44ed6a939f94079eb26b4a1d44592ef0ca2576a",
+          "runtimeSha256": "dc24ac33e8869c47977d1adea44ed6a939f94079eb26b4a1d44592ef0ca2576a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 40
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave22-heath-patch-b",
+        "kind": "ground-prop",
+        "placement": "land",
+        "baseId": "decals/heath_patch_a",
+        "archetypes": [
+          "core:chalk_downs"
+        ],
+        "image": {
+          "url": "assets/wave22/decals/heath_patch_b.png",
+          "width": 96,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_b-v1.png",
+          "sourceSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+          "runtimeSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 56
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "wave22-heath-patch-c",
+        "kind": "ground-prop",
+        "placement": "land",
+        "baseId": "decals/heath_patch_a",
+        "archetypes": [
+          "core:chalk_downs"
+        ],
+        "image": {
+          "url": "assets/wave22/decals/heath_patch_c.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_c-v1.png",
+          "sourceSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+          "runtimeSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 88
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave22-heath-base",
+        "kind": "ground-prop",
+        "slot": "land-decal-base",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "decals/heath_patch_a"
+          },
+          {
+            "field": "archetype",
+            "op": "eq",
+            "value": "core:chalk_downs"
+          },
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "land"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-heath-patch-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave22-heath-variants",
+        "kind": "ground-prop",
+        "slot": "land-decal-variant",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "decals/heath_patch_a"
+          },
+          {
+            "field": "archetype",
+            "op": "eq",
+            "value": "core:chalk_downs"
+          },
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "land"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave22-heath-patch-a",
+            "weight": 1
+          },
+          {
+            "assetId": "wave22-heath-patch-b",
+            "weight": 1
+          },
+          {
+            "assetId": "wave22-heath-patch-c",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  }
+]

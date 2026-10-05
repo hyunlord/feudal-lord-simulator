@@ -8,6 +8,7 @@ import { drawConstructionSite } from "./drawConstructionSites";
 import { wallBaselinesFor } from "./wallBaselineCache";
 import { drawPalisadeSegment } from "./drawPalisadeSegments";
 import { cornerGateModules } from "./gateCornerModules";
+import { gateArmPosts } from "./gateOpeningPosts";
 import type { HouseMaterialWave } from "./buildingMaterialWave";
 import type { RenderQueueItem } from "./objectRenderOrder";
 import { getObjectRenderViewMode } from "./objectRenderViewMode";
@@ -30,6 +31,7 @@ import { drawPlagueProp } from "./plagueWorldProps";
 import { drawReorgPropAt } from "./reorgWorldProps";
 import { drawAleDrinker } from "./alehouseCrowd";
 import { drawCountrysideItem } from "./countrysideDraw";
+import { drawDoorSign } from "./doorSigns";
 import { inGatePassage, placeWalkers, walkerHiddenBehind } from "./walkerOcclusion";
 import { beginSpriteMipFrame, endSpriteMipFrame } from "./spriteMipCache";
 
@@ -113,6 +115,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "countryside") { // INSTALL-28 hedges, baulks, dry-stone walls and point props outside the walls
       if (viewMode === "normal") drawCountrysideItem(context, item, input.state, input.zoom);
+      continue;
+    }
+    if (item.kind === "door_sign") { // LM-R1 Wave 37 house-front signs (lord mode)
+      if (viewMode === "normal") drawDoorSign(context, item.sign, input.zoom);
       continue;
     }
     if (item.kind === "village_life") { // INSTALL-23 hens, cats, dogs, birds, toys, washing lines, doorstep props
@@ -215,7 +221,9 @@ function wallFaceFor(state: DrawObjectRenderItemsInput["state"], item: { readonl
   // same depth the arm drawn after the owner painted its face over the tower; drawn again after that arm, it stays whole.
   const drawsNode = (node: (typeof walls.nodes)[number]): boolean => node.owner === key
     || (node.kind === "tower" && node.materials.includes("stone") && node.neighbors.some(neighbor => unitEdgeKey(node.point, neighbor) === key));
-  // NAT-2 QA-003: a corner gate's art and its off-axis pier are split between its two arms (gateCornerModules).
-  const nodes = own ? walls.nodes.flatMap(node => cornerGateModules(node, key) ?? (drawsNode(node) ? [node] : [])) : [];
+  // NAT-2 QA-003: a corner gate's art and its off-axis pier are split between its two arms (gateCornerModules); a
+  // palisade gate's door post is drawn by its arm, and by the gate's art over it (gateArmPosts).
+  const nodes = own ? walls.nodes.flatMap(node => { const modules = cornerGateModules(node, key) ?? (drawsNode(node) ? [node] : []);
+    return modules.includes(node) ? modules : [...modules, ...gateArmPosts(node, key)]; }) : [];
   return { slice: own ? slice : null, nodes, pillars: own ? walls.pillars.filter(pillar => pillar.owner === key) : [] };
 }

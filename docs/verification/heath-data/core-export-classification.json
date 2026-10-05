@@ -1,0 +1,25 @@
+{
+  "classification": "NON_RUNTIME_DOCUMENT_DRIFT",
+  "trackedDirty": true,
+  "exportStartMetadataDirty": false,
+  "head": "931d780e37307a7dd2f85a697b122656cb29359d",
+  "changedTrackedPaths": [
+    {
+      "path": "docs/verification/field-spring3-data/REPORT.md",
+      "remoteSHA": "2149c4e2742183d2dc1275d1b30ad7c959a42d8316a8ed0f20ccf589acb9132f",
+      "bufferedFixSHA": "2149c4e2742183d2dc1275d1b30ad7c959a42d8316a8ed0f20ccf589acb9132f",
+      "committed931SHA": "5c3244774e78a637661beeacc4cfaccc8ea14dc5176cc8364660c296c9050f1b"
+    },
+    {
+      "path": "docs/verification/field-spring3-data/SHA256SUMS.json",
+      "remoteSHA": "37934ddc6b0c5b4874f00e392749c9d6bb53ad3b245fd28ff41ccc715459abb9",
+      "bufferedFixSHA": "37934ddc6b0c5b4874f00e392749c9d6bb53ad3b245fd28ff41ccc715459abb9",
+      "committed931SHA": "38656ab1c939113a57a09af13e4720342c0783b13320ea44714d54873ccc2cf8"
+    }
+  ],
+  "allOtherTrackedPathsEqualHead": true,
+  "runtimeFreezeMatched": 4308,
+  "absentMatched": 8,
+  "parentDisposition": "Continue same run; product freeze valid runtime evidence, not clean whole export. No unchanged-product recapture; preserve failed clean attestation.",
+  "rawTrackedDiffEvidence": "/Users/rexxa/fls-astra-renderB/.omo/evidence/heath-main-core-tracked-race-check.txt"
+}

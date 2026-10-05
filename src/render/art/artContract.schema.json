@@ -1,0 +1,1755 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "bundleId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/entry"
+      },
+      "minItems": 1
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/rule"
+      },
+      "minItems": 0
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "bundleId",
+    "entries",
+    "rules"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "point": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "minimum": 0
+        },
+        "y": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "x",
+        "y"
+      ],
+      "additionalProperties": false
+    },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "rect": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "y": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "image": {
+      "type": "object",
+      "properties": {
+        "url": {
+          "type": "string",
+          "pattern": "^assets/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "url",
+        "width",
+        "height"
+      ],
+      "additionalProperties": false
+    },
+    "provenance": {
+      "type": "object",
+      "properties": {
+        "inboxFile": {
+          "type": "string",
+          "pattern": "^assets-inbox/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$"
+        },
+        "sourceSha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        },
+        "runtimeSha256": {
+          "type": "string",
+          "pattern": "^[a-fA-F0-9]{64}$"
+        }
+      },
+      "required": [
+        "inboxFile",
+        "sourceSha256",
+        "runtimeSha256"
+      ],
+      "additionalProperties": false
+    },
+    "geometry": {
+      "type": "object",
+      "properties": {
+        "pivot": {
+          "$ref": "#/$defs/point"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "crop": {
+          "$ref": "#/$defs/rect"
+        },
+        "footprint": {
+          "type": "object",
+          "properties": {
+            "width": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "height": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            }
+          },
+          "required": [
+            "width",
+            "height"
+          ],
+          "additionalProperties": false
+        },
+        "allowMirror": {
+          "const": false
+        }
+      },
+      "required": [
+        "pivot",
+        "scale",
+        "allowMirror"
+      ],
+      "additionalProperties": false
+    },
+    "frame": {
+      "type": "object",
+      "properties": {
+        "sourceRect": {
+          "$ref": "#/$defs/rect"
+        },
+        "pivot": {
+          "$ref": "#/$defs/point"
+        },
+        "durationMs": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        }
+      },
+      "required": [
+        "sourceRect",
+        "pivot",
+        "durationMs"
+      ],
+      "additionalProperties": false
+    },
+    "range": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      },
+      "required": [],
+      "additionalProperties": false,
+      "anyOf": [
+        {
+          "required": [
+            "min"
+          ]
+        },
+        {
+          "required": [
+            "max"
+          ]
+        }
+      ]
+    },
+    "ports": {
+      "type": "object",
+      "properties": {
+        "SW": {
+          "$ref": "#/$defs/point"
+        },
+        "NW": {
+          "$ref": "#/$defs/point"
+        },
+        "SE": {
+          "$ref": "#/$defs/point"
+        },
+        "NE": {
+          "$ref": "#/$defs/point"
+        },
+        "start": {
+          "$ref": "#/$defs/point"
+        },
+        "end": {
+          "$ref": "#/$defs/point"
+        }
+      },
+      "required": [],
+      "additionalProperties": false
+    },
+    "scalar": {
+      "type": [
+        "string",
+        "number",
+        "boolean"
+      ]
+    },
+    "condition": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "const": "eq"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "$ref": "#/$defs/scalar"
+            }
+          },
+          "required": [
+            "op",
+            "field",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "const": "in"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "values": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/scalar"
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "op",
+            "field",
+            "values"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "op": {
+              "const": "range"
+            },
+            "field": {
+              "type": "string",
+              "minLength": 1
+            },
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "op",
+            "field"
+          ],
+          "additionalProperties": false,
+          "anyOf": [
+            {
+              "required": [
+                "min"
+              ]
+            },
+            {
+              "required": [
+                "max"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "building-body": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "building-body"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "facing": {
+          "type": "string",
+          "enum": [
+            "n",
+            "ne",
+            "e",
+            "se",
+            "s",
+            "sw",
+            "w",
+            "nw"
+          ]
+        },
+        "buildingKinds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "levels": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "variantId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "geometry",
+        "buildingKinds",
+        "levels",
+        "variantId"
+      ],
+      "additionalProperties": false
+    },
+    "state-overlay": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "state-overlay"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "facing": {
+          "type": "string",
+          "enum": [
+            "n",
+            "ne",
+            "e",
+            "se",
+            "s",
+            "sw",
+            "w",
+            "nw"
+          ]
+        },
+        "targetBodyIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "layer": {
+          "type": "string",
+          "enum": [
+            "snow",
+            "boarded",
+            "worn",
+            "wealth",
+            "era"
+          ]
+        },
+        "transform": {
+          "const": "inherit-body"
+        },
+        "order": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "geometry",
+        "targetBodyIds",
+        "layer",
+        "transform",
+        "order"
+      ],
+      "additionalProperties": false
+    },
+    "ground-prop": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "facing": {
+              "type": "string",
+              "enum": [
+                "n",
+                "ne",
+                "e",
+                "se",
+                "s",
+                "sw",
+                "w",
+                "nw"
+              ]
+            },
+            "archetypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "occupations": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "placement": {
+              "type": "string",
+              "enum": [
+                "front-yard",
+                "back-yard",
+                "yard",
+                "street",
+                "frontage"
+              ]
+            },
+            "wealthRange": {
+              "$ref": "#/$defs/range"
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "archetypes",
+            "occupations",
+            "placement"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "archetypes": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            },
+            "placement": {
+              "const": "land"
+            },
+            "baseId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "archetypes",
+            "placement",
+            "baseId"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "walker-cargo": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "walker-cargo"
+            },
+            "role": {
+              "const": "cargo"
+            },
+            "cargoKinds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0,
+              "uniqueItems": true
+            },
+            "frames": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/frame"
+              },
+              "minItems": 1
+            },
+            "facing": {
+              "type": "string",
+              "enum": [
+                "n",
+                "ne",
+                "e",
+                "se",
+                "s",
+                "sw",
+                "w",
+                "nw"
+              ]
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "allowMirror": {
+              "const": false
+            },
+            "attachment": {
+              "type": "object",
+              "properties": {
+                "anchor": {
+                  "const": "grip"
+                },
+                "pivot": {
+                  "$ref": "#/$defs/point"
+                }
+              },
+              "required": [
+                "anchor",
+                "pivot"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "role",
+            "cargoKinds",
+            "frames",
+            "facing",
+            "scale",
+            "allowMirror",
+            "attachment"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "walker-cargo"
+            },
+            "role": {
+              "const": "walker"
+            },
+            "cargoKinds": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0,
+              "uniqueItems": true
+            },
+            "frames": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/frame"
+              },
+              "minItems": 1
+            },
+            "facing": {
+              "type": "string",
+              "enum": [
+                "n",
+                "ne",
+                "e",
+                "se",
+                "s",
+                "sw",
+                "w",
+                "nw"
+              ]
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "allowMirror": {
+              "const": false
+            },
+            "attachment": {
+              "type": "object",
+              "properties": {
+                "anchor": {
+                  "const": "foot"
+                },
+                "pivot": {
+                  "$ref": "#/$defs/point"
+                }
+              },
+              "required": [
+                "anchor",
+                "pivot"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "role",
+            "cargoKinds",
+            "frames",
+            "facing",
+            "scale",
+            "allowMirror",
+            "attachment"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "land-stage": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "land-stage"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "facing": {
+              "type": "string",
+              "enum": [
+                "n",
+                "ne",
+                "e",
+                "se",
+                "s",
+                "sw",
+                "w",
+                "nw"
+              ]
+            },
+            "family": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stage": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layout": {
+              "const": "single"
+            },
+            "ports": {
+              "$ref": "#/$defs/ports"
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "family",
+            "stage",
+            "layout"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "land-stage"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "facing": {
+              "type": "string",
+              "enum": [
+                "n",
+                "ne",
+                "e",
+                "se",
+                "s",
+                "sw",
+                "w",
+                "nw"
+              ]
+            },
+            "family": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stage": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layout": {
+              "const": "strip"
+            },
+            "ports": {
+              "type": "object",
+              "properties": {
+                "start": {
+                  "$ref": "#/$defs/point"
+                },
+                "end": {
+                  "$ref": "#/$defs/point"
+                }
+              },
+              "required": [
+                "start",
+                "end"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "family",
+            "stage",
+            "layout",
+            "ports"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "land-stage"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "facing": {
+              "type": "string",
+              "enum": [
+                "n",
+                "ne",
+                "e",
+                "se",
+                "s",
+                "sw",
+                "w",
+                "nw"
+              ]
+            },
+            "family": {
+              "type": "string",
+              "minLength": 1
+            },
+            "stage": {
+              "type": "string",
+              "minLength": 1
+            },
+            "layout": {
+              "const": "connector"
+            },
+            "ports": {
+              "type": "object",
+              "properties": {
+                "SW": {
+                  "$ref": "#/$defs/point"
+                },
+                "NW": {
+                  "$ref": "#/$defs/point"
+                },
+                "SE": {
+                  "$ref": "#/$defs/point"
+                },
+                "NE": {
+                  "$ref": "#/$defs/point"
+                }
+              },
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "family",
+            "stage",
+            "layout",
+            "ports"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "landmark": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "landmark"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "facing": {
+          "type": "string",
+          "enum": [
+            "n",
+            "ne",
+            "e",
+            "se",
+            "s",
+            "sw",
+            "w",
+            "nw"
+          ]
+        },
+        "family": {
+          "type": "string",
+          "minLength": 1
+        },
+        "growthStage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "expansion": {
+          "type": "string",
+          "enum": [
+            "none",
+            "approved-footprint"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "geometry",
+        "family",
+        "growthStage",
+        "expansion"
+      ],
+      "additionalProperties": false
+    },
+    "event-scene": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "event-scene"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "facing": {
+          "type": "string",
+          "enum": [
+            "n",
+            "ne",
+            "e",
+            "se",
+            "s",
+            "sw",
+            "w",
+            "nw"
+          ]
+        },
+        "eventIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "placement": {
+          "type": "string",
+          "enum": [
+            "target",
+            "building",
+            "road"
+          ]
+        },
+        "duration": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "mode": {
+                  "const": "while-active"
+                }
+              },
+              "required": [
+                "mode"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "mode": {
+                  "const": "visual-ms"
+                },
+                "milliseconds": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                }
+              },
+              "required": [
+                "mode",
+                "milliseconds"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/frame"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "geometry",
+        "eventIds",
+        "group",
+        "placement",
+        "duration"
+      ],
+      "additionalProperties": false
+    },
+    "event-illustration": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "event-illustration"
+        },
+        "eventIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "fit": {
+          "type": "string",
+          "enum": [
+            "contain",
+            "cover"
+          ]
+        },
+        "altTextKey": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "eventIds",
+        "fit",
+        "altTextKey"
+      ],
+      "additionalProperties": false
+    },
+    "portrait": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "portrait"
+        },
+        "pool": {
+          "type": "string",
+          "minLength": 1
+        },
+        "personIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "lineage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ageStage": {
+          "type": "string",
+          "minLength": 1
+        },
+        "era": {
+          "type": "string",
+          "minLength": 1
+        },
+        "derivatives": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "size": {
+                "type": "integer",
+                "enum": [
+                  96,
+                  256
+                ]
+              },
+              "assetId": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "size",
+              "assetId"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 0
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "pool",
+        "ageStage",
+        "era",
+        "derivatives"
+      ],
+      "additionalProperties": false
+    },
+    "regional-map": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "regional-map"
+        },
+        "mapId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "landTypes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "coordinateSpace": {
+          "$ref": "#/$defs/dimensions"
+        },
+        "slots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "x": {
+                "type": "number",
+                "minimum": 0
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0
+              },
+              "landType": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "id",
+              "x",
+              "y",
+              "landType"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "mapId",
+        "landTypes",
+        "coordinateSpace",
+        "slots"
+      ],
+      "additionalProperties": false
+    },
+    "entry": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/building-body"
+        },
+        {
+          "$ref": "#/$defs/state-overlay"
+        },
+        {
+          "$ref": "#/$defs/ground-prop"
+        },
+        {
+          "$ref": "#/$defs/walker-cargo"
+        },
+        {
+          "$ref": "#/$defs/land-stage"
+        },
+        {
+          "$ref": "#/$defs/landmark"
+        },
+        {
+          "$ref": "#/$defs/event-scene"
+        },
+        {
+          "$ref": "#/$defs/event-illustration"
+        },
+        {
+          "$ref": "#/$defs/portrait"
+        },
+        {
+          "$ref": "#/$defs/regional-map"
+        },
+        {
+          "$ref": "#/$defs/season-variant"
+        },
+        {
+          "$ref": "#/$defs/ground-texture"
+        }
+      ]
+    },
+    "rule": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "building-body",
+            "state-overlay",
+            "ground-prop",
+            "walker-cargo",
+            "land-stage",
+            "landmark",
+            "event-scene",
+            "event-illustration",
+            "portrait",
+            "regional-map",
+            "season-variant",
+            "ground-texture"
+          ]
+        },
+        "slot": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priority": {
+          "type": "integer"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          },
+          "minItems": 0
+        },
+        "variants": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "assetId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "weight": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              }
+            },
+            "required": [
+              "assetId",
+              "weight"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "fallback": {
+          "const": "none"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "slot",
+        "priority",
+        "conditions",
+        "variants",
+        "fallback"
+      ],
+      "additionalProperties": false
+    },
+    "season-variant": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "kind": {
+          "const": "season-variant"
+        },
+        "base": {
+          "type": "object",
+          "properties": {
+            "namespace": {
+              "enum": [
+                "world-sprite",
+                "zone-prop"
+              ]
+            },
+            "key": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "namespace",
+            "key"
+          ],
+          "additionalProperties": false
+        },
+        "geometry": {
+          "type": "object",
+          "properties": {
+            "pivot": {
+              "$ref": "#/$defs/point"
+            },
+            "scale": {
+              "type": "number",
+              "exclusiveMinimum": 0
+            },
+            "allowMirror": {
+              "const": false
+            }
+          },
+          "required": [
+            "pivot",
+            "scale",
+            "allowMirror"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "image",
+        "provenance",
+        "base",
+        "season",
+        "geometry"
+      ],
+      "additionalProperties": false
+    },
+    "ground-texture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "image",
+        "provenance",
+        "mapping",
+        "composition",
+        "allowMirror"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "kind": {
+          "const": "ground-texture"
+        },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "url",
+            "width",
+            "height"
+          ],
+          "properties": {
+            "url": {
+              "type": "string",
+              "pattern": "^assets/[A-Za-z0-9_-][A-Za-z0-9._-]*(?:/[A-Za-z0-9_-][A-Za-z0-9._-]*)*$"
+            },
+            "width": {
+              "const": 512
+            },
+            "height": {
+              "const": 64
+            }
+          }
+        },
+        "mapping": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "repeat",
+            "sourcePixelsPerTile",
+            "origin"
+          ],
+          "properties": {
+            "repeat": {
+              "const": "x"
+            },
+            "sourcePixelsPerTile": {
+              "const": 128
+            },
+            "origin": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "x",
+                "y"
+              ],
+              "properties": {
+                "x": {
+                  "const": 0
+                },
+                "y": {
+                  "const": 0
+                }
+              }
+            }
+          }
+        },
+        "composition": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "joinFadeSourcePx",
+            "wash"
+          ],
+          "properties": {
+            "joinFadeSourcePx": {
+              "const": 40
+            },
+            "wash": {
+              "enum": [
+                "legacy-stage",
+                "none"
+              ]
+            }
+          }
+        },
+        "allowMirror": {
+          "const": false
+        }
+      }
+    }
+  }
+}

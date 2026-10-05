@@ -1,0 +1,176 @@
+{
+  "status": "TRANSFERRED_UNCOMMITTED_STATIC_PASS",
+  "baseHead": "208c622222b2d2a2b7d0aa883d6a598984b25ca4",
+  "coreRuntimeReceiptSha256": "3330d0de5a8f38d7e23d42a906478b9b6a26dc25bac9706aba13f16e0ff13ca3",
+  "operations": [
+    {
+      "path": "src/render/art/catalog.json",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/src/render/art/catalog.json",
+      "beforeSha256": "dec02e05ce25a42339d741016248129394055680f5bbe286acaeea79340dcdd7",
+      "afterSha256": "395ed16ecaa0bc76b18d2ec72dd9e089b16ff23a0c8a45fb5e1785254614b84d",
+      "operation": "CATALOG_REPLACE"
+    },
+    {
+      "path": "docs/provenance/assets.csv",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/docs/provenance/assets.csv",
+      "beforeSha256": "c1f2ec247b85ed3219c630afad3d614db0f0d5bea7ddbbdc745e12a2dba6cb58",
+      "afterSha256": "17e838c2de8c637530cef5ef37473f5cc28524c26ef22790633d5f926ec329bb",
+      "operation": "CSV_MINIMAL6_REPLACE9_APPEND"
+    },
+    {
+      "path": "public/assets/wave43/orchard/orchard_apple_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/orchard/orchard_apple_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/orchard/orchard_pear_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/orchard/orchard_pear_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/orchard/orchard_plum_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/orchard/orchard_plum_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/trees_other/tree_dead_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/trees_other/tree_dead_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/trees_other/tree_pine_short_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/trees_other/tree_pine_short_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave43/trees_other/tree_pine_tall_spring.png",
+      "source": "/Users/rexxa/fls-astra-renderB-season-data/public/assets/wave43/trees_other/tree_pine_tall_spring.png",
+      "beforeSha256": null,
+      "afterSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+      "operation": "NEW_PNG_COPY"
+    },
+    {
+      "path": "public/assets/wave15/foliage/tree_birch_spring-v1.png",
+      "beforeSha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e",
+      "afterSha256": null,
+      "operation": "DELETE_PUBLIC_KEEP_SOURCE",
+      "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_spring-v1.png"
+    },
+    {
+      "path": "public/assets/wave15/foliage/tree_oak_large_spring-v1.png",
+      "beforeSha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f",
+      "afterSha256": null,
+      "operation": "DELETE_PUBLIC_KEEP_SOURCE",
+      "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_spring-v1.png"
+    },
+    {
+      "path": "public/assets/wave15/foliage/tree_oak_small_spring-v1.png",
+      "beforeSha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8",
+      "afterSha256": null,
+      "operation": "DELETE_PUBLIC_KEEP_SOURCE",
+      "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_spring-v1.png"
+    },
+    {
+      "path": "public/assets/wave15/orchard/orchard_apple_c_spring-v1.png",
+      "beforeSha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f",
+      "afterSha256": null,
+      "operation": "DELETE_PUBLIC_KEEP_SOURCE",
+      "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_spring-v1.png"
+    },
+    {
+      "path": "public/assets/wave15/orchard/orchard_pear_e_spring-v1.png",
+      "beforeSha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d",
+      "afterSha256": null,
+      "operation": "DELETE_PUBLIC_KEEP_SOURCE",
+      "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_spring-v1.png"
+    },
+    {
+      "path": "public/assets/wave15/orchard/orchard_plum_f_spring-v1.png",
+      "beforeSha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624",
+      "afterSha256": null,
+      "operation": "DELETE_PUBLIC_KEEP_SOURCE",
+      "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_spring-v1.png"
+    }
+  ],
+  "ledgerSha256": "162d4ad7001a8f522d614112a78f369be08a19181e67eda5906980a729fd3d12",
+  "fixtureHashes": {
+    "determinism.json": "87ed42eac4d784432334484b9cc9f3a8a5f874013382e3bfd89bf3d6a5bb05e7",
+    "views.json": "c7169017dd5fc67fdb86633776d010aefc19f65aa6ba5cc8aa307032fb495199",
+    "prepared-season-winter.json": "409488fb2294ca268fa89796105dcc2847719c9d3ab9556f1e583e7d1458ce8b",
+    "prepared-season-summer.save.json": "b97a0d15032c5498e687345df70188f7ed765ad5feab43eeb5fe1182614872b4",
+    "prepared-season-autumn.json": "b84b89f785a463676de8332303d6be202226c79aa37bacf2c15529ade50c83f3",
+    "prepared-season-spring.save.json": "153aba52499dba03c75c4acc97d8fa84b421b9d293c2ce0b151d68e5af5fa9b5",
+    "prepared-season-winter.save.json": "58e36b2974ea36b819c1aebb6e7323d5b5301b843ea4add8a3821a63fd8dc4fb",
+    "validation.json": "106b489fe6ce2e7b9cfcfe5deb99c16bf2c500595030789a61b8a3c24b76f46e",
+    "prepared-season-autumn.save.json": "2d73ec98248579ec30bffd3089d91bc83ecbde644bd8908a6df07678743f646a",
+    "prepared-season-spring.json": "317f85b84e4109d6d0c0918fbd83019a59a09ca8edd2fcfbded08b3378fcaf2e",
+    "coverage.json": "ccab36052b8fd2a6dd6c8aaf4593e5a4cbcf6c7dbdfc3f3b238a7b97eca219f1",
+    "prepared-season-summer.json": "9bf317d97f2a56e7f51f289eb5a577a836eda8550b65ddacefa341868649c169"
+  },
+  "fixtureRoot": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-data-fixtures",
+  "stateAndSaveBytesIdentical": 8,
+  "preservedNonSpringViews": 7,
+  "changedSpringExpectedRequestsOnly": 3,
+  "metadataNote": "Source data determinism/coverage/validation JSON copied exactly; historical metadata differs from core; not new validation results.",
+  "mainDataRuntime": "NOT_RUN",
+  "commit": null,
+  "codeHashesCompared": 2342,
+  "codeDifferences": [],
+  "ledgerUnchanged": true,
+  "inboxUnchanged": true,
+  "validation": {
+    "focusedPass": 37,
+    "catalogPass": 95,
+    "provenanceRows": 2384,
+    "provenanceRuntime": 2384,
+    "missing": 0,
+    "orphan": 0,
+    "hashMismatch": 0,
+    "missingFiles": 0,
+    "springSelectionPass": 63,
+    "nonSpringSelectionPreserved": 189,
+    "captureValidatorViews": 10,
+    "nonSpringFixtureViewsPreserved": 7,
+    "stateSaveFilesByteIdentical": 8,
+    "diffCheck": "PASS",
+    "typecheckLint": "Not repeated: product/scripts/tests0changes; priorcoretype/lintPASS"
+  },
+  "actualDataCommit": null,
+  "codeFreezeEvidence": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/spring9-main-transfer.json",
+    "sha256": "d49421b0a70ed8d64368d8760be7694628e17f77ee0a564213c63c3bde117dac",
+    "compared": 2342,
+    "differences": 0
+  }
+}

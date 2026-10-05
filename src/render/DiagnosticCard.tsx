@@ -1,7 +1,7 @@
 import { UiIcon } from "../ui/UiIcon";
 import { BUILDING_OPERATION_COPY } from '../ui/buildingOperationCopy.ko';
 import { durationLabel } from "../ui/gameTimeCopy.ko";
-import type { ReactElement } from "react";
+import type { ReactElement, ReactNode } from "react";
 import { BALANCE } from "../content/balanceConfig";
 
 import type { HouseProgressModel } from "../ui/houseProgressModel";
@@ -270,6 +270,8 @@ export function DiagnosticCard({
   onPerson,
   reachLine = null,
   farmsteadCrop,
+  lordReceipt = null,
+  extra = null,
 }: Readonly<{
   model: DiagnosticCardModel;
   /** The hover tooltip's cause line for a selected building (same text, UI-1 / B9). */
@@ -290,6 +292,10 @@ export function DiagnosticCard({
   reachLine?: string | null;
   /** INSTALL-3: a barn's crop choice (the game command `set_farmstead_crop`). */
   farmsteadCrop?: { readonly model: FarmsteadCropModel; readonly onChange: (crop: FieldCrop) => void };
+  /** LM-R1: lord mode's "왜 여기?" button and the receipt it opens beside the card (absent elsewhere). */
+  lordReceipt?: ReactNode;
+  /** LM-R1: sections above the card's own body (a burnt house's rebuild, the jump to the full store a pile waits on). */
+  extra?: ReactNode;
 }>): ReactElement {
   const identity = cardIdentity(model, walkerHeadline);
   const aleLine = causeSummary == null ? null : houseAleProgressLine(causeSummary);
@@ -305,6 +311,7 @@ export function DiagnosticCard({
           {onClose === undefined ? null : <Button className="inspector-close" type="button" aria-label={DIAGNOSTIC_CARD_COPY.close} onPress={() => onClose()} variant="icon">×</Button>}
         </header>
         {causeLine === null ? null : <p className="inspector-cause-line" role="status">{causeLine}</p>}
+        {lordReceipt}
         {causeSummary == null ? null : <div className="inspector-cause-summary">
           {DIAGNOSTIC_CARD_COPY.causeSummary(
             causeSummary.nextLevel === null ? DIAGNOSTIC_CARD_COPY.topLevel : DIAGNOSTIC_CARD_COPY.nextLevel(causeSummary.nextLevel),
@@ -317,6 +324,7 @@ export function DiagnosticCard({
             : <p className="inspector-ale-line" data-ale={causeSummary.ale?.served === true ? "served" : "unserved"}>{aleLine}</p>}
         </div>}
         <div className="inspector-body">
+          {extra}
           {model.kind === "house" ? <HouseCard model={model.value} onDemolishHouse={onDemolishHouse} onMergeHouses={onMergeHouses} members={houseMembers} onPerson={onPerson} /> : null}
           {model.kind === "walker" ? <WalkerCard model={model.value} headline={walkerHeadline} /> : null}
           {model.kind === "store" ? <StoreInspectorBody model={model.value} /> : null}

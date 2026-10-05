@@ -1,0 +1,1667 @@
+{
+  "status": "REPOSITORY_ART_REQUEST_PRODUCTION_INSTALLATION_RUNTIME_PENDING",
+  "sourceAuditHead": "ab67dcb8",
+  "canonicalSources": [
+    "docs/decisions/README.md#FND-3",
+    "docs/design/art-bible.md section 2"
+  ],
+  "canonicalAdultBarefootHeightWorldPx": 17.6,
+  "targetDoorHeightWorldPx": [
+    20.24,
+    24.64
+  ],
+  "targetDoorWidthWorldPx": [
+    7.92,
+    11.44
+  ],
+  "count": 23,
+  "counts": {
+    "historical": 2,
+    "wave20": 8,
+    "wave2": 5,
+    "wave26": 8
+  },
+  "measurementConvention": "Same-x vertical inferred inner aperture behind closed leaf; exclude lintel/posts/step. Width is horizontal projection, not wall-plane length. Preserve per-entry manual uncertainty. No runtime verification.",
+  "sharedWave20Layers": [
+    {
+      "path": "public/assets/wave7/overlay/boarded_l0-v2.png",
+      "sha256": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa",
+      "canvas": [
+        153,
+        153
+      ]
+    },
+    {
+      "path": "public/assets/wave7/season/roof_snow_l0-v2.png",
+      "sha256": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c",
+      "canvas": [
+        153,
+        153
+      ]
+    },
+    {
+      "path": "public/assets/wave7/overlay/boarded_l1-v2.png",
+      "sha256": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8",
+      "canvas": [
+        139,
+        139
+      ]
+    },
+    {
+      "path": "public/assets/wave7/season/roof_snow_l1-v2.png",
+      "sha256": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e",
+      "canvas": [
+        139,
+        139
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "id": "house_l0-v3",
+      "wave": "historical",
+      "level": 0,
+      "public": {
+        "path": "public/assets/buildings/historical-houses/house_l0-v3.png",
+        "sha256": "fd1bfc4c4f79728490bf8a5c437bc4b9d78cad5ba97015f8ab83f4ebf21ecd09",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "docs/asset-evidence/runtime-sources/buildings/historical-houses/house_l0-v3.png",
+        "sha256": "6a51abfea2b84e72a3764c4b50ec45668de9c61af660f04840c34bc1e9b9ef6e",
+        "canvas": [
+          1254,
+          1254
+        ]
+      },
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "nativeSamplingCropXYWH": [
+        20.985645933014354,
+        46.119617224880386,
+        112.73684210526316,
+        93.45933014354067
+      ],
+      "baseAlphaCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "worldPxPerNativePx": 0.49957049486461247,
+      "equivalentNativeGroundPivot": [
+        77.35406698564593,
+        139.57894736842104
+      ],
+      "nativeDoorHeightRange": [
+        21,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        9,
+        13
+      ],
+      "manualUncertaintyNativePx": 2,
+      "inspectionROI": [
+        50,
+        87,
+        76,
+        129
+      ],
+      "measurement": "Closed-leaf inferred inner aperture, same-x vertical; excludes frame/lintel/step; original crop and shipped pixels inspected.",
+      "worldDoorHeightRange": [
+        10.490980392156862,
+        12.489262371615311
+      ],
+      "worldProjectedDoorWidthRange": [
+        4.496134453781512,
+        6.494416433239962
+      ],
+      "sourceEqualsPublic": false
+    },
+    {
+      "id": "house_l1-v2",
+      "wave": "historical",
+      "level": 1,
+      "public": {
+        "path": "public/assets/buildings/historical-houses/house_l1-v2.png",
+        "sha256": "84424c358a5434821146ab7c8c260b3ad807595fface5018aff6b6211f2cd3ac",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "docs/asset-evidence/runtime-sources/buildings/historical-houses/house_l1-v2.png",
+        "sha256": "58d9f6e465f4e34e6f5b1ecf6bcbdc5953f8f76f166a42ec4ca567f2e1cff6a4",
+        "canvas": [
+          1254,
+          1254
+        ]
+      },
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "nativeSamplingCropXYWH": [
+        15.185805422647528,
+        20.728070175438596,
+        112.95135566188198,
+        105.19218500797449
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ],
+      "nativeDoorHeightRange": [
+        19,
+        23
+      ],
+      "nativeProjectedDoorWidthRange": [
+        8,
+        12
+      ],
+      "manualUncertaintyNativePx": 2,
+      "inspectionROI": [
+        51,
+        78,
+        73,
+        116
+      ],
+      "measurement": "Closed-leaf inferred inner aperture, same-x vertical; excludes frame/lintel/step; original crop and shipped pixels inspected.",
+      "worldDoorHeightRange": [
+        9.473812808438236,
+        11.468299715477864
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.988973814079257,
+        5.9834607211188855
+      ],
+      "sourceEqualsPublic": false
+    },
+    {
+      "id": "wave20/house_l0_1350_a-v1",
+      "wave": 20,
+      "level": 0,
+      "era": "1350",
+      "variantId": "a",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l0_1350_a-v1.png",
+        "sha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1350_a-v1.png",
+        "sha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 77.35406698564593,
+          "y": 139.57894736842104
+        },
+        "scale": 0.4995704948646125,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 153,
+          "height": 153
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4995704948646125,
+      "nativeDoorHeightRange": [
+        21,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        9,
+        13
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        10.490980392156864,
+        12.489262371615313
+      ],
+      "worldProjectedDoorWidthRange": [
+        4.496134453781512,
+        6.494416433239963
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "wave20/house_l0_1350_b-v1",
+      "wave": 20,
+      "level": 0,
+      "era": "1350",
+      "variantId": "b",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l0_1350_b-v1.png",
+        "sha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1350_b-v1.png",
+        "sha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 77.35406698564593,
+          "y": 139.57894736842104
+        },
+        "scale": 0.4995704948646125,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 153,
+          "height": 153
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4995704948646125,
+      "nativeDoorHeightRange": [
+        21,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        9,
+        13
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        10.490980392156864,
+        12.489262371615313
+      ],
+      "worldProjectedDoorWidthRange": [
+        4.496134453781512,
+        6.494416433239963
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "wave20/house_l0_1400_a-v1",
+      "wave": 20,
+      "level": 0,
+      "era": "1400",
+      "variantId": "a",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l0_1400_a-v1.png",
+        "sha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1400_a-v1.png",
+        "sha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 77.35406698564593,
+          "y": 139.57894736842104
+        },
+        "scale": 0.4995704948646125,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 153,
+          "height": 153
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4995704948646125,
+      "nativeDoorHeightRange": [
+        21,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        9,
+        13
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        10.490980392156864,
+        12.489262371615313
+      ],
+      "worldProjectedDoorWidthRange": [
+        4.496134453781512,
+        6.494416433239963
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "wave20/house_l0_1400_b-v1",
+      "wave": 20,
+      "level": 0,
+      "era": "1400",
+      "variantId": "b",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l0_1400_b-v1.png",
+        "sha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l0_1400_b-v1.png",
+        "sha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 77.35406698564593,
+          "y": 139.57894736842104
+        },
+        "scale": 0.4995704948646125,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 153,
+          "height": 153
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4995704948646125,
+      "nativeDoorHeightRange": [
+        21,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        9,
+        13
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        10.490980392156864,
+        12.489262371615313
+      ],
+      "worldProjectedDoorWidthRange": [
+        4.496134453781512,
+        6.494416433239963
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "wave20/house_l1_1350_a-v1",
+      "wave": 20,
+      "level": 1,
+      "era": "1350",
+      "variantId": "a",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l1_1350_a-v1.png",
+        "sha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1350_a-v1.png",
+        "sha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 71.66148325358851,
+          "y": 125.92025518341308
+        },
+        "scale": 0.4986217267599071,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 139,
+          "height": 139
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        19,
+        23
+      ],
+      "nativeProjectedDoorWidthRange": [
+        8,
+        12
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        9.473812808438236,
+        11.468299715477864
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.988973814079257,
+        5.9834607211188855
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "wave20/house_l1_1350_b-v1",
+      "wave": 20,
+      "level": 1,
+      "era": "1350",
+      "variantId": "b",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l1_1350_b-v1.png",
+        "sha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1350_b-v1.png",
+        "sha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 71.66148325358851,
+          "y": 125.92025518341308
+        },
+        "scale": 0.4986217267599071,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 139,
+          "height": 139
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        19,
+        23
+      ],
+      "nativeProjectedDoorWidthRange": [
+        8,
+        12
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        9.473812808438236,
+        11.468299715477864
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.988973814079257,
+        5.9834607211188855
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "wave20/house_l1_1400_a-v1",
+      "wave": 20,
+      "level": 1,
+      "era": "1400",
+      "variantId": "a",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l1_1400_a-v1.png",
+        "sha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1400_a-v1.png",
+        "sha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 71.66148325358851,
+          "y": 125.92025518341308
+        },
+        "scale": 0.4986217267599071,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 139,
+          "height": 139
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        19,
+        23
+      ],
+      "nativeProjectedDoorWidthRange": [
+        8,
+        12
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        9.473812808438236,
+        11.468299715477864
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.988973814079257,
+        5.9834607211188855
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "wave20/house_l1_1400_b-v1",
+      "wave": 20,
+      "level": 1,
+      "era": "1400",
+      "variantId": "b",
+      "public": {
+        "path": "public/assets/wave20/houses/house_l1_1400_b-v1.png",
+        "sha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave20/candidates-20260926/assets/houses/house_l1_1400_b-v1.png",
+        "sha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "catalogGeometry": {
+        "pivot": {
+          "x": 71.66148325358851,
+          "y": 125.92025518341308
+        },
+        "scale": 0.4986217267599071,
+        "crop": {
+          "x": 0,
+          "y": 0,
+          "width": 139,
+          "height": 139
+        },
+        "footprint": {
+          "width": 1,
+          "height": 1
+        },
+        "allowMirror": false
+      },
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        19,
+        23
+      ],
+      "nativeProjectedDoorWidthRange": [
+        8,
+        12
+      ],
+      "manualUncertaintyNativePx": 2,
+      "measurement": "Individually inspected shipped full image and enlargement; conservative grade-level aperture interval, not identical-pixel assertion.",
+      "worldDoorHeightRange": [
+        9.473812808438236,
+        11.468299715477864
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.988973814079257,
+        5.9834607211188855
+      ],
+      "sourceEqualsPublic": true
+    },
+    {
+      "id": "house_l0_garden-v1",
+      "wave": 2,
+      "level": 0,
+      "public": {
+        "path": "public/assets/buildings/variants-wave2/house_l0_garden-v1.png",
+        "sha256": "c320744da6a2b850b0c078c36f2357166840a3d43e2a028acb8e31b28ec8348a",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "docs/asset-evidence/runtime-sources/variants-wave2/house_l0_garden-v1.png",
+        "sha256": "bf49c3143a45e894731de374080a287cad7fdf9af42073126a13886bb98835c2",
+        "canvas": [
+          1254,
+          1254
+        ]
+      },
+      "sourceEqualsPublic": false,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "nativeSamplingCropXYWH": [
+        20.985645933014354,
+        46.119617224880386,
+        112.73684210526316,
+        93.45933014354067
+      ],
+      "baseAlphaCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "worldPxPerNativePx": 0.49957049486461247,
+      "nativeDoorHeightRange": [
+        16,
+        22
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 49,
+        "topY": 95,
+        "thresholdY": 114
+      },
+      "worldDoorHeightRange": [
+        7.9931279178337995,
+        10.990550887021474
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.496993464052287,
+        5.495275443510737
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "id": "house_l0_pen-v1",
+      "wave": 2,
+      "level": 0,
+      "public": {
+        "path": "public/assets/buildings/variants-wave2/house_l0_pen-v1.png",
+        "sha256": "22551b82a740af2ab8c06d966992c6d052fc1ab04dcfa7eecf4b7d509e48d7ca",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "docs/asset-evidence/runtime-sources/variants-wave2/house_l0_pen-v1.png",
+        "sha256": "7e936a947e6e3dfd47d9feaf50752c84bde5424f7564a6841fb1ab46c8b4683c",
+        "canvas": [
+          1254,
+          1254
+        ]
+      },
+      "sourceEqualsPublic": false,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "nativeSamplingCropXYWH": [
+        20.985645933014354,
+        46.119617224880386,
+        112.73684210526316,
+        93.45933014354067
+      ],
+      "baseAlphaCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "worldPxPerNativePx": 0.49957049486461247,
+      "nativeDoorHeightRange": [
+        14,
+        20
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 44,
+        "topY": 96,
+        "thresholdY": 113
+      },
+      "worldDoorHeightRange": [
+        6.993986928104574,
+        9.99140989729225
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.496993464052287,
+        5.495275443510737
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "id": "house_l1_artisan-v1",
+      "wave": 2,
+      "level": 1,
+      "public": {
+        "path": "public/assets/buildings/variants-wave2/house_l1_artisan-v1.png",
+        "sha256": "903f214c669da374ec2663ee32307d3e28ddbef9ab49baac0e3857bc6b8e811e",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "docs/asset-evidence/runtime-sources/variants-wave2/house_l1_artisan-v1.png",
+        "sha256": "4c2f93ca1f4d53b306e2e34d0d07d8f5cd229f8d37d7455e9f727291f1c20f7f",
+        "canvas": [
+          1254,
+          1254
+        ]
+      },
+      "sourceEqualsPublic": false,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "nativeSamplingCropXYWH": [
+        15.185805422647528,
+        20.728070175438596,
+        112.95135566188198,
+        105.19218500797449
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        18,
+        24
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 72,
+        "topY": 91,
+        "thresholdY": 112
+      },
+      "worldDoorHeightRange": [
+        8.975191081678329,
+        11.966921442237771
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.4903520873193496,
+        5.484838994358978
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "id": "house_l1_garden-v1",
+      "wave": 2,
+      "level": 1,
+      "public": {
+        "path": "public/assets/buildings/variants-wave2/house_l1_garden-v1.png",
+        "sha256": "bb2ef7a7c0849de21f4d6ca1fd602b52f979dae2101dfb7613ede2df29f8a809",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "docs/asset-evidence/runtime-sources/variants-wave2/house_l1_garden-v1.png",
+        "sha256": "38da00d1c84d75b2e8d5b1d36924456152d358d76c8f60c46cc0e225afae881b",
+        "canvas": [
+          1254,
+          1254
+        ]
+      },
+      "sourceEqualsPublic": false,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "nativeSamplingCropXYWH": [
+        15.185805422647528,
+        20.728070175438596,
+        112.95135566188198,
+        105.19218500797449
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        15,
+        21
+      ],
+      "nativeProjectedDoorWidthRange": [
+        6,
+        10
+      ],
+      "approximateMeasurementLine": {
+        "x": 50,
+        "topY": 88,
+        "thresholdY": 106
+      },
+      "worldDoorHeightRange": [
+        7.479325901398607,
+        10.471056261958049
+      ],
+      "worldProjectedDoorWidthRange": [
+        2.9917303605594427,
+        4.986217267599072
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "id": "house_l1_tile-v1",
+      "wave": 2,
+      "level": 1,
+      "public": {
+        "path": "public/assets/buildings/variants-wave2/house_l1_tile-v1.png",
+        "sha256": "3ae4137b5fc09dae322b41fd88626cd0ab635557c371471e9feae39d0712d4a0",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "docs/asset-evidence/runtime-sources/variants-wave2/house_l1_tile-v1.png",
+        "sha256": "b45682292fb3e3fb978c174fc1d6bc737bf04fd2448595197af2faa41e0aa4da",
+        "canvas": [
+          1254,
+          1254
+        ]
+      },
+      "sourceEqualsPublic": false,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "nativeSamplingCropXYWH": [
+        15.185805422647528,
+        20.728070175438596,
+        112.95135566188198,
+        105.19218500797449
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        18,
+        24
+      ],
+      "nativeProjectedDoorWidthRange": [
+        8,
+        12
+      ],
+      "approximateMeasurementLine": {
+        "x": 63,
+        "topY": 87,
+        "thresholdY": 108
+      },
+      "worldDoorHeightRange": [
+        8.975191081678329,
+        11.966921442237771
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.988973814079257,
+        5.9834607211188855
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "id": "house_l0_c",
+      "wave": 26,
+      "level": 0,
+      "public": {
+        "path": "public/assets/wave26/house/house_l0_c.png",
+        "sha256": "f07a5dd4e579af72294568884bb1ffbc6c20d99c26574d17e3fad643a1850124",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l0_c-v1.png",
+        "sha256": "f07a5dd4e579af72294568884bb1ffbc6c20d99c26574d17e3fad643a1850124",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        163,
+        368,
+        936,
+        780
+      ],
+      "nativeSamplingCropXYWH": [
+        19.88755980861244,
+        44.899521531100476,
+        114.20095693779905,
+        95.16746411483254
+      ],
+      "baseAlphaCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "worldPxPerNativePx": 0.49957049486461247,
+      "nativeDoorHeightRange": [
+        19,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 60,
+        "topY": 101,
+        "thresholdY": 123
+      },
+      "worldDoorHeightRange": [
+        9.491839402427637,
+        12.489262371615311
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.496993464052287,
+        5.495275443510737
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "id": "house_l0_d",
+      "wave": 26,
+      "level": 0,
+      "public": {
+        "path": "public/assets/wave26/house/house_l0_d.png",
+        "sha256": "11ec3fdeb5e806dfe87756a141f1ab8de34e80b238e60c2ff4dbcaffbbbd2a8d",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l0_d-v1.png",
+        "sha256": "11ec3fdeb5e806dfe87756a141f1ab8de34e80b238e60c2ff4dbcaffbbbd2a8d",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        131,
+        378,
+        968,
+        770
+      ],
+      "nativeSamplingCropXYWH": [
+        15.983253588516746,
+        46.119617224880386,
+        118.10526315789474,
+        93.94736842105263
+      ],
+      "baseAlphaCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "worldPxPerNativePx": 0.49957049486461247,
+      "nativeDoorHeightRange": [
+        18,
+        24
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 60,
+        "topY": 103,
+        "thresholdY": 124
+      },
+      "worldDoorHeightRange": [
+        8.992268907563025,
+        11.9896918767507
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.496993464052287,
+        5.495275443510737
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "id": "house_l0_e",
+      "wave": 26,
+      "level": 0,
+      "public": {
+        "path": "public/assets/wave26/house/house_l0_e.png",
+        "sha256": "0ce018808f5860fb0248ab6d9afd23ee1f7bab00bb341019ab082bcdeaf292b9",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l0_e-v1.png",
+        "sha256": "0ce018808f5860fb0248ab6d9afd23ee1f7bab00bb341019ab082bcdeaf292b9",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        139,
+        378,
+        960,
+        770
+      ],
+      "nativeSamplingCropXYWH": [
+        16.95933014354067,
+        46.119617224880386,
+        117.12918660287082,
+        93.94736842105263
+      ],
+      "baseAlphaCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "worldPxPerNativePx": 0.49957049486461247,
+      "nativeDoorHeightRange": [
+        19,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 60,
+        "topY": 101,
+        "thresholdY": 123
+      },
+      "worldDoorHeightRange": [
+        9.491839402427637,
+        12.489262371615311
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.496993464052287,
+        5.495275443510737
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "id": "house_l0_f",
+      "wave": 26,
+      "level": 0,
+      "public": {
+        "path": "public/assets/wave26/house/house_l0_f.png",
+        "sha256": "98f50284496889dee185ba208a7e7ede17571a480c53c29b5e44bf86c728fb2d",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l0_f-v1.png",
+        "sha256": "98f50284496889dee185ba208a7e7ede17571a480c53c29b5e44bf86c728fb2d",
+        "canvas": [
+          153,
+          153
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        131,
+        378,
+        968,
+        770
+      ],
+      "nativeSamplingCropXYWH": [
+        15.983253588516746,
+        46.119617224880386,
+        118.10526315789474,
+        93.94736842105263
+      ],
+      "baseAlphaCropXYWH": [
+        172,
+        378,
+        924,
+        766
+      ],
+      "worldPxPerNativePx": 0.49957049486461247,
+      "nativeDoorHeightRange": [
+        17,
+        23
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 60,
+        "topY": 104,
+        "thresholdY": 124
+      },
+      "worldDoorHeightRange": [
+        8.492698412698411,
+        11.490121381886087
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.496993464052287,
+        5.495275443510737
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        77.35406698564593,
+        139.57894736842104
+      ]
+    },
+    {
+      "id": "house_l1_c",
+      "wave": 26,
+      "level": 1,
+      "public": {
+        "path": "public/assets/wave26/house/house_l1_c.png",
+        "sha256": "7aa5228f420c4591861e604bf5d98be5e92099964daaf83f2c13cd6d1f9dd594",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l1_c-v1.png",
+        "sha256": "7aa5228f420c4591861e604bf5d98be5e92099964daaf83f2c13cd6d1f9dd594",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        135,
+        180,
+        1021,
+        957
+      ],
+      "nativeSamplingCropXYWH": [
+        14.964114832535886,
+        19.952153110047846,
+        113.17304625199363,
+        106.07894736842105
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        19,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 62,
+        "topY": 88,
+        "thresholdY": 110
+      },
+      "worldDoorHeightRange": [
+        9.473812808438236,
+        12.465543168997678
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.4903520873193496,
+        5.484838994358978
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "id": "house_l1_d",
+      "wave": 26,
+      "level": 1,
+      "public": {
+        "path": "public/assets/wave26/house/house_l1_d.png",
+        "sha256": "6d519e7ed17bb5888b6b74dd3e8ef3a0ff8266530b0d46f683d924cd2fe56698",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l1_d-v1.png",
+        "sha256": "6d519e7ed17bb5888b6b74dd3e8ef3a0ff8266530b0d46f683d924cd2fe56698",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        135,
+        180,
+        1021,
+        957
+      ],
+      "nativeSamplingCropXYWH": [
+        14.964114832535886,
+        19.952153110047846,
+        113.17304625199363,
+        106.07894736842105
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        20,
+        26
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 61,
+        "topY": 84,
+        "thresholdY": 107
+      },
+      "worldDoorHeightRange": [
+        9.972434535198143,
+        12.964164895757586
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.4903520873193496,
+        5.484838994358978
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "id": "house_l1_e",
+      "wave": 26,
+      "level": 1,
+      "public": {
+        "path": "public/assets/wave26/house/house_l1_e.png",
+        "sha256": "c17be28b2c677b279e5531faf87d16305ce5e050f074e2aebfdc42fec8585865",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l1_e-v1.png",
+        "sha256": "c17be28b2c677b279e5531faf87d16305ce5e050f074e2aebfdc42fec8585865",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        135,
+        180,
+        1021,
+        957
+      ],
+      "nativeSamplingCropXYWH": [
+        14.964114832535886,
+        19.952153110047846,
+        113.17304625199363,
+        106.07894736842105
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        19,
+        25
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 61,
+        "topY": 87,
+        "thresholdY": 109
+      },
+      "worldDoorHeightRange": [
+        9.473812808438236,
+        12.465543168997678
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.4903520873193496,
+        5.484838994358978
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    },
+    {
+      "id": "house_l1_f",
+      "wave": 26,
+      "level": 1,
+      "public": {
+        "path": "public/assets/wave26/house/house_l1_f.png",
+        "sha256": "f19579921f7c3154c24c77ee0768df4442addd53ede6fbe5433b39eab42ab937",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "source": {
+        "path": "assets-inbox/wave26/candidates-20260928/assets/house_l1_f-v1.png",
+        "sha256": "f19579921f7c3154c24c77ee0768df4442addd53ede6fbe5433b39eab42ab937",
+        "canvas": [
+          139,
+          139
+        ]
+      },
+      "sourceEqualsPublic": true,
+      "authoredRegistrationCanvas": [
+        1254,
+        1254
+      ],
+      "authoredCropXYWH": [
+        135,
+        180,
+        1021,
+        957
+      ],
+      "nativeSamplingCropXYWH": [
+        14.964114832535886,
+        19.952153110047846,
+        113.17304625199363,
+        106.07894736842105
+      ],
+      "baseAlphaCropXYWH": [
+        137,
+        187,
+        1019,
+        949
+      ],
+      "worldPxPerNativePx": 0.4986217267599071,
+      "nativeDoorHeightRange": [
+        17,
+        23
+      ],
+      "nativeProjectedDoorWidthRange": [
+        7,
+        11
+      ],
+      "approximateMeasurementLine": {
+        "x": 67,
+        "topY": 91,
+        "thresholdY": 111
+      },
+      "worldDoorHeightRange": [
+        8.476569354918421,
+        11.468299715477864
+      ],
+      "worldProjectedDoorWidthRange": [
+        3.4903520873193496,
+        5.484838994358978
+      ],
+      "measurement": "manual closed-leaf inferred inner aperture; same-x vertical; uncertainty 3 native pixels; not runtime",
+      "compliantHeight": false,
+      "manualUncertaintyNativePx": 3,
+      "equivalentNativeGroundPivot": [
+        71.66148325358851,
+        125.92025518341308
+      ]
+    }
+  ],
+  "externalMessageSent": false,
+  "installationAuthorized": false,
+  "heightMilestoneComplete": false,
+  "revalidation": {
+    "head": "a392694c3056b93812a0bcc3de767a387f2f3f3b",
+    "date": "2026-10-05",
+    "sourcePublicShaAndCanvas": {
+      "checked": 46,
+      "matched": 46
+    },
+    "sharedLayerShaAndCanvas": {
+      "checked": 4,
+      "matched": 4
+    },
+    "rangeMath": 23,
+    "legacyNativeScaleCropEquivalentPivot": 15,
+    "currentCatalogGeometry": 8,
+    "wave26AuthoredCrop": 8,
+    "newVisualRemeasurement": false,
+    "runtimeRun": false,
+    "report": "independent-review.md",
+    "initialObservationHeadPreserved": "ab67dcb8"
+  }
+}

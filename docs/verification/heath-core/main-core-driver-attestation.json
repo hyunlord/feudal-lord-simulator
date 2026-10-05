@@ -1,0 +1,16 @@
+{
+  "pass": true,
+  "scope": "Supplemental read-only after-export attestation of supplied run wrapper and negative checker; separate from4308 startup product/fixture freeze",
+  "rows": [
+    {
+      "path": ".omo/evidence/heath-main-core-run.sh",
+      "remoteSHA": "cea276ac34d2f1946e16a97c53ebcc78584bfdf400c6e5a99a2592b09115046e",
+      "localSHA": "cea276ac34d2f1946e16a97c53ebcc78584bfdf400c6e5a99a2592b09115046e"
+    },
+    {
+      "path": ".omo/evidence/heath-main-before-negative-check.mjs",
+      "remoteSHA": "1cb1b360a015336d02025493ec8499b171af31482970c006069c4b9c2ede582d",
+      "localSHA": "1cb1b360a015336d02025493ec8499b171af31482970c006069c4b9c2ede582d"
+    }
+  ]
+}

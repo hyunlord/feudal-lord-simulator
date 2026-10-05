@@ -112,7 +112,7 @@ async function openPaused(save: string, centre: readonly [number, number], viewp
   }
   await page.waitForFunction(() => (window as unknown as PageWindow).__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 90_000 });
   await page.waitForTimeout(2_000);
-  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click();
+  if (await page.locator(".welcome-dismiss-layer").count()) await page.locator(".welcome-dismiss-layer").click({ position: { x: 20, y: 20 } });
   if (await page.locator(".pause-menu").count()) await page.keyboard.press("Escape");
   await closeModals(page);
   await page.mouse.move(PARK.x, PARK.y);

@@ -1,0 +1,18 @@
+[
+  {
+    "run": "astra-ARCH1-core-v3-d4973e8",
+    "expectedCount": 1039,
+    "actualCount": 1039,
+    "differences": [],
+    "pass": true,
+    "aggregateSHA256": "fe924ebd99df4aef97eddbf24de5b0c86c7b68958e9300982c49002237492e8d"
+  },
+  {
+    "run": "astra-ARCH1-data-v3-d4973e8",
+    "expectedCount": 1039,
+    "actualCount": 1039,
+    "differences": [],
+    "pass": true,
+    "aggregateSHA256": "fe924ebd99df4aef97eddbf24de5b0c86c7b68958e9300982c49002237492e8d"
+  }
+]

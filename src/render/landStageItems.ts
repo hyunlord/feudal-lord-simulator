@@ -3,11 +3,13 @@ import { landOf } from "../engine/land";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { renderDetailLevel } from "./buildingVisualState";
 import { depthKey, tileToScreen } from "./iso";
-import { cellHash, fallowPicture, nextTreePictureTick, stageSeason, treeStagePicture, type LandStagePicture } from "./landStageModel";
+import { cellHash, fallowStageArt, nextTreePictureTick, stageSeason, treeStageArt, type LandStagePicture } from "./landStageModel";
 import type { ObjectRenderItem, RenderQueueItem } from "./objectRenderTypes";
 import { tileIsVisibleInRange, type TileRange } from "./renderVisibility";
 import { seasonBlend, seasonForObject } from "./seasonTransition";
-import { drawStageArt, stageKey, STAGE_SCALE } from "./wave42StageArt";
+import { drawStageArt } from "./wave42StageArt";
+import type { ArtRegistry } from './art/artRegistry';
+import { ART_REGISTRY } from './art/wave42Registry';
 
 // NAT-5 (Wave 42): the land change stages that stand up from the ground — a felled tree's stump, saplings and young
 // wood, and a fallow cell's grass, bramble and saplings — are objects of the object pass, depth-sorted like the trees,
@@ -18,18 +20,22 @@ import { drawStageArt, stageKey, STAGE_SCALE } from "./wave42StageArt";
 // house plot's fallow sorts just before its house. Above block detail only (as the countryside props), each turns to
 // the new season at its own moment (seasonForObject).
 
-export type LandStagePiece = { readonly picture: LandStagePicture; readonly tx: number; readonly ty: number; readonly salt: number };
+export type LandStagePiece = { readonly picture: LandStagePicture; readonly tx: number; readonly ty: number; readonly salt: number;
+  readonly editions: { readonly summer: string; readonly winter: string } };
 export type LandStageRenderItem = Extract<ObjectRenderItem, { readonly kind: "land_stage" }>;
 
 const YEAR = 4 * PRESSURE_BALANCE.seasonTicks;
 
-function stageItem(id: string, picture: LandStagePicture, tx: number, ty: number, depthBias = 0): LandStageRenderItem {
-  return { kind: "land_stage", id, piece: { picture, tx, ty, salt: cellHash(tx, ty) % 100_000 }, depth: depthKey(tx, ty) + depthBias, anchorTx: tx };
+function stageItem(id: string, picture: LandStagePicture, editions: LandStagePiece['editions'], tx: number, ty: number, depthBias = 0): LandStageRenderItem {
+  return { kind: "land_stage", id, piece: { picture, editions, tx, ty, salt: cellHash(tx, ty) % 100_000 }, depth: depthKey(tx, ty) + depthBias, anchorTx: tx };
 }
 
 /** A felled tree's stage picture on its cell. */
-export function treeStageItem(harvest: ForestHarvest, tick: number): LandStageRenderItem {
-  return stageItem(`felled:${harvest.tx}:${harvest.ty}:${harvest.harvestedAtTick}`, treeStagePicture(harvest, tick), harvest.tx, harvest.ty);
+export function treeStageItem(harvest: ForestHarvest, tick: number, registry: ArtRegistry = ART_REGISTRY): LandStageRenderItem {
+  const summer = treeStageArt(harvest, tick, 'summer', registry);
+  const winter = treeStageArt(harvest, tick, 'winter', registry);
+  return stageItem(`felled:${harvest.tx}:${harvest.ty}:${harvest.harvestedAtTick}`, summer.stage,
+    { summer: summer.id, winter: winter.id }, harvest.tx, harvest.ty);
 }
 
 // Felled trees' signature (the object queue's static cache key, renderObjectFrameCache.ts). Cache (AGENTS rule 10):
@@ -45,7 +51,7 @@ export function felledTreeSignature(harvests: readonly ForestHarvest[] | undefin
   let hash = 2_166_136_261;
   let until = Number.POSITIVE_INFINITY;
   for (const harvest of list) {
-    const text = `${harvest.tx},${harvest.ty},${treeStagePicture(harvest, tick)}|`;
+    const text = `${harvest.tx},${harvest.ty},${treeStageArt(harvest, tick, 'summer').id},${treeStageArt(harvest, tick, 'winter').id}|`;
     for (let index = 0; index < text.length; index += 1) hash = Math.imul(hash ^ text.charCodeAt(index), 16_777_619);
     until = Math.min(until, nextTreePictureTick(harvest, tick));
   }
@@ -68,7 +74,9 @@ export function fallowItems(state: Pick<GameState, "land" | "tiles" | "width" | 
   const items = fallow.map(([cell, since]) => {
     const tx = cell % state.width, ty = Math.floor(cell / state.width);
     const plot = (state.tiles[cell]?.buildingId ?? null) !== null;
-    return stageItem(`fallow:${cell}`, fallowPicture(plot, since, state.tick), tx, ty, plot ? -0.01 : 0);
+    const summer = fallowStageArt(plot, since, state.tick, 'summer', cellHash(tx, ty));
+    const winter = fallowStageArt(plot, since, state.tick, 'winter', cellHash(tx, ty));
+    return stageItem(`fallow:${cell}`, summer.stage, { summer: summer.id, winter: winter.id }, tx, ty, plot ? -0.01 : 0);
   }).sort(compareItems);
   fallowMemo = { fallow, tiles: state.tiles, year, items };
   return items;
@@ -86,12 +94,11 @@ export function withLandFallow(queue: readonly RenderQueueItem[], state: GameSta
   return result;
 }
 
-/** Draws a stage picture: its pivot on the cell centre, at 0.5 world px per source px, in its season's file. */
 export function drawLandStageItem(context: CanvasRenderingContext2D, item: LandStageRenderItem, state: GameState, zoom: number): void {
   if (renderDetailLevel(zoom) === "blocks") return;
-  const { picture, tx, ty, salt } = item.piece;
+  const { editions, tx, ty, salt } = item.piece;
   const at = tileToScreen(tx, ty);
-  drawStageArt(context, stageKey(picture, stageSeason(seasonForObject(seasonBlend(state), salt))), at.sx, at.sy, STAGE_SCALE);
+  drawStageArt(context, editions[stageSeason(seasonForObject(seasonBlend(state), salt))], at.sx, at.sy);
 }
 
 function compareItems(left: RenderQueueItem, right: RenderQueueItem): number {

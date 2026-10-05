@@ -1,0 +1,72 @@
+{
+  "status": "ED83_GATES_PASS_DOCUMENT_CLOSURE_SUCCESSOR_PENDING",
+  "futureHEAD": null,
+  "measuredRuntimeHEAD": "db17321a907b5c0c72560fe2fab29966f38963d1",
+  "geometryMeasuredHEAD": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "geometry": {
+    "status": "PASS_MEASURED_FD68",
+    "receiptSlot": "geometry-final-receipt.json",
+    "sourceWatch": "phase2-geometry-watch.json",
+    "required": [
+      "actual completion and exit",
+      "fetched result",
+      "measured source freeze and input hash",
+      "failure count and native results",
+      "independent review",
+      "final HEAD linkage or explicitly bounded measured-HEAD scope"
+    ],
+    "receipt": "geometry-final-receipt.json",
+    "independentReview": "PASS",
+    "review": "phase2-final-geometry-review.json"
+  },
+  "checkMerge": {
+    "status": "PASS_EXACT_ED83_SUCCESSOR_RECHECK_REQUIRED",
+    "receipt": "ed83-merge-receipt.json",
+    "historicalFailure": "dd46-merge-failure.json"
+  },
+  "cleanClone": {
+    "status": "PASS_EXACT_ED83_SUCCESSOR_RECHECK_REQUIRED",
+    "receiptSlot": "final-clean-clone-receipt.json",
+    "required": [
+      "exact actual inner clone HEAD and clean tracked state",
+      "real origin LFS pull and source14 bytes",
+      "public14 ordinary Git bytes",
+      "actual TAP count/type/build results"
+    ],
+    "receipt": "ed83-clean-clone-receipt.json"
+  },
+  "protectedPush": {
+    "status": "PENDING",
+    "receiptSlot": "publication-receipt.json"
+  },
+  "publicationDependenciesFromAudit": [
+    "docs/verification/wave37-reconcile/SHA256SUMS.json",
+    "docs/verification/heath-data/reference4-export-attestation.txt",
+    "docs/verification/heath-data/reference4-parent-check.json",
+    "docs/verification/heath-data/reference4-summary.json",
+    "docs/verification/heath-data/reference4-views.json",
+    "docs/requests/render-human-registration-request.md",
+    "docs/requests/render-human-registration-request.json"
+  ],
+  "scope": {
+    "newRuntime14": {
+      "spring": 9,
+      "field": 3,
+      "heath": 2
+    },
+    "retiredPublic": 6,
+    "wave37LedgerReconciliation": 16,
+    "originalCensus": 425,
+    "markedWithinOriginalCensus": 153,
+    "runtimeWithinOriginalCensus": 157,
+    "heath2OutsideOriginalCensus": true
+  },
+  "excludedCompletionClaims": [
+    "UI handoff",
+    "HEIGHT",
+    "REGION",
+    "CLOUD"
+  ],
+  "preparedArtifactsArePassedGates": false,
+  "verifiedGateHEAD": "ed83fe44abc688ee688cb4069bfc636382f5e313"
+}

@@ -1,0 +1,44 @@
+{
+  "pass": true,
+  "phase": "DATA2_APPLIED_CANDIDATE_RUNTIME_NOT_RUN",
+  "focusedTests": 305,
+  "focusedFiles": 24,
+  "fail": 0,
+  "skipped": 0,
+  "typecheckExit": 0,
+  "lint": "No TS/code changes;2600file bytefreeze retains core13lintPASS",
+  "catalogEntries": 105,
+  "provenanceRuntimeCount": 2389,
+  "provenanceRows": 2389,
+  "provenanceMissing": 0,
+  "provenanceOrphans": 0,
+  "provenanceHashMismatch": 0,
+  "unreferencedPublicInformational": 49,
+  "diffCheckExit": 0,
+  "evidence": [
+    {
+      "path": ".omo/evidence/heath-main-data-focused.log",
+      "sha256": "a1f5d69aad6f3108ff8cc4396747e1edfa31dffc61f911687e0ef3ee6e45fa05"
+    },
+    {
+      "path": ".omo/evidence/heath-main-data-typecheck.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".omo/evidence/heath-main-data-provenance.txt",
+      "sha256": "90c0a99aa92cd8b25803d2dde8e535c6c5cb4adf8847d1e82c5f42a06623c42e"
+    },
+    {
+      "path": ".omo/evidence/heath-main-data-catalog.json",
+      "sha256": "f33406f3ba592b7fc094da19d2e96ab65ad6d5a72edff5fb8ff9e2c6410ac32d"
+    },
+    {
+      "path": ".omo/evidence/heath-main-data-parent-check.json",
+      "sha256": "0e199b6a80362ed0fb7610184ba1738331d8860973f42278c4c5211b9fc9f6b0"
+    },
+    {
+      "path": ".omo/evidence/heath-main-data-apply.receipt.json",
+      "sha256": "17fb7725597c9e6462c342c0f147283acac8012163b6bd020dff4cc7a74b6f38"
+    }
+  ]
+}

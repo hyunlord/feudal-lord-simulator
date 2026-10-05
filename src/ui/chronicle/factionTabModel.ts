@@ -4,8 +4,10 @@ import type { GameState } from "../../engine/engine.types";
 import type { FactionTimelineEntry, FactionView } from "../../engine/faction.types";
 import { factionChronicle, factionsList, worldTimeline } from "../../engine/factions";
 import { history } from "../../engine/history";
+import { lordSliceFactionsMet } from "../../engine/lordSlice";
 import { ageOf, currentYear, personById, personDisplayName, personPortrait } from "../../engine/persons";
 import { factionInfluence } from "../../engine/reorganisation";
+import { lordMode } from "../../engine/townAgency";
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { drawnPortraitId } from "../portraitArt";
 import { PERSON_STATE_COPY } from "../persons/personStateCopy.ko";
@@ -72,7 +74,9 @@ const nameOf = (faction: Pick<FactionView, "id" | "name">) => factionDisplayName
 
 /** FX-6 `factionsList`: the nine rows of the tab, in the engine's order (overlord, Crown, neighbours, bishop, the town's). */
 export function factionRows(state: GameState): readonly FactionRow[] {
-  return factionsList(state).map(faction => {
+  // LM-R1 (FIX-14, decision LM8-1): lord mode lists the five its start introduces and those the lord has since dealt with.
+  const met = lordMode(state) ? new Set<string>(lordSliceFactionsMet(state)) : null;
+  return factionsList(state).filter(faction => met === null || met.has(faction.id)).map(faction => {
     const name = nameOf(faction);
     const leader = leaderView(state, faction);
     const relation = clampRelation(faction.relation);

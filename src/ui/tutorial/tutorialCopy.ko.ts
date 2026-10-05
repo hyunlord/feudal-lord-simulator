@@ -1,6 +1,7 @@
 // UX-1 first-session tutorial copy (research E "첫 세션 대본 0~15분"; the five concepts: direct building, road links,
 // prediction / refusal, production -> storage, zones). Card titles are one line (18 px), reasons at most two lines,
 // the steward's lines 70-110 characters.
+import { LORD_SLICE_GOAL_YEARS } from "../../content/lordSliceConfig";
 
 export const TUTORIAL_COPY = {
   stewardName: "청지기",
@@ -47,7 +48,7 @@ export const TUTORIAL_COPY = {
     defense: "목책 단계에서 열립니다",
   },
   lockedTool: "첫 안내를 마치면 열립니다",
-  lockedLayer: { zone: "첫 생산 뒤에 열립니다", direction: "첫 청원 뒤에 열립니다" },
+  lockedLayer: { zone: "첫 생산 뒤에 열립니다", direction: "첫 청원에 답한 뒤에 열립니다", directionLordMode: "영주 모드에서 열립니다" },
   layers: { direct: "직접", zone: "구역", direction: "방향" },
   layerGroup: "조작 층위",
   progress: (current: number, target: number) => `${current}/${target}`,
@@ -67,6 +68,7 @@ export const TUTORIAL_COPY = {
   modeLines: {
     campaign_market_town: "목표를 따라 마을을 시장도시로 키웁니다. 처음이라면 이 모드로 시작하세요.",
     sandbox: "목표와 실패 없이 자유롭게 짓습니다.",
+    lord_slice: `도시는 스스로 짓고, 영주는 방침·장려금·판결로 조건을 만듭니다. ${LORD_SLICE_GOAL_YEARS.min}~${LORD_SLICE_GOAL_YEARS.max}년 뒤 이 도시가 내 결정의 결과인지 봅니다.`,
   },
   pickTool: "도구를 고르세요",
   generalCard: { title: (name: string) => name, cta: "조건 보기", arm: (name: string) => `${name} 놓기`, place: (name: string) => `표시한 자리에 ${name} 놓기` },

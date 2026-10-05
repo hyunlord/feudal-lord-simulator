@@ -1,0 +1,280 @@
+{
+  "status": "POST_LEDGER_REFERENCE4_PASS",
+  "pass": true,
+  "head": "c8089d606ace9ae1543e197fcfa981483906343a",
+  "run": "astra-spring9-ledger-reference-c8089d6",
+  "views": [
+    {
+      "name": "prepared-season-summer-z1",
+      "identity": {
+        "state": "prepared-season-summer",
+        "savedStateSHA": "9bf317d97f2a56e7f51f289eb5a577a836eda8550b65ddacefa341868649c169",
+        "tick": 201500,
+        "season": "summer",
+        "tile": [
+          34,
+          34
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_birch.png",
+          "/assets/foliage/tree_dead.png",
+          "/assets/foliage/tree_oak_large.png",
+          "/assets/foliage/tree_oak_small.png",
+          "/assets/foliage/tree_pine_short.png",
+          "/assets/foliage/tree_pine_tall.png",
+          "/assets/zones/orchard_apple_c-v1.png",
+          "/assets/zones/orchard_pear_e-v1.png",
+          "/assets/zones/orchard_plum_f-v1.png"
+        ]
+      },
+      "fullIdentityEqual": true,
+      "identityWithoutExpectedRequestsEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-committed-70c15321/prepared-season-summer-z1.png",
+      "beforePngSHA": "6994717ddebfbaadb972107919abfa48cd4409d4b93a022d2595658093aa22d1",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-ledger-reference-c8089d60/prepared-season-summer-z1.png",
+      "afterPngSHA": "6994717ddebfbaadb972107919abfa48cd4409d4b93a022d2595658093aa22d1",
+      "rgbaSHA": "f3feeaac2e0c37917267ba89b437a494f8b14fe9924d2012a770ecdca0765f6d",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "springIntentionalChange": false,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "missingNewUrls": []
+    },
+    {
+      "name": "prepared-season-summer-z06",
+      "identity": {
+        "state": "prepared-season-summer",
+        "savedStateSHA": "9bf317d97f2a56e7f51f289eb5a577a836eda8550b65ddacefa341868649c169",
+        "tick": 201500,
+        "season": "summer",
+        "tile": [
+          34,
+          34
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_birch.png",
+          "/assets/foliage/tree_dead.png",
+          "/assets/foliage/tree_oak_large.png",
+          "/assets/foliage/tree_oak_small.png",
+          "/assets/foliage/tree_pine_short.png",
+          "/assets/foliage/tree_pine_tall.png",
+          "/assets/zones/orchard_apple_c-v1.png",
+          "/assets/zones/orchard_pear_e-v1.png",
+          "/assets/zones/orchard_plum_f-v1.png"
+        ]
+      },
+      "fullIdentityEqual": true,
+      "identityWithoutExpectedRequestsEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-committed-70c15321/prepared-season-summer-z06.png",
+      "beforePngSHA": "9f14861e25588dbe9dd3aad6b62a1b1efe0ecb005531f7d1b0bd4f46aaba20f9",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-ledger-reference-c8089d60/prepared-season-summer-z06.png",
+      "afterPngSHA": "9f14861e25588dbe9dd3aad6b62a1b1efe0ecb005531f7d1b0bd4f46aaba20f9",
+      "rgbaSHA": "9cca52b9d1935e101cbbb4632581893be0309c37e159f989aa3cef0ec4dd9861",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "springIntentionalChange": false,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "missingNewUrls": []
+    },
+    {
+      "name": "prepared-season-winter-z1",
+      "identity": {
+        "state": "prepared-season-winter",
+        "savedStateSHA": "409488fb2294ca268fa89796105dcc2847719c9d3ab9556f1e583e7d1458ce8b",
+        "tick": 203500,
+        "season": "winter",
+        "tile": [
+          34,
+          34
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_birch_winter-v1.png",
+          "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_oak_large_winter-v1.png",
+          "/assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_oak_small_winter-v1.png",
+          "/assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+          "/assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+          "/assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+          "/assets/wave15/orchard/orchard_plum_f_winter-v1.png"
+        ]
+      },
+      "fullIdentityEqual": true,
+      "identityWithoutExpectedRequestsEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-committed-70c15321/prepared-season-winter-z1.png",
+      "beforePngSHA": "e0515ca9a570da1765548b91b0c7e03a355a37583e52df22d3c673f38f3395c1",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-ledger-reference-c8089d60/prepared-season-winter-z1.png",
+      "afterPngSHA": "e0515ca9a570da1765548b91b0c7e03a355a37583e52df22d3c673f38f3395c1",
+      "rgbaSHA": "14d9f6c576e448209c691b38d20c505a35a17b63d898a6a83569ddda22153137",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "springIntentionalChange": false,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "missingNewUrls": []
+    },
+    {
+      "name": "prepared-season-winter-z06",
+      "identity": {
+        "state": "prepared-season-winter",
+        "savedStateSHA": "409488fb2294ca268fa89796105dcc2847719c9d3ab9556f1e583e7d1458ce8b",
+        "tick": 203500,
+        "season": "winter",
+        "tile": [
+          34,
+          34
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_birch_winter-v1.png",
+          "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_oak_large_winter-v1.png",
+          "/assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_oak_small_winter-v1.png",
+          "/assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+          "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+          "/assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+          "/assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+          "/assets/wave15/orchard/orchard_plum_f_winter-v1.png"
+        ]
+      },
+      "fullIdentityEqual": true,
+      "identityWithoutExpectedRequestsEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-committed-70c15321/prepared-season-winter-z06.png",
+      "beforePngSHA": "2d8986316762046586e71cb9558065ac1ea2376b0027b2ae612df010e18f5616",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-ledger-reference-c8089d60/prepared-season-winter-z06.png",
+      "afterPngSHA": "2d8986316762046586e71cb9558065ac1ea2376b0027b2ae612df010e18f5616",
+      "rgbaSHA": "6faa6ee1072d72c505eff9b6e61fa4c68a5a5702a4c3a598d5bef0ba56cf9bc5",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "springIntentionalChange": false,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "missingNewUrls": []
+    }
+  ],
+  "errors": [],
+  "newTargets": [
+    "/assets/wave43/orchard/orchard_apple_spring.png",
+    "/assets/wave43/orchard/orchard_pear_spring.png",
+    "/assets/wave43/orchard/orchard_plum_spring.png",
+    "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+    "/assets/wave43/trees_other/tree_dead_spring.png",
+    "/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+    "/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+    "/assets/wave43/trees_other/tree_pine_short_spring.png",
+    "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+  ],
+  "coreBaseline": "70c153211187f5e7dedef538147136b22afdd8fc",
+  "nonSpringExact": 4,
+  "springChanged": 0,
+  "remoteFreeze": {
+    "pass": true,
+    "head": "c8089d606ace9ae1543e197fcfa981483906343a",
+    "hashCount": 4144,
+    "absentCount": 6,
+    "differences": []
+  },
+  "rawCapture": "/Users/rexxa/fls-astra-renderB/output/art-architecture/spring9-ledger-reference-c8089d60/captures.json",
+  "rawCaptureSHA": "72c055287d43d520dd39d7da25ee49bb7f2258e31b42542e14e734b8ab25e696",
+  "nativeVisual": {
+    "status": "PASS_EXECUTOR_REFERENCE4",
+    "opened": 4,
+    "independent": false,
+    "notes": "Individually opened all four native1280x800 PNGs. Summer foliage/green orchard and winter bare orchard/snow remain grounded, no introduced opaque rectangle or displaced roots. Existing regular ground decoration and dense forest occlusion remain; no natural play or universal visibility claim."
+  },
+  "installationLedger": "captured c8089d60 after parent promotion; runtime9 / RENDER-B-SPRING9",
+  "remoteExit": 0,
+  "fetchExit": 0,
+  "finalPublication": "PENDING",
+  "inputFreeze": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/spring9-ledger-reference-freeze.json",
+    "sha256": "ea7f2eb9ca6d24b4b5608b89d4b6c224feaba1eb5178a19697983f82707a33a3"
+  },
+  "inputPreservation": {
+    "changedInputs": [
+      "tests/fixtures/boundary/c25-board.json",
+      "docs/provenance/assets.csv",
+      "assets-inbox/INBOX_LEDGER.csv"
+    ],
+    "productionCatalogPublicCaptureCodeUnchanged": true,
+    "baselineFreezeSHA": "c0b027cf561b4a8acd226057bab19081bf0b592c6ec2a6a03762fb903a0b450b"
+  },
+  "rawRemoteReceipt": "/Users/rexxa/fls-astra-renderB/.remote-runs/astra-spring9-ledger-reference-c8089d6"
+}

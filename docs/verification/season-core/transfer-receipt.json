@@ -1,0 +1,144 @@
+{
+  "status": "TRANSFERRED_UNCOMMITTED_LOCAL_PASS",
+  "baseHead": "bc29f6b254292a7e2080aebc0c23b3cd4368a9f6",
+  "plan": "/Users/rexxa/fls-astra-renderB-season-prep/.omo/evidence/season-transfer-plan-v2.json",
+  "planSha256": "f5ddaaed0471567f606b2c42ef9ee35655667a0e11d0c0ef6987a219f8efacad",
+  "files": [
+    {
+      "path": "scripts/c25Board.ts",
+      "beforeSha256": "97bef3e008ca4679a8dbbc775f8ff19e6ac20695749b8b9d05b37d68536dcf2d",
+      "afterSha256": "a45a0932f01a2bf202313aa7f68e3e22ba450447d8eaf53464b39cf4e852eb72"
+    },
+    {
+      "path": "scripts/installWave15.py",
+      "beforeSha256": "2557aac5034eb75bfb6a653173d9c7c014b174a90a06b1c92f18f2c1e0ce9178",
+      "afterSha256": "c6b1f58653bc02723acef51b7d086acc1cae79b91caf928d8c8564f6cdf126b3"
+    },
+    {
+      "path": "src/render/art/artAdapters.ts",
+      "beforeSha256": "683aa82c5c115fc031fb7e0c5393b22bdb2ac7f358fa7ba231a0d214e9f4d727",
+      "afterSha256": "d746c43d00414cdf27f77b00cf62d5c4fc4e364c6979493c30342937da3d6502"
+    },
+    {
+      "path": "src/render/art/artContract.schema.json",
+      "beforeSha256": "74f174de35dea37fae2971a4e4c5e8ee1bc7134420d4be499cd8fa8b1e494445",
+      "afterSha256": "085b0f1209cdb5b0c2f097ee01da48e6312f8b3fca6ec741c975aeecd97b86a6"
+    },
+    {
+      "path": "src/render/art/artContract.ts",
+      "beforeSha256": "595eb3a1b31d67aecf49ed96078b09ffdd3b168c1db3da5e519f944c6a16d7bd",
+      "afterSha256": "b06590997af477f79f793b872332b07823894a7dfe41eeedf1e766c70694f428"
+    },
+    {
+      "path": "src/render/art/artImageLoader.ts",
+      "beforeSha256": "523fe5d93dd96ce593e42bac3225bf07c18fb547e255ab2415863aa4e6937ebf",
+      "afterSha256": "24d4a14c5d9be9fcf7e86585d866ec764c5ff7bd8a4fb33ee5529f2380bcade7"
+    },
+    {
+      "path": "src/render/art/artRegistryValidation.ts",
+      "beforeSha256": "f086e9a4fbec40c603d9f0eaf5dbb6425ef431e00edc4dba5964bcd2035ca45e",
+      "afterSha256": "6f38c53fd8243b350044fb7017193ddab5649e88f2d35ef361969bc65a9e8c22"
+    },
+    {
+      "path": "src/render/art/artSelection.ts",
+      "beforeSha256": "003a0a7fb979360207a0e0e37b08aa54a57dcb06b7dc082c44d42c7951259f21",
+      "afterSha256": "56102a477d0d0251494ccb38473d12b6ba9170f10eae117cb4a16d5ce420a2c7"
+    },
+    {
+      "path": "src/render/art/catalog.json",
+      "beforeSha256": "fa41c30e47668583ac42627334706c5cd3060794c95b732ca331690b998a86d1",
+      "afterSha256": "dec02e05ce25a42339d741016248129394055680f5bbe286acaeea79340dcdd7"
+    },
+    {
+      "path": "src/render/seasonArt.ts",
+      "beforeSha256": "945c870618f7c6b3128bc718cfbf279b6b1b93389c5d36d1aa950d76e08ca7ce",
+      "afterSha256": "d4cec72825bf4d8e87313515620274e69ccfbe7da19c42124c33aed5b5ce9b5a"
+    },
+    {
+      "path": "src/render/seasonArtManifest.generated.ts",
+      "beforeSha256": "32c7af951d4d056558df2daa387910bc7038aff81ced762b93c53b14c46650ad",
+      "afterSha256": "14a9091a5c78c86f604a07caa3564d05e6cb53f45aaf5d1c73c5ed111f0489f7"
+    },
+    {
+      "path": "tests/artImageLoader.test.ts",
+      "beforeSha256": "7df8496c103a52faae102369937fb10ef96dba310b2759320ca2a525a5633daa",
+      "afterSha256": "674d56ad78333f71c804d2e6bdbd294a051de8e0b65e1c29e708ac136111d525"
+    },
+    {
+      "path": "tests/seasonArt.test.ts",
+      "beforeSha256": "80751d25b9be1975ff0eb9f5d8424172d6ba3fd52ed3ad1a2f62a38cf09798f8",
+      "afterSha256": "0d8b15235094a9adc24344b09bc2562a2e6601156ba7954320f12b5339c5c1fb"
+    },
+    {
+      "path": "src/render/art/seasonMigrationOwnership.json",
+      "beforeSha256": null,
+      "afterSha256": "7598bdf662e4a61bf1ffb9d218ccb1b5742e392136aabfae40fb2eb2867c00c8"
+    },
+    {
+      "path": "src/render/art/seasonVariantArt.ts",
+      "beforeSha256": null,
+      "afterSha256": "5806fbd7acafe11cf03380be003f7332e2e1fbc4c8b7f5b194242b4d20dd5b2a"
+    },
+    {
+      "path": "src/render/art/seasonVariantValidation.ts",
+      "beforeSha256": null,
+      "afterSha256": "8403d74177d8f70ca7e346f51066bfae659df42a98679c89b1fcac9d9cf41d14"
+    },
+    {
+      "path": "tests/artSeasonVariant.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "2bfb394a8e125906aa594dae1f1266d35040a40ed997a19fc0b28b88fad600d7"
+    },
+    {
+      "path": "tests/fixtures/season-art-before.json",
+      "beforeSha256": null,
+      "afterSha256": "1c0fca9ff07fe6ee41b40293447b11d96791d52c32e75a3f33426c8ca8e894de"
+    },
+    {
+      "path": "tests/fixtures/season-variant-migration.json",
+      "beforeSha256": null,
+      "afterSha256": "0810a1dcd4d7c5a58aaf5380cdeac19ac30f9ae897de10cc5f2628b6775aa288"
+    },
+    {
+      "path": "tests/seasonArtLifecycle.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "06022484535345b6a77e13796e486e137cbb593331328317ee98447714fadeae"
+    }
+  ],
+  "count": 20,
+  "guardsBefore": {
+    "assets-inbox/INBOX_LEDGER.csv": "162d4ad7001a8f522d614112a78f369be08a19181e67eda5906980a729fd3d12",
+    "docs/provenance/assets.csv": "c1f2ec247b85ed3219c630afad3d614db0f0d5bea7ddbbdc745e12a2dba6cb58"
+  },
+  "docsBefore": {
+    "docs/design/art-contract.md": "ddd36b7bd8ebc99d9d9a30ce2201b1519fa2efb0c74b1b1dc8bb19705372737f",
+    "docs/STATUS.md": "e4e6ca6983ad20f8421e5d8fb08e6ab7d79bcf81aec9d1755c20c34e193e466a",
+    "docs/ROADMAP.html": "74d84b4c0a25fbb47a4fd96b4ae346114cbd0d0c4a44f6fe905ae4abdc726f44",
+    "docs/ops/DISPATCH_LEDGER.md": "ab146ecac59d277a4be108d41d6e4b9382b43b3882dd67676bd281f1293297d8"
+  },
+  "productHashCount": 1075,
+  "productMatch": true,
+  "new9Included": false,
+  "runtime": "FUTURE_COMMITTED_HEAD_NOT_RUN",
+  "validation": {
+    "focused": {
+      "pass": 37,
+      "fail": 0
+    },
+    "typecheck": "PASS",
+    "lint": "PASS explicit config",
+    "catalog": {
+      "pass": true,
+      "count": 92
+    },
+    "diffCheck": "PASS"
+  },
+  "guardsUnchanged": true,
+  "publicChanged": false,
+  "officialDocuments": [
+    "docs/design/art-contract.md",
+    "docs/STATUS.md",
+    "docs/ROADMAP.html",
+    "docs/ops/DISPATCH_LEDGER.md"
+  ]
+}

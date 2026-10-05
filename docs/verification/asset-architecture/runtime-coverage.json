@@ -1,0 +1,4182 @@
+{
+  "runs": {
+    "before": {
+      "pass": true,
+      "views": 28,
+      "errors": [],
+      "viewFailures": []
+    },
+    "core": {
+      "pass": true,
+      "views": 28,
+      "errors": [],
+      "viewFailures": []
+    },
+    "data": {
+      "pass": true,
+      "views": 8,
+      "errors": [],
+      "viewFailures": []
+    }
+  },
+  "frozen": [
+    {
+      "root": "/Users/rexxa/fls-astra-renderB",
+      "count": 1039,
+      "mismatch": []
+    },
+    {
+      "root": "/Users/rexxa/fls-astra-renderB-data-proof",
+      "count": 1039,
+      "mismatch": []
+    }
+  ],
+  "coreIdentities": [
+    {
+      "name": "forest-y0-summer-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "forest-y0-summer-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "forest-y0-winter-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "forest-y0-winter-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "forest-y2-summer-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "forest-y2-summer-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "forest-y2-winter-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "forest-y2-winter-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-summer-trees-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-summer-trees-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-summer-fallow-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-summer-fallow-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-summer-paths-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-summer-paths-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-winter-trees-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-winter-trees-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-winter-fallow-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-winter-fallow-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-winter-paths-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-land-winter-paths-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1350-summer-gallery-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1350-summer-gallery-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1350-winter-gallery-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1350-winter-gallery-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1400-summer-gallery-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1400-summer-gallery-z06",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1400-winter-gallery-z1",
+      "match": true,
+      "sameRgba": true
+    },
+    {
+      "name": "prepared-houses-1400-winter-gallery-z06",
+      "match": true,
+      "sameRgba": true
+    }
+  ],
+  "dataIdentities": [
+    {
+      "name": "prepared-houses-1350-summer-gallery-z1",
+      "match": true,
+      "sameRgba": false
+    },
+    {
+      "name": "prepared-houses-1350-summer-gallery-z06",
+      "match": true,
+      "sameRgba": false
+    },
+    {
+      "name": "prepared-houses-1350-winter-gallery-z1",
+      "match": true,
+      "sameRgba": false
+    },
+    {
+      "name": "prepared-houses-1350-winter-gallery-z06",
+      "match": true,
+      "sameRgba": false
+    },
+    {
+      "name": "prepared-houses-1400-summer-gallery-z1",
+      "match": true,
+      "sameRgba": false
+    },
+    {
+      "name": "prepared-houses-1400-summer-gallery-z06",
+      "match": true,
+      "sameRgba": false
+    },
+    {
+      "name": "prepared-houses-1400-winter-gallery-z1",
+      "match": true,
+      "sameRgba": false
+    },
+    {
+      "name": "prepared-houses-1400-winter-gallery-z06",
+      "match": true,
+      "sameRgba": false
+    }
+  ],
+  "wave42Before": [
+    {
+      "id": "abandoned_bramble_summer",
+      "url": "/assets/wave42/abandoned/abandoned_bramble_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_bramble_winter",
+      "url": "/assets/wave42/abandoned/abandoned_bramble_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_grass_summer",
+      "url": "/assets/wave42/abandoned/abandoned_grass_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_grass_winter",
+      "url": "/assets/wave42/abandoned/abandoned_grass_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_overgrown_furrows_summer",
+      "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_overgrown_furrows_winter",
+      "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_saplings_summer",
+      "url": "/assets/wave42/abandoned/abandoned_saplings_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_saplings_winter",
+      "url": "/assets/wave42/abandoned/abandoned_saplings_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_ne_summer",
+      "url": "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_ne_winter",
+      "url": "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_nw_summer",
+      "url": "/assets/wave42/connections/path_clear_corner_nw_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_nw_winter",
+      "url": "/assets/wave42/connections/path_clear_corner_nw_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_ne_summer",
+      "url": "/assets/wave42/connections/path_clear_fork_ne_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_ne_winter",
+      "url": "/assets/wave42/connections/path_clear_fork_ne_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_nw_summer",
+      "url": "/assets/wave42/connections/path_clear_fork_nw_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_nw_winter",
+      "url": "/assets/wave42/connections/path_clear_fork_nw_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_ne_summer",
+      "url": "/assets/wave42/paths/path_clear_ne_summer.png",
+      "expectedViews": [
+        "forest-y0-summer-z1",
+        "forest-y0-summer-z06",
+        "forest-y2-summer-z1",
+        "forest-y2-summer-z06",
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "forest-y0-summer-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y0-summer-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-summer-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-summer-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_ne_winter",
+      "url": "/assets/wave42/paths/path_clear_ne_winter.png",
+      "expectedViews": [
+        "forest-y0-winter-z1",
+        "forest-y0-winter-z06",
+        "forest-y2-winter-z1",
+        "forest-y2-winter-z06",
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "forest-y0-winter-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y0-winter-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-winter-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-winter-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_nw_summer",
+      "url": "/assets/wave42/paths/path_clear_nw_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_nw_winter",
+      "url": "/assets/wave42/paths/path_clear_nw_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_1to3_summer",
+      "url": "/assets/wave42/regrowth/sapling_1to3_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_1to3_winter",
+      "url": "/assets/wave42/regrowth/sapling_1to3_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_4to8_summer",
+      "url": "/assets/wave42/regrowth/sapling_4to8_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_4to8_winter",
+      "url": "/assets/wave42/regrowth/sapling_4to8_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_fresh_summer",
+      "url": "/assets/wave42/stumps/stump_ash_small_fresh_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_fresh_winter",
+      "url": "/assets/wave42/stumps/stump_ash_small_fresh_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_mossy_summer",
+      "url": "/assets/wave42/stumps/stump_ash_small_mossy_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_mossy_winter",
+      "url": "/assets/wave42/stumps/stump_ash_small_mossy_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_fresh_summer",
+      "url": "/assets/wave42/stumps/stump_oak_large_fresh_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_fresh_winter",
+      "url": "/assets/wave42/stumps/stump_oak_large_fresh_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_mossy_summer",
+      "url": "/assets/wave42/stumps/stump_oak_large_mossy_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_mossy_winter",
+      "url": "/assets/wave42/stumps/stump_oak_large_mossy_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_a_summer",
+      "url": "/assets/wave42/regrowth/young_wood_a_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_a_winter",
+      "url": "/assets/wave42/regrowth/young_wood_a_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_b_summer",
+      "url": "/assets/wave42/regrowth/young_wood_b_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_b_winter",
+      "url": "/assets/wave42/regrowth/young_wood_b_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    }
+  ],
+  "wave42Core": [
+    {
+      "id": "abandoned_bramble_summer",
+      "url": "/assets/wave42/abandoned/abandoned_bramble_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_bramble_winter",
+      "url": "/assets/wave42/abandoned/abandoned_bramble_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_grass_summer",
+      "url": "/assets/wave42/abandoned/abandoned_grass_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_grass_winter",
+      "url": "/assets/wave42/abandoned/abandoned_grass_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_overgrown_furrows_summer",
+      "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_overgrown_furrows_winter",
+      "url": "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_saplings_summer",
+      "url": "/assets/wave42/abandoned/abandoned_saplings_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-fallow-z1",
+        "prepared-land-summer-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "abandoned_saplings_winter",
+      "url": "/assets/wave42/abandoned/abandoned_saplings_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-fallow-z1",
+        "prepared-land-winter-fallow-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-fallow-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-fallow-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_ne_summer",
+      "url": "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_ne_winter",
+      "url": "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_nw_summer",
+      "url": "/assets/wave42/connections/path_clear_corner_nw_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_corner_nw_winter",
+      "url": "/assets/wave42/connections/path_clear_corner_nw_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_ne_summer",
+      "url": "/assets/wave42/connections/path_clear_fork_ne_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_ne_winter",
+      "url": "/assets/wave42/connections/path_clear_fork_ne_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_nw_summer",
+      "url": "/assets/wave42/connections/path_clear_fork_nw_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_fork_nw_winter",
+      "url": "/assets/wave42/connections/path_clear_fork_nw_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_ne_summer",
+      "url": "/assets/wave42/paths/path_clear_ne_summer.png",
+      "expectedViews": [
+        "forest-y0-summer-z1",
+        "forest-y0-summer-z06",
+        "forest-y2-summer-z1",
+        "forest-y2-summer-z06",
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "forest-y0-summer-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y0-summer-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-summer-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-summer-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_ne_winter",
+      "url": "/assets/wave42/paths/path_clear_ne_winter.png",
+      "expectedViews": [
+        "forest-y0-winter-z1",
+        "forest-y0-winter-z06",
+        "forest-y2-winter-z1",
+        "forest-y2-winter-z06",
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "forest-y0-winter-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y0-winter-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-winter-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "forest-y2-winter-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_nw_summer",
+      "url": "/assets/wave42/paths/path_clear_nw_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-paths-z1",
+        "prepared-land-summer-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "path_clear_nw_winter",
+      "url": "/assets/wave42/paths/path_clear_nw_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-paths-z1",
+        "prepared-land-winter-paths-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-paths-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-paths-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_1to3_summer",
+      "url": "/assets/wave42/regrowth/sapling_1to3_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_1to3_winter",
+      "url": "/assets/wave42/regrowth/sapling_1to3_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_4to8_summer",
+      "url": "/assets/wave42/regrowth/sapling_4to8_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "sapling_4to8_winter",
+      "url": "/assets/wave42/regrowth/sapling_4to8_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_fresh_summer",
+      "url": "/assets/wave42/stumps/stump_ash_small_fresh_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_fresh_winter",
+      "url": "/assets/wave42/stumps/stump_ash_small_fresh_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_mossy_summer",
+      "url": "/assets/wave42/stumps/stump_ash_small_mossy_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_ash_small_mossy_winter",
+      "url": "/assets/wave42/stumps/stump_ash_small_mossy_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_fresh_summer",
+      "url": "/assets/wave42/stumps/stump_oak_large_fresh_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_fresh_winter",
+      "url": "/assets/wave42/stumps/stump_oak_large_fresh_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_mossy_summer",
+      "url": "/assets/wave42/stumps/stump_oak_large_mossy_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "stump_oak_large_mossy_winter",
+      "url": "/assets/wave42/stumps/stump_oak_large_mossy_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_a_summer",
+      "url": "/assets/wave42/regrowth/young_wood_a_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_a_winter",
+      "url": "/assets/wave42/regrowth/young_wood_a_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_b_summer",
+      "url": "/assets/wave42/regrowth/young_wood_b_summer.png",
+      "expectedViews": [
+        "prepared-land-summer-trees-z1",
+        "prepared-land-summer-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-summer-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-summer-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "young_wood_b_winter",
+      "url": "/assets/wave42/regrowth/young_wood_b_winter.png",
+      "expectedViews": [
+        "prepared-land-winter-trees-z1",
+        "prepared-land-winter-trees-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-land-winter-trees-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-land-winter-trees-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    }
+  ],
+  "houses": [
+    {
+      "id": "wave20/house_l0_1350_a-v1",
+      "url": "/assets/wave20/houses/house_l0_1350_a-v1.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l0_1350_b-v1",
+      "url": "/assets/wave20/houses/house_l0_1350_b-v1.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l0_1400_a-v1",
+      "url": "/assets/wave20/houses/house_l0_1400_a-v1.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l0_1400_b-v1",
+      "url": "/assets/wave20/houses/house_l0_1400_b-v1.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l1_1350_a-v1",
+      "url": "/assets/wave20/houses/house_l1_1350_a-v1.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l1_1350_b-v1",
+      "url": "/assets/wave20/houses/house_l1_1350_b-v1.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l1_1400_a-v1",
+      "url": "/assets/wave20/houses/house_l1_1400_a-v1.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l1_1400_b-v1",
+      "url": "/assets/wave20/houses/house_l1_1400_b-v1.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l2_1350_a-v2",
+      "url": "/assets/wave20/houses/house_l2_1350_a-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l2_1350_b-v2",
+      "url": "/assets/wave20/houses/house_l2_1350_b-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l2_1400_a-v2",
+      "url": "/assets/wave20/houses/house_l2_1400_a-v2.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l2_1400_b-v2",
+      "url": "/assets/wave20/houses/house_l2_1400_b-v2.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l3_1350_a-v2",
+      "url": "/assets/wave20/houses/house_l3_1350_a-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l3_1350_b-v2",
+      "url": "/assets/wave20/houses/house_l3_1350_b-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l3_1400_a-v2",
+      "url": "/assets/wave20/houses/house_l3_1400_a-v2.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l3_1400_b-v2",
+      "url": "/assets/wave20/houses/house_l3_1400_b-v2.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l4_1350_a-v2",
+      "url": "/assets/wave20/houses/house_l4_1350_a-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l4_1350_b-v2",
+      "url": "/assets/wave20/houses/house_l4_1350_b-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l4_1400_a-v2",
+      "url": "/assets/wave20/houses/house_l4_1400_a-v2.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/house_l4_1400_b-v2",
+      "url": "/assets/wave20/houses/house_l4_1400_b-v2.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/boarded_l2_1350-v3",
+      "url": "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/boarded_l2_1400-v3",
+      "url": "/assets/wave20/overlays/boarded_l2_1400-v3.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/boarded_l3_1350-v3",
+      "url": "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/boarded_l3_1400-v3",
+      "url": "/assets/wave20/overlays/boarded_l3_1400-v3.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/boarded_l4_1350-v3",
+      "url": "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/boarded_l4_1400-v3",
+      "url": "/assets/wave20/overlays/boarded_l4_1400-v3.png",
+      "expectedViews": [
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/roof_snow_l2_1350-v4",
+      "url": "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+      "expectedViews": [
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/roof_snow_l2_1400-v4",
+      "url": "/assets/wave20/overlays/roof_snow_l2_1400-v4.png",
+      "expectedViews": [
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/roof_snow_l3_1350-v4",
+      "url": "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+      "expectedViews": [
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/roof_snow_l3_1400-v4",
+      "url": "/assets/wave20/overlays/roof_snow_l3_1400-v4.png",
+      "expectedViews": [
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/roof_snow_l4_1350-v4",
+      "url": "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+      "expectedViews": [
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/roof_snow_l4_1400-v4",
+      "url": "/assets/wave20/overlays/roof_snow_l4_1400-v4.png",
+      "expectedViews": [
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/reused-boarded_l0-v2",
+      "url": "/assets/wave7/overlay/boarded_l0-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06",
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/reused-roof_snow_l0-v2",
+      "url": "/assets/wave7/season/roof_snow_l0-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/reused-boarded_l1-v2",
+      "url": "/assets/wave7/overlay/boarded_l1-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-summer-gallery-z1",
+        "prepared-houses-1350-summer-gallery-z06",
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06",
+        "prepared-houses-1400-summer-gallery-z1",
+        "prepared-houses-1400-summer-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-summer-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    },
+    {
+      "id": "wave20/reused-roof_snow_l1-v2",
+      "url": "/assets/wave7/season/roof_snow_l1-v2.png",
+      "expectedViews": [
+        "prepared-houses-1350-winter-gallery-z1",
+        "prepared-houses-1350-winter-gallery-z06",
+        "prepared-houses-1400-winter-gallery-z1",
+        "prepared-houses-1400-winter-gallery-z06"
+      ],
+      "observed": [
+        {
+          "view": "prepared-houses-1350-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1350-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z1",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        },
+        {
+          "view": "prepared-houses-1400-winter-gallery-z06",
+          "request": true,
+          "response": true,
+          "decoded": true,
+          "draw": true
+        }
+      ]
+    }
+  ],
+  "houseFiles": {
+    "new": 32,
+    "reused": 4,
+    "files": [
+      {
+        "id": "wave20/house_l0_1350_a-v1",
+        "path": "public/assets/wave20/houses/house_l0_1350_a-v1.png",
+        "reused": false,
+        "isolatedHash": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+        "declaredHash": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l0_1350_b-v1",
+        "path": "public/assets/wave20/houses/house_l0_1350_b-v1.png",
+        "reused": false,
+        "isolatedHash": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+        "declaredHash": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l0_1400_a-v1",
+        "path": "public/assets/wave20/houses/house_l0_1400_a-v1.png",
+        "reused": false,
+        "isolatedHash": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+        "declaredHash": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l0_1400_b-v1",
+        "path": "public/assets/wave20/houses/house_l0_1400_b-v1.png",
+        "reused": false,
+        "isolatedHash": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+        "declaredHash": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l1_1350_a-v1",
+        "path": "public/assets/wave20/houses/house_l1_1350_a-v1.png",
+        "reused": false,
+        "isolatedHash": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+        "declaredHash": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l1_1350_b-v1",
+        "path": "public/assets/wave20/houses/house_l1_1350_b-v1.png",
+        "reused": false,
+        "isolatedHash": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+        "declaredHash": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l1_1400_a-v1",
+        "path": "public/assets/wave20/houses/house_l1_1400_a-v1.png",
+        "reused": false,
+        "isolatedHash": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+        "declaredHash": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l1_1400_b-v1",
+        "path": "public/assets/wave20/houses/house_l1_1400_b-v1.png",
+        "reused": false,
+        "isolatedHash": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+        "declaredHash": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l2_1350_a-v2",
+        "path": "public/assets/wave20/houses/house_l2_1350_a-v2.png",
+        "reused": false,
+        "isolatedHash": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55",
+        "declaredHash": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l2_1350_b-v2",
+        "path": "public/assets/wave20/houses/house_l2_1350_b-v2.png",
+        "reused": false,
+        "isolatedHash": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9",
+        "declaredHash": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l2_1400_a-v2",
+        "path": "public/assets/wave20/houses/house_l2_1400_a-v2.png",
+        "reused": false,
+        "isolatedHash": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6",
+        "declaredHash": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l2_1400_b-v2",
+        "path": "public/assets/wave20/houses/house_l2_1400_b-v2.png",
+        "reused": false,
+        "isolatedHash": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b",
+        "declaredHash": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l3_1350_a-v2",
+        "path": "public/assets/wave20/houses/house_l3_1350_a-v2.png",
+        "reused": false,
+        "isolatedHash": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7",
+        "declaredHash": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l3_1350_b-v2",
+        "path": "public/assets/wave20/houses/house_l3_1350_b-v2.png",
+        "reused": false,
+        "isolatedHash": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084",
+        "declaredHash": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l3_1400_a-v2",
+        "path": "public/assets/wave20/houses/house_l3_1400_a-v2.png",
+        "reused": false,
+        "isolatedHash": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9",
+        "declaredHash": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l3_1400_b-v2",
+        "path": "public/assets/wave20/houses/house_l3_1400_b-v2.png",
+        "reused": false,
+        "isolatedHash": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68",
+        "declaredHash": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l4_1350_a-v2",
+        "path": "public/assets/wave20/houses/house_l4_1350_a-v2.png",
+        "reused": false,
+        "isolatedHash": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8",
+        "declaredHash": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l4_1350_b-v2",
+        "path": "public/assets/wave20/houses/house_l4_1350_b-v2.png",
+        "reused": false,
+        "isolatedHash": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631",
+        "declaredHash": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l4_1400_a-v2",
+        "path": "public/assets/wave20/houses/house_l4_1400_a-v2.png",
+        "reused": false,
+        "isolatedHash": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b",
+        "declaredHash": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/house_l4_1400_b-v2",
+        "path": "public/assets/wave20/houses/house_l4_1400_b-v2.png",
+        "reused": false,
+        "isolatedHash": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7",
+        "declaredHash": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/boarded_l2_1350-v3",
+        "path": "public/assets/wave20/overlays/boarded_l2_1350-v3.png",
+        "reused": false,
+        "isolatedHash": "5746b6d65c42a49794270491cecbbc49e071b5fddfac3d4e8ce489f3be5e2c39",
+        "declaredHash": "5746b6d65c42a49794270491cecbbc49e071b5fddfac3d4e8ce489f3be5e2c39",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/boarded_l2_1400-v3",
+        "path": "public/assets/wave20/overlays/boarded_l2_1400-v3.png",
+        "reused": false,
+        "isolatedHash": "126a09ae77818cb16dbc0879c5bbc4bf0b58f750ed314faeb88df47a7ea03787",
+        "declaredHash": "126a09ae77818cb16dbc0879c5bbc4bf0b58f750ed314faeb88df47a7ea03787",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/boarded_l3_1350-v3",
+        "path": "public/assets/wave20/overlays/boarded_l3_1350-v3.png",
+        "reused": false,
+        "isolatedHash": "70433fae506ec25fadb70648f2922fc79a7d0ac63e32a7859a426cd07bc314e4",
+        "declaredHash": "70433fae506ec25fadb70648f2922fc79a7d0ac63e32a7859a426cd07bc314e4",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/boarded_l3_1400-v3",
+        "path": "public/assets/wave20/overlays/boarded_l3_1400-v3.png",
+        "reused": false,
+        "isolatedHash": "1da3f94fe23acd56326b9156342fc44309f4f84bcfb72a910455dae6de97516c",
+        "declaredHash": "1da3f94fe23acd56326b9156342fc44309f4f84bcfb72a910455dae6de97516c",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/boarded_l4_1350-v3",
+        "path": "public/assets/wave20/overlays/boarded_l4_1350-v3.png",
+        "reused": false,
+        "isolatedHash": "2d839d7571c0d7991c771324edc89c370e5da4e57dd6b8eb76caf8143c3aac3e",
+        "declaredHash": "2d839d7571c0d7991c771324edc89c370e5da4e57dd6b8eb76caf8143c3aac3e",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/boarded_l4_1400-v3",
+        "path": "public/assets/wave20/overlays/boarded_l4_1400-v3.png",
+        "reused": false,
+        "isolatedHash": "75b48f6b52e74a7014d9da683686457fcbf8a5eb1aaacd0678084a37f2410403",
+        "declaredHash": "75b48f6b52e74a7014d9da683686457fcbf8a5eb1aaacd0678084a37f2410403",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/roof_snow_l2_1350-v4",
+        "path": "public/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+        "reused": false,
+        "isolatedHash": "9766c06a55f69cbfa94813401f6b4c7d8a4777719e39ab36ecc5e98dea4fc3dd",
+        "declaredHash": "9766c06a55f69cbfa94813401f6b4c7d8a4777719e39ab36ecc5e98dea4fc3dd",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/roof_snow_l2_1400-v4",
+        "path": "public/assets/wave20/overlays/roof_snow_l2_1400-v4.png",
+        "reused": false,
+        "isolatedHash": "0058445ce889fd9aea12d69ce52f842f159adc6afa44b9a20a0fc42407590c94",
+        "declaredHash": "0058445ce889fd9aea12d69ce52f842f159adc6afa44b9a20a0fc42407590c94",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/roof_snow_l3_1350-v4",
+        "path": "public/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+        "reused": false,
+        "isolatedHash": "19dcf99f2eb1c4f1ae950f867a329c6c9f511a4f8853e21515ba8ddd93f31d8a",
+        "declaredHash": "19dcf99f2eb1c4f1ae950f867a329c6c9f511a4f8853e21515ba8ddd93f31d8a",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/roof_snow_l3_1400-v4",
+        "path": "public/assets/wave20/overlays/roof_snow_l3_1400-v4.png",
+        "reused": false,
+        "isolatedHash": "29d986787eabb4fbc22191548980b5be52d7476f83ccf24297299e9d095b21a0",
+        "declaredHash": "29d986787eabb4fbc22191548980b5be52d7476f83ccf24297299e9d095b21a0",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/roof_snow_l4_1350-v4",
+        "path": "public/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+        "reused": false,
+        "isolatedHash": "c209486d793a6f109b2a90ba3c0c11885c20025259e2889f022b7bdb35ebfca6",
+        "declaredHash": "c209486d793a6f109b2a90ba3c0c11885c20025259e2889f022b7bdb35ebfca6",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/roof_snow_l4_1400-v4",
+        "path": "public/assets/wave20/overlays/roof_snow_l4_1400-v4.png",
+        "reused": false,
+        "isolatedHash": "7f7729b3e2aedfe5a060fd1f5c66d65efa76f4339791649d667e81b4a5789954",
+        "declaredHash": "7f7729b3e2aedfe5a060fd1f5c66d65efa76f4339791649d667e81b4a5789954",
+        "hashMatches": true,
+        "existingSame": null
+      },
+      {
+        "id": "wave20/reused-boarded_l0-v2",
+        "path": "public/assets/wave7/overlay/boarded_l0-v2.png",
+        "reused": true,
+        "isolatedHash": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa",
+        "declaredHash": "6d19cdb3d34039321ea09ab844b696a91b4e2265d041ba7ec523b916d48afaaa",
+        "hashMatches": true,
+        "existingSame": true
+      },
+      {
+        "id": "wave20/reused-roof_snow_l0-v2",
+        "path": "public/assets/wave7/season/roof_snow_l0-v2.png",
+        "reused": true,
+        "isolatedHash": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c",
+        "declaredHash": "de6abd02053da883f3ee1000d60f57ba14e3f0d1b525272f02adaf186b24dc8c",
+        "hashMatches": true,
+        "existingSame": true
+      },
+      {
+        "id": "wave20/reused-boarded_l1-v2",
+        "path": "public/assets/wave7/overlay/boarded_l1-v2.png",
+        "reused": true,
+        "isolatedHash": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8",
+        "declaredHash": "175741dbcf5ebb62b4a9c8db46e9ef1c29e24a4ca005a97211eb33c33fd725e8",
+        "hashMatches": true,
+        "existingSame": true
+      },
+      {
+        "id": "wave20/reused-roof_snow_l1-v2",
+        "path": "public/assets/wave7/season/roof_snow_l1-v2.png",
+        "reused": true,
+        "isolatedHash": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e",
+        "declaredHash": "812ba0165e63c0494370d4fe37c9635e86b674d8eb07add02f600f39fb92a42e",
+        "hashMatches": true,
+        "existingSame": true
+      }
+    ]
+  },
+  "corePixelReport": {
+    "pass": true,
+    "issues": [],
+    "rows": [
+      {
+        "file": "forest-y0-summer-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "forest-y0-summer-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "forest-y0-winter-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "forest-y0-winter-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "forest-y2-summer-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "forest-y2-summer-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "forest-y2-winter-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "forest-y2-winter-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1350-summer-gallery-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1350-summer-gallery-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1350-winter-gallery-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1350-winter-gallery-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1400-summer-gallery-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1400-summer-gallery-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1400-winter-gallery-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-houses-1400-winter-gallery-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-summer-fallow-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-summer-fallow-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-summer-paths-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-summer-paths-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-summer-trees-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-summer-trees-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-winter-fallow-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-winter-fallow-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-winter-paths-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-winter-paths-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-winter-trees-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "prepared-land-winter-trees-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    ]
+  },
+  "intentionalDataPixels": [
+    {
+      "name": "prepared-houses-1350-summer-gallery-z1",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 50834,
+      "maxChannelDelta": 217
+    },
+    {
+      "name": "prepared-houses-1350-summer-gallery-z06",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 17992,
+      "maxChannelDelta": 221
+    },
+    {
+      "name": "prepared-houses-1350-winter-gallery-z1",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 50721,
+      "maxChannelDelta": 237
+    },
+    {
+      "name": "prepared-houses-1350-winter-gallery-z06",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 17948,
+      "maxChannelDelta": 230
+    },
+    {
+      "name": "prepared-houses-1400-summer-gallery-z1",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 49727,
+      "maxChannelDelta": 219
+    },
+    {
+      "name": "prepared-houses-1400-summer-gallery-z06",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 17580,
+      "maxChannelDelta": 202
+    },
+    {
+      "name": "prepared-houses-1400-winter-gallery-z1",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 49960,
+      "maxChannelDelta": 237
+    },
+    {
+      "name": "prepared-houses-1400-winter-gallery-z06",
+      "pass": false,
+      "sameSize": true,
+      "width": 1280,
+      "height": 800,
+      "differingPixels": 17670,
+      "maxChannelDelta": 232
+    }
+  ],
+  "catalogRules": [
+    {
+      "root": "/Users/rexxa/fls-astra-renderB",
+      "bundle": "wave42",
+      "entries": 36,
+      "rules": 40,
+      "unreferenced": [],
+      "unknownTargets": []
+    },
+    {
+      "root": "/Users/rexxa/fls-astra-renderB-data-proof",
+      "bundle": "wave42",
+      "entries": 36,
+      "rules": 40,
+      "unreferenced": [],
+      "unknownTargets": []
+    },
+    {
+      "root": "/Users/rexxa/fls-astra-renderB-data-proof",
+      "bundle": "wave20-era",
+      "entries": 36,
+      "rules": 26,
+      "unreferenced": [],
+      "unknownTargets": []
+    }
+  ],
+  "sourceManifests": {
+    "before-v3/captures.json": "b55f5a1cc5283d4dee5993d7bae85a66d22b52c68966d5790b6e47d9f0bb46d0",
+    "core-v3/captures.json": "38204d0eeda1ee39fb034496cc0f2158ffb7a8fe873ab8ac4cd6464ec97ebef2",
+    "data-v3/captures.json": "e9760b2f7467d89c5ca9175b7a6dab19dc6c88b6c7ed26c2e465fbd82f3ba932",
+    "core-pixels-v3.json": "5f24cbf0faf890fe1281fa2258bca3836935219a3cd48ace721325ad0b59e55d"
+  }
+}

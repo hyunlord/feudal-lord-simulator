@@ -1,0 +1,1855 @@
+{
+  "beforeHead": "a392694c3056b93812a0bcc3de767a387f2f3f3b",
+  "afterHead": "cd399e4abb26fc04b37dc27b5c61bec270934a7d",
+  "beforeReceipt": {
+    "path": "output/art-architecture/field-main-core-a392694c/captures.json",
+    "sha256": "0df07577e03c8f4e1ca7f12fce1145c2396c987951546edf2ea2360a26dd77aa"
+  },
+  "afterReceipt": {
+    "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/field-main-spring3-cd399e4a/captures.json",
+    "sha256": "e3fa5b16e6d97a52d75813a43494168a74756cae430a9539b8543140d61c8ce3"
+  },
+  "pairs": [
+    {
+      "name": "field-x-spring-z1",
+      "spring": true,
+      "differingPixels": 53257,
+      "maxChannelDelta": 106,
+      "before": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z1.png",
+          "sha256": "ee2b00727e52e9fcb9fab9d865f56d1ef0710e4f508c572b350424ea9f3b2faa"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z1.jpg",
+          "sha256": "03c2c433c0e05c06bb625e8b181dd97dc9a3cf4b7d99c72501db62c418934360"
+        },
+        "preview": "images/field-x-spring-z1-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z1.png",
+          "sha256": "816160fc59249715603c7816dd464068abeb33054c05975a357e0d558b2a0a88"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z1.jpg",
+          "sha256": "ffdd6c72d698519ebdc9c7b17eec44c8705874ae2777d4280dbff7d222c76d67"
+        },
+        "preview": "images/field-x-spring-z1-after.jpg"
+      }
+    },
+    {
+      "name": "field-x-spring-z06",
+      "spring": true,
+      "differingPixels": 19489,
+      "maxChannelDelta": 107,
+      "before": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z06.png",
+          "sha256": "80c51a902daeddff709b66eb9f68924786d500027a04a7fcdd6c0d2e763b3be9"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z06.jpg",
+          "sha256": "69371f8894147a04167e529d2879bffc2877a3ca8a2d4685678178205bc7e6c1"
+        },
+        "preview": "images/field-x-spring-z06-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z06.png",
+          "sha256": "f1e7d3c58846b7124ba58702fe0e7ad5d6287b3d85ed2ab02671332d866e148d"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z06.jpg",
+          "sha256": "d69df4fe5249c5deef0c581384a5456406e0d0f728de7daeed82b9972bd82069"
+        },
+        "preview": "images/field-x-spring-z06-after.jpg"
+      }
+    },
+    {
+      "name": "field-x-spring-z14-dpr1",
+      "spring": true,
+      "differingPixels": 103736,
+      "maxChannelDelta": 111,
+      "before": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1.4,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z14-dpr1.png",
+          "sha256": "a00762e80174cd1a5ccbe60fc4f3617b9f133e565521359a8e8aa2eb31bdeb10"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z14-dpr1.jpg",
+          "sha256": "9d97a1db8f4219041f75c54f58e32bfa01ddf210bf1354da04463913a4083ed8"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1.4,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z14-dpr1.png",
+          "sha256": "4a40d9eeb21bf1db141f3f047eec7619ca46d1629f2367bca5d86a82bd06e695"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z14-dpr1.jpg",
+          "sha256": "6d794a1cfcfb63f00b0e60c0cc4a5c3669ed7fa2731a179ff659f6528b00a593"
+        }
+      }
+    },
+    {
+      "name": "field-x-spring-z1-dpr2",
+      "spring": true,
+      "differingPixels": 211296,
+      "maxChannelDelta": 115,
+      "before": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 2,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z1-dpr2.png",
+          "sha256": "907682dabe86feeb9f071e94d0d3ed05e59c01bd17540040a75691405692aa43"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-spring-z1-dpr2.jpg",
+          "sha256": "ffb25bff4f97d101f1237b43b82a0cb50d891e5e58a01021fb6bdb4955a19f29"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-spring",
+          "savedStateSHA": "3ff91f2d994569bb9f06c3b154035ea97fd2e98e354f8c2b5c434c858084cc7d",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 2,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z1-dpr2.png",
+          "sha256": "298d7da80c3b4876d7e703e87be5a4993e8724c9eac7d264fb8551d99bcd7d15"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-spring-z1-dpr2.jpg",
+          "sha256": "6162c3dbf41697729223d1d170d1414cc5bcb680b15aa08c36aa40e5bb81cc5f"
+        }
+      }
+    },
+    {
+      "name": "field-x-summer-z1",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-x-summer",
+          "savedStateSHA": "25912531c7b0356f65a0b9e86449cea6805a7f730be6c021d1fc356e37c8d78b",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-summer-z1.png",
+          "sha256": "d640d227d067137ef2e678e53773d45f5fc13bc2c550fc9af3703e9c1b3c8001"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-summer-z1.jpg",
+          "sha256": "6359eb10a8bc732624b09da1bd4c5f240de363ec20bd7a54872e9853e1b13c9f"
+        },
+        "preview": "images/field-x-summer-z1-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-summer",
+          "savedStateSHA": "25912531c7b0356f65a0b9e86449cea6805a7f730be6c021d1fc356e37c8d78b",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-summer-z1.png",
+          "sha256": "d640d227d067137ef2e678e53773d45f5fc13bc2c550fc9af3703e9c1b3c8001"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-summer-z1.jpg",
+          "sha256": "6359eb10a8bc732624b09da1bd4c5f240de363ec20bd7a54872e9853e1b13c9f"
+        },
+        "preview": "images/field-x-summer-z1-before.jpg"
+      }
+    },
+    {
+      "name": "field-x-summer-z06",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-x-summer",
+          "savedStateSHA": "25912531c7b0356f65a0b9e86449cea6805a7f730be6c021d1fc356e37c8d78b",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-summer-z06.png",
+          "sha256": "120673557bc690e1b0c2af264e7f6ae45bc72b5c8c7dfa7d4e0419835698e314"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-summer-z06.jpg",
+          "sha256": "fa55ec0cf6bce9d28733ee17c6dcbc76d327f1151dab8db5951c22e9fcc628bf"
+        },
+        "preview": "images/field-x-summer-z06-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-summer",
+          "savedStateSHA": "25912531c7b0356f65a0b9e86449cea6805a7f730be6c021d1fc356e37c8d78b",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-summer-z06.png",
+          "sha256": "120673557bc690e1b0c2af264e7f6ae45bc72b5c8c7dfa7d4e0419835698e314"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-summer-z06.jpg",
+          "sha256": "fa55ec0cf6bce9d28733ee17c6dcbc76d327f1151dab8db5951c22e9fcc628bf"
+        },
+        "preview": "images/field-x-summer-z06-before.jpg"
+      }
+    },
+    {
+      "name": "field-x-autumn-z1",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-x-autumn",
+          "savedStateSHA": "4052f23fb6579375b90eb323de2cf2ab0e99ff6160a8aa55f3b1dbd624d5063e",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-autumn-z1.png",
+          "sha256": "0e7e03ba430afd52cc546236dec463631a84c57ddd2b76b032f7f6fc371a2de7"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-autumn-z1.jpg",
+          "sha256": "89e1aea4f789b001af2d2de2c323cbcf83bace10e02269e1b32621c18aca6a48"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-autumn",
+          "savedStateSHA": "4052f23fb6579375b90eb323de2cf2ab0e99ff6160a8aa55f3b1dbd624d5063e",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-autumn-z1.png",
+          "sha256": "0e7e03ba430afd52cc546236dec463631a84c57ddd2b76b032f7f6fc371a2de7"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-autumn-z1.jpg",
+          "sha256": "89e1aea4f789b001af2d2de2c323cbcf83bace10e02269e1b32621c18aca6a48"
+        }
+      }
+    },
+    {
+      "name": "field-x-autumn-z06",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-x-autumn",
+          "savedStateSHA": "4052f23fb6579375b90eb323de2cf2ab0e99ff6160a8aa55f3b1dbd624d5063e",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-autumn-z06.png",
+          "sha256": "7ce32a488f7b5fdb74ee2112f7a40ee8928921a9b777e5a0e4b2ae5b11a869af"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-autumn-z06.jpg",
+          "sha256": "41cd98d92131b2e8c3aeed6845c772b900611843e09941acbd38b2ce2eb85cfc"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-autumn",
+          "savedStateSHA": "4052f23fb6579375b90eb323de2cf2ab0e99ff6160a8aa55f3b1dbd624d5063e",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-autumn-z06.png",
+          "sha256": "7ce32a488f7b5fdb74ee2112f7a40ee8928921a9b777e5a0e4b2ae5b11a869af"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-autumn-z06.jpg",
+          "sha256": "41cd98d92131b2e8c3aeed6845c772b900611843e09941acbd38b2ce2eb85cfc"
+        }
+      }
+    },
+    {
+      "name": "field-x-winter-z1",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-x-winter",
+          "savedStateSHA": "2d84b64449d75f6cc795151b4a344f81f11f378cbe56be3bcef97718d8e233d2",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-winter-z1.png",
+          "sha256": "b489f7c59ae1ed6fc0e44147a9fb2bbf95accfa9be4e74854c98c482dacc6355"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-winter-z1.jpg",
+          "sha256": "10a5452e0c4f34b9b8e673ad76b03947154a976c2c8ea4623ce79527110b2092"
+        },
+        "preview": "images/field-x-winter-z1-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-winter",
+          "savedStateSHA": "2d84b64449d75f6cc795151b4a344f81f11f378cbe56be3bcef97718d8e233d2",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-winter-z1.png",
+          "sha256": "b489f7c59ae1ed6fc0e44147a9fb2bbf95accfa9be4e74854c98c482dacc6355"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-winter-z1.jpg",
+          "sha256": "10a5452e0c4f34b9b8e673ad76b03947154a976c2c8ea4623ce79527110b2092"
+        },
+        "preview": "images/field-x-winter-z1-before.jpg"
+      }
+    },
+    {
+      "name": "field-x-winter-z06",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-x-winter",
+          "savedStateSHA": "2d84b64449d75f6cc795151b4a344f81f11f378cbe56be3bcef97718d8e233d2",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-winter-z06.png",
+          "sha256": "11364c9b4b9bbeae92f179db8b6708c0c48b7752f2d2d11dee5f52c844e1dc5a"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-x-winter-z06.jpg",
+          "sha256": "f65b4841931b9cda56a306c2d4d509587d9182f8b9f2971cdc9cfa39c7381f4c"
+        },
+        "preview": "images/field-x-winter-z06-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-x-winter",
+          "savedStateSHA": "2d84b64449d75f6cc795151b4a344f81f11f378cbe56be3bcef97718d8e233d2",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            44.5,
+            5.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-winter-z06.png",
+          "sha256": "11364c9b4b9bbeae92f179db8b6708c0c48b7752f2d2d11dee5f52c844e1dc5a"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-x-winter-z06.jpg",
+          "sha256": "f65b4841931b9cda56a306c2d4d509587d9182f8b9f2971cdc9cfa39c7381f4c"
+        },
+        "preview": "images/field-x-winter-z06-before.jpg"
+      }
+    },
+    {
+      "name": "field-y-spring-z1",
+      "spring": true,
+      "differingPixels": 53329,
+      "maxChannelDelta": 106,
+      "before": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z1.png",
+          "sha256": "7b7d2fd5f58349f982ca81700fe8308da9563dcb3f136eb0aa35a19892425527"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z1.jpg",
+          "sha256": "bb9967d48afbab31fe9a32e2ff256801bbda4450e55be4fa96411539e36b258a"
+        },
+        "preview": "images/field-y-spring-z1-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z1.png",
+          "sha256": "b5abca9d30c6033bc0487c5a0638585e6bc619815575f3fee45e8e4676431d44"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z1.jpg",
+          "sha256": "5d158ac71eefd7a8d4f53eb4945aca1b71704cb20ae6403471a3c1bae12dc4fa"
+        },
+        "preview": "images/field-y-spring-z1-after.jpg"
+      }
+    },
+    {
+      "name": "field-y-spring-z06",
+      "spring": true,
+      "differingPixels": 19298,
+      "maxChannelDelta": 107,
+      "before": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z06.png",
+          "sha256": "33a9aa51b226224b271c63cdd2fa5e077a0edcb73b84378e8bc6aa77d23ab688"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z06.jpg",
+          "sha256": "395b5e96492274654467b43eb46cd78328126e52e8a04810895ab6381077f8c0"
+        },
+        "preview": "images/field-y-spring-z06-before.jpg"
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z06.png",
+          "sha256": "ed6449f4321bce8c206e43d2a5e40468a3c36a13ef9c0ce08bd4eb95ac7f65fb"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z06.jpg",
+          "sha256": "fb74ddfb407faf5b6751b63475b0e3ac51bd9d6fa18f9543c88e56fdedd11024"
+        },
+        "preview": "images/field-y-spring-z06-after.jpg"
+      }
+    },
+    {
+      "name": "field-y-spring-z14-dpr1",
+      "spring": true,
+      "differingPixels": 104599,
+      "maxChannelDelta": 113,
+      "before": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1.4,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z14-dpr1.png",
+          "sha256": "34c548f903f2f846e970e6a8be65ed3821e1899aafcae4ccdb3b3fbc87dd3123"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z14-dpr1.jpg",
+          "sha256": "ff5cf4cf8efc2d900e2c2277d2452db56a29578403516d952660a501bdbb8eff"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1.4,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z14-dpr1.png",
+          "sha256": "66be08f342c9d075959abe1196060c89ec7daefd8f63e7a1d6ee0ad6f26db899"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z14-dpr1.jpg",
+          "sha256": "97433b90916f37f1db1b37b138d4b839ac989dcce339d8d53e159f0c92b5c37e"
+        }
+      }
+    },
+    {
+      "name": "field-y-spring-z1-dpr2",
+      "spring": true,
+      "differingPixels": 211230,
+      "maxChannelDelta": 115,
+      "before": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 2,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z1-dpr2.png",
+          "sha256": "a7367e771d5cc46c6382e6009155c0ba2d9b62ef1e442b9c13cd7b405da40b80"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-spring-z1-dpr2.jpg",
+          "sha256": "947e9f1f30d1df2596989b1eebf9067045a777a4a20bd68821aaa4ab62736af8"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-spring",
+          "savedStateSHA": "a94511e04a70b5c8aea0a8decdbd9926784a5434ad7fbca3fb624a70e3e10fcb",
+          "tick": 32600,
+          "season": "spring",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 2,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+            "/assets/wave43/ground/ridge_seedling_spring_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z1-dpr2.png",
+          "sha256": "7af9f88f0c98f8f3905d885717927d4768d653e7d9bcf2ef489b1c60730575c5"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-spring-z1-dpr2.jpg",
+          "sha256": "064c96b92fc6efb3bca36435fae72057d12abed935ca670164a6e06c725c28d3"
+        }
+      }
+    },
+    {
+      "name": "field-y-summer-z1",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-y-summer",
+          "savedStateSHA": "0b72acb13232ab53c0723fdd18fb84d6ecc43496ec153a24bb1695fe7178a621",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-summer-z1.png",
+          "sha256": "d0b79eb93c2c79ff969ae96afc02e35168d2a2545070cb33165f9da137180ae8"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-summer-z1.jpg",
+          "sha256": "5e6ac0c1bfcad6569c8c6630b0faee2bcfa2282748fcf1b99691a11fdaf23fd1"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-summer",
+          "savedStateSHA": "0b72acb13232ab53c0723fdd18fb84d6ecc43496ec153a24bb1695fe7178a621",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-summer-z1.png",
+          "sha256": "d0b79eb93c2c79ff969ae96afc02e35168d2a2545070cb33165f9da137180ae8"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-summer-z1.jpg",
+          "sha256": "5e6ac0c1bfcad6569c8c6630b0faee2bcfa2282748fcf1b99691a11fdaf23fd1"
+        }
+      }
+    },
+    {
+      "name": "field-y-summer-z06",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-y-summer",
+          "savedStateSHA": "0b72acb13232ab53c0723fdd18fb84d6ecc43496ec153a24bb1695fe7178a621",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-summer-z06.png",
+          "sha256": "cd367244ee59f39299e09b483a1cb83d90048e783ab7b63ca65b3241ad7e6867"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-summer-z06.jpg",
+          "sha256": "1a5cbdd49b085f6d17a5b3493331cb3203daf4f838db95d9a3ab99b6bd35878f"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-summer",
+          "savedStateSHA": "0b72acb13232ab53c0723fdd18fb84d6ecc43496ec153a24bb1695fe7178a621",
+          "tick": 33600,
+          "season": "summer",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-summer-z06.png",
+          "sha256": "cd367244ee59f39299e09b483a1cb83d90048e783ab7b63ca65b3241ad7e6867"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-summer-z06.jpg",
+          "sha256": "1a5cbdd49b085f6d17a5b3493331cb3203daf4f838db95d9a3ab99b6bd35878f"
+        }
+      }
+    },
+    {
+      "name": "field-y-autumn-z1",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-y-autumn",
+          "savedStateSHA": "629ca04a21567983375cb1142c0d5f9af5a59d71e8b5e1af5824cb5fe4ec4d6f",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-autumn-z1.png",
+          "sha256": "9a53cd7e55ad4ccb9b2f3e7844f4700d035d2aa208e80678430c2f8bbfa8155a"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-autumn-z1.jpg",
+          "sha256": "2cb04c6b2c9595245ac75b32f8b7575703aba1f000f0b0b6ba4e20ae0f86c0fc"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-autumn",
+          "savedStateSHA": "629ca04a21567983375cb1142c0d5f9af5a59d71e8b5e1af5824cb5fe4ec4d6f",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-autumn-z1.png",
+          "sha256": "9a53cd7e55ad4ccb9b2f3e7844f4700d035d2aa208e80678430c2f8bbfa8155a"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-autumn-z1.jpg",
+          "sha256": "2cb04c6b2c9595245ac75b32f8b7575703aba1f000f0b0b6ba4e20ae0f86c0fc"
+        }
+      }
+    },
+    {
+      "name": "field-y-autumn-z06",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-y-autumn",
+          "savedStateSHA": "629ca04a21567983375cb1142c0d5f9af5a59d71e8b5e1af5824cb5fe4ec4d6f",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-autumn-z06.png",
+          "sha256": "62ca14d68f43574d1cb668635dd76cada44479f9f3b68ffdaa8030093a7f4db3"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-autumn-z06.jpg",
+          "sha256": "2369e8682718f910bf901305c9e4132bf5d5b0753c0148fd348348aa01cd26cf"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-autumn",
+          "savedStateSHA": "629ca04a21567983375cb1142c0d5f9af5a59d71e8b5e1af5824cb5fe4ec4d6f",
+          "tick": 34600,
+          "season": "autumn",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_fallow_a-v1.png",
+            "/assets/fields/ridge_fallow_b-v1.png",
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-autumn-z06.png",
+          "sha256": "62ca14d68f43574d1cb668635dd76cada44479f9f3b68ffdaa8030093a7f4db3"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-autumn-z06.jpg",
+          "sha256": "2369e8682718f910bf901305c9e4132bf5d5b0753c0148fd348348aa01cd26cf"
+        }
+      }
+    },
+    {
+      "name": "field-y-winter-z1",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-y-winter",
+          "savedStateSHA": "ad77a0cb598e45643cb1c2cd59e745be75c80481943d8118e167479ba156280a",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-winter-z1.png",
+          "sha256": "1b49ae52b157c1c82ba78b1c056fb31bbe4ab766209e855a241608cc3ffac9c0"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-winter-z1.jpg",
+          "sha256": "a80a05ba8d565de65e2c44aafea59f36a6fa57bed1d242547870650dd92deaf6"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-winter",
+          "savedStateSHA": "ad77a0cb598e45643cb1c2cd59e745be75c80481943d8118e167479ba156280a",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 1,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-winter-z1.png",
+          "sha256": "1b49ae52b157c1c82ba78b1c056fb31bbe4ab766209e855a241608cc3ffac9c0"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-winter-z1.jpg",
+          "sha256": "a80a05ba8d565de65e2c44aafea59f36a6fa57bed1d242547870650dd92deaf6"
+        }
+      }
+    },
+    {
+      "name": "field-y-winter-z06",
+      "spring": false,
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "before": {
+        "identity": {
+          "state": "field-y-winter",
+          "savedStateSHA": "ad77a0cb598e45643cb1c2cd59e745be75c80481943d8118e167479ba156280a",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-winter-z06.png",
+          "sha256": "4d0ea9710d728eeb33d885cc153acec7a5b4520bc0b4b24b0f44cb5e80104c2a"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-core-a392694c/field-y-winter-z06.jpg",
+          "sha256": "3832ac09ee0887c3967a56f42bb528336dcdce0bf505dc8169eeeb03d151039b"
+        }
+      },
+      "after": {
+        "identity": {
+          "state": "field-y-winter",
+          "savedStateSHA": "ad77a0cb598e45643cb1c2cd59e745be75c80481943d8118e167479ba156280a",
+          "tick": 35600,
+          "season": "winter",
+          "tile": [
+            21.5,
+            50.5
+          ],
+          "zoom": 0.6,
+          "width": 1280,
+          "height": 800,
+          "dpr": 1,
+          "browser": "151.0.7922.34",
+          "renderer": "headless-disable-gpu",
+          "visualTime": {
+            "date": 1700000000000,
+            "performance": 12345
+          },
+          "captureProtocol": 3,
+          "expectedRequests": [
+            "/assets/fields/ridge_growing_a-v1.png",
+            "/assets/fields/ridge_growing_b-v1.png",
+            "/assets/fields/ridge_ploughed_a-v1.png",
+            "/assets/fields/ridge_ploughed_b-v1.png",
+            "/assets/fields/ridge_seedling_a-v1.png",
+            "/assets/fields/ridge_seedling_b-v1.png",
+            "/assets/fields/ridge_stubble_a-v1.png",
+            "/assets/fields/ridge_stubble_b-v1.png",
+            "/assets/wave15/fields/ridge_fallow_winter-v1.png"
+          ]
+        },
+        "rawPng": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-winter-z06.png",
+          "sha256": "4d0ea9710d728eeb33d885cc153acec7a5b4520bc0b4b24b0f44cb5e80104c2a"
+        },
+        "rawJpeg": {
+          "path": "output/art-architecture/field-main-spring3-cd399e4a/field-y-winter-z06.jpg",
+          "sha256": "3832ac09ee0887c3967a56f42bb528336dcdce0bf505dc8169eeeb03d151039b"
+        }
+      }
+    }
+  ],
+  "previewPolicy": "Selected original JPEG bytes: spring x/y at1/.6 pairs; summer/winter at1/.6 shared exact pairs. All20 identities and full raw refs including spring1.4/DPR2 retained."
+}

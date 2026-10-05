@@ -1,0 +1,220 @@
+{
+  "scope": "Linked external packages; sizes and committed/prospective distinctions from copied audit. Images are not duplicated.",
+  "packages": [
+    {
+      "name": "wave37-reconcile",
+      "repositoryPath": "docs/verification/wave37-reconcile",
+      "absolutePath": "/Users/rexxa/fls-astra-renderB/docs/verification/wave37-reconcile",
+      "reportPath": "docs/verification/wave37-reconcile/REPORT.md",
+      "indexPath": "docs/verification/wave37-reconcile/SHA256SUMS.json",
+      "indexSHA256": "c418d8e52951bcde3aa62df70129dff9e0d0a07130c7ec17cb546001eaaf2221",
+      "audit": {
+        "name": "wave37-reconcile",
+        "trackedFiles": 14,
+        "trackedBytes": 1208064,
+        "prospectivePublishedFiles": 15,
+        "prospectiveBytes": 1210477,
+        "under3MiB": true,
+        "hashIndexExists": true,
+        "indexEntries": 14,
+        "missing": [],
+        "hashMismatch": [],
+        "unindexed": [],
+        "indexedNotYetTracked": [],
+        "jpegCount": 6,
+        "referenceCoverageByFilename": {
+          "summer-z1": true,
+          "summer-z06": true,
+          "winter-z1": true,
+          "winter-z06": true
+        },
+        "indexSha256": "c418d8e52951bcde3aa62df70129dff9e0d0a07130c7ec17cb546001eaaf2221"
+      }
+    },
+    {
+      "name": "season-core",
+      "repositoryPath": "docs/verification/season-core",
+      "absolutePath": "/Users/rexxa/fls-astra-renderB/docs/verification/season-core",
+      "reportPath": "docs/verification/season-core/REPORT.md",
+      "indexPath": "docs/verification/season-core/SHA256SUMS.json",
+      "indexSHA256": "606afbf6b86ddadfd6841ae92cc9e0a8d5ad687c23ce623c3d144e2c1879bd2c",
+      "audit": {
+        "name": "season-core",
+        "trackedFiles": 24,
+        "trackedBytes": 2891921,
+        "prospectivePublishedFiles": 24,
+        "prospectiveBytes": 2891921,
+        "under3MiB": true,
+        "hashIndexExists": true,
+        "indexEntries": 23,
+        "missing": [],
+        "hashMismatch": [],
+        "unindexed": [],
+        "indexedNotYetTracked": [],
+        "jpegCount": 14,
+        "referenceCoverageByFilename": {
+          "summer-z1": true,
+          "summer-z06": true,
+          "winter-z1": true,
+          "winter-z06": true
+        },
+        "indexSha256": "606afbf6b86ddadfd6841ae92cc9e0a8d5ad687c23ce623c3d144e2c1879bd2c"
+      }
+    },
+    {
+      "name": "spring9-data",
+      "repositoryPath": "docs/verification/spring9-data",
+      "absolutePath": "/Users/rexxa/fls-astra-renderB/docs/verification/spring9-data",
+      "reportPath": "docs/verification/spring9-data/REPORT.md",
+      "indexPath": "docs/verification/spring9-data/SHA256SUMS.json",
+      "indexSHA256": "841aa51398f5cb75bad39b9cddc96d002442e50e92e1c7f96f9a8be7fa1fbc72",
+      "audit": {
+        "name": "spring9-data",
+        "trackedFiles": 27,
+        "trackedBytes": 1742850,
+        "prospectivePublishedFiles": 27,
+        "prospectiveBytes": 1742850,
+        "under3MiB": true,
+        "hashIndexExists": true,
+        "indexEntries": 26,
+        "missing": [],
+        "hashMismatch": [],
+        "unindexed": [],
+        "indexedNotYetTracked": [],
+        "jpegCount": 10,
+        "referenceCoverageByFilename": {
+          "summer-z1": true,
+          "summer-z06": true,
+          "winter-z1": true,
+          "winter-z06": true
+        },
+        "indexSha256": "841aa51398f5cb75bad39b9cddc96d002442e50e92e1c7f96f9a8be7fa1fbc72"
+      }
+    },
+    {
+      "name": "field-core",
+      "repositoryPath": "docs/verification/field-core",
+      "absolutePath": "/Users/rexxa/fls-astra-renderB/docs/verification/field-core",
+      "reportPath": "docs/verification/field-core/REPORT.md",
+      "indexPath": "docs/verification/field-core/SHA256SUMS.json",
+      "indexSHA256": "13497245e57d3ccbb774cac06902ba52baf99ac7755576a80793fcdd18e2ccdf",
+      "audit": {
+        "name": "field-core",
+        "trackedFiles": 26,
+        "trackedBytes": 2344601,
+        "prospectivePublishedFiles": 26,
+        "prospectiveBytes": 2344601,
+        "under3MiB": true,
+        "hashIndexExists": true,
+        "indexEntries": 25,
+        "missing": [],
+        "hashMismatch": [],
+        "unindexed": [],
+        "indexedNotYetTracked": [],
+        "jpegCount": 7,
+        "referenceCoverageByFilename": {
+          "summer-z1": true,
+          "summer-z06": true,
+          "winter-z1": true,
+          "winter-z06": true
+        },
+        "indexSha256": "13497245e57d3ccbb774cac06902ba52baf99ac7755576a80793fcdd18e2ccdf"
+      }
+    },
+    {
+      "name": "field-spring3-data",
+      "repositoryPath": "docs/verification/field-spring3-data",
+      "absolutePath": "/Users/rexxa/fls-astra-renderB/docs/verification/field-spring3-data",
+      "reportPath": "docs/verification/field-spring3-data/REPORT.md",
+      "indexPath": "docs/verification/field-spring3-data/SHA256SUMS.json",
+      "indexSHA256": "37934ddc6b0c5b4874f00e392749c9d6bb53ad3b245fd28ff41ccc715459abb9",
+      "audit": {
+        "name": "field-spring3-data",
+        "trackedFiles": 34,
+        "trackedBytes": 2053610,
+        "prospectivePublishedFiles": 34,
+        "prospectiveBytes": 2053610,
+        "under3MiB": true,
+        "hashIndexExists": true,
+        "indexEntries": 33,
+        "missing": [],
+        "hashMismatch": [],
+        "unindexed": [],
+        "indexedNotYetTracked": [],
+        "jpegCount": 12,
+        "referenceCoverageByFilename": {
+          "summer-z1": true,
+          "summer-z06": true,
+          "winter-z1": true,
+          "winter-z06": true
+        },
+        "indexSha256": "37934ddc6b0c5b4874f00e392749c9d6bb53ad3b245fd28ff41ccc715459abb9"
+      }
+    },
+    {
+      "name": "heath-core",
+      "repositoryPath": "docs/verification/heath-core",
+      "absolutePath": "/Users/rexxa/fls-astra-renderB/docs/verification/heath-core",
+      "reportPath": "docs/verification/heath-core/REPORT.md",
+      "indexPath": "docs/verification/heath-core/SHA256SUMS.json",
+      "indexSHA256": "ee682759085cfd0d7d597e8a09073d5a12b92795cebfa903b0bfaed1564abbc1",
+      "audit": {
+        "name": "heath-core",
+        "trackedFiles": 40,
+        "trackedBytes": 1423909,
+        "prospectivePublishedFiles": 40,
+        "prospectiveBytes": 1423909,
+        "under3MiB": true,
+        "hashIndexExists": true,
+        "indexEntries": 39,
+        "missing": [],
+        "hashMismatch": [],
+        "unindexed": [],
+        "indexedNotYetTracked": [],
+        "jpegCount": 7,
+        "referenceCoverageByFilename": {
+          "summer-z1": true,
+          "summer-z06": true,
+          "winter-z1": true,
+          "winter-z06": true
+        },
+        "indexSha256": "ee682759085cfd0d7d597e8a09073d5a12b92795cebfa903b0bfaed1564abbc1"
+      }
+    },
+    {
+      "name": "heath-data",
+      "repositoryPath": "docs/verification/heath-data",
+      "absolutePath": "/Users/rexxa/fls-astra-renderB/docs/verification/heath-data",
+      "reportPath": "docs/verification/heath-data/REPORT.md",
+      "indexPath": "docs/verification/heath-data/SHA256SUMS.json",
+      "indexSHA256": "549ada92cfea612ee9823cb238ce75492cb59678ad1adecf4f7f79b34c7a44ca",
+      "audit": {
+        "name": "heath-data",
+        "trackedFiles": 31,
+        "trackedBytes": 1530619,
+        "prospectivePublishedFiles": 35,
+        "prospectiveBytes": 1548703,
+        "under3MiB": true,
+        "hashIndexExists": true,
+        "indexEntries": 34,
+        "missing": [],
+        "hashMismatch": [],
+        "unindexed": [],
+        "indexedNotYetTracked": [
+          "reference4-export-attestation.txt",
+          "reference4-parent-check.json",
+          "reference4-summary.json",
+          "reference4-views.json"
+        ],
+        "jpegCount": 8,
+        "referenceCoverageByFilename": {
+          "summer-z1": true,
+          "summer-z06": true,
+          "winter-z1": true,
+          "winter-z06": true
+        },
+        "indexSha256": "549ada92cfea612ee9823cb238ce75492cb59678ad1adecf4f7f79b34c7a44ca"
+      }
+    }
+  ]
+}

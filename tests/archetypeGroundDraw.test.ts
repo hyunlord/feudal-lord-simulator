@@ -1,3 +1,4 @@
+import { ART_REGISTRY } from '../src/render/art/wave42Registry';
 /**
  * LAND-UI the lands' ground (Wave 22, archetypeGroundModel.ts / archetypeGroundDraw.ts): every key the MA-5 layer
  * produces resolves to an installed file in every season, the season map (LU-D1), drained ground as meadow (LU-D5), the
@@ -38,6 +39,8 @@ const unwarp = (ground: { seed: number; width: number; height: number }, point: 
 };
 const SEASONS: readonly SeasonIndex[] = [0, 1, 2, 3];
 const installed = (key: string): boolean => {
+  const managed = ART_REGISTRY.entries('ground-prop').find(e => e.kind === 'ground-prop' && e.placement === 'land' && (e.baseId === key || e.id === key));
+  if (managed !== undefined) return existsSync(new URL(`../public/${managed.image.url}`, import.meta.url));
   const meta = (WAVE22_GROUND_IMAGES as Record<string, { readonly url: string } | undefined>)[key];
   return meta !== undefined && existsSync(new URL(`../public/${meta.url}`, import.meta.url));
 };
@@ -57,13 +60,13 @@ test("every key the layer produces on five lands x seeds 1-3 resolves to an inst
         for (const file of files) assert.ok(installed(file), `${id} seed ${seed} ${key} season ${season}: ${file}`);
       }
     }
-    for (const season of SEASONS) for (const file of landArtKeys(ground, season)) assert.ok(installed(file), `${id} ${file}`);
+    for (const season of SEASONS) for (const file of landArtKeys(ground, season)) assert.ok(installed(file.key), `${id} ${file.key}`);
   }
 });
 
 test("the installed set is exactly what the layer can name: no v1 fill, no unnamed decal", () => {
   const keys = Object.keys(WAVE22_GROUND_IMAGES);
-  assert.equal(keys.length, 79);
+  assert.equal(keys.length, 78);
   assert.ok(keys.every(key => !/-v[0-9]$/.test(key) && !key.includes("heath_patch_b") && !key.includes("heath_patch_c")));
   assert.equal(keys.filter(key => key.startsWith("terrain/")).length, 30);
   for (const key of keys) {
@@ -186,12 +189,12 @@ test("the chalk downs' field edges are dry-stone walls; the riverside keeps its 
 test("the land's first readiness check starts every season's art loading (the turn's staging then finds it ready)", () => {
   const requested = new Set<string>();
   // The first test here to touch the art: manifestArt keeps its entries for the file's later tests.
-  (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; onload: (() => void) | null = null; onerror: unknown = null;
+  (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; decode() { return Promise.resolve(); } onload: (() => void) | null = null; onerror: unknown = null;
     set src(url: string) { requested.add(url); queueMicrotask(() => this.onload?.()); } };
   const ground = landGroundOf({ ...land("core:chalk_downs", 2), tiles: [...land("core:chalk_downs", 2).tiles] })!;
   landArtReadiness(ground, 1);
   for (const season of SEASONS) for (const key of landArtKeys(ground, season)) {
-    assert.ok([...requested].some(url => url.endsWith(WAVE22_GROUND_IMAGES[key].url)), `${key} requested`);
+    assert.ok([...requested].some(url => url.endsWith((key.owner === 'legacy' ? WAVE22_GROUND_IMAGES[key.key].url : ART_REGISTRY.entry(key.key)?.image.url ?? 'absent'))), `${key} requested`);
   }
 });
 
@@ -211,7 +214,7 @@ function countingContext() {
 
 test("draw calls one land chunk adds: two fills per fill region, one per strip quad, one blit per decal", () => {
   // Node has no Image: a stand-in that is loaded at once, so the land's art is ready.
-  (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; onload: (() => void) | null = null; onerror: unknown = null;
+  (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; decode() { return Promise.resolve(); } onload: (() => void) | null = null; onerror: unknown = null;
     set src(_url: string) { queueMicrotask(() => this.onload?.()); } };
   return new Promise<void>(resolve => {
     for (const id of NEW_LANDS) { const ground = landGroundOf(land(id, 1))!; for (const season of SEASONS) landArtReadiness(ground, season); }
@@ -227,7 +230,7 @@ test("draw calls one land chunk adds: two fills per fill region, one per strip q
           const fills = counts.fill;
           const edgeQuads = drawLandEdges(context, ground, plan, 1);
           const shoreQuads = drawLandShoreStrips(context, ground, scene.shore, plan.waterLoops, { left: plan.cx * 8 - 0.5, top: plan.cy * 8 - 0.5, right: plan.cx * 8 + 7.5, bottom: plan.cy * 8 + 7.5 });
-          const decals = drawLandDecals(context, ground, state.tiles, plan);
+          const decals = drawLandDecals(context, ground, state.tiles, plan, 1);
           assert.equal(counts.fill, fills + edgeQuads + shoreQuads);
           const total = counts.fill + counts.drawImage;
           if (total > worst.total) worst = { fills, quads: edgeQuads + shoreQuads, decals, total, chunk: `${plan.cx},${plan.cy}` };
@@ -335,7 +338,7 @@ test("LU-D11 / NAT-4: the forest edge is Wave 41's: summer woodland_edge_a | b (
   assert.ok(woodland.some(region => region.loops.some(loop => loop.strips.includes(FOREST_EDGE_FAMILY))), "the woodland floor's edges carry the strip");
   assert.ok(woodland.every(region => region.loops.every(loop => loop.strips.every(strip => strip === null || strip === FOREST_EDGE_FAMILY))));
   // Its file is part of the land's readiness (and never a Wave 22 key); a land without the woodland floor adds nothing.
-  for (const season of SEASONS) assert.ok(landArtKeys(forest, season).every(key => !key.startsWith(FOREST_EDGE_FAMILY) && !key.includes("woodland_grass_edge")));
+  for (const season of SEASONS) assert.ok(landArtKeys(forest, season).every(key => !key.key.startsWith(FOREST_EDGE_FAMILY) && !key.key.includes("woodland_grass_edge")));
   assert.match(forestEdgeReadiness(forest.fillBase, 1), /^:f[01]$/);
   const downs = landGroundOf(land("core:chalk_downs", 1))!;
   assert.equal(downs.fillBase.includes(FOREST_EDGE_FILL), false);

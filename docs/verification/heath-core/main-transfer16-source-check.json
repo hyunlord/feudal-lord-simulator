@@ -1,0 +1,121 @@
+{
+  "status": "PARENT_REPORTED_GUARDED_APPLY_LOCAL16_SHA_VERIFIED",
+  "head": "d367382392a4806e683b91463f3996b7654704d6",
+  "operations": [
+    {
+      "path": "scripts/installWave22.py",
+      "beforeSha256": "8f3eb981cf98e6c31bf15cca8670b4163e6b82c4447e27486116b293f3cb906a",
+      "afterSha256": "b862fb897068cd3b0dc9f2ae972dd5d1773fa914281a0d2781f845c2a89e9a8c",
+      "sourcePreparedSha256": "b862fb897068cd3b0dc9f2ae972dd5d1773fa914281a0d2781f845c2a89e9a8c",
+      "action": "GUARDED_COPY_IF_BASELINE_UNCHANGED"
+    },
+    {
+      "path": "scripts/wave22CatalogOwnership.ts",
+      "beforeSha256": null,
+      "afterSha256": "205295d27f9bc90b13d248bd8ce7cf4bbfb1435c485626da224622d476d4c693",
+      "sourcePreparedSha256": "205295d27f9bc90b13d248bd8ce7cf4bbfb1435c485626da224622d476d4c693",
+      "action": "ADD_IF_ABSENT"
+    },
+    {
+      "path": "src/render/archetypeGroundDraw.ts",
+      "beforeSha256": "12a48fa96542fcb80bb93dc869df40f1aaf6d1e7038c078faf9790fe4319f03b",
+      "afterSha256": "fc2a6d46544fa26dd563883a5521976b3f17954625279d3c44b4aae289b34ea7",
+      "sourcePreparedSha256": "fc2a6d46544fa26dd563883a5521976b3f17954625279d3c44b4aae289b34ea7",
+      "action": "GUARDED_COPY_IF_BASELINE_UNCHANGED"
+    },
+    {
+      "path": "src/render/archetypeGroundModel.ts",
+      "beforeSha256": "5782a1bbeb81c3754f286115b755b12a7a586ee04109941fbf8529bd526f4780",
+      "afterSha256": "7ce4baca498e3237340f0d7dcb7f12ad917611296aef35133e7394f531084963",
+      "sourcePreparedSha256": "7ce4baca498e3237340f0d7dcb7f12ad917611296aef35133e7394f531084963",
+      "action": "GUARDED_COPY_IF_BASELINE_UNCHANGED"
+    },
+    {
+      "path": "src/render/art/artContract.schema.json",
+      "beforeSha256": "b1b79e9a9d8b1e9642b2ded52aa7e93c5c54f5df18755c6db88b4cd5baf22bd6",
+      "afterSha256": "6807280ac14ebf4b422355c30220cdedfb613270d95196e50a5e38fe684ef691",
+      "sourcePreparedSha256": "b922e34d00577d3c641710ff4122f8ab771791800c8562f391bb824792ed752f",
+      "action": "SEMANTIC_MERGE"
+    },
+    {
+      "path": "src/render/art/artContract.ts",
+      "beforeSha256": "4bb7b10bd6d74b17adacf17f07ee05d3b2d82b16c5d35edaf1817c03c50acc00",
+      "afterSha256": "3b3d8f26e3438f10060283e3f0b8a6415a39506fd1d7ca102d235ace726fe10c",
+      "sourcePreparedSha256": "c425fe6ed836efc95b4ad3c04c15a5cf939fbecdcbdb13560df9170f126db754",
+      "action": "SEMANTIC_MERGE"
+    },
+    {
+      "path": "src/render/art/artRegistryValidation.ts",
+      "beforeSha256": "3218b0b412ee9c3988a693c9bddfc246a2ac8cdba476426aa42f9f710ed1a7c7",
+      "afterSha256": "2acf463cc4fa0fef3e8375f0dc017bfa04486d5c8363d8661de5e9d78fa73629",
+      "sourcePreparedSha256": "fa1789d3bb2a3d3d0023176d3f7eb76190077a76b4287aadc037d4996d77c342",
+      "action": "SEMANTIC_MERGE"
+    },
+    {
+      "path": "src/render/art/artSelection.ts",
+      "beforeSha256": "5f0e279d9b55b370dddeb2eca7beb8b4c83d2c1a708305cc9f3bbb012989575f",
+      "afterSha256": "f216442e3d80afc9598e1b8d4681bb0a2a6980cf80347e8a9ce1d403d70ed532",
+      "sourcePreparedSha256": "49e50f9fe82f715036c6633d97e2418cb1c94764a5606c0d9372a3fdd7a69566",
+      "action": "SEMANTIC_MERGE"
+    },
+    {
+      "path": "src/render/art/catalog.json",
+      "beforeSha256": "2bf7404a70f1a6c99c34a3fa4f2905800a0e8692f40f89566240375ab1c9096b",
+      "afterSha256": "b161bdcfbb08098fe6ba36bd45e2ccd3a1f02670fed5024a84b900f971b3d54b",
+      "sourcePreparedSha256": "eb31795370c98473c665166b9751c26e01a6e5e63dc1bf5e2820f61e83fcfc96",
+      "action": "SEMANTIC_MERGE"
+    },
+    {
+      "path": "src/render/art/landDecalArt.ts",
+      "beforeSha256": null,
+      "afterSha256": "bd2188a2c885ecb124cef22263acf75dad8fa6186faacd50cd93b0e663feb016",
+      "sourcePreparedSha256": "bd2188a2c885ecb124cef22263acf75dad8fa6186faacd50cd93b0e663feb016",
+      "action": "ADD_IF_ABSENT"
+    },
+    {
+      "path": "src/render/art/landDecalValidation.ts",
+      "beforeSha256": null,
+      "afterSha256": "1ed1077ab8b01b2bdfd6f7a1afa862c997c7ef950dc30498ee9cb6d4bf2db00a",
+      "sourcePreparedSha256": "1ed1077ab8b01b2bdfd6f7a1afa862c997c7ef950dc30498ee9cb6d4bf2db00a",
+      "action": "ADD_IF_ABSENT"
+    },
+    {
+      "path": "src/render/drawTerrainBoundaryV2.ts",
+      "beforeSha256": "854f014c6a0366919ef86a192d5d26989d878098540135c652a308612f5e99d0",
+      "afterSha256": "c1578730cdc6b29f5c0fe6b7b9eadc4fb248bfccc0e66ea7d990ba97f2fcdd58",
+      "sourcePreparedSha256": "2abff68392766a58fc28855f98fc1014c33c8c0d228024871b9dd339bc7356f6",
+      "action": "SEMANTIC_MERGE"
+    },
+    {
+      "path": "src/render/wave22GroundManifest.generated.ts",
+      "beforeSha256": "2fdf13f97c326de2bcd5d1f5c7027d07c7f070fa76d6c0c7b21809887a557992",
+      "afterSha256": "6d8b0fd6ef622cffc851f4be733a445f17da2aed892bab4c93d5be66a93dbc78",
+      "sourcePreparedSha256": "6d8b0fd6ef622cffc851f4be733a445f17da2aed892bab4c93d5be66a93dbc78",
+      "action": "GUARDED_COPY_IF_BASELINE_UNCHANGED"
+    },
+    {
+      "path": "tests/archetypeGroundDraw.test.ts",
+      "beforeSha256": "af987aaa4e043a3f4a2f16995fb0eaef83ecd2ef75ffc86d77386c75db19b4e4",
+      "afterSha256": "e98c3fe73bca25d811ea743fa4e775b5a3d98f95b236ca1e35bd0ffc099a6712",
+      "sourcePreparedSha256": "e98c3fe73bca25d811ea743fa4e775b5a3d98f95b236ca1e35bd0ffc099a6712",
+      "action": "GUARDED_COPY_IF_BASELINE_UNCHANGED"
+    },
+    {
+      "path": "tests/artLandDecal.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "f5505d67e376da392446735802b5f02667661e1af3706f25df339f20a16d0c13",
+      "sourcePreparedSha256": "f5505d67e376da392446735802b5f02667661e1af3706f25df339f20a16d0c13",
+      "action": "ADD_IF_ABSENT"
+    },
+    {
+      "path": "tests/installWave22Ownership.test.ts",
+      "beforeSha256": null,
+      "afterSha256": "213515052e6fc73290957bd6c41c91d50086ba8bfc35669c947540d27cebdb9b",
+      "sourcePreparedSha256": "213515052e6fc73290957bd6c41c91d50086ba8bfc35669c947540d27cebdb9b",
+      "action": "ADD_IF_ABSENT"
+    }
+  ],
+  "protected4280": "Actual guarded application receipt: main-transfer-receipt.json",
+  "mainFocused305": "PASS_RECORDED_IN_MAIN_CORE_STATIC",
+  "coreRuntime": "NOT_RUN"
+}

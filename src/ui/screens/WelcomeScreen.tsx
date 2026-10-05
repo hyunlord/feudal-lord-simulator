@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type KeyboardEvent as ReactKeyboardEvent, type MouseEvent, type PointerEvent } from "react";
-import { CORE_SCENARIOS, DEFAULT_SCENARIO_ID } from "../../content/scenario/coreScenarios";
+import { CORE_SCENARIOS, DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "../../content/scenario/coreScenarios";
 import { SCENARIO_COPY } from "../../content/scenario/scenarioCopy.ko";
 import { KO_UI } from "../../content/locale.ko";
 import { SAVE_COPY } from "../../content/saveCopy.ko";
@@ -101,19 +101,28 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
   );
 }
 
-/** New-game mode choice (B2): one button per registered scenario, in registration order; off while the land cannot start. */
+/** The start screen's modes: the core scenarios in registration order, then the lord's slice (LM-R1, Astra B01: lord mode
+ * can be played before LM-R3 makes it the default start). */
+const START_MODES: readonly string[] = [...CORE_SCENARIOS.map(scenario => scenario.id), LORD_SLICE_SCENARIO_ID];
+const MODE_KEY: Readonly<Record<string, "campaign_market_town" | "sandbox" | "lord_slice">> =
+  { [DEFAULT_SCENARIO_ID]: "campaign_market_town", [SANDBOX_SCENARIO_ID]: "sandbox", [LORD_SLICE_SCENARIO_ID]: "lord_slice" };
+
+/** New-game mode choice (B2): one button per mode; off while the land cannot start. */
 function ScenarioModeButtons({ onChoose, playable }: {
   readonly onChoose: (scenarioId: string) => void;
   readonly playable: boolean;
 }) {
   return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
-    {CORE_SCENARIOS.map(scenario => <div key={scenario.id}>
-      <Button className="autoplay-toggle save-control-button" type="button"
-        data-scenario={scenario.id} aria-disabled={playable ? undefined : true} isolate onPress={() => { if (playable) onChoose(scenario.id); }} variant="primary">
-        {SCENARIO_COPY.modeButtons[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}
-      </Button>
-      <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[scenario.id === DEFAULT_SCENARIO_ID ? "campaign_market_town" : "sandbox"]}</p>
-    </div>)}
+    {START_MODES.map(id => {
+      const key = MODE_KEY[id] ?? "sandbox";
+      return <div key={id}>
+        <Button className="autoplay-toggle save-control-button" type="button"
+          data-scenario={id} aria-disabled={playable ? undefined : true} isolate onPress={() => { if (playable) onChoose(id); }} variant="primary">
+          {SCENARIO_COPY.modeButtons[key]}
+        </Button>
+        <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[key]}</p>
+      </div>;
+    })}
   </div>;
 }
 

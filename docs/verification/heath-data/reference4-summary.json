@@ -1,0 +1,389 @@
+{
+  "status": "HEATH_POST_PROMOTION_REFERENCE4_PASS",
+  "pass": true,
+  "head": "db17321a907b5c0c72560fe2fab29966f38963d1",
+  "baselineHead": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "views": 4,
+  "identityEqual": 4,
+  "rgbaExact": 4,
+  "aaPass": 4,
+  "errors": [],
+  "springViews": 0,
+  "nonSpringViews": 4,
+  "dpr2Views": 0,
+  "uniqueExpectedUrls": [
+    "/assets/wave22/decals/heath_patch_a.png",
+    "/assets/wave22/decals/heath_patch_b.png",
+    "/assets/wave22/decals/heath_patch_c.png"
+  ],
+  "rows": [
+    {
+      "name": "heath-chalk-summer-z1",
+      "identity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "identityEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-summer-z1.png",
+      "beforePngSHA": "31d85ff396c9a63b47dbff0c89b0958a08de147382988e0f45780d8ded6b6846",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-promotion-reference-db17321a/heath-chalk-summer-z1.png",
+      "afterPngSHA": "31d85ff396c9a63b47dbff0c89b0958a08de147382988e0f45780d8ded6b6846",
+      "repeatPngSHA": "31d85ff396c9a63b47dbff0c89b0958a08de147382988e0f45780d8ded6b6846",
+      "rgbaSHA": "0b01ca2acbc53c139f1a2b8750074db3ed382dadc0111bd2368d61ac8e326c52",
+      "differingPixels": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-summer-z06",
+      "identity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "identityEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-summer-z06.png",
+      "beforePngSHA": "951a8ed45ffee274c1acbe320def19de339a239f405d6461990c3e23bdcb22fd",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-promotion-reference-db17321a/heath-chalk-summer-z06.png",
+      "afterPngSHA": "951a8ed45ffee274c1acbe320def19de339a239f405d6461990c3e23bdcb22fd",
+      "repeatPngSHA": "951a8ed45ffee274c1acbe320def19de339a239f405d6461990c3e23bdcb22fd",
+      "rgbaSHA": "aa19e8914eec8adb46f125c5446e96839161a0d6a2615aa735dde7f1b742b4bc",
+      "differingPixels": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-winter-z1",
+      "identity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "identityEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-winter-z1.png",
+      "beforePngSHA": "bf7d250ec11f8bd3c0c55379bcb1aba4bd6e272e44f4540fc797a4225474ba28",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-promotion-reference-db17321a/heath-chalk-winter-z1.png",
+      "afterPngSHA": "bf7d250ec11f8bd3c0c55379bcb1aba4bd6e272e44f4540fc797a4225474ba28",
+      "repeatPngSHA": "bf7d250ec11f8bd3c0c55379bcb1aba4bd6e272e44f4540fc797a4225474ba28",
+      "rgbaSHA": "22566404389c9c9be5e2d860536d2533bef13899e6a0383041bed84d59efff6d",
+      "differingPixels": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-winter-z06",
+      "identity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "identityEqual": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-winter-z06.png",
+      "beforePngSHA": "76994f6199a3e95fc7ec79552c756229fabf71bc781283ca9362fbdde667804d",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-promotion-reference-db17321a/heath-chalk-winter-z06.png",
+      "afterPngSHA": "76994f6199a3e95fc7ec79552c756229fabf71bc781283ca9362fbdde667804d",
+      "repeatPngSHA": "76994f6199a3e95fc7ec79552c756229fabf71bc781283ca9362fbdde667804d",
+      "rgbaSHA": "8770c55353bc6a8a25f3986ceb635e4680c817d9da7a5e5bf1dafc0615c2ca53",
+      "differingPixels": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    }
+  ],
+  "remoteFreeze": {
+    "pass": true,
+    "head": "db17321a907b5c0c72560fe2fab29966f38963d1",
+    "hashCount": 4311,
+    "absentCount": 6,
+    "differences": []
+  },
+  "captureReceipt": {
+    "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-promotion-reference-db17321a/captures.json",
+    "sha256": "c5911207562ccb21126a7f4723c3edf3a19cfb9f9f1a7203930c692c2691d187"
+  },
+  "inputFreeze": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/heath-promotion-reference-freeze.json",
+    "sha256": "0a6edce94013a654d6d1bdcb9685f5643b10745219812bab818995c2e5cfc666"
+  },
+  "coverageScope": "Expected URLs must be requested, decoded, and observed in image/canvas/pattern paint lineage reaching the captured canvas; coverage set is explicit per view, not a claim of final visible pixels or occlusion.",
+  "nativeVisual": "NOT_PERFORMED_BY_EXECUTOR_NUMERIC_REFERENCE_ONLY",
+  "comparison": "Actual fd68f124 DATA30 baseline; summer/winter four references are integrated smoke only, not FIELD spring coverage.",
+  "remoteExit": 0,
+  "fetchExit": 0,
+  "run": "astra-heath-promotion-reference-db17321",
+  "trackedDirty": false,
+  "exportClassification": "TRACKED_CLEAN_EXACT_COMMIT",
+  "exportAttestation": {
+    "head": "db17321a907b5c0c72560fe2fab29966f38963d1",
+    "trackedDirty": false,
+    "allTrackedPathsEqualHead": true,
+    "runtimeFreeze": {
+      "pass": true,
+      "head": "db17321a907b5c0c72560fe2fab29966f38963d1",
+      "hashCount": 4311,
+      "absentCount": 6,
+      "differences": []
+    },
+    "rawPath": ".omo/evidence/heath-promotion-reference-export-attestation.txt",
+    "rawSHA256": "18b42bda3dd1747ec294d99dbb2d86c1703bb75e308debba13a00edcdfe297d1",
+    "method": "Remote git rev-parse HEAD, git diff --name-only HEAD, git status --porcelain --untracked-files=no, then startup SHA receipt; no intervening diff/status lines."
+  },
+  "nativePNGComparisons": 12,
+  "timing": {
+    "prepareSeconds": 8.1,
+    "waitSeconds": 0,
+    "commandSeconds": 47.7
+  }
+}

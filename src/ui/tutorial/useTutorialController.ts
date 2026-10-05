@@ -18,7 +18,7 @@ import { humanizeTicks } from "../gameTimeCopy.ko";
 import { TUTORIAL_COPY } from "./tutorialCopy.ko";
 import type { StewardTone } from "../uiArt";
 import {
-  currentStepIndex, newCount, placedCount, stepAction, stepProgress, stepTarget, suggestedBuildingSpot, tutorialAccess,
+  currentStepIndex, newCount, placedCount, stepAction, stepProgress, stepTarget, suggestedBuildingSpot, tutorialAccess, directionAccess,
   TUTORIAL_STEP_IDS, type BuildCategoryKey, type ControlLayer, type TutorialAccess, type TutorialAction, type TutorialStepId,
 } from "./tutorialModel";
 import { readTutorialRecord, writeTutorialRecord, type TutorialRecord } from "./tutorialStore";
@@ -27,6 +27,7 @@ import { chapterGoals } from "../../engine/politics";
 import { plagueRecoveryPermille } from "../../engine/plague";
 import { CHAPTER_COPY } from "../chapterCopy.ko";
 import { legacyGoalProgress } from "../legacyGoalProgress";
+import { goalPinFor, type GoalPinAction } from "../hud/goalPinModel";
 
 // UX-1 tutorial controller (App shell): the record, the current step, the goal cards (the active one, the last
 // completion held SUCCESS_HOLD_MS, "이미 갖춰짐 ✓" for steps the game had already met), unlock banners, the steward's
@@ -121,6 +122,8 @@ export function useTutorialController(input: {
   readonly onOpenDrawer: () => void;
   /** QA-025: the chapter card's "목표 보기" — the chapter's goal screen (a modal: a paused game stays paused). */
   readonly onOpenChapterGoals: () => void;
+  /** LM-R1: the settlement card's button does its pinned next action (a store, the ledger, the goal log). */
+  readonly onGoalAction?: (action: GoalPinAction) => void;
 }): TutorialController {
   const { state, nowMs } = input;
   const [record, setRecordState] = useState<TutorialRecord | null>(() => readTutorialRecord());
@@ -135,7 +138,9 @@ export function useTutorialController(input: {
   const index = enabled ? currentStepIndex(state, acks) : TUTORIAL_STEP_IDS.length;
   const running = enabled && index < TUTORIAL_STEP_IDS.length;
   const defenseOpen = state.era !== "hamlet" || canProclaimPalisadeEra(state);
-  const access = useMemo(() => tutorialAccess(enabled, index, defenseOpen), [enabled, index, defenseOpen]);
+  const direction = directionAccess(state);
+  // why: the two fields, not the object (it is new every render)
+  const access = useMemo(() => tutorialAccess(enabled, index, defenseOpen, direction), [enabled, index, defenseOpen, direction.open, direction.lock]); // eslint-disable-line react-hooks/exhaustive-deps
   const stepId = running ? TUTORIAL_STEP_IDS[index]! : null;
   const zoneRadius = input.zoneTool?.radius ?? 2;
   const armed = { tool: input.selectedTool, zone: input.zoneTool?.target ?? null, layer: input.layer };
@@ -238,6 +243,7 @@ export function useTutorialController(input: {
   // General mode (tutorial off or finished): the settlement goal and, after the tutorial, the market and chapel card.
   const general = generalCards(state, enabled, input.selectedTool);
   const press = (cardKey: string) => {
+    if (cardKey === "settlement" && general.pinAction !== null && input.onGoalAction !== undefined) { input.onGoalAction(general.pinAction); return; }
     const decided = goalCardPress(cardKey, { stepId, action, generalActions: general.actions });
     if (decided.resume) resume();
     if (decided.run !== null) run(decided.run);
@@ -253,7 +259,7 @@ export function useTutorialController(input: {
     const copy = TUTORIAL_COPY.cards[COPY_KEY[stepId]];
     cards.push({ key: stepId, title: copy.title, why: copy.why, progress: stepProgress(state, stepId), ctaLabel: ctaLabel(stepId, action),
       status: "active", help: TUTORIAL_COPY.advisor[ADVISOR_KEY[stepId] ?? "greet"] ?? null, hasTarget: target !== null });
-  } else cards.push(...general.cards);
+  } else cards.push(...general.cards.slice(0, 2));
 
   const [dismissedAdvisor, setDismissedAdvisor] = useState<string | null>(null);
   const advisorKey = stepId === null ? null : ADVISOR_KEY[stepId] ?? null;
@@ -269,7 +275,9 @@ export function useTutorialController(input: {
 
   return {
     enabled, running, access,
-    cards: cards.slice(-2),
+    // LM-R1: the general cards come in priority order (the lean season, the chapter, the town goal, the chapel / market
+    // suggestion) and the first two stay; a finished step's "완료" stands before them.
+    cards: stepId === null ? cards : cards.slice(-2),
     advisor,
     banner: banner !== null && banner.until > nowMs ? banner.text : null,
     // CODE-1c: the tutorial needs the presentation clock while it runs, a banner shows or a step's "완료" holds.
@@ -310,9 +318,13 @@ export function goalCardPress(cardKey: string, current: {
   return { resume: false, run: current.generalActions.get(cardKey) ?? null, open: null };
 }
 
-/** Goal cards when no tutorial step is current: the settlement goal, and the chapel / market suggestion. */
-function generalCards(state: GameState, tutorialRan: boolean, selectedTool: PlacementTool | null): { readonly cards: readonly GoalCard[]; readonly actions: ReadonlyMap<string, TutorialAction> } {
+/** Goal cards when no tutorial step is current, the most pressing first: the lean season, the chapter, the settlement
+ * goal (its pin), and the chapel / market suggestion. */
+function generalCards(state: GameState, tutorialRan: boolean, selectedTool: PlacementTool | null): {
+  readonly cards: readonly GoalCard[]; readonly actions: ReadonlyMap<string, TutorialAction>; readonly pinAction: GoalPinAction | null;
+} {
   const cards: GoalCard[] = []; const actions = new Map<string, TutorialAction>();
+  let pinAction: GoalPinAction | null = null;
   const view = getSettlementView(state);
   const goal = view.currentGoal;
   // UI-6 (FAIL-3 FL-9): from chapter 2 on, the chapter's own card first — its title, its goals reached, the next one.
@@ -337,10 +349,12 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
       ctaLabel: CHAPTER_COPY.cta, status: "active", help: null, hasTarget: false,
       foldKey: next?.id ?? "reached", shortTitle: CHAPTER_COPY.short(chapter) });
   }
+  // LM-R1 (playtest #1): the town goal's card is its pin — the very next thing it waits on and the button that goes there.
   if (goal !== null) {
-    const next = goal.criteria.find(item => !item.met) ?? goal.criteria[0];
-    cards.push({ key: "settlement", title: goal.title, why: humanizeTicks(next?.label ?? goal.description), progress: next === undefined ? null : { current: Math.floor(next.current), target: next.target },
-      ctaLabel: TUTORIAL_COPY.generalCard.cta, status: "active", help: humanizeTicks(goal.description), hasTarget: false });
+    const pin = goalPinFor(state, goal);
+    pinAction = pin.next?.action ?? null;
+    cards.push({ key: "settlement", title: goal.title, why: pin.next?.line ?? humanizeTicks(goal.description), progress: pin.count,
+      ctaLabel: pin.next?.cta ?? TUTORIAL_COPY.generalCard.cta, status: "active", help: humanizeTicks(goal.description), hasTarget: false });
   }
   if (tutorialRan) {
     // UX-0b: the chapel first, and never a building the era has not opened (the market waits for the market-town
@@ -351,7 +365,7 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
       const spot = suggestedBuildingSpot(state, kind);
       const nextAction: TutorialAction = selectedTool === kind && spot !== null ? { kind: "place", tool: kind, tile: spot } : { kind: "arm", tool: kind };
       actions.set("wrap", nextAction);
-      cards.unshift({ key: "wrap", title: TUTORIAL_COPY.cards.wrapUp.title, why: TUTORIAL_COPY.cards.wrapUp.why,
+      cards.push({ key: "wrap", title: TUTORIAL_COPY.cards.wrapUp.title, why: TUTORIAL_COPY.cards.wrapUp.why,
         progress: { current: 2 - missing.length, target: 2 }, ctaLabel: nextAction.kind === "place" ? TUTORIAL_COPY.generalCard.place(TUTORIAL_COPY.buildingNames[kind]) : TUTORIAL_COPY.generalCard.arm(TUTORIAL_COPY.buildingNames[kind]),
         status: "active", help: null, hasTarget: false });
     }
@@ -360,8 +374,8 @@ function generalCards(state: GameState, tutorialRan: boolean, selectedTool: Plac
   if (firstWinterWarningActive(state)) {
     const next: TutorialAction = placedCount(state, "granary") === 0 ? { kind: "arm", tool: "granary" } : { kind: "armZone", target: "arable" };
     actions.set("lean_season", next);
-    cards.push({ key: "lean_season", title: TUTORIAL_COPY.leanSeason.title, why: TUTORIAL_COPY.leanSeason.why, progress: null,
+    cards.unshift({ key: "lean_season", title: TUTORIAL_COPY.leanSeason.title, why: TUTORIAL_COPY.leanSeason.why, progress: null,
       ctaLabel: next.kind === "arm" ? TUTORIAL_COPY.leanSeason.granary : TUTORIAL_COPY.leanSeason.arable, status: "active", help: null, hasTarget: false });
   }
-  return { cards, actions };
+  return { cards, actions, pinAction };
 }

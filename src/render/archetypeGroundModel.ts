@@ -1,3 +1,4 @@
+import { LAND_DECAL_ART } from './art/landDecalArt';
 import type { GameState } from "../engine/engine.types";
 import { stateArchetype } from "../engine/archetype";
 import { RIVERSIDE_ARCHETYPE_ID } from "../content/scenario/archetypes";
@@ -29,6 +30,7 @@ import { wave22StripInstalled } from "./landEdgeBand";
 // tiles (the rock region's mask, landRockRegions.ts) come from the terrain the key already names; the rock's own chunk
 // token is in the content key for every land, the riverside's too (rockChunkToken).
 
+export type LandArtRequest = { readonly owner: 'legacy'; readonly key: Wave22GroundKey } | { readonly owner: 'catalog'; readonly key: string };
 export type LandGround = {
   readonly id: string;
   readonly seed: number;
@@ -51,7 +53,7 @@ export type LandGround = {
   readonly cache: { regions?: readonly FillRegion[]; readonly chunks: Map<number, readonly ChunkRegion[]>;
     rock?: FillRegion; readonly rockChunks: Map<number, ChunkRegion | null>;
     /** Per season: the art keys (landArtKeys), and the readiness once every file has loaded (it cannot change after). */
-    readonly artKeys: Map<SeasonIndex, readonly Wave22GroundKey[]>; readonly allReady: Map<SeasonIndex, string>;
+    readonly artKeys: Map<SeasonIndex, readonly LandArtRequest[]>; readonly allReady: Map<SeasonIndex, string>;
     /** Every season's art has been asked for (archetypeGroundDraw preloadLandArt). */
     preloaded?: boolean };
 };
@@ -134,18 +136,22 @@ export function isWaterStrip(family: StripFamily | null): boolean {
 }
 
 /** Every Wave 22 file the land draws in `season` (fills a and b, both halves of each strip, the decals and props). */
-export function landArtKeys(land: LandGround, season: SeasonIndex): readonly Wave22GroundKey[] {
+export function landArtKeys(land: LandGround, season: SeasonIndex): readonly LandArtRequest[] {
   const cached = land.cache.artKeys.get(season);
   if (cached !== undefined) return cached;
   const keys = new Set<Wave22GroundKey>();
+  const owned = new Set<string>();
   land.keys.forEach((name, index) => {
     const base = land.fillBase[index] ?? null;
     if (base !== null) { keys.add(fillArtKey(base, season, "a")); keys.add(fillArtKey(base, season, "b")); return; }
     const family = stripFamily(name);
     if (family !== null) { if (wave22StripInstalled(family)) { keys.add(`${family}_a` as Wave22GroundKey); keys.add(`${family}_b` as Wave22GroundKey); } return; }
+    if (LAND_DECAL_ART.owns(land.id, name, season)) { owned.add(name); return; }
     if (name in WAVE22_GROUND_IMAGES) keys.add(name as Wave22GroundKey);
   });
-  const sorted = [...keys].sort();
+  const sorted: LandArtRequest[] = [...new Set<string>([...keys, ...owned])].sort().flatMap((key): LandArtRequest[] => owned.has(key)
+    ? LAND_DECAL_ART.ids(land.id, key, season).map(id => ({ owner: 'catalog', key: id }))
+    : [...keys].filter(legacy => legacy === key).map(legacy => ({ owner: 'legacy', key: legacy })));
   land.cache.artKeys.set(season, sorted);
   return sorted;
 }

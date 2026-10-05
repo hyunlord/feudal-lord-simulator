@@ -81,7 +81,8 @@ test("Given every neighbour pattern Then the rule table gives the pack's join or
       // The join's own ports (CONNECTIONS.md, the manifest) are exactly the cell's: no rotation, no flip.
       for (const season of ["summer", "winter"]) {
         const name = `${connector}_${season}` as keyof typeof WAVE42_STAGES;
-        const meta: (typeof WAVE42_STAGES)[keyof typeof WAVE42_STAGES] = WAVE42_STAGES[name];
+        const meta = WAVE42_STAGES[name];
+        assert.ok(meta !== undefined);
         assert.deepEqual(Object.keys("ports" in meta ? meta.ports : {}).sort(), [...ports].sort(), `${connector} ports`);
       }
       assert.deepEqual(found.halves, []);

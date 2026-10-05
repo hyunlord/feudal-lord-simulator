@@ -1,0 +1,411 @@
+{
+  "status": "POST_LEDGER_AFTER4_RUNTIME_PASS; final phase2 publication gates pending",
+  "captures": [
+    {
+      "phase": "before",
+      "name": "trade_baker_a-summer-z1",
+      "run": "astra-W37-before-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-summer-z1.jpg",
+      "sha256": "42ca3ece02e320dd885d8f9bf1cd28816ee684d9892a4267a25161137048681a",
+      "source": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z1.jpg",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z1.png",
+      "sourcePngSha256": "cd6ec80904e801049519acfbbfb53a01362fa34c04994579e241853d6f488fac",
+      "rgbaSHA": "15b0f70d2b017a9f7fb4ae3b72405268d62f2f4ec60737294fe2d6e530ae4d29"
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_a-summer-z06",
+      "run": "astra-W37-before-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-summer-z06.jpg",
+      "sha256": "c4d8b390ed3730e175c97bcc2fdbfa9fe7c50db1c798de051be5cb17e378ac48",
+      "source": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z06.jpg",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-summer-z06.png",
+      "sourcePngSha256": "f40349778ca84b4b8f84a4a4084fc3e95228bb92bf0eae6491f6add19d0615d3",
+      "rgbaSHA": "14e3b1489936db36ad0dc8d186d0f449b69023049bc45ebb18c37ab0163a8973"
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_a-winter-z1",
+      "run": "astra-W37-before-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-winter-z1.jpg",
+      "sha256": "7105c2c2da155cc5b9f4ab01f1a0f9753adc732dcf392f2d54ac895ff63e771a",
+      "source": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z1.jpg",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z1.png",
+      "sourcePngSha256": "db1ac6f189bf494310cbe32bcdf38c1ce71cdfbde4bfc0aefe4e6c2e6094fe3d",
+      "rgbaSHA": "11ccbed5b20635122b0a8c800b7ace28d744f856b1193a2e62b7fd3b963df2a1"
+    },
+    {
+      "phase": "before",
+      "name": "trade_baker_a-winter-z06",
+      "run": "astra-W37-before-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-winter-z06.jpg",
+      "sha256": "8d0aa07d3bc1c29b6a17900bf43ef7444140bd01975c1c72532191bdee68af7a",
+      "source": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z06.jpg",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_baker_a-winter-z06.png",
+      "sourcePngSha256": "af19b597c21172452d15bc7370e42107e468d63fb483a13fbf046c2f87bce9f0",
+      "rgbaSHA": "7c6ca2cab125d20cdc8103d5934292ede34e5a2c773ec43de79e982c7e7a92f7"
+    },
+    {
+      "phase": "before",
+      "name": "condition_newcomer_cart_a-summer-z14",
+      "run": "astra-W37-before-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "identity": {
+        "state": "condition_newcomer_cart_a-summer",
+        "savedStateSHA": "6d892fbab8cc2c2fabb16f3d3ceb8550cbba61d347bdea7a9b72aba42b650104",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          35.6
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/condition_newcomer_cart_a.png"
+        ]
+      },
+      "file": "captures/condition_newcomer_cart_a-summer-z14.jpg",
+      "sha256": "35042f7e3cfb8e2a9ccace44fd8b3b00f3c1917655e9c04063461694526b31a0",
+      "source": "output/art-architecture/wave37-before-v2/condition_newcomer_cart_a-summer-z14.jpg",
+      "sourcePng": "output/art-architecture/wave37-before-v2/condition_newcomer_cart_a-summer-z14.png",
+      "sourcePngSha256": "eebd0758b81cae34fc192101326cf955435ded77924fc83957a15bdceecbb1a8",
+      "rgbaSHA": "9a923d94181755a1b4c9c632aa68a96eceb5c931d7474bab4ef541a4a10488c0"
+    },
+    {
+      "phase": "before",
+      "name": "trade_weaver_a-summer-z14",
+      "run": "astra-W37-before-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "identity": {
+        "state": "trade_weaver_a-summer",
+        "savedStateSHA": "0257adcd75f0b4ed3c7e6d2d4f7b59b483a2d1d82215f6d4a3700d06e0d781d2",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          45.3,
+          39.4
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_weaver_a.png"
+        ]
+      },
+      "file": "captures/trade_weaver_a-summer-z14.jpg",
+      "sha256": "816b92f3bd5448320225e33d75abeb14ca5991b11837eba6a7e5b691259c502c",
+      "source": "output/art-architecture/wave37-before-v2/trade_weaver_a-summer-z14.jpg",
+      "sourcePng": "output/art-architecture/wave37-before-v2/trade_weaver_a-summer-z14.png",
+      "sourcePngSha256": "6144abce9272b820930c17c9a030de3d2d5992bab1d7f72b9f48e5dd30bd2fb3",
+      "rgbaSHA": "3880ad5ef9cb58564481f8b4ea58035df9dbc131200d4303e301dd073350da8d"
+    },
+    {
+      "phase": "post-ledger-after",
+      "name": "trade_baker_a-summer-z1",
+      "run": "astra-W37-ledger-after-bc29f6b",
+      "commit": "bc29f6b254292a7e2080aebc0c23b3cd4368a9f6",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-summer-z1.jpg",
+      "sha256": "42ca3ece02e320dd885d8f9bf1cd28816ee684d9892a4267a25161137048681a",
+      "source": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-summer-z1.jpg",
+      "sourcePng": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-summer-z1.png",
+      "sourcePngSha256": "cd6ec80904e801049519acfbbfb53a01362fa34c04994579e241853d6f488fac",
+      "rgbaSHA": "15b0f70d2b017a9f7fb4ae3b72405268d62f2f4ec60737294fe2d6e530ae4d29",
+      "sameIdentityAsBefore": true,
+      "differingPixelsFromBefore": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "physicalJpegSharedAfterByteComparison": true
+    },
+    {
+      "phase": "post-ledger-after",
+      "name": "trade_baker_a-summer-z06",
+      "run": "astra-W37-ledger-after-bc29f6b",
+      "commit": "bc29f6b254292a7e2080aebc0c23b3cd4368a9f6",
+      "identity": {
+        "state": "trade_baker_a-summer",
+        "savedStateSHA": "852e2ed43149558a7846874cf10e4ae12916d09f6907d76af9208a1af3174e69",
+        "tick": 29500,
+        "season": "summer",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-summer-z06.jpg",
+      "sha256": "c4d8b390ed3730e175c97bcc2fdbfa9fe7c50db1c798de051be5cb17e378ac48",
+      "source": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-summer-z06.jpg",
+      "sourcePng": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-summer-z06.png",
+      "sourcePngSha256": "f40349778ca84b4b8f84a4a4084fc3e95228bb92bf0eae6491f6add19d0615d3",
+      "rgbaSHA": "14e3b1489936db36ad0dc8d186d0f449b69023049bc45ebb18c37ab0163a8973",
+      "sameIdentityAsBefore": true,
+      "differingPixelsFromBefore": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "physicalJpegSharedAfterByteComparison": true
+    },
+    {
+      "phase": "post-ledger-after",
+      "name": "trade_baker_a-winter-z1",
+      "run": "astra-W37-ledger-after-bc29f6b",
+      "commit": "bc29f6b254292a7e2080aebc0c23b3cd4368a9f6",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-winter-z1.jpg",
+      "sha256": "7105c2c2da155cc5b9f4ab01f1a0f9753adc732dcf392f2d54ac895ff63e771a",
+      "source": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-winter-z1.jpg",
+      "sourcePng": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-winter-z1.png",
+      "sourcePngSha256": "db1ac6f189bf494310cbe32bcdf38c1ce71cdfbde4bfc0aefe4e6c2e6094fe3d",
+      "rgbaSHA": "11ccbed5b20635122b0a8c800b7ace28d744f856b1193a2e62b7fd3b963df2a1",
+      "sameIdentityAsBefore": true,
+      "differingPixelsFromBefore": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "physicalJpegSharedAfterByteComparison": true
+    },
+    {
+      "phase": "post-ledger-after",
+      "name": "trade_baker_a-winter-z06",
+      "run": "astra-W37-ledger-after-bc29f6b",
+      "commit": "bc29f6b254292a7e2080aebc0c23b3cd4368a9f6",
+      "identity": {
+        "state": "trade_baker_a-winter",
+        "savedStateSHA": "c09b2641975446bd42f4bec755ab197de657bd3a79d1de971488499faac393af",
+        "tick": 31500,
+        "season": "winter",
+        "tile": [
+          43.7,
+          35.6
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave37/trade_baker_a.png"
+        ]
+      },
+      "file": "captures/trade_baker_a-winter-z06.jpg",
+      "sha256": "8d0aa07d3bc1c29b6a17900bf43ef7444140bd01975c1c72532191bdee68af7a",
+      "source": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-winter-z06.jpg",
+      "sourcePng": "output/art-architecture/wave37-ledger-after-bc29f6b2/trade_baker_a-winter-z06.png",
+      "sourcePngSha256": "af19b597c21172452d15bc7370e42107e468d63fb483a13fbf046c2f87bce9f0",
+      "rgbaSHA": "7c6ca2cab125d20cdc8103d5934292ede34e5a2c773ec43de79e982c7e7a92f7",
+      "sameIdentityAsBefore": true,
+      "differingPixelsFromBefore": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "physicalJpegSharedAfterByteComparison": true
+    }
+  ],
+  "logicalCaptureCount": 10,
+  "physicalJpegCount": 6
+}

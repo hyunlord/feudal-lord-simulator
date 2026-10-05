@@ -45,7 +45,8 @@ const unfoldChapter = async page => {
 const SURFACES = [
   // A goal card shows only where its town has it (chapter 2 on: the chapter's card first; chapter 1: the settlement's).
   { id: 'goal-card.chapter (목표 보기)', needs: '[data-goal-card="chapter"]', open: steps(unfoldChapter, press('[data-tutorial-cta="chapter"]')), shown: '.chapter-preview', close: press('.chapter-preview-continue'), shot: true },
-  { id: 'goal-card.settlement', needs: '[data-tutorial-cta="settlement"]', open: press('[data-tutorial-cta="settlement"]'), shown: '.goal-slot', close: key('Escape') },
+  // LM-R1: the settlement card's button does its pinned next action — the goal log, the stock ledger or a store's inspector.
+  { id: 'goal-card.settlement', needs: '[data-tutorial-cta="settlement"]', open: press('[data-tutorial-cta="settlement"]'), shown: '.goal-slot, [data-slot="ledger"], .inspector-slot', close: key('Escape') },
   // The rail (and its toggle) leaves the screen while the drawer is open: Esc closes it.
   { id: 'goal drawer toggle', open: press('.goal-drawer-toggle'), shown: '.goal-slot', close: key('Escape') },
   { id: 'pause menu (Esc, then Esc)', open: key('Escape'), shown: '.pause-menu', close: key('Escape') },
@@ -56,7 +57,8 @@ const SURFACES = [
   { id: 'dock.build', open: press('[data-dock="build"]'), shown: '.build-menu-category', close: press('[data-dock="build"]') },
   { id: 'dock.steward', open: press('[data-dock="steward"]'), shown: '[data-dock="steward"][aria-expanded="true"]', close: press('[data-dock="steward"]') },
   { id: 'pill.population', open: press('.status-pill .status-pill-cell >> nth=1'), shown: '[data-slot="population"]', close: key('Escape') },
-  { id: 'pill.food → ledger', open: press('.status-pill-cell[data-food-days]'), shown: '[data-slot="ledger"]', close: key('Escape') },
+  // LM-R1 (playtest #5): the food cell opens its breakdown (its ledger button is one press further).
+  { id: 'pill.food → breakdown', open: press('.status-pill-cell[data-food-days]'), shown: '.food-breakdown', close: press('.food-breakdown-close') },
   { id: 'pill.season strip', open: press('[data-testid="hud-calendar"]'), shown: '[data-testid="hud-calendar"][aria-expanded="true"]', close: press('[data-testid="hud-calendar"]') },
   { id: 'settings', open: press('.settings-disclosure > summary'), shown: '.settings-disclosure[open]', close: press('.settings-disclosure > summary') },
 ];

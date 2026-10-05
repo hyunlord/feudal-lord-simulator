@@ -1,0 +1,1814 @@
+{
+  "classification": "HISTORICAL_DETACHED_PRECOMMIT_ONLY",
+  "priorManifest": {
+    "commit": "70c153211187f5e7dedef538147136b22afdd8fc",
+    "path": "docs/verification/spring9-data/manifest.json",
+    "sha256": "2627eea8f5ad8bd75e3acb85ff913f05f1af4bbcf4da0ccf2110da71fb55cbe1"
+  },
+  "preparedManifest": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/prepared-delivery/spring9-data/manifest.json",
+    "sha256": "2627eea8f5ad8bd75e3acb85ff913f05f1af4bbcf4da0ccf2110da71fb55cbe1"
+  },
+  "historicalManifest": {
+    "classification": "DETACHED PRECOMMIT PROOFS",
+    "finalCommittedHeadRequired": {
+      "views10": true,
+      "preservationPairs4": true
+    },
+    "notClaimed": [
+      "future commit",
+      "trunk installation",
+      "installed_by update"
+    ],
+    "jpegNotice": "Lossy review previews only. Raw PNG SHA and decoded RGBA are authoritative; shared JPEG does not collapse logical provenance.",
+    "pairs": [
+      {
+        "name": "prepared-season-summer-z1",
+        "logicalCaptures": {
+          "before": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/prepared-season-summer-z1.png",
+              "sha256": "6994717ddebfbaadb972107919abfa48cd4409d4b93a022d2595658093aa22d1"
+            },
+            "rgbaSha256": "f3feeaac2e0c37917267ba89b437a494f8b14fe9924d2012a770ecdca0765f6d",
+            "jpeg": "images/prepared-season-summer-z1-before.jpg",
+            "identity": {
+              "state": "prepared-season-summer",
+              "savedStateSHA": "9bf317d97f2a56e7f51f289eb5a577a836eda8550b65ddacefa341868649c169",
+              "tick": 201500,
+              "season": "summer",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 1,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/foliage/tree_birch.png",
+                "/assets/foliage/tree_dead.png",
+                "/assets/foliage/tree_oak_large.png",
+                "/assets/foliage/tree_oak_small.png",
+                "/assets/foliage/tree_pine_short.png",
+                "/assets/foliage/tree_pine_tall.png",
+                "/assets/zones/orchard_apple_c-v1.png",
+                "/assets/zones/orchard_pear_e-v1.png",
+                "/assets/zones/orchard_plum_f-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/captures.json",
+              "sha256": "466e102560013446b18d4caf1dccc929e15c860a1f088ffea276ed6f83319551"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-SEASON-before-v2-ab67dcb"
+          },
+          "after": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/prepared-season-summer-z1.png",
+              "sha256": "6994717ddebfbaadb972107919abfa48cd4409d4b93a022d2595658093aa22d1"
+            },
+            "rgbaSha256": "f3feeaac2e0c37917267ba89b437a494f8b14fe9924d2012a770ecdca0765f6d",
+            "jpeg": "images/prepared-season-summer-z1-before.jpg",
+            "identity": {
+              "state": "prepared-season-summer",
+              "savedStateSHA": "9bf317d97f2a56e7f51f289eb5a577a836eda8550b65ddacefa341868649c169",
+              "tick": 201500,
+              "season": "summer",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 1,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/foliage/tree_birch.png",
+                "/assets/foliage/tree_dead.png",
+                "/assets/foliage/tree_oak_large.png",
+                "/assets/foliage/tree_oak_small.png",
+                "/assets/foliage/tree_pine_short.png",
+                "/assets/foliage/tree_pine_tall.png",
+                "/assets/zones/orchard_apple_c-v1.png",
+                "/assets/zones/orchard_pear_e-v1.png",
+                "/assets/zones/orchard_plum_f-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/captures.json",
+              "sha256": "1cec4a2c1679440b80cf5cfd92f9c23e447f64474547208094cbdd8f2122b066"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-season-spring9-v2-ab67dcb"
+          }
+        },
+        "rawRgbaComparison": {
+          "differingPixels": 0,
+          "maxChannelDelta": 0,
+          "sameSize": true
+        },
+        "intentionalChange": false
+      },
+      {
+        "name": "prepared-season-summer-z06",
+        "logicalCaptures": {
+          "before": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/prepared-season-summer-z06.png",
+              "sha256": "9f14861e25588dbe9dd3aad6b62a1b1efe0ecb005531f7d1b0bd4f46aaba20f9"
+            },
+            "rgbaSha256": "9cca52b9d1935e101cbbb4632581893be0309c37e159f989aa3cef0ec4dd9861",
+            "jpeg": "images/prepared-season-summer-z06-before.jpg",
+            "identity": {
+              "state": "prepared-season-summer",
+              "savedStateSHA": "9bf317d97f2a56e7f51f289eb5a577a836eda8550b65ddacefa341868649c169",
+              "tick": 201500,
+              "season": "summer",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 0.6,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/foliage/tree_birch.png",
+                "/assets/foliage/tree_dead.png",
+                "/assets/foliage/tree_oak_large.png",
+                "/assets/foliage/tree_oak_small.png",
+                "/assets/foliage/tree_pine_short.png",
+                "/assets/foliage/tree_pine_tall.png",
+                "/assets/zones/orchard_apple_c-v1.png",
+                "/assets/zones/orchard_pear_e-v1.png",
+                "/assets/zones/orchard_plum_f-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/captures.json",
+              "sha256": "466e102560013446b18d4caf1dccc929e15c860a1f088ffea276ed6f83319551"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-SEASON-before-v2-ab67dcb"
+          },
+          "after": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/prepared-season-summer-z06.png",
+              "sha256": "9f14861e25588dbe9dd3aad6b62a1b1efe0ecb005531f7d1b0bd4f46aaba20f9"
+            },
+            "rgbaSha256": "9cca52b9d1935e101cbbb4632581893be0309c37e159f989aa3cef0ec4dd9861",
+            "jpeg": "images/prepared-season-summer-z06-before.jpg",
+            "identity": {
+              "state": "prepared-season-summer",
+              "savedStateSHA": "9bf317d97f2a56e7f51f289eb5a577a836eda8550b65ddacefa341868649c169",
+              "tick": 201500,
+              "season": "summer",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 0.6,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/foliage/tree_birch.png",
+                "/assets/foliage/tree_dead.png",
+                "/assets/foliage/tree_oak_large.png",
+                "/assets/foliage/tree_oak_small.png",
+                "/assets/foliage/tree_pine_short.png",
+                "/assets/foliage/tree_pine_tall.png",
+                "/assets/zones/orchard_apple_c-v1.png",
+                "/assets/zones/orchard_pear_e-v1.png",
+                "/assets/zones/orchard_plum_f-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/captures.json",
+              "sha256": "1cec4a2c1679440b80cf5cfd92f9c23e447f64474547208094cbdd8f2122b066"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-season-spring9-v2-ab67dcb"
+          }
+        },
+        "rawRgbaComparison": {
+          "differingPixels": 0,
+          "maxChannelDelta": 0,
+          "sameSize": true
+        },
+        "intentionalChange": false
+      },
+      {
+        "name": "prepared-season-winter-z1",
+        "logicalCaptures": {
+          "before": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/prepared-season-winter-z1.png",
+              "sha256": "e0515ca9a570da1765548b91b0c7e03a355a37583e52df22d3c673f38f3395c1"
+            },
+            "rgbaSha256": "14d9f6c576e448209c691b38d20c505a35a17b63d898a6a83569ddda22153137",
+            "jpeg": "images/prepared-season-winter-z1-before.jpg",
+            "identity": {
+              "state": "prepared-season-winter",
+              "savedStateSHA": "409488fb2294ca268fa89796105dcc2847719c9d3ab9556f1e583e7d1458ce8b",
+              "tick": 203500,
+              "season": "winter",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 1,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/wave15/foliage/tree_birch_winter-v1.png",
+                "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+                "/assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+                "/assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+                "/assets/wave15/orchard/orchard_plum_f_winter-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/captures.json",
+              "sha256": "466e102560013446b18d4caf1dccc929e15c860a1f088ffea276ed6f83319551"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-SEASON-before-v2-ab67dcb"
+          },
+          "after": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/prepared-season-winter-z1.png",
+              "sha256": "e0515ca9a570da1765548b91b0c7e03a355a37583e52df22d3c673f38f3395c1"
+            },
+            "rgbaSha256": "14d9f6c576e448209c691b38d20c505a35a17b63d898a6a83569ddda22153137",
+            "jpeg": "images/prepared-season-winter-z1-before.jpg",
+            "identity": {
+              "state": "prepared-season-winter",
+              "savedStateSHA": "409488fb2294ca268fa89796105dcc2847719c9d3ab9556f1e583e7d1458ce8b",
+              "tick": 203500,
+              "season": "winter",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 1,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/wave15/foliage/tree_birch_winter-v1.png",
+                "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+                "/assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+                "/assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+                "/assets/wave15/orchard/orchard_plum_f_winter-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/captures.json",
+              "sha256": "1cec4a2c1679440b80cf5cfd92f9c23e447f64474547208094cbdd8f2122b066"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-season-spring9-v2-ab67dcb"
+          }
+        },
+        "rawRgbaComparison": {
+          "differingPixels": 0,
+          "maxChannelDelta": 0,
+          "sameSize": true
+        },
+        "intentionalChange": false
+      },
+      {
+        "name": "prepared-season-winter-z06",
+        "logicalCaptures": {
+          "before": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/prepared-season-winter-z06.png",
+              "sha256": "2d8986316762046586e71cb9558065ac1ea2376b0027b2ae612df010e18f5616"
+            },
+            "rgbaSha256": "6faa6ee1072d72c505eff9b6e61fa4c68a5a5702a4c3a598d5bef0ba56cf9bc5",
+            "jpeg": "images/prepared-season-winter-z06-before.jpg",
+            "identity": {
+              "state": "prepared-season-winter",
+              "savedStateSHA": "409488fb2294ca268fa89796105dcc2847719c9d3ab9556f1e583e7d1458ce8b",
+              "tick": 203500,
+              "season": "winter",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 0.6,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/wave15/foliage/tree_birch_winter-v1.png",
+                "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+                "/assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+                "/assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+                "/assets/wave15/orchard/orchard_plum_f_winter-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/captures.json",
+              "sha256": "466e102560013446b18d4caf1dccc929e15c860a1f088ffea276ed6f83319551"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-SEASON-before-v2-ab67dcb"
+          },
+          "after": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/prepared-season-winter-z06.png",
+              "sha256": "2d8986316762046586e71cb9558065ac1ea2376b0027b2ae612df010e18f5616"
+            },
+            "rgbaSha256": "6faa6ee1072d72c505eff9b6e61fa4c68a5a5702a4c3a598d5bef0ba56cf9bc5",
+            "jpeg": "images/prepared-season-winter-z06-before.jpg",
+            "identity": {
+              "state": "prepared-season-winter",
+              "savedStateSHA": "409488fb2294ca268fa89796105dcc2847719c9d3ab9556f1e583e7d1458ce8b",
+              "tick": 203500,
+              "season": "winter",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 0.6,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/wave15/foliage/tree_birch_winter-v1.png",
+                "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+                "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+                "/assets/wave15/orchard/orchard_apple_c_winter-v1.png",
+                "/assets/wave15/orchard/orchard_pear_e_winter-v1.png",
+                "/assets/wave15/orchard/orchard_plum_f_winter-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/captures.json",
+              "sha256": "1cec4a2c1679440b80cf5cfd92f9c23e447f64474547208094cbdd8f2122b066"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-season-spring9-v2-ab67dcb"
+          }
+        },
+        "rawRgbaComparison": {
+          "differingPixels": 0,
+          "maxChannelDelta": 0,
+          "sameSize": true
+        },
+        "intentionalChange": false
+      },
+      {
+        "name": "prepared-season-spring-z1",
+        "logicalCaptures": {
+          "before": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/prepared-season-spring-z1.png",
+              "sha256": "cbd0d07579abaf4a563ddf360adc638a336b6c9f9ddcfbe9083694c5b40f68ce"
+            },
+            "rgbaSha256": "864406b777b0766c3b7ae55a6e1a49c4ce509e78cedeabfeadcb9231b3e50481",
+            "jpeg": "images/prepared-season-spring-z1-before.jpg",
+            "identity": {
+              "state": "prepared-season-spring",
+              "savedStateSHA": "317f85b84e4109d6d0c0918fbd83019a59a09ca8edd2fcfbded08b3378fcaf2e",
+              "tick": 200500,
+              "season": "spring",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 1,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/foliage/tree_dead.png",
+                "/assets/foliage/tree_pine_short.png",
+                "/assets/foliage/tree_pine_tall.png",
+                "/assets/wave15/foliage/tree_birch_spring-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_spring-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_spring-v1.png",
+                "/assets/wave15/orchard/orchard_apple_c_spring-v1.png",
+                "/assets/wave15/orchard/orchard_pear_e_spring-v1.png",
+                "/assets/wave15/orchard/orchard_plum_f_spring-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/captures.json",
+              "sha256": "466e102560013446b18d4caf1dccc929e15c860a1f088ffea276ed6f83319551"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-SEASON-before-v2-ab67dcb"
+          },
+          "after": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/prepared-season-spring-z1.png",
+              "sha256": "51c12a4fc4e1d380c3d19f73d58a13d08899ed191c73f965dfdd8e7f38c4f96d"
+            },
+            "rgbaSha256": "74f6fa1b54bd34024f18827c18c6a12ef0bfb88bf6ee61e1fbe8715ef1adc8f7",
+            "jpeg": "images/prepared-season-spring-z1-after.jpg",
+            "identity": {
+              "state": "prepared-season-spring",
+              "savedStateSHA": "317f85b84e4109d6d0c0918fbd83019a59a09ca8edd2fcfbded08b3378fcaf2e",
+              "tick": 200500,
+              "season": "spring",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 1,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/wave43/orchard/orchard_apple_spring.png",
+                "/assets/wave43/orchard/orchard_pear_spring.png",
+                "/assets/wave43/orchard/orchard_plum_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+                "/assets/wave43/trees_other/tree_dead_spring.png",
+                "/assets/wave43/trees_other/tree_pine_short_spring.png",
+                "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/captures.json",
+              "sha256": "1cec4a2c1679440b80cf5cfd92f9c23e447f64474547208094cbdd8f2122b066"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-season-spring9-v2-ab67dcb"
+          }
+        },
+        "rawRgbaComparison": {
+          "differingPixels": 18642,
+          "maxChannelDelta": 178,
+          "sameSize": true
+        },
+        "intentionalChange": true
+      },
+      {
+        "name": "prepared-season-spring-z06",
+        "logicalCaptures": {
+          "before": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/prepared-season-spring-z06.png",
+              "sha256": "611bc79661ad5fd3ab7ce7f0ae24f2f2e9d2c3609d5b7b91fd9e9d4bb1500a7c"
+            },
+            "rgbaSha256": "498de3011f010173374a597e8af14caa785c133f7ccdd30be752d5ce65c58a6f",
+            "jpeg": "images/prepared-season-spring-z06-before.jpg",
+            "identity": {
+              "state": "prepared-season-spring",
+              "savedStateSHA": "317f85b84e4109d6d0c0918fbd83019a59a09ca8edd2fcfbded08b3378fcaf2e",
+              "tick": 200500,
+              "season": "spring",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 0.6,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/foliage/tree_dead.png",
+                "/assets/foliage/tree_pine_short.png",
+                "/assets/foliage/tree_pine_tall.png",
+                "/assets/wave15/foliage/tree_birch_spring-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_spring-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_spring-v1.png",
+                "/assets/wave15/orchard/orchard_apple_c_spring-v1.png",
+                "/assets/wave15/orchard/orchard_pear_e_spring-v1.png",
+                "/assets/wave15/orchard/orchard_plum_f_spring-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/captures.json",
+              "sha256": "466e102560013446b18d4caf1dccc929e15c860a1f088ffea276ed6f83319551"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-SEASON-before-v2-ab67dcb"
+          },
+          "after": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/prepared-season-spring-z06.png",
+              "sha256": "c6ccfedff6348d3723ba5a9a199ec8915dfe468141cb87e80004f7f69d094bd6"
+            },
+            "rgbaSha256": "c8003ea18fd05580077d66c51b554b5c61e29fc5c0e09f8f1f4b957d8f89bb1b",
+            "jpeg": "images/prepared-season-spring-z06-after.jpg",
+            "identity": {
+              "state": "prepared-season-spring",
+              "savedStateSHA": "317f85b84e4109d6d0c0918fbd83019a59a09ca8edd2fcfbded08b3378fcaf2e",
+              "tick": 200500,
+              "season": "spring",
+              "tile": [
+                34,
+                34
+              ],
+              "zoom": 0.6,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/wave43/orchard/orchard_apple_spring.png",
+                "/assets/wave43/orchard/orchard_pear_spring.png",
+                "/assets/wave43/orchard/orchard_plum_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+                "/assets/wave43/trees_other/tree_dead_spring.png",
+                "/assets/wave43/trees_other/tree_pine_short_spring.png",
+                "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/captures.json",
+              "sha256": "1cec4a2c1679440b80cf5cfd92f9c23e447f64474547208094cbdd8f2122b066"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-season-spring9-v2-ab67dcb"
+          }
+        },
+        "rawRgbaComparison": {
+          "differingPixels": 100186,
+          "maxChannelDelta": 158,
+          "sameSize": true
+        },
+        "intentionalChange": true
+      },
+      {
+        "name": "prepared-season-spring-z14",
+        "logicalCaptures": {
+          "before": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/prepared-season-spring-z14.png",
+              "sha256": "a4439d134dee80137abd0f8bcad5a3131481cba5dc04762b266b5778f5b33f89"
+            },
+            "rgbaSha256": "634cc08bae05ae1f350deb12c350b97592dd03cf812b75e3615793bc2738125a",
+            "jpeg": "images/prepared-season-spring-z14-before.jpg",
+            "identity": {
+              "state": "prepared-season-spring",
+              "savedStateSHA": "317f85b84e4109d6d0c0918fbd83019a59a09ca8edd2fcfbded08b3378fcaf2e",
+              "tick": 200500,
+              "season": "spring",
+              "tile": [
+                33.75,
+                32
+              ],
+              "zoom": 1.4,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/foliage/tree_dead.png",
+                "/assets/foliage/tree_pine_short.png",
+                "/assets/foliage/tree_pine_tall.png",
+                "/assets/wave15/foliage/tree_birch_spring-v1.png",
+                "/assets/wave15/foliage/tree_oak_large_spring-v1.png",
+                "/assets/wave15/foliage/tree_oak_small_spring-v1.png",
+                "/assets/wave15/orchard/orchard_apple_c_spring-v1.png",
+                "/assets/wave15/orchard/orchard_pear_e_spring-v1.png",
+                "/assets/wave15/orchard/orchard_plum_f_spring-v1.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/season-before-v2/captures.json",
+              "sha256": "466e102560013446b18d4caf1dccc929e15c860a1f088ffea276ed6f83319551"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-SEASON-before-v2-ab67dcb"
+          },
+          "after": {
+            "rawPng": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/prepared-season-spring-z14.png",
+              "sha256": "f77220bcf7a500bf0bd358b24ffb69300ff11d8b319d481f1414cd475cfedc70"
+            },
+            "rgbaSha256": "767510b5c6e4c93b4943c37de290c183550f2e3ebe94966d9e19da1ee3467e20",
+            "jpeg": "images/prepared-season-spring-z14-after.jpg",
+            "identity": {
+              "state": "prepared-season-spring",
+              "savedStateSHA": "317f85b84e4109d6d0c0918fbd83019a59a09ca8edd2fcfbded08b3378fcaf2e",
+              "tick": 200500,
+              "season": "spring",
+              "tile": [
+                33.75,
+                32
+              ],
+              "zoom": 1.4,
+              "width": 1280,
+              "height": 800,
+              "dpr": 1,
+              "browser": "151.0.7922.34",
+              "renderer": "headless-disable-gpu",
+              "visualTime": {
+                "date": 1700000000000,
+                "performance": 12345
+              },
+              "captureProtocol": 3,
+              "expectedRequests": [
+                "/assets/wave43/orchard/orchard_apple_spring.png",
+                "/assets/wave43/orchard/orchard_pear_spring.png",
+                "/assets/wave43/orchard/orchard_plum_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+                "/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+                "/assets/wave43/trees_other/tree_dead_spring.png",
+                "/assets/wave43/trees_other/tree_pine_short_spring.png",
+                "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+              ]
+            },
+            "captureReceipt": {
+              "path": "/Users/rexxa/fls-astra-renderB-season-data/output/art-architecture/season-spring9-v2/captures.json",
+              "sha256": "1cec4a2c1679440b80cf5cfd92f9c23e447f64474547208094cbdd8f2122b066"
+            },
+            "receiptCommit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+            "errors": [],
+            "run": "astra-season-spring9-v2-ab67dcb"
+          }
+        },
+        "rawRgbaComparison": {
+          "differingPixels": 17766,
+          "maxChannelDelta": 194,
+          "sameSize": true
+        },
+        "intentionalChange": true
+      }
+    ],
+    "authoritativeEvidence": [
+      {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/season-before-v2-summary.json",
+        "sha256": "68ec454eed6b321717eb963c2c875f4890ebca8eeaebb1d5fe87f90300fc2b36"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/season-core-freeze.json",
+        "sha256": "a50144cc1c1d6c2a294123b8114c7fd4a8419e2002e76485547f6e910cdbdb3b"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/spring9-v2-summary.json",
+        "sha256": "347a30056be85248e0ce0b476f725c2f8b76e56b92863c9455b26fe3759b9398"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/spring9-v2-runtime-freeze.json",
+        "sha256": "52eab6dedbb63884826537a33bf872e3f896e3c40e9bff11c2efe3a2400cd155"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/spring9-v2-remote-freeze.json",
+        "sha256": "d4462ff98be818b30fcb12d40cf8ea4d0f9f4674e5cc1248b3b01df606420ed0"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB-season-data/.omo/evidence/spring9-data-v2-delta.json",
+        "sha256": "bc569ac341a7ba9d30ff55d1e81ed90623c64b1f217f2d916da8b64b8cfc40f5"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB-season-data/.omo/evidence/spring9-data-v2-freeze.json",
+        "sha256": "4b42176e3ab90f22e11b2464efcd659b3ff8c5f9509bc2e44a9a7a554d2d1f82"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/spring9-v2-visual-review.md",
+        "sha256": "9f76d9c5743d4920b49b580a9627b7fdc6241ac99e4de25d7feb0e5ca206e745",
+        "includedCopy": "spring9-v2-visual-review.md"
+      },
+      {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/spring9-parent-visual.md",
+        "sha256": "25799d5c47b1dc940d9f0a7a061bcbbf5bf20bfa3c6395c9c24f7e49536f6f8f",
+        "includedCopy": "spring9-parent-visual.md"
+      }
+    ],
+    "afterSummary": {
+      "pass": true,
+      "run": "astra-season-spring9-v2-ab67dcb",
+      "scope": "Detached data9 runtime; no main installation claim",
+      "auditScriptChange": "Shared provenance audit correction since notify core runtime; product1075 unchanged",
+      "springChanged": 3,
+      "nonSpringExact": 7,
+      "targets": [
+        "/assets/wave43/orchard/orchard_apple_spring.png",
+        "/assets/wave43/orchard/orchard_pear_spring.png",
+        "/assets/wave43/orchard/orchard_plum_spring.png",
+        "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+        "/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+        "/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+        "/assets/wave43/trees_other/tree_dead_spring.png",
+        "/assets/wave43/trees_other/tree_pine_short_spring.png",
+        "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+      ],
+      "rows": [
+        {
+          "name": "prepared-season-spring-z1",
+          "season": "spring",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": false,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 18642,
+            "maxChannelDelta": 178
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-spring-z06",
+          "season": "spring",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": false,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 100186,
+            "maxChannelDelta": 158
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-spring-z14",
+          "season": "spring",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": false,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 17766,
+            "maxChannelDelta": 194
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-summer-z1",
+          "season": "summer",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-summer-z06",
+          "season": "summer",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-autumn-z1",
+          "season": "autumn",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-autumn-z06",
+          "season": "autumn",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-winter-z1",
+          "season": "winter",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-winter-z06",
+          "season": "winter",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        },
+        {
+          "name": "prepared-season-winter-z14",
+          "season": "winter",
+          "sameIdentityExceptExpectedRequests": true,
+          "pixels": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "stable": true,
+          "repeat": {
+            "pass": true,
+            "sameSize": true,
+            "width": 1280,
+            "height": 800,
+            "differingPixels": 0,
+            "maxChannelDelta": 0
+          },
+          "errors": [],
+          "missing": []
+        }
+      ]
+    },
+    "afterRemoteFreeze": {
+      "run": "astra-season-spring9-v2-ab67dcb",
+      "hashCount": 2371,
+      "absentCount": 6,
+      "differences": [],
+      "pass": true
+    },
+    "rawReceiptsUntouched": true,
+    "uniqueJpegs": 10,
+    "v1ToV2Retirement": {
+      "previousFreeze": "spring9-data-freeze.json",
+      "commonCoreBaselineUpdate": "provenance-audit-baseline-update.json",
+      "csvChangedRows": [
+        {
+          "before": {
+            "assetId": "foliage/tree_birch_spring-v1",
+            "version": "v1",
+            "runtimePath": "public/assets/wave15/foliage/tree_birch_spring-v1.png",
+            "runtimeSha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_spring-v1.png",
+            "sourceSha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e",
+            "tool": "native image_gen edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:05:53.024Z",
+            "prompt": "docs/provenance/prompts/tree_birch_spring-wave15.txt",
+            "referenceInputs": "tree_birch.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Single high-quality crop/resize and translation registering source visible alpha bounding box to original visible alpha bounding box, on exact original canvas; transparent margins retained. Lower 22 percent receives integer row translations tapering to contact-centroid alignment; no painted pixels invented procedurally.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "runtime",
+            "notes": "Native seasonal edit selected after side-by-side original comparison; crown envelope, root baseline, low saturation and thin snow checked at final canvas size.; Source identity: tree_birch.png; raw generation 0563e51db538387a4085c6081373fe667caa7c75700ff21f4635a4532c85b878 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          },
+          "after": {
+            "assetId": "foliage/tree_birch_spring-v1",
+            "version": "v1",
+            "runtimePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_spring-v1.png",
+            "runtimeSha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_spring-v1.png",
+            "sourceSha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e",
+            "tool": "native image_gen edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:05:53.024Z",
+            "prompt": "docs/provenance/prompts/tree_birch_spring-wave15.txt",
+            "referenceInputs": "tree_birch.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Single high-quality crop/resize and translation registering source visible alpha bounding box to original visible alpha bounding box, on exact original canvas; transparent margins retained. Lower 22 percent receives integer row translations tapering to contact-centroid alignment; no painted pixels invented procedurally.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "retired",
+            "notes": "Native seasonal edit selected after side-by-side original comparison; crown envelope, root baseline, low saturation and thin snow checked at final canvas size.; Source identity: tree_birch.png; raw generation 0563e51db538387a4085c6081373fe667caa7c75700ff21f4635a4532c85b878 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          }
+        },
+        {
+          "before": {
+            "assetId": "foliage/tree_oak_large_spring-v1",
+            "version": "v1",
+            "runtimePath": "public/assets/wave15/foliage/tree_oak_large_spring-v1.png",
+            "runtimeSha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_spring-v1.png",
+            "sourceSha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f",
+            "tool": "native image_gen edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:01:57.713Z",
+            "prompt": "docs/provenance/prompts/tree_oak_large_spring-wave15.txt",
+            "referenceInputs": "tree_oak_large.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Single high-quality crop/resize and translation registering source visible alpha bounding box to original visible alpha bounding box, on exact original canvas; transparent margins retained. Lower 22 percent receives integer row translations tapering to contact-centroid alignment; no painted pixels invented procedurally.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "runtime",
+            "notes": "Native seasonal edit selected after side-by-side original comparison; crown envelope, root baseline, low saturation and thin snow checked at final canvas size.; Source identity: tree_oak_large.png; raw generation ade60c8ab19920b2d412ca49ab723ae07ae45394681e589fcf5e7547c2d5eec1 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          },
+          "after": {
+            "assetId": "foliage/tree_oak_large_spring-v1",
+            "version": "v1",
+            "runtimePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_spring-v1.png",
+            "runtimeSha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_spring-v1.png",
+            "sourceSha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f",
+            "tool": "native image_gen edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:01:57.713Z",
+            "prompt": "docs/provenance/prompts/tree_oak_large_spring-wave15.txt",
+            "referenceInputs": "tree_oak_large.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Single high-quality crop/resize and translation registering source visible alpha bounding box to original visible alpha bounding box, on exact original canvas; transparent margins retained. Lower 22 percent receives integer row translations tapering to contact-centroid alignment; no painted pixels invented procedurally.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "retired",
+            "notes": "Native seasonal edit selected after side-by-side original comparison; crown envelope, root baseline, low saturation and thin snow checked at final canvas size.; Source identity: tree_oak_large.png; raw generation ade60c8ab19920b2d412ca49ab723ae07ae45394681e589fcf5e7547c2d5eec1 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          }
+        },
+        {
+          "before": {
+            "assetId": "foliage/tree_oak_small_spring-v1",
+            "version": "v1",
+            "runtimePath": "public/assets/wave15/foliage/tree_oak_small_spring-v1.png",
+            "runtimeSha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_spring-v1.png",
+            "sourceSha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8",
+            "tool": "native image_gen edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:04:14.603Z",
+            "prompt": "docs/provenance/prompts/tree_oak_small_spring-wave15.txt",
+            "referenceInputs": "tree_oak_small.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Single high-quality crop/resize and translation registering source visible alpha bounding box to original visible alpha bounding box, on exact original canvas; transparent margins retained. Lower 22 percent receives integer row translations tapering to contact-centroid alignment; no painted pixels invented procedurally.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "runtime",
+            "notes": "Native seasonal edit selected after side-by-side original comparison; crown envelope, root baseline, low saturation and thin snow checked at final canvas size.; Source identity: tree_oak_small.png; raw generation 037563b834964b3486ace72a89a49b065b07de070072829793ac7a79abc7cf3d (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          },
+          "after": {
+            "assetId": "foliage/tree_oak_small_spring-v1",
+            "version": "v1",
+            "runtimePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_spring-v1.png",
+            "runtimeSha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_spring-v1.png",
+            "sourceSha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8",
+            "tool": "native image_gen edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:04:14.603Z",
+            "prompt": "docs/provenance/prompts/tree_oak_small_spring-wave15.txt",
+            "referenceInputs": "tree_oak_small.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Single high-quality crop/resize and translation registering source visible alpha bounding box to original visible alpha bounding box, on exact original canvas; transparent margins retained. Lower 22 percent receives integer row translations tapering to contact-centroid alignment; no painted pixels invented procedurally.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "retired",
+            "notes": "Native seasonal edit selected after side-by-side original comparison; crown envelope, root baseline, low saturation and thin snow checked at final canvas size.; Source identity: tree_oak_small.png; raw generation 037563b834964b3486ace72a89a49b065b07de070072829793ac7a79abc7cf3d (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          }
+        },
+        {
+          "before": {
+            "assetId": "orchard/orchard_apple_c_spring-v1",
+            "version": "v1",
+            "runtimePath": "public/assets/wave15/orchard/orchard_apple_c_spring-v1.png",
+            "runtimeSha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_spring-v1.png",
+            "sourceSha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f",
+            "tool": "image_gen built-in native edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-25T23:58:51.348Z",
+            "prompt": "docs/provenance/prompts/orchard_apple_c_spring-wave15.txt",
+            "referenceInputs": "orchard_apple_c-v1.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "runtime",
+            "notes": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.; Source identity: orchard_apple_c-v1.png; raw generation 2079522edb6ee633fec73ecbe5987a7a19fa9f1da5c0e4f31f95fece728e2590 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          },
+          "after": {
+            "assetId": "orchard/orchard_apple_c_spring-v1",
+            "version": "v1",
+            "runtimePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_spring-v1.png",
+            "runtimeSha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_spring-v1.png",
+            "sourceSha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f",
+            "tool": "image_gen built-in native edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-25T23:58:51.348Z",
+            "prompt": "docs/provenance/prompts/orchard_apple_c_spring-wave15.txt",
+            "referenceInputs": "orchard_apple_c-v1.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "retired",
+            "notes": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.; Source identity: orchard_apple_c-v1.png; raw generation 2079522edb6ee633fec73ecbe5987a7a19fa9f1da5c0e4f31f95fece728e2590 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          }
+        },
+        {
+          "before": {
+            "assetId": "orchard/orchard_pear_e_spring-v1",
+            "version": "v1",
+            "runtimePath": "public/assets/wave15/orchard/orchard_pear_e_spring-v1.png",
+            "runtimeSha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_spring-v1.png",
+            "sourceSha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d",
+            "tool": "image_gen built-in native edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:05:37.028Z",
+            "prompt": "docs/provenance/prompts/orchard_pear_e_spring-wave15.txt",
+            "referenceInputs": "orchard_pear_e-v1.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "runtime",
+            "notes": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.; Source identity: orchard_pear_e-v1.png; raw generation c3558cc55518260759eeaee6b5cd852a450e182dc7585a728fc0cb9d2679d9ad (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          },
+          "after": {
+            "assetId": "orchard/orchard_pear_e_spring-v1",
+            "version": "v1",
+            "runtimePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_spring-v1.png",
+            "runtimeSha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_spring-v1.png",
+            "sourceSha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d",
+            "tool": "image_gen built-in native edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:05:37.028Z",
+            "prompt": "docs/provenance/prompts/orchard_pear_e_spring-wave15.txt",
+            "referenceInputs": "orchard_pear_e-v1.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "retired",
+            "notes": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.; Source identity: orchard_pear_e-v1.png; raw generation c3558cc55518260759eeaee6b5cd852a450e182dc7585a728fc0cb9d2679d9ad (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          }
+        },
+        {
+          "before": {
+            "assetId": "orchard/orchard_plum_f_spring-v1",
+            "version": "v1",
+            "runtimePath": "public/assets/wave15/orchard/orchard_plum_f_spring-v1.png",
+            "runtimeSha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_spring-v1.png",
+            "sourceSha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624",
+            "tool": "image_gen built-in native edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:08:20.730Z",
+            "prompt": "docs/provenance/prompts/orchard_plum_f_spring-wave15.txt",
+            "referenceInputs": "orchard_plum_f-v1.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "runtime",
+            "notes": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.; Source identity: orchard_plum_f-v1.png; raw generation 80cb6964b68532a49e5816703f9c6a503afd7e425867061196ffbee08ed9b7a4 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          },
+          "after": {
+            "assetId": "orchard/orchard_plum_f_spring-v1",
+            "version": "v1",
+            "runtimePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_spring-v1.png",
+            "runtimeSha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624",
+            "sourcePath": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_spring-v1.png",
+            "sourceSha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624",
+            "tool": "image_gen built-in native edit",
+            "model": "not exposed",
+            "generatedAt": "2026-09-26T00:08:20.730Z",
+            "prompt": "docs/provenance/prompts/orchard_plum_f_spring-wave15.txt",
+            "referenceInputs": "orchard_plum_f-v1.png",
+            "seed": "not exposed",
+            "candidates": "1",
+            "manualEdits": "Mechanical alpha-content bounding-box registration to original alpha>16 extent on exact reference canvas; generated transparency retained. Root lower-seven-row alpha centroid registered in X to original (integer translation), original root baseline retained. No drawn elements.",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "S_England_1300_1450_v1",
+            "owner": "Astra Wave15",
+            "usedIn": "src/render/seasonArtManifest.generated.ts (INSTALL-15: seasonal trees, orchards, forest fringe, grass, pasture, winter fields, season decals and fx)",
+            "status": "retired",
+            "notes": "Same original tree and crown-lobe arrangement, seasonal replacement only; selected after visual comparison.; Source identity: orchard_plum_f-v1.png; raw generation 80cb6964b68532a49e5816703f9c6a503afd7e425867061196ffbee08ed9b7a4 (Astra's machine, before the manual edits); installed by INSTALL-15 on 2026-09-27 from assets-inbox/wave15/candidates-20260926 (confirmed in assets-inbox/INBOX_LEDGER.csv; received bytes = runtime bytes)"
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/orchard_apple_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/orchard/orchard_apple_spring.png",
+            "runtimeSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_apple_spring.png",
+            "sourceSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this EXACT existing game tree sprite into spring flowering APPLE. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: abundant but small IVORY WHITE apple blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/orchard/generations.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: \"single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0\"",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/orchard_apple_c/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-orchard_apple_spring; generation record assets-inbox/wave43/candidates-20261002/records/orchard/generations.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/orchard_apple_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/orchard/orchard_apple_spring.png",
+            "runtimeSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_apple_spring.png",
+            "sourceSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this EXACT existing game tree sprite into spring flowering APPLE. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: abundant but small IVORY WHITE apple blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/orchard/generations.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: \"single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0\"",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/orchard_apple_c/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-orchard_apple_spring; generation record assets-inbox/wave43/candidates-20261002/records/orchard/generations.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/orchard_pear_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/orchard/orchard_pear_spring.png",
+            "runtimeSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_pear_spring.png",
+            "sourceSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this EXACT existing game tree sprite into spring flowering PEAR. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: delicate scattered small IVORY WHITE pear blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/orchard/generations.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: \"single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0\"",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/orchard_pear_e/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-orchard_pear_spring; generation record assets-inbox/wave43/candidates-20261002/records/orchard/generations.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/orchard_pear_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/orchard/orchard_pear_spring.png",
+            "runtimeSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_pear_spring.png",
+            "sourceSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this EXACT existing game tree sprite into spring flowering PEAR. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: delicate scattered small IVORY WHITE pear blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers white, not pink. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/orchard/generations.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: \"single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0\"",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/orchard_pear_e/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-orchard_pear_spring; generation record assets-inbox/wave43/candidates-20261002/records/orchard/generations.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/orchard_plum_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/orchard/orchard_plum_spring.png",
+            "runtimeSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_plum_spring.png",
+            "sourceSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this EXACT existing game tree sprite into spring flowering PLUM. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: scattered small SOFT PALE PINK plum blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers visibly pale blush pink, restrained natural pink, never saturated magenta. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/orchard/generations.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: \"single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0\"",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/orchard_plum_f/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-orchard_plum_spring; generation record assets-inbox/wave43/candidates-20261002/records/orchard/generations.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/orchard_plum_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/orchard/orchard_plum_spring.png",
+            "runtimeSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_plum_spring.png",
+            "sourceSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this EXACT existing game tree sprite into spring flowering PLUM. Preserve exact canvas256x256, transparent margin, every foliage silhouette and hole, every branch and trunk pixel position, root contact, perspective and occupied bounds. NO redesign, no changed trunk. Change only canopy surface: scattered small SOFT PALE PINK plum blossom clusters interspersed with fresh pale green young leaves; no fruit. Flowers visibly pale blush pink, restrained natural pink, never saturated magenta. Hand-painted prerender matching original muted medieval game art, upper-left soft light. Never expand the crown with protruding blossoms. All petals remain INSIDE existing leaf silhouette. Keep all visible wood unchanged. Same tree, same pose, same outline, genuine transparent background, no floor or shadow, no text. Output one image.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/orchard/generations.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: \"single whole-canvas resize256x256; generatedRGB applied only to original green canopy pixels (and cherry proxy fruit), wood RGB retained; summer alpha copied exactly; alpha0 RGB0\"",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/orchard_plum_f/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-orchard_plum_spring; generation record assets-inbox/wave43/candidates-20261002/records/orchard/generations.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/tree_birch_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+            "runtimeSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_birch_spring.png",
+            "sourceSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer slender birch tree into spring. ONE tree only, transparent background, same canvas proportions60:96. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(30,96). Do not recenter, enlarge or extend crown. KEEP ALL pale birch trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-birch.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"operation\": \"Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero\", \"source_bbox\": {\"x0\": 2, \"y0\": 9, \"x1\": 57, \"y1\": 94}, \"generated_bbox\": {\"x0\": 1, \"y0\": 6, \"x1\": 56, \"y1\": 89}, \"leaf_rgb_pixels\": 2129, \"wood_rgb_preserved_pixels\": 615, \"leaf_selector\": \"original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty\", \"spring_leaf_color_finish\": {\"pixels\": 2129, \"red_delta\": -5, \"green_delta\": 8, \"reason\": \"Generated spring birch remained close to summer olive; subtle greenward finish inside source foliage mask only\"}}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_birch/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_birch_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-birch.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/tree_birch_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+            "runtimeSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_birch_spring.png",
+            "sourceSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer slender birch tree into spring. ONE tree only, transparent background, same canvas proportions60:96. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(30,96). Do not recenter, enlarge or extend crown. KEEP ALL pale birch trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-birch.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"operation\": \"Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero\", \"source_bbox\": {\"x0\": 2, \"y0\": 9, \"x1\": 57, \"y1\": 94}, \"generated_bbox\": {\"x0\": 1, \"y0\": 6, \"x1\": 56, \"y1\": 89}, \"leaf_rgb_pixels\": 2129, \"wood_rgb_preserved_pixels\": 615, \"leaf_selector\": \"original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty\", \"spring_leaf_color_finish\": {\"pixels\": 2129, \"red_delta\": -5, \"green_delta\": 8, \"reason\": \"Generated spring birch remained close to summer olive; subtle greenward finish inside source foliage mask only\"}}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_birch/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_birch_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-birch.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/tree_dead_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_other/tree_dead_spring.png",
+            "runtimeSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_dead_spring.png",
+            "sourceSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this exact tree_dead game sprite into a spring seasonal bark-material variant. It is a DEAD leafless tree and MUST REMAIN DEAD: absolutely no leaves, buds, green shoots or new living branches. Preserve every fork, broken tip, branch gap, root shape, silhouette, framing, canvas and bottom pivot precisely. Only give existing bark a subtly damp spring tone and a few restrained muted gray-green moss flecks WITHIN the lower existing bark surface, never a new silhouette. Keep dark brown-gray wood, restrained upper-left diffuse light, original hand-painted medieval strategy game texture. No snow, no flowers, no ground or cast shadow, no added objects, text, white edge lines or black outline strokes. Transparent background. Exact structural overlay with source, no crop or reposition.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_other/tree_dead_spring.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"method\": \"Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero\", \"source_bbox\": {\"left\": 2, \"top\": 9, \"width\": 52, \"height\": 70}, \"generated_bbox\": {\"left\": 48, \"top\": 168, \"width\": 967, \"height\": 1313}, \"blend\": \"32% interior / 8% edge\", \"geometry\": \"Original edge and branch-boundary RGB retained at 92-97%; generated alpha discarded\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_dead/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_dead_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_other/tree_dead_spring.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/tree_dead_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_other/tree_dead_spring.png",
+            "runtimeSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_dead_spring.png",
+            "sourceSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this exact tree_dead game sprite into a spring seasonal bark-material variant. It is a DEAD leafless tree and MUST REMAIN DEAD: absolutely no leaves, buds, green shoots or new living branches. Preserve every fork, broken tip, branch gap, root shape, silhouette, framing, canvas and bottom pivot precisely. Only give existing bark a subtly damp spring tone and a few restrained muted gray-green moss flecks WITHIN the lower existing bark surface, never a new silhouette. Keep dark brown-gray wood, restrained upper-left diffuse light, original hand-painted medieval strategy game texture. No snow, no flowers, no ground or cast shadow, no added objects, text, white edge lines or black outline strokes. Transparent background. Exact structural overlay with source, no crop or reposition.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_other/tree_dead_spring.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"method\": \"Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero\", \"source_bbox\": {\"left\": 2, \"top\": 9, \"width\": 52, \"height\": 70}, \"generated_bbox\": {\"left\": 48, \"top\": 168, \"width\": 967, \"height\": 1313}, \"blend\": \"32% interior / 8% edge\", \"geometry\": \"Original edge and branch-boundary RGB retained at 92-97%; generated alpha discarded\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_dead/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_dead_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_other/tree_dead_spring.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/tree_oak_large_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+            "runtimeSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_large_spring.png",
+            "sourceSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer tree into spring. ONE tree only, transparent background, same canvas proportions88:112. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(44,112). Do not recenter, enlarge or extend crown. KEEP ALL brown trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_large.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"operation\": \"Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero\", \"source_bbox\": {\"x0\": 2, \"y0\": 52, \"x1\": 85, \"y1\": 110}, \"generated_bbox\": {\"x0\": 1, \"y0\": 46, \"x1\": 84, \"y1\": 106}, \"leaf_rgb_pixels\": 2562, \"wood_rgb_preserved_pixels\": 711, \"leaf_selector\": \"original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_oak_large/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_oak_large_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_large.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/tree_oak_large_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+            "runtimeSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_large_spring.png",
+            "sourceSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned summer tree into spring. ONE tree only, transparent background, same canvas proportions88:112. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(44,112). Do not recenter, enlarge or extend crown. KEEP ALL brown trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_large.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"operation\": \"Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero\", \"source_bbox\": {\"x0\": 2, \"y0\": 52, \"x1\": 85, \"y1\": 110}, \"generated_bbox\": {\"x0\": 1, \"y0\": 46, \"x1\": 84, \"y1\": 106}, \"leaf_rgb_pixels\": 2562, \"wood_rgb_preserved_pixels\": 711, \"leaf_selector\": \"original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_oak_large/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_oak_large_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_large.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/tree_oak_small_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+            "runtimeSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_small_spring.png",
+            "sourceSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned small summer oak tree into spring. ONE tree only, transparent background, same canvas proportions64:80. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(32,80). Do not recenter, enlarge or extend crown. KEEP ALL brown trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_small.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"operation\": \"Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero\", \"source_bbox\": {\"x0\": 2, \"y0\": 27, \"x1\": 61, \"y1\": 78}, \"generated_bbox\": {\"x0\": 2, \"y0\": 26, \"x1\": 61, \"y1\": 79}, \"leaf_rgb_pixels\": 1745, \"wood_rgb_preserved_pixels\": 372, \"leaf_selector\": \"original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_oak_small/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_oak_small_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_small.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/tree_oak_small_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+            "runtimeSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_small_spring.png",
+            "sourceSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Use case: precise-object-edit / seasonal foliage. Edit this EXACT project-owned small summer oak tree into spring. ONE tree only, transparent background, same canvas proportions64:80. Preserve original occupied bounds, canopy contour, every gap in silhouette, trunk and branch positions, ground contact and lower-edge pivot(32,80). Do not recenter, enlarge or extend crown. KEEP ALL brown trunk/bark/branches and exposed roots unchanged. Change only leaf surfaces inside the existing canopy to distinctly fresh light yellow-green new spring leaves, lively but muted natural spring green, small tender newly unfolded leaves in original clumps. Spring is visibly brighter and more lime-green than mature dark olive summer; not autumn yellow, no blossoms, no extra branches. Upper-left illumination, soft hand-painted prerender, southern England1300-1450, no black cartoon outline, no photographic noise. Do not alter alpha holes or tree shape. No text/no framing/no ground base/no shadow blob. Same exact tree and camera. Output one clean RGBA spring sprite.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_small.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"operation\": \"Single resize of generated image to source canvas; generated RGB bbox registered to source bbox, leaf RGB80%+original20%; source nonleaf wood RGB preserved; exact source alpha reapplied; alpha0RGBzero\", \"source_bbox\": {\"x0\": 2, \"y0\": 27, \"x1\": 61, \"y1\": 78}, \"generated_bbox\": {\"x0\": 2, \"y0\": 26, \"x1\": 61, \"y1\": 79}, \"leaf_rgb_pixels\": 1745, \"wood_rgb_preserved_pixels\": 372, \"leaf_selector\": \"original G>0.93R and G>1.18B, alpha>16; generated green sample nearest within6px when mapped sample is wood/empty\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_oak_small/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_oak_small_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_broadleaf/generation-oak_small.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/tree_pine_short_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_other/tree_pine_short_spring.png",
+            "runtimeSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_short_spring.png",
+            "sourceSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this exact short conical pine sprite into CLEARLY IDENTIFIABLE EARLY SPRING. Preserve exact original silhouette, crown tiers, trunk, branches, roots, framing and bottom pivot. Add distinctly fresh light yellow-green needle candle clusters at the tips of the EXISTING foliage tiers, especially top and upper-left surfaces, completely INSIDE existing crown contour. About one third of needle tips should look fresh spring green and lighter than mature olive needles, enough to distinguish spring at only 34px sprite width. Natural muted apple/sage yellow-green, not neon, no broad leaves or flowers. Dark mature needles remain in inner crown. Preserve trunk and roots exactly. No added shape or outline, no ground, no snow, no text. Transparent background. Strong spring tip differentiation, not merely an overall tint. Same tree, exact overlay.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_short_spring.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"method\": \"Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero\", \"source_bbox\": {\"left\": 3, \"top\": 3, \"width\": 50, \"height\": 84}, \"generated_bbox\": {\"left\": 62, \"top\": 16, \"width\": 880, \"height\": 1528}, \"blend\": \"94% generated needle RGB / original bark RGB; 80% weight at silhouette edge\", \"geometry\": \"Original bark RGB fixed; crown material from generation; generated alpha discarded\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_pine_short/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_pine_short_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_short_spring.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/tree_pine_short_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_other/tree_pine_short_spring.png",
+            "runtimeSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_short_spring.png",
+            "sourceSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit this exact short conical pine sprite into CLEARLY IDENTIFIABLE EARLY SPRING. Preserve exact original silhouette, crown tiers, trunk, branches, roots, framing and bottom pivot. Add distinctly fresh light yellow-green needle candle clusters at the tips of the EXISTING foliage tiers, especially top and upper-left surfaces, completely INSIDE existing crown contour. About one third of needle tips should look fresh spring green and lighter than mature olive needles, enough to distinguish spring at only 34px sprite width. Natural muted apple/sage yellow-green, not neon, no broad leaves or flowers. Dark mature needles remain in inner crown. Preserve trunk and roots exactly. No added shape or outline, no ground, no snow, no text. Transparent background. Strong spring tip differentiation, not merely an overall tint. Same tree, exact overlay.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_short_spring.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"method\": \"Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero\", \"source_bbox\": {\"left\": 3, \"top\": 3, \"width\": 50, \"height\": 84}, \"generated_bbox\": {\"left\": 62, \"top\": 16, \"width\": 880, \"height\": 1528}, \"blend\": \"94% generated needle RGB / original bark RGB; 80% weight at silhouette edge\", \"geometry\": \"Original bark RGB fixed; crown material from generation; generated alpha discarded\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_pine_short/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_pine_short_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_short_spring.json; original candidate status retained in inbox."
+          }
+        },
+        {
+          "before": {
+            "assetId": "wave43/tree_pine_tall_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_other/tree_pine_tall_spring.png",
+            "runtimeSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_tall_spring.png",
+            "sourceSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit the exact source pine sprite into CLEARLY IDENTIFIABLE EARLY SPRING. Keep every silhouette pixel boundary, crown shape, branch and trunk alignment unchanged. Add noticeably fresh light yellow-green needle candle clusters across the outer tips of the EXISTING crown, especially upper-left and upper crown tiers, all fully INSIDE original foliage contour. Make roughly one third of existing crown needle tips distinctly lighter fresh spring green than mature olive needles, visibly readable even at 38px tree width. Muted natural apple/sage yellow-green, not neon, not flowers, no broad leaves. Keep older inner needles dark green. Preserve source trunk and roots exactly. No added silhouettes, no snow, no ground, no black or white outline, no text. Transparent background. This remains the same tall pine with the original rounded umbrella crown, not a new conical tree. Stronger spring-tip differentiation than a mere overall tint.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_tall_spring.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"method\": \"Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero\", \"source_bbox\": {\"left\": 2, \"top\": 36, \"width\": 60, \"height\": 83}, \"generated_bbox\": {\"left\": 25, \"top\": 493, \"width\": 878, \"height\": 1207}, \"blend\": \"94% generated needle RGB / original bark RGB; 80% weight at silhouette edge\", \"geometry\": \"Original bark RGB fixed; crown material from generation; generated alpha discarded\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_pine_tall/spring",
+            "status": "prepared",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_pine_tall_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_tall_spring.json; original candidate status retained in inbox."
+          },
+          "after": {
+            "assetId": "wave43/tree_pine_tall_spring",
+            "version": "",
+            "runtimePath": "public/assets/wave43/trees_other/tree_pine_tall_spring.png",
+            "runtimeSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+            "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_tall_spring.png",
+            "sourceSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+            "tool": "image_gen.imagegen",
+            "model": "",
+            "generatedAt": "",
+            "prompt": "Edit the exact source pine sprite into CLEARLY IDENTIFIABLE EARLY SPRING. Keep every silhouette pixel boundary, crown shape, branch and trunk alignment unchanged. Add noticeably fresh light yellow-green needle candle clusters across the outer tips of the EXISTING crown, especially upper-left and upper crown tiers, all fully INSIDE original foliage contour. Make roughly one third of existing crown needle tips distinctly lighter fresh spring green than mature olive needles, visibly readable even at 38px tree width. Muted natural apple/sage yellow-green, not neon, not flowers, no broad leaves. Keep older inner needles dark green. Preserve source trunk and roots exactly. No added silhouettes, no snow, no ground, no black or white outline, no text. Transparent background. This remains the same tall pine with the original rounded umbrella crown, not a new conical tree. Stronger spring-tip differentiation than a mere overall tint.",
+            "referenceInputs": "assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_tall_spring.json",
+            "seed": "",
+            "candidates": "1 selected approved source",
+            "manualEdits": "No installation transformation; source processing: {\"method\": \"Sharp alpha-bbox registration, Lanczos3 resample, selective generated RGB material blend into original RGB, exact summer alpha restoration, transparent RGB zero\", \"source_bbox\": {\"left\": 2, \"top\": 36, \"width\": 60, \"height\": 83}, \"generated_bbox\": {\"left\": 25, \"top\": 493, \"width\": 878, \"height\": 1207}, \"blend\": \"94% generated needle RGB / original bark RGB; 80% weight at silhouette edge\", \"geometry\": \"Original bark RGB fixed; crown material from generation; generated alpha discarded\"}",
+            "artBible": "AB_2026-09-19_v1",
+            "historicalProfile": "",
+            "owner": "",
+            "usedIn": "season-variant/tree_pine_tall/spring",
+            "status": "candidate",
+            "notes": "Detached spring9 data preparation only; runtime NOT_RUN. Catalog ID wave43-tree_pine_tall_spring; generation record assets-inbox/wave43/candidates-20261002/records/trees_other/tree_pine_tall_spring.json; original candidate status retained in inbox."
+          }
+        }
+      ],
+      "deletedPublicFiles": [
+        {
+          "path": "public/assets/wave15/foliage/tree_birch_spring-v1.png",
+          "sha256": "314f70fc81dcd686e73415f329c4bd4d1ff96fcd9cc6f74a395cd1971c98418e",
+          "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_birch_spring-v1.png"
+        },
+        {
+          "path": "public/assets/wave15/foliage/tree_oak_large_spring-v1.png",
+          "sha256": "48bfd0b33bcac02265544ad146f6c111deb5f8c8008134b6eb506a5185bf903f",
+          "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_large_spring-v1.png"
+        },
+        {
+          "path": "public/assets/wave15/foliage/tree_oak_small_spring-v1.png",
+          "sha256": "a4494807f25688512f09e894c9b7dc7ef28ace09e7cc651b59d2755fc2cef9f8",
+          "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/foliage/tree_oak_small_spring-v1.png"
+        },
+        {
+          "path": "public/assets/wave15/orchard/orchard_apple_c_spring-v1.png",
+          "sha256": "85cb17adf886febc134c4cc0fa077cf41506f27cf74db430dbb19b2577d34c9f",
+          "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_apple_c_spring-v1.png"
+        },
+        {
+          "path": "public/assets/wave15/orchard/orchard_pear_e_spring-v1.png",
+          "sha256": "8b5c545931c9a964989ddf4493b598f3fe5a1abe6cb37eef717153fd5d94286d",
+          "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_pear_e_spring-v1.png"
+        },
+        {
+          "path": "public/assets/wave15/orchard/orchard_plum_f_spring-v1.png",
+          "sha256": "a165713253200faa539c93b54acfb8b75284c85d8dc5b33b01870eac695fb624",
+          "preservedSource": "assets-inbox/wave15/candidates-20260926/assets/orchard/orchard_plum_f_spring-v1.png"
+        }
+      ],
+      "csvBeforeSha256": "5ba68837647e2834518d700e042303037f75c671ce09ff8a62544bb530317546",
+      "csvAfterSha256": "17e838c2de8c637530cef5ef37473f5cc28524c26ef22790633d5f926ec329bb",
+      "runtime": "NOT_RUN for spring9; notify core v3 parent reports10/10 parity"
+    },
+    "new9Status": "candidate in detached provenance; no installed_by claim",
+    "comparisonBaselineNote": "Preview before is original season baseline. Notify core is RGBA identical to that baseline in all10 views; spring9 summary compares to notify core. Common audit script changed after notify runtime."
+  },
+  "note": "Prior locally encoded detached previews were removed from this presentation. Current browser JPEGs originate in actual committed captures; no old preview was relabelled."
+}

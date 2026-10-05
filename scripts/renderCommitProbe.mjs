@@ -87,7 +87,7 @@ export async function openScene(browser, { state, tile, baseUrl, width = WIDTH, 
   // UI-AUDIT-1: `loadTimeout` for a shared, busy DGX (the page's load and the proof port's first frame).
   await page.goto(`${baseUrl}?phase10-proof=1${query}`, { timeout: loadTimeout });
   await Promise.race([page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: Math.max(60_000, loadTimeout) }), refused]);
-  if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click();
+  if (await page.locator('.welcome-dismiss-layer').count()) await page.locator('.welcome-dismiss-layer').click({ position: { x: 20, y: 20 } });
   await page.keyboard.press('Escape');
   // UX-3 S-31: Esc on the idle screen opens the pause menu; a scene starts without it.
   if (await page.locator('.pause-menu').count()) await page.keyboard.press('Escape');

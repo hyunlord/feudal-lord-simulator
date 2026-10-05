@@ -1,8 +1,8 @@
 import { useState } from "react";
 
 import { UiIcon } from "../UiIcon";
-import { Button, IconButton, type ButtonSize, type ButtonVariant } from "./Button";
-import { Checkbox, Chip, Divider, Slider, Tabs, Toggle, Tooltip } from "./Controls";
+import { Button, CloseButton, IconButton, type ButtonSize, type ButtonVariant } from "./Button";
+import { Checkbox, Chip, Divider, Radio, Slider, Tabs, Toggle, Tooltip } from "./Controls";
 import { Card, Panel, type FrameKind } from "./Frame";
 import { NumberField } from "./NumberField";
 import { Select } from "./Select";
@@ -18,7 +18,7 @@ import type { PadGlyphId } from "../padGlyphs";
  * UI-KIT-1 gallery (`/dev/ui-kit`): every kit part in every variant and state on one page, inside `.app-shell` so the
  * game's skin, type and touch floor apply. Desktop and tablet captures of it are gate ③ (scripts/uiSkinAudit.mjs).
  */
-const VARIANTS: readonly Exclude<ButtonVariant, "icon">[] = ["primary", "secondary", "quiet", "danger", "toggle", "tab", "surface"];
+const VARIANTS: readonly Exclude<ButtonVariant, "icon" | "close">[] = ["primary", "secondary", "quiet", "danger", "toggle", "tab", "surface"];
 const SIZES: readonly ButtonSize[] = ["sm", "md", "lg"];
 const FRAMES: readonly FrameKind[] = ["light", "dark", "objective", "advisor", "modal", "tooltip", "record"];
 /** INSTALL-23 ④: a pool face for each state's sample (the artist's proof faces; an adult for the parent's child_born). */
@@ -77,6 +77,7 @@ export function UiKitGallery() {
   const [digits, setDigits] = useState("482913");
   const [tab, setTab] = useState<"resources" | "view" | "map">("resources");
   const [pressed, setPressed] = useState(true);
+  const [share, setShare] = useState<"keep" | "market" | "tithe" | "lord">("market");
   return (
     <div className="app-shell ui-kit-gallery" data-testid="ui-kit-gallery">
       <header className="ui-kit-gallery-head">
@@ -96,7 +97,7 @@ export function UiKitGallery() {
           {SIZES.map(size => <Button key={`s-${size}`} variant="secondary" size={size}>{COPY.sizes[size]}</Button>)}
         </div>
         <h3>{COPY.sections.states}</h3>
-        {(["primary", "secondary", "toggle", "tab"] as const).map(variant => (
+        {(["primary", "secondary", "danger", "toggle", "tab"] as const).map(variant => (
           <div key={variant} className="ui-kit-gallery-row" data-states={variant}>
             <Button variant={variant} size="md">{COPY.states.normal}</Button>
             <Button variant={variant} size="md" aria-pressed={pressed} {...(variant === "tab" ? { "aria-selected": true } : {})}
@@ -111,6 +112,17 @@ export function UiKitGallery() {
           <IconButton label={COPY.iconLabels.help}><UiIcon sheet="lock" cell="help" /></IconButton>
           <IconButton label={COPY.iconLabels.help} disabled><UiIcon sheet="lock" cell="help" /></IconButton>
         </div>
+        <h3>{COPY.sections.close}</h3>
+        <div className="ui-kit-gallery-row" data-states="close">
+          <CloseButton label={COPY.iconLabels.close}><UiIcon sheet="prediction" cell="block" /></CloseButton>
+          <CloseButton label={COPY.iconLabels.close} disabled><UiIcon sheet="prediction" cell="block" /></CloseButton>
+        </div>
+        <h3>{COPY.sections.longLabels}</h3>
+        <div className="ui-kit-gallery-row" data-states="long">
+          {COPY.longLabels.map((label, index) => (
+            <Button key={label} variant={(["primary", "secondary", "danger"] as const)[index]!} size="md">{label}</Button>
+          ))}
+        </div>
       </Panel>
       <Panel className="ui-kit-gallery-section" aria-label={COPY.sections.select} data-section="controls">
         <h2>{COPY.sections.select}</h2>
@@ -124,6 +136,13 @@ export function UiKitGallery() {
           <Toggle checked={!sound} label={`${COPY.toggle} ${!sound ? COPY.on : COPY.off}`} onChange={value => setSound(!value)} />
           <Checkbox checked={seasonCard} label={COPY.checkbox} onChange={setSeasonCard} />
           <Checkbox checked={!seasonCard} label={COPY.checkbox} onChange={value => setSeasonCard(!value)} />
+          <Checkbox checked={false} label={COPY.checkbox} onChange={() => undefined} disabled />
+        </div>
+        <h2>{COPY.sections.radio}</h2>
+        <div className="ui-kit-gallery-row" data-states="radio">
+          <Radio label={COPY.radioLabel} value={share} onChange={setShare}
+            options={[...(Object.keys(COPY.radioOptions) as (keyof typeof COPY.radioOptions)[]).map(key => ({ value: key, label: COPY.radioOptions[key] })),
+              { value: "lord", label: COPY.radioDisabled, disabled: true }]} />
         </div>
         <h2>{COPY.sections.slider}</h2>
         <div className="ui-kit-gallery-row">
@@ -145,7 +164,12 @@ export function UiKitGallery() {
         <div className="ui-kit-gallery-row">
           <Chip>{COPY.chips.info}</Chip>
           {(["ok", "warn", "block", "info"] as const).map(tone => <Chip key={tone} tone={tone}>{COPY.chips[tone]}</Chip>)}
+          <Chip selected>{COPY.chips.selected}</Chip>
         </div>
+        <h2>{COPY.sections.scroll}</h2>
+        <ol className="ui-kit-gallery-scroll" data-states="scroll" tabIndex={0} aria-label={COPY.sections.scroll}>
+          {Array.from({ length: 30 }, (_, index) => <li key={index}>{COPY.scrollItem(index + 1)}</li>)}
+        </ol>
       </Panel>
       <PersonStateAndPadSections />
       <section className="ui-kit-gallery-section ui-kit-gallery-frames" aria-label={COPY.sections.frames} data-section="frames">

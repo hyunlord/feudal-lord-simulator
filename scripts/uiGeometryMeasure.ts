@@ -262,10 +262,11 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
       const kit = element.classList.contains("ui-btn") || element.classList.contains("ui-select-option") || element.closest(".ui-select, .ui-slider, .ui-number") !== null; // NAT-4: the kit NumberField is a kit control
       // A list option is a row of its framed list (a surface, as the skin audit counts it).
       const variant = element.classList.contains("ui-select-option") ? "surface"
-        : [...element.classList].find(name => name.startsWith("ui-btn--") && ["surface", "quiet", "primary", "secondary", "danger", "icon", "toggle", "tab"].includes(name.slice(8)))?.slice(8) ?? null;
+        : [...element.classList].find(name => name.startsWith("ui-btn--") && ["surface", "quiet", "primary", "secondary", "danger", "icon", "close", "toggle", "tab"].includes(name.slice(8)))?.slice(8) ?? null;
       controlIndex.set(element, items.length);
       items.push({ ...base, kind: "control", text: (element.getAttribute("aria-label") ?? element.textContent ?? "").replace(/\s+/g, " ").trim().slice(0, 40),
-        control: { kit, art: ART.test(style.borderImageSource) || ART.test(style.backgroundImage), variant } });
+        // LM-R1: a fixed-height face drawn on the control's ::before (the kit select's 40 px Wave 38 face in a 44 px target).
+        control: { kit, art: ART.test(style.borderImageSource) || ART.test(style.backgroundImage) || ART.test(getComputedStyle(element, "::before").borderImageSource), variant } });
     } else if (["img", "canvas", "svg", "video", "picture"].includes(tag) || ART.test(style.backgroundImage) || ART.test(style.borderImageSource)) {
       items.push({ ...base, kind: "image" });
     } else if (tag === "hr" || visibleBorder(style)) {

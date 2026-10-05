@@ -14,6 +14,8 @@ export function drawGateMarker(
   gate: TileEdgePoint,
   zoom: number,
   node?: StoneWallNode,
+  /** QA-003: the wall strips' door post at a pier (the plain post when it returns false). */
+  post?: (pier: TileEdgePoint) => boolean,
 ): void {
   const center = palisadeScreenPath([gate])[0];
   if (!center) return;
@@ -21,7 +23,7 @@ export function drawGateMarker(
   for (const branch of branches) {
     const point = palisadeScreenPath([branch.point])[0];
     if (!point) continue;
-    if (branch.pier) drawPost(context, point, { width: 8, height: 32 }, zoom);
+    if (branch.pier && post?.(branch.point) !== true) drawPost(context, point, { width: 8, height: 32 }, zoom);
     context.save();
     applyPaletteStroke(context, SEMANTIC_PALETTE.earthDark, zoom);
     context.lineWidth = 5;

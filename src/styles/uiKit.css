@@ -24,23 +24,72 @@
 :where(.ui-btn--primary) { font-weight: 700; }
 :where(.ui-btn--danger) { color: var(--seal-red-deep); font-weight: 700; }
 :where(.ui-btn--icon) { display: inline-grid; place-items: center; padding: 2px; }
-:where(.ui-btn--tab) { color: var(--parchment-light); }
+:where(.ui-btn--tab) { color: var(--ink); }
 :where(.ui-btn--quiet.ui-btn--dark) { color: var(--parchment-light); }
 :where(.ui-btn--surface) { color: inherit; text-align: inherit; justify-content: flex-start; }
 /* NAT-2 (QA-006): a surface a screen gives no fill or border of its own is not the browser's button (grey fill, outset
    border): the ledger's rows and the gallery's samples were. At 0 specificity: a screen's own fill and border win. */
 :where(.ui-btn--surface) { background-color: transparent; border: 0 solid transparent; }
 :root .ui-btn.ui-btn:not(.ui-btn--surface) {
+  /* LM-R1: Wave 38, a picture per state (frameTokens.generated.css). A variant names its family's pictures here; the
+     state rules below pick one, so a screen's own button rules (place, size, colour) never handle the states. */
+  --ui-btn-art: var(--button-secondary-art);
+  --ui-btn-hover-art: var(--button-secondary-hover-art);
+  --ui-btn-pressed-art: var(--button-secondary-pressed-art);
+  --ui-btn-disabled-art: var(--button-secondary-disabled-art);
   background: none;
   border-color: transparent;
   border-radius: 0;
-  border-image: var(--button-secondary-art);
+  border-image: var(--ui-btn-art);
 }
-:root .ui-btn.ui-btn.ui-btn--primary { border-image: var(--button-primary-art); }
-:root .ui-btn.ui-btn.ui-btn--danger { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--seal-red) 55%, transparent); }
-:root .ui-btn.ui-btn.ui-btn--icon { border-image: var(--button-icon-art); }
-:root .ui-btn.ui-btn.ui-btn--tab { border-image: var(--button-tab-art); }
-:root .ui-btn.ui-btn.ui-btn--quiet { border-image: none; background: var(--art-rule-light) center bottom / 100% 6px no-repeat; }
+/* Primary: the reworked dark oak (UI-01), its text the light parchment (above a screen's own ink: 0-4-0). */
+:root .ui-btn.ui-btn.ui-btn--primary {
+  --ui-btn-art: var(--button-primary-art);
+  --ui-btn-hover-art: var(--button-primary-hover-art);
+  --ui-btn-pressed-art: var(--button-primary-pressed-art);
+  --ui-btn-disabled-art: var(--button-primary-disabled-art);
+  color: var(--primary-ink);
+}
+:root .ui-btn.ui-btn.ui-btn--danger {
+  --ui-btn-art: var(--button-danger-art);
+  --ui-btn-hover-art: var(--button-danger-hover-art);
+  --ui-btn-pressed-art: var(--button-danger-pressed-art);
+  --ui-btn-disabled-art: var(--button-danger-disabled-art);
+}
+:root .ui-btn.ui-btn.ui-btn--icon {
+  --ui-btn-art: var(--button-icon-art);
+  --ui-btn-hover-art: var(--button-icon-hover-art);
+  --ui-btn-pressed-art: var(--button-icon-pressed-art);
+  --ui-btn-disabled-art: var(--button-icon-disabled-art);
+}
+/* Tabs: unselected · hover (pointer) · selected, which is brighter than hover and keeps its picture under the pointer. */
+:root .ui-btn.ui-btn.ui-btn--tab {
+  --ui-btn-art: var(--button-tab-art);
+  --ui-btn-hover-art: var(--button-tab-hover-art);
+  --ui-btn-pressed-art: var(--button-tab-hover-art);
+  --ui-btn-disabled-art: var(--button-tab-art);
+}
+:root .ui-btn.ui-btn.ui-btn--tab:is([aria-selected="true"], [aria-pressed="true"]) {
+  --ui-btn-art: var(--button-tab-selected-art);
+  --ui-btn-hover-art: var(--button-tab-selected-art);
+  --ui-btn-pressed-art: var(--button-tab-selected-art);
+}
+/* The close button: Wave 38's fixed 32 px close picture (its own X) in the middle of the 44 px target; the glyph the
+   button carries shows only when the picture did not load (the P0 icon frame then, `data-ui-art="p0"`). */
+:root .ui-btn.ui-btn.ui-btn--close {
+  --ui-btn-art: var(--button-icon-art);
+  --ui-btn-hover-art: var(--button-icon-hover-art);
+  --ui-btn-pressed-art: var(--button-icon-pressed-art);
+  --ui-btn-disabled-art: var(--button-icon-disabled-art);
+  --ui-close-art: var(--control-close-normal);
+  background: var(--ui-close-art) center / 32px 32px no-repeat;
+}
+:root:not([data-ui-art="p0"]) .ui-btn.ui-btn.ui-btn--close { --ui-btn-art: none; --ui-btn-hover-art: none; --ui-btn-pressed-art: none; --ui-btn-disabled-art: none; }
+:root:not([data-ui-art="p0"]) .ui-btn--close > * { visibility: hidden; }
+@media (hover: hover) { :root .ui-btn.ui-btn.ui-btn--close:not(:disabled):hover { --ui-close-art: var(--control-close-hover); } }
+:root .ui-btn.ui-btn.ui-btn--close:not(:disabled):active { --ui-close-art: var(--control-close-pressed); }
+:root .ui-btn.ui-btn.ui-btn--quiet { --ui-btn-art: none; --ui-btn-hover-art: none; --ui-btn-pressed-art: none; --ui-btn-disabled-art: none;
+  background: var(--art-rule-light) center bottom / 100% 6px no-repeat; }
 :root .ui-btn.ui-btn.ui-btn--quiet.ui-btn--dark { background: var(--art-rule-dark) center bottom / 100% 6px no-repeat; }
 /* A cell, row or card of a framed strip or panel: the frame around it is its skin (the audit checks that frame).
    It keeps the screen's own fill (a season cell's colour, the Wave 19 strip) and never takes the button art. */
@@ -51,16 +100,41 @@
 :where(.ui-btn--sm) { min-height: 32px; padding: var(--button-pad-sm); font-size: var(--text-13); }
 :where(.ui-btn--md) { min-height: 40px; padding: var(--button-pad-md); font-size: var(--text-14); }
 :where(.ui-btn--lg) { min-height: 48px; padding: var(--button-pad-lg); font-size: var(--text-16); }
+/* LM-R1: a 128 × 40 Wave 38 button keeps its 44 px target (the floor in uiBoundaries.css) and 48 px on a touch screen.
+   Sized kit buttons and the select only: the HUD's own buttons keep their sizes (the tablet HUD budget has no margin). */
+@media (pointer: coarse) {
+  :root .ui-btn.ui-btn:is(.ui-btn--sm, .ui-btn--md, .ui-btn--lg) { min-height: 48px !important; } /* above the 44 px !important floor */
+  :root .ui-select .ui-select-trigger.ui-btn { height: 48px; }
+}
 
-:root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); }
-:root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); filter: brightness(0.96); }
+:root .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):active { transform: translateY(1px); }
+/* LM-R1 states: hover only where the pointer hovers (a tap leaves no sticky hover), pressed while held, the keyboard focus
+   ring apart from both; disabled first (last and most specific: no hover, press or on-state picture over it). */
+@media (hover: hover) {
+  :root .ui-btn.ui-btn:not(.ui-btn--surface):not(:disabled):not([aria-disabled="true"]):hover { border-image: var(--ui-btn-hover-art); }
+}
+:root .ui-btn.ui-btn:not(.ui-btn--surface):not(:disabled):not([aria-disabled="true"]):active { border-image: var(--ui-btn-pressed-art); }
 :root .ui-btn.ui-btn:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
-:root .ui-btn.ui-btn:is(:disabled, [aria-disabled="true"]) { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
-:root .ui-btn.ui-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-current="true"], [aria-current="page"]):not(.ui-btn--tab):not(.ui-toggle):not(.ui-checkbox) {
+:root .ui-btn.ui-btn:is([aria-pressed="true"], [aria-checked="true"], [aria-current="true"], [aria-current="page"]):not(.ui-btn--tab):not(.ui-toggle):not(.ui-checkbox):not(.ui-radio) {
   filter: brightness(1.08);
   box-shadow: inset 0 0 0 2px var(--seal-red);
 }
-:root .ui-btn.ui-btn--tab:is([aria-selected="true"], [aria-pressed="true"]) { filter: brightness(1.45); box-shadow: inset 0 -3px 0 var(--status-warn); }
+:root .ui-btn.ui-btn--tab:is([aria-selected="true"], [aria-pressed="true"]) { box-shadow: inset 0 -3px 0 var(--status-warn); }
+/* Disabled: the family's disabled picture; a family without one (tab, quiet, close) greys as before. */
+:root .ui-btn.ui-btn:is(:disabled, [aria-disabled="true"]) { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
+:root .ui-btn.ui-btn.ui-btn.ui-btn:is(.ui-btn--primary, .ui-btn--secondary, .ui-btn--danger, .ui-btn--icon, .ui-btn--toggle):is(:disabled, [aria-disabled="true"]) {
+  color: var(--ink-soft);
+  filter: none;
+  opacity: 1;
+  box-shadow: none;
+  border-image: var(--ui-btn-disabled-art);
+}
+:root .ui-btn.ui-btn.ui-btn.ui-btn.ui-btn--primary:is(:disabled, [aria-disabled="true"]) { color: color-mix(in srgb, var(--primary-ink) 72%, transparent); }
+/* P0 fallback (a Wave 38 picture did not load): one P0 picture for every state, so the states are drawn in code again. */
+@media (hover: hover) { :root[data-ui-art="p0"] .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):hover { filter: brightness(1.06); } }
+:root[data-ui-art="p0"] .ui-btn.ui-btn:not(:disabled):not([aria-disabled="true"]):active { filter: brightness(0.96); }
+:root[data-ui-art="p0"] .ui-btn.ui-btn.ui-btn.ui-btn:is(:disabled, [aria-disabled="true"]) { filter: grayscale(0.6); opacity: 0.6; }
+:root[data-ui-art="p0"] .ui-btn.ui-btn.ui-btn--primary { color: var(--ink); }
 
 :where(.ui-btn:is([aria-pressed="true"], [aria-checked="true"])) { font-weight: 700; }
 
@@ -79,9 +153,32 @@
 /* The pause menu is a dialog: the modal frame (was a flat vellum box with an ink rule). */
 :root .app-shell .pause-menu { background: var(--parchment) var(--art-texture-light) repeat; border-image: var(--frame-modal-art); }
 
-/* ---- Select: a secondary button and a light-framed list ---- */
+/* ---- Select: a secondary button and a light-framed list ----
+   LM-R1: Wave 38 select_closed is a fixed 40 px face (its own chevron; only its width stretches, the right 26 px keep the
+   chevron): it is drawn on the trigger's ::before, centred in the 44 / 48 px target, so it is never stretched upright.
+   The open list wears select_open_list (frame kind select-list), the active row select_row_hover. */
 .ui-select { position: relative; display: inline-block; min-width: 0; vertical-align: middle; }
-:root .ui-select .ui-select-trigger.ui-btn { justify-content: space-between; width: 100%; min-width: 96px; padding: 4px 6px 4px 12px; font-size: var(--text-14); }
+:root .ui-select .ui-select-trigger.ui-btn { position: relative; isolation: isolate; justify-content: space-between; width: 100%; min-width: 96px; padding: 4px 6px 4px 12px; font-size: var(--text-14); }
+:root:not([data-ui-art="p0"]) .ui-select .ui-select-trigger.ui-btn.ui-btn {
+  --ui-btn-art: none; --ui-btn-hover-art: none; --ui-btn-pressed-art: none; --ui-btn-disabled-art: none;
+  padding: 4px 28px 4px 12px;
+}
+:root .ui-select .ui-select-trigger::before {
+  position: absolute;
+  top: calc(50% - 20px);
+  right: 0;
+  left: 0;
+  z-index: -1;
+  height: 40px;
+  content: "";
+  border-style: solid;
+  border-color: transparent;
+  border-width: 0;
+  border-image: var(--control-select-art);
+}
+:root[data-ui-art="p0"] .ui-select .ui-select-trigger::before { display: none; }
+:root:not([data-ui-art="p0"]) .ui-select .ui-select-chevron { display: none; }
+:root .ui-select .ui-select-trigger:disabled::before { filter: grayscale(0.6); opacity: 0.6; }
 .ui-select-value { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
 .ui-select-chevron { transform: rotate(180deg) scale(0.75); }
 .ui-select[data-open="true"] .ui-select-chevron { transform: scale(0.75); }
@@ -98,6 +195,8 @@
   list-style: none;
   box-shadow: 0 6px 18px color-mix(in srgb, var(--ink) 35%, transparent);
 }
+:root .ui-select-list.ui-frame.ui-frame--select-list { color: var(--ink); background: none; border-image: var(--frame-select-list-art); }
+:root[data-ui-art="p0"] .ui-select-list.ui-frame.ui-frame--select-list { background: var(--parchment) var(--art-texture-light) repeat; }
 .ui-select-list:focus { outline: none; }
 .ui-select-list:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
 .ui-select-option {
@@ -113,8 +212,12 @@
 }
 .ui-select-option[aria-selected="true"] { font-weight: 700; border-left-color: var(--seal-red); }
 .ui-select-option--active { background-color: color-mix(in srgb, var(--gold-rule) 28%, transparent); }
+:root:not([data-ui-art="p0"]) .ui-select-option.ui-select-option--active { background-color: transparent; border-style: solid; border-color: transparent; border-image: var(--control-select-row-art); }
+:root:not([data-ui-art="p0"]) .ui-select-option.ui-select-option--active[aria-selected="true"] { box-shadow: inset 3px 0 0 var(--seal-red); }
 
-/* ---- Toggle (switch) and checkbox: seals ---- */
+/* ---- Toggle (switch), checkbox and radio: seals ----
+   LM-R1: Wave 38's fixed-size pictures (toggle 56 × 28, checkbox and radio 24 × 24, never stretched) on the drawn
+   track / box; the drawn seal and tick show only when the pictures did not load (`data-ui-art="p0"`). */
 .ui-btn.ui-toggle { gap: var(--space-1); padding: 4px 12px 4px 8px; }
 .ui-toggle-track {
   position: relative;
@@ -138,8 +241,11 @@
 }
 .ui-toggle[aria-checked="true"] .ui-toggle-seal { background: radial-gradient(circle at 35% 35%, var(--parchment-light) 0 16%, var(--seal-red) 18% 100%); transform: translateX(18px); }
 .ui-toggle[aria-checked="true"] { font-weight: 700; }
-.ui-btn.ui-checkbox { gap: var(--space-1); padding: 4px 8px; }
-.ui-checkbox-box {
+:root:not([data-ui-art="p0"]) .ui-toggle-track { width: 56px; height: 28px; background: var(--control-toggle-off) center / 56px 28px no-repeat; border-radius: 0; box-shadow: none; }
+:root:not([data-ui-art="p0"]) .ui-toggle[aria-checked="true"] .ui-toggle-track { background-image: var(--control-toggle-on); }
+:root:not([data-ui-art="p0"]) .ui-toggle-seal { display: none; }
+.ui-btn.ui-checkbox, .ui-btn.ui-radio { gap: var(--space-1); padding: 4px 8px; }
+.ui-checkbox-box, .ui-radio-box {
   display: inline-grid;
   flex: none;
   place-items: center;
@@ -149,7 +255,16 @@
   border-radius: 50%;
   box-shadow: inset 0 0 0 2px var(--ink-soft);
 }
-.ui-checkbox[aria-checked="true"] .ui-checkbox-box { box-shadow: inset 0 0 0 2px var(--seal-red); }
+.ui-checkbox[aria-checked="true"] .ui-checkbox-box, .ui-radio[aria-checked="true"] .ui-radio-box { box-shadow: inset 0 0 0 2px var(--seal-red); }
+.ui-radio-dot { width: 10px; height: 10px; background: var(--seal-red); border-radius: 50%; }
+:root:not([data-ui-art="p0"]) :is(.ui-checkbox-box, .ui-radio-box) { width: 24px; height: 24px; background: var(--control-checkbox-empty) center / 24px 24px no-repeat; border-radius: 0; box-shadow: none; }
+:root:not([data-ui-art="p0"]) .ui-checkbox[aria-checked="true"] .ui-checkbox-box { background-image: var(--control-checkbox-checked); }
+:root:not([data-ui-art="p0"]) .ui-checkbox:disabled .ui-checkbox-box { background-image: var(--control-checkbox-disabled); }
+:root:not([data-ui-art="p0"]) .ui-radio-box { background-image: var(--control-radio-empty); }
+:root:not([data-ui-art="p0"]) .ui-radio[aria-checked="true"] .ui-radio-box { background-image: var(--control-radio-selected); }
+:root:not([data-ui-art="p0"]) :is(.ui-checkbox-box, .ui-radio-box) > * { visibility: hidden; }
+/* The checkbox's own picture says disabled (checkbox_disabled); no grey veil over it. */
+:root:not([data-ui-art="p0"]) .ui-btn.ui-btn.ui-btn.ui-checkbox:disabled { filter: none; opacity: 1; color: var(--ink-soft); }
 
 /* ---- Slider: a parchment groove, a seal thumb ---- */
 :root .ui-slider.ui-slider {
@@ -189,6 +304,11 @@
   border-radius: 50%;
   box-shadow: inset 0 0 0 2px var(--seal-red-deep);
 }
+/* LM-R1: Wave 38's groove (slider_track: a 9-slice, only its width stretches; 12 px tall) and its fixed 24 px thumb. */
+:root:not([data-ui-art="p0"]) .ui-slider::-webkit-slider-runnable-track { height: 12px; background: none; border-radius: 0; box-shadow: none; border-style: solid; border-color: transparent; border-width: 0; border-image: var(--control-slider-track-art); }
+:root:not([data-ui-art="p0"]) .ui-slider::-moz-range-track { height: 12px; background: none; border-radius: 0; box-shadow: none; border: 0 solid transparent; border-image: var(--control-slider-track-art); }
+:root:not([data-ui-art="p0"]) .ui-slider::-webkit-slider-thumb { margin-top: -6px; background: var(--control-slider-thumb) center / 24px 24px no-repeat; border-radius: 0; box-shadow: none; }
+:root:not([data-ui-art="p0"]) .ui-slider::-moz-range-thumb { background: var(--control-slider-thumb) center / 24px 24px no-repeat; border-radius: 0; box-shadow: none; }
 .ui-slider:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
 .ui-slider:disabled { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
 
@@ -207,9 +327,11 @@
   background: none;
   border: var(--frame-tooltip-width) solid transparent;
   border-radius: 0;
-  border-image: var(--frame-tooltip-art);
+  border-image: var(--control-input-art);
   outline: none;
 }
+/* LM-R1: Wave 38 input_focus while the caret is in it (pointer or keys); the keyboard ring stays the focus-visible one. */
+:root .ui-number.ui-number:focus { border-image: var(--control-input-focus-art); }
 :root .ui-number.ui-number:focus-visible { outline: 2px solid var(--seal-red); outline-offset: 2px; }
 :root .ui-number.ui-number[aria-invalid="true"] { color: var(--seal-red-deep); box-shadow: inset 0 0 0 2px var(--seal-red); }
 :root .ui-number.ui-number:disabled { cursor: default; filter: grayscale(0.6); opacity: 0.6; }
@@ -218,6 +340,8 @@
 
 /* ---- Tabs ---- */
 .ui-tabs { display: flex; flex-wrap: wrap; gap: var(--space-half); }
+/* LM-R1: a kit tab's label clears the Wave 38 tab's rim and text_safe x (14 px; a screen's own tab rule keeps its padding). */
+:where(.ui-tabs > .ui-btn--tab) { padding: 4px 14px; }
 
 /* ---- Chip ---- */
 :root .ui-chip.ui-chip {
@@ -231,6 +355,9 @@
   border: 1px solid transparent;
   border-image: var(--button-chip-art);
 }
+/* LM-R1: the kit chip wears Wave 38 chip_normal / chip_selected, a fixed 28 px tall (only its width stretches). */
+:root .ui-chip.ui-chip { box-sizing: border-box; height: 28px; padding: 0 10px; border-width: 0; border-image: var(--control-chip-art); }
+:root .ui-chip.ui-chip.ui-chip--selected { font-weight: 700; border-image: var(--control-chip-selected-art); }
 .ui-chip--ok { color: var(--status-ok); }
 .ui-chip--warn { color: var(--oak); font-weight: 700; }
 .ui-chip--block { color: var(--status-block); font-weight: 700; }
@@ -264,6 +391,19 @@
 :root .ui-divider.ui-divider { height: 8px; margin: var(--space-1) 0; background: var(--art-rule-light) center / 100% 8px no-repeat; border: 0; }
 :root .ui-divider.ui-divider--dark { background-image: var(--art-rule-dark); }
 
+/* ---- Scrollbars (LM-R1) ----
+   Wave 38's track and thumb (12 px wide, only their height stretches) on every vertical scroller in the game: the
+   browser's own scrollbar (`::-webkit-scrollbar`), so scrolling, dragging and the wheel stay native. A part paints its
+   border-image only over a border as wide as the slices. A horizontal bar has no Wave 38 picture: a plain ink thumb. In the
+   P0 fallback the tokens are `none` and the thumb's ink fill shows. Scrollers that set `scrollbar-width` keep the browser's
+   bar (the standard property wins). No `:root:not(…)` prefix here: Chromium did not paint the parts under it (DGX probe). */
+:is(.app-shell, .app-shell *)::-webkit-scrollbar { width: 12px; height: 8px; background: transparent; }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-track { border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-track-width); border-image: var(--control-scrollbar-track-art); }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb { min-height: 20px; background-color: color-mix(in srgb, var(--ink-soft) 70%, transparent); border-style: solid; border-color: transparent; border-width: var(--control-scrollbar-thumb-width); border-image: var(--control-scrollbar-thumb-art); }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-track:horizontal { background: transparent; border-width: 0; border-image: none; }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-thumb:horizontal { border-width: 0; border-radius: 4px; border-image: none; }
+:is(.app-shell, .app-shell *)::-webkit-scrollbar-corner { background: transparent; }
+
 /* ---- /dev/ui-kit gallery (a developer screen) ---- */
 .app-shell.ui-kit-gallery { box-sizing: border-box; height: 100dvh; padding: var(--space-2) var(--space-3) var(--space-3); overflow-y: auto; overflow-x: hidden; background: var(--parchment) var(--art-texture-light) repeat; }
 .ui-kit-gallery-head h1 { margin: 0 0 var(--space-half); font-family: var(--ui-font-serif); font-size: 24px; }
@@ -274,6 +414,9 @@
 .ui-kit-gallery-section h3 { margin: var(--space-1) 0 var(--space-half); font-size: var(--text-14); color: var(--ink-soft); }
 .ui-kit-gallery-row { display: flex; flex-wrap: wrap; gap: var(--space-1); align-items: center; margin-bottom: var(--space-1); }
 .ui-kit-gallery-row--select { min-height: 60px; }
+/* LM-R1: the long list for the scrollbar check, and the radio group. */
+.ui-kit-gallery-scroll { box-sizing: border-box; width: min(360px, 100%); height: 160px; margin: 0 0 var(--space-1); padding: 4px 8px 4px 28px; overflow-y: auto; font-size: var(--text-13); line-height: 1.6; }
+.ui-radio-group { display: flex; flex-wrap: wrap; gap: var(--space-1); }
 .ui-kit-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: var(--space-2); }
 .ui-kit-gallery-frame { min-height: 96px; font-size: var(--text-13); }
 .ui-kit-gallery-frame p { margin: var(--space-half) 0 0; }

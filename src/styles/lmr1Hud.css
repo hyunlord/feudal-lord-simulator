@@ -1,0 +1,74 @@
+/* LM-R1 HUD (playtest 2026-10-02's blockers, lord mode's command pins). Touch targets >= 44 px (48 on tablets), text
+   >= 12 px; frames from the frame tokens (light: the inspector's parchment, strip-bottom: the build drawer's). */
+
+/* #1: the town goal's card on the rail shows its next action (one 12 px line) under its title; the button does it. */
+.app-shell .goal-chip-rail .goal-card[data-goal-card="settlement"] .goal-card-why {
+  display: block; max-width: 220px; margin: 0 0 2px; overflow: hidden; font-size: 12px; text-overflow: ellipsis; white-space: nowrap;
+}
+
+/* #1, #10: the goal log's pin — the chapter's flow and the town goal side by side, then the next action. */
+.app-shell .goal-pin { display: grid; gap: 6px; }
+.app-shell .goal-pin-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 8px; }
+.app-shell .goal-pin-column { display: grid; align-content: start; gap: 2px; min-width: 0; padding: 4px 6px; border-left: 2px solid var(--palette-parchment-dark); }
+.app-shell .goal-pin-column h3 { margin: 0; font-size: 12px; font-weight: 700; color: var(--palette-ink-muted); }
+.app-shell .goal-pin-column p { margin: 0; font-size: 13px; overflow-wrap: anywhere; }
+.app-shell .goal-pin-title { font-weight: 700; }
+.app-shell .goal-pin-count { font-variant-numeric: tabular-nums; }
+.app-shell .goal-pin-apart { font-size: 12px !important; color: var(--palette-ink-muted); }
+.app-shell .goal-pin-next { display: grid; gap: 4px; justify-items: start; }
+.app-shell .goal-pin-line { margin: 0; font-size: 14px; font-weight: 700; }
+.app-shell .goal-pin-cta { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; padding: 0 10px; font-size: 13px; }
+.app-shell .goal-drawer-done > summary { min-height: 44px; font-size: 13px; }
+
+/* #5: the food cell's breakdown, under the status pill (as the season strip's panel). */
+/* contrast-audit selector=".food-breakdown" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
+.app-shell .food-breakdown {
+  position: absolute; top: calc(100% + var(--frame-tooltip-safe-bottom) + var(--hud-row-gap)); left: 0; z-index: 6;
+  width: min(var(--box-w-medium), calc(100vw - 32px)); color: var(--palette-ink); background: var(--parchment) var(--art-texture-light) repeat;
+  border-color: transparent; border-image: var(--frame-light-art); font-size: 13px; font-weight: 400; line-height: 1.45; white-space: normal;
+}
+.app-shell .food-breakdown-rows { display: grid; gap: 4px; margin: 0 0 6px; }
+.app-shell .food-breakdown-row { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.app-shell .food-breakdown-row dt { font-weight: 700; }
+.app-shell .food-breakdown-row dd { margin: 0; overflow-wrap: anywhere; }
+.app-shell .food-breakdown-row[data-urgent="true"] dd { color: var(--palette-vermilion); font-weight: 700; }
+.app-shell .food-breakdown-note { margin: 0 0 6px; font-size: 12px; }
+.app-shell .food-breakdown-actions { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+.app-shell .food-breakdown-actions .ui-btn { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; padding: 0 10px; font-size: 13px; }
+.app-shell .food-breakdown-close { margin-left: auto; min-width: 44px; }
+/* The pill's hunger mark beside the days (only while households go hungry). */
+.app-shell .status-pill-starving { margin-left: 4px; font-size: 12px; color: var(--palette-vermilion); }
+
+/* #7: the first season card asks how the next ones come; the stacked notice in the event chips' row. */
+.season-ledger-first { flex: none; display: flex; flex-wrap: wrap; gap: 4px 6px; align-items: center; font-size: 12px; font-weight: 600; }
+.season-ledger-first .ui-btn { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; font-size: 13px; }
+@media (pointer: coarse) { .app-shell .season-ledger-first .ui-btn { min-height: 48px !important; } }
+.app-shell .season-notice { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 0 10px 0 6px; font-size: 13px; font-weight: 600; }
+
+/* #2, #8: the map card's and the inspector's jump to a full store; the burnt house's rebuild. */
+.app-shell :is(.inspector-stuck-store-jump, .left-inspector-to-store, .inspector-burnt-rebuild) { display: inline-flex; gap: 4px; align-items: center; min-height: 44px; padding: 0 10px; font-size: 13px; }
+.app-shell .inspector-stuck-store { display: grid; gap: 4px; justify-items: start; margin-bottom: 6px; }
+.app-shell .inspector-burnt { display: grid; gap: 4px; margin-bottom: 8px; padding: 6px 8px; border-left: 3px solid var(--palette-vermilion); }
+.app-shell .inspector-burnt h3 { margin: 0; font-size: 14px; }
+.app-shell .inspector-burnt dl { display: grid; gap: 4px; margin: 0; }
+.app-shell .inspector-burnt dl > div { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 6px; }
+.app-shell .inspector-burnt dt { font-weight: 700; font-size: 12px; }
+.app-shell .inspector-burnt dd { margin: 0; font-size: 13px; overflow-wrap: anywhere; }
+.app-shell .inspector-burnt-conditions { display: grid; gap: 2px; margin: 0; padding: 0; list-style: none; }
+.app-shell .inspector-burnt-conditions li { display: flex; gap: 4px; align-items: center; }
+.app-shell .inspector-burnt-household { margin: 0; font-size: 12px; }
+
+/* Lord mode: the command pins in the build drawer's place (bottom centre, only while open). */
+.app-shell .command-pins {
+  position: absolute; left: 50%; bottom: 8px; z-index: 4; display: grid; gap: 4px; transform: translateX(-50%);
+  max-width: min(560px, calc(100% - 2 * (var(--box-w-small) + var(--hud-edge) + var(--frame-gap))));
+  color: var(--parchment-light); background: none; border-image: var(--frame-strip-bottom-art);
+}
+.app-shell .command-pins-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.app-shell .command-pin { display: inline-flex; gap: 6px; align-items: center; min-height: 44px; padding: 4px 10px; text-align: left; }
+.app-shell .command-pin[aria-disabled="true"] { opacity: 0.7; }
+.app-shell .command-pin-text { display: grid; gap: 0; }
+.app-shell .command-pin-text strong { font-size: 13px; }
+.app-shell .command-pin-text small { font-size: 12px; font-weight: 400; }
+.app-shell .command-pins-note { margin: 0; font-size: 12px; }
+@media (pointer: coarse) { .app-shell :is(.command-pin, .goal-pin-cta, .food-breakdown-actions .ui-btn, .season-notice, .inspector-stuck-store-jump, .left-inspector-to-store, .inspector-burnt-rebuild) { min-height: 48px; } }

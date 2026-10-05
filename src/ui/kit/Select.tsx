@@ -4,7 +4,7 @@ import { UiIcon } from "../UiIcon";
 
 /**
  * UI-KIT-1 select: no native `<select>` (it keeps the browser's square look). A secondary button shows the chosen
- * option; pressing it opens a light-framed list panel under it.
+ * option; pressing it opens a framed list panel under it (LM-R1: Wave 38 select_closed / select_open_list / select_row_hover).
  *
  * - Mouse and touch: press the button, then an option. Pressing outside the list (it loses the focus) closes it.
  * - Keyboard (and a pad driving the focus): on the button ArrowDown / ArrowUp / Enter / Space open the list at the
@@ -64,7 +64,7 @@ export function Select<V extends string | number>(props: {
       </button>
       {open ? (
         <ul ref={list} id={`${id}-list`} role="listbox" tabIndex={-1} aria-label={label} aria-activedescendant={optionId(active)}
-          className="ui-frame ui-frame--light ui-select-list" data-frame="light"
+          className="ui-frame ui-frame--select-list ui-select-list" data-frame="select-list"
           onKeyDown={event => {
             const last = options.length - 1;
             const move: Readonly<Record<string, number>> = { ArrowDown: Math.min(last, active + 1), ArrowUp: Math.max(0, active - 1), Home: 0, End: last };

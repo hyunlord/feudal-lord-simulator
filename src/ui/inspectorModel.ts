@@ -1,6 +1,6 @@
 import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfig";
 import { resourceName } from "../content/resourceCatalog.ko";
-import { STORAGE_KIND_BY_RESOURCE } from "../content/resourceConfig";
+import { isStorableResource, STORAGE_KIND_BY_RESOURCE, type ResourceType } from "../content/resourceConfig";
 import { constructionSiteDisplayName, type ConstructionSite } from "../economy/construction";
 import type { GameState } from "../engine/engine.types";
 import { lordshipOf } from "../engine/lordshipState";
@@ -16,12 +16,13 @@ import { buildingCausePresentation, houseProgressModel } from "./houseProgressMo
 import { INSPECTOR_COPY } from "./inspectorCopy.ko";
 import { buildingProblemCause } from "./problemCauseModel";
 import { STUCK_GOODS_COPY } from "./stuckGoodsCopy.ko";
-import type { StuckGoods } from "./stuckGoodsModel";
+import type { StuckRow } from "./hud/stuckStockView";
 
 // Left inspector: name, one state line, "왜?" (causes, the blocking one first) and "조치" (one or two things to do).
 // Causes come from the same models as the cause map and the warning stack (`buildingCauseSnapshot` for buildings,
 // `constructionAccessModel` for construction sites), so the three never disagree. A pile the HUD's stuck-goods chip
-// reports (UI-AUDIT-1) is a "왜?" line here with the chip's own reason, and its "조치" comes first.
+// reports (UI-AUDIT-1; LM-R1: the engine's `stuckStock`) is a "왜?" line here with the chip's own reason, and its "조치"
+// comes first; a pile waiting on a full store carries the jump to that store (`toStore`).
 
 export type InspectorLine = Readonly<{
   text: string;
@@ -36,6 +37,8 @@ export type InspectorModel = Readonly<{
   stateLine: string;
   why: readonly InspectorLine[];
   actions: readonly string[];
+  /** LM-R1: a pile here waits on this full store — the button that goes there (its label, its accessible name). */
+  toStore?: Readonly<{ storeId: string; label: string; ariaLabel: string }>;
 }>;
 
 const MAX_WHY_LINES = 3;
@@ -96,15 +99,31 @@ function blockerActions(state: GameState, building: Building, blocker: CauseDeta
   }
 }
 
-/** The stuck pile's "왜?" line (the chip's reason words) and what the player can do about it. */
-function stuckExplanation(row: StuckGoods): Readonly<{ line: InspectorLine; actions: readonly string[] }> {
-  const store = BUILDING_CONFIG_BY_KIND[STORAGE_KIND_BY_RESOURCE[row.good]].name;
-  const cause = STUCK_GOODS_COPY.reason[row.reason](store);
-  const reason = row.spoiling ? STUCK_GOODS_COPY.spoiling(cause) : cause;
+/** The name of the store a good goes to (곡창, 창고), else the receiver's own kind. */
+function storeName(good: ResourceType, row: StuckRow): string {
+  if (isStorableResource(good)) return BUILDING_CONFIG_BY_KIND[STORAGE_KIND_BY_RESOURCE[good]].name;
+  return row.store === null ? BUILDING_CONFIG_BY_KIND[row.kind].name : BUILDING_CONFIG_BY_KIND[row.store.kind].name;
+}
+
+/** The chip's reason words for a pile: `받을 곳 가득 · 창고 200/200`, `운반꾼 부족 · 수확 버려짐`. */
+export function stuckReasonText(row: StuckRow): string {
+  const copy = STUCK_GOODS_COPY;
+  const cause = row.reason === "receiver_full" && row.store !== null
+    ? copy.withStore(copy.reason.receiver_full, copy.storeFullness(BUILDING_CONFIG_BY_KIND[row.store.kind].name, row.store.used, row.store.capacity))
+    : copy.reason[row.reason];
+  return row.source === "field" ? copy.spoiling(cause) : cause;
+}
+
+/** The stuck pile's "왜?" line (the chip's reason words), what the player can do about it, and the jump to its store. */
+function stuckExplanation(row: StuckRow): Readonly<{ line: InspectorLine; actions: readonly string[]; toStore: InspectorModel["toStore"] }> {
+  const store = storeName(row.good, row);
   const copy = INSPECTOR_COPY.action;
   const mill = row.good === "wheat" && (row.reason === "receiver_full" || row.reason === "no_carrier") ? [copy.stuckWheatMill] : [];
-  return { line: { text: INSPECTOR_COPY.stuckLine(resourceName(row.good), row.amount, reason), block: true },
-    actions: [copy.stuck[row.reason](store), ...mill] };
+  const action = row.reason === "receiver_full" && row.store === null ? copy.stuck.no_receiver(store) : copy.stuck[row.reason](store);
+  const target = row.store;
+  const toStore = target === null ? undefined : { storeId: target.id, label: STUCK_GOODS_COPY.toStore(BUILDING_CONFIG_BY_KIND[target.kind].name),
+    ariaLabel: STUCK_GOODS_COPY.toStoreLabel(STUCK_GOODS_COPY.storeFullness(BUILDING_CONFIG_BY_KIND[target.kind].name, target.used, target.capacity)) };
+  return { line: { text: INSPECTOR_COPY.stuckLine(resourceName(row.good), row.amount, stuckReasonText(row)), block: true }, actions: [action, ...mill], toStore };
 }
 
 function houseState(state: GameState, building: Building, name: string): string {
@@ -136,7 +155,7 @@ function supportingCauses(state: GameState, building: Building, blocker: CauseDe
   ];
 }
 
-function buildingInspector(state: GameState, building: Building, stuck: readonly StuckGoods[]): InspectorModel | null {
+function buildingInspector(state: GameState, building: Building, stuck: readonly StuckRow[]): InspectorModel | null {
   const presentation = buildingCausePresentation(state, building.id);
   const basics = buildingInspectorModel(state, building.id);
   if (presentation === null || basics === null) return null;
@@ -162,10 +181,12 @@ function buildingInspector(state: GameState, building: Building, stuck: readonly
       : required > 0 ? INSPECTOR_COPY.facilityState(building.workers, required, facilityStatus) : facilityStatus,
     why: lines.slice(0, MAX_WHY_LINES),
     actions: [...new Set([...piled?.actions ?? [], ...blocker === null ? [] : blockerActions(state, building, blocker)])].slice(0, MAX_ACTIONS),
+    ...(piled?.toStore === undefined ? {} : { toStore: piled.toStore }),
   };
 }
 
-function siteActions(access: ConstructionAccessModel): readonly string[] {
+/** What to do about a construction site's cause (LM-R1: the burnt house's rebuild says the same). */
+export function siteActions(access: ConstructionAccessModel): readonly string[] {
   const copy = INSPECTOR_COPY.action;
   switch (access.cause) {
     case "road_disconnected": case "no_route":
@@ -198,9 +219,9 @@ function siteInspector(state: GameState, site: ConstructionSite): InspectorModel
 
 /**
  * Inspector content for a building or construction-site id; null when nothing is selected or the id is unknown.
- * `stuck`: the HUD's stuck piles (App's `useStuckGoods`, with its memory), so the inspector says what the chip says.
+ * `stuck`: the HUD's stuck piles (App's `stuckRows` of the guidance sample), so the inspector says what the chip says.
  */
-export function inspectorModel(state: GameState, targetId: string | null, stuck: readonly StuckGoods[] = []): InspectorModel | null {
+export function inspectorModel(state: GameState, targetId: string | null, stuck: readonly StuckRow[] = []): InspectorModel | null {
   if (targetId === null) return null;
   const building = state.buildings.find((candidate) => candidate.id === targetId);
   if (building !== undefined) return buildingInspector(state, building, stuck);

@@ -1,0 +1,135 @@
+{
+  "status": "APPLIED_AFTER_ACTUAL_MAIN20_AND_INDEPENDENT_VISUAL",
+  "headAtApply": "cd399e4abb26fc04b37dc27b5c61bec270934a7d",
+  "runtimeCommit": "cd399e4abb26fc04b37dc27b5c61bec270934a7d",
+  "runtimeRun": "astra-field-main-spring3-cd399e4",
+  "proofs": {
+    ".omo/evidence/field-main-spring3-summary.json": {
+      "sha256": "14030c127c5b561d90d50e72161f896abd12d2436a13662ed022451675af9a41"
+    },
+    ".omo/drafts/field-main-spring3-visual-review.md": {
+      "sha256": "67e15f69585f291af6c83bc41dec79764ade84c852862c56110fe8d99c5e4b5b"
+    },
+    ".omo/drafts/field-main-spring3-visual-review.json": {
+      "sha256": "6236fc669ffa370ac35d6c15f044f0e4c2ee0bdbd0cd472cd3a0527430048976"
+    },
+    ".omo/evidence/field-spring3-promotion-plan.json": {
+      "sha256": "d223ab58cd71011d3292b2591f194ee635fddaed3ae4229eb41aabb1df8049f8"
+    }
+  },
+  "files": {
+    "assets-inbox/INBOX_LEDGER.csv": {
+      "beforeSHA256": "8e4f353bc60de90acffb0ef791f0027ab14afc0e40e1d773846f94a4862e9753",
+      "afterSHA256": "ea61889f1afe6226b46092ff43b932a82faf6d43756a4d0cbe921931b6211e2a",
+      "records": 6122,
+      "unchangedLiteralRecords": 6119,
+      "changed": [
+        {
+          "sourceId": "wave43/candidates-20261002/assets/ground/ridge_ploughed_spring_a-v1.png",
+          "beforeRecordSHA256": "1d88730037ba21ef0c258607ba8acc5c7dfdb4dfa33b0b65a8971abd7232c9ad",
+          "afterRecordSHA256": "4067129f9983d3aa2cf7f6bf68b2ba3905532068e59fc25d3650a2d31e02bfbb",
+          "columns": [
+            "installed_by"
+          ]
+        },
+        {
+          "sourceId": "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_a-v1.png",
+          "beforeRecordSHA256": "556dc6ec39917e65f04c69ea02302fab95e549a4abdba7fc30b5e7376f5d1c7b",
+          "afterRecordSHA256": "731210beb48216bfb74025a2aac97c840867129efdcdf43b48baf77283a4c5ac",
+          "columns": [
+            "installed_by"
+          ]
+        },
+        {
+          "sourceId": "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_b-v1.png",
+          "beforeRecordSHA256": "7e118197ae6856119ecc18156f3eefebbdd845646ac5dc3c01b286e0379db3bc",
+          "afterRecordSHA256": "3739c05ac9585968c358d1746f2b84d451926a628de1fea3fe53f2df40228683",
+          "columns": [
+            "installed_by"
+          ]
+        }
+      ],
+      "headerLiteralUnchanged": true,
+      "newlineCountsBefore": {
+        "LF": 6123,
+        "CRLF": 6123
+      },
+      "newlineCountsAfter": {
+        "LF": 6123,
+        "CRLF": 6123
+      },
+      "rawBackup": {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/field-spring3-promotion-backups/INBOX_LEDGER.before.csv",
+        "sha256": "8e4f353bc60de90acffb0ef791f0027ab14afc0e40e1d773846f94a4862e9753"
+      }
+    },
+    "docs/provenance/assets.csv": {
+      "beforeSHA256": "7460b2de3850375b7033e545037891f04279d96c858e5443042fe4e8111ff71a",
+      "afterSHA256": "05c2657c2dcd6c4b56736d970e801b2f594f33999a4618c9ee611ef2b1ad4f44",
+      "records": 2430,
+      "unchangedLiteralRecords": 2427,
+      "changed": [
+        {
+          "sourceId": "wave43/candidates-20261002/assets/ground/ridge_ploughed_spring_a-v1.png",
+          "beforeRecordSHA256": "9569ac4b063554f8256dcc637788aec81c9b050f8a48a647df145df38ce6c91f",
+          "afterRecordSHA256": "9149977f37c8190201d67040e300e93465664d55182ed85da0d915e47dd229e9",
+          "columns": [
+            "status",
+            "notes"
+          ]
+        },
+        {
+          "sourceId": "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_a-v1.png",
+          "beforeRecordSHA256": "a9ff2d29203f5bed1a4f034d624635669f9dbe3760642d332bdb4e4b3985c7e4",
+          "afterRecordSHA256": "bc6dc14d184d60fc9485a453b22b621235351ae483f30ac1d0b7f6c508df4792",
+          "columns": [
+            "status",
+            "notes"
+          ]
+        },
+        {
+          "sourceId": "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_b-v1.png",
+          "beforeRecordSHA256": "f9aa932a33bd9641783368717333f03dca63de1deb1c9832e7c288a47fe7ab3e",
+          "afterRecordSHA256": "ab1f3c2ce5cb3aa175a4e3629c15f13ebfbd2c968a0fd83b5a28eb9f1100889e",
+          "columns": [
+            "status",
+            "notes"
+          ]
+        }
+      ],
+      "headerLiteralUnchanged": true,
+      "newlineCountsBefore": {
+        "LF": 2457,
+        "CRLF": 0
+      },
+      "newlineCountsAfter": {
+        "LF": 2457,
+        "CRLF": 0
+      },
+      "rawBackup": {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/field-spring3-promotion-backups/assets.before.csv",
+        "sha256": "7460b2de3850375b7033e545037891f04279d96c858e5443042fe4e8111ff71a"
+      }
+    }
+  },
+  "countsBefore": {
+    "original425": 425,
+    "marked": 150,
+    "runtimeStatusByteVerified": 154,
+    "physicalByteMatched": 157
+  },
+  "countsAfter": {
+    "original425": 425,
+    "marked": 153,
+    "runtimeStatusByteVerified": 157,
+    "physicalByteMatched": 157
+  },
+  "notesWritten": "Runtime verified on committed main cd399e4abb26fc04b37dc27b5c61bec270934a7d by astra-field-main-spring3-cd399e4; actual FIELD20: A/A20, errors0, spring8 intended changes, non-spring12 exact RGBA; all three spring sources requested, decoded and observed in actual pattern paint lineage. Independent native review PASS WITH LIMITS: .omo/drafts/field-main-spring3-visual-review.md. Prepared scenes only; not natural play or universal visibility/occlusion proof. Original generation model/date/seed unspecified; received record retained.",
+  "protectedCodePublicFilesUnchanged": 4259,
+  "postPromotionReference4": "PENDING_PARENT_COMMIT_AND_ACTUAL_CAPTURE",
+  "commitCreated": false,
+  "limitations": [
+    "Runtime summary retains historical nativeVisual PENDING; separate later independent visual report PASS WITH LIMITS is authoritative.",
+    "Pattern paint lineage is not universal final-pixel visibility; natural play unproved."
+  ]
+}

@@ -1,0 +1,745 @@
+{
+  "beforeCommit": "a392694c3056b93812a0bcc3de767a387f2f3f3b",
+  "afterCommit": "cd399e4abb26fc04b37dc27b5c61bec270934a7d",
+  "method": "Independent original PNG Pillow RGBA/Numpy pixel comparison and full captures.json identity/first-open consumption inspection",
+  "sameNames": true,
+  "repeatConsumptionArraysPresent": false,
+  "rows": [
+    {
+      "name": "field-x-spring-z1",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 53257,
+      "maxChannelDelta": 106,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-x-spring-z06",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 19489,
+      "maxChannelDelta": 107,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-x-spring-z14-dpr1",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 103736,
+      "maxChannelDelta": 111,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-x-spring-z1-dpr2",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        2560,
+        1600
+      ],
+      "differingPixels": 211296,
+      "maxChannelDelta": 115,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-x-summer-z1",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-x-summer-z06",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-x-autumn-z1",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-x-autumn-z06",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-x-winter-z1",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-x-winter-z06",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-y-spring-z1",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 53329,
+      "maxChannelDelta": 106,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-y-spring-z06",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 19298,
+      "maxChannelDelta": 107,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-y-spring-z14-dpr1",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 104599,
+      "maxChannelDelta": 113,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-y-spring-z1-dpr2",
+      "spring": true,
+      "identityChangedKeys": [
+        "expectedRequests"
+      ],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        2560,
+        1600
+      ],
+      "differingPixels": 211230,
+      "maxChannelDelta": 115,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "field-y-summer-z1",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-y-summer-z06",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-y-autumn-z1",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-y-autumn-z06",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-y-winter-z1",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    },
+    {
+      "name": "field-y-winter-z06",
+      "spring": false,
+      "identityChangedKeys": [],
+      "identityExpected": true,
+      "expectedUrlDeltaExact": true,
+      "dimensions": [
+        1280,
+        800
+      ],
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "afterRepeatExact": true,
+      "rgbaReceiptMatches": true,
+      "errors": [],
+      "newSources": [
+        {
+          "url": "/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        },
+        {
+          "url": "/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+          "requested": true,
+          "decoded512x64": true,
+          "paintLineage": false
+        }
+      ]
+    }
+  ]
+}

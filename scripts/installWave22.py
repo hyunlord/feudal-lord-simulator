@@ -20,10 +20,13 @@ import json
 import re
 import shutil
 import struct
+import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
+OWNERSHIP_CHECK = ROOT / "scripts/wave22CatalogOwnership.ts"
+TSX = ROOT / "node_modules/.bin/tsx"
 WAVE = ROOT / "assets-inbox/wave22"
 BATCHES = [WAVE / "rework-20260927", WAVE / "candidates-20260927"]  # the rework first: its v2 files replace v1
 RECORDS = WAVE / "rework-20260927/records/assets.csv"
@@ -62,13 +65,34 @@ def wanted(asset_id: str, named: set) -> bool:
     return key in named
 
 
+def record_key(asset_id: str) -> str:
+    """Canonical key comes from source records, never yesterday's generated manifest."""
+    return re.sub(r"-v[0-9]+$", "", asset_id)
+
+
+def legacy_records(records: list[dict[str, str]], named: set[str]) -> list[dict[str, str]]:
+    canonical = [row for row in records if wanted(row["assetId"], named)]
+    keys = {record_key(row["assetId"]) for row in canonical}
+    counts = {folder: sum(key.startswith(folder + "/") for key in keys) for folder in FOLDERS}
+    assert len(keys) == len(canonical) == 79, counts
+    assert counts == {"terrain": 30, "boundary": 10, "shore": 6, "decals": 13, "props": 20}, counts
+    # The actual TS registry validates every archetype/season fallback before any copy or ledger write.
+    output = subprocess.check_output([str(TSX), str(OWNERSHIP_CHECK), str(ROOT / "src/render/art/catalog.json")], text=True)
+    owned = set(json.loads(output)) & keys
+    selected = [row for row in canonical if record_key(row["assetId"]) not in owned]
+    assert {record_key(row["assetId"]) for row in selected} == keys - owned
+    return selected
+
+
 def main() -> None:
     named = set(re.findall(r'"((?:decals|props)/[a-z_]+)"', ARCHETYPES.read_text()))
     inbox = list(csv.DictReader(open(INBOX_LEDGER, encoding="utf-8")))
     by_file = {row["file"]: row for row in inbox}
     records = list(csv.DictReader(open(RECORDS, encoding="utf-8-sig")))
+    selected = legacy_records(records, named)
+    expected_keys = {record_key(row["assetId"]) for row in selected}
     rows, installed, images = [], set(), {}
-    for record in records:
+    for record in selected:
         asset_id = record["assetId"]
         if not wanted(asset_id, named):
             continue
@@ -101,7 +125,8 @@ def main() -> None:
                               f"{source.parent.parent.parent.relative_to(ROOT)}; no C2PA chunk, received bytes = runtime bytes."})
         installed.add(inbox_key)
     counts = {folder: sum(1 for image in images.values() if image["folder"] == folder) for folder in FOLDERS}
-    assert counts == {"terrain": 30, "boundary": 10, "shore": 6, "decals": 13, "props": 20}, counts
+    assert set(images) == expected_keys
+    assert counts == {folder: sum(key.startswith(folder + "/") for key in expected_keys) for folder in FOLDERS}, counts
     assert all(by_file[key]["status"] != "superseded" for key in installed)
     header = next(csv.reader(open(LEDGER, encoding="utf-8")))
     ours = {row["runtimePath"] for row in rows}

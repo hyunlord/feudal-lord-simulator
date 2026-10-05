@@ -1,0 +1,27 @@
+{
+  "pass": true,
+  "files": {
+    "assets-inbox/INBOX_LEDGER.csv": {
+      "rows": 6122,
+      "changed": [
+        "wave43/candidates-20261002/assets/ground/ridge_ploughed_spring_a-v1.png",
+        "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_a-v1.png",
+        "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_b-v1.png"
+      ],
+      "unchangedLiteral": 6119,
+      "afterSHA": "ea61889f1afe6226b46092ff43b932a82faf6d43756a4d0cbe921931b6211e2a"
+    },
+    "docs/provenance/assets.csv": {
+      "rows": 2430,
+      "changed": [
+        "wave43/candidates-20261002/assets/ground/ridge_ploughed_spring_a-v1.png",
+        "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_a-v1.png",
+        "wave43/candidates-20261002/assets/ground/ridge_seedling_spring_b-v1.png"
+      ],
+      "unchangedLiteral": 2427,
+      "afterSHA": "05c2657c2dcd6c4b56736d970e801b2f594f33999a4618c9ee611ef2b1ad4f44"
+    }
+  },
+  "proofHashesVerified": 4,
+  "newSourceIDs": 3
+}

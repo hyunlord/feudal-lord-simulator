@@ -1,0 +1,41 @@
+{
+  "status": "APPLIED_AFTER_ACTUAL_AND_INDEPENDENT_VISUAL",
+  "run": "astra-spring9-committed-70c1532",
+  "files": {
+    "assets-inbox/INBOX_LEDGER.csv": {
+      "beforeSHA256": "162d4ad7001a8f522d614112a78f369be08a19181e67eda5906980a729fd3d12",
+      "afterSHA256": "8e4f353bc60de90acffb0ef791f0027ab14afc0e40e1d773846f94a4862e9753",
+      "changed": [
+        "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_apple_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_pear_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_plum_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_birch_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_large_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_small_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_dead_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_short_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_tall_spring.png"
+      ],
+      "unchangedLiteralRecords": 6113,
+      "records": 6122
+    },
+    "docs/provenance/assets.csv": {
+      "beforeSHA256": "17e838c2de8c637530cef5ef37473f5cc28524c26ef22790633d5f926ec329bb",
+      "afterSHA256": "447024d5589dae17e97be852e90f04ce1107c2cff2654a129a714119f76761c8",
+      "changed": [
+        "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_apple_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_pear_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_plum_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_birch_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_dead_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_large_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_broadleaf/tree_oak_small_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_short_spring.png",
+        "assets-inbox/wave43/candidates-20261002/assets/trees_other/tree_pine_tall_spring.png"
+      ],
+      "unchangedLiteralRecords": 2418,
+      "records": 2427
+    }
+  },
+  "postLedgerReference4": "PENDING"
+}

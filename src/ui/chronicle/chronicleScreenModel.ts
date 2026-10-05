@@ -18,6 +18,7 @@ import { chronicleIllustration, legacyRecordArt, reorgRecordArt } from "../chron
 import type { EmblemSpec } from "../heraldry/EmblemImage";
 import { armsRecipe, heraldryArms, heraldryMark, royalArms } from "../heraldry/heraldry";
 import { PERSONS_COPY } from "../persons/personsCopy.ko";
+import { lordChoiceLabel } from "../lord/policyModel";
 import { isOutsider, personEmblem } from "../persons/personModels";
 import { PERSON_TRAIT_COPY } from "../persons/personTraitCopy.ko";
 import { resemblanceParts } from "../persons/resemblance";
@@ -491,6 +492,8 @@ export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" 
   const decision = record.decision;
   if (decision === undefined) return null;
   const kind = String(record.params?.decisionKind ?? record.template.slice("decision.".length));
+  // LM-R1: the lord's conditions are named by the lord tab's own words, not the engine's keys.
+  const choiceLabel = (key: string) => lordChoiceLabel(kind, key) ?? label(key);
   const rows = Object.entries(decision.predicted).map(([key, predicted]): DecisionRow => {
     const actual = decision.actual?.[key];
     if (actual === undefined) return { key, predicted: CHRONICLE_SCREEN_COPY.predictedValue(key, predicted), actual: null, delta: null, deltaLabel: null };
@@ -500,8 +503,8 @@ export function decisionCompare(state: Pick<GameState, "persons" | "scenarioId" 
       deltaLabel: actual > predicted ? CHRONICLE_SCREEN_COPY.deltaUp(difference) : actual < predicted ? CHRONICLE_SCREEN_COPY.deltaDown(difference) : CHRONICLE_SCREEN_COPY.deltaSame };
   });
   return {
-    id: record.id, heading: CHRONICLE_SCREEN_COPY.decisionHeading(chronicleDate(state, record.tick), kind), chosen: label(decision.chosen),
-    alternatives: decision.alternatives.map(label), art: recordArt(state, record), rows,
+    id: record.id, heading: CHRONICLE_SCREEN_COPY.decisionHeading(chronicleDate(state, record.tick), kind), chosen: choiceLabel(decision.chosen),
+    alternatives: decision.alternatives.map(choiceLabel), art: recordArt(state, record), rows,
     pending: decision.actual === undefined && decision.actualDueTick !== undefined ? CHRONICLE_SCREEN_COPY.actualPending(chronicleDate(state, decision.actualDueTick)) : null,
   };
 }

@@ -14,6 +14,9 @@ export const PETITION_COPY = {
     accept: (paid: number) => `${moneyShort(paid)}에 권리를 되삽니다 · 칭호도 곧바로 돌아옵니다`,
     accept_with_price: (paid: number) => `값을 깎아 ${moneyShort(paid)}에 되삽니다 · 칭호는 한 해 뒤에 돌아옵니다`,
     refuse: () => "거절합니다 · 한 해 뒤에 다시 청해 옵니다",
+    /** LM-R1 (Astra B04): the treasury cannot pay this answer's price — the engine records it and restores nothing. */
+    short: (price: number, treasury: number, again: string) =>
+      `값 ${moneyFull(price)} · 금고 ${moneyFull(treasury)} · ${moneyFull(price - treasury)} 모자람: 지금 답하면 복원되지 않고, ${again}에 다시 청해 옵니다`,
   },
   wool_payment: {
     title: "양모 공납 칙령",

@@ -20,6 +20,9 @@ import type { ZoneLayer } from "./zoneLayer";
 import { wetSummer } from "./wetSummer";
 import { seasonImage, seasonVariant, type SeasonIndex } from "./seasonArt";
 import { wave9Art, type Wave9Key } from "./wave9Art";
+import { fieldTextures, fieldTextureRequest } from "./art/fieldTextures";
+import { fieldTextureToken, type FieldTextureSnapshot } from "./art/fieldTextureArt";
+import { FIELD_TEXTURE_STATES } from "./art/fieldTextureValidation";
 import { wave3AleArt, type Wave3AleKey } from "./wave3AleArt";
 
 // Arable ridge strips in the ground chunks (C1e): after the zone's soil fill, each strip run is drawn as two ridge rows
@@ -65,7 +68,7 @@ const STATE_WASH: Readonly<Record<FieldStripState, string | null>> = {
 /** UI-4: in a wet summer every FLOOD_EVERY-th growing strip stands under water, the rest blight. */
 const FLOOD_EVERY = 3;
 
-type StateLookup = ReadonlyMap<string, FieldStripState>;
+export type StateLookup = ReadonlyMap<string, FieldStripState>;
 const lookups = new WeakMap<object, WeakMap<object, WeakMap<object, WeakMap<object, StateLookup>>>>();
 const NO_FIELDS: readonly unknown[] = [];
 
@@ -126,7 +129,21 @@ export function stripStateKey(layer: ZoneLayer, bandIndexes: readonly number[], 
   return key;
 }
 
-export function drawArableFields(context: CanvasRenderingContext2D, layer: ZoneLayer, zoneIndexes: readonly number[], states: StateLookup, season: SeasonIndex = 1): void {
+/** Prepare before chunk-key decisions, including cache hits; deferred paints retain this same snapshot. */
+export function prepareArableFieldTextures(states: StateLookup | null, seasons: readonly SeasonIndex[]): FieldTextureSnapshot {
+  const supported = [...new Set(states?.values())].filter(state => FIELD_TEXTURE_STATES.some(value => value === state));
+  return fieldTextures().prepare(supported.flatMap(state => seasons.map(season => fieldTextureRequest(state, season))));
+}
+
+export function fieldTextureChunkToken(layer: ZoneLayer, indexes: readonly number[], states: StateLookup, season: SeasonIndex, snapshot: FieldTextureSnapshot): string {
+  const tokens = indexes.flatMap(index => {
+    const band = layer.arableBands[index]; const state = band === undefined ? undefined : states.get(band.stripId);
+    return state !== undefined && FIELD_TEXTURE_STATES.some(value => value === state) ? [fieldTextureToken(snapshot, fieldTextureRequest(state, season))] : [];
+  });
+  return tokens.length === 0 ? "" : `:ft${JSON.stringify(tokens)}`;
+}
+
+export function drawArableFields(context: CanvasRenderingContext2D, layer: ZoneLayer, zoneIndexes: readonly number[], states: StateLookup, season: SeasonIndex = 1, textures: FieldTextureSnapshot = prepareArableFieldTextures(states, [season])): void {
   for (const index of zoneIndexes) {
     const field = layer.fields[index];
     if (field === null || field === undefined || field.bands.length === 0) continue;
@@ -134,19 +151,21 @@ export function drawArableFields(context: CanvasRenderingContext2D, layer: ZoneL
     context.beginPath();
     for (const rect of field.crop) addQuad(context, [{ x: rect.left, y: rect.top }, { x: rect.right, y: rect.top }, { x: rect.right, y: rect.bottom }, { x: rect.left, y: rect.bottom }]);
     context.clip();
-    drawRidgeRows(context, field, states, season);
+    drawRidgeRows(context, field, states, season, textures);
     drawFurrowStamps(context, field);
     context.restore();
   }
 }
 
-function drawRidgeRows(context: CanvasRenderingContext2D, field: ArableField, states: StateLookup, season: SeasonIndex): void {
+function drawRidgeRows(context: CanvasRenderingContext2D, field: ArableField, states: StateLookup, season: SeasonIndex, textures: FieldTextureSnapshot): void {
   if (typeof context.createPattern !== "function") return;
   const rowWidth = 1 / RIDGE_ROWS_PER_STRIP;
   for (const band of field.bands) {
     const state = states.get(band.stripId) ?? "fallow";
-    const seasonal = seasonalRidge(state, season);
-    const pair = seasonal ?? ridgePair(state);
+    const contracted = state === "ploughed" || state === "seedling";
+    const texture = contracted ? textures.get(fieldTextureRequest(state, season)) : null;
+    const seasonal = contracted ? null : seasonalRidge(state, season);
+    const pair = contracted ? texture?.image ?? null : seasonal ?? ridgePair(state);
     if (pair === null) continue;
     const pattern = cachedPattern(context, pair);
     if (pattern === null) continue;
@@ -165,7 +184,7 @@ function drawRidgeRows(context: CanvasRenderingContext2D, field: ArableField, st
       context.fillStyle = pattern;
       context.fill();
       const wash = STATE_WASH[state];
-      if (seasonal !== null || wash === null) continue; // the winter art is its own colour: no summer wash
+      if (seasonal !== null || texture?.composition.wash === "none" || wash === null) continue; // the winter art is its own colour: no summer wash
       context.fillStyle = wash;
       context.fill();
     }

@@ -1,0 +1,5 @@
+# Spring9 v2 parent native inspection
+
+Opened actual after spring z1/z0.6/z1.4 PNGs and before z1 native, separately from automated pixel comparison. Orchard blossom silhouettes remain rooted to the same orchard anchors; wider forest view reads greener spring canopy. No new rectangular patch, detached trunk, obvious pivot shift or axis error was observed in these views. The close view clips the orchard at the viewport edge by camera choice; it is not a complete per-tree registration audit. Existing grid/terrain patch periodicity remains visible. z0.6 individual twig detail is limited. No natural-play, all-edge, performance or every occlusion claim. All9 draw coverage is supplied by actual capture receipts, not inferred from this visual sample. Independent reviewer owns all10 paired scene review. Prepared isolated data snapshot only; no main installation.
+
+Source: season-data/output/art-architecture/season-spring9-v2/prepared-season-spring-{z1,z06,z14}.png; before season-prep/output/art-architecture/season-core-notify-v3/prepared-season-spring-z1.png.

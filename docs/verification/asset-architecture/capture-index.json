@@ -1,0 +1,299 @@
+{
+  "purpose": "Selected exact-preservation before/core and intentional-house-install core/data JPEG previews; lossless PNG evidence and full runs retained separately. JPEG is not the pixel comparator input. Byte-identical before/core JPEG previews share a physical file; independent capture source paths and PNG comparisons remain separate.",
+  "captures": [
+    {
+      "phase": "before-v3",
+      "scene": "prepared-land-summer-fallow-z1",
+      "file": "captures/before-v3-prepared-land-summer-fallow-z1.jpg",
+      "source": "output/art-architecture/before-v3/prepared-land-summer-fallow-z1.jpg",
+      "sha256": "673ce5e35942c323281acb45a2391050aef818ff195f74f4420a0cf98b87b27b",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "before-v3",
+      "scene": "prepared-land-summer-fallow-z06",
+      "file": "captures/before-v3-prepared-land-summer-fallow-z06.jpg",
+      "source": "output/art-architecture/before-v3/prepared-land-summer-fallow-z06.jpg",
+      "sha256": "04dc0aa1bcbf6cefebacff5ddcf718b4482dec7a9d9db65307a6967af96ead38",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "before-v3",
+      "scene": "prepared-land-winter-fallow-z1",
+      "file": "captures/before-v3-prepared-land-winter-fallow-z1.jpg",
+      "source": "output/art-architecture/before-v3/prepared-land-winter-fallow-z1.jpg",
+      "sha256": "782ab4f869323d84a908efc0cb5706c3271fa60401b0021c03eb32a045e43fbc",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "before-v3",
+      "scene": "prepared-land-winter-fallow-z06",
+      "file": "captures/before-v3-prepared-land-winter-fallow-z06.jpg",
+      "source": "output/art-architecture/before-v3/prepared-land-winter-fallow-z06.jpg",
+      "sha256": "d79bf8de6f629b8ae77713af74ffc62a97089437639cb6050fa1a52063cf00f3",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-land-summer-fallow-z1",
+      "file": "captures/before-v3-prepared-land-summer-fallow-z1.jpg",
+      "source": "output/art-architecture/core-v3/prepared-land-summer-fallow-z1.jpg",
+      "sha256": "673ce5e35942c323281acb45a2391050aef818ff195f74f4420a0cf98b87b27b",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-land-summer-fallow-z06",
+      "file": "captures/before-v3-prepared-land-summer-fallow-z06.jpg",
+      "source": "output/art-architecture/core-v3/prepared-land-summer-fallow-z06.jpg",
+      "sha256": "04dc0aa1bcbf6cefebacff5ddcf718b4482dec7a9d9db65307a6967af96ead38",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-land-winter-fallow-z1",
+      "file": "captures/before-v3-prepared-land-winter-fallow-z1.jpg",
+      "source": "output/art-architecture/core-v3/prepared-land-winter-fallow-z1.jpg",
+      "sha256": "782ab4f869323d84a908efc0cb5706c3271fa60401b0021c03eb32a045e43fbc",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-land-winter-fallow-z06",
+      "file": "captures/before-v3-prepared-land-winter-fallow-z06.jpg",
+      "source": "output/art-architecture/core-v3/prepared-land-winter-fallow-z06.jpg",
+      "sha256": "d79bf8de6f629b8ae77713af74ffc62a97089437639cb6050fa1a52063cf00f3",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot",
+      "storageNote": "Byte-identical JPEG deduplicated against before-v3; independent core capture source and SHA retained."
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-houses-1350-summer-gallery-z06",
+      "file": "captures/core-v3-prepared-houses-1350-summer-gallery-z06.jpg",
+      "source": "output/art-architecture/core-v3/prepared-houses-1350-summer-gallery-z06.jpg",
+      "sha256": "55a4d249e3e0c8c864b5783b9c84601418ebb8a895ed3010d65d90d901d7892b",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-houses-1350-summer-gallery-z1",
+      "file": "captures/core-v3-prepared-houses-1350-summer-gallery-z1.jpg",
+      "source": "output/art-architecture/core-v3/prepared-houses-1350-summer-gallery-z1.jpg",
+      "sha256": "8f2bef5c93abed2999a8cb5dccba7d320abcb4424fd03ff9f9453925b27711d4",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-houses-1350-winter-gallery-z06",
+      "file": "captures/core-v3-prepared-houses-1350-winter-gallery-z06.jpg",
+      "source": "output/art-architecture/core-v3/prepared-houses-1350-winter-gallery-z06.jpg",
+      "sha256": "2713c40e3f7f692f995fa973d73b603f31e161885083e86de3d8894905cc7977",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "core-v3",
+      "scene": "prepared-houses-1350-winter-gallery-z1",
+      "file": "captures/core-v3-prepared-houses-1350-winter-gallery-z1.jpg",
+      "source": "output/art-architecture/core-v3/prepared-houses-1350-winter-gallery-z1.jpg",
+      "sha256": "196d2cec7e4c0ec6266e320091d32bdbaa55a05fc064679db082bb91b18e8082",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "data-v3",
+      "scene": "prepared-houses-1350-summer-gallery-z06",
+      "file": "captures/data-v3-prepared-houses-1350-summer-gallery-z06.jpg",
+      "source": "output/art-architecture/data-v3/prepared-houses-1350-summer-gallery-z06.jpg",
+      "sha256": "fa8e0fd0e64d932b889e2bf9c1d4aed738d903584834e4888b889c294f334f8a",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "data-v3",
+      "scene": "prepared-houses-1350-summer-gallery-z1",
+      "file": "captures/data-v3-prepared-houses-1350-summer-gallery-z1.jpg",
+      "source": "output/art-architecture/data-v3/prepared-houses-1350-summer-gallery-z1.jpg",
+      "sha256": "de961704373e223578dcb86328fab477c7f6c085ef9497f3e9ec2d459a9fa0e8",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "data-v3",
+      "scene": "prepared-houses-1350-winter-gallery-z06",
+      "file": "captures/data-v3-prepared-houses-1350-winter-gallery-z06.jpg",
+      "source": "output/art-architecture/data-v3/prepared-houses-1350-winter-gallery-z06.jpg",
+      "sha256": "69eca7514607fc21709642c63f54d0612f13cf0e8c1e39bdc3bba529ffe92413",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "data-v3",
+      "scene": "prepared-houses-1350-winter-gallery-z1",
+      "file": "captures/data-v3-prepared-houses-1350-winter-gallery-z1.jpg",
+      "source": "output/art-architecture/data-v3/prepared-houses-1350-winter-gallery-z1.jpg",
+      "sha256": "8a4f7b0ddfce4d4d08355c5704002b6703f308d9daebcb4178e74aad61ad0af5",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-summer-occupied-z06",
+      "file": "captures/integrated-summer-occupied-z06.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-summer-occupied-z06.jpg",
+      "sha256": "66c3694efc1728dbb43cab652e3042cd2d2941c5ec5dadd5c496ec4349dc30e0",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    },
+    {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-summer-occupied-z1",
+      "file": "captures/integrated-summer-occupied-z1.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-summer-occupied-z1.jpg",
+      "sha256": "a80843f2f9f94dc575594d7ec3b9b389a79e85387c8997f0ba13fdaa6988df7f",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    },
+    {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-winter-empty-z06",
+      "file": "captures/integrated-winter-empty-z06.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-winter-empty-z06.jpg",
+      "sha256": "33afb0c2779a1f49477994149a2486c9672c998b08b7aa3294e4ab36d79d6971",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    },
+    {
+      "phase": "integrated-4151d15",
+      "scene": "integrated-winter-empty-z1",
+      "file": "captures/integrated-winter-empty-z1.jpg",
+      "source": "output/art-architecture/integrated-smoke/integrated-winter-empty-z1.jpg",
+      "sha256": "6b8a063339ea6ddd8a9b7dd77864260177fe1611fb5c41345fcc2e299112a598",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene"
+    },
+    {
+      "phase": "qa003-smoke-v2-ab67dcb",
+      "scene": "integrated-summer-occupied-z1",
+      "file": "captures/integrated-summer-occupied-z1.jpg",
+      "source": "output/art-architecture/qa003-smoke-v2/integrated-summer-occupied-z1.jpg",
+      "sha256": "a80843f2f9f94dc575594d7ec3b9b389a79e85387c8997f0ba13fdaa6988df7f",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/qa003-smoke-v2/integrated-summer-occupied-z1.png",
+      "sourcePngSha256": "6d80f332d48a332e3214cf741f26abab7662530182d3aff57e6adcbc45b7d930",
+      "run": "astra-ARCH1-qa003-smoke-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "rgbaSHA": "e1f31bc58a23b50f5ec4da4f46e7d43a89ebe7b2651efbf89b91ca34aaa4cfea",
+      "storageNote": "Independent QA003 integrated run; identity/RGBA/JPEG equal historical4151. Physical JPEG reused only after exact hash comparison."
+    },
+    {
+      "phase": "qa003-smoke-v2-ab67dcb",
+      "scene": "integrated-summer-occupied-z06",
+      "file": "captures/integrated-summer-occupied-z06.jpg",
+      "source": "output/art-architecture/qa003-smoke-v2/integrated-summer-occupied-z06.jpg",
+      "sha256": "66c3694efc1728dbb43cab652e3042cd2d2941c5ec5dadd5c496ec4349dc30e0",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/qa003-smoke-v2/integrated-summer-occupied-z06.png",
+      "sourcePngSha256": "0cb5ebca90d61cf216ca04a8190011e18a0107235f465410813949964855a205",
+      "run": "astra-ARCH1-qa003-smoke-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "rgbaSHA": "6bea2af519985691e72074feb76123c2c5ba1e220c0555b47c7d27acacf9ef26",
+      "storageNote": "Independent QA003 integrated run; identity/RGBA/JPEG equal historical4151. Physical JPEG reused only after exact hash comparison."
+    },
+    {
+      "phase": "qa003-smoke-v2-ab67dcb",
+      "scene": "integrated-winter-empty-z1",
+      "file": "captures/integrated-winter-empty-z1.jpg",
+      "source": "output/art-architecture/qa003-smoke-v2/integrated-winter-empty-z1.jpg",
+      "sha256": "6b8a063339ea6ddd8a9b7dd77864260177fe1611fb5c41345fcc2e299112a598",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/qa003-smoke-v2/integrated-winter-empty-z1.png",
+      "sourcePngSha256": "592bf97f6cc1295886426b84c7ff2a5ac5bbcd88390f82f4a25868701ec778df",
+      "run": "astra-ARCH1-qa003-smoke-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "rgbaSHA": "5663a9ab48009d30eecb83f42d7a5b1aca6b62cc01fa1485d8c8836addbe8866",
+      "storageNote": "Independent QA003 integrated run; identity/RGBA/JPEG equal historical4151. Physical JPEG reused only after exact hash comparison."
+    },
+    {
+      "phase": "qa003-smoke-v2-ab67dcb",
+      "scene": "integrated-winter-empty-z06",
+      "file": "captures/integrated-winter-empty-z06.jpg",
+      "source": "output/art-architecture/qa003-smoke-v2/integrated-winter-empty-z06.jpg",
+      "sha256": "33afb0c2779a1f49477994149a2486c9672c998b08b7aa3294e4ab36d79d6971",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/qa003-smoke-v2/integrated-winter-empty-z06.png",
+      "sourcePngSha256": "792b6658670122f202c6c2d82606af79eb2d7972e2dca6628025bcb31e0673fa",
+      "run": "astra-ARCH1-qa003-smoke-v2-ab67dcb",
+      "commit": "ab67dcb84b3f0cbc202718cfd618b20393b198b8",
+      "rgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127",
+      "storageNote": "Independent QA003 integrated run; identity/RGBA/JPEG equal historical4151. Physical JPEG reused only after exact hash comparison."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-summer-occupied-z1",
+      "file": "captures/integrated-summer-occupied-z1.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z1.jpg",
+      "sha256": "a80843f2f9f94dc575594d7ec3b9b389a79e85387c8997f0ba13fdaa6988df7f",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z1.png",
+      "sourcePngSha256": "6d80f332d48a332e3214cf741f26abab7662530182d3aff57e6adcbc45b7d930",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "e1f31bc58a23b50f5ec4da4f46e7d43a89ebe7b2651efbf89b91ca34aaa4cfea",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-summer-occupied-z06",
+      "file": "captures/integrated-summer-occupied-z06.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z06.jpg",
+      "sha256": "66c3694efc1728dbb43cab652e3042cd2d2941c5ec5dadd5c496ec4349dc30e0",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-summer-occupied-z06.png",
+      "sourcePngSha256": "0cb5ebca90d61cf216ca04a8190011e18a0107235f465410813949964855a205",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "6bea2af519985691e72074feb76123c2c5ba1e220c0555b47c7d27acacf9ef26",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-winter-empty-z1",
+      "file": "captures/integrated-winter-empty-z1.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-winter-empty-z1.jpg",
+      "sha256": "6b8a063339ea6ddd8a9b7dd77864260177fe1611fb5c41345fcc2e299112a598",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-winter-empty-z1.png",
+      "sourcePngSha256": "592bf97f6cc1295886426b84c7ff2a5ac5bbcd88390f82f4a25868701ec778df",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "5663a9ab48009d30eecb83f42d7a5b1aca6b62cc01fa1485d8c8836addbe8866",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
+    },
+    {
+      "phase": "provenance-smoke-92a566d",
+      "scene": "integrated-winter-empty-z06",
+      "file": "captures/integrated-winter-empty-z06.jpg",
+      "source": "output/art-architecture/provenance-smoke/integrated-winter-empty-z06.jpg",
+      "sha256": "33afb0c2779a1f49477994149a2486c9672c998b08b7aa3294e4ab36d79d6971",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot, integrated Render A/B scene",
+      "sourcePng": "output/art-architecture/provenance-smoke/integrated-winter-empty-z06.png",
+      "sourcePngSha256": "792b6658670122f202c6c2d82606af79eb2d7972e2dca6628025bcb31e0673fa",
+      "run": "astra-ARCH1-provenance-smoke-92a566d",
+      "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+      "rgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127",
+      "storageNote": "Independent post-fix capture; JPEG bytes equal existing physical file. PNG SHA and RGBA identify this actual run."
+    }
+  ],
+  "previewsRetainedOutsideTaskFolder": [
+    {
+      "phase": "data-v3",
+      "scene": "prepared-houses-1400-summer-gallery-z1",
+      "file": "captures/data-v3-prepared-houses-1400-summer-gallery-z1.jpg",
+      "source": "output/art-architecture/data-v3/prepared-houses-1400-summer-gallery-z1.jpg",
+      "sha256": "2e8a4ff0df9a4c7866c4fd2fd8ce54496d24edb98327c5101450c6d03012026d",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    },
+    {
+      "phase": "data-v3",
+      "scene": "prepared-houses-1400-winter-gallery-z1",
+      "file": "captures/data-v3-prepared-houses-1400-winter-gallery-z1.jpg",
+      "source": "output/art-architecture/data-v3/prepared-houses-1400-winter-gallery-z1.jpg",
+      "sha256": "07955f5beba48081924aeff2e9155912be35a4214563c34cb70a60f344516920",
+      "kind": "authored saved-state fixture; actual DGX browser screenshot"
+    }
+  ]
+}

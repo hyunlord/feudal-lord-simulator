@@ -16,6 +16,8 @@ import { ageOf, currentYear, inTown, manorLord, personById, personDisplayName } 
 import type { Person } from "../engine/persons.types";
 import type { PetitionRecord } from "../engine/politics.types";
 import { treasuryBalance } from "../ledger/ledger";
+import { LORDSHIP_BALANCE } from "../content/lordshipConfig";
+import { calendarLabel } from "../engine/scenarioState";
 import { levyMen, refugeeRoom, subsidyAmount, warOf, woolInKindPerSeason, woolLevyAmount } from "../engine/war";
 import { woolInKindSplit } from "../engine/pastureWool";
 import { DECISION_COPY } from "./decisionCopy.ko";
@@ -62,9 +64,14 @@ const PRESENTATIONS: Readonly<Record<PetitionDefId, Presentation>> = {
   },
   restore_right: {
     art: MARKET, title: PETITION_COPY.restore_right.title, demand: () => PETITION_COPY.restore_right.demand,
-    line: (_state, response) => {
+    line: (state, response) => {
       const paid = -(PETITION_DEFS.find(def => def.id === "restore_right")!.outcomes[response].charterFee);
-      return response === "refuse" ? PETITION_COPY.restore_right.refuse() : PETITION_COPY.restore_right[response](paid);
+      if (response === "refuse") return PETITION_COPY.restore_right.refuse();
+      // Astra B04: the engine (answerRestoration) restores only what the treasury can pay; short, it waits a year.
+      const price = response === "accept" ? LORDSHIP_BALANCE.restoreFee : LORDSHIP_BALANCE.restoreFeeHaggled;
+      const treasury = treasuryBalance(state);
+      if (treasury < price) return PETITION_COPY.restore_right.short(price, treasury, calendarLabel({ ...state, tick: state.tick + LORDSHIP_BALANCE.restoreRetryTicks }));
+      return PETITION_COPY.restore_right[response](paid);
     },
   },
   wool_payment: {

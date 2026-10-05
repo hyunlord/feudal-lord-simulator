@@ -27,6 +27,7 @@ import { INTENT_ORDER } from "../../input/intentBus";
 import { platformServices } from "../../platform/platform";
 import { Button, Select, Tabs } from "../kit";
 import { LEGACY_SCREEN_COPY } from "../legacy/legacyScreenCopy.ko";
+import { chronicleFocus, clearChronicleFocus } from "../lord/chronicleFocus";
 
 // CHRON-1 chronicle screen (CHRONICLE_DESIGN 2.1, 2.2, 2.4): a full-screen modal over the town (the state machine's
 // `history` modal: time stops while it is up). The timeline on top, the filters, the record cards (a virtual list:
@@ -89,11 +90,13 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
   readonly onBook?: () => void;
   readonly onEnding?: (() => void) | null;
 }) {
+  // LM-R1: opened from a receipt's decision ribbon, on that decision's record.
+  const [focus] = useState(chronicleFocus);
   const [filter, setFilter] = useState<ChronicleFilter>(DEFAULT_CHRONICLE_FILTER);
-  const [selected, setSelected] = useState<string | null>(null);
-  const [pickedTick, setPickedTick] = useState(state.tick);
+  const [selected, setSelected] = useState<string | null>(focus?.recordId ?? null);
+  const [pickedTick, setPickedTick] = useState(focus?.tick ?? state.tick);
   const [zoomed, setZoomed] = useState(false);
-  const [zoomTick, setZoomTick] = useState(state.tick);
+  const [zoomTick, setZoomTick] = useState(focus?.tick ?? state.tick);
   const [compare, setCompare] = useState(false);
   const [detailView, setDetailView] = useState<"record" | "map">("record");
   const [personId, setPersonId] = useState<string | null>(initialPersonId);
@@ -164,6 +167,8 @@ export function ChronicleScreen({ state, onClose, onLookAt, initialPersonId = nu
     if (list.current !== null) list.current.scrollTop = top;
     setScrollTop(top);
   };
+  // why: once, as the screen opens (the receipt's record scrolled into view; the request is spent)
+  useEffect(() => { clearChronicleFocus(); if (focus !== null) scrollTo(indexOf.get(focus.recordId) ?? 0); }, []); // eslint-disable-line react-hooks/exhaustive-deps
   const changeFilter = (next: ChronicleFilter) => {
     setFilter(next); setSelected(null); setCompare(false);
     if (list.current !== null) list.current.scrollTop = 0;

@@ -1,0 +1,2997 @@
+{
+  "status": "MAIN_HEATH_DATA_RUNTIME_PASS",
+  "pass": true,
+  "head": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "baselineHead": "931d780e37307a7dd2f85a697b122656cb29359d",
+  "views": 30,
+  "fullIdentityEqual": 16,
+  "identityExceptExpectedRequestsEqual": 30,
+  "negativeRgbaExact": 16,
+  "positiveChanged": 14,
+  "newTargets": [
+    "/assets/wave22/decals/heath_patch_b.png",
+    "/assets/wave22/decals/heath_patch_c.png"
+  ],
+  "aaPass": 30,
+  "errors": [],
+  "positiveViews": 14,
+  "negativeViews": 16,
+  "negativeFirstOpen": {
+    "status": "PASS_FIRST_OPEN_ONLY",
+    "repeatAbsence": "UNPROVED_ARRAYS_NOT_PERSISTED",
+    "results": [
+      {
+        "view": "heath-negative-open_field-spring",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-open_field-summer",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-open_field-autumn",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-open_field-winter",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-forest_edge-spring",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-forest_edge-summer",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-forest_edge-autumn",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-forest_edge-winter",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-fen_drainage-spring",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-fen_drainage-summer",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-fen_drainage-autumn",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-fen_drainage-winter",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-coastal_port-spring",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-coastal_port-summer",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-coastal_port-autumn",
+        "firstOpenForbiddenViolations": []
+      },
+      {
+        "view": "heath-negative-coastal_port-winter",
+        "firstOpenForbiddenViolations": []
+      }
+    ]
+  },
+  "repeatAbsence": "UNPROVED_ARRAYS_NOT_PERSISTED",
+  "uniqueExpectedUrls": [
+    "/assets/foliage/tree_birch.png",
+    "/assets/foliage/tree_dead.png",
+    "/assets/foliage/tree_pine_short.png",
+    "/assets/foliage/tree_pine_tall.png",
+    "/assets/wave15/foliage/tree_birch_autumn-v1.png",
+    "/assets/wave15/foliage/tree_birch_winter-v1.png",
+    "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+    "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+    "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+    "/assets/wave22/decals/heath_patch_a.png",
+    "/assets/wave22/decals/heath_patch_b.png",
+    "/assets/wave22/decals/heath_patch_c.png",
+    "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+    "/assets/wave43/trees_other/tree_dead_spring.png",
+    "/assets/wave43/trees_other/tree_pine_short_spring.png",
+    "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+  ],
+  "rows": [
+    {
+      "name": "heath-chalk-spring-z1",
+      "identity": {
+        "state": "heath-chalk-spring",
+        "savedStateSHA": "fe1010e2adad1e72847a9f57b2966735f0f085fb255fafc33a433e845e145bf3",
+        "tick": 500,
+        "season": "spring",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-spring",
+        "savedStateSHA": "fe1010e2adad1e72847a9f57b2966735f0f085fb255fafc33a433e845e145bf3",
+        "tick": 500,
+        "season": "spring",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-spring-z1.png",
+      "beforePngSHA": "bc4c6514920e893ce578e02616721e3fc7196f56f312335c0f599fbee076a098",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-spring-z1.png",
+      "afterPngSHA": "53b9d3eb0e77408322b33c82f41f42ecb8423c30f35f7e5acb18f5b4137773ce",
+      "repeatPngSHA": "53b9d3eb0e77408322b33c82f41f42ecb8423c30f35f7e5acb18f5b4137773ce",
+      "rgbaSHA": "38f26fc0b8e6ecdbd844ca9d88321ba61cae7932d6d5aa14dedca87e845fb691",
+      "differingPixels": 3929,
+      "maxChannelDelta": 96,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-spring-z06",
+      "identity": {
+        "state": "heath-chalk-spring",
+        "savedStateSHA": "fe1010e2adad1e72847a9f57b2966735f0f085fb255fafc33a433e845e145bf3",
+        "tick": 500,
+        "season": "spring",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-spring",
+        "savedStateSHA": "fe1010e2adad1e72847a9f57b2966735f0f085fb255fafc33a433e845e145bf3",
+        "tick": 500,
+        "season": "spring",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-spring-z06.png",
+      "beforePngSHA": "78ad4eacaaa5f1b413ba366bcd117695ae27c80cb80681ea5b1ea57c91f31b41",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-spring-z06.png",
+      "afterPngSHA": "adb8a38e2b90638eeb90b02b26d036e35caf3c45775e1c568a7058422214fe0b",
+      "repeatPngSHA": "adb8a38e2b90638eeb90b02b26d036e35caf3c45775e1c568a7058422214fe0b",
+      "rgbaSHA": "4080936fa95eae0bf6ffbf82e49e60921bf96d30b148ac10b3f4ba97cbbd670d",
+      "differingPixels": 2888,
+      "maxChannelDelta": 82,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-spring-z14",
+      "identity": {
+        "state": "heath-chalk-spring",
+        "savedStateSHA": "fe1010e2adad1e72847a9f57b2966735f0f085fb255fafc33a433e845e145bf3",
+        "tick": 500,
+        "season": "spring",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-spring",
+        "savedStateSHA": "fe1010e2adad1e72847a9f57b2966735f0f085fb255fafc33a433e845e145bf3",
+        "tick": 500,
+        "season": "spring",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-spring-z14.png",
+      "beforePngSHA": "c5e3bfff3fe14d26b0a80332a85b60a884ffc691269156222038160203476181",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-spring-z14.png",
+      "afterPngSHA": "f30972f760fa55c1596bfa48391a14ca61b1a6e2197279fad7f2d0079ff21256",
+      "repeatPngSHA": "f30972f760fa55c1596bfa48391a14ca61b1a6e2197279fad7f2d0079ff21256",
+      "rgbaSHA": "a9a87d5769d760f8109cfe24aa173c4eedf135e48aff1f44ba3f874e4de6a48e",
+      "differingPixels": 3875,
+      "maxChannelDelta": 103,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-summer-z1",
+      "identity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-z1.png",
+      "beforePngSHA": "7bb67d4bfbe6bbdbd584b7df1766596b0928df0edb8c701fbd26d15cfae826cf",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-summer-z1.png",
+      "afterPngSHA": "31d85ff396c9a63b47dbff0c89b0958a08de147382988e0f45780d8ded6b6846",
+      "repeatPngSHA": "31d85ff396c9a63b47dbff0c89b0958a08de147382988e0f45780d8ded6b6846",
+      "rgbaSHA": "0b01ca2acbc53c139f1a2b8750074db3ed382dadc0111bd2368d61ac8e326c52",
+      "differingPixels": 4007,
+      "maxChannelDelta": 96,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-summer-z06",
+      "identity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-z06.png",
+      "beforePngSHA": "86b8b939bf295a41cc5963b08ebccefb90bc7d8189dcee598b03205bfc69c2f9",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-summer-z06.png",
+      "afterPngSHA": "951a8ed45ffee274c1acbe320def19de339a239f405d6461990c3e23bdcb22fd",
+      "repeatPngSHA": "951a8ed45ffee274c1acbe320def19de339a239f405d6461990c3e23bdcb22fd",
+      "rgbaSHA": "aa19e8914eec8adb46f125c5446e96839161a0d6a2615aa735dde7f1b742b4bc",
+      "differingPixels": 2920,
+      "maxChannelDelta": 98,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-summer-z14",
+      "identity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-z14.png",
+      "beforePngSHA": "6fc653156d3ffe47d6cbe885c1bd81ab75a12bfb28ab2b41454bf84352d66784",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-summer-z14.png",
+      "afterPngSHA": "0ded40175cf0147563b98ac3b439e4569b64b9048672a3e72394c368f1294c3f",
+      "repeatPngSHA": "0ded40175cf0147563b98ac3b439e4569b64b9048672a3e72394c368f1294c3f",
+      "rgbaSHA": "fc3e3d7b2eca463702ac855242eb2300483eecb8a00e91aa2333e3336de616b1",
+      "differingPixels": 3962,
+      "maxChannelDelta": 103,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-autumn-z1",
+      "identity": {
+        "state": "heath-chalk-autumn",
+        "savedStateSHA": "26d6722d09b5add5b5691d69d17d678436e5bda93524942adc6a571104e2050a",
+        "tick": 2500,
+        "season": "autumn",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-autumn",
+        "savedStateSHA": "26d6722d09b5add5b5691d69d17d678436e5bda93524942adc6a571104e2050a",
+        "tick": 2500,
+        "season": "autumn",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-autumn-z1.png",
+      "beforePngSHA": "8162b3cbdf6c5d9a19cd0c88a86628f2c081d502a1e70507eee0e2904c8bf70c",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-autumn-z1.png",
+      "afterPngSHA": "e096784e4c11bbe32eb7cd56c09518b565f3f4e0e66dd30074125a45678ac638",
+      "repeatPngSHA": "e096784e4c11bbe32eb7cd56c09518b565f3f4e0e66dd30074125a45678ac638",
+      "rgbaSHA": "277739145c44cf2c3a2220766a5fd67b13710101114fb837afab4ad67163673c",
+      "differingPixels": 3989,
+      "maxChannelDelta": 90,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-autumn-z06",
+      "identity": {
+        "state": "heath-chalk-autumn",
+        "savedStateSHA": "26d6722d09b5add5b5691d69d17d678436e5bda93524942adc6a571104e2050a",
+        "tick": 2500,
+        "season": "autumn",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-autumn",
+        "savedStateSHA": "26d6722d09b5add5b5691d69d17d678436e5bda93524942adc6a571104e2050a",
+        "tick": 2500,
+        "season": "autumn",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-autumn-z06.png",
+      "beforePngSHA": "5047965fde432419fd6826add05137fb4cdb01bf29f6af06412988203fb35b58",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-autumn-z06.png",
+      "afterPngSHA": "8ad54b8176057ca626e3edc943253ee8c4d6ad8edf79e149029dbaf5dcb54a85",
+      "repeatPngSHA": "8ad54b8176057ca626e3edc943253ee8c4d6ad8edf79e149029dbaf5dcb54a85",
+      "rgbaSHA": "acca559926665db0518c1a9302d7f067d69280fb888b7574cd02b4efa492de30",
+      "differingPixels": 2922,
+      "maxChannelDelta": 98,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-autumn-z14",
+      "identity": {
+        "state": "heath-chalk-autumn",
+        "savedStateSHA": "26d6722d09b5add5b5691d69d17d678436e5bda93524942adc6a571104e2050a",
+        "tick": 2500,
+        "season": "autumn",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-autumn",
+        "savedStateSHA": "26d6722d09b5add5b5691d69d17d678436e5bda93524942adc6a571104e2050a",
+        "tick": 2500,
+        "season": "autumn",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-autumn-z14.png",
+      "beforePngSHA": "b3b23de1fd4fc5590bfd4b4b398cad5e4681266e3f790920fc510c3e929c2b56",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-autumn-z14.png",
+      "afterPngSHA": "49b2ce022efce8388da95084510d677cc5d136b8eb361c1c9009c2cffb1ffe44",
+      "repeatPngSHA": "49b2ce022efce8388da95084510d677cc5d136b8eb361c1c9009c2cffb1ffe44",
+      "rgbaSHA": "62af9e52f72a349bb839ef76b6872e12488d5dc351414233d899569f4f5bab30",
+      "differingPixels": 4004,
+      "maxChannelDelta": 103,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-winter-z1",
+      "identity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-winter-z1.png",
+      "beforePngSHA": "48a77643bc4596f09672452bfe43d833cfed5eda5d3fe76ee6453ebb0ce9b02c",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-winter-z1.png",
+      "afterPngSHA": "bf7d250ec11f8bd3c0c55379bcb1aba4bd6e272e44f4540fc797a4225474ba28",
+      "repeatPngSHA": "bf7d250ec11f8bd3c0c55379bcb1aba4bd6e272e44f4540fc797a4225474ba28",
+      "rgbaSHA": "22566404389c9c9be5e2d860536d2533bef13899e6a0383041bed84d59efff6d",
+      "differingPixels": 4281,
+      "maxChannelDelta": 95,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-winter-z06",
+      "identity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-winter-z06.png",
+      "beforePngSHA": "01c95922d9978da7e99c49e24fcd59271b4e5f0d1ebdd380f8e4020f90063ba7",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-winter-z06.png",
+      "afterPngSHA": "76994f6199a3e95fc7ec79552c756229fabf71bc781283ca9362fbdde667804d",
+      "repeatPngSHA": "76994f6199a3e95fc7ec79552c756229fabf71bc781283ca9362fbdde667804d",
+      "rgbaSHA": "8770c55353bc6a8a25f3986ceb635e4680c817d9da7a5e5bf1dafc0615c2ca53",
+      "differingPixels": 3001,
+      "maxChannelDelta": 85,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-winter-z14",
+      "identity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png",
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-winter",
+        "savedStateSHA": "a29d744f584c0ae178b40e559c4a9d998262fa891438ce00082f74cb0a43d6ed",
+        "tick": 3500,
+        "season": "winter",
+        "tile": [
+          37,
+          15
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-winter-z14.png",
+      "beforePngSHA": "58f2b955f1d31a7d20bc1cbaee8b9c3a524bd9c6b1f4a1c52e32575f25c3e411",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-winter-z14.png",
+      "afterPngSHA": "1f04dbbd02d1bf4d8e3a82afe5aa79132c20ee4bc1bcb7f0671fdd5dc168a6e1",
+      "repeatPngSHA": "1f04dbbd02d1bf4d8e3a82afe5aa79132c20ee4bc1bcb7f0671fdd5dc168a6e1",
+      "rgbaSHA": "f81d80b906d8f6006a05df9c4e28cec21d745a5fa33b228cf83acfc019611993",
+      "differingPixels": 4101,
+      "maxChannelDelta": 95,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_a.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_a.png",
+            "decoded": true,
+            "width": 64,
+            "height": 48
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-summer-chunk-edge",
+      "identity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          32,
+          9
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          32,
+          9
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-chunk-edge.png",
+      "beforePngSHA": "020c117074869d46a7fd3566532eed5c8aa86166bde2bd727b474555d6ba1a4f",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-summer-chunk-edge.png",
+      "afterPngSHA": "2a9e0579a32216e3dfd4ffb629cb60e5937b0906a77f0817c881e62b676a1346",
+      "repeatPngSHA": "2a9e0579a32216e3dfd4ffb629cb60e5937b0906a77f0817c881e62b676a1346",
+      "rgbaSHA": "8ac75926dd66412d9ef724a055d4df5ba15e1e0505adf22ed14c1d61d1118768",
+      "differingPixels": 4981,
+      "maxChannelDelta": 103,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-chalk-summer-map-edge",
+      "identity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          38,
+          0
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_b.png",
+          "/assets/wave22/decals/heath_patch_c.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-chalk-summer",
+        "savedStateSHA": "8d4d95a17cc0a7be6aa331f6f172bbc5d1e2a4aa36b034900a036c38b6b8d9b5",
+        "tick": 1500,
+        "season": "summer",
+        "tile": [
+          38,
+          0
+        ],
+        "zoom": 1.4,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave22/decals/heath_patch_a.png"
+        ]
+      },
+      "identityEqual": false,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": true,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-map-edge.png",
+      "beforePngSHA": "7da13454758c389d3d624072a9a23496c0263b42f5cf9d9b2fd63437e842de7d",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-chalk-summer-map-edge.png",
+      "afterPngSHA": "c4f6405b9dac9e392f4b4f56574925528a93bb62217ced5cbc9bbe60dd1ea16e",
+      "repeatPngSHA": "c4f6405b9dac9e392f4b4f56574925528a93bb62217ced5cbc9bbe60dd1ea16e",
+      "rgbaSHA": "8523edb24e604469563f6613c3a1d9c62adf9ad83ecb3c156a7cbde208c72a34",
+      "differingPixels": 3202,
+      "maxChannelDelta": 103,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave22/decals/heath_patch_b.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_b.png",
+            "decoded": true,
+            "width": 96,
+            "height": 64
+          },
+          "paintLineage": true
+        },
+        {
+          "url": "/assets/wave22/decals/heath_patch_c.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave22/decals/heath_patch_c.png",
+            "decoded": true,
+            "width": 128,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-open_field-spring",
+      "identity": {
+        "state": "heath-negative-open_field-spring",
+        "savedStateSHA": "c144de63a3a5eb29e15a6b1c8131436ba4a8df684f1155774b2eb00c6e9408f8",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_other/tree_pine_short_spring.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-open_field-spring",
+        "savedStateSHA": "c144de63a3a5eb29e15a6b1c8131436ba4a8df684f1155774b2eb00c6e9408f8",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_other/tree_pine_short_spring.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-open_field-spring.png",
+      "beforePngSHA": "c8449725ef471f8812b7e9f784dfd9a3b90a8507e8d4eb33bc20dfd1e6bd0a93",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-open_field-spring.png",
+      "afterPngSHA": "c8449725ef471f8812b7e9f784dfd9a3b90a8507e8d4eb33bc20dfd1e6bd0a93",
+      "repeatPngSHA": "c8449725ef471f8812b7e9f784dfd9a3b90a8507e8d4eb33bc20dfd1e6bd0a93",
+      "rgbaSHA": "eaafce87433e58fdea94ec0e5d83119bb28921162bf97aff37ea81e57b917f56",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave43/trees_other/tree_pine_short_spring.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave43/trees_other/tree_pine_short_spring.png",
+            "decoded": true,
+            "width": 56,
+            "height": 88
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-open_field-summer",
+      "identity": {
+        "state": "heath-negative-open_field-summer",
+        "savedStateSHA": "125a52b85c2038f616a32664741d32f2fef76c278fc7c83ba6c33b570618c1f3",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_short.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-open_field-summer",
+        "savedStateSHA": "125a52b85c2038f616a32664741d32f2fef76c278fc7c83ba6c33b570618c1f3",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_short.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-open_field-summer.png",
+      "beforePngSHA": "68014a30bef187c81ecf49d5787a8f56967cc18a2e39256fecb55e802fc9b61d",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-open_field-summer.png",
+      "afterPngSHA": "68014a30bef187c81ecf49d5787a8f56967cc18a2e39256fecb55e802fc9b61d",
+      "repeatPngSHA": "68014a30bef187c81ecf49d5787a8f56967cc18a2e39256fecb55e802fc9b61d",
+      "rgbaSHA": "dee8462312ef66ad2fef3390c9cf4b2882d726091d723d38a5724aec323d5d2a",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/foliage/tree_pine_short.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/foliage/tree_pine_short.png",
+            "decoded": true,
+            "width": 56,
+            "height": 88
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-open_field-autumn",
+      "identity": {
+        "state": "heath-negative-open_field-autumn",
+        "savedStateSHA": "6067822de0cbfe8bd5eeabada0522a9146ee8a128355b0b07b4fbfe9e9ecbb0a",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_short.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-open_field-autumn",
+        "savedStateSHA": "6067822de0cbfe8bd5eeabada0522a9146ee8a128355b0b07b4fbfe9e9ecbb0a",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_short.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-open_field-autumn.png",
+      "beforePngSHA": "06a8df0fb803124792332d7f18b9a3f738a4c84db0fab67f7e134a0951f9cb06",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-open_field-autumn.png",
+      "afterPngSHA": "06a8df0fb803124792332d7f18b9a3f738a4c84db0fab67f7e134a0951f9cb06",
+      "repeatPngSHA": "06a8df0fb803124792332d7f18b9a3f738a4c84db0fab67f7e134a0951f9cb06",
+      "rgbaSHA": "a4f4cd0a775cfa0aad52bcf60564926ce96905e835b913910cafadec86464fbc",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/foliage/tree_pine_short.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/foliage/tree_pine_short.png",
+            "decoded": true,
+            "width": 56,
+            "height": 88
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-open_field-winter",
+      "identity": {
+        "state": "heath-negative-open_field-winter",
+        "savedStateSHA": "b5c831eaca2c6deb8862ed6396db80a02366ea6289ca7884e36e04582139afe5",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-open_field-winter",
+        "savedStateSHA": "b5c831eaca2c6deb8862ed6396db80a02366ea6289ca7884e36e04582139afe5",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          31,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-open_field-winter.png",
+      "beforePngSHA": "700e6b2031ecf0a156bf47971c715e6d96f31a35cb7961e6053c8582cb4081ee",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-open_field-winter.png",
+      "afterPngSHA": "700e6b2031ecf0a156bf47971c715e6d96f31a35cb7961e6053c8582cb4081ee",
+      "repeatPngSHA": "700e6b2031ecf0a156bf47971c715e6d96f31a35cb7961e6053c8582cb4081ee",
+      "rgbaSHA": "5f9445f427b4581924a09846a19b0da3e05538c45fe20e0cd7e9761643eae12d",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave15/foliage/tree_pine_short_winter_snow-v1.png",
+            "decoded": true,
+            "width": 56,
+            "height": 88
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-forest_edge-spring",
+      "identity": {
+        "state": "heath-negative-forest_edge-spring",
+        "savedStateSHA": "1970c452b9dedd77bd8179c99d46eca7135541cc2257a27721c35f3e0ca14023",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-forest_edge-spring",
+        "savedStateSHA": "1970c452b9dedd77bd8179c99d46eca7135541cc2257a27721c35f3e0ca14023",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_other/tree_pine_tall_spring.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-forest_edge-spring.png",
+      "beforePngSHA": "237d8ef276f217fe50fc7156ea106bcadcc7a308edbb105deb5e6423eb993b22",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-forest_edge-spring.png",
+      "afterPngSHA": "237d8ef276f217fe50fc7156ea106bcadcc7a308edbb105deb5e6423eb993b22",
+      "repeatPngSHA": "237d8ef276f217fe50fc7156ea106bcadcc7a308edbb105deb5e6423eb993b22",
+      "rgbaSHA": "bdb8eb4875fe3536e9ff34a240dbceb504808eee697f7166ba00ed19e3d77bc0",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave43/trees_other/tree_pine_tall_spring.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave43/trees_other/tree_pine_tall_spring.png",
+            "decoded": true,
+            "width": 64,
+            "height": 120
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-forest_edge-summer",
+      "identity": {
+        "state": "heath-negative-forest_edge-summer",
+        "savedStateSHA": "09e69570aad5b2348a7fc42aa0f52fcb33a681396d3973f1d1e34b2cd3ae5baa",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_tall.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-forest_edge-summer",
+        "savedStateSHA": "09e69570aad5b2348a7fc42aa0f52fcb33a681396d3973f1d1e34b2cd3ae5baa",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_tall.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-forest_edge-summer.png",
+      "beforePngSHA": "41fb8b85dd9db01d028cf9639f0b30bb12b1bf05854a176165c98f6c2dc5a300",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-forest_edge-summer.png",
+      "afterPngSHA": "41fb8b85dd9db01d028cf9639f0b30bb12b1bf05854a176165c98f6c2dc5a300",
+      "repeatPngSHA": "41fb8b85dd9db01d028cf9639f0b30bb12b1bf05854a176165c98f6c2dc5a300",
+      "rgbaSHA": "f57f2f43c9cfc4fa297a165d4d99d71be84d9b936a37fe80296345af4165f1c7",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/foliage/tree_pine_tall.png",
+            "decoded": true,
+            "width": 64,
+            "height": 120
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-forest_edge-autumn",
+      "identity": {
+        "state": "heath-negative-forest_edge-autumn",
+        "savedStateSHA": "292be96c498f8e4e8ceb4a49b8d2cde5a711c8037a1316a63cf6e8950c163e8d",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_tall.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-forest_edge-autumn",
+        "savedStateSHA": "292be96c498f8e4e8ceb4a49b8d2cde5a711c8037a1316a63cf6e8950c163e8d",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_pine_tall.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-forest_edge-autumn.png",
+      "beforePngSHA": "8c791f2bd9d24a154969563058bccb52c02485b0336fc690847a7ebc4d56c0bb",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-forest_edge-autumn.png",
+      "afterPngSHA": "8c791f2bd9d24a154969563058bccb52c02485b0336fc690847a7ebc4d56c0bb",
+      "repeatPngSHA": "8c791f2bd9d24a154969563058bccb52c02485b0336fc690847a7ebc4d56c0bb",
+      "rgbaSHA": "d188f18ad640484f6e074a4f47132527c990df60cf431ea433fe52e46ea2fa18",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/foliage/tree_pine_tall.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/foliage/tree_pine_tall.png",
+            "decoded": true,
+            "width": 64,
+            "height": 120
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-forest_edge-winter",
+      "identity": {
+        "state": "heath-negative-forest_edge-winter",
+        "savedStateSHA": "efa3b968cf92f3426c64257725de005cdf45f7087244ff68b40355705e9d8a63",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-forest_edge-winter",
+        "savedStateSHA": "efa3b968cf92f3426c64257725de005cdf45f7087244ff68b40355705e9d8a63",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          32,
+          31
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-forest_edge-winter.png",
+      "beforePngSHA": "b389e989a138df9250e6d4c163facbbff826a54dfbca1a836788a09fb784a191",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-forest_edge-winter.png",
+      "afterPngSHA": "b389e989a138df9250e6d4c163facbbff826a54dfbca1a836788a09fb784a191",
+      "repeatPngSHA": "b389e989a138df9250e6d4c163facbbff826a54dfbca1a836788a09fb784a191",
+      "rgbaSHA": "8b72440eaf1e9179d40db58f6083f3126e8f389f93f267fa358e85ebf5954393",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave15/foliage/tree_pine_tall_winter_snow-v1.png",
+            "decoded": true,
+            "width": 64,
+            "height": 120
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-fen_drainage-spring",
+      "identity": {
+        "state": "heath-negative-fen_drainage-spring",
+        "savedStateSHA": "50a0ae79cabdc8ba6f06742fc412e090737663814ef548475a52b0a959dc94fd",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_broadleaf/tree_birch_spring.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-fen_drainage-spring",
+        "savedStateSHA": "50a0ae79cabdc8ba6f06742fc412e090737663814ef548475a52b0a959dc94fd",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_broadleaf/tree_birch_spring.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-fen_drainage-spring.png",
+      "beforePngSHA": "ca42a0c036b97de49315954837a21aa58011bec3f2fde7adb11ad8d378e48983",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-fen_drainage-spring.png",
+      "afterPngSHA": "ca42a0c036b97de49315954837a21aa58011bec3f2fde7adb11ad8d378e48983",
+      "repeatPngSHA": "ca42a0c036b97de49315954837a21aa58011bec3f2fde7adb11ad8d378e48983",
+      "rgbaSHA": "1ac6887871898d6f41a75bd971445ff466a24d1c6c25dab1b2753687a20d1bc2",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+            "decoded": true,
+            "width": 60,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-fen_drainage-summer",
+      "identity": {
+        "state": "heath-negative-fen_drainage-summer",
+        "savedStateSHA": "dbaa46f9a866cc8d75f289daf2baa2ab8ff50aad206732e6f3fed2e3586cbc6e",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_birch.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-fen_drainage-summer",
+        "savedStateSHA": "dbaa46f9a866cc8d75f289daf2baa2ab8ff50aad206732e6f3fed2e3586cbc6e",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_birch.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-fen_drainage-summer.png",
+      "beforePngSHA": "8481f1cab3c684142714741b2004699c29c704e25fa681742c61a810e66ee2ea",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-fen_drainage-summer.png",
+      "afterPngSHA": "8481f1cab3c684142714741b2004699c29c704e25fa681742c61a810e66ee2ea",
+      "repeatPngSHA": "8481f1cab3c684142714741b2004699c29c704e25fa681742c61a810e66ee2ea",
+      "rgbaSHA": "6b343289debcb57fab645a710efda9ef3e35b8191cd063291356f4d3fd0292ed",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/foliage/tree_birch.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/foliage/tree_birch.png",
+            "decoded": true,
+            "width": 60,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-fen_drainage-autumn",
+      "identity": {
+        "state": "heath-negative-fen_drainage-autumn",
+        "savedStateSHA": "0c693be24c36efa0293b006f8fc926a463cb9e04094521d71857d2385a4dd4ca",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_birch_autumn-v1.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-fen_drainage-autumn",
+        "savedStateSHA": "0c693be24c36efa0293b006f8fc926a463cb9e04094521d71857d2385a4dd4ca",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_birch_autumn-v1.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-fen_drainage-autumn.png",
+      "beforePngSHA": "84a667df70d7ab2461660bfb38aad7b43480ada0bd5ea6650d5a0622e45bcc02",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-fen_drainage-autumn.png",
+      "afterPngSHA": "84a667df70d7ab2461660bfb38aad7b43480ada0bd5ea6650d5a0622e45bcc02",
+      "repeatPngSHA": "84a667df70d7ab2461660bfb38aad7b43480ada0bd5ea6650d5a0622e45bcc02",
+      "rgbaSHA": "ae9d198af6de3066eac2c37cc33d834fb29b3915da8b42967b710036123541f8",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave15/foliage/tree_birch_autumn-v1.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave15/foliage/tree_birch_autumn-v1.png",
+            "decoded": true,
+            "width": 60,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-fen_drainage-winter",
+      "identity": {
+        "state": "heath-negative-fen_drainage-winter",
+        "savedStateSHA": "436586249a8780716b62a855be5554a2dff2a65c718c4682f2558d84ee5d3f39",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_birch_winter-v1.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-fen_drainage-winter",
+        "savedStateSHA": "436586249a8780716b62a855be5554a2dff2a65c718c4682f2558d84ee5d3f39",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          40,
+          25
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_birch_winter-v1.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-fen_drainage-winter.png",
+      "beforePngSHA": "f809c5b95882d1ffc767923a853377fb0893e5298764f491217a1ea7d1dbcaf7",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-fen_drainage-winter.png",
+      "afterPngSHA": "f809c5b95882d1ffc767923a853377fb0893e5298764f491217a1ea7d1dbcaf7",
+      "repeatPngSHA": "f809c5b95882d1ffc767923a853377fb0893e5298764f491217a1ea7d1dbcaf7",
+      "rgbaSHA": "dde4841637f5a1f70ad2ab026d97ef29c797734fdc32f1cd739ef31a39b6d428",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave15/foliage/tree_birch_winter-v1.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave15/foliage/tree_birch_winter-v1.png",
+            "decoded": true,
+            "width": 60,
+            "height": 96
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-coastal_port-spring",
+      "identity": {
+        "state": "heath-negative-coastal_port-spring",
+        "savedStateSHA": "b3da467940095e80968a1d5082c9b6da3821ae49d81f9a54507e3434ac03df23",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_other/tree_dead_spring.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-coastal_port-spring",
+        "savedStateSHA": "b3da467940095e80968a1d5082c9b6da3821ae49d81f9a54507e3434ac03df23",
+        "tick": 4500,
+        "season": "spring",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave43/trees_other/tree_dead_spring.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-coastal_port-spring.png",
+      "beforePngSHA": "b4c1bf9565101a9994ac39a7209572fa145da25731cc4e25d060084731d9c471",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-coastal_port-spring.png",
+      "afterPngSHA": "b4c1bf9565101a9994ac39a7209572fa145da25731cc4e25d060084731d9c471",
+      "repeatPngSHA": "b4c1bf9565101a9994ac39a7209572fa145da25731cc4e25d060084731d9c471",
+      "rgbaSHA": "876a8c00e3ea39797694d3a8c138a8d8bf3e4c543262e494ffd21be0fbd8a531",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave43/trees_other/tree_dead_spring.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave43/trees_other/tree_dead_spring.png",
+            "decoded": true,
+            "width": 56,
+            "height": 80
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-coastal_port-summer",
+      "identity": {
+        "state": "heath-negative-coastal_port-summer",
+        "savedStateSHA": "d179effb59a7920eff6c0d49998f22f148e275a4d727c395f795360ddbd31e38",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_dead.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-coastal_port-summer",
+        "savedStateSHA": "d179effb59a7920eff6c0d49998f22f148e275a4d727c395f795360ddbd31e38",
+        "tick": 5500,
+        "season": "summer",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_dead.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-coastal_port-summer.png",
+      "beforePngSHA": "aad88d1868fe6b4a3d9f9148074d446425ad9f0307d0b94b99497dd82aa413a3",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-coastal_port-summer.png",
+      "afterPngSHA": "aad88d1868fe6b4a3d9f9148074d446425ad9f0307d0b94b99497dd82aa413a3",
+      "repeatPngSHA": "aad88d1868fe6b4a3d9f9148074d446425ad9f0307d0b94b99497dd82aa413a3",
+      "rgbaSHA": "7c51ff46f92714478bf3c7705d8d116d53161f92c225096f3a016ea93b3ae9e4",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/foliage/tree_dead.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/foliage/tree_dead.png",
+            "decoded": true,
+            "width": 56,
+            "height": 80
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-coastal_port-autumn",
+      "identity": {
+        "state": "heath-negative-coastal_port-autumn",
+        "savedStateSHA": "3efa8f0972528e2b883cc9a9f306b9d7ae411427858b28fcd45d77bb4c4a729d",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_dead.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-coastal_port-autumn",
+        "savedStateSHA": "3efa8f0972528e2b883cc9a9f306b9d7ae411427858b28fcd45d77bb4c4a729d",
+        "tick": 6500,
+        "season": "autumn",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/foliage/tree_dead.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-coastal_port-autumn.png",
+      "beforePngSHA": "4cd9421e258fd0d507c0f4cf32934ff1ffff604c088315c1dcd2495feca66e69",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-coastal_port-autumn.png",
+      "afterPngSHA": "4cd9421e258fd0d507c0f4cf32934ff1ffff604c088315c1dcd2495feca66e69",
+      "repeatPngSHA": "4cd9421e258fd0d507c0f4cf32934ff1ffff604c088315c1dcd2495feca66e69",
+      "rgbaSHA": "c8ca8f2fc6d7e545795373c1e94e53f860d4e6d6c57f22244f840f8737de5a0a",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/foliage/tree_dead.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/foliage/tree_dead.png",
+            "decoded": true,
+            "width": 56,
+            "height": 80
+          },
+          "paintLineage": true
+        }
+      ]
+    },
+    {
+      "name": "heath-negative-coastal_port-winter",
+      "identity": {
+        "state": "heath-negative-coastal_port-winter",
+        "savedStateSHA": "f3fbccf9585526dcff9927e5df71bbb69c964c2eb9531a94344e98213eeb5773",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_dead_winter_snow-v1.png"
+        ]
+      },
+      "beforeIdentity": {
+        "state": "heath-negative-coastal_port-winter",
+        "savedStateSHA": "f3fbccf9585526dcff9927e5df71bbb69c964c2eb9531a94344e98213eeb5773",
+        "tick": 7500,
+        "season": "winter",
+        "tile": [
+          22,
+          39
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave15/foliage/tree_dead_winter_snow-v1.png"
+        ]
+      },
+      "identityEqual": true,
+      "identityExceptExpectedRequestsEqual": true,
+      "positiveIntentionalChange": false,
+      "beforePng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-core-931d780e/heath-negative-coastal_port-winter.png",
+      "beforePngSHA": "46731f148811cb2e3c62d0daff98e752b9c87fec509863d2bf3f0d71ccaf7f8c",
+      "afterPng": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/heath-negative-coastal_port-winter.png",
+      "afterPngSHA": "46731f148811cb2e3c62d0daff98e752b9c87fec509863d2bf3f0d71ccaf7f8c",
+      "repeatPngSHA": "46731f148811cb2e3c62d0daff98e752b9c87fec509863d2bf3f0d71ccaf7f8c",
+      "rgbaSHA": "a2ed7759fdeb34cf672ebb60bff9fd2ae609f818ccf38e718a18660b16381686",
+      "differingPixels": 0,
+      "maxChannelDelta": 0,
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "errors": [],
+      "expectedEvidence": [
+        {
+          "url": "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+          "requested": true,
+          "decoded": {
+            "url": "/assets/wave15/foliage/tree_dead_winter_snow-v1.png",
+            "decoded": true,
+            "width": 56,
+            "height": 80
+          },
+          "paintLineage": true
+        }
+      ]
+    }
+  ],
+  "remoteFreeze": {
+    "pass": true,
+    "head": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+    "hashCount": 4310,
+    "absentCount": 6,
+    "differences": []
+  },
+  "captureReceipt": {
+    "path": "/Users/rexxa/fls-astra-renderB/output/art-architecture/heath-main-data-fd68f124/captures.json",
+    "sha256": "088c89e1c4c97091b115f817f562743cadfc2e33eea334e984ed8e103b07972f"
+  },
+  "inputFreeze": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/heath-main-data-freeze.json",
+    "sha256": "371e835ca77dc45d7190d63e8c99f4d0dda0fd08ba90d0397ca6b640b42df3c2"
+  },
+  "coverageScope": "Expected URLs must be requested, decoded, and observed in image/canvas/pattern paint lineage reaching the captured canvas; coverage set is explicit per view, not a claim of final visible pixels or occlusion.",
+  "nativeVisual": "PENDING",
+  "comparison": "Actual core931d780e baseline with NON_RUNTIME_DOCUMENT_DRIFT limited evidence: exact4308runtime inputs, two unrelated evidence documents differ; not whole-export clean.",
+  "remoteExit": 0,
+  "fetchExit": 0,
+  "run": "astra-heath-main-data-fd68f12",
+  "trackedDirty": false,
+  "exportClassification": "TRACKED_CLEAN_EXACT_COMMIT",
+  "exportAttestation": {
+    "path": ".omo/evidence/heath-main-data-export-attestation.json",
+    "sha256": "b848a8d4ee2208f93947ff72248d2c47bfc8f867c32f7a446de48ee592499327",
+    "record": {
+      "head": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+      "trackedDirty": false,
+      "allTrackedPathsEqualHead": true,
+      "trackedDiff": [],
+      "scope": "Entire tracked export equality; runtime4310 freeze separate; arbitrary untracked artifacts not claimed git-clean",
+      "driverAttestation": [
+        {
+          "path": ".omo/evidence/heath-main-data-run.sh",
+          "remoteSHA": "40ab6d16a53ffd1bcf055984282e29d5da70637dccbcb077a98e4db278ac9423",
+          "localSHA": "40ab6d16a53ffd1bcf055984282e29d5da70637dccbcb077a98e4db278ac9423"
+        },
+        {
+          "path": ".omo/evidence/heath-main-data-negative-check.mjs",
+          "remoteSHA": "c5297452e6907c5ca77c252ad4adb9512a0c76b4ffd2757e9a7cbdb5810c8bf5",
+          "localSHA": "c5297452e6907c5ca77c252ad4adb9512a0c76b4ffd2757e9a7cbdb5810c8bf5"
+        }
+      ]
+    }
+  },
+  "nativePNGComparisons": 90,
+  "timing": {
+    "syncSeconds": 128.5,
+    "prepareSeconds": 7.4,
+    "waitSeconds": 0.0,
+    "commandSeconds": 340.1
+  },
+  "independentNativeVisual": "PENDING_SEPARATE_REVIEW",
+  "promotion": "NOT_AUTHORIZED_BY_NUMERIC_RECEIPT_ALONE"
+}

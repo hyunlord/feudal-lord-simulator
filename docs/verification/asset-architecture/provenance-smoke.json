@@ -1,0 +1,351 @@
+{
+  "run": "astra-ARCH1-provenance-smoke-92a566d",
+  "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+  "pass": true,
+  "summary": {
+    "run": "astra-ARCH1-provenance-smoke-92a566d",
+    "pass": true,
+    "commit": "92a566d742d92a678a8b3ba6133fc4c88be9024c",
+    "views": 4,
+    "rows": [
+      {
+        "name": "integrated-summer-occupied-z1",
+        "sameIdentity": true,
+        "repeat": {
+          "pass": true,
+          "sameSize": true,
+          "width": 1280,
+          "height": 800,
+          "differingPixels": 0,
+          "maxChannelDelta": 0
+        },
+        "errors": [],
+        "missing": [],
+        "sameJpeg": true
+      },
+      {
+        "name": "integrated-summer-occupied-z06",
+        "sameIdentity": true,
+        "repeat": {
+          "pass": true,
+          "sameSize": true,
+          "width": 1280,
+          "height": 800,
+          "differingPixels": 0,
+          "maxChannelDelta": 0
+        },
+        "errors": [],
+        "missing": [],
+        "sameJpeg": true
+      },
+      {
+        "name": "integrated-winter-empty-z1",
+        "sameIdentity": true,
+        "repeat": {
+          "pass": true,
+          "sameSize": true,
+          "width": 1280,
+          "height": 800,
+          "differingPixels": 0,
+          "maxChannelDelta": 0
+        },
+        "errors": [],
+        "missing": [],
+        "sameJpeg": true
+      },
+      {
+        "name": "integrated-winter-empty-z06",
+        "sameIdentity": true,
+        "repeat": {
+          "pass": true,
+          "sameSize": true,
+          "width": 1280,
+          "height": 800,
+          "differingPixels": 0,
+          "maxChannelDelta": 0
+        },
+        "errors": [],
+        "missing": [],
+        "sameJpeg": true
+      }
+    ],
+    "remoteFreeze": ".omo/evidence/provenance-smoke-remote-freeze.json"
+  },
+  "pixelComparison": {
+    "pass": true,
+    "issues": [],
+    "rows": [
+      {
+        "file": "integrated-summer-occupied-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "integrated-summer-occupied-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "integrated-winter-empty-z06.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      {
+        "file": "integrated-winter-empty-z1.png",
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      }
+    ]
+  },
+  "views": [
+    {
+      "name": "integrated-summer-occupied-z1",
+      "identity": {
+        "state": "integrated-summer-occupied",
+        "savedStateSHA": "a3a6fdb8e7a509b5f6de4f28b0bf76d9af913384dc756655953de2d25f32d899",
+        "tick": 201500,
+        "season": "summer",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave12/bld/manor_house_b-v1.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_summer.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+          "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+          "/assets/wave42/paths/path_clear_ne_summer.png",
+          "/assets/wave42/paths/path_clear_nw_summer.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png"
+        ]
+      },
+      "errors": [],
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgbaSHA": "e1f31bc58a23b50f5ec4da4f46e7d43a89ebe7b2651efbf89b91ca34aaa4cfea",
+      "repeatRgbaSHA": "e1f31bc58a23b50f5ec4da4f46e7d43a89ebe7b2651efbf89b91ca34aaa4cfea"
+    },
+    {
+      "name": "integrated-summer-occupied-z06",
+      "identity": {
+        "state": "integrated-summer-occupied",
+        "savedStateSHA": "a3a6fdb8e7a509b5f6de4f28b0bf76d9af913384dc756655953de2d25f32d899",
+        "tick": 201500,
+        "season": "summer",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/wave12/bld/manor_house_b-v1.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_summer.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+          "/assets/wave42/connections/path_clear_corner_ne_summer.png",
+          "/assets/wave42/paths/path_clear_ne_summer.png",
+          "/assets/wave42/paths/path_clear_nw_summer.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png"
+        ]
+      },
+      "errors": [],
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgbaSHA": "6bea2af519985691e72074feb76123c2c5ba1e220c0555b47c7d27acacf9ef26",
+      "repeatRgbaSHA": "6bea2af519985691e72074feb76123c2c5ba1e220c0555b47c7d27acacf9ef26"
+    },
+    {
+      "name": "integrated-winter-empty-z1",
+      "identity": {
+        "state": "integrated-winter-empty",
+        "savedStateSHA": "116c7e200f1fd0469eb61087f220b5449ee16fe915e39967ab3638b2af0ee232",
+        "tick": 203500,
+        "season": "winter",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_winter.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+          "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+          "/assets/wave42/paths/path_clear_ne_winter.png",
+          "/assets/wave42/paths/path_clear_nw_winter.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png",
+          "/assets/wave7/season/roof_snow_l1-v2.png"
+        ]
+      },
+      "errors": [],
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgbaSHA": "5663a9ab48009d30eecb83f42d7a5b1aca6b62cc01fa1485d8c8836addbe8866",
+      "repeatRgbaSHA": "5663a9ab48009d30eecb83f42d7a5b1aca6b62cc01fa1485d8c8836addbe8866"
+    },
+    {
+      "name": "integrated-winter-empty-z06",
+      "identity": {
+        "state": "integrated-winter-empty",
+        "savedStateSHA": "116c7e200f1fd0469eb61087f220b5449ee16fe915e39967ab3638b2af0ee232",
+        "tick": 203500,
+        "season": "winter",
+        "tile": [
+          34,
+          35
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": 3,
+        "expectedRequests": [
+          "/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+          "/assets/wave20/houses/house_l1_1350_a-v1.png",
+          "/assets/wave20/houses/house_l2_1350_a-v2.png",
+          "/assets/wave20/houses/house_l3_1350_a-v2.png",
+          "/assets/wave20/houses/house_l4_1350_a-v2.png",
+          "/assets/wave20/overlays/boarded_l2_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l3_1350-v3.png",
+          "/assets/wave20/overlays/boarded_l4_1350-v3.png",
+          "/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+          "/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+          "/assets/wave37/trade_baker_a.png",
+          "/assets/wave37/trade_weaver_a.png",
+          "/assets/wave42/abandoned/abandoned_grass_winter.png",
+          "/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+          "/assets/wave42/connections/path_clear_corner_ne_winter.png",
+          "/assets/wave42/paths/path_clear_ne_winter.png",
+          "/assets/wave42/paths/path_clear_nw_winter.png",
+          "/assets/wave7/overlay/boarded_l1-v2.png",
+          "/assets/wave7/season/roof_snow_l1-v2.png"
+        ]
+      },
+      "errors": [],
+      "repeat": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "rgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127",
+      "repeatRgbaSHA": "53d2ff5f5de19caeae8f08c7ce45a9ab963ea440eeaf7da01a006879c489a127"
+    }
+  ],
+  "visualReview": {
+    "reviewer": "parent",
+    "method": "Opened all four native PNGs individually",
+    "verdict": "PASS with notes",
+    "notes": [
+      "House body, boarded and snow layers remain grounded; no new visual regression observed.",
+      "Existing warning badges and gold rings obscure fronts; small zoom glyph readability remains limited.",
+      "Existing manor roof lacks snow. Prepared scenes do not prove natural play, every occlusion combination or performance."
+    ]
+  },
+  "rawCaptureSHA256": "2727ef08406476ca679ffbf81d0d5c37406abaab6271de0f293c7df0160eea07",
+  "rawCapturePath": "output/art-architecture/provenance-smoke/captures.json",
+  "scope": "Audit script fix; renderer and fixture inputs unchanged. This receipt is not the final clean clone or trunk publication."
+}

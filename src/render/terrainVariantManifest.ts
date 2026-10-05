@@ -62,6 +62,9 @@ export const TERRAIN_VARIANT_ASSETS = [
   { "key": "bridge_abutment_sw_a", "url": "assets/module/bridge_abutment_sw_a-v1.png", "width": 256, "height": 192, "role": "module" },
   { "key": "bridge_abutment_nw_b", "url": "assets/module/bridge_abutment_nw_b-v1.png", "width": 256, "height": 192, "role": "module" },
   { "key": "ferry_landing", "url": "assets/module/ferry_landing-v1.png", "width": 256, "height": 192, "role": "module" },
+  // QA-003 (scripts/installGateJambStone.py): the stone gate jamb (nat5-fixes, confirmed 2026-10-04), on a corner
+  // gate's off-axis arm end (gateOpeningPosts.ts). Candidates kept in assets-inbox/nat5-fixes.
+  { "key": "gate_jamb_stone", "url": "assets/wall/gate_jamb_stone-v1.png", "width": 64, "height": 80, "role": "module" },
 ] as const;
 
 export type TerrainVariantKey = (typeof TERRAIN_VARIANT_ASSETS)[number]["key"];
@@ -96,6 +99,8 @@ export const TERRAIN_VARIANTS = {
   /** Wave 5c gate v3, one painting per axis (NW-SE, NE-SW): the wall strips' stone gate (INSTALL-5c). */
   stoneGateV3: ["stone_gate_v3_nwse", "stone_gate_v3_nesw"],
   palisadeGate: ["palisade_gate_v2"],
+  /** QA-003: the stone door jamb at a corner gate's diagonal opening. */
+  stoneGateJamb: ["gate_jamb_stone"],
   bridgeAbutment: ["bridge_abutment_ne_a", "bridge_abutment_nw_a", "bridge_abutment_se_a", "bridge_abutment_sw_a", "bridge_abutment_nw_b"],
 } as const satisfies Record<string, readonly TerrainVariantKey[]>;
 
@@ -106,5 +111,5 @@ export type ShoreAssetKey = (typeof SHORE_ASSET_KEYS)[number];
 export const WALL_FACE_KEYS = [...TERRAIN_VARIANTS.palisadeFace, ...TERRAIN_VARIANTS.stoneFace, ...TERRAIN_VARIANTS.palisadeTop,
   ...TERRAIN_VARIANTS.stoneTop, ...TERRAIN_VARIANTS.palisadeDiagTop, ...TERRAIN_VARIANTS.stoneDiagTop, ...TERRAIN_VARIANTS.stoneTower,
   ...TERRAIN_VARIANTS.stoneFaceGate, ...TERRAIN_VARIANTS.stonePillar, ...TERRAIN_VARIANTS.stoneGate, ...TERRAIN_VARIANTS.palisadeGate,
-  ...TERRAIN_VARIANTS.stoneGateV3] as const;
+  ...TERRAIN_VARIANTS.stoneGateV3, ...TERRAIN_VARIANTS.stoneGateJamb] as const;
 export type WallFaceKey = (typeof WALL_FACE_KEYS)[number];

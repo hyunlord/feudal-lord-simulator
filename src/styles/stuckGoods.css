@@ -2,12 +2,24 @@
    pile, its reason in the warning tone, and how many more. Kit secondary button art; 44 px (48 on tablets).
    UI-AUDIT-1: the gap inside the button's art — 12 px sides, a 16 px bell (the 44 px row leaves 16 px inside it). */
 .app-shell .stuck-goods-chip {
-  display: inline-flex; align-items: center; gap: 6px; min-height: 44px; max-width: min(420px, calc(100vw - 200px));
+  display: inline-flex; align-items: center; gap: 6px; min-height: 44px;
+  /* LM-R1: its left edge stays right of the centred pause badge (half its long-copy width 122 px, the bells' column on its
+     right about 164 px, a gap): the reason gives way first. */
+  max-width: min(420px, calc(50vw - 296px));
   padding: 0 12px; font-size: 13px; font-weight: 600; line-height: 1.2; white-space: nowrap;
 }
+/* LM-R1: the Wave 38 secondary pictures at the compact band (frameTokens.ts `secondary-compact`), so the 16 px row fits. */
+:root .app-shell .ui-btn.ui-btn.stuck-goods-chip {
+  --ui-btn-art: var(--button-secondary-compact-art);
+  --ui-btn-hover-art: var(--button-secondary-compact-hover-art);
+  --ui-btn-pressed-art: var(--button-secondary-compact-pressed-art);
+  --ui-btn-disabled-art: var(--button-secondary-compact-disabled-art);
+}
 .app-shell .stuck-goods-bell { display: inline-block; flex: 0 0 auto; width: 16px; height: 16px; }
-.app-shell .stuck-goods-line { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
-.app-shell .stuck-goods-reason { flex: 0 0 auto; color: var(--palette-vermilion); font-size: 12px; }
+.app-shell .stuck-goods-line { flex: 0 3 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+/* LM-R1: the reason carries the full store's fullness (받을 곳 가득 · 창고 200/200 · 수확 버려짐); it gives way after the line,
+   cut with an ellipsis rather than leaving the chip (the whole text is the chip's accessible name). */
+.app-shell .stuck-goods-reason { flex: 0 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; color: var(--palette-vermilion); font-size: 12px; }
 .app-shell .stuck-goods-more { flex: 0 0 auto; font-size: 12px; font-weight: 400; }
 @media (pointer: coarse) {
   .app-shell .stuck-goods-chip { min-height: 48px; }

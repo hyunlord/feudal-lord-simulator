@@ -14,6 +14,7 @@ import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { preloadWallFaceAssets, wallFaceAsset } from "./terrainVariantAssets";
 import { TERRAIN_VARIANTS, type WallFaceKey } from "./terrainVariantManifest";
+import { drawGateArtPosts, drawGateEnd, drawPalisadeGatePost, isGateEnd } from "./gateOpeningPosts";
 import { drawGateMarker, drawPost } from "./timberGateRenderer";
 import { preloadTimberWallAssets } from "./timberWallAssets";
 import { chainSides, wallChainJoints, type ChainJoints } from "./wallFaceJoints";
@@ -284,14 +285,16 @@ export function drawWallModules(context: CanvasRenderingContext2D, nodes: readon
     const legacy: StoneWallNode = { point: node.point, neighbors: node.neighbors,
       kind: node.kind === "gate" ? "gate" : node.kind === "terminal" ? "terminal" : node.kind === "junction" ? "junction" : "corner" };
     if (node.kind === "gate") {
-      if (drawRegisteredGate(context, legacy, kind, true)) continue;
+      // QA-003: a palisade corner gate's door post stands over its art (gateOpeningPosts), or the fallback marker's posts.
+      if (drawRegisteredGate(context, legacy, kind, true)) { if (kind === "timber") drawGateArtPosts(context, legacy, FACE_HEIGHT); continue; }
       if (kind === "stone") { for (const solid of stoneWallNodeSolids(legacy)) drawMasonrySolid(context, solid, stoneWallMaterial(), false); }
-      else drawGateMarker(context, node.neighbors.flatMap(point => [point, node.point]), node.point, zoom, legacy);
+      else drawGateMarker(context, node.neighbors.flatMap(point => [point, node.point]), node.point, zoom, legacy, pier => drawPalisadeGatePost(context, node.point, pier, FACE_HEIGHT));
       continue;
     }
     if (node.kind === "tower" && kind === "stone" && drawCornerTower(context, node.point)) continue;
-    // NAT-2 QA-003: the end of a corner gate's off-axis arm (gateCornerModules) is capped by the painted pillar.
-    if ("gateEnd" in node && kind === "stone" && drawModuleSprite(context, MODULES.pillar, node.point)) continue;
+    // NAT-2 QA-003: the end of a gate's arm (gateCornerModules, gateArmPosts): QA-003 the stone jamb or the palisade
+    // door post, the painted pillar or the plain post before those are loaded.
+    if (isGateEnd(node) && (drawGateEnd(context, node, kind, FACE_HEIGHT) || (kind === "stone" && drawModuleSprite(context, MODULES.pillar, node.point)))) continue;
     // NAT-5: a palisade's corner is the band itself, joined round the turn (wallFaceJoints); the corner post that stood
     // over the butted runs went with them.
     if (node.kind === "tower" && kind === "timber") continue;

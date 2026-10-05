@@ -1,0 +1,68 @@
+AI asset provenance ledger check (docs/provenance/assets.csv)
+  runtime assets enumerated: 2389
+  CSV rows:                  2389
+
+Missing rows: none
+
+Orphan rows: none
+
+Hash mismatches: none
+
+Rows pointing at non-existent files: none
+
+Public/ files not referenced by any runtime enumeration rule (49):
+  - public/assets/.gitkeep
+  - public/assets/buildings/historical-houses/installation-manifest.json
+  - public/assets/buildings/historical-wall/manifest.json
+  - public/assets/phase16-house-condition/registration.json
+  - public/assets/phase16-landscape/manifest.json
+  - public/assets/world_asset_manifest.json
+  - public/audio/alert_info.mp3
+  - public/audio/alert_urgent.mp3
+  - public/audio/alert_warn.mp3
+  - public/audio/autumn_ambience.mp3
+  - public/audio/cart_loop.mp3
+  - public/audio/church_bell.mp3
+  - public/audio/complete.mp3
+  - public/audio/famine_omen_bell.mp3
+  - public/audio/fanfare.mp3
+  - public/audio/fire_loop.mp3
+  - public/audio/great_famine.mp3
+  - public/audio/hammer_1.mp3
+  - public/audio/hammer_2.mp3
+  - public/audio/hammer_3.mp3
+  - public/audio/market_loop.mp3
+  - public/audio/mill_loop.mp3
+  - public/audio/oven_loop.mp3
+  - public/audio/ox_loop.mp3
+  - public/audio/petition_arrival.mp3
+  - public/audio/place_blocked.mp3
+  - public/audio/place_cancel.mp3
+  - public/audio/place_ok.mp3
+  - public/audio/quarry_loop.mp3
+  - public/audio/rain_loop.mp3
+  - public/audio/saw_loop.mp3
+  - public/audio/season_autumn.mp3
+  - public/audio/season_spring.mp3
+  - public/audio/season_summer.mp3
+  - public/audio/season_winter.mp3
+  - public/audio/sheep_loop.mp3
+  - public/audio/spring_ambience.mp3
+  - public/audio/stage_thud.mp3
+  - public/audio/summer_ambience.mp3
+  - public/audio/unload_stone.mp3
+  - public/audio/unload_wood.mp3
+  - public/audio/unlock_banner.mp3
+  - public/audio/winter_ambience.mp3
+  - public/licenses/audio/Kenney-impact-sounds-License.txt
+  - public/licenses/audio/Kenney-interface-sounds-License.txt
+  - public/licenses/audio/Kenney-music-jingles-License.txt
+  - public/licenses/audio/Kenney-rpg-audio-License.txt
+  - public/licenses/fonts/OFL-NotoSansKR.txt
+  - public/licenses/fonts/OFL-NotoSerifKR.txt
+
+Statistics:
+  total runtime assets (N):     2389
+  complete rows (K):            1597
+  rows containing "unknown" (M): 792
+  missing rows (L):             0

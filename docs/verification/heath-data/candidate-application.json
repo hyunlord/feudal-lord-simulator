@@ -1,0 +1,162 @@
+{
+  "status": "CANDIDATE_APPLIED_DATA_RUNTIME_NOT_RUN",
+  "coreHead": "931d780e37307a7dd2f85a697b122656cb29359d",
+  "dataHead": null,
+  "productPaths": [
+    "docs/provenance/assets.csv",
+    "public/assets/wave22/decals/heath_patch_b.png",
+    "public/assets/wave22/decals/heath_patch_c.png",
+    "src/render/art/catalog.json"
+  ],
+  "codeFrozen": 2600,
+  "protectedExcludingCsv": 1668,
+  "ledgerChanges": 0,
+  "entries": [
+    103,
+    105
+  ],
+  "rules": [
+    96,
+    97
+  ],
+  "provenanceRows": [
+    2430,
+    2432
+  ],
+  "sources": [
+    {
+      "path": "public/assets/wave22/decals/heath_patch_b.png",
+      "source": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_b-v1.png",
+      "sha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+      "width": 96,
+      "height": 64,
+      "sourceRecordRawSHA": "c7d413d6b00013cfb7fe9a9165139b890a4846191b2c48b011ddb0121e950db5"
+    },
+    {
+      "path": "public/assets/wave22/decals/heath_patch_c.png",
+      "source": "assets-inbox/wave22/rework-20260927/assets/decals/heath_patch_c-v1.png",
+      "sha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+      "width": 128,
+      "height": 96,
+      "sourceRecordRawSHA": "64fd265ab693086704841d1cc9d4e13b9e14e042d5fb4ae5a41aa5c44233d18a"
+    }
+  ],
+  "boundCoreGate": {
+    "head": "931d780e37307a7dd2f85a697b122656cb29359d",
+    "beforeHead": "d367382392a4806e683b91463f3996b7654704d6",
+    "parentAcceptedIndependentVisual": true,
+    "remoteExit": 0,
+    "fetchExit": 0,
+    "beforeCaptures": {
+      "path": "output/art-architecture/heath-main-before-d3673823/captures.json",
+      "sha256": "5014a14a36ee9918afb2e3505e87b2fbb255d660c4aad5c276d3d6d1376571f4"
+    },
+    "afterCaptures": {
+      "path": "output/art-architecture/heath-main-core-931d780e/captures.json",
+      "sha256": "9caf7cd0664547e28fbd498c5cde48e4ca8fc30b7e74f683b2ef16c1382560e3"
+    },
+    "independentVisualReview": {
+      "path": ".omo/drafts/heath-main-core-visual-review.md",
+      "sha256": "0c9d3a7a3a1effb25f448b39497a967f84b77be5f5f1f9689b8e2ab5b3c34d46"
+    },
+    "remoteReceipt": {
+      "path": ".omo/evidence/heath-main-core-summary.json",
+      "sha256": "2fd772457dea27278363e7b91234ea69177582a02f6618652095123b360cfaab"
+    },
+    "firstOpenNegative": {
+      "pass": true,
+      "count": 16,
+      "evidence": {
+        "path": ".omo/drafts/heath-main-core-visual-review.json",
+        "sha256": "5aff7b74ca4fd4032b97997a46a278eb3116459b1e1a5bc4c855641569df7983"
+      }
+    },
+    "exportClassification": "NON_RUNTIME_DOCUMENT_DRIFT",
+    "actualTrackedDirty": true,
+    "exportEvidence": {
+      "path": ".omo/evidence/heath-main-core-export-classification.json",
+      "sha256": "532fc06eca132634e6289ae4cc45217777d327fc5edc4e7fdd980a60799d2408"
+    },
+    "exportIndependentReview": {
+      "path": ".omo/drafts/heath-core-doc-drift-review.md",
+      "sha256": "c633a6b155d98f69f7d3b92ccabec5ef3eb70ade2bfb419a9fa3d4d70f0eec75"
+    },
+    "parentAcceptanceScope": "Exactcommittedruntimeproduct4308 inputs; no wholeexportcleanclaim. Core30 identity/RGBA0/A-A30/native30/firstopennegative16 PASS, repeatabsenceunproved."
+  },
+  "corePreviews": [
+    {
+      "name": "heath-chalk-summer-z1",
+      "preview": "CORE-BEFORE-heath-chalk-summer-z1.jpg",
+      "previewSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-z1.jpg",
+      "previewSHA256": "de8c1534e3160fd452dec7b6e1862e36c1681cc6cb365ffdf8326613e5d24e8c",
+      "nativeSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-z1.png",
+      "nativeSHA256": "7bb67d4bfbe6bbdbd584b7df1766596b0928df0edb8c701fbd26d15cfae826cf",
+      "scope": "ACTUAL_CORE_BEFORE_A_ONLY_NOT_DATA_AFTER"
+    },
+    {
+      "name": "heath-chalk-summer-z06",
+      "preview": "CORE-BEFORE-heath-chalk-summer-z06.jpg",
+      "previewSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-z06.jpg",
+      "previewSHA256": "dd6e8bfd669b2933a54c928371ce07b3513d5e627da2273fed4398f36fa7c7a1",
+      "nativeSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-summer-z06.png",
+      "nativeSHA256": "86b8b939bf295a41cc5963b08ebccefb90bc7d8189dcee598b03205bfc69c2f9",
+      "scope": "ACTUAL_CORE_BEFORE_A_ONLY_NOT_DATA_AFTER"
+    },
+    {
+      "name": "heath-chalk-winter-z1",
+      "preview": "CORE-BEFORE-heath-chalk-winter-z1.jpg",
+      "previewSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-winter-z1.jpg",
+      "previewSHA256": "5c3ca9a6fad6f2289063f1debec84975a2971914da2047a6d29fe6c7c45a9402",
+      "nativeSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-winter-z1.png",
+      "nativeSHA256": "48a77643bc4596f09672452bfe43d833cfed5eda5d3fe76ee6453ebb0ce9b02c",
+      "scope": "ACTUAL_CORE_BEFORE_A_ONLY_NOT_DATA_AFTER"
+    },
+    {
+      "name": "heath-chalk-winter-z06",
+      "preview": "CORE-BEFORE-heath-chalk-winter-z06.jpg",
+      "previewSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-winter-z06.jpg",
+      "previewSHA256": "19951ee53235533d3c5acbb2029afc0400c991b3e32a2ed7631869d94a371726",
+      "nativeSource": "output/art-architecture/heath-main-core-931d780e/heath-chalk-winter-z06.png",
+      "nativeSHA256": "01c95922d9978da7e99c49e24fcd59271b4e5f0d1ebdd380f8e4020f90063ba7",
+      "scope": "ACTUAL_CORE_BEFORE_A_ONLY_NOT_DATA_AFTER"
+    }
+  ],
+  "evidenceSources": {
+    "apply-receipt.json": {
+      "source": ".omo/evidence/heath-main-data-apply.receipt.json",
+      "sha256": "17fb7725597c9e6462c342c0f147283acac8012163b6bd020dff4cc7a74b6f38"
+    },
+    "parent-check.json": {
+      "source": ".omo/evidence/heath-main-data-parent-check.json",
+      "sha256": "0e199b6a80362ed0fb7610184ba1738331d8860973f42278c4c5211b9fc9f6b0"
+    },
+    "core-summary.json": {
+      "source": ".omo/evidence/heath-main-core-summary.json",
+      "sha256": "2fd772457dea27278363e7b91234ea69177582a02f6618652095123b360cfaab"
+    },
+    "core-independent-visual-review.md": {
+      "source": ".omo/drafts/heath-main-core-visual-review.md",
+      "sha256": "0c9d3a7a3a1effb25f448b39497a967f84b77be5f5f1f9689b8e2ab5b3c34d46"
+    },
+    "core-export-classification.json": {
+      "source": ".omo/evidence/heath-main-core-export-classification.json",
+      "sha256": "532fc06eca132634e6289ae4cc45217777d327fc5edc4e7fdd980a60799d2408"
+    },
+    "core-doc-drift-review.md": {
+      "source": ".omo/drafts/heath-core-doc-drift-review.md",
+      "sha256": "c633a6b155d98f69f7d3b92ccabec5ef3eb70ade2bfb419a9fa3d4d70f0eec75"
+    }
+  },
+  "recipe": {
+    "path": ".omo/evidence/heath-main-data-plan.json",
+    "sha256": "6976abd0cfcf8ac5709a19f6cf39b904151454cc53bf57515db40a5a0c114470"
+  },
+  "fixtureReceipt": {
+    "path": ".omo/evidence/heath-main-data-fixtures.json",
+    "sha256": "6a826e21123723e035ba2e0e80e582cc88c72f8a1ad6bd5985ce0bf9b588d845"
+  },
+  "dataRuntime": "NOT_RUN",
+  "candidatePromotion": "PENDING_ACTUAL_DATA30_AND_INDEPENDENT_NATIVE",
+  "postPromotionReference": "PENDING",
+  "finalPublication": "PENDING"
+}

@@ -6,6 +6,7 @@ import { WAVE8_FRAMES } from "../src/ui/wave8ArtManifest.generated";
 import { WAVE14_IMAGES } from "../src/ui/wave14ArtManifest.generated";
 import { WAVE19_IMAGES } from "../src/ui/wave19ArtManifest.generated";
 import { WAVE25_IMAGES } from "../src/ui/wave25ArtManifest.generated";
+import { WAVE38_ART, type Wave38ArtId } from "../src/ui/wave38ArtManifest.generated";
 
 // UI-AUDIT-1: every frame's draw width and content-safe inset from one table, written as CSS custom properties
 // (src/styles/frameTokens.generated.css, :root) and a TS module (src/ui/frameTokens.generated.ts) for the frame-layer and
@@ -29,6 +30,8 @@ type KindSpec = Readonly<{
   type: FrameType; url: string; size: Readonly<{ width: number; height: number }>; slice: Sides | null; scale: number;
   repeat?: "stretch" | "round"; safe: Sides; note: string; variants?: Readonly<Record<string, Variant>>;
   content?: Rect; slots?: Readonly<Record<string, unknown>>;
+  /** css kinds: the picture (at the kind's scale) worn when a Wave 38 picture did not load (`data-ui-art="p0"`). */
+  fallback?: Readonly<{ url: string; slice: Sides; scale: number }>;
 }>;
 
 const sides = (top: number, right = top, bottom = top, left = right): Sides => ({ top, right, bottom, left });
@@ -98,19 +101,66 @@ const KINDS = {
     safe: sides(22, 15, 23, 15), note: "person card painting (inside the inner rule)", slots: personCard.slots },
   biography: { type: "painting", ...w19("frame_biography"), slice: null, scale: 1, safe: sides(29, 26, 28, 26), note: "biography page (drawn at the page scale)" },
   "faction-page": { type: "painting", ...w19("frame_faction_page"), slice: null, scale: 1, safe: sides(29, 28, 29, 28), note: "faction page (drawn at the page scale)" },
+  // LM-R1: the select's open list (Wave 38 select_open_list, drawn 1:1; measured edge 10 9 10 9). Fallback: the light panel.
+  "select-list": { type: "css", url: WAVE38_ART.select_open_list.url, size: { width: WAVE38_ART.select_open_list.width, height: WAVE38_ART.select_open_list.height },
+    slice: WAVE38_ART.select_open_list.slice, scale: 1, safe: sides(10, 9, 10, 9), note: "the select's open list (Wave 38)",
+    fallback: { url: P0.frame_panel_light.url, slice: P0.frame_panel_light.slice as Sides, scale: 0.5 } },
   "pause-badge": { type: "painting", url: "assets/wave8/time/pause_badge.png", size: { width: 128, height: 48 }, slice: null, scale: 44 / 48,
     safe: sides(2, 1, 2, 25), note: "the pause badge (hand: the hourglass at its left)" },
+  // LM-R1: measured 168 40 39 44; the bottom is the slice's 110 by hand — the separator and the lower field under it are
+  // the receipt's foot slot (its money line), not the reading field.
+  receipt: { type: "layer", url: "assets/wave35-receipts/E_receipts/receipt_frame.png", size: { width: 384, height: 512 }, slice: sides(190, 40, 110, 40),
+    scale: 0.875, safe: sides(168, 40, 110, 44), note: "the lord's why-here receipt (Wave 35; hand: the lower field is the foot slot)" },
 } as const satisfies Record<string, KindSpec>;
 
-/** Button art (Wave 38 replaces these per state later): draw width, the measured edge, the kit's border and paddings. */
+/** One button picture: its url and 9-slice (source px). */
+type Art = Readonly<{ url: string; slice: Sides }>;
+const w38 = (id: Wave38ArtId): Art => ({ url: WAVE38_ART[id].url, slice: WAVE38_ART[id].slice });
+const art = (id: P0Id): Art => ({ url: P0[id].url, slice: P0[id].slice as Sides });
+/** A button family: a picture per state (`normal` first), drawn at `scale` CSS px per source px; `safe` the painted edge in
+ * source px (the largest of its states); `fallback` the P0 picture (at its own scale 0.5) every state wears when a Wave 38
+ * picture did not load (src/ui/wave38Art.ts sets `data-ui-art="p0"` on the root). */
+type ButtonSpec = Readonly<{ states: Readonly<Record<string, Art>> & { readonly normal: Art }; scale: number; safe: Sides; fallback?: Art }>;
+/**
+ * Button art, LM-R1: Wave 38 (assets-inbox/wave38, the reworked primary four and tab_hover), one picture per state, drawn
+ * 1:1 (the art is made at its CSS size, 128 × 40 and 48 × 48; the batch's 9-slice is 10 px). Safe insets measured by
+ * scripts/measureFrameSafe.py (the button-* kinds), the family's largest. The chip stays P0: the build cards' chips are
+ * about 20 px tall and the Wave 38 chip is a fixed 28 px (the kit Chip wears it, CONTROLS below).
+ */
 const BUTTONS = {
-  primary: { ...p0("button_primary_base"), safe: sides(2, 2, 3, 3) },
-  secondary: { ...p0("button_secondary_base"), safe: sides(2) },
-  icon: { ...p0("button_icon_square_base"), safe: sides(0) },
-  tab: { ...p0("tab_build_base"), safe: sides(2) },
-  chip: { ...p0("chip_condition_base"), safe: sides(2, 3, 3, 3) },
-} as const;
-const BUTTON_SIZES = { sm: "2px 10px", md: "6px 14px", lg: "10px 22px" } as const;
+  primary: { states: { normal: w38("button_primary_normal"), hover: w38("button_primary_hover"), pressed: w38("button_primary_pressed"),
+    disabled: w38("button_primary_disabled") }, scale: 1, safe: sides(7, 5, 5, 5), fallback: art("button_primary_base") },
+  secondary: { states: { normal: w38("button_secondary_normal"), hover: w38("button_secondary_hover"), pressed: w38("button_secondary_pressed"),
+    disabled: w38("button_secondary_disabled") }, scale: 1, safe: sides(8, 5, 6, 5), fallback: art("button_secondary_base") },
+  // LM-R1: the same pictures with a 6 px band (P0's), for a 44 px HUD row whose 16 px content the 10 px band leaves no room
+  // for (the stuck-goods chip: 44 − 2 × (6 + the 8 px gap) = 16).
+  "secondary-compact": { states: { normal: w38("button_secondary_normal"), hover: w38("button_secondary_hover"), pressed: w38("button_secondary_pressed"),
+    disabled: w38("button_secondary_disabled") }, scale: 0.6, safe: sides(8, 5, 6, 5), fallback: art("button_secondary_base") },
+  danger: { states: { normal: w38("button_danger_normal"), hover: w38("button_danger_hover"), pressed: w38("button_danger_pressed"),
+    disabled: w38("button_danger_disabled") }, scale: 1, safe: sides(7, 4, 6, 4), fallback: art("button_secondary_base") },
+  icon: { states: { normal: w38("button_icon_normal"), hover: w38("button_icon_hover"), pressed: w38("button_icon_pressed"),
+    disabled: w38("button_icon_disabled") }, scale: 1, safe: sides(6), fallback: art("button_icon_square_base") },
+  tab: { states: { normal: w38("tab_unselected"), hover: w38("tab_hover"), selected: w38("tab_selected") }, scale: 1, safe: sides(7, 5, 7, 5),
+    fallback: art("tab_build_base") },
+  chip: { states: { normal: art("chip_condition_base") }, scale: 0.5, safe: sides(2, 3, 3, 3) },
+} as const satisfies Record<string, ButtonSpec>;
+// LM-R1: each size clears Wave 38's text_safe x (14 source px = 14 CSS px at 1:1) with the 2 px border: sm 12 + 2.
+const BUTTON_SIZES = { sm: "2px 12px", md: "6px 14px", lg: "10px 22px" } as const;
+/** Wave 38 controls (scale 1). 9-slice pieces become `--control-K[-state]-art` border-images (with a P0 fallback where one
+ * exists, else `none`: the kit keeps its drawn shape); fixed-size pictures become `--control-K` url()s (`none` in fallback).
+ * Safe insets measured like the buttons; hand-set: select right 26 = the chevron's slice (records: "Right 26px slice
+ * protects glyph"), so a label never runs under the chevron. */
+const CONTROLS = {
+  input: { states: { normal: w38("input_normal"), focus: w38("input_focus") }, scale: 1, safe: sides(10, 8, 9, 8), fallback: art("frame_tooltip") },
+  select: { states: { normal: w38("select_closed") }, scale: 1, safe: sides(8, 26, 7, 6), fallback: art("button_secondary_base") },
+  "select-row": { states: { normal: w38("select_row_hover") }, scale: 1, safe: sides(6, 5, 6, 5) },
+  chip: { states: { normal: w38("chip_normal"), selected: w38("chip_selected") }, scale: 1, safe: sides(5, 4, 5, 4), fallback: art("chip_condition_base") },
+  "slider-track": { states: { normal: w38("slider_track") }, scale: 1, safe: sides(5, 5, 4, 5) },
+  "scrollbar-track": { states: { normal: w38("scrollbar_track") }, scale: 1, safe: sides(8, 4, 7, 5) },
+  "scrollbar-thumb": { states: { normal: w38("scrollbar_thumb") }, scale: 1, safe: sides(2, 1, 1, 1) },
+} as const satisfies Record<string, ButtonSpec>;
+const FIXED_CONTROLS = ["checkbox_empty", "checkbox_checked", "checkbox_disabled", "radio_empty", "radio_selected", "toggle_off", "toggle_on",
+  "close_normal", "close_hover", "close_pressed", "slider_thumb"] as const satisfies readonly Wave38ArtId[];
 
 const px = (value: number): string => `${Number(value.toFixed(3))}px`;
 const cssSides = (value: Sides): string => {
@@ -178,16 +228,45 @@ export function renderFrameTokens(): { readonly css: string; readonly ts: string
     if (spec.slots !== undefined) fields.push(`slots: ${JSON.stringify(spec.slots)}`);
     ts.push(`  "${kind}": { ${fields.join(", ")} },`);
   }
-  css.push("  /* Buttons: the P0 art (one state; code draws hover / pressed / disabled), the kit's border and size paddings. */");
+  css.push("  /* Buttons (LM-R1: Wave 38, one picture per state; the chip P0), the kit's border and size paddings. Per family F:",
+    "     --button-F-art (normal), --button-F-<state>-art, --button-F-width, --button-F-safe. Wave 38 controls: --control-K[-state]-art",
+    "     (9-slice) and --control-<id> (fixed-size url). `:root[data-ui-art=\"p0\"]` below swaps the P0 pictures back. */");
   css.push("  --button-border: 2px;");
   for (const [size, padding] of Object.entries(BUTTON_SIZES)) css.push(`  --button-pad-${size}: ${padding};`);
   ts.push("} as const;", "", "export const BUTTON_TOKENS = {");
-  for (const [name, button] of Object.entries(BUTTONS)) {
-    const width = map(button.slice, side => side * 0.5); const safe = map(button.safe, side => Math.ceil(side * 0.5 - 1e-6));
-    css.push(`  --button-${name}-width: ${cssSides(width)};`);
-    css.push(`  --button-${name}-art: ${cssUrl(button.url)} ${sliceText(button.slice)} fill / var(--button-${name}-width) / 0 stretch;`);
-    css.push(`  --button-${name}-safe: ${cssSides(safe)};`);
-    ts.push(`  "${name}": { url: "${button.url}", slice: ${JSON.stringify(button.slice)}, scale: 0.5, width: ${JSON.stringify(width)}, safe: ${JSON.stringify(safe)} },`);
+  const fallback: string[] = [];
+  const family = (prefix: string, name: string, spec: ButtonSpec, tsName: string) => {
+    const width = map(spec.states.normal.slice, side => side * spec.scale); const safe = map(spec.safe, side => Math.ceil(side * spec.scale - 1e-6));
+    css.push(`  --${prefix}-${name}-width: ${cssSides(width)};`);
+    for (const [state, picture] of Object.entries(spec.states)) {
+      const own = map(picture.slice, side => side * spec.scale);
+      const widthVar = state === "normal" || cssSides(own) === cssSides(width) ? `var(--${prefix}-${name}-width)` : cssSides(own);
+      css.push(`  --${prefix}-${name}${state === "normal" ? "" : `-${state}`}-art: ${cssUrl(picture.url)} ${sliceText(picture.slice)} fill / ${widthVar} / 0 stretch;`);
+    }
+    css.push(`  --${prefix}-${name}-safe: ${cssSides(safe)};`);
+    if (spec.fallback !== undefined) {
+      const old = map(spec.fallback.slice, side => side * 0.5);
+      fallback.push(`  --${prefix}-${name}-width: ${cssSides(old)};`);
+      for (const state of Object.keys(spec.states)) {
+        fallback.push(`  --${prefix}-${name}${state === "normal" ? "" : `-${state}`}-art: ${cssUrl(spec.fallback.url)} ${sliceText(spec.fallback.slice)} fill / var(--${prefix}-${name}-width) / 0 stretch;`);
+      }
+    } else if (prefix === "control") for (const state of Object.keys(spec.states)) fallback.push(`  --${prefix}-${name}${state === "normal" ? "" : `-${state}`}-art: none;`);
+    ts.push(`  "${tsName}": { url: "${spec.states.normal.url}", slice: ${JSON.stringify(spec.states.normal.slice)}, scale: ${spec.scale}, width: ${JSON.stringify(width)}, safe: ${JSON.stringify(safe)}, `
+      + `states: ${JSON.stringify(Object.fromEntries(Object.entries(spec.states).map(([state, picture]) => [state, picture.url])))} },`);
+  };
+  for (const [name, button] of Object.entries(BUTTONS)) family("button", name, button, name);
+  for (const [name, control] of Object.entries(CONTROLS)) family("control", name, control, `control-${name}`);
+  for (const id of FIXED_CONTROLS) {
+    const name = id.replaceAll("_", "-");
+    css.push(`  --control-${name}: ${cssUrl(WAVE38_ART[id].url)};`);
+    fallback.push(`  --control-${name}: none;`);
+  }
+  for (const kind of Object.keys(KINDS) as Kind[]) {
+    const spec: KindSpec = KINDS[kind];
+    if (spec.fallback === undefined) continue;
+    const old = spec.fallback;
+    fallback.push(`  --frame-${kind}-width: ${cssSides(map(old.slice, side => side * old.scale))};`);
+    fallback.push(`  --frame-${kind}-art: ${cssUrl(old.url)} ${sliceText(old.slice)} fill / var(--frame-${kind}-width) / 0 ${spec.repeat ?? "stretch"};`);
   }
   css.push("}", "");
   css.push("/* The box contract, keyed on the surface's `data-frame` (0-4-0: an older screen rule's border or padding cannot win).",
@@ -197,6 +276,8 @@ export function renderFrameTokens(): { readonly css: string; readonly ts: string
     css.push(`:root [data-frame][data-frame][data-frame="${kind}"] { border-style: solid; border-color: transparent; border-width: var(--frame-${kind}-safe);`
       + ` padding: var(--frame-gap);${spec.type === "painting" ? " background-origin: border-box;" : ""} }`);
   }
+  css.push("", "/* LM-R1: a Wave 38 picture did not load (src/ui/wave38Art.ts): every button and control wears its P0 picture again, the",
+    "   fixed-size controls their drawn shapes (uiKit.css), so nothing is left blank. */", ':root[data-ui-art="p0"] {', ...fallback, "}");
   css.push("");
   ts.push("} as const;", "", "export type FrameKind = keyof typeof FRAME_TOKENS;", "/** A surface's `data-frame`: a frame kind, or \"flat\" (no art frame). */",
     "export type FrameAttr = FrameKind | \"flat\";", "");

@@ -3,7 +3,7 @@
  * (ART_AUDIT.md findings) — 26 runtime PNGs replaced byte for byte under their old names and the title keyart's
  * build-time source moved to its rework — each with its provenance row and installed_by NAT-5. A rework keeps its
  * original's canvas (so every manifest's size, pivot, anchor and display scale stand); `rock` (the NAT-5 ground
- * installer's) and `seal_slot` (LM-R1's) are left to other work.
+ * installer's) and `seal_slot` (LM-R1's, scripts/installWave41SealSlot.py) are left to other work.
  */
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
@@ -49,9 +49,11 @@ test("the title keyart's derivative is made from its rework; the Wave 8 original
   assert.ok(lines("docs/provenance/assets.csv").some(line => line.startsWith(`keyart_title_bg,v1,${item.source},${sha(item.source)},`)));
 });
 
-test("seal_slot stays as it was (UI-02 goes with LM-R1's seal button work)", () => {
+test("seal_slot is its Wave 41 rework too, installed by LM-R1 (UI-02; scripts/installWave41SealSlot.py), not by NAT-5", () => {
   const row = rows.find(entry => entry.assetId === "seal_slot")!;
   const entry = lines("assets-inbox/INBOX_LEDGER.csv").find(line => line.startsWith(`wave41,${row.candidate.replace("assets-inbox/", "")},`))!;
   assert.equal(entry.endsWith(",NAT-5"), false);
-  assert.equal(sha(row.sourcePath), row.sourceSha);
+  assert.equal(sha(row.sourcePath), sha(row.candidate));
+  assert.deepEqual(pngSize(row.sourcePath), [row.width, row.height]);
+  assert.ok(lines("docs/provenance/assets.csv").some(line => line.startsWith(`seal_slot,v1,${row.sourcePath},${sha(row.candidate)},${row.candidate},`)));
 });
