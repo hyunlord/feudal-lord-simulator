@@ -8,6 +8,7 @@ import { eventWorldFirstMs, storyBeats, type StoryBeat } from "../eventStory";
 import type { UiModal } from "../stateMachine/uiStateMachine";
 import { latestChapterEnd } from "../chronicleModel";
 import { openHomePetitions } from "../lordCardsModel";
+import { openRegistryCards } from "../registryCardModel";
 
 // UI-4 world before UI: a beat's chip appears EVENT_WORLD_FIRST_MS after the beat is first seen (the world has shown
 // it by then: the burning roof, the blighted fields, the petitioners at the gate) and stays until dismissed or a
@@ -82,6 +83,8 @@ export function useStoryPresentation(input: {
   const famine = famineStatus(state); const petition = openPetitions(state)[0];
   // LM-R1 (lord mode): a home estate's petition opens its card once, after the world, as a political petition does.
   const home = openHomePetitions(state)[0];
+  // EVENT-ART (lord mode): a registry offer (an event entry) opens its card once, after the world, the same way.
+  const offer = openRegistryCards(state)[0]?.occurrence;
   const ready = (id: string) => { const entry = seenRef.current.get(id); return entry !== undefined && nowMs - entry.firstSeenMs >= delayMs; };
   useEffect(() => {
     if (blocked || topModal !== null) return;
@@ -93,6 +96,9 @@ export function useStoryPresentation(input: {
     }
     if (home !== undefined && !openedRef.current.has(home.id) && ready(`home-petition:${home.id}`)) {
       openedRef.current.add(home.id); pushModal("estate_petition"); return;
+    }
+    if (offer !== undefined && !openedRef.current.has(offer.id) && ready(`registry:${offer.id}`)) {
+      openedRef.current.add(offer.id); pushModal("registry_offer"); return;
     }
     const chapterKey = end === null ? null : `chapter:${end.chapter}`;
     const since = chapterKey === null || openedRef.current.has(chapterKey) ? undefined : chapterSeenRef.current.get(chapterKey);

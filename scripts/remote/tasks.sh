@@ -167,11 +167,12 @@ ui-geometry)
     "$states6/wool_payment.json" "$states6/decline.json" "$states6/chapter2-end.json" "$states8/chapter3-end.json" \
     "$states9/reorg.alehouse_boom.json" "$states9/chapter4-end.json" "$states9/borough_charter.json" "$states9/rumour-chased.json" "$states9/reorg.wage_competition.json" \
     "$states10/chapter5-end.json" "$states10/borough_autonomy.json" "$extra/heir_choice.json" "$lands/fen_drainage-summer.json" \
-    "$petitions/home-boundary_dispute.json" "$petitions/precedent.json" "$petitions/request.json" "$petitions/guardian.json" "$lord/lord-receipts.json"; do
+    "$petitions/home-boundary_dispute.json" "$petitions/precedent.json" "$petitions/request.json" "$petitions/guardian.json" "$lord/lord-receipts.json" \
+    "$lord/registry-offer.json"; do
     [ -f "$f" ] || missing="$missing $f"
   done
   if [ -n "$missing" ]; then
-    echo "ui-geometry: state files missing:$missing (build them with scripts/ui5States.ts, ui6States.ts, ui8States.ts, ui9States.ts, ui10States.ts, ui10ExtraStates.ts, landStates.ts, lmr1PetitionStates.ts, lmr1LordStates.ts)" | tee "$OUT/summary.txt"
+    echo "ui-geometry: state files missing:$missing (build them with scripts/ui5States.ts, ui6States.ts, ui8States.ts, ui9States.ts, ui10States.ts, ui10ExtraStates.ts, landStates.ts, lmr1PetitionStates.ts, lmr1LordStates.ts, eventArtStates.ts)" | tee "$OUT/summary.txt"
     exit 2
   fi
   # No file watching (scripts/remote/viteNoWatch.config.ts): the audit needs the dev transforms, not hot reload, and a
