@@ -13,6 +13,7 @@
 // rect, measured on the PNG); `flat` — no art frame (a plain fill with a CSS rule).
 // Copy in this file stays out of it (koreanStrings): buttons are reached by class, data attribute or position.
 
+import { DECISION_SURFACES } from "./lord/decisions/surfaces";
 import { ESTATES_SURFACES } from "./lord/estates/surfaces";
 import { LEDGER_SURFACES } from "./lord/ledger/surfaces";
 import { NEGOTIATION_SURFACES } from "./lord/negotiation/surfaces";
@@ -488,6 +489,8 @@ export const SURFACES: readonly SurfaceRow[] = [
     requires: [".command-pin"], data: "the lord's public work (the keep, locked until the fortified town) and encouragement-zone pins" },
   // LM-R2: the lord screen host and its four areas' screens (each area's rows in its own file, src/ui/lord/<area>/surfaces.ts).
   ...SCREEN_SURFACES, ...NEGOTIATION_SURFACES, ...LEDGER_SURFACES, ...ESTATES_SURFACES, ...REGION_SURFACES,
+  // LM-R2: the lord's decision cards (src/ui/lord/decisions/surfaces.ts).
+  ...DECISION_SURFACES,
 ];
 
 /**

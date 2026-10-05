@@ -29,3 +29,6 @@
 @media (min-width: 720px) {
   .app-shell [data-slot="lord"] { --slot-clear: calc(min(760px, 100% - 280px) + 8px); }
 }
+
+/* LM-R2: the contested inheritance's one act (the way to the suit) under its line, as the cards' answers sit. */
+.lord-card .lord-decision-open { align-self: flex-start; margin-block: 8px 4px; }
