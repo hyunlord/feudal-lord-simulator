@@ -129,15 +129,17 @@ const wardship = (() => {
   return { begun, ended: state, moments: momentsOf(state, from) };
 })();
 
-test("Wave 40: fourteen confirmed received JPEGs, 960×540, provenance rows, shipped as received", () => {
+test("Wave 40: fourteen confirmed received JPEGs, 960×540, provenance rows, re-encoded at build (EVA-D2: the received files unchanged)", () => {
   assert.equal(WAVE40_DERIVATIVES.length, 14);
   for (const item of WAVE40_DERIVATIVES) {
     const bytes = readFileSync(item.source);
     assert.ok(inbox.includes(`${sha256(bytes)},confirmed`), `${item.id}: confirmed in INBOX_LEDGER by its sha256`);
     assert.ok(provenance.includes(item.source), `${item.id}: provenance row`);
     assert.equal(KEYART_DERIVATIVE_BY_URL.get(item.url), item, `${item.id}: in WEB_ART_DERIVATIVES`);
-    assert.equal(item.format, "jpeg-received");
-    assert.deepEqual(buildKeyartDerivative(item), bytes, `${item.id}: the received bytes, no second encode`);
+    assert.equal(item.format, "jpeg-reencoded");
+    const built = buildKeyartDerivative(item);
+    assert.ok(built.length < bytes.length, `${item.id}: the build output is smaller than the received file`);
+    assert.deepEqual(jpegSize(built), [960, 540], `${item.id}: the build output keeps the size`);
     assert.deepEqual(jpegSize(bytes), [960, 540], item.id);
   }
 });
