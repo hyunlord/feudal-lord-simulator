@@ -1,3 +1,4 @@
+import { calendarProgress } from './calendarProgress';
 import type { ContractHouseDraw } from './art/contractHouseArt';
 import { outlinesOccludingBuilding } from "./selectionOcclusion";
 import { drawBuildingContactShadowV2 } from "./buildingContactShadow";
@@ -92,7 +93,7 @@ export function drawBuildings(
     } else if (item.kind === "zone_prop") {
       if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop, season);
     } else if (item.kind === "farm_prop") {
-      if ((input.viewMode ?? "normal") === "normal") drawFarmProp(context, item.prop);
+      if ((input.viewMode ?? "normal") === "normal") drawFarmProp(context, item.prop, { state: input.state, season: calendarProgress(input.state).season, zoom: input.zoom });
     } else if (item.kind === "building") {
       drawBuilding(context, input, item.building, spriteOptions);
     }

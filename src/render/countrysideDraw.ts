@@ -8,6 +8,7 @@ import { tileIsVisibleInRange, type TileRange } from "./renderVisibility";
 import { DECAL_MIN_ZOOM } from "./seasonalDecals";
 import { calendarProgress } from "./calendarProgress";
 import { treeProgression } from "./seasonProgression";
+import { drawSpringHedge } from './springHedges';
 
 // INSTALL-28 the countryside on screen (layout: countrysideLayout.ts, art: countrysideArt.ts).
 //  - Draw order: the wildflower patches are ground decals, drawn in the ground pass after the terrain and before the
@@ -66,6 +67,7 @@ export function drawCountrysideItem(context: CanvasRenderingContext2D, item: Cou
   const phase = treeProgression(progress, piece.id, progress.year === calendarProgress({ ...state, tick: 0 }).year);
   const season = progress.season === 3 && !phase.snowy ? 2 : phase.season;
   if ("salt" in piece) { drawCountryBlit(context, pieceBlit(piece, season)); return; }
+  if (progress.season === 0 && drawSpringHedge(context, piece, season, zoom)) return;
   for (const blit of stripBlits(piece, season)) drawCountryBlit(context, blit);
 }
 

@@ -1,3 +1,4 @@
+import { validateSpringWorld } from './springWorldValidation';
 import schema from './artContract.schema.json';
 import type { ArtBundle, ArtEntry, ArtKind, ArtRule } from './artContract';
 import { validateArtSchema } from './schemaValidation';
@@ -41,7 +42,7 @@ export function createArtRegistry(bundles: readonly unknown[]): ArtRegistry {
   const validated: ArtBundle[] = [];
   for (const bundle of bundles) if (isBundle(bundle)) validated.push(bundle);
   const rules = validated.flatMap(bundle => bundle.rules);
-  const issues = [...validateRegistryData(validated), ...validateSelection(rules)];
+  const issues = [...validateRegistryData(validated), ...validateSpringWorld(validated), ...validateSelection(rules)];
   if (issues.length) throw new ArtRegistryError(issues);
   const snapshots = structuredClone(validated);
   freezeTree(snapshots);
