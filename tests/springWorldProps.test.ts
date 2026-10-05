@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 import { readFileSync } from 'node:fs';
+import { newGameState } from '../src/state/newGame';
+import { DEFAULT_SCENARIO_ID } from '../src/content/scenario/coreScenarios';
 import { decodeSave } from '../src/save/saveCodec';
 import type { GameState } from '../src/engine/engine.types';
 import { ART_REGISTRY } from '../src/render/art/wave42Registry';
@@ -36,10 +38,8 @@ test('Given a standalone bank When computing source support Then full 128 world 
   assert.ok(support.length > 8); assert.ok(new Set(support.map(cell => cell.tx)).size >= 4);
 });
 test('Given actual wet spring and water edge When planning bank Then roads buildings and dry weather prevent unsupported placement', () => {
-  let wet = state();
-  for (let seed = 1; seed < 1000; seed++) { const candidate = { ...wet, seed }; if (weatherActive(candidate) && weatherAt(candidate).kind === 'wet') { wet = candidate; break; } }
+  const wet = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, archetypeId: 'core:open_field', seed: 2 }); assert.ok(wet);
   assert.equal(calendarProgress(wet).season, 0); assert.equal(weatherAt(wet).kind, 'wet');
-  wet = { ...wet, tiles: wet.tiles.map(tile => tile.ty < 12 ? { ...tile, terrain: 'water' as const } : tile) };
   const banks = springWorldProps(wet, choose).filter(prop => prop.role === 'swollen-bank'); assert.ok(banks.length > 0);
   let dry = wet;
   for (let seed = 1; seed < 1000; seed++) { const candidate = { ...wet, seed }; if (weatherAt(candidate).kind !== 'wet') { dry = candidate; break; } }
@@ -96,4 +96,10 @@ test('Given spring props at different depths When queue sorting Then source anch
   const a = { kind: 'spring_prop' as const, id: 'a', prop, depth: depthKey(2, 3), anchorTx: 2 };
   const b = { ...a, id: 'b', prop: { ...prop, ty: 4 }, depth: depthKey(2, 4) };
   assert.deepEqual(sortRenderItems([b, a]).map(item => item.id), ['a', 'b']);
+});
+test('Given water on the wrong side of the native bank When deriving spring props Then no reversed or floating bank is drawn', () => {
+  let base = state();
+  for (let seed = 1; seed < 1000; seed++) { const next = { ...base, seed }; if (weatherActive(next) && weatherAt(next).kind === 'wet') { base = next; break; } }
+  const wrong = { ...base, tiles: base.tiles.map(tile => tile.tx < 12 ? { ...tile, terrain: 'water' as const } : tile) };
+  assert.equal(springWorldProps(wrong, choose).filter(prop => prop.role === 'swollen-bank').length, 0);
 });

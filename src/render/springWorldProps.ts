@@ -19,6 +19,7 @@ import { sortRenderItems } from './objectRenderSort';
 import type { RenderQueueItem } from './objectRenderTypes';
 import { tileIsVisibleInRange, type TileRange } from './renderVisibility';
 import { ZONE_ASSETS, ZONE_VARIANTS } from './zoneAssetManifest';
+import { springBankAnchors, springBankSupport } from './springBankShore';
 import { boundaryV2Enabled } from './renderBoundaryFlag';
 
 export type SpringContextRole = Extract<SpringWorldRole, 'cherry' | 'laundry' | 'nest' | 'swollen-bank'>;
@@ -32,15 +33,17 @@ function sourceBox(entry: SpringWorldEntry, cell: TileCoordinate): Box {
   const foot = tileToScreen(cell.tx, cell.ty), { pivot, scale } = entry.geometry;
   return { x: foot.sx - pivot.x * scale, y: foot.sy - pivot.y * scale, width: entry.image.width * scale, height: entry.image.height * scale };
 }
-// Immutable catalog entry identity includes source canvas, pivot, scale and role. Candidates are integer tile anchors.
+// Immutable catalog entry identity covers canvas/pivot/scale/role for integer upright-prop anchors.
+// Fractional bank anchors use their exact full-canvas support geometry instead.
 // Offset memoization replaces the 2px support raster at every candidate with one raster per immutable entry.
 const supportOffsets = new WeakMap<SpringWorldEntry, readonly TileCoordinate[]>();
 /** Bank is a whole ground painting; reserve its whole canvas. Upright props reserve their lower ground-contact band. */
 export function springPropSupport(entry: SpringWorldEntry, cell: TileCoordinate): readonly TileCoordinate[] {
+  if (entry.role === 'swollen-bank') return springBankSupport(entry, cell);
   const cached = supportOffsets.get(entry);
   if (cached !== undefined) return cached.map(offset => ({ tx: cell.tx + offset.tx, ty: cell.ty + offset.ty }));
   const box = sourceBox(entry, { tx: 0, ty: 0 }), foot = tileToScreen(0, 0);
-  const top = entry.role === 'swollen-bank' ? box.y : foot.sy - 3;
+  const top = foot.sy - 3;
   const cells = new Map<string, TileCoordinate>();
   for (let y = top; y <= box.y + box.height + 1; y += 2) for (let x = box.x; x <= box.x + box.width + 1; x += 2) {
     const point = screenToTile(x, y), tx = Math.round(point.tx), ty = Math.round(point.ty);
@@ -55,7 +58,7 @@ export function springPropSupport(entry: SpringWorldEntry, cell: TileCoordinate)
 // Trade reservations use ART_REGISTRY metadata selection, and backyard boxes use WAVE27 metadata: both
 // reserve their eventual geometry before decode. Their image readiness cannot add a previously absent obstacle.
 // No GameState field is omitted: new tick/house/zone/layout state identities recompute, even when references are shared.
-// Mac diagnostic (4096-tile spring save, 5 recomputes/50 reuse calls): 1.191ms -> 0.00186ms per call;
+// Mac diagnostic (4096-tile production seed2, 5 recomputes/50 reuse calls): 3.834ms -> 0.00178ms per call;
 // tile scans 4096 -> 0. Not a timing gate. Advancing state intentionally recomputes.
 const plans = new WeakMap<GameState, { readonly entries: readonly SpringWorldEntry[]; readonly props: readonly SpringWorldProp[] }>();
 /** Display only; no state mutation and no tick/season omissions in the cache key. */
@@ -137,7 +140,11 @@ function buildSpringWorldProps(state: GameState, metas: ReadonlyMap<SpringContex
     const near = [{ tx: tile.tx - 1, ty: tile.ty }, { tx: tile.tx + 1, ty: tile.ty }, { tx: tile.tx, ty: tile.ty - 1 }, { tx: tile.tx, ty: tile.ty + 1 }];
     const hash = yardHash(`${tile.tx},${tile.ty}`, state.seed);
     if (hash % 7 === 0 && near.some(point => tileAt(point)?.terrain === 'forest')) put('nest', `spring:nest:${tile.tx},${tile.ty}`, tile);
-    if (wet && hash % 5 === 0 && near.some(point => tileAt(point)?.terrain === 'water')) put('swollen-bank', `spring:bank:${tile.tx},${tile.ty}`, tile);
+
+  }
+  const bank = metas.get('swollen-bank');
+  if (wet && bank !== undefined) for (const anchor of springBankAnchors(state, scene.shore, bank)) {
+    put('swollen-bank', `spring:bank:${anchor.tx},${anchor.ty}`, anchor);
   }
   return result;
 }
