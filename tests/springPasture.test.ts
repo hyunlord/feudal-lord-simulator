@@ -54,5 +54,5 @@ test('consumer draws full source with native scale/pivot and never mirrors', asy
   const art = await readyArt(); const input = state(); const calls: unknown[][] = [];
   const context: CanvasRenderingContext2D = Object.assign(Object.create(null), { globalAlpha: 0.8, imageSmoothingEnabled: false, save() {}, restore() {}, getTransform: () => ({ a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }), drawImage: (...args: unknown[]) => calls.push(args) });
   assert.equal(drawSpringPasture(context, input, flock, [flock], 0, 1, art), true);
-  assert.deepEqual(calls[0]?.slice(1, 5), [0, 0, 128, 96]); assert.deepEqual(calls[0]?.slice(-2), [28, 21]); assert.equal(context.globalAlpha, 0.8);
+  assert.deepEqual(calls[0]?.slice(1, 5), [0, 0, 128, 96]); assert.deepEqual(calls[0]?.slice(-2), [23, 17.25]); assert.equal(context.globalAlpha, 0.8);
 });

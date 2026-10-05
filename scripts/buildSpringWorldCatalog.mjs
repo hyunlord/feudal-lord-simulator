@@ -8,9 +8,15 @@ const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const props = json(`${root}/records/props/manifest.json`);
 const cherry = json(`${root}/records/orchard/manifest.json`).find(item => item.id === 'orchard_cherry_spring');
 const river = json(`${root}/records/ground/riverside_grass_spring_a.json`);
+// Runtime scale overrides only: preserve inbox metadata, pixels, full canvas and native pivots.
+// Art Bible adult H=17.6, sheep BACK=0.35–0.50H (raised B head is not its back).
+// Source alpha>=32 manual back/hoof columns: A x66/y26..66=41px, B x65/y30..77=48px.
+// Shared ewe width23 gives7.367/8.625 world px; width25 would make B9.375 (>8.8).
+// Laundry's163px alpha silhouette at width27.5 is17.5098 world px (<=adult17.6).
+const runtimeWidths = { ewe_lamb_a_spring: 23, ewe_lamb_b_spring: 23, laundry_yard_spring: 27.5 };
 const definitions = [
   ['riverside-grass', 'ground', river, 128], ['cherry', 'orchard', cherry, cherry.worlddisplayWidth],
-  ...props.map(item => [{ ewe_lamb_a_spring: 'ewe-lamb', ewe_lamb_b_spring: 'ewe-lamb', swollen_stream_bank_spring: 'swollen-bank', hawthorn_blossom_strip_spring: 'hawthorn', nest_bird_spring: 'nest', laundry_yard_spring: 'laundry' }[item.id], 'props', item, item.suggested_world_width]),
+  ...props.map(item => [{ ewe_lamb_a_spring: 'ewe-lamb', ewe_lamb_b_spring: 'ewe-lamb', swollen_stream_bank_spring: 'swollen-bank', hawthorn_blossom_strip_spring: 'hawthorn', nest_bird_spring: 'nest', laundry_yard_spring: 'laundry' }[item.id], 'props', item, runtimeWidths[item.id] ?? item.suggested_world_width]),
 ];
 function strip(bytes) {
   const chunks = [bytes.subarray(0, 8)];

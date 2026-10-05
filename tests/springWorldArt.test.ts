@@ -65,8 +65,8 @@ test('full native sprite draw preserves source pivot, scale, inherited alpha and
   const context: CanvasRenderingContext2D = Object.assign(Object.create(null), { globalAlpha: 0.37, imageSmoothingEnabled: false, save() {}, restore() {}, getTransform: () => ({ a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }), drawImage: (...args: unknown[]) => calls.push(args) });
   assert.equal(art.draw(context, 'wave43:ewe_lamb_a_spring', 100, 200, 0.59), false);
   assert.equal(art.draw(context, 'wave43:ewe_lamb_a_spring', 100, 200, 0.6), true);
-  assert.deepEqual(calls[0]?.slice(1), [0, 0, 128, 96, 100 - 67 * 28 / 128, 200 - 69 * 28 / 128, 28, 21]);
+  assert.deepEqual(calls[0]?.slice(1), [0, 0, 128, 96, 100 - 67 * 23 / 128, 200 - 69 * 23 / 128, 23, 17.25]);
   assert.equal(context.globalAlpha, 0.37);
   assert.equal(art.draw(context, 'wave43:ewe_lamb_b_spring', 100, 200, 1), true);
-  assert.deepEqual(calls[1]?.slice(1), [0, 0, 128, 96, 100 - 65 * 28 / 128, 200 - 77 * 28 / 128, 28, 21]);
+  assert.deepEqual(calls[1]?.slice(1), [0, 0, 128, 96, 100 - 65 * 23 / 128, 200 - 77 * 23 / 128, 23, 17.25]);
 });

@@ -5,10 +5,10 @@ export const SPRING_WORLD_ROLES = ['riverside-grass', 'cherry', 'ewe-lamb', 'haw
 const geometry = [
   ['riverside_grass_spring_a', 'riverside-grass', 256, 128, 0, 0, 0.5],
   ['orchard_cherry_spring', 'cherry', 256, 256, 128, 242, 43 / 256],
-  ['ewe_lamb_a_spring', 'ewe-lamb', 128, 96, 67, 69, 28 / 128],
-  ['ewe_lamb_b_spring', 'ewe-lamb', 128, 96, 65, 77, 28 / 128],
+  ['ewe_lamb_a_spring', 'ewe-lamb', 128, 96, 67, 69, 23 / 128],
+  ['ewe_lamb_b_spring', 'ewe-lamb', 128, 96, 65, 77, 23 / 128],
   ['hawthorn_blossom_strip_spring', 'hawthorn', 512, 64, 256, 53, 0.5],
-  ['laundry_yard_spring', 'laundry', 256, 192, 132, 176, 40 / 256],
+  ['laundry_yard_spring', 'laundry', 256, 192, 132, 176, 27.5 / 256],
   ['nest_bird_spring', 'nest', 128, 96, 65, 79, 9 / 128],
   ['swollen_stream_bank_spring', 'swollen-bank', 256, 128, 130, 117, 0.5],
 ] as const;
