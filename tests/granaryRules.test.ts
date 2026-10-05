@@ -25,7 +25,7 @@ test("RC-6 in lord mode barley fills at most 40 % of a granary; the sandbox keep
   const free = availableSpace(granary, BUILDING_CONFIG_BY_KIND.granary);
   const cap = Math.floor(BUILDING_CONFIG_BY_KIND.granary.storageCapacity * LORD_GRANARY_RULES.barleyCapPermille / 1000);
   assert.equal(storageIntakeSpace(granary, "barley", free, lordIntakeRules({ agency: initialAgency() })), cap - 70);
-  assert.equal(storageIntakeSpace(granary, "barley", free, lordIntakeRules({ agency: undefined })), free);
+  assert.equal(storageIntakeSpace(granary, "barley", free, lordIntakeRules({})), free);
   assert.equal(storageIntakeSpace({ ...granary, inventory: { barley: cap } }, "barley", free, LORD_GRANARY_RULES), 0);
   assert.ok(storageIntakeSpace({ ...granary, inventory: { barley: cap } }, "bread", free, LORD_GRANARY_RULES) > 0, "bread keeps its room");
 });
