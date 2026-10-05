@@ -8547,5 +8547,333 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave43-region-spring4",
+    "entries": [
+      {
+        "id": "wave43-region-chalk-down-spring-a",
+        "kind": "ground-texture",
+        "baseId": "chalk_down",
+        "image": {
+          "url": "assets/wave43/ground/chalk_down_spring_a-v1.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/chalk_down_spring_a-v1.png",
+          "sourceSha256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+          "runtimeSha256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave43-region-coastal-grass-spring-a",
+        "kind": "ground-texture",
+        "baseId": "coastal_grass",
+        "image": {
+          "url": "assets/wave43/ground/coastal_grass_spring_a-v1.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/coastal_grass_spring_a-v1.png",
+          "sourceSha256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+          "runtimeSha256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave43-region-fen-spring-a",
+        "kind": "ground-texture",
+        "baseId": "fen",
+        "image": {
+          "url": "assets/wave43/ground/fen_spring_a-v1.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/fen_spring_a-v1.png",
+          "sourceSha256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+          "runtimeSha256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      },
+      {
+        "id": "wave43-region-woodland-floor-spring-a",
+        "kind": "ground-texture",
+        "baseId": "woodland_floor",
+        "image": {
+          "url": "assets/wave43/ground/woodland_floor_spring_a-v1.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/woodland_floor_spring_a-v1.png",
+          "sourceSha256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+          "runtimeSha256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152"
+        },
+        "mapping": {
+          "repeat": "xy",
+          "sourcePixelsPerTile": {
+            "u": 128,
+            "v": 64
+          },
+          "origin": {
+            "x": 0,
+            "y": 0
+          }
+        },
+        "composition": {
+          "wash": "none"
+        },
+        "allowMirror": false
+      }
+    ],
+    "rules": [
+      {
+        "id": "region-spring4-chalk_down-a",
+        "kind": "ground-texture",
+        "slot": "land-region-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-chalk-down-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-spring4-chalk_down-b",
+        "kind": "ground-texture",
+        "slot": "land-region-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "chalk_down"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-chalk-down-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-spring4-coastal_grass-a",
+        "kind": "ground-texture",
+        "slot": "land-region-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-coastal-grass-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-spring4-coastal_grass-b",
+        "kind": "ground-texture",
+        "slot": "land-region-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "coastal_grass"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-coastal-grass-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-spring4-fen-a",
+        "kind": "ground-texture",
+        "slot": "land-region-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-fen-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-spring4-fen-b",
+        "kind": "ground-texture",
+        "slot": "land-region-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "fen"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-fen-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-spring4-woodland_floor-a",
+        "kind": "ground-texture",
+        "slot": "land-region-season-a",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-woodland-floor-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "region-spring4-woodland_floor-b",
+        "kind": "ground-texture",
+        "slot": "land-region-season-b",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "baseId",
+            "op": "eq",
+            "value": "woodland_floor"
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "spring"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43-region-woodland-floor-spring-a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]
