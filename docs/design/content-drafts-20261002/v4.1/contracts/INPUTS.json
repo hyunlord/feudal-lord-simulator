@@ -1,0 +1,71 @@
+{
+  "canonicalHead": "d169d3faf8366c839861042596c2ec79b0a4c4c2",
+  "engineHead": "813b31f0d0e4eacb0e12c58d45cf4719e12dec94",
+  "files": [
+    {
+      "scope": "canonical v4",
+      "file": "events-v4.json",
+      "sha256": "2f09e1cc292d9c80ecab686026f05ab647129f0d12b8c9d260dea19299f1dfcb"
+    },
+    {
+      "scope": "canonical v4",
+      "file": "registry-v4.json",
+      "sha256": "5a48d22cb53bb2e9f63c28104ed2d16a32a873064e22e3d253521d85b99c227c"
+    },
+    {
+      "scope": "canonical v4",
+      "file": "events-v4.schema.json",
+      "sha256": "1fa3eff965beb8ad7d59584ed1c04d6922c97109a9a604f966c4a94a39270897"
+    },
+    {
+      "scope": "canonical v4",
+      "file": "registry-v4.schema.json",
+      "sha256": "0da1604119ae91a23e10398c080a57150f23002030da6791ac6e5010e3434af2"
+    },
+    {
+      "scope": "canonical v4",
+      "file": "READ_MODEL.json",
+      "sha256": "7aac3e1ea21a6c52c340445c62a62eb0a3ab9ed33289f20ecfbf0916d2c5cfa9"
+    },
+    {
+      "scope": "canonical v4",
+      "file": "ADAPTER_CONTRACTS.json",
+      "sha256": "12b7f6642d2987c5dab465dc49afff0d9963031ccb0b22fc4754a0c2c4ed1493"
+    },
+    {
+      "scope": "canonical v4",
+      "file": "COMMAND_CONTRACT.json",
+      "sha256": "5aa76c137e0e774abec6741d0675c77859360617c1b6a82b0b1cef25b72a05ac"
+    },
+    {
+      "scope": "LM-E9b read-only snapshot",
+      "file": "src/engine/registryV4.ts",
+      "sha256": "ce9ef46f57b2b2e73868b908fbf0e251ff67197f6cca95906539516f3d083eba"
+    },
+    {
+      "scope": "LM-E9b read-only snapshot",
+      "file": "src/engine/registryDsl.ts",
+      "sha256": "cd28b44827317ca53ca9d86b0f7cf9770c04e2acf9d47846a463456c1471bc17"
+    },
+    {
+      "scope": "LM-E9b read-only snapshot",
+      "file": "scripts/buildRegistryV4.ts",
+      "sha256": "9f177258f1f1a2aa374ce606579167f89d0df75e4711438c05479edbaf1b3f55"
+    },
+    {
+      "scope": "LM-E9b read-only snapshot",
+      "file": "docs/verification/lm-e9b/runs/v4e-run-1.json",
+      "sha256": "4dc6f3411a374a7ac693085160b52fa01e1250a8413efe756c44aba41acd323d"
+    },
+    {
+      "scope": "LM-E9b read-only snapshot",
+      "file": "docs/verification/lm-e9b/runs/v4e-run-2.json",
+      "sha256": "fb7c04a19809a409ca7722579381c453b469dfa1c42064523770472c298a6c51"
+    },
+    {
+      "scope": "LM-E9b read-only snapshot",
+      "file": "docs/verification/lm-e9b/runs/v4e-run-3.json",
+      "sha256": "d7a6743c8437643c4bf326c7d4396ec88696a95afe511ee3f185312e395c20ae"
+    }
+  ]
+}

@@ -111,15 +111,15 @@ export function StewardAdvisor({ advisor, onDismiss }: { readonly advisor: Tutor
       <div className="steward-body">
         <strong className="steward-name">{TUTORIAL_COPY.stewardName}</strong>
         <p className="steward-line">{advisor.text}</p>
-        <Button type="button" className="steward-button" onPress={() => onDismiss()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button>
+        <Button type="button" className="steward-button" onPress={() => onDismiss()} variant="secondary">{TUTORIAL_COPY.advisorButton}</Button>
       </div>
     </aside>
   );
 }
 
-export function UnlockBanner({ text }: { readonly text: string | null }) {
+export function UnlockBanner({ text, icon = true }: { readonly text: string | null; /** LR1-D7: a start hint has no lock. */ readonly icon?: boolean }) {
   if (text === null) return null;
-  return <div className="unlock-banner" data-frame="banner" role="status"><UiIcon sheet="lock" cell="new" size={32} />{text}</div>;
+  return <div className="unlock-banner" data-frame="banner" role="status">{icon ? <UiIcon sheet="lock" cell="new" size={32} /> : null}{text}</div>;
 }
 
 export function PauseVeil({ paused }: { readonly paused: boolean }) {

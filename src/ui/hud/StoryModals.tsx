@@ -52,7 +52,7 @@ export function FamineDecisionModal({ view, onChoose, onLater, steward = null, o
         <ol className="famine-options">
           {view.options.map(option => (
             <li key={option.choice}>
-              <Button type="button" className="famine-option" data-choice={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onChoose(option.choice)} variant="primary">
+              <Button type="button" className="famine-option" data-choice={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onChoose(option.choice)} variant="secondary">
                 <span className="famine-option-art" aria-hidden="true" style={wave16ImageStyle(option.illustration, 132)} />
                 <strong>{option.label}</strong>
                 <span className="famine-option-line">{option.line}</span>
@@ -132,7 +132,7 @@ export function PetitionModal({ view, onRespond, onLater, petitioners = [], onPe
           <ol className="petition-options">
             {view.options.map(option => (
               <li key={option.choice}>
-                <Button type="button" className="petition-option" data-response={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onRespond(option.choice)} variant="primary">
+                <Button type="button" className="petition-option" data-response={option.choice} aria-label={DECISION_COPY.choose(option.label)} onPress={() => onRespond(option.choice)} variant="secondary">
                   <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.seal, 44)} />
                   <strong>{option.label}</strong>
                   {option.heir === undefined ? null : <HeirCandidate heir={option.heir} />}

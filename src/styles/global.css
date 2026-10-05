@@ -87,10 +87,10 @@ button {
   word-break: keep-all;
 }
 
-/* contrast-audit selector=".welcome-dismiss" fg="--palette-ink" bg="--palette-vellum" size="13" role="body" */
-.welcome-dismiss {
+/* LR1-D7: the welcome's "click anywhere" line is gone (a mode button starts); its place is the default mode's note. */
+/* contrast-audit selector=".welcome-mode-first" fg="--palette-ink" bg="--palette-vellum" size="12" role="body" */
+.welcome-mode-first {
   color: var(--palette-ink);
-  font-size: var(--font-body);
 }
 
 .era-ceremony {
@@ -757,10 +757,7 @@ button {
   cursor: pointer;
   appearance: none;
   background-color: transparent;
-  background-image: url("/assets/ui/seal_slot.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  /* LR1-D1 (user 2026-10-05): the seal slot picture is retired — the kit's Wave 38 art draws these seals. */
   border: 0;
 }
 

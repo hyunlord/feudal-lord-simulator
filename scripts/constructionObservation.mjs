@@ -22,7 +22,7 @@ const page = await (await browser.newContext({ viewport: { width: 1280, height: 
 await page.routeWebSocket('**', socket => socket.close());
 await page.goto(`${url}?phase10-proof=1`);
 await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-await page.locator('.welcome-parchment [data-scenario]').first().click();
+await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
 await page.waitForTimeout(1_200);
 const sites = () => page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.state().constructionSites.map(site => ({ id: site.id, kind: site.kind, tx: site.tx, ty: site.ty,
   delivered: site.delivered, required: site.required, builderTicks: site.builderTicks, requiredBuilderTicks: site.requiredBuilderTicks, stall: site.stall, builders: site.assignedBuilders })));

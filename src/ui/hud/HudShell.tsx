@@ -164,7 +164,7 @@ export function ActionDock({ buildOpen, ledgerOpen, onBuild, onLedger, advisor, 
         aria-label={stewardName === null ? TUTORIAL_COPY.stewardName : PERSONS_COPY.steward(stewardName)} data-advisor={advisor.key} data-tone={advisor.tone}>
         {expanded && stewardName !== null ? <p className="steward-name">{PERSONS_COPY.steward(stewardName)}</p> : null}
         <p className="steward-line">{advisor.text}</p>
-        {expanded ? <Button type="button" className="steward-button" onPress={() => onDismissAdvisor()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button> : null}
+        {expanded ? <Button type="button" className="steward-button" onPress={() => onDismissAdvisor()} variant="secondary">{TUTORIAL_COPY.advisorButton}</Button> : null}
       </aside> : speaking ? null : stewardOpen ? <aside className="steward-bubble" data-frame="advisor" role="status"><p className="steward-line">{HUD_COPY.stewardQuiet}</p></aside> : null}
     </>
   );

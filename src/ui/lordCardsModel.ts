@@ -7,6 +7,8 @@ import { autoplayActionToGameAction } from "../engine/autoplayActions";
 import type { GameState } from "../engine/engine.types";
 import { faction, kingAt } from "../engine/factions";
 import { lordHouse, lordshipOf } from "../engine/lordshipState";
+import type { EmblemSpec } from "./heraldry/EmblemImage";
+import { lordHouseArms } from "./persons/personModels";
 import { ageOf, manorLord, personById, personDisplayName } from "../engine/persons";
 import { stateCalendar } from "../engine/scenarioState";
 import { lordEstatePetitions, precedentReport, stewardshipOf } from "../engine/stewardship";
@@ -34,6 +36,8 @@ export type HomePetitionView = Readonly<{
   precedent: string | null;
   recurring: boolean;
   options: readonly [HomePetitionOption, HomePetitionOption];
+  /** LR1-D5 (user 2026-10-05): the lord house's arms in the frame's roundel, as the lordship screen shows them. */
+  arms: EmblemSpec; armsLabel: string;
 }>;
 
 const isHomeKind = (kind: EstatePetition["kind"]): kind is HomePetitionKind => Object.hasOwn(HOME_PETITION_KINDS, kind);
@@ -122,6 +126,7 @@ export function homePetitionView(state: GameState): HomePetitionView | null {
     waits: LORD_CARDS_COPY.waits(calendarDays(petition.deadline - state.tick)),
     precedent: settled === null ? LORD_CARDS_COPY.precedentHint : LORD_CARDS_COPY.precedentSettled(settled ? copy.grant(named) : copy.refuse(named)),
     recurring, options: [option(true), option(false)],
+    arms: lordHouseArms(state), armsLabel: PETITION_COPY.arms(lordHouse(state).name),
   };
 }
 

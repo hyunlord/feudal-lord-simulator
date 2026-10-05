@@ -1,0 +1,2855 @@
+[
+  {
+    "number": 11,
+    "id": "ck_evt_011",
+    "category": "이웃 가문",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+      "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+      "season": "계절 제한 없음.",
+      "state": "실제 countered negotiation과 counter 존재. deadline-state.tick>=80, proposer cash 합계<=max(0,treasuryBalance(state)). 실제 역제안의 전체 조건을 보여 주고 수락 여부를 묻는다. 원안보다 금전 부담만 늘었거나 비금전 조건이 같다고 가정하지 않는다."
+    },
+    "sender": {
+      "faction": "기존 혼인 상대 가문",
+      "role": "이웃 영주의 사자"
+    },
+    "title": "혼담에 되돌아온 조건",
+    "body": "이웃 가문이 혼담의 조건을 고쳐 돌려보냈습니다. 청지기가 처음 보낸 약정과 돌아온 약정을 나란히 놓았습니다. 사자는 남은 답변 기한 안에 수락 여부를 알려 달라고 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "되돌아온 조건을 받아들인다",
+        "effects": [
+          {
+            "catalogKey": "marriage.offer",
+            "operation": "answer_counter(accept=true)",
+            "parameters": {
+              "cashCostD": "[C,C], C=counter.terms의 proposer cash 합계",
+              "pensionAnnualD": "[P,P], 실제 역제안 pension만",
+              "debtTotalD": "[D,D], 실제 역제안 debt_assumption만",
+              "contractRelationGain": [
+                10,
+                10
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "기존 negotiationId와 counter terms 원문 표시·cash≤금고",
+            "limits": "표시된 실제 항목만 적용. 권리조각 term만으로 즉시 양도 단정 금지; 새 혼인/상속 성공 보장 아님.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:114",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L114"
+              },
+              {
+                "ref": "src/engine/marriage.ts:137",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L137"
+              },
+              {
+                "ref": "src/engine/marriage.ts:154",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L154"
+              },
+              {
+                "ref": "src/engine/marriage.ts:256",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L256"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "돌아온 조건에 적힌 현금과 후속 약속을 떠안고 이 역제안을 수락한다.",
+        "ledger": "혼인 역제안 수락. 현금 Cd와 실제 후속 약정 기록.",
+        "chronicle": "돌아온 혼담은 상대가 고친 조건으로 맺어졌다.",
+        "costAxes": [
+          "money",
+          "promise",
+          "time"
+        ]
+      },
+      {
+        "id": "b",
+        "label": "이번 역제안을 거두게 한다",
+        "effects": [
+          {
+            "catalogKey": "marriage.offer",
+            "operation": "answer_counter(accept=false)",
+            "parameters": {
+              "immediateCashDeltaD": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 엔진 고정값은 [x,x], 비용은 페니(d). 역사적 가격이 아니라 게임 추정이다.",
+            "preconditions": "같은 유효 countered negotiationId",
+            "limits": "추가 관계 벌점이나 영구 혼인 금지는 없다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/marriage.ts:114",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L114"
+              },
+              {
+                "ref": "src/engine/marriage.ts:137",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L137"
+              },
+              {
+                "ref": "src/engine/marriage.ts:154",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L154"
+              },
+              {
+                "ref": "src/engine/marriage.ts:256",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/83b06802661d6eef33ebf7dc5b7c31a18aa9fae8/src/engine/marriage.ts#L256"
+              }
+            ]
+          }
+        ],
+        "tradeoff": "이번 역제안의 의무를 피하지만 이 조건으로 계약은 맺지 못한다.",
+        "ledger": "혼인 역제안 거절. 새 지급·약속 없음.",
+        "chronicle": "되돌아온 조건은 인장을 받지 못했다.",
+        "costAxes": [
+          "money",
+          "promise",
+          "time"
+        ]
+      },
+      {
+        "id": "c",
+        "label": "남은 기한 동안 혼담의 지출을 검토한다",
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "아무 명령도 보내지 않는다",
+            "parameters": {
+              "immediateDelta": [
+                0,
+                0
+              ]
+            },
+            "rangeNote": "현행 고정값은 [x,x]. 임의 입력 금액·비율 범위는 게임 추정이며 사료 가격이 아니다.",
+            "preconditions": "countered·원래deadline 전",
+            "limits": "협상은countered 유지. 다른 혼인 제안은under_way로 막힌다. 원래deadline 초과시 현행withdrawn, 기한 연장 없음.",
+            "codeReferences": []
+          }
+        ],
+        "tradeoff": "지금 조건을 확정하지 않지만 남은 협상 시간을 써 버리고 다른 혼담도 시작할 수 없다. 늦으면 이 역제안은 철회된다.",
+        "ledger": "혼인 역제안 미결. 기존 기한과 협상 잠금 유지.",
+        "chronicle": "친족들은 답을 미룬 만큼 다른 혼담을 열지 못했다.",
+        "costAxes": [
+          "time",
+          "promise",
+          "opportunity"
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        3,
+        6
+      ],
+      "steward": "이 초안 자체는 청지기 선례 처리 대상이 아니다. 자동 처리하려면 별도 연결이 필요하다.",
+      "exclusions": "같은 negotiationId에서는 한 번. 기존 역제안 기한을 새 카드가 연장하지 않으며 기존 UI와 이중 응답을 막는다."
+    },
+    "illustration": "서로 다른 혼인 조건 두 장을 같은 탁자에 펴 놓고 이웃 가문의 사자가 답을 기다린다.",
+    "history": {
+      "sourceIds": [
+        "HK12",
+        "HK05"
+      ],
+      "basis": "혼담의 가족 중개와 혼인 재산조건의 문서화를 참고했다.",
+      "inference": "가공 인물과 청원은 관행을 조합한 창작이다. 근거 문서는 주로 1420~1440 Norfolk 사례다. 초기 14세기 남부에 같은 문구·금액이 쓰였다는 증거는 아니며 계약 협상이라는 넓은 관행만 소급한 창작.",
+      "limits": "연대·지역 차이를 명시한다. 실제 역제안 금액은 엔진 산출값이지 사료 인용액이 아니다.",
+      "sources": [
+        {
+          "id": "HK12",
+          "title": "Paston Letters II, 서한 34: Agnes가 William에게, 약1440",
+          "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter34"
+        },
+        {
+          "id": "HK05",
+          "title": "Paston Letters II, 문서 4: William Paston 혼인 재산설정, 1420",
+          "url": "https://www.gutenberg.org/files/40989/40989-h/40989-h.htm#letter4"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "기존 명령 또는 기존 청원 경로에 연결하는 미설치 편집 초안",
+      "requirements": "신규 카드 등록·대상 ID 선택·발동 필터·문구 연결 어댑터 필요. 금액 범위는 카드 생성 때 한 번 정하고 양쪽 선택지에서 같은 기준값을 사용한다. 소스 코드와 정본 청원 제목은 변경하지 않는다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 201,
+    "id": "ck_evt_201",
+    "category": "도시",
+    "period": "1300–1380",
+    "years": [
+      1300,
+      1380
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "가동 중인 시장이 있는 새 계절. 도시 전체 좌판 부담을 논의하며 특정 통행세 분쟁의 발생을 가정하지 않는다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "도시 공동체의 대표"
+    },
+    "title": "이번 철 좌판의 몫",
+    "body": "장이 서는 철을 맞아 도시 공동체가 좌판의 부담을 다시 살펴 달라고 합니다. 적게 거두면 거래하는 이들의 부담이 줄고, 많이 거두면 영주의 수입 몫이 커집니다. 이번 결정은 도시의 모든 시장 좌판에 적용됩니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "좌판 부담을 한 단계 낮춘다",
+        "tradeoff": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+        "ledger": "전체 시장 좌판세 인하. 새 비율은 선택 당시 묶인 값.",
+        "chronicle": "시장에 내는 부담은 낮아졌고 영주는 세입 일부를 양보했다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "duesPermille": [
+                250,
+                2000
+              ],
+              "previousPermille": [
+                250,
+                2000
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:95",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "좌판 부담을 한 단계 높인다",
+        "tradeoff": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+        "ledger": "전체 시장 좌판세 인상. 새 비율은 선택 당시 묶인 값.",
+        "chronicle": "시장에 내는 부담은 높아졌고 장사꾼들은 몫을 더 내게 되었다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "duesPermille": [
+                250,
+                2000
+              ],
+              "previousPermille": [
+                250,
+                2000
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:95",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 도시 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "townRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.T1"
+    },
+    "illustration": "장터 골목의 접힌 좌판 천을 펴는 주민과 바구니를 내려놓는 행상. 앞쪽에는 작은 동전 접시를 든 징수자. 문서 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-GUILD"
+      ],
+      "basis": "길드 규약의 거래 부담·면제와 도시 내 협상 관행.",
+      "inference": "실제 계절과 시장에 묶은 가공 좌판세 협의.",
+      "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-GUILD",
+          "title": "Southampton Guild Organization, 14th Century",
+          "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 202,
+    "id": "ck_evt_202",
+    "category": "도시",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,1,2 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "살아 있는 주민이 있는 주택의 실제 식량부족 시작 시점. 새 가구 유입으로 가장하지 않는다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "도시 공동체의 대표"
+    },
+    "title": "한 집의 빈 식탁이 묻는 일",
+    "body": "먹을거리가 모자란 집이 있습니다. 도시 공동체는 살림의 기반을 먼저 돌볼지, 집과 장터를 늘릴지, 수입이 나는 사업에 더 힘을 실을지 묻습니다. 어느 길을 택해도 오늘의 빈 식탁이 곧 채워지는 것은 아닙니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 도시 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "townRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.house.buildingId, bound.house.foodShortSinceTick)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.T2"
+    },
+    "illustration": "작은 집의 열린 문 안 빈 나무 그릇과 식탁. 문밖 주민이 거의 빈 곡물 바구니를 대표에게 기울여 보인다. 장부 탁자 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-GUILD",
+        "H41-LABOUR"
+      ],
+      "basis": "도시 조직의 빵과 회원 구제 관행을 생계 청원의 배경으로 삼는다.",
+      "inference": "기존 식량 부족 가구 상태를 도시 사업 우선순위의 선택으로 각색한다.",
+      "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다. 법정 임금과 실제 임금을 동일시하지 않고 1381에 임금통제가 폐지됐다고 쓰지 않는다.",
+      "sources": [
+        {
+          "id": "H41-GUILD",
+          "title": "Southampton Guild Organization, 14th Century",
+          "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+        },
+        {
+          "id": "H41-LABOUR",
+          "title": "The Statute of Labourers, 1351",
+          "url": "https://www.umsl.edu/~gradyf/medieval/statute.htm"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 203,
+    "id": "ck_evt_203",
+    "category": "도시",
+    "period": "1381–1450",
+    "years": [
+      1381,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "실제 성인 노동력이 있고 유휴 일손 1 이하인 봄. 1381 이후에도 이어진 고용 긴장을 배경으로 삼는다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "도시 공동체의 대표"
+    },
+    "title": "빈손으로 기다리는 일꾼은 드물다",
+    "body": "큰 반란이 지난 뒤에도 일손과 품삯을 둘러싼 긴장은 남아 있습니다. 지금 이 도시에는 일을 맡지 않은 성인이 거의 없습니다. 주민들은 늘릴 사업을 고르되, 한정된 일손이 모든 곳에 함께 갈 수 없다는 점을 살펴 달라고 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 도시 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "townRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.T3"
+    },
+    "illustration": "고용 장터에 남은 빈 자리 몇 곳. 농기구를 멘 일꾼 대부분은 밭과 작업장으로 걸어가고, 고용하려던 사람이 뒤를 바라본다. 임금표나 강제 체포 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-LABOUR"
+      ],
+      "basis": "1351 이후 고용·임금·노동 이동을 둘러싼 통제와 긴장.",
+      "inference": "1381 이후 실제 유휴 일손 부족을 사업 우선순위와 결합한다.",
+      "limits": "법정 임금과 실제 임금을 동일시하지 않고 1381에 임금통제가 폐지됐다고 쓰지 않는다.",
+      "sources": [
+        {
+          "id": "H41-LABOUR",
+          "title": "The Statute of Labourers, 1351",
+          "url": "https://www.umsl.edu/~gradyf/medieval/statute.htm"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 204,
+    "id": "ck_evt_204",
+    "category": "도시",
+    "period": "1381–1450",
+    "years": [
+      1381,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "가동 시장과 실제 직물 시설이 있는 가을·겨울. 원모 수출량·불황 상태를 새로 만들지 않는다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "도시 공동체의 대표"
+    },
+    "title": "직물 꾸러미가 놓인 장터",
+    "body": "직물을 다루는 시설이 자리 잡은 도시에서, 주민들이 이번 철의 좌판 부담을 묻습니다. 원모뿐 아니라 가공한 천의 교역에도 관심이 쏠리는 때입니다. 낮은 부담으로 장사를 돕겠습니까, 더 큰 수입 몫을 택하겠습니까?",
+    "choices": [
+      {
+        "id": "a",
+        "label": "좌판 부담을 한 단계 낮춘다",
+        "tradeoff": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+        "ledger": "전체 시장 좌판세 인하. 새 비율은 선택 당시 묶인 값.",
+        "chronicle": "시장에 내는 부담은 낮아졌고 영주는 세입 일부를 양보했다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "duesPermille": [
+                250,
+                2000
+              ],
+              "previousPermille": [
+                250,
+                2000
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:95",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "좌판 부담을 한 단계 높인다",
+        "tradeoff": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+        "ledger": "전체 시장 좌판세 인상. 새 비율은 선택 당시 묶인 값.",
+        "chronicle": "시장에 내는 부담은 높아졌고 장사꾼들은 몫을 더 내게 되었다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "duesPermille": [
+                250,
+                2000
+              ],
+              "previousPermille": [
+                250,
+                2000
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:95",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 도시 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "townRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.T4"
+    },
+    "illustration": "양모 자루와 접은 직물 꾸러미가 갈라져 놓인 장터. 천을 펼쳐 보이는 상인 옆으로 징수자가 걸어간다. 가을·겨울 양쪽에 맞게 잎 진 나무를 멀리 보이고 세율 글자는 없다.",
+    "history": {
+      "sourceIds": [
+        "H41-WOOL",
+        "H41-CUSTOMS"
+      ],
+      "basis": "14세기 후반 이후 원모와 가공 직물 교역 구조 변화.",
+      "inference": "실제 직물 시설이 있는 도시의 계절별 시장 부담으로 각색한다.",
+      "limits": "특정 가상도시의 매년 수요나 가격을 역사적 필연으로 지정하지 않는다. 정량 배율은 재사용하지 않는다. 시장 좌판세와 왕실 수출관세를 같은 세목으로 쓰지 않는다. 이 자료만으로 특정 해 불황을 단정하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-WOOL",
+          "title": "Henry V and the crossing to France: reconstructing naval operations for the Agincourt campaign, 1415",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/03044181.2016.1236503"
+        },
+        {
+          "id": "H41-CUSTOMS",
+          "title": "Medieval customs’ accounts",
+          "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/medieval-customs-accounts/"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 205,
+    "id": "ck_evt_205",
+    "category": "도시",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "실제 급수받지 못하는 가구가 둘 이상. 우물 공고 선택은 실제 후보 자리와 지원 여력이 있을 때만 보인다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "도시 공동체의 대표"
+    },
+    "title": "물통 줄 끝의 두 집",
+    "body": "두 집 이상이 우물물을 충분히 받지 못하고 있습니다. 도시 공동체는 우물 사업에 장려금을 걸어 달라고 합니다. 돈을 약속하는 대신 영지의 방침을 바꾸어 사업의 우선순위부터 조정할 수도 있습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "우물 사업에 24d 장려금을 건다",
+        "tradeoff": "우물 사업에 쓸 공고 예산을 약속해 다른 지원의 여유를 줄인다. 실제 사업 시작 전에는 물도 돈도 지급되지 않는다.",
+        "ledger": "우물 사업 장려금 24d. 지급은 실제 사업 시작 때.",
+        "chronicle": "공동체의 물 사정을 위해 우물 사업 장려금이 공고되었다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "subsidy",
+            "operation": "set_project_subsidy",
+            "parameters": {
+              "kind": "well",
+              "amount": 24
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "종류별 공고 대체. 특정 집·우물 위치·완공을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:73",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L73"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 도시 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "townRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.T5"
+    },
+    "illustration": "공동 우물 주변에 놓인 물통들. 줄 끝의 두 주민이 빈 물통을 내려놓고 먼 우물을 바라본다. 새 우물 완공 장면 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-WATER"
+      ],
+      "basis": "1310–1415 런던의 공용 급수 관리와 대량 취수로 인한 주민 민원·이용 제한의 사례를 참고했다.",
+      "inference": "현재의 실제 급수 부족을 기존 우물 사업 공고와 정책 선택으로 연결한 창작이다.",
+      "limits": "이 자료는 공용 도수로 접근 갈등의 근거이지 자연 가뭄·우물 고갈을 증명하지 않는다. 205가 말라버린 우물이라면 실제 엔진 물 부족의 게임상 각색이라고 명시하고 우물 물길 복구를 효과로 약속하지 않는다. 런던 규칙을 모든 마을에 동일 적용하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-WATER",
+          "title": "Industrial Waste Management and Urban Environments in Medieval England, 1300–1600",
+          "url": "https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/54773b4d-e44f-44bc-be43-bae178349b28/content"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 206,
+    "id": "ck_evt_206",
+    "category": "자연",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+    },
+    "sender": {
+      "faction": "농민 공동체",
+      "role": "농민 공동체의 대표"
+    },
+    "title": "불길 뒤에 남은 서까래",
+    "body": "도시에 불이 났던 일이 기록되었습니다. 주민들이 수선에 쓸 목재를 얼마나 주문해 둘지 묻습니다. 큰 주문은 뒤 장날의 금고 부담을 늘리고, 작은 주문은 필요한 재료를 덜 넉넉히 준비하게 됩니다. 주문만으로 집이 곧 복구되지는 않습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "목재 주문 잔량을 10단으로 정한다",
+        "tradeoff": "추가 주문이 아니라 총 남은 주문을 10단으로 바꾼다. 전량을 사면 최대 180d를 쓰며, 다른 지출에 쓸 금고가 줄어든다.",
+        "ledger": "목재 주문 잔량 10단. 매입 때 실제 지급.",
+        "chronicle": "영주는 시장에서 목재 10단을 더 확보하도록 주문을 정했다.",
+        "costAxes": [
+          "money",
+          "time"
+        ],
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 10,
+              "pricePerUnitD": [
+                18,
+                18
+              ],
+              "maximumTotalCostD": [
+                180,
+                180
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "즉시 지급·수선·전용 예약 없음. 시장 가동·재고·금고에 따라 납품하며 잔량 설정은 원래 주문을 대체한다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/timberTrade.ts:19",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "목재 주문 잔량을 4단으로 정한다",
+        "tradeoff": "추가 주문이 아니라 총 남은 주문을 4단으로 바꾼다. 전량을 사면 최대 72d를 쓰며, 다른 지출에 쓸 금고가 줄어든다.",
+        "ledger": "목재 주문 잔량 4단. 매입 때 실제 지급.",
+        "chronicle": "영주는 시장에서 목재 4단을 더 확보하도록 주문을 정했다.",
+        "costAxes": [
+          "money",
+          "time"
+        ],
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 4,
+              "pricePerUnitD": [
+                18,
+                18
+              ],
+              "maximumTotalCostD": [
+                72,
+                72
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "즉시 지급·수선·전용 예약 없음. 시장 가동·재고·금고에 따라 납품하며 잔량 설정은 원래 주문을 대체한다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/timberTrade.ts:19",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 농민 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "commonsFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.event.id)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.N1"
+    },
+    "illustration": "검게 탄 지붕 부재 곁에서 쓸 수 있는 서까래를 골라 쌓는 주민들. 불타는 사람·시신·문서 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-FIRE"
+      ],
+      "basis": "중세 화재 위험과 건축 유지 책임의 선례.",
+      "inference": "실제 fire 사건 뒤 수선 자원 준비를 묻는 가공 청원이다.",
+      "limits": "런던의 초가지붕 금지를 모든 농촌에 적용하지 않는다. 소방차·보험금·1666년 조치를 사용하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-FIRE",
+          "title": "History of Building Regulations in the British Isles",
+          "url": "https://www.buildinghistory.org/regulations.shtml"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 207,
+    "id": "ck_evt_207",
+    "category": "자연",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "겨울이며 실제 식량부족 주택이 있다. 새 혹한·역병이 발생했다고 서술하지 않는다."
+    },
+    "sender": {
+      "faction": "농민 공동체",
+      "role": "농민 공동체의 대표"
+    },
+    "title": "겨울 문턱의 빈 바구니",
+    "body": "겨울이 되었는데 먹을거리가 모자란 집이 남아 있습니다. 농민 공동체는 영지가 어떤 사업을 앞세울지 다시 살펴 달라고 합니다. 곡창과 농장에 무게를 둘지, 수입 기반이나 집과 장터의 확대를 먼저 택할지 정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 농민 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "commonsFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext, bound.house.buildingId)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.N2"
+    },
+    "illustration": "잎 진 나무 아래 집 문턱. 주민이 곡물이 조금 남은 바구니를 열어 보이고 가족은 작은 빵을 나눈다. 극심한 눈폭풍·동사 표현 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-GUILD"
+      ],
+      "basis": "생활 구제와 노동자의 생계 조건을 계절 청원의 배경으로 한다.",
+      "inference": "실제 겨울·식량 부족을 결합한 창작이다.",
+      "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-GUILD",
+          "title": "Southampton Guild Organization, 14th Century",
+          "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 208,
+    "id": "ck_evt_208",
+    "category": "자연",
+    "period": "1381–1450",
+    "years": [
+      1381,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 2 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "가을 실제 농업 일손이 있고 유휴 노동 1 이하. 수확·장터·방비의 사업 우선순위이며 임금 통제 명령이 아니다."
+    },
+    "sender": {
+      "faction": "농민 공동체",
+      "role": "농민 공동체의 대표"
+    },
+    "title": "수확철에 남지 않는 일손",
+    "body": "밭에 나가는 사람들은 있는데 새 일을 맡을 일손은 거의 남지 않았습니다. 농민 공동체가 수확철의 우선순위를 묻습니다. 살림의 기반, 수입이 나는 사업, 방비를 받치는 사업을 모두 같은 무게로 밀어 줄 수는 없습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "길과 비축·방비를 앞세운다",
+        "tradeoff": "도로·창고·방어 사업을 앞세우지만 주택 쪽은 뒤로 둔다. 징병이나 원정 물자 인도는 실행하지 않는다.",
+        "ledger": "도시 방침 defence로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 길과 비축·방비를 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "defence"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 농민 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "commonsFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.N3"
+    },
+    "illustration": "추수 중인 밭에서 낫과 밀단을 든 주민들이 일한다. 밭 끝의 수레는 기다리고, 먼 길에는 작업 자재가 놓여 있다. 전투나 임금 문서 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-LABOUR"
+      ],
+      "basis": "계절과 직종에 따른 노동 규정, 고용과 일손 이동의 긴장.",
+      "inference": "실제 fieldHands와 유휴 일손 부족을 수확철 사업 경쟁으로 각색한다.",
+      "limits": "법정 임금과 실제 임금을 동일시하지 않고 1381에 임금통제가 폐지됐다고 쓰지 않는다.",
+      "sources": [
+        {
+          "id": "H41-LABOUR",
+          "title": "The Statute of Labourers, 1351",
+          "url": "https://www.umsl.edu/~gradyf/medieval/statute.htm"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 209,
+    "id": "ck_evt_209",
+    "category": "도시",
+    "period": "1300–1414",
+    "years": [
+      1300,
+      1414
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+    },
+    "sender": {
+      "faction": "농민 공동체",
+      "role": "농민 공동체의 대표"
+    },
+    "title": "공사장 빈 목재 받침대",
+    "body": "공사장에 납품할 목재가 모자랍니다. 농민 공동체가 뒤 장날을 위해 주문잔량을 다시 정해 달라고 합니다. 재료를 넉넉히 준비하려면 금고 부담을 감수해야 합니다. 살림을 먼저 돌보는 방침으로 바꾸는 길도 있지만, 그것이 목재를 곧 보내 주지는 않습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "목재 주문 잔량을 10단으로 정한다",
+        "tradeoff": "추가 주문이 아니라 총 남은 주문을 10단으로 바꾼다. 전량을 사면 최대 180d를 쓰며, 다른 지출에 쓸 금고가 줄어든다.",
+        "ledger": "목재 주문 잔량 10단. 매입 때 실제 지급.",
+        "chronicle": "영주는 시장에서 목재 10단을 더 확보하도록 주문을 정했다.",
+        "costAxes": [
+          "money",
+          "time"
+        ],
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 10,
+              "pricePerUnitD": [
+                18,
+                18
+              ],
+              "maximumTotalCostD": [
+                180,
+                180
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "즉시 지급·수선·전용 예약 없음. 시장 가동·재고·금고에 따라 납품하며 잔량 설정은 원래 주문을 대체한다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/timberTrade.ts:19",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "목재 주문 잔량을 4단으로 정한다",
+        "tradeoff": "추가 주문이 아니라 총 남은 주문을 4단으로 바꾼다. 전량을 사면 최대 72d를 쓰며, 다른 지출에 쓸 금고가 줄어든다.",
+        "ledger": "목재 주문 잔량 4단. 매입 때 실제 지급.",
+        "chronicle": "영주는 시장에서 목재 4단을 더 확보하도록 주문을 정했다.",
+        "costAxes": [
+          "money",
+          "time"
+        ],
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 4,
+              "pricePerUnitD": [
+                18,
+                18
+              ],
+              "maximumTotalCostD": [
+                72,
+                72
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "즉시 지급·수선·전용 예약 없음. 시장 가동·재고·금고에 따라 납품하며 잔량 설정은 원래 주문을 대체한다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/timberTrade.ts:19",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 농민 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "commonsFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.N4"
+    },
+    "illustration": "잎 없는 가지 아래 덜 얹힌 지붕과 빈 목재 받침대. 목수가 기존 부재 위에 천을 덮고 수레가 들어올 길을 바라본다. 홍수·폭풍 피해를 암시하지 않는다.",
+    "history": {
+      "sourceIds": [
+        "H41-TIMBER"
+      ],
+      "basis": "1393–1401 웨스트민스터 홀 지붕 목재의 조달·사전 가공·수레와 바지선 운송 사례를 자재 도착 대기 장면의 참고로 삼았다.",
+      "inference": "왕실 대공사와 작은 도시 공사는 규모가 다르다. 운송과 조달이 필요한 목재 건축이라는 넓은 관행만 참고했으며 실제 부족은 게임 공사 상태에서 읽는다.",
+      "limits": "왕실 대공사의 규모를 일반 집에 옮기지 않는다. 이 자료는 당시 전국 목재 부족이나 가격 폭등의 근거가 아니다. 209의 부족·대기는 실제 게임 재고 상태에 따른 창작이며 역사적 특정 부족 사태로 단정하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-TIMBER",
+          "title": "The hammer-beam roof",
+          "url": "https://www.parliament.uk/about/living-heritage/building/palace/westminsterhall/architecture/the-hammer-beam-roof-/"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 210,
+    "id": "ck_evt_210",
+    "category": "자연",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "실제 dearth 발생 ID, 도래 후 두 해 이내. 1315 장 사건 famine_response를 다른 연도에 재사용하지 않는다."
+    },
+    "sender": {
+      "faction": "농민 공동체",
+      "role": "농민 공동체의 대표"
+    },
+    "title": "곡식이 귀해진 뒤의 순서",
+    "body": "먹을거리가 귀해진 일이 생겼습니다. 농민 공동체는 다음 사업의 순서를 다시 정해 달라고 합니다. 살림을 받치는 기반에 힘을 실을지, 수입이 나는 사업이나 집과 장터를 넓히는 일을 먼저 택할지 결정해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 농민 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "commonsFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.event.id)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.N5"
+    },
+    "illustration": "곡물 장터의 듬성한 밀 자루와 거의 빈 큰 바구니. 주민은 작은 되를 들여다보고 행상은 마지막 자루를 기울인다. 잔혹한 기아 묘사 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-GUILD",
+        "H41-LABOUR"
+      ],
+      "basis": "생활 구제와 생필품을 구하는 노동자의 조건을 배경으로 한다.",
+      "inference": "실제 dearth 기록 이후 대응을 정책 우선순위로 각색한다.",
+      "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다. 법정 임금과 실제 임금을 동일시하지 않고 1381에 임금통제가 폐지됐다고 쓰지 않는다.",
+      "sources": [
+        {
+          "id": "H41-GUILD",
+          "title": "Southampton Guild Organization, 14th Century",
+          "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+        },
+        {
+          "id": "H41-LABOUR",
+          "title": "The Statute of Labourers, 1351",
+          "url": "https://www.umsl.edu/~gradyf/medieval/statute.htm"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 211,
+    "id": "ck_evt_211",
+    "category": "세력",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "첫째 상인 가문의 실제 현 수장과 첫 시장 협의. 처음 관측한 수장을 방금 취임했다고 단정하지 않는다."
+    },
+    "sender": {
+      "faction": "첫째 상인 가문",
+      "role": "상인 가문의 대표"
+    },
+    "title": "상인 가문 대표와 처음 정할 몫",
+    "body": "상인 가문의 현 대표가 시장 좌판의 부담에 관한 뜻을 묻습니다. 이 대표와 나누는 첫 협의입니다. 어느 수준을 택해도 그 가문만의 특혜가 아니라 도시의 모든 좌판에 적용되는 기준이 됩니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "좌판 부담을 한 단계 낮춘다",
+        "tradeoff": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+        "ledger": "전체 시장 좌판세 인하. 새 비율은 선택 당시 묶인 값.",
+        "chronicle": "시장에 내는 부담은 낮아졌고 영주는 세입 일부를 양보했다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "duesPermille": [
+                250,
+                2000
+              ],
+              "previousPermille": [
+                250,
+                2000
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:95",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "좌판 부담을 한 단계 높인다",
+        "tradeoff": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+        "ledger": "전체 시장 좌판세 인상. 새 비율은 선택 당시 묶인 값.",
+        "chronicle": "시장에 내는 부담은 높아졌고 장사꾼들은 몫을 더 내게 되었다.",
+        "costAxes": [
+          "money",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "market_dues",
+            "operation": "set_market_dues",
+            "parameters": {
+              "duesPermille": [
+                250,
+                2000
+              ],
+              "previousPermille": [
+                250,
+                2000
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:95",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 첫째 상인 가문 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 첫째 상인 가문 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "merchantHouse1Delta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.faction.id, bound.faction.leaderId)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.F1"
+    },
+    "illustration": "가문 대표가 직물 꾸러미를 실은 수레 옆에서 시장의 동전 접시를 가리킨다. 징수자와 마주 서며 문서 탁자 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-GUILD"
+      ],
+      "basis": "상업 조직의 대표와 거래 부담 협상의 선례.",
+      "inference": "실제 상인 가문 대표 ID마다 한 번 협의하는 게임용 창작이다.",
+      "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-GUILD",
+          "title": "Southampton Guild Organization, 14th Century",
+          "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 212,
+    "id": "ck_evt_212",
+    "category": "세력",
+    "period": "1300–1450",
+    "years": [
+      1300,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 1 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "실제 공동체 대표가 있고 여름 유휴 일손이 부족한 계절 협의. 동일 계절 대표 교체만으로 중복 제시하지 않는다."
+    },
+    "sender": {
+      "faction": "농민 공동체",
+      "role": "농민 공동체의 대표"
+    },
+    "title": "일손을 두고 대표가 다시 온 여름",
+    "body": "새 일을 맡을 일손이 거의 남지 않은 여름입니다. 농민 공동체의 대표는 살림을 받치는 사업, 집과 장터, 수입 기반 가운데 무엇을 먼저 돌볼지 묻습니다. 같은 공동체의 부탁이어도 이번 철의 한정된 일손을 두고 다시 답해야 합니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 농민 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "commonsFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.faction.id, bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.F2"
+    },
+    "illustration": "밭 가장자리 돌담에 모인 주민들 앞에서 대표가 농기구와 곡물 바구니를 내려놓는다. 영주의 사자는 말에서 내려 듣는다. 문서 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-GUILD",
+        "H41-LABOUR"
+      ],
+      "basis": "농업 노동과 생계·고용 이해관계를 배경으로 한다.",
+      "inference": "실제 공동체 대표와 유휴 일손이 부족한 여름의 협의를 기존 사업 우선순위로 표현한다.",
+      "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다. 법정 임금과 실제 임금을 동일시하지 않고 1381에 임금통제가 폐지됐다고 쓰지 않는다.",
+      "sources": [
+        {
+          "id": "H41-GUILD",
+          "title": "Southampton Guild Organization, 14th Century",
+          "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+        },
+        {
+          "id": "H41-LABOUR",
+          "title": "The Statute of Labourers, 1351",
+          "url": "https://www.umsl.edu/~gradyf/medieval/statute.htm"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 213,
+    "id": "ck_evt_213",
+    "category": "세력",
+    "period": "1399–1450",
+    "years": [
+      1399,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "1399 이후 실제 왕실 수장별 첫 협의. 권리 확인 배경만 사용하고 새 왕조 상태·권리 소멸·특허장 지급을 발명하지 않는다."
+    },
+    "sender": {
+      "faction": "왕실",
+      "role": "왕실의 연락 담당자"
+    },
+    "title": "랭커스터 왕실 아래의 옛 권리",
+    "body": "왕실의 주인이 바뀌면 오래된 특권도 다시 확인받으려는 이들이 움직입니다. 현 왕실과 처음 협의하는 영지에 사절이 왔습니다. 비축과 길을 앞세울지, 수입 기반을 키울지, 주민의 살림부터 지킬지 답을 기다립니다. 이 답변만으로 특허장이 발급되거나 기존 권리가 사라지지는 않습니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "길과 비축·방비를 앞세운다",
+        "tradeoff": "도로·창고·방어 사업을 앞세우지만 주택 쪽은 뒤로 둔다. 징병이나 원정 물자 인도는 실행하지 않는다.",
+        "ledger": "도시 방침 defence로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 길과 비축·방비를 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "defence"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 왕실 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 왕실 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "crownFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        0,
+        0
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.faction.id, bound.faction.leaderId)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.F3"
+    },
+    "illustration": "성문 앞에서 왕실 연락 담당자가 영지 사람들과 도시를 바라본다. 길 한편의 창고, 멀리 시장 수레와 곡물 바구니가 보인다. 왕의 얼굴·특허장 수여·대군 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-HENRYIV",
+        "H41-JERSEY",
+        "H41-CHARTERS"
+      ],
+      "basis": "1399 이후 헨리 4세와 후대 왕실의 기존 특권 확인 및 도시 협상 사례를 시대 배경으로 한다.",
+      "inference": "실제 crown 수장별 첫 협의를 기존 영지 정책 선택으로 각색한다.",
+      "limits": "헤리퍼드는 남부 가상도시의 직접 사례가 아니라 왕 교체 후 권리 재확인의 잉글랜드 유사 사례다. 저지의 특수 법체계를 남부 잉글랜드 전체에 적용하지 않는다. 단순 왕 교체가 모든 권리 자동 소멸을 뜻하지 않는다. 주 연구시기 1439–1449의 개별 사례를 1381–1424에 소급하지 않는다. 특허장을 민주적 자치의 일방적 진보로 묘사하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-HENRYIV",
+          "title": "City History — royal charter catalogue",
+          "url": "https://herefordcitycouncil.gov.uk/city-history/"
+        },
+        {
+          "id": "H41-JERSEY",
+          "title": "Jersey’s royal charters of liberties",
+          "url": "https://www.jerseylaw.je/publications/jglr/Pages/JLR0906_Thornton.aspx"
+        },
+        {
+          "id": "H41-CHARTERS",
+          "title": "Charters and Inter-Urban Networks: England, 1439–1449",
+          "url": "https://eprints.whiterose.ac.uk/104531/1/Hartrich%20Borough%20Charters%202.pdf"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 214,
+    "id": "ck_evt_214",
+    "category": "세력",
+    "period": "1415–1450",
+    "years": [
+      1415,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 0,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "1415 이후 왕실 대표가 실재하며 실제 목재 공사 수요가 있는 봄·겨울. 원정 재정의 시대 배경이지 새 징발이나 왕실 세금 부과가 아니다."
+    },
+    "sender": {
+      "faction": "왕실",
+      "role": "왕실의 사절"
+    },
+    "title": "프랑스 원정과 마을의 들보",
+    "body": "프랑스 원정에 돈과 물자가 드는 때, 이곳에도 목재를 기다리는 공사가 남아 있습니다. 왕실의 사절은 길과 비축을 먼저 준비할지, 목재를 사 두면서 다른 방침을 유지할지 묻습니다. 원정대에 바칠 물량을 이미 정해 놓은 것은 아닙니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "길과 비축·방비를 앞세운다",
+        "tradeoff": "도로·창고·방어 사업을 앞세우지만 주택 쪽은 뒤로 둔다. 징병이나 원정 물자 인도는 실행하지 않는다.",
+        "ledger": "도시 방침 defence로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 길과 비축·방비를 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "defence"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "목재 주문 잔량을 8단으로 정한다",
+        "tradeoff": "추가 주문이 아니라 총 남은 주문을 8단으로 바꾼다. 전량을 사면 최대 144d를 쓰며, 다른 지출에 쓸 금고가 줄어든다.",
+        "ledger": "목재 주문 잔량 8단. 매입 때 실제 지급.",
+        "chronicle": "영주는 시장에서 목재 8단을 더 확보하도록 주문을 정했다.",
+        "costAxes": [
+          "money",
+          "time"
+        ],
+        "effects": [
+          {
+            "catalogKey": "timber.order",
+            "operation": "order_timber",
+            "parameters": {
+              "amount": 8,
+              "pricePerUnitD": [
+                18,
+                18
+              ],
+              "maximumTotalCostD": [
+                144,
+                144
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "즉시 지급·수선·전용 예약 없음. 시장 가동·재고·금고에 따라 납품하며 잔량 설정은 원래 주문을 대체한다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/timberTrade.ts:19",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 왕실 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 왕실 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "crownFactionRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.faction.id, bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.F4"
+    },
+    "illustration": "영지 경계의 갈림길에서 사절과 영지 사람들이 만난다. 한 길은 성채 쪽, 다른 길은 집과 장터 쪽으로 이어지고 수레가 멈춰 있다. 문서 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-WAR",
+        "H41-TIMBER"
+      ],
+      "basis": "1415 이후 프랑스 원정 재정과 반복 과세의 부담을 시대 배경으로 한다.",
+      "inference": "실제 왕실 대표와 공사 목재 수요가 있는 계절에 벌어지는 정책 협의는 창작이다.",
+      "limits": "본문의 1460–1470년대 사례를 1424 이전 상황으로 옮기지 않는다. 영주가 의회 권한으로 세금을 신설한다고 쓰지 않는다. 왕실 대공사의 규모를 일반 집에 옮기지 않는다. 이 자료는 당시 전국 목재 부족이나 가격 폭등의 근거가 아니다. 209의 부족·대기는 실제 게임 재고 상태에 따른 창작이며 역사적 특정 부족 사태로 단정하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-WAR",
+          "title": "Funding the defence of the realm (or not…)",
+          "url": "https://historyofparliament.com/2022/07/28/funding-the-defence-of-the-realm/"
+        },
+        {
+          "id": "H41-TIMBER",
+          "title": "The hammer-beam roof",
+          "url": "https://www.parliament.uk/about/living-heritage/building/palace/westminsterhall/architecture/the-hammer-beam-roof-/"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  },
+  {
+    "number": 215,
+    "id": "ck_evt_215",
+    "category": "세력",
+    "period": "1381–1450",
+    "years": [
+      1381,
+      1450
+    ],
+    "conditions": {
+      "land": "땅 종류 제한 없음.",
+      "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+      "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+      "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+      "season": "계절 인덱스 3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+      "state": "실제 도시 대표와 가동 시장이 있는 겨울의 사업 협의. 별도 길드 세력이나 길드 가입 상태를 만들지 않는다."
+    },
+    "sender": {
+      "faction": "도시 공동체",
+      "role": "도시 공동체의 대표"
+    },
+    "title": "겨울 장터를 누가 먼저 도울까",
+    "body": "겨울 장터가 열리는 도시에서 공동체 대표가 이번 철의 사업 순서를 묻습니다. 거래 수입을 키우려는 이들과 먹거리와 물을 먼저 돌보려는 이들의 뜻이 다릅니다. 대표는 주택과 장터를 늘리는 길까지 놓고 어느 쪽을 앞세울지 답을 기다립니다.",
+    "choices": [
+      {
+        "id": "a",
+        "label": "먹거리와 물의 안정을 앞세운다",
+        "tradeoff": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "ledger": "도시 방침 stability로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 먹거리와 물의 안정을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "stability"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "b",
+        "label": "주택과 시장의 성장을 앞세운다",
+        "tradeoff": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "ledger": "도시 방침 growth로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 주택과 시장의 성장을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "growth"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "c",
+        "label": "장터와 생산의 수입을 앞세운다",
+        "tradeoff": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "ledger": "도시 방침 revenue로 교체. 즉시 금고 변화 없음.",
+        "chronicle": "영주는 장터와 생산의 수입을 앞세우기로 했다",
+        "costAxes": [
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "policy",
+            "operation": "set_estate_policy",
+            "parameters": {
+              "policy": "revenue"
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "도시 전체의 다음 사업 점수 가중치를 바꾼다. 건설·고용·임금·재해 해결을 보장하지 않는다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/townAgency.ts:65",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L65"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "d",
+        "label": "답을 미루고 현행을 유지한다",
+        "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "ledger": "답변 보류: 도시 공동체 관계 −2.",
+        "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+        "costAxes": [
+          "relation",
+          "opportunity"
+        ],
+        "effects": [
+          {
+            "catalogKey": "no_op",
+            "operation": "registry_hold",
+            "parameters": {
+              "townRelationDelta": [
+                -2,
+                -2
+              ]
+            },
+            "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+            "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+            "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+            "codeReferences": [
+              {
+                "ref": "src/engine/registryV4.ts:173",
+                "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "recurrence": {
+      "allowed": true,
+      "cooldownYears": [
+        1,
+        1
+      ],
+      "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+      "exclusions": "동일 사건 ID에서 동일 맥락(bound.faction.id, bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+      "variantGroup": "v41.F5"
+    },
+    "illustration": "겨울 시장의 처마 아래 도시 대표가 곡식 바구니와 상품 꾸러미를 사이에 두고 주민들의 서로 다른 청을 듣는다. 회의 탁자·문서 없이 손짓과 물건으로 이해관계를 구분한다. 그림에는 글자 없음.",
+    "history": {
+      "sourceIds": [
+        "H41-GUILD",
+        "H41-WOOL"
+      ],
+      "basis": "가공 직물 교역의 비중과 도시 생업 조직의 협의를 배경으로 한다.",
+      "inference": "실제 도시 대표와 가동 시장이 있는 겨울의 협의를 영지 정책 선택으로 연결한다.",
+      "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다. 특정 가상도시의 매년 수요나 가격을 역사적 필연으로 지정하지 않는다. 정량 배율은 재사용하지 않는다.",
+      "sources": [
+        {
+          "id": "H41-GUILD",
+          "title": "Southampton Guild Organization, 14th Century",
+          "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+        },
+        {
+          "id": "H41-WOOL",
+          "title": "Henry V and the crossing to France: reconstructing naval operations for the Agincourt campaign, 1415",
+          "url": "https://www.tandfonline.com/doi/full/10.1080/03044181.2016.1236503"
+        }
+      ]
+    },
+    "integration": {
+      "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+      "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+    },
+    "newEffectLinks": [],
+    "contentClass": "new_event_draft"
+  }
+]

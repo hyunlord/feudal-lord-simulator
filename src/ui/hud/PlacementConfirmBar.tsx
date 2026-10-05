@@ -10,7 +10,7 @@ export function PlacementConfirmBar() {
     <div className="placement-confirm-bar" data-frame="flat" role="group" aria-label={PLACEMENT_CONFIRM_COPY.label}>
       <Button type="button" className="placement-confirm-button" data-confirm="ok" onPress={() => { platformServices().input.emit({ kind: "confirm" }); }} variant="primary">
         <UiIcon sheet="prediction" cell="ok" size={32} />{PLACEMENT_CONFIRM_COPY.confirm}</Button>
-      <Button type="button" className="placement-confirm-button" data-confirm="cancel" onPress={() => { platformServices().input.emit({ kind: "cancel" }); }} variant="primary">
+      <Button type="button" className="placement-confirm-button" data-confirm="cancel" onPress={() => { platformServices().input.emit({ kind: "cancel" }); }} variant="secondary">
         <UiIcon sheet="prediction" cell="block" size={32} />{PLACEMENT_CONFIRM_COPY.cancel}</Button>
       <p className="placement-confirm-hint">{PLACEMENT_CONFIRM_COPY.hint}</p>
     </div>

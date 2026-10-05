@@ -1,0 +1,680 @@
+{
+  "scope": "Synthetic condition fixtures derived from real chapter-two-town save; no simulation ticks executed",
+  "inputHashes": {
+    "events": "57eb2ff4dac22d37f4ed421c0a8cb446f760d4754dcb65fa6ea55ff3a3617482",
+    "registry": "b6eef50b6509c8dac07e773274cd94aaf0a7100d3d4289f15ca4bb78d35574b2"
+  },
+  "results": [
+    {
+      "id": "ck_evt_011",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "fixture-negotiation",
+      "enabled": [
+        "a",
+        "b",
+        "c"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": null
+    },
+    {
+      "id": "ck_evt_201",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "76",
+      "enabled": [
+        "a",
+        "b",
+        "c"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true,
+      "duesChangedInvalidates": true
+    },
+    {
+      "id": "ck_evt_202",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "house-46-40-0|76000",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_203",
+      "supported": true,
+      "calendar": {
+        "year": 1381,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "324",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_204",
+      "supported": true,
+      "calendar": {
+        "year": 1381,
+        "season": 2,
+        "dayOfYear": 190
+      },
+      "bound": true,
+      "context": "326",
+      "enabled": [
+        "a",
+        "b",
+        "c"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true,
+      "duesChangedInvalidates": true
+    },
+    {
+      "id": "ck_evt_205",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "76",
+      "enabled": [
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true,
+      "waterless": 24,
+      "wellAction": {
+        "kind": "none"
+      }
+    },
+    {
+      "id": "ck_evt_206",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "fixture-event-1",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_207",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 3,
+        "dayOfYear": 280
+      },
+      "bound": true,
+      "context": "79|house-46-40-0",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_208",
+      "supported": true,
+      "calendar": {
+        "year": 1381,
+        "season": 2,
+        "dayOfYear": 190
+      },
+      "bound": true,
+      "context": "326",
+      "enabled": [
+        "a",
+        "b",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_209",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "76",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_210",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "fixture-event-1",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_211",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "merchant_house_1|p-000211",
+      "enabled": [
+        "a",
+        "b",
+        "c"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true,
+      "duesChangedInvalidates": true
+    },
+    {
+      "id": "ck_evt_212",
+      "supported": true,
+      "calendar": {
+        "year": 1319,
+        "season": 1,
+        "dayOfYear": 100
+      },
+      "bound": true,
+      "context": "commons|77",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_213",
+      "supported": true,
+      "calendar": {
+        "year": 1399,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "crown|f-000007",
+      "enabled": [
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_214",
+      "supported": true,
+      "calendar": {
+        "year": 1415,
+        "season": 0,
+        "dayOfYear": 10
+      },
+      "bound": true,
+      "context": "crown|460",
+      "enabled": [
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    },
+    {
+      "id": "ck_evt_215",
+      "supported": true,
+      "calendar": {
+        "year": 1381,
+        "season": 3,
+        "dayOfYear": 280
+      },
+      "bound": true,
+      "context": "town|327",
+      "enabled": [
+        "a",
+        "b",
+        "c",
+        "d"
+      ],
+      "commands": [
+        {
+          "id": "a",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "b",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "c",
+          "success": true,
+          "changed": true,
+          "hold": false
+        },
+        {
+          "id": "d",
+          "success": true,
+          "changed": false,
+          "hold": true
+        }
+      ],
+      "originalUnchanged": true,
+      "missingAgencyClosed": true
+    }
+  ]
+}
