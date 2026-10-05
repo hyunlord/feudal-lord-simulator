@@ -9,6 +9,7 @@
 
 ## 현재 단계
 
+- **DGX 디스크 관리(DISK-UPKEEP) — 완료, 본선 병합**(Claude Code, 인프라·문서 세션, 게임 코드 0줄): 실행이 끝날 때마다 끝난 실행 폴더(하루 뒤, `--keep` 결과는 `_kept`에)·용량 상한·보고서가 부르지 않는 오래된 `_kept` 압축·남은 클론을 치우고, 무거운 실행은 여유가 300 GB 아래면 먼저 정리한다(결정 RR15, 기록은 `== disk:`). LFS는 `_cache/lfs` 공유. 그날 225 → 704 GB.
 - **렌더 B 게시 전 문서 정리**: 실제 `ed83fe44` DGX merge·clean clone4,886/4,886·타입/build·source LFS14/public14 검증 PASS. 아래 이전 대기 문구는 각 측정 시점 기록이며, 완료된 계절/봄9/FIELD/HEATH/W37 일곱 구현은 장부에 체크했다. 이 문서 후속 최종 HEAD는 다시 검사한 뒤 보호 게시한다. 게시 완료·설치1~3단계 전체 완료는 아직 아니다. [관문 영수증](verification/renderb-phase2/REPORT.md).
 
 - **FIELD core — 실제 main 20쌍 통과, 최종 게시 대기**: `3e722109`→`a392694c` 전체 identity20·RGBA 차이0·양쪽 A/A20·오류0, core 원격 입력4,165 해시 일치·실행/수집 exit0. 독립 원본40장 검토 PASS WITH LIMITS(기존 가림·저배율 한계 유지). 12번째 ground-texture kind·기존4개 이전, catalog95→99·신규 이미지0·장부0, main196/196·타입/린트 및 보호이관22/22 PASS. spring9·retired6·C25 보존. 최종 가지 회귀·클론·게시 관문은 별도 대기. [증거](verification/field-core/REPORT.md).
