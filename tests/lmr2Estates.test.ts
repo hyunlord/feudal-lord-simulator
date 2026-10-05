@@ -161,6 +161,11 @@ test("a pending audit shows its facts; the season summary shows what the lord se
   assert.equal(panel.summaries.length, Math.min(8, summaries.length));
   assert.ok(summaries.some(entry => entry.kept > 0), "the season kept something back");
   for (const row of panel.summaries) assert.ok(!Object.values(row).some(value => typeof value === "string" && /빼돌|오류/.test(value)), "no kept or error amount in a row");
+  // Of an audit, only what it found: never the amount that stayed hidden.
+  const hidden = { ...audit, revealedKept: 0, revealedErrors: 0, hidden: 777, status: "clean" as const };
+  const clean = { ...real, stewardship: { ...stewardshipOf(real), audits: stewardshipOf(real).audits.map(entry => entry.id === audit.id ? hidden : entry) } };
+  assert.equal(portfolioView(clean).oversight.get(audit.estateId)!.lastAudit?.found, null);
+  assert.doesNotMatch(markup(clean, audit.estateId), /£3 4s 9d/);
 });
 
 test("the panel: kit only, a deep link's estate selected, lord mode only", () => {

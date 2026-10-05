@@ -207,7 +207,7 @@ for (const [name, options] of [['estate-home-tablet', { width: 1180, height: 820
     const src = getComputedStyle(el).backgroundImage.match(/url\("?([^")]+)"?\)/)?.[1];
     return new Promise(done => { const image = new Image(); image.onload = () => done([image.naturalWidth, image.naturalHeight]); image.onerror = () => done('error'); image.src = src; });
   });
-  const size = await shoot(page, 'policy-subsidy', '.slot-panel.ledger-drawer');
+  const size = await shoot(page, 'policy-subsidy', '.slot-panel.ledger-drawer', '.lord-policy-options');
   record('policy-subsidy', { bytes: size, extra: { switched, notice } }, switched.every(row => row.now === row.policy && row.art === row.policy) && Array.isArray(notice) && notice[0] === 192);
   await context.close();
 }

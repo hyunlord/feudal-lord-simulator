@@ -17,7 +17,7 @@ import { estateCards, type EstateCardView } from "./estatesModel";
 //
 // The season summary shows what the lord sees: the accounts (what reached the treasury), the rates, the goodwill, the
 // petitions, the overload. What the steward kept back, the errors and the true yield stay off the screen: the audit is
-// what reveals them (SW-6 "빼돌림은 찾았을 때만 드러난다").
+// what reveals them (SW-6 "빼돌림은 찾았을 때만 드러난다"); of an audit only what it found, never what stayed hidden.
 
 export type OfficeId = "receiver" | "steward";
 /** A disposition's trait icon (lord-components-ui): only the two the engine's StewardDisposition names. */
@@ -103,9 +103,9 @@ function summaryRow(state: GameState, summary: QuarterSummary): SummaryRow {
     petitions: COPY.summaryPetitions(summary.petitions.length), overloaded: summary.overloaded };
 }
 
+/** An audit as the lord knows it: what it found (never what stayed hidden: `hidden` is the engine's, SW-6). */
 function auditLines(state: GameState, audit: AuditRecord): Readonly<{ line: string; found: string | null }> {
-  const found = audit.revealedKept + audit.revealedErrors > 0 || audit.status !== "clean"
-    ? COPY.auditFound(moneyFull(audit.revealedKept), moneyFull(audit.revealedErrors), moneyFull(audit.hidden)) : null;
+  const found = audit.revealedKept + audit.revealedErrors > 0 ? COPY.auditFound(moneyFull(audit.revealedKept), moneyFull(audit.revealedErrors)) : null;
   return { line: COPY.auditLine(yearOf(state, audit.tick), COPY.auditModes[audit.mode], COPY.auditStatus[audit.status]), found };
 }
 

@@ -94,7 +94,7 @@ export const ESTATES_COPY = {
   noAuditYet: "아직 감사 없음",
   auditStatus: { clean: "깨끗함", pending: "감사 대기", punished: "처벌함", replaced: "갈아치움", tolerated: "눈감아 줌" } as const,
   auditLine: (year: number, mode: string, status: string) => `${year}년 ${mode} · ${status}`,
-  auditFound: (kept: string, errors: string, hidden: string) => `찾은 빼돌림 ${kept} · 오류 ${errors} · 숨은 채 남은 것 ${hidden}`,
+  auditFound: (kept: string, errors: string) => `찾은 빼돌림 ${kept} · 드러난 오류 ${errors}`,
   auditPending: "감사 대기",
   auditPendingLine: (steward: string, kept: string, days: number) => `${steward}의 장부에서 ${kept}을 찾았습니다 · 답할 날 ${days}일 남음`,
   /** SW-7 the season summaries. */
