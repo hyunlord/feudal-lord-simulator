@@ -7,7 +7,7 @@
  */
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import test from "node:test";
 import { KEYART_DERIVATIVES } from "../scripts/keyartDerivatives";
 
@@ -49,11 +49,10 @@ test("the title keyart's derivative is made from its rework; the Wave 8 original
   assert.ok(lines("docs/provenance/assets.csv").some(line => line.startsWith(`keyart_title_bg,v1,${item.source},${sha(item.source)},`)));
 });
 
-test("seal_slot is its Wave 41 rework too, installed by LM-R1 (UI-02; scripts/installWave41SealSlot.py), not by NAT-5", () => {
+test("seal_slot's Wave 41 rework is retired (LR1-D1, user 2026-10-05): its ledger row, no runtime file, no provenance row", () => {
   const row = rows.find(entry => entry.assetId === "seal_slot")!;
   const entry = lines("assets-inbox/INBOX_LEDGER.csv").find(line => line.startsWith(`wave41,${row.candidate.replace("assets-inbox/", "")},`))!;
-  assert.equal(entry.endsWith(",NAT-5"), false);
-  assert.equal(sha(row.sourcePath), sha(row.candidate));
-  assert.deepEqual(pngSize(row.sourcePath), [row.width, row.height]);
-  assert.ok(lines("docs/provenance/assets.csv").some(line => line.startsWith(`seal_slot,v1,${row.sourcePath},${sha(row.candidate)},${row.candidate},`)));
+  assert.match(entry, /,retired,/);
+  assert.equal(existsSync(row.sourcePath), false);
+  assert.ok(!lines("docs/provenance/assets.csv").some(line => line.startsWith("seal_slot,")));
 });

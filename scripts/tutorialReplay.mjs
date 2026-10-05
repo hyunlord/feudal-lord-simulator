@@ -88,7 +88,7 @@ const audit = () => page.evaluate(() => {
 });
 const welcomeAudit = flags.audit === '1' ? await audit() : null;
 if (flags.audit === '1') await writeFile(join(outDir, '00-welcome.jpg'), await page.screenshot({ type: 'jpeg', quality: 62 }));
-await page.locator('.welcome-parchment [data-scenario]').first().click();
+await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
 await page.waitForTimeout(1_200);
 const stepOf = () => page.evaluate(() => document.querySelector('[data-tutorial-cta]')?.getAttribute('data-tutorial-cta') ?? null);
 const rows = []; const seen = new Set(); let presses = 0; let last = null;

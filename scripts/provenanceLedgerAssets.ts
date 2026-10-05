@@ -205,7 +205,6 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
   // 11) ResourceArtwork.tsx read assets/runtime-icons-v1/${kind}.png; ASSET-2 retired them (the resource sheet's cells).
 
   // 12) global.css background-image url().
-  add("assets/ui/seal_slot.png", "src/styles/global.css");
 
   return refs.sort((a, b) => a.runtimePath.localeCompare(b.runtimePath));
 }

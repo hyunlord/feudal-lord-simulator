@@ -335,7 +335,7 @@ try {
   await page.routeWebSocket('**', socket => socket.close());
   await page.goto(`${url}?phase10-proof=1`);
   await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-  await page.locator('.welcome-parchment [data-scenario]').first().click();
+  await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
   await page.locator('.steward-advisor').waitFor({ timeout: 15_000 });
   await page.getByRole('button', { name: '1배속', exact: true }).click().catch(() => undefined);
   await page.waitForTimeout(1_200);

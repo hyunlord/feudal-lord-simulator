@@ -174,12 +174,8 @@ test("build seals surface the road and armed styling states for the console layo
 test("console CSS uses every generated surface and rejects web-dashboard styling", async () => {
   // Given
   const css = await readFile(STYLESHEET, "utf8");
-  const assets = [
-    "seal_slot.png",
-  ];
-
-  // Then
-  for (const asset of assets) assert.match(css, new RegExp(asset));
+  // Then: LR1-D1 (user 2026-10-05) — the seal slot picture is retired; the kit's Wave 38 art draws the seals.
+  assert.doesNotMatch(css, /seal_slot/);
   assert.doesNotMatch(
     css,
     /#[0-9a-f]{3,8}|\b(?:rgb|hsl)a?\(|(?:linear|radial|conic)-gradient|box-shadow|backdrop-filter|blur\(|system-ui|sans-serif|ui-panel|title-panel/i,

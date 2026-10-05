@@ -21,7 +21,7 @@ const open = async (base, { width = 1280, height = 800, tutorialOff = false } = 
   await page.routeWebSocket('**', socket => socket.close());
   await page.goto(`${base}?phase10-proof=1`);
   await page.waitForFunction(() => window.__FEUDAL_PHASE10_PROOF__ !== undefined, null, { timeout: 60_000 });
-  await page.locator('.welcome-parchment [data-scenario]').first().click();
+  await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click();
   await page.waitForTimeout(1_500);
   return { context, page };
 };

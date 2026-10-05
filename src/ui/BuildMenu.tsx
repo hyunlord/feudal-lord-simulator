@@ -140,7 +140,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
           if (!open) { setLockNote(`${card.label} · ${TUTORIAL_COPY.lockedTool}`); return; }
           setLockNote(null);
           onZoneToolChange?.({ target: card.target, radius: zoneTool?.radius ?? DEFAULT_ZONE_BRUSH_RADIUS, polygon: zoneTool?.polygon ?? false }); closeAfterPick();
-        }} variant="primary">
+        }} variant="secondary">
         <span className="build-tool-art" aria-hidden="true">
           {card.thumbnail !== null ? <img src={card.thumbnail} width="80" height="40" alt="" draggable={false} />
             : card.icon === null ? null : card.icon.sheet === "building" ? <UiIcon sheet="building" cell={card.icon.cell} size={48} /> : <UiIcon sheet="prediction" cell={card.icon.cell} size={48} />}
@@ -168,7 +168,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
         aria-disabled={!toolAffordable} data-affordable={String(affordability.affordable)} data-locked={locked ? eraLock !== null ? "era" : "tutorial" : undefined}
         data-highlighted={highlightedTools.includes(option.tool) ? option.tool : undefined} data-pulse={pulsing(option.tool)}
         onHover={hovering => setPreview(hovering ? option.tool : null)} onFocusChange={focused => setPreview(focused ? option.tool : null)}
-        onPress={() => { if (toolAffordable) { onSelect(option.tool); closeAfterPick(); setPreview(null); setPinned(null); setLockNote(null); } else if (locked) { setLockNote(`${option.label} · ${lockText}`); setPinned(null); } else setPinned(option.tool); }} variant="primary">
+        onPress={() => { if (toolAffordable) { onSelect(option.tool); closeAfterPick(); setPreview(null); setPinned(null); setLockNote(null); } else if (locked) { setLockNote(`${option.label} · ${lockText}`); setPinned(null); } else setPinned(option.tool); }} variant="secondary">
         <span id={`${id}-tool-${option.tool}`} className="visually-hidden">{buildToolTooltipLines(option.tool, menuState).join(". ")}</span>
         <span className="build-tool-art" aria-hidden="true">
           {thumbnail !== null ? <img src={thumbnail} width="80" height="64" alt="" draggable={false} />
@@ -237,7 +237,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
               {item.key === "trade" && onDrainToolChange !== undefined && drainToolAvailable(menuState) ? (
                 <Button type="button" className={`build-seal build-tool drain-tool${drainTool ? " build-tool--selected" : ""}`}
                   aria-label={DRAINAGE_COPY.card} aria-pressed={drainTool} data-drain-tool="fen"
-                  onPress={() => { onDrainToolChange(!drainTool); setLockNote(null); setPinned(null); closeAfterPick(); }} variant="primary">
+                  onPress={() => { onDrainToolChange(!drainTool); setLockNote(null); setPinned(null); closeAfterPick(); }} variant="secondary">
                   <span className="build-tool-art" aria-hidden="true"><UiIcon sheet="cause" cell="water" size={48} /></span>
                   <span className="build-seal-label" aria-hidden="true">{DRAINAGE_COPY.card}</span>
                   <span className="build-tool-cost">{DRAINAGE_COPY.cardHint}</span>
@@ -247,7 +247,7 @@ export function BuildSeals({ selectedTool, state, highlightedTools = [], onSelec
               {item.key === 'defense' && onStartPalisadeDrawing !== undefined ? (
                 <Button type="button" className={`build-seal build-tool${palisadeDrawing ? ' build-tool--selected' : ''}`}
                   aria-label={WALL_COPY.drawTool} aria-pressed={palisadeDrawing} aria-disabled={!palisadeReady}
-                  onPress={() => { if (palisadeReady) { onStartPalisadeDrawing(); closeAfterPick(); } }} variant="primary">
+                  onPress={() => { if (palisadeReady) { onStartPalisadeDrawing(); closeAfterPick(); } }} variant="secondary">
                   <span className="build-tool-art" aria-hidden="true"><UiIcon sheet="building" cell="palisade" size={48} /></span>
                   <span className="build-seal-label" aria-hidden="true">{WALL_COPY.drawTool}</span>
                   <span className="build-tool-cost">{WALL_COPY.drawCost}</span>

@@ -1,4 +1,5 @@
-import { DEFAULT_SCENARIO_ID } from "./content/scenario/coreScenarios";
+import { DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "./content/scenario/coreScenarios";
+import { LORD_SLICE_GOAL_YEARS } from "./content/lordSliceConfig";
 import { SCENARIO_COPY } from "./content/scenario/scenarioCopy.ko";
 import {
   useCallback,
@@ -41,6 +42,7 @@ import { MapShield } from "./ui/OverlayControls";
 import { releaseControlFocus } from "./input/domInputBindings";
 import { stateCalendar } from "./engine/scenarioState";
 import { TITLE_COPY } from "./ui/titleCopy.ko";
+import { showStartHint as setStartHint, useStartHint } from "./ui/startHintStore";
 import { wave8Url } from "./ui/wave8Art";
 import { seasonJustClosed } from "./ui/seasonLedgerCard";
 import { seasonLedgerChoice, setSeasonLedgerAuto, type SeasonLedgerChoice } from "./ui/seasonLedgerPreference";
@@ -444,6 +446,7 @@ export function App() {
   // 1315 / 1337 / 1348 screens are registered for the later chapters). It never takes a click. NAT-4: its flag lives
   // outside this component (chapterLoadingStore.ts): a start that sends start_new_game remounts the app.
   const chapterLoading = useChapterLoading();
+  const startHint = useStartHint();
   // LAND-UI (LU-D7): every start takes the land picked on the welcome; the riverside on map 1 (the default) is today's
   // start exactly, any other land sends its land and seed and gives the tutorial no state (as a start over a save does).
   // A click anywhere starts the picked land too.
@@ -454,7 +457,11 @@ export function App() {
     if (saveSystem.offerContinue) saveSystem.declineContinue();
     else tutorial.startNewGame(welcomeTutorial, state);
   };
+  // LR1-D7: what the welcome no longer says, once the mode is chosen — the sandbox's build guidance, lord mode's goal.
+  const showStartHint = (scenarioId: string) => setStartHint(scenarioId === SANDBOX_SCENARIO_ID ? TITLE_COPY.sandboxHint
+    : scenarioId === LORD_SLICE_SCENARIO_ID ? TITLE_COPY.lordGoal(LORD_SLICE_GOAL_YEARS.min, LORD_SLICE_GOAL_YEARS.max) : null);
   const startNewGameOverSave = (scenarioId: string, land: LandChoice) => {
+    showStartHint(scenarioId);
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     dispatch(landStartCommand(scenarioId, land, true) ?? { type: "start_new_game", scenarioId });
@@ -462,6 +469,7 @@ export function App() {
     tutorial.startNewGame(welcomeTutorial && scenarioId === DEFAULT_SCENARIO_ID, null);
   };
   const startScenarioWithoutSave = (scenarioId: string, land: LandChoice) => {
+    showStartHint(scenarioId);
     writeWelcomeDismissed();
     setWelcomeVisible(false);
     const command = landStartCommand(scenarioId, land, false);
@@ -559,6 +567,7 @@ export function App() {
           viewTab={<EconomyOverlayControls overlayMode={overlayMode} onChange={setOverlayMode} problemOnly={problemOnly} onProblemOnlyChange={setProblemOnly} />}
           mapTab={<MapShield grid={state} />} onOpenChronicle={() => sendUi({ type: "push_modal", modal: "history" })} onPerson={openPerson} /> : null}
         <UnlockBanner text={tutorial.banner} />
+        {tutorial.banner === null ? <UnlockBanner text={startHint} icon={false} /> : null}
         {toastVisible && completionToast !== null ? <div className="completion-toast" data-frame="toast" role="status" aria-label={COMPLETION_TOAST_COPY.region}>
           <UiIcon sheet="prediction" cell="ok" />{completionToast.names.length === 1 ? COMPLETION_TOAST_COPY.one(completionToast.names[0]!)
             : COMPLETION_TOAST_COPY.many(completionToast.names[0]!, completionToast.names.length - 1)}
