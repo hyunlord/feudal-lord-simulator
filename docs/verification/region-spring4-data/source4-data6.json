@@ -1,0 +1,252 @@
+{
+  "status": "DATA_RUNTIME_PASS_PROMOTION_PENDING",
+  "sourceRecords": [
+    {
+      "id": "N0411",
+      "baseId": "chalk_down",
+      "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/ground/chalk_down_spring_a-v1.png",
+      "sourceSHA256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+      "runtimePath": "public/assets/wave43/ground/chalk_down_spring_a-v1.png",
+      "runtimeSHA256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+      "runtimeBytes": 86376,
+      "chunks": [
+        "IHDR",
+        "pHYs",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "removedC2PAChunks": [],
+      "size": [
+        256,
+        128
+      ],
+      "nonOpaquePixels": 0,
+      "sourceRuntimePixelsEqual": true,
+      "oppositeEdgesExactXY": true,
+      "nativeSourceOpened": true,
+      "recordPath": "assets-inbox/wave43/candidates-20261002/records/ground/chalk_down_spring_a.json",
+      "recordSHA256": "81d35b2642018bcc2a7fe5cfc8fa1a89793d394f769ea0de9cc7e98b7e8ad71a",
+      "referenceRecordsPreserved": true,
+      "selectedAttempt": null,
+      "referenceByteChecks": [
+        {
+          "path": "public/assets/wave22/terrain/chalk_down_summer_a.png",
+          "SHA256": "43a00762d9289baec34a66113af18bf7e7570738ed11009ea8168ca493fc63c1",
+          "unchanged": true
+        },
+        {
+          "path": "public/assets/wave22/terrain/chalk_down_winter_a.png",
+          "SHA256": "868fe4645be8dd9ef1eb90183c78a2db37b8fa71f4f0b8bf51af04240980dfca",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "id": "N0412",
+      "baseId": "coastal_grass",
+      "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/ground/coastal_grass_spring_a-v1.png",
+      "sourceSHA256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+      "runtimePath": "public/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+      "runtimeSHA256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+      "runtimeBytes": 86719,
+      "chunks": [
+        "IHDR",
+        "pHYs",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "removedC2PAChunks": [],
+      "size": [
+        256,
+        128
+      ],
+      "nonOpaquePixels": 0,
+      "sourceRuntimePixelsEqual": true,
+      "oppositeEdgesExactXY": true,
+      "nativeSourceOpened": true,
+      "recordPath": "assets-inbox/wave43/candidates-20261002/records/ground/coastal_grass_spring_a.json",
+      "recordSHA256": "0d168d8b091d7625a8200f1945bd6a4525fa03ac87571931a0eafb5e4373ef02",
+      "referenceRecordsPreserved": true,
+      "selectedAttempt": null,
+      "referenceByteChecks": [
+        {
+          "path": "public/assets/wave22/terrain/coastal_grass_summer_a.png",
+          "SHA256": "ce5b7302f4c05d74a17e0131f232ccc6270eb442df42abf8c3e7e945233cb4c7",
+          "unchanged": true
+        },
+        {
+          "path": "public/assets/wave22/terrain/coastal_grass_winter_a.png",
+          "SHA256": "a10ca3299e081f9bc6ffb054702a10e8181dcdd7b4a0627d766f42d20ee5a0f7",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "id": "N0413",
+      "baseId": "fen",
+      "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/ground/fen_spring_a-v1.png",
+      "sourceSHA256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+      "runtimePath": "public/assets/wave43/ground/fen_spring_a-v1.png",
+      "runtimeSHA256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+      "runtimeBytes": 79489,
+      "chunks": [
+        "IHDR",
+        "pHYs",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "removedC2PAChunks": [],
+      "size": [
+        256,
+        128
+      ],
+      "nonOpaquePixels": 0,
+      "sourceRuntimePixelsEqual": true,
+      "oppositeEdgesExactXY": true,
+      "nativeSourceOpened": true,
+      "recordPath": "assets-inbox/wave43/candidates-20261002/records/ground/fen_spring_a.json",
+      "recordSHA256": "ed9ec3fe9cc3dc0a68e8615aaef8a71639bf288401ea7c7ef89bf1f50e621fd6",
+      "referenceRecordsPreserved": true,
+      "selectedAttempt": null,
+      "referenceByteChecks": [
+        {
+          "path": "public/assets/wave22/terrain/fen_summer_a.png",
+          "SHA256": "68e3b98c6b3bd76c04b12d568613d8e156f44a24d81b61b592a96571171bd3d8",
+          "unchanged": true
+        },
+        {
+          "path": "public/assets/wave22/terrain/fen_winter_a.png",
+          "SHA256": "cec139c429ce8b6961435f50a6bf12d5be657f48fd24e23a8384ef0bc6c0d5fc",
+          "unchanged": true
+        }
+      ]
+    },
+    {
+      "id": "N0418",
+      "baseId": "woodland_floor",
+      "sourcePath": "assets-inbox/wave43/candidates-20261002/assets/ground/woodland_floor_spring_a-v1.png",
+      "sourceSHA256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+      "runtimePath": "public/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+      "runtimeSHA256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+      "runtimeBytes": 71612,
+      "chunks": [
+        "IHDR",
+        "pHYs",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "removedC2PAChunks": [],
+      "size": [
+        256,
+        128
+      ],
+      "nonOpaquePixels": 0,
+      "sourceRuntimePixelsEqual": true,
+      "oppositeEdgesExactXY": true,
+      "nativeSourceOpened": true,
+      "recordPath": "assets-inbox/wave43/candidates-20261002/records/ground/woodland_floor_spring_a.json",
+      "recordSHA256": "b6ae7a2b8d576d3413e62f9c2d0b2f6daf8b46f837b40b576e2a9dc3224363a0",
+      "referenceRecordsPreserved": true,
+      "selectedAttempt": 3,
+      "referenceByteChecks": [
+        {
+          "path": "public/assets/wave22/terrain/woodland_floor_summer_a.png",
+          "SHA256": "1c7927a164231a578173d647e0e8ffe0cb7bd09fc98ab572ea7cfdc51a0a7f36",
+          "unchanged": true
+        },
+        {
+          "path": "public/assets/wave22/terrain/woodland_floor_winter_a.png",
+          "SHA256": "db73565fdb3c0ea1900a394ead017898201e88054cdde37f20d5d7506d79b673",
+          "unchanged": true
+        }
+      ]
+    }
+  ],
+  "dataOperations": [
+    {
+      "path": "src/render/art/catalog.json",
+      "beforeSHA256": "9be2d7b7329032d2fd00ed2e23b0ea3c8954d0d7e3d141a7cb78f670c13a5f69",
+      "afterSHA256": "bacfda4e3bb6b4156d070d96d9aa6c35e0d31f0a60a4c24415e8d129b3da8a11",
+      "bytes": 235283
+    },
+    {
+      "path": "docs/provenance/assets.csv",
+      "beforeSHA256": "5ad1ecac51d02b5915b059b9c8f9dbd7e405f525df2e34335ba9f37a4a387a2e",
+      "afterSHA256": "1275f329f07c89d64bb9c5c2b7a42b668c27743a60588cf40418dc61e8220b2d",
+      "bytes": 3144769
+    },
+    {
+      "path": "public/assets/wave43/ground/chalk_down_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+      "bytes": 86376
+    },
+    {
+      "path": "public/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+      "bytes": 86719
+    },
+    {
+      "path": "public/assets/wave43/ground/fen_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+      "bytes": 79489
+    },
+    {
+      "path": "public/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+      "beforeSHA256": null,
+      "afterSHA256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+      "bytes": 71612
+    }
+  ],
+  "productCodeChanges": 0,
+  "candidateCommit": "region-data-candidate-commit.json",
+  "testOnlyFix": "region-core-test-fix.json",
+  "existing135EntriesAndRulesPreserved": true,
+  "addedEntries": 4,
+  "springABRoles": 8,
+  "excluded": [
+    "N0417"
+  ],
+  "promotion": false,
+  "publication": false,
+  "futureHEAD": null
+}

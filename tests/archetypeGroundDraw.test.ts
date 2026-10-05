@@ -1,3 +1,5 @@
+import regionMigration from './fixtures/region-texture-migration.json';
+import { isRegionTexture } from '../src/render/art/artContract';
 import { ART_REGISTRY } from '../src/render/art/wave42Registry';
 /**
  * LAND-UI the lands' ground (Wave 22, archetypeGroundModel.ts / archetypeGroundDraw.ts): every key the MA-5 layer
@@ -39,7 +41,7 @@ const unwarp = (ground: { seed: number; width: number; height: number }, point: 
 };
 const SEASONS: readonly SeasonIndex[] = [0, 1, 2, 3];
 const installed = (key: string): boolean => {
-  const managed = ART_REGISTRY.entries('ground-prop').find(e => e.kind === 'ground-prop' && e.placement === 'land' && (e.baseId === key || e.id === key));
+  const managed = ART_REGISTRY.entries().find(e => (e.kind === 'ground-prop' && e.placement === 'land' && (e.baseId === key || e.id === key)) || (isRegionTexture(e) && (e.id === key || e.image.url === `assets/wave22/${key}.png`)));
   if (managed !== undefined) return existsSync(new URL(`../public/${managed.image.url}`, import.meta.url));
   const meta = (WAVE22_GROUND_IMAGES as Record<string, { readonly url: string } | undefined>)[key];
   return meta !== undefined && existsSync(new URL(`../public/${meta.url}`, import.meta.url));
@@ -66,9 +68,14 @@ test("every key the layer produces on five lands x seeds 1-3 resolves to an inst
 
 test("the installed set is exactly what the layer can name: no v1 fill, no unnamed decal", () => {
   const keys = Object.keys(WAVE22_GROUND_IMAGES);
-  assert.equal(keys.length, 78);
+  assert.equal(keys.length, 48);
   assert.ok(keys.every(key => !/-v[0-9]$/.test(key) && !key.includes("heath_patch_b") && !key.includes("heath_patch_c")));
-  assert.equal(keys.filter(key => key.startsWith("terrain/")).length, 30);
+  assert.equal(keys.filter(key => key.startsWith("terrain/")).length, 0);
+  const canonicalIds = new Set(regionMigration.entries.map(entry => entry.id));
+  assert.equal(canonicalIds.size, 30);
+  const canonical = ART_REGISTRY.entries().filter(entry => canonicalIds.has(entry.id));
+  const byId = (left: { id: string }, right: { id: string }) => left.id.localeCompare(right.id);
+  assert.deepEqual([...canonical].sort(byId), [...regionMigration.entries].sort(byId));
   for (const key of keys) {
     const meta = WAVE22_GROUND_IMAGES[key as Wave22GroundKey];
     if (meta.folder === "decals" || meta.folder === "props") assert.deepEqual(meta.pivot, { x: meta.width / 2, y: meta.height - 8 }, key);
@@ -190,7 +197,7 @@ test("the land's first readiness check starts every season's art loading (the tu
   const requested = new Set<string>();
   // The first test here to touch the art: manifestArt keeps its entries for the file's later tests.
   (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; decode() { return Promise.resolve(); } onload: (() => void) | null = null; onerror: unknown = null;
-    set src(url: string) { requested.add(url); queueMicrotask(() => this.onload?.()); } };
+    set src(url: string) { requested.add(url); const entry = ART_REGISTRY.entries().find(e => url.endsWith(e.image.url)); if (entry) { this.naturalWidth = entry.image.width; this.naturalHeight = entry.image.height; } queueMicrotask(() => this.onload?.()); } };
   const ground = landGroundOf({ ...land("core:chalk_downs", 2), tiles: [...land("core:chalk_downs", 2).tiles] })!;
   landArtReadiness(ground, 1);
   for (const season of SEASONS) for (const key of landArtKeys(ground, season)) {
@@ -215,7 +222,7 @@ function countingContext() {
 test("draw calls one land chunk adds: two fills per fill region, one per strip quad, one blit per decal", () => {
   // Node has no Image: a stand-in that is loaded at once, so the land's art is ready.
   (globalThis as unknown as { Image: unknown }).Image = class { naturalWidth = 512; naturalHeight = 64; decode() { return Promise.resolve(); } onload: (() => void) | null = null; onerror: unknown = null;
-    set src(_url: string) { queueMicrotask(() => this.onload?.()); } };
+    set src(url: string) { const entry = ART_REGISTRY.entries().find(e => url.endsWith(e.image.url)); if (entry) { this.naturalWidth = entry.image.width; this.naturalHeight = entry.image.height; } queueMicrotask(() => this.onload?.()); } };
   return new Promise<void>(resolve => {
     for (const id of NEW_LANDS) { const ground = landGroundOf(land(id, 1))!; for (const season of SEASONS) landArtReadiness(ground, season); }
     setTimeout(() => {

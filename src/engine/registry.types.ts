@@ -14,6 +14,15 @@ export interface RegistryOccurrence {
   readonly settledTick?: number;
   /** ER-3: why it came — the conditions that held and the draw. */
   readonly receipt: { readonly draw: number; readonly chancePermille: number; readonly conditions: readonly string[] };
+  /** LM-E9b (ER-13, save v49): a content canon v4 entry's occurrence. */
+  readonly source?: "v4";
+  /** ER-15: the identities of its bound targets by binding name (kept for the answer's recheck). */
+  readonly bound?: Readonly<Record<string, string>>;
+  /** ER-15: its dedup key (group and semantic fields) and its recurrence context. */
+  readonly key?: string;
+  readonly context?: string;
+  /** ER-19 (R3): an answered hold's cost — the claim weakened, or the sender faction's relation moved (the history moves it). */
+  readonly hold?: { readonly claimId?: string; readonly weakened?: number; readonly faction?: string; readonly delta?: number; readonly deadline?: string };
 }
 
 /** ER-7 (NE03): a remission or an instalment plan with its term. */

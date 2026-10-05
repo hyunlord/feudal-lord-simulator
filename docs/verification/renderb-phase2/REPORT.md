@@ -1,6 +1,6 @@
 # Phase 2 증거 조립 상태
 
-**ed83 실제 merge·깨끗한 클론 통과, 게시 문서 정리.** 제품은 db173 이후 바뀌지 않았다. 실제 검사 커밋과 이 문서 후속 커밋을 구분하며, 게시 대상 최종 HEAD 검사는 별도로 수행한다.
+**최종 `be576dbe` 실제 merge·깨끗한 클론·보호 본선 게시 통과.** DGX 4,886/4,886·타입·build·source LFS14/public14 검사 뒤 `90d9b586 → be576dbe`를 게시했고 원격 ref 일치를 확인했다. [최종 관문](be576-final-gates.json)·[게시 영수증](publication.json). 아래 ed83 및 더 이전 기록은 각각의 실제 측정 시점을 보존한다. 후속 REGION/CLOUD/HEIGHT 가지의 검증을 대신하지 않는다.
 
 | 항목 | 확인 범위 / 상태 |
 |---|---|
@@ -13,8 +13,8 @@
 | 최신 실제 통합 참조 | db17321a: 여름·겨울 × 1/.6, identity 4 / RGBA 동일 4 / A-A 4 / 오류 0, B/C paint; FIELD 봄 증거 아님 |
 | 기하 | fd68f124 실제 측정 PASS: 2,202/2,202, 실패 0, WARN 693; 독립 검토 PASS |
 | fd68 → db173 연결 | 보호 입력 4,277 동일, native hash 동일; 중간 연결이며 미래 HEAD 증명 아님 |
-| merge / clean clone | 실제 ed83 PASS: 4,886/4,886·타입·build·LFS14/public14; 문서 후속 HEAD는 재검사 대상 |
-| 보호 push | PENDING, futureHEAD null; 실제 원격 ref 확인 전 게시 완료라고 하지 않음 |
+| merge / clean clone | 최종 be576 PASS: 4,886/4,886·타입·build·LFS14/public14; ed83 결과 별도 보존 |
+| 보호 push | be576 DGX protected push exit0; 원격 exact HEAD 확인; 작업 가지 삭제·전용 자격 캐시 종료 |
 
 ## 기존 일곱 증거 폴더
 
@@ -66,3 +66,7 @@ DGX `astra-phase2-final-merge-ed83fe4`는 exit0, 기하 실패/예외/override0,
 DGX `astra-phase2-final-clone-ed83fe4`는 실제 내부 HEAD ed83·tracked clean, real-origin source LFS14 및 public 일반PNG14 바이트, 시험4,886/4,886(실패·취소·skip·todo0), 타입·build를 통과했다. 외부 입력26,845와 tracked26,841/LFS6,384의 전후 동결도 일치했다. [클론 영수증](ed83-clean-clone-receipt.json)·[병합 검사 영수증](ed83-merge-receipt.json)은 실제 실행 HEAD를 고정한다.
 
 이 문서 정리는 완료된 일곱 설치/이전 항목을 작업 장부에 반영하고 STATUS·ROADMAP을 함께 갱신한다. 체크는 해당 구현·실제 장면 검증 완료를 뜻하며 본선 게시 완료는 뜻하지 않는다. 이 문서까지 포함한 후속 HEAD는 다시 최종 검사와 깨끗한 클론을 거친 뒤 보호 push하며, 그 실행을 ed83 결과로 대체하지 않는다. 전체 설치1~3단계·REGION·CLOUD·HEIGHT는 계속 미완료다.
+
+## be576 게시 뒤 공식 추이
+
+공식 DGX `infra-TREND-be576dbe-be576db` exit0/fetch0. 큰 도시5배·새 게임3배의 자동 A/B 네 짝 비교에서 할당률·GC·canvas·GC 뒤 heap 모두 95% 폭 기준 소음 안이었다. 비교 조상은90d9이며 현재 REGION/CLOUD/HEIGHT 통합의 성능 판정이 아니다. [원본 영수증](be576-official-trend.json)·[요약](be576-official-trend.md).

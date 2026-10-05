@@ -1,0 +1,829 @@
+{
+  "pass": true,
+  "views": 10,
+  "independentAA": 10,
+  "errors": 0,
+  "positiveViews": 8,
+  "negativeViews": 2,
+  "rows": [
+    {
+      "name": "summer-normal-z1-t0",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "presentedSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 1,
+          "panX": 640,
+          "panY": -624
+        },
+        "actualNowMs": 0,
+        "state": "chapter-two-town",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 0
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1197,
+            "/assets/wave23/weather/cloud_shadow_b.png": 665
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1575,
+            "/assets/wave23/weather/cloud_shadow_b.png": 935
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1170,
+            "/assets/wave23/weather/cloud_shadow_b.png": 650
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1548,
+            "/assets/wave23/weather/cloud_shadow_b.png": 920
+          }
+        }
+      }
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "presentedSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 1,
+          "panX": 640,
+          "panY": -624
+        },
+        "actualNowMs": 5000,
+        "state": "chapter-two-town",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 5000
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1161,
+            "/assets/wave23/weather/cloud_shadow_b.png": 645
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1593,
+            "/assets/wave23/weather/cloud_shadow_b.png": 885
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1161,
+            "/assets/wave23/weather/cloud_shadow_b.png": 645
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1638,
+            "/assets/wave23/weather/cloud_shadow_b.png": 910
+          }
+        }
+      }
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "presentedSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 0.6,
+          "panX": 640,
+          "panY": -214.39999999999998
+        },
+        "actualNowMs": 0,
+        "state": "chapter-two-town",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 0
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 891,
+            "/assets/wave23/weather/cloud_shadow_b.png": 792
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1422,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1264
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 882,
+            "/assets/wave23/weather/cloud_shadow_b.png": 784
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1314,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1168
+          }
+        }
+      }
+    },
+    {
+      "name": "summer-normal-z06-t5000",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "presentedSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 0.6,
+          "panX": 640,
+          "panY": -214.39999999999998
+        },
+        "actualNowMs": 5000,
+        "state": "chapter-two-town",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 5000
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 882,
+            "/assets/wave23/weather/cloud_shadow_b.png": 784
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1368,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1216
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 882,
+            "/assets/wave23/weather/cloud_shadow_b.png": 784
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1314,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1168
+          }
+        }
+      }
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+        "presentedSha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 1,
+          "panX": 640,
+          "panY": -624
+        },
+        "actualNowMs": 0,
+        "state": "four-farms",
+        "savedStateSHA": "119162faa02e7970f482150164d85b255e02563b71589ae4f3497a576e61741d",
+        "tick": 15162,
+        "season": "winter",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 0
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1026,
+            "/assets/wave23/weather/cloud_shadow_b.png": 570
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1411,
+            "/assets/wave23/weather/cloud_shadow_b.png": 845
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 981,
+            "/assets/wave23/weather/cloud_shadow_b.png": 545
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1436,
+            "/assets/wave23/weather/cloud_shadow_b.png": 870
+          }
+        }
+      }
+    },
+    {
+      "name": "winter-normal-z1-t5000",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+        "presentedSha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 1,
+          "panX": 640,
+          "panY": -624
+        },
+        "actualNowMs": 5000,
+        "state": "four-farms",
+        "savedStateSHA": "119162faa02e7970f482150164d85b255e02563b71589ae4f3497a576e61741d",
+        "tick": 15162,
+        "season": "winter",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 5000
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1044,
+            "/assets/wave23/weather/cloud_shadow_b.png": 580
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1548,
+            "/assets/wave23/weather/cloud_shadow_b.png": 860
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 990,
+            "/assets/wave23/weather/cloud_shadow_b.png": 550
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1530,
+            "/assets/wave23/weather/cloud_shadow_b.png": 850
+          }
+        }
+      }
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+        "presentedSha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 0.6,
+          "panX": 640,
+          "panY": -214.39999999999998
+        },
+        "actualNowMs": 0,
+        "state": "four-farms",
+        "savedStateSHA": "119162faa02e7970f482150164d85b255e02563b71589ae4f3497a576e61741d",
+        "tick": 15162,
+        "season": "winter",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 0
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 783,
+            "/assets/wave23/weather/cloud_shadow_b.png": 696
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1197,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1064
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 756,
+            "/assets/wave23/weather/cloud_shadow_b.png": 672
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1287,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1144
+          }
+        }
+      }
+    },
+    {
+      "name": "winter-normal-z06-t5000",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "9f778f64d0e3d5f5f33f5b856fbb3db35b3d5ad765138b4d1e70ec404111a797",
+        "presentedSha256": "c1f2af118d90731c5b2542dcccbb0da66e4dcc356eb407bce4a9313090b4a12e",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 0.6,
+          "panX": 640,
+          "panY": -214.39999999999998
+        },
+        "actualNowMs": 5000,
+        "state": "four-farms",
+        "savedStateSHA": "119162faa02e7970f482150164d85b255e02563b71589ae4f3497a576e61741d",
+        "tick": 15162,
+        "season": "winter",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 0.6,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 5000
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/wave23/weather/cloud_shadow_a.png",
+          "/assets/wave23/weather/cloud_shadow_b.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 774,
+            "/assets/wave23/weather/cloud_shadow_b.png": 688
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1278,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1136
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 783,
+            "/assets/wave23/weather/cloud_shadow_b.png": 696
+          }
+        },
+        "end": {
+          "nowMs": 5000,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 1224,
+            "/assets/wave23/weather/cloud_shadow_b.png": 1088
+          }
+        }
+      }
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+        "presentedSha256": "98d1299b76649ab700eaf396ac7a764bb1a209e1c7d84c1306b45df2c7f88769",
+        "presentation": {
+          "weatherFx": true,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 1,
+          "panX": 640,
+          "panY": -624
+        },
+        "actualNowMs": 0,
+        "state": "ledger-rollup",
+        "savedStateSHA": "37295be96f6960d85e837494bb2d37a6b780408da6256102fbf9d75853e94f41",
+        "tick": 20480,
+        "season": "spring",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 0
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/terrain/grass.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        }
+      }
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1280,
+        "height": 800,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "identity": {
+        "engineSha256": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "presentedSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "presentation": {
+          "weatherFx": false,
+          "rainOverlay": true,
+          "weatherProofOverride": null,
+          "simulationRunning": false
+        },
+        "actualCamera": {
+          "zoom": 1,
+          "panX": 640,
+          "panY": -624
+        },
+        "actualNowMs": 0,
+        "state": "chapter-two-town",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          32,
+          32
+        ],
+        "zoom": 1,
+        "width": 1280,
+        "height": 800,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 0
+        },
+        "captureProtocol": "cloud2-old2-v2-frozen-paint",
+        "expectedRequests": [
+          "/assets/terrain/grass.png"
+        ]
+      },
+      "firstFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        }
+      },
+      "repeatFrozenWindow": {
+        "start": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        },
+        "end": {
+          "nowMs": 0,
+          "counts": {
+            "/assets/wave23/weather/cloud_shadow_a.png": 0,
+            "/assets/wave23/weather/cloud_shadow_b.png": 0
+          }
+        }
+      }
+    }
+  ],
+  "limit": "Numeric call-lineage/state/pixel evidence only; native visual acceptance pending."
+}

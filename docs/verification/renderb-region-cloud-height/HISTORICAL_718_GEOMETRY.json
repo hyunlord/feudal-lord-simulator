@@ -1,0 +1,30 @@
+{
+  "status": "PASSED_HISTORICAL_718_FULL_GEOMETRY",
+  "head": "718dce4b60c5cb0c5be0178284034ed49bfc67f7",
+  "freezeSHA256": "1595773e2e5428a05f73871e63682b2d4838e20cb6345fd77454cc88b403bb52",
+  "run": "astra-integrated-full-geometry-718dce4",
+  "remoteExit": 0,
+  "officialAttachExit": 0,
+  "fetchCompleted": true,
+  "geometry": {
+    "rows": 122,
+    "reachable": 2202,
+    "unreachableRows": 4,
+    "unreachableRecords": 60,
+    "warnings": 693,
+    "retried": []
+  },
+  "inputHash": "acb0a3ef2fe0e63c8474676a58c95ac5d1f124ec90d16b49435098fd72632f40",
+  "sourceUnchanged": true,
+  "errors": [],
+  "sourceFinalReceipt": "/Users/rexxa/fls-astra-renderB-integrated-geometry/.remote-runs/astra-integrated-full-geometry-718dce4/integrated-geometry/final.json",
+  "sourceFinalSHA256": "d2ab7ee5df1e36449efa97a292cf27ab048c61078955a25cdb078f8d230dce39",
+  "current2fdbGateSatisfied": false,
+  "notice": "Historical 718 world-batch geometry only. Current 2fdb integrated UI audit remains separately pending.",
+  "sourceSummary": {
+    "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/integrated-geometry-runtime-result.json",
+    "sha256": "c590e0db0b10deea5457070b6480b33b46e0a3a8ba59c80a3042dfacee965217"
+  },
+  "wrapperPass": true,
+  "failures": 0
+}

@@ -1,6 +1,6 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
 export type ArtKind = 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
-  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture';
+  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
 export type ArtImage = { readonly url: string; readonly width: number; readonly height: number };
@@ -91,14 +91,26 @@ export type SeasonVariantEntry = EntryBase & {
   readonly base: { readonly namespace: 'world-sprite' | 'zone-prop'; readonly key: string };
   readonly season: ArtSeason; readonly geometry: Pick<ArtGeometry, 'pivot' | 'scale' | 'allowMirror'>;
 };
-export type GroundTextureEntry = EntryBase & {
+export type FieldGroundTextureEntry = EntryBase & {
   readonly kind: 'ground-texture';
   readonly mapping: { readonly repeat: 'x'; readonly sourcePixelsPerTile: 128; readonly origin: { readonly x: 0; readonly y: 0 } };
   readonly composition: { readonly joinFadeSourcePx: 40; readonly wash: 'legacy-stage' | 'none' };
   readonly allowMirror: false;
 };
+export type RegionGroundTextureEntry = EntryBase & {
+  readonly kind: 'ground-texture'; readonly baseId: string;
+  readonly mapping: { readonly repeat: 'xy'; readonly sourcePixelsPerTile: { readonly u: 128; readonly v: 64 }; readonly origin: { readonly x: 0; readonly y: 0 } };
+  readonly composition: { readonly wash: 'none' }; readonly allowMirror: false;
+};
+export type WeatherShadowEntry = EntryBase & {
+  readonly kind: 'weather-shadow'; readonly deck: 'lower' | 'upper'; readonly blend: 'multiply'; readonly opacityMax: 0.12;
+  readonly geometry: { readonly pivot: ArtPoint; readonly scale: 1; readonly allowMirror: false };
+};
+export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEntry;
+export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
+export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
 export type ArtEntry = BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
-  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry;
+  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =
   | { readonly op: 'eq'; readonly field: string; readonly value: ArtScalar }

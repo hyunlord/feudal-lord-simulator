@@ -1,0 +1,210 @@
+{
+  "status": "CANDIDATE_COMMITTED_RUNTIME_NOT_RUN",
+  "worktree": "/Users/rexxa/fls-astra-renderB-region-core",
+  "branch": "astra/renderB-region-core",
+  "head": "442b71822c189a245877cc1da1af86831e19448a",
+  "parent": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "commitFiles": [
+    {
+      "path": "scripts/installWave22.py",
+      "beforeSha256": "b862fb897068cd3b0dc9f2ae972dd5d1773fa914281a0d2781f845c2a89e9a8c",
+      "sha256": "9ae964c9ca99f895768ef4608d555518b991016865f40c682ccaed728bb5c908",
+      "bytes": 9682,
+      "classification": "core"
+    },
+    {
+      "path": "scripts/wave22CatalogOwnership.ts",
+      "beforeSha256": "205295d27f9bc90b13d248bd8ce7cf4bbfb1435c485626da224622d476d4c693",
+      "sha256": "0c7566e59de2eb98f406510f24070bd2c9be7ca3cc857ef5efd7bd162320cb6f",
+      "bytes": 1368,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/archetypeGroundDraw.ts",
+      "beforeSha256": "fc2a6d46544fa26dd563883a5521976b3f17954625279d3c44b4aae289b34ea7",
+      "sha256": "e86c65482568e9a65b4f289e8c406cef8f3fb1a33815d1bf4a2da2a9fa8368b2",
+      "bytes": 18481,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/archetypeGroundModel.ts",
+      "beforeSha256": "7ce4baca498e3237340f0d7dcb7f12ad917611296aef35133e7394f531084963",
+      "sha256": "266d408b2e12b6fd392d3e4af7593cbe57165f5f37bad99b8931730f4bba2e45",
+      "bytes": 14859,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/artContract.schema.json",
+      "beforeSha256": "6807280ac14ebf4b422355c30220cdedfb613270d95196e50a5e38fe684ef691",
+      "sha256": "971ec0a2b8f4cdef7f4d9ad828be0621e66ea0f219484f84d970cb1b87e7539a",
+      "bytes": 42122,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/artContract.ts",
+      "beforeSha256": "3b3d8f26e3438f10060283e3f0b8a6415a39506fd1d7ca102d235ace726fe10c",
+      "sha256": "7ca60e1b5be5f130244ee0247f7070cbf0b7ecc28f4c361d24fa22917b0d0503",
+      "bytes": 7842,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/artRegistryValidation.ts",
+      "beforeSha256": "2acf463cc4fa0fef3e8375f0dc017bfa04486d5c8363d8661de5e9d78fa73629",
+      "sha256": "ee3451a2d5de8d893fc3296f1a8d7f22d2622575b528b48e75e452025fe5f27b",
+      "bytes": 6579,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/artSelection.ts",
+      "beforeSha256": "f216442e3d80afc9598e1b8d4681bb0a2a6980cf80347e8a9ce1d403d70ed532",
+      "sha256": "23f3e85f54d048c591de6dd50a01ad9a2387bffa19247aa8cfaa0866f93037fd",
+      "bytes": 6742,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/catalog.json",
+      "beforeSha256": "b05ce0d127d1b2e8067c66fb90b4ddd0467d56b309a97911b0c173c39f92d282",
+      "sha256": "9be2d7b7329032d2fd00ed2e23b0ea3c8954d0d7e3d141a7cb78f670c13a5f69",
+      "bytes": 226802,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/fieldTextureArt.ts",
+      "beforeSha256": "81a61d9edc8c1d33088adf29d966784bcdd8665e78fb2b2c81ce9b75106ed048",
+      "sha256": "9584b05d30f725142858ed5123625a53f08cb12d65cbeb843abfd3539c7b7b22",
+      "bytes": 5120,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/fieldTextureValidation.ts",
+      "beforeSha256": "05f61d8cbf571bd0f20c6b4b78af48acecfca5c4fbf7f4dc49e26c48817b6f41",
+      "sha256": "3ff7596934511bf97024b4854dc33ca39ae6ebea958f8dd78207cdbf881c6d87",
+      "bytes": 3052,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/regionTextureArt.ts",
+      "beforeSha256": null,
+      "sha256": "6f911a115098aeb5fd37092a5828964ebf30cf54feb325f5a17a1ca757f7f7bf",
+      "bytes": 2674,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/art/regionTextureValidation.ts",
+      "beforeSha256": null,
+      "sha256": "b4c6845fec1d730a7e091f1ed042bda7d164613591a94f71cc554ca2efc48a92",
+      "bytes": 2310,
+      "classification": "core"
+    },
+    {
+      "path": "src/render/wave22GroundManifest.generated.ts",
+      "beforeSha256": "6d8b0fd6ef622cffc851f4be733a445f17da2aed892bab4c93d5be66a93dbc78",
+      "sha256": "a3a85653cfbfa49530eee3cb6105ada9e2217298e24bfa271819352937cf7585",
+      "bytes": 7686,
+      "classification": "core"
+    },
+    {
+      "path": "tests/archetypeGroundDraw.test.ts",
+      "beforeSha256": "e98c3fe73bca25d811ea743fa4e775b5a3d98f95b236ca1e35bd0ffc099a6712",
+      "sha256": "f4fb1564ef5d295a3e0deaa8b93d16c1927beb38abc7eb40251b4a0afc9be35b",
+      "bytes": 27679,
+      "classification": "test"
+    },
+    {
+      "path": "tests/installWave22Ownership.test.ts",
+      "beforeSha256": "213515052e6fc73290957bd6c41c91d50086ba8bfc35669c947540d27cebdb9b",
+      "sha256": "4e291e4e8bdac820cf9ca9cb1754ff37c62960ff1a2488e1574ca2083c1b9e64",
+      "bytes": 5170,
+      "classification": "test"
+    },
+    {
+      "path": "tests/fixtures/region-texture-migration.json",
+      "beforeSha256": null,
+      "sha256": "4ec4ba01169f7be2feb9f73be8edf6b6201afb20f7eb7289f296c18778e28da4",
+      "bytes": 46821,
+      "classification": "test"
+    },
+    {
+      "path": "tests/regionTextureArt.test.ts",
+      "beforeSha256": null,
+      "sha256": "32defc985e1f4c967cff56efc2adbb7bf3e3bde76956fb8531103fd40a24c326",
+      "bytes": 9185,
+      "classification": "test"
+    },
+    {
+      "path": "tests/regionTextureContract.test.ts",
+      "beforeSha256": null,
+      "sha256": "5a5d04755c4d83e211e04e6ca4a813357e1ab5810e891c828bc2804b174d272d",
+      "bytes": 3162,
+      "classification": "test"
+    },
+    {
+      "path": "tests/regionTextureReadiness.test.ts",
+      "beforeSha256": null,
+      "sha256": "8dcc0a55ed823e6e0788c1c69a8346809c4124c0a3d0e7f9191e5dbd3c92bf26",
+      "bytes": 3895,
+      "classification": "test"
+    }
+  ],
+  "committedFileCount": 20,
+  "commitBlobShaMatchesFrozenFiles": true,
+  "trackedClean": true,
+  "untrackedExcludedCount": 45,
+  "untrackedExcludedPaths": [
+    ".omo/evidence/region-core-runtime-prep-check.json",
+    ".omo/evidence/region-core-runtime-prep-check.mts",
+    ".omo/evidence/region-core-runtime-prep-inputs.json",
+    ".omo/evidence/region-core-runtime-prep-report.md",
+    ".omo/evidence/region-core-runtime-prep-run.sh",
+    ".omo/evidence/region-core-runtime-prep-tsconfig.json",
+    "output/art-architecture/region-core-v1/before-identity.json",
+    "output/art-architecture/region-core-v1/fixtures/admission.json",
+    "output/art-architecture/region-core-v1/fixtures/coverage.json",
+    "output/art-architecture/region-core-v1/fixtures/determinism.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-chalk_downs-spring.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-chalk_downs-spring.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-chalk_downs-summer.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-chalk_downs-summer.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-chalk_downs-winter.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-chalk_downs-winter.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-coastal_port-spring.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-coastal_port-spring.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-coastal_port-summer.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-coastal_port-summer.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-coastal_port-winter.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-coastal_port-winter.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-fen_drainage-spring.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-fen_drainage-spring.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-fen_drainage-summer.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-fen_drainage-summer.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-fen_drainage-winter.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-fen_drainage-winter.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-forest_edge-spring.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-forest_edge-spring.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-forest_edge-summer.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-forest_edge-summer.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-forest_edge-winter.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-forest_edge-winter.save.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-open_field-spring.json",
+    "output/art-architecture/region-core-v1/fixtures/region4-open_field-spring.save.json",
+    "output/art-architecture/region-core-v1/fixtures/views.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-chalk-autumn.save.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-chalk-spring.save.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-chalk-summer.save.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-chalk-winter.save.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-negative-coastal_port.save.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-negative-fen_drainage.save.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-negative-forest_edge.save.json",
+    "output/art-architecture/region-core-v1/source-saves/heath-negative-open_field.save.json"
+  ],
+  "sourceCount": 2285,
+  "sourceFilesUnchangedFromPrepFreeze": true,
+  "sourceFreezeSha256": "06a01714de6527a295438351afd777a08a8bd63585e0db8413fdfb9bdfb4efa2",
+  "savedPatchBytesUnchanged": true,
+  "patchSha256": "9546b9beff4983d15e8f9a716efddd200b7bbbcd73fd7a4cb7f619279653ca89",
+  "stagedReceipt": "region-core-candidate-staged.json",
+  "validation": "174 focused PASS/typecheck0/lint0/catalog135; unchanged implementation since those gates",
+  "runtime": "NOT_RUN; committed measurement candidate only",
+  "mainTransfer": false,
+  "push": false
+}

@@ -19,6 +19,7 @@ const entries: readonly ArtEntry[] = [
   { ...common, id: 'illustration', kind: 'event-illustration', eventIds: ['event'], fit: 'contain', altTextKey: 'event.alt' },
   { ...common, id: 'portrait', kind: 'portrait', pool: 'nobles', ageStage: 'adult', era: '1300', derivatives: [{ size: 96, assetId: 'portrait' }] },
   { ...common, id: 'map', kind: 'regional-map', mapId: 'east', landTypes: ['pasture'], coordinateSpace: { width: 64, height: 64 }, slots: [{ id: 'estate', x: 32, y: 32, landType: 'pasture' }] },
+  { ...common, id: 'shadow', kind: 'weather-shadow', geometry: { pivot: { x: 32, y: 32 }, scale: 1, allowMirror: false }, deck: 'lower', blend: 'multiply', opacityMax: 0.12 },
 ];
 const bundle: ArtBundle = { schemaVersion: 1, bundleId: 'example', entries, rules: [{ id: 'select', kind: 'land-stage', slot: 'ground', priority: 0, conditions: [{ op: 'range', field: 'age', min: 0 }], variants: [{ assetId: 'land', weight: 1 }], fallback: 'none' }] };
 const schema: unknown = JSON.parse(readFileSync(new URL('../src/render/art/artContract.schema.json', import.meta.url), 'utf8'));

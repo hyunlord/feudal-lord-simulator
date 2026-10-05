@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
 
-test('Given canonical79 and catalog A/B/C When generating twice Then only78 legacy keys remain and owned bytes/ledgers survive', () => {
+test('Given canonical79 and catalog A/B/C When generating twice Then only48 legacy keys remain and owned bytes/ledgers survive', () => {
   const result = spawnSync('python3', ['-c', String.raw`
 import importlib.util, pathlib, tempfile, shutil, json, csv, hashlib, re
 root=pathlib.Path.cwd()
@@ -22,14 +22,19 @@ with tempfile.TemporaryDirectory(prefix='heath-generator-') as directory:
  def rows(p): return list(csv.DictReader(p.open()))
  arow=next(x for x in rows(m.LEDGER) if x['runtimePath']=='public/assets/wave22/decals/heath_patch_a.png');ibefore=rows(m.INBOX_LEDGER)
  hashfile=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
- owned={p.name:hashfile(p) for p in m.RUNTIME.glob('decals/heath_patch_*.png')}
+ for source in (root/'public/assets/wave22/terrain').glob('*.png'):
+  (m.RUNTIME/'terrain').mkdir(exist_ok=True);shutil.copyfile(source,m.RUNTIME/'terrain'/source.name)
+ owned={str(p.relative_to(m.RUNTIME)):hashfile(p) for p in m.RUNTIME.rglob('*.png')}
+ region_rows=[x for x in rows(m.LEDGER) if x['runtimePath'].startswith('public/assets/wave22/terrain/')]
+
  expected={k:json.loads(v) for k,v in re.findall(r'^  "([^"]+)": (.+),$',(root/'src/render/wave22GroundManifest.generated.ts').read_text(),re.M)}
- assert len(expected)==78
+ assert len(expected)==48
  for iteration in range(2):
   m.main();actual={k:json.loads(v) for k,v in re.findall(r'^  "([^"]+)": (.+),$',m.MANIFEST.read_text(),re.M)};assert actual==expected
-  assert len(actual)==78 and 'decals/heath_patch_a' not in actual
+  assert len(actual)==48 and 'decals/heath_patch_a' not in actual
   assert next(x for x in rows(m.LEDGER) if x['runtimePath']==arow['runtimePath'])==arow
-  assert {p.name:hashfile(p) for p in m.RUNTIME.glob('decals/heath_patch_*.png')}==owned
+  assert all(hashfile(m.RUNTIME/key)==value for key,value in owned.items())
+  assert [x for x in rows(m.LEDGER) if x['runtimePath'].startswith('public/assets/wave22/terrain/')]==region_rows
   for key,meta in actual.items(): assert hashfile(t/'public'/meta['url'])==hashfile(root/'public'/meta['url'])
   assert next(x for x in rows(m.INBOX_LEDGER) if 'heath_patch_a-v1' in x['file'])==next(x for x in ibefore if 'heath_patch_a-v1' in x['file'])
  before_bytes={p:p.read_bytes() for p in [m.LEDGER,m.INBOX_LEDGER,m.MANIFEST]}
@@ -39,8 +44,13 @@ with tempfile.TemporaryDirectory(prefix='heath-generator-') as directory:
  except subprocess.CalledProcessError: pass
  else: raise AssertionError('Partial-season fallback was accepted')
  assert all(p.read_bytes()==raw for p,raw in before_bytes.items())
- print('PASS: canonical79 -> legacy78 twice; A/B/C bytes, A provenance/installation unchanged')
+ b['rules'][0]['conditions'].pop();region=next(x for x in catalog if x['bundleId']=='wave22-region-textures');region['rules'].pop();(t/'src/render/art/catalog.json').write_text(json.dumps(catalog))
+ try: m.main()
+ except subprocess.CalledProcessError: pass
+ else: raise AssertionError('Partial region ownership was accepted')
+ assert all(p.read_bytes()==raw for p,raw in before_bytes.items())
+ print('PASS: canonical79 -> legacy48 twice; A/B/C bytes, A provenance/installation unchanged')
 `], { encoding: 'utf8' });
   assert.equal(result.status, 0, result.stdout + result.stderr);
-  assert.match(result.stdout, /legacy78 twice/);
+  assert.match(result.stdout, /legacy48 twice/);
 });

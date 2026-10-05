@@ -28,13 +28,10 @@ import { constructionStageIndex, constructionWorkProgress } from "./construction
 //  - Looks: computed from the state (walkerLooks) the first time a walker is drawn and kept for that walker id while
 //    it lives (pruned when the walkers array no longer holds it), so a look never flips during a walk.
 
-/**
- * A villager's world scale; the composer draws each figure 32 × this tall (16 px at zoom 1). NAT-4 BLD-07: 0.55
- * (17.6 px) made an adult taller than the basic house's door (L0 / L1 doors about 12.5 / 12.0 world px, art audit
- * 2026-10-02: door / adult 0.71 / 0.68); at 0.5 the ratio is about 0.78 / 0.75, the house art unchanged.
- */
-export const VILLAGER_WORLD_SCALE = 0.5;
-export const WALKER_FIGURE_PX = 32 * VILLAGER_WORLD_SCALE;
+/** FND-3 registered figure height; anatomical barefoot height remains a separate art measurement. */
+export const WALKER_FIGURE_PX = 17.6;
+/** Compatibility scale for the existing 32-unit actor drawing API. */
+export const VILLAGER_WORLD_SCALE = WALKER_FIGURE_PX / 32;
 export const WALKER_CELL = 74;
 export const WALKER_PAD = 17;
 export const WALKER_COMPOSED_CELL = WALKER_CELL + 2 * WALKER_PAD;

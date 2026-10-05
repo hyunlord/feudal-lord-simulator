@@ -21,6 +21,7 @@ import { stateCalendar } from "./scenarioState";
 import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode, setEstateOversight, setExceptionRules, stewardshipOf } from "./stewardship";
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
+import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry } from "./registryV4";
 
 const SEASON = 1_000;
 const YEAR = 4_000;
@@ -398,9 +399,29 @@ export function seasonDraw(state: GameState): readonly { readonly entry: Registr
   return [];
 }
 
+/** LM-E9b (ER-3, ER-13): the season's v4 offer when no other entry was drawn — one weighted pick within the budget. */
+function offerV4Season(state: GameState): GameState {
+  const registry = registryOf(state);
+  const index = seasonIndexOf(state.tick);
+  const thisYear = registry.occurrences.filter(entry => Math.floor(entry.offeredTick / YEAR) === Math.floor(state.tick / YEAR) && !entry.entryId.startsWith("home:"));
+  if (Math.min(REGISTRY_EVENTS_PER_SEASON, REGISTRY_EVENTS_PER_YEAR - thisYear.length) <= 0) return state;
+  const candidates = [...v4Candidates(state, registry.occurrences.filter(occurrence => occurrence.source === "v4"))]
+    .sort((left, right) => (left.entry.id < right.entry.id ? -1 : 1));
+  const total = candidates.reduce((sum, candidate) => sum + candidate.entry.frequency.weight, 0);
+  if (total <= 0) return state;
+  let pick = hashSeed(state.seed, "registry-selection", index) % total;
+  const chosen = candidates.find(candidate => { if (pick < candidate.entry.frequency.weight) return true; pick -= candidate.entry.frequency.weight; return false; });
+  if (chosen === undefined) return state;
+  const bound = boundIdentities(chosen.bound);
+  const offer: RegistryOccurrence = { id: `registry:${chosen.entry.id}:${chosen.key}:${index}`, entryId: chosen.entry.id, boundId: Object.values(bound)[0] ?? "",
+    offeredTick: state.tick, deadline: state.tick + REGISTRY_ANSWER_TICKS, status: "offered",
+    receipt: { draw: chosen.draw, chancePermille: chosen.entry.frequency.chancePermille, conditions: [] }, source: "v4", bound, key: chosen.key, context: chosen.context };
+  return { ...state, registry: { ...registry, occurrences: [...registry.occurrences, offer].slice(-MAX_OCCURRENCES_KEPT) } };
+}
+
 function offerSeason(state: GameState): GameState {
   const chosen = seasonDraw(state);
-  if (chosen.length === 0) return state;
+  if (chosen.length === 0) return offerV4Season(state);
   const registry = registryOf(state);
   const offers: RegistryOccurrence[] = [];
   for (const candidate of chosen) {
@@ -430,9 +451,42 @@ export function openRegistryOffers(state: GameState): readonly RegistryOccurrenc
   return registryOf(state).occurrences.filter(occurrence => occurrence.status === "offered" && state.tick <= occurrence.deadline);
 }
 
+/** ER-4, ER-17 API: the choices of an open offer that can be carried out now (a v4 offer's on its bound targets). */
+export function offerChoices(state: GameState, occurrence: RegistryOccurrence): readonly string[] {
+  if (occurrence.source === "v4") {
+    const entry = v4Entry(occurrence.entryId);
+    const bound = entry === undefined ? null : bindEntry(state, entry, occurrence.bound);
+    return entry === undefined || bound === null ? [] : v4EnabledChoices(state, entry, bound);
+  }
+  const entry = registryEntry(occurrence.entryId);
+  return entry === undefined ? [] : enabledChoices(state, entry, occurrence.boundId, occurrence.id);
+}
+
+function settleOccurrence(state: GameState, occurrenceId: string, settled: Partial<RegistryOccurrence>): GameState {
+  const registry = registryOf(state);
+  return { ...state, registry: { ...registry, occurrences: registry.occurrences.map(item => item.id === occurrenceId ? { ...item, ...settled, settledTick: state.tick } : item) } };
+}
+
+/** LM-E9b (ER-15, ER-16): a v4 offer answered — its targets bound again (the same identities), the choice rechecked, its commands run whole. */
+function answerV4Offer(state: GameState, occurrence: RegistryOccurrence, choiceId: string): GameState {
+  const entry = v4Entry(occurrence.entryId);
+  const bound = entry === undefined ? null : bindEntry(state, entry, occurrence.bound);
+  if (entry === undefined || bound === null) return settleOccurrence(state, occurrence.id, { status: "invalid" });
+  const choice = entry.choices.find(candidate => candidate.id === choiceId);
+  if (choice === undefined || !v4EnabledChoices(state, entry, bound).includes(choiceId)) return state;
+  if (choice.commands.length === 0) {
+    // ER-19 (R3): a hold — its time cost applied (the claim weakened now, a relation moved by the history).
+    const held = applyHold(state, entry, bound);
+    return held === null ? state : settleOccurrence(held.state, occurrence.id, { status: "answered", choiceId, hold: held.hold });
+  }
+  const applied = runCommands(state, choice.commands, { state, bound, vars: {} });
+  return applied === null ? state : settleOccurrence(applied, occurrence.id, { status: "answered", choiceId });
+}
+
 /** ER-4 API: the lord answers an offer — rechecked now, applied whole or not at all; a second answer is refused. */
 export function answerRegistryOffer(state: GameState, occurrenceId: string, choiceId: string): GameState {
   const occurrence = openRegistryOffers(state).find(entry => entry.id === occurrenceId);
+  if (occurrence?.source === "v4") return answerV4Offer(state, occurrence, choiceId);
   const entry = occurrence === undefined ? undefined : registryEntry(occurrence.entryId);
   if (occurrence === undefined || entry === undefined) return state;
   if (!boundTargets(state, entry).includes(occurrence.boundId) || !conditionHolds(state, entry.conditions, occurrence.boundId)) {

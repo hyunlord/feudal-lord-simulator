@@ -1,0 +1,72 @@
+{
+  "status": "PASS_BOUNDED_A1_VISIBILITY_ONLY",
+  "verification": "Parent decoded16 original PNGs, verified8 source crop rectangles and16 presented JSON hashes,4 cross identities except composer; opened4 native paired sheets individually",
+  "rows": [
+    {
+      "variant": "before",
+      "name": "summer-loaded-nw",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "a2ff9002435b1dbf009f928a4213ac00a15cafa5f648faab3501efa607ff0f5b",
+      "presentedStateExact": true
+    },
+    {
+      "variant": "before",
+      "name": "summer-loaded-ne",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "96d8740c81c62f3e0fef3ed3820a2996ea5b738485abbcb0894f0cc58be1144e",
+      "presentedStateExact": true
+    },
+    {
+      "variant": "before",
+      "name": "summer-loaded-sw",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "8e9246cdfc944f8a604226ddb834687e97ecd8637139b2885f8ceec0e43e22fc",
+      "presentedStateExact": true
+    },
+    {
+      "variant": "before",
+      "name": "summer-loaded-se",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "c40a28db1a4d443cd57e10b69aa2bdd31498f65b4cb5c8bfa9d99942a96ddde7",
+      "presentedStateExact": true
+    },
+    {
+      "variant": "after",
+      "name": "summer-loaded-nw",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "f8c0e456d0e6c1b81beb3a7e25f8e56eae5f9cceaee28d75ff91b23817528916",
+      "presentedStateExact": true
+    },
+    {
+      "variant": "after",
+      "name": "summer-loaded-ne",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "4f49075c0ebec7f779b81ceb0cbaedaf25573becfa6245606dc0acd1eb097611",
+      "presentedStateExact": true
+    },
+    {
+      "variant": "after",
+      "name": "summer-loaded-sw",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "aea3167cad7c8fbf00ccdc010d97c6ca0f2365635178bef30d2d7531664d5296",
+      "presentedStateExact": true
+    },
+    {
+      "variant": "after",
+      "name": "summer-loaded-se",
+      "aaRgbaExact": true,
+      "sourceCropExact": true,
+      "rgbaSHA": "e5efa9fc245dea5ea24d607d203647701c3e010aa6bd9fd1d5278b9fd78380a4",
+      "presentedStateExact": true
+    }
+  ],
+  "contact": "UNCERTAIN all4 due NW/SE labels, SW roof, NE nearby actors/bridge; no anatomical height or universal grip approval",
+  "mainChanged": false
+}

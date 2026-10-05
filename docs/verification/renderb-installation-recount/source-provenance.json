@@ -1,0 +1,2240 @@
+{
+  "head": "9786468f72c67e6c206a708b60d0fa69e0d6001e",
+  "inputFiles": [
+    {
+      "path": ".omo/drafts/original-install-inventory.csv",
+      "currentSha256": "239cb39b9eadc304d1e7781f67f9bdb7b54d34fe8004a25015da8d10933441b8",
+      "historical32a599Sha256": "239cb39b9eadc304d1e7781f67f9bdb7b54d34fe8004a25015da8d10933441b8"
+    },
+    {
+      "path": "docs/verification/asset-architecture/recount-425.csv",
+      "currentSha256": "77047709645a8e688fe00a0d20ade78760152c1685bb64ca9d82b7281f7f468c",
+      "historical32a599Sha256": "77047709645a8e688fe00a0d20ade78760152c1685bb64ca9d82b7281f7f468c"
+    },
+    {
+      "path": "assets-inbox/INBOX_LEDGER.csv",
+      "currentSha256": "d03f9916543cfd9f07ab448e5b69a4b486e0335507525fe2f3c2f9c1b2a3aa48",
+      "historical32a599Sha256": "d03f9916543cfd9f07ab448e5b69a4b486e0335507525fe2f3c2f9c1b2a3aa48"
+    },
+    {
+      "path": "docs/provenance/assets.csv",
+      "currentSha256": "7067724291271b20e4cafd9fae333c0f8880f99819c8f310576a7cfdd8638b2f",
+      "historical32a599Sha256": "7067724291271b20e4cafd9fae333c0f8880f99819c8f310576a7cfdd8638b2f"
+    },
+    {
+      "path": "docs/ops/DISPATCH_LEDGER.md",
+      "currentSha256": "dcd37f1d9f9ece7f4ddc0a770ffb3837a9924ea1987879efd7575292810d8bf5",
+      "historical32a599Sha256": "6ab80fbe3eab28fad61133b5d19255924a002420e67ef4e4a46998aaead01e2f"
+    },
+    {
+      "path": "docs/verification/region-spring4-data/REPORT.md",
+      "currentSha256": "9ad653d3c3e2ab21cef881fa2fd8429fa290c07a09230ee0dd15808b82335965",
+      "historical32a599Sha256": null
+    },
+    {
+      "path": "docs/verification/cloud-data2-hold/REPORT.md",
+      "currentSha256": "1a7af4c7f13dacbfeabbd79f16ccfc0cd6cfbfeea35d70b5c208591e70a6b877",
+      "historical32a599Sha256": null
+    }
+  ],
+  "historicalSnapshots": [
+    {
+      "path": ".omo/drafts/remaining-install-lanes-review.json",
+      "packagePath": "historical-ed83.json",
+      "sha256": "c7fc6f9ffd7ac433c6e08bccf4727d06f3eccb19a6db133acf86df95a5e0277d",
+      "head": "ed83fe44abc688ee688cb4069bfc636382f5e313"
+    },
+    {
+      "path": ".omo/drafts/remaining-install-c203-refresh.json",
+      "packagePath": "historical-c203.json",
+      "sha256": "783b834ac8b9f6c0625e9ed7f0e606951a018aea4b95a764e6c3732a8da48bcc",
+      "head": "c20375d215a2d518df0fced580bd8a73386bbde8"
+    },
+    {
+      "path": ".omo/drafts/remaining-install-32a599-refresh.json",
+      "packagePath": "historical-32a599.json",
+      "sha256": "4542d0696f5e70cba7c29ec5e7ae20596d775715e22f9dc818d194c2b5c597bc",
+      "head": "32a5996e5b38bca8eb6071963c7fc773eb62fed6"
+    }
+  ],
+  "verification": {
+    "originalInventoryRows": 803,
+    "excludedReconciliationOnlyRows": 59,
+    "sourceShaRows": 744,
+    "exactIdPreservation": true,
+    "subsetIds": 425,
+    "ledgerRows": 6122,
+    "provenanceRows": 2436,
+    "recordedAliasEntriesRehashed": 210,
+    "distinctAliasPaths": 210,
+    "allAliasesHaveCurrentMatchingProvenance": true,
+    "newRuntimeRuns": 0,
+    "trackedWrites": 0
+  },
+  "aliases": [
+    {
+      "id": "I0001",
+      "runtimePath": "public/assets/endings-manors/manors/manor_house_a_empty-v1.png",
+      "runtimeSha256": "ad0b755915052398b438a754e1ae57f1ca66b72b989d66494afcb98d8c0ab9d8",
+      "sourceSha256": "ad0b755915052398b438a754e1ae57f1ca66b72b989d66494afcb98d8c0ab9d8",
+      "consumer": "src/render/manorHouseManifest.generated.ts (LM-R1 RUN-01: the manor_house building, src/render/manorHouseArt.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0002",
+      "runtimePath": "public/assets/endings-manors/manors/manor_house_b_empty-v2.png",
+      "runtimeSha256": "11e60c5363b9461d088b5cf05e956cf91b0bb1f9c1157bdac7a42e111a339f63",
+      "sourceSha256": "11e60c5363b9461d088b5cf05e956cf91b0bb1f9c1157bdac7a42e111a339f63",
+      "consumer": "src/render/manorHouseManifest.generated.ts (LM-R1 RUN-01: the manor_house building, src/render/manorHouseArt.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0167",
+      "runtimePath": "public/assets/buildings/storehouse-snow/storehouse_a_snow.png",
+      "runtimeSha256": "777451dfc512877d54cb813d5cf94e3502ed691d1b397fc6cbfd9fb574db4264",
+      "sourceSha256": "777451dfc512877d54cb813d5cf94e3502ed691d1b397fc6cbfd9fb574db4264",
+      "consumer": "src/render/storehouseSnowManifest.generated.ts (NAT-5 RUN-02 / N4-D3: winter roof snow on the storehouse, buildingOverlays.ts via storehouseSnowArt.ts, in the body's fitted rect)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0168",
+      "runtimePath": "public/assets/buildings/storehouse-snow/storehouse_b_snow.png",
+      "runtimeSha256": "7494f33392af760fe54076ada75ea43a89eb76975e97e98b9b03f8edd03887bc",
+      "sourceSha256": "7494f33392af760fe54076ada75ea43a89eb76975e97e98b9b03f8edd03887bc",
+      "consumer": "src/render/storehouseSnowManifest.generated.ts (NAT-5 RUN-02 / N4-D3: winter roof snow on the storehouse, buildingOverlays.ts via storehouseSnowArt.ts, in the body's fitted rect)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0169",
+      "runtimePath": "public/assets/buildings/storehouse-snow/storehouse_c_snow.png",
+      "runtimeSha256": "39b586baeda43a40da7d7277f7df99581bd8cf5da53315a59688bf92db97d00b",
+      "sourceSha256": "39b586baeda43a40da7d7277f7df99581bd8cf5da53315a59688bf92db97d00b",
+      "consumer": "src/render/storehouseSnowManifest.generated.ts (NAT-5 RUN-02 / N4-D3: winter roof snow on the storehouse, buildingOverlays.ts via storehouseSnowArt.ts, in the body's fitted rect)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0223",
+      "runtimePath": "public/assets/wave12/bld/manor_house_a-v1.png",
+      "runtimeSha256": "916941e26116e6344755466e902e067b43fe1494994ea74fafe664bb53c6f745",
+      "sourceSha256": "916941e26116e6344755466e902e067b43fe1494994ea74fafe664bb53c6f745",
+      "consumer": "src/render/manorHouseManifest.generated.ts (LM-R1 RUN-01: the manor_house building, src/render/manorHouseArt.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0224",
+      "runtimePath": "public/assets/wave12/bld/manor_house_b-v1.png",
+      "runtimeSha256": "ee3335da84739e139156ed879342ee0312e4a13bd36ee0bf12ce4252fcc3edb4",
+      "sourceSha256": "ee3335da84739e139156ed879342ee0312e4a13bd36ee0bf12ce4252fcc3edb4",
+      "consumer": "src/render/manorHouseManifest.generated.ts (LM-R1 RUN-01: the manor_house building, src/render/manorHouseArt.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0249",
+      "runtimePath": "public/assets/wave12/active/manor_house_a-active-v1.png",
+      "runtimeSha256": "b4f31837396d8e9963005175c9778cbe37dba8f2acf866efcd745a204ef6571d",
+      "sourceSha256": "b4f31837396d8e9963005175c9778cbe37dba8f2acf866efcd745a204ef6571d",
+      "consumer": "src/render/manorHouseManifest.generated.ts (LM-R1 RUN-01: the manor_house building, src/render/manorHouseArt.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0250",
+      "runtimePath": "public/assets/wave12/active/manor_house_b-active-v1.png",
+      "runtimeSha256": "e3747baeece06683f9aa185095a88f4369b8dbd5fc4241ffad925aea50787372",
+      "sourceSha256": "e3747baeece06683f9aa185095a88f4369b8dbd5fc4241ffad925aea50787372",
+      "consumer": "src/render/manorHouseManifest.generated.ts (LM-R1 RUN-01: the manor_house building, src/render/manorHouseArt.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0382",
+      "runtimePath": "public/assets/wave20/houses/house_l0_1350_a-v1.png",
+      "runtimeSha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+      "sourceSha256": "3413e1ef9a3c35816ef690b318b8ce322d411b478ee0566a354e3dc64588b04c",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0383",
+      "runtimePath": "public/assets/wave20/houses/house_l0_1350_b-v1.png",
+      "runtimeSha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+      "sourceSha256": "c64c380ffdde60c5100fb4b3bcf05df04848249fecf1efdb5b7388e79ba5ff5c",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0384",
+      "runtimePath": "public/assets/wave20/houses/house_l0_1400_a-v1.png",
+      "runtimeSha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+      "sourceSha256": "4f9a46d7da85b2b3385d00fddebddef03549da9d9c88b1f0cb66629e58c9fe00",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0385",
+      "runtimePath": "public/assets/wave20/houses/house_l0_1400_b-v1.png",
+      "runtimeSha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+      "sourceSha256": "91199690adcbdba30b8926b6aa72b168d2d443d127f6a75f8a6474082b8fe53d",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0386",
+      "runtimePath": "public/assets/wave20/houses/house_l1_1350_a-v1.png",
+      "runtimeSha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+      "sourceSha256": "44aefa87d3b4510552642e9c225cbe52bf1e881d4b1bcb9fc7b4f90b7617c2cf",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0387",
+      "runtimePath": "public/assets/wave20/houses/house_l1_1350_b-v1.png",
+      "runtimeSha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+      "sourceSha256": "8a33c40412390902c8ade41aceb16e9e702592692fb830aab23ebb0bbb956b00",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0388",
+      "runtimePath": "public/assets/wave20/houses/house_l1_1400_a-v1.png",
+      "runtimeSha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+      "sourceSha256": "061f88c9b58c400efdc134f0198d02bea0ea6dd3cfd08d3890979bf0924747f8",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0389",
+      "runtimePath": "public/assets/wave20/houses/house_l1_1400_b-v1.png",
+      "runtimeSha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+      "sourceSha256": "2dd0f0962bab1ac7efb532ad489dd69a89fc07ee11a854e22065f0f268362354",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0390",
+      "runtimePath": "public/assets/wave20/houses/house_l2_1350_a-v2.png",
+      "runtimeSha256": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55",
+      "sourceSha256": "eae7260cade74a7ccb9b22e20e913f2c4634e6fe132fe2ed13fe2ef2469c0f55",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0391",
+      "runtimePath": "public/assets/wave20/houses/house_l2_1350_b-v2.png",
+      "runtimeSha256": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9",
+      "sourceSha256": "e5d5b9e33ab6b6a901382679bcd7d79241301f49b6abbbc84b6eaa21b03932e9",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0392",
+      "runtimePath": "public/assets/wave20/houses/house_l2_1400_a-v2.png",
+      "runtimeSha256": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6",
+      "sourceSha256": "8c4720c8a7eb07679726c80a924282820343dc0ad811df7d50fc705319ed22b6",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0393",
+      "runtimePath": "public/assets/wave20/houses/house_l2_1400_b-v2.png",
+      "runtimeSha256": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b",
+      "sourceSha256": "21a2a3895a0a87357d35e72c5eb976dcf8e9a1390d1d220018d8872191471f1b",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0394",
+      "runtimePath": "public/assets/wave20/houses/house_l3_1350_a-v2.png",
+      "runtimeSha256": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7",
+      "sourceSha256": "01eda02bd43199fd9096a493ec7c509b9e67a29dcc80afc4f2334098f5df19f7",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0395",
+      "runtimePath": "public/assets/wave20/houses/house_l3_1350_b-v2.png",
+      "runtimeSha256": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084",
+      "sourceSha256": "258c7638867d9b9185873a3b946176cb67ace0b26e0ec2fad3614b7eb7051084",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0396",
+      "runtimePath": "public/assets/wave20/houses/house_l3_1400_a-v2.png",
+      "runtimeSha256": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9",
+      "sourceSha256": "7b883d60b9041ce6d46122d5f7adac2ec728faf64643473f909a82a3f434b1f9",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0397",
+      "runtimePath": "public/assets/wave20/houses/house_l3_1400_b-v2.png",
+      "runtimeSha256": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68",
+      "sourceSha256": "376eb6afed0fd2b883ca45bce863e2e87614e1f33e2078248c89e6759c333e68",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0398",
+      "runtimePath": "public/assets/wave20/houses/house_l4_1350_a-v2.png",
+      "runtimeSha256": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8",
+      "sourceSha256": "ba148ecfb3f672c361ced58c49d2a25f58b9d2b5cd2fa3e295d2ebb885a64ff8",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0399",
+      "runtimePath": "public/assets/wave20/houses/house_l4_1350_b-v2.png",
+      "runtimeSha256": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631",
+      "sourceSha256": "4483abd9716330547de21493ea0307f17a388573ad993c51fbda8e77428a7631",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0400",
+      "runtimePath": "public/assets/wave20/houses/house_l4_1400_a-v2.png",
+      "runtimeSha256": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b",
+      "sourceSha256": "c8cec83c79194ff0ad59139011dfb2f16adefd3d471490714422f0b1dbdc466b",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0401",
+      "runtimePath": "public/assets/wave20/houses/house_l4_1400_b-v2.png",
+      "runtimeSha256": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7",
+      "sourceSha256": "62c8c2b14ea45a4bc0ea460c24c2dc74baed5d8f97d46b8d5b46596f417acfe7",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/historicalHouseAssets.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0402",
+      "runtimePath": "public/assets/wave20/overlays/boarded_l2_1350-v3.png",
+      "runtimeSha256": "5746b6d65c42a49794270491cecbbc49e071b5fddfac3d4e8ce489f3be5e2c39",
+      "sourceSha256": "5746b6d65c42a49794270491cecbbc49e071b5fddfac3d4e8ce489f3be5e2c39",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0403",
+      "runtimePath": "public/assets/wave20/overlays/boarded_l2_1400-v3.png",
+      "runtimeSha256": "126a09ae77818cb16dbc0879c5bbc4bf0b58f750ed314faeb88df47a7ea03787",
+      "sourceSha256": "126a09ae77818cb16dbc0879c5bbc4bf0b58f750ed314faeb88df47a7ea03787",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0404",
+      "runtimePath": "public/assets/wave20/overlays/boarded_l3_1350-v3.png",
+      "runtimeSha256": "70433fae506ec25fadb70648f2922fc79a7d0ac63e32a7859a426cd07bc314e4",
+      "sourceSha256": "70433fae506ec25fadb70648f2922fc79a7d0ac63e32a7859a426cd07bc314e4",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0405",
+      "runtimePath": "public/assets/wave20/overlays/boarded_l3_1400-v3.png",
+      "runtimeSha256": "1da3f94fe23acd56326b9156342fc44309f4f84bcfb72a910455dae6de97516c",
+      "sourceSha256": "1da3f94fe23acd56326b9156342fc44309f4f84bcfb72a910455dae6de97516c",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0406",
+      "runtimePath": "public/assets/wave20/overlays/boarded_l4_1350-v3.png",
+      "runtimeSha256": "2d839d7571c0d7991c771324edc89c370e5da4e57dd6b8eb76caf8143c3aac3e",
+      "sourceSha256": "2d839d7571c0d7991c771324edc89c370e5da4e57dd6b8eb76caf8143c3aac3e",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0407",
+      "runtimePath": "public/assets/wave20/overlays/boarded_l4_1400-v3.png",
+      "runtimeSha256": "75b48f6b52e74a7014d9da683686457fcbf8a5eb1aaacd0678084a37f2410403",
+      "sourceSha256": "75b48f6b52e74a7014d9da683686457fcbf8a5eb1aaacd0678084a37f2410403",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0408",
+      "runtimePath": "public/assets/wave20/overlays/roof_snow_l2_1350-v4.png",
+      "runtimeSha256": "9766c06a55f69cbfa94813401f6b4c7d8a4777719e39ab36ecc5e98dea4fc3dd",
+      "sourceSha256": "9766c06a55f69cbfa94813401f6b4c7d8a4777719e39ab36ecc5e98dea4fc3dd",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0409",
+      "runtimePath": "public/assets/wave20/overlays/roof_snow_l2_1400-v4.png",
+      "runtimeSha256": "0058445ce889fd9aea12d69ce52f842f159adc6afa44b9a20a0fc42407590c94",
+      "sourceSha256": "0058445ce889fd9aea12d69ce52f842f159adc6afa44b9a20a0fc42407590c94",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0410",
+      "runtimePath": "public/assets/wave20/overlays/roof_snow_l3_1350-v4.png",
+      "runtimeSha256": "19dcf99f2eb1c4f1ae950f867a329c6c9f511a4f8853e21515ba8ddd93f31d8a",
+      "sourceSha256": "19dcf99f2eb1c4f1ae950f867a329c6c9f511a4f8853e21515ba8ddd93f31d8a",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0411",
+      "runtimePath": "public/assets/wave20/overlays/roof_snow_l3_1400-v4.png",
+      "runtimeSha256": "29d986787eabb4fbc22191548980b5be52d7476f83ccf24297299e9d095b21a0",
+      "sourceSha256": "29d986787eabb4fbc22191548980b5be52d7476f83ccf24297299e9d095b21a0",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0412",
+      "runtimePath": "public/assets/wave20/overlays/roof_snow_l4_1350-v4.png",
+      "runtimeSha256": "c209486d793a6f109b2a90ba3c0c11885c20025259e2889f022b7bdb35ebfca6",
+      "sourceSha256": "c209486d793a6f109b2a90ba3c0c11885c20025259e2889f022b7bdb35ebfca6",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0413",
+      "runtimePath": "public/assets/wave20/overlays/roof_snow_l4_1400-v4.png",
+      "runtimeSha256": "7f7729b3e2aedfe5a060fd1f5c66d65efa76f4339791649d667e81b4a5789954",
+      "sourceSha256": "7f7729b3e2aedfe5a060fd1f5c66d65efa76f4339791649d667e81b4a5789954",
+      "consumer": "src/render/art/contractHouseArt.ts; src/render/art/artAdapters.ts; src/render/buildingOverlays.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0414",
+      "runtimePath": "public/assets/wave22/decals/heath_patch_b.png",
+      "runtimeSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+      "sourceSha256": "8bc85a500ad5de03a34e76f7eadfdda9908217824ba7fb25b41daca56217d565",
+      "consumer": "src/render/art/catalog.json -> landDecalArt.ts; ground-prop placement land",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0415",
+      "runtimePath": "public/assets/wave22/decals/heath_patch_c.png",
+      "runtimeSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+      "sourceSha256": "4031ebe921cbfdb7cc4fa42905bfaa4b3bf4f255c39d1189fc800be79f2b0458",
+      "consumer": "src/render/art/catalog.json -> landDecalArt.ts; ground-prop placement land",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0482",
+      "runtimePath": "public/assets/wave35-receipts/E_receipts/reason_bar_cap_minus.png",
+      "runtimeSha256": "475ced5985184f7416c1d848b14da222d46dbd961c45e8219bd0cb4fabce130f",
+      "sourceSha256": "475ced5985184f7416c1d848b14da222d46dbd961c45e8219bd0cb4fabce130f",
+      "consumer": "src/ui/lord/receiptArt.ts; src/styles/lordReceipt.css (LM-R1: the lord mode's \"왜 여기?\" receipt, src/ui/lord/ReceiptPanel.tsx)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0483",
+      "runtimePath": "public/assets/wave35-receipts/E_receipts/reason_bar_cap_plus.png",
+      "runtimeSha256": "2a00bddf7973ffab36bfabc16f8218dff381c01b9e9bc146204f59e9b9e8f708",
+      "sourceSha256": "2a00bddf7973ffab36bfabc16f8218dff381c01b9e9bc146204f59e9b9e8f708",
+      "consumer": "src/ui/lord/receiptArt.ts; src/styles/lordReceipt.css (LM-R1: the lord mode's \"왜 여기?\" receipt, src/ui/lord/ReceiptPanel.tsx)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0484",
+      "runtimePath": "public/assets/wave35-receipts/E_receipts/receipt_frame.png",
+      "runtimeSha256": "eb4580f91381bc0443f84d620fcb17166d0acbbe7a3da2d3c9af7cb24f395b1c",
+      "sourceSha256": "eb4580f91381bc0443f84d620fcb17166d0acbbe7a3da2d3c9af7cb24f395b1c",
+      "consumer": "src/ui/lord/receiptArt.ts; src/styles/lordReceipt.css (LM-R1: the lord mode's \"왜 여기?\" receipt, src/ui/lord/ReceiptPanel.tsx)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0485",
+      "runtimePath": "public/assets/wave35-receipts/E_receipts/related_decision_ribbon.png",
+      "runtimeSha256": "e72d07c0045c16123dd2dfb64a1dc1f16cd5b30df70e799eef4a46423a72287b",
+      "sourceSha256": "e72d07c0045c16123dd2dfb64a1dc1f16cd5b30df70e799eef4a46423a72287b",
+      "consumer": "src/ui/lord/receiptArt.ts; src/styles/lordReceipt.css (LM-R1: the lord mode's \"왜 여기?\" receipt, src/ui/lord/ReceiptPanel.tsx)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0486",
+      "runtimePath": "public/assets/wave37/condition_newcomer_cart_a.png",
+      "runtimeSha256": "c19982c9161b8cf7eccb3f81184c78be0bb70f194bfe2e0697da64ea297237a7",
+      "sourceSha256": "c19982c9161b8cf7eccb3f81184c78be0bb70f194bfe2e0697da64ea297237a7",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0487",
+      "runtimePath": "public/assets/wave37/condition_newcomer_cart_b.png",
+      "runtimeSha256": "223610882f5ac4e6a8d560fcbfb05f1acad22f1c95a6c93581cf63eeef274d69",
+      "sourceSha256": "223610882f5ac4e6a8d560fcbfb05f1acad22f1c95a6c93581cf63eeef274d69",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0488",
+      "runtimePath": "public/assets/wave37/condition_ordinary_bench.png",
+      "runtimeSha256": "dba243e20097ba22551f3025bfa5fdb822a20194da9ff56b00b1db26798822b2",
+      "sourceSha256": "dba243e20097ba22551f3025bfa5fdb822a20194da9ff56b00b1db26798822b2",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0489",
+      "runtimePath": "public/assets/wave37/condition_ordinary_water.png",
+      "runtimeSha256": "18905e936a41297cbe9f8abbd72c9e0bb1542fc53d8c4afbb8c6537159ca0cb9",
+      "sourceSha256": "18905e936a41297cbe9f8abbd72c9e0bb1542fc53d8c4afbb8c6537159ca0cb9",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0490",
+      "runtimePath": "public/assets/wave37/condition_prosperous_pots.png",
+      "runtimeSha256": "7fbb7a481735ec7258e2d09e38c262f70bba99cf0b29855d1eb5bd8da1685a07",
+      "sourceSha256": "7fbb7a481735ec7258e2d09e38c262f70bba99cf0b29855d1eb5bd8da1685a07",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0491",
+      "runtimePath": "public/assets/wave37/condition_strained_barrel.png",
+      "runtimeSha256": "37c728fff7a3831d1e812143c6aa1607a468f7e07d341449fa6f8470cf386fe6",
+      "sourceSha256": "37c728fff7a3831d1e812143c6aa1607a468f7e07d341449fa6f8470cf386fe6",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0492",
+      "runtimePath": "public/assets/wave37/condition_strained_firewood.png",
+      "runtimeSha256": "a927d9708ec990d13093c142ec36a36bd4780d0c9b6f8ed29c428f4b13405e2c",
+      "sourceSha256": "a927d9708ec990d13093c142ec36a36bd4780d0c9b6f8ed29c428f4b13405e2c",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0493",
+      "runtimePath": "public/assets/wave37/trade_ale_a.png",
+      "runtimeSha256": "76d37a02795c76f7e8c668fa5acc86d4d6cdb53de7b06bcc002ebe2998809b18",
+      "sourceSha256": "76d37a02795c76f7e8c668fa5acc86d4d6cdb53de7b06bcc002ebe2998809b18",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0494",
+      "runtimePath": "public/assets/wave37/trade_ale_b.png",
+      "runtimeSha256": "ff54e96da66987c248b896d2f392b4436723155b568d07675e9f50019dff9aa0",
+      "sourceSha256": "ff54e96da66987c248b896d2f392b4436723155b568d07675e9f50019dff9aa0",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0495",
+      "runtimePath": "public/assets/wave37/trade_baker_a.png",
+      "runtimeSha256": "40266fd8f5bb0f1cc17f92538254d281f3a2eed62c5ce6a889d36fcb54de70b8",
+      "sourceSha256": "40266fd8f5bb0f1cc17f92538254d281f3a2eed62c5ce6a889d36fcb54de70b8",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0496",
+      "runtimePath": "public/assets/wave37/trade_baker_b.png",
+      "runtimeSha256": "486f4dcbf479a17ec2582be82e6f3d36b289d6326f3cbf54f1d5df41fd6c3e0a",
+      "sourceSha256": "486f4dcbf479a17ec2582be82e6f3d36b289d6326f3cbf54f1d5df41fd6c3e0a",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0497",
+      "runtimePath": "public/assets/wave37/trade_carpenter_b.png",
+      "runtimeSha256": "8e4ed06bec2e239e155c5a3316ef24a52fe411ca88e0dfdb55a4265c5c731c7f",
+      "sourceSha256": "8e4ed06bec2e239e155c5a3316ef24a52fe411ca88e0dfdb55a4265c5c731c7f",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0498",
+      "runtimePath": "public/assets/wave37/trade_dyer_a.png",
+      "runtimeSha256": "ba19e54b6b442fa0bde294e55094883f1f01ffb3193914a4e08ab2978cb9a0a1",
+      "sourceSha256": "ba19e54b6b442fa0bde294e55094883f1f01ffb3193914a4e08ab2978cb9a0a1",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0499",
+      "runtimePath": "public/assets/wave37/trade_dyer_b.png",
+      "runtimeSha256": "3076470d32b37b44affdd9255948707a62017088359a11edc9107635a3fb18fd",
+      "sourceSha256": "3076470d32b37b44affdd9255948707a62017088359a11edc9107635a3fb18fd",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0500",
+      "runtimePath": "public/assets/wave37/trade_fisher_a.png",
+      "runtimeSha256": "a79a77aa9594f206980a41821f0574154e775c277f8dac868f9e093c8e69e2c6",
+      "sourceSha256": "a79a77aa9594f206980a41821f0574154e775c277f8dac868f9e093c8e69e2c6",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0501",
+      "runtimePath": "public/assets/wave37/trade_fisher_b.png",
+      "runtimeSha256": "4fb554b9138afd596c78210592f137c1aec72b731462f06e29f5eef83d5ee79b",
+      "sourceSha256": "4fb554b9138afd596c78210592f137c1aec72b731462f06e29f5eef83d5ee79b",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0502",
+      "runtimePath": "public/assets/wave37/trade_inn_a.png",
+      "runtimeSha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+      "sourceSha256": "2469a6d9db08f4a05b556c9ffd7158890c87b9ace1842465496ee6addda9091a",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0503",
+      "runtimePath": "public/assets/wave37/trade_inn_b.png",
+      "runtimeSha256": "e076ef8e2af3b5c94db1dcf3721d59952a657647d11203ecb6fcbc376c96844a",
+      "sourceSha256": "e076ef8e2af3b5c94db1dcf3721d59952a657647d11203ecb6fcbc376c96844a",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0504",
+      "runtimePath": "public/assets/wave37/trade_merchant_a.png",
+      "runtimeSha256": "a3c01ce81b745563d0961c28c29a8d7cbefbb95284c79795cac7763b8d34fdc9",
+      "sourceSha256": "a3c01ce81b745563d0961c28c29a8d7cbefbb95284c79795cac7763b8d34fdc9",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0505",
+      "runtimePath": "public/assets/wave37/trade_merchant_b.png",
+      "runtimeSha256": "8609231aa971102edd8d57d7040cbee0a5d4d0353ef73b25adc3a330f7798ae0",
+      "sourceSha256": "8609231aa971102edd8d57d7040cbee0a5d4d0353ef73b25adc3a330f7798ae0",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0506",
+      "runtimePath": "public/assets/wave37/trade_shepherd_a.png",
+      "runtimeSha256": "caf5dcf6f8ac727c660a0f17ac25b534dd9fbf9b74aad12ab7227562688a3879",
+      "sourceSha256": "caf5dcf6f8ac727c660a0f17ac25b534dd9fbf9b74aad12ab7227562688a3879",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0507",
+      "runtimePath": "public/assets/wave37/trade_shepherd_b.png",
+      "runtimeSha256": "d6e8717f3be385301f5ea5c805b5f381acf1713c4bcb3fa5b225242c300055fa",
+      "sourceSha256": "d6e8717f3be385301f5ea5c805b5f381acf1713c4bcb3fa5b225242c300055fa",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0508",
+      "runtimePath": "public/assets/wave37/trade_smith_a.png",
+      "runtimeSha256": "b8e02373d0f695d041839a98bf7c39a0cc96255112d6ed5570e0f2862a371c6d",
+      "sourceSha256": "b8e02373d0f695d041839a98bf7c39a0cc96255112d6ed5570e0f2862a371c6d",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0509",
+      "runtimePath": "public/assets/wave37/trade_smith_b.png",
+      "runtimeSha256": "d94ad9e45a7346e84fae8acb25939f7343ad920bb3e2c21c70e6606383bb27cd",
+      "sourceSha256": "d94ad9e45a7346e84fae8acb25939f7343ad920bb3e2c21c70e6606383bb27cd",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0510",
+      "runtimePath": "public/assets/wave37/trade_tanner_a.png",
+      "runtimeSha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+      "sourceSha256": "37306717160ef44eea7bae13e82acad952b512a3fe46c2bedbec23790e872464",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0511",
+      "runtimePath": "public/assets/wave37/trade_tanner_b.png",
+      "runtimeSha256": "ba1d2f1661c6d08a5a8e000d8d521fbb954a9ce08a4a091de86c77642f74a472",
+      "sourceSha256": "ba1d2f1661c6d08a5a8e000d8d521fbb954a9ce08a4a091de86c77642f74a472",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0512",
+      "runtimePath": "public/assets/wave37/trade_weaver_a.png",
+      "runtimeSha256": "f90010dc7def67b3287bae84a6e998b5b5ee5542643b03aa7f0b1f27675a390f",
+      "sourceSha256": "f90010dc7def67b3287bae84a6e998b5b5ee5542643b03aa7f0b1f27675a390f",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0513",
+      "runtimePath": "public/assets/wave37/trade_weaver_b.png",
+      "runtimeSha256": "dee42edfe7d6b8abcdb3633ac9b4da5da5518f285b54df8a903c47572a14e12a",
+      "sourceSha256": "dee42edfe7d6b8abcdb3633ac9b4da5da5518f285b54df8a903c47572a14e12a",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0514",
+      "runtimePath": "public/assets/wave37/condition_prosperous_bench.png",
+      "runtimeSha256": "feb62ef262ef093d2e67339bd80f19a412dd08c1f135e307ed8a6af12e3409bb",
+      "sourceSha256": "feb62ef262ef093d2e67339bd80f19a412dd08c1f135e307ed8a6af12e3409bb",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0515",
+      "runtimePath": "public/assets/wave37/trade_carpenter_a.png",
+      "runtimeSha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+      "sourceSha256": "577c323fb03b2deefc99256fe9b669a8ee6e09f962058aa45e226e1d6f5fd053",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0516",
+      "runtimePath": "public/assets/wave37/trade_miller_a.png",
+      "runtimeSha256": "8d9212df0398364965986b7612ca1b39d070c8951caea9c4005010773ca85c73",
+      "sourceSha256": "8d9212df0398364965986b7612ca1b39d070c8951caea9c4005010773ca85c73",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0517",
+      "runtimePath": "public/assets/wave37/trade_miller_b.png",
+      "runtimeSha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+      "sourceSha256": "788f8d03d7cf6e6dfcbad03b6793ee4d524a64d2f4b655a15bbbf1608e632ff9",
+      "consumer": "src/render/wave37DoorSignManifest.generated.ts (LM-R1: the lord-mode house-front sign on the road side, src/render/doorSigns.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0518",
+      "runtimePath": "public/assets/wave38/button_danger_disabled.png",
+      "runtimeSha256": "2330d49d19d8b96b49743e453f82f66111a50529c73b01bc79ac2e0e4e91dee5",
+      "sourceSha256": "2330d49d19d8b96b49743e453f82f66111a50529c73b01bc79ac2e0e4e91dee5",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0519",
+      "runtimePath": "public/assets/wave38/button_danger_hover.png",
+      "runtimeSha256": "48312602a61afc71781fa01ebe912f71dc72774e94a84710c7bce7f1a356a370",
+      "sourceSha256": "48312602a61afc71781fa01ebe912f71dc72774e94a84710c7bce7f1a356a370",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0520",
+      "runtimePath": "public/assets/wave38/button_danger_normal.png",
+      "runtimeSha256": "064c1caa8c07f74fa9d9d585d93390d458c7e1eee3f5a3ac6425ad60280fc495",
+      "sourceSha256": "064c1caa8c07f74fa9d9d585d93390d458c7e1eee3f5a3ac6425ad60280fc495",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0521",
+      "runtimePath": "public/assets/wave38/button_danger_pressed.png",
+      "runtimeSha256": "30edb289d9d02c9bb393707a56fbe7e43696a4500460abab02d05f034e8384ca",
+      "sourceSha256": "30edb289d9d02c9bb393707a56fbe7e43696a4500460abab02d05f034e8384ca",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0522",
+      "runtimePath": "public/assets/wave38/button_icon_disabled.png",
+      "runtimeSha256": "3623b0cc9a9dbeaa06714f47246414e080fd506e8f0d6ca1d2331ce61d24dcac",
+      "sourceSha256": "3623b0cc9a9dbeaa06714f47246414e080fd506e8f0d6ca1d2331ce61d24dcac",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0523",
+      "runtimePath": "public/assets/wave38/button_icon_hover.png",
+      "runtimeSha256": "c202d26b1fef44ed14f228ed2e4e10e4a7294fb7b7fbbc6cbd132f1cfc02cf81",
+      "sourceSha256": "c202d26b1fef44ed14f228ed2e4e10e4a7294fb7b7fbbc6cbd132f1cfc02cf81",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0524",
+      "runtimePath": "public/assets/wave38/button_icon_normal.png",
+      "runtimeSha256": "eef065c39194c83cb7b01305cbfe77bd81fa6de1dbe6b8f67852f445d8d29908",
+      "sourceSha256": "eef065c39194c83cb7b01305cbfe77bd81fa6de1dbe6b8f67852f445d8d29908",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0525",
+      "runtimePath": "public/assets/wave38/button_icon_pressed.png",
+      "runtimeSha256": "b5ac211afdd0015ef8e7c8d0b6c9cc758fdbf935cb17ec398e509e78d07a8108",
+      "sourceSha256": "b5ac211afdd0015ef8e7c8d0b6c9cc758fdbf935cb17ec398e509e78d07a8108",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0526",
+      "runtimePath": "public/assets/wave38/button_secondary_disabled.png",
+      "runtimeSha256": "6efc8b3baff434e183e977bb7cfc39db515e8833c00a5b584b17cbebd961537b",
+      "sourceSha256": "6efc8b3baff434e183e977bb7cfc39db515e8833c00a5b584b17cbebd961537b",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0527",
+      "runtimePath": "public/assets/wave38/button_secondary_hover.png",
+      "runtimeSha256": "de30999c6a215d1e7963d16f39229978059378195e147b6151be4f6dc2d991c3",
+      "sourceSha256": "de30999c6a215d1e7963d16f39229978059378195e147b6151be4f6dc2d991c3",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0528",
+      "runtimePath": "public/assets/wave38/button_secondary_normal.png",
+      "runtimeSha256": "dd47f5b24d43cc3e4b4529d0a76e45eec8e2d6844f628d16daec3d7895d35c42",
+      "sourceSha256": "dd47f5b24d43cc3e4b4529d0a76e45eec8e2d6844f628d16daec3d7895d35c42",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0529",
+      "runtimePath": "public/assets/wave38/button_secondary_pressed.png",
+      "runtimeSha256": "7543ef75105bc5eebe482d51f1e7b83a032f0855040caef6c863a4d7a2fc552e",
+      "sourceSha256": "7543ef75105bc5eebe482d51f1e7b83a032f0855040caef6c863a4d7a2fc552e",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0530",
+      "runtimePath": "public/assets/wave38/checkbox_checked.png",
+      "runtimeSha256": "2200d83fe03f9e22807f3c0f53f6333ca5a6b57b0267f6ecfe077cf8aaa2d944",
+      "sourceSha256": "2200d83fe03f9e22807f3c0f53f6333ca5a6b57b0267f6ecfe077cf8aaa2d944",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0531",
+      "runtimePath": "public/assets/wave38/checkbox_disabled.png",
+      "runtimeSha256": "bfb4abda8776f114a1af24b1955eed3aebb02460820453be184ef8e6ffca70a0",
+      "sourceSha256": "bfb4abda8776f114a1af24b1955eed3aebb02460820453be184ef8e6ffca70a0",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0532",
+      "runtimePath": "public/assets/wave38/checkbox_empty.png",
+      "runtimeSha256": "65e78bd6bfb785a2289f80cd8ab71e1cbb7f9b92b2902e3cdbf118768bfa43f7",
+      "sourceSha256": "65e78bd6bfb785a2289f80cd8ab71e1cbb7f9b92b2902e3cdbf118768bfa43f7",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0533",
+      "runtimePath": "public/assets/wave38/chip_normal.png",
+      "runtimeSha256": "23bd5126fe215a54a724e99a8c17ecef550511bee52081afcd1a4a4e96bbf762",
+      "sourceSha256": "23bd5126fe215a54a724e99a8c17ecef550511bee52081afcd1a4a4e96bbf762",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0534",
+      "runtimePath": "public/assets/wave38/chip_selected.png",
+      "runtimeSha256": "81dc18889ee4328d3741ebfe224241c6ae158eacef7c8dd8731178b84a82186c",
+      "sourceSha256": "81dc18889ee4328d3741ebfe224241c6ae158eacef7c8dd8731178b84a82186c",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0535",
+      "runtimePath": "public/assets/wave38/close_hover.png",
+      "runtimeSha256": "d9e75e832481bad9b0a738024f6c09a7459eab3c763b6d3aba726971b88e5093",
+      "sourceSha256": "d9e75e832481bad9b0a738024f6c09a7459eab3c763b6d3aba726971b88e5093",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0536",
+      "runtimePath": "public/assets/wave38/close_normal.png",
+      "runtimeSha256": "dafe080b52f849c3816db5be7c79264154f266f04271130a3f95e669c6369496",
+      "sourceSha256": "dafe080b52f849c3816db5be7c79264154f266f04271130a3f95e669c6369496",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0537",
+      "runtimePath": "public/assets/wave38/close_pressed.png",
+      "runtimeSha256": "39ed81cb8a71751f123ed2e275c0e8f154f5081876f4c7677795ff1f99a8c6f0",
+      "sourceSha256": "39ed81cb8a71751f123ed2e275c0e8f154f5081876f4c7677795ff1f99a8c6f0",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0538",
+      "runtimePath": "public/assets/wave38/input_focus.png",
+      "runtimeSha256": "bbd96bbc0e0f5ce4b4b68f5c6c26115eaf3bd88f0f9778d521d2bf6f80d4cb47",
+      "sourceSha256": "bbd96bbc0e0f5ce4b4b68f5c6c26115eaf3bd88f0f9778d521d2bf6f80d4cb47",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0539",
+      "runtimePath": "public/assets/wave38/input_normal.png",
+      "runtimeSha256": "b2d7fa7fd43de7096015cfb211cadcc933ceff383c676097599980200d4f31b6",
+      "sourceSha256": "b2d7fa7fd43de7096015cfb211cadcc933ceff383c676097599980200d4f31b6",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0540",
+      "runtimePath": "public/assets/wave38/radio_empty.png",
+      "runtimeSha256": "125c2e671b4f1701304e2eb7df16413d60ad422345f69917e3705ca8e74b137d",
+      "sourceSha256": "125c2e671b4f1701304e2eb7df16413d60ad422345f69917e3705ca8e74b137d",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0541",
+      "runtimePath": "public/assets/wave38/radio_selected.png",
+      "runtimeSha256": "e3598ea6aa3b09caba73b65945e77d92bc67aeb553d4445e95953b860697e0a9",
+      "sourceSha256": "e3598ea6aa3b09caba73b65945e77d92bc67aeb553d4445e95953b860697e0a9",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0542",
+      "runtimePath": "public/assets/wave38/scrollbar_thumb.png",
+      "runtimeSha256": "b111ee59d9cc5a3695fb8e324e8ef836da7287dc2d717d8ad76870085fb953d5",
+      "sourceSha256": "b111ee59d9cc5a3695fb8e324e8ef836da7287dc2d717d8ad76870085fb953d5",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0543",
+      "runtimePath": "public/assets/wave38/scrollbar_track.png",
+      "runtimeSha256": "08ba2aa30e468574fa52605bf4bc2aa86d7b95b07912f50c1f723b02205f01f3",
+      "sourceSha256": "08ba2aa30e468574fa52605bf4bc2aa86d7b95b07912f50c1f723b02205f01f3",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0544",
+      "runtimePath": "public/assets/wave38/select_closed.png",
+      "runtimeSha256": "f227c01afd33703e3fc0d5bdba767de7555cfcaeef376e092ddfcc233e613ae8",
+      "sourceSha256": "f227c01afd33703e3fc0d5bdba767de7555cfcaeef376e092ddfcc233e613ae8",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0545",
+      "runtimePath": "public/assets/wave38/select_open_list.png",
+      "runtimeSha256": "62d18263f3ca7e9a2e99de14d5686be0ff0c9a23e44f79ecee00fee686544fea",
+      "sourceSha256": "62d18263f3ca7e9a2e99de14d5686be0ff0c9a23e44f79ecee00fee686544fea",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0546",
+      "runtimePath": "public/assets/wave38/select_row_hover.png",
+      "runtimeSha256": "53fcb8e0d98b9b71a40129351abca85139822111d9aacd250bf29d0bfa2fdc03",
+      "sourceSha256": "53fcb8e0d98b9b71a40129351abca85139822111d9aacd250bf29d0bfa2fdc03",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0547",
+      "runtimePath": "public/assets/wave38/slider_thumb.png",
+      "runtimeSha256": "bbab90033ca758853fd1dbf4f03ffc5f332908ad7b9598398e5fb53bed53f57b",
+      "sourceSha256": "bbab90033ca758853fd1dbf4f03ffc5f332908ad7b9598398e5fb53bed53f57b",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0548",
+      "runtimePath": "public/assets/wave38/slider_track.png",
+      "runtimeSha256": "659cf09986ce7d58bb5505c7c0ddea46047448dac74d1869b4aaf453e021e7c4",
+      "sourceSha256": "659cf09986ce7d58bb5505c7c0ddea46047448dac74d1869b4aaf453e021e7c4",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0549",
+      "runtimePath": "public/assets/wave38/tab_selected.png",
+      "runtimeSha256": "0dea705d35749fff366029435a14d17aca3b4f9a2ec8cc97d0885c37f4bdb1c8",
+      "sourceSha256": "0dea705d35749fff366029435a14d17aca3b4f9a2ec8cc97d0885c37f4bdb1c8",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0550",
+      "runtimePath": "public/assets/wave38/tab_unselected.png",
+      "runtimeSha256": "b83bc0a5d8c43751f319023ee2b58fafdd55e6a1662aff29444cfa046a3471a8",
+      "sourceSha256": "b83bc0a5d8c43751f319023ee2b58fafdd55e6a1662aff29444cfa046a3471a8",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0551",
+      "runtimePath": "public/assets/wave38/toggle_off.png",
+      "runtimeSha256": "83350aee6068c0382477c948f2e9a37ee09967ed0e213b4abc6264349ba4cabc",
+      "sourceSha256": "83350aee6068c0382477c948f2e9a37ee09967ed0e213b4abc6264349ba4cabc",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0552",
+      "runtimePath": "public/assets/wave38/toggle_on.png",
+      "runtimeSha256": "577f187ba285f85bdacbcd8332db995145cb144c827aa662c468d1226fa7420e",
+      "sourceSha256": "577f187ba285f85bdacbcd8332db995145cb144c827aa662c468d1226fa7420e",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0553",
+      "runtimePath": "public/assets/wave38/button_primary_disabled.png",
+      "runtimeSha256": "8e2a7c3216341d4089fe67701919b28adabf372dba41293704784f833087b4c0",
+      "sourceSha256": "8e2a7c3216341d4089fe67701919b28adabf372dba41293704784f833087b4c0",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0554",
+      "runtimePath": "public/assets/wave38/button_primary_hover.png",
+      "runtimeSha256": "0c9a1eb33e654893e3703309308e748a8e96bbb2a782e969c2a755187c23a810",
+      "sourceSha256": "0c9a1eb33e654893e3703309308e748a8e96bbb2a782e969c2a755187c23a810",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0555",
+      "runtimePath": "public/assets/wave38/button_primary_normal.png",
+      "runtimeSha256": "310997d4a96890b9b96c7a27911f5c638a201b82158bb3bc11f2adaddb9e593e",
+      "sourceSha256": "310997d4a96890b9b96c7a27911f5c638a201b82158bb3bc11f2adaddb9e593e",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0556",
+      "runtimePath": "public/assets/wave38/button_primary_pressed.png",
+      "runtimeSha256": "99cfd880680ccd50cddf56cb1cb86b301a17e5968f18ae0e4f8a38c146488de7",
+      "sourceSha256": "99cfd880680ccd50cddf56cb1cb86b301a17e5968f18ae0e4f8a38c146488de7",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0557",
+      "runtimePath": "public/assets/wave38/tab_hover.png",
+      "runtimeSha256": "33668775fd1979026bb9a7ff198ad4af56b92f3c0fe91c8845929474622657f3",
+      "sourceSha256": "33668775fd1979026bb9a7ff198ad4af56b92f3c0fe91c8845929474622657f3",
+      "consumer": "src/ui/wave38ArtManifest.generated.ts -> scripts/frameTokens.ts (src/styles/frameTokens.generated.css --button-* / --control-*) -> src/styles/uiKit.css, src/styles/uiSkin.css (LM-R1: the kit's buttons, tabs, checkbox, radio, toggle, select, slider, number field, chip, the close button and the scrollbars)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0630",
+      "runtimePath": "public/assets/module/bridge_abutment_ne_a-v1.png",
+      "runtimeSha256": "92b2ed4f254f6b2e7d50ddcda0a9c83803909e3251b47967dc58da5b90c79323",
+      "sourceSha256": "92b2ed4f254f6b2e7d50ddcda0a9c83803909e3251b47967dc58da5b90c79323",
+      "consumer": "src/render/terrainVariantManifest.ts (registered for the D3 curved shore / wall / bridge render; not drawn yet (C1e))",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0631",
+      "runtimePath": "public/assets/module/bridge_abutment_nw_a-v1.png",
+      "runtimeSha256": "be20e0f47ff3bf91873da6189a489ab986b2f651ff69e11898598f1930b35eec",
+      "sourceSha256": "be20e0f47ff3bf91873da6189a489ab986b2f651ff69e11898598f1930b35eec",
+      "consumer": "src/render/terrainVariantManifest.ts (registered for the D3 curved shore / wall / bridge render; not drawn yet (C1e))",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0632",
+      "runtimePath": "public/assets/module/bridge_abutment_se_a-v1.png",
+      "runtimeSha256": "dc062745c18a355138733b3917868f434b1e1dffa3bdd80983be2d7c8e6507c6",
+      "sourceSha256": "dc062745c18a355138733b3917868f434b1e1dffa3bdd80983be2d7c8e6507c6",
+      "consumer": "src/render/terrainVariantManifest.ts (D3b-2: wall strips v2, stone corner tower, deep water, shore strips e/f, reed and mudstone decals, front bridge abutment)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0633",
+      "runtimePath": "public/assets/wave12/bld/guildhall-active-v1.png",
+      "runtimeSha256": "892d1984ae7ddc6ea9361ed6ec92ffa69ac78814af4123430513129b090bf955",
+      "sourceSha256": "892d1984ae7ddc6ea9361ed6ec92ffa69ac78814af4123430513129b090bf955",
+      "consumer": "src/render/wave12GuildhallManifest.generated.ts (UI-9: guildhall active overlay)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0634",
+      "runtimePath": "public/assets/zones/haycock_a-v1.png",
+      "runtimeSha256": "6a3704323144f040231bf88ba465290f18455e042cf7ab2dabe8c263c8ddcd5c",
+      "sourceSha256": "6a3704323144f040231bf88ba465290f18455e042cf7ab2dabe8c263c8ddcd5c",
+      "consumer": "src/render/zoneAssetManifest.ts (pasture zone haycock prop (C1b)); src/render/drawZones.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0635",
+      "runtimePath": "public/assets/zones/haycock_b-v1.png",
+      "runtimeSha256": "dbe5d03f6b30b994761c8afb49e35b8e4165038b07208778c4ca45101631ac53",
+      "sourceSha256": "dbe5d03f6b30b994761c8afb49e35b8e4165038b07208778c4ca45101631ac53",
+      "consumer": "src/render/zoneAssetManifest.ts (pasture zone haycock prop (C1b)); src/render/drawZones.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0636",
+      "runtimePath": "public/assets/zones/haycock_c-v1.png",
+      "runtimeSha256": "cd1a1df952e0f26c5f4596a5ec28471872d66aac7284948fbf182a32fab3d93c",
+      "sourceSha256": "cd1a1df952e0f26c5f4596a5ec28471872d66aac7284948fbf182a32fab3d93c",
+      "consumer": "src/render/zoneAssetManifest.ts (pasture haycock variant (C1e)); src/render/zonePropSprites.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0637",
+      "runtimePath": "public/assets/zones/haycock_d-v1.png",
+      "runtimeSha256": "8c5077c8a47bc4c5944099d998d388c65e5ba5866b72dc5843f1053e8ecf99bd",
+      "sourceSha256": "8c5077c8a47bc4c5944099d998d388c65e5ba5866b72dc5843f1053e8ecf99bd",
+      "consumer": "src/render/zoneAssetManifest.ts (pasture haycock variant (C1e)); src/render/zonePropSprites.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0638",
+      "runtimePath": "public/assets/zones/haycock_e-v1.png",
+      "runtimeSha256": "55ae63a29537592bef6620753fce87082838157584f9d987e8931caeafb1c999",
+      "sourceSha256": "55ae63a29537592bef6620753fce87082838157584f9d987e8931caeafb1c999",
+      "consumer": "src/render/zoneAssetManifest.ts (pasture haycock variant (C1e)); src/render/zonePropSprites.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0639",
+      "runtimePath": "public/assets/zones/haycock_f-v1.png",
+      "runtimeSha256": "2e935064269358db5bde6168d8df538c751b5649971d917592743be71d069548",
+      "sourceSha256": "2e935064269358db5bde6168d8df538c751b5649971d917592743be71d069548",
+      "consumer": "src/render/zoneAssetManifest.ts (pasture haycock variant (C1e)); src/render/zonePropSprites.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0640",
+      "runtimePath": "public/assets/zones/orchard_apple_c-v1.png",
+      "runtimeSha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753",
+      "sourceSha256": "9b4e11045540c46e1c477554ae0363b6ee1d9b202ab49905637c8521e09e8753",
+      "consumer": "src/render/zoneAssetManifest.ts (orchard zone tree scatter (C1b)); src/render/drawZones.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0641",
+      "runtimePath": "public/assets/zones/orchard_apple_d-v1.png",
+      "runtimeSha256": "9a7517d707fb8fb150151092a00994f8ea8ab24ae997ad8a82a2dae61aead90f",
+      "sourceSha256": "9a7517d707fb8fb150151092a00994f8ea8ab24ae997ad8a82a2dae61aead90f",
+      "consumer": "src/render/zoneAssetManifest.ts (orchard tree variant (C1e)); src/render/zonePropSprites.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0642",
+      "runtimePath": "public/assets/zones/orchard_pear_e-v1.png",
+      "runtimeSha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5",
+      "sourceSha256": "ded1852c37d7a24c33216b7b7b63b2a4ca2ca8428d19462bd4bbcf3954708bf5",
+      "consumer": "src/render/zoneAssetManifest.ts (orchard tree variant (C1e)); src/render/zonePropSprites.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0643",
+      "runtimePath": "public/assets/zones/orchard_plum_f-v1.png",
+      "runtimeSha256": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665",
+      "sourceSha256": "fa158f5ac19631e608c00e0e38f7be23db5a40c08c1738c5104a4c8a281c6665",
+      "consumer": "src/render/zoneAssetManifest.ts (orchard tree variant (C1e)); src/render/zonePropSprites.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0644",
+      "runtimePath": "public/assets/yards/hurdle_straight-v1.png",
+      "runtimeSha256": "995fcc5fc43d171add99009a91f2d9b1b5ddbaf21cce6cc8094a004db192189e",
+      "sourceSha256": "995fcc5fc43d171add99009a91f2d9b1b5ddbaf21cce6cc8094a004db192189e",
+      "consumer": "src/render/zoneAssetManifest.ts (hurdle fence on house yard edges (C1e)); src/render/drawYardProps.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0645",
+      "runtimePath": "public/assets/yards/hurdle_end_corner-v1.png",
+      "runtimeSha256": "9beb7e9e898498067b477b286fbf91cea3a8d5adeb89df97de133f68ccdec9f6",
+      "sourceSha256": "9beb7e9e898498067b477b286fbf91cea3a8d5adeb89df97de133f68ccdec9f6",
+      "consumer": "src/render/zoneAssetManifest.ts (hurdle fence on house yard edges (C1e)); src/render/drawYardProps.ts",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0646",
+      "runtimePath": "assets-inbox/wave41/candidates-20261002/assets/17-keyart_title_bg-wave41-v1.png",
+      "runtimeSha256": "9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b",
+      "sourceSha256": "9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b",
+      "consumer": "src/ui/wave8ArtManifest.generated.ts (UI-3: season ledger card, season strip, pause vignette and badge, title and mode select screens, chapter loading screens, overlay icons, alert bells; chronicle and petition art registered)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0647",
+      "runtimePath": "public/assets/buildings/farmstead/farmstead_a-v1.png",
+      "runtimeSha256": "68ace8439f935f80f0ca95f922bcc462ae7ffdc29518c31009a44ab362beca9b",
+      "sourceSha256": "68ace8439f935f80f0ca95f922bcc462ae7ffdc29518c31009a44ab362beca9b",
+      "consumer": "C1f farmstead, hurdle, orchard, stubble and farm animal art (src/render)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0648",
+      "runtimePath": "public/assets/buildings/farmstead/farmstead_b-v1.png",
+      "runtimeSha256": "50e5ff97012106a879ab3f36959abd53884682db26d01fb872429bc560fcd80b",
+      "sourceSha256": "50e5ff97012106a879ab3f36959abd53884682db26d01fb872429bc560fcd80b",
+      "consumer": "C1f farmstead, hurdle, orchard, stubble and farm animal art (src/render)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0649",
+      "runtimePath": "public/assets/buildings/farmstead/farmstead_working-v1.png",
+      "runtimeSha256": "e3a2439cda39c5049f78c5026c259719334ec1ad9af1a953eded0faa03dafa00",
+      "sourceSha256": "e3a2439cda39c5049f78c5026c259719334ec1ad9af1a953eded0faa03dafa00",
+      "consumer": "C1f farmstead, hurdle, orchard, stubble and farm animal art (src/render)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0650",
+      "runtimePath": "public/assets/buildings/farmstead/farmstead_winter-v1.png",
+      "runtimeSha256": "7f33b288f3a7ce8904b4793e31e17b04feef4772ed0c08010a8a374c0458212d",
+      "sourceSha256": "7f33b288f3a7ce8904b4793e31e17b04feef4772ed0c08010a8a374c0458212d",
+      "consumer": "src/render/buildingVariantManifest.ts (INSTALL-4e: farmstead in calendar winter; farmsteadArt.ts)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0651",
+      "runtimePath": "public/assets/wave23/life_ground/chicken_flock_a.png",
+      "runtimeSha256": "16c6c6e47ef79319425f6c588417f222f6c0b784a4fb2430d4f0e4cff994a4ae",
+      "sourceSha256": "16c6c6e47ef79319425f6c588417f222f6c0b784a4fb2430d4f0e4cff994a4ae",
+      "consumer": "src/render/wave23ArtManifest.generated.ts (INSTALL-23: royal arms, weather, village life, person-state ornaments, pad glyphs)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0652",
+      "runtimePath": "public/assets/wave9/signifier/hungry_queue-v1.png",
+      "runtimeSha256": "ad6b1ac367e7bad6fc4f912b1647a8cae15bd555d5bfbbcca63d57cfc5578b46",
+      "sourceSha256": "ad6b1ac367e7bad6fc4f912b1647a8cae15bd555d5bfbbcca63d57cfc5578b46",
+      "consumer": "src/render/wave9ArtManifest.generated.ts (UI-4: fire, burnt and abandoned houses, smoke, wet-summer ridges, puddles, rain, leaving family, petitioners)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0654",
+      "runtimePath": "public/assets/wave7/signifier/footprints_dotted_ne-v1.png",
+      "runtimeSha256": "2b4abc4221d4ed331e6b8beef75cf81a099715a01823703a498e3277b08e6ef5",
+      "sourceSha256": "2b4abc4221d4ed331e6b8beef75cf81a099715a01823703a498e3277b08e6ef5",
+      "consumer": "src/render/wave7ArtManifest.generated.ts (INSTALL-7: cart loads, piles, smoke and dust sheets, work props, winter overlays and decals, world signals, roof frames)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0655",
+      "runtimePath": "public/assets/wave7/signifier/footprints_dotted_nw-v1.png",
+      "runtimeSha256": "2ef42bb5ef481776191044c91440e954ab6c4623dea87728507ff82f51e22799",
+      "sourceSha256": "2ef42bb5ef481776191044c91440e954ab6c4623dea87728507ff82f51e22799",
+      "consumer": "src/render/wave7ArtManifest.generated.ts (INSTALL-7: cart loads, piles, smoke and dust sheets, work props, winter overlays and decals, world signals, roof frames)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0656",
+      "runtimePath": "public/assets/ui/seal_slot.png",
+      "runtimeSha256": "8c1730d6f289647d3678bbf68d314eb0faa460ed5fbcdbccd9841a14182247be",
+      "sourceSha256": "8c1730d6f289647d3678bbf68d314eb0faa460ed5fbcdbccd9841a14182247be",
+      "consumer": "src/styles/global.css",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0657",
+      "runtimePath": "public/assets/wave19/timeline/icon_actual.png",
+      "runtimeSha256": "f0abda5758403412876db2fb1ac8ea9120f3a5ba54bca087c18ad3a26864fe9b",
+      "sourceSha256": "f0abda5758403412876db2fb1ac8ea9120f3a5ba54bca087c18ad3a26864fe9b",
+      "consumer": "src/ui/wave19ArtManifest.generated.ts (UI-4b: registered for CHRON-1: record cards, timeline, biography and faction pages, decision record)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0658",
+      "runtimePath": "public/assets/wave14/ui-icons/icon_right_toll-v1.png",
+      "runtimeSha256": "ebfc559084643b7080fae3b80a2046a00f0f0f617e0a946c296342b89402004a",
+      "sourceSha256": "ebfc559084643b7080fae3b80a2046a00f0f0f617e0a946c296342b89402004a",
+      "consumer": "src/ui/wave14ArtManifest.generated.ts (UI-6: the ledger drawer's rights register and right icons; the Crown's writ seal)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0659",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_bramble_summer.png",
+      "runtimeSha256": "4d22bfa28bd6b259f78513fe195f8d32e021840af50114560c053d5c98c6e0fd",
+      "sourceSha256": "4d22bfa28bd6b259f78513fe195f8d32e021840af50114560c053d5c98c6e0fd",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0660",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_bramble_winter.png",
+      "runtimeSha256": "649277ae59fb2e8070129a283232db4f4aa25443b306d6fbde00ee3a9b0674eb",
+      "sourceSha256": "649277ae59fb2e8070129a283232db4f4aa25443b306d6fbde00ee3a9b0674eb",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0663",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_overgrown_furrows_summer.png",
+      "runtimeSha256": "e7abb17baec0db1c350f73c78f6cc4e06c45bf446ab8a00f53b17f1821659060",
+      "sourceSha256": "e7abb17baec0db1c350f73c78f6cc4e06c45bf446ab8a00f53b17f1821659060",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0664",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_overgrown_furrows_winter.png",
+      "runtimeSha256": "2ab606668c931308e16cb1008e4b0b9a8d72e71baf54515748b835d5bc1635af",
+      "sourceSha256": "2ab606668c931308e16cb1008e4b0b9a8d72e71baf54515748b835d5bc1635af",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0665",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_saplings_summer.png",
+      "runtimeSha256": "2eb6013b25d601aefc954c82ad427f51c621ceacb0f96c1d84e43b0b1d20bfb3",
+      "sourceSha256": "2eb6013b25d601aefc954c82ad427f51c621ceacb0f96c1d84e43b0b1d20bfb3",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0666",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_saplings_winter.png",
+      "runtimeSha256": "b2a7e5ebaa54124570eec6c25e4d57d01c2f1fc39baaa1adae12ebe640881f34",
+      "sourceSha256": "b2a7e5ebaa54124570eec6c25e4d57d01c2f1fc39baaa1adae12ebe640881f34",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0667",
+      "runtimePath": "public/assets/wave42/connections/path_clear_corner_ne_summer.png",
+      "runtimeSha256": "001a6ab3a10174007e15f2f8c903d64a248b6e9053e5a1ff8fa7bcb667945641",
+      "sourceSha256": "001a6ab3a10174007e15f2f8c903d64a248b6e9053e5a1ff8fa7bcb667945641",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0668",
+      "runtimePath": "public/assets/wave42/connections/path_clear_corner_ne_winter.png",
+      "runtimeSha256": "bb8f1a7ab36e0c70fe92809f657e7aeedb5e8dda897df4211f8d79fdd300d986",
+      "sourceSha256": "bb8f1a7ab36e0c70fe92809f657e7aeedb5e8dda897df4211f8d79fdd300d986",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0669",
+      "runtimePath": "public/assets/wave42/connections/path_clear_corner_nw_summer.png",
+      "runtimeSha256": "9a99f06a80b20ec9dd8422a6943438f5564be25c5d13fa34cbc55287a04eb8fe",
+      "sourceSha256": "9a99f06a80b20ec9dd8422a6943438f5564be25c5d13fa34cbc55287a04eb8fe",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0670",
+      "runtimePath": "public/assets/wave42/connections/path_clear_corner_nw_winter.png",
+      "runtimeSha256": "77ae0653feea9536c369b159d22a338bf856ed0657aabb719fa467fc5dd803ba",
+      "sourceSha256": "77ae0653feea9536c369b159d22a338bf856ed0657aabb719fa467fc5dd803ba",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0671",
+      "runtimePath": "public/assets/wave42/connections/path_clear_fork_ne_summer.png",
+      "runtimeSha256": "acbbc91698c1c03264c4a409fe9637430a35feb0a73e5a1d7ba7ae5f3c8435eb",
+      "sourceSha256": "acbbc91698c1c03264c4a409fe9637430a35feb0a73e5a1d7ba7ae5f3c8435eb",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0672",
+      "runtimePath": "public/assets/wave42/connections/path_clear_fork_ne_winter.png",
+      "runtimeSha256": "09cc1cc3c40f90cfd4baac4cd5380a9ff39ccd9716a9c1e942f85d777172b10c",
+      "sourceSha256": "09cc1cc3c40f90cfd4baac4cd5380a9ff39ccd9716a9c1e942f85d777172b10c",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0673",
+      "runtimePath": "public/assets/wave42/connections/path_clear_fork_nw_summer.png",
+      "runtimeSha256": "f2d82deab6a19765b25858955a0a1dca454f809c23a401667aa04eab1c3e4301",
+      "sourceSha256": "f2d82deab6a19765b25858955a0a1dca454f809c23a401667aa04eab1c3e4301",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0674",
+      "runtimePath": "public/assets/wave42/connections/path_clear_fork_nw_winter.png",
+      "runtimeSha256": "069e0750100008367c60385ada12c1f7df261120ac8bd47f6f6a29045bab559b",
+      "sourceSha256": "069e0750100008367c60385ada12c1f7df261120ac8bd47f6f6a29045bab559b",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath corners and forks, records/CONNECTIONS.md; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0675",
+      "runtimePath": "public/assets/wave42/paths/path_clear_ne_summer.png",
+      "runtimeSha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e",
+      "sourceSha256": "5133d1366dc554a3c72913f2179d5d3a84ae9c22253f10295192bbb1a64b543e",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath strips, LM-E5 landOf(state).footpaths; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0676",
+      "runtimePath": "public/assets/wave42/paths/path_clear_ne_winter.png",
+      "runtimeSha256": "19fc62b1e490a6d85dd1f54deb1c85522d4c3966d6bb5c0b8344d93f4d34bb21",
+      "sourceSha256": "19fc62b1e490a6d85dd1f54deb1c85522d4c3966d6bb5c0b8344d93f4d34bb21",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath strips, LM-E5 landOf(state).footpaths; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0677",
+      "runtimePath": "public/assets/wave42/paths/path_clear_nw_summer.png",
+      "runtimeSha256": "a544206298a01f3206d10231f2bebc702cc2a50c8e380f3ceda53fdea0d02399",
+      "sourceSha256": "a544206298a01f3206d10231f2bebc702cc2a50c8e380f3ceda53fdea0d02399",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath strips, LM-E5 landOf(state).footpaths; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0678",
+      "runtimePath": "public/assets/wave42/paths/path_clear_nw_winter.png",
+      "runtimeSha256": "5a5cf0a4640350fc74aff0381468b10911219f045a49c4be95d0a6e3e36d3bdc",
+      "sourceSha256": "5a5cf0a4640350fc74aff0381468b10911219f045a49c4be95d0a6e3e36d3bdc",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: footpath strips, LM-E5 landOf(state).footpaths; footpathDraw.ts, ground chunks)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0691",
+      "runtimePath": "public/assets/wave42/regrowth/young_wood_a_summer.png",
+      "runtimeSha256": "a480f58fe5a678ec5d1991032226e4e67e09a1e5982e2577b93fa0fd2b08cdbf",
+      "sourceSha256": "a480f58fe5a678ec5d1991032226e4e67e09a1e5982e2577b93fa0fd2b08cdbf",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0692",
+      "runtimePath": "public/assets/wave42/regrowth/young_wood_a_winter.png",
+      "runtimeSha256": "f42b85ab4d1fab9f54bd95609f4fc2f6de9641d9d911649e3bfba2792d3d7a21",
+      "sourceSha256": "f42b85ab4d1fab9f54bd95609f4fc2f6de9641d9d911649e3bfba2792d3d7a21",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0693",
+      "runtimePath": "public/assets/wave42/regrowth/young_wood_b_summer.png",
+      "runtimeSha256": "976f5abdd71d3cd51d1bfef97382ce5e5ccb0d941e97deab815d178fdf96618a",
+      "sourceSha256": "976f5abdd71d3cd51d1bfef97382ce5e5ccb0d941e97deab815d178fdf96618a",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0694",
+      "runtimePath": "public/assets/wave42/regrowth/young_wood_b_winter.png",
+      "runtimeSha256": "b759cd34e097ae7112b2091dce5c9ad3b29feb0f11bedea7da5ff75eb51d72e1",
+      "sourceSha256": "b759cd34e097ae7112b2091dce5c9ad3b29feb0f11bedea7da5ff75eb51d72e1",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0695",
+      "runtimePath": "public/assets/wave42/stumps/stump_ash_small_fresh_summer.png",
+      "runtimeSha256": "c3992b93fd9b545a9c38f9c5617e3979f2f688995b45c59efa115f33a8ce4243",
+      "sourceSha256": "c3992b93fd9b545a9c38f9c5617e3979f2f688995b45c59efa115f33a8ce4243",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0696",
+      "runtimePath": "public/assets/wave42/stumps/stump_ash_small_fresh_winter.png",
+      "runtimeSha256": "4459146d2ed36dcf3c41256b6cc7d1a2c041ec6a4d35bd7b9bf88e25d5f52358",
+      "sourceSha256": "4459146d2ed36dcf3c41256b6cc7d1a2c041ec6a4d35bd7b9bf88e25d5f52358",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0697",
+      "runtimePath": "public/assets/wave42/stumps/stump_ash_small_mossy_summer.png",
+      "runtimeSha256": "7a20afe25ef87bc5325330f2665ffecb9337b3b11bb48c88304bd6690fb3fe8b",
+      "sourceSha256": "7a20afe25ef87bc5325330f2665ffecb9337b3b11bb48c88304bd6690fb3fe8b",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0698",
+      "runtimePath": "public/assets/wave42/stumps/stump_ash_small_mossy_winter.png",
+      "runtimeSha256": "4f3272df1212c99843f7eef622f4f849fa44e5bbf04d93724812be3321ba3a60",
+      "sourceSha256": "4f3272df1212c99843f7eef622f4f849fa44e5bbf04d93724812be3321ba3a60",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0699",
+      "runtimePath": "public/assets/wave42/stumps/stump_oak_large_fresh_summer.png",
+      "runtimeSha256": "9236fc3ddd41f0c2c929ea4f0c85dbb449355e23b9423ca21f05f39641fd382c",
+      "sourceSha256": "9236fc3ddd41f0c2c929ea4f0c85dbb449355e23b9423ca21f05f39641fd382c",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0700",
+      "runtimePath": "public/assets/wave42/stumps/stump_oak_large_fresh_winter.png",
+      "runtimeSha256": "4565cc354a1f2031cbccbecfa6995742a8fce4ed2c6c99670f75504b1e94043c",
+      "sourceSha256": "4565cc354a1f2031cbccbecfa6995742a8fce4ed2c6c99670f75504b1e94043c",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0701",
+      "runtimePath": "public/assets/wave42/stumps/stump_oak_large_mossy_summer.png",
+      "runtimeSha256": "117e542bcf59b88eab4fc11fc7d911ce28f69183cbecd32a3c6a81e3c7f1ce0c",
+      "sourceSha256": "117e542bcf59b88eab4fc11fc7d911ce28f69183cbecd32a3c6a81e3c7f1ce0c",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0702",
+      "runtimePath": "public/assets/wave42/stumps/stump_oak_large_mossy_winter.png",
+      "runtimeSha256": "05aded1c7d0a412d13db315b44e778b3c2c8f91b1736ebd0ea3f3eae74dcd36d",
+      "sourceSha256": "05aded1c7d0a412d13db315b44e778b3c2c8f91b1736ebd0ea3f3eae74dcd36d",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's stump stage, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0703",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_grass_summer.png",
+      "runtimeSha256": "7347638527587c2e7371cb63945ba6db7a0b815be86e7711c6e38dbcb1549f59",
+      "sourceSha256": "7347638527587c2e7371cb63945ba6db7a0b815be86e7711c6e38dbcb1549f59",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0704",
+      "runtimePath": "public/assets/wave42/abandoned/abandoned_grass_winter.png",
+      "runtimeSha256": "d0902241fd3b0dcfb558a4b4a3feb9f8d1845d7a4f776f6c4c9bf980a34b0472",
+      "sourceSha256": "d0902241fd3b0dcfb558a4b4a3feb9f8d1845d7a4f776f6c4c9bf980a34b0472",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: fallow plots and strips, LM-E5 fallowStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0705",
+      "runtimePath": "public/assets/wave42/regrowth/sapling_1to3_summer.png",
+      "runtimeSha256": "af99e860759eeb79d8486caed3052df5db021fefdbc4a570fe98f6086ad80537",
+      "sourceSha256": "af99e860759eeb79d8486caed3052df5db021fefdbc4a570fe98f6086ad80537",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0706",
+      "runtimePath": "public/assets/wave42/regrowth/sapling_1to3_winter.png",
+      "runtimeSha256": "1dd81fca48173ecb10665de88f8275df1699cb6d15c8074dddcd82532000cf68",
+      "sourceSha256": "1dd81fca48173ecb10665de88f8275df1699cb6d15c8074dddcd82532000cf68",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0707",
+      "runtimePath": "public/assets/wave42/regrowth/sapling_4to8_summer.png",
+      "runtimeSha256": "f4209411e46a57ac1def5158dd6d42d1070bbcaef95d1480cf5ec604dcf1d816",
+      "sourceSha256": "f4209411e46a57ac1def5158dd6d42d1070bbcaef95d1480cf5ec604dcf1d816",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0708",
+      "runtimePath": "public/assets/wave42/regrowth/sapling_4to8_winter.png",
+      "runtimeSha256": "1f448d2494b949faf7a07d77876d537a3836dda28a79bc8f4a8e205eafa46704",
+      "sourceSha256": "1f448d2494b949faf7a07d77876d537a3836dda28a79bc8f4a8e205eafa46704",
+      "consumer": "src/render/wave42StageManifest.generated.ts (NAT-5: a felled tree's sapling and grown stages, LM-E5 treeStage; landStageItems.ts, object pass)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0709",
+      "runtimePath": "public/assets/wave43/ground/chalk_down_spring_a-v1.png",
+      "runtimeSha256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+      "sourceSha256": "d755152cca5a7cb310b4a81db0c63d6357f7979311e8684a8fc664bd44c36cdf",
+      "consumer": "ground-texture XY land-region seasonal A/B; spring only",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0710",
+      "runtimePath": "public/assets/wave43/ground/coastal_grass_spring_a-v1.png",
+      "runtimeSha256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+      "sourceSha256": "629abc5f22a146df9f7c3ab12c8c90a2488875b94aea5713e32b76d81cd7fb01",
+      "consumer": "ground-texture XY land-region seasonal A/B; spring only",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0711",
+      "runtimePath": "public/assets/wave43/ground/fen_spring_a-v1.png",
+      "runtimeSha256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+      "sourceSha256": "7310024371fad02be3e0d08cbb75e25571b779046f233a2e89b3ce5ba2420b9a",
+      "consumer": "ground-texture XY land-region seasonal A/B; spring only",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0712",
+      "runtimePath": "public/assets/wave43/ground/ridge_ploughed_spring_a-v1.png",
+      "runtimeSha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9",
+      "sourceSha256": "47dc7b26825cf49b61655449190e2798ab3674de9b22bc50ef763e979dc2bbe9",
+      "consumer": "ground-texture seasonal field ridge pair, spring only",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0713",
+      "runtimePath": "public/assets/wave43/ground/ridge_seedling_spring_a-v1.png",
+      "runtimeSha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045",
+      "sourceSha256": "7b77d1578990d0031f8828c6bbf1b2d8a47032f78493311346c3272ab5693045",
+      "consumer": "ground-texture seasonal field ridge pair, spring only",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0714",
+      "runtimePath": "public/assets/wave43/ground/ridge_seedling_spring_b-v1.png",
+      "runtimeSha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2",
+      "sourceSha256": "89d3c9898840b91c7e3147c90ec714ae6a3044e15ce41ae2e9b71988ddd7fac2",
+      "consumer": "ground-texture seasonal field ridge pair, spring only",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0716",
+      "runtimePath": "public/assets/wave43/ground/woodland_floor_spring_a-v1.png",
+      "runtimeSha256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+      "sourceSha256": "fd4ae287c638ecfac47ef70ead2790cc61ba1baf84149007efb5f65ae4697152",
+      "consumer": "ground-texture XY land-region seasonal A/B; spring only",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0717",
+      "runtimePath": "public/assets/wave43/orchard/orchard_apple_spring.png",
+      "runtimeSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+      "sourceSha256": "16c6d61ea3e112d27103801e4da0c27932e21c6b623a59d7a47bb5818655a449",
+      "consumer": "season-variant/orchard_apple_c/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0719",
+      "runtimePath": "public/assets/wave43/orchard/orchard_pear_spring.png",
+      "runtimeSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+      "sourceSha256": "0a09a0ea71d6bf4c9e4f7643aebe79e83e95bd71efeb5df49b5959dd19388156",
+      "consumer": "season-variant/orchard_pear_e/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0720",
+      "runtimePath": "public/assets/wave43/orchard/orchard_plum_spring.png",
+      "runtimeSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+      "sourceSha256": "6572246b4e6ed76a9d501a6dd5229bcaaf60734e965d62580bb7f05b5569ecee",
+      "consumer": "season-variant/orchard_plum_f/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0727",
+      "runtimePath": "public/assets/wave43/trees_broadleaf/tree_birch_spring.png",
+      "runtimeSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+      "sourceSha256": "9f930c089576c296f33b23c6aa22a970c2d86176ef25a821b573bfe79bf78d4c",
+      "consumer": "season-variant/tree_birch/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0728",
+      "runtimePath": "public/assets/wave43/trees_broadleaf/tree_oak_large_spring.png",
+      "runtimeSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+      "sourceSha256": "c05872222b776a6eb20eb701f770d2dac07b10e5aaf0caf93ee89443356b344a",
+      "consumer": "season-variant/tree_oak_large/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0729",
+      "runtimePath": "public/assets/wave43/trees_broadleaf/tree_oak_small_spring.png",
+      "runtimeSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+      "sourceSha256": "1c9ad455c6f0386bf0f250a5bb7445c9d315eadc65a9cebc02e9f4d6f7f87738",
+      "consumer": "season-variant/tree_oak_small/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0730",
+      "runtimePath": "public/assets/wave43/trees_other/tree_dead_spring.png",
+      "runtimeSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+      "sourceSha256": "303b50f07fa4c8b5e2fddaa9315d5f05369ed9e1a5bad5de0175f9510afb6f78",
+      "consumer": "season-variant/tree_dead/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0731",
+      "runtimePath": "public/assets/wave43/trees_other/tree_pine_short_spring.png",
+      "runtimeSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+      "sourceSha256": "ea8a0835becc6cbfec2638bc734e1472ad671d8dc6b30fd852f35b4cec28a7b5",
+      "consumer": "season-variant/tree_pine_short/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0732",
+      "runtimePath": "public/assets/wave43/trees_other/tree_pine_tall_spring.png",
+      "runtimeSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+      "sourceSha256": "8c294336ccea8076b2be5f12be37f79f5f691319c0f53253200b8b24c530ed1a",
+      "consumer": "season-variant/tree_pine_tall/spring",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0733",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/01_boundary_dispute.jpg",
+      "runtimeSha256": "7162f14d848c4f47264edcbb918718ac4b9e4f8ab808561090e449176639d411",
+      "sourceSha256": "7162f14d848c4f47264edcbb918718ac4b9e4f8ab808561090e449176639d411",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0734",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/02_suit_of_mill.jpg",
+      "runtimeSha256": "fafb5c7a76a8623c040391f38d71f65bac7c2458cfc47f57a2aac6fa23992313",
+      "sourceSha256": "fafb5c7a76a8623c040391f38d71f65bac7c2458cfc47f57a2aac6fa23992313",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0735",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/03_heriot.jpg",
+      "runtimeSha256": "491234c5d458192738b9484c6013c1ad93b039cac7d9821060b5cb053e410653",
+      "sourceSha256": "491234c5d458192738b9484c6013c1ad93b039cac7d9821060b5cb053e410653",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0736",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/04_merchet.jpg",
+      "runtimeSha256": "c30903aba8daf5ee6ec386b2d67a2c17e1bd709c0eef16d62c1b925f40697544",
+      "sourceSha256": "c30903aba8daf5ee6ec386b2d67a2c17e1bd709c0eef16d62c1b925f40697544",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0737",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/05_ale_assize.jpg",
+      "runtimeSha256": "1018645944d480c6b416e568a5ae937dfad5b85f01646727873a76d1a36a1b78",
+      "sourceSha256": "1018645944d480c6b416e568a5ae937dfad5b85f01646727873a76d1a36a1b78",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0738",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/06_bridge_repair.jpg",
+      "runtimeSha256": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42",
+      "sourceSha256": "fee7ffe398177110f4a4df5788d886519dbe6b5e29f0214a500648b6493a4f42",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0739",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/07_market_stall_dispute.jpg",
+      "runtimeSha256": "50c034702937118f329a6078d5438311da0ef8d7aa40d822b31c7cc6f4c44195",
+      "sourceSha256": "50c034702937118f329a6078d5438311da0ef8d7aa40d822b31c7cc6f4c44195",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0740",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/08_minor_wardship.jpg",
+      "runtimeSha256": "b14f1f54093f9f25a837cccd29b7d2ad2f31cbc3e091a1646036596979c52087",
+      "sourceSha256": "b14f1f54093f9f25a837cccd29b7d2ad2f31cbc3e091a1646036596979c52087",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0741",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/09_common_pasture.jpg",
+      "runtimeSha256": "47b89f4a7adb04421ff63b21498bcd962567bda1b7f8f01931c96734aed6650f",
+      "sourceSha256": "47b89f4a7adb04421ff63b21498bcd962567bda1b7f8f01931c96734aed6650f",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0742",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/10_migrant_settlement.jpg",
+      "runtimeSha256": "84e5585cd9011497a311e08fc84bd1ef5738ec22556e8c61485ff9f92e9d8b1e",
+      "sourceSha256": "84e5585cd9011497a311e08fc84bd1ef5738ec22556e8c61485ff9f92e9d8b1e",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    },
+    {
+      "id": "I0745",
+      "runtimePath": "assets-inbox/wave44/candidates-20261002/assets/13_by_precedent.jpg",
+      "runtimeSha256": "e0911339cb75e235d6e2f260cf3306405734e21de40ef76bbdde2fe096eed5e2",
+      "sourceSha256": "e0911339cb75e235d6e2f260cf3306405734e21de40ef76bbdde2fe096eed5e2",
+      "consumer": "src/ui/wave44ArtManifest.generated.ts (LM-R1: the lord-mode home petition card and its event chip, one picture per matching HomePetitionKind; by_precedent on the steward's precedent card; shipped as received)",
+      "matchingProvenanceRows": 1
+    }
+  ],
+  "consumerOwnership425": [
+    {
+      "consumerOwner": "Render A placement/input feedback consumer in world coordinates; Render B asset data/install",
+      "denominator": 4,
+      "counts": {
+        "active-unproven": 4
+      },
+      "ids": [
+        "I0358",
+        "I0359",
+        "I0360",
+        "I0361"
+      ]
+    },
+    {
+      "consumerOwner": "Render A screen/input consumer; Render B contract/files/install",
+      "denominator": 156,
+      "counts": {
+        "active-unproven": 112,
+        "marked": 44
+      },
+      "ids": [
+        "I0006",
+        "I0007",
+        "I0008",
+        "I0009",
+        "I0010",
+        "I0011",
+        "I0012",
+        "I0013",
+        "I0014",
+        "I0015",
+        "I0016",
+        "I0017",
+        "I0018",
+        "I0019",
+        "I0020",
+        "I0021",
+        "I0022",
+        "I0023",
+        "I0089",
+        "I0090",
+        "I0091",
+        "I0092",
+        "I0096",
+        "I0097",
+        "I0098",
+        "I0112",
+        "I0113",
+        "I0114",
+        "I0115",
+        "I0116",
+        "I0117",
+        "I0118",
+        "I0119",
+        "I0120",
+        "I0121",
+        "I0122",
+        "I0123",
+        "I0124",
+        "I0125",
+        "I0126",
+        "I0127",
+        "I0128",
+        "I0129",
+        "I0130",
+        "I0131",
+        "I0132",
+        "I0133",
+        "I0134",
+        "I0135",
+        "I0136",
+        "I0137",
+        "I0138",
+        "I0139",
+        "I0140",
+        "I0141",
+        "I0142",
+        "I0143",
+        "I0144",
+        "I0145",
+        "I0146",
+        "I0297",
+        "I0298",
+        "I0299",
+        "I0300",
+        "I0301",
+        "I0302",
+        "I0303",
+        "I0304",
+        "I0305",
+        "I0306",
+        "I0307",
+        "I0308",
+        "I0309",
+        "I0310",
+        "I0311",
+        "I0341",
+        "I0342",
+        "I0343",
+        "I0344",
+        "I0345",
+        "I0346",
+        "I0347",
+        "I0348",
+        "I0349",
+        "I0350",
+        "I0351",
+        "I0352",
+        "I0353",
+        "I0354",
+        "I0355",
+        "I0356",
+        "I0357",
+        "I0362",
+        "I0363",
+        "I0364",
+        "I0365",
+        "I0366",
+        "I0367",
+        "I0368",
+        "I0369",
+        "I0370",
+        "I0371",
+        "I0372",
+        "I0373",
+        "I0374",
+        "I0375",
+        "I0376",
+        "I0377",
+        "I0378",
+        "I0379",
+        "I0380",
+        "I0381",
+        "I0482",
+        "I0483",
+        "I0484",
+        "I0485",
+        "I0518",
+        "I0519",
+        "I0520",
+        "I0521",
+        "I0522",
+        "I0523",
+        "I0524",
+        "I0525",
+        "I0526",
+        "I0527",
+        "I0528",
+        "I0529",
+        "I0530",
+        "I0531",
+        "I0532",
+        "I0533",
+        "I0534",
+        "I0535",
+        "I0536",
+        "I0537",
+        "I0538",
+        "I0539",
+        "I0540",
+        "I0541",
+        "I0542",
+        "I0543",
+        "I0544",
+        "I0545",
+        "I0546",
+        "I0547",
+        "I0548",
+        "I0549",
+        "I0550",
+        "I0551",
+        "I0552",
+        "I0553",
+        "I0554",
+        "I0555",
+        "I0556",
+        "I0557"
+      ]
+    },
+    {
+      "consumerOwner": "Render B world consumer",
+      "denominator": 232,
+      "counts": {
+        "active-unproven": 131,
+        "marked": 85,
+        "retired": 16
+      },
+      "ids": [
+        "I0003",
+        "I0004",
+        "I0005",
+        "I0024",
+        "I0025",
+        "I0026",
+        "I0027",
+        "I0028",
+        "I0029",
+        "I0030",
+        "I0031",
+        "I0167",
+        "I0168",
+        "I0169",
+        "I0170",
+        "I0171",
+        "I0172",
+        "I0173",
+        "I0174",
+        "I0175",
+        "I0176",
+        "I0177",
+        "I0178",
+        "I0179",
+        "I0180",
+        "I0181",
+        "I0182",
+        "I0183",
+        "I0184",
+        "I0185",
+        "I0186",
+        "I0187",
+        "I0188",
+        "I0189",
+        "I0190",
+        "I0191",
+        "I0192",
+        "I0193",
+        "I0194",
+        "I0195",
+        "I0196",
+        "I0197",
+        "I0198",
+        "I0199",
+        "I0200",
+        "I0201",
+        "I0202",
+        "I0203",
+        "I0204",
+        "I0205",
+        "I0223",
+        "I0224",
+        "I0249",
+        "I0250",
+        "I0255",
+        "I0285",
+        "I0286",
+        "I0287",
+        "I0288",
+        "I0289",
+        "I0290",
+        "I0291",
+        "I0292",
+        "I0293",
+        "I0294",
+        "I0295",
+        "I0296",
+        "I0313",
+        "I0314",
+        "I0315",
+        "I0316",
+        "I0317",
+        "I0318",
+        "I0319",
+        "I0320",
+        "I0321",
+        "I0322",
+        "I0323",
+        "I0324",
+        "I0325",
+        "I0326",
+        "I0327",
+        "I0328",
+        "I0329",
+        "I0330",
+        "I0331",
+        "I0332",
+        "I0333",
+        "I0335",
+        "I0336",
+        "I0337",
+        "I0338",
+        "I0339",
+        "I0340",
+        "I0382",
+        "I0383",
+        "I0384",
+        "I0385",
+        "I0386",
+        "I0387",
+        "I0388",
+        "I0389",
+        "I0390",
+        "I0391",
+        "I0392",
+        "I0393",
+        "I0394",
+        "I0395",
+        "I0396",
+        "I0397",
+        "I0398",
+        "I0399",
+        "I0400",
+        "I0401",
+        "I0402",
+        "I0403",
+        "I0404",
+        "I0405",
+        "I0406",
+        "I0407",
+        "I0408",
+        "I0409",
+        "I0410",
+        "I0411",
+        "I0412",
+        "I0413",
+        "I0417",
+        "I0418",
+        "I0419",
+        "I0420",
+        "I0421",
+        "I0422",
+        "I0423",
+        "I0424",
+        "I0425",
+        "I0426",
+        "I0427",
+        "I0428",
+        "I0429",
+        "I0430",
+        "I0431",
+        "I0432",
+        "I0433",
+        "I0434",
+        "I0435",
+        "I0558",
+        "I0559",
+        "I0560",
+        "I0561",
+        "I0562",
+        "I0563",
+        "I0564",
+        "I0580",
+        "I0581",
+        "I0582",
+        "I0583",
+        "I0584",
+        "I0585",
+        "I0586",
+        "I0587",
+        "I0588",
+        "I0589",
+        "I0608",
+        "I0609",
+        "I0644",
+        "I0645",
+        "I0652",
+        "I0659",
+        "I0660",
+        "I0661",
+        "I0662",
+        "I0663",
+        "I0664",
+        "I0665",
+        "I0666",
+        "I0667",
+        "I0668",
+        "I0669",
+        "I0670",
+        "I0671",
+        "I0672",
+        "I0673",
+        "I0674",
+        "I0675",
+        "I0676",
+        "I0677",
+        "I0678",
+        "I0679",
+        "I0680",
+        "I0681",
+        "I0682",
+        "I0683",
+        "I0684",
+        "I0685",
+        "I0686",
+        "I0687",
+        "I0688",
+        "I0689",
+        "I0690",
+        "I0691",
+        "I0692",
+        "I0693",
+        "I0694",
+        "I0695",
+        "I0696",
+        "I0697",
+        "I0698",
+        "I0699",
+        "I0700",
+        "I0701",
+        "I0702",
+        "I0703",
+        "I0704",
+        "I0705",
+        "I0706",
+        "I0707",
+        "I0708",
+        "I0709",
+        "I0710",
+        "I0711",
+        "I0712",
+        "I0713",
+        "I0714",
+        "I0715",
+        "I0716",
+        "I0718",
+        "I0721",
+        "I0722",
+        "I0723",
+        "I0724",
+        "I0725",
+        "I0726"
+      ]
+    },
+    {
+      "consumerOwner": "Render B world consumer; Render A LM-R1 UI collaboration",
+      "denominator": 32,
+      "counts": {
+        "marked": 28,
+        "byte-proven-unmarked": 4
+      },
+      "ids": [
+        "I0486",
+        "I0487",
+        "I0488",
+        "I0489",
+        "I0490",
+        "I0491",
+        "I0492",
+        "I0493",
+        "I0494",
+        "I0495",
+        "I0496",
+        "I0497",
+        "I0498",
+        "I0499",
+        "I0500",
+        "I0501",
+        "I0502",
+        "I0503",
+        "I0504",
+        "I0505",
+        "I0506",
+        "I0507",
+        "I0508",
+        "I0509",
+        "I0510",
+        "I0511",
+        "I0512",
+        "I0513",
+        "I0514",
+        "I0515",
+        "I0516",
+        "I0517"
+      ]
+    },
+    {
+      "consumerOwner": "World carved mark/material consumer boundary unresolved; not exclusive Render A",
+      "denominator": 1,
+      "counts": {
+        "active-unproven": 1
+      },
+      "ids": [
+        "I0312"
+      ]
+    }
+  ],
+  "limitations": [
+    "정적 장부/원본/기록된 공개 별칭 재검산이며 새 runtime 관측이 아니다.",
+    "marked는 installed_by 표시이며 새 runtime PASS가 아니다. active-unproven은 미설치 단정이 아니다.",
+    "REGION4는 분리 체크아웃 proof와 장부 표시가 있다. 현재 통합 batch 수락은 이 패키지에서 pending으로 유지한다.",
+    "CLOUD N0354/N0355는 HOLD이며 DATA 가시성 수락이 없다. CORE 기존 두 그림의 이동만 별도 입증되었다.",
+    "계약/파일 설치 소유와 UI 소비 화면 소유를 구분한다. 과거 가능성 분류를 지금 data-ready로 승격하지 않는다.",
+    "I0656 seal retired는 LR1-D1 상태 결정이다. 남아 있는 공개 별칭 바이트가 퇴역을 취소하지 않는다."
+  ]
+}

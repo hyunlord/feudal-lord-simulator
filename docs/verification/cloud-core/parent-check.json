@@ -1,0 +1,19 @@
+{
+  "status": "PARENT_RAW77_AND_RGBA10_AA10_PASS",
+  "sourceResultSHA256": "e5fd85eeb49f9c1b1b3ff896582ac9404bbf8f9c9a3615b0f517d8687af2dca9",
+  "actualHEAD": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+  "rawFilesVerified": 77,
+  "decodedPNG": 30,
+  "nativeOpened": [
+    "summer-normal-z1-t0",
+    "summer-normal-z06-t0",
+    "winter-normal-z1-t0",
+    "winter-normal-z06-t0"
+  ],
+  "observation": "Unchanged real city scenes across season and zoom; no obvious blank or missing renderer scene. Cloud shadow remains subtle.",
+  "limits": [
+    "No readable motion or perceptual visibility certificate.",
+    "Time0/time5000 canvas differences are not solely cloud attributable.",
+    "DATA2 not installed or reviewed."
+  ]
+}

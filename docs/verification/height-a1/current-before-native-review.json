@@ -1,0 +1,60 @@
+{
+  "verdict": "PASS_BOUNDED_REGISTERED16_BASELINE",
+  "run": "astra-height-ed83-before-v1-ed83fe4",
+  "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+  "receiptSha256": "c6d6b2c5795a84a8069f6a57eff01f62c2b747ba7ef406c7bca78bb60819414a",
+  "captureSha256": "55e8463f4b77eb43fa8d8579bc801448f09b2876dddd18038b60b9a93826b08f",
+  "freezeSha256": "d8d85af257b9bba07763aa784f2cbbe1308569380674d7ba3a83dadfbe57eb8b",
+  "independentChecks": {
+    "rawFiles": 18,
+    "PNGDecoded": 4,
+    "AA": 2,
+    "fullIdentity": 2,
+    "errors": 0,
+    "prePostSourceGuard": "PASS",
+    "tracked": 26841,
+    "input": 26876,
+    "export": 26877,
+    "LFS": 6384,
+    "externalExistingUnchanged": 5488,
+    "externalAdditions": 15
+  },
+  "views": [
+    {
+      "name": "summer-ne-z1",
+      "nativeOpenedIndividually": true,
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z1.png",
+      "pngSha256": "7e5ff0d2673d425d3578300b93ae52a47e6513d6486ddbeb7f05cd9f71e9d709",
+      "rgbaSha256": "fda4cfe28e4e0a9b690f7b0662c685ca651f4ce5e2734c3179eead87beed603b",
+      "AA": "EXACT",
+      "fullIdentity": "PASS",
+      "figurePx": 16,
+      "worldScale": 0.5,
+      "zoomScale": 0.5,
+      "payloadDrawEligible": true,
+      "visual": "World scene coherent; target vicinity dense/occluded, anatomy/contact unproved"
+    },
+    {
+      "name": "summer-ne-z0p6",
+      "nativeOpenedIndividually": true,
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z0p6.png",
+      "pngSha256": "a13167047ce77f0f55d948078e1cf011588784b8a10e6a908e531035376d0f78",
+      "rgbaSha256": "ff55229dd561fcdb4952c4b2db3053b609898175e2836f0b7bfdc3bc13dc5ab9",
+      "AA": "EXACT",
+      "fullIdentity": "PASS",
+      "figurePx": 16,
+      "worldScale": 0.5,
+      "zoomScale": 0.5416666666666667,
+      "payloadDrawEligible": false,
+      "visual": "World scene coherent; target vicinity dense/occluded, anatomy/contact unproved"
+    }
+  ],
+  "limits": [
+    "Registered figure16/worldScale.5 are runtime exports, not measured opaque crown-to-sole anatomy.",
+    "Zoom.6 payloadDrawEligible false is branch eligibility, not target pixel absence or global cargo URL absence.",
+    "Native target region is visually crowded; contact/anatomy/actor-specific final visibility remain unproved.",
+    "Lineage is cumulative page evidence, not frozen-window actor-specific attribution.",
+    "Offline admitted engine and actual full presented state remain separate; no live engine-store equality.",
+    "No 17.6 AFTER acceptance or repeated winter proof; original runner setup8 differences retained, actual hydrated pre/post guards authoritative."
+  ]
+}

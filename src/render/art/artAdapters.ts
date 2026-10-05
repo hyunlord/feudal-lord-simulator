@@ -15,6 +15,7 @@ export type ArtPlacementInput = {
 export type ArtPlacement =
   | { readonly type: 'blit'; readonly sourceRect: ArtRect; readonly targetRect: ArtRect }
   | { readonly type: 'land-primitive'; readonly entry: LandStageEntry; readonly image: HTMLImageElement | null }
+  | { readonly type: 'weather-shadow-source'; readonly entry: Extract<ArtEntry, { readonly kind: 'weather-shadow' }> }
   | { readonly type: 'texture-source'; readonly entry: Extract<ArtEntry, { readonly kind: 'ground-texture' }> }
   | { readonly type: 'image-substitution'; readonly entry: Extract<ArtEntry, { readonly kind: 'season-variant' }> }
   | { readonly type: 'ui-handoff'; readonly entry: Extract<ArtEntry, { readonly kind: 'event-illustration' | 'portrait' | 'regional-map' }> };
@@ -50,6 +51,7 @@ export function createArtAdapters(registry: ArtRegistry, environment?: ArtImageE
     const entry = registry.entry(id);
     if (entry === null) return null;
     switch (entry.kind) {
+      case 'weather-shadow': return { type: 'weather-shadow-source', entry };
       case 'ground-texture': return { type: 'texture-source', entry };
       case 'season-variant': return { type: 'image-substitution', entry };
       case 'event-illustration': case 'portrait': case 'regional-map':

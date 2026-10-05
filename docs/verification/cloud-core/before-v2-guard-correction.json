@@ -1,0 +1,57 @@
+{
+  "status": "OFFLINE_PASS_PENDING_INDEPENDENT_REVIEW_AND_PARENT_RERUN_APPROVAL",
+  "head": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "originalFailure": {
+    "run": "astra-cloud2-before-v1-bd84351",
+    "phase": "PRECONDITION_REMOTE_CENSUS",
+    "captureCount": 0,
+    "visual": "NOT_RUN",
+    "freezeSha256": "fcae54af1b3c182eabca85b2c0fe8e15e262a831b77ac7b4178bc7e876707f3c"
+  },
+  "freeze": {
+    "path": "/Users/rexxa/fls-astra-renderB-cloud-before/.omo/evidence/cloud2-before-runtime-freeze.json",
+    "sha256": "5775c0b31c134120ba3d1cfab3b66dac6cd83903dad9f250b82f3f2be368fad6",
+    "tracked": 26854,
+    "inputs": 26881,
+    "exports": 26882,
+    "lfs": 6384
+  },
+  "changedInputs": [
+    ".omo/evidence/cloud2-before-runtime-guard.mjs",
+    ".omo/evidence/cloud2-before-runtime-run.mjs",
+    ".omo/evidence/cloud2-before-runtime-test.mjs"
+  ],
+  "addedInputs": [
+    ".omo/evidence/cloud2-before-runtime-v1-check.mjs",
+    ".omo/evidence/cloud2-before-runtime-v1-freeze.json",
+    ".omo/evidence/cloud2-before-runtime-v1-guard.mjs",
+    ".omo/evidence/cloud2-before-runtime-v1-run.mjs",
+    ".omo/evidence/cloud2-before-runtime-v1-test.mjs"
+  ],
+  "wrapperSha256": {
+    ".omo/evidence/cloud2-before-runtime-guard.mjs": "e13564eacaf97dc2d7c781fa34ef64330ccf2001c4053e6707d001148a293942",
+    ".omo/evidence/cloud2-before-runtime-run.mjs": "e42e2f855c88c9ddb7c71b3595c33e3195c1927b2eefa79f14c729736ee74190",
+    ".omo/evidence/cloud2-before-runtime-check.mjs": "f17c9c3dc431a86b8cdb8273c25a007803a78e5f25791cd3161e1d756d5da318",
+    ".omo/evidence/cloud2-before-runtime-test.mjs": "4d7ac3a07bc472705de01c837078bd639640962fb13dcd312669f4df131de2e2"
+  },
+  "tests": {
+    "passed": 5,
+    "failed": 0,
+    "syntax": 3,
+    "log": "/Users/rexxa/fls-astra-renderB-cloud-before/.omo/evidence/cloud2-before-runtime-v2-tests.log"
+  },
+  "cachePolicy": {
+    "previous": "v1 excluded .vite and .vite-temp wholesale",
+    "current": "complete pre/post inventories; every preexisting entry byte-identical, no deletion; new regular files only .vite/** or .vite-temp/** or exact keyart v1 cache filename",
+    "sources": [
+      "scripts/keyartDerivatives.ts:353-373",
+      "node_modules/vite/dist/node/chunks/node.js:36562,36997"
+    ],
+    "unknownAdditions": "FAIL",
+    "symlinkAdditions": "FAIL",
+    "runtimeVerification": "NOT_RUN"
+  },
+  "driver6AndFixture9Unchanged": true,
+  "trackedClean": true,
+  "submittedAgain": false
+}

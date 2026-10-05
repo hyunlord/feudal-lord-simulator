@@ -1,0 +1,48 @@
+{
+  "pass": true,
+  "head": "be576dbee826fc9e02a0336bb98cae4209fa5279",
+  "base": "90d9b5865bee4dc012f49f6eded135ac85975e78",
+  "executionRoot": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe",
+  "mergeRun": "astra-phase2-final-merge-be576db",
+  "cloneRun": "astra-phase2-final-clone-be576db",
+  "mergeExit": 0,
+  "cloneExit": 0,
+  "fetchExits": [
+    0,
+    0
+  ],
+  "tests": {
+    "tests": 4886,
+    "pass": 4886,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "duration_ms": 646388.53246
+  },
+  "innerCloneHead": "be576dbee826fc9e02a0336bb98cae4209fa5279",
+  "innerCloneTrackedClean": true,
+  "public14": true,
+  "source14": true,
+  "trackedInputs": 26844,
+  "exportedInputsExcludingFreeze": 26848,
+  "hydratedLfsInputs": 6384,
+  "freezeSHA256": "98d72fc182c0479de4b76de718dbf1f271873e631bbb28556d256820845396ff",
+  "measuredGeometryHead": "fd68f124cf6f8f0b60e6c05049cd03cfc6b817b5",
+  "geometryNativeInputHash": "0cb88b8e55d305f886f513ca36952ea784ab0d93bf92860bbe3641a490b9b58a",
+  "historicalRunsPreserved": [
+    "astra-phase2-final-merge-dd46aa3",
+    "astra-phase2-final-clone-dd46aa3",
+    "astra-phase2-final-merge-ed83fe4",
+    "astra-phase2-final-clone-ed83fe4"
+  ],
+  "warnings": [
+    "Nonblocking perf-trend lag116 commits retained",
+    "Geometry693 empty-space warnings and4 by-design unreachable rows retained"
+  ],
+  "publication": "NOT_PERFORMED; parent owns protected push and origin verification",
+  "receipts": {
+    ".omo/evidence/phase2-final-gates-be576-merge-summary.json": "1de3f19111aa8a681dd20b93944e05d10a265cafa5456c1bb58d6b9323fc259e",
+    ".omo/evidence/phase2-final-gates-be576-clone-summary.json": "2d63b04d79672a51620ea13b3e29b7b571d6fb1fda2726596d731645467aa3fe"
+  }
+}

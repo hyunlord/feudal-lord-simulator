@@ -1,0 +1,1433 @@
+{
+  "status": "BEFORE_AFTER_RUNTIME_GATES_PASS_NATIVE_TARGET_REVIEW_COMPLETE_CONTACT_UNRESOLVED",
+  "viewsPerVariant": 16,
+  "totalIndependentOpens": 64,
+  "errors": 0,
+  "fullPresentedJsonExact": 64,
+  "pngRgbaVerified": 64,
+  "exactAaPairs": 32,
+  "crossVariantIdentityExceptComposerEqual": 16,
+  "crossVariantEntireHeightEvidenceEqual": 16,
+  "productPatchUnchanged": true,
+  "comparisons": [
+    {
+      "view": "winter-g0-empty-g0-z0p5-d1",
+      "differentPixels": 173,
+      "diffBoundingBox": [
+        797,
+        534,
+        891,
+        554
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g0-empty-g0-z0p5-d2",
+      "differentPixels": 689,
+      "diffBoundingBox": [
+        1594,
+        1070,
+        1782,
+        1108
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g0-empty-g0-z0p6-d1",
+      "differentPixels": 175,
+      "diffBoundingBox": [
+        797,
+        534,
+        908,
+        554
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g0-empty-g0-z0p6-d2",
+      "differentPixels": 692,
+      "diffBoundingBox": [
+        1594,
+        1069,
+        1817,
+        1109
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g0-empty-g0-z1-d1",
+      "differentPixels": 415,
+      "diffBoundingBox": [
+        795,
+        526,
+        980,
+        557
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g0-empty-g0-z1-d2",
+      "differentPixels": 1579,
+      "diffBoundingBox": [
+        1591,
+        1050,
+        1960,
+        1114
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g0-empty-g0-z2-d1",
+      "differentPixels": 1579,
+      "diffBoundingBox": [
+        791,
+        500,
+        1160,
+        564
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g0-empty-g0-z2-d2",
+      "differentPixels": 6240,
+      "diffBoundingBox": [
+        1580,
+        1002,
+        2320,
+        1128
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z0p5-d1",
+      "differentPixels": 449,
+      "diffBoundingBox": [
+        754,
+        470,
+        894,
+        554
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z0p5-d2",
+      "differentPixels": 1753,
+      "diffBoundingBox": [
+        1508,
+        939,
+        1789,
+        1108
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z0p6-d1",
+      "differentPixels": 465,
+      "diffBoundingBox": [
+        747,
+        457,
+        912,
+        554
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z0p6-d2",
+      "differentPixels": 1810,
+      "diffBoundingBox": [
+        1494,
+        913,
+        1826,
+        1109
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z1-d1",
+      "differentPixels": 1111,
+      "diffBoundingBox": [
+        713,
+        396,
+        987,
+        557
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z1-d2",
+      "differentPixels": 4295,
+      "diffBoundingBox": [
+        1426,
+        793,
+        1974,
+        1115
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z2-d1",
+      "differentPixels": 4294,
+      "diffBoundingBox": [
+        626,
+        243,
+        1174,
+        565
+      ],
+      "totalPixels": 1760000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    },
+    {
+      "view": "winter-g1-empty-g1-z2-d2",
+      "differentPixels": 16977,
+      "diffBoundingBox": [
+        1252,
+        486,
+        2349,
+        1128
+      ],
+      "totalPixels": 7040000,
+      "sameInputIdentityExceptComposerSHA": true,
+      "sameEntireHeightEvidence": true
+    }
+  ],
+  "inventory": [
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p5-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p5-d1.png",
+      "rgbaSha256": "e7d8ce61048ac7ab3feba9127a07d266f705d4174a7364d1ce9459ecd5199dbc",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p5-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p5-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z0p5-d1.png",
+      "rgbaSha256": "e7d8ce61048ac7ab3feba9127a07d266f705d4174a7364d1ce9459ecd5199dbc",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p5-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p5-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p5-d2.png",
+      "rgbaSha256": "37ce07c259138b6783db66831c79281de7d434d3e78b4cce7402ab82e14371e1",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p5-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p5-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z0p5-d2.png",
+      "rgbaSha256": "37ce07c259138b6783db66831c79281de7d434d3e78b4cce7402ab82e14371e1",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p5-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p6-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p6-d1.png",
+      "rgbaSha256": "bacb37ab9724dcc7e82f53ab7fd55adc53e7e585c91ded01d001126158a82914",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p6-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p6-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z0p6-d1.png",
+      "rgbaSha256": "bacb37ab9724dcc7e82f53ab7fd55adc53e7e585c91ded01d001126158a82914",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p6-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p6-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p6-d2.png",
+      "rgbaSha256": "792e3517b371b52ec01fdce98e2cbbd0f5850682f181b29c6509159cf30f32cd",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p6-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z0p6-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z0p6-d2.png",
+      "rgbaSha256": "792e3517b371b52ec01fdce98e2cbbd0f5850682f181b29c6509159cf30f32cd",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z0p6-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z1-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z1-d1.png",
+      "rgbaSha256": "fb7f68ea936c0f45a8996588080364bc4e9d638ef61beac94c983097be1be48e",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z1-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z1-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z1-d1.png",
+      "rgbaSha256": "fb7f68ea936c0f45a8996588080364bc4e9d638ef61beac94c983097be1be48e",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z1-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z1-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z1-d2.png",
+      "rgbaSha256": "41ff4327fb52e560771248cd0c3725d73f5a99d3102a584aec4c896785e32fd9",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z1-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z1-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z1-d2.png",
+      "rgbaSha256": "41ff4327fb52e560771248cd0c3725d73f5a99d3102a584aec4c896785e32fd9",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z1-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z2-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z2-d1.png",
+      "rgbaSha256": "c77e198384b45b8e7cba1dfc8f69f62e5534d3c452f848b4dde64a8404f7a6b3",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z2-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z2-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z2-d1.png",
+      "rgbaSha256": "c77e198384b45b8e7cba1dfc8f69f62e5534d3c452f848b4dde64a8404f7a6b3",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z2-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z2-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z2-d2.png",
+      "rgbaSha256": "97ad8cb518b5cc150b43c5061e130980eb23843af12782c9631be4f538f3a1f0",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z2-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g0-empty-g0-z2-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g0-empty-g0-z2-d2.png",
+      "rgbaSha256": "97ad8cb518b5cc150b43c5061e130980eb23843af12782c9631be4f538f3a1f0",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g0-empty-g0-z2-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p5-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p5-d1.png",
+      "rgbaSha256": "19de61bbee8c60917e0508eda96bcc86fc4820d3476c1146b27fce384600df6a",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p5-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p5-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z0p5-d1.png",
+      "rgbaSha256": "19de61bbee8c60917e0508eda96bcc86fc4820d3476c1146b27fce384600df6a",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p5-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p5-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p5-d2.png",
+      "rgbaSha256": "7f40470e345e458da6854d670ec28b6a355dc50cb0ee402d8c2332c3cdc1d14b",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p5-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p5-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z0p5-d2.png",
+      "rgbaSha256": "7f40470e345e458da6854d670ec28b6a355dc50cb0ee402d8c2332c3cdc1d14b",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p5-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p6-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p6-d1.png",
+      "rgbaSha256": "e4fe20cbe5a118f12bdf129cd01c851d1dc80240ab50e8050cd731d8d409b5bd",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p6-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p6-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z0p6-d1.png",
+      "rgbaSha256": "e4fe20cbe5a118f12bdf129cd01c851d1dc80240ab50e8050cd731d8d409b5bd",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p6-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p6-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p6-d2.png",
+      "rgbaSha256": "257612e179424ca0dc5735dff20f9b12a1922eb4242f943fb3b22d2add1503fd",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p6-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z0p6-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z0p6-d2.png",
+      "rgbaSha256": "257612e179424ca0dc5735dff20f9b12a1922eb4242f943fb3b22d2add1503fd",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z0p6-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z1-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z1-d1.png",
+      "rgbaSha256": "36a7f0f0c948d0b897c8f89cd10154761939d7c118c52fadb14cf8565365d150",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z1-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z1-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z1-d1.png",
+      "rgbaSha256": "36a7f0f0c948d0b897c8f89cd10154761939d7c118c52fadb14cf8565365d150",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z1-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z1-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z1-d2.png",
+      "rgbaSha256": "1572d88cd5ec03c9b9c4ec9dd7c2c0b5a8c6ecd98a360c48532eb73399dffcd2",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z1-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z1-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z1-d2.png",
+      "rgbaSha256": "1572d88cd5ec03c9b9c4ec9dd7c2c0b5a8c6ecd98a360c48532eb73399dffcd2",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z1-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z2-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z2-d1.png",
+      "rgbaSha256": "063786182a1b8804d2a68ea8ab5098ea07abc8a8999d29d81f051ab98249b5ba",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z2-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z2-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z2-d1.png",
+      "rgbaSha256": "063786182a1b8804d2a68ea8ab5098ea07abc8a8999d29d81f051ab98249b5ba",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z2-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z2-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z2-d2.png",
+      "rgbaSha256": "a34c4515c45a59986ad2cbebedc1accc7f165df3a17d58899718415f1c55a70a",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z2-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "before",
+      "view": "winter-g1-empty-g1-z2-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/repeat/winter-g1-empty-g1-z2-d2.png",
+      "rgbaSha256": "a34c4515c45a59986ad2cbebedc1accc7f165df3a17d58899718415f1c55a70a",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-runtime-v2/captures-before-full/winter-g1-empty-g1-z2-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p5-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p5-d1.png",
+      "rgbaSha256": "6f2a1722a3bd3cbfd284f8d52a11916dce5321bdc82d6a2d23157163df64bd97",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p5-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p5-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z0p5-d1.png",
+      "rgbaSha256": "6f2a1722a3bd3cbfd284f8d52a11916dce5321bdc82d6a2d23157163df64bd97",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p5-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p5-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p5-d2.png",
+      "rgbaSha256": "348bc81537fcc54f5fcd8af9601a457af025708145a084d0869cbd2c556f1488",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p5-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p5-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z0p5-d2.png",
+      "rgbaSha256": "348bc81537fcc54f5fcd8af9601a457af025708145a084d0869cbd2c556f1488",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p5-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p6-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p6-d1.png",
+      "rgbaSha256": "2d3c057622fc46821eb534f88d938dc41e3ac045db766f4fb55a0b57ec03a27c",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p6-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p6-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z0p6-d1.png",
+      "rgbaSha256": "2d3c057622fc46821eb534f88d938dc41e3ac045db766f4fb55a0b57ec03a27c",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p6-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p6-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p6-d2.png",
+      "rgbaSha256": "e4f75d9c6fe955d01e624d4f1a2b9cedb7ca515a4d831ea1cf972c9b8b0c3ed1",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p6-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z0p6-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z0p6-d2.png",
+      "rgbaSha256": "e4f75d9c6fe955d01e624d4f1a2b9cedb7ca515a4d831ea1cf972c9b8b0c3ed1",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z0p6-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z1-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z1-d1.png",
+      "rgbaSha256": "48d73c6a76c75ba0eaeca2338ca0ab27a52bf16f5cb764db584c1bc6e450978a",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z1-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z1-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z1-d1.png",
+      "rgbaSha256": "48d73c6a76c75ba0eaeca2338ca0ab27a52bf16f5cb764db584c1bc6e450978a",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z1-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z1-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z1-d2.png",
+      "rgbaSha256": "820c2b2d0380a9c1e86e89811f2127e25d59390cfa7ba5ed9aed48c720d7d522",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z1-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z1-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z1-d2.png",
+      "rgbaSha256": "820c2b2d0380a9c1e86e89811f2127e25d59390cfa7ba5ed9aed48c720d7d522",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z1-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z2-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z2-d1.png",
+      "rgbaSha256": "d5fef6d5b318eabf6caf805a5ef58c5467f240f4c5b42a56b133392a821b85c2",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z2-d1-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z2-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z2-d1.png",
+      "rgbaSha256": "d5fef6d5b318eabf6caf805a5ef58c5467f240f4c5b42a56b133392a821b85c2",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z2-d1-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z2-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z2-d2.png",
+      "rgbaSha256": "5dff192bd405aba5bd0950f2e1431b05874ccbd313acea99d1ccaac2331622ac",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z2-d2-first-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g0-empty-g0-z2-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g0-empty-g0-z2-d2.png",
+      "rgbaSha256": "5dff192bd405aba5bd0950f2e1431b05874ccbd313acea99d1ccaac2331622ac",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g0-empty-g0-z2-d2-repeat-presented-state.json",
+      "presentedSHA": "ce256ccdae5ff886603c4566657b70f73fe1cacb5e9dc3ea6acc0f7feaa65b5a"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p5-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p5-d1.png",
+      "rgbaSha256": "89ee203545389cb5eb8a69a775715b06fdc04c177da9784cf68c8b6c9cf1845d",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p5-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p5-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z0p5-d1.png",
+      "rgbaSha256": "89ee203545389cb5eb8a69a775715b06fdc04c177da9784cf68c8b6c9cf1845d",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p5-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p5-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p5-d2.png",
+      "rgbaSha256": "47f2f2eb37bd8a64e8861a77c1f95323aca529f5259abef2f550ac83b9f4f6c8",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p5-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p5-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z0p5-d2.png",
+      "rgbaSha256": "47f2f2eb37bd8a64e8861a77c1f95323aca529f5259abef2f550ac83b9f4f6c8",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p5-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p6-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p6-d1.png",
+      "rgbaSha256": "fc499c8500bf771c74cfb694f776e5d57e4b54c7077139ae895166831c0299bf",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p6-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p6-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z0p6-d1.png",
+      "rgbaSha256": "fc499c8500bf771c74cfb694f776e5d57e4b54c7077139ae895166831c0299bf",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p6-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p6-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p6-d2.png",
+      "rgbaSha256": "ac987535c404e346e9ee4a452f7b87c2149d85b475478f27da545c1be44b4b8b",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p6-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z0p6-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z0p6-d2.png",
+      "rgbaSha256": "ac987535c404e346e9ee4a452f7b87c2149d85b475478f27da545c1be44b4b8b",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z0p6-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z1-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z1-d1.png",
+      "rgbaSha256": "ad889fa9576ea8eddb3a4305a4f19f5e1b2153ebbc13f7842d91327493a12b10",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z1-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z1-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z1-d1.png",
+      "rgbaSha256": "ad889fa9576ea8eddb3a4305a4f19f5e1b2153ebbc13f7842d91327493a12b10",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z1-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z1-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z1-d2.png",
+      "rgbaSha256": "a8bd5af0af42949eae49144eb14b2d2f7d9df7c76653c6a30f4f34ce00ba3ff0",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z1-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z1-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z1-d2.png",
+      "rgbaSha256": "a8bd5af0af42949eae49144eb14b2d2f7d9df7c76653c6a30f4f34ce00ba3ff0",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z1-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z2-d1",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z2-d1.png",
+      "rgbaSha256": "93c1e4e98a22e67ea285fa7291188d20818552baa60bd7329ceebcbffdebc4d3",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z2-d1-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z2-d1",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z2-d1.png",
+      "rgbaSha256": "93c1e4e98a22e67ea285fa7291188d20818552baa60bd7329ceebcbffdebc4d3",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z2-d1-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z2-d2",
+      "open": "first",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z2-d2.png",
+      "rgbaSha256": "81138bf8023aa25756962523c5311449582399d783ade364c15d89ec4f0ea260",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z2-d2-first-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    },
+    {
+      "variant": "after",
+      "view": "winter-g1-empty-g1-z2-d2",
+      "open": "repeat",
+      "png": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/repeat/winter-g1-empty-g1-z2-d2.png",
+      "rgbaSha256": "81138bf8023aa25756962523c5311449582399d783ade364c15d89ec4f0ea260",
+      "presentedJson": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/captures-after-full/winter-g1-empty-g1-z2-d2-repeat-presented-state.json",
+      "presentedSHA": "1803ea5ac5ae7f8ee19e0c85c1a102ced9a2990b9b9627fcacedeeeaf7f7a6c1"
+    }
+  ],
+  "nativeSheets": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison",
+  "nativeReview": {
+    "views": 32,
+    "sheets": 8,
+    "scaling": "none; native crops placed on labelled padding",
+    "extent": "Target neighborhoods from all 32 first captures; 32 repeat captures proven pixel-identical, not separately visual-rated. Not pixel-by-pixel inspection of every full-canvas area.",
+    "results": [
+      {
+        "view": "winter-g0-empty-g0-z0p5-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p5-d1-before-native.png",
+            "sha256": "adbc690787c5d310c2094479d109411da0ebc7a8ec8a1b76db5ee9185988260f",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p5-d1-after-native.png",
+            "sha256": "2099a688791d4090888df70f0cd8b6210e18126abda73459b09b749a2e7fa952",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g0-empty-g0-z0p5-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p5-d2-before-native.png",
+            "sha256": "d456760963df1a1aeccf6c70d35d03e04a7d863f8252f464677f78625d5ceffc",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p5-d2-after-native.png",
+            "sha256": "b6ad42dd905e4314b954b6151f88fc6e25859471379412262d80e2087eace356",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g0-empty-g0-z0p6-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p6-d1-before-native.png",
+            "sha256": "4e4ae62fd4e74e2de32f3708d5b5d2d30527f2d666b96b90428f443050b0b8af",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p6-d1-after-native.png",
+            "sha256": "2f215e39f6e2e94378da8d6fde5228bd02ebc51cd15393b85e968605432b4a80",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g0-empty-g0-z0p6-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p6-d2-before-native.png",
+            "sha256": "9440fb8a53d52d455a4ee6a5e450d341ee0d8909488e6c0bd0e73e877c09430d",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z0p6-d2-after-native.png",
+            "sha256": "af9fc92068b4f4d4815f47a1c64295e6993a554e64b6d99f1f2d11ae2e0c39c0",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g0-empty-g0-z1-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body, feet and cart are visible; fine hand/shaft contact still uncertain.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z1-d1-before-native.png",
+            "sha256": "4e15aecd905585f7d86896f8c17028efb1fc052debba6405762c438734e73613",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z1-d1-after-native.png",
+            "sha256": "83328c162d3334e2fafaf34c0a1b7d0c4775ea89b254401189957f4788050bbd",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g0-empty-g0-z1-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body, feet and cart are visible; fine hand/shaft contact still uncertain.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z1-d2-before-native.png",
+            "sha256": "d56cba47abbdedf6bdbcb5f73ec73959817c929beecb73da57e63e2ef199f885",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z1-d2-after-native.png",
+            "sha256": "a351b407db0ae244157406cd3f4c6f61c129b3889dd8a9c5997430982c92dafc",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g0-empty-g0-z2-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body, feet and cart are visible; fine hand/shaft contact still uncertain.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z2-d1-before-native.png",
+            "sha256": "fb9bbac3bdf95213666d49f17b5700e9ff9832cc6a8a6a436373939c190ad66f",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z2-d1-after-native.png",
+            "sha256": "fb6e795b66e0b498503b6d543061c51b3e06d844f92e2da08bdae2535c5bdc91",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g0-empty-g0-z2-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body, feet and cart are visible; fine hand/shaft contact still uncertain.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z2-d2-before-native.png",
+            "sha256": "713540b3fb6aa7950f9527b75c4a2827e80f9fee16b9e8feb04de58f36e83884",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g0-empty-g0-z2-d2-after-native.png",
+            "sha256": "f151a1b93f5894f14c5d46eae6dbdb7be236a78e9f6163e8bb3610fe3dbbadbf",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z0p5-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p5-d1-before-native.png",
+            "sha256": "b0e981497c20b097c8da6b6247885de3b19e14cf655b67202be91719c10e81d2",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p5-d1-after-native.png",
+            "sha256": "68304b3e0b012971b33d5f86078a83d421af4ee7696debcc9d4172f4066cea09",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z0p5-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p5-d2-before-native.png",
+            "sha256": "074ea7c8bef9895fe8672bdbf8cf03e311ccb28ce2203fb6e72d8dd297595031",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p5-d2-after-native.png",
+            "sha256": "19ae332c562d86c564a51af9bf2fd1d54e303c7625b3866fa691643c0ec47d82",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z0p6-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p6-d1-before-native.png",
+            "sha256": "cb8d107defbad30c80285c17cfe9aab128fefef9cc2faf1062b166be97a28e19",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p6-d1-after-native.png",
+            "sha256": "85771d2d7e689bf9df7bd69a613a667d2d5bfd8ae947439236f223657f56bf42",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z0p6-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Low zoom: target silhouette exists, anatomical contact cannot be resolved.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p6-d2-before-native.png",
+            "sha256": "b86e8a4228832b058caa9886cb8fabf81c8a79d75fa607a38a70c5d02e2b3f70",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z0p6-d2-after-native.png",
+            "sha256": "2053f6da532405dd13e3f6a1abb79b92ed843adbdb2fca799c9347f9bdf453fa",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z1-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body/legs/feet visible; adjacent figure occludes some arm/cart contact area.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z1-d1-before-native.png",
+            "sha256": "89de39c285dc9588c6f5325833ea51985a77a33acc0fba5edce64eb06eaa1929",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z1-d1-after-native.png",
+            "sha256": "1df4a5b00646c84551f936fa4a0195de073f7444f3551a7e666ad9e993001119",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z1-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body/legs/feet visible; adjacent figure occludes some arm/cart contact area.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z1-d2-before-native.png",
+            "sha256": "022b879e9511c736dc454912b588137a398fb59513f79489c66c2e10039f23f4",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z1-d2-after-native.png",
+            "sha256": "7868bc3de2ea979f43df82c0866e8687833c4737c4c39ee6148e6de75b4b3558",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z2-d1",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body/legs/feet visible; adjacent figure occludes some arm/cart contact area.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z2-d1-before-native.png",
+            "sha256": "cae355711ad62eedb2347cf526fc1e8e69369bb4714ffe781a8b405b39f11fa8",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z2-d1-after-native.png",
+            "sha256": "f7fb0dc9b49f55ea8bb09f0fe2aa3321c2960abfe15c7fa0cc0b2b4398f6edeb",
+            "nativeSize": [
+              200,
+              175
+            ],
+            "sourceRectangle": [
+              700,
+              425,
+              900,
+              600
+            ]
+          }
+        ]
+      },
+      {
+        "view": "winter-g1-empty-g1-z2-d2",
+        "nativeBeforeAfterCropsInspected": true,
+        "observed": "Body/legs/feet visible; adjacent figure occludes some arm/cart contact area.",
+        "afterDifference": "Visible figure/cart growth; no alternate target substituted. Pixel size is not barefoot anatomical height.",
+        "contactVerdict": "UNCERTAIN",
+        "files": [
+          {
+            "variant": "before",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z2-d2-before-native.png",
+            "sha256": "ed2ab3811674e7782181cdd59b4af49d1f7dafb09f0606b6f56c03855d013fab",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          },
+          {
+            "variant": "after",
+            "path": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-runtime-v2/comparison/winter-g1-empty-g1-z2-d2-after-native.png",
+            "sha256": "aa1e62787dd9a8e7d0a1a348d090651efa82770b8318ddc5ca59dca1ae7320f0",
+            "nativeSize": [
+              400,
+              350
+            ],
+            "sourceRectangle": [
+              1400,
+              850,
+              1800,
+              1200
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "pass": true,
+  "views": 2,
+  "independentAA": 2,
+  "errors": 0,
+  "rows": [
+    {
+      "name": "summer-ne-z1",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "ab": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 4728,
+        "maxChannelDelta": 183
+      },
+      "identity": {
+        "state": "summer-loaded",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          48,
+          35.73999999999997
+        ],
+        "zoom": 1,
+        "width": 1600,
+        "height": 1100,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": "height-a1-summer-zooms-v1",
+        "admittedEngineStateSHA": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "expectedPresentedStateSHA": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "productComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+        "expectedRequests": [
+          "/assets/runtime-actors-v1/cart_hand-v4.png",
+          "/assets/walkers-v2/wk_artisan_m_01-v1.png",
+          "/assets/wave7/cart/cart_load_timber_ne-v2.png"
+        ]
+      }
+    },
+    {
+      "name": "summer-ne-z0p6",
+      "aa": {
+        "pass": true,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 0,
+        "maxChannelDelta": 0
+      },
+      "ab": {
+        "pass": false,
+        "sameSize": true,
+        "width": 1600,
+        "height": 1100,
+        "differingPixels": 2035,
+        "maxChannelDelta": 141
+      },
+      "identity": {
+        "state": "summer-loaded",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          48,
+          35.73999999999997
+        ],
+        "zoom": 0.6,
+        "width": 1600,
+        "height": 1100,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": "height-a1-summer-zooms-v1",
+        "admittedEngineStateSHA": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "expectedPresentedStateSHA": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "productComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+        "expectedRequests": [
+          "/assets/runtime-actors-v1/cart_hand-v4.png",
+          "/assets/walkers-v2/wk_artisan_m_01-v1.png"
+        ]
+      }
+    }
+  ],
+  "limits": "SummerNE2 candidate17.6 only; native visibility/contact review pending; no fresh winter proof."
+}

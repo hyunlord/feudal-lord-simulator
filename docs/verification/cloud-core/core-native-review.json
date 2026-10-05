@@ -1,0 +1,263 @@
+{
+  "verdict": "PASS_BOUNDED_CORE_MIGRATION",
+  "head": "cd24d50c5ff3f7df35fbf1849d11da67cfd137b9",
+  "baselineHEAD": "bd84351abb1e36d6b03f7fa03d4ec4f9484ed23d",
+  "run": "astra-cloud2-core-v1-cd24d50",
+  "receiptSha256": "e5fd85eeb49f9c1b1b3ff896582ac9404bbf8f9c9a3615b0f517d8687af2dca9",
+  "capturesSha256": "d44fb4f245badf517dac03ed89f045d0d631a4f394bc46c6fcb7d19379b3250f",
+  "freezeSha256": "c208c147a67421347be3e67ea00476e27a8256021141279f5b2cf4cfd795279e",
+  "independentChecks": {
+    "rawFiles": 77,
+    "PNGDecoded": 40,
+    "AB": 10,
+    "AA": 10,
+    "fullIdentity": 10,
+    "commonSemantics": 10,
+    "positiveBothFrozenOpens": 8,
+    "negativeBothCumulativeAbsenceAndGrassControl": 2,
+    "errors": 0,
+    "tracked": 26859,
+    "input": 26961,
+    "export": 26962,
+    "LFS": 6384,
+    "externalUnchanged": 5488,
+    "externalAdded": 15
+  },
+  "views": [
+    {
+      "name": "summer-normal-z1-t0",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t0.png",
+      "afterPngSha256": "787c8af43d06740eae0a073631e7705520e26d045a59158b036c6511a22b9548",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z1-t0.png",
+      "beforeReopenedThisReview": true,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "08ebf86441100089727304c94ddc2a97184e893e0699bdd9307f7c3f26df956b",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 378,
+          "/assets/wave23/weather/cloud_shadow_b.png": 270
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 378,
+          "/assets/wave23/weather/cloud_shadow_b.png": 270
+        }
+      ]
+    },
+    {
+      "name": "summer-normal-z1-t5000",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z1-t5000.png",
+      "afterPngSha256": "04c206c8bf1a39d6d8bf7263af8432395b89aa51f54a81eaf0952985cbe0bf68",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z1-t5000.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "54825d27decbc571fde12d2d654e46007713dffce23bc0c3a97f55f9e197a5f9",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 432,
+          "/assets/wave23/weather/cloud_shadow_b.png": 240
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 477,
+          "/assets/wave23/weather/cloud_shadow_b.png": 265
+        }
+      ]
+    },
+    {
+      "name": "summer-normal-z06-t0",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t0.png",
+      "afterPngSha256": "197282dccc34f4f9c07c3325dce82fc0bac81891b558a66e24bc3230952ab764",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z06-t0.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "c9f209f00d5ad9d2d3b6dbb0818638f63c655d65306682fdb9168c29b69a4c40",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 531,
+          "/assets/wave23/weather/cloud_shadow_b.png": 472
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 432,
+          "/assets/wave23/weather/cloud_shadow_b.png": 384
+        }
+      ]
+    },
+    {
+      "name": "summer-normal-z06-t5000",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-normal-z06-t5000.png",
+      "afterPngSha256": "bbb081cc3dca3719f689dc81d7dede163a18e25366e03cb81f18d5e5128fa7af",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-normal-z06-t5000.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "689835d6b96252c66051a4dacdbc5637237ae43a8f71337bffe235efb3e85f51",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 486,
+          "/assets/wave23/weather/cloud_shadow_b.png": 432
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 432,
+          "/assets/wave23/weather/cloud_shadow_b.png": 384
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z1-t0",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t0.png",
+      "afterPngSha256": "893aacfef286abeb8f0746e234b368babf97b2023a4064340ba9c59e18b47b83",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z1-t0.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "cff3f3714575ef6198521f31b92a304a2d6b56d3096c70bfefca1a769701d4f7",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 385,
+          "/assets/wave23/weather/cloud_shadow_b.png": 275
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 455,
+          "/assets/wave23/weather/cloud_shadow_b.png": 325
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z1-t5000",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z1-t5000.png",
+      "afterPngSha256": "00313ccb8c1c4c40b23d461fa8003c43560a2b691c9f37006f2d1f95950b5e4a",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z1-t5000.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "efd45a0b5c178cbadbacb86431c6f70aa36a2741ff8b6c767ae9fbf64c7335ec",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 504,
+          "/assets/wave23/weather/cloud_shadow_b.png": 280
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 540,
+          "/assets/wave23/weather/cloud_shadow_b.png": 300
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z06-t0",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t0.png",
+      "afterPngSha256": "7a8fae8342af9dd0e416fec3ce467aa1b6f1aae7664bcfae39747da75d735f7b",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z06-t0.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "a16e7756dff9afb99fc398ae596de779ce2601c7ac38316fdde2d4feea4bf4db",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 414,
+          "/assets/wave23/weather/cloud_shadow_b.png": 368
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 531,
+          "/assets/wave23/weather/cloud_shadow_b.png": 472
+        }
+      ]
+    },
+    {
+      "name": "winter-normal-z06-t5000",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/winter-normal-z06-t5000.png",
+      "afterPngSha256": "991315f750d824121ec36c36efa29e1c21382721ca436dddb756c03cf3568ab6",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/winter-normal-z06-t5000.png",
+      "beforeReopenedThisReview": true,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "074fc1031064b858c0d4b213446966bb7aaf6b08181741e9d0f22e6036d7f445",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 504,
+          "/assets/wave23/weather/cloud_shadow_b.png": 448
+        },
+        {
+          "/assets/wave23/weather/cloud_shadow_a.png": 441,
+          "/assets/wave23/weather/cloud_shadow_b.png": 392
+        }
+      ]
+    },
+    {
+      "name": "spring-wet-negative-z1-t0",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/spring-wet-negative-z1-t0.png",
+      "afterPngSha256": "992e1c7c4f5355ebc18699dba70a353f9d1e06b593469c146a796e8f7c7fd9d1",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/spring-wet-negative-z1-t0.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "6c2e46a8835003e9627b713766ffdc75b2a56fc1da4dd8763f579bc4ed885077",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {},
+        {}
+      ]
+    },
+    {
+      "name": "summer-off-negative-z1-t0",
+      "afterNativeOpenedIndividually": true,
+      "afterPath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/results/summer-off-negative-z1-t0.png",
+      "afterPngSha256": "9e61081ab0c5a33f3cae94cda8bd5343ff552c7e29a3edd07682448d6f02963f",
+      "beforePath": "/Users/rexxa/fls-astra-renderB-cloud-core/output/art-architecture/cloud2-core-v1/baseline/results/summer-off-negative-z1-t0.png",
+      "beforeReopenedThisReview": false,
+      "allBeforePreviouslyOpened": true,
+      "rgbaSha256": "6886683657e1f9d494c8e08e809d5273bbb41d8af3296ab9acd19ad6937c09e4",
+      "ABDifferingPixels": 0,
+      "AADifferingPixels": 0,
+      "identity": "EXACT",
+      "commonSemantics": "EXACT",
+      "firstRepeatFrozenPaintDeltas": [
+        {},
+        {}
+      ]
+    }
+  ],
+  "nativeFindings": "No blocking visual regression; summer/winter world, shoreline, town and negative rain/off appearance preserved. Faint cloud readability/motion remains UNCERTAIN.",
+  "limits": [
+    "Raw legacy assets and core decks differ intentionally and are checked independently before semantic projection.",
+    "Paint lineage does not prove visible contribution; time-pair pixel changes not isolated to cloud motion.",
+    "No DATA2/new cloud art, autumn/DPR2 or cold-loading equivalence acceptance.",
+    "External cache15 additions are recorded, not whole-cache equality."
+  ]
+}
