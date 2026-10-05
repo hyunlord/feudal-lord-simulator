@@ -15,6 +15,7 @@ import { advanceTick } from "../src/engine/tick";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
 import { pointInPolygon } from "../src/world/boundary/buildingGrounds";
+import { houseRequirementRows } from "./autoplayStallProbe";
 
 function yearRow(state: GameState) {
   const ring = state.palisade?.polygon.map(point => ({ x: point.x, y: point.y })) ?? null;
@@ -47,6 +48,14 @@ function yearRow(state: GameState) {
     stock: Object.fromEntries(["wheat", "flour", "bread", "timber", "stone"].map(item => [item,
       state.buildings.reduce((sum, building) => sum + ((building.inventory as Record<string, number | undefined>)[item] ?? 0), 0)])),
     treasury: treasuryBalance(state),
+    // What the houses lack (a house below its level's requirement falls a level after the grace): by requirement.
+    lacking: (() => {
+      const rows = houseRequirementRows(state).filter(row => row.residents > 0);
+      return { water: rows.filter(row => !row.water).length, bread: rows.filter(row => !row.bread).length,
+        granary: rows.filter(row => row.granary === false || row.granary === undefined).length,
+        market: rows.filter(row => row.market !== "served").length, church: rows.filter(row => row.church !== "served").length,
+        outside: rows.filter(row => row.protection === "outside").length, unmetTicks: state.houses.filter(house => house.unmetRequirementTicks > 0).length };
+    })(),
   };
 }
 
