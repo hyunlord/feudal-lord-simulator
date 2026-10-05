@@ -26,6 +26,7 @@ import { householdShortOfFood } from "../population/housePressure";
 import { houseIsStarving } from "../population/houseFood";
 import { withHouseholdMembers } from "../population/householdMembers";
 import { lordshipOf } from "./lordshipState";
+import { newcomersDue, recoveryActive, settleNewcomers, vacantForNewcomers } from "./recovery";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
 import { advanceHistoricalEras, calendar, scenarioOf } from "./scenarioState";
@@ -214,6 +215,10 @@ type LadderResult = { readonly houses: House[]; readonly tally: SeasonTally; rea
 function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
   const tick = state.tick;
   const reserveShort = seasonalFoodReserveShort(state, tick);
+  // RECOVER-1 (RC-3): in lord mode a household is short only when its own larder is empty — a thin town reserve does
+  // not send fed households away (the market and the petitions show the reserve).
+  const recovery = recoveryActive(state);
+  const householdReserveShort = recovery ? false : reserveShort;
   // FC-2: in the famine the poorest households cannot buy bread at its price (relief or price control feeds them).
   const famineShort = new Set(famineShortHouses(state));
   let changed = false;
@@ -222,7 +227,7 @@ function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
   const houses = state.houses.map(house => {
     if (house.abandonedTick !== undefined) return house;
     // A house that starved empty is an ordinary empty house (the old rule): it has no household to be short or leave.
-    if (!householdShortOfFood(house, reserveShort, tick) && !(famineShort.has(house.buildingId) && house.residents > 0)) {
+    if (!householdShortOfFood(house, householdReserveShort, tick) && !(famineShort.has(house.buildingId) && house.residents > 0)) {
       if (house.foodShortSinceTick === undefined && house.leavingSinceTick === undefined) return house;
       changed = true;
       return withoutPressure(house);
@@ -248,7 +253,19 @@ function stepLadder(state: GameState, tally: SeasonTally): LadderResult {
     .slice(0, room);
   for (const { house, index } of due) houses[index] = abandonHouse(house, tick);
   let resettled = 0;
-  if (!reserveShort) {
+  if (recovery) {
+    // RECOVER-1 (RC-2, RC-4): the vacant houses take the households the vacancies and the labour shortage pull in,
+    // whatever the town's stored food; the longest empty first. A house the pestilence emptied waits for its own
+    // resettlement (`plague.ts`) while the pestilence lasts.
+    const lots = new Map(state.buildings.map(building => [building.id, building]));
+    const held = state.plague?.first !== undefined && state.plague.endedTick === undefined ? new Set(state.plague.vacantHouseIds) : null;
+    const vacant = houses.map((house, index) => ({ house, index }))
+      .filter(({ house }) => vacantForNewcomers(house, tick) && held?.has(house.buildingId) !== true)
+      .sort((a, b) => (a.house.abandonedTick ?? Infinity) - (b.house.abandonedTick ?? Infinity) || a.house.buildingId.localeCompare(b.house.buildingId));
+    const arrivals = newcomersDue(state, vacant.length, tally.resettled, tally.startTick);
+    for (const { house, index } of vacant.slice(0, arrivals)) houses[index] = settleNewcomers(house, houseLotArea(lots.get(house.buildingId)), tick);
+    resettled = Math.min(arrivals, vacant.length);
+  } else if (!reserveShort) {
     const lots = new Map(state.buildings.map(building => [building.id, building]));
     // F3-A (PL-3): a house the pestilence emptied waits for its resettlement (`plague.ts`), not for the ladder's household.
     const held = state.plague?.first !== undefined && state.plague.endedTick === undefined ? new Set(state.plague.vacantHouseIds) : null;
