@@ -30,6 +30,8 @@ export const REGION_COPY = {
   /** A holder the copy has no word for (an outside id). */
   otherHolder: "다른 보유자",
   lordHouse: (house: string) => `${house} 가문`,
+  /** A neighbour estate by its house (the registry card's form: "드 헤로넬 영지"). */
+  estateName: (house: string) => `${house} 영지`,
   label: (name: string, flag: string) => `${name} · ${flag}`,
   site: (label: string, kind: string, line: string) => `${label}: ${kind}. ${line}`,
   armsLabel: (house: string) => `${house} 문장`,

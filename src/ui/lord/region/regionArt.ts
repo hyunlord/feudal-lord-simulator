@@ -47,6 +47,17 @@ export type RegionMapArt = {
 };
 
 /** The region map's entry and picture: loads on first use, re-renders once the load has settled (once per session). */
+/** The map's entry with its deployed URL: one object for the session (the registry is fixed), so a view memoised on it
+ * keeps its cache across renders. */
+let mapEntry: RegionalMapEntry | null | undefined;
+function regionMapEntry(): RegionalMapEntry | null {
+  if (mapEntry === undefined) {
+    const placed = MAP_ART.placement(REGION_MAP_ID, { at: { x: 0, y: 0 } });
+    mapEntry = placed?.type === "ui-handoff" && placed.entry.kind === "regional-map" ? placed.entry : null;
+  }
+  return mapEntry;
+}
+
 export function useRegionMap(): RegionMapArt {
   const [, setSettled] = useState(0);
   useEffect(() => {
@@ -54,8 +65,7 @@ export function useRegionMap(): RegionMapArt {
     void MAP_ART.loadSettled(REGION_MAP_ID).then(() => { if (live) setSettled(count => count + 1); });
     return () => { live = false; };
   }, []);
-  const placed = MAP_ART.placement(REGION_MAP_ID, { at: { x: 0, y: 0 } });
-  const entry = placed?.type === "ui-handoff" && placed.entry.kind === "regional-map" ? placed.entry : null;
+  const entry = regionMapEntry();
   const status = MAP_ART.status(REGION_MAP_ID).status;
   return { entry, url: entry !== null && status === "ready" ? entry.image.url : null, failed: status === "missing" || status === "unavailable" };
 }

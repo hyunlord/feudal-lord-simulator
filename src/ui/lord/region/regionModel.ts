@@ -5,6 +5,7 @@ import type { Estate, EstateKind, HolderId } from "../../../engine/estates.types
 import { lordHouse } from "../../../engine/lordshipState";
 import { oversightViews } from "../../../engine/stewardship";
 import { HOME_ESTATE_ID } from "../../../content/estateConfig";
+import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import type { EmblemSpec } from "../../heraldry/EmblemImage";
 import { heraldryArms } from "../../heraldry/heraldry";
 import { moneyShort } from "../../money.ko";
@@ -27,14 +28,18 @@ export const REGION_ZOOMS: readonly RegionZoom[] = ["fit", "half", "full"];
 
 export const SITE_OF_KIND: Readonly<Record<EstateKind, RegionSite | null>> = { manor: "manor", market_town: "market", mill_estate: "mill", fishery: null };
 
+/** An engine surname as the screens write it (FIX-5: the registry card and the lead's cards do the same). */
+const ko = (name: string): string => GENTRY_NAMES_KO[name] ?? name;
+const estateName = (estate: Pick<Estate, "id" | "name">): string => estate.id === HOME_ESTATE_ID ? COPY.home : COPY.estateName(ko(estate.name));
+
 /** ES-1 holders: the lord, a faction (a neighbour house), a neighbour estate's own house, a person (an heir). */
 export function holderLabel(state: GameState, holder: HolderId): string {
-  if (holder === LORD) return COPY.lordHouse(lordHouse(state).name);
+  if (holder === LORD) return COPY.lordHouse(ko(lordHouse(state).name));
   const faction = state.factions?.factions.find(entry => entry.id === holder);
-  if (faction !== undefined) return COPY.lordHouse(faction.name);
+  if (faction !== undefined) return COPY.lordHouse(ko(faction.name));
   if (holder.startsWith("estate:")) {
     const house = estatesOf(state).estates.find(estate => estate.id === holder.slice("estate:".length))?.house;
-    if (house !== undefined) return COPY.lordHouse(house.name);
+    if (house !== undefined) return COPY.lordHouse(ko(house.name));
   }
   if (holder.startsWith("person:")) {
     const person = estatePerson(state, holder.slice("person:".length));
@@ -57,9 +62,9 @@ export function regionFlag(state: GameState, estate: Pick<Estate, "id" | "posses
 /** The arms on the flag's base: the ruling house's on what the lord possesses, a neighbour house's (by its heraldry seed)
  * on its own; none for a house the engine gives no arms (the old lord's, an heir's) — the base stays empty. */
 export function regionArms(state: GameState, estate: Pick<Estate, "possessor">): { readonly emblem: EmblemSpec; readonly house: string } | null {
-  if (estate.possessor === LORD) return { emblem: lordHouseArms(state), house: lordHouse(state).name };
+  if (estate.possessor === LORD) return { emblem: lordHouseArms(state), house: ko(lordHouse(state).name) };
   const faction = state.factions?.factions.find(entry => entry.id === estate.possessor);
-  return faction === undefined ? null : { emblem: { kind: "arms", recipe: heraldryArms(faction.heraldrySeed) }, house: faction.name };
+  return faction === undefined ? null : { emblem: { kind: "arms", recipe: heraldryArms(faction.heraldrySeed) }, house: ko(faction.name) };
 }
 
 type Slot = ReturnType<typeof siteSlots>[number];
@@ -103,7 +108,7 @@ export function regionEstates(state: GameState, map: Pick<RegionalMapEntry, "slo
   return estates.map(estate => {
     const home = estate.id === HOME_ESTATE_ID;
     const flag = regionFlag(state, estate);
-    const name = home ? COPY.home : estate.name;
+    const name = estateName(estate);
     return { estateId: estate.id, home, name, label: COPY.label(name, COPY.flags[flag]), kind: COPY.kinds[estate.kind],
       site: SITE_OF_KIND[estate.kind], flag, slot: slots.get(estate.id) ?? null, arms: regionArms(state, estate) };
   });
@@ -133,7 +138,7 @@ export function regionChosen(state: GameState, estateId: string): RegionChosenVi
   if (steward !== undefined) rows.push({ key: "steward", value: lordPersonRow(state, steward).name });
   rows.push({ key: "value", value: moneyShort(view.annualValue) });
   if (lordPieces.length > 0) rows.push({ key: "lordPieces", value: lordPieces.join(", ") });
-  return { estateId, name: view.id === HOME_ESTATE_ID ? COPY.home : view.name, rows };
+  return { estateId, name: estateName(view), rows };
 }
 
 /** The markers' size at each zoom (CSS px per source px): half size at the whole map and at half zoom (the declared

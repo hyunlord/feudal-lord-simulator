@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactElement } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
 import { estatesOf } from "../../../engine/estates";
 import type { GameState } from "../../../engine/engine.types";
 import { EmblemImage } from "../../heraldry/EmblemImage";
@@ -60,10 +60,11 @@ export function RegionPanel({ state, focus, onOpen }: LordPanelProps): ReactElem
   const [zoom, setZoom] = useState<RegionZoom>("fit");
   const [chosen, setChosen] = useState<string | null>(focus);
   useEffect(() => { if (focus !== null) setChosen(focus); }, [focus]);
-  const estates = regionEstates(state, map.entry);
+  // Once per state object (and the session's one map entry): the clock's and the zoom's re-renders reuse it.
+  const estates = useMemo(() => regionEstates(state, map.entry), [state, map.entry]);
   const placed = estates.filter(view => view.slot !== null);
   const listed = estates.filter(view => view.slot === null);
-  const line = chosen === null ? null : regionChosen(state, chosen);
+  const line = useMemo(() => chosen === null ? null : regionChosen(state, chosen), [state, chosen]);
   const size = map.entry?.coordinateSpace ?? { width: 1600, height: 1000 };
   const scroller = useRef<HTMLDivElement | null>(null);
   const chosenLine = useRef<HTMLElement | null>(null);
