@@ -89,7 +89,7 @@ const proofTick = page => page.evaluate(() => window.__FEUDAL_PHASE10_PROOF__.st
   await page.goto(`${url}?phase10-proof=1`);
   await page.waitForSelector('.title-screen'); await page.waitForTimeout(1200);
   await shot(page, 'title.jpg');
-  await page.locator('.welcome-parchment [data-scenario]').first().click(); await page.waitForTimeout(200);
+  await page.locator('.welcome-parchment [data-scenario="core:campaign_market_town"]').click(); await page.waitForTimeout(200);
   const loading = await page.locator('.chapter-loading').count();
   await shot(page, 'chapter-loading.jpg');
   await page.waitForTimeout(1200);

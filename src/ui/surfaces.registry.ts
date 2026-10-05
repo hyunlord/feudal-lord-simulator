@@ -327,7 +327,7 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.chapter-preview.goals", extends: "modal.chapter-preview", root: ".chapter-preview-goals", frame: "flat", scene: chapterScene("ui5", "chapter-end"), open: [],
     data: "chapter 2's goals on the preview" },
   { id: "modal.chapter-loading", root: ".chapter-loading", frame: "flat", scene: { kind: "title" }, numbers: false,
-    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-scenario]" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
+    open: [{ holdTimers: true }, { click: ".welcome-parchment [data-scenario='core:campaign_market_town']" }, { wait: ".chapter-loading", timeout: 5_000 }], data: "the new game's loading screen (900 ms)" },
   { id: "modal.person-card", extends: "map.selection.house", root: ".person-card", frame: "painting", painting: PERSON_CARD_ART, scene: TOWN_CLOSE,
     frameSlots: [".person-card-emblem-cover"],
     portraitRing: { cx: 59.5, cy: 83.5, r: 43, inner: 33.5, face: ".person-card-portrait .person-portrait-layer", ornament: ".person-card-portrait .person-state-ornament" },
@@ -414,13 +414,13 @@ export const SURFACES: readonly SurfaceRow[] = [
   // the steward's precedents and the town's request (from their chips).
   // The picture is not a required element: the content check proves paint by text and controls changing between its two
   // captures, which a picture never does (scripts/lmr1PetitionCaptures.mjs checks each picture loads at 960 × 540).
-  { id: "modal.lord.home-petition", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".lord-card-recurring", ".story-modal-later"],
     scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01), both answers' numbers" },
-  { id: "modal.lord.home-petition.no-art", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition.no-art", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".lord-card-forecast", ".story-modal-later"],
     scene: petitionScene("petitions", "home-chancel_repair", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the chancel's repair (no picture)" },
-  { id: "modal.lord.home-petition.guardian", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition.guardian", ...PETITION, root: ".story-modal.petition-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".petition-option", ".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".lord-card-court", ".petition-option", ".story-modal-later"],
     scene: petitionScene("petitions", "guardian", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "a minor lord's wardship petition (the court line with his guardian)" },
   { id: "modal.lord.precedent", ...PETITION, root: ".story-modal.petition-card.lord-card[data-precedent]", frameSlots: [], siblingsNoOverlap: [".lord-card-recurring", ".story-modal-later"],

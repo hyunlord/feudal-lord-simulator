@@ -12,6 +12,9 @@ import { CANONICAL_PALETTE, PALETTE, RAMPS } from "../src/content/palette";
 import { FEN_ARCHETYPE_ID, MAP_ARCHETYPE_IDS, RIVERSIDE_ARCHETYPE_ID } from "../src/content/scenario/archetypes";
 import { DEFAULT_SCENARIO_ID, LORD_SLICE_SCENARIO_ID, SANDBOX_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import { lordMode } from "../src/engine/townAgency";
+import { TUTORIAL_COPY } from "../src/ui/tutorial/tutorialCopy.ko";
+import { TITLE_COPY } from "../src/ui/titleCopy.ko";
+import { showStartHint, startHint } from "../src/ui/startHintStore";
 import { SCENARIO_COPY } from "../src/content/scenario/scenarioCopy.ko";
 import { gameReducer, DEFAULT_GAME_STATE } from "../src/state/gameStore";
 import { NEW_GAME_SEED_MAX, newGameState } from "../src/state/newGame";
@@ -168,7 +171,7 @@ test("the welcome offers the five lands above the mode buttons; the mode buttons
     assert.ok(markup.includes(land.name));
     assert.ok(markup.includes(land.description));
   }
-  assert.deepEqual([...markup.matchAll(/data-scenario="([^"]+)"/g)].map(match => match[1]), [DEFAULT_SCENARIO_ID, SANDBOX_SCENARIO_ID, LORD_SLICE_SCENARIO_ID]);
+  assert.deepEqual([...markup.matchAll(/data-scenario="([^"]+)"/g)].map(match => match[1]), [LORD_SLICE_SCENARIO_ID, DEFAULT_SCENARIO_ID, SANDBOX_SCENARIO_ID]);
   assert.match(markup, /목표형으로 시작/);
   assert.match(markup, /class="welcome-parchment welcome-parchment--lands"/);
   // NAT-4: the number is the kit field (digits, six at most, numeric keypad) beside "무작위"; no −/+ any more.
@@ -211,4 +214,25 @@ test("LM-R1 (Astra B01): the start screen's lord mode starts the lord's slice on
   assert.equal(state.scenarioId, LORD_SLICE_SCENARIO_ID);
   assert.equal(state.seed, 4242);
   assert.ok(lordMode(state), "the slice is always lord mode");
+});
+
+test("LR1-D7: lord mode first, the one primary button, under \"처음이라면 이 모드로\"; its line is two short sentences without the goal years", () => {
+  const markup = welcome();
+  const buttons = modeButtons(markup);
+  assert.match(buttons[0]!, /data-scenario="core:lord_slice"/);
+  assert.equal(buttons.filter(button => /ui-btn--primary/.test(button)).length, 1, "one primary on the screen");
+  assert.match(buttons[0]!, /ui-btn--primary/);
+  assert.ok(markup.indexOf(TUTORIAL_COPY.modeFirst) < markup.indexOf('data-scenario="core:lord_slice"'));
+  assert.equal(markup.split(TUTORIAL_COPY.modeFirst).length - 1, 1);
+  assert.doesNotMatch(TUTORIAL_COPY.modeLines.lord_slice, /년/);
+  assert.doesNotMatch(TUTORIAL_COPY.modeLines.campaign_market_town, /처음이라면/);
+});
+
+test("LR1-D7: the start hint — the sandbox's build guidance, lord mode's goal — survives the start's remount and clears", async () => {
+  showStartHint(TITLE_COPY.sandboxHint);
+  assert.equal(startHint(), TITLE_COPY.sandboxHint);
+  showStartHint(TITLE_COPY.lordGoal(12, 20));
+  assert.equal(startHint(), "12~20년 뒤, 이 도시가 내 결정의 결과인지 봅니다.");
+  showStartHint(null);
+  assert.equal(startHint(), null);
 });

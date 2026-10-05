@@ -1,0 +1,33 @@
+{
+  "scope": "Actual answerRegistryOffer + recordDecision on constructed offered occurrence; no random selection or long simulation",
+  "well": {
+    "id": "ck_evt_205",
+    "waterless": 9,
+    "action": {
+      "kind": "place_building",
+      "building": "well",
+      "tx": 1,
+      "ty": 1
+    },
+    "enabled": [
+      "a",
+      "b",
+      "c"
+    ],
+    "subsidyApplied": true
+  },
+  "hold": {
+    "answered": true,
+    "hold": {
+      "faction": "town",
+      "delta": -2
+    },
+    "before": 10,
+    "after": 8,
+    "doubleAnswerRefused": true
+  },
+  "stale": {
+    "choices": [],
+    "status": "invalid"
+  }
+}

@@ -1,6 +1,6 @@
 // ASSET-2 (2026-09-28): four of the five Phase 13 UI outputs this checks (scroll_frame, wood_console, parchment_texture,
 // illumination_corner) are retired from the runtime (unused since UI-KIT-1; files gone from public/assets/ui); seal_slot
-// is the one still in use. The checker and its fixture tests stay as the Phase 13 record.
+// followed (LR1-D1, user 2026-10-05: no screen draws it since the Wave 38 seals; file gone, its ledger row retired). The checker and its fixture tests stay as the Phase 13 record.
 import { createHash } from "node:crypto";
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";

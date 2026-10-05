@@ -1,4 +1,5 @@
 import { DECISION_COPY } from "../decisionCopy.ko";
+import { EmblemImage, type EmblemSpec } from "../heraldry/EmblemImage";
 import { Button } from "../kit";
 import { LORD_CARDS_COPY } from "../lordCardsCopy.ko";
 import type { HomePetitionView, LordRequestView, PrecedentView } from "../lordCardsModel";
@@ -26,11 +27,16 @@ function RecurringSwitch({ on, onToggle }: { readonly on: boolean; readonly onTo
   );
 }
 
-function Frame({ label, data, children }: { readonly label: string; readonly data: Readonly<Record<`data-${string}`, string>>; readonly children: React.ReactNode }) {
+function Frame({ label, data, children, crest = null }: {
+  readonly label: string; readonly data: Readonly<Record<`data-${string}`, string>>; readonly children: React.ReactNode;
+  /** LR1-D5: arms in the frame's empty roundel (its top-left corner), as the political cards show the sender's. */
+  readonly crest?: Readonly<{ arms: EmblemSpec; label: string }> | null;
+}) {
   return (
     <div className="story-modal-backdrop" role="presentation">
       <section className="story-modal petition-card lord-card" data-frame="petition" role="dialog" aria-modal="true" aria-label={label} {...data}>
         <span className="petition-frame" aria-hidden="true" style={wave8FrameLayerStyle("frame_petition")} />
+        {crest === null ? null : <span className="petition-roundel"><EmblemImage emblem={crest.arms} size={38} label={crest.label} /></span>}
         <div className="petition-body">{children}</div>
       </section>
     </div>
@@ -41,7 +47,7 @@ export function HomePetitionModal({ view, onAnswer, onRecurring, onLater }: {
   readonly view: HomePetitionView; readonly onAnswer: (grant: boolean) => void; readonly onRecurring: (next: boolean) => void; readonly onLater: () => void;
 }) {
   return (
-    <Frame label={view.title} data={{ "data-home-petition": view.kind, "data-petition": view.petitionId, "data-answers": "2" }}>
+    <Frame label={view.title} data={{ "data-home-petition": view.kind, "data-petition": view.petitionId, "data-answers": "2" }} crest={{ arms: view.arms, label: view.armsLabel }}>
       <p className="lord-card-court">{view.court}</p>
       <Scene art={view.art} />
       <p className="lord-card-kicker">{LORD_CARDS_COPY.homeFrom} · {view.waits}</p>
@@ -51,7 +57,7 @@ export function HomePetitionModal({ view, onAnswer, onRecurring, onLater }: {
         {view.options.map(option => (
           <li key={option.grant ? "grant" : "refuse"}>
             <Button type="button" className="petition-option" data-grant={option.grant ? "true" : "false"} aria-label={DECISION_COPY.choose(option.label)}
-              onPress={() => onAnswer(option.grant)} variant="primary">
+              onPress={() => onAnswer(option.grant)} variant="secondary">
               <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.grant ? "seal_petition_accept" : "seal_petition_reject", 44)} />
               <strong>{option.label}</strong>
               <span className="lord-card-forecast" data-treasury={option.treasury}

@@ -41,8 +41,10 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
   const consumeDismissal = (event: MouseEvent | PointerEvent) => {
     event.preventDefault();
     event.stopPropagation();
-    // With a saved city on offer the player must choose explicitly; a stray click must not start over.
-    if (continueLine === null && playable) onDismiss(land);
+    // LR1-D7 (user 2026-10-05): a player starts by a mode button only. A scripted run (the proof query, or a pinned map
+    // number) still closes the welcome by a click on the layer, keeping its injected scene. With a saved city on offer
+    // the choice is always explicit.
+    if (continueLine === null && playable && scriptedRun()) onDismiss(land);
   };
   const containKeyboard = (event: ReactKeyboardEvent) => {
     event.stopPropagation();
@@ -75,11 +77,10 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
         {continueLine === null ? <>
           <LandPicker choice={land} onChange={setLand} />
           <ScenarioModeButtons playable={playable} onChoose={scenarioId => onChooseMode(scenarioId, land)} />
-          <p className="welcome-dismiss">{TITLE_COPY.dismiss}</p>
         </> : (
           <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
             <p>{continueLine}</p>
-            <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => onContinue()} variant="primary">
+            <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => onContinue()} variant={confirmingNewGame ? "secondary" : "primary"}>
               {SAVE_COPY.continueGame}
             </Button>
             {confirmingNewGame ? <>
@@ -101,9 +102,9 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
   );
 }
 
-/** The start screen's modes: the core scenarios in registration order, then the lord's slice (LM-R1, Astra B01: lord mode
- * can be played before LM-R3 makes it the default start). */
-const START_MODES: readonly string[] = [...CORE_SCENARIOS.map(scenario => scenario.id), LORD_SLICE_SCENARIO_ID];
+/** The start screen's modes (LR1-D7, foundation §4): lord mode first — the default, the one primary button with "처음이라면
+ * 이 모드로" — then the core scenarios in registration order. */
+const START_MODES: readonly string[] = [LORD_SLICE_SCENARIO_ID, ...CORE_SCENARIOS.map(scenario => scenario.id)];
 const MODE_KEY: Readonly<Record<string, "campaign_market_town" | "sandbox" | "lord_slice">> =
   { [DEFAULT_SCENARIO_ID]: "campaign_market_town", [SANDBOX_SCENARIO_ID]: "sandbox", [LORD_SLICE_SCENARIO_ID]: "lord_slice" };
 
@@ -115,15 +116,24 @@ function ScenarioModeButtons({ onChoose, playable }: {
   return <div className="welcome-modes" role="group" aria-label={SCENARIO_COPY.modePrompt}>
     {START_MODES.map(id => {
       const key = MODE_KEY[id] ?? "sandbox";
-      return <div key={id}>
+      const first = id === LORD_SLICE_SCENARIO_ID;
+      return <div key={id} data-mode-first={first ? "true" : undefined}>
+        {first ? <p className="welcome-mode-first">{TUTORIAL_COPY.modeFirst}</p> : null}
         <Button className="autoplay-toggle save-control-button" type="button"
-          data-scenario={id} aria-disabled={playable ? undefined : true} isolate onPress={() => { if (playable) onChoose(id); }} variant="primary">
+          data-scenario={id} aria-disabled={playable ? undefined : true} isolate onPress={() => { if (playable) onChoose(id); }} variant={first ? "primary" : "secondary"}>
           {SCENARIO_COPY.modeButtons[key]}
         </Button>
         <p className="welcome-mode-line">{TUTORIAL_COPY.modeLines[key]}</p>
       </div>;
     })}
   </div>;
+}
+
+/** A scripted run: the proof query or a pinned new-game number (scripts and replays; a player never passes either). */
+function scriptedRun(): boolean {
+  if (typeof window === "undefined") return false;
+  const query = new URLSearchParams(window.location.search);
+  return query.get("phase10-proof") === "1" || query.has("new-game-seed");
 }
 
 export function readWelcomeDismissed(): boolean {
