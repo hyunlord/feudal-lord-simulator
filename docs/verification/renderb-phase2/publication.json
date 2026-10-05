@@ -1,0 +1,37 @@
+{
+  "head": "be576dbee826fc9e02a0336bb98cae4209fa5279",
+  "base": "90d9b5865bee4dc012f49f6eded135ac85975e78",
+  "remoteHead": "be576dbee826fc9e02a0336bb98cae4209fa5279",
+  "protectedPushRun": "astra-phase2-trunk-push-be576db",
+  "exit": 0,
+  "protectedHooks": true,
+  "remoteVerifiedBy": "explicit fetch and live git ls-remote equality",
+  "credentialCacheCleanupExit": 0,
+  "mergedWorkbranchDeleted": true,
+  "nextBranch": "astra/renderB-region-cloud-height",
+  "mergeReceipt": ".omo/evidence/phase2-final-gates-be576-merge-summary.json",
+  "cloneReceipt": ".omo/evidence/phase2-final-gates-be576-clone-summary.json",
+  "finalReceipt": ".omo/evidence/phase2-final-gates-be576-final-summary.json",
+  "nonblockingWarning": "DGX mirror remote-ref ambiguity in trend check; check:merge passed with stale trend warning; actual protected push confirmed",
+  "timestamp": "2026-10-05T02:13:13.154366+00:00",
+  "mergeReceiptSha256": "1de3f19111aa8a681dd20b93944e05d10a265cafa5456c1bb58d6b9323fc259e",
+  "cloneReceiptSha256": "2d63b04d79672a51620ea13b3e29b7b571d6fb1fda2726596d731645467aa3fe",
+  "finalReceiptSha256": "c4c4c2ca98e3df9feddbf8aec57572293e33dadd05674d8b2b795eeb5e7663fe",
+  "rawPushFiles": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-trunk-push-be576db/run.log",
+      "sha256": "858c0daff297158ffed9851515afc6aad3a6ec958796464b122f2cebf2468f98",
+      "bytes": 9479
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-trunk-push-be576db/timing.env",
+      "sha256": "cce8e3f223f41a20e6668b563a2968a6b1054345ddacb55df117ca5580b64d82",
+      "bytes": 75
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-trunk-push-be576db/exit-code",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2
+    }
+  ]
+}

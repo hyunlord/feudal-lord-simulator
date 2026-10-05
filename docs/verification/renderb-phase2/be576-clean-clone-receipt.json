@@ -1,0 +1,93 @@
+{
+  "pass": true,
+  "classification": "FINAL_BE576_EXACT_HEAD",
+  "run": "astra-phase2-final-clone-be576db",
+  "head": "be576dbee826fc9e02a0336bb98cae4209fa5279",
+  "remoteExit": 0,
+  "fetchExit": 0,
+  "steps": {
+    "clone": 0,
+    "npm-ci": 0,
+    "typecheck": 0,
+    "test": 0,
+    "build": 0
+  },
+  "totals": {
+    "tests": 4886,
+    "pass": 4886,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "duration_ms": 646388.53246
+  },
+  "innerExactHead": true,
+  "innerTrackedClean": true,
+  "public14": true,
+  "source14": true,
+  "postGuardErrors": [],
+  "postTrackedClean": true,
+  "trackedCount": 26844,
+  "exportedCount": 26848,
+  "lfsHydrated": 6384,
+  "fullPostSnapshotEqualsFreeze": true,
+  "freezeSHA256": "98d72fc182c0479de4b76de718dbf1f271873e631bbb28556d256820845396ff",
+  "summary": "clone: exit 0 (319s)\nnpm-ci: exit 0 (1s)\ntypecheck: exit 0 (1s)\ntest: exit 0 (647s)\ntest: tests=4886 pass=4886 fail=0 cancelled=0 skipped=0 todo=0 duration_ms=646388.53246 \nbuild: exit 0 (10s)\nclone-check be576db: passed\n",
+  "logs": {
+    "run.log": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/run.log",
+      "bytes": 1092,
+      "sha256": "7d22cf82c2477a53181fa9a2b2310dbfacb3f0debb5c6400db08a9fe727498af"
+    },
+    "summary.txt": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/summary.txt",
+      "bytes": 221,
+      "sha256": "07ab91acb98d8f5976081079407d36ed6b13fed1943cd0e2ba2d7ecf5207e945"
+    },
+    "clone-clone.log": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/clone-clone.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clone-npm-ci.log": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/clone-npm-ci.log",
+      "bytes": 550,
+      "sha256": "3ed7327ceafd84b0a5b1bb000bf10d62f2a7e6d740318bdb15913e6480671e02"
+    },
+    "clone-typecheck.log": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/clone-typecheck.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "clone-test.log": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/clone-test.log",
+      "bytes": 546876,
+      "sha256": "2fd0c90ab038e08249a41b91dd0f7562e6000c3b9d97f24251d82a7053935331"
+    },
+    "clone-build.log": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/clone-build.log",
+      "bytes": 148826,
+      "sha256": "52867643d3474bba480de087f10eecd69f8bf8b7737349087475a641fa0c0545"
+    },
+    "phase2-final-gates-inner-audit.json": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/phase2-final-gates-inner-audit.json",
+      "bytes": 6464,
+      "sha256": "c31d68f9e0c5b5518252094b5e347efa77f2f2e7d0a110d8fa7415dcd57d84f3"
+    },
+    "phase2-final-gates-clone/start.json": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/phase2-final-gates-clone/start.json",
+      "bytes": 938,
+      "sha256": "0433de8c051dc74addd956ef7799a2d3f0ddaff55ddb18b0cf3627638d4abf56"
+    },
+    "phase2-final-gates-clone/end.json": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/phase2-final-gates-clone/end.json",
+      "bytes": 13621525,
+      "sha256": "baacb9dc8c863c7c70a654a2ee191c11b39019c176000d945be255fc57a870dc"
+    },
+    "phase2-final-gates-clone/source-freeze.json": {
+      "path": "/Users/rexxa/fls-astra-renderB-phase2-gates-be576dbe/.remote-runs/astra-phase2-final-clone-be576db/phase2-final-gates-clone/source-freeze.json",
+      "bytes": 13008247,
+      "sha256": "98d72fc182c0479de4b76de718dbf1f271873e631bbb28556d256820845396ff"
+    }
+  }
+}

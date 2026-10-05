@@ -1,6 +1,6 @@
 # Phase 2 증거 조립 상태
 
-**ed83 실제 merge·깨끗한 클론 통과, 게시 문서 정리.** 제품은 db173 이후 바뀌지 않았다. 실제 검사 커밋과 이 문서 후속 커밋을 구분하며, 게시 대상 최종 HEAD 검사는 별도로 수행한다.
+**최종 `be576dbe` 실제 merge·깨끗한 클론·보호 본선 게시 통과.** DGX 4,886/4,886·타입·build·source LFS14/public14 검사 뒤 `90d9b586 → be576dbe`를 게시했고 원격 ref 일치를 확인했다. [최종 관문](be576-final-gates.json)·[게시 영수증](publication.json). 아래 ed83 및 더 이전 기록은 각각의 실제 측정 시점을 보존한다. 후속 REGION/CLOUD/HEIGHT 가지의 검증을 대신하지 않는다.
 
 | 항목 | 확인 범위 / 상태 |
 |---|---|
@@ -13,8 +13,8 @@
 | 최신 실제 통합 참조 | db17321a: 여름·겨울 × 1/.6, identity 4 / RGBA 동일 4 / A-A 4 / 오류 0, B/C paint; FIELD 봄 증거 아님 |
 | 기하 | fd68f124 실제 측정 PASS: 2,202/2,202, 실패 0, WARN 693; 독립 검토 PASS |
 | fd68 → db173 연결 | 보호 입력 4,277 동일, native hash 동일; 중간 연결이며 미래 HEAD 증명 아님 |
-| merge / clean clone | 실제 ed83 PASS: 4,886/4,886·타입·build·LFS14/public14; 문서 후속 HEAD는 재검사 대상 |
-| 보호 push | PENDING, futureHEAD null; 실제 원격 ref 확인 전 게시 완료라고 하지 않음 |
+| merge / clean clone | 최종 be576 PASS: 4,886/4,886·타입·build·LFS14/public14; ed83 결과 별도 보존 |
+| 보호 push | be576 DGX protected push exit0; 원격 exact HEAD 확인; 작업 가지 삭제·전용 자격 캐시 종료 |
 
 ## 기존 일곱 증거 폴더
 
