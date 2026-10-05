@@ -187,7 +187,8 @@ test("B4 rules unchanged: the seed 3 stall state advanced 24,000 ticks without t
   // bynames (FX11-3), wardship (FX11-1) and the stuck-stock since-ticks (SK-3) follow (was 20e33b11…).
   // LM-E5 (LG-3, LM5-5): the state carries the land (footfall, footpaths, fallow) and grown trees are felled again (was
   // fc96b344…; without `forestHarvests` and `land` the state is trunk 6d039cd's, 6708920a9b75091b both).
-  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "812d66ad594d768098151dce393c94f3f32192d4bff6d4cc78b4061cfe69a05f");
+  // MANOR-1: the state file migrates to v50 — its manor house 3×3 (MH-5) and its lordship written (MNR-4) (was 812d66ad…).
+  assert.equal(createHash("sha256").update(JSON.stringify(rest)).digest("hex"), "8fc5fb9acecf485f896bec53c0abd3da2eb12fda8d7fb8eb3ec45b04636434e6");
 });
 
 test("B8 seed 4 (F0-A run 1): backed-up edge barns get a mill beside them while homes lose levels, and the town reaches L4 24/24", () => {

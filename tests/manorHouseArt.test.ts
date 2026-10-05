@@ -9,7 +9,8 @@ import { readFileSync } from "node:fs";
 import { test } from "node:test";
 import type { GameState } from "../src/engine/engine.types";
 import { historicalFacilitySpriteRect } from "../src/render/historicalFacilityAssets";
-import { tileToScreen } from "../src/render/iso";
+import { TILE_W, tileToScreen } from "../src/render/iso";
+import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
 import { lordInResidence, MANOR_ART_WIDTH, MANOR_FILL, manorHousePictures, manorHouseRect, manorHouseScale, manorHouseVariant } from "../src/render/manorHouseArt";
 import { MANOR_HOUSE_IMAGES } from "../src/render/manorHouseManifest.generated";
 import { decodeSave } from "../src/save/saveCodec";
@@ -73,10 +74,12 @@ test("Given the manor's footprint When its rect is read Then Astra's pivot lies 
   const town = load("chapter-four-town");
   const manor = manorOf(town);
   const scale = manorHouseScale(manor);
-  assert.equal(scale, MANOR_FILL * 128 / MANOR_ART_WIDTH);
+  // MANOR-1: the footprint is 3×3 (its diamond 192 px wide); the fill is the houses' 0.87 of it.
+  const { width, height } = BUILDING_CONFIG_BY_KIND.manor_house;
+  assert.equal(scale, MANOR_FILL * (width + height) * TILE_W / 2 / MANOR_ART_WIDTH);
   const rect = manorHouseRect(manor, town.seed);
   const meta = MANOR_HOUSE_IMAGES[`manor_${manorHouseVariant(town.seed, manor.id)}`];
-  const front = tileToScreen(manor.tx + 1.5, manor.ty + 1.5);
+  const front = tileToScreen(manor.tx + width - 0.5, manor.ty + height - 0.5);
   assert.ok(Math.abs(rect.x + meta.pivot.x * scale - front.sx) < 1e-9 && Math.abs(rect.y + meta.pivot.y * scale - front.sy) < 1e-9);
   assert.ok(Math.abs(rect.x + rect.width / 2 - front.sx) > 10, "the canvas middle is not on the footprint's middle");
   assert.deepEqual(historicalFacilitySpriteRect(manor, town), rect, "the occlusion outline uses the same rect");
