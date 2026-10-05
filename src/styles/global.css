@@ -757,10 +757,7 @@ button {
   cursor: pointer;
   appearance: none;
   background-color: transparent;
-  background-image: url("/assets/ui/seal_slot.png");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+  /* LR1-D1 (user 2026-10-05): the seal slot picture is retired — the kit's Wave 38 art draws these seals. */
   border: 0;
 }
 

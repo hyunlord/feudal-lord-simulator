@@ -51,7 +51,7 @@ export function HomePetitionModal({ view, onAnswer, onRecurring, onLater }: {
         {view.options.map(option => (
           <li key={option.grant ? "grant" : "refuse"}>
             <Button type="button" className="petition-option" data-grant={option.grant ? "true" : "false"} aria-label={DECISION_COPY.choose(option.label)}
-              onPress={() => onAnswer(option.grant)} variant="primary">
+              onPress={() => onAnswer(option.grant)} variant="secondary">
               <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.grant ? "seal_petition_accept" : "seal_petition_reject", 44)} />
               <strong>{option.label}</strong>
               <span className="lord-card-forecast" data-treasury={option.treasury}

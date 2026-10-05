@@ -111,7 +111,7 @@ export function StewardAdvisor({ advisor, onDismiss }: { readonly advisor: Tutor
       <div className="steward-body">
         <strong className="steward-name">{TUTORIAL_COPY.stewardName}</strong>
         <p className="steward-line">{advisor.text}</p>
-        <Button type="button" className="steward-button" onPress={() => onDismiss()} variant="primary">{TUTORIAL_COPY.advisorButton}</Button>
+        <Button type="button" className="steward-button" onPress={() => onDismiss()} variant="secondary">{TUTORIAL_COPY.advisorButton}</Button>
       </div>
     </aside>
   );

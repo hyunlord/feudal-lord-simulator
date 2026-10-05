@@ -80,7 +80,7 @@ export function WelcomeParchment({ onDismiss, continueLine, archiveNotice, onCon
         </> : (
           <div className="welcome-save" role="group" aria-label={SAVE_COPY.welcomeSaveLabel}>
             <p>{continueLine}</p>
-            <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => onContinue()} variant="primary">
+            <Button className="autoplay-toggle save-control-button" type="button" isolate onPress={() => onContinue()} variant={confirmingNewGame ? "secondary" : "primary"}>
               {SAVE_COPY.continueGame}
             </Button>
             {confirmingNewGame ? <>
