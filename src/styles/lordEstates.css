@@ -70,10 +70,10 @@
 .app-shell .lord-estates-rule-line { font-size: 13px; }
 .app-shell .lord-estates-petitions ul { display: grid; gap: 4px; margin: 0; padding: 0; list-style: none; }
 .app-shell .lord-estates-petitions li { display: flex; align-items: center; font-size: 13px; word-break: keep-all; overflow-wrap: anywhere; }
+/* A touch screen: every control here 48 px (above uiBoundaries.css's 44 px !important floor, as the kit's sized buttons). */
 @media (pointer: coarse) {
-  .app-shell .lord-estates-pick, .app-shell .lord-estates-mode, .app-shell .lord-estates-audit-mode, .app-shell .lord-estates-appoint,
-  .app-shell .lord-estates-rule, .app-shell .lord-estates-step { min-height: 48px; }
-  .app-shell .lord-estates-step { min-width: 48px; }
+  .app-shell .lord-estates .ui-btn.ui-btn { min-height: 48px !important; }
+  .app-shell .lord-estates .ui-btn.lord-estates-step { min-width: 48px !important; }
 }
 /* LM-R2 (wave35-operations) in LM-R1's policy tab (src/ui/lord/LordPolicyPanel.tsx): a policy's icon beside its name and
    weights, the notice of a subsidy on offer above its list. Without the pictures the tab is LM-R1's own. */
