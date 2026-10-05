@@ -8,10 +8,10 @@ import { readFileSync } from "node:fs";
 import test from "node:test";
 
 import { BUILDING_CONFIG_BY_KIND } from "../src/content/buildingConfig";
-import { LORD_GRANARY_RULES, MILL_PULL } from "../src/content/recoveryConfig";
+import { INPUT_PULL, LORD_INTAKE_CAPS } from "../src/content/recoveryConfig";
 import { availableSpace, storageIntakeSpace } from "../src/economy/storage";
 import type { GameState } from "../src/engine/engine.types";
-import { lordIntakeRules } from "../src/engine/recovery";
+import { LORD_INTAKE_RULES, lordIntakeRules } from "../src/engine/recovery";
 import { haulStuckStock, initialTrades } from "../src/engine/trades";
 import type { TradeHousehold } from "../src/engine/trades.types";
 import { initialAgency } from "../src/engine/townAgency";
@@ -23,11 +23,11 @@ test("RC-6 in lord mode barley fills at most 40 % of a granary; the sandbox keep
   const town = load();
   const granary = { ...town.buildings.find(building => building.kind === "granary")!, inventory: { barley: 70 }, reserved: {}, stockReserved: {} };
   const free = availableSpace(granary, BUILDING_CONFIG_BY_KIND.granary);
-  const cap = Math.floor(BUILDING_CONFIG_BY_KIND.granary.storageCapacity * LORD_GRANARY_RULES.barleyCapPermille / 1000);
+  const cap = Math.floor(BUILDING_CONFIG_BY_KIND.granary.storageCapacity * LORD_INTAKE_CAPS.find(line => line.store === "granary" && line.resource === "barley")!.permille / 1000);
   assert.equal(storageIntakeSpace(granary, "barley", free, lordIntakeRules({ agency: initialAgency() })), cap - 70);
   assert.equal(storageIntakeSpace(granary, "barley", free, lordIntakeRules({})), free);
-  assert.equal(storageIntakeSpace({ ...granary, inventory: { barley: cap } }, "barley", free, LORD_GRANARY_RULES), 0);
-  assert.ok(storageIntakeSpace({ ...granary, inventory: { barley: cap } }, "bread", free, LORD_GRANARY_RULES) > 0, "bread keeps its room");
+  assert.equal(storageIntakeSpace({ ...granary, inventory: { barley: cap } }, "barley", free, LORD_INTAKE_RULES), 0);
+  assert.ok(storageIntakeSpace({ ...granary, inventory: { barley: cap } }, "bread", free, LORD_INTAKE_RULES) > 0, "bread keeps its room");
 });
 
 test("RC-5 the carters' spare loads bring barn wheat to the neediest mill or granary, from the nearest barn", () => {
@@ -37,7 +37,7 @@ test("RC-5 the carters' spare loads bring barn wheat to the neediest mill or gra
   const state: GameState = { ...town, buildings: town.buildings.map(building =>
     building.id === barn.id ? { ...building, inventory: { ...building.inventory, wheat: 300 }, stockReserved: {} }
       : building.kind === "mill" ? { ...building, inventory: { ...building.inventory, wheat: building.id === mill.id ? 0 : 99 }, reserved: {} }
-        : building.kind === "granary" ? { ...building, inventory: { ...building.inventory, wheat: MILL_PULL.granaryWheatTarget } }
+        : building.kind === "granary" ? { ...building, inventory: { ...building.inventory, wheat: INPUT_PULL.chains[0]!.stores[0]!.target } }
           : building.kind === "farmstead" ? { ...building, inventory: { ...building.inventory, wheat: 0 } } : building) };
   const carter = { tradeId: "carter" } as unknown as TradeHousehold;
   const hauled = haulStuckStock(state, { ...initialTrades(), households: [carter] });

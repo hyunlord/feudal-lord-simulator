@@ -257,8 +257,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
     ...(progressed.wallConstructionReserve === undefined ? {} : { wallConstructionReserve: progressed.wallConstructionReserve }),
     ...(progressed.wallConstructionPriority === undefined ? {} : { wallConstructionPriority: progressed.wallConstructionPriority }),
     ...(state.autoplayMaterialRecovery === undefined ? {} : { materialActivity }),
-    // RECOVER-1 (RC-1, RC-5): lord mode's mills pull their wheat.
-    ...(state.agency === undefined ? {} : { millPull: true }),
+    // RECOVER-1 (RC-1, RC-5): lord mode's converters pull their input (`INPUT_PULL`).
+    ...(state.agency === undefined ? {} : { inputPull: true }),
   });
   const spawnedDistributors = spawnDistributors({
     tick,

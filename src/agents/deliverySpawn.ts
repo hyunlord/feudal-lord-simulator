@@ -5,7 +5,7 @@ import { fieldOutputResource,
   type Building,
 } from "../content/buildingConfig";
 import { LABOUR_BALANCE } from "../content/balanceConfig";
-import { MILL_PULL } from "../content/recoveryConfig";
+import { INPUT_PULL, type InputPullChain } from "../content/recoveryConfig";
 import { pushableMill } from "./millPush";
 import type { ResourceType } from "../content/resourceConfig";
 import {
@@ -224,41 +224,60 @@ function pushCandidate(granary: Building, buildings: readonly Building[], invent
 
 /** LB-7: mills' intake carts, then granary pushes (a granary needs a hauler from the day pool), after the main carts. */
 /**
- * RECOVER-1 (RC-5): a mill's reorder point by its round trip — the wheat it grinds while an intake cart goes to the
- * nearest wheat and back (two path lengths at the carter's pace), × the margin, never below the fixed target.
+ * RECOVER-1 (RC-5): a chain converter's reorder point by its round trip — the input it uses while an intake cart goes to
+ * the nearest input and back (two path lengths at the carter's pace), × the margin, never below the chain's floor.
  */
-export function millReorderPoint(pathTiles: number): number {
-  const mill = BUILDING_CONFIG_BY_KIND.mill.production!;
+export function inputReorderPoint(chain: InputPullChain, pathTiles: number): number {
+  const production = BUILDING_CONFIG_BY_KIND[chain.converter].production;
+  if (production === null) return chain.minReorder;
   const roundTrip = 2 * pathTiles / BALANCE.CARTER_SPEED;
-  return Math.max(LABOUR_BALANCE.millWheatTarget, Math.ceil(roundTrip * mill.inputPerOutput / mill.ticksPerOutput * MILL_PULL.marginPermille / 1000));
+  return Math.max(chain.minReorder, Math.ceil(roundTrip * production.inputPerOutput / production.ticksPerOutput * INPUT_PULL.marginPermille / 1000));
 }
 
-/** RECOVER-1 (RC-5): the intake carts a mill may have out — enough loads to cover its reorder point, up to the cap. */
-export function millIntakeCarts(reorderPoint: number): number {
-  return Math.min(MILL_PULL.maxIntakeCarts, Math.max(1, Math.ceil(reorderPoint / LABOUR_BALANCE.millCartCapacity)));
+/** RECOVER-1 (RC-5): the intake carts a converter may have out — enough loads to cover its reorder point, up to the cap. */
+export function inputIntakeCarts(chain: InputPullChain, reorderPoint: number): number {
+  const load = BUILDING_CONFIG_BY_KIND[chain.converter].carterCapacity ?? BALANCE.CARTER_CAPACITY;
+  return Math.min(INPUT_PULL.maxIntakeCarts, Math.max(1, Math.ceil(reorderPoint / load)));
+}
+
+/** RECOVER-1 (RC-5): the input a converter holds plus what is on its way (reserved space). */
+function heldInput(building: Building, resource: ResourceType): number {
+  return amountOf(building.inventory, resource) + amountOf(building.reserved, resource);
 }
 
 function spawnSecondCarts(input: DeliveryStepInput, start: readonly Building[], walkers: Walker[]): readonly Building[] {
   let buildings = start;
   const intake = activeCarterHomes(walkers, "intake");
   const intakeOut = new Map<string, number>();
-  for (const walker of walkers) if (walker.kind === "carter" && walker.cart === "intake") intakeOut.set(walker.homeBuildingId, (intakeOut.get(walker.homeBuildingId) ?? 0) + 1);
-  for (const mill of [...start].filter(building => building.kind === "mill").sort(byId)) {
-    const current = buildings.find(({ id }) => id === mill.id) ?? mill;
-    if (operationSuspended(current)) continue;
-    if (input.millPull === true) {
-      // RECOVER-1 (RC-5): the short side pulls — reorder by the round trip, more carts on a long one.
-      const nearest = fetchCandidate(current, "wheat", buildings, input.inventory, input.routes);
-      if (nearest === null) continue;
-      const reorder = millReorderPoint(nearest.path.length);
-      if ((intakeOut.get(mill.id) ?? 0) >= millIntakeCarts(reorder) || millWheat(current) >= reorder) continue;
-    } else if (intake.has(mill.id) || millWheat(current) >= LABOUR_BALANCE.millWheatTarget) continue;
-    const fetched = spawnFetch({ tick: input.tick, building: current, buildings, inputResource: "wheat",
-      inventory: input.inventory, routes: input.routes, cart: "intake" });
-    if (fetched.walker === null) continue;
-    buildings = fetched.buildings;
-    walkers.push(fetched.walker);
-    intakeOut.set(mill.id, (intakeOut.get(mill.id) ?? 0) + 1);
+  if (input.inputPull === true) for (const walker of walkers) if (walker.kind === "carter" && walker.cart === "intake") intakeOut.set(walker.homeBuildingId, (intakeOut.get(walker.homeBuildingId) ?? 0) + 1);
+  if (input.inputPull === true) {
+    // RECOVER-1 (RC-5): the short side pulls — each chain's converters reorder by the round trip, more carts on a long one.
+    for (const chain of INPUT_PULL.chains) {
+      for (const converter of [...start].filter(building => building.kind === chain.converter).sort(byId)) {
+        const current = buildings.find(({ id }) => id === converter.id) ?? converter;
+        if (operationSuspended(current)) continue;
+        const nearest = fetchCandidate(current, chain.input, buildings, input.inventory, input.routes);
+        if (nearest === null) continue;
+        const reorder = inputReorderPoint(chain, nearest.path.length);
+        if ((intakeOut.get(current.id) ?? 0) >= inputIntakeCarts(chain, reorder) || heldInput(current, chain.input) >= reorder) continue;
+        const fetched = spawnFetch({ tick: input.tick, building: current, buildings, inputResource: chain.input,
+          inventory: input.inventory, routes: input.routes, cart: "intake" });
+        if (fetched.walker === null) continue;
+        buildings = fetched.buildings;
+        walkers.push(fetched.walker);
+        intakeOut.set(current.id, (intakeOut.get(current.id) ?? 0) + 1);
+      }
+    }
+  } else {
+    for (const mill of [...start].filter(building => building.kind === "mill").sort(byId)) {
+      const current = buildings.find(({ id }) => id === mill.id) ?? mill;
+      if (intake.has(mill.id) || operationSuspended(current) || millWheat(current) >= LABOUR_BALANCE.millWheatTarget) continue;
+      const fetched = spawnFetch({ tick: input.tick, building: current, buildings, inputResource: "wheat",
+        inventory: input.inventory, routes: input.routes, cart: "intake" });
+      if (fetched.walker === null) continue;
+      buildings = fetched.buildings;
+      walkers.push(fetched.walker);
+    }
   }
   const pushing = activeCarterHomes(walkers, "push");
   for (const granary of [...start].filter(building => building.kind === "granary" && (building.haulers ?? 0) > 0).sort(byId)) {

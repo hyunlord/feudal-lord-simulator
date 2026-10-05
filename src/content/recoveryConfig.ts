@@ -1,4 +1,6 @@
-import { PRESSURE_BALANCE } from "./balanceConfig";
+import { LABOUR_BALANCE, PRESSURE_BALANCE } from "./balanceConfig";
+import type { BuildingKind } from "./buildingConfig";
+import type { StorableResourceType } from "./resourceConfig";
 
 /**
  * RECOVER-1 (spec docs/design/recovery.md RC-2..RC-4): lord mode's recovery — vacant houses and the labour shortage
@@ -16,21 +18,40 @@ export const RECOVERY_BALANCE = {
 } as const;
 
 /**
- * RECOVER-1 (RC-6, the user's decision 2026-10-06): in lord mode a granary keeps room for bread and wheat — barley may
- * fill at most this share of it; the rest of the barley waits in its barn or the carters sell it at a market.
+ * RECOVER-1 (RC-6, the user's decision 2026-10-06; data, not code — EXT principle): in lord mode a store keeps room for
+ * other goods — each line caps one resource's share of one kind of store. The core reads the lines, never the words.
+ * Today: barley fills at most 40 % of a granary (the rest is bread's and wheat's); the rest of the barley waits in its
+ * barn or the carters sell it at a market.
  */
-export const LORD_GRANARY_RULES = { barleyCapPermille: 400 } as const;
+export interface IntakeCap {
+  readonly store: BuildingKind;
+  readonly resource: StorableResourceType;
+  /** The resource may fill at most this share of the store, permille. */
+  readonly permille: number;
+}
+export const LORD_INTAKE_CAPS: readonly IntakeCap[] = [{ store: "granary", resource: "barley", permille: 400 }];
 
 /**
- * RECOVER-1 (RC-5, B2): in lord mode the short side pulls. A mill reorders wheat at what it grinds during a round trip
- * to its nearest wheat (× the margin), never below the old fixed target; a round trip longer than one cart's load
- * lasts sends more intake carts at once, up to the cap. Game estimates.
+ * RECOVER-1 (RC-5, B2; data, not code): in lord mode the short side pulls. Each chain names a converter, its input,
+ * where the input lies in bulk (its sources) and the stores that pass it on. A converter reorders its input at what it
+ * uses during a round trip to the nearest input (× the margin), never below the chain's floor; a round trip longer than
+ * one cart's load lasts sends more intake carts at once, up to the cap. The carters' spare loads bring the input from a
+ * source to the converters under their reorder point and the stores under their target. Game estimates.
  */
-export const MILL_PULL = {
-  /** Reorder point = round-trip ticks × wheat per tick × this, permille. */
+export interface InputPullChain {
+  readonly converter: BuildingKind;
+  readonly input: StorableResourceType;
+  /** The reorder point never falls below this (the converter's old fixed target). */
+  readonly minReorder: number;
+  readonly sources: readonly BuildingKind[];
+  readonly stores: readonly { readonly kind: BuildingKind; readonly target: number }[];
+}
+export const INPUT_PULL = {
+  /** Reorder point = round-trip ticks × input per tick × this, permille. */
   marginPermille: 1500,
-  /** Intake carts one mill may have out at once. */
+  /** Intake carts one converter may have out at once. */
   maxIntakeCarts: 3,
-  /** RC-5: the carters bring barn wheat to a granary holding less than this (it pushes wheat on to its mills). */
-  granaryWheatTarget: 40,
+  chains: [
+    { converter: "mill", input: "wheat", minReorder: LABOUR_BALANCE.millWheatTarget, sources: ["farmstead"], stores: [{ kind: "granary", target: 40 }] },
+  ] satisfies readonly InputPullChain[] as readonly InputPullChain[],
 } as const;

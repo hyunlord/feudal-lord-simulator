@@ -5,8 +5,9 @@
  * are untouched. The trade layer reads the game's resources and never takes them; only the carters' haulage moves game
  * goods (stuck stock, TR-7).
  */
-import { LORD_GRANARY_RULES, MILL_PULL } from "../content/recoveryConfig";
-import { millReorderPoint } from "../agents/deliverySpawn";
+import { INPUT_PULL } from "../content/recoveryConfig";
+import { inputReorderPoint } from "../agents/deliverySpawn";
+import { LORD_INTAKE_RULES } from "./recovery";
 import { BUILDING_CONFIG_BY_KIND, type Building, operationSuspended } from "../content/buildingConfig";
 import { hashSeed } from "../content/seedHash";
 import type { StorableResourceType } from "../content/resourceConfig";
@@ -433,7 +434,7 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
   const stuck = stuckStock(state).filter(entry => entry.source === "stock" && isStorableResource(entry.resource));
   const entries = stuck.filter(entry => entry.reason === "no_carrier")
     .sort((left, right) => right.amount - left.amount || left.buildingId.localeCompare(right.buildingId));
-  const inventory = createDeliveryInventoryPort(LORD_GRANARY_RULES);
+  const inventory = createDeliveryInventoryPort(LORD_INTAKE_RULES);
   let buildings = state.buildings;
   let moved = 0;
   for (const entry of entries) {
@@ -443,7 +444,7 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
       const available = Math.min(TRADE_BALANCE.carterLoad, capacity, inventory.availableStock(source, resource));
       if (available <= 0) break;
       const receivers = buildings.filter(building => building.id !== source.id && acceptsResource(building.kind, resource))
-        .map(building => ({ building, room: storageIntakeSpace(building, resource, availableSpace(building, BUILDING_CONFIG_BY_KIND[building.kind]), LORD_GRANARY_RULES) }))
+        .map(building => ({ building, room: storageIntakeSpace(building, resource, availableSpace(building, BUILDING_CONFIG_BY_KIND[building.kind]), LORD_INTAKE_RULES) }))
         .filter(candidate => candidate.room > 0)
         .sort((left, right) => chebyshev(source.tx, source.ty, left.building.tx, left.building.ty) - chebyshev(source.tx, source.ty, right.building.tx, right.building.ty)
           || left.building.id.localeCompare(right.building.id));
@@ -457,32 +458,34 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
     }
     if (capacity <= 0) break;
   }
-  // RECOVER-1 (RC-5): the short side pulls — what the loads have left brings barn wheat to the mills under their reorder
-  // point (by the distance to the nearest barn holding wheat) and the granaries under their wheat target, the
-  // largest shortfall first, from the nearest barn.
-  if (capacity > 0) {
-    const barns = () => buildings.filter(building => building.kind === "farmstead" && inventory.availableStock(building, "wheat") > 0);
-    const nearestBarn = (target: Building) => barns().sort((left, right) =>
+  // RECOVER-1 (RC-5): the short side pulls — for each `INPUT_PULL` chain, what the loads have left brings the input from
+  // the nearest source to the converters under their reorder point (by the distance to the nearest source holding it)
+  // and the stores under their target, the largest shortfall first.
+  for (const chain of INPUT_PULL.chains) {
+    if (capacity <= 0) break;
+    const sources = () => buildings.filter(building => chain.sources.includes(building.kind) && inventory.availableStock(building, chain.input) > 0);
+    const nearestSource = (target: Building) => sources().sort((left, right) =>
       chebyshev(target.tx, target.ty, left.tx, left.ty) - chebyshev(target.tx, target.ty, right.tx, right.ty) || left.id.localeCompare(right.id))[0];
     const shortfall = (target: Building): number => {
-      const held = (target.inventory.wheat ?? 0) + (target.reserved.wheat ?? 0);
-      if (target.kind === "granary") return MILL_PULL.granaryWheatTarget - held;
-      const barn = nearestBarn(target);
-      return barn === undefined ? 0 : millReorderPoint(chebyshev(target.tx, target.ty, barn.tx, barn.ty)) - held;
+      const held = (target.inventory[chain.input] ?? 0) + (target.reserved[chain.input] ?? 0);
+      const store = chain.stores.find(line => line.kind === target.kind);
+      if (store !== undefined) return store.target - held;
+      const source = nearestSource(target);
+      return source === undefined ? 0 : inputReorderPoint(chain, chebyshev(target.tx, target.ty, source.tx, source.ty)) - held;
     };
-    const short = buildings.filter(building => (building.kind === "mill" || building.kind === "granary") && !operationSuspended(building))
+    const short = buildings.filter(building => (building.kind === chain.converter || chain.stores.some(line => line.kind === building.kind)) && !operationSuspended(building))
       .map(building => ({ id: building.id, want: shortfall(building) })).filter(entry => entry.want > 0)
       .sort((left, right) => right.want - left.want || left.id.localeCompare(right.id));
     for (const entry of short) {
       if (capacity <= 0) break;
       const target = buildings.find(building => building.id === entry.id)!;
-      const barn = nearestBarn(target);
-      if (barn === undefined) break;
-      const room = storageIntakeSpace(target, "wheat", availableSpace(target, BUILDING_CONFIG_BY_KIND[target.kind]), LORD_GRANARY_RULES);
-      const amount = Math.min(TRADE_BALANCE.carterLoad, capacity, entry.want, inventory.availableStock(barn, "wheat"), room);
+      const source = nearestSource(target);
+      if (source === undefined) break;
+      const room = storageIntakeSpace(target, chain.input, availableSpace(target, BUILDING_CONFIG_BY_KIND[target.kind]), LORD_INTAKE_RULES);
+      const amount = Math.min(TRADE_BALANCE.carterLoad, capacity, entry.want, inventory.availableStock(source, chain.input), room);
       if (amount <= 0) continue;
-      buildings = buildings.map(building => building.id === barn.id ? { ...building, inventory: { ...building.inventory, wheat: (building.inventory.wheat ?? 0) - amount } }
-        : building.id === target.id ? { ...building, inventory: { ...building.inventory, wheat: (building.inventory.wheat ?? 0) + amount } } : building);
+      buildings = buildings.map(building => building.id === source.id ? { ...building, inventory: { ...building.inventory, [chain.input]: (building.inventory[chain.input] ?? 0) - amount } }
+        : building.id === target.id ? { ...building, inventory: { ...building.inventory, [chain.input]: (building.inventory[chain.input] ?? 0) + amount } } : building);
       capacity -= amount;
       moved += amount;
     }

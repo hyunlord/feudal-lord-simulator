@@ -11,6 +11,7 @@ import {
   type ResourceType,
   type StorableResourceType,
 } from "../content/resourceConfig";
+import type { IntakeCap } from "../content/recoveryConfig";
 import type { Building } from "./economy.types";
 
 export interface StockReservation {
@@ -56,10 +57,9 @@ export function storageUsage(building: Building): StorageUsage {
   };
 }
 
-/** RECOVER-1 (RC-6): intake rules beyond the stores' own — lord mode caps barley in a granary. */
+/** RECOVER-1 (RC-6): intake rules beyond the stores' own — lord mode's caps (data: `LORD_INTAKE_CAPS`). */
 export interface IntakeRules {
-  /** Barley may fill at most this share of a granary, permille. */
-  readonly barleyCapPermille?: number;
+  readonly caps?: readonly IntakeCap[];
 }
 
 function rawIntakeUsage(
@@ -67,9 +67,10 @@ function rawIntakeUsage(
   resource: StorableResourceType,
   rules?: IntakeRules,
 ): { readonly used: number; readonly capacity: number } | null {
-  if (building.kind === "granary" && resource === "barley" && rules?.barleyCapPermille !== undefined) {
-    const room = BUILDING_CONFIG_BY_KIND.granary.storageCapacity;
-    return { used: amountOf(building.inventory, "barley") + amountOf(building.reserved, "barley"), capacity: Math.floor(room * rules.barleyCapPermille / 1000) };
+  const cap = rules?.caps?.find(line => line.store === building.kind && line.resource === resource);
+  if (cap !== undefined) {
+    const room = BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity;
+    return { used: amountOf(building.inventory, resource) + amountOf(building.reserved, resource), capacity: Math.floor(room * cap.permille / 1000) };
   }
   const limited: readonly StorableResourceType[] = building.kind === "granary" && resource === "wheat"
     ? ["wheat"]
