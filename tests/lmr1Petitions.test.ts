@@ -29,6 +29,8 @@ import { WAVE44_IMAGES } from "../src/ui/wave44ArtManifest.generated";
 import { LORD_SLICE_FACTIONS } from "../src/content/lordSliceConfig";
 import { lordSliceFactionsMet } from "../src/engine/lordSlice";
 import { factionRows } from "../src/ui/chronicle/factionTabModel";
+import { lordHouseArms } from "../src/ui/persons/personModels";
+import { HomePetitionModal } from "../src/ui/hud/LordCards";
 import { directionAccess, tutorialAccess } from "../src/ui/tutorial/tutorialModel";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -239,4 +241,12 @@ test("LM-R1 (Astra B02): the direction layer opens with the lord's first answer,
   // Outside lord mode there are no conditions to set: shut, and it says lord mode.
   const campaign = newGameState({ scenarioId: DEFAULT_SCENARIO_ID, seed: 1 })!;
   assert.deepEqual(directionAccess(campaign), { open: false, lock: "lord_mode" });
+});
+
+test("LR1-D5: a home petition's roundel holds the lord house's arms, as the lordship screen shows them", () => {
+  const view = homePetitionView(firstPetition)!;
+  assert.deepEqual(view.arms, lordHouseArms(firstPetition));
+  assert.match(view.armsLabel, new RegExp(lordHouse(firstPetition).name));
+  const markup = renderToStaticMarkup(createElement(HomePetitionModal, { view, onAnswer: () => undefined, onRecurring: () => undefined, onLater: () => undefined }));
+  assert.match(markup, /class="petition-roundel"/);
 });
