@@ -1,0 +1,5527 @@
+{
+  "formatVersion": 1,
+  "status": "proposal_only_not_runtime_registry",
+  "sourceHead": "d169d3faf8366c839861042596c2ec79b0a4c4c2",
+  "policy": {
+    "newContentMaxPerYear": 2,
+    "newContentMaxPerSeason": 1,
+    "minimumEnabledConsequentialChoices": 2,
+    "engineMutationOnMissingBinding": false,
+    "selection": "seeded_integer_weighted_sorted_id"
+  },
+  "sourceScopes": {
+    "ck_evt_001": "contracts/baseline/",
+    "ck_evt_002": "contracts/baseline/",
+    "ck_evt_003": "contracts/baseline/",
+    "ck_evt_004": "contracts/baseline/",
+    "ck_evt_005": "contracts/baseline/",
+    "ck_evt_006": "contracts/baseline/",
+    "ck_evt_007": "contracts/baseline/",
+    "ck_evt_008": "contracts/baseline/",
+    "ck_evt_009": "contracts/baseline/",
+    "ck_evt_010": "contracts/baseline/",
+    "ck_evt_011": "contracts/baseline/",
+    "ck_evt_012": "contracts/baseline/",
+    "ck_evt_013": "contracts/baseline/",
+    "ck_evt_014": "contracts/baseline/",
+    "ck_evt_015": "contracts/baseline/",
+    "ck_evt_016": "contracts/baseline/",
+    "ck_evt_017": "contracts/baseline/",
+    "ck_evt_018": "contracts/baseline/",
+    "ck_evt_019": "contracts/baseline/",
+    "ck_evt_020": "contracts/baseline/",
+    "ck_evt_021": "contracts/baseline/",
+    "ck_evt_022": "contracts/baseline/",
+    "ck_evt_023": "contracts/baseline/",
+    "ck_evt_024": "contracts/baseline/",
+    "ck_evt_025": "contracts/baseline/",
+    "ck_evt_026": "contracts/baseline/",
+    "ck_evt_027": "contracts/baseline/",
+    "ck_evt_028": "contracts/baseline/",
+    "ck_evt_029": "contracts/baseline/",
+    "ck_evt_030": "contracts/baseline/",
+    "ck_evt_031": "contracts/baseline/",
+    "ck_evt_032": "contracts/baseline/",
+    "ck_evt_033": "contracts/baseline/",
+    "ck_evt_034": "contracts/baseline/",
+    "ck_evt_035": "contracts/baseline/",
+    "ck_evt_036": "contracts/baseline/",
+    "ck_evt_037": "contracts/baseline/",
+    "ck_evt_038": "contracts/baseline/",
+    "ck_evt_039": "contracts/baseline/",
+    "ck_evt_040": "contracts/baseline/",
+    "ck_evt_041": "contracts/baseline/",
+    "ck_evt_042": "contracts/baseline/",
+    "ck_evt_043": "contracts/baseline/",
+    "ck_evt_044": "contracts/baseline/",
+    "ck_evt_045": "contracts/baseline/",
+    "ck_evt_046": "contracts/baseline/",
+    "ck_evt_047": "contracts/baseline/",
+    "ck_evt_048": "contracts/baseline/",
+    "ck_evt_049": "contracts/baseline/",
+    "ck_evt_050": "contracts/baseline/",
+    "ck_evt_051": "contracts/baseline/",
+    "ck_evt_052": "contracts/baseline/",
+    "ck_evt_053": "contracts/baseline/",
+    "ck_evt_054": "contracts/baseline/",
+    "ck_evt_055": "contracts/baseline/",
+    "ck_evt_056": "contracts/baseline/",
+    "ck_evt_057": "contracts/baseline/",
+    "ck_evt_058": "contracts/baseline/",
+    "ck_evt_059": "contracts/baseline/",
+    "ck_evt_060": "contracts/baseline/",
+    "ck_evt_061": "contracts/manor-town/",
+    "ck_evt_062": "contracts/manor-town/",
+    "ck_evt_063": "contracts/manor-town/",
+    "ck_evt_064": "contracts/manor-town/",
+    "ck_evt_065": "contracts/manor-town/",
+    "ck_evt_066": "contracts/manor-town/",
+    "ck_evt_067": "contracts/manor-town/",
+    "ck_evt_068": "contracts/manor-town/",
+    "ck_evt_069": "contracts/manor-town/",
+    "ck_evt_070": "contracts/manor-town/",
+    "ck_evt_071": "contracts/manor-town/",
+    "ck_evt_072": "contracts/manor-town/",
+    "ck_evt_073": "contracts/manor-town/",
+    "ck_evt_074": "contracts/manor-town/",
+    "ck_evt_075": "contracts/manor-town/",
+    "ck_evt_076": "contracts/manor-town/",
+    "ck_evt_077": "contracts/manor-town/",
+    "ck_evt_078": "contracts/manor-town/",
+    "ck_evt_079": "contracts/manor-town/",
+    "ck_evt_080": "contracts/manor-town/",
+    "ck_evt_081": "contracts/manor-town/",
+    "ck_evt_082": "contracts/manor-town/",
+    "ck_evt_083": "contracts/manor-town/",
+    "ck_evt_084": "contracts/manor-town/",
+    "ck_evt_085": "contracts/manor-town/",
+    "ck_evt_086": "contracts/manor-town/",
+    "ck_evt_087": "contracts/manor-town/",
+    "ck_evt_088": "contracts/manor-town/",
+    "ck_evt_089": "contracts/manor-town/",
+    "ck_evt_090": "contracts/manor-town/",
+    "ck_evt_091": "contracts/manor-town/",
+    "ck_evt_092": "contracts/manor-town/",
+    "ck_evt_093": "contracts/manor-town/",
+    "ck_evt_094": "contracts/manor-town/",
+    "ck_evt_095": "contracts/manor-town/",
+    "ck_evt_096": "contracts/manor-town/",
+    "ck_evt_097": "contracts/manor-town/",
+    "ck_evt_098": "contracts/manor-town/",
+    "ck_evt_099": "contracts/manor-town/",
+    "ck_evt_100": "contracts/manor-town/",
+    "ck_evt_101": "contracts/church-neighbors/",
+    "ck_evt_102": "contracts/church-neighbors/",
+    "ck_evt_103": "contracts/church-neighbors/",
+    "ck_evt_104": "contracts/church-neighbors/",
+    "ck_evt_105": "contracts/church-neighbors/",
+    "ck_evt_106": "contracts/church-neighbors/",
+    "ck_evt_107": "contracts/church-neighbors/",
+    "ck_evt_108": "contracts/church-neighbors/",
+    "ck_evt_109": "contracts/church-neighbors/",
+    "ck_evt_110": "contracts/church-neighbors/",
+    "ck_evt_111": "contracts/church-neighbors/",
+    "ck_evt_112": "contracts/church-neighbors/",
+    "ck_evt_113": "contracts/church-neighbors/",
+    "ck_evt_114": "contracts/church-neighbors/",
+    "ck_evt_115": "contracts/church-neighbors/",
+    "ck_evt_116": "contracts/church-neighbors/",
+    "ck_evt_117": "contracts/church-neighbors/",
+    "ck_evt_118": "contracts/church-neighbors/",
+    "ck_evt_119": "contracts/church-neighbors/",
+    "ck_evt_120": "contracts/church-neighbors/",
+    "ck_evt_121": "contracts/church-neighbors/",
+    "ck_evt_122": "contracts/church-neighbors/",
+    "ck_evt_123": "contracts/church-neighbors/",
+    "ck_evt_124": "contracts/church-neighbors/",
+    "ck_evt_125": "contracts/church-neighbors/",
+    "ck_evt_126": "contracts/church-neighbors/",
+    "ck_evt_127": "contracts/church-neighbors/",
+    "ck_evt_128": "contracts/church-neighbors/",
+    "ck_evt_129": "contracts/church-neighbors/",
+    "ck_evt_130": "contracts/church-neighbors/",
+    "ck_evt_131": "contracts/church-neighbors/",
+    "ck_evt_132": "contracts/church-neighbors/",
+    "ck_evt_133": "contracts/church-neighbors/",
+    "ck_evt_134": "contracts/church-neighbors/",
+    "ck_evt_135": "contracts/church-neighbors/",
+    "ck_evt_136": "contracts/church-neighbors/",
+    "ck_evt_137": "contracts/church-neighbors/",
+    "ck_evt_138": "contracts/church-neighbors/",
+    "ck_evt_139": "contracts/church-neighbors/",
+    "ck_evt_140": "contracts/church-neighbors/",
+    "ck_evt_141": "contracts/faction-nature/",
+    "ck_evt_142": "contracts/faction-nature/",
+    "ck_evt_143": "contracts/faction-nature/",
+    "ck_evt_144": "contracts/faction-nature/",
+    "ck_evt_145": "contracts/faction-nature/",
+    "ck_evt_146": "contracts/faction-nature/",
+    "ck_evt_147": "contracts/faction-nature/",
+    "ck_evt_148": "contracts/faction-nature/",
+    "ck_evt_149": "contracts/faction-nature/",
+    "ck_evt_150": "contracts/faction-nature/",
+    "ck_evt_151": "contracts/faction-nature/",
+    "ck_evt_152": "contracts/faction-nature/",
+    "ck_evt_153": "contracts/faction-nature/",
+    "ck_evt_154": "contracts/faction-nature/",
+    "ck_evt_155": "contracts/faction-nature/",
+    "ck_evt_156": "contracts/faction-nature/",
+    "ck_evt_157": "contracts/faction-nature/",
+    "ck_evt_158": "contracts/faction-nature/",
+    "ck_evt_159": "contracts/faction-nature/",
+    "ck_evt_160": "contracts/faction-nature/",
+    "ck_evt_161": "contracts/faction-nature/",
+    "ck_evt_162": "contracts/faction-nature/",
+    "ck_evt_163": "contracts/faction-nature/",
+    "ck_evt_164": "contracts/faction-nature/",
+    "ck_evt_165": "contracts/faction-nature/",
+    "ck_evt_166": "contracts/faction-nature/",
+    "ck_evt_167": "contracts/faction-nature/",
+    "ck_evt_168": "contracts/faction-nature/",
+    "ck_evt_169": "contracts/faction-nature/",
+    "ck_evt_170": "contracts/faction-nature/",
+    "ck_evt_171": "contracts/faction-nature/",
+    "ck_evt_172": "contracts/faction-nature/",
+    "ck_evt_173": "contracts/faction-nature/",
+    "ck_evt_174": "contracts/faction-nature/",
+    "ck_evt_175": "contracts/faction-nature/",
+    "ck_evt_176": "contracts/faction-nature/",
+    "ck_evt_177": "contracts/faction-nature/",
+    "ck_evt_178": "contracts/faction-nature/",
+    "ck_evt_179": "contracts/faction-nature/",
+    "ck_evt_180": "contracts/faction-nature/",
+    "ck_evt_181": "contracts/family/",
+    "ck_evt_182": "contracts/family/",
+    "ck_evt_183": "contracts/family/",
+    "ck_evt_184": "contracts/family/",
+    "ck_evt_185": "contracts/family/",
+    "ck_evt_186": "contracts/family/",
+    "ck_evt_187": "contracts/family/",
+    "ck_evt_188": "contracts/family/",
+    "ck_evt_189": "contracts/family/",
+    "ck_evt_190": "contracts/family/",
+    "ck_evt_191": "contracts/family/",
+    "ck_evt_192": "contracts/family/",
+    "ck_evt_193": "contracts/family/",
+    "ck_evt_194": "contracts/family/",
+    "ck_evt_195": "contracts/family/",
+    "ck_evt_196": "contracts/family/",
+    "ck_evt_197": "contracts/family/",
+    "ck_evt_198": "contracts/family/",
+    "ck_evt_199": "contracts/family/",
+    "ck_evt_200": "contracts/family/"
+  },
+  "bindingAdapterStatus": "not_installed",
+  "dedupContracts": "ADAPTER_CONTRACTS.json",
+  "entries": [
+    {
+      "id": "ck_evt_011",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_011",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "B v3.1의 넓은 후보 창 채택. authoredYears는 A 최초 집필 구간의 출처 기록이며 런타임 발동 창이 아니다. 실제 상태·중복·빈도 조건 유지."
+      },
+      "conditionBinding": {
+        "status": "structured_spec_requires_runtime_evaluator",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "새 인구 하한 없음. 해당 기존 명령의 주민·시설 조건을 따른다.",
+          "rights": "추가 권리 조건 없음. 기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "추가 관계 하한 없음. 현재 관계를 그대로 사용한다.",
+          "season": "계절 제한 없음.",
+          "state": "실제 countered negotiation과 counter 존재. deadline-state.tick>=80, proposer cash 합계<=max(0,treasuryBalance(state)). 실제 역제안의 전체 조건을 보여 주고 수락 여부를 묻는다. 원안보다 금전 부담만 늘었거나 비금전 조건이 같다고 가정하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "none",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 12,
+        "cooldownSeasonsMaximum": 24,
+        "contextFields": [
+          "bound.negotiation.id"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "marriage.offer",
+        "semanticFields": [
+          "bound.negotiation.id"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "answer_counter",
+              "args": {
+                "negotiationId": {
+                  "binding": "bound.negotiation.id"
+                },
+                "accept": true
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "기존 negotiationId와 counter terms 원문 표시·cash≤금고"
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "answer_counter",
+              "args": {
+                "negotiationId": {
+                  "binding": "bound.negotiation.id"
+                },
+                "accept": false
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "같은 유효 countered negotiationId"
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "countered·원래deadline 전"
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "requires_runtime_target_binding",
+      "bindings": {
+        "negotiation": {
+          "from": {
+            "field": "state.diplomacy.negotiations"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.status"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "countered"
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.deadline"
+                  },
+                  "op": "gte",
+                  "right": {
+                    "field": "state.tick"
+                  }
+                }
+              }
+            ]
+          },
+          "select": "first",
+          "order": [
+            {
+              "field": "id",
+              "direction": "asc",
+              "collation": "codepoint"
+            }
+          ],
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "field": "selectors.stateCalendar.year"
+              },
+              "op": "gte",
+              "right": {
+                "literal": 1300
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "field": "selectors.stateCalendar.year"
+              },
+              "op": "lte",
+              "right": {
+                "literal": 1450
+              }
+            }
+          },
+          {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "selectors.stateCalendar.year"
+                  },
+                  "op": "gte",
+                  "right": {
+                    "literal": 1300
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "selectors.stateCalendar.year"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "literal": 1450
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "selectors.stateCalendar.season"
+                  },
+                  "op": "in",
+                  "right": {
+                    "literal": [
+                      0,
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "bound.negotiation"
+                }
+              },
+              {
+                "exists": {
+                  "field": "bound.negotiation.counter"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "args": [
+                      {
+                        "field": "bound.negotiation.deadline"
+                      },
+                      {
+                        "field": "state.tick"
+                      }
+                    ],
+                    "operation": "subtract"
+                  },
+                  "op": "gte",
+                  "right": {
+                    "literal": 80
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "derived": "COUNTER_CASH",
+                    "args": [
+                      {
+                        "field": "bound.negotiation"
+                      }
+                    ]
+                  },
+                  "op": "lte",
+                  "right": {
+                    "operation": "max",
+                    "args": [
+                      {
+                        "literal": 0
+                      },
+                      {
+                        "call": "treasuryBalance",
+                        "args": [
+                          {
+                            "field": "state"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_201",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_201",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1380,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1380
+        ],
+        "eligibilityYears": [
+          1300,
+          1380
+        ],
+        "windowRationale": "가동 중인 시장이 있는 새 계절. 도시 전체 좌판 부담을 논의하며 특정 통행세 분쟁의 발생을 가정하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "가동 중인 시장이 있는 새 계절. 도시 전체 좌판 부담을 논의하며 특정 통행세 분쟁의 발생을 가정하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 45,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.T1",
+        "semanticFields": [
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_market_dues",
+              "args": {
+                "permille": {
+                  "binding": "bound.lowerDues"
+                }
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가동 중인 시장이 있는 새 계절. 도시 전체 좌판 부담을 논의하며 특정 통행세 분쟁의 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "bound.lowerDues"
+                },
+                "op": "lt",
+                "right": {
+                  "field": "state.agency.duesPermille"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_market_dues",
+              "args": {
+                "permille": {
+                  "binding": "bound.higherDues"
+                }
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가동 중인 시장이 있는 새 계절. 도시 전체 좌판 부담을 논의하며 특정 통행세 분쟁의 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "bound.higherDues"
+                },
+                "op": "gt",
+                "right": {
+                  "field": "state.agency.duesPermille"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가동 중인 시장이 있는 새 계절. 도시 전체 좌판 부담을 논의하며 특정 통행세 분쟁의 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "lowerDues": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "max",
+                "args": [
+                  {
+                    "literal": 250
+                  },
+                  {
+                    "operation": "subtract",
+                    "args": [
+                      {
+                        "field": "state.agency.duesPermille"
+                      },
+                      {
+                        "literal": 100
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "higherDues": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "min",
+                "args": [
+                  {
+                    "literal": 2000
+                  },
+                  {
+                    "operation": "add",
+                    "args": [
+                      {
+                        "field": "state.agency.duesPermille"
+                      },
+                      {
+                        "literal": 100
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "call": "completedMarkets",
+                    "args": [
+                      {
+                        "field": "state.buildings"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_202",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_202",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "살아 있는 주민이 있는 주택의 실제 식량부족 시작 시점. 새 가구 유입으로 가장하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "살아 있는 주민이 있는 주택의 실제 식량부족 시작 시점. 새 가구 유입으로 가장하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 180,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.house.buildingId",
+          "bound.house.foodShortSinceTick"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.T2",
+        "semanticFields": [
+          "bound.house.buildingId",
+          "bound.house.foodShortSinceTick"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "살아 있는 주민이 있는 주택의 실제 식량부족 시작 시점. 새 가구 유입으로 가장하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "살아 있는 주민이 있는 주택의 실제 식량부족 시작 시점. 새 가구 유입으로 가장하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "살아 있는 주민이 있는 주택의 실제 식량부족 시작 시점. 새 가구 유입으로 가장하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "살아 있는 주민이 있는 주택의 실제 식량부족 시작 시점. 새 가구 유입으로 가장하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "house": {
+          "from": {
+            "field": "state.houses"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.residents"
+                  },
+                  "op": "gt",
+                  "right": {
+                    "literal": 0
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "item.foodShortSinceTick"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.foodShortSinceTick"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "field": "state.tick"
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "foodShortSinceTick",
+              "direction": "desc"
+            },
+            {
+              "field": "buildingId",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_203",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_203",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1381,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0
+        ],
+        "authoredYears": [
+          1381,
+          1450
+        ],
+        "eligibilityYears": [
+          1381,
+          1450
+        ],
+        "windowRationale": "실제 성인 노동력이 있고 유휴 일손 1 이하인 봄. 1381 이후에도 이어진 고용 긴장을 배경으로 삼는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "실제 성인 노동력이 있고 유휴 일손 1 이하인 봄. 1381 이후에도 이어진 고용 긴장을 배경으로 삼는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 150,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.T3",
+        "semanticFields": [
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 성인 노동력이 있고 유휴 일손 1 이하인 봄. 1381 이후에도 이어진 고용 긴장을 배경으로 삼는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 성인 노동력이 있고 유휴 일손 1 이하인 봄. 1381 이후에도 이어진 고용 긴장을 배경으로 삼는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 성인 노동력이 있고 유휴 일손 1 이하인 봄. 1381 이후에도 이어진 고용 긴장을 배경으로 삼는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 성인 노동력이 있고 유휴 일손 1 이하인 봄. 1381 이후에도 이어진 고용 긴장을 배경으로 삼는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.labour.adults"
+                  },
+                  "op": "gt",
+                  "right": {
+                    "literal": 0
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.labour.idle"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "literal": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_204",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_204",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1381,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          2,
+          3
+        ],
+        "authoredYears": [
+          1381,
+          1450
+        ],
+        "eligibilityYears": [
+          1381,
+          1450
+        ],
+        "windowRationale": "가동 시장과 실제 직물 시설이 있는 가을·겨울. 원모 수출량·불황 상태를 새로 만들지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "가동 시장과 실제 직물 시설이 있는 가을·겨울. 원모 수출량·불황 상태를 새로 만들지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 150,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.T4",
+        "semanticFields": [
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_market_dues",
+              "args": {
+                "permille": {
+                  "binding": "bound.lowerDues"
+                }
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가동 시장과 실제 직물 시설이 있는 가을·겨울. 원모 수출량·불황 상태를 새로 만들지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "bound.lowerDues"
+                },
+                "op": "lt",
+                "right": {
+                  "field": "state.agency.duesPermille"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_market_dues",
+              "args": {
+                "permille": {
+                  "binding": "bound.higherDues"
+                }
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가동 시장과 실제 직물 시설이 있는 가을·겨울. 원모 수출량·불황 상태를 새로 만들지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "bound.higherDues"
+                },
+                "op": "gt",
+                "right": {
+                  "field": "state.agency.duesPermille"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가동 시장과 실제 직물 시설이 있는 가을·겨울. 원모 수출량·불황 상태를 새로 만들지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "lowerDues": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "max",
+                "args": [
+                  {
+                    "literal": 250
+                  },
+                  {
+                    "operation": "subtract",
+                    "args": [
+                      {
+                        "field": "state.agency.duesPermille"
+                      },
+                      {
+                        "literal": 100
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "higherDues": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "min",
+                "args": [
+                  {
+                    "literal": 2000
+                  },
+                  {
+                    "operation": "add",
+                    "args": [
+                      {
+                        "field": "state.agency.duesPermille"
+                      },
+                      {
+                        "literal": 100
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "call": "completedMarkets",
+                    "args": [
+                      {
+                        "field": "state.buildings"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "field": "state.buildings"
+                      },
+                      "as": "b",
+                      "where": {
+                        "compare": {
+                          "left": {
+                            "field": "b.kind"
+                          },
+                          "op": "in",
+                          "right": {
+                            "literal": [
+                              "weaver_house",
+                              "fulling_mill",
+                              "dyehouse",
+                              "tenter_yard"
+                            ]
+                          }
+                        }
+                      }
+                    }
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_205",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_205",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "실제 급수받지 못하는 가구가 둘 이상. 우물 공고 선택은 실제 후보 자리와 지원 여력이 있을 때만 보인다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "실제 급수받지 못하는 가구가 둘 이상. 우물 공고 선택은 실제 후보 자리와 지원 여력이 있을 때만 보인다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 70,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.T5",
+        "semanticFields": [
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_project_subsidy",
+              "args": {
+                "kind": "well",
+                "amount": 24
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 급수받지 못하는 가구가 둘 이상. 우물 공고 선택은 실제 후보 자리와 지원 여력이 있을 때만 보인다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "derived": "SUB",
+                      "args": [
+                        {
+                          "literal": "well"
+                        }
+                      ]
+                    },
+                    "op": "lt",
+                    "right": {
+                      "literal": 24
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "subsidyRefusal",
+                      "args": [
+                        {
+                          "field": "state"
+                        },
+                        {
+                          "literal": "well"
+                        },
+                        {
+                          "literal": 24
+                        }
+                      ]
+                    },
+                    "op": "eq",
+                    "right": {
+                      "literal": null
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "selectors.autoplayBuildAction.well.kind"
+                    },
+                    "op": "eq",
+                    "right": {
+                      "literal": "place_building"
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 급수받지 못하는 가구가 둘 이상. 우물 공고 선택은 실제 후보 자리와 지원 여력이 있을 때만 보인다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 급수받지 못하는 가구가 둘 이상. 우물 공고 선택은 실제 후보 자리와 지원 여력이 있을 때만 보인다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 급수받지 못하는 가구가 둘 이상. 우물 공고 선택은 실제 후보 자리와 지원 여력이 있을 때만 보인다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "derived": "WATERLESS",
+                "args": []
+              },
+              "op": "gte",
+              "right": {
+                "literal": 2
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_206",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_206",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 0,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [
+          "bound.event.id"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.N1",
+        "semanticFields": [
+          "bound.event.id"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 10
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 10
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "treasuryBalance",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 4
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 4
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "treasuryBalance",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "event": {
+          "from": {
+            "field": "state.events.records"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.kind"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "fire"
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.arrivalTick"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "field": "state.tick"
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "operation": "subtract",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "field": "item.arrivalTick"
+                      }
+                    ]
+                  },
+                  "op": "lte",
+                  "right": {
+                    "literal": 8000
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "arrivalTick",
+              "direction": "desc"
+            },
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_207",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_207",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "겨울이며 실제 식량부족 주택이 있다. 새 혹한·역병이 발생했다고 서술하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "겨울이며 실제 식량부족 주택이 있다. 새 혹한·역병이 발생했다고 서술하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 250,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext",
+          "bound.house.buildingId"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.N2",
+        "semanticFields": [
+          "bound.seasonContext",
+          "bound.house.buildingId"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "겨울이며 실제 식량부족 주택이 있다. 새 혹한·역병이 발생했다고 서술하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "겨울이며 실제 식량부족 주택이 있다. 새 혹한·역병이 발생했다고 서술하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "겨울이며 실제 식량부족 주택이 있다. 새 혹한·역병이 발생했다고 서술하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "겨울이며 실제 식량부족 주택이 있다. 새 혹한·역병이 발생했다고 서술하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "house": {
+          "from": {
+            "field": "state.houses"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.residents"
+                  },
+                  "op": "gt",
+                  "right": {
+                    "literal": 0
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "item.foodShortSinceTick"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.foodShortSinceTick"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "field": "state.tick"
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "foodShortSinceTick",
+              "direction": "desc"
+            },
+            {
+              "field": "buildingId",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_208",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_208",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1381,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          2
+        ],
+        "authoredYears": [
+          1381,
+          1450
+        ],
+        "eligibilityYears": [
+          1381,
+          1450
+        ],
+        "windowRationale": "가을 실제 농업 일손이 있고 유휴 노동 1 이하. 수확·장터·방비의 사업 우선순위이며 임금 통제 명령이 아니다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 2 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "가을 실제 농업 일손이 있고 유휴 노동 1 이하. 수확·장터·방비의 사업 우선순위이며 임금 통제 명령이 아니다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 350,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.N3",
+        "semanticFields": [
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가을 실제 농업 일손이 있고 유휴 노동 1 이하. 수확·장터·방비의 사업 우선순위이며 임금 통제 명령이 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가을 실제 농업 일손이 있고 유휴 노동 1 이하. 수확·장터·방비의 사업 우선순위이며 임금 통제 명령이 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "defence"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가을 실제 농업 일손이 있고 유휴 노동 1 이하. 수확·장터·방비의 사업 우선순위이며 임금 통제 명령이 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "defence"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "가을 실제 농업 일손이 있고 유휴 노동 1 이하. 수확·장터·방비의 사업 우선순위이며 임금 통제 명령이 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.labour.adults"
+                  },
+                  "op": "gt",
+                  "right": {
+                    "literal": 0
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.labour.idle"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "literal": 1
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "compare": {
+              "left": {
+                "field": "state.labour.fieldHands"
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_209",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_209",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1414,
+        "seasonIndices": [
+          0,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1414
+        ],
+        "eligibilityYears": [
+          1300,
+          1414
+        ],
+        "windowRationale": "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 140,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.N4",
+        "semanticFields": [
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 10
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 10
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "treasuryBalance",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 4
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 4
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "treasuryBalance",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "call": "waitingTimberNeed",
+                "args": [
+                  {
+                    "field": "state"
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "field": "state.events.records"
+                      },
+                      "as": "fire",
+                      "where": {
+                        "all": [
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "fire.kind"
+                              },
+                              "op": "eq",
+                              "right": {
+                                "literal": "fire"
+                              }
+                            }
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "fire.arrivalTick"
+                              },
+                              "op": "lte",
+                              "right": {
+                                "field": "state.tick"
+                              }
+                            }
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "operation": "subtract",
+                                "args": [
+                                  {
+                                    "field": "state.tick"
+                                  },
+                                  {
+                                    "field": "fire.arrivalTick"
+                                  }
+                                ]
+                              },
+                              "op": "lte",
+                              "right": {
+                                "literal": 8000
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_210",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_210",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "실제 dearth 발생 ID, 도래 후 두 해 이내. 1315 장 사건 famine_response를 다른 연도에 재사용하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "실제 dearth 발생 ID, 도래 후 두 해 이내. 1315 장 사건 famine_response를 다른 연도에 재사용하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 0,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [
+          "bound.event.id"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.N5",
+        "semanticFields": [
+          "bound.event.id"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 dearth 발생 ID, 도래 후 두 해 이내. 1315 장 사건 famine_response를 다른 연도에 재사용하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 dearth 발생 ID, 도래 후 두 해 이내. 1315 장 사건 famine_response를 다른 연도에 재사용하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 dearth 발생 ID, 도래 후 두 해 이내. 1315 장 사건 famine_response를 다른 연도에 재사용하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 dearth 발생 ID, 도래 후 두 해 이내. 1315 장 사건 famine_response를 다른 연도에 재사용하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "event": {
+          "from": {
+            "field": "state.events.records"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.kind"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "dearth"
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.arrivalTick"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "field": "state.tick"
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "operation": "subtract",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "field": "item.arrivalTick"
+                      }
+                    ]
+                  },
+                  "op": "lte",
+                  "right": {
+                    "literal": 8000
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "arrivalTick",
+              "direction": "desc"
+            },
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_211",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_211",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "첫째 상인 가문의 실제 현 수장과 첫 시장 협의. 처음 관측한 수장을 방금 취임했다고 단정하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "첫째 상인 가문의 실제 현 수장과 첫 시장 협의. 처음 관측한 수장을 방금 취임했다고 단정하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 0,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [
+          "bound.faction.id",
+          "bound.faction.leaderId"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.F1",
+        "semanticFields": [
+          "bound.faction.id",
+          "bound.faction.leaderId"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_market_dues",
+              "args": {
+                "permille": {
+                  "binding": "bound.lowerDues"
+                }
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "첫째 상인 가문의 실제 현 수장과 첫 시장 협의. 처음 관측한 수장을 방금 취임했다고 단정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "bound.lowerDues"
+                },
+                "op": "lt",
+                "right": {
+                  "field": "state.agency.duesPermille"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_market_dues",
+              "args": {
+                "permille": {
+                  "binding": "bound.higherDues"
+                }
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "첫째 상인 가문의 실제 현 수장과 첫 시장 협의. 처음 관측한 수장을 방금 취임했다고 단정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "bound.higherDues"
+                },
+                "op": "gt",
+                "right": {
+                  "field": "state.agency.duesPermille"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "첫째 상인 가문의 실제 현 수장과 첫 시장 협의. 처음 관측한 수장을 방금 취임했다고 단정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "faction": {
+          "from": {
+            "field": "state.factions.factions"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.id"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "merchant_house_1"
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "item.leaderId"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.leaderId"
+                  },
+                  "op": "neq",
+                  "right": {
+                    "literal": null
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "lowerDues": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "max",
+                "args": [
+                  {
+                    "literal": 250
+                  },
+                  {
+                    "operation": "subtract",
+                    "args": [
+                      {
+                        "field": "state.agency.duesPermille"
+                      },
+                      {
+                        "literal": 100
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "higherDues": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "min",
+                "args": [
+                  {
+                    "literal": 2000
+                  },
+                  {
+                    "operation": "add",
+                    "args": [
+                      {
+                        "field": "state.agency.duesPermille"
+                      },
+                      {
+                        "literal": 100
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "call": "completedMarkets",
+                    "args": [
+                      {
+                        "field": "state.buildings"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_212",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_212",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          1
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "실제 공동체 대표가 있고 여름 유휴 일손이 부족한 계절 협의. 동일 계절 대표 교체만으로 중복 제시하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 1 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "실제 공동체 대표가 있고 여름 유휴 일손이 부족한 계절 협의. 동일 계절 대표 교체만으로 중복 제시하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 220,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.faction.id",
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.F2",
+        "semanticFields": [
+          "bound.faction.id",
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 공동체 대표가 있고 여름 유휴 일손이 부족한 계절 협의. 동일 계절 대표 교체만으로 중복 제시하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 공동체 대표가 있고 여름 유휴 일손이 부족한 계절 협의. 동일 계절 대표 교체만으로 중복 제시하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 공동체 대표가 있고 여름 유휴 일손이 부족한 계절 협의. 동일 계절 대표 교체만으로 중복 제시하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 공동체 대표가 있고 여름 유휴 일손이 부족한 계절 협의. 동일 계절 대표 교체만으로 중복 제시하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "faction": {
+          "from": {
+            "field": "state.factions.factions"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.id"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "commons"
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "item.leaderId"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.leaderId"
+                  },
+                  "op": "neq",
+                  "right": {
+                    "literal": null
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.labour.adults"
+                  },
+                  "op": "gt",
+                  "right": {
+                    "literal": 0
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.labour.idle"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "literal": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_213",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_213",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1399,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1399,
+          1450
+        ],
+        "eligibilityYears": [
+          1399,
+          1450
+        ],
+        "windowRationale": "1399 이후 실제 왕실 수장별 첫 협의. 권리 확인 배경만 사용하고 새 왕조 상태·권리 소멸·특허장 지급을 발명하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "1399 이후 실제 왕실 수장별 첫 협의. 권리 확인 배경만 사용하고 새 왕조 상태·권리 소멸·특허장 지급을 발명하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 0,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [
+          "bound.faction.id",
+          "bound.faction.leaderId"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.F3",
+        "semanticFields": [
+          "bound.faction.id",
+          "bound.faction.leaderId"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "defence"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1399 이후 실제 왕실 수장별 첫 협의. 권리 확인 배경만 사용하고 새 왕조 상태·권리 소멸·특허장 지급을 발명하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "defence"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1399 이후 실제 왕실 수장별 첫 협의. 권리 확인 배경만 사용하고 새 왕조 상태·권리 소멸·특허장 지급을 발명하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1399 이후 실제 왕실 수장별 첫 협의. 권리 확인 배경만 사용하고 새 왕조 상태·권리 소멸·특허장 지급을 발명하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1399 이후 실제 왕실 수장별 첫 협의. 권리 확인 배경만 사용하고 새 왕조 상태·권리 소멸·특허장 지급을 발명하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "faction": {
+          "from": {
+            "field": "state.factions.factions"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.id"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "crown"
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "item.leaderId"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.leaderId"
+                  },
+                  "op": "neq",
+                  "right": {
+                    "literal": null
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_214",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_214",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1415,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          3
+        ],
+        "authoredYears": [
+          1415,
+          1450
+        ],
+        "eligibilityYears": [
+          1415,
+          1450
+        ],
+        "windowRationale": "1415 이후 왕실 대표가 실재하며 실제 목재 공사 수요가 있는 봄·겨울. 원정 재정의 시대 배경이지 새 징발이나 왕실 세금 부과가 아니다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "1415 이후 왕실 대표가 실재하며 실제 목재 공사 수요가 있는 봄·겨울. 원정 재정의 시대 배경이지 새 징발이나 왕실 세금 부과가 아니다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 240,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.faction.id",
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.F4",
+        "semanticFields": [
+          "bound.faction.id",
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "defence"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1415 이후 왕실 대표가 실재하며 실제 목재 공사 수요가 있는 봄·겨울. 원정 재정의 시대 배경이지 새 징발이나 왕실 세금 부과가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "defence"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 8
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1415 이후 왕실 대표가 실재하며 실제 목재 공사 수요가 있는 봄·겨울. 원정 재정의 시대 배경이지 새 징발이나 왕실 세금 부과가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 8
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "treasuryBalance",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1415 이후 왕실 대표가 실재하며 실제 목재 공사 수요가 있는 봄·겨울. 원정 재정의 시대 배경이지 새 징발이나 왕실 세금 부과가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "1415 이후 왕실 대표가 실재하며 실제 목재 공사 수요가 있는 봄·겨울. 원정 재정의 시대 배경이지 새 징발이나 왕실 세금 부과가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "faction": {
+          "from": {
+            "field": "state.factions.factions"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.id"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "crown"
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "item.leaderId"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.leaderId"
+                  },
+                  "op": "neq",
+                  "right": {
+                    "literal": null
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "call": "waitingTimberNeed",
+                "args": [
+                  {
+                    "field": "state"
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "field": "state.events.records"
+                      },
+                      "as": "fire",
+                      "where": {
+                        "all": [
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "fire.kind"
+                              },
+                              "op": "eq",
+                              "right": {
+                                "literal": "fire"
+                              }
+                            }
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "fire.arrivalTick"
+                              },
+                              "op": "lte",
+                              "right": {
+                                "field": "state.tick"
+                              }
+                            }
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "operation": "subtract",
+                                "args": [
+                                  {
+                                    "field": "state.tick"
+                                  },
+                                  {
+                                    "field": "fire.arrivalTick"
+                                  }
+                                ]
+                              },
+                              "op": "lte",
+                              "right": {
+                                "literal": 8000
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    },
+    {
+      "id": "ck_evt_215",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_215",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1381,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          3
+        ],
+        "authoredYears": [
+          1381,
+          1450
+        ],
+        "eligibilityYears": [
+          1381,
+          1450
+        ],
+        "windowRationale": "실제 도시 대표와 가동 시장이 있는 겨울의 사업 협의. 별도 길드 세력이나 길드 가입 상태를 만들지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "실제 도시 대표와 가동 시장이 있는 겨울의 사업 협의. 별도 길드 세력이나 길드 가입 상태를 만들지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 260,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.faction.id",
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.F5",
+        "semanticFields": [
+          "bound.faction.id",
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "stability"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 도시 대표와 가동 시장이 있는 겨울의 사업 협의. 별도 길드 세력이나 길드 가입 상태를 만들지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "stability"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "growth"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 도시 대표와 가동 시장이 있는 겨울의 사업 협의. 별도 길드 세력이나 길드 가입 상태를 만들지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "growth"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "set_estate_policy",
+              "args": {
+                "policy": "revenue"
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 도시 대표와 가동 시장이 있는 겨울의 사업 협의. 별도 길드 세력이나 길드 가입 상태를 만들지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "compare": {
+                "left": {
+                  "field": "state.agency.policy"
+                },
+                "op": "neq",
+                "right": {
+                  "literal": "revenue"
+                }
+              }
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 도시 대표와 가동 시장이 있는 겨울의 사업 협의. 별도 길드 세력이나 길드 가입 상태를 만들지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "faction": {
+          "from": {
+            "field": "state.factions.factions"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.id"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "town"
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "item.leaderId"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.leaderId"
+                  },
+                  "op": "neq",
+                  "right": {
+                    "literal": null
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        },
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "call": "completedMarkets",
+                    "args": [
+                      {
+                        "field": "state.buildings"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    }
+  ]
+}

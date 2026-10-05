@@ -1,0 +1,674 @@
+{
+  "cases": [
+    {
+      "test": "well-existing-subsidy",
+      "amount": 0,
+      "choices": [
+        "a",
+        "b",
+        "c"
+      ],
+      "pass": true
+    },
+    {
+      "test": "well-existing-subsidy",
+      "amount": 24,
+      "choices": [
+        "b",
+        "c"
+      ],
+      "pass": true
+    },
+    {
+      "test": "well-existing-subsidy",
+      "amount": 48,
+      "choices": [
+        "b",
+        "c"
+      ],
+      "pass": true
+    },
+    {
+      "test": "recent-fire-exclusion",
+      "id": "ck_evt_209",
+      "age": 0,
+      "bound": false,
+      "pass": true
+    },
+    {
+      "test": "recent-fire-exclusion",
+      "id": "ck_evt_209",
+      "age": 8000,
+      "bound": false,
+      "pass": true
+    },
+    {
+      "test": "recent-fire-exclusion",
+      "id": "ck_evt_209",
+      "age": 8001,
+      "bound": true,
+      "pass": true
+    },
+    {
+      "test": "recent-fire-exclusion",
+      "id": "ck_evt_214",
+      "age": 0,
+      "bound": false,
+      "pass": true
+    },
+    {
+      "test": "recent-fire-exclusion",
+      "id": "ck_evt_214",
+      "age": 8000,
+      "bound": false,
+      "pass": true
+    },
+    {
+      "test": "recent-fire-exclusion",
+      "id": "ck_evt_214",
+      "age": 8001,
+      "bound": true,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_201",
+      "policy": "growth",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_201",
+      "policy": "stability",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_201",
+      "policy": "revenue",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_201",
+      "policy": "defence",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_202",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_202",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_202",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_202",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_203",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_203",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_203",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_203",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_204",
+      "policy": "growth",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_204",
+      "policy": "stability",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_204",
+      "policy": "revenue",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_204",
+      "policy": "defence",
+      "choice": "c",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_205",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_205",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_205",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_205",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_206",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_206",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_206",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_206",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_207",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_207",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_207",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_207",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_208",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_208",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_208",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_208",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_209",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_209",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_209",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_209",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_210",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_210",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_210",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_210",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_211",
+      "policy": "growth",
+      "choice": "c",
+      "faction": "merchant_house_1",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_211",
+      "policy": "stability",
+      "choice": "c",
+      "faction": "merchant_house_1",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_211",
+      "policy": "revenue",
+      "choice": "c",
+      "faction": "merchant_house_1",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_211",
+      "policy": "defence",
+      "choice": "c",
+      "faction": "merchant_house_1",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_212",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_212",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_212",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_212",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "commons",
+      "before": 25,
+      "after": 23,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_213",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_213",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_213",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_213",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_214",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_214",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_214",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_214",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "crown",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_215",
+      "policy": "growth",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_215",
+      "policy": "stability",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_215",
+      "policy": "revenue",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    },
+    {
+      "test": "hold-retains-current-policy",
+      "id": "ck_evt_215",
+      "policy": "defence",
+      "choice": "d",
+      "faction": "town",
+      "before": 10,
+      "after": 8,
+      "pass": true
+    }
+  ]
+}

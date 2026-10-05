@@ -1,0 +1,367 @@
+{
+  "checkedAt": "2026-10-05",
+  "scope": "역사 소재 검증만. 엔진 읽기 함수·맥락 키·명령의 존재는 별도 확인 필요.",
+  "sources": [
+    {
+      "id": "H41-GUILD",
+      "title": "Southampton Guild Organization, 14th Century",
+      "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp",
+      "kind": "1차 규약 영문 번역, Fordham IHSP",
+      "verification": "본문 확인",
+      "period": "14세기 사본, 첫 11조는 1300 이전 기원",
+      "evidence": "선출직 길드 임원·입회비, 연 2회 집회, 병든 회원 방문·빵, 빈곤 회원 구제, 관세면제 증명, 봉인 도량형 규정.",
+      "limit": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다."
+    },
+    {
+      "id": "H41-LABOUR",
+      "title": "The Statute of Labourers, 1351",
+      "url": "https://www.umsl.edu/~gradyf/medieval/statute.htm",
+      "kind": "1차 법령 번역, 대학 수록; Statutes of the Realm 1:311–313",
+      "verification": "본문 확인",
+      "period": "1351 이후",
+      "evidence": "공개된 시장에서 노동자 고용, 임금 억제·이동 제한, 계절·직종별 임금 규정, 지방 집행자의 조사 책임.",
+      "limit": "법정 임금과 실제 임금을 동일시하지 않고 1381에 임금통제가 폐지됐다고 쓰지 않는다."
+    },
+    {
+      "id": "H41-ARCHERY",
+      "title": "Sporting discipline",
+      "url": "https://www.cai.cam.ac.uk/discover/library/online-exhibitions/blood-sweat-and-ink/sporting-discipline",
+      "kind": "Cambridge Gonville & Caius 도서관 1차 법령 전시",
+      "verification": "본문 확인",
+      "period": "1388 이후",
+      "evidence": "1388 법령은 하인·노동자의 일부 놀이를 금하고 일요일·축일 활쏘기를 요구했다.",
+      "limit": "1477 규정·전국민 동원·현대 징병제를 앞당기지 않는다."
+    },
+    {
+      "id": "H41-FLOOD",
+      "title": "How Did Our Medieval Ancestors Cope with Flooding?",
+      "url": "https://historicengland.org.uk/listing/what-is-designation/heritage-highlights/medieval-ancestors-cope-with-flooding",
+      "kind": "Historic England 유산 연구 해설",
+      "verification": "본문 확인",
+      "period": "중세; 구체 비용 사례 1293–1294",
+      "evidence": "켄트·롬니 습지의 제방과 배수 유지에 큰 비용이 들었으며 반복 유지가 중요했다.",
+      "limit": "현대 수문·치수기관을 투영하지 않으며 1293–1294 비용을 1400년 게임 가격으로 복사하지 않는다."
+    },
+    {
+      "id": "H41-FIRE",
+      "title": "History of Building Regulations in the British Isles",
+      "url": "https://www.buildinghistory.org/regulations.shtml",
+      "kind": "건축사 연구 안내; Liber Albus 및 런던 법규 판본 인용",
+      "verification": "본문 확인",
+      "period": "1189/1212 규정의 중세 선례",
+      "evidence": "런던의 이웃 경계·공동벽·배수 갈등과 화재 위험에 대한 건축 규정 선례.",
+      "limit": "런던의 초가지붕 금지를 모든 농촌에 적용하지 않는다. 소방차·보험금·1666년 조치를 사용하지 않는다."
+    },
+    {
+      "id": "H41-WAR",
+      "title": "Funding the defence of the realm (or not…)",
+      "url": "https://historyofparliament.com/2022/07/28/funding-the-defence-of-the-realm/",
+      "kind": "History of Parliament Trust 연구자 해설",
+      "verification": "본문 확인",
+      "period": "1415 이후 원정세 승인 부분",
+      "evidence": "아쟁쿠르 뒤 프랑스 원정을 위한 연속 과세가 의회에서 승인되었다.",
+      "limit": "본문의 1460–1470년대 사례를 1424 이전 상황으로 옮기지 않는다. 영주가 의회 권한으로 세금을 신설한다고 쓰지 않는다."
+    },
+    {
+      "id": "H41-CHARTERS",
+      "title": "Charters and Inter-Urban Networks: England, 1439–1449",
+      "url": "https://eprints.whiterose.ac.uk/104531/1/Hartrich%20Borough%20Charters%202.pdf",
+      "kind": "Eliza Hartrich, English Historical Review 132(555), 2017, accepted manuscript",
+      "verification": "PDF 본문 확인",
+      "period": "비교 논의에 1399–1413 포함",
+      "evidence": "왕권과 도시 특권은 협상·네트워크 관계였고, 기존 권리 확인과 새로운 권리는 구분되며 얻는 데 비용이 들었다.",
+      "limit": "주 연구시기 1439–1449의 개별 사례를 1381–1424에 소급하지 않는다. 특허장을 민주적 자치의 일방적 진보로 묘사하지 않는다."
+    },
+    {
+      "id": "H41-HENRYIV",
+      "title": "City History — royal charter catalogue",
+      "url": "https://herefordcitycouncil.gov.uk/city-history/",
+      "kind": "Hereford City Council 소장 왕실 헌장 목록",
+      "verification": "본문 확인",
+      "period": "1399년 11월 20일",
+      "evidence": "헨리 4세의 이전 헌장 재확인 기록.",
+      "limit": "헤리퍼드는 남부 가상도시의 직접 사례가 아니라 왕 교체 후 권리 재확인의 잉글랜드 유사 사례다."
+    },
+    {
+      "id": "H41-JERSEY",
+      "title": "Jersey’s royal charters of liberties",
+      "url": "https://www.jerseylaw.je/publications/jglr/Pages/JLR0906_Thornton.aspx",
+      "kind": "Tim Thornton, Jersey & Guernsey Law Review, June 2009",
+      "verification": "본문 확인",
+      "period": "1394·1400·1414",
+      "evidence": "1394의 잉글랜드 내 통행세·관세 면제를 1400 헨리 4세가 그대로 재확인하지 않았으며, 1414 헨리 5세는 1400판을 확인했다.",
+      "limit": "저지의 특수 법체계를 남부 잉글랜드 전체에 적용하지 않는다. 단순 왕 교체가 모든 권리 자동 소멸을 뜻하지 않는다."
+    },
+    {
+      "id": "H41-CUSTOMS",
+      "title": "Medieval customs’ accounts",
+      "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/medieval-customs-accounts/",
+      "kind": "The National Archives 연구 안내",
+      "verification": "검색 색인 본문 발췌 확인; 직접 열기는 403",
+      "period": "13세기 말–15세기",
+      "evidence": "양모에 대한 전국 관세, 14세기 직물 등으로 확대된 관세, 무역 연구에 사용되는 항구 장부.",
+      "limit": "시장 좌판세와 왕실 수출관세를 같은 세목으로 쓰지 않는다. 이 자료만으로 특정 해 불황을 단정하지 않는다."
+    },
+    {
+      "id": "H41-WOOL",
+      "title": "Henry V and the crossing to France: reconstructing naval operations for the Agincourt campaign, 1415",
+      "url": "https://www.tandfonline.com/doi/full/10.1080/03044181.2016.1236503",
+      "repository": "https://eprints.soton.ac.uk/400231/",
+      "kind": "Journal of Medieval History 연구 논문; Southampton 저장소 서지",
+      "verification": "검색 색인 발췌 확인; 출판사 직접 열기 실패",
+      "period": "1360 이후–1415 중심",
+      "evidence": "원모 수출 감소와 직물 수출 확대가 왕실 관세 수입 구조에 영향을 주었다는 논의.",
+      "limit": "특정 가상도시의 매년 수요나 가격을 역사적 필연으로 지정하지 않는다. 정량 배율은 재사용하지 않는다."
+    },
+    {
+      "id": "H41-MIGRATION",
+      "title": "The geographical origins and mobility of the inhabitants of Southampton, 1400–1600",
+      "url": "https://research-repository.st-andrews.ac.uk/handle/10023/2759",
+      "kind": "St Andrews 대학 역사학 학위논문 저장소",
+      "verification": "검색 색인 초록 확인; 직접 열기 timeout",
+      "period": "1400–1600, 사용은 1400–1450으로 제한",
+      "evidence": "외부 이주민·상인·도시 엘리트 유입과 후원·재력의 도시 사회 진입 역할.",
+      "limit": "16세기 제도나 1496 이후 명부 통계를 1400으로 소급하지 않는다. 새 가구를 모두 외국인으로 묘사하지 않는다."
+    },
+    {
+      "id": "H41-WATER",
+      "title": "Industrial Waste Management and Urban Environments in Medieval England, 1300–1600",
+      "url": "https://dspacemainprd01.lib.uwaterloo.ca/server/api/core/bitstreams/54773b4d-e44f-44bc-be43-bae178349b28/content",
+      "kind": "Erin Kurian, University of Waterloo, MA thesis, 2021, pp.78–80; Riley Memorials pp.78,200,225 재인용",
+      "verification": "PDF 본문 pp.78–80 확인",
+      "period": "런던 1310·1337·1345·1415 사례만 사용",
+      "evidence": "1310 도수로 관리인의 물 낭비 방지 의무, 1337 양조업자 대량 취수로 주민이 물을 얻지 못한다는 민원, 1345 취수 제한, 1415 특정 수원 유료 사용. 공용 급수의 사용 순서·관리·생계 갈등을 뒷받침한다.",
+      "limit": "이 자료는 공용 도수로 접근 갈등의 근거이지 자연 가뭄·우물 고갈을 증명하지 않는다. 205가 말라버린 우물이라면 실제 엔진 물 부족의 게임상 각색이라고 명시하고 우물 물길 복구를 효과로 약속하지 않는다. 런던 규칙을 모든 마을에 동일 적용하지 않는다."
+    },
+    {
+      "id": "H41-TIMBER",
+      "title": "The hammer-beam roof",
+      "url": "https://www.parliament.uk/about/living-heritage/building/palace/westminsterhall/architecture/the-hammer-beam-roof-/",
+      "kind": "UK Parliament Living Heritage; Westminster Hall 건축사",
+      "verification": "본문 확인",
+      "period": "1393–1401",
+      "evidence": "웨스트민스터 홀 지붕 목재는 서리 Farnham 인근에서 짜맞춰졌고 수레와 바지선으로 운송되어 현장 조립됐다. 큰 목재의 무게·인양이 시공의 어려움이었다. 건설 목재 조달과 운송을 기다리는 장면의 물질적 근거다.",
+      "limit": "왕실 대공사의 규모를 일반 집에 옮기지 않는다. 이 자료는 당시 전국 목재 부족이나 가격 폭등의 근거가 아니다. 209의 부족·대기는 실제 게임 재고 상태에 따른 창작이며 역사적 특정 부족 사태로 단정하지 않는다.",
+      "supportingUrl": "https://archives.history.ac.uk/cmh/arpt93.html",
+      "supportingEvidence": "IHR Centre for Metropolitan History 1993–4 연구보고 pp웹단락91–99: 중세 런던 목재·연료 전문 상인과 Surrey–Kingston 수운 공급망. 본문 확인. 연료 수요를 건축재 부족과 동일시하지 않는다."
+    }
+  ],
+  "concepts": [
+    {
+      "id": "C01",
+      "category": "도시",
+      "title": "이번 장날의 통행세 면제 다툼",
+      "years": [
+        1300,
+        1450
+      ],
+      "sources": [
+        "H41-GUILD"
+      ],
+      "scene": "도시 문 앞 짐수레와 관세 징수자",
+      "inference": "새 시장 거래 상황을 규약의 면제 증명 갈등으로 각색",
+      "requiredContext": "실제로 구별되는 새 시장·거래 맥락; 달력만 추가해 사실상 매해 자동 발생시키지 말 것"
+    },
+    {
+      "id": "C02",
+      "category": "도시",
+      "title": "새 가구의 자리와 보증인",
+      "years": [
+        1400,
+        1450
+      ],
+      "sources": [
+        "H41-MIGRATION",
+        "H41-GUILD"
+      ],
+      "scene": "빈 집 문 앞 이삿짐과 이웃 보증인",
+      "inference": "유입·입회 조건을 정착 청원으로 각색",
+      "requiredContext": "실제 신규 가구 식별자; 이민자 출신 상태를 발명하지 말 것"
+    },
+    {
+      "id": "C03",
+      "category": "도시",
+      "title": "봉인이 다른 저울",
+      "years": [
+        1300,
+        1450
+      ],
+      "sources": [
+        "H41-GUILD"
+      ],
+      "scene": "장터에서 두 저울추를 견주는 상인",
+      "inference": "봉인 도량형 규정을 거래 질서 갈등으로 각색",
+      "requiredContext": "새 거래 분쟁 또는 기존 시장 스트레스 상황; 위조 범죄 발생 사실을 임의로 생성하지 말 것"
+    },
+    {
+      "id": "C04",
+      "category": "세력",
+      "title": "새 길드 수장의 공동 궤짝",
+      "years": [
+        1300,
+        1450
+      ],
+      "sources": [
+        "H41-GUILD"
+      ],
+      "scene": "길드 마당에서 열쇠를 인계하는 임원",
+      "inference": "선출 임원·공동 궤짝 규정에 근거한 권한과 기여금 협상",
+      "requiredContext": "실제 세력 수장 식별자·교체 시점; 없다면 보류"
+    },
+    {
+      "id": "C05",
+      "category": "세력",
+      "title": "집회철의 공동 구제 몫",
+      "years": [
+        1300,
+        1450
+      ],
+      "sources": [
+        "H41-GUILD"
+      ],
+      "scene": "길드 뜰의 빵 바구니와 회원들",
+      "inference": "주기 집회와 회원 구제를 계절 협상으로 각색",
+      "requiredContext": "실제 새 계절 상황·세력 요구 맥락; 보편 복지권으로 쓰지 말 것"
+    },
+    {
+      "id": "C06",
+      "category": "자연",
+      "title": "물이 빠진 뒤 제방을 맡을 사람",
+      "years": [
+        1300,
+        1450
+      ],
+      "sources": [
+        "H41-FLOOD"
+      ],
+      "scene": "물 빠진 둑에서 흙과 말뚝을 나르는 주민",
+      "inference": "중세 유지비 부담을 특정 홍수 뒤 책임 갈등으로 각색",
+      "requiredContext": "실제 홍수 사건 id; 자동 제방 건설을 약속하는 효과가 없으면 비용·태도만 명시"
+    },
+    {
+      "id": "C07",
+      "category": "자연",
+      "title": "재가 된 지붕의 이웃 부담",
+      "years": [
+        1300,
+        1450
+      ],
+      "sources": [
+        "H41-FIRE"
+      ],
+      "scene": "타고 남은 집 지붕 아래 살림을 건지는 가족",
+      "inference": "화재 위험·공동벽 선례에서 피해 구호와 이웃 책임을 창작",
+      "requiredContext": "실제 화재 피해 맥락; 현대 보험·상설 소방 조직은 금지"
+    },
+    {
+      "id": "C08",
+      "category": "자연",
+      "title": "앓는 회원의 문 앞에 놓을 빵",
+      "years": [
+        1300,
+        1450
+      ],
+      "sources": [
+        "H41-GUILD"
+      ],
+      "scene": "병든 이의 문 앞 빵과 물을 놓는 방문자",
+      "inference": "질병 때 회원 구제의 지역 선례를 청원으로 각색",
+      "requiredContext": "실제 질병 맥락; 구제를 질병 완치·세균학적 방역으로 설명하지 말 것"
+    },
+    {
+      "id": "C09",
+      "category": "도시",
+      "title": "반란 뒤에도 남은 품삯 다툼",
+      "years": [
+        1381,
+        1424
+      ],
+      "sources": [
+        "H41-LABOUR"
+      ],
+      "scene": "고용 장터에서 낫을 든 일꾼과 고용주",
+      "inference": "노동 법제의 지속과 협상 긴장을 후반 상황에 적용",
+      "requiredContext": "실제 노동 부족·불만 상태; 1381 반란이 현재 도시에서 일어났다고 가정하지 말 것"
+    },
+    {
+      "id": "C10",
+      "category": "세력",
+      "title": "일손과 활터 사이",
+      "years": [
+        1388,
+        1424
+      ],
+      "sources": [
+        "H41-ARCHERY",
+        "H41-LABOUR"
+      ],
+      "scene": "수확밭 옆 활터로 갈 사람을 나누는 주민",
+      "inference": "축일 활쏘기 규정과 노동 필요의 긴장",
+      "requiredContext": "실제 계절 노동·세력 요구 상황; 전문 상비군이나 강제 전장 이동 효과 금지"
+    },
+    {
+      "id": "C11",
+      "category": "세력",
+      "title": "새 왕 아래 옛 특권을 묻다",
+      "years": [
+        1399,
+        1413
+      ],
+      "sources": [
+        "H41-HENRYIV",
+        "H41-CHARTERS",
+        "H41-JERSEY"
+      ],
+      "scene": "성문에서 기존 면제를 주장하는 짐수레와 사절",
+      "inference": "정권 교체 뒤 권리 재확인 비용·관계 협상",
+      "requiredContext": "실제 왕실·세력 요구 상황; 해가1399라는 사실만으로 존재하지 않는 왕조 상태를 만들지 말 것"
+    },
+    {
+      "id": "C12",
+      "category": "세력",
+      "title": "프랑스로 보낼 몫",
+      "years": [
+        1415,
+        1424
+      ],
+      "sources": [
+        "H41-WAR"
+      ],
+      "scene": "항구로 향하는 곡물 수레와 빈 창고",
+      "inference": "원정 재정 요구를 지방 부담 선택으로 각색",
+      "requiredContext": "실제 전쟁·상위권력 요구 맥락; 1420년대에1450년대전황을예언하지말것"
+    },
+    {
+      "id": "C13",
+      "category": "도시",
+      "title": "원모와 직물 사이의 장터",
+      "years": [
+        1381,
+        1424
+      ],
+      "sources": [
+        "H41-WOOL",
+        "H41-CUSTOMS"
+      ],
+      "scene": "양모 자루와 직물 꾸러미가 갈라진 시장 창고",
+      "inference": "원모·가공 직물 이해관계를 교역 상황의 갈등으로 각색",
+      "requiredContext": "엔진의 실제 교역·세수·길드 상태만 사용; woolPrice 같은 없는 필드 금지"
+    },
+    {
+      "id": "C14",
+      "category": "도시",
+      "title": "수확철에 들어온 품팔이 가구",
+      "years": [
+        1381,
+        1424
+      ],
+      "sources": [
+        "H41-LABOUR",
+        "H41-MIGRATION"
+      ],
+      "scene": "길에서 농기구와 살림을 끌고 오는 가족",
+      "inference": "노동 이동 통제와 도시 유입의 긴장을 계절 청원으로 각색",
+      "requiredContext": "실제 새 가구와 계절 맥락; 농노 해방·영구 정착권을 없는 명령으로 약속하지 말 것"
+    }
+  ]
+}

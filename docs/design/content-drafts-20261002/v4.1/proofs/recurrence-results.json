@@ -1,0 +1,1159 @@
+{
+  "scope": "Candidate/recurrence unit fixtures; dates and states rebased, no game simulation ticks",
+  "recurrence": [
+    {
+      "id": "ck_evt_011",
+      "found": true,
+      "oldContext": "fixture-negotiation",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "fixture-negotiation-next",
+      "persistentSameContextAfterGapBlocked": true
+    },
+    {
+      "id": "ck_evt_201",
+      "found": true,
+      "oldContext": "76",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "92",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_202",
+      "found": true,
+      "oldContext": "house-46-40-0|76000",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "house-46-40-0|92000",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_203",
+      "found": true,
+      "oldContext": "324",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "340",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_204",
+      "found": true,
+      "oldContext": "326",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "342",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_205",
+      "found": true,
+      "oldContext": "76",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "92",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_206",
+      "found": true,
+      "oldContext": "fixture-event-1",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "fixture-event-1-next",
+      "persistentSameContextAfterGapBlocked": true
+    },
+    {
+      "id": "ck_evt_207",
+      "found": true,
+      "oldContext": "79|house-46-40-0",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "95|house-46-40-0",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_208",
+      "found": true,
+      "oldContext": "326",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "342",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_209",
+      "found": true,
+      "oldContext": "76",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "92",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_210",
+      "found": true,
+      "oldContext": "fixture-event-1",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "fixture-event-1-next",
+      "persistentSameContextAfterGapBlocked": true
+    },
+    {
+      "id": "ck_evt_211",
+      "found": true,
+      "oldContext": "merchant_house_1|p-000211",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "merchant_house_1|p-000211-next",
+      "persistentSameContextAfterGapBlocked": true
+    },
+    {
+      "id": "ck_evt_212",
+      "found": true,
+      "oldContext": "commons|77",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "commons|93",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_213",
+      "found": true,
+      "oldContext": "crown|f-000007",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "crown|f-000007-next",
+      "persistentSameContextAfterGapBlocked": true
+    },
+    {
+      "id": "ck_evt_214",
+      "found": true,
+      "oldContext": "crown|460",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "crown|476",
+      "persistentSameContextAfterGapBlocked": null
+    },
+    {
+      "id": "ck_evt_215",
+      "found": true,
+      "oldContext": "town|327",
+      "sameContextBlocked": true,
+      "newContextEligible": true,
+      "newContext": "town|343",
+      "persistentSameContextAfterGapBlocked": null
+    }
+  ],
+  "windows": [
+    {
+      "id": "ck_evt_011",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_011",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1381,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1398,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1399,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1414,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1415,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1424,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1450,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_201",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_202",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1380,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_203",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1380,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_204",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_205",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_206",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_207",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1380,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_208",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1415,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1424,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1450,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_209",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_210",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_211",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1380,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_212",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1380,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1381,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1398,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_213",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1380,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1381,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1398,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1399,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1414,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_214",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1380,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1381,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1398,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1399,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1414,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1415,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1424,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1450,
+      "expected": true,
+      "observed": true,
+      "pass": true
+    },
+    {
+      "id": "ck_evt_215",
+      "year": 1451,
+      "expected": false,
+      "observed": false,
+      "pass": true
+    }
+  ]
+}
