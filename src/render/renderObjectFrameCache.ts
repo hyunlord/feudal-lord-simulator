@@ -34,11 +34,9 @@ type ObjectRenderFrameInput = {
   readonly renderWalkers?: readonly Walker[] | undefined;
 };
 
-type StaticObjectRenderCacheEntry = {
-  readonly buildings: GameState["buildings"];
-  readonly constructionSites: GameState["constructionSites"];
-  readonly palisade: GameState["palisade"];
-  readonly forestHarvests: GameState["forestHarvests"];
+type StaticObjectRenderCacheEntry = Readonly<
+  Pick<GameState, "buildings" | "constructionSites" | "palisade" | "forestHarvests">
+> & {
   readonly visibleTiles: readonly Tile[];
   readonly cacheKey: string;
   readonly items: readonly RenderQueueItem[];

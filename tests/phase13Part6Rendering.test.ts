@@ -260,38 +260,42 @@ test("drawObjectRenderItems feeds frame interpolation into construction renderin
   assert.equal(context.calls.includes("fillRect:40,34,3,18"), false);
 });
 
-test("drawObjectRenderItems defers walkers until after buildings so they are never occluded", () => {
-  // Given
-  const context = loggedContext();
-  const house = building("house-a");
-  const walker = builderWalker("builder-a");
-  const items = [
-    { kind: "walker", id: walker.id, walker, depth: 0, anchorTx: 0 },
-    { kind: "building", id: house.id, building: house, depth: 999, anchorTx: 9 },
-  ] as const satisfies readonly RenderQueueItem[];
+for (const placement of [
+  { label: "behind", position: { tx: 0, ty: 0 }, afterHouse: false },
+  { label: "in front of", position: { tx: 2, ty: 2 }, afterHouse: true },
+] as const) {
+  test(`drawObjectRenderItems paints a procedural walker ${placement.label} the house in occlusion order`, () => {
+    const context = loggedContext();
+    const house = building("house-a");
+    const walker = { ...builderWalker("builder-a"), position: placement.position };
+    const items = [
+      { kind: "walker", id: walker.id, walker, depth: 0, anchorTx: 0 },
+      { kind: "building", id: house.id, building: house, depth: 999, anchorTx: 9 },
+    ] as const satisfies readonly RenderQueueItem[];
 
-  // When
-  drawObjectRenderItems(context, {
-    state: state({ buildings: [house], walkers: [walker] }),
-    tiles: [],
-    range: { minTx: 0, minTy: 0, maxTx: 3, maxTy: 3 },
-    zoom: 1,
-    camera: { zoom: 1, panX: 0, panY: 0 },
-    dpr: 1,
-    viewport: { width: 400, height: 300 },
-    objectRenderItems: items,
+    drawObjectRenderItems(context, {
+      state: state({ buildings: [house], walkers: [walker] }),
+      tiles: [],
+      range: { minTx: 0, minTy: 0, maxTx: 3, maxTy: 3 },
+      zoom: 1,
+      camera: { zoom: 1, panX: 0, panY: 0 },
+      dpr: 1,
+      viewport: { width: 400, height: 300 },
+      objectRenderItems: items,
+    });
+
+    // The first generic fill is the walker's shadow, not the house. Identify its wall paint instead.
+    const housePaint = context.calls.indexOf("fillStyle:#95795A");
+    const proceduralWalker = context.calls.findIndex((call, index, calls) =>
+      call === "fillStyle:#C9A227"
+      && calls[index + 1]?.startsWith("fillRect:")
+      && calls[index + 2] === "strokeStyle:#2A2118",
+    );
+    assert.ok(housePaint >= 0, "the house wall must be painted");
+    assert.ok(proceduralWalker >= 0, "the procedural builder must be painted");
+    assert.equal(proceduralWalker > housePaint, placement.afterHouse);
   });
-
-  // Then
-  const firstBuildingFill = context.calls.findIndex((call) => call === "fill");
-  const proceduralWalker = context.calls.findIndex((call, index, calls) =>
-    call === "fillStyle:#C9A227"
-    && calls[index + 1] === "fillRect:-2,28,4,7"
-    && calls[index + 2] === "strokeStyle:#2A2118",
-  );
-  assert.ok(firstBuildingFill >= 0);
-  assert.ok(proceduralWalker > firstBuildingFill);
-});
+}
 
 test("drawObjectRenderItems keeps the building opaque when its sprite overlaps the cursor tile", () => {
   // Given
