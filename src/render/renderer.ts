@@ -1,4 +1,5 @@
 import { drawSnowFootprints } from './snowFootprints';
+import { devicePixelRatioFor } from './renderDevicePixelRatio';
 import type { ZoneBrushView } from "./zoneBrushOverlay";
 import { drawTownPlanOverlays } from "./townPlanOverlay";
 import { drawPlacementPrediction } from "./placementPredictionOverlay";
@@ -253,13 +254,4 @@ export const runRenderPasses = (passes: RenderPasses): void => {
   passes.ground();
   passes.objects();
   passes.overhang();
-};
-
-const devicePixelRatioFor = (
-  context: CanvasRenderingContext2D,
-  viewport: ViewportSize,
-): number => {
-  if (viewport.width <= 0) return 1;
-  const dpr = context.canvas.width / viewport.width;
-  return Number.isFinite(dpr) && dpr > 0 ? dpr : 1;
 };
