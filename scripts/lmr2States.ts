@@ -11,7 +11,8 @@
 //  - audit-pending: that estate's first Michaelmas audited by a visit, the finding waiting for the lord's answer;
 //  - attention-overloaded: then the estate taken under the lord's own oversight within the visit's year (load > capacity);
 //  - promises: a path where the lord keeps only his first promise — some kept, some broken, one still open;
-//  - neighbour-suit: after the inheritance, the estate's old house suing the lord to recover it (ER-21, plaintiff ≠ lord).
+//  - neighbour-suit: after the inheritance, played on by the lord bot's commands: a neighbour house suing the lord to
+//    recover a piece he won of its estate (ER-21, plaintiff ≠ lord).
 // Beside them lord2.json: for each, the seed, tick, year and what it holds. Seeds 1–5 in turn until each is found.
 //   tsx scripts/lmr2States.ts <out-dir> [lastSeed=5]
 import { refuseHeavyOnMac } from "./remote/localGuard.mjs";
@@ -23,8 +24,9 @@ import { estatesOf, LORD } from "../src/engine/estates";
 import { marriageDecisionDue, MARRIAGE_ESTATE_ID } from "../src/engine/marriage";
 import { diplomacyOf } from "../src/engine/negotiation";
 import { stateCalendar } from "../src/engine/scenarioState";
-import { attention, lordEstatePetitions, nextMichaelmas, pendingAudits, stewardCandidates, stewardshipOf } from "../src/engine/stewardship";
+import { attention, nextMichaelmas, pendingAudits, stewardCandidates, stewardshipOf } from "../src/engine/stewardship";
 import { advanceTick } from "../src/engine/tick";
+import { lordBotCommands } from "../src/engine/lordBot";
 import { gameReducer } from "../src/state/gameStore";
 import { marriagePath } from "./marriagePath";
 
@@ -63,14 +65,6 @@ function marriageStates(seed: number): GameState | null {
   return path.stage === "inherited" && path.state !== undefined ? path.state as GameState : null;
 }
 
-/** The lord's answers to what reaches him on the inherited estate (stewardshipPaths' lordAnswers, audits tolerated). */
-function answerLord(state: GameState): GameState {
-  let next = state;
-  for (const petition of lordEstatePetitions(next)) next = gameReducer(next, { type: "answer_estate_petition", petitionId: petition.id, grant: petition.group === "tenants" });
-  for (const audit of pendingAudits(next)) next = gameReducer(next, { type: "answer_audit", auditId: audit.id, choice: "tolerate" });
-  return next;
-}
-
 function stewardshipStates(seed: number, inherited: GameState): void {
   let state = inherited;
   while (state.stewardship === undefined) state = advanceTick(state);
@@ -91,12 +85,14 @@ function stewardshipStates(seed: number, inherited: GameState): void {
   const load = attention(state);
   if (load.overloaded) save("attention-overloaded", state, seed, { capacity: load.capacity, load: load.load, reasons: load.reasons.map(reason => `${reason.name} ${reason.value}`) });
   else process.stderr.write(`seed ${seed}: attention ${load.load}/${load.capacity}, not overloaded\n`);
-  // ER-21: the estate's old house sues to recover it (100‰ a year); the lord's estate delegated meanwhile.
+  // ER-21: a house sues to recover a piece the lord won of its estate (the Paston rule; the inherited estate is wholly
+  // his, so the pieces come from his own suits on the claims the neighbours' papers raise) — the lord bot's commands play
+  // on (its suits, stewardship, marriage and registry answers: scripts/eventArtStates.ts' way), the estate delegated.
   state = gameReducer(after, { type: "set_audit_mode", estateId: MARRIAGE_ESTATE_ID, mode: "accounts" });
-  const end = state.tick + 30 * YEAR;
+  const end = state.tick + 45 * YEAR;
   while (state.tick < end && !found.has("neighbour-suit")) {
+    for (const { command } of lordBotCommands(state)) state = gameReducer(state, command);
     state = advanceTick(state);
-    if (state.tick % 50 === 0) state = answerLord(state);
     const suit = estatesOf(state).suits.find(entry => entry.plaintiff !== LORD && entry.stage !== "closed");
     if (suit !== undefined) save("neighbour-suit", state, seed, { suit: suit.id, plaintiff: suit.plaintiff, estate: suit.estateId, stage: suit.stage, lordSuits: lordSuits(state).length });
   }
