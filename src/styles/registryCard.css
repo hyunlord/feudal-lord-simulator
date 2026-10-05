@@ -1,0 +1,9 @@
+/* EVENT-ART the registry's event card in lord mode (src/ui/hud/RegistryCard.tsx): LM-R1's lord card (lordCards.css) with
+   "why it came" as a short list under the request, and answers without a seal (equal answers: one column, label then
+   the numbers or why it is shut). */
+.registry-card-why { display: grid; gap: 2px; }
+.story-modal .registry-card-why h3 { margin: 0; font-size: 13px; }
+.registry-card-why ul { display: grid; gap: 1px; margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.4; }
+.petition-option.registry-card-option { grid-template-columns: minmax(0, 1fr); min-height: 48px; }
+.petition-option.registry-card-option > * { grid-column: 1; }
+.petition-option.registry-card-option[data-enabled="false"] .lord-card-forecast { font-weight: 400; color: var(--palette-ink-muted); }

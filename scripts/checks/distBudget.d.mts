@@ -2,7 +2,8 @@
 export type BudgetConfig = {
   megabyte: number;
   totalBudgetMB: number | null;
-  categories: readonly { id: string; name: string; budgetMB: number | null }[];
+  /** `onDemand`: loaded only when its screen needs it — measured, left out of the total (the first load). */
+  categories: readonly { id: string; name: string; budgetMB: number | null; onDemand?: boolean }[];
   rules: readonly { category: string; label: string; patterns: readonly string[] }[];
 };
 export type DistFile = { path: string; bytes: number };
@@ -19,7 +20,9 @@ export type StartupArtMemory = {
 export type BudgetResult = {
   megabyte: number;
   categories: BudgetCategory[];
+  /** The first load: every file but the on-demand categories'. */
   total: { bytes: number; files: number; budgetBytes: number | null; pass: boolean };
+  onDemand: { bytes: number; files: number };
   unmatched: DistFile[];
   over: string[];
   pass: boolean;

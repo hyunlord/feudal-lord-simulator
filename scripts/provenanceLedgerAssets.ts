@@ -17,7 +17,7 @@
  */
 import { readFileSync } from "node:fs";
 import path from "node:path";
-import { KEYART_DERIVATIVE_BY_URL } from "./keyartDerivatives";
+import { EVENT_ART_DERIVATIVES, KEYART_DERIVATIVE_BY_URL } from "./keyartDerivatives";
 
 export const REPO_ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 
@@ -149,6 +149,11 @@ export function enumerateRuntimeAssets(): RuntimeAssetRef[] {
       if (derived === undefined) { add(url, file); continue; }
       if (!seen.has(derived.source)) { seen.add(derived.source); refs.push({ runtimePath: derived.source, foundVia: `${file} (build-time web derivative ${url})` }); }
     }
+  }
+
+  // EVENT-ART: the event illustrations' manifest names all 200 by `path` (not `url`); only the registry's ones ship.
+  for (const item of EVENT_ART_DERIVATIVES) {
+    if (!seen.has(item.source)) { seen.add(item.source); refs.push({ runtimePath: item.source, foundVia: `src/ui/eventArtManifest.generated.ts (build-time web derivative ${item.url})` }); }
   }
 
   // 3) animatedMill.ts — single-quoted static url literals for the mill body/sails.

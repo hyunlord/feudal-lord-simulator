@@ -44,7 +44,9 @@ export type StoryKind = "fire" | "fire_aftermath" | "fire_warning" | "wet_summer
   // LM-R1 (lord mode): a home estate's petition, the steward's answers by precedent, the town's request (lordStoryBeats.ts).
   | "home_petition" | "home_precedent" | "lord_request"
   // EVENT-ART (lord mode): a ledger moment with its Wave 40 picture — the marriage, the suit, the wardship (lordMomentBeats.ts).
-  | "lord_moment";
+  | "lord_moment"
+  // EVENT-ART (lord mode): an offer of the engine's registry (an event entry, not a home petition).
+  | "registry_event";
 export type StoryBeat = Readonly<{
   id: string;
   kind: StoryKind;
@@ -57,8 +59,8 @@ export type StoryBeat = Readonly<{
   facts: readonly string[];
   advice: string;
   /** The beat is a decision the lord answers in a modal (the famine, a petition; LM-R1: a home petition, the steward's
-   * precedents, the town's request). */
-  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | null;
+   * precedents, the town's request; EVENT-ART: a registry offer). */
+  decision: "famine" | "petition" | "estate_petition" | "precedent" | "lord_request" | "registry_offer" | null;
 }>;
 
 /** The modal a decision beat's [결정하기] opens. */

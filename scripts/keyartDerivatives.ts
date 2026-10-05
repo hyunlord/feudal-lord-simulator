@@ -12,11 +12,16 @@
  * each (the 96 an exact area average of the 256), in the same cache (same key: source SHA-256 + version + format +
  * quality): the 464 encodes measured 1.97 s cold on the Mac, a hit is a file read; 256 px about 10.8 KB, 96 px about
  * 2.5 KB — 3.0 MB for the pool against 28 MB of PNG.
+ * EVENT-ART (user decision 2026-10-05): the registry's event pictures arrive as JPEG (q85) and are re-encoded at build
+ * time (`jpeg-reencoded`: scripts/jpegDecode.ts decodes, the encoder here writes a baseline JPEG at JPEG_QUALITY, 4:2:0)
+ * — the received files and the ledger stay as they are; same cache, key = source SHA-256 + encoder and decoder
+ * versions + format + quality (0.3 s a picture measured on the Mac, a hit is a file read).
  */
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import path from "node:path";
 import { deflateSync, inflateSync } from "node:zlib";
+import { decodeJpeg, JPEG_DECODER_VERSION } from "./jpegDecode";
 import { PORTRAIT_IMAGES } from "../src/ui/portraitArtManifest.generated";
 import { WAVE16_IMAGES } from "../src/ui/wave16ArtManifest.generated";
 import { WAVE17_IMAGES } from "../src/ui/wave17ArtManifest.generated";
@@ -25,6 +30,8 @@ import { WAVE33_IMAGES } from "../src/ui/wave33ArtManifest.generated";
 import { ENDING_IMAGES } from "../src/ui/endingArtManifest.generated";
 import { WAVE44_IMAGES } from "../src/ui/wave44ArtManifest.generated";
 import { WAVE40_IMAGES } from "../src/ui/wave40ArtManifest.generated";
+import { EVENT_ART_IMAGES } from "../src/ui/eventArtManifest.generated";
+import { shippedEventArtIds } from "../src/ui/eventArtSelection";
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname);
 const ENCODER_VERSION = 1;
@@ -41,8 +48,9 @@ export type KeyartDerivative = Readonly<{
   /** Where the game loads it (relative to the site base), and how it is made. */
   url: string;
   /** `portrait` / `portrait-96`: a pool portrait at its 256 px size / area-averaged to 96 px, as JPEG.
-   *  INSTALL-33 `jpeg-received`: a painting received as a web-sized JPEG, shipped as it came (no second lossy encode). */
-  format: "jpeg" | "png-half" | "portrait" | "portrait-96" | "jpeg-received";
+   *  INSTALL-33 `jpeg-received`: a painting received as a web-sized JPEG, shipped as it came (no second lossy encode).
+   *  EVENT-ART `jpeg-reencoded`: a received JPEG decoded and encoded again as a smaller baseline JPEG (JPEG_QUALITY). */
+  format: "jpeg" | "png-half" | "portrait" | "portrait-96" | "jpeg-received" | "jpeg-reencoded";
 }>;
 
 export const JPEG_QUALITY = 70;
@@ -83,18 +91,23 @@ export const ENDING_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(EN
 export const WAVE44_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE44_IMAGES)
   .map(([id, image]) => ({ id: `wave44_${id}`, source: image.source, url: image.url, format: "jpeg-received" as const }));
 
-/** EVENT-ART: the Wave 40 lord-mode moment illustrations (960 × 540 JPEGs, q88 as received; copied as they came). */
+/** EVENT-ART: the Wave 40 lord-mode moment illustrations (960 × 540 JPEGs, re-encoded smaller like the event art; user decision 2026-10-05 EVA-D2: on demand, only the build output re-encoded). */
 export const WAVE40_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(WAVE40_IMAGES)
-  .map(([id, image]) => ({ id: `wave40_${id}`, source: image.source, url: image.url, format: "jpeg-received" as const }));
+  .map(([id, image]) => ({ id: `wave40_${id}`, source: image.source, url: image.url, format: "jpeg-reencoded" as const }));
+/** EVENT-ART: the event illustrations (960 × 540 received JPEGs, re-encoded smaller) — only those of the registry's
+ *  entries (`shippedEventArtIds`: an entry the engine adds ships its picture; the other of the 200 stay in assets-inbox).
+ *  They load when their card or chip shows (never at start; distBudget's own on-demand category). */
+export const EVENT_ART_DERIVATIVES: readonly KeyartDerivative[] = shippedEventArtIds(EVENT_ART_IMAGES)
+  .map(id => { const image = EVENT_ART_IMAGES[id as keyof typeof EVENT_ART_IMAGES]; return { id: `event_${id}`, source: image.source, url: image.path, format: "jpeg-reencoded" as const }; });
 /** CHRON-1: each pool portrait twice — at 256 px (biography) and 96 px (cards, lists). */
 export const PORTRAIT_DERIVATIVES: readonly KeyartDerivative[] = Object.entries(PORTRAIT_IMAGES).flatMap(([id, image]) => [
   { id, source: image.source, url: image.url, format: "portrait" as const },
   { id: `${id}-96`, source: image.source, url: image.url96, format: "portrait-96" as const },
 ]);
 
-/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17, 21 and 33 illustrations, the ending paintings, Wave 44, Wave 40, the portrait pool). */
+/** Every build-time web derivative (Wave 8 keyart, Wave 16, 17, 21 and 33 illustrations, the ending paintings, Wave 44, Wave 40, the event art, the portrait pool). */
 export const WEB_ART_DERIVATIVES: readonly KeyartDerivative[] = [...KEYART_DERIVATIVES, ...WAVE16_DERIVATIVES, ...WAVE17_DERIVATIVES, ...WAVE21_DERIVATIVES, ...WAVE33_DERIVATIVES,
-  ...ENDING_DERIVATIVES, ...WAVE44_DERIVATIVES, ...WAVE40_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
+  ...ENDING_DERIVATIVES, ...WAVE44_DERIVATIVES, ...WAVE40_DERIVATIVES, ...EVENT_ART_DERIVATIVES, ...PORTRAIT_DERIVATIVES];
 
 export const KEYART_DERIVATIVE_BY_URL: ReadonlyMap<string, KeyartDerivative> = new Map(WEB_ART_DERIVATIVES.map(item => [item.url, item]));
 
@@ -367,11 +380,12 @@ export function buildKeyartDerivative(item: KeyartDerivative, root = ROOT): Buff
     return source;
   }
   const cacheDir = path.join(root, "node_modules/.cache/keyart-derivatives");
-  const quality = item.format === "jpeg" ? `-q${JPEG_QUALITY}` : item.format === "png-half" ? "" : `-q${PORTRAIT_QUALITY}`;
+  const quality = item.format === "jpeg" ? `-q${JPEG_QUALITY}` : item.format === "jpeg-reencoded" ? `-q${JPEG_QUALITY}-d${JPEG_DECODER_VERSION}`
+    : item.format === "png-half" ? "" : `-q${PORTRAIT_QUALITY}`;
   const cached = path.join(cacheDir, `${sha256(source)}-v${ENCODER_VERSION}-${item.format}${quality}`);
   if (existsSync(cached)) return readFileSync(cached);
-  const image = decodePng(source);
-  const out = item.format === "jpeg" ? encodeJpeg(image, JPEG_QUALITY) : item.format === "png-half" ? encodePng(halfSize(image))
+  const image = item.format === "jpeg-reencoded" ? decodeJpeg(source) : decodePng(source);
+  const out = item.format === "jpeg" || item.format === "jpeg-reencoded" ? encodeJpeg(image, JPEG_QUALITY) : item.format === "png-half" ? encodePng(halfSize(image))
     : encodeJpeg(item.format === "portrait" ? image : resizeArea(image, PORTRAIT_SMALL, PORTRAIT_SMALL), PORTRAIT_QUALITY);
   try { mkdirSync(cacheDir, { recursive: true }); writeFileSync(cached, out); } catch { /* a read-only tree still builds */ }
   return out;

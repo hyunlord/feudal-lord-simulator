@@ -15,7 +15,8 @@
 
 export type FrameKind = "css" | "layer" | "painting" | "flat";
 /** The cached DGX state folders (scripts/ui{5,6,8,9,10}States.ts, scripts/ui10ExtraStates.ts; `lands`: scripts/landStates.ts, ~/fls-land-states;
- * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice). */
+ * LM-R1 `petitions`: scripts/lmr1PetitionStates.ts, ~/fls-lmr1-petition-states; `lord`: scripts/lmr1LordStates.ts, ~/fls-lord-states — the lord's slice;
+ * EVENT-ART adds `registry-offer` to it: scripts/eventArtStates.ts; `moments`: scripts/wave40MomentStates.ts, the Wave 40 ledger moments). */
 export type StateSet = "ui5" | "ui6" | "ui8" | "ui9" | "ui10" | "ui10-extra" | "lands" | "petitions" | "lord" | "moments";
 export type ViewportId = "1280x800" | "1920x1080" | "tablet-1180x820" | "1024x768" | "1280x720";
 
@@ -435,6 +436,14 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.lord-card[data-lord-request]", frameSlots: [],
     requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".story-modal-later"],
     scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }], data: "the town's request (a proclamation waiting)" },
+  // EVENT-ART: the registry's event card (src/ui/hud/RegistryCard.tsx) on scripts/eventArtStates.ts's state — the lord's
+  // slice played by the lord bot (the dues left alone) to the first registry offer the engine draws (ck_evt_005 and its
+  // picture); it opens by itself after the world, as a petition does. The picture is not a required element (as above).
+  { id: "modal.lord.registry", ...PETITION, root: ".story-modal.petition-card.lord-card[data-registry-offer]", frameSlots: [],
+    siblingsNoOverlap: [".petition-option", ".story-modal-later"],
+    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".registry-card-why li", ".petition-option", ".lord-card-forecast", ".lord-card-precedent", ".story-modal-later"],
+    scene: petitionScene("lord", "registry-offer", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
+    data: "a registry offer the engine drew (ck_evt_005: the market dues), its why and three answers' numbers" },
   // LM-R1 receipt: lord mode's "왜 여기?" receipt beside a selected building's card, and the ledger drawer's lord tab
   // (scripts/lmr1LordStates.ts: the lord's slice with the stability policy, dues 80% and a 10d farmstead subsidy).
   { id: "map.selection.lord-farmstead", root: ".diagnostic-card", frame: "css", scene: LORD_TOWN, open: [LORD_PICK], scroll: "y",

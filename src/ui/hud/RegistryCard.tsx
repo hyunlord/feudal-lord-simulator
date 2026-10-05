@@ -1,0 +1,51 @@
+import { DECISION_COPY } from "../decisionCopy.ko";
+import { eventArtStyle, type EventArtId } from "../eventArt";
+import { Button } from "../kit";
+import { REGISTRY_CARD_COPY } from "../registryCardCopy.ko";
+import type { RegistryOfferView } from "../registryCardModel";
+import { Frame } from "./LordCards";
+
+// EVENT-ART: the registry's event card (lord mode only; a state machine modal: time stops while it is up). It wears the
+// petition card's Wave 8 frame as LM-R1's lord cards do; the event picture is shown whole (16:9, contain), or not at all
+// when the entry has none. Equal answers are all secondary (LR1-D2: one primary per screen); an answer the engine would
+// not carry out now is shut, with why.
+
+const SCENE_WIDTH = 320;
+
+function Scene({ art }: { readonly art: EventArtId | null }) {
+  return art === null ? null
+    : <div className="petition-scene"><div className="story-modal-art lord-card-art" aria-hidden="true" data-art={art} style={eventArtStyle(art, SCENE_WIDTH)} /></div>;
+}
+
+export function RegistryOfferModal({ view, onAnswer, onLater }: {
+  readonly view: RegistryOfferView; readonly onAnswer: (choiceId: string) => void; readonly onLater: () => void;
+}) {
+  return (
+    <Frame label={view.title} data={{ "data-registry-offer": view.entryId, "data-occurrence": view.occurrenceId, "data-answers": String(view.choices.length) }}>
+      <p className="lord-card-court">{view.court}</p>
+      <Scene art={view.art} />
+      <p className="lord-card-kicker">{view.from} · {view.waits}</p>
+      <h2>{view.title}</h2>
+      <p>{view.body}</p>
+      <section className="registry-card-why" aria-label={REGISTRY_CARD_COPY.whyHeading}>
+        <h3>{REGISTRY_CARD_COPY.whyHeading}</h3>
+        <ul>{view.why.map((line, index) => <li key={index}>{line}</li>)}</ul>
+      </section>
+      <ol className="petition-options registry-card-options">
+        {view.choices.map(choice => (
+          <li key={choice.id}>
+            <Button type="button" className="petition-option registry-card-option" data-choice={choice.id} data-enabled={choice.enabled ? "true" : "false"}
+              disabled={!choice.enabled} aria-label={DECISION_COPY.choose(choice.label)} onPress={() => onAnswer(choice.id)} variant="secondary">
+              <strong>{choice.label}</strong>
+              <span className="lord-card-forecast" {...(choice.treasury === null ? {} : { "data-treasury": String(choice.treasury) })}>{choice.line}</span>
+            </Button>
+          </li>
+        ))}
+      </ol>
+      <p className="lord-card-precedent">{view.lapse}</p>
+      <div className="lord-card-actions">
+        <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
+      </div>
+    </Frame>
+  );
+}
