@@ -6,6 +6,7 @@ import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 
 import { HOME_ESTATE_ID } from "../src/content/estateConfig";
+import { GENTRY_NAMES_KO } from "../src/content/gentryNames";
 import { LORD_SLICE_SCENARIO_ID } from "../src/content/scenario/coreScenarios";
 import type { GameState } from "../src/engine/engine.types";
 import { estatesOf, LORD } from "../src/engine/estates";
@@ -21,7 +22,6 @@ import { REGION_COPY } from "../src/ui/lord/region/regionCopy.ko";
 import { assignSlots, MARKER_SCALE, markerLayout, regionChosen, regionEstates, regionFlag, type RegionFlag } from "../src/ui/lord/region/regionModel";
 import { REGION_SURFACES } from "../src/ui/lord/region/surfaces";
 import { readPng } from "../scripts/processBuildingSprite";
-import { GENTRY_NAMES_KO } from "../src/content/gentryNames";
 
 // LM-R2 (region area): the lord screen's single region map — the catalog bundle (slots measured on the records' assembly
 // proof), the flags from the engine's possession and oversight, the arms only on a flag's empty base, the markers'
@@ -103,9 +103,11 @@ test("the opening: the home market town direct with the lord's arms, three neigh
   ]);
   const factions = state.factions!.factions;
   assert.equal(views[0]!.arms?.emblem.kind, "arms");
-  assert.equal(views[1]!.arms?.house, GENTRY_NAMES_KO[factions.find(faction => faction.id === "neighbour_1")!.name], "the house by its Korean reading");
-  assert.equal(views[2]!.arms?.house, GENTRY_NAMES_KO[factions.find(faction => faction.id === "neighbour_2")!.name], "the house by its Korean reading");
-  for (const view of views) assert.doesNotMatch(view.label, /\b(de|Fitz)[ A-Z]/, `${view.estateId}: Korean on the map`);
+  const ko = (id: string) => { const name = factions.find(faction => faction.id === id)!.name; return GENTRY_NAMES_KO[name] ?? name; };
+  assert.equal(views[1]!.arms?.house, ko("neighbour_1"));
+  assert.equal(views[2]!.arms?.house, ko("neighbour_2"));
+  assert.equal(views[1]!.name, REGION_COPY.estateName(ko("neighbour_1")), "the estate by its house's Korean name");
+  assert.ok(views.every(view => !/[A-Za-z]/.test(view.name)), JSON.stringify(views.map(view => view.name)));
   assert.equal(views[3]!.arms, null, "the old lord's house has no arms in the engine");
   assert.ok(views.every(view => view.label.length > 0 && view.label.includes(REGION_COPY.flags[view.flag])));
   assert.deepEqual(regionEstates(state, null).map(view => view.slot), [null, null, null, null], "no map entry: the estates are listed, not placed");
@@ -132,6 +134,12 @@ test("lord2 states (LMR2_STATES): inherited is delegated, attention-overloaded d
     assert.equal(views.find(view => view.estateId === "estate-neighbour-3")!.flag, flag, name);
     assert.equal(views.find(view => view.home)!.flag, "direct", name);
     assert.ok(views.every(view => view.slot !== null), name);
+  }
+  // Per-render cost (lead note 2026-10-06): one view call on a real state, measured (the panel memoises it per state).
+  for (const name of ["inherited", "neighbour-suit"]) {
+    const state = lord2(name)!;
+    const time = (run: () => unknown) => { run(); const start = performance.now(); for (let i = 0; i < 20; i += 1) run(); return (performance.now() - start) / 20; };
+    console.log(`${name}: regionEstates ${time(() => regionEstates(state, mapEntry())).toFixed(3)} ms, regionChosen ${time(() => regionChosen(state, "estate-neighbour-1")).toFixed(3)} ms`);
   }
   const inherited = lord2("inherited")!;
   assert.ok(regionChosen(inherited, "estate-neighbour-3")!.rows.some(row => row.key === "steward"), "the delegated estate names its steward");

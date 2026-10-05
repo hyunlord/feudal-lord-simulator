@@ -1,4 +1,3 @@
-import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import type { ArtPoint, RegionalMapEntry } from "../../../render/art/artContract";
 import type { GameState } from "../../../engine/engine.types";
 import { estatePerson, estatePortfolio, estatesOf, LORD } from "../../../engine/estates";
@@ -6,6 +5,7 @@ import type { Estate, EstateKind, HolderId } from "../../../engine/estates.types
 import { lordHouse } from "../../../engine/lordshipState";
 import { oversightViews } from "../../../engine/stewardship";
 import { HOME_ESTATE_ID } from "../../../content/estateConfig";
+import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import type { EmblemSpec } from "../../heraldry/EmblemImage";
 import { heraldryArms } from "../../heraldry/heraldry";
 import { moneyShort } from "../../money.ko";
@@ -28,9 +28,9 @@ export const REGION_ZOOMS: readonly RegionZoom[] = ["fit", "half", "full"];
 
 export const SITE_OF_KIND: Readonly<Record<EstateKind, RegionSite | null>> = { manor: "manor", market_town: "market", mill_estate: "mill", fishery: null };
 
-/** A house or estate by its Korean reading (GENTRY_NAMES_KO, as the other lord screens): the map labels say the house's
- * reading alone (short at 12 px), the chosen estate's line "<reading> 영지". */
+/** An engine surname as the screens write it (FIX-5: the registry card and the lead's cards do the same). */
 const ko = (name: string): string => GENTRY_NAMES_KO[name] ?? name;
+const estateName = (estate: Pick<Estate, "id" | "name">): string => estate.id === HOME_ESTATE_ID ? COPY.home : COPY.estateName(ko(estate.name));
 
 /** ES-1 holders: the lord, a faction (a neighbour house), a neighbour estate's own house, a person (an heir). */
 export function holderLabel(state: GameState, holder: HolderId): string {
@@ -108,7 +108,7 @@ export function regionEstates(state: GameState, map: Pick<RegionalMapEntry, "slo
   return estates.map(estate => {
     const home = estate.id === HOME_ESTATE_ID;
     const flag = regionFlag(state, estate);
-    const name = home ? COPY.home : ko(estate.name);
+    const name = estateName(estate);
     return { estateId: estate.id, home, name, label: COPY.label(name, COPY.flags[flag]), kind: COPY.kinds[estate.kind],
       site: SITE_OF_KIND[estate.kind], flag, slot: slots.get(estate.id) ?? null, arms: regionArms(state, estate) };
   });
@@ -138,7 +138,7 @@ export function regionChosen(state: GameState, estateId: string): RegionChosenVi
   if (steward !== undefined) rows.push({ key: "steward", value: lordPersonRow(state, steward).name });
   rows.push({ key: "value", value: moneyShort(view.annualValue) });
   if (lordPieces.length > 0) rows.push({ key: "lordPieces", value: lordPieces.join(", ") });
-  return { estateId, name: view.id === HOME_ESTATE_ID ? COPY.home : COPY.estateName(ko(view.name)), rows };
+  return { estateId, name: estateName(view), rows };
 }
 
 /** The markers' size at each zoom (CSS px per source px): half size at the whole map and at half zoom (the declared

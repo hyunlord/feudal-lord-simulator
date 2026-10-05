@@ -60,7 +60,7 @@ export function RegionPanel({ state, focus, onOpen }: LordPanelProps): ReactElem
   const [zoom, setZoom] = useState<RegionZoom>("fit");
   const [chosen, setChosen] = useState<string | null>(focus);
   useEffect(() => { if (focus !== null) setChosen(focus); }, [focus]);
-  // Once per state and map entry (and per chosen estate): zoom, pan and clock re-renders reuse them.
+  // Once per state object (and the session's one map entry): the clock's and the zoom's re-renders reuse it.
   const estates = useMemo(() => regionEstates(state, map.entry), [state, map.entry]);
   const placed = estates.filter(view => view.slot !== null);
   const listed = estates.filter(view => view.slot === null);
