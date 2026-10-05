@@ -31,18 +31,22 @@ test("the lord screen takes the one panel slot, keeps time running and goes on E
   assert.equal(run([{ type: "push_modal", modal: "pause_menu" }, { type: "open_lord" }]).mode, "idle", "a modal holds the screen");
 });
 
-test("the menu: every lord-components-region item, each shut with its reason until its area opens it; the screen empty", () => {
+test("the menu: every lord-components-region item; an item opens once its area's gate does, a shut one carries its reason", () => {
   const state = lordState();
   assert.deepEqual(LORD_NAV.map(item => item.id), ["character", "dynasty", "region", "estates", "council", "marriage", "ledger", "petitions", "military"]);
-  assert.equal(shownScreen(state, "marriage"), null, "the scaffold opens no screen");
+  // The areas open their items as they land (LM-R2 lmr2-<area>); the host shows the one asked for, else the first open one.
+  const open = LORD_NAV.filter(item => item.Panel !== null && item.gate(state) === null).map(item => item.id);
+  assert.equal(shownScreen(state, "marriage"), open.includes("marriage") ? "marriage" : open[0] ?? null);
   const html = renderToStaticMarkup(createElement(LordScreen, { state, dispatch: noop, screen: null, focus: null, onOpen: noop, onClose: noop, onPerson: undefined }));
   assert.match(html, /^<aside class="slot-panel lord-screen" data-frame="slot"/);
   for (const item of LORD_NAV) {
-    assert.match(html, new RegExp(`data-lord-nav="${item.id}"[^>]*disabled=""`), `${item.id} shut`);
+    const button = new RegExp(`data-lord-nav="${item.id}"[^>]*disabled=""`);
+    if (open.includes(item.id)) assert.doesNotMatch(html, button, `${item.id} open`);
+    else assert.match(html, button, `${item.id} shut`);
     assert.ok(html.includes(LORD_SCREEN_COPY.labels[item.id]), item.id);
   }
   assert.ok(html.includes(`<span class="lord-screen-nav-reason">${LORD_SCREEN_COPY.noRules}</span>`), "military: no rules");
-  assert.ok(html.includes(`<p class="lord-screen-empty">${LORD_SCREEN_COPY.none}</p>`));
+  assert.equal(html.includes(`<p class="lord-screen-empty">${LORD_SCREEN_COPY.none}</p>`), open.length === 0, "the empty line only while nothing opens");
   assert.equal(html.includes("lord-screen-nav-icon"), false, "no icon until the region bundle's parts load");
   assert.equal(navIconId("region"), "lord.nav.region");
   assert.doesNotMatch(html, /\stitle="/);

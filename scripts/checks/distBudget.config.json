@@ -31,6 +31,7 @@
     { "category": "ui", "label": "P0 kit: frames, textures, icons, cursors, buttons", "patterns": ["assets/ui/**", "assets/ui-p0/**"] },
     { "category": "ui", "label": "Wave 8 frames, icons, ornaments, time strip", "patterns": ["assets/wave8/{frames,icons,ornaments,time}/**"] },
     { "category": "ui", "label": "heraldry, merchant marks, seals, UI frames and icons (Wave 14)", "patterns": ["assets/wave14/**"] },
+    { "category": "ui", "label": "the lord screens' UI parts (LM-R2 frames, icons, cards through the art contract)", "patterns": ["assets/lord-ui/**"] },
     { "category": "ui", "label": "record cards, chronicle pages, timeline (Wave 19)", "patterns": ["assets/wave19/{cards,pages,timeline}/**"] },
     { "category": "ui", "label": "pad glyphs, person-state ornaments, royal arms (Wave 23)", "patterns": ["assets/wave23/{pad,person_state,royal}/**"] },
     { "category": "ui", "label": "family tree parts (Wave 25)", "patterns": ["assets/wave25/tree/**"] },
