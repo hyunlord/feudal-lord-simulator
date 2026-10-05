@@ -5,9 +5,10 @@
 #   FLS_REMOTE_LABEL=render-LMR2-skin scripts/remote/run.sh render-LMR2-skin-<sha7> -- bash scripts/lmr2SkinAudit.sh
 set -u
 out=${1:-.remote/skin}
-states=${UI5_STATES:-$HOME/fls-ui5-states}
+states=${UI5_STATES:-$HOME/fls-lmr2-ui5-states}
 lord2=${LMR2_STATES:-$HOME/fls-lmr2-states}
-[ -f "$states/merchant-town.json" ] || { echo "no ui5 states in $states (scripts/ui5States.ts)"; exit 1; }
+# The base states are built from this commit when missing (a folder of old bare saves is refused by openScene).
+[ -f "$states/merchant-town.json" ] || npx tsx scripts/ui5States.ts 2 200000 "$states" || { echo "ui5 states failed in $states"; exit 1; }
 [ -f "$lord2/inherited.json" ] || { echo "no lord2 states in $lord2 (scripts/lmr2States.ts)"; exit 1; }
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
 . scripts/remote/devServers.sh
