@@ -36,6 +36,8 @@ export interface MarriagePathOptions {
   readonly lastYear?: number;
   /** LM-E4: hand back the state at the end too (the stewardship's path and comparison start from the inheritance). */
   readonly keepState?: boolean;
+  /** EVENT-ART: sees the state after each tick (scripts/wave40MomentStates.ts keeps the moments' states); true stops the path. */
+  readonly observe?: (state: GameState) => boolean | void;
 }
 
 export function marriagePath(options: MarriagePathOptions) {
@@ -85,6 +87,7 @@ export function marriagePath(options: MarriagePathOptions) {
       }
     }
     state = advanceTick(state);
+    if (options.observe?.(state) === true) break;
   }
   const diplomacy = diplomacyOf(state);
   const estate = estateById(state, MARRIAGE_ESTATE_ID)!;

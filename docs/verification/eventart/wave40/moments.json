@@ -1,0 +1,128 @@
+{
+ "moment_marriage_negotiation": {
+  "tick": 3,
+  "year": 1300,
+  "season": 0,
+  "record": "h-000002",
+  "template": "negotiation.offered",
+  "recordTick": 2,
+  "seed": 1
+ },
+ "moment_marriage_sealing": {
+  "tick": 81,
+  "year": 1300,
+  "season": 0,
+  "record": "h-000011",
+  "template": "marriage.contracted",
+  "recordTick": 80,
+  "seed": 1
+ },
+ "moment_bride_arrival": {
+  "tick": 1080,
+  "year": 1300,
+  "season": 1,
+  "record": "h-000043",
+  "template": "marriage.bride_arrived",
+  "recordTick": 1080,
+  "seed": 1
+ },
+ "moment_first_child": {
+  "tick": 4080,
+  "year": 1301,
+  "season": 0,
+  "record": "h-000108",
+  "template": "marriage.child_born",
+  "recordTick": 4080,
+  "seed": 1
+ },
+ "moment_old_lord_sickbed": {
+  "tick": 12080,
+  "year": 1303,
+  "season": 0,
+  "record": "h-000607",
+  "template": "marriage.father_ill",
+  "recordTick": 12080,
+  "seed": 1
+ },
+ "moment_child_lord_guardian": {
+  "tick": 20000,
+  "year": 1305,
+  "season": 0,
+  "record": "h-001160",
+  "template": "lord.wardship_begun",
+  "recordTick": 20000,
+  "seed": 1
+ },
+ "moment_end_of_wardship": {
+  "tick": 36000,
+  "year": 1309,
+  "season": 0,
+  "record": "h-002194",
+  "template": "lord.wardship_ended",
+  "recordTick": 36000,
+  "seed": 1
+ },
+ "moment_inheritance_fealty": {
+  "tick": 52000,
+  "year": 1313,
+  "season": 0,
+  "record": "h-003371",
+  "template": "marriage.inherited",
+  "recordTick": 52000,
+  "seed": 1
+ },
+ "moment_brother_in_law_born": {
+  "tick": 6080,
+  "year": 1301,
+  "season": 2,
+  "record": "h-000134",
+  "template": "marriage.brother_in_law_born",
+  "recordTick": 6080,
+  "seed": 3
+ },
+ "moment_attempted_will_change": {
+  "tick": 14080,
+  "year": 1303,
+  "season": 2,
+  "record": "h-000701",
+  "template": "marriage.will_change",
+  "recordTick": 14080,
+  "seed": 5
+ },
+ "moment_lawsuit_filed": {
+  "tick": 52029,
+  "year": 1313,
+  "season": 0,
+  "record": "h-003689",
+  "template": "estate.suit_filed",
+  "recordTick": 52028,
+  "seed": 5
+ },
+ "moment_documentary_evidence": {
+  "tick": 54000,
+  "year": 1313,
+  "season": 2,
+  "record": "h-003809",
+  "template": "estate.suit_stage",
+  "recordTick": 54000,
+  "seed": 5
+ },
+ "moment_possession_refused": {
+  "tick": 57021,
+  "year": 1314,
+  "season": 1,
+  "record": "h-004222",
+  "template": "estate.possession_enforced",
+  "recordTick": 57020,
+  "seed": 5
+ },
+ "moment_possession_taken": {
+  "tick": 57177,
+  "year": 1314,
+  "season": 1,
+  "record": "h-004225",
+  "template": "estate.possession_enforced",
+  "recordTick": 57176,
+  "seed": 5
+ }
+}

@@ -1,0 +1,17 @@
+/* EVENT-ART the registry's event card in lord mode (src/ui/hud/RegistryCard.tsx): LM-R1's lord card (lordCards.css) with
+   "why it came" as a short list under the request, and answers without a seal (equal answers: one column, label then
+   the numbers or why it is shut). */
+.registry-card-why { display: grid; gap: 2px; }
+.story-modal .registry-card-why h3 { margin: 0; font-size: 13px; }
+.registry-card-why ul { display: grid; gap: 1px; margin: 0; padding-left: 18px; font-size: 12px; line-height: 1.4; }
+.petition-option.registry-card-option { grid-template-columns: minmax(0, 1fr); min-height: 48px; }
+.petition-option.registry-card-option > * { grid-column: 1; }
+.petition-option.registry-card-option[data-enabled="false"] .lord-card-forecast { font-weight: 400; color: var(--palette-ink-muted); }
+/* ER-19: a hold's cost under its tradeoff; the treasury an answer moves now. */
+.petition-option.registry-card-option .registry-card-hold,
+.petition-option.registry-card-option .registry-card-money { font-size: 12px; font-weight: 600; }
+/* The picture beside the court and sender lines (the v4 answers are longer: four with a hold's cost must fit 1280 × 720). */
+.registry-card-head { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: center; }
+.registry-card-head-text { display: grid; gap: 4px; min-width: 0; }
+.registry-card-head-text > p { margin: 0; }
+.registry-card-head:not(:has(.petition-scene)) { grid-template-columns: minmax(0, 1fr); }

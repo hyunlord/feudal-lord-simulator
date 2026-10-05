@@ -1,0 +1,90 @@
+{
+  "runs": [
+    {
+      "name": "astra-SEASONS-before-5b14e93",
+      "role": "original baseline",
+      "exitCode": 1
+    },
+    {
+      "name": "astra-SEASONS-after-b661bed",
+      "role": "superseded candidate, kept as failed",
+      "exitCode": 1
+    },
+    {
+      "name": "astra-SEASONS-before-motion-5b14e93",
+      "role": "baseline motion supplement",
+      "exitCode": 1
+    },
+    {
+      "name": "astra-SEASONS-after-v2-b661bed",
+      "role": "full capture before regression repair cda5764f",
+      "exitCode": 1
+    },
+    {
+      "name": "astra-SEASONS-cycle-b3cdecf",
+      "role": "full winter continuous playback; extra spring frames interrupted by normal settlement dialog",
+      "exitCode": 1
+    },
+    {
+      "name": "astra-SEASONS-clone-b3cdecf",
+      "role": "pre-repair clean clone and full regression",
+      "exitCode": 1,
+      "tests": {
+        "passed": 5021,
+        "failed": 2
+      },
+      "build": "not reached"
+    },
+    {
+      "name": "astra-SEASONS-repair-capture-b3cdecf",
+      "role": "post-repair actual scene capture; dirty snapshot matches 46 changed files at cda5764f",
+      "exitCode": 1,
+      "frames": 41,
+      "matchedInitialPairs": 21,
+      "telemetryCancellations": 4,
+      "otherRecordedErrors": 0,
+      "commandSeconds": 193.8,
+      "slotWaitSeconds": 5018.5
+    },
+    {
+      "name": "astra-SEASONS-repair-clone-cda5764",
+      "role": "post-repair clean clone and full regression",
+      "exitCode": 0,
+      "tests": {
+        "passed": 5024,
+        "failed": 0,
+        "cancelled": 0,
+        "skipped": 0
+      },
+      "build": "passed",
+      "typecheck": "passed"
+    },
+    {
+      "name": "astra-SEASONS-repair-geometry-cda5764",
+      "role": "post-repair geometry audit",
+      "exitCode": 0,
+      "conditions": 2262,
+      "failures": 0,
+      "unopened": 0,
+      "warnings": 693,
+      "commandSeconds": 4148.6,
+      "slotWaitSeconds": 6040.7
+    },
+    {
+      "name": "astra-SEASONS-geometry-b3cdecf",
+      "role": "obsolete pre-repair geometry audit",
+      "exitCode": null,
+      "status": "cancelled as superseded; systemd inactive/dead confirmed; no numeric exit receipt",
+      "reason": "cda5764f changes the geometry input fingerprint; fresh full audit already queued",
+      "unit": "fls-run-astra-SEASONS-geometry-b3cdecf-1791219509.scope"
+    }
+  ],
+  "gateStatus": {
+    "fullRegression": "passed",
+    "cleanClone": "passed",
+    "uiGeometry": "passed",
+    "checkMerge": "passed",
+    "publication": "protected push receipt and final trunk SHA are recorded in delivery ZIP PUBLICATION.json"
+  },
+  "startupTiming": "not independently collected for this report; omitted"
+}

@@ -13589,5 +13589,3982 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave7-seasonal-ground-old3",
+    "entries": [
+      {
+        "id": "leaves_a",
+        "kind": "ground-prop",
+        "placement": "seasonal-ground",
+        "season": "autumn",
+        "image": {
+          "url": "assets/wave7/season/leaves_a-v1.png",
+          "width": 96,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave7/candidates-v1/assets/season/leaves_a-v1.png",
+          "sourceSha256": "95f8a92da9c6a7476666d70aaeac444005d50c6dcaced9740b92d3880b0cc0be",
+          "runtimeSha256": "95f8a92da9c6a7476666d70aaeac444005d50c6dcaced9740b92d3880b0cc0be"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 46
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "leaves_b",
+        "kind": "ground-prop",
+        "placement": "seasonal-ground",
+        "season": "autumn",
+        "image": {
+          "url": "assets/wave7/season/leaves_b-v1.png",
+          "width": 96,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave7/candidates-v1/assets/season/leaves_b-v1.png",
+          "sourceSha256": "46655eb8036284018d0e3b7a8e4250ef0408f604cb275c74bd3cfbe0d5975222",
+          "runtimeSha256": "46655eb8036284018d0e3b7a8e4250ef0408f604cb275c74bd3cfbe0d5975222"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 46
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        }
+      },
+      {
+        "id": "leaves_c",
+        "kind": "ground-prop",
+        "placement": "seasonal-ground",
+        "season": "autumn",
+        "image": {
+          "url": "assets/wave7/season/leaves_c-v1.png",
+          "width": 96,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave7/candidates-v1/assets/season/leaves_c-v1.png",
+          "sourceSha256": "ae47f56c0b476891280101cf0d3b9ca3aa2a46a72cfb644894ed0cbfb39ab84d",
+          "runtimeSha256": "ae47f56c0b476891280101cf0d3b9ca3aa2a46a72cfb644894ed0cbfb39ab84d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 46
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave7-seasonal-leaves-autumn",
+        "kind": "ground-prop",
+        "slot": "seasonal-leaves",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "autumn"
+          },
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "seasonal-ground"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "leaves_a",
+            "weight": 1
+          },
+          {
+            "assetId": "leaves_b",
+            "weight": 1
+          },
+          {
+            "assetId": "leaves_c",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave39-nat3-world",
+    "entries": [
+      {
+        "id": "wave39:debris/floating_leaves-v1",
+        "kind": "ground-prop",
+        "role": "leaf-water",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/debris/floating_leaves-v1.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/floating_leaves-v1.png",
+          "sourceSha256": "f430a619cd6b91f9fd988dbe4300293edbee9db8799d6bec8c6d0d183cb87dce",
+          "runtimeSha256": "f430a619cd6b91f9fd988dbe4300293edbee9db8799d6bec8c6d0d183cb87dce"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/ground_leaves_large-v1",
+        "kind": "ground-prop",
+        "role": "leaf-ground",
+        "group": "mixed",
+        "image": {
+          "url": "assets/wave39/debris/ground_leaves_large-v1.png",
+          "width": 96,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/ground_leaves_large-v1.png",
+          "sourceSha256": "b35944ae1eb1b94bbd5742ee223719592296a57299a7f12cc9de0fd91c28effd",
+          "runtimeSha256": "b35944ae1eb1b94bbd5742ee223719592296a57299a7f12cc9de0fd91c28effd"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 24
+          },
+          "scale": 0.4166666666666667,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/ground_leaves_medium_birch_maple-v1",
+        "kind": "ground-prop",
+        "role": "leaf-ground",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/debris/ground_leaves_medium_birch_maple-v1.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/ground_leaves_medium_birch_maple-v1.png",
+          "sourceSha256": "4e9ac907e9691c911624cb0e774f516275d118ef624579703b3b1c78e2c18604",
+          "runtimeSha256": "4e9ac907e9691c911624cb0e774f516275d118ef624579703b3b1c78e2c18604"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/ground_leaves_medium_oak_beech-v1",
+        "kind": "ground-prop",
+        "role": "leaf-ground",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/debris/ground_leaves_medium_oak_beech-v1.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/ground_leaves_medium_oak_beech-v1.png",
+          "sourceSha256": "df53c8c61de405b61df3687881814a70b53c186cb3ffcef77cbc7199afd369dd",
+          "runtimeSha256": "df53c8c61de405b61df3687881814a70b53c186cb3ffcef77cbc7199afd369dd"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/ground_leaves_small-v1",
+        "kind": "ground-prop",
+        "role": "leaf-ground",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/debris/ground_leaves_small-v1.png",
+          "width": 32,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/ground_leaves_small-v1.png",
+          "sourceSha256": "c1334df88ac13eda6f504cbbd0f82c0dbdd1a9a08d4ce5ee069e84158b249aa9",
+          "runtimeSha256": "c1334df88ac13eda6f504cbbd0f82c0dbdd1a9a08d4ce5ee069e84158b249aa9"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 16,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/ground_leaves_windrow_a-v1",
+        "kind": "ground-prop",
+        "role": "leaf-ground",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/debris/ground_leaves_windrow_a-v1.png",
+          "width": 96,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/ground_leaves_windrow_a-v1.png",
+          "sourceSha256": "84761e72804f62fdae58f8670f633468c4e359e32029087eab76e67e8599fdaa",
+          "runtimeSha256": "84761e72804f62fdae58f8670f633468c4e359e32029087eab76e67e8599fdaa"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 16
+          },
+          "scale": 0.4166666666666667,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/ground_leaves_windrow_b-v1",
+        "kind": "ground-prop",
+        "role": "leaf-ground",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/debris/ground_leaves_windrow_b-v1.png",
+          "width": 96,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/ground_leaves_windrow_b-v1.png",
+          "sourceSha256": "52a5c86f2cb936d3e66e2a5c8e4605c4e7b20e0fe173bba4912c822d8b16e35d",
+          "runtimeSha256": "52a5c86f2cb936d3e66e2a5c8e4605c4e7b20e0fe173bba4912c822d8b16e35d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 16
+          },
+          "scale": 0.4166666666666667,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/roof_leaves-v1",
+        "kind": "ground-prop",
+        "role": "leaf-roof",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/debris/roof_leaves-v1.png",
+          "width": 48,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/roof_leaves-v1.png",
+          "sourceSha256": "6803b9a7fb8a7c3f62fc205682e9a5856afaeb8a551a243a29a98e4dfa76f98e",
+          "runtimeSha256": "6803b9a7fb8a7c3f62fc205682e9a5856afaeb8a551a243a29a98e4dfa76f98e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 24,
+            "y": 16
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:debris/wind_leaves_group_a-v1",
+        "kind": "weather-particle",
+        "role": "leaf-wind",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/debris/wind_leaves_group_a-v1.png",
+          "width": 384,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/wind_leaves_group_a-v1.png",
+          "sourceSha256": "e217fb392eda99516ce8a21400247059f9ecc8dd0240b727b2e0fbc80e6b8627",
+          "runtimeSha256": "e217fb392eda99516ce8a21400247059f9ecc8dd0240b727b2e0fbc80e6b8627"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 128,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 192,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 256,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 320,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          }
+        ]
+      },
+      {
+        "id": "wave39:debris/wind_leaves_group_b-v1",
+        "kind": "weather-particle",
+        "role": "leaf-wind",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/debris/wind_leaves_group_b-v1.png",
+          "width": 384,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/debris/wind_leaves_group_b-v1.png",
+          "sourceSha256": "b290472e3cb9aadcf8b14ca819958e3c9be76b2673c6f7bfa1bd74cb1f17f786",
+          "runtimeSha256": "b290472e3cb9aadcf8b14ca819958e3c9be76b2673c6f7bfa1bd74cb1f17f786"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 0.85,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 128,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 192,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 256,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 320,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_beech_brown-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_beech_brown-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_beech_brown-v1.png",
+          "sourceSha256": "717d6d3a04f5c9487c5a9621961ae29387b57004661b31d56f676f4088660cc7",
+          "runtimeSha256": "717d6d3a04f5c9487c5a9621961ae29387b57004661b31d56f676f4088660cc7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_beech_orange-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_beech_orange-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_beech_orange-v1.png",
+          "sourceSha256": "7697b8821ad8920902e1b5907c5bb71092384ea52aae36323a9fccf2b10ddb5f",
+          "runtimeSha256": "7697b8821ad8920902e1b5907c5bb71092384ea52aae36323a9fccf2b10ddb5f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_beech_yellow-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_beech_yellow-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_beech_yellow-v1.png",
+          "sourceSha256": "3812e039e1e6752fbae6b04230aed2c26c2a1f0642abffb422b5e31ca9b4a0ef",
+          "runtimeSha256": "3812e039e1e6752fbae6b04230aed2c26c2a1f0642abffb422b5e31ca9b4a0ef"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_birch_brown-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_birch_brown-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_birch_brown-v1.png",
+          "sourceSha256": "eb49235e615ea64fb2d80fb52c34bba8eea77934024a499c211c0a98fa07fe52",
+          "runtimeSha256": "eb49235e615ea64fb2d80fb52c34bba8eea77934024a499c211c0a98fa07fe52"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_birch_orange-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_birch_orange-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_birch_orange-v1.png",
+          "sourceSha256": "a2dcf39a75f010f6eaf15f7764668c13a44a3c4bd5734657defd184550782611",
+          "runtimeSha256": "a2dcf39a75f010f6eaf15f7764668c13a44a3c4bd5734657defd184550782611"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_birch_yellow-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_birch_yellow-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_birch_yellow-v1.png",
+          "sourceSha256": "4c166dbda2bce1096a672b1e30dd6850226309bc0eac9eec368c0d0ddcdab57d",
+          "runtimeSha256": "4c166dbda2bce1096a672b1e30dd6850226309bc0eac9eec368c0d0ddcdab57d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_fieldmaple_brown-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_fieldmaple_brown-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_fieldmaple_brown-v1.png",
+          "sourceSha256": "636451066a9f1b372255840d915034c2fede9af52a42557f3d849ae1892d411b",
+          "runtimeSha256": "636451066a9f1b372255840d915034c2fede9af52a42557f3d849ae1892d411b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_fieldmaple_orange-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_fieldmaple_orange-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_fieldmaple_orange-v1.png",
+          "sourceSha256": "115f6ecf74d39f19009ac6d53c1bffbd1e1de8383c1ede3b6b9b9851bdfe78ec",
+          "runtimeSha256": "115f6ecf74d39f19009ac6d53c1bffbd1e1de8383c1ede3b6b9b9851bdfe78ec"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_fieldmaple_yellow-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "narrow-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_fieldmaple_yellow-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_fieldmaple_yellow-v1.png",
+          "sourceSha256": "7056ea00377508ff008929d37aaad83e83156f38f62d0179a7bc07783f7be764",
+          "runtimeSha256": "7056ea00377508ff008929d37aaad83e83156f38f62d0179a7bc07783f7be764"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_oak_brown-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_oak_brown-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_oak_brown-v1.png",
+          "sourceSha256": "49dcf553927c49234ca1acacd767ff3604ea13ab205cdb408a24a51cb4c25f47",
+          "runtimeSha256": "49dcf553927c49234ca1acacd767ff3604ea13ab205cdb408a24a51cb4c25f47"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_oak_orange-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_oak_orange-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_oak_orange-v1.png",
+          "sourceSha256": "c01502cfe2b595cef4d9019c5745228f9d383ac33688a9ca721b6506cd386a03",
+          "runtimeSha256": "c01502cfe2b595cef4d9019c5745228f9d383ac33688a9ca721b6506cd386a03"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:leaves/falling_oak_yellow-v1",
+        "kind": "weather-particle",
+        "role": "leaf-flight",
+        "group": "broad-deciduous",
+        "image": {
+          "url": "assets/wave39/leaves/falling_oak_yellow-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/leaves/falling_oak_yellow-v1.png",
+          "sourceSha256": "99ca3c3fc07a58c55e8acfc6c8739827876a87fcad58c318703f607479b39a09",
+          "runtimeSha256": "99ca3c3fc07a58c55e8acfc6c8739827876a87fcad58c318703f607479b39a09"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.9,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          },
+          {
+            "sourceRect": {
+              "x": 80,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:mud_scar_large-v1",
+        "kind": "ground-prop",
+        "role": "mud",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/mud_scar_large-v1.png",
+          "width": 96,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/mud_scar_large-v1.png",
+          "sourceSha256": "f6bfc6b5903a46de653cf0af996a8a42fff29cf9b7c3bed710c3be1e71e01bb2",
+          "runtimeSha256": "f6bfc6b5903a46de653cf0af996a8a42fff29cf9b7c3bed710c3be1e71e01bb2"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 24
+          },
+          "scale": 0.4166666666666667,
+          "allowMirror": false
+        },
+        "opacity": 0.55,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:mud_scar_medium-v1",
+        "kind": "ground-prop",
+        "role": "mud",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/mud_scar_medium-v1.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/mud_scar_medium-v1.png",
+          "sourceSha256": "2720eaee055082da674ec86f49cc1b0c86627e8a45404c790a07a98c5dd60f1b",
+          "runtimeSha256": "2720eaee055082da674ec86f49cc1b0c86627e8a45404c790a07a98c5dd60f1b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.55,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:puddle_large_a-v1",
+        "kind": "ground-prop",
+        "role": "puddle",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/puddle_large_a-v1.png",
+          "width": 96,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/puddle_large_a-v1.png",
+          "sourceSha256": "12a17b3cdad8468e5373e5992f753aa5447c444745fcabe1cd07a7312625ad5d",
+          "runtimeSha256": "12a17b3cdad8468e5373e5992f753aa5447c444745fcabe1cd07a7312625ad5d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 24
+          },
+          "scale": 0.4166666666666667,
+          "allowMirror": false
+        },
+        "opacity": 0.65,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:puddle_large_b-v1",
+        "kind": "ground-prop",
+        "role": "puddle",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/puddle_large_b-v1.png",
+          "width": 96,
+          "height": 48
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/puddle_large_b-v1.png",
+          "sourceSha256": "02d0512bf29c6223e58dfa093e78b43e706f3a1ac17597b14b68bb9c471a6533",
+          "runtimeSha256": "02d0512bf29c6223e58dfa093e78b43e706f3a1ac17597b14b68bb9c471a6533"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 48,
+            "y": 24
+          },
+          "scale": 0.4166666666666667,
+          "allowMirror": false
+        },
+        "opacity": 0.65,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:puddle_medium_a-v1",
+        "kind": "ground-prop",
+        "role": "puddle",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/puddle_medium_a-v1.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/puddle_medium_a-v1.png",
+          "sourceSha256": "11341ba0717b9e70f59db08dbf17a7794386fdb36471a089fd1781a3f77a9ac4",
+          "runtimeSha256": "11341ba0717b9e70f59db08dbf17a7794386fdb36471a089fd1781a3f77a9ac4"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.65,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:puddle_medium_b-v1",
+        "kind": "ground-prop",
+        "role": "puddle",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/puddle_medium_b-v1.png",
+          "width": 64,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/puddle_medium_b-v1.png",
+          "sourceSha256": "e1dc30363d94f93fedf087d430b226dc0420e5e42a1825c790b5eac9c6d1b080",
+          "runtimeSha256": "e1dc30363d94f93fedf087d430b226dc0420e5e42a1825c790b5eac9c6d1b080"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.65,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:puddle_small_a-v1",
+        "kind": "ground-prop",
+        "role": "puddle",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/puddle_small_a-v1.png",
+          "width": 32,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/puddle_small_a-v1.png",
+          "sourceSha256": "b85c1ca88d5bf9d9eb9d5979614c367537afd151fd2bf2da97513ab4bd7b7332",
+          "runtimeSha256": "b85c1ca88d5bf9d9eb9d5979614c367537afd151fd2bf2da97513ab4bd7b7332"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 16,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.65,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:puddle_small_b-v1",
+        "kind": "ground-prop",
+        "role": "puddle",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/puddles/puddle_small_b-v1.png",
+          "width": 32,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/puddles/puddle_small_b-v1.png",
+          "sourceSha256": "14fc94ed6010cccee86b52524ff3a70b6e374b529a6a529221adaf970e1ce5e7",
+          "runtimeSha256": "14fc94ed6010cccee86b52524ff3a70b6e374b529a6a529221adaf970e1ce5e7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 16,
+            "y": 8
+          },
+          "scale": 0.375,
+          "allowMirror": false
+        },
+        "opacity": 0.65,
+        "minZoom": 1,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:rain_splash_roof_large-v1",
+        "kind": "weather-particle",
+        "role": "splash",
+        "group": "roof",
+        "image": {
+          "url": "assets/wave39/rain/rain_splash_roof_large-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_splash_roof_large-v1.png",
+          "sourceSha256": "e79f792a72143561c99e1992f4a872050777319bad368eddaa0262364ef29d42",
+          "runtimeSha256": "e79f792a72143561c99e1992f4a872050777319bad368eddaa0262364ef29d42"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 12,
+            "y": 13
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 24,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 72,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_splash_roof_small-v1",
+        "kind": "weather-particle",
+        "role": "splash",
+        "group": "roof",
+        "image": {
+          "url": "assets/wave39/rain/rain_splash_roof_small-v1.png",
+          "width": 64,
+          "height": 12
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_splash_roof_small-v1.png",
+          "sourceSha256": "1fb4174cb053f2477e1ce9e360828a718f7878a3899854186767e5a0d07ed766",
+          "runtimeSha256": "1fb4174cb053f2477e1ce9e360828a718f7878a3899854186767e5a0d07ed766"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 9
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_splash_soil_large-v1",
+        "kind": "weather-particle",
+        "role": "splash",
+        "group": "soil",
+        "image": {
+          "url": "assets/wave39/rain/rain_splash_soil_large-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_splash_soil_large-v1.png",
+          "sourceSha256": "3804623c5983139eb9770723c2da66e73570c6397b821b1753770b22ba1b5941",
+          "runtimeSha256": "3804623c5983139eb9770723c2da66e73570c6397b821b1753770b22ba1b5941"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 12,
+            "y": 13
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 24,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 72,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_splash_soil_small-v1",
+        "kind": "weather-particle",
+        "role": "splash",
+        "group": "soil",
+        "image": {
+          "url": "assets/wave39/rain/rain_splash_soil_small-v1.png",
+          "width": 64,
+          "height": 12
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_splash_soil_small-v1.png",
+          "sourceSha256": "5711cca7385b3f27411ec5a09a7d9abea5e16ee363a876f7a6e3d16addd30999",
+          "runtimeSha256": "5711cca7385b3f27411ec5a09a7d9abea5e16ee363a876f7a6e3d16addd30999"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 9
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_splash_stone_large-v1",
+        "kind": "weather-particle",
+        "role": "splash",
+        "group": "stone",
+        "image": {
+          "url": "assets/wave39/rain/rain_splash_stone_large-v1.png",
+          "width": 96,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_splash_stone_large-v1.png",
+          "sourceSha256": "6ec769947e4d2f39f4412ef66b9bb0e11c96defde417cdceab7c2ebce16ea46d",
+          "runtimeSha256": "6ec769947e4d2f39f4412ef66b9bb0e11c96defde417cdceab7c2ebce16ea46d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 12,
+            "y": 13
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 24,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 72,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            "pivot": {
+              "x": 12,
+              "y": 13
+            },
+            "durationMs": 50
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_splash_stone_small-v1",
+        "kind": "weather-particle",
+        "role": "splash",
+        "group": "stone",
+        "image": {
+          "url": "assets/wave39/rain/rain_splash_stone_small-v1.png",
+          "width": 64,
+          "height": 12
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_splash_stone_small-v1.png",
+          "sourceSha256": "e4a7c8a55beddf75d3d0b9aab34717b8f0d48e8605a8530f355f8f9230536bdc",
+          "runtimeSha256": "e4a7c8a55beddf75d3d0b9aab34717b8f0d48e8605a8530f355f8f9230536bdc"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 9
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 16,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 32,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          },
+          {
+            "sourceRect": {
+              "x": 48,
+              "y": 0,
+              "width": 16,
+              "height": 12
+            },
+            "pivot": {
+              "x": 8,
+              "y": 9
+            },
+            "durationMs": 50
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_10px_1px_faint-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_10px_1px_faint-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_10px_1px_faint-v1.png",
+          "sourceSha256": "0e7cc4453337d50bcd0033d29ed157656e8102890bbdbfefe612fcc3d5cffb57",
+          "runtimeSha256": "0e7cc4453337d50bcd0033d29ed157656e8102890bbdbfefe612fcc3d5cffb57"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_10px_1px_strong-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_10px_1px_strong-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_10px_1px_strong-v1.png",
+          "sourceSha256": "5950d862acb01245813337a48c604e796a78056719935410b0e0051e7f16c4c7",
+          "runtimeSha256": "5950d862acb01245813337a48c604e796a78056719935410b0e0051e7f16c4c7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_10px_2px_faint-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_10px_2px_faint-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_10px_2px_faint-v1.png",
+          "sourceSha256": "fcc872c7283b6a89fd3f5187761bbd58127f4bcb5a364c812adf931b27931881",
+          "runtimeSha256": "fcc872c7283b6a89fd3f5187761bbd58127f4bcb5a364c812adf931b27931881"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_10px_2px_strong-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_10px_2px_strong-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_10px_2px_strong-v1.png",
+          "sourceSha256": "6a17c76101e30fc2b70065babf6e5aa2c90dc08f127069053e7dde38a64aaf2a",
+          "runtimeSha256": "6a17c76101e30fc2b70065babf6e5aa2c90dc08f127069053e7dde38a64aaf2a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_4px_1px_faint-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_4px_1px_faint-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_4px_1px_faint-v1.png",
+          "sourceSha256": "1fc63a1881d103ca788e96cf332f90a9be12e07533c8af70e6937973261d96d7",
+          "runtimeSha256": "1fc63a1881d103ca788e96cf332f90a9be12e07533c8af70e6937973261d96d7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_4px_1px_strong-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_4px_1px_strong-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_4px_1px_strong-v1.png",
+          "sourceSha256": "9f24161d1e03f65e3f4d63353b4f0b07d8499df0246b7527e7045f3135b4304b",
+          "runtimeSha256": "9f24161d1e03f65e3f4d63353b4f0b07d8499df0246b7527e7045f3135b4304b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_4px_2px_faint-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_4px_2px_faint-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_4px_2px_faint-v1.png",
+          "sourceSha256": "b6f2e50739aede8405fb6bf0858d01ef8b07f7c7b45f803dba4ffd2f727e8ee6",
+          "runtimeSha256": "b6f2e50739aede8405fb6bf0858d01ef8b07f7c7b45f803dba4ffd2f727e8ee6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_4px_2px_strong-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_4px_2px_strong-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_4px_2px_strong-v1.png",
+          "sourceSha256": "bc9f20aeffa72871057bea6f4efa449d77376e9c9c3a3f8218e012546581792b",
+          "runtimeSha256": "bc9f20aeffa72871057bea6f4efa449d77376e9c9c3a3f8218e012546581792b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_7px_1px_faint-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_7px_1px_faint-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_7px_1px_faint-v1.png",
+          "sourceSha256": "57496056c06bf13ad877b0623100001a7d97b1a48abc4afa83d23492670e3ad8",
+          "runtimeSha256": "57496056c06bf13ad877b0623100001a7d97b1a48abc4afa83d23492670e3ad8"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_7px_1px_strong-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_7px_1px_strong-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_7px_1px_strong-v1.png",
+          "sourceSha256": "8c7330fd3a382cf4c427518139945420b329c65364053fb9790ddbcc2544a86d",
+          "runtimeSha256": "8c7330fd3a382cf4c427518139945420b329c65364053fb9790ddbcc2544a86d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_7px_2px_faint-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_7px_2px_faint-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_7px_2px_faint-v1.png",
+          "sourceSha256": "413a279af70c18c4a5174b4360ecc1211ce03aef87ab4d554b851272be293a1b",
+          "runtimeSha256": "413a279af70c18c4a5174b4360ecc1211ce03aef87ab4d554b851272be293a1b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_streak_7px_2px_strong-v1",
+        "kind": "weather-particle",
+        "role": "rain",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_streak_7px_2px_strong-v1.png",
+          "width": 16,
+          "height": 24
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_streak_7px_2px_strong-v1.png",
+          "sourceSha256": "cebef731c71bc1172c20ff2e973cf422144a9251d0a4c9dc8c75a0bba2598ae1",
+          "runtimeSha256": "cebef731c71bc1172c20ff2e973cf422144a9251d0a4c9dc8c75a0bba2598ae1"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 12
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 24
+            },
+            "pivot": {
+              "x": 8,
+              "y": 12
+            },
+            "durationMs": 160
+          }
+        ]
+      },
+      {
+        "id": "wave39:rain_wet_mask_grass-v1",
+        "kind": "ground-prop",
+        "role": "wet-grass",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_wet_mask_grass-v1.png",
+          "width": 128,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_wet_mask_grass-v1.png",
+          "sourceSha256": "ca04a7c3bf6c789af987e2f44f23635bad4f1d2a9dc51a3d1699ce68fc8c88c6",
+          "runtimeSha256": "ca04a7c3bf6c789af987e2f44f23635bad4f1d2a9dc51a3d1699ce68fc8c88c6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      },
+      {
+        "id": "wave39:rain_wet_mask_soil-v1",
+        "kind": "ground-prop",
+        "role": "wet-soil",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/rain/rain_wet_mask_soil-v1.png",
+          "width": 128,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/rain/rain_wet_mask_soil-v1.png",
+          "sourceSha256": "adf4e2f15cee6924967d99f0a694d534927fdfeb085589afaf0acbd5c622a682",
+          "runtimeSha256": "adf4e2f15cee6924967d99f0a694d534927fdfeb085589afaf0acbd5c622a682"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6,
+        "placement": "nature-ground"
+      }
+    ],
+    "rules": [
+      {
+        "id": "nature-leaf-water-all",
+        "kind": "ground-prop",
+        "slot": "nature-leaf-water",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-water"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:debris/floating_leaves-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-leaf-ground-mixed",
+        "kind": "ground-prop",
+        "slot": "nature-leaf-ground",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-ground"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "mixed"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:debris/ground_leaves_large-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-leaf-ground-narrow-deciduous",
+        "kind": "ground-prop",
+        "slot": "nature-leaf-ground",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-ground"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "narrow-deciduous"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:debris/ground_leaves_medium_birch_maple-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:debris/ground_leaves_windrow_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-leaf-ground-broad-deciduous",
+        "kind": "ground-prop",
+        "slot": "nature-leaf-ground",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-ground"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "broad-deciduous"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:debris/ground_leaves_medium_oak_beech-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:debris/ground_leaves_small-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:debris/ground_leaves_windrow_a-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-leaf-roof-all",
+        "kind": "ground-prop",
+        "slot": "nature-leaf-roof",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-roof"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:debris/roof_leaves-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-leaf-wind-all",
+        "kind": "weather-particle",
+        "slot": "nature-leaf-wind",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-wind"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:debris/wind_leaves_group_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:debris/wind_leaves_group_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-leaf-flight-broad-deciduous",
+        "kind": "weather-particle",
+        "slot": "nature-leaf-flight",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-flight"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "broad-deciduous"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:leaves/falling_beech_brown-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_beech_orange-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_beech_yellow-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_oak_brown-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_oak_orange-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_oak_yellow-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-leaf-flight-narrow-deciduous",
+        "kind": "weather-particle",
+        "slot": "nature-leaf-flight",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "leaf-flight"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "narrow-deciduous"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:leaves/falling_birch_brown-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_birch_orange-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_birch_yellow-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_fieldmaple_brown-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_fieldmaple_orange-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:leaves/falling_fieldmaple_yellow-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-mud-all",
+        "kind": "ground-prop",
+        "slot": "nature-mud",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "mud"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:mud_scar_large-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:mud_scar_medium-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-puddle-all",
+        "kind": "ground-prop",
+        "slot": "nature-puddle",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "puddle"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:puddle_large_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:puddle_large_b-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:puddle_medium_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:puddle_medium_b-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:puddle_small_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:puddle_small_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-splash-roof",
+        "kind": "weather-particle",
+        "slot": "nature-splash",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "splash"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "roof"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:rain_splash_roof_large-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_splash_roof_small-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-splash-soil",
+        "kind": "weather-particle",
+        "slot": "nature-splash",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "splash"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "soil"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:rain_splash_soil_large-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_splash_soil_small-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-splash-stone",
+        "kind": "weather-particle",
+        "slot": "nature-splash",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "splash"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "stone"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:rain_splash_stone_large-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_splash_stone_small-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-rain-all",
+        "kind": "weather-particle",
+        "slot": "nature-rain",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "rain"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:rain_streak_10px_1px_faint-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_10px_1px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_10px_2px_faint-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_10px_2px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_4px_1px_faint-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_4px_1px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_4px_2px_faint-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_4px_2px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_7px_1px_faint-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_7px_1px_strong-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_7px_2px_faint-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:rain_streak_7px_2px_strong-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-wet-grass-all",
+        "kind": "ground-prop",
+        "slot": "nature-wet-grass",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "wet-grass"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:rain_wet_mask_grass-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-wet-soil-all",
+        "kind": "ground-prop",
+        "slot": "nature-wet-soil",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "wet-soil"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:rain_wet_mask_soil-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave39-seasons-snow",
+    "entries": [
+      {
+        "id": "wave39:snow/blowing_snow_sheet-v1",
+        "kind": "weather-particle",
+        "role": "blowing-snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/blowing_snow_sheet-v1.png",
+          "width": 384,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/blowing_snow_sheet-v1.png",
+          "sourceSha256": "bfe866c940f08e6c39e88accdf5927e1b94aae514d4838ce30f199e1066ba0a1",
+          "runtimeSha256": "bfe866c940f08e6c39e88accdf5927e1b94aae514d4838ce30f199e1066ba0a1"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 0.6,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 128,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 192,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 256,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 320,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          }
+        ]
+      },
+      {
+        "id": "wave39:snow/footprints_snow_a-v1",
+        "kind": "ground-prop",
+        "placement": "nature-ground",
+        "role": "snow-footprint",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/footprints_snow_a-v1.png",
+          "width": 128,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/footprints_snow_a-v1.png",
+          "sourceSha256": "dfb133bf66a9bd6762792346eb35a0a8d107cd2d1df8dc8ef2511171e5b4893b",
+          "runtimeSha256": "dfb133bf66a9bd6762792346eb35a0a8d107cd2d1df8dc8ef2511171e5b4893b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 32
+          },
+          "scale": 0.25,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1
+      },
+      {
+        "id": "wave39:snow/footprints_snow_b-v1",
+        "kind": "ground-prop",
+        "placement": "nature-ground",
+        "role": "snow-footprint",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/footprints_snow_b-v1.png",
+          "width": 128,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/footprints_snow_b-v1.png",
+          "sourceSha256": "b6837483aa1a344266c2981f9f6a7c030f83a5d3b29d002732ec619cd994d8e2",
+          "runtimeSha256": "b6837483aa1a344266c2981f9f6a7c030f83a5d3b29d002732ec619cd994d8e2"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 32
+          },
+          "scale": 0.25,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1
+      },
+      {
+        "id": "wave39:snow/snowflake_large-v1",
+        "kind": "weather-particle",
+        "role": "snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/snowflake_large-v1.png",
+          "width": 16,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/snowflake_large-v1.png",
+          "sourceSha256": "b5b88c929f5cb5b644887ec8a957cc849f1a9616ca3d7af66a1071750266dfa6",
+          "runtimeSha256": "b5b88c929f5cb5b644887ec8a957cc849f1a9616ca3d7af66a1071750266dfa6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 4000
+          }
+        ]
+      },
+      {
+        "id": "wave39:snow/snowflake_medium-v1",
+        "kind": "weather-particle",
+        "role": "snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/snowflake_medium-v1.png",
+          "width": 12,
+          "height": 12
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/snowflake_medium-v1.png",
+          "sourceSha256": "5ef32c5293a2fb93169b78a3ba8b31f998ab210d81a1112e622a7121bac42f6e",
+          "runtimeSha256": "5ef32c5293a2fb93169b78a3ba8b31f998ab210d81a1112e622a7121bac42f6e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 6,
+            "y": 6
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 12,
+              "height": 12
+            },
+            "pivot": {
+              "x": 6,
+              "y": 6
+            },
+            "durationMs": 4000
+          }
+        ]
+      },
+      {
+        "id": "wave39:snow/snowflake_small-v1",
+        "kind": "weather-particle",
+        "role": "snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/snowflake_small-v1.png",
+          "width": 8,
+          "height": 8
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/snowflake_small-v1.png",
+          "sourceSha256": "ba132b99a3984b71e5e027c03dcf649250d3d11d67e2a7593838aa2caba7119b",
+          "runtimeSha256": "ba132b99a3984b71e5e027c03dcf649250d3d11d67e2a7593838aa2caba7119b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 4,
+            "y": 4
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 8,
+              "height": 8
+            },
+            "pivot": {
+              "x": 4,
+              "y": 4
+            },
+            "durationMs": 4000
+          }
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "nature-snow-all",
+        "kind": "weather-particle",
+        "slot": "nature-snow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:snow/snowflake_large-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:snow/snowflake_medium-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:snow/snowflake_small-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-blowing-snow-all",
+        "kind": "weather-particle",
+        "slot": "nature-blowing-snow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "blowing-snow"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:snow/blowing_snow_sheet-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-snow-footprint-all",
+        "kind": "ground-prop",
+        "slot": "nature-snow-footprint",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "snow-footprint"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:snow/footprints_snow_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:snow/footprints_snow_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]

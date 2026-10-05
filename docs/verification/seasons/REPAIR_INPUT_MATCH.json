@@ -1,0 +1,192 @@
+{
+  "run": "astra-SEASONS-repair-capture-b3cdecf",
+  "captureBase": "b3cdecfd",
+  "matchesLocalCommit": "cda5764f",
+  "scope": "All 46 product, asset, script and test files changed since b661bedd; remote files read through SSH after submission, not inferred from run name",
+  "files": [
+    {
+      "sha256": "bfe866c940f08e6c39e88accdf5927e1b94aae514d4838ce30f199e1066ba0a1",
+      "path": "public/assets/wave39/snow/blowing_snow_sheet-v1.png"
+    },
+    {
+      "sha256": "dfb133bf66a9bd6762792346eb35a0a8d107cd2d1df8dc8ef2511171e5b4893b",
+      "path": "public/assets/wave39/snow/footprints_snow_a-v1.png"
+    },
+    {
+      "sha256": "b6837483aa1a344266c2981f9f6a7c030f83a5d3b29d002732ec619cd994d8e2",
+      "path": "public/assets/wave39/snow/footprints_snow_b-v1.png"
+    },
+    {
+      "sha256": "b5b88c929f5cb5b644887ec8a957cc849f1a9616ca3d7af66a1071750266dfa6",
+      "path": "public/assets/wave39/snow/snowflake_large-v1.png"
+    },
+    {
+      "sha256": "5ef32c5293a2fb93169b78a3ba8b31f998ab210d81a1112e622a7121bac42f6e",
+      "path": "public/assets/wave39/snow/snowflake_medium-v1.png"
+    },
+    {
+      "sha256": "ba132b99a3984b71e5e027c03dcf649250d3d11d67e2a7593838aa2caba7119b",
+      "path": "public/assets/wave39/snow/snowflake_small-v1.png"
+    },
+    {
+      "sha256": "d2c37af409287f2784422139e0aefa08e3f5c89c4a53bb698b6c5c82db4475f2",
+      "path": "scripts/buildSeasonsCatalog.mjs"
+    },
+    {
+      "sha256": "e7c26ad39368cfc3d102b8869d8cb6c5d1ca274ddb1425b4abd94ce758db24bd",
+      "path": "scripts/buildSnowFootprintSupport.py"
+    },
+    {
+      "sha256": "af9cdf8427416f90807d05328bf53c2d8db271d69a8ebd3725f30edf34d295bc",
+      "path": "src/render/art/artContract.schema.json"
+    },
+    {
+      "sha256": "b0c51746d4764a5202d6474684d50fb6bd0a3f5fc9dfafa7f3d68a05eb9b9b26",
+      "path": "src/render/art/artContract.ts"
+    },
+    {
+      "sha256": "b1d0cd244a44144798f41204b81639781d9bf5b317721e8d8e78de3efdbff8a2",
+      "path": "src/render/art/catalog.json"
+    },
+    {
+      "sha256": "d0998cf735cedcc89b79b98ec42b3c3bc748a4425a72216bf36f3c30d4cf8329",
+      "path": "src/render/art/contractHouseArt.ts"
+    },
+    {
+      "sha256": "4ccfb6797063894d69ee24bd66e6dcdc13f558208e2e279610954d069f6ddcac",
+      "path": "src/render/art/natureValidation.ts"
+    },
+    {
+      "sha256": "03e203223316059bb1c349bfb8786a1adf808b91d8bf66cb972426e4b4e342a8",
+      "path": "src/render/art/snowFootprintSupport.json"
+    },
+    {
+      "sha256": "ee4d3364ec1d8e8f2c1c0bf021b69d7a58443f4cccf6e3eec505784c221a6b8f",
+      "path": "src/render/buildingOverlays.ts"
+    },
+    {
+      "sha256": "1237e563980b6e2cc87ee42b18234f3dc0061feb042c89d46e12748d1f57de51",
+      "path": "src/render/countrysideDraw.ts"
+    },
+    {
+      "sha256": "3ae3bc11964d011f5c26631f69bbb10ceff3cfa5bd1af48a0712e70632866b2d",
+      "path": "src/render/drawTrees.ts"
+    },
+    {
+      "sha256": "6d798da0f01fae34a0955cdf1442ac3558f104cac11b529855582a271462ac36",
+      "path": "src/render/granaryVariantChoice.ts"
+    },
+    {
+      "sha256": "d95dd9dced88176eb8fd8472026d5923fbb96bec9a81fa1de1b0bee6e9f304f6",
+      "path": "src/render/landStageItems.ts"
+    },
+    {
+      "sha256": "97c5079f506d4b0b23d54594e1c2f3160231585776b4fb1ebb2919a5f33cd8d9",
+      "path": "src/render/renderDevicePixelRatio.ts"
+    },
+    {
+      "sha256": "50c84cc06800ba0b692348807deec3df78c6d382f40bde0df014cffa4b2a0bbf",
+      "path": "src/render/renderer.ts"
+    },
+    {
+      "sha256": "8e452188ece26e25f20f31177569952a368943ab3f61abe1eff24edb2dd93b3d",
+      "path": "src/render/seasonFx.ts"
+    },
+    {
+      "sha256": "33cb39f676b6dfde189a54acf9051a4aefcf6546ee54caa1cb40db8aeb19654f",
+      "path": "src/render/seasonProgression.json"
+    },
+    {
+      "sha256": "742a036ec7556c3315a414c0573106ce5551490d0ceeb39b09a2759a2c052ac4",
+      "path": "src/render/seasonProgression.ts"
+    },
+    {
+      "sha256": "73c7845372258517e9fc4762f4439e8160be23286cc21775544357edcc3de61b",
+      "path": "src/render/seasonTransition.ts"
+    },
+    {
+      "sha256": "20eda3e6a29b2c38e10c43d46d00ea3787781b4f2d070421632d9e17cc606c04",
+      "path": "src/render/seasonalDecals.ts"
+    },
+    {
+      "sha256": "5d09587dda53619c40b6ccdbeda0b307cb385e77c0114ec065df398974b2ca47",
+      "path": "src/render/snowFootprintHistory.ts"
+    },
+    {
+      "sha256": "3230d8579fbb7f9b757c9e6c906c3b0744306a2c1df0efad30b81b397166797a",
+      "path": "src/render/snowFootprintSupport.ts"
+    },
+    {
+      "sha256": "eaa1b828d9475e8c239ce13b8455e5ffd2c0591436b8a5f9feb875e9fcbb5f92",
+      "path": "src/render/snowFootprints.ts"
+    },
+    {
+      "sha256": "de72f124e73bae6b34bece40ada8a1677d5a90dfd44882e1b10c5440fb81ef2e",
+      "path": "src/render/snowProgressionProfiles.ts"
+    },
+    {
+      "sha256": "0c810b197fe7c5ce05c397cc5d6c78fe8e124cfac3bc75c523f6ffccbd0bd7cb",
+      "path": "src/render/storehouseSnowArt.ts"
+    },
+    {
+      "sha256": "a3266492692cbf6d49df7d4dd3ea42d518f0259ffe2eeacf8b450fcd504e2bd6",
+      "path": "src/render/townLandscapeAssets.ts"
+    },
+    {
+      "sha256": "60d64d4f15876c2cfa3d9421a54f5fe32676d91fb3d9a9e750a7c99614df9059",
+      "path": "src/render/wave26HouseArt.ts"
+    },
+    {
+      "sha256": "cffb48bc7047cd1dd160e7c355f6879cc9dcc45d07215a504742e8789061e38e",
+      "path": "src/render/wave32GranaryArt.ts"
+    },
+    {
+      "sha256": "c864226427cccd9eb771c2b54465e70ce27317d55ebd8710fb511b798858d69b",
+      "path": "src/render/worldParticleBirths.ts"
+    },
+    {
+      "sha256": "6b6ed1b2739977ec1babe7b5aeab7d76cc2f2ac0aee5601422b73792157dc8e1",
+      "path": "src/render/worldSnow.ts"
+    },
+    {
+      "sha256": "a7aaab95b21de1fcbefadf098d0d962cea3d80dd0efa33b2c6b8e48fa48f7ad7",
+      "path": "tests/artHouseBinding.test.ts"
+    },
+    {
+      "sha256": "89e38c5c689d00d5a2e580804f981818e4d590ae69f0b0819180d1725534ff31",
+      "path": "tests/fixtures/boundary/c25-board.json"
+    },
+    {
+      "sha256": "89d4e7b2bb635a63122fcab44107ff2e5c1c1e9772862649110b7c955bf1aefd",
+      "path": "tests/landStageSeasonProgression.test.ts"
+    },
+    {
+      "sha256": "ec44245b61dd9fcfc18d5748104942b046dad5d99bb1628895f6c154002c82bf",
+      "path": "tests/natureContacts.test.ts"
+    },
+    {
+      "sha256": "14f3ea50c9209b59d9929f7a781d635ec136bd8c54e3ae5bc1102ae4a742b57f",
+      "path": "tests/seasonProgression.test.ts"
+    },
+    {
+      "sha256": "cd4509bed150b4d29413c2613b57c13fe816cebbd2ba48845633a59af4553aa7",
+      "path": "tests/seasonProgressionGround.test.ts"
+    },
+    {
+      "sha256": "835d1487f7ba4940c0ab20a5e4c36f499bf888d2e112b469482a8cc6e3193adf",
+      "path": "tests/seasonalDecalCanvasState.test.ts"
+    },
+    {
+      "sha256": "30670a02647e30c633eb6e1dfbbc269502334d0fc07e74efa8b6b0236396f272",
+      "path": "tests/snowFootprintHistory.test.ts"
+    },
+    {
+      "sha256": "ba0c0401260a85104aa23cd78227bcf70ac82867dead81c7f977130221b7e23a",
+      "path": "tests/snowFootprintSupport.test.ts"
+    },
+    {
+      "sha256": "970549c0f99fd8fd7da6d51863c8d7883491374e3700c0b53a79a5792735c423",
+      "path": "tests/snowFootprintSupportMetadata.test.py"
+    }
+  ]
+}

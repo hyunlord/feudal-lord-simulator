@@ -126,3 +126,13 @@ test("decoded memory sums w × h × 4 by category and lists files it cannot read
     rmSync(dir, { recursive: true, force: true });
   }
 });
+
+test("EVENT-ART: an on-demand category (the event pictures, loaded when their card opens) is measured but out of the first load's total", () => {
+  assert.equal(categorize("assets/event-art/ck_evt_005.jpg", config)?.category, "event_cards");
+  const result = evaluateBudget([{ path: "assets/event-art/ck_evt_005.jpg", bytes: 200 * MB }, { path: "assets/wave16/events/event_fire.jpg", bytes: 5 * MB }], config);
+  const cards = result.categories.find(category => category.id === "event_cards")!;
+  assert.deepEqual([cards.bytes, cards.budgetBytes, cards.pass], [200 * MB, null, true]);
+  assert.deepEqual([result.total.bytes, result.total.files, result.onDemand.bytes, result.onDemand.files], [5 * MB, 1, 200 * MB, 1]);
+  assert.equal(result.pass, true, "200 MB on demand does not fail the 150 MB first load");
+  assert.match(formatBudgetTable(result), /전체 = first load; on demand, not in it: 1 files 200\.00 MB/);
+});

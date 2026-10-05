@@ -17,6 +17,8 @@ import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } 
 import { HomePetitionModal, LordRequestModal, PrecedentModal } from "../hud/LordCards";
 import { homePetitionView, lordRequestView, precedentView } from "../lordCardsModel";
 import { requestArt } from "../lordStoryBeats";
+import { RegistryOfferModal } from "../hud/RegistryCard";
+import { registryOfferView } from "../registryCardModel";
 import { stewardshipOf } from "../../engine/stewardship";
 import { Button } from "../kit";
 import { ChronicleBook } from "../legacy/ChronicleBook";
@@ -76,7 +78,10 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const precedent = top === "precedent" ? precedentView(state) : null;
   const asked = top === "lord_request" ? lordRequestView(state) : null;
   const request = asked?.command === null ? null : asked;
-  const lordGone = (top === "estate_petition" && homeView === null) || (top === "precedent" && precedent === null) || (top === "lord_request" && request === null);
+  // EVENT-ART: the registry's event card; it goes when its offer is answered, lapsed or invalid (no open offer left).
+  const offer = top === "registry_offer" ? registryOfferView(state) : null;
+  const lordGone = (top === "estate_petition" && homeView === null) || (top === "precedent" && precedent === null) || (top === "lord_request" && request === null)
+    || (top === "registry_offer" && offer === null);
   const setRecurring = (recurring: boolean) => dispatch({ type: "set_exception_rules", rules: { ...stewardshipOf(state).rules, recurring } });
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
@@ -101,6 +106,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {precedent === null ? null : <PrecedentModal view={precedent} onRecurring={setRecurring} onClose={() => sendUi({ type: "pop_modal" })} />}
     {request === null ? null : <LordRequestModal view={request} art={requestArt(request.kind)} onLater={() => sendUi({ type: "pop_modal" })}
       onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}
+    {offer === null ? null : <RegistryOfferModal view={offer} onLater={() => sendUi({ type: "pop_modal" })}
+      onAnswer={choiceId => { dispatch({ type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId }); sendUi({ type: "pop_modal" }); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
       // UI-10 (LG-8): chapter 5's end is the campaign's — its page leads to the legacy verdict, not to a chapter 6.
       {...(chronicle.chapter === CHAPTER_FIVE.chapter ? { nextLabel: LEGACY_SCREEN_COPY.toVerdict } : {})}

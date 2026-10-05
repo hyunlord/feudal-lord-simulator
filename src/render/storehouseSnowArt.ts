@@ -4,7 +4,7 @@ import { worldSpriteVariantImage } from "./buildingVariantAssets";
 import { frameBuildingVariant } from "./buildingVariants";
 import { fittedBuildingSpriteRect } from "./buildingSpriteFit";
 import { manifestArt } from "./manifestArt";
-import { seasonBlend, seasonForObject } from "./seasonTransition";
+import { roofSnowAlpha } from "./seasonProgression";
 import { STOREHOUSE_SNOW_IMAGES, type StorehouseSnowKey } from "./storehouseSnowManifest.generated";
 
 // NAT-5 RUN-02 (decision N4-D3): winter snow on the storehouse roof (scripts/installStorehouseSnow.py). Each layer is
@@ -26,12 +26,17 @@ export function storehouseSnowKey(building: Pick<Building, "id">): StorehouseSno
 
 /** Whether the storehouse's roof shows snow now (the house roofs' rule, buildingOverlays.ts). */
 export function storehouseSnowNow(state: Pick<GameState, "tick" | "scenarioId">, building: Pick<Building, "tx" | "ty">): boolean {
-  return seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3;
+  return roofSnowAlpha(state, building) > 0;
 }
 
 /** The roof snow into the body's fitted rect, in winter. */
 export function drawStorehouseSnow(context: CanvasRenderingContext2D, state: GameState, building: Building): void {
   if (!storehouseSnowNow(state, building)) return;
   const key = storehouseSnowKey(building);
-  if (key !== null) layers.drawOnReference(context, key, CANVAS, CANVAS, fittedBuildingSpriteRect("storehouse", building));
+  if (key !== null) {
+    const alpha = context.globalAlpha;
+    context.globalAlpha = alpha * roofSnowAlpha(state, building);
+    try { layers.drawOnReference(context, key, CANVAS, CANVAS, fittedBuildingSpriteRect("storehouse", building)); }
+    finally { context.globalAlpha = alpha; }
+  }
 }

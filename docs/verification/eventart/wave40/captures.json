@@ -1,0 +1,687 @@
+{
+ "url": "http://127.0.0.1:4300/",
+ "ok": true,
+ "bytes": 258230,
+ "rows": {
+  "marriage_negotiation": {
+   "record": "h-000002",
+   "template": "negotiation.offered",
+   "year": 1300,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "01_marriage_negotiation.jpg",
+     "label": "혼담을 넣었다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "혼담을 넣었다",
+    "line": "이웃 영주에게 혼인을 청했다 — 불가능(점수 6)",
+    "src": "http://127.0.0.1:4300/assets/wave40/01_marriage_negotiation.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 176,
+     "right": 1272,
+     "bottom": 470,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 13046,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "01_marriage_negotiation.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "marriage_sealing": {
+   "record": "h-000011",
+   "template": "marriage.contracted",
+   "year": 1300,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "01_marriage_negotiation.jpg",
+     "label": "혼담을 넣었다 — 카드 열기"
+    },
+    {
+     "file": "02_marriage_sealing.jpg",
+     "label": "혼인 계약을 봉인했다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "혼인 계약을 봉인했다",
+    "line": "혼인 계약 — 영주의 동생과 이웃 영주의 맏딸",
+    "src": "http://127.0.0.1:4300/assets/wave40/02_marriage_sealing.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 14114,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "02_marriage_sealing.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "bride_arrival": {
+   "record": "h-000043",
+   "template": "marriage.bride_arrived",
+   "year": 1300,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "03_bride_arrival.jpg",
+     "label": "신부가 왔다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "신부가 왔다",
+    "line": "신부가 영주관에 들어왔다",
+    "src": "http://127.0.0.1:4300/assets/wave40/03_bride_arrival.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 176,
+     "right": 1272,
+     "bottom": 470,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 14745,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "03_bride_arrival.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "first_child": {
+   "record": "h-000108",
+   "template": "marriage.child_born",
+   "year": 1301,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "04_first_child.jpg",
+     "label": "첫아이가 태어났다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "첫아이가 태어났다",
+    "line": "부부의 첫아이가 태어났다",
+    "src": "http://127.0.0.1:4300/assets/wave40/04_first_child.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 13630,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "04_first_child.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "brother_in_law_born": {
+   "record": "h-000134",
+   "template": "marriage.brother_in_law_born",
+   "year": 1301,
+   "seed": 3,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "05_brother_in_law_born.jpg",
+     "label": "처남이 태어났다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "처남이 태어났다",
+    "line": "이웃 영주가 다시 장가들어 아들을 얻었다 — 상속 기대가 줄었다",
+    "src": "http://127.0.0.1:4300/assets/wave40/05_brother_in_law_born.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 12868,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "05_brother_in_law_born.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "old_lord_sickbed": {
+   "record": "h-000607",
+   "template": "marriage.father_ill",
+   "year": 1303,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "06_old_lord_sickbed.jpg",
+     "label": "이웃 영주가 병들었다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "이웃 영주가 병들었다",
+    "line": "이웃 영주가 병들었다",
+    "src": "http://127.0.0.1:4300/assets/wave40/06_old_lord_sickbed.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 10977,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "06_old_lord_sickbed.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "attempted_will_change": {
+   "record": "h-000701",
+   "template": "marriage.will_change",
+   "year": 1303,
+   "seed": 5,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "07_attempted_will_change.jpg",
+     "label": "유언을 고치려 한다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "유언을 고치려 한다",
+    "line": "이웃 영주가 유언을 고치려 한다",
+    "src": "http://127.0.0.1:4300/assets/wave40/07_attempted_will_change.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 11332,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "07_attempted_will_change.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "inheritance_fealty": {
+   "record": "h-003371",
+   "template": "marriage.inherited",
+   "year": 1313,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "08_inheritance_fealty.jpg",
+     "label": "소작인들이 충성을 서약했다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "소작인들이 충성을 서약했다",
+    "line": "아내를 통해 이웃 영지를 물려받았다 — 이제 우리 영지다",
+    "src": "http://127.0.0.1:4300/assets/wave40/08_inheritance_fealty.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 14432,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "08_inheritance_fealty.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "lawsuit_filed": {
+   "record": "h-003689",
+   "template": "estate.suit_filed",
+   "year": 1313,
+   "seed": 5,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "09_lawsuit_filed.jpg",
+     "label": "소송이 제기되었다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "소송이 제기되었다",
+    "line": "영주가 옛 가문의 친족을 상대로 영지 소송을 냈다",
+    "src": "http://127.0.0.1:4300/assets/wave40/09_lawsuit_filed.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 13019,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "09_lawsuit_filed.jpg",
+    "bytes": 9618
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "documentary_evidence": {
+   "record": "h-003809",
+   "template": "estate.suit_stage",
+   "year": 1313,
+   "seed": 5,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "10_documentary_evidence.jpg",
+     "label": "증거를 대조한다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "증거를 대조한다",
+    "line": "소송이 증거 단계로 넘어갔다",
+    "src": "http://127.0.0.1:4300/assets/wave40/10_documentary_evidence.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 272,
+     "right": 1272,
+     "bottom": 566,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 12813,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "10_documentary_evidence.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "possession_refused": {
+   "record": "h-004222",
+   "template": "estate.possession_enforced",
+   "year": 1314,
+   "seed": 5,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "11_possession_refused.jpg",
+     "label": "점유자가 버텼다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "점유자가 버텼다",
+    "line": "점유자가 버텼다: 영지 점유 집행이 막혔다(1번째)",
+    "src": "http://127.0.0.1:4300/assets/wave40/11_possession_refused.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 272,
+     "right": 1272,
+     "bottom": 566,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 14085,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "11_possession_refused.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "possession_taken": {
+   "record": "h-004225",
+   "template": "estate.possession_enforced",
+   "year": 1314,
+   "seed": 5,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "12_possession_taken.jpg",
+     "label": "점유를 넘겨받았다 — 카드 열기"
+    },
+    {
+     "file": "08_inheritance_fealty.jpg",
+     "label": "소작인들이 충성을 서약했다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "점유를 넘겨받았다",
+    "line": "판결대로 영지의 점유를 넘겨받았다(3번째)",
+    "src": "http://127.0.0.1:4300/assets/wave40/12_possession_taken.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 272,
+     "right": 1272,
+     "bottom": 566,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 14136,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "12_possession_taken.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "child_lord_guardian": {
+   "record": "h-001160",
+   "template": "lord.wardship_begun",
+   "year": 1305,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "13_child_lord_guardian.jpg",
+     "label": "어린 영주의 후견 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "어린 영주의 후견",
+    "line": "조앤 드 포콩발이 미성년 영주다 — 후견인 앨리스 드 케스트베일",
+    "src": "http://127.0.0.1:4300/assets/wave40/13_child_lord_guardian.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 272,
+     "right": 1272,
+     "bottom": 566,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 13829,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "13_child_lord_guardian.jpg",
+    "bytes": 8529
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "end_of_wardship": {
+   "record": "h-002194",
+   "template": "lord.wardship_ended",
+   "year": 1309,
+   "seed": 1,
+   "chipShown": true,
+   "chips": [
+    {
+     "file": "14_end_of_wardship.jpg",
+     "label": "후견이 끝났다 — 카드 열기"
+    }
+   ],
+   "sameChip": 1,
+   "card": {
+    "title": "후견이 끝났다",
+    "line": "조앤 드 포콩발이 성년이 되어 후견이 끝났다",
+    "src": "http://127.0.0.1:4300/assets/wave40/14_end_of_wardship.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 14045,
+   "afterRun": 0,
+   "chronicle": {
+    "kind": "chronicle-card-art--wave40",
+    "file": "14_end_of_wardship.jpg",
+    "bytes": 0
+   },
+   "afterChronicle": 0,
+   "ok": true
+  },
+  "lawsuit_filed-tablet": {
+   "shown": true,
+   "card": {
+    "title": "소송이 제기되었다",
+    "line": "영주가 옛 가문의 친족을 상대로 영지 소송을 냈다",
+    "src": "http://127.0.0.1:4300/assets/wave40/09_lawsuit_filed.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 758,
+     "top": 232,
+     "right": 1172,
+     "bottom": 526,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 13297,
+   "ok": true
+  },
+  "lawsuit_filed-dpr2": {
+   "shown": true,
+   "card": {
+    "title": "소송이 제기되었다",
+    "line": "영주가 옛 가문의 친족을 상대로 영지 소송을 냈다",
+    "src": "http://127.0.0.1:4300/assets/wave40/09_lawsuit_filed.jpg",
+    "loaded": [
+     960,
+     540
+    ],
+    "art": [
+     296,
+     167
+    ],
+    "box": {
+     "left": 912,
+     "top": 224,
+     "right": 1272,
+     "bottom": 518,
+     "inside": true
+    },
+    "smallestText": 13
+   },
+   "bytes": 39715,
+   "ok": true
+  },
+  "campaign": {
+   "momentChips": 0,
+   "ok": true
+  }
+ }
+}

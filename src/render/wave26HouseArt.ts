@@ -97,13 +97,18 @@ export function houseStateLayerNow(state: Pick<GameState, "tick"> & Partial<Pick
 
 /** The painting's own layers over it: its weathered or fresh, then boarded (abandoned), then snow (winter). */
 export function drawWave26HouseLayers(context: CanvasRenderingContext2D, variant: HousePainting, bounds: Rect, rect: Rect,
-  shown: { readonly state: "fresh" | "weathered" | null; readonly boarded: boolean; readonly snow: boolean }): void {
+  shown: { readonly state: "fresh" | "weathered" | null; readonly boarded: boolean; readonly snow: boolean; readonly snowAlpha?: number }): void {
   const declared = declaredFrame(variant);
   if (declared === undefined) return;
   const target = wave26HouseRect(variant, bounds, rect);
   const keys = [shown.state === null ? null : `${variant.key}_${shown.state}`, shown.boarded ? `${variant.key}_boarded` : null,
     shown.snow ? `${variant.key}_snow` : null];
-  for (const key of keys) if (key !== null) layers.drawOnReference(context, key as HouseImageKey, variant.crop, declared, target);
+  for (const key of keys) if (key !== null) {
+    const alpha = context.globalAlpha;
+    if (key.endsWith("_snow")) context.globalAlpha = alpha * (shown.snowAlpha ?? 1);
+    try { layers.drawOnReference(context, key as HouseImageKey, variant.crop, declared, target); }
+    finally { context.globalAlpha = alpha; }
+  }
 }
 
 /** Starts loading the paintings in the approved frame (awaited with the Wave 2 variants: a capture's first frame has them). */

@@ -1,6 +1,6 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
 export type ArtKind = 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
-  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow';
+  | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
 export type ArtImage = { readonly url: string; readonly width: number; readonly height: number };
@@ -41,7 +41,18 @@ export type LandGroundPropEntry = EntryBase & {
   readonly kind: 'ground-prop'; readonly placement: 'land'; readonly baseId: string;
   readonly archetypes: readonly string[]; readonly geometry: ArtGeometry; readonly season?: ArtSeason;
 };
-export type GroundPropEntry = HouseholdGroundPropEntry | LandGroundPropEntry;
+export type SeasonalGroundPropEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'seasonal-ground'; readonly geometry: ArtGeometry; readonly season: ArtSeason;
+};
+export type NatureGroundEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'nature-ground'; readonly role: 'leaf-ground' | 'leaf-water' | 'puddle' | 'mud' | 'wet-grass' | 'wet-soil' | 'leaf-roof' | 'snow-footprint';
+  readonly geometry: ArtGeometry; readonly opacity: number; readonly minZoom: number; readonly group: string;
+};
+export type WeatherParticleEntry = EntryBase & {
+  readonly kind: 'weather-particle'; readonly role: 'rain' | 'leaf-flight' | 'leaf-wind' | 'splash' | 'snow' | 'blowing-snow'; readonly group: string;
+  readonly geometry: ArtGeometry; readonly opacity: number; readonly minZoom: number; readonly frames: readonly ArtFrame[];
+};
+export type GroundPropEntry = HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
 export type WalkerCargoEntry = EntryBase & {
   readonly kind: 'walker-cargo'; readonly cargoKinds: readonly string[];
   readonly frames: readonly ArtFrame[]; readonly facing: ArtFacing; readonly scale: number; readonly allowMirror: false;
@@ -110,7 +121,7 @@ export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEn
 export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
 export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
 export type ArtEntry = BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
-  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry;
+  | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =
   | { readonly op: 'eq'; readonly field: string; readonly value: ArtScalar }

@@ -1,3 +1,4 @@
+import type { CalendarProgress } from "./calendarProgress";
 import type { GameState } from "../engine/engine.types";
 import { FAST_PRESENTATION_SPEED, presentationSpeed } from "./presentationSpeed";
 import { seasonOf, type SeasonIndex } from "./seasonArt";
@@ -13,7 +14,7 @@ export const SEASON_FADE_MS = 1_500;
 export const SEASON_FADE_FAST_MS = 600;
 const SEASON_TICKS = 1_000;
 
-export type SeasonBlend = { readonly season: SeasonIndex; readonly from: SeasonIndex | null; readonly t: number };
+export type SeasonBlend = { readonly season: SeasonIndex; readonly from: SeasonIndex | null; readonly t: number; readonly firstYear?: boolean; readonly calendar?: CalendarProgress };
 let seen: { season: SeasonIndex; tick: number; from: SeasonIndex | null; startedMs: number; ms: number } | null = null;
 
 export function seasonFadeMs(): number {

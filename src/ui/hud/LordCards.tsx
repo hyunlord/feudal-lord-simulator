@@ -27,7 +27,7 @@ function RecurringSwitch({ on, onToggle }: { readonly on: boolean; readonly onTo
   );
 }
 
-function Frame({ label, data, children, crest = null }: {
+export function Frame({ label, data, children, crest = null }: {
   readonly label: string; readonly data: Readonly<Record<`data-${string}`, string>>; readonly children: React.ReactNode;
   /** LR1-D5: arms in the frame's empty roundel (its top-left corner), as the political cards show the sender's. */
   readonly crest?: Readonly<{ arms: EmblemSpec; label: string }> | null;
