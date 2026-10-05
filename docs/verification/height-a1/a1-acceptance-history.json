@@ -1,0 +1,72 @@
+{
+  "verdict": "ACCEPT_BOUNDED_A1_EVIDENCE_WITH_TWO_VIEW_INTEGRATION_GATE",
+  "scope": "Existing registered figure height 16 to 17.6; not anatomical HEIGHT completion",
+  "baseHead": "cd399e4abb26fc04b37dc27b5c61bec270934a7d",
+  "afterComposerSha256": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+  "sourceFiles": {
+    "src/render/walkerComposer.ts": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+    "tests/asset2Scales.test.ts": "a32598a822facfbfd4a148adbc5db3f82baf22d842d0de8848e39493fc1ca98a",
+    "tests/phase35Rendering.test.ts": "3d89aa0c390e0d5d33d897252580074224770bfc18736dd0ea9b75ce9fb54208"
+  },
+  "references": {
+    ".omo/drafts/height-next-scope.md": "7b95ffa438ba259092a08ee0939537da17ac0db9fef32588e96d3e3547c2eebe",
+    ".omo/drafts/height-a1-parent-native-review.json": "5bf23bf8150170c5ca436685726b66465a4e11b714d1decdc0d5c564acd9ea7e",
+    ".omo/drafts/height-summer-parent-native-review.json": "f33098ae486d6d74780bc583334ae18b3ade277c12f468d536738a5a76b1e0cc",
+    ".omo/evidence/height-summer-runtime-v1/numeric.json": "b209d74b377c205639e57b62e12c525b54604105f45730b15aa362b75ee02fc2",
+    ".omo/evidence/height-a1-runtime-full-v2/RESULT.md": "8480b6ec3ce1d41675e73900edb39561a7c2c679574694615a98e5647f5ca562",
+    "docs/requests/render-human-registration-request.md": "59bda26e52715b0807075f9981af4d4c1c67c9290735ac20e8b4736fa4735778",
+    "docs/requests/render-human-scale-art-request.md": "9aa2f9afcdabc7efadafbf5f3b92046672bbbd7e8c11a376754f5f5ef35487c1"
+  },
+  "currentAcceptance": {
+    "winterViewsPerVariant": 16,
+    "summerViewsPerVariant": 4,
+    "nativeVerdict": "PASS_BOUNDED_A1_VISIBILITY_ONLY",
+    "contact": "UNCERTAIN",
+    "newRegistrationRegressionProved": false,
+    "universalContactRegressionAbsenceProved": false
+  },
+  "minimumAdditionalViews": [
+    {
+      "name": "summer-loaded-ne-z1-d1",
+      "walkerId": "carter:construction-site-000006:77441",
+      "zoom": 1,
+      "dpr": 1,
+      "purpose": "ordinary-size body/cart/loaded timber silhouette and scale coherence"
+    },
+    {
+      "name": "summer-loaded-ne-z0p6-d1",
+      "walkerId": "carter:construction-site-000006:77441",
+      "zoom": 0.6,
+      "dpr": 1,
+      "purpose": "existing .65 floor readability; load paint intentionally absent below .8"
+    }
+  ],
+  "additionalViewContract": {
+    "sourceSave": "fixtures/saves/v48/chapter-two-town.save.json",
+    "stateTick": 77500,
+    "tile": [
+      48,
+      35.73999999999997
+    ],
+    "width": 1600,
+    "height": 1100,
+    "perVariantViews": 2,
+    "beforeAfterFirstCaptures": 4,
+    "totalIndependentOpensWithAA": 8,
+    "engineChanges": 0,
+    "actorRemoval": false,
+    "recommendation": "Combine with current-main baseline/A1-candidate integration proof to avoid repeating identical isolated and main captures. Review derived view expectations before running."
+  },
+  "gates": [
+    "Bind exact approved product1/test2 bytes and unchanged consumer/assets to an actual commit/export; cd399 alone is not the captured source.",
+    "Reconcile minimal semantic patch onto pinned current main and protect every unrelated source/catalog/public/ledger path; run focused HEIGHT tests plus required type/lint.",
+    "Use the two admitted summer views on the same current-main baseline and A1 candidate, full presented identity/readiness/AA/native comparison; retain historic winter evidence and rerun affected winter only if human consumer dependencies changed."
+  ],
+  "separateIncomplete": [
+    "A2 low-zoom story policy",
+    "Anatomical/age/crowd source registration",
+    "Held8/bier contact registration and their dedicated witnesses",
+    "Door23 artwork and layer verification"
+  ],
+  "inspectionLimits": "Read-only plan/source/receipt review; only two existing NE/NW native paired summer sheets reopened. No new full PNG audit, tests, runtime, remote job or product edits."
+}

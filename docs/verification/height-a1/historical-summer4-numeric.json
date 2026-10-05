@@ -1,0 +1,88 @@
+{
+  "pass": true,
+  "scope": "4 actual distinct actors, summer gait0 zoom2 DPR2, no universal contact/height acceptance",
+  "cropBox": [
+    1400,
+    850,
+    1800,
+    1200
+  ],
+  "variants": {
+    "before": {
+      "views": 4,
+      "opens": 8,
+      "aaExact": 4,
+      "rawPresentedShaEqual": 8,
+      "actorsEach": 46,
+      "pngRgbaVerified": 8,
+      "errors": 0
+    },
+    "after": {
+      "views": 4,
+      "opens": 8,
+      "aaExact": 4,
+      "rawPresentedShaEqual": 8,
+      "actorsEach": 46,
+      "pngRgbaVerified": 8,
+      "errors": 0
+    }
+  },
+  "comparisons": [
+    {
+      "name": "summer-loaded-nw",
+      "identityExceptComposerEqual": true,
+      "heightEvidenceEqual": true,
+      "beforeComposerSHA": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+      "afterComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+      "fullRgbaChanged": true,
+      "cropChangedPixels": 10072,
+      "originals": {
+        "before": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-summer-loaded/captures-before/summer-loaded-nw.png",
+        "after": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/captures-after/summer-loaded-nw.png"
+      },
+      "nativeSheet": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/comparison/summer-loaded-nw-paired-native.png"
+    },
+    {
+      "name": "summer-loaded-ne",
+      "identityExceptComposerEqual": true,
+      "heightEvidenceEqual": true,
+      "beforeComposerSHA": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+      "afterComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+      "fullRgbaChanged": true,
+      "cropChangedPixels": 13621,
+      "originals": {
+        "before": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-summer-loaded/captures-before/summer-loaded-ne.png",
+        "after": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/captures-after/summer-loaded-ne.png"
+      },
+      "nativeSheet": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/comparison/summer-loaded-ne-paired-native.png"
+    },
+    {
+      "name": "summer-loaded-sw",
+      "identityExceptComposerEqual": true,
+      "heightEvidenceEqual": true,
+      "beforeComposerSHA": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+      "afterComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+      "fullRgbaChanged": true,
+      "cropChangedPixels": 3850,
+      "originals": {
+        "before": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-summer-loaded/captures-before/summer-loaded-sw.png",
+        "after": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/captures-after/summer-loaded-sw.png"
+      },
+      "nativeSheet": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/comparison/summer-loaded-sw-paired-native.png"
+    },
+    {
+      "name": "summer-loaded-se",
+      "identityExceptComposerEqual": true,
+      "heightEvidenceEqual": true,
+      "beforeComposerSHA": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+      "afterComposerSHA": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f",
+      "fullRgbaChanged": true,
+      "cropChangedPixels": 10438,
+      "originals": {
+        "before": "/Users/rexxa/fls-astra-renderB-height-before/output/height-a1-summer-loaded/captures-before/summer-loaded-se.png",
+        "after": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/captures-after/summer-loaded-se.png"
+      },
+      "nativeSheet": "/Users/rexxa/fls-astra-renderB-height-prep/output/height-a1-summer-loaded/comparison/summer-loaded-se-paired-native.png"
+    }
+  ]
+}

@@ -1,0 +1,1201 @@
+{
+  "status": "BASELINE2_RUNTIME_NUMERIC_PASS_NATIVE_VISUAL_PENDING",
+  "run": "astra-height-ed83-before-v1-ed83fe4",
+  "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+  "freezeSha256": "d8d85af257b9bba07763aa784f2cbbe1308569380674d7ba3a83dadfbe57eb8b",
+  "variant": "before",
+  "exit": 0,
+  "submissions": 1,
+  "fetches": 1,
+  "slot": "1/2",
+  "waitSeconds": 0,
+  "prepareSeconds": 11.3,
+  "commandSeconds": 73.4,
+  "views": 2,
+  "AA": 2,
+  "errors": 0,
+  "fullIdentityAndActorState": "PASS",
+  "diagnostics": [
+    {
+      "name": "summer-ne-z1",
+      "identity": {
+        "state": "summer-loaded",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          48,
+          35.73999999999997
+        ],
+        "zoom": 1,
+        "width": 1600,
+        "height": 1100,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": "height-a1-summer-zooms-v1",
+        "admittedEngineStateSHA": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "expectedPresentedStateSHA": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "productComposerSHA": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+        "expectedRequests": [
+          "/assets/runtime-actors-v1/cart_hand-v4.png",
+          "/assets/walkers-v2/wk_artisan_m_01-v1.png",
+          "/assets/wave7/cart/cart_load_timber_ne-v2.png"
+        ]
+      },
+      "first": {
+        "figurePx": 16,
+        "worldScale": 0.5,
+        "zoomScale": 0.5,
+        "walker": {
+          "id": "carter:construction-site-000006:77441",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000006",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "construction-site-000050"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "construction-site-000050"
+            },
+            "resource": "timber",
+            "amount": 2,
+            "sourceStockClaim": {
+              "kind": "treasury",
+              "resource": "timber",
+              "amount": 2
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 48,
+            "ty": 35.73999999999997
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 38
+            },
+            {
+              "tx": 45,
+              "ty": 37
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 35
+            },
+            {
+              "tx": 48,
+              "ty": 34
+            },
+            {
+              "tx": 48,
+              "ty": 33
+            },
+            {
+              "tx": 48,
+              "ty": 32
+            },
+            {
+              "tx": 48,
+              "ty": 31
+            },
+            {
+              "tx": 48,
+              "ty": 30
+            },
+            {
+              "tx": 48,
+              "ty": 29
+            },
+            {
+              "tx": 48,
+              "ty": 28
+            },
+            {
+              "tx": 47,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 27
+            },
+            {
+              "tx": 45,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 28
+            },
+            {
+              "tx": 43,
+              "ty": 28
+            },
+            {
+              "tx": 42,
+              "ty": 28
+            },
+            {
+              "tx": 41,
+              "ty": 28
+            },
+            {
+              "tx": 40,
+              "ty": 28
+            },
+            {
+              "tx": 39,
+              "ty": 28
+            },
+            {
+              "tx": 38,
+              "ty": 28
+            },
+            {
+              "tx": 37,
+              "ty": 28
+            },
+            {
+              "tx": 36,
+              "ty": 28
+            },
+            {
+              "tx": 35,
+              "ty": 28
+            },
+            {
+              "tx": 34,
+              "ty": 28
+            },
+            {
+              "tx": 33,
+              "ty": 28
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 47,
+            "ty": 36
+          },
+          "cargo": {
+            "resource": "timber",
+            "amount": 2
+          },
+          "spawnedTick": 77441,
+          "cancellation": null
+        },
+        "presentation": {
+          "role": "logger",
+          "direction": "NE",
+          "gaitFrame": 0
+        },
+        "appearance": {
+          "look": {
+            "sheetId": "wk_artisan_m_01",
+            "band": "artisan",
+            "occupation": "logger",
+            "sex": "male",
+            "trinket": null
+          },
+          "prop": null,
+          "cloak": null
+        },
+        "payloadDrawEligible": true,
+        "cargoArt": {
+          "key": "cart_load_timber_ne",
+          "width": 36,
+          "pile": "pile_wood_1"
+        },
+        "composedReady": true,
+        "camera": {
+          "zoom": 1,
+          "lod": "full"
+        },
+        "point": {
+          "clientX": 800,
+          "clientY": 550
+        },
+        "canvasRect": {
+          "left": 0,
+          "top": 0,
+          "width": 1600,
+          "height": 1100
+        },
+        "devicePixelRatio": 1,
+        "stateSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+      },
+      "repeat": {
+        "figurePx": 16,
+        "worldScale": 0.5,
+        "zoomScale": 0.5,
+        "walker": {
+          "id": "carter:construction-site-000006:77441",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000006",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "construction-site-000050"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "construction-site-000050"
+            },
+            "resource": "timber",
+            "amount": 2,
+            "sourceStockClaim": {
+              "kind": "treasury",
+              "resource": "timber",
+              "amount": 2
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 48,
+            "ty": 35.73999999999997
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 38
+            },
+            {
+              "tx": 45,
+              "ty": 37
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 35
+            },
+            {
+              "tx": 48,
+              "ty": 34
+            },
+            {
+              "tx": 48,
+              "ty": 33
+            },
+            {
+              "tx": 48,
+              "ty": 32
+            },
+            {
+              "tx": 48,
+              "ty": 31
+            },
+            {
+              "tx": 48,
+              "ty": 30
+            },
+            {
+              "tx": 48,
+              "ty": 29
+            },
+            {
+              "tx": 48,
+              "ty": 28
+            },
+            {
+              "tx": 47,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 27
+            },
+            {
+              "tx": 45,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 28
+            },
+            {
+              "tx": 43,
+              "ty": 28
+            },
+            {
+              "tx": 42,
+              "ty": 28
+            },
+            {
+              "tx": 41,
+              "ty": 28
+            },
+            {
+              "tx": 40,
+              "ty": 28
+            },
+            {
+              "tx": 39,
+              "ty": 28
+            },
+            {
+              "tx": 38,
+              "ty": 28
+            },
+            {
+              "tx": 37,
+              "ty": 28
+            },
+            {
+              "tx": 36,
+              "ty": 28
+            },
+            {
+              "tx": 35,
+              "ty": 28
+            },
+            {
+              "tx": 34,
+              "ty": 28
+            },
+            {
+              "tx": 33,
+              "ty": 28
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 47,
+            "ty": 36
+          },
+          "cargo": {
+            "resource": "timber",
+            "amount": 2
+          },
+          "spawnedTick": 77441,
+          "cancellation": null
+        },
+        "presentation": {
+          "role": "logger",
+          "direction": "NE",
+          "gaitFrame": 0
+        },
+        "appearance": {
+          "look": {
+            "sheetId": "wk_artisan_m_01",
+            "band": "artisan",
+            "occupation": "logger",
+            "sex": "male",
+            "trinket": null
+          },
+          "prop": null,
+          "cloak": null
+        },
+        "payloadDrawEligible": true,
+        "cargoArt": {
+          "key": "cart_load_timber_ne",
+          "width": 36,
+          "pile": "pile_wood_1"
+        },
+        "composedReady": true,
+        "camera": {
+          "zoom": 1,
+          "lod": "full"
+        },
+        "point": {
+          "clientX": 800,
+          "clientY": 550
+        },
+        "canvasRect": {
+          "left": 0,
+          "top": 0,
+          "width": 1600,
+          "height": 1100
+        },
+        "devicePixelRatio": 1,
+        "stateSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+      }
+    },
+    {
+      "name": "summer-ne-z0p6",
+      "identity": {
+        "state": "summer-loaded",
+        "savedStateSHA": "203f2393fb2fb363cf93d0737e55a5afde5b92bf41f81c29740e6d4a83434102",
+        "tick": 77500,
+        "season": "summer",
+        "tile": [
+          48,
+          35.73999999999997
+        ],
+        "zoom": 0.6,
+        "width": 1600,
+        "height": 1100,
+        "dpr": 1,
+        "browser": "151.0.7922.34",
+        "renderer": "headless-disable-gpu",
+        "visualTime": {
+          "date": 1700000000000,
+          "performance": 12345
+        },
+        "captureProtocol": "height-a1-summer-zooms-v1",
+        "admittedEngineStateSHA": "776708fcc47c4f8e1d4bde626c4165b6b8cf6c2aa5f6073f5ad25644f0343ca5",
+        "expectedPresentedStateSHA": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7",
+        "productComposerSHA": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+        "expectedRequests": [
+          "/assets/runtime-actors-v1/cart_hand-v4.png",
+          "/assets/walkers-v2/wk_artisan_m_01-v1.png"
+        ]
+      },
+      "first": {
+        "figurePx": 16,
+        "worldScale": 0.5,
+        "zoomScale": 0.5416666666666667,
+        "walker": {
+          "id": "carter:construction-site-000006:77441",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000006",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "construction-site-000050"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "construction-site-000050"
+            },
+            "resource": "timber",
+            "amount": 2,
+            "sourceStockClaim": {
+              "kind": "treasury",
+              "resource": "timber",
+              "amount": 2
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 48,
+            "ty": 35.73999999999997
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 38
+            },
+            {
+              "tx": 45,
+              "ty": 37
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 35
+            },
+            {
+              "tx": 48,
+              "ty": 34
+            },
+            {
+              "tx": 48,
+              "ty": 33
+            },
+            {
+              "tx": 48,
+              "ty": 32
+            },
+            {
+              "tx": 48,
+              "ty": 31
+            },
+            {
+              "tx": 48,
+              "ty": 30
+            },
+            {
+              "tx": 48,
+              "ty": 29
+            },
+            {
+              "tx": 48,
+              "ty": 28
+            },
+            {
+              "tx": 47,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 27
+            },
+            {
+              "tx": 45,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 28
+            },
+            {
+              "tx": 43,
+              "ty": 28
+            },
+            {
+              "tx": 42,
+              "ty": 28
+            },
+            {
+              "tx": 41,
+              "ty": 28
+            },
+            {
+              "tx": 40,
+              "ty": 28
+            },
+            {
+              "tx": 39,
+              "ty": 28
+            },
+            {
+              "tx": 38,
+              "ty": 28
+            },
+            {
+              "tx": 37,
+              "ty": 28
+            },
+            {
+              "tx": 36,
+              "ty": 28
+            },
+            {
+              "tx": 35,
+              "ty": 28
+            },
+            {
+              "tx": 34,
+              "ty": 28
+            },
+            {
+              "tx": 33,
+              "ty": 28
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 47,
+            "ty": 36
+          },
+          "cargo": {
+            "resource": "timber",
+            "amount": 2
+          },
+          "spawnedTick": 77441,
+          "cancellation": null
+        },
+        "presentation": {
+          "role": "logger",
+          "direction": "NE",
+          "gaitFrame": 0
+        },
+        "appearance": {
+          "look": {
+            "sheetId": "wk_artisan_m_01",
+            "band": "artisan",
+            "occupation": "logger",
+            "sex": "male",
+            "trinket": null
+          },
+          "prop": null,
+          "cloak": null
+        },
+        "payloadDrawEligible": false,
+        "cargoArt": {
+          "key": "cart_load_timber_ne",
+          "width": 36,
+          "pile": "pile_wood_1"
+        },
+        "composedReady": true,
+        "camera": {
+          "zoom": 0.6,
+          "lod": "full"
+        },
+        "point": {
+          "clientX": 800,
+          "clientY": 550
+        },
+        "canvasRect": {
+          "left": 0,
+          "top": 0,
+          "width": 1600,
+          "height": 1100
+        },
+        "devicePixelRatio": 1,
+        "stateSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+      },
+      "repeat": {
+        "figurePx": 16,
+        "worldScale": 0.5,
+        "zoomScale": 0.5416666666666667,
+        "walker": {
+          "id": "carter:construction-site-000006:77441",
+          "kind": "carter",
+          "mission": "deliver",
+          "phase": "outbound",
+          "homeBuildingId": "construction-site-000006",
+          "destination": {
+            "kind": "construction_site",
+            "siteId": "construction-site-000050"
+          },
+          "reservation": {
+            "destination": {
+              "kind": "construction_site",
+              "siteId": "construction-site-000050"
+            },
+            "resource": "timber",
+            "amount": 2,
+            "sourceStockClaim": {
+              "kind": "treasury",
+              "resource": "timber",
+              "amount": 2
+            },
+            "homeCapacityClaim": null
+          },
+          "position": {
+            "tx": 48,
+            "ty": 35.73999999999997
+          },
+          "path": [
+            {
+              "tx": 47,
+              "ty": 39
+            },
+            {
+              "tx": 46,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 39
+            },
+            {
+              "tx": 45,
+              "ty": 38
+            },
+            {
+              "tx": 45,
+              "ty": 37
+            },
+            {
+              "tx": 45,
+              "ty": 36
+            },
+            {
+              "tx": 46,
+              "ty": 36
+            },
+            {
+              "tx": 47,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 36
+            },
+            {
+              "tx": 48,
+              "ty": 35
+            },
+            {
+              "tx": 48,
+              "ty": 34
+            },
+            {
+              "tx": 48,
+              "ty": 33
+            },
+            {
+              "tx": 48,
+              "ty": 32
+            },
+            {
+              "tx": 48,
+              "ty": 31
+            },
+            {
+              "tx": 48,
+              "ty": 30
+            },
+            {
+              "tx": 48,
+              "ty": 29
+            },
+            {
+              "tx": 48,
+              "ty": 28
+            },
+            {
+              "tx": 47,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 28
+            },
+            {
+              "tx": 46,
+              "ty": 27
+            },
+            {
+              "tx": 45,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 27
+            },
+            {
+              "tx": 44,
+              "ty": 28
+            },
+            {
+              "tx": 43,
+              "ty": 28
+            },
+            {
+              "tx": 42,
+              "ty": 28
+            },
+            {
+              "tx": 41,
+              "ty": 28
+            },
+            {
+              "tx": 40,
+              "ty": 28
+            },
+            {
+              "tx": 39,
+              "ty": 28
+            },
+            {
+              "tx": 38,
+              "ty": 28
+            },
+            {
+              "tx": 37,
+              "ty": 28
+            },
+            {
+              "tx": 36,
+              "ty": 28
+            },
+            {
+              "tx": 35,
+              "ty": 28
+            },
+            {
+              "tx": 34,
+              "ty": 28
+            },
+            {
+              "tx": 33,
+              "ty": 28
+            }
+          ],
+          "pathIndex": 8,
+          "previousTile": {
+            "tx": 47,
+            "ty": 36
+          },
+          "cargo": {
+            "resource": "timber",
+            "amount": 2
+          },
+          "spawnedTick": 77441,
+          "cancellation": null
+        },
+        "presentation": {
+          "role": "logger",
+          "direction": "NE",
+          "gaitFrame": 0
+        },
+        "appearance": {
+          "look": {
+            "sheetId": "wk_artisan_m_01",
+            "band": "artisan",
+            "occupation": "logger",
+            "sex": "male",
+            "trinket": null
+          },
+          "prop": null,
+          "cloak": null
+        },
+        "payloadDrawEligible": false,
+        "cargoArt": {
+          "key": "cart_load_timber_ne",
+          "width": 36,
+          "pile": "pile_wood_1"
+        },
+        "composedReady": true,
+        "camera": {
+          "zoom": 0.6,
+          "lod": "full"
+        },
+        "point": {
+          "clientX": 800,
+          "clientY": 550
+        },
+        "canvasRect": {
+          "left": 0,
+          "top": 0,
+          "width": 1600,
+          "height": 1100
+        },
+        "devicePixelRatio": 1,
+        "stateSha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+      }
+    }
+  ],
+  "guards": {
+    "pre": {
+      "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+      "clean": true,
+      "tracked": 26841,
+      "input": 26876,
+      "export": 26877,
+      "lfs": 6384
+    },
+    "post": {
+      "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+      "clean": true,
+      "tracked": 26841,
+      "input": 26876,
+      "export": 26877,
+      "lfs": 6384
+    },
+    "localPost": {
+      "pass": true,
+      "phase": "local",
+      "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+      "trackedClean": true,
+      "tracked": 26841,
+      "exported": null,
+      "verifiedFiles": 26876,
+      "lfsHydrated": 6384,
+      "manifestSha256": "d8d85af257b9bba07763aa784f2cbbe1308569380674d7ba3a83dadfbe57eb8b",
+      "extras": [],
+      "external": null
+    }
+  },
+  "external": {
+    "preexistingUnchanged": 5488,
+    "modified": 0,
+    "deleted": 0,
+    "added": 15,
+    "vite": 13,
+    "keyart": 2,
+    "additions": {
+      ".cache/keyart-derivatives/977163c2c58e3d57acae3e8bbb22b5b6f410be35c3f9c284aa6013adf6b82845-v1-png-half": {
+        "type": "file",
+        "bytes": 96265,
+        "sha256": "ce76b925e2a5c0745ad8e30222858cd25119932a0c8eab78c2a30f8d4fef0729"
+      },
+      ".cache/keyart-derivatives/9839ed90210b54c04e8aecffdff9dbc7e920f65261b0c26e1b061f5676d9598b-v1-jpeg-q70": {
+        "type": "file",
+        "bytes": 315323,
+        "sha256": "c9c39668fbf4b8508c7a61c245e9c5c0bffdeef673d951fa9ec051db38e1434a"
+      },
+      ".vite/deps/_metadata.json": {
+        "type": "file",
+        "bytes": 1089,
+        "sha256": "77297a7cf00744879e6531ce05502c8f4f465748ce01c388e0dd0fcb8d92c8c9"
+      },
+      ".vite/deps/package.json": {
+        "type": "file",
+        "bytes": 23,
+        "sha256": "3ca9d4afd21425087cf31893b8f9f63c81b0b8408db5e343ca76e5f8aa26ab9a"
+      },
+      ".vite/deps/react-dom.js": {
+        "type": "file",
+        "bytes": 14535,
+        "sha256": "86295b7f3a447555e08cf9ebb5d34b72a699fb2863fde30dbe505c846102b4c0"
+      },
+      ".vite/deps/react-dom.js.map": {
+        "type": "file",
+        "bytes": 25602,
+        "sha256": "392f5943639eba2d0113930cf7ec4a78f6cb660cd60083c83c81a29a223a81fd"
+      },
+      ".vite/deps/react-dom_client.js": {
+        "type": "file",
+        "bytes": 820711,
+        "sha256": "3c0fcd691cd26e901ed362fa403e3f8953509cefae20152e2335c23c62bf8b67"
+      },
+      ".vite/deps/react-dom_client.js.map": {
+        "type": "file",
+        "bytes": 1498893,
+        "sha256": "6476738af93e6f431c0587f299b4e509ba5e7be30eb6cb152ccfd2966b2d9b8d"
+      },
+      ".vite/deps/react.js": {
+        "type": "file",
+        "bytes": 38246,
+        "sha256": "d825799114c356286938056830da0314c2680d1fb304c3390cd56c0bef023101"
+      },
+      ".vite/deps/react.js.map": {
+        "type": "file",
+        "bytes": 68787,
+        "sha256": "512b5b4cb2d03e310293282adf8f7e12986bad182dbe364b53730b5f8f477fcc"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js": {
+        "type": "file",
+        "bytes": 10466,
+        "sha256": "f583c333ee04c86c5706e0499464d898d978e784cdb743b2db6f386f463ba885"
+      },
+      ".vite/deps/react_jsx-dev-runtime.js.map": {
+        "type": "file",
+        "bytes": 18068,
+        "sha256": "a2cbbfc95fa5cbd63b00e1524fa38ba7d3cc8efc794e36e23278b4b1b16ffad3"
+      },
+      ".vite/deps/react_jsx-runtime.js": {
+        "type": "file",
+        "bytes": 10743,
+        "sha256": "f441d0cfcdaed154914d32ef0304199ea84b25e3f85fcea9653ce911369dadde"
+      },
+      ".vite/deps/react_jsx-runtime.js.map": {
+        "type": "file",
+        "bytes": 18636,
+        "sha256": "9ca0503453f56908949c3be7dcfe64eb4a63c6e0fa38dde4a9ef74119934fa6f"
+      },
+      ".vite/deps/rolldown-runtime-BvCyGRYZ.js": {
+        "type": "file",
+        "bytes": 192,
+        "sha256": "8857aad4f904253f9a8bb160ae7ca249376498df7c3510b0cd92b4e5a2c3b6cb"
+      }
+    }
+  },
+  "nativeIndex": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z0p6.png",
+      "bytes": 2978942,
+      "sha256": "a13167047ce77f0f55d948078e1cf011588784b8a10e6a908e531035376d0f78"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z1.png",
+      "bytes": 3610279,
+      "sha256": "7e5ff0d2673d425d3578300b93ae52a47e6513d6486ddbeb7f05cd9f71e9d709"
+    }
+  ],
+  "rawFiles": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/receipts/final.json",
+      "bytes": 3218,
+      "sha256": "93ddc052f605f1143179c914305349714191ebfb2464cd151420c506ce5a1140"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/receipts/numeric-check.json",
+      "bytes": 2798,
+      "sha256": "13fe6c3d04ea8ec919cc096964d5d596911a9a496ece4d3acec81681f154bc9c"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/receipts/post.json",
+      "bytes": 1187111,
+      "sha256": "395fc97358e59e7ac571b9036da957069043ae9618d57757a4733c1a274b2583"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/receipts/pre.json",
+      "bytes": 1183160,
+      "sha256": "5030d8669c4216d8db1b3fe69f3136c79ce0c276ff855eee2272b1a9423e6718"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/captures.json",
+      "bytes": 2299569,
+      "sha256": "55e8463f4b77eb43fa8d8579bc801448f09b2876dddd18038b60b9a93826b08f"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/progress.jsonl",
+      "bytes": 8041,
+      "sha256": "892aa925a6a3c8527885ffcdb0239328b1980a0bd78d6b6c42fb7820added6a0"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/repeat/summer-ne-z0p6.jpg",
+      "bytes": 230097,
+      "sha256": "f4999d53cc195fcd8cc7f5c1186fe3160d691cd21ee922e3d216e30e72f8f8c9"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/repeat/summer-ne-z0p6.png",
+      "bytes": 2978942,
+      "sha256": "a13167047ce77f0f55d948078e1cf011588784b8a10e6a908e531035376d0f78"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/repeat/summer-ne-z1.jpg",
+      "bytes": 281740,
+      "sha256": "3a4a0cfaf6546cb418a8226f78482d697698e9a1a283128199a899210569429a"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/repeat/summer-ne-z1.png",
+      "bytes": 3610279,
+      "sha256": "7e5ff0d2673d425d3578300b93ae52a47e6513d6486ddbeb7f05cd9f71e9d709"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z0p6-first-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z0p6-repeat-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z0p6.jpg",
+      "bytes": 230097,
+      "sha256": "f4999d53cc195fcd8cc7f5c1186fe3160d691cd21ee922e3d216e30e72f8f8c9"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z0p6.png",
+      "bytes": 2978942,
+      "sha256": "a13167047ce77f0f55d948078e1cf011588784b8a10e6a908e531035376d0f78"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z1-first-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z1-repeat-presented-state.json",
+      "bytes": 1875663,
+      "sha256": "8cbff37d92638e01176a2103dea4aaffeea452508c1e9ac2520450d65e1305d7"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z1.jpg",
+      "bytes": 281740,
+      "sha256": "3a4a0cfaf6546cb418a8226f78482d697698e9a1a283128199a899210569429a"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-before/output/height-ed83-before/results/summer-ne-z1.png",
+      "bytes": 3610279,
+      "sha256": "7e5ff0d2673d425d3578300b93ae52a47e6513d6486ddbeb7f05cd9f71e9d709"
+    }
+  ],
+  "limits": [
+    "Baseline actual composer exports16/.5 only; nominal screen heights16 and10.4, not crown-to-sole measured opaque height.",
+    "Zoom.6 actual payloadDrawEligiblefalse at cutoff.8; no target-specific zero-paint or global absent-cargo-URL assertion.",
+    "URL lineage cumulative page evidence; not frozen-window count-delta or actor-specific final visibility.",
+    "Offline full admitted engine and actual full presented snapshots distinct; no live engine-store equality claim.",
+    "Historical winter16 not repeated; A1 after17.6 not applied or measured here.",
+    "Native visual/contact/occlusion review pending.",
+    "Initial runner setup8 differing paths retained in watch log; actual hydrated pre/post guards confirm HEAD/clean and every input byte.",
+    "No products or frozen inputs edited; no automatic retries."
+  ]
+}

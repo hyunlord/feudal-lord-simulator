@@ -1,0 +1,237 @@
+{
+  "current": {
+    "head": "af879b364c00f04611778f53f389251514f981d3",
+    "baselineHEAD": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+    "cleanPre": true,
+    "cleanPost": true,
+    "tracked": 26841,
+    "input": 26896,
+    "export": 26897,
+    "lfs": 6384,
+    "freeze": "5577de9747031dfd7b36be66bf16d1bcd6c1141b90d219a80e583ddb2b63742d"
+  },
+  "approvedCode3": [
+    {
+      "path": "src/render/walkerComposer.ts",
+      "before": "1ac2d1251ef01716585130976f95b1f536a47caca5e8a37b0c6ebf48a1a2b9bf",
+      "after": "63bcc341d0b8a95ddaac7ae82e038f430757afd3e1d1fe31f46d388166cc279f"
+    },
+    {
+      "path": "tests/asset2Scales.test.ts",
+      "before": "5bbf07752148250236b5dacbe92bd710fc3d9370b30ceb0e7a671ec750bdc717",
+      "after": "a32598a822facfbfd4a148adbc5db3f82baf22d842d0de8848e39493fc1ca98a"
+    },
+    {
+      "path": "tests/phase35Rendering.test.ts",
+      "before": "236999a671ca7130217cb16732e97757879cf3f29c0657baa118cf739b8b2845",
+      "after": "3d89aa0c390e0d5d33d897252580074224770bfc18736dd0ea9b75ce9fb54208"
+    }
+  ],
+  "approvedPatchSHA": "a3d657ec717e21976dbf1bd69c5a6db9fb22ace701642c7d198573018412038d",
+  "dirtyPrep": {
+    "head": "ed83fe44abc688ee688cb4069bfc636382f5e313",
+    "trackedClean": false,
+    "freezeSHA": "22e5015abc09d5204f8d7d2e46386ec7be7ff099c970ea90e1497926bd0edba9",
+    "classification": "precommit local preparation only; never actual clean runtime"
+  },
+  "historical": [
+    {
+      "scope": "summer4",
+      "variant": "before",
+      "source": {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-summer-runtime-v1/before-start-export.json",
+        "bytes": 3729413,
+        "sha256": "a56fa7d39a6867a02714df8f73df0b0fdf819744d98c3dee67a43994c57cdfce"
+      },
+      "metadata": "RUN=astra-height-summer-before-v1-cd399e4\nLABEL=astra-height-summer-before-v1\nSHORT_SHA=cd399e4\nFULL_SHA=cd399e4abb26fc04b37dc27b5c61bec270934a7d\nDIRTY=0\nSLOT=heavy\nBRANCH=HEAD\nMAC_HOST=hyunlordui-MacBookPro\nKEEP_RUN=1\nCMD=node_modules/.bin/tsx\\ output/height-a1-summer-loaded/capture.mjs\\ capture\\ --variant\\ before\\ --states\\ output/height-a1-summer-loaded/states\\ --views\\ output/height-a1-summer-loaded/views.json\\ --out\\ output/height-a1-summer-loaded/captures-before\\ \n"
+    },
+    {
+      "scope": "winter16",
+      "variant": "before",
+      "source": {
+        "path": "/Users/rexxa/fls-astra-renderB-height-before/.remote-runs/astra-height-a1-before-full-v2-cd399e4/run.log",
+        "bytes": 72193,
+        "sha256": "403d51dc341c10d20a2ffbe080008d3c463045b55d713fadac2bd86d6df84f13"
+      },
+      "header": "== astra-height-a1-before-full-v2-cd399e4  unit=fls-run-astra-height-a1-before-full-v2-cd399e4-1791154750  host=aitopatom-d6bb  commit=cd399e4abb26fc04b37dc27b5c61bec270934a7d  dirty=0  branch=HEAD"
+    },
+    {
+      "scope": "summer4",
+      "variant": "after",
+      "source": {
+        "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-summer-runtime-v1/after-start-export.json",
+        "bytes": 3721598,
+        "sha256": "489ff9a39168e03820ad4df01c0771edef79b3ea5547abc8ea47f1f25a5a43f7"
+      },
+      "metadata": "RUN=astra-height-summer-after-v1-cd399e4\nLABEL=astra-height-summer-after-v1\nSHORT_SHA=cd399e4\nFULL_SHA=cd399e4abb26fc04b37dc27b5c61bec270934a7d\nDIRTY=1\nSLOT=heavy\nBRANCH=HEAD\nMAC_HOST=hyunlordui-MacBookPro\nKEEP_RUN=1\nCMD=node_modules/.bin/tsx\\ output/height-a1-summer-loaded/capture.mjs\\ capture\\ --variant\\ after\\ --states\\ output/height-a1-summer-loaded/states\\ --views\\ output/height-a1-summer-loaded/views.json\\ --out\\ output/height-a1-summer-loaded/captures-after\\ \n"
+    },
+    {
+      "scope": "winter16",
+      "variant": "after",
+      "source": {
+        "path": "/Users/rexxa/fls-astra-renderB-height-prep/.remote-runs/astra-height-a1-after-full-v2-cd399e4/run.log",
+        "bytes": 72187,
+        "sha256": "8f4822151e3c4aefae3bb0bba4dc724017b62b95be9b7e11c4875333ecede1d1"
+      },
+      "header": "== astra-height-a1-after-full-v2-cd399e4  unit=fls-run-astra-height-a1-after-full-v2-cd399e4-1791155125  host=aitopatom-d6bb  commit=cd399e4abb26fc04b37dc27b5c61bec270934a7d  dirty=1  branch=HEAD"
+    }
+  ],
+  "rawReferences": [
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/.omo/evidence/height-ed83-after-runtime-freeze.json",
+      "bytes": 8741373,
+      "sha256": "5577de9747031dfd7b36be66bf16d1bcd6c1141b90d219a80e583ddb2b63742d"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/pre.json",
+      "bytes": 1183183,
+      "sha256": "020f44a22c8a9aa0e3dfd4cc92daa6bea99e47095c873d701a44d367ad99b2c3"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/post.json",
+      "bytes": 1187118,
+      "sha256": "258d984fbe08ba9bc3f9859cb7245642ed94eef880cdcc4c016b4bffcc8a61dc"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/results/captures.json",
+      "bytes": 2299975,
+      "sha256": "1413548df0e41202a299e9e75907ca333a447b6210688464634e83229daf3f24"
+    },
+    {
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/baseline/results/captures.json",
+      "bytes": 2299569,
+      "sha256": "55e8463f4b77eb43fa8d8579bc801448f09b2876dddd18038b60b9a93826b08f"
+    }
+  ],
+  "copiedEvidence": [
+    {
+      "packaged": "current-after-result.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-af879-after-runtime-result.json",
+      "bytes": 13697,
+      "sha256": "61aff291c552f78b6ee21951747418cd3892ebd3e5ce0c811683dc1f54b5ebfe"
+    },
+    {
+      "packaged": "current-before-result.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-ed83-before-runtime-result.json",
+      "bytes": 31865,
+      "sha256": "c6d6b2c5795a84a8069f6a57eff01f62c2b747ba7ef406c7bca78bb60819414a"
+    },
+    {
+      "packaged": "current-parent-check.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-af879-after-parent-check.json",
+      "bytes": 906,
+      "sha256": "6db19eac98b0e2a94f0a2c6b6ce7d4c66694bbf5689f9c678a103dbd83beede7"
+    },
+    {
+      "packaged": "current-before-parent-check.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-ed83-before-parent-check.json",
+      "bytes": 1151,
+      "sha256": "e003325cb9e9aa13c3cc03870e41bf78a7575e37d0c7051f8c4caf9e7cbf45c9"
+    },
+    {
+      "packaged": "current-native-review.md",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-af879-after-native-review.md",
+      "bytes": 2206,
+      "sha256": "4d5dfd286e9cf6140b169271ade176ba0c417f85576a0c6f8a3c72e29c983d61"
+    },
+    {
+      "packaged": "current-native-review.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-af879-after-native-review.json",
+      "bytes": 3684,
+      "sha256": "0434470021cb54d6cc215ce0a628a3f1c98c5327d1dfd406fbe1092ab1e2aa59"
+    },
+    {
+      "packaged": "current-before-native-review.md",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-ed83-before-native-review.md",
+      "bytes": 2082,
+      "sha256": "a84d8ddb92aef7f353ee51d908be47d6756e3a1b49ae1973b4194da768b44f68"
+    },
+    {
+      "packaged": "current-before-native-review.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-ed83-before-native-review.json",
+      "bytes": 2722,
+      "sha256": "9cc3ebd5f09a41c5b456c7825b4b5cd4df9d8e6a29aaa0e0c3ea125a3231b759"
+    },
+    {
+      "packaged": "a1-acceptance-history.md",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-a1-acceptance-review.md",
+      "bytes": 8458,
+      "sha256": "f209eccb970acefbe0e272cabc9ff492dce5165014c580a77351800157b5c4c1"
+    },
+    {
+      "packaged": "a1-acceptance-history.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-a1-acceptance-review.json",
+      "bytes": 3899,
+      "sha256": "8723c7ff279951a1a22b4440db526207cb292efa6b1d5b96f109004a8d0faa47"
+    },
+    {
+      "packaged": "dirty-preparation-history.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-ed83-after-prep.json",
+      "bytes": 5320,
+      "sha256": "26eaa4115a5eacb931a213a3d520d05567304a944b0152440da55b9edfeb71a0"
+    },
+    {
+      "packaged": "current-final.json",
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/final.json",
+      "bytes": 3218,
+      "sha256": "dbb151cdb306081d40fe05e5c8f80db7a1713381b9bddda4a2bcc19792452185"
+    },
+    {
+      "packaged": "current-numeric-check.json",
+      "path": "/Users/rexxa/fls-astra-renderB-height-ed83-after/output/height-ed83-after/receipts/numeric-check.json",
+      "bytes": 3167,
+      "sha256": "54fedcd3380a6b147753627f51702527e02329784ad79e4b8d6d3fd91fc1566e"
+    },
+    {
+      "packaged": "historical-winter-result.md",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-a1-runtime-full-v2/RESULT.md",
+      "bytes": 5755,
+      "sha256": "8480b6ec3ce1d41675e73900edb39561a7c2c679574694615a98e5647f5ca562"
+    },
+    {
+      "packaged": "historical-winter-status.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-a1-runtime-full-v2/status.json",
+      "bytes": 66381,
+      "sha256": "0d8aca15d70f7107376d5c8fa308cd8c50cf0f511db5a9e7cd8f336ba4df4e51"
+    },
+    {
+      "packaged": "historical-winter-parent-native.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-a1-parent-native-review.json",
+      "bytes": 719,
+      "sha256": "5bf23bf8150170c5ca436685726b66465a4e11b714d1decdc0d5c564acd9ea7e"
+    },
+    {
+      "packaged": "historical-winter-zoom-index.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-summer-zooms-prep-v1/existing-winter-index.json",
+      "bytes": 12643,
+      "sha256": "4fdca5b5dd4c116d3ea25a836535e3d18147779f13fb8443cefaf0990d219382"
+    },
+    {
+      "packaged": "historical-summer4-result.md",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-summer-runtime-v1/RESULT.md",
+      "bytes": 6852,
+      "sha256": "421750541ad819030cb57c0fcd42dd79f65b29972f14b9cf5235bfd79061c0c4"
+    },
+    {
+      "packaged": "historical-summer4-numeric.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-summer-runtime-v1/numeric.json",
+      "bytes": 3846,
+      "sha256": "b209d74b377c205639e57b62e12c525b54604105f45730b15aa362b75ee02fc2"
+    },
+    {
+      "packaged": "historical-summer4-native-index.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/evidence/height-summer-runtime-v1/native-index.json",
+      "bytes": 8532,
+      "sha256": "6713d8962edb236ced5d58febabc975c13cb04ba1793cafed31df93de4da7b30"
+    },
+    {
+      "packaged": "historical-summer4-parent-native.json",
+      "path": "/Users/rexxa/fls-astra-renderB/.omo/drafts/height-summer-parent-native-review.json",
+      "bytes": 2417,
+      "sha256": "f33098ae486d6d74780bc583334ae18b3ade277c12f468d536738a5a76b1e0cc"
+    }
+  ],
+  "currentRawIndex": "current-after-result.json#rawFiles",
+  "baselineRawIndex": "current-before-result.json#rawFiles",
+  "currentCompatibility": "Exact approved composer+tests3 at af879; observed ed83 consumer/manifest64 and public1665 preserved per preparation; no assertion about an unknown future main HEAD or main transfer."
+}
