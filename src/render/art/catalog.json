@@ -8973,5 +8973,4621 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "rb-trade-world-72",
+    "entries": [
+      {
+        "id": "yard_street_front_shop_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_street_front_shop_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_street_front_shop_a_summer.png",
+          "sourceSha256": "e1f55e419e3c08b3f9b27554b5bc52b14702d430a8c3e6698df08256b4fad243",
+          "runtimeSha256": "e1f55e419e3c08b3f9b27554b5bc52b14702d430a8c3e6698df08256b4fad243"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "tailor"
+        ],
+        "placement": "front-yard"
+      },
+      {
+        "id": "yard_street_front_shop_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_street_front_shop_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_street_front_shop_a_winter.png",
+          "sourceSha256": "7f009f9fb8e19ec4c749cc979a2ca20c29c97780d3668723b11bf4654d564e29",
+          "runtimeSha256": "7f009f9fb8e19ec4c749cc979a2ca20c29c97780d3668723b11bf4654d564e29"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "tailor"
+        ],
+        "placement": "front-yard"
+      },
+      {
+        "id": "yard_street_front_shop_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_street_front_shop_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_street_front_shop_b_summer.png",
+          "sourceSha256": "f945fe30dc4fd62cb9516304c2332da15809ea4c64224758e2f7c4c91e43d146",
+          "runtimeSha256": "f945fe30dc4fd62cb9516304c2332da15809ea4c64224758e2f7c4c91e43d146"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "spicer"
+        ],
+        "placement": "front-yard"
+      },
+      {
+        "id": "yard_street_front_shop_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_street_front_shop_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_street_front_shop_b_winter.png",
+          "sourceSha256": "9a7b96e6ceb1873b3b51b78eafc4ba2f507f7efb3d22eed01f9d7541dd2f8853",
+          "runtimeSha256": "9a7b96e6ceb1873b3b51b78eafc4ba2f507f7efb3d22eed01f9d7541dd2f8853"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "spicer"
+        ],
+        "placement": "front-yard"
+      },
+      {
+        "id": "yard_rear_workshop_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_rear_workshop_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_rear_workshop_a_summer.png",
+          "sourceSha256": "4a97903ce45748e8fc9dce9964b874626e903d3887c4ac90f8582bca0e33f549",
+          "runtimeSha256": "4a97903ce45748e8fc9dce9964b874626e903d3887c4ac90f8582bca0e33f549"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "rear_workshop"
+        ],
+        "occupations": [
+          "weaver"
+        ],
+        "placement": "back-yard"
+      },
+      {
+        "id": "yard_rear_workshop_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_rear_workshop_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_rear_workshop_a_winter.png",
+          "sourceSha256": "67efc0aae5ed038057e65b15eee965849ab618293e47737f5c9eecff7721d0e8",
+          "runtimeSha256": "67efc0aae5ed038057e65b15eee965849ab618293e47737f5c9eecff7721d0e8"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "rear_workshop"
+        ],
+        "occupations": [
+          "weaver"
+        ],
+        "placement": "back-yard"
+      },
+      {
+        "id": "yard_rear_workshop_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_rear_workshop_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_rear_workshop_b_summer.png",
+          "sourceSha256": "38623dab806e47f117302176fcbc2deb119dcf9b59a700f0e1fbc6b4ea03e0bd",
+          "runtimeSha256": "38623dab806e47f117302176fcbc2deb119dcf9b59a700f0e1fbc6b4ea03e0bd"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "rear_workshop"
+        ],
+        "occupations": [
+          "cooper"
+        ],
+        "placement": "back-yard"
+      },
+      {
+        "id": "yard_rear_workshop_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_rear_workshop_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_rear_workshop_b_winter.png",
+          "sourceSha256": "ad8e31738b0dd87def595bd47000cfc6c599068c019f7c6af54f28f5a0088765",
+          "runtimeSha256": "ad8e31738b0dd87def595bd47000cfc6c599068c019f7c6af54f28f5a0088765"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "rear_workshop"
+        ],
+        "occupations": [
+          "cooper"
+        ],
+        "placement": "back-yard"
+      },
+      {
+        "id": "yard_large_yard_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_large_yard_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_large_yard_a_summer.png",
+          "sourceSha256": "e759ae98a8b4792104b36cdf22920a35af346f4c034f1f91d89eb447f4552d04",
+          "runtimeSha256": "e759ae98a8b4792104b36cdf22920a35af346f4c034f1f91d89eb447f4552d04"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "innkeeper"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_large_yard_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_large_yard_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_large_yard_a_winter.png",
+          "sourceSha256": "e10fcb2b62f93aedbbbd4d38f377add8457d373b7cb71d74988eee44a3b119ca",
+          "runtimeSha256": "e10fcb2b62f93aedbbbd4d38f377add8457d373b7cb71d74988eee44a3b119ca"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "innkeeper"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_large_yard_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_large_yard_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_large_yard_b_summer.png",
+          "sourceSha256": "38af3a8494acdc0e58a39a53b37bffe2470bbe5642028ac611b7353f28233ab7",
+          "runtimeSha256": "38af3a8494acdc0e58a39a53b37bffe2470bbe5642028ac611b7353f28233ab7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "wheelwright"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_large_yard_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_large_yard_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_large_yard_b_winter.png",
+          "sourceSha256": "578c7553914ed71ed9b62801ca85e9fa211329662c901989710c6997a335c9bd",
+          "runtimeSha256": "578c7553914ed71ed9b62801ca85e9fa211329662c901989710c6997a335c9bd"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "wheelwright"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_dirty_yard_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_dirty_yard_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_dirty_yard_a_summer.png",
+          "sourceSha256": "a4000b74447a143a84c0d98f2bde47ed5e66f6e48785e69200b3016524b56341",
+          "runtimeSha256": "a4000b74447a143a84c0d98f2bde47ed5e66f6e48785e69200b3016524b56341"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "dirty_yard"
+        ],
+        "occupations": [
+          "butcher"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_dirty_yard_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_dirty_yard_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_dirty_yard_a_winter.png",
+          "sourceSha256": "4cc1785ad3d5d237ad17a94a59f3b77fab08fe8d731e63478d856fa279b7a37f",
+          "runtimeSha256": "4cc1785ad3d5d237ad17a94a59f3b77fab08fe8d731e63478d856fa279b7a37f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "dirty_yard"
+        ],
+        "occupations": [
+          "butcher"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_dirty_yard_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_dirty_yard_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_dirty_yard_b_summer.png",
+          "sourceSha256": "e85fa325c851f3206de3059d5f16a4c7d0508967f084e0a7fa61876e3149a1e3",
+          "runtimeSha256": "e85fa325c851f3206de3059d5f16a4c7d0508967f084e0a7fa61876e3149a1e3"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "dirty_yard"
+        ],
+        "occupations": [
+          "brewer"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_dirty_yard_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_dirty_yard_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_dirty_yard_b_winter.png",
+          "sourceSha256": "bbd721f4b7e1535275249a5fc9153d9c5b51fcee40e3bdbdde797bbe869cdba5",
+          "runtimeSha256": "bbd721f4b7e1535275249a5fc9153d9c5b51fcee40e3bdbdde797bbe869cdba5"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "dirty_yard"
+        ],
+        "occupations": [
+          "brewer"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_nuisance_yard_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_nuisance_yard_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_nuisance_yard_a_summer.png",
+          "sourceSha256": "2e8ae5e3a7c7c16cffcc45a3fa3139c3865a6314a2adf789e7a4a1874c60e907",
+          "runtimeSha256": "2e8ae5e3a7c7c16cffcc45a3fa3139c3865a6314a2adf789e7a4a1874c60e907"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "nuisance_yard"
+        ],
+        "occupations": [
+          "tanner"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_nuisance_yard_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_nuisance_yard_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_nuisance_yard_a_winter.png",
+          "sourceSha256": "7bbae7e984ba89e2d6cb735c1e1cdae009b0a258a28c58f5e162a0530784a83f",
+          "runtimeSha256": "7bbae7e984ba89e2d6cb735c1e1cdae009b0a258a28c58f5e162a0530784a83f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "nuisance_yard"
+        ],
+        "occupations": [
+          "tanner"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_nuisance_yard_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_nuisance_yard_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_nuisance_yard_b_summer.png",
+          "sourceSha256": "ea63b7bed0fac0fc13b1d35d82fd5aa58f29c4116df3cf00d4b5a3587689874d",
+          "runtimeSha256": "ea63b7bed0fac0fc13b1d35d82fd5aa58f29c4116df3cf00d4b5a3587689874d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "nuisance_yard"
+        ],
+        "occupations": [
+          "tanner"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_nuisance_yard_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_nuisance_yard_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_nuisance_yard_b_winter.png",
+          "sourceSha256": "516ef0ba2618c7b1634f65d20f8d1e942e6da7e5612dd23b7c27e53cc0cb8946",
+          "runtimeSha256": "516ef0ba2618c7b1634f65d20f8d1e942e6da7e5612dd23b7c27e53cc0cb8946"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "nuisance_yard"
+        ],
+        "occupations": [
+          "tanner"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_forge_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_forge_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_forge_a_summer.png",
+          "sourceSha256": "727ee9bfacf7fb08363c24a5c18b10a3291fc7b9b13ca416f005aa78250de34e",
+          "runtimeSha256": "727ee9bfacf7fb08363c24a5c18b10a3291fc7b9b13ca416f005aa78250de34e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "forge"
+        ],
+        "occupations": [
+          "smith"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_forge_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_forge_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_forge_a_winter.png",
+          "sourceSha256": "91cee4a8ada0309c78b75c20811488999f67f559b9587fe9fd4e52a45627633f",
+          "runtimeSha256": "91cee4a8ada0309c78b75c20811488999f67f559b9587fe9fd4e52a45627633f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "forge"
+        ],
+        "occupations": [
+          "smith"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_forge_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_forge_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_forge_b_summer.png",
+          "sourceSha256": "2e3591e349c79f9ca34a6340b6a79e499830529f04e72022235d7864c29653bd",
+          "runtimeSha256": "2e3591e349c79f9ca34a6340b6a79e499830529f04e72022235d7864c29653bd"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "forge"
+        ],
+        "occupations": [
+          "smith"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_forge_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_forge_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_forge_b_winter.png",
+          "sourceSha256": "8465d92e69d2ae441335eaf468835f03848fbfe3cdc53d60c177be2eb059b4b8",
+          "runtimeSha256": "8465d92e69d2ae441335eaf468835f03848fbfe3cdc53d60c177be2eb059b4b8"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.35200000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "forge"
+        ],
+        "occupations": [
+          "smith"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_waterside_workshop_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_waterside_workshop_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_waterside_workshop_a_summer.png",
+          "sourceSha256": "94f66ec76b7304f19a2f3462b1ec58b71fba8a1fab7d3b71d19864f88f46e140",
+          "runtimeSha256": "94f66ec76b7304f19a2f3462b1ec58b71fba8a1fab7d3b71d19864f88f46e140"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "waterside_workshop"
+        ],
+        "occupations": [
+          "dyer"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_waterside_workshop_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_waterside_workshop_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_waterside_workshop_a_winter.png",
+          "sourceSha256": "4eee957de94608d581dab19901760e88b3880d3b0abc5f8dad870278c66a5270",
+          "runtimeSha256": "4eee957de94608d581dab19901760e88b3880d3b0abc5f8dad870278c66a5270"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "waterside_workshop"
+        ],
+        "occupations": [
+          "dyer"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_waterside_workshop_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_waterside_workshop_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_waterside_workshop_b_summer.png",
+          "sourceSha256": "fac9aa0a96f0b8bd0fdd7183b46c333b1b76c2ec640b30d155a6526c9af21ff1",
+          "runtimeSha256": "fac9aa0a96f0b8bd0fdd7183b46c333b1b76c2ec640b30d155a6526c9af21ff1"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "waterside_workshop"
+        ],
+        "occupations": [
+          "fuller"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_waterside_workshop_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_waterside_workshop_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_waterside_workshop_b_winter.png",
+          "sourceSha256": "1282dbcf57da0f9083ee53e42df36ecc5af7b9448cc98642d3c001d8f05aeed7",
+          "runtimeSha256": "1282dbcf57da0f9083ee53e42df36ecc5af7b9448cc98642d3c001d8f05aeed7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "waterside_workshop"
+        ],
+        "occupations": [
+          "fuller"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_warehouse_shop_a_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_warehouse_shop_a_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_warehouse_shop_a_summer.png",
+          "sourceSha256": "cc980873821e0848156853acd4447ebf247adb7b25da0af77a79ee46d9d8f0b3",
+          "runtimeSha256": "cc980873821e0848156853acd4447ebf247adb7b25da0af77a79ee46d9d8f0b3"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "warehouse_shop"
+        ],
+        "occupations": [
+          "merchant"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_warehouse_shop_a_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_warehouse_shop_a_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_warehouse_shop_a_winter.png",
+          "sourceSha256": "fe618ee137657704a2d71688d82edb38fd5f0232380bd4b95b6cd25b30fe6d06",
+          "runtimeSha256": "fe618ee137657704a2d71688d82edb38fd5f0232380bd4b95b6cd25b30fe6d06"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "warehouse_shop"
+        ],
+        "occupations": [
+          "merchant"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_warehouse_shop_b_summer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_warehouse_shop_b_summer.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_warehouse_shop_b_summer.png",
+          "sourceSha256": "2424f424864655a426668731bb3597e0e73bf55f7af8e15ee9848b48d24e2f7c",
+          "runtimeSha256": "2424f424864655a426668731bb3597e0e73bf55f7af8e15ee9848b48d24e2f7c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "summer",
+        "archetypes": [
+          "warehouse_shop"
+        ],
+        "occupations": [
+          "vintner"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "yard_warehouse_shop_b_winter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/yard/yard_warehouse_shop_b_winter.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/yard/yard_warehouse_shop_b_winter.png",
+          "sourceSha256": "e66b7b17ed73e48474f63282ea3bd43eea5933abc451ea7b87ea58cf5dfb38d1",
+          "runtimeSha256": "e66b7b17ed73e48474f63282ea3bd43eea5933abc451ea7b87ea58cf5dfb38d1"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 104
+          },
+          "scale": 0.29645000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 1
+          }
+        },
+        "season": "winter",
+        "archetypes": [
+          "warehouse_shop"
+        ],
+        "occupations": [
+          "vintner"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "street_baker",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_baker.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_baker.png",
+          "sourceSha256": "e201a2cc2d479617621d838525e4c6493bd193b849cda0bb62c568c64cb3e8f6",
+          "runtimeSha256": "e201a2cc2d479617621d838525e4c6493bd193b849cda0bb62c568c64cb3e8f6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 74,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "baker"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_brewer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_brewer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_brewer.png",
+          "sourceSha256": "c473915e073088ede9db1f0bb802e799c72a520be087c90c8996bdc537fd0b88",
+          "runtimeSha256": "c473915e073088ede9db1f0bb802e799c72a520be087c90c8996bdc537fd0b88"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 55,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "brewer"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_butcher_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_butcher_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_butcher_a.png",
+          "sourceSha256": "c7c9bf853a2fb5b1d2438c1cd36d86ec7de5c76e9ad0d802b270b0cbd874f45b",
+          "runtimeSha256": "c7c9bf853a2fb5b1d2438c1cd36d86ec7de5c76e9ad0d802b270b0cbd874f45b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 82,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "dirty_yard"
+        ],
+        "occupations": [
+          "butcher"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "front_butcher_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_butcher_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_butcher_b.png",
+          "sourceSha256": "42c3c4729fbc88c03e1e74aefd9e6a67a3224f880feab36ec53b288f71d9737f",
+          "runtimeSha256": "42c3c4729fbc88c03e1e74aefd9e6a67a3224f880feab36ec53b288f71d9737f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 63,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "dirty_yard"
+        ],
+        "occupations": [
+          "butcher"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "street_butcher",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_butcher.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_butcher.png",
+          "sourceSha256": "1e2f20ae07df8eb45eaec17f6e25c56c62bd8e1274e673e7c2a4d3de11c0ac66",
+          "runtimeSha256": "1e2f20ae07df8eb45eaec17f6e25c56c62bd8e1274e673e7c2a4d3de11c0ac66"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 73,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "butcher"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_miller",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_miller.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_miller.png",
+          "sourceSha256": "a2c8c039ef42e3a1b238f4adb2d3d3a3e1c1009bd62d47ac4bcd5cac0133775b",
+          "runtimeSha256": "a2c8c039ef42e3a1b238f4adb2d3d3a3e1c1009bd62d47ac4bcd5cac0133775b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 55,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "miller"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_innkeeper",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_innkeeper.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_innkeeper.png",
+          "sourceSha256": "8f7515db0da8a02d523c27d82e9f1f3cb6e564bb0514fcb7da336fae5aae10b3",
+          "runtimeSha256": "8f7515db0da8a02d523c27d82e9f1f3cb6e564bb0514fcb7da336fae5aae10b3"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 57,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "innkeeper"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_tailor_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_tailor_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_tailor_a.png",
+          "sourceSha256": "73d026da7ca18cb47358cb41e134ef1ab361904c9f0e86d63f5ae9ecccc33e6c",
+          "runtimeSha256": "73d026da7ca18cb47358cb41e134ef1ab361904c9f0e86d63f5ae9ecccc33e6c"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 82,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "tailor"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "front_tailor_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_tailor_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_tailor_b.png",
+          "sourceSha256": "f790b18430a7f62d33e634157198d59717f36bbe73eacc0aabac6ac16cf6c577",
+          "runtimeSha256": "f790b18430a7f62d33e634157198d59717f36bbe73eacc0aabac6ac16cf6c577"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 91,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "tailor"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "street_tailor",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_tailor.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_tailor.png",
+          "sourceSha256": "12c2fa52fb2ab3adc81ef32b3170035b84ddeae9143bcf27fef418dc5eae3b6f",
+          "runtimeSha256": "12c2fa52fb2ab3adc81ef32b3170035b84ddeae9143bcf27fef418dc5eae3b6f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 59,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "tailor"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_weaver",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_weaver.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_weaver.png",
+          "sourceSha256": "ff9b7698dd43352f48c26bf030a81944c0841c3dc547de185284ce64bbadf42b",
+          "runtimeSha256": "ff9b7698dd43352f48c26bf030a81944c0841c3dc547de185284ce64bbadf42b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 53,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "weaver"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_smith",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_smith.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_smith.png",
+          "sourceSha256": "0ae944b236ce7b25893529e45aec97c206098bd3005b4bd0c5af1969098820c7",
+          "runtimeSha256": "0ae944b236ce7b25893529e45aec97c206098bd3005b4bd0c5af1969098820c7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 78,
+            "y": 118
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "smith"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_carpenter",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_carpenter.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_carpenter.png",
+          "sourceSha256": "0cc440de6627f4abb989186555dadd09823b87486511fba4b522376c468e892f",
+          "runtimeSha256": "0cc440de6627f4abb989186555dadd09823b87486511fba4b522376c468e892f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 55,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "carpenter"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_shoemaker_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_shoemaker_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_shoemaker_a.png",
+          "sourceSha256": "6f6181caa54253b2ba152f3e353d97de5de89ff2cec4212646d132dd2ff534c0",
+          "runtimeSha256": "6f6181caa54253b2ba152f3e353d97de5de89ff2cec4212646d132dd2ff534c0"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 67,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "rear_workshop"
+        ],
+        "occupations": [
+          "shoemaker"
+        ],
+        "placement": "back-yard"
+      },
+      {
+        "id": "front_shoemaker_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_shoemaker_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_shoemaker_b.png",
+          "sourceSha256": "06f516993a80871e717b59cbf908ad7faa71f819f99ffaedf87468c1076ffeb1",
+          "runtimeSha256": "06f516993a80871e717b59cbf908ad7faa71f819f99ffaedf87468c1076ffeb1"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 78,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "rear_workshop"
+        ],
+        "occupations": [
+          "shoemaker"
+        ],
+        "placement": "back-yard"
+      },
+      {
+        "id": "street_shoemaker",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_shoemaker.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_shoemaker.png",
+          "sourceSha256": "c55631bf01066cccdaac544480178db335c1c9dc8291c1ec9da52774e7a3bb15",
+          "runtimeSha256": "c55631bf01066cccdaac544480178db335c1c9dc8291c1ec9da52774e7a3bb15"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 52,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "shoemaker"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_carrier",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_carrier.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_carrier.png",
+          "sourceSha256": "170a46642238f13690d7e8dd2b1f5b369a83d905d268ecb2c993d7a3b1e50d3d",
+          "runtimeSha256": "170a46642238f13690d7e8dd2b1f5b369a83d905d268ecb2c993d7a3b1e50d3d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 58,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "carter"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_merchant",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_merchant.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_merchant.png",
+          "sourceSha256": "f21e4d7eebd6cd72067b4dc5410404964418f146a6850ce421d75241ffdc5934",
+          "runtimeSha256": "f21e4d7eebd6cd72067b4dc5410404964418f146a6850ce421d75241ffdc5934"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 53,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "merchant"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_fuller",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_fuller.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_fuller.png",
+          "sourceSha256": "98d035f973224f582b07dd68e9a3660750531515317591d8bd40575639fdc01a",
+          "runtimeSha256": "98d035f973224f582b07dd68e9a3660750531515317591d8bd40575639fdc01a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 55,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "fuller"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_dyer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_dyer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_dyer.png",
+          "sourceSha256": "4e78cb6314d63395a5f14f9c1deaa0041c27e99a7c5ec52d7bd2afa2744d0895",
+          "runtimeSha256": "4e78cb6314d63395a5f14f9c1deaa0041c27e99a7c5ec52d7bd2afa2744d0895"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 50,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "dyer"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "street_tanner",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_tanner.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_tanner.png",
+          "sourceSha256": "a24342f28d0c5f20930c5b6946e2ff71f1778bcf1b85b45aedc7de69dc7fec7b",
+          "runtimeSha256": "a24342f28d0c5f20930c5b6946e2ff71f1778bcf1b85b45aedc7de69dc7fec7b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 73,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "tanner"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_cooper_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_cooper_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_cooper_a.png",
+          "sourceSha256": "ce22e6dfd063bc897f22b40f69e28078c416f7ec29b27aa99e56aa1ddc514416",
+          "runtimeSha256": "ce22e6dfd063bc897f22b40f69e28078c416f7ec29b27aa99e56aa1ddc514416"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 79,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "cooper"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "front_cooper_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_cooper_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_cooper_b.png",
+          "sourceSha256": "d3091e4a2a863c28424bfce4ecadb1c50d0468ddf6f35ad0b83fd09b4fe116d9",
+          "runtimeSha256": "d3091e4a2a863c28424bfce4ecadb1c50d0468ddf6f35ad0b83fd09b4fe116d9"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 89,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "cooper"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "street_cooper",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_cooper.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_cooper.png",
+          "sourceSha256": "db635d2721aaec07ba4869b2abfb2dbcd92011fffd87f1c7c3d55861616d5a42",
+          "runtimeSha256": "db635d2721aaec07ba4869b2abfb2dbcd92011fffd87f1c7c3d55861616d5a42"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 49,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "cooper"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_wheelwright_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_wheelwright_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_wheelwright_a.png",
+          "sourceSha256": "3db07e9f2f99b8db5ff7df0cc4d499574b49eac7b1cde93cb457e0f3ee07f7a3",
+          "runtimeSha256": "3db07e9f2f99b8db5ff7df0cc4d499574b49eac7b1cde93cb457e0f3ee07f7a3"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 86,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "wheelwright"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "front_wheelwright_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_wheelwright_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_wheelwright_b.png",
+          "sourceSha256": "104b52ecdb9284ae4b10d2b3dc378fdc2cf59480453c4902ab37448d10da5b6d",
+          "runtimeSha256": "104b52ecdb9284ae4b10d2b3dc378fdc2cf59480453c4902ab37448d10da5b6d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 92,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "large_yard"
+        ],
+        "occupations": [
+          "wheelwright"
+        ],
+        "placement": "yard"
+      },
+      {
+        "id": "street_wheelwright",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_wheelwright.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_wheelwright.png",
+          "sourceSha256": "61e3cf4d3da2d9df5d2a52d2aa71eb69ebe196c77f2d51ad8b47ff49af12f88d",
+          "runtimeSha256": "61e3cf4d3da2d9df5d2a52d2aa71eb69ebe196c77f2d51ad8b47ff49af12f88d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 52,
+            "y": 118
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "wheelwright"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_mercer_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_mercer_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_mercer_a.png",
+          "sourceSha256": "c88e2aee887d832ab5da7fd5789f44e2e417ef315c2dce93feb59930011e06ec",
+          "runtimeSha256": "c88e2aee887d832ab5da7fd5789f44e2e417ef315c2dce93feb59930011e06ec"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 79,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "mercer"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "front_mercer_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_mercer_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_mercer_b.png",
+          "sourceSha256": "34d8c180cfc46d4ce9bfb2949f9eff3691a8845305820f73bfcf8e1ff5f29375",
+          "runtimeSha256": "34d8c180cfc46d4ce9bfb2949f9eff3691a8845305820f73bfcf8e1ff5f29375"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 71,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "mercer"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "street_mercer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_mercer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_mercer.png",
+          "sourceSha256": "4412178f367298899f900c8f1f5773321ddabdaa70796432aa5d80113e59cdc9",
+          "runtimeSha256": "4412178f367298899f900c8f1f5773321ddabdaa70796432aa5d80113e59cdc9"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 56,
+            "y": 118
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "mercer"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_spicer_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_spicer_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_spicer_a.png",
+          "sourceSha256": "8e9e6a448dda99f64596572e93390ebf15406f53bd9e5f2b22bee13ec840ac40",
+          "runtimeSha256": "8e9e6a448dda99f64596572e93390ebf15406f53bd9e5f2b22bee13ec840ac40"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 84,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "spicer"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "front_spicer_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_spicer_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_spicer_b.png",
+          "sourceSha256": "9504d1af242eaa12df061ff2de8698c2c6fd9707b652c51b2a189c800452dc67",
+          "runtimeSha256": "9504d1af242eaa12df061ff2de8698c2c6fd9707b652c51b2a189c800452dc67"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 75,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_front_shop"
+        ],
+        "occupations": [
+          "spicer"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "street_spicer",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_spicer.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_spicer.png",
+          "sourceSha256": "3e1b2349e1580a8dc2c9f9852e3aabe678c309eaea79ec36c232ee1797357cf9",
+          "runtimeSha256": "3e1b2349e1580a8dc2c9f9852e3aabe678c309eaea79ec36c232ee1797357cf9"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 52,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "spicer"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "front_vintner_a",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_vintner_a.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_vintner_a.png",
+          "sourceSha256": "ca8d4b831e34685a3b2893d90c9e51849c9d8949c64ceac0ac153ba2be4aff00",
+          "runtimeSha256": "ca8d4b831e34685a3b2893d90c9e51849c9d8949c64ceac0ac153ba2be4aff00"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 55,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "warehouse_shop"
+        ],
+        "occupations": [
+          "vintner"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "front_vintner_b",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/front/front_vintner_b.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/front/front_vintner_b.png",
+          "sourceSha256": "ae57f769e332a071148027ae9504e6b50080a951fc363fd06f2a6e1ca9639dc7",
+          "runtimeSha256": "ae57f769e332a071148027ae9504e6b50080a951fc363fd06f2a6e1ca9639dc7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 52,
+            "y": 88
+          },
+          "scale": 0.25938000000000005,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "warehouse_shop"
+        ],
+        "occupations": [
+          "vintner"
+        ],
+        "placement": "frontage"
+      },
+      {
+        "id": "street_vintner",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/trade-world/street/street_vintner.png",
+          "width": 128,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/street/street_vintner.png",
+          "sourceSha256": "37b7e3ceb89407853e50c00f9f57ac9fa02c9b1bb371dee4112535de93f6da2a",
+          "runtimeSha256": "37b7e3ceb89407853e50c00f9f57ac9fa02c9b1bb371dee4112535de93f6da2a"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 49,
+            "y": 117
+          },
+          "scale": 0.21307000000000004,
+          "allowMirror": false,
+          "footprint": {
+            "width": 1,
+            "height": 1
+          }
+        },
+        "archetypes": [
+          "street_corner"
+        ],
+        "occupations": [
+          "vintner"
+        ],
+        "placement": "street"
+      },
+      {
+        "id": "cargo_bread_basket_NE",
+        "kind": "walker-cargo",
+        "image": {
+          "url": "assets/trade-world/cargo/cargo_bread_basket_NE.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/cargo/cargo_bread_basket_NE.png",
+          "sourceSha256": "790fb71a77fed50d02ce0da0309d13f4b172d36be4d42214e0c8ee128d0f56ed",
+          "runtimeSha256": "790fb71a77fed50d02ce0da0309d13f4b172d36be4d42214e0c8ee128d0f56ed"
+        },
+        "cargoKinds": [
+          "bread"
+        ],
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "pivot": {
+              "x": 14.676,
+              "y": 4.756
+            },
+            "durationMs": 100
+          }
+        ],
+        "facing": "ne",
+        "scale": 0.15459459459459463,
+        "allowMirror": false,
+        "role": "cargo",
+        "attachment": {
+          "anchor": "grip",
+          "pivot": {
+            "x": 14.676,
+            "y": 4.756
+          }
+        }
+      },
+      {
+        "id": "cargo_bread_basket_SE",
+        "kind": "walker-cargo",
+        "image": {
+          "url": "assets/trade-world/cargo/cargo_bread_basket_SE.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/cargo/cargo_bread_basket_SE.png",
+          "sourceSha256": "281471ef35c66b7b371515a99765f25524d7d08e6da1ef47162774331bfe092f",
+          "runtimeSha256": "281471ef35c66b7b371515a99765f25524d7d08e6da1ef47162774331bfe092f"
+        },
+        "cargoKinds": [
+          "bread"
+        ],
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "pivot": {
+              "x": 17.461,
+              "y": 2.933
+            },
+            "durationMs": 100
+          }
+        ],
+        "facing": "se",
+        "scale": 0.15459459459459463,
+        "allowMirror": false,
+        "role": "cargo",
+        "attachment": {
+          "anchor": "grip",
+          "pivot": {
+            "x": 17.461,
+            "y": 2.933
+          }
+        }
+      },
+      {
+        "id": "cargo_bread_basket_SW",
+        "kind": "walker-cargo",
+        "image": {
+          "url": "assets/trade-world/cargo/cargo_bread_basket_SW.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/cargo/cargo_bread_basket_SW.png",
+          "sourceSha256": "15d739f23315e8d446e37674ac6c401d6047a3e7f7113737109b02c4e98cefdd",
+          "runtimeSha256": "15d739f23315e8d446e37674ac6c401d6047a3e7f7113737109b02c4e98cefdd"
+        },
+        "cargoKinds": [
+          "bread"
+        ],
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "pivot": {
+              "x": 13.451,
+              "y": 6.04
+            },
+            "durationMs": 100
+          }
+        ],
+        "facing": "sw",
+        "scale": 0.15459459459459463,
+        "allowMirror": false,
+        "role": "cargo",
+        "attachment": {
+          "anchor": "grip",
+          "pivot": {
+            "x": 13.451,
+            "y": 6.04
+          }
+        }
+      },
+      {
+        "id": "cargo_bread_basket_NW",
+        "kind": "walker-cargo",
+        "image": {
+          "url": "assets/trade-world/cargo/cargo_bread_basket_NW.png",
+          "width": 32,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/trade-world/candidates-20261003/assets/cargo/cargo_bread_basket_NW.png",
+          "sourceSha256": "3b03f4e97b8a3dd44eae635d7f4fc7eafa5dbe062797e18bc6e1afc87d06d426",
+          "runtimeSha256": "3b03f4e97b8a3dd44eae635d7f4fc7eafa5dbe062797e18bc6e1afc87d06d426"
+        },
+        "cargoKinds": [
+          "bread"
+        ],
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 32,
+              "height": 32
+            },
+            "pivot": {
+              "x": 13.48,
+              "y": 4.658
+            },
+            "durationMs": 100
+          }
+        ],
+        "facing": "nw",
+        "scale": 0.15459459459459463,
+        "allowMirror": false,
+        "role": "cargo",
+        "attachment": {
+          "anchor": "grip",
+          "pivot": {
+            "x": 13.48,
+            "y": 4.658
+          }
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "rb-trade-ground-0",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "front-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "tailor"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_front_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_street_front_shop_a_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-1",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "front-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "tailor"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_front_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_street_front_shop_a_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-2",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "front-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "spicer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_front_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_street_front_shop_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-3",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "front-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "spicer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_front_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_street_front_shop_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-4",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "back-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "weaver"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "rear_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_rear_workshop_a_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-5",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "back-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "weaver"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "rear_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_rear_workshop_a_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-6",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "back-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "cooper"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "rear_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_rear_workshop_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-7",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "back-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "cooper"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "rear_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_rear_workshop_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-8",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "innkeeper"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "large_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_large_yard_a_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-9",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "innkeeper"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "large_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_large_yard_a_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-10",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "wheelwright"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "large_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_large_yard_b_summer",
+            "weight": 1
+          },
+          {
+            "assetId": "front_wheelwright_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_wheelwright_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-11",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "wheelwright"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "large_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_large_yard_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-12",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "butcher"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "dirty_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_dirty_yard_a_summer",
+            "weight": 1
+          },
+          {
+            "assetId": "front_butcher_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_butcher_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-13",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "butcher"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "dirty_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_dirty_yard_a_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-14",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "brewer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "dirty_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_dirty_yard_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-15",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "brewer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "dirty_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_dirty_yard_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-16",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "tanner"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "nuisance_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_nuisance_yard_a_summer",
+            "weight": 1
+          },
+          {
+            "assetId": "yard_nuisance_yard_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-17",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "tanner"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "nuisance_yard"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_nuisance_yard_a_winter",
+            "weight": 1
+          },
+          {
+            "assetId": "yard_nuisance_yard_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-18",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "smith"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "forge"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_forge_a_summer",
+            "weight": 1
+          },
+          {
+            "assetId": "yard_forge_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-19",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "smith"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "forge"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_forge_a_winter",
+            "weight": 1
+          },
+          {
+            "assetId": "yard_forge_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-20",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "dyer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "waterside_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_waterside_workshop_a_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-21",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "dyer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "waterside_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_waterside_workshop_a_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-22",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "fuller"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "waterside_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_waterside_workshop_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-23",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "fuller"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "waterside_workshop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_waterside_workshop_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-26",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "merchant"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "warehouse_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_warehouse_shop_a_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-27",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "merchant"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "warehouse_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_warehouse_shop_a_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-28",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "vintner"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "warehouse_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_warehouse_shop_b_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-29",
+        "kind": "ground-prop",
+        "slot": "rb-trade-yard",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "vintner"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "warehouse_shop"
+            ]
+          },
+          {
+            "field": "season",
+            "op": "eq",
+            "value": "winter"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "yard_warehouse_shop_b_winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-30",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "baker"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_baker",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-31",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "brewer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_brewer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-32",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "butcher"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_butcher",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-33",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "miller"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_miller",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-34",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "innkeeper"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_innkeeper",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-35",
+        "kind": "ground-prop",
+        "slot": "rb-trade-front",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "frontage"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "tailor"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_front_shop"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "front_tailor_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_tailor_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-36",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "tailor"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_tailor",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-37",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "weaver"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_weaver",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-38",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "smith"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_smith",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-39",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "carpenter"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_carpenter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-40",
+        "kind": "ground-prop",
+        "slot": "rb-trade-front",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "back-yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "shoemaker"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "rear_workshop"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "front_shoemaker_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_shoemaker_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-41",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "shoemaker"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_shoemaker",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-42",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "carter"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_carrier",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-43",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "merchant"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_merchant",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-44",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "fuller"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_fuller",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-45",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "dyer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_dyer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-46",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "tanner"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_tanner",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-47",
+        "kind": "ground-prop",
+        "slot": "rb-trade-front",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "yard"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "cooper"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "large_yard"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "front_cooper_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_cooper_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-48",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "cooper"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_cooper",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-49",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "wheelwright"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_wheelwright",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-50",
+        "kind": "ground-prop",
+        "slot": "rb-trade-front",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "frontage"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "mercer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_front_shop"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "front_mercer_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_mercer_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-51",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "mercer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_mercer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-52",
+        "kind": "ground-prop",
+        "slot": "rb-trade-front",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "frontage"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "spicer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_front_shop"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "front_spicer_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_spicer_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-53",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "spicer"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_spicer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-54",
+        "kind": "ground-prop",
+        "slot": "rb-trade-front",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "frontage"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "vintner"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "warehouse_shop"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "front_vintner_a",
+            "weight": 1
+          },
+          {
+            "assetId": "front_vintner_b",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-ground-55",
+        "kind": "ground-prop",
+        "slot": "rb-trade-street",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "street"
+          },
+          {
+            "field": "occupation",
+            "op": "in",
+            "values": [
+              "vintner"
+            ]
+          },
+          {
+            "field": "archetype",
+            "op": "in",
+            "values": [
+              "street_corner"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "street_vintner",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-cargo-ne",
+        "kind": "walker-cargo",
+        "slot": "rb-trade-held-cargo",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "role",
+            "op": "eq",
+            "value": "cargo"
+          },
+          {
+            "field": "cargoKind",
+            "op": "in",
+            "values": [
+              "bread"
+            ]
+          },
+          {
+            "field": "facing",
+            "op": "eq",
+            "value": "ne"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "cargo_bread_basket_NE",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-cargo-se",
+        "kind": "walker-cargo",
+        "slot": "rb-trade-held-cargo",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "role",
+            "op": "eq",
+            "value": "cargo"
+          },
+          {
+            "field": "cargoKind",
+            "op": "in",
+            "values": [
+              "bread"
+            ]
+          },
+          {
+            "field": "facing",
+            "op": "eq",
+            "value": "se"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "cargo_bread_basket_SE",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-cargo-sw",
+        "kind": "walker-cargo",
+        "slot": "rb-trade-held-cargo",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "role",
+            "op": "eq",
+            "value": "cargo"
+          },
+          {
+            "field": "cargoKind",
+            "op": "in",
+            "values": [
+              "bread"
+            ]
+          },
+          {
+            "field": "facing",
+            "op": "eq",
+            "value": "sw"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "cargo_bread_basket_SW",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "rb-trade-cargo-nw",
+        "kind": "walker-cargo",
+        "slot": "rb-trade-held-cargo",
+        "priority": 10,
+        "conditions": [
+          {
+            "field": "role",
+            "op": "eq",
+            "value": "cargo"
+          },
+          {
+            "field": "cargoKind",
+            "op": "in",
+            "values": [
+              "bread"
+            ]
+          },
+          {
+            "field": "facing",
+            "op": "eq",
+            "value": "nw"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "cargo_bread_basket_NW",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]
