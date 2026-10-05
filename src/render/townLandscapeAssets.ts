@@ -7,7 +7,8 @@ import { assetUrlForBase } from "./worldAssets";
 import { drawCroppedWorldSprite } from "./worldSprite";
 import { rasterizeWorldSprite, type RasterizedWorldSprite } from "./worldSpriteRaster";
 import { seasonPropRaster, seasonVariant } from "./seasonArt";
-import { seasonBlend, seasonForObject } from "./seasonTransition";
+import { calendarProgress } from "./calendarProgress";
+import { treeProgression } from "./seasonProgression";
 
 type LandscapeAsset = { readonly meta: typeof townLandscapeManifest[number]; image: HTMLImageElement | null; raster: RasterizedWorldSprite | null };
 const assets: LandscapeAsset[] = townLandscapeManifest.map(meta => ({ meta, image: null, raster: null }));
@@ -47,7 +48,8 @@ export function townLandscapeAssetReady(kind: TownLandscapeKind): boolean {
 
 export function drawTownLandscape(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[]): void {
   if (!assets.some(asset => asset.image !== null)) return;
-  const season = seasonBlend(state);
+  const progress = calendarProgress(state);
+  const firstYear = progress.year === calendarProgress({ ...state, tick: 0 }).year;
   for (const tile of tiles) {
     const kind = townLandscapeAt(state, tile);
     const asset = assets.find(candidate => candidate.meta.id === kind);
@@ -57,7 +59,7 @@ export function drawTownLandscape(context: CanvasRenderingContext2D, state: Game
     const rect = townLandscapeRect(asset.meta, tile);
     // INSTALL-15: the orchard tree blossoms in spring and is bare in winter (orchard_tree variants, same canvas); it
     // turns at its own moment while the season changes.
-    const variant = kind === "orchard" ? seasonVariant("orchard_tree", seasonForObject(season, tile.tx * 31 + tile.ty * 17)) : null;
+    const variant = kind === "orchard" ? seasonVariant("orchard_tree", treeProgression(progress, `orchard:${tile.tx}:${tile.ty}`, firstYear).season) : null;
     const raster = variant === null ? null : seasonPropRaster(variant, asset.meta.displayWidth);
     drawCroppedWorldSprite(context, raster?.image ?? asset.raster?.image ?? asset.image, raster?.source ?? source, rect, false, true);
   }

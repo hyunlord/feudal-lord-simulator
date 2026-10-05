@@ -2,7 +2,7 @@ import { BUILDING_CONFIG_BY_KIND, type Building } from "../content/buildingConfi
 import { storageUsage } from "../economy/storage";
 import type { GameState } from "../engine/engine.types";
 import { textRandom, touching } from "./buildingVariants";
-import { seasonBlend, seasonForObject } from "./seasonTransition";
+import { roofSnowAlpha } from "./seasonProgression";
 import { WAVE32_GRANARY_VARIANTS, type Wave32GranaryKey } from "./wave32GranaryManifest.generated";
 
 // INSTALL-32 which Wave 32 painting a granary shows instead of barn.png, and which of its layers lie on it: pure choices
@@ -66,7 +66,7 @@ export function granaryLayers(state: Pick<GameState, "tick" | "scenarioId">, bui
   const shut = building.operationPaused === true || building.upkeepUnpaid === true;
   const unkept = !shut && building.workers < BUILDING_CONFIG_BY_KIND[building.kind].workersRequired;
   // INSTALL-15's rule, as the houses': while the season turns, each roof takes or loses its snow at its own moment.
-  const snow = seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3;
+  const snow = roofSnowAlpha(state, building) > 0;
   return { weathered: unkept, fill: shut ? null : granaryFill(granaryStockRatio(building)), boarded: shut, snow };
 }
 

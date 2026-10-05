@@ -5,6 +5,7 @@ import { calendarProgress } from './calendarProgress';
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
 import { seasonBlend } from "./seasonTransition";
+import { groundWinterAlpha } from "./seasonProgression";
 import { hashNumbers } from "../world/boundary/boundaryGeometry";
 import { TILE_H, tileToScreen } from "./iso";
 import { drawWave7, type Wave7Key } from "./wave7Art";
@@ -96,11 +97,19 @@ export function drawSeasonalDecals(context: CanvasRenderingContext2D, state: Gam
   const progress = calendarProgress(state);
   const natureLeaves = (progress.season === 2 || progress.season === 3) && drawAccumulatedLeaves(context, state, tiles, zoom);
   const blend = seasonBlend(state);
-  if (blend.from === null) { drawDecalsOf(context, state, tiles, items, blend.season, natureLeaves); return; }
   const alpha = context.globalAlpha;
-  context.globalAlpha = alpha * (1 - blend.t); drawDecalsOf(context, state, tiles, items, blend.from, natureLeaves);
-  context.globalAlpha = alpha * blend.t; drawDecalsOf(context, state, tiles, items, blend.season, natureLeaves);
-  context.globalAlpha = alpha;
+  try {
+    // Nonwinter decals retain their existing season-turn fade. Frost and snow own their calendar ramps.
+    if (blend.from === null) {
+      if (blend.season !== 3) drawDecalsOf(context, state, tiles, items, blend.season, natureLeaves);
+    } else {
+      context.globalAlpha = alpha * (1 - blend.t);
+      if (blend.from !== 3) drawDecalsOf(context, state, tiles, items, blend.from, natureLeaves);
+      context.globalAlpha = alpha * blend.t;
+      if (blend.season !== 3) drawDecalsOf(context, state, tiles, items, blend.season, natureLeaves);
+    }
+  } finally { context.globalAlpha = alpha; }
+  drawWinterGround(context, state, tiles, items);
 }
 
 function drawDecalsOf(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], items: readonly RenderQueueItem[], season: 0 | 1 | 2 | 3, natureLeaves = false): void {
@@ -144,5 +153,27 @@ function drawDecalsOf(context: CanvasRenderingContext2D, state: GameState, tiles
     const key = seasonalDecal(state.seed, tile, season);
     if (key !== null) drawWave7(context, key, at.sx, at.sy + TILE_H * 0.35, DECAL_SCALE);
   }
-  if (season === 3) for (const spot of fenceDriftSpots(state, items)) drawSeasonArt(context, spot.key, spot.x, spot.y, DRIFT_SCALE);
+
+}
+
+function drawWinterGround(context: CanvasRenderingContext2D, state: GameState, tiles: readonly Tile[], items: readonly RenderQueueItem[]): void {
+  const alpha = context.globalAlpha;
+  try {
+    for (const tile of tiles) {
+      const frost = groundWinterAlpha(state, `tile:${tile.tx}:${tile.ty}`, 'frost');
+      if (frost <= 0) continue;
+      context.globalAlpha = alpha * frost;
+      const at = tileToScreen(tile.tx, tile.ty);
+      const ice = wave15GroundDecal(state.seed, tile, 3);
+      if (ice !== null && drawSeasonArt(context, ice, at.sx, at.sy + TILE_H * 0.35, DECAL_SCALE)) continue;
+      const key = seasonalDecal(state.seed, tile, 3);
+      if (key !== null) drawWave7(context, key, at.sx, at.sy + TILE_H * 0.35, DECAL_SCALE);
+    }
+    for (const spot of fenceDriftSpots(state, items)) {
+      const snow = groundWinterAlpha(state, `fence:${spot.x}:${spot.y}`, 'drift');
+      if (snow <= 0) continue;
+      context.globalAlpha = alpha * snow;
+      drawSeasonArt(context, spot.key, spot.x, spot.y, DRIFT_SCALE);
+    }
+  } finally { context.globalAlpha = alpha; }
 }

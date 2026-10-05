@@ -45,11 +45,11 @@ export type SeasonalGroundPropEntry = EntryBase & {
   readonly kind: 'ground-prop'; readonly placement: 'seasonal-ground'; readonly geometry: ArtGeometry; readonly season: ArtSeason;
 };
 export type NatureGroundEntry = EntryBase & {
-  readonly kind: 'ground-prop'; readonly placement: 'nature-ground'; readonly role: 'leaf-ground' | 'leaf-water' | 'puddle' | 'mud' | 'wet-grass' | 'wet-soil' | 'leaf-roof';
+  readonly kind: 'ground-prop'; readonly placement: 'nature-ground'; readonly role: 'leaf-ground' | 'leaf-water' | 'puddle' | 'mud' | 'wet-grass' | 'wet-soil' | 'leaf-roof' | 'snow-footprint';
   readonly geometry: ArtGeometry; readonly opacity: number; readonly minZoom: number; readonly group: string;
 };
 export type WeatherParticleEntry = EntryBase & {
-  readonly kind: 'weather-particle'; readonly role: 'rain' | 'leaf-flight' | 'leaf-wind' | 'splash'; readonly group: string;
+  readonly kind: 'weather-particle'; readonly role: 'rain' | 'leaf-flight' | 'leaf-wind' | 'splash' | 'snow' | 'blowing-snow'; readonly group: string;
   readonly geometry: ArtGeometry; readonly opacity: number; readonly minZoom: number; readonly frames: readonly ArtFrame[];
 };
 export type GroundPropEntry = HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;

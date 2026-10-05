@@ -1,3 +1,4 @@
+import { drawSnowFootprints } from './snowFootprints';
 import type { ZoneBrushView } from "./zoneBrushOverlay";
 import { drawTownPlanOverlays } from "./townPlanOverlay";
 import { drawPlacementPrediction } from "./placementPredictionOverlay";
@@ -125,7 +126,8 @@ export const renderFrame = (input: RenderFrameInput): void => {
         zoom: input.camera.zoom, nowMs: input.nowMs ?? 0, // INSTALL-29: water moves on the wall clock, also while paused
         objectRenderItems,
       });
-      drawCountryFields(input.context, input.state, range, input.camera.zoom); drawBackyardDecals(input.context, input.state, range, input.camera.zoom); drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); drawWeatherGround(input.context, input.state, visibleTiles, input.camera.zoom, input.nowMs ?? 0); // INSTALL-28 wildflower patches, INSTALL-27 backyards, INSTALL-7 / INSTALL-15 season decals, INSTALL-23 weather ground
+      drawCountryFields(input.context, input.state, range, input.camera.zoom); drawBackyardDecals(input.context, input.state, range, input.camera.zoom); drawSeasonalDecals(input.context, input.state, visibleTiles, input.camera.zoom, objectRenderItems); drawWeatherGround(input.context, input.state, visibleTiles, input.camera.zoom, input.nowMs ?? 0);
+      drawSnowFootprints(input.context, input.state, input.renderWalkers ?? [], visibleTiles, input.camera.zoom); // INSTALL-28 wildflower patches, INSTALL-27 backyards, INSTALL-7 / INSTALL-15 season decals, INSTALL-23 weather ground
     },
     objects: () => objectPassForProof &&
       drawObjectRenderItems(input.context, {

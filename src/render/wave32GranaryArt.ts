@@ -1,3 +1,4 @@
+import { roofSnowAlpha } from "./seasonProgression";
 import type { Building } from "../content/buildingConfig";
 import type { GameState } from "../engine/engine.types";
 import { buildingVariantsEnabled } from "./buildingVariants";
@@ -50,7 +51,12 @@ export function shownGranaryImage(building: Pick<Building, "id">): HTMLImageElem
 export function drawWave32GranaryLayers(context: CanvasRenderingContext2D, state: Pick<GameState, "tick" | "scenarioId">, building: Building, rect: Rect): void {
   const variant = shownGranaryVariant(building);
   if (variant === null) return;
-  for (const key of granaryLayerKeys(variant, granaryLayers(state, building))) layers.drawOnReference(context, key, CANVAS, CANVAS, rect);
+  for (const key of granaryLayerKeys(variant, granaryLayers(state, building))) {
+    const alpha = context.globalAlpha;
+    if (key.endsWith("_snow")) context.globalAlpha = alpha * roofSnowAlpha(state, building);
+    try { layers.drawOnReference(context, key, CANVAS, CANVAS, rect); }
+    finally { context.globalAlpha = alpha; }
+  }
 }
 
 /** Starts loading the three paintings (awaited with the Wave 2 variants: a capture's first frame has them). */

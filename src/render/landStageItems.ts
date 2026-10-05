@@ -3,10 +3,11 @@ import { landOf } from "../engine/land";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
 import { renderDetailLevel } from "./buildingVisualState";
 import { depthKey, tileToScreen } from "./iso";
-import { cellHash, fallowStageArt, nextTreePictureTick, stageSeason, treeStageArt, type LandStagePicture } from "./landStageModel";
+import { cellHash, fallowStageArt, nextTreePictureTick, treeStageArt, type LandStagePicture } from "./landStageModel";
 import type { ObjectRenderItem, RenderQueueItem } from "./objectRenderTypes";
 import { tileIsVisibleInRange, type TileRange } from "./renderVisibility";
-import { seasonBlend, seasonForObject } from "./seasonTransition";
+import { calendarProgress } from "./calendarProgress";
+import { treeProgression } from "./seasonProgression";
 import { drawStageArt } from "./wave42StageArt";
 import type { ArtRegistry } from './art/artRegistry';
 import { ART_REGISTRY } from './art/wave42Registry';
@@ -18,7 +19,7 @@ import { ART_REGISTRY } from './art/wave42Registry';
 // engine's ticks (landStageModel.ts), so they cost no chunk re-raster at all; the object queue's static cache key carries
 // their signature. A felled tree replaces its cell's trees (stumpRenderItems.ts) until the engine drops the record; a
 // house plot's fallow sorts just before its house. Above block detail only (as the countryside props), each turns to
-// the new season at its own moment (seasonForObject).
+// the snowy edition at its own calendar phase, including the following spring's melt.
 
 export type LandStagePiece = { readonly picture: LandStagePicture; readonly tx: number; readonly ty: number; readonly salt: number;
   readonly editions: { readonly summer: string; readonly winter: string } };
@@ -96,9 +97,15 @@ export function withLandFallow(queue: readonly RenderQueueItem[], state: GameSta
 
 export function drawLandStageItem(context: CanvasRenderingContext2D, item: LandStageRenderItem, state: GameState, zoom: number): void {
   if (renderDetailLevel(zoom) === "blocks") return;
-  const { editions, tx, ty, salt } = item.piece;
+  const { tx, ty } = item.piece;
   const at = tileToScreen(tx, ty);
-  drawStageArt(context, editions[stageSeason(seasonForObject(seasonBlend(state), salt))], at.sx, at.sy);
+  drawStageArt(context, landStageEdition(item, state), at.sx, at.sy);
+}
+
+export function landStageEdition(item: LandStageRenderItem, state: Pick<GameState, 'tick' | 'scenarioId'>): string {
+  const progress = calendarProgress(state);
+  const phase = treeProgression(progress, item.id, progress.year === calendarProgress({ ...state, tick: 0 }).year);
+  return item.piece.editions[phase.snowy ? 'winter' : 'summer'];
 }
 
 function compareItems(left: RenderQueueItem, right: RenderQueueItem): number {

@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "roofSnow": {
+    "start": 0.12,
+    "end": 0.75,
+    "jitter": 0.1
+  },
+  "springMelt": {
+    "start": 0,
+    "end": 0.25,
+    "jitter": 0.04
+  },
+  "treeSpring": {
+    "start": 0.05,
+    "end": 0.35,
+    "jitter": 0
+  },
+  "treeSummer": {
+    "start": 0.02,
+    "end": 0.25,
+    "jitter": 0
+  },
+  "treeAutumn": {
+    "start": 0.12,
+    "end": 0.65,
+    "jitter": 0
+  },
+  "treeBare": {
+    "start": 0,
+    "end": 0.2,
+    "jitter": 0
+  },
+  "treeSnow": {
+    "start": 0.22,
+    "end": 0.65,
+    "jitter": 0
+  },
+  "winterStages": {
+    "tree_oak_large": {
+      "bare": "tree_oak_large_winter",
+      "snow": "tree_oak_large_winter_snow"
+    },
+    "tree_oak_small": {
+      "bare": "tree_oak_small_winter",
+      "snow": "tree_oak_small_winter_snow"
+    },
+    "tree_birch": {
+      "bare": "tree_birch_winter",
+      "snow": "tree_birch_winter"
+    },
+    "tree_pine_tall": {
+      "bare": null,
+      "snow": "tree_pine_tall_winter_snow"
+    },
+    "tree_pine_short": {
+      "bare": null,
+      "snow": "tree_pine_short_winter_snow"
+    },
+    "tree_dead": {
+      "bare": null,
+      "snow": "tree_dead_winter_snow"
+    }
+  },
+  "firstFrost": {
+    "start": 0.78,
+    "end": 1,
+    "jitter": 0.1
+  },
+  "fenceSnow": {
+    "start": 0.2,
+    "end": 0.85,
+    "jitter": 0.12
+  },
+  "snowWeather": {
+    "cell": 64,
+    "interval": 1,
+    "maxLife": 4,
+    "overscan": 96,
+    "domain": 39401,
+    "speed": 12,
+    "drift": 3,
+    "bandCell": 160,
+    "bandInterval": 1.2,
+    "bandLife": 1.2,
+    "bandSpeed": 24
+  },
+  "snowFootprints": {
+    "maxWalkers": 64,
+    "maxSamples": 24,
+    "maxPrints": 128,
+    "lifeTicks": 60,
+    "maxStep": 6,
+    "minStep": 0.25,
+    "stripLength": 32,
+    "slope": 0.5,
+    "tolerance": 1.5,
+    "minAccumulation": 0.2
+  }
+}

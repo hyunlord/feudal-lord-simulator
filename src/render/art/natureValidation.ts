@@ -1,7 +1,7 @@
 import type { ArtBundle, NatureGroundEntry, WeatherParticleEntry } from './artContract';
 import type { ArtSchemaIssue } from './schemaValidation';
 
-const COUNTS = { splash: 6, 'leaf-roof': 1, rain: 12, 'leaf-flight': 12, 'leaf-wind': 2, 'leaf-ground': 6, 'leaf-water': 1, puddle: 6, mud: 2, 'wet-grass': 1, 'wet-soil': 1 } as const;
+const COUNTS = { 'snow-footprint': 2, snow: 3, 'blowing-snow': 1, splash: 6, 'leaf-roof': 1, rain: 12, 'leaf-flight': 12, 'leaf-wind': 2, 'leaf-ground': 6, 'leaf-water': 1, puddle: 6, mud: 2, 'wet-grass': 1, 'wet-soil': 1 } as const;
 /** Family readiness requires complete authored roles; an absent role leaves its legacy consumer intact. */
 export function validateNature(bundles: readonly ArtBundle[]): readonly ArtSchemaIssue[] {
   const entries = bundles.flatMap(bundle => bundle.entries).filter((entry): entry is NatureGroundEntry | WeatherParticleEntry => entry.kind === 'weather-particle' || (entry.kind === 'ground-prop' && entry.placement === 'nature-ground'));

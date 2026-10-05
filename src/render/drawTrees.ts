@@ -10,8 +10,11 @@ import {
   type TreeDescriptor,
 } from "./treeLayout";
 import { applyInkOutline, snapToPixel } from "./style";
+import type { GameState } from "../engine/engine.types";
+import { calendarProgress } from "./calendarProgress";
+import { treeProgression, treeWinterVariant } from "./seasonProgression";
 import { seasonSprite, seasonVariant } from "./seasonArt";
-import { seasonForObject, type SeasonBlend } from "./seasonTransition";
+import { seasonBlend as legacySeasonBlend, seasonForObject, type SeasonBlend } from "./seasonTransition";
 import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSprite";
 
 /**
@@ -22,15 +25,25 @@ import { drawWorldSpriteAtWorldAnchor, type WorldSpriteOptions } from "./worldSp
  * `salt` (the object's position) picks between a winter oak's bare and snowy art and its moment in the turn.
  */
 function drawSeasonalSprite(context: CanvasRenderingContext2D, key: string, tx: number, ty: number, options: WorldSpriteOptions,
-  blend: SeasonBlend | undefined, salt: number): boolean {
+  blend: SeasonBlend | undefined, salt: number, identity = `${key}:${tx}:${ty}`): boolean {
   if (blend === undefined) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
-  const variant = seasonVariant(key, seasonForObject(blend, salt), salt);
+  const stage = blend.calendar === undefined ? null : treeProgression(blend.calendar, identity, blend.firstYear);
+  let variant = seasonVariant(key, stage?.season ?? seasonForObject(blend, salt), salt);
+  if (stage?.season === 3) {
+    const specific = treeWinterVariant(key, stage.snowy);
+    if (specific !== undefined) variant = specific;
+  }
   const image = variant === null ? null : seasonSprite(variant);
   if (image === null) return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, options);
   return drawWorldSpriteAtWorldAnchor(context, key, tx, ty, { ...options, image });
 }
 
-export { seasonBlend } from "./seasonTransition"; // one drawBuildings import for the object pass's season
+/** The object pass carries calendar phase without changing the legacy ground-transition receipt. */
+export function seasonBlend(state: Pick<GameState, "tick" | "scenarioId">, nowMs: number = performance.now()): SeasonBlend {
+  const calendar = calendarProgress(state);
+  return { ...legacySeasonBlend(state, nowMs), calendar,
+    firstYear: calendar.year === calendarProgress({ ...state, tick: 0 }).year };
+}
 
 const saltOf = (tx: number, ty: number): number => Math.floor(tx * 31 + ty * 17);
 
@@ -68,7 +81,7 @@ export function drawTreeDescriptor(
         scale: input.tree.scale,
         flipX: input.tree.flipX,
         shearX: treeSway(input.nowMs, input.tree.phase, input.tree.scale),
-      }, input.season, saltOf(input.tree.anchorTx, input.tree.anchorTy))
+      }, input.season, saltOf(input.tree.anchorTx, input.tree.anchorTy), input.tree.id)
     ) {
       return;
     }

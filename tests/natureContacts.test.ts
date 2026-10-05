@@ -9,7 +9,7 @@ import masks from '../src/render/art/natureRoofMasks.json';
 
 test('roof contact uses registered ink spans and applies the actually drawn crop transform', () => {
   const mask = masks[0]; assert.ok(mask); const bodyId = mask.bodyIds[0]; assert.ok(bodyId);
-  const drawn = { at: { x: 0, y: 0 }, layers: [], body: { bodyId,
+  const drawn = { at: { x: 0, y: 0 }, layers: [], layerAlpha: {}, body: { bodyId,
     sourceRect: { x: 0, y: 0, width: mask.width, height: mask.height },
     targetRect: { x: 100, y: 200, width: mask.width / 2, height: mask.height / 2 } } };
   const spans = roofContactDomain(drawn); assert.ok(spans); assert.equal(spans.length, mask.spans.length);
