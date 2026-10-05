@@ -647,6 +647,110 @@
             "baseId"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "season": {
+              "type": "string",
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            },
+            "placement": {
+              "const": "seasonal-ground"
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "kind",
+            "geometry",
+            "season",
+            "placement"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "minZoom": {
+              "type": "number",
+              "minimum": 0
+            },
+            "group": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "placement": {
+              "const": "nature-ground"
+            },
+            "role": {
+              "enum": [
+                "leaf-ground",
+                "leaf-water",
+                "puddle",
+                "mud",
+                "wet-grass",
+                "wet-soil",
+                "leaf-roof"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "geometry",
+            "opacity",
+            "minZoom",
+            "group",
+            "kind",
+            "placement",
+            "role"
+          ],
+          "additionalProperties": false
         }
       ]
     },
@@ -1496,6 +1600,9 @@
         },
         {
           "$ref": "#/$defs/weather-shadow"
+        },
+        {
+          "$ref": "#/$defs/weather-particle"
         }
       ]
     },
@@ -1521,7 +1628,8 @@
             "regional-map",
             "season-variant",
             "ground-texture",
-            "weather-shadow"
+            "weather-shadow",
+            "weather-particle"
           ]
         },
         "slot": {
@@ -1936,6 +2044,68 @@
           "const": 0.12
         }
       }
+    },
+    "weather-particle": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "opacity": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "minZoom": {
+          "type": "number",
+          "minimum": 0
+        },
+        "group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "weather-particle"
+        },
+        "role": {
+          "enum": [
+            "rain",
+            "leaf-flight",
+            "leaf-wind",
+            "splash"
+          ]
+        },
+        "frames": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/frame"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "geometry",
+        "opacity",
+        "minZoom",
+        "group",
+        "kind",
+        "role",
+        "frames"
+      ],
+      "additionalProperties": false
     }
   }
 }
