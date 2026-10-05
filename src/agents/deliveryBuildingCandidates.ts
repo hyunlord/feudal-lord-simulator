@@ -76,7 +76,7 @@ export function deliverCandidate(
     const amount = Math.min(
       BUILDING_CONFIG_BY_KIND[producer.kind].carterCapacity ?? BALANCE.CARTER_CAPACITY,
       stock,
-      storageIntakeSpace(building, resource, inventory.availableSpace(building)),
+      storageIntakeSpace(building, resource, inventory.availableSpace(building), inventory.intakeRules),
     );
     return amount > 0 ? [{ building, path, amount }] : [];
   });

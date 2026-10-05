@@ -4,6 +4,8 @@ import type { ConstructionSite } from "../economy/construction";
 import type { CarterDestination, TilePos, Walker } from "./walker.types";
 
 export interface DeliveryInventoryPort {
+  /** RECOVER-1 (RC-6): lord mode's intake rules (barley's share of a granary). Absent = the stores' own rules. */
+  readonly intakeRules?: import("../economy/storage").IntakeRules;
   readonly availableSpace: (building: Building) => number;
   readonly reserveSpace: (
     building: Building,

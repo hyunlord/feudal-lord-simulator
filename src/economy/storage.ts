@@ -56,10 +56,21 @@ export function storageUsage(building: Building): StorageUsage {
   };
 }
 
+/** RECOVER-1 (RC-6): intake rules beyond the stores' own — lord mode caps barley in a granary. */
+export interface IntakeRules {
+  /** Barley may fill at most this share of a granary, permille. */
+  readonly barleyCapPermille?: number;
+}
+
 function rawIntakeUsage(
   building: Building,
   resource: StorableResourceType,
+  rules?: IntakeRules,
 ): { readonly used: number; readonly capacity: number } | null {
+  if (building.kind === "granary" && resource === "barley" && rules?.barleyCapPermille !== undefined) {
+    const room = BUILDING_CONFIG_BY_KIND.granary.storageCapacity;
+    return { used: amountOf(building.inventory, "barley") + amountOf(building.reserved, "barley"), capacity: Math.floor(room * rules.barleyCapPermille / 1000) };
+  }
   const limited: readonly StorableResourceType[] = building.kind === "granary" && resource === "wheat"
     ? ["wheat"]
     : building.kind === "storehouse" && (resource === "logs" || resource === "stone_raw")
@@ -77,10 +88,11 @@ function rawIntakeUsage(
 export function storageIntakeUsage(
   building: Building,
   resource: StorableResourceType,
+  rules?: IntakeRules,
 ): { readonly used: number; readonly capacity: number } {
   const usage = storageUsage(building);
   const physical = { used: usage.used + usage.incoming, capacity: usage.capacity };
-  const raw = rawIntakeUsage(building, resource);
+  const raw = rawIntakeUsage(building, resource, rules);
   return raw !== null && Math.max(0, raw.capacity - raw.used) < Math.max(0, physical.capacity - physical.used)
     ? { used: Math.min(raw.used, raw.capacity), capacity: raw.capacity }
     : physical;
@@ -90,8 +102,9 @@ export function storageIntakeSpace(
   building: Building,
   resource: StorableResourceType,
   freeSpace: number,
+  rules?: IntakeRules,
 ): number {
-  const raw = rawIntakeUsage(building, resource);
+  const raw = rawIntakeUsage(building, resource, rules);
   return raw === null ? freeSpace : Math.min(freeSpace, Math.max(0, raw.capacity - raw.used));
 }
 

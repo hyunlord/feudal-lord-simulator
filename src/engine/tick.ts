@@ -1,3 +1,4 @@
+import { lordIntakeRules } from "./recovery";
 import { advanceStuckStock } from "./stuckStock";
 import { advanceTownAgency } from "./townAgency";
 import { advanceTrades } from "./trades";
@@ -138,7 +139,8 @@ export function advanceSimulationSubstep(input: GameState): GameState {
   const routePorts = createSimulationRoutePorts(flowing);
   const state = beginMaterialObservation(flowing, routePorts.delivery);
   const tick = state.tick + 1;
-  const inventory = createDeliveryInventoryPort();
+  // RECOVER-1 (RC-6): lord mode keeps room in the granaries for bread and wheat.
+  const inventory = createDeliveryInventoryPort(lordIntakeRules(state));
   const materialEvents: MaterialActivity[] = [];
   const materialActivity = (event: MaterialActivity) => materialEvents.push(event);
   let deliveredWheat = 0;

@@ -16,6 +16,12 @@ export const RECOVERY_BALANCE = {
 } as const;
 
 /**
+ * RECOVER-1 (RC-6, the user's decision 2026-10-06): in lord mode a granary keeps room for bread and wheat — barley may
+ * fill at most this share of it; the rest of the barley waits in its barn or the carters sell it at a market.
+ */
+export const LORD_GRANARY_RULES = { barleyCapPermille: 400 } as const;
+
+/**
  * RECOVER-1 (RC-5, B2): in lord mode the short side pulls. A mill reorders wheat at what it grinds during a round trip
  * to its nearest wheat (× the margin), never below the old fixed target; a round trip longer than one cart's load
  * lasts sends more intake carts at once, up to the cap. Game estimates.
@@ -25,4 +31,6 @@ export const MILL_PULL = {
   marginPermille: 1500,
   /** Intake carts one mill may have out at once. */
   maxIntakeCarts: 3,
+  /** RC-5: the carters bring barn wheat to a granary holding less than this (it pushes wheat on to its mills). */
+  granaryWheatTarget: 40,
 } as const;

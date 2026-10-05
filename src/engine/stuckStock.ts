@@ -12,6 +12,7 @@
  *   every `STUCK_STOCK_CHECK_TICKS`, so days are counted to that step.
  * SK-4 the list is derived and deterministic; lord mode's town agency reads it as a reason score (LM-E1).
  */
+import { lordIntakeRules } from "./recovery";
 import { BUILDING_CONFIG_BY_KIND, type Building, fieldOutputResource } from "../content/buildingConfig";
 import { BALANCE } from "../content/balanceConfig";
 import type { ResourceType, StorableResourceType } from "../content/resourceConfig";
@@ -43,7 +44,7 @@ function hasReceiver(state: GameState, from: Building, resource: ResourceType): 
   if (!isStorableResource(resource)) return false;
   for (const building of state.buildings) {
     if (building.id === from.id || !acceptsResource(building.kind, resource)) continue;
-    if (storageIntakeSpace(building, resource as StorableResourceType, availableSpace(building, BUILDING_CONFIG_BY_KIND[building.kind])) > 0) return true;
+    if (storageIntakeSpace(building, resource as StorableResourceType, availableSpace(building, BUILDING_CONFIG_BY_KIND[building.kind]), lordIntakeRules(state)) > 0) return true;
   }
   return false;
 }

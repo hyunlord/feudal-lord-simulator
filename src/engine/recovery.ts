@@ -6,7 +6,8 @@
  */
 import { BUILDING_CONFIG_BY_KIND } from "../content/buildingConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
-import { RECOVERY_BALANCE } from "../content/recoveryConfig";
+import { LORD_GRANARY_RULES, RECOVERY_BALANCE } from "../content/recoveryConfig";
+import type { IntakeRules } from "../economy/storage";
 import { houseBuiltLevel } from "../population/houseCondition";
 import type { House } from "../population/population.types";
 import type { GameState } from "./engine.types";
@@ -14,6 +15,11 @@ import type { GameState } from "./engine.types";
 /** RC-1: the recovery rules are lord mode's. */
 export function recoveryActive(state: Pick<GameState, "agency">): boolean {
   return state.agency !== undefined;
+}
+
+/** RC-6: lord mode's intake rules (barley's share of a granary); none elsewhere. */
+export function lordIntakeRules(state: Pick<GameState, "agency">): IntakeRules | undefined {
+  return recoveryActive(state) ? LORD_GRANARY_RULES : undefined;
 }
 
 /** RC-4: the labour shortage, permille — the job slots left unfilled over the slots the town's buildings need. */
