@@ -46,7 +46,7 @@ function PromiseItem({ row, parts, onKeep }: { readonly row: PromiseRow; readonl
         {row.witnesses === null ? null : <p className="lord-ledger-line"><Icon className="lord-ledger-inline-icon" style={parts.image(LEDGER_PARTS.witness, 24)} />{row.witnesses}</p>}
         {row.state === "open" || row.state === "due" ? <p className="lord-ledger-line lord-ledger-stake">{row.stake}</p> : null}
         {row.keep === null ? (row.state === "open" || row.state === "due" ? <p className="lord-ledger-line">{COPY.theirs}</p> : null) : <div className="lord-ledger-action">
-          <Button type="button" className="lord-ledger-keep" data-keep={row.id} variant="secondary" disabled={!row.keep.enabled}
+          <Button type="button" className="lord-ledger-keep" data-keep={row.id} variant="secondary" size="md" disabled={!row.keep.enabled}
             aria-label={COPY.keepLabel(row.term)} onPress={() => { if (row.keep?.enabled === true) onKeep(row.id); }}>{COPY.keep}</Button>
           <ShutLine shut={row.keep} />
         </div>}
@@ -76,7 +76,7 @@ function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly pa
           {evidence.filter(entry => entry.given !== null || bringable).map(entry => <li key={entry.kind} data-evidence={entry.kind}>
             <span className="lord-ledger-option-name">{entry.label}</span>
             {entry.given !== null ? <span className="lord-ledger-option-note" data-given="true">{entry.given}</span>
-              : <Button type="button" className="lord-ledger-bring" data-bring={entry.kind} variant="secondary" disabled={entry.bring?.enabled !== true}
+              : <Button type="button" className="lord-ledger-bring" data-bring={entry.kind} variant="secondary" size="md" disabled={entry.bring?.enabled !== true}
                 aria-label={COPY.evidenceLabel(entry.label)} onPress={() => { if (entry.bring?.enabled === true) dispatch({ type: "add_suit_evidence", suitId: row.id, evidence: entry.kind }); }}>
                 {COPY.evidenceBring}</Button>}
           </li>)}
@@ -90,7 +90,7 @@ function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly pa
           : <ul className="lord-ledger-options">
             {row.patron.options.map(option => <li key={option.factionId} data-patron={option.factionId}>
               <span className="lord-ledger-option-name">{option.name}</span><span className="lord-ledger-option-note">{option.relation}</span>
-              <Button type="button" className="lord-ledger-patron" data-seek={option.factionId} variant="secondary" aria-label={COPY.patronLabel(option.name)}
+              <Button type="button" className="lord-ledger-patron" data-seek={option.factionId} variant="secondary" size="md" aria-label={COPY.patronLabel(option.name)}
                 onPress={() => dispatch({ type: "seek_suit_patron", suitId: row.id, factionId: option.factionId })}>{COPY.patronSeek}</Button>
             </li>)}
           </ul>}
@@ -99,7 +99,7 @@ function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly pa
         <h5>{COPY.enforceHeading}</h5>
         {row.enforce.lines.map(line => <p key={line} className="lord-ledger-line">{line}</p>)}
         {row.enforce.button === null ? null : <div className="lord-ledger-action">
-          <Button type="button" className="lord-ledger-enforce" data-enforce={row.id} variant="secondary" disabled={!row.enforce.button.enabled}
+          <Button type="button" className="lord-ledger-enforce" data-enforce={row.id} variant="secondary" size="md" disabled={!row.enforce.button.enabled}
             aria-label={COPY.enforceLabel(row.what)} onPress={() => { if (row.enforce?.button?.enabled === true) dispatch({ type: "enforce_possession", suitId: row.id }); }}>
             {COPY.enforce}</Button>
           <ShutLine shut={row.enforce.button} />
@@ -160,7 +160,7 @@ export function LedgerPanel({ state, dispatch, focus }: LordPanelProps): ReactEl
             data-focused={claim.focused ? "true" : undefined} aria-current={claim.focused ? "true" : undefined}>
             <div className="lord-ledger-claim-body"><p className="lord-ledger-suit-title">{claim.what}</p><p className="lord-ledger-line">{claim.line}</p></div>
             <div className="lord-ledger-action">
-              <Button type="button" className="lord-ledger-file" data-file={claim.id} variant="secondary" disabled={claim.refusal !== null}
+              <Button type="button" className="lord-ledger-file" data-file={claim.id} variant="secondary" size="md" disabled={claim.refusal !== null}
                 aria-label={COPY.fileSuitLabel(claim.what)} onPress={() => { if (claim.refusal === null) dispatch({ type: "file_suit", claimId: claim.id }); }}>{COPY.fileSuit}</Button>
               {claim.refusal === null ? null : <span className="lord-ledger-shut" role="status" data-refusal="true">{claim.refusal}</span>}
             </div>
