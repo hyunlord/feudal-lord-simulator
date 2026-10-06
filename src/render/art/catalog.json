@@ -19087,5 +19087,145 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wet-paths",
+    "entries": [
+      {
+        "id": "path_muddy_ne_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/paths/path_muddy_ne_summer.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/paths/path_muddy_ne_summer.png",
+          "sourceSha256": "799ccd46ae92650f033240863227db1aab519afeac6cb266ec72641f1d85643d",
+          "runtimeSha256": "799ccd46ae92650f033240863227db1aab519afeac6cb266ec72641f1d85643d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 256,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "wet-path",
+        "stage": "path_muddy_ne",
+        "layout": "strip",
+        "ports": {
+          "start": {
+            "x": 0,
+            "y": 32
+          },
+          "end": {
+            "x": 512,
+            "y": 32
+          }
+        }
+      },
+      {
+        "id": "path_muddy_nw_summer",
+        "kind": "land-stage",
+        "image": {
+          "url": "assets/wave42/paths/path_muddy_nw_summer.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/paths/path_muddy_nw_summer.png",
+          "sourceSha256": "463aee24fdb0247e576c5bf9aafc065e159de9cc00473882e085ce9cebaba2f8",
+          "runtimeSha256": "463aee24fdb0247e576c5bf9aafc065e159de9cc00473882e085ce9cebaba2f8"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 256,
+            "y": 32
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "season": "summer",
+        "family": "wet-path",
+        "stage": "path_muddy_nw",
+        "layout": "strip",
+        "ports": {
+          "start": {
+            "x": 0,
+            "y": 32
+          },
+          "end": {
+            "x": 512,
+            "y": 32
+          }
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "wet-path-strip-ne-summer",
+        "kind": "land-stage",
+        "slot": "wet-path-strip",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "wet-path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "ne"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_muddy_ne_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wet-path-strip-nw-summer",
+        "kind": "land-stage",
+        "slot": "wet-path-strip",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "family",
+            "value": "wet-path"
+          },
+          {
+            "op": "eq",
+            "field": "stage",
+            "value": "nw"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "summer"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "path_muddy_nw_summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]
