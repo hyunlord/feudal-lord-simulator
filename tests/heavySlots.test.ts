@@ -55,3 +55,35 @@ while [ ! -e ${JSON.stringify(join(base, `release-${run}`))} ]; do sleep 0.2; do
     rmSync(base, { recursive: true, force: true });
   }
 });
+
+test("a run takes a slot no run ahead of it can take: the third slot is not left empty behind runs that only know two", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+  const base = mkdtempSync(join(tmpdir(), "fls-heavy3-"));
+  const children: ChildProcess[] = [];
+  const out: Record<string, string> = {};
+  const hold = (file: string) => { const c = spawn("bash", ["-c", `exec 9>"$1"; flock -n 9 || exit 1; exec sleep 600`, "hold", file], { stdio: "ignore" }); children.push(c); return c; };
+  const held = (file: string) => spawnSync("bash", ["-c", `( flock -n 9 ) 9<"$1"`, "c", file]).status !== 0;
+  const until = async (check: () => boolean) => { for (const end = Date.now() + CAP_MS; !check() && Date.now() < end;) await pause(100); assert.ok(check()); };
+  try {
+    mkdirSync(join(base, "_slots/queue"), { recursive: true });
+    for (const n of [1, 2]) { writeFileSync(join(base, `_slots/heavy.${n}.info`), `old-${n}\t0\tbusy\n`); hold(join(base, `_slots/heavy.${n}.lock`)); }
+    // An older copy of heavySlots.sh waits for slots 1–2: its ticket is empty (counts as cap 2) and held.
+    const old = join(base, "_slots/queue", `${(BigInt(Date.now() - 5000) * 1_000_000n).toString()}-old-run`);
+    writeFileSync(old, ""); hold(old);
+    await until(() => held(join(base, "_slots/heavy.2.lock")) && held(old));
+    const start = (run: string, slots: string) => {
+      const child = spawn("bash", ["-c", `. ${JSON.stringify(helper)}; heavy_take_slot ${JSON.stringify(base)} ${run} "test"; echo TOOK; exec sleep 600`],
+        { env: { ...process.env, HEAVY_SLOTS: slots, HEAVY_POLL_S: "1" }, stdio: ["ignore", "pipe", "pipe"] });
+      child.stdout!.on("data", chunk => { out[run] = (out[run] ?? "") + chunk; });
+      children.push(child);
+    };
+    start("new", "3");
+    await until(() => /== heavy slot 3\/3/.test(out.new ?? ""));
+    // With three slots busy the next new run waits behind the old one (FIFO for every slot it could take).
+    start("later", "3");
+    await until(() => /number 2 in line/.test(out.later ?? ""));
+    assert.doesNotMatch(out.later ?? "", /TOOK/);
+  } finally {
+    for (const child of children) child.kill("SIGKILL");
+    rmSync(base, { recursive: true, force: true });
+  }
+});

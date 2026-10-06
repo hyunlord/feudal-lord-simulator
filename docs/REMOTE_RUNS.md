@@ -24,7 +24,16 @@ scripts/remote/run.sh <label> [--heavy|--light] [--detach] [--keep] -- <아무 �
   - `--fetch <run>`은 폴더가 없으면 `_kept/`에서 받는다.
   - 결과를 저장소에 옮긴 뒤 `scripts/remote/run.sh --release <run>`으로 놓아준다.
   - 까닭: FIX-10 때 습지 seed 1 캠페인의 결과를 정리가 지워 잃었다(2026-09-30).
-- **무거운 실행은 동시에 2개까지**(2026-10-04, 결정 RR14): 나머지는 줄을 서서 먼저 온 순서로 들어간다.
+- **올리기 전 검증과 본선 묶음 클론**(2026-10-06, 사용자 지시 — 모든 세션이 몇 시간씩 줄을 섰다):
+  - 본선에 올리기 전에는 `check:merge`(푸시 훅이 돈다) + **바뀐 파일에 걸린 시험**(`npm run test:changed -- --run`; 많으면 `scripts/remote/run.sh <label> --light -- npm run -s test:changed -- --run`) + 화면을 바꿨으면 **바뀐 줄의 기하 감사**(`--task ui-geometry --only <바뀐 줄>`)만 한다.
+    - `test:changed`(`scripts/checks/changedTests.mjs`): 본선과의 공통 조상 이후 바뀐 파일(작업 트리 포함)에 대해, 바뀐 시험 파일, 바뀐 파일을 직접·간접으로 import하는 시험, 바뀐 데이터·문서 파일을 경로(또는 저장소에 하나뿐인 이름)로 부르는 시험을 고른다. `package-lock.json`·`tsconfig.json`·`package.json`의 의존성이 바뀌면 전부다.
+  - **깨끗한 클론 전체 시험은 본선에서 묶어서**: DGX 타이머 `fls-trunk-clone`이 지난번이 끝나고 3시간 뒤(즉 3~4시간마다) `scripts/remote/trunkClone.sh`를 돈다(본선의 그 파일을 매번 읽는다). 본선 머리가 지난번과 같으면 아무것도 하지 않는다.
+    - 통과하면 `~/fls-runs/_trunk/last-good`에 그 머리를 적는다.
+    - 실패하면 실패한 단계(실패한 시험 파일·typecheck·build)로 지난 통과 머리부터 지금 머리까지 `git bisect`(병합 포함)를 돌려 **처음 깨진 커밋**(해시·제목·작성자)을 찾는다. 결과는 `~/fls-runs/_trunk/status`·`history.log`에 남고, **`run.sh`가 실행마다 `== TRUNK CLONE FAILED …` 한 줄로 알린다** — 그 커밋의 세션이 고치거나 되돌린다. 다음 본선 클론이 통과하면 알림이 멈춘다.
+    - 설치(DGX에서 한 번): `cp scripts/remote/systemd/fls-trunk-clone.* ~/.config/systemd/user/ && systemctl --user daemon-reload && systemctl --user enable --now fls-trunk-clone.timer`. 지금 한 번 돌리기: `systemctl --user start --no-block fls-trunk-clone.service`.
+  - 엔진 가드레일은 1회째 seed 1~5의 끝 상태 해시가 기준선과 모두 같으면 2회째를 돌리지 않는다.
+  - 결과를 기다리는 동안 다음 일을 한다. 1분 간격으로 확인하지 않는다(`--detach` 뒤 `--attach`를 백그라운드로 걸어 두기).
+- **무거운 실행은 동시에 3개까지**(2026-10-04 결정 RR14는 2개, 2026-10-06 사용자 지시로 3개): 나머지는 줄을 서서 먼저 온 순서로 들어간다. DGX의 `~/fls-runs/_slots/max`에 숫자가 있으면 줄을 확인할 때마다 그 수를 쓴다(코드를 올리지 않고 바꿀 수 있다). 자기 실행 폴더에 옛 `heavySlots.sh`를 올린 실행은 2를 쓴다. 줄의 표에는 실행마다 자기 상한이 적혀 있어서(옛 코드의 표는 비어 있고 2로 친다), 앞의 실행이 쓸 수 없는 칸(앞의 모든 상한보다 높은 칸)은 뒤의 실행이 먼저 잡는다 — 3번째 칸이 옛 코드의 실행들 뒤에서 비어 있지 않게.
   - 무거운 실행: `--task test|guardrail|ui-geometry|clone-check`, 그리고 임의 명령 가운데 `--heavy`를 붙였거나 `--detach`(20분 넘는 실행)이거나 알려진 무거운 스크립트(`uiGeometryAudit`·`efficientGrowthRun`)를 부르는 것. 옛 `--slot guardrail`도 무거운 실행이다.
   - 상한 밖(가벼운 실행): `--task browser|perf|trend`(성능 측정은 기다리지 않는다, 결정 RR3), 단위 시험 파일·짧은 탐침. 무거워 보이는 임의 명령을 상한 밖에서 돌리려면 `--light`.
   - 기다리는 동안 실행 기록(`--attach`로 보이는 `run.log`)에 몇 번째인지, 칸마다 무엇이 언제부터 도는지, 앞에 누가 줄 섰는지를 적는다. 처음, 바뀔 때, 그리고 10분마다다. 기다린 시간은 `slot wait`로 남는다.
@@ -65,7 +74,7 @@ scripts/remote/run.sh <label> [--heavy|--light] [--detach] [--keep] -- <아무 �
    - git: 실행 폴더는 공유 bare 미러(`_cache/repo.git`)를 alternates로 쓰는 `$FULL_SHA` 작업 트리가 된다. `git status`는 Mac의 커밋 안 한 변경을 그대로 보여 준다.
    - node_modules: `package-lock.json` 해시·Node 버전·arch별 캐시(`_cache/nm-<hash>`)에서 하드링크로 복사한다(`cp -al`). 캐시가 없을 때만 `npm ci`를 한 번 한다.
    - 포트는 4300~4399 가운데 빈 것 둘이다: `FLS_REMOTE_PORT`, 그리고 둘째 서버(옆에 띄우는 base 빌드·드라이버)용 `FLS_REMOTE_BASE_PORT`. 전에는 스크립트가 `FLS_REMOTE_PORT + 50`을 써서 4350 이상에서 범위를 벗어났다(2026-10-04).
-   - 무거운 실행은 무거운 실행 칸을 잡는다(동시에 2개까지, 나머지는 줄을 선다 — 위 "무거운 실행은 동시에 2개까지").
+   - 무거운 실행은 무거운 실행 칸을 잡는다(동시에 3개까지, 나머지는 줄을 선다 — 위 "무거운 실행은 동시에 3개까지").
 3. **실행**: `bash -c "<명령>"`. 로그는 `.remote/run.log`에 남는다.
 4. **회수**:
    - 실행 폴더의 `.remote/`(로그·요약·가드레일/성능 원자료)는 Mac의 `.remote-runs/<run>/`으로 온다(git 무시).

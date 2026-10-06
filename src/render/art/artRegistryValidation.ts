@@ -57,7 +57,7 @@ export function validateRegistryData(bundles: readonly ArtBundle[]): readonly Ar
         if (!finiteScaled(Object.values(point))) report(at, 'Scaled port overflows');
       }
     }
-    if (entry.kind === 'ground-prop' && entry.placement !== 'land' && entry.placement !== 'seasonal-ground' && entry.placement !== 'nature-ground' && entry.wealthRange && entry.wealthRange.min !== undefined && entry.wealthRange.max !== undefined && entry.wealthRange.min >= entry.wealthRange.max) report(at, 'Wealth range requires min < max');
+    if (entry.kind === 'ground-prop' && entry.placement !== 'land' && entry.placement !== 'seasonal-ground' && entry.placement !== 'nature-ground' && entry.placement !== 'spring-context' && entry.wealthRange && entry.wealthRange.min !== undefined && entry.wealthRange.max !== undefined && entry.wealthRange.min >= entry.wealthRange.max) report(at, 'Wealth range requires min < max');
     if (entry.kind === 'state-overlay') for (const id of entry.targetBodyIds) {
       const body = byId.get(id);
       if (!body || (body.kind !== 'building-body' && body.kind !== 'landmark')) { report(at, `Missing body or landmark target ${id}`); continue; }

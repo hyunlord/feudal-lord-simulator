@@ -17,11 +17,22 @@
 #      compiles a missing one again). /tmp is shared, so nothing else there is touched.
 # tight (free space under DC_LOW_GB, 300, before a heavy run): rule 1 takes every finished folder (age 0) and rule 2
 # halves the cap.
+# A folder with a part this user may not write (a directory without write permission — a run's read-only copy of its
+# input states — or another user's file) is left whole, by every rule: rm -rf would delete what it can and leave a
+# broken folder (2026-10-06: astra-phase2-final-geometry-fd68f12 kept its 0555 state copies, lost its .remote/exit-code
+# and could never age again; its "허가 거부" lines landed in the log of the render run that cleaned). Such a folder gets
+# one line in the clean's own log DC_LOG (_logs/disk-clean.log), once, and nothing in the run's log.
+# DC_FIX_READONLY (1 by default since 2026-10-06, decision RR15b; 0 turns it off): write permission is restored (u+w)
+# first and the folder goes as usual — but only for a run folder that finished DC_FIX_HOURS (24) or more hours ago,
+# holds no lock, has no process working in it and is wholly this user's. Anything else is still left whole.
 DC_RUN_HOURS=${DC_RUN_HOURS:-24}
 DC_RUNS_CAP_GB=${DC_RUNS_CAP_GB:-250}
 DC_KEPT_DAYS=${DC_KEPT_DAYS:-3}
 DC_LOW_GB=${DC_LOW_GB:-300}
 DC_TRUNK=${DC_TRUNK:-codex/phase15-organic-ground}
+DC_LOG=${DC_LOG:-$BASE/_logs/disk-clean.log}
+DC_FIX_READONLY=${DC_FIX_READONLY:-1}
+DC_FIX_HOURS=${DC_FIX_HOURS:-24}
 DC_TMP=${DC_TMP:-/tmp}
 DC_TSX_DAYS=${DC_TSX_DAYS:-3}
 
@@ -38,6 +49,36 @@ dc__in_use() {
   done | sort -u
 }
 dc__mb() { du -sm "$1" 2> /dev/null | cut -f1; }
+# 0 when the whole folder can go; else one line in DC_LOG (once per folder) and 1 (see the header).
+dc__removable() { # <dir> <label>
+  local dir=$1 label=$2 uid part mark
+  uid=$(id -u)
+  dc__fixable "$dir" "$label" && chmod -R u+w "$dir" 2> /dev/null
+  part=$(find "$dir" \( \( -type d ! -writable \) -o ! -user "$uid" \) -print -quit 2> /dev/null)
+  [ -z "$part" ] && return 0
+  mark=$BASE/_logs/disk-clean.left/$(printf '%s' "$label" | tr '/' '_')
+  if [ ! -e "$mark" ]; then
+    mkdir -p "${mark%/*}" 2> /dev/null && : > "$mark"
+    printf '%s left %s whole: %s is not writable by %s (a read-only copy, or a file of another user; write permission is restored only for a run folder finished ${DC_FIX_HOURS} h+ ago, unlocked, unused and wholly ours)\n' \
+      "$(date '+%F %T')" "$label" "${part#"$dir"/}" "$(id -un)" >> "$DC_LOG" 2> /dev/null
+  fi
+  return 1
+}
+# Write permission may be restored (u+w) only for a run folder (not _clones/_kept//tmp) that finished DC_FIX_HOURS or
+# more hours ago (its .remote/exit-code; a folder without one never qualifies), holds no lock, has no process working
+# in it, and has no file of another user. The callers have checked lock and use already; checked again here because a
+# chmod must never touch a folder a run still owns.
+dc__fixable() { # <dir> <label>
+  local dir=$1 name=$2 age
+  [ "$DC_FIX_READONLY" = 1 ] || return 1
+  case "$name" in */*|_*) return 1 ;; esac
+  age=$(dc__age_h "$dir"); [ "$age" -ge "$DC_FIX_HOURS" ] || return 1
+  dc__locked "$name" && return 1
+  dc__tmp_busy "$dir" && return 1
+  [ -z "$(find "$dir" ! -user "$(id -u)" -print -quit 2> /dev/null)" ]
+}
+# The folder went: forget that it was left once.
+dc__gone() { rm -f "$BASE/_logs/disk-clean.left/$(printf '%s' "$1" | tr '/' '_')" 2> /dev/null; }
 # Hours since the run finished (its .remote/exit-code); -1 while it has not.
 dc__age_h() { [ -f "$1/.remote/exit-code" ] || { echo -1; return; }; echo $(( ($(date +%s) - $(stat -c %Y "$1/.remote/exit-code")) / 3600 )); }
 dc__ensure_kept() {
@@ -50,9 +91,11 @@ dc__ensure_kept() {
 }
 dc__remove_run() { # <name> <why>
   local name=$1 mb
+  dc__removable "$BASE/$name" "$name" || return 1
   dc__ensure_kept "$name" || { echo "== disk: left $name (its results could not be copied to _kept/)"; return 1; }
   mb=$(dc__mb "$BASE/$name")
-  ( flock -n 9 || exit 1; rm -rf "$BASE/${name:?}" ) 9> "$BASE/_locks/$name.lock" || return 1
+  ( flock -n 9 || exit 1; rm -rf "$BASE/${name:?}" 2>> "$DC_LOG" ) 9> "$BASE/_locks/$name.lock" || return 1
+  dc__gone "$name"
   git -C "$BASE/_cache/repo.git" update-ref -d "refs/remote-runs/$name" 2> /dev/null
   rm -f "$BASE/_locks/$name.lock"
   echo "== disk: removed run folder $name (${mb:-?} MB, $2)"
@@ -60,6 +103,7 @@ dc__remove_run() { # <name> <why>
 
 # One clean at a time (two runs finishing together would pack the same _kept/ folder): a second one skips.
 clean_disk() {
+  mkdir -p "${DC_LOG%/*}" 2> /dev/null   # the clean's own log (rm's errors go there: a redirection to a missing folder would skip the rm)
   ( flock -n 8 || { echo "== disk: another clean is going; skipped ($1)"; exit 0; }; dc__clean "$@" ) 8> "$BASE/_locks/disk-clean.lock"
 }
 
@@ -77,7 +121,8 @@ dc__clean() {
     [ -d "$dir" ] || continue
     name=$(basename "$dir")
     dc__locked "$name" || printf '%s\n' "$inuse" | grep -qx "$name" && continue
-    rm -rf "${dir:?}" && echo "== disk: removed _clones/$name (no clean clone is going there)"
+    dc__removable "$dir" "_clones/$name" || continue
+    rm -rf "${dir:?}" 2>> "$DC_LOG" && dc__gone "_clones/$name" && echo "== disk: removed _clones/$name (no clean clone is going there)"
   done
   # 1. age
   for dir in $(ls -1dtr "$BASE"/*/ 2> /dev/null); do
@@ -123,8 +168,9 @@ dc__archive_kept() {
   for name in $names; do
     printf '%s\n' "$named" | grep -qx "$name" && continue
     dir=$BASE/_kept/$name
+    dc__removable "$dir" "_kept/$name" || continue
     if tar -C "$BASE/_kept" --zstd -cf "$BASE/_kept/_archive/$name.tar.zst.tmp" "$name" 2> /dev/null; then
-      mv "$BASE/_kept/_archive/$name.tar.zst.tmp" "$BASE/_kept/_archive/$name.tar.zst" && rm -rf "${dir:?}"
+      mv "$BASE/_kept/_archive/$name.tar.zst.tmp" "$BASE/_kept/_archive/$name.tar.zst" && rm -rf "${dir:?}" 2>> "$DC_LOG" && dc__gone "_kept/$name"
       echo "== disk: packed _kept/$name into _kept/_archive/$name.tar.zst (no report names it)"
     else
       rm -f "$BASE/_kept/_archive/$name.tar.zst.tmp"
@@ -150,8 +196,9 @@ dc__clean_tmp() {
     case "$pid" in ''|*[!0-9]*) continue ;; esac
     [ -e "/proc/$pid" ] && continue          # its trend or perf:ab is still going
     dc__tmp_busy "$dir" && continue
+    dc__removable "$dir" "tmp/${dir##*/}" || continue
     mb=$(dc__mb "$dir")
-    rm -rf "${dir:?}" && echo "== disk: removed $dir (${mb:-?} MB, its process $pid is gone)"
+    rm -rf "${dir:?}" 2>> "$DC_LOG" && dc__gone "tmp/${dir##*/}" && echo "== disk: removed $dir (${mb:-?} MB, its process $pid is gone)"
   done
   tsx=$DC_TMP/tsx-$(id -u)
   [ -d "$tsx" ] || return 0

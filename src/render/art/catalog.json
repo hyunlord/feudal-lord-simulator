@@ -17566,5 +17566,486 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "wave43-spring-context",
+    "entries": [
+      {
+        "id": "wave43:riverside_grass_spring_a",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "riverside-grass",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/ground/riverside_grass_spring_a-v1.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/ground/riverside_grass_spring_a-v1.png",
+          "sourceSha256": "db2882b50af8e5249946d07e310c188112c11a1e533008d12f35c124c9add8ef",
+          "runtimeSha256": "db2882b50af8e5249946d07e310c188112c11a1e533008d12f35c124c9add8ef"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 0,
+            "y": 0
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6
+      },
+      {
+        "id": "wave43:orchard_cherry_spring",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "cherry",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/orchard/orchard_cherry_spring.png",
+          "width": 256,
+          "height": 256
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/orchard/orchard_cherry_spring.png",
+          "sourceSha256": "049dc09ac5d25137a2dacf905ab995e2f54d55634c7a00207dc760239ccbbdce",
+          "runtimeSha256": "049dc09ac5d25137a2dacf905ab995e2f54d55634c7a00207dc760239ccbbdce"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 242
+          },
+          "scale": 0.16796875,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6
+      },
+      {
+        "id": "wave43:ewe_lamb_a_spring",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "ewe-lamb",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/props/ewe_lamb_a_spring.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/props/ewe_lamb_a_spring.png",
+          "sourceSha256": "65606634d4864d9bdff6e9f92a5b524310a8b5c0b153928998962e70e673aa13",
+          "runtimeSha256": "65606634d4864d9bdff6e9f92a5b524310a8b5c0b153928998962e70e673aa13"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 67,
+            "y": 69
+          },
+          "scale": 0.1796875,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6
+      },
+      {
+        "id": "wave43:ewe_lamb_b_spring",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "ewe-lamb",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/props/ewe_lamb_b_spring.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/props/ewe_lamb_b_spring.png",
+          "sourceSha256": "1bc3735ad19a482b247ae6094f2fe780d235886bbd27a89987e8fc8e331dd8f7",
+          "runtimeSha256": "1bc3735ad19a482b247ae6094f2fe780d235886bbd27a89987e8fc8e331dd8f7"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 65,
+            "y": 77
+          },
+          "scale": 0.1796875,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6
+      },
+      {
+        "id": "wave43:swollen_stream_bank_spring",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "swollen-bank",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/props/swollen_stream_bank_spring.png",
+          "width": 256,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/props/swollen_stream_bank_spring.png",
+          "sourceSha256": "b4da5624a4f48bf97fed0107c3602a77077d31d8c73f65cd2143764d2b95b01d",
+          "runtimeSha256": "b4da5624a4f48bf97fed0107c3602a77077d31d8c73f65cd2143764d2b95b01d"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 130,
+            "y": 117
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6
+      },
+      {
+        "id": "wave43:hawthorn_blossom_strip_spring",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "hawthorn",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "width": 512,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/props/hawthorn_blossom_strip_spring.png",
+          "sourceSha256": "67c78cca392ebdbb0857064ead6e6bc12b089b4442d5655b3606b95d37210ebf",
+          "runtimeSha256": "67c78cca392ebdbb0857064ead6e6bc12b089b4442d5655b3606b95d37210ebf"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 256,
+            "y": 53
+          },
+          "scale": 0.5,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6
+      },
+      {
+        "id": "wave43:nest_bird_spring",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "nest",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/props/nest_bird_spring.png",
+          "width": 128,
+          "height": 96
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/props/nest_bird_spring.png",
+          "sourceSha256": "cf5dae83ba4ab6cc30b69cc2325ef23e1de9f1ca37f8481aa99b11b152f9477e",
+          "runtimeSha256": "cf5dae83ba4ab6cc30b69cc2325ef23e1de9f1ca37f8481aa99b11b152f9477e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 65,
+            "y": 79
+          },
+          "scale": 0.0703125,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 1
+      },
+      {
+        "id": "wave43:laundry_yard_spring",
+        "kind": "ground-prop",
+        "placement": "spring-context",
+        "role": "laundry",
+        "group": "all",
+        "season": "spring",
+        "image": {
+          "url": "assets/wave43/props/laundry_yard_spring.png",
+          "width": 256,
+          "height": 192
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave43/candidates-20261002/assets/props/laundry_yard_spring.png",
+          "sourceSha256": "27f1e510dc808aaac40c69675b7f6c82cacacbd57915d0fbd4cf9349cc8266de",
+          "runtimeSha256": "27f1e510dc808aaac40c69675b7f6c82cacacbd57915d0fbd4cf9349cc8266de"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 132,
+            "y": 176
+          },
+          "scale": 0.107421875,
+          "allowMirror": false
+        },
+        "opacity": 1,
+        "minZoom": 0.6
+      }
+    ],
+    "rules": [
+      {
+        "id": "spring-riverside-grass-all",
+        "kind": "ground-prop",
+        "slot": "spring-riverside-grass",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "spring-context"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          },
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "riverside-grass"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43:riverside_grass_spring_a",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "spring-cherry-all",
+        "kind": "ground-prop",
+        "slot": "spring-cherry",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "spring-context"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          },
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "cherry"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43:orchard_cherry_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "spring-ewe-lamb-all",
+        "kind": "ground-prop",
+        "slot": "spring-ewe-lamb",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "spring-context"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          },
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "ewe-lamb"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43:ewe_lamb_a_spring",
+            "weight": 1
+          },
+          {
+            "assetId": "wave43:ewe_lamb_b_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "spring-swollen-bank-all",
+        "kind": "ground-prop",
+        "slot": "spring-swollen-bank",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "spring-context"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          },
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "swollen-bank"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43:swollen_stream_bank_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "spring-hawthorn-all",
+        "kind": "ground-prop",
+        "slot": "spring-hawthorn",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "spring-context"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          },
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "hawthorn"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43:hawthorn_blossom_strip_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "spring-nest-all",
+        "kind": "ground-prop",
+        "slot": "spring-nest",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "spring-context"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          },
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "nest"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43:nest_bird_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "spring-laundry-all",
+        "kind": "ground-prop",
+        "slot": "spring-laundry",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "placement",
+            "value": "spring-context"
+          },
+          {
+            "op": "eq",
+            "field": "season",
+            "value": "spring"
+          },
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "laundry"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave43:laundry_yard_spring",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]

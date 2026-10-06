@@ -52,7 +52,13 @@ export type WeatherParticleEntry = EntryBase & {
   readonly kind: 'weather-particle'; readonly role: 'rain' | 'leaf-flight' | 'leaf-wind' | 'splash' | 'snow' | 'blowing-snow'; readonly group: string;
   readonly geometry: ArtGeometry; readonly opacity: number; readonly minZoom: number; readonly frames: readonly ArtFrame[];
 };
-export type GroundPropEntry = HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
+export type SpringWorldRole = 'riverside-grass' | 'cherry' | 'ewe-lamb' | 'hawthorn' | 'laundry' | 'nest' | 'swollen-bank';
+export type SpringWorldEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'spring-context'; readonly role: SpringWorldRole;
+  readonly season: 'spring'; readonly group: string; readonly geometry: ArtGeometry;
+  readonly opacity: number; readonly minZoom: number;
+};
+export type GroundPropEntry = SpringWorldEntry | HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
 export type WalkerCargoEntry = EntryBase & {
   readonly kind: 'walker-cargo'; readonly cargoKinds: readonly string[];
   readonly frames: readonly ArtFrame[]; readonly facing: ArtFacing; readonly scale: number; readonly allowMirror: false;

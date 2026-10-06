@@ -1,0 +1,11 @@
+# Three hours after the previous trunk clone ended (a clone takes ~15-40 min with its wait): every 3-4 hours.
+[Unit]
+Description=Feudal Lord Simulator: the trunk's bundled clean clone timer
+
+[Timer]
+OnBootSec=15min
+OnUnitInactiveSec=3h
+Persistent=false
+
+[Install]
+WantedBy=timers.target
