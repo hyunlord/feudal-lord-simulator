@@ -93,6 +93,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 
 ---
 ## B′. 렌더 B — Astra (결정 FND-2, 2026-10-04 출범)
+- [x] **RB-LANDMARK-DATA 자료 준비**: `1b68f4dd` 확정 원본32장과 교정12장, 44장·22계절쌍을 정리했다. 변경 시험3개 통과. 설치0장, 엔진 성장·점유 사실은 [요청서](../requests/landmark-growth/README.md)로 넘긴다. LANDMARK-GROW 전체는 미완료.
 - [x] **RB-ERA-SIGNS 간판 8장**: 본선 포함 구현 `f749fecc`. 네 L2 본체에 실제 직업·달력으로 작은 벽 간판을 붙였다. 변경 시험 1,478개·기하 80조건 실패 0·전후 18쌍 확인. 문양 판독 한계와 미등록 본체 제외를 [보고서](../verification/era-signs/README.md)에 적었다.
 
 - [x] **RB-SEASON-BOUNDARY 시점 수정**: 본선 포함 구현·통합 `494fb0d1`, 새 그림 0장. 네 시점과 여름 실제 전후 20쌍을 확인했다. 영향 시험 1,204개 중 옛 부분 적설 가정 1건을 보정하고 해당 13개를 다시 통과했다. 연속 214프레임은 보고 영상 6개로 묶었다. UI 입력 변경 없음, RR16 병합 검사로 게시한다. [보고서](../verification/season-boundaries/README.md).
