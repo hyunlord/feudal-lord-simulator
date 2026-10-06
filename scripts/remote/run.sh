@@ -89,7 +89,7 @@ case "${1:-}" in
   ""|-h|--help) sed -n '2,24p' "$0"; exit 0 ;;
   --status)
     rsh "systemctl --user list-units 'fls-run-*' --no-pager --no-legend; systemctl --user status fls-runs.slice --no-pager 2>/dev/null | sed -n '1,8p'; ls -1t $RROOT | grep -v '^_'; echo '== kept:'; ls -1t $RROOT/_kept 2>/dev/null
-      echo '== heavy slots (at most 2 heavy runs at once):'; for f in $RROOT/_slots/heavy.*.lock; do [ -e \"\$f\" ] && ! flock -n \"\$f\" true && tr '\\t' ' ' < \"\${f%.lock}.info\"; done; echo '== waiting in line:'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//'"
+      echo '== heavy slots (at most 3 heavy runs at once, or the number in _slots/max):'; for f in $RROOT/_slots/heavy.*.lock; do [ -e \"\$f\" ] && ! flock -n \"\$f\" true && tr '\\t' ' ' < \"\${f%.lock}.info\"; done; echo '== waiting in line:'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//'"
     exit 0 ;;
   --release) [ -n "${2:-}" ] || die "--release <run>"
     rsh "rm -rf $RROOT/_kept/${2:?}; rm -f $RROOT/${2:?}/.remote/keep"; echo "remote: released $2"; exit 0 ;;
@@ -170,11 +170,15 @@ for _ in $(seq 1 300); do grep -q 'LOCKED\|BUSY' "$TMP/lock.out" 2>/dev/null && 
 grep -q BUSY "$TMP/lock.out" && die "$RUN is already running on the DGX (scripts/remote/run.sh --attach $RUN)"
 grep -q LOCKED "$TMP/lock.out" || die "could not lock $RUN on the DGX: $(tail -1 "$TMP/lock.out")"
 state=$(rsh "mkdir -p $RROOT/$RUN/.remote-in && \
-  ls -1dt $RROOT/*/ 2>/dev/null | sed 's#/\$##; s#.*/##' | grep -v '^_' | grep -vx '$RUN' | head -1 | sed 's/^/PREV=/'")
+  ls -1dt $RROOT/*/ 2>/dev/null | sed 's#/\$##; s#.*/##' | grep -v '^_' | grep -vx '$RUN' | head -1 | sed 's/^/PREV=/'; \
+  { sed 's/^/TRUNK=/' $RROOT/_trunk/status 2>/dev/null || true; }")
 PREV=$(printf '%s\n' "$state" | sed -n 's/^PREV=//p')
+# The trunk's bundled clean clone (scripts/remote/trunkClone.sh) failed: every run says so until a later trunk passes.
+TRUNK_STATE=$(printf '%s\n' "$state" | sed -n 's/^TRUNK=//p')
+case "$TRUNK_STATE" in FAILED*) echo "== TRUNK CLONE FAILED — the session whose commit it names fixes or reverts it: ${TRUNK_STATE#FAILED }" >&2 ;; esac
 COPY_DEST=""; [ -n "$PREV" ] && COPY_DEST="--copy-dest=../$PREV"
 
-echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}${SLOT:+, heavy: waits in line when 2 heavy runs are going}) -> $HOST"
+echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}${SLOT:+, heavy: waits in line when every heavy slot is taken}) -> $HOST"
 rsync -a --checksum $COPY_DEST -e "ssh $SSH_OPTS" --files-from="$TMP/files.txt" "$REPO/" "$HOST:$RROOT/$RUN/"
 rsync -a -e "ssh $SSH_OPTS" "$TMP/meta.env" "$TMP/in-files.txt" $( [ -f "$TMP/head.bundle" ] && echo "$TMP/head.bundle" ) "$HOST:$RROOT/$RUN/.remote-in/"
 SYNC_S=$(since "$T0")
