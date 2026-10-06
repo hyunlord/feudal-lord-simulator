@@ -45,3 +45,17 @@ LM-R2(협상·약속 장부·영지 포트폴리오·소송·혼인 진행) 화�
   - 규약(neighbor-world SOURCES): 담비 없음(백작·왕실만), 왕실 조합 없음(붉은 바탕 금 사자, 청색 바탕 금 백합), 색과 금속의 대비. 모두 창작 도안이다.
   - 그림으로 그리는 법(조합 표)은 렌더 몫이다. 이웃 세계 16가문(LM-E10)이 들어오면 그 문장 표로 바뀐다.
 - ②·③·④는 이어서 한다(사용자 지시: ① 먼저).
+
+## 엔진 답 ②·③·④
+- **② 읽기**(시험이 읽기 = 명령을 박음 — 명령도 같은 함수로 거절한다):
+  - `suitActions(state, suitId)`(`estateSuits.ts`): 요청한 모양이다.
+    - `enforce`는 끝난 소송이면 null, 판결 전이면 `refusal: "stage"`다.
+    - `nextStageTick`은 다음 단계로 넘어가는 계절 첫 틱이고, 다음 단계가 없으면 null이다.
+    - **영주가 원고가 아닌 소송(이웃의 되찾기 소송, ER-21)은 null**이다 — 화면은 보여 주기만 한다(④-b).
+  - `keepPromiseRefusal`·`answerCounterRefusal`(셋째 인자 `accept`, 기본 true; 거절할 때는 "treasury"를 보지 않음)·`willChangeRefusal`(`marriage.ts`).
+  - `estatePetitionEffect`·`auditAnswerEffect`(넷째 인자 `replacementId`; 살아 있는 후보가 아니면 null)(`stewardship.ts`).
+- **③ 단어표**: `historyCopy.ko.ts`의 `TIER_KO`·`TERM_KO`·`HOLDER_KO`·`PIECE_KO`·`CLAIM_BASIS_KO`·`SUIT_STAGE_KO`를 내보냈다. `SUIT_STAGE_KO`에는 지금 쓰는 넷(증거·후원·심리·점유 집행)만 있다. 소장 접수·판결·종결 말이 필요하면 용어 정본(glossary)에 먼저 올린다.
+- **④ 확인**:
+  - (a) 맞다. 혼인 "다툼"은 자기 명령이 없다. 혼인 영지의 권원과 점유가 모두 영주에게 오면(`plan.claimId` 소송을 이기고 점유 집행까지) "상속됨"으로 끝난다.
+  - (b) 맞다. 이웃의 되찾기 소송에 영주가 막을 명령은 없고, 위처럼 읽기도 null이다.
+  - (c) 맞다. 목적은 혼인 하나다. 제안은 그 자리에서 받아들여지거나, 거절되거나, 역제안이 된다. 역제안은 한 계절(`COUNTER_ANSWER_TICKS`) 영주의 답을 기다린다.

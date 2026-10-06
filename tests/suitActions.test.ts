@@ -59,4 +59,7 @@ test("patrons, enforcement and the next stage: the stage refuses them until it c
     assert.equal(seekSuitPatron(patronage, suitId, patron.factionId) !== patronage, patron.refusal === null, `${patron.factionId}: ${patron.refusal}`);
   }
   assert.equal(suitActions(state, "suit-none"), null);
+  // A suit brought against the lord (a neighbour's recovery, ER-21): no action of his, the screen shows it only.
+  const against: GameState = { ...state, estates: { ...estatesOf(state), suits: estatesOf(state).suits.map(entry => entry.id === suitId ? { ...entry, plaintiff: "neighbour_1", defendant: LORD } : entry) } };
+  assert.equal(suitActions(against, suitId), null);
 });
