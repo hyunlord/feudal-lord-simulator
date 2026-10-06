@@ -93,7 +93,8 @@ function duesLines(state: GameState, last: Last): readonly string[] {
   const all = settlements(state);
   const before = [...all].reverse().find(entry => entry.tick <= last.tick);
   const after = all.at(-1);
-  if (after === undefined || after.tick <= last.tick) lines.push(COPY.dues.noSettlementSince);
+  if (after === undefined) lines.push(COPY.dues.noSettlement);
+  else if (after.tick <= last.tick) lines.push(COPY.dues.noSettlementSince);
   else if (before === undefined) lines.push(COPY.dues.folded);
   else lines.push(COPY.dues.stalls(before.stalls, after.stalls), COPY.dues.income(before.amount, after.amount));
   return lines;

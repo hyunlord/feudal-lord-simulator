@@ -16,6 +16,7 @@ export const SINCE_LAST_COPY = {
     rateNow: (now: number) => `좌판세: 지금 평소의 ${percent(now)}`,
     stalls: (then: number, now: number) => `좌판: 그때 ${then}칸 → 지금 ${now}칸`,
     income: (then: number, now: number) => `좌판세 한 번 정산: 그때 ${moneyFull(then)} → 지금 ${moneyFull(now)}`,
+    noSettlement: "장부에 남은 좌판세 정산이 없습니다",
     noSettlementSince: "그 뒤 좌판세 정산이 아직 없습니다(기간이 끝날 때 정산합니다)",
     folded: "그때의 좌판세 정산은 장부에서 접혀 비교할 수 없습니다",
   },

@@ -55,8 +55,9 @@ const smallest = (page: Page, selector: string) => page.evaluate(root => Math.mi
 const lines = (page: Page, selector: string) => page.evaluate(root => [...document.querySelectorAll(root)].map(element => (element.textContent ?? "").trim()), selector);
 /** How far the tile's middle stands from the view's middle, in CSS px (the proof port's own projection). */
 const offCentre = (page: Page, tile: { tx: number; ty: number }) => page.evaluate(target => {
-  const proof = (window as unknown as { __FEUDAL_PHASE10_PROOF__: { tileClientPoint: (tile: { tx: number; ty: number }) => { x: number; y: number } } }).__FEUDAL_PHASE10_PROOF__;
-  const point = proof.tileClientPoint(target);
+  const proof = (window as unknown as { __FEUDAL_PHASE10_PROOF__: { tileClientPoint: (tile: { tx: number; ty: number }) => { clientX: number; clientY: number } } }).__FEUDAL_PHASE10_PROOF__;
+  const { clientX: x, clientY: y } = proof.tileClientPoint(target);
+  const point = { x, y };
   const canvas = document.querySelector("canvas")!.getBoundingClientRect();
   return Math.round(Math.hypot(point.x - (canvas.left + canvas.width / 2), point.y - (canvas.top + canvas.height / 2)));
 }, tile);
