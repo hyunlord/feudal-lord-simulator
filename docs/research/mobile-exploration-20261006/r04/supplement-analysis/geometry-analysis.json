@@ -1,0 +1,1558 @@
+{
+  "kind": "geometry",
+  "sourceHash": "4d2b139cc08ea0618e64442abd6d782dbc71e25b27d9a2e309d1ef208082762a",
+  "scheduleHash": "638a237627c39ea49d8d5a4709eccaa0680239eb6533c7c071f94f15e16d15d7",
+  "count": 5,
+  "analysis": [
+    {
+      "id": "geometry:1",
+      "store": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            }
+          ],
+          "steps": 10,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 190,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            },
+            {
+              "x": 10,
+              "y": 11
+            },
+            {
+              "x": 10,
+              "y": 12
+            },
+            {
+              "x": 10,
+              "y": 13
+            },
+            {
+              "x": 10,
+              "y": 14
+            },
+            {
+              "x": 10,
+              "y": 15
+            },
+            {
+              "x": 10,
+              "y": 16
+            },
+            {
+              "x": 10,
+              "y": 17
+            },
+            {
+              "x": 10,
+              "y": 18
+            }
+          ],
+          "steps": 42,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 185,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "pathDiffers": true,
+        "farCostsMoreFood": true
+      },
+      "guard": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 9,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 1
+            },
+            {
+              "x": 9,
+              "y": 2
+            },
+            {
+              "x": 9,
+              "y": 3
+            },
+            {
+              "x": 9,
+              "y": 4
+            },
+            {
+              "x": 9,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 30,
+          "exposure": 11,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 187,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 26,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 188,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "sameDeployed": true,
+        "nearExposureHigher": true
+      },
+      "allRequiredChecks": true
+    },
+    {
+      "id": "geometry:2",
+      "store": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            }
+          ],
+          "steps": 10,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 190,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            },
+            {
+              "x": 10,
+              "y": 11
+            },
+            {
+              "x": 10,
+              "y": 12
+            },
+            {
+              "x": 10,
+              "y": 13
+            },
+            {
+              "x": 10,
+              "y": 14
+            },
+            {
+              "x": 10,
+              "y": 15
+            },
+            {
+              "x": 10,
+              "y": 16
+            },
+            {
+              "x": 10,
+              "y": 17
+            },
+            {
+              "x": 10,
+              "y": 18
+            }
+          ],
+          "steps": 42,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 185,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "pathDiffers": true,
+        "farCostsMoreFood": true
+      },
+      "guard": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 9,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 1
+            },
+            {
+              "x": 9,
+              "y": 2
+            },
+            {
+              "x": 9,
+              "y": 3
+            },
+            {
+              "x": 9,
+              "y": 4
+            },
+            {
+              "x": 9,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 30,
+          "exposure": 11,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 187,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 26,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 188,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "sameDeployed": true,
+        "nearExposureHigher": true
+      },
+      "allRequiredChecks": true
+    },
+    {
+      "id": "geometry:3",
+      "store": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            }
+          ],
+          "steps": 10,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 190,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            },
+            {
+              "x": 10,
+              "y": 11
+            },
+            {
+              "x": 10,
+              "y": 12
+            },
+            {
+              "x": 10,
+              "y": 13
+            },
+            {
+              "x": 10,
+              "y": 14
+            },
+            {
+              "x": 10,
+              "y": 15
+            },
+            {
+              "x": 10,
+              "y": 16
+            },
+            {
+              "x": 10,
+              "y": 17
+            },
+            {
+              "x": 10,
+              "y": 18
+            }
+          ],
+          "steps": 42,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 185,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "pathDiffers": true,
+        "farCostsMoreFood": true
+      },
+      "guard": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 9,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 1
+            },
+            {
+              "x": 9,
+              "y": 2
+            },
+            {
+              "x": 9,
+              "y": 3
+            },
+            {
+              "x": 9,
+              "y": 4
+            },
+            {
+              "x": 9,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 30,
+          "exposure": 11,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 187,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 26,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 188,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "sameDeployed": true,
+        "nearExposureHigher": true
+      },
+      "allRequiredChecks": true
+    },
+    {
+      "id": "geometry:4",
+      "store": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            }
+          ],
+          "steps": 10,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 190,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            },
+            {
+              "x": 10,
+              "y": 11
+            },
+            {
+              "x": 10,
+              "y": 12
+            },
+            {
+              "x": 10,
+              "y": 13
+            },
+            {
+              "x": 10,
+              "y": 14
+            },
+            {
+              "x": 10,
+              "y": 15
+            },
+            {
+              "x": 10,
+              "y": 16
+            },
+            {
+              "x": 10,
+              "y": 17
+            },
+            {
+              "x": 10,
+              "y": 18
+            }
+          ],
+          "steps": 42,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 185,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "pathDiffers": true,
+        "farCostsMoreFood": true
+      },
+      "guard": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 9,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 1
+            },
+            {
+              "x": 9,
+              "y": 2
+            },
+            {
+              "x": 9,
+              "y": 3
+            },
+            {
+              "x": 9,
+              "y": 4
+            },
+            {
+              "x": 9,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 30,
+          "exposure": 11,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 187,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 2,
+              "wood": 3,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 26,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 188,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "sameDeployed": true,
+        "nearExposureHigher": true
+      },
+      "allRequiredChecks": true
+    },
+    {
+      "id": "geometry:5",
+      "store": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            }
+          ],
+          "steps": 10,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 190,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            },
+            {
+              "x": 10,
+              "y": 11
+            },
+            {
+              "x": 10,
+              "y": 12
+            },
+            {
+              "x": 10,
+              "y": 13
+            },
+            {
+              "x": 10,
+              "y": 14
+            },
+            {
+              "x": 10,
+              "y": 15
+            },
+            {
+              "x": 10,
+              "y": 16
+            },
+            {
+              "x": 10,
+              "y": 17
+            },
+            {
+              "x": 10,
+              "y": 18
+            }
+          ],
+          "steps": 42,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 185,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "pathDiffers": true,
+        "farCostsMoreFood": true
+      },
+      "guard": {
+        "near": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 9,
+              "y": 0
+            },
+            {
+              "x": 9,
+              "y": 1
+            },
+            {
+              "x": 9,
+              "y": 2
+            },
+            {
+              "x": 9,
+              "y": 3
+            },
+            {
+              "x": 9,
+              "y": 4
+            },
+            {
+              "x": 9,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 30,
+          "exposure": 11,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 187,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "far": {
+          "route": [
+            {
+              "x": 10,
+              "y": 0,
+              "water": false,
+              "elevation": 0,
+              "fertility": 1,
+              "wood": 2,
+              "road": true
+            },
+            {
+              "x": 10,
+              "y": 1
+            },
+            {
+              "x": 10,
+              "y": 2
+            },
+            {
+              "x": 10,
+              "y": 3
+            },
+            {
+              "x": 10,
+              "y": 4
+            },
+            {
+              "x": 10,
+              "y": 5
+            },
+            {
+              "x": 10,
+              "y": 6
+            },
+            {
+              "x": 10,
+              "y": 7
+            },
+            {
+              "x": 10,
+              "y": 8
+            },
+            {
+              "x": 10,
+              "y": 9
+            },
+            {
+              "x": 10,
+              "y": 10
+            }
+          ],
+          "steps": 26,
+          "exposure": 0,
+          "losses": 0,
+          "guardLosses": 0,
+          "deployed": 6,
+          "loot": {
+            "food": 12,
+            "materials": 0,
+            "tools": 0,
+            "coin": 0
+          },
+          "remaining": {
+            "food": 188,
+            "materials": 100,
+            "tools": 28,
+            "coin": 160
+          },
+          "success": true,
+          "reason": "창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다"
+        },
+        "sameCountsStocksAndPeople": true,
+        "sameDeployed": true,
+        "nearExposureHigher": true
+      },
+      "allRequiredChecks": true
+    }
+  ]
+}
