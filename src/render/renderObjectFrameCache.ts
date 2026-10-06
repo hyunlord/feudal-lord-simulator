@@ -9,8 +9,7 @@ import {
   type ObjectRenderItem,
   type RenderQueueItem,
 } from "./objectRenderOrder";
-import type { TileRange } from "./renderVisibility";
-import { tileIsVisibleInRange } from "./renderVisibility";
+import { tileIsVisibleInRange, type TileRange } from "./renderVisibility";
 import { walkerVisualAnchor } from "./walkerAnchor";
 import type { ZoneLayer } from "./zoneLayer";
 import { groundBoundaryScene } from "./groundBoundaryScene";

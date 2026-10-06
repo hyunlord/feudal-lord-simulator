@@ -163,7 +163,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   // while the canvas budget has room, so at its moment in the turn a chunk only swaps (groundChunkCache header (d);
   // SMOOTH-2R: at every speed). Same keys as the turn's requests will carry.
   if (next !== null) {
-    const nextToken = seasonChunkToken(next);
+    const nextToken = seasonChunkToken(next, input.state);
     const nextFade = { token: `s${next}`, ms: fade.ms };
     scheduleStaging(context, cache, visible.flatMap(plan => [
       { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan, next)}${landToken(plan, next)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
