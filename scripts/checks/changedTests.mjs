@@ -20,10 +20,14 @@ const MAC_LIMIT = 30;
 
 const args = process.argv.slice(2);
 const opt = (name) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : undefined; };
-const git = (...a) => execFileSync("git", a, { cwd: ROOT, encoding: "utf8", maxBuffer: 256 << 20 }).trim();
+const git = (...a) => execFileSync("git", a, { cwd: ROOT, encoding: "utf8", maxBuffer: 256 << 20, stdio: ["ignore", "pipe", "ignore"] }).trim();
 
 function mergeBase() {
-  for (const ref of [`origin/${TRUNK}`, TRUNK, `refs/remote-runs/${TRUNK}`]) {
+  const refs = [`origin/${TRUNK}`, TRUNK];
+  // A DGX run folder borrows the mirror's objects but has none of its refs: take the trunk's commit from the mirror.
+  const mirror = process.env.FLS_REMOTE_MIRROR;
+  if (mirror) try { refs.push(execFileSync("git", ["-C", mirror, "rev-parse", `refs/heads/${TRUNK}`], { encoding: "utf8" }).trim()); } catch { /* no mirror */ }
+  for (const ref of refs) {
     try { return git("merge-base", "HEAD", ref); } catch { /* try the next name */ }
   }
   console.error(`no trunk ref to compare with; pass --base <commit>`); process.exit(2);

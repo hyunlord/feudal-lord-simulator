@@ -8,6 +8,9 @@
 # waits in line, first come first served: a ticket _slots/queue/<ns>-<run> it holds locked while waiting. A ticket whose
 # lock is free and that is older than a minute belongs to a run that is gone and is removed. While waiting the run logs
 # its place in line, what holds each slot and who is ahead — at the start, whenever that changes, and every 10 minutes.
+# A ticket holds its run's cap (a ticket of an older copy of this file is empty and counts as 2). A run may take a free
+# slot that no run ahead of it could take (a slot above every cap ahead): when the cap rose to 3, the third slot is not
+# left empty behind runs that only know two (2026-10-06).
 # 3 since 2026-10-06 (user order: every session waited hours in line; was 2). <base>/_slots/max, when it holds a number,
 # overrides it at every check, so the DGX can change the cap without a code push.
 HEAVY_SLOTS=${HEAVY_SLOTS:-3}
@@ -32,21 +35,27 @@ heavy_take_slot() {
   HEAVY_DIR=$base/_slots
   mkdir -p "$HEAVY_DIR/queue"
   ticket="$HEAVY_DIR/queue/$(date +%s%N)-$run"
+  heavy__cap
   exec 6> "$ticket"
   flock -n 6 || true
+  echo "$HEAVY_SLOTS" > "$ticket"
   while :; do
     heavy__cap
+    [ "$(cat "$ticket" 2> /dev/null)" = "$HEAVY_SLOTS" ] || echo "$HEAVY_SLOTS" > "$ticket"
     [ -e "$ticket" ] || { exec 6> "$ticket"; flock -n 6 || true; }   # never dropped while held, but be safe
     now=$(date +%s)
-    local ahead=()
+    local ahead=() above=0 cap
     for t in $(ls -1 "$HEAVY_DIR/queue" 2> /dev/null | sort); do
       [ "$HEAVY_DIR/queue/$t" = "$ticket" ] && break
       born=$(( ${t%%-*} / 1000000000 ))
-      if heavy__held "$HEAVY_DIR/queue/$t" || [ $((now - born)) -lt 60 ]; then ahead+=("${t#*-}")
+      if heavy__held "$HEAVY_DIR/queue/$t" || [ $((now - born)) -lt 60 ]; then
+        ahead+=("${t#*-}")
+        read -r cap 2> /dev/null < "$HEAVY_DIR/queue/$t"; [[ ${cap:-} =~ ^[1-9][0-9]?$ ]] || cap=2
+        [ "$cap" -gt "$above" ] && above=$cap
       else rm -f "$HEAVY_DIR/queue/$t"; fi
     done
-    if [ "${#ahead[@]}" -eq 0 ]; then
-      for n in $(seq 1 "$HEAVY_SLOTS"); do
+    if [ "$above" -lt "$HEAVY_SLOTS" ]; then
+      for n in $(seq $((above + 1)) "$HEAVY_SLOTS"); do
         exec 5> "$HEAVY_DIR/heavy.$n.lock"
         if flock -n 5; then
           printf '%s\t%s\t%s\n' "$run" "$now" "$what" > "$HEAVY_DIR/heavy.$n.info"
