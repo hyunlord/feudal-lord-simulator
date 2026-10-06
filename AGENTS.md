@@ -169,6 +169,7 @@
 - **원격 폴더 label은 `<세션>-<작업ID>`다**(예: `render-F0V`, `engine-F0A`). `FLS_REMOTE_LABEL`로 준다.
 - 원격 실행은 48GB·12코어·nice 10 안에서만 돈다(`fls-runs.slice`). 무거운 실행(전체 회귀·가드레일·화면 기하 감사·깨끗한 클론, `--heavy`·`--detach` 명령)은 동시에 3개까지이고 나머지는 줄을 선다(결정 RR14, 2026-10-06에 2 → 3; DGX `~/fls-runs/_slots/max`가 있으면 그 수). 짧은 실행은 `--light`로 상한 밖에 둔다. DGX 디스크는 실행이 끝날 때마다 스스로 치운다(끝난 폴더는 하루 뒤, `--keep` 결과는 `_kept/`에 남고, 보고서가 부르지 않는 오래된 `_kept`는 압축, `/tmp`의 끝난 perf:ab·추이 소스 트리와 3일 안 읽은 tsx 캐시도, 결정 RR15). 판정에 쓴 실행은 보고서에 실행 이름을 적어 두면 압축되지 않는다. 이 상한을 올리거나 우회하지 않는다. 플레이 서버(4173)는 건드리지 않는다. 원격 실행의 포트는 4300~4399다.
 - **관문 줄과 실험 줄**(결정 RR20): 올리기 전에 꼭 필요한 짧은 무거운 실행(바뀐 줄의 기하 감사, 무겁게 돌리는 `test:changed`)은 `--gate`를 붙인다(`--task ui-geometry --gate --only …`). 관문 줄은 실험보다 먼저 칸을 잡고 마지막 칸은 관문 줄 몫이다. 그 밖의 무거운 실행(장기 판·탐침·분석·가드레일·클론)은 실험 줄(기본, `--experiment`)이다. 실험을 `--gate`로 돌리지 않는다.
+  - 실험 줄은 세션마다 한 번에 하나, 세션이 돌아가며 차례를 받는다(결정 RR21): 실험을 여럿 줄 세워도 다른 세션의 실행이 먼저 든다.
 - **기다리는 동안 다음 일**: 원격 실행 결과를 기다리는 동안 다음 작업을 한다. 1분 간격으로 확인하지 않는다 — 끝나면 알림이 오게 걸어 두거나(백그라운드로 따라가기, `--detach` 뒤 `--attach`) 긴 간격으로 본다.
 
 ### 상시 규칙
@@ -197,6 +198,7 @@
 18. **렌더 수정 금지의 예외**: 새 건물 종류를 추가할 때 렌더의 종류별 분기 세 곳(`buildingInspectorModel` 용도 문구, `buildingVisualState` 몸체, `historicalFacilityAssets` 그림 id)에 최소 줄을 넣는 것은 렌더 수정 금지의 예외다. 그 밖의 렌더는 건드리지 않고, 보고서에 "렌더 세션이 넘겨받을 것"으로 적는다.
 19. **병합 전 자동 검사**: 본선·main 푸시마다 pre-push 훅이 `npm run check:merge`를 푸시하는 범위(원격 머리..로컬 머리)에 돌린다(`FLS_PUSH_OK=1`일 때도). 하나라도 실패하면 푸시를 거부한다. 기존 위반은 목록으로 두고 새 것만 본다. [사용법](docs/REMOTE_RUNS.md#병합-전-자동-검사)
     - **회귀 시험은 벽시계로 판정하지 않는다**(결정 RR9): 시간은 가짜 시계·틱 수로 정하고, 성능 예산은 `recordCodeBudget`(`tests/helpers/codeBudget.ts`)으로 넘겨 DGX 추이가 커밋마다 잰다. 목록은 [wall-clock-tests](docs/verification/wall-clock-tests.md).
+    - **감사·관문 규칙을 바꾸면 REMOTE가 검토한다**(결정 RR22, 2026-10-07): 기하 감사의 판정(`scripts/uiGeometryMeasure.ts`·`scripts/uiGeometryAudit.mjs`), 병합 전 검사(`scripts/checks/**`), 원격 실행기의 관문·줄(`scripts/remote/**`), 기준선·예외 목록의 규칙을 다른 레인이 고치면, 본선에 올리기 전에 REMOTE의 독립 검토(일부러 잘못 만든 사례로 시험, 바꾼 뒤 다른 화면·작업의 결과 비교)를 받고 결정 목록의 그 줄에 "REMOTE 검토 통과"를 적는다. 자기 화면이나 작업을 통과시키려고 공용 관문을 고친 경우가 특히 그렇다. 기준선·예외 목록에 항목을 손으로 더하는 것은 지금처럼 금지다.
     - **바뀐 파일의 시험을 돌렸는지 본다**(`scripts/checks/testedChanges.mjs`, 결정 RR16): 범위가 고르는 시험(`npm run test:changed`와 같은 규칙)이 있으면, 올리는 머리와 같은 내용에서 그 시험을 모두 돌려 통과한 `test:changed` 기록이 있어야 한다. 없거나 실패했거나 일부만이면 푸시를 거부한다. 고른 시험이 없으면(문서·시험이 읽지 않는 데이터만) 기록 없이 통과.
     - **증거 폴더는 3 MB 이하다**(`scripts/checks/evidenceSize.mjs`, 결정 RR10): 범위에서 바뀐 `docs/verification/<작업>/` 폴더가 3 MB(2^20 단위)를 넘으면 푸시를 거부한다. 재플레이 캡처·`uiaudit1/geometry/`·`perf-trend/`는 세지 않고, 이미 넘은 두 폴더는 기준선 크기까지다.
     - **결정 ID는 하나뿐이다**(`scripts/checks/decisionIds.mjs`, 결정 RR8): `docs/decisions/README.md`에서 같은 ID가 두 행에 있으면 푸시를 거부한다. 다른 세션이 먼저 쓴 번호면 내 것에 새 번호를 준다.
