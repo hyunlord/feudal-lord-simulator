@@ -220,7 +220,10 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
         region = { box: cut(outer.box, padding, style.overflowX !== "visible", style.overflowY !== "visible"),
           clipper: { path: path(container), scroll: scrolls(style.overflowX) || scrolls(style.overflowY), ellipsis },
           scrollBox: cut(outer.scrollBox, padding, scrolls(style.overflowX), scrolls(style.overflowY)),
-          hardBox: cut(outer.hardBox, padding, style.overflowX !== "visible" && !scrolls(style.overflowX), style.overflowY !== "visible" && !scrolls(style.overflowY)) };
+          // Only the clippers inside the nearest scroller cut for good: what an outer box clips is the scroller's view,
+          // and scrolling reaches it (the side panel around the scrolled lord screen is no cut of the map's labels).
+          hardBox: scrolls(style.overflowX) || scrolls(style.overflowY) ? everywhere
+            : cut(outer.hardBox, padding, style.overflowX !== "visible", style.overflowY !== "visible") };
       }
     }
     regions.set(container, region); return region;
