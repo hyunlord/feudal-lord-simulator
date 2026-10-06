@@ -15,6 +15,7 @@
  * - HL-10 (HIST-1): at each season's close, everyday records eight seasons old fold into one summary per season, and
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
+import { MANOR_HOUSEHOLD } from "./persons.types";
 import { V4_LIVE_ENTRIES } from "../content/registry/v4Entries.generated";
 import { DECISION_RELATION, NEIGHBOUR_FACTION_BY_ESTATE, POLICY_RELATION, SUBSIDY_FACTION } from "../content/decisionRelationConfig";
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
@@ -504,6 +505,22 @@ function personDrafts(before: GameState, after: GameState): Draft[] {
     if (!was.has(person.id) || now.has(person.id)) continue;
     if (!person.alive) personRecord(person, "person.died", 1, { cause: person.deathCause ?? "age", age: (person.deathYear ?? year) - person.birthYear });
     else personRecord(person, "person.left_town", 0);
+  }
+  // DEC-TRACE §6 (the user's decision 2026-10-06): in lord mode the house's change of head is a big event — the lord
+  // who died and the heir who took the house, in one line (the year's review puts it first).
+  if (after.agency !== undefined) {
+    const headOf = (people: readonly Person[]) => people.find(person => person.householdId === MANOR_HOUSEHOLD && person.role === "head" && person.tags.some(tag => tag.startsWith("lord-house:")));
+    const oldHead = headOf(before.persons.people), newHead = headOf(after.persons.people);
+    if (oldHead !== undefined && newHead !== undefined && oldHead.id !== newHead.id) {
+      const dead = after.persons.past.find(person => person.id === oldHead.id);
+      const kin = newHead.fatherId === oldHead.id || newHead.motherId === oldHead.id ? (newHead.sex === "male" ? "son" : "daughter")
+        : newHead.role === "head" && [newHead.fatherId, newHead.motherId].some(id => id !== undefined && [oldHead.fatherId, oldHead.motherId].includes(id)) ? "sibling"
+        : oldHead.role === "head" && before.persons.people.some(person => person.id === newHead.id && person.role === "spouse") ? "spouse" : "kin";
+      drafts.push({ tick: after.tick, kind: "person", template: "house.succession", severity: 3, subject: { type: "person", id: newHead.id },
+        actors: [{ type: "person", id: oldHead.id }],
+        params: { deceasedId: oldHead.id, deadAge: (dead?.deathYear ?? year) - oldHead.birthYear, died: dead === undefined || dead.alive ? 0 : 1, cause: dead?.deathCause ?? "",
+          heirId: newHead.id, heirAge: year - newHead.birthYear, kin } });
+    }
   }
   return drafts;
 }

@@ -18,6 +18,8 @@ import { scenarioOf } from "./scenarioState";
 import type { EstatePetitionKind, HomePetitionKind } from "./stewardship.types";
 
 const YEAR = BALANCE.TICKS_PER_YEAR;
+/** DEC-TRACE §6: the records of the house's big changes (the year's review puts them first). */
+const HOUSE_TEMPLATES: ReadonlySet<string> = new Set(["house.succession", "house.withdrew", "house.arrived", "marriage.inherited", "legacy.succession"]);
 
 /** One line of what followed a decision. */
 export interface TraceRow {
@@ -93,7 +95,10 @@ export interface YearDecision {
  * DEC-TRACE §4 API (`yearReview`): "what your decisions changed this year" — the year's decisions (the lord's and the
  * steward's, the lapsed), and what followed in the year from the decisions of this year and the years before.
  */
-export function yearReview(state: GameState, year: number): { readonly decisions: readonly YearDecision[]; readonly consequences: readonly TraceRow[] } {
+export function yearReview(state: GameState, year: number): {
+  /** DEC-TRACE §6 (the user's decision): the house's big changes first — a lord's death and his heir, a house withdrawn or come. */
+  readonly house: readonly { readonly recordId: string; readonly tick: number; readonly template: string; readonly params: Readonly<Record<string, string | number>> }[];
+  readonly decisions: readonly YearDecision[]; readonly consequences: readonly TraceRow[] } {
   const from = (year - scenarioOf(state).startYear) * YEAR;
   const to = from + YEAR;
   const traced = new Map(traceOf(state).decisions.map(decision => [decision.id, decision] as const));
@@ -104,7 +109,9 @@ export function yearReview(state: GameState, year: number): { readonly decisions
         chosen: record.decision?.chosen ?? String(record.params?.chosen ?? ""), weights: decision.weights, predicted: record.decision?.predicted ?? {},
         actual: record.decision?.actual ?? null, actualDueTick: record.decision?.actualDueTick ?? null };
     });
-  return { decisions, consequences: traceInRange(state, from, to) };
+  const house = (state.history?.records ?? []).filter(record => record.tick >= from && record.tick < to && HOUSE_TEMPLATES.has(record.template))
+    .map(record => ({ recordId: record.id, tick: record.tick, template: record.template, params: record.params ?? {} }));
+  return { house, decisions, consequences: traceInRange(state, from, to) };
 }
 
 /** What one setting does to a kind of small matter (the steward's answer, the treasury, the factions). */

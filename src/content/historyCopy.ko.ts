@@ -145,6 +145,9 @@ const projectWord = (what: string) => what === "road" ? "길" : what.startsWith(
 /** COPY-1e (CA-050): a petition left unanswered, one sentence for every era's. */
 const unansweredLine = (params: P) => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`;
 
+/** DEC-TRACE §6: the heir's tie to the lord he succeeded. */
+const KIN_WORDS: Readonly<Record<string, string>> = { son: "아들", daughter: "딸", sibling: "형제", spouse: "배우자", kin: "친족" };
+
 /** DEC-TRACE §1: what a card's command decided (the lord's answer in lord mode). */
 const CARD_COMMAND: Readonly<Record<string, string>> = {
   answer_registry_offer: "사건에 답했다", answer_estate_petition: "영지 청원에 답했다", file_suit: "소송을 걸었다", add_suit_evidence: "소송에 증거를 냈다",
@@ -181,6 +184,7 @@ const FACTION_ACT_WORDS: Readonly<Record<string, string>> = {
 };
 
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
+  "house.succession": params => `${n(params, "died") === 1 ? `영주 ${s(params, "deceased")}${josa(s(params, "deceased"), "이", "가")} ${n(params, "deadAge")}살에 죽고, ` : ""}${KIN_WORDS[s(params, "kin")] ?? "친족"} ${s(params, "heir")}(${n(params, "heirAge")}살)이 가문을 이었다`,
   "decision.card": params => CARD_COMMAND[s(params, "command")] ?? "영주가 결정했다",
   "decision.steward": params => `청지기가 ${STANDING_WORDS[s(params, "policy")] ?? STANDING_WORDS.customary} 처리했다`,
   "decision.lapsed": () => "답하지 않은 채 기한이 지났다",

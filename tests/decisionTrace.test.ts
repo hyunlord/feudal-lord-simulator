@@ -115,3 +115,21 @@ test("§1 the standing policies and the steward's report: every small kind with 
   assert.ok(report.handled.length > 0 && report.handled.every(entry => entry.policy !== undefined));
   assert.ok(report.handled.filter(entry => entry.kind === "heriot").every(entry => entry.granted && entry.policy === "lenient"));
 });
+
+test("§6 in lord mode the heir takes the house the day the lord dies, and the history writes it as a big event (no interregnum to the year's turn)", () => {
+  let state = run(lordGame(), 1);
+  const year = 1300;
+  state = { ...state, persons: { ...state.persons!, people: state.persons!.people.map(person => person.role === "head" && person.householdId === "manor" ? { ...person, birthYear: year - 95 } : person) } };
+  const lordId = state.persons!.people.find(person => person.role === "head" && person.householdId === "manor")!.id;
+  let record: import("../src/engine/history.types").HistoryRecord | undefined;
+  for (let tick = 0; tick < 40_000 && record === undefined; tick += 1) {
+    state = advanceTick(state);
+    record = state.history?.records.find(entry => entry.template === "house.succession");
+  }
+  assert.ok(record !== undefined, "the old lord died and was succeeded");
+  assert.equal(record!.severity, 3);
+  assert.equal(record!.params?.deceasedId, lordId);
+  assert.equal(record!.tick % 1000, 1, "on the season's death day, not at the year's turn");
+  const head = state.persons!.people.find(person => person.role === "head" && person.householdId === "manor")!;
+  assert.equal(head.id, record!.params?.heirId);
+});
