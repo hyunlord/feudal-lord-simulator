@@ -188,3 +188,14 @@ Phase 3 loop:
   Readback differences alone are not evidence of that gameplay defect. Reopen
   investigation if actual road disappearance is observed, preserving the
   reproducing state and rendering conditions.
+
+## RB-SEASONS-C25: gradual autumn and winter board (2026-10-06)
+
+The requested per-object seasonal progression changes the C25 autumn and winter
+views at season fraction 0.6: autumn trees need not all have turned, winter trees
+need not all be snowy, and fence snow is still accumulating. Update only those
+two hashes in `tests/fixtures/boundary/c25-board.json`; the other fourteen views
+remain byte-identical call streams. Remove redundant canvas alpha assignments
+before recording the new values. Keep the same sixteen views, two-draw
+comparison, fixture geometry and recording implementation. Actual summer/winter
+and spring-transition game evidence is in `verification/seasons/REPORT.md`.

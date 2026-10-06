@@ -1,3 +1,4 @@
+import { drawWorldSnow } from './worldSnow';
 import { drawNatureLeafFlight } from './natureLeaves';
 import { calendarProgress } from './calendarProgress';
 import type { GameState } from "../engine/engine.types";
@@ -42,6 +43,12 @@ export function drawSeasonFx(context: CanvasRenderingContext2D, state: GameState
     const view = { x: -matrix.e / matrix.a, y: -matrix.f / matrix.d, width: viewport.width * ratio / matrix.a, height: viewport.height * ratio / matrix.d };
     if (drawNatureLeafFlight(context, state, zoom, view)) return;
   }
+  if (presentationPreference("seasonFx") && calendarProgress(state).season === 3 && typeof context.getTransform === "function") {
+    const matrix = context.getTransform();
+    const ratio = matrix.a / zoom;
+    const view = { x: -matrix.e / matrix.a, y: -matrix.f / matrix.d, width: viewport.width * ratio / matrix.a, height: viewport.height * ratio / matrix.d };
+    if (drawWorldSnow(context, state, view, zoom)) return;
+  }
   const fx = seasonFxAt(state);
   if (fx === null || !presentationPreference("seasonFx")) return;
   if (fx === "leaves") {
@@ -56,7 +63,7 @@ export function drawSeasonFx(context: CanvasRenderingContext2D, state: GameState
     return;
   }
   const transform = typeof context.getTransform === "function" ? context.getTransform() : null;
-  drawSnowfall(context, viewport, transform === null ? 1 : transform.a / zoom, nowMs);
+  drawSnowfall(context, viewport, transform === null ? 1 : transform.a / zoom, calendarProgress(state).seconds * 1000);
 }
 
 // Cache (AGENTS rule 10): the flakes of each snowfall frame as one path of its visible pixels (alpha over 24 of 255);

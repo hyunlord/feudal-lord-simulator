@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { execFileSync, spawn, spawnSync, type ChildProcess } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, rmSync, writeFileSync } from "node:fs";
+import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join, resolve } from "node:path";
 import { test } from "node:test";
@@ -72,6 +72,34 @@ test("finished run folders go after a day (kept results copied first); running, 
     assert.equal(existsSync(join(dir, "running-1111111")), true);
     assert.match(tight, /\(test, tight\)/);
   } finally { for (const h of holders) h.kill("SIGKILL"); rmSync(dir, { recursive: true, force: true }); }
+});
+
+test("a folder with a read-only part is left whole, said once in the clean's own log and never in the run's; DC_FIX_READONLY=1 restores u+w and it goes", { skip: !linux && "needs Linux flock, /proc and zstd" }, () => {
+  const dir = base();
+  const frozen = (name: string) => {
+    run(dir, name, { finishedHoursAgo: 30, folderHoursAgo: 30 });
+    // As a run's prep locks its input states (files 0444, folders 0555) and never unlocks them.
+    const states = join(dir, name, ".remote/geometry/private-scenes/UI5_STATES");
+    mkdirSync(states, { recursive: true }); writeFileSync(join(states, "town.json"), "{}"); chmodSync(join(states, "town.json"), 0o444); chmodSync(states, 0o555);
+    touch(join(dir, name), 30);
+  };
+  try {
+    frozen("frozen-1111111");
+    for (const n of [1, 2, 3]) run(dir, `newest-${n}-1111111`, { finishedHoursAgo: 99, folderHoursAgo: 0 });
+    const out = clean(dir, "normal");
+    assert.equal(existsSync(join(dir, "frozen-1111111/.remote/exit-code")), true, "left whole: no part deleted (it can still age and go later)");
+    assert.equal(existsSync(join(dir, "frozen-1111111/big.bin")), true);
+    assert.doesNotMatch(out, /frozen-1111111|허가|denied/i, "nothing about it in the run's log");
+    const logged = () => readFileSync(join(dir, "_logs/disk-clean.log"), "utf8").split("\n").filter(line => line.includes("frozen-1111111"));
+    assert.equal(logged().length, 1);
+    assert.match(logged()[0]!, /left frozen-1111111 whole: \.remote\/geometry\/private-scenes\/UI5_STATES is not writable/);
+    clean(dir, "normal");
+    assert.equal(logged().length, 1, "said once, not at every clean");
+    const fixed = clean(dir, "normal", { DC_FIX_READONLY: "1" });
+    assert.equal(existsSync(join(dir, "frozen-1111111")), false, "ours: write permission restored, then it goes");
+    assert.match(fixed, /removed run folder frozen-1111111/);
+    assert.equal(existsSync(join(dir, "_logs/disk-clean.left/frozen-1111111")), false, "forgotten once it went");
+  } finally { spawnSync("chmod", ["-R", "u+w", dir]); rmSync(dir, { recursive: true, force: true }); }
 });
 
 test("the game's /tmp leftovers: a source tree whose process is gone goes, tsx cache files unread for three days go; the rest stays", { skip: !linux && "needs Linux flock, /proc and zstd" }, async () => {

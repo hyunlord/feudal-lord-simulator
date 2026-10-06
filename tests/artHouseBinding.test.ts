@@ -72,10 +72,11 @@ test('body and required overlay load atomically and share exact source and desti
     Object.assign(image, { naturalWidth: 64, naturalHeight: 64, onload: null, onerror: null, decode: () => Promise.resolve() });
     images.push(image); return image;
   } });
-  const winter = { ...input, state: { ...state, tick: state.tick + BALANCE.TICKS_PER_YEAR * 0.75 } };
+  const winter = { ...input, state: { ...state, tick: state.tick + BALANCE.TICKS_PER_YEAR * 0.75 + 400 } };
   const calls: unknown[][] = [];
-  const context = { imageSmoothingEnabled: false, save: () => undefined, restore: () => undefined,
-    drawImage: (...args: unknown[]) => { calls.push(args); }, getTransform: () => ({ a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }) };
+  const alphas: number[] = [];
+  const context = { globalAlpha: 0.8, imageSmoothingEnabled: false, save: () => undefined, restore: () => undefined,
+    drawImage: (...args: unknown[]) => { calls.push(args); alphas.push(context.globalAlpha); }, getTransform: () => ({ a: 1, b: 0, c: 0, d: 1, e: 0, f: 0 }) };
   assert.equal(art.drawBody(context, winter), null);
   assert.equal(images.length, 2);
   const first = images[0]; const second = images[1];
@@ -91,6 +92,9 @@ test('body and required overlay load atomically and share exact source and desti
   art.select({ ...input, state: { ...state, tick: (1400 - originYear) * BALANCE.TICKS_PER_YEAR } });
   assert.equal(art.drawLayers(context, drawn), true);
   assert.equal(calls.length, 2);
+  assert.equal(alphas[0], 0.8);
+  assert.ok(alphas[1] !== undefined && alphas[1] > 0 && alphas[1] < 0.8);
+  assert.equal(context.globalAlpha, 0.8);
   assert.deepEqual(calls[0]?.slice(1), calls[1]?.slice(1));
   const center = tileToScreen(building.tx, building.ty);
   assert.deepEqual(calls[0]?.slice(1), [0, 0, 64, 64, center.sx - 16, center.sy + TILE_H / 2 - 30, 32, 32]);

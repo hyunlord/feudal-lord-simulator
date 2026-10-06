@@ -1,0 +1,118 @@
+{
+  "run": "astra-SEASONS-cycle-b3cdecf",
+  "head": "b3cdecfd16b14d19ffc8e6d52707116df7d66618",
+  "rawExitCode": 1,
+  "targetFrames": 16,
+  "capturedFrames": 11,
+  "observedSpan": "one complete winter, 23000 through season boundary 24000",
+  "requestedAdditionalSpringFramesCaptured": false,
+  "stopReason": "Actual winter settlement dialog paused the simulation at24000; parent inspected frame010. The following wait timed out. No forced advance or modal bypass was used.",
+  "initialStateAndCameraMatchBaselineWinter": true,
+  "sourceSaveSHA256": "0b45c85480ede185d48f0e398c4fb389f599372d6c6b25963ad3372fbbb49eeb",
+  "camera": {
+    "zoom": 1,
+    "lod": "full"
+  },
+  "frames": [
+    {
+      "tick": 23000,
+      "screenshotEndTick": 23000,
+      "stateSHA256": "36e7c3df7499595c86d30081dfd7dfb560443dc6f3a658c26af120542e4621af",
+      "png": "winter-cycle-z1-000.png",
+      "pngSHA256": "7ee52ffcacc05d0f92cf2ea6b0ef7345369129841879c840aa2e82930fa45e7e"
+    },
+    {
+      "tick": 23100,
+      "screenshotEndTick": 23108,
+      "stateSHA256": "49675da3fb611829a33895eadc1fdffffb49103219f4db839bafde867df53d84",
+      "png": "winter-cycle-z1-001.png",
+      "pngSHA256": "b4be0820db042a2975fd1fb44f9d2d24ae8a36c594337cd2269d3e3e8a93491a"
+    },
+    {
+      "tick": 23200,
+      "screenshotEndTick": 23207,
+      "stateSHA256": "2f06bf98d522d5db79fd0d04ddeac9beaa4326feb7493d839481367cd629f440",
+      "png": "winter-cycle-z1-002.png",
+      "pngSHA256": "cbbf6f704ff718bbca275a62d55b3746494fec0ab15a56b4de8d3fe682da0b6f"
+    },
+    {
+      "tick": 23300,
+      "screenshotEndTick": 23308,
+      "stateSHA256": "df4b707cc75ccc345878a58ea32d560e5f48c5b8eff27b9c1c5efc657c27aac0",
+      "png": "winter-cycle-z1-003.png",
+      "pngSHA256": "598870826cd84628e55d9abd65290ba380ffc55f8b485313f2c034a16795726e"
+    },
+    {
+      "tick": 23400,
+      "screenshotEndTick": 23407,
+      "stateSHA256": "bbc377b7709339d4af46b6a5297e6a436057439e96711a5ed0b338c4fde7f1a4",
+      "png": "winter-cycle-z1-004.png",
+      "pngSHA256": "a0d458a311aa375366f735f51b85306495c857dbd5885528be13f885ac41bfed"
+    },
+    {
+      "tick": 23500,
+      "screenshotEndTick": 23508,
+      "stateSHA256": "7856ac87101a10ed123029973bcaf39c0894c45b0ae2bb7e5735f9594521e807",
+      "png": "winter-cycle-z1-005.png",
+      "pngSHA256": "e2c98a2b21aba9ab723b215f886453fbff6bbc4a947ca0fcedbffb0e50f1e329"
+    },
+    {
+      "tick": 23600,
+      "screenshotEndTick": 23608,
+      "stateSHA256": "5a93b6e38cb244147070aa910b482d667149c9567b4220fdb098e46421a58f6b",
+      "png": "winter-cycle-z1-006.png",
+      "pngSHA256": "2d4754faf9ae1294290ffe52a12acffac1ad90728a96aae564f55c565263def7"
+    },
+    {
+      "tick": 23700,
+      "screenshotEndTick": 23708,
+      "stateSHA256": "ad3c345c657d19e0fc89151a0ea311b1c4168e672ccbd4886781a8384d26861d",
+      "png": "winter-cycle-z1-007.png",
+      "pngSHA256": "908e8b54facf75c89b39b4200c6a86eb0e0e8f71db6b97cb1cadecc7fef04aa4"
+    },
+    {
+      "tick": 23800,
+      "screenshotEndTick": 23808,
+      "stateSHA256": "8d425aae44a9879286b1401b8640005897e385f1824eeecfa9a31068f820b564",
+      "png": "winter-cycle-z1-008.png",
+      "pngSHA256": "76eda614d9ffb35d2c48024aabcdc55ba313fc8ada1b3cf4ba41b6f7a0d304bd"
+    },
+    {
+      "tick": 23900,
+      "screenshotEndTick": 23908,
+      "stateSHA256": "7082ffdb2d7935f177467ed1d02e242517e74572b2991790c524925b957b3bfa",
+      "png": "winter-cycle-z1-009.png",
+      "pngSHA256": "39509335ba28378dd6fb7ad0ff8f0fd668344dc4cf50275607e00bd1a8ac00ed"
+    },
+    {
+      "tick": 24000,
+      "screenshotEndTick": 24000,
+      "stateSHA256": "6bf0536d88ed1f6490e53f7f64d9d41b531c6c9830a21fecb44c51fc49997394",
+      "png": "winter-cycle-z1-010.png",
+      "pngSHA256": "12d08b9faaae7aca23b8912c34a5395204760bb7494676cb7e398d61d5989109"
+    }
+  ],
+  "rawErrors": [
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED",
+    "winter-cycle-z1: TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
+  ],
+  "telemetryCancellations": 14,
+  "otherErrors": [
+    "winter-cycle-z1: TimeoutError: page.waitForFunction: Timeout 30000ms exceeded."
+  ],
+  "resultSHA256": "2b137d7107a83445a54a190764b7e520195b93696d275a201b802944bf55086a",
+  "scope": "Full winter motion evidence, not a successful full1500tick run; spring melt remains separately captured."
+}

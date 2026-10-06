@@ -6,7 +6,8 @@ import { countrysideOf, type CountryPiece, type Countryside } from "./countrysid
 import type { ObjectRenderItem, RenderQueueItem } from "./objectRenderTypes";
 import { tileIsVisibleInRange, type TileRange } from "./renderVisibility";
 import { DECAL_MIN_ZOOM } from "./seasonalDecals";
-import { seasonBlend, seasonForObject } from "./seasonTransition";
+import { calendarProgress } from "./calendarProgress";
+import { treeProgression } from "./seasonProgression";
 
 // INSTALL-28 the countryside on screen (layout: countrysideLayout.ts, art: countrysideArt.ts).
 //  - Draw order: the wildflower patches are ground decals, drawn in the ground pass after the terrain and before the
@@ -16,7 +17,7 @@ import { seasonBlend, seasonForObject } from "./seasonTransition";
 //  - Detail (renderDetailLevel, the building LOD): above block detail everything draws, by the same rules close up and
 //    far out (NAT-2: the small views draw each sprite from its pre-shrunk level); blocks (zoom <= 0.35) draws none. The
 //    patches follow the season decals (from DECAL_MIN_ZOOM).
-//  - Seasons: each piece turns to the new season's picture at its own moment of the season fade (seasonForObject).
+//  - Seasons: each piece turns to the new season's picture at its own fixed phase of the calendar season.
 
 export type CountrysideRenderItem = Extract<ObjectRenderItem, { readonly kind: "countryside" }>;
 
@@ -61,8 +62,11 @@ export function countrysideDrawnAt(_piece: CountryStripPiece | CountryPiece, zoo
 export function drawCountrysideItem(context: CanvasRenderingContext2D, item: CountrysideRenderItem, state: GameState, zoom: number): void {
   if (!countrysideDrawnAt(item.piece, zoom)) return;
   const piece = item.piece;
-  if ("salt" in piece) { drawCountryBlit(context, pieceBlit(piece, seasonForObject(seasonBlend(state), piece.salt))); return; }
-  for (const blit of stripBlits(piece, seasonForObject(seasonBlend(state), piece.tx * 131 + piece.ty))) drawCountryBlit(context, blit);
+  const progress = calendarProgress(state);
+  const phase = treeProgression(progress, piece.id, progress.year === calendarProgress({ ...state, tick: 0 }).year);
+  const season = progress.season === 3 && !phase.snowy ? 2 : phase.season;
+  if ("salt" in piece) { drawCountryBlit(context, pieceBlit(piece, season)); return; }
+  for (const blit of stripBlits(piece, season)) drawCountryBlit(context, blit);
 }
 
 /** Ground pass: the wildflower patches in view. */
@@ -70,9 +74,12 @@ export function drawCountryFields(context: CanvasRenderingContext2D, state: Game
   if (zoom < DECAL_MIN_ZOOM) return;
   const fields = countrysideOf(state).fields;
   if (fields.length === 0) return;
-  const blend = seasonBlend(state);
+  const progress = calendarProgress(state);
+  const firstYear = progress.year === calendarProgress({ ...state, tick: 0 }).year;
   for (const piece of fields) {
-    if (tileIsVisibleInRange(piece.tx, piece.ty, range)) drawCountryBlit(context, pieceBlit(piece, seasonForObject(blend, piece.salt)));
+    const phase = treeProgression(progress, piece.id, firstYear);
+    const season = progress.season === 3 && !phase.snowy ? 2 : phase.season;
+    if (tileIsVisibleInRange(piece.tx, piece.ty, range)) drawCountryBlit(context, pieceBlit(piece, season));
   }
 }
 

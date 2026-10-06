@@ -12,7 +12,7 @@ import { drawWave7, drawWave7Overlay, type Wave7Key } from "./wave7Art";
 import { drawWave9, drawWave9Overlay, type Wave9Key } from "./wave9Art";
 import { tileToScreen } from "./iso";
 import { drawStoryProps } from "./storyWorldProps";
-import { seasonBlend, seasonForObject } from "./seasonTransition";
+import { roofSnowAlpha } from "./seasonProgression";
 import { drawWave26HouseLayers, houseStateLayerNow, shownHouseVariant } from "./wave26HouseArt";
 import { drawWave32GranaryLayers } from "./wave32GranaryArt";
 import { fittedBuildingSpriteRect } from "./buildingSpriteFit";
@@ -61,15 +61,20 @@ export function drawBuildingOverlays(context: CanvasRenderingContext2D, state: G
       const house = state.houses.find(candidate => candidate.buildingId === building.id);
       const boarded = house !== undefined && housePressureStatus(house) === "abandoned";
       // INSTALL-15: while the season turns, each roof takes or loses its snow at its own moment, with the trees.
-      const snow = seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3;
+      const snowAlpha = roofSnowAlpha(state, building);
+      const snow = snowAlpha > 0;
       const wave26 = house === undefined ? null : shownHouseVariant(building, level);
       const boards = boarded ? vacantHouseBoards(clamped, wave26 !== null, plagueVacantPlots(state).includes(building.id)) : null;
       if (wave26 !== null && house !== undefined) {
-        drawWave26HouseLayers(context, wave26, meta.alphaBounds, rect, { state: houseStateLayerNow(state, house), boarded, snow });
+        drawWave26HouseLayers(context, wave26, meta.alphaBounds, rect, { state: houseStateLayerNow(state, house), boarded, snow, snowAlpha });
       } else {
         if (boards === "plague_shut") drawWave9Overlay(context, `event_plague_shut_l${clamped}` as Wave9Key, meta.alphaBounds, meta, rect);
         else if (boards === "boarded") drawWave7Overlay(context, `boarded_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
-        if (snow) drawWave7Overlay(context, `roof_snow_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect);
+        if (snow) {
+          const alpha = context.globalAlpha; context.globalAlpha = alpha * snowAlpha;
+          try { drawWave7Overlay(context, `roof_snow_l${clamped}` as Wave7Key, meta.alphaBounds, meta, rect); }
+          finally { context.globalAlpha = alpha; }
+        }
       }
     }
   }
@@ -89,8 +94,9 @@ function drawPairHouseLayers(context: CanvasRenderingContext2D, state: GameState
   const meta = wave30 === null ? null : houseCompoundAssetMeta(building, level);
   if (wave30 === null || meta === null || house === undefined) return;
   const boarded = housePressureStatus(house) === "abandoned";
-  const snow = seasonForObject(seasonBlend(state), building.tx * 31 + building.ty * 17) === 3;
-  drawWave26HouseLayers(context, wave30, meta.alphaBounds, houseCompoundSpriteRect(building, meta), { state: houseStateLayerNow(state, house), boarded, snow });
+  const snowAlpha = roofSnowAlpha(state, building);
+  const snow = snowAlpha > 0;
+  drawWave26HouseLayers(context, wave30, meta.alphaBounds, houseCompoundSpriteRect(building, meta), { state: houseStateLayerNow(state, house), boarded, snow, snowAlpha });
 }
 
 function drawHouseEventOverlays(context: CanvasRenderingContext2D, state: GameState, building: Building): void {

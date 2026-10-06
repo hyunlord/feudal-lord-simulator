@@ -17191,6 +17191,384 @@
   },
   {
     "schemaVersion": 1,
+    "bundleId": "wave39-seasons-snow",
+    "entries": [
+      {
+        "id": "wave39:snow/blowing_snow_sheet-v1",
+        "kind": "weather-particle",
+        "role": "blowing-snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/blowing_snow_sheet-v1.png",
+          "width": 384,
+          "height": 32
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/blowing_snow_sheet-v1.png",
+          "sourceSha256": "bfe866c940f08e6c39e88accdf5927e1b94aae514d4838ce30f199e1066ba0a1",
+          "runtimeSha256": "bfe866c940f08e6c39e88accdf5927e1b94aae514d4838ce30f199e1066ba0a1"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 32,
+            "y": 16
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 0.6,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 64,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 128,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 192,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 256,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          },
+          {
+            "sourceRect": {
+              "x": 320,
+              "y": 0,
+              "width": 64,
+              "height": 32
+            },
+            "pivot": {
+              "x": 32,
+              "y": 16
+            },
+            "durationMs": 200
+          }
+        ]
+      },
+      {
+        "id": "wave39:snow/footprints_snow_a-v1",
+        "kind": "ground-prop",
+        "placement": "nature-ground",
+        "role": "snow-footprint",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/footprints_snow_a-v1.png",
+          "width": 128,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/footprints_snow_a-v1.png",
+          "sourceSha256": "dfb133bf66a9bd6762792346eb35a0a8d107cd2d1df8dc8ef2511171e5b4893b",
+          "runtimeSha256": "dfb133bf66a9bd6762792346eb35a0a8d107cd2d1df8dc8ef2511171e5b4893b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 32
+          },
+          "scale": 0.25,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1
+      },
+      {
+        "id": "wave39:snow/footprints_snow_b-v1",
+        "kind": "ground-prop",
+        "placement": "nature-ground",
+        "role": "snow-footprint",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/footprints_snow_b-v1.png",
+          "width": 128,
+          "height": 64
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/footprints_snow_b-v1.png",
+          "sourceSha256": "b6837483aa1a344266c2981f9f6a7c030f83a5d3b29d002732ec619cd994d8e2",
+          "runtimeSha256": "b6837483aa1a344266c2981f9f6a7c030f83a5d3b29d002732ec619cd994d8e2"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 32
+          },
+          "scale": 0.25,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1
+      },
+      {
+        "id": "wave39:snow/snowflake_large-v1",
+        "kind": "weather-particle",
+        "role": "snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/snowflake_large-v1.png",
+          "width": 16,
+          "height": 16
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/snowflake_large-v1.png",
+          "sourceSha256": "b5b88c929f5cb5b644887ec8a957cc849f1a9616ca3d7af66a1071750266dfa6",
+          "runtimeSha256": "b5b88c929f5cb5b644887ec8a957cc849f1a9616ca3d7af66a1071750266dfa6"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 8,
+            "y": 8
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 16,
+              "height": 16
+            },
+            "pivot": {
+              "x": 8,
+              "y": 8
+            },
+            "durationMs": 4000
+          }
+        ]
+      },
+      {
+        "id": "wave39:snow/snowflake_medium-v1",
+        "kind": "weather-particle",
+        "role": "snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/snowflake_medium-v1.png",
+          "width": 12,
+          "height": 12
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/snowflake_medium-v1.png",
+          "sourceSha256": "5ef32c5293a2fb93169b78a3ba8b31f998ab210d81a1112e622a7121bac42f6e",
+          "runtimeSha256": "5ef32c5293a2fb93169b78a3ba8b31f998ab210d81a1112e622a7121bac42f6e"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 6,
+            "y": 6
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 12,
+              "height": 12
+            },
+            "pivot": {
+              "x": 6,
+              "y": 6
+            },
+            "durationMs": 4000
+          }
+        ]
+      },
+      {
+        "id": "wave39:snow/snowflake_small-v1",
+        "kind": "weather-particle",
+        "role": "snow",
+        "group": "all",
+        "image": {
+          "url": "assets/wave39/snow/snowflake_small-v1.png",
+          "width": 8,
+          "height": 8
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave39/candidates-20260930/assets/snow/snowflake_small-v1.png",
+          "sourceSha256": "ba132b99a3984b71e5e027c03dcf649250d3d11d67e2a7593838aa2caba7119b",
+          "runtimeSha256": "ba132b99a3984b71e5e027c03dcf649250d3d11d67e2a7593838aa2caba7119b"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 4,
+            "y": 4
+          },
+          "scale": 1,
+          "allowMirror": false
+        },
+        "opacity": 0.7,
+        "minZoom": 1,
+        "frames": [
+          {
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 8,
+              "height": 8
+            },
+            "pivot": {
+              "x": 4,
+              "y": 4
+            },
+            "durationMs": 4000
+          }
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "nature-snow-all",
+        "kind": "weather-particle",
+        "slot": "nature-snow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "snow"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:snow/snowflake_large-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:snow/snowflake_medium-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:snow/snowflake_small-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-blowing-snow-all",
+        "kind": "weather-particle",
+        "slot": "nature-blowing-snow",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "blowing-snow"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:snow/blowing_snow_sheet-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "nature-snow-footprint-all",
+        "kind": "ground-prop",
+        "slot": "nature-snow-footprint",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "role",
+            "value": "snow-footprint"
+          },
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "all"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave39:snow/footprints_snow_a-v1",
+            "weight": 1
+          },
+          {
+            "assetId": "wave39:snow/footprints_snow_b-v1",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
+  },
+  {
+    "schemaVersion": 1,
     "bundleId": "lord-ledger",
     "entries": [
       {
