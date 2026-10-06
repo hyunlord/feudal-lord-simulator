@@ -105,7 +105,7 @@ DGX, 2,000틱. 수리 전은 v4.1+MANOR-1이고, 본선은 LM-E9b다.
 - 실제로는 50틱마다 한 채이고, 도시 비축이 한 계절을 버틸 때만이다. 막는 것은 속도가 아니라 비축 문이다. 보고서를 고쳤다.
 
 ## 필수 조건
-- 전체 회귀: 5,054/5,054 — DGX(깨끗한 클론 `ee5ae2a`, `engine-RECOVER1-clone-ee5ae2a`)
+- 전체 회귀: 5,054/5,054 — DGX(깨끗한 클론 `ee5ae2a`, `engine-RECOVER1-clone-ee5ae2a`). 본선을 합친 뒤 바뀐 것에 걸린 시험(RR16): 4,234/4,234 — DGX `eb9d46f`(`engine-RECOVER1-changed2-eb9d46f`, 가벼운 칸).
 - 깨끗한 클론: 5,054/5,054·build — DGX `ee5ae2a`(`engine-RECOVER1-clone-ee5ae2a`)
 - ui-geometry: UI 입력 해시가 본선과 같다(`027a4ca6…`) — 재지 않음.
 - typecheck — Mac.
