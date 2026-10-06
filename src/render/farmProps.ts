@@ -1,3 +1,4 @@
+import { drawSpringPasture } from './springPasture';
 import type { GameState } from "../engine/engine.types";
 import { boundaryHash } from "../world/boundary/boundaryGeometry";
 import type { ForestBoundary } from "../world/boundary/terrainBoundaries";
@@ -161,7 +162,7 @@ export function heardFarmAnimals(state: GameState): readonly FarmProp[] {
   return props;
 }
 
-export function drawFarmProp(context: CanvasRenderingContext2D, prop: FarmProp): void {
+export function drawFarmProp(context: CanvasRenderingContext2D, prop: FarmProp, spring?: { readonly state: GameState; readonly season: number; readonly zoom: number }): void {
   const meta = ZONE_ASSETS.find(asset => asset.key === prop.kind);
   const image = zoneAsset(prop.kind);
   if (meta === undefined || meta.role !== "prop" || image === null) return;
@@ -170,4 +171,5 @@ export function drawFarmProp(context: CanvasRenderingContext2D, prop: FarmProp):
   const width = meta.displayWidth; const height = width * meta.height / meta.width;
   drawCroppedWorldSprite(context, raster?.image ?? image, raster?.source ?? { x: 0, y: 0, width: meta.width, height: meta.height },
     { x: foot.sx - width * meta.anchorX / meta.width, y: foot.sy - height * meta.anchorY / meta.height, width, height }, false, true);
+  if (spring !== undefined && spring.season === 0 && spring.zoom >= 0.6) drawSpringPasture(context, spring.state, prop, farmProps(spring.state), spring.season, spring.zoom);
 }

@@ -1,0 +1,4832 @@
+{
+  "status": "incomplete-or-errors",
+  "visualAcceptance": "Reviewed separately; see visual-review.md and README.md",
+  "issues": [
+    "original: before result errors missing or nonempty",
+    "supplemental: before result errors missing or nonempty",
+    "visibility: before result errors missing or nonempty",
+    "visibility: after result errors missing or nonempty",
+    "original/spring-town@1: before view errors missing or nonempty",
+    "supplemental/spring-context-bank-north@0.6: before view errors missing or nonempty",
+    "visibility/spring-nest-front-a@0.6: before view errors missing or nonempty",
+    "visibility/spring-nest-front-a@0.6: after view errors missing or nonempty"
+  ],
+  "rawErrors": [
+    {
+      "matrix": "original",
+      "side": "before",
+      "scope": "result",
+      "errors": [
+        "spring-town-z1: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "original",
+      "side": "after",
+      "scope": "result",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1",
+      "side": "before",
+      "scope": "view",
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "side": "before",
+      "scope": "result",
+      "errors": [
+        "spring-context-bank-north-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "supplemental",
+      "side": "after",
+      "scope": "result",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "side": "before",
+      "scope": "result",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "side": "after",
+      "scope": "result",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "side": "before",
+      "scope": "result",
+      "errors": [
+        "spring-nest-front-a-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "visibility",
+      "side": "after",
+      "scope": "result",
+      "errors": [
+        "spring-nest-front-a-z0.6: http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": [
+        "http://127.0.0.1:4302/@fls-telemetry/sample: net::ERR_ABORTED"
+      ]
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "side": "before",
+      "scope": "result",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "side": "after",
+      "scope": "result",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@0.6",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@0.6",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@0.6",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@0.6",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1.4",
+      "side": "before",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1.4",
+      "side": "before",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1.4",
+      "side": "after",
+      "scope": "view",
+      "errors": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1.4",
+      "side": "after",
+      "scope": "telemetry-frame-0",
+      "errors": []
+    }
+  ],
+  "matrices": [
+    {
+      "matrix": "original",
+      "expectedCount": 49,
+      "paired": 48,
+      "issues": [
+        "before result errors missing or nonempty"
+      ],
+      "before": "/tmp/astra-spring-before-2e03/output/rb-spring-before",
+      "after": "/Users/rexxa/fls-astra-renderB/output/rb-spring-after-bankfix",
+      "heads": [
+        "2e03f3174ac4bb6c1f11f5be8e4cc720b78b62ef",
+        "3929f8bdcce5d514df7ab543d34cfa78879ea021"
+      ]
+    },
+    {
+      "matrix": "supplemental",
+      "expectedCount": 24,
+      "paired": 23,
+      "issues": [
+        "before result errors missing or nonempty"
+      ],
+      "before": "/tmp/astra-spring-before-2e03/output/rb-spring-supplemental-before",
+      "after": "/Users/rexxa/fls-astra-renderB/output/rb-spring-supplemental-after-bankfix",
+      "heads": [
+        "2e03f3174ac4bb6c1f11f5be8e4cc720b78b62ef",
+        "3929f8bdcce5d514df7ab543d34cfa78879ea021"
+      ]
+    },
+    {
+      "matrix": "lands",
+      "expectedCount": 45,
+      "paired": 45,
+      "issues": [],
+      "before": "/tmp/astra-spring-before-2e03/output/rb-spring-lands-before",
+      "after": "/Users/rexxa/fls-astra-renderB/output/rb-spring-lands-after-bankfix",
+      "heads": [
+        "2e03f3174ac4bb6c1f11f5be8e4cc720b78b62ef",
+        "3929f8bdcce5d514df7ab543d34cfa78879ea021"
+      ]
+    },
+    {
+      "matrix": "visibility",
+      "expectedCount": 6,
+      "paired": 5,
+      "issues": [
+        "before result errors missing or nonempty",
+        "after result errors missing or nonempty"
+      ],
+      "before": "/tmp/astra-spring-before-2e03/output/rb-spring-visibility-before",
+      "after": "/Users/rexxa/fls-astra-renderB/output/rb-spring-visibility-after-bankfix",
+      "heads": [
+        "2e03f3174ac4bb6c1f11f5be8e4cc720b78b62ef",
+        "3929f8bdcce5d514df7ab543d34cfa78879ea021"
+      ]
+    },
+    {
+      "matrix": "bank",
+      "expectedCount": 9,
+      "paired": 9,
+      "issues": [],
+      "before": "/tmp/astra-spring-before-2e03/output/rb-spring-bank-before",
+      "after": "/Users/rexxa/fls-astra-renderB/output/rb-spring-bank-after-bankfix",
+      "heads": [
+        "2e03f3174ac4bb6c1f11f5be8e4cc720b78b62ef",
+        "3929f8bdcce5d514df7ab543d34cfa78879ea021"
+      ]
+    }
+  ],
+  "pairCount": 133,
+  "pairs": [
+    {
+      "matrix": "original",
+      "id": "spring-town@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": [
+        "before view errors missing or nonempty"
+      ]
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-town@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-pasture@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-hedge@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-orchard@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-yard@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-forestedge@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "spring-river@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-town@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-pasture@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-hedge@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-orchard@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-yard@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-forestedge@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "summer-river@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-town@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-pasture@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-hedge@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-orchard@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-yard@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-forestedge@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "original",
+      "id": "winter-river@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": [
+        "before view errors missing or nonempty"
+      ]
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-north@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-middle@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-bank-south@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-cherry@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-a@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-b@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-context-nest-c@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "supplemental",
+      "id": "spring-prepared-sparse-laundry@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-spring@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-summer@1.4",
+      "season": "summer",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-open_field-winter@1.4",
+      "season": "winter",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-spring@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-summer@1.4",
+      "season": "summer",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-coastal_port-winter@1.4",
+      "season": "winter",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-spring@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-summer@1.4",
+      "season": "summer",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-chalk_downs-winter@1.4",
+      "season": "winter",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-spring@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-summer@1.4",
+      "season": "summer",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-forest_edge-winter@1.4",
+      "season": "winter",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-spring@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@0.6",
+      "season": "summer",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1",
+      "season": "summer",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-summer@1.4",
+      "season": "summer",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@0.6",
+      "season": "winter",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1",
+      "season": "winter",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "lands",
+      "id": "lands-fen_drainage-winter@1.4",
+      "season": "winter",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": [
+        "before view errors missing or nonempty",
+        "after view errors missing or nonempty"
+      ]
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-a@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "visibility",
+      "id": "spring-nest-front-b@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-open_field-1@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-1@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@0.6",
+      "season": "spring",
+      "zoom": 0.6,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1",
+      "season": "spring",
+      "zoom": 1,
+      "issues": []
+    },
+    {
+      "matrix": "bank",
+      "id": "spring-natural-bank-chalk_downs-2@1.4",
+      "season": "spring",
+      "zoom": 1.4,
+      "issues": []
+    }
+  ],
+  "limits": [
+    "drawImage observations include offscreen mip creation; they do not prove visible world drawing.",
+    "createPattern creation is not proof of pattern fill or visible pixels. Requested/loaded assets are not visible-draw proof.",
+    "PNG differences include all scene pixels and presentation animation; they are observations, not attributed asset effects.",
+    "No visual acceptance or zero-regression verdict is inferred from pixel equality/differences."
+  ]
+}

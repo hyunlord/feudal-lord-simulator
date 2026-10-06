@@ -752,6 +752,71 @@
             "role"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "opacity": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "minZoom": {
+              "type": "number",
+              "minimum": 0
+            },
+            "group": {
+              "type": "string",
+              "minLength": 1
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "placement": {
+              "const": "spring-context"
+            },
+            "role": {
+              "enum": [
+                "riverside-grass",
+                "cherry",
+                "ewe-lamb",
+                "hawthorn",
+                "laundry",
+                "nest",
+                "swollen-bank"
+              ]
+            },
+            "season": {
+              "const": "spring"
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "geometry",
+            "opacity",
+            "minZoom",
+            "group",
+            "kind",
+            "placement",
+            "role",
+            "season"
+          ],
+          "additionalProperties": false
         }
       ]
     },

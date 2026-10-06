@@ -1,0 +1,50 @@
+--- a/.omo/evidence/integrated-geometry-prep.wrapper.mjs
++++ b/.omo/evidence/integrated-geometry-prep.wrapper.mjs
+@@ -93,6 +93,28 @@
+  const extras=walk().filter(p=>!plan.exported.includes(p));const allowed=`docs/verification/uiaudit1/geometry/${process.env.FLS_REMOTE_RUN}/`;
+  assert.ok(extras.every(p=>ending&&p.startsWith(allowed)),'Unknown remote files: '+extras.join(','));return extras;
+ }
++export async function withFixtureWriteRestoration(work) {
++ const targets = [], errors = [];
++ const restore = filename => {
++  let stat;
++  try { stat = fs.lstatSync(filename); }
++  catch (error) { if (error.code === 'ENOENT') return; throw error; }
++  if (stat.isSymbolicLink()) return;
++  fs.chmodSync(filename, (stat.mode & 0o7777) | 0o200);
++  if (stat.isDirectory()) for (const name of fs.readdirSync(filename)) {
++   try { restore(path.join(filename, name)); } catch (error) { errors.push(error); }
++  }
++ };
++ try { return await work(target => targets.push(target)); }
++ catch (error) { errors.push(error); }
++ finally {
++  for (const target of targets) {
++   try { restore(target); } catch (error) { errors.push(error); }
++  }
++  if (errors.length === 1) throw errors[0];
++  if (errors.length > 1) throw new AggregateError(errors, 'Fixture run or owner-write restoration failed');
++ }
++}
+ async function main(){
+  const [mode,hash]=process.argv.slice(2);
+  if(mode==='freeze'){const snap=snapshot();write(manifestPath,{schema:1,...snap});console.log(JSON.stringify({head:snap.head,tracked:snap.tracked.length,exported:snap.exported.length,lfs:snap.lfs.length,native:snap.inputs.length,inputHash:snap.inputHash,freezeSHA256:sha(fs.readFileSync(manifestPath)),notSubmitted:true}));return;}
+@@ -104,9 +126,10 @@
+  const contract=read(contractPath), fixtures=[],env={...process.env,FLS_UI_GEOMETRY_GATE:'enforce'};delete env.FLS_UI_GEOMETRY_REASON;
+  assert.ok(!fs.existsSync(out),'Refuse duplicate run');fs.mkdirSync(out,{recursive:true});write(out+'/source-freeze.json',plan);
+  const dependenciesBefore=external();write(out+'/external-start.json',dependenciesBefore);
++ await withFixtureWriteRestoration(async registerTarget => {
+  for(const [key,expected]of Object.entries(contract.fixtures)){
+   const source=path.resolve(process.env[key]||path.join(os.homedir(),expected.defaultFolder));const target=path.resolve(out,'private-scenes',key);assert.ok(!fs.lstatSync(source).isSymbolicLink());
+-  assert.deepEqual(filesIn(source),expected.files,'Historical fixture bytes differ: '+key);fs.mkdirSync(target,{recursive:true});
++  assert.deepEqual(filesIn(source),expected.files,'Historical fixture bytes differ: '+key);registerTarget(target);fs.mkdirSync(target,{recursive:true});
+   for(const r of expected.files){const dest=path.join(target,r.path);fs.mkdirSync(path.dirname(dest),{recursive:true});fs.copyFileSync(path.join(source,r.path),dest);fs.chmodSync(dest,0o444);}
+   assert.deepEqual(filesIn(source),expected.files);assert.deepEqual(filesIn(target),expected.files);
+   const lock=dir=>{for(const e of fs.readdirSync(dir,{withFileTypes:true}))if(e.isDirectory())lock(path.join(dir,e.name));fs.chmodSync(dir,0o555);};lock(target);
+@@ -121,5 +144,6 @@
+  const summary=check(()=>read(api.UI_GEOMETRY_SUMMARY));const report=summary&&check(()=>{assert.equal(summary.report,`docs/verification/uiaudit1/geometry/${process.env.FLS_REMOTE_RUN}/geometry.json`);return read(summary.report);});
+  const geometry=summary&&report&&check(()=>{assert.equal(summary.inputs,plan.inputs.length);assert.equal(report.inputs,plan.inputs.length);return validateReport(summary,report,contract,plan.inputHash,process.env.FLS_REMOTE_RUN);});
+  write(out+'/final.json',{pass:r.status===0&&errors.length===0,auditExit:r.status,signal:r.signal,head:expectedHead,inputHash:plan.inputHash,errors,geometry,dependencyComparison,summary,sourceUnchanged:!!end&&errors.length===0});process.exitCode=r.status===0&&errors.length===0?0:1;
++ });
+ }
+ if(process.argv[1]&&path.resolve(process.argv[1])===path.resolve(wrapperPath))await main();
