@@ -25,7 +25,7 @@ import { loadChromium, openScene } from './renderCommitProbe.mjs';
 import { compareBaseline, geometryInputHash, geometryInputs, UI_GEOMETRY_BASELINE, UI_GEOMETRY_EXCEPTIONS, UI_GEOMETRY_SUMMARY, UI_INPUT_ROOTS } from './checks/uiGeometry.mjs';
 import { FRAME_GAP_PX, HUD_ALWAYS, SURFACES, VIEWPORTS } from '../src/ui/surfaces.registry.ts';
 import { FRAME_TOKENS } from '../src/ui/frameTokens.generated.ts';
-import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded } from './uiGeometryMeasure.ts';
+import { CHECKS, collectSurface, evaluateSurface, failureKey, markFailures, revealSurface, surfaceArtLoaded, surfaceFontsLoaded } from './uiGeometryMeasure.ts';
 import { HIDE_CSS, paintFacts, STILL_CSS } from './uiGeometryPaint.ts';
 import { decodePng } from './keyartDerivatives.ts';
 import { extremeNumbers, mapTile, sceneTile } from './uiGeometryScene.ts';
@@ -181,6 +181,7 @@ const conditionsOf = row => {
   return rows;
 };
 const results = {};
+const ruleDiff = [];   // FLS_GEOMETRY_RULE_DIFF=1: the text-clip failures the rule before LR2-D5 and this one disagree on
 for (const row of SURFACES) if (selected(row)) results[row.id] = { frame: row.frame, root: row.root, data: row.data, ...(row.unreachable ? { unreachable: row.unreachable } : {}), conditions: {} };
 const shots = { count: 0, bytes: 0, rows: new Set() };
 const specOf = row => ({ root: row.root, frame: row.frame, gap: FRAME_GAP_PX, frameLayer: row.frameLayer, contentSlot: row.contentSlot, frameSlots: row.frameSlots,
@@ -233,9 +234,34 @@ async function measure(row, condition, page) {
   // Its art has loaded (a busy DGX served a drawer's frame and its tabs' button art after the captures); a page whose
   // timers are stopped has no setTimeout, so the wait is bounded here too.
   if (await Promise.race([page.evaluate(surfaceArtLoaded, { selector: row.root, ms: 8_000 }), pause(9_000).then(() => 0)]) > 0) await twoFrames(page);
+  // And its web fonts (a late font widens text after the measure; REMOTE review of LR2-D5, 2026-10-07), bounded the same way.
+  if (await Promise.race([page.evaluate(surfaceFontsLoaded).then(() => 1), pause(8_000).then(() => 0)]) > 0) await twoFrames(page);
   let collected = await page.evaluate(collectSurface, spec);
   if (collected.found) { const paint = await paintPass(page, collected); if (paint !== undefined) collected = { ...collected, paint }; }
   const evaluation = evaluateSurface(collected, spec);
+  // FLS_GEOMETRY_RULE_DIFF=1 (REMOTE review of LR2-D5): also judge "text clipped" by the rule before LR2-D5 (every
+  // clipper, scrollers included: no hardRect) and keep what differs, with a capture of the old rule's boxes, in
+  // rule-diff.json — a failure the new rule drops is either a fixed false failure or a miss, and is looked at by eye.
+  if (process.env.FLS_GEOMETRY_RULE_DIFF === '1' && evaluation.found) {
+    const textClip = failure => failure.check === 'overflow' && /text clipped/.test(failure.what);
+    const old = evaluateSurface({ ...collected, items: collected.items.map(({ hardRect, ...item }) => item) }, spec).failures.filter(textClip);
+    const now = evaluation.failures.filter(textClip);
+    const key = failure => `${failure.path}|${failure.text ?? ''}`;
+    const removed = old.filter(failure => !now.some(other => key(other) === key(failure)));
+    const added = now.filter(failure => !old.some(other => key(other) === key(failure)));
+    if (removed.length + added.length > 0) {
+      const entry = { row: row.id, condition: condition.id, removed: removed.map(f => ({ path: f.path, text: f.text, px: f.px, rect: roundBox(f.rect) })), added: added.map(f => ({ path: f.path, text: f.text, px: f.px })) };
+      if (ruleDiff.length < 60) {
+        const id = await page.evaluate(markFailures, { boxes: removed.map(f => f.full ?? f.rect).filter(Boolean).slice(0, 20), inner: evaluation.inner });
+        const file = join('rule-diff', `${row.id}--${condition.id.replace(/\//g, '-')}.jpg`);
+        mkdirSync(join(out, 'rule-diff'), { recursive: true });
+        await page.screenshot({ path: join(out, file), type: 'jpeg', quality: 55 }).catch(() => undefined);
+        await page.evaluate(layer => document.getElementById(layer)?.remove(), id);
+        entry.shot = file;
+      }
+      ruleDiff.push(entry);
+    }
+  }
   for (const { kind, path } of collected.unregistered ?? []) {
     const key = `${kind} ${path}`; if (!unregisteredFramed.has(key)) unregisteredFramed.set(key, new Set()); unregisteredFramed.get(key).add(row.id);
   }
@@ -372,6 +398,7 @@ const report = { run, url, commit: git(['rev-parse', 'HEAD']), dirty, inputs: in
   axes: { viewports, copies, numbers: numberModes }, gapPx: FRAME_GAP_PX, totals, retried, shots: { count: shots.count, bytes: shots.bytes }, pageErrors: [...new Set(pageErrors)].slice(0, 40),
   kindNotes, unregisteredFramed: [...unregisteredFramed].map(([key, rows]) => ({ root: key, seenIn: [...rows].slice(0, 6) })), rows: results };
 writeFileSync(join(out, 'geometry.json'), `${JSON.stringify(report)}\n`);
+if (process.env.FLS_GEOMETRY_RULE_DIFF === '1') writeFileSync(join(out, 'rule-diff.json'), `${JSON.stringify(ruleDiff, null, 1)}\n`);
 
 const md = [`# UI-AUDIT-1 geometry audit — ${run}`, '',
   `Commit ${report.commit.slice(0, 8)}${dirty ? ' (dirty tree)' : ''}, ${totals.rows} registry rows, ${totals.conditions} row × condition cells (${viewports.length} viewports × ${copies.length} copy × ${numberModes.length} numbers where they apply), ${Math.round(report.durationS / 60)} min.`,
