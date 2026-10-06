@@ -442,6 +442,18 @@ export function precedentReport(state: GameState, startTick = Math.max(0, (Math.
 }
 
 /** SW-4 API: the lord answers an estate's petition (its effect falls on the estate's goodwill and the treasury now). */
+/**
+ * LM-R2-E ② API: what the lord's answer to an open petition does — income, the tenants' and merchants' change, neglect
+ * (the same table the answer uses, `petitionEffect`, as the lord answers it); null when it is not his open petition.
+ */
+export function estatePetitionEffect(state: GameState, petitionId: string, grant: boolean):
+  { readonly income: number; readonly tenants: number; readonly merchants: number; readonly neglect: boolean } | null {
+  const petition = lordEstatePetitions(state).find(entry => entry.id === petitionId);
+  if (petition === undefined || state.tick > petition.deadline) return null;
+  const { income, tenants, merchants, neglect } = petitionEffect(petition, grant, false);
+  return { income, tenants, merchants, neglect };
+}
+
 export function answerEstatePetition(state: GameState, petitionId: string, grant: boolean): GameState {
   const stewardship = stewardshipOf(state);
   const petition = lordEstatePetitions(state).find(entry => entry.id === petitionId);
@@ -486,6 +498,34 @@ export function setAuditMode(state: GameState, estateId: string, mode: "accounts
  * recovered, the tenants approve, his faction does not), replace (dismissed, nothing recovered), or tolerate (kept,
  * more loyal). A dismissed steward's estate goes to `replacementId`, else the most able candidate left.
  */
+/**
+ * SW-6 (FIX-17 A02): the successor an audit's punish or replace answer puts in — the named living candidate, else the
+ * ablest living one; undefined when none (the answer is refused).
+ */
+function auditSuccessor(state: GameState, stewardship: StewardshipState, audit: { readonly estateId: string; readonly stewardId: string }, replacementId?: string): StewardRecord | undefined {
+  const others = stewardship.stewards.filter(entry => entry.estateId === audit.estateId && living(state, entry) && entry.personId !== audit.stewardId);
+  // FIX-17 (A02): a named successor must be a living candidate (a dead or unknown one is refused, not replaced by another).
+  if (replacementId !== undefined) return others.find(entry => entry.personId === replacementId);
+  return [...others].sort((a, b) => b.ability - a.ability || a.personId.localeCompare(b.personId))[0];
+}
+
+/**
+ * LM-R2-E ② API: what an answer to a pending audit does — the coin recovered, the tenants' change, the steward's loyalty
+ * change, the successor — or null when the answer would be refused (not pending, past its deadline, no living successor).
+ */
+export function auditAnswerEffect(state: GameState, auditId: string, choice: "punish" | "replace" | "tolerate", replacementId?: string):
+  { readonly recovered: number; readonly tenants: number; readonly loyalty: number; readonly successorId: string | null } | null {
+  const stewardship = stewardshipOf(state);
+  const audit = stewardship.audits.find(entry => entry.id === auditId);
+  if (audit === undefined || audit.status !== "pending" || state.tick > audit.deadline) return null;
+  const record = steward(stewardship, audit.stewardId)!;
+  if (choice === "tolerate") return { recovered: 0, tenants: 0, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) - record.loyalty, successorId: null };
+  const successor = auditSuccessor(state, stewardship, audit, replacementId);
+  if (successor === undefined) return null;
+  return { recovered: choice === "punish" ? Math.round(audit.revealedKept * PUNISH_RECOVERY / 1000) : 0, tenants: choice === "punish" ? PUNISH_TENANTS : 0,
+    loyalty: 0, successorId: successor.personId };
+}
+
 export function answerAudit(state: GameState, auditId: string, choice: "punish" | "replace" | "tolerate", lapsed = false, replacementId?: string): GameState {
   const stewardship = stewardshipOf(state);
   const audit = stewardship.audits.find(entry => entry.id === auditId);
@@ -495,10 +535,7 @@ export function answerAudit(state: GameState, auditId: string, choice: "punish" 
   const settled = { ...stewardship, audits: stewardship.audits.map(entry => entry.id === auditId
     ? { ...entry, status: choice === "punish" ? "punished" as const : choice === "replace" ? "replaced" as const : "tolerated" as const } : entry) };
   if (choice === "tolerate") return withStewardship(state, withSteward(settled, { ...record, loyalty: Math.min(100, record.loyalty + TOLERATE_LOYALTY) }));
-  const others = settled.stewards.filter(entry => entry.estateId === audit.estateId && living(state, entry) && entry.personId !== record.personId);
-  // FIX-17 (A02): a named successor must be a living candidate (a dead or unknown one is refused, not replaced by another).
-  if (replacementId !== undefined && !others.some(entry => entry.personId === replacementId)) return state;
-  const successor = others.find(entry => entry.personId === replacementId) ?? [...others].sort((a, b) => b.ability - a.ability || a.personId.localeCompare(b.personId))[0];
+  const successor = auditSuccessor(state, settled, audit, replacementId);
   if (successor === undefined) return state;
   let next = state;
   const recovered = choice === "punish" ? Math.round(audit.revealedKept * PUNISH_RECOVERY / 1000) : 0;
