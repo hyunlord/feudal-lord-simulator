@@ -72,6 +72,10 @@ test('Given a non-core pack When identical contracts use the public selector The
   assert.equal(mod.prop('missing', 'NE'), null);
 });
 
+test('Given open prop identities When an inherited object key is requested Then it remains an unknown prop', () => {
+  assert.throws(() => walkerPropDirections('constructor'), /Unknown walker prop/);
+});
+
 const invalid: readonly { readonly name: string; readonly bundle: unknown }[] = [
   { name: 'missing consumer selectors', bundle: { ...typedBundle, rules: [] } },
   { name: 'misdirected consumer selectors', bundle: { ...typedBundle, rules: typedBundle.rules.map(rule => ({ ...rule, conditions: [{ op: 'eq', field: rule.kind === 'walker-body' ? 'bodyId' : 'propId', value: 'absent' }] })) } },

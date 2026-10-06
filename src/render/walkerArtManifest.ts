@@ -32,16 +32,15 @@ for (const entry of art.props) {
     ...(entry.referenceFigureHeight === undefined ? {} : { referenceFigureHeight: entry.referenceFigureHeight }) });
   registeredProps.set(entry.propId, directions);
 }
-const registeredManifest: Record<string, WalkerPropDirections> = {};
-for (const [id, directions] of registeredProps) {
+const registeredManifest: Readonly<Record<string, WalkerPropDirections>> = Object.fromEntries([...registeredProps].map(([id, directions]) => {
   const NE = directions.get('NE'); const SE = directions.get('SE');
   const SW = directions.get('SW'); const NW = directions.get('NW');
   if (!NE || !SE || !SW || !NW) throw new ArtAdapterError(`Incomplete walker prop family ${id}`);
-  registeredManifest[id] = { NE, SE, SW, NW };
-}
+  return [id, { NE, SE, SW, NW }];
+}));
 export const walkerPropManifest: Readonly<Record<string, WalkerPropDirections>> = { ...legacyProps, ...registeredManifest };
 export function walkerPropDirections(id: string): WalkerPropDirections {
   const directions = walkerPropManifest[id];
-  if (directions === undefined) throw new ArtAdapterError(`Unknown walker prop ${id}`);
+  if (!Object.hasOwn(walkerPropManifest, id) || directions === undefined) throw new ArtAdapterError(`Unknown walker prop ${id}`);
   return directions;
 }
