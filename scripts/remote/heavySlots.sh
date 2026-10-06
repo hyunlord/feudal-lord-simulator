@@ -8,6 +8,11 @@
 # waits in line, first come first served: a ticket _slots/queue/<ns>-<run> it holds locked while waiting. A ticket whose
 # lock is free and that is older than a minute belongs to a run that is gone and is removed. While waiting the run logs
 # its place in line, what holds each slot and who is ahead — at the start, whenever that changes, and every 10 minutes.
+# Two lines (user order 2026-10-06, decision RR20): the gate line (_slots/queue-gate/: what a push needs — the changed
+# rows' geometry audit, test:changed when run heavy; short) and the experiment line (_slots/queue/: long games, probes,
+# analyses, clones, guardrails; long). A gate takes any free slot before any experiment and tries the last slot first;
+# the last slot is kept for gates, so experiments use slots 1..cap-1 and a gate runs at once even when experiments fill
+# the rest. While a gate waits, no experiment takes a slot. A run is a gate only when run.sh is told --gate.
 # A ticket holds its run's cap (a ticket of an older copy of this file is empty and counts as 2). A run may take a free
 # slot that no run ahead of it could take (a slot above every cap ahead): when the cap rose to 3, the third slot is not
 # left empty behind runs that only know two (2026-10-06).
@@ -30,12 +35,14 @@ heavy__running() {
   done
 }
 
-heavy_take_slot() {
-  local base=$1 run=$2 what=$3 ticket t name born n now place state last="" last_at=0
+heavy_take_slot() { # <base> <run> <what> [gate|experiment]
+  local base=$1 run=$2 what=$3 class=${4:-${HEAVY_CLASS:-experiment}} ticket t born n now place state last="" last_at=0
+  [ "$class" = gate ] || class=experiment
   HEAVY_DIR=$base/_slots
-  mkdir -p "$HEAVY_DIR/queue"
-  ticket="$HEAVY_DIR/queue/$(date +%s%N)-$run"
+  local gq=$HEAVY_DIR/queue-gate eq=$HEAVY_DIR/queue
+  mkdir -p "$gq" "$eq"
   heavy__cap
+  if [ "$class" = gate ]; then ticket="$gq/$(date +%s%N)-$run"; else ticket="$eq/$(date +%s%N)-$run"; fi
   exec 6> "$ticket"
   flock -n 6 || true
   echo "$HEAVY_SLOTS" > "$ticket"
@@ -44,32 +51,47 @@ heavy_take_slot() {
     [ "$(cat "$ticket" 2> /dev/null)" = "$HEAVY_SLOTS" ] || echo "$HEAVY_SLOTS" > "$ticket"
     [ -e "$ticket" ] || { exec 6> "$ticket"; flock -n 6 || true; }   # never dropped while held, but be safe
     now=$(date +%s)
-    local ahead=() above=0 cap
-    for t in $(ls -1 "$HEAVY_DIR/queue" 2> /dev/null | sort); do
-      [ "$HEAVY_DIR/queue/$t" = "$ticket" ] && break
-      born=$(( ${t%%-*} / 1000000000 ))
-      if heavy__held "$HEAVY_DIR/queue/$t" || [ $((now - born)) -lt 60 ]; then
+    # The live tickets of one line, oldest first (a ticket whose lock is free and that is over a minute old belongs to a
+    # run that is gone and is removed).
+    local ahead=() gates_waiting=0 above=0 cap
+    live() { local dir=$1 stop=${2:-}
+      for t in $(ls -1 "$dir" 2> /dev/null | sort); do
+        [ "$dir/$t" = "$stop" ] && return 0
+        born=$(( ${t%%-*} / 1000000000 ))
+        if heavy__held "$dir/$t" || [ $((now - born)) -lt 60 ]; then echo "$t"; else rm -f "$dir/$t"; fi
+      done; }
+    local slots=()
+    if [ "$class" = gate ]; then
+      # Gates: first come first served among gates, any free slot, the reserved last one first.
+      for t in $(live "$gq" "$ticket"); do ahead+=("${t#*-}"); done
+      if [ "${#ahead[@]}" -eq 0 ]; then slots=("$HEAVY_SLOTS"); for n in $(seq 1 $((HEAVY_SLOTS - 1))); do slots+=("$n"); done; fi
+    else
+      # Experiments: never while a gate waits, never the reserved last slot, and among experiments a slot is taken
+      # only when no run ahead could take it (a ticket of an older copy of this file is empty and counts as 2).
+      gates_waiting=$(live "$gq" | wc -l)
+      for t in $(live "$eq" "$ticket"); do
         ahead+=("${t#*-}")
-        read -r cap 2> /dev/null < "$HEAVY_DIR/queue/$t"; [[ ${cap:-} =~ ^[1-9][0-9]?$ ]] || cap=2
+        read -r cap 2> /dev/null < "$eq/$t"; [[ ${cap:-} =~ ^[1-9][0-9]?$ ]] || cap=2
         [ "$cap" -gt "$above" ] && above=$cap
-      else rm -f "$HEAVY_DIR/queue/$t"; fi
-    done
-    if [ "$above" -lt "$HEAVY_SLOTS" ]; then
-      for n in $(seq $((above + 1)) "$HEAVY_SLOTS"); do
-        exec 5> "$HEAVY_DIR/heavy.$n.lock"
-        if flock -n 5; then
-          printf '%s\t%s\t%s\n' "$run" "$now" "$what" > "$HEAVY_DIR/heavy.$n.info"
-          echo "== heavy slot $n/$HEAVY_SLOTS"
-          exec 6>&-; rm -f "$ticket"
-          return 0
-        fi
-        exec 5>&-
       done
+      local top=$((HEAVY_SLOTS > 1 ? HEAVY_SLOTS - 1 : 1))
+      if [ "$gates_waiting" -eq 0 ] && [ "$above" -lt "$top" ]; then for n in $(seq $((above + 1)) "$top"); do slots+=("$n"); done; fi
     fi
+    for n in "${slots[@]}"; do
+      exec 5> "$HEAVY_DIR/heavy.$n.lock"
+      if flock -n 5; then
+        printf '%s\t%s\t%s\n' "$run" "$now" "[$class] $what" > "$HEAVY_DIR/heavy.$n.info"
+        echo "== heavy slot $n/$HEAVY_SLOTS ($class line)"
+        exec 6>&-; rm -f "$ticket"
+        return 0
+      fi
+      exec 5>&-
+    done
     place=$(( ${#ahead[@]} + 1 ))
-    state="$place|$(heavy__running --names | tr '\n' ' ')|${ahead[*]:-}"
+    state="$place|$gates_waiting|$(heavy__running --names | tr '\n' ' ')|${ahead[*]:-}"
     if [ "$state" != "$last" ] || [ $((now - last_at)) -ge 600 ]; then
-      echo "== waiting for a heavy slot (all $HEAVY_SLOTS busy): number $place in line"
+      if [ "$class" = gate ]; then echo "== waiting for a heavy slot (gate line, every slot busy): number $place among gates"
+      else echo "== waiting for a heavy slot (experiment line: slots 1-$((HEAVY_SLOTS > 1 ? HEAVY_SLOTS - 1 : 1)), slot $HEAVY_SLOTS kept for gates$([ "$gates_waiting" -gt 0 ] && echo ", $gates_waiting gate(s) go first")): number $place in line"; fi
       heavy__running | sed 's/^/   running /'
       [ "${#ahead[@]}" -gt 0 ] && echo "   ahead in line: ${ahead[*]}"
       last=$state; last_at=$now
