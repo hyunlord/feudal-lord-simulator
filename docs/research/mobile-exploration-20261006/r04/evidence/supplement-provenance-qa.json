@@ -1,0 +1,22 @@
+{
+  "temporaryRoot": "/var/folders/0w/j63n8j5s46j4dl79hrwn0m2w0000gn/T/astra-supplement-provenance-qa-GS7rMb",
+  "proof": [
+    {
+      "test": "missing-file",
+      "exit": 1,
+      "rejected": true,
+      "reason": "Provenance source closure differs"
+    },
+    {
+      "test": "changed-source-hash",
+      "exit": 1,
+      "rejected": true,
+      "reason": "Current source SHA256 differs"
+    },
+    {
+      "test": "recorded-V-plus-one",
+      "rejected": true,
+      "reason": "Recorded V differs from population and owned stock/escrow"
+    }
+  ]
+}
