@@ -196,7 +196,10 @@ test("the card renders the picture whole, equal answers all secondary, a hold wi
 
 test("the picture by the v4 id; none for an id the build does not ship", () => {
   assert.equal(eventArtFor("ck_evt_005"), "ck_evt_005");
-  assert.equal(eventArtFor("ck_evt_180"), "ck_evt_180");
+  assert.equal(eventArtFor("ck_evt_174"), "ck_evt_174");
+  // DEC-TRACE (the user's decision 2026-10-06; engine, render file updated as an exception — render takes it over): the
+  // v4.2 audit's held events no longer run, so their pictures do not ship.
+  assert.equal(eventArtFor("ck_evt_180"), null, "180 held by the v4.2 audit");
   assert.equal(eventArtFor("test:none"), null);
   assert.equal(eventArtFor("ck_evt_001"), null, "a variant of an existing occurrence's words: never an offer, its picture not shipped");
   // RECOVER-1 (engine, render file updated as an exception — render takes it over): v4.1 fixed 011's derived name, so it runs.
@@ -208,7 +211,8 @@ test("the shipped pictures follow the registry alone: every v4 entry it runs, no
   assert.deepEqual(eventCardEntryIds(), runs);
   const live = runs.filter(id => Object.hasOwn(EVENT_ART_IMAGES, id)).sort();
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES), live);
-  assert.equal(live.length, 71);
+  // DEC-TRACE: 45 events run after the v4.2 audit's holds; 40 of them have a picture.
+  assert.equal(live.length, 40);
   assert.ok(v4Entries().filter(entry => entry.contentClass !== "new_event_draft").every(entry => !live.includes(entry.id)));
   // An entry the registry turns on later ships its picture by the same rule; an id without a picture is left out.
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES, ["ck_evt_150", "ck_evt_011", "home:heriot", "ck_evt_150"]), ["ck_evt_011", "ck_evt_150"]);

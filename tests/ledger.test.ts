@@ -96,7 +96,9 @@ test("L-3 before the first posting the treasury is the opening balance; the firs
     // FIX-10 (TT-2)
     "timber_purchase",
     // LM-E1 (TA-6)
-    "project_subsidy", "lawsuit", "marriage_portion", "promise_payment", "estate_income", "audit_recovery", "registry_settlement", "instalment"]);
+    "project_subsidy", "lawsuit", "marriage_portion", "promise_payment", "estate_income", "audit_recovery", "registry_settlement", "instalment",
+    // DEC-TRACE §3: a faction's gift and demand.
+    "faction_gift", "faction_demand"]);
 });
 
 test("L-4 roll-ups keep every account total while only the last 6 periods stay as entries", () => {
