@@ -7,7 +7,7 @@ set -u
 out=${1:-docs/verification/deccard/astra}
 states=${DECCARD_ASTRA_STATES:-$HOME/fls-deccard-astra-states}
 if [ ! -f "$states/deccard-astra-states.json" ] || [ "${DECCARD_ASTRA_REBUILD:-0}" = 1 ]; then
-  node_modules/.bin/tsx scripts/deccardAstraStates.ts "$states" 2>&1 | tee .remote/deccard-astra-states.log || exit 1
+  node_modules/.bin/tsx scripts/deccardAstraStates.ts "$states" "${DECCARD_ASTRA_LAST_YEAR:-1322}" 2>&1 | tee .remote/deccard-astra-states.log || exit 1
 fi
 port=${FLS_REMOTE_PORT:?run through scripts/remote/run.sh}
 . scripts/remote/devServers.sh
