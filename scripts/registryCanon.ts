@@ -10,20 +10,39 @@ export interface CanonFiles<Event extends { readonly id: string }, Entry extends
   readonly registry: { readonly policy: unknown; readonly entries: readonly Entry[] };
 }
 
-/** The canon with each delta merged in order: same id replaced, new id added (the base order kept, new ones after). */
+/**
+ * A delta release: its events and, unless it only rewrites existing events' words (`registry` absent — a sender or a
+ * text fix, the conditions and choices untouched), its registry entries.
+ */
+export interface CanonDelta<Event extends { readonly id: string }, Entry extends { readonly id: string }> {
+  readonly events: readonly Event[];
+  readonly registry?: { readonly policy: unknown; readonly entries: readonly Entry[] };
+}
+
+/**
+ * The canon with each delta merged in order: same id replaced, new id added (the base order kept, new ones after). A
+ * delta with a registry must name the same ids in both; an events-only delta may only replace events the canon has
+ * (an event added without its registry entry would have no conditions).
+ */
 export function mergeCanon<Event extends { readonly id: string }, Entry extends { readonly id: string }>(
-  base: CanonFiles<Event, Entry>, deltas: readonly CanonFiles<Event, Entry>[]): CanonFiles<Event, Entry> {
+  base: CanonFiles<Event, Entry>, deltas: readonly CanonDelta<Event, Entry>[]): CanonFiles<Event, Entry> {
   let events = [...base.events];
   let entries = [...base.registry.entries];
+  const merge = <T extends { readonly id: string }>(list: T[], changes: readonly T[]): T[] => {
+    const out = list.map(item => changes.find(change => change.id === item.id) ?? item);
+    for (const change of changes) if (!list.some(item => item.id === change.id)) out.push(change);
+    return out;
+  };
   for (const delta of deltas) {
     const eventIds = delta.events.map(event => event.id).sort();
+    if (delta.registry === undefined) {
+      const unknown = eventIds.filter(id => !events.some(event => event.id === id));
+      if (unknown.length > 0) throw new Error(`an events-only delta may only replace events: ${unknown.join(",")} are new`);
+      events = merge(events, delta.events);
+      continue;
+    }
     const entryIds = delta.registry.entries.map(entry => entry.id).sort();
     if (JSON.stringify(eventIds) !== JSON.stringify(entryIds)) throw new Error(`delta events and registry name different ids: ${eventIds.join(",")} / ${entryIds.join(",")}`);
-    const merge = <T extends { readonly id: string }>(list: T[], changes: readonly T[]): T[] => {
-      const out = list.map(item => changes.find(change => change.id === item.id) ?? item);
-      for (const change of changes) if (!list.some(item => item.id === change.id)) out.push(change);
-      return out;
-    };
     events = merge(events, delta.events);
     entries = merge(entries, delta.registry.entries);
   }
@@ -31,15 +50,21 @@ export function mergeCanon<Event extends { readonly id: string }, Entry extends 
 }
 
 const DRAFTS = resolve(import.meta.dirname, "../docs/design/content-drafts-20261002");
-/** The canon releases in order (v4, then its deltas). */
-export const CANON_RELEASES = [{ dir: "v4", events: "events-v4.json", registry: "registry-v4.json" },
-  { dir: "v4.1", events: "events-v4.1.json", registry: "registry-v4.1.json" }] as const;
+/**
+ * The canon releases in order (v4, then its deltas). v4.1-senders rewrites three events' senders only (008 → the church,
+ * 024·035 → the town community: one faction each, so their holds can cost a relation, ER-19); no registry file.
+ */
+export const CANON_RELEASES: readonly { readonly dir: string; readonly events: string; readonly registry?: string }[] = [
+  { dir: "v4", events: "events-v4.json", registry: "registry-v4.json" },
+  { dir: "v4.1", events: "events-v4.1.json", registry: "registry-v4.1.json" },
+  { dir: "v4.1-senders", events: "events-v4.1.json" },
+];
 
 /** The merged canon read from the repository's content drafts. */
 export function readCanon<Event extends { readonly id: string }, Entry extends { readonly id: string }>(): CanonFiles<Event, Entry> {
   const [base, ...deltas] = CANON_RELEASES.map(release => ({
     events: JSON.parse(readFileSync(resolve(DRAFTS, release.dir, release.events), "utf8")) as Event[],
-    registry: JSON.parse(readFileSync(resolve(DRAFTS, release.dir, release.registry), "utf8")) as { policy: unknown; entries: Entry[] },
+    ...(release.registry === undefined ? {} : { registry: JSON.parse(readFileSync(resolve(DRAFTS, release.dir, release.registry), "utf8")) as { policy: unknown; entries: Entry[] } }),
   }));
-  return mergeCanon(base!, deltas);
+  return mergeCanon(base as CanonFiles<Event, Entry>, deltas);
 }
