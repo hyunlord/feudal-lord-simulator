@@ -2,7 +2,7 @@ import { DECISION_COPY } from "../decisionCopy.ko";
 import { EmblemImage, type EmblemSpec } from "../heraldry/EmblemImage";
 import { Button } from "../kit";
 import { LORD_CARDS_COPY } from "../lordCardsCopy.ko";
-import type { HomePetitionView, LordRequestView, PrecedentView } from "../lordCardsModel";
+import type { LordRequestView, PrecedentView } from "../lordCardsModel";
 import { storyArtStyle, type StoryIllustration } from "../storyArt";
 import { wave44ImageStyle, type Wave44ImageId } from "../wave44Art";
 import { wave8FrameLayerStyle, wave8ImageStyle } from "../wave8Art";
@@ -19,7 +19,7 @@ function Scene({ art }: { readonly art: Wave44ImageId | null }) {
 }
 
 /** The lord's exception rule `recurring` ("선례가 있어도 다시 올린다") as a switch. */
-function RecurringSwitch({ on, onToggle }: { readonly on: boolean; readonly onToggle: (next: boolean) => void }) {
+export function RecurringSwitch({ on, onToggle }: { readonly on: boolean; readonly onToggle: (next: boolean) => void }) {
   return (
     <Button type="button" className="lord-card-recurring" variant="toggle" aria-pressed={on} onPress={() => onToggle(!on)}>
       {LORD_CARDS_COPY.recurring} · {on ? LORD_CARDS_COPY.recurringOn : LORD_CARDS_COPY.recurringOff}
@@ -40,38 +40,6 @@ export function Frame({ label, data, children, crest = null }: {
         <div className="petition-body">{children}</div>
       </section>
     </div>
-  );
-}
-
-export function HomePetitionModal({ view, onAnswer, onRecurring, onLater }: {
-  readonly view: HomePetitionView; readonly onAnswer: (grant: boolean) => void; readonly onRecurring: (next: boolean) => void; readonly onLater: () => void;
-}) {
-  return (
-    <Frame label={view.title} data={{ "data-home-petition": view.kind, "data-petition": view.petitionId, "data-answers": "2" }} crest={{ arms: view.arms, label: view.armsLabel }}>
-      <p className="lord-card-court">{view.court}</p>
-      <Scene art={view.art} />
-      <p className="lord-card-kicker">{LORD_CARDS_COPY.homeFrom} · {view.waits}</p>
-      <h2>{view.title}</h2>
-      <p>{view.demand}</p>
-      <ol className="petition-options">
-        {view.options.map(option => (
-          <li key={option.grant ? "grant" : "refuse"}>
-            <Button type="button" className="petition-option" data-grant={option.grant ? "true" : "false"} aria-label={DECISION_COPY.choose(option.label)}
-              onPress={() => onAnswer(option.grant)} variant="secondary">
-              <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle(option.grant ? "seal_petition_accept" : "seal_petition_reject", 44)} />
-              <strong>{option.label}</strong>
-              <span className="lord-card-forecast" data-treasury={option.treasury}
-                data-relations={option.relations.map(move => `${move.factionId}:${move.delta}`).join(",")}>{option.line}</span>
-            </Button>
-          </li>
-        ))}
-      </ol>
-      {view.precedent === null ? null : <p className="lord-card-precedent">{view.precedent}</p>}
-      <div className="lord-card-actions">
-        <RecurringSwitch on={view.recurring} onToggle={onRecurring} />
-        <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
-      </div>
-    </Frame>
   );
 }
 

@@ -30,7 +30,8 @@ import { LORD_SLICE_FACTIONS } from "../src/content/lordSliceConfig";
 import { lordSliceFactionsMet } from "../src/engine/lordSlice";
 import { factionRows } from "../src/ui/chronicle/factionTabModel";
 import { lordHouseArms } from "../src/ui/persons/personModels";
-import { HomePetitionModal } from "../src/ui/hud/LordCards";
+import { DecisionCard } from "../src/ui/decisionCard/DecisionCard";
+import { homePetitionCard } from "../src/ui/decisionCard/families/homePetitionCard";
 import { directionAccess, tutorialAccess } from "../src/ui/tutorial/tutorialModel";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
@@ -247,6 +248,28 @@ test("LR1-D5: a home petition's roundel holds the lord house's arms, as the lord
   const view = homePetitionView(firstPetition)!;
   assert.deepEqual(view.arms, lordHouseArms(firstPetition));
   assert.match(view.armsLabel, new RegExp(lordHouse(firstPetition).name));
-  const markup = renderToStaticMarkup(createElement(HomePetitionModal, { view, onAnswer: () => undefined, onRecurring: () => undefined, onLater: () => undefined }));
+  const card = homePetitionCard(firstPetition)!;
+  const markup = renderToStaticMarkup(createElement(DecisionCard, { view: card, crest: { arms: view.arms, label: view.armsLabel }, onChoose: () => undefined, onLater: () => undefined }));
   assert.match(markup, /class="petition-roundel"/);
+});
+
+test("DEC-CARD: the home petition's card says what is happening, what is at stake, and each answer's now / later / who remembers — the engine's own", () => {
+  const view = homePetitionView(firstPetition)!;
+  const card = homePetitionCard(firstPetition)!;
+  assert.equal(card.subjectId, view.petitionId);
+  assert.ok(card.situation.length > 0 && card.stake.length > 0 && card.deadline !== null);
+  for (const choice of card.choices) {
+    const after = gameReducer(firstPetition, { type: "answer_estate_petition", petitionId: view.petitionId, grant: choice.id === "grant" });
+    assert.notEqual(after, firstPetition, "an answer the engine takes");
+    assert.equal(choice.refusal, null);
+    const moved = treasuryBalance(after) - treasuryBalance(firstPetition);
+    assert.equal(choice.now.length, 1, "the treasury's line, in words");
+    assert.equal(/그대로/.test(choice.now[0]!), moved === 0, `${choice.id}: ${choice.now[0]} (${moved})`);
+    assert.ok(choice.later.length > 0, "what follows (the precedent rule)");
+    assert.ok(choice.remembers.every(entry => entry.who.length > 0 && entry.how.length > 0 && entry.delta !== 0));
+  }
+  const markup = renderToStaticMarkup(createElement(DecisionCard, { view: card, onChoose: () => undefined, onLater: () => undefined }));
+  for (const part of ["무슨 일인가", "걸린 것", "지금", "나중에", "기억하는 이"]) assert.ok(markup.includes(part), part);
+  assert.doesNotMatch(markup, /ui-btn--primary/, "equal answers, all secondary (LR1-D2)");
+  assert.doesNotMatch(markup, /\stitle="/);
 });

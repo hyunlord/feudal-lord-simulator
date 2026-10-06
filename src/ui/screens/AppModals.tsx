@@ -14,7 +14,9 @@ import { famineDecisionView, petitionDecisionView } from "../decisionModels";
 import { PauseMenu } from "../hud/HudShell";
 import { SeasonLedgerCard } from "../hud/SeasonLedgerCard";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "../hud/StoryModals";
-import { HomePetitionModal, LordRequestModal, PrecedentModal } from "../hud/LordCards";
+import { LordRequestModal, PrecedentModal, RecurringSwitch } from "../hud/LordCards";
+import { DecisionCard } from "../decisionCard/DecisionCard";
+import { homePetitionCard } from "../decisionCard/families/homePetitionCard";
 import { homePetitionView, lordRequestView, precedentView } from "../lordCardsModel";
 import { requestArt } from "../lordStoryBeats";
 import { RegistryOfferModal } from "../hud/RegistryCard";
@@ -80,6 +82,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const legacyView = top === "legacy_ending" ? legacyVerdictView(state) : null;
   // LM-R1 (lord mode): the home estate's petition, the steward's precedents, the town's request.
   const homeView = top === "estate_petition" ? homePetitionView(state) : null;
+  // DEC-CARD: the home petition in the heavy card's layout (the situation, the stake, each answer now / later / who remembers).
+  const homeCard = top === "estate_petition" ? homePetitionCard(state) : null;
   const precedent = top === "precedent" ? precedentView(state) : null;
   const asked = top === "lord_request" ? lordRequestView(state) : null;
   const request = asked?.command === null ? null : asked;
@@ -111,8 +115,10 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
     {petitionView === null ? null : <PetitionModal view={petitionView} onLater={() => sendUi({ type: "pop_modal" })} onPerson={onPerson}
       petitioners={petitionerRows(state, state.politics?.petitions.find(petition => petition.id === petitionView.petitionId) ?? {})}
       onRespond={response => { dispatch({ type: "petition_response", petitionId: petitionView.petitionId, response }); sendUi({ type: "pop_modal" }); }} />}
-    {homeView === null ? null : <HomePetitionModal view={homeView} onLater={() => sendUi({ type: "pop_modal" })} onRecurring={setRecurring}
-      onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
+    {homeView === null || homeCard === null ? null : <DecisionCard view={homeCard} className="lord-card" crest={{ arms: homeView.arms, label: homeView.armsLabel }}
+      data={{ "data-home-petition": homeView.kind, "data-petition": homeView.petitionId }}
+      extra={<RecurringSwitch on={homeView.recurring} onToggle={setRecurring} />} onLater={() => sendUi({ type: "pop_modal" })}
+      onChoose={choice => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant: choice === "grant" }); sendUi({ type: "pop_modal" }); }} />}
     {precedent === null ? null : <PrecedentModal view={precedent} onRecurring={setRecurring} onClose={() => sendUi({ type: "pop_modal" })} />}
     {request === null ? null : <LordRequestModal view={request} art={requestArt(request.kind)} onLater={() => sendUi({ type: "pop_modal" })}
       onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}

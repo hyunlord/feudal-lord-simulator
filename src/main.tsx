@@ -19,6 +19,7 @@ import "./styles/stuckGoods.css";
 import "./styles/chronicle.css";
 import "./styles/legacy.css";
 import "./styles/lordCards.css";
+import "./styles/decisionCard.css";
 import "./styles/registryCard.css";
 import "./styles/lordMode.css";
 // LM-R2: the lord screen host and its four areas' screens (lord mode only).
