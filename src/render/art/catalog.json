@@ -19087,5 +19087,39 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-pasture-wash",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "pasture_wash_pool",
+        "kind": "ground-prop",
+        "image": {
+          "url": "assets/wave3/pasture/wash_pool-v1.png",
+          "width": 192,
+          "height": 128
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave3/candidates-20260926/assets/pasture/wash_pool-v1.png",
+          "sourceSha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f",
+          "runtimeSha256": "4c824dc6538aa379611c01575ee841412497fa7da43befd4dd4216803c3e821f"
+        },
+        "geometry": {
+          "pivot": {
+            "x": 96,
+            "y": 120
+          },
+          "scale": 0.3333333333333333,
+          "allowMirror": false
+        },
+        "placement": "facility-ground",
+        "buildingKinds": [
+          "pastoral_farm"
+        ]
+      }
+    ],
+    "rules": []
   }
 ]

@@ -1,3 +1,4 @@
+import { withWashPoolProps } from './washPoolDraw';
 import { compareObjectRenderItems, mergeObjectRenderItems } from "./objectRenderMerge";
 import { withWorldFireProps } from "./worldFireProps";
 import { withSpringWorldProps } from "./springWorldProps";
@@ -50,7 +51,7 @@ export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
   const baseItems = withDoorSigns(withLandFallow(withAlehouseCrowd(withCountryside(withVillageLife(withWarProps(withReorgProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input.state, input.range), input), input), input.state, input.range), input.state, input.range), input.state, input.range), input.state, input.range); // + INSTALL-28, UI-8, UI-9, NAT-2 alehouse crowd, NAT-5 fallow, LM-R1 door signs
-  const staticItems = withWorldFireProps(withSpringWorldProps(withTradeWorldProps(baseItems, input.state, input.range), input.state, input.range), input.state, input.range);
+  const staticItems = withWorldFireProps(withSpringWorldProps(withTradeWorldProps(withWashPoolProps(baseItems, input.state, input.range), input.state, input.range), input.state, input.range), input.state, input.range);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };
