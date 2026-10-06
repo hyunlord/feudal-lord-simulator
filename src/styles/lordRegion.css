@@ -29,10 +29,16 @@
 .app-shell .lord-region-site-art, .app-shell .lord-region-flag-art, .app-shell .lord-region-arms { position: absolute; display: block; }
 .app-shell .lord-region-arms { overflow: hidden; }
 .app-shell .lord-region-arms .emblem-image { display: block; }
+/* The label hangs under the marker (absolute: the marker's touch box stays its art), wrapped at 10em and turned toward
+   the map's middle by data-label-side, so a long name stays on the map. */
 .app-shell .lord-region-label {
-  margin-top: 2px; padding: 1px 6px; white-space: nowrap; font-size: 12px; line-height: 1.4; color: var(--palette-ink);
+  position: absolute; top: 100%; width: max-content; max-width: 10em; white-space: normal; overflow-wrap: anywhere;
+  margin-top: 2px; padding: 1px 6px; font-size: 12px; line-height: 1.4; color: var(--palette-ink);
   background: var(--palette-vellum); border: 1px solid var(--palette-earth); border-radius: 2px;
 }
+.app-shell .lord-region-label[data-label-side="centre"] { left: 50%; translate: -50% 0; text-align: center; }
+.app-shell .lord-region-label[data-label-side="start"] { left: 0; text-align: start; }
+.app-shell .lord-region-label[data-label-side="end"] { right: 0; text-align: end; }
 .app-shell .lord-region-site[aria-pressed="true"] .lord-region-label {
   font-weight: 700; border-color: var(--palette-vermilion); box-shadow: 0 0 0 1px var(--palette-vermilion);
 }

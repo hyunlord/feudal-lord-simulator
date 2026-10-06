@@ -134,7 +134,8 @@ async function runStep(page, state, step) {
       for (let chip = 0; chip < 8 && !await wanted(); chip += 1) {
         if (await page.locator(shown('.story-modal')).count() > 0) { await page.locator(shown('.story-modal-later')).first().click({ timeout: 5_000 }).catch(() => undefined); await pause(500); }
         if (await page.locator(shown('.event-chip')).count() === 0) break;
-        await page.locator(shown('.event-chip')).first().click({ timeout: 5_000 }); await pause(600);
+        // The chips in turn (LM-R2): the first again would reopen the same other decision forever.
+        await page.locator(shown('.event-chip')).nth(chip % Math.max(1, await page.locator(shown('.event-chip')).count())).click({ timeout: 5_000 }); await pause(600);
         if (await page.locator(shown('.event-card-decide')).count() > 0) { await page.locator(shown('.event-card-decide')).first().click({ timeout: 5_000 }); await pause(900); continue; }
         await page.locator(shown('.event-card-actions > button:last-child')).first().click({ timeout: 5_000 }).catch(() => undefined); await pause(500);
       }

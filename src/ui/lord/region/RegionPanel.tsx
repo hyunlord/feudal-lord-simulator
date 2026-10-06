@@ -20,6 +20,9 @@ export const regionGate: LordNavGate = (state: GameState) => estatesOf(state).es
 
 type Parts = ReturnType<typeof useUiParts>;
 
+/** Where a marker's label hangs: from a site in the left third it starts at the marker, in the right third it ends there. */
+const labelSide = (x: number): "start" | "centre" | "end" => x < 1 / 3 ? "start" : x > 2 / 3 ? "end" : "centre";
+
 function Marker({ view, scale, chosen, parts, size, onChoose }: {
   readonly view: RegionEstateView; readonly scale: 0.5 | 1; readonly chosen: boolean; readonly parts: Parts;
   readonly size: { readonly width: number; readonly height: number }; readonly onChoose: (estateId: string) => void;
@@ -41,7 +44,9 @@ function Marker({ view, scale, chosen, parts, size, onChoose }: {
           style={{ left: layout.arms.left, top: layout.arms.top, width: layout.arms.width, height: layout.arms.height }}>
           <EmblemImage emblem={view.arms.emblem} size={layout.arms.width} label={COPY.armsLabel(view.arms.house)} /></span>}
       </span>
-      <span className="lord-region-label">{view.label}</span>
+      {/* The label hangs under the marker toward the map's middle (a site in the left third starts it, the right third ends
+          it), wrapped at 10em, so a long name never crosses the map's edge (geometry: text clipped by the map). */}
+      <span className="lord-region-label" data-label-side={labelSide(slot.site.x / size.width)}>{view.label}</span>
     </Button>
   );
 }
