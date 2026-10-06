@@ -6,6 +6,10 @@
 ---
 ## A. 엔진 세션
 
+### Engine B — LM-E9c 계약 요청 전달 (2026-10-06)
+- [x] `engine-B-read-bundles.md`, `engine-B-7.md`, `engine-B-remaining.md`, `engine-B-EVA-AUTO.md` 요청서 전달. 런타임 구현과 장기 관문은 미완료. 본선 문서 커밋은 이 항목을 추가한 커밋이다.
+- [ ] Engine B 구현 게시: DGX 분포·가드레일·최종 변경 시험 및 사건 그림 총량 관문 대기.
+
 ### A1. 완료·검증됨
 | 작업 | 본선 커밋 | 비고 |
 |---|---|---|

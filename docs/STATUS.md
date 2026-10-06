@@ -1,3 +1,4 @@
+- **Engine B LM-E9c 요청 전달**: 저장 확장 슬롯·실제 사실 생산·렌더 EVA-AUTO 총량 계약 요청4건을 `docs/requests/engine-B-*.md`에 게시한다. 구현 ae26ab28은 별도 작업 가지이며 분포·해시·게시 관문은 미완료다.
 - **RB-LANDMARK-DATA 준비 완료**: `1b68f4dd` 랜드마크 44장·계절 22쌍을 원본 해시·피벗·발판과 함께 정리했다. 설치 0장. 현재 영주관 3×3을 반영했고 성장 단계·확장 터·다리/문 통행 연결은 [엔진 요청서](requests/landmark-growth/README.md)에 남겼다.
 - **RB-ERA-SIGNS 완료**: 본선 포함 구현 `f749fecc`. 간판 8장을 네 L2 집 본체에 직업·시대별로 붙였다. DGX 변경 시험 1,478개·기하 80조건 실패 0, 실제 전후 18쌍 확인. 문양은 작아 독립 직업 판독 단서로 보지 않는다. [보고서](verification/era-signs/README.md).
 - **RB-SEASON-BOUNDARY 시점 수정**: 통합 `494fb0d1`. 한겨울의 주황 단풍과 희미한 지붕 눈을 고쳤다. 네 시점·여름 실제 전후 20쌍, 새 그림 0장. 영향 시험 1,204개 중 1건의 옛 시점 가정을 고친 뒤 해당 13개 통과. UI 입력 변경 없음. 보고 ZIP에 연속 214프레임 영상 6개도 포함한다. [보고서](verification/season-boundaries/README.md).
