@@ -1,0 +1,27 @@
+{
+  "scope": "RB-HANDCART initial real-town capture",
+  "reviewer": "primary assistant visual inspection",
+  "status": "draw-chain-verified-contact-judgment-incomplete",
+  "comparison": ".omo/evidence/handcart-comparison.json",
+  "observations": [
+    {
+      "view": "SE-close",
+      "finding": "선택한 운반자의 발 위치는 가운데 집 뒤이며 수레 접점을 볼 수 없다."
+    },
+    {
+      "view": "NW-close",
+      "finding": "인물 상체 일부가 보이지만 지붕이 수레·손잡이 부근을 가린다."
+    },
+    {
+      "view": "SW-close",
+      "finding": "선택한 두 운반자 위치가 거의 겹치고 앞 집에 가려져 접점 판정을 하지 않는다. 오른쪽에는 다른 실제 수레가 보인다."
+    },
+    {
+      "view": "NE-close",
+      "finding": "선택 대상은 나무에 가려지고 길의 다른 수레만 보인다. 선택 대상의 접점 통과로 세지 않는다."
+    }
+  ],
+  "pageErrors": 0,
+  "networkFailures": 1,
+  "next": "다른 실제 운반자 위치 8곳의 전후 확대 캡처. 시뮬레이션 상태·위치·화물은 수정하지 않는다."
+}
