@@ -16,7 +16,14 @@ import { townSeatTile } from "./townSeat";
 // published view rectangle; the zoom stays the player's); (c) why: the save has no camera and the engine's save format
 // is not the renderer's to change. Written at most every WRITE_MS while the view moves, and when the canvas goes.
 
+// A scripted scene (`?phase10-proof=1`: captures, the geometry audit, replays) sets its own camera; this stays out of
+// it unless the scene asks for it (`&lord-camera=1`, the DEC-CARD capture of this very behaviour).
 const WRITE_MS = 2_000;
+const scripted = (): boolean => {
+  if (typeof window === "undefined") return false;
+  const query = new URLSearchParams(window.location.search);
+  return query.get("phase10-proof") === "1" && query.get("lord-camera") !== "1";
+};
 export const cameraKey = (state: Pick<GameState, "scenarioId" | "seed">): string => `fls.lordCamera.v1:${state.scenarioId}:${state.seed}`;
 
 export function readCameraTile(key: string): TileCoordinate | null {
@@ -36,7 +43,7 @@ export function useLordCamera(state: GameState): void {
   const first = useRef(state);
   useEffect(() => {
     const at = first.current;
-    if (!lordMode(at)) return undefined;
+    if (!lordMode(at) || scripted()) return undefined;
     const key = cameraKey(at);
     const target = readCameraTile(key) ?? townSeatTile(at);
     if (target !== null) platformServices().input.emit({ kind: "lookAt", tile: target });
