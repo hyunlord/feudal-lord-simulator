@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Remote runner (REMOTE-1): edit on the Mac, run heavy verification on the DGX Spark, bring back only the results.
 #
-#   scripts/remote/run.sh <label> [--heavy|--light] [--detach] [--keep] -- <command ...>
-#   scripts/remote/run.sh --task test|guardrail|browser|perf|ui-geometry|clone-check|trend [task args ...]   (label: $FLS_REMOTE_LABEL or branch)
+#   scripts/remote/run.sh <label> [--heavy|--light] [--gate|--experiment] [--detach] [--keep] -- <command ...>
+#   scripts/remote/run.sh --task test|guardrail|browser|perf|ui-geometry|clone-check|trend [--gate|--experiment] [task args ...]   (label: $FLS_REMOTE_LABEL or branch)
+#   --gate: a check a push needs (the changed rows' geometry audit, test:changed run heavy): the gate line, which has a
+#   slot of its own; anything else heavy is an experiment (the default). Decision RR20, scripts/remote/heavySlots.sh.
 #   scripts/remote/run.sh --attach <run>     follow a detached/interrupted run, then fetch its results
 #   scripts/remote/run.sh --fetch <run>      fetch results only
 #   scripts/remote/run.sh --status           active remote runs, run folders and kept runs
@@ -89,7 +91,7 @@ case "${1:-}" in
   ""|-h|--help) sed -n '2,24p' "$0"; exit 0 ;;
   --status)
     rsh "systemctl --user list-units 'fls-run-*' --no-pager --no-legend; systemctl --user status fls-runs.slice --no-pager 2>/dev/null | sed -n '1,8p'; ls -1t $RROOT | grep -v '^_'; echo '== kept:'; ls -1t $RROOT/_kept 2>/dev/null
-      echo '== heavy slots (at most 3 heavy runs at once, or the number in _slots/max):'; for f in $RROOT/_slots/heavy.*.lock; do [ -e \"\$f\" ] && ! flock -n \"\$f\" true && tr '\\t' ' ' < \"\${f%.lock}.info\"; done; echo '== waiting in line:'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//'"
+      echo '== heavy slots (at most 3 at once, or the number in _slots/max; the last is kept for the gate line):'; for f in $RROOT/_slots/heavy.*.lock; do [ -e \"\$f\" ] && ! flock -n \"\$f\" true && tr '\\t' ' ' < \"\${f%.lock}.info\"; done; echo '== gate line:'; ls -1 $RROOT/_slots/queue-gate 2>/dev/null | sed 's/^[0-9]*-//'; echo '== experiment line:'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//'; echo '== experiment line by session (waiting · served last):'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//; s/-.*//' | sort | uniq -c | while read n s; do echo \"   \$s \$n waiting · served \$(date -r $RROOT/_slots/served/\$s +%H:%M 2>/dev/null || echo never)\"; done"
     exit 0 ;;
   --release) [ -n "${2:-}" ] || die "--release <run>"
     rsh "rm -rf $RROOT/_kept/${2:?}; rm -f $RROOT/${2:?}/.remote/keep"; echo "remote: released $2"; exit 0 ;;
@@ -97,7 +99,7 @@ case "${1:-}" in
   --attach) [ -n "${2:-}" ] || die "--attach <run>"; follow "$2" || true; finish "$2"; exit $? ;;
 esac
 
-SLOT=""; DETACH=0; KEEP_RUN=${FLS_REMOTE_KEEP_RUN:-0}; WEIGHT=
+SLOT=""; DETACH=0; KEEP_RUN=${FLS_REMOTE_KEEP_RUN:-0}; WEIGHT=; CLASS=${FLS_REMOTE_CLASS:-experiment}
 if [ "$1" = "--task" ]; then
   TASK=${2:-}; shift 2 || die "--task <name>"
   LABEL=${FLS_REMOTE_LABEL:-$(default_label)}
@@ -107,7 +109,9 @@ if [ "$1" = "--task" ]; then
     *) die "unknown task: $TASK (test|guardrail|browser|perf|ui-geometry|clone-check|trend)" ;;
   esac
   [ "${FLS_REMOTE_DETACH:-0}" = 1 ] && DETACH=1
-  set -- bash scripts/remote/tasks.sh "$TASK" "$@"
+  # --gate / --experiment may stand anywhere among the task's arguments; they are run.sh's, not the task's.
+  rest=(); for a in "$@"; do case "$a" in --gate) CLASS=gate ;; --experiment) CLASS=experiment ;; *) rest+=("$a") ;; esac; done
+  set -- bash scripts/remote/tasks.sh "$TASK" ${rest[@]+"${rest[@]}"}
 else
   LABEL=$1; shift
   while [ $# -gt 0 ] && [ "$1" != "--" ]; do
@@ -117,6 +121,8 @@ else
       --light) WEIGHT=light; shift ;;
       --detach) DETACH=1; shift ;;
       --keep) KEEP_RUN=1; shift ;;
+      --gate) CLASS=gate; shift ;;
+      --experiment) CLASS=experiment; shift ;;
       *) die "unknown option $1 (did you forget -- before the command?)" ;;
     esac
   done
@@ -151,7 +157,7 @@ if git bundle create "$TMP/head.bundle" HEAD --not --remotes=origin >/dev/null 2
 {
   printf 'RUN=%q\nLABEL=%q\nSHORT_SHA=%q\nFULL_SHA=%q\nDIRTY=%q\nSLOT=%q\nBRANCH=%q\nMAC_HOST=%q\n' \
     "$RUN" "$LABEL" "$SHORT" "$FULL" "$DIRTY" "$SLOT" "$(git rev-parse --abbrev-ref HEAD)" "$(hostname -s)"
-  printf 'KEEP_RUN=%q\n' "$KEEP_RUN"
+  printf 'KEEP_RUN=%q\nRUN_CLASS=%q\n' "$KEEP_RUN" "$CLASS"
   printf 'CMD=%q\n' "$(printf '%q ' "$@")"
 } > "$TMP/meta.env"
 
@@ -178,7 +184,7 @@ TRUNK_STATE=$(printf '%s\n' "$state" | sed -n 's/^TRUNK=//p')
 case "$TRUNK_STATE" in FAILED*) echo "== TRUNK CLONE FAILED — the session whose commit it names fixes or reverts it: ${TRUNK_STATE#FAILED }" >&2 ;; esac
 COPY_DEST=""; [ -n "$PREV" ] && COPY_DEST="--copy-dest=../$PREV"
 
-echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}${SLOT:+, heavy: waits in line when every heavy slot is taken}) -> $HOST"
+echo "remote: $RUN ($(wc -l < "$TMP/files.txt" | tr -d ' ') files, dirty=$DIRTY${PREV:+, local copies from $PREV}${SLOT:+, heavy $CLASS line}) -> $HOST"
 rsync -a --checksum $COPY_DEST -e "ssh $SSH_OPTS" --files-from="$TMP/files.txt" "$REPO/" "$HOST:$RROOT/$RUN/"
 rsync -a -e "ssh $SSH_OPTS" "$TMP/meta.env" "$TMP/in-files.txt" $( [ -f "$TMP/head.bundle" ] && echo "$TMP/head.bundle" ) "$HOST:$RROOT/$RUN/.remote-in/"
 SYNC_S=$(since "$T0")

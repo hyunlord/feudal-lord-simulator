@@ -20,7 +20,7 @@ test("two heavy runs go, the next ones wait in line with their place and the run
   const start = (run: string) => {
     const body = `. ${JSON.stringify(helper)}; heavy_take_slot ${JSON.stringify(base)} ${run} "test: ${run} command"; echo TOOK
 while [ ! -e ${JSON.stringify(join(base, `release-${run}`))} ]; do sleep 0.2; done`;
-    const child = spawn("bash", ["-c", body], { env: { ...process.env, HEAVY_SLOTS: "2", HEAVY_POLL_S: "1" }, stdio: ["ignore", "pipe", "pipe"] });
+    const child = spawn("bash", ["-c", body], { env: { ...process.env, HEAVY_SLOTS: "3", HEAVY_POLL_S: "1" }, stdio: ["ignore", "pipe", "pipe"] });   // 3: experiments use 1–2
     child.stdout!.on("data", chunk => writeFileSync(log(run), chunk, { flag: "a" }));
     children.push(child);
   };
@@ -36,17 +36,17 @@ while [ ! -e ${JSON.stringify(join(base, `release-${run}`))} ]; do sleep 0.2; do
     start("a"); await until("a", /TOOK/);
     start("b"); await until("b", /TOOK/);
     // A waiting run's log arrives line by line: wait for each expected line itself.
-    start("c"); await until("c", /number 1 in line/);
+    start("c"); await until("c", /number 1 by arrival/);
     await until("c", /running slot 1: a .*test: a command/);
     await until("c", /running slot 2: b .*test: b command/);
-    start("d"); await until("d", /number 2 in line/);
+    start("d"); await until("d", /number 2 by arrival/);
     await until("d", /ahead in line: c\b/);
     assert.deepEqual(spawnSync("ls", [join(base, "_slots/queue")], { encoding: "utf8" }).stdout.split("\n").filter(Boolean).map(name => name.replace(/^\d+-/, "")).sort(), ["c", "d"]);
 
     writeFileSync(join(base, "release-a"), "");
     await until("c", /TOOK/);
     assert.doesNotMatch(text("d"), /TOOK/);
-    await until("d", /number 1 in line/);
+    await until("d", /number 1 by arrival/);
     writeFileSync(join(base, "release-b"), "");
     await until("d", /TOOK/);
   } finally {
@@ -56,7 +56,8 @@ while [ ! -e ${JSON.stringify(join(base, `release-${run}`))} ]; do sleep 0.2; do
   }
 });
 
-test("a run takes a slot no run ahead of it can take: the third slot is not left empty behind runs that only know two", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+// The experiment line keeps the last slot for gates (RR20); with a cap of 4, experiments use slots 1–3.
+test("an experiment takes a slot no experiment ahead of it can take: a slot the older copies do not know is not left empty", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
   const base = mkdtempSync(join(tmpdir(), "fls-heavy3-"));
   const children: ChildProcess[] = [];
   const out: Record<string, string> = {};
@@ -70,20 +71,84 @@ test("a run takes a slot no run ahead of it can take: the third slot is not left
     const old = join(base, "_slots/queue", `${(BigInt(Date.now() - 5000) * 1_000_000n).toString()}-old-run`);
     writeFileSync(old, ""); hold(old);
     await until(() => held(join(base, "_slots/heavy.2.lock")) && held(old));
-    const start = (run: string, slots: string) => {
-      const child = spawn("bash", ["-c", `. ${JSON.stringify(helper)}; heavy_take_slot ${JSON.stringify(base)} ${run} "test"; echo TOOK; exec sleep 600`],
-        { env: { ...process.env, HEAVY_SLOTS: slots, HEAVY_POLL_S: "1" }, stdio: ["ignore", "pipe", "pipe"] });
+    const start = (run: string, cls: string) => {
+      const child = spawn("bash", ["-c", `. ${JSON.stringify(helper)}; heavy_take_slot ${JSON.stringify(base)} ${run} "test" ${cls}; echo TOOK; exec sleep 600`],
+        { env: { ...process.env, HEAVY_SLOTS: "4", HEAVY_POLL_S: "1" }, stdio: ["ignore", "pipe", "pipe"] });
       child.stdout!.on("data", chunk => { out[run] = (out[run] ?? "") + chunk; });
       children.push(child);
     };
-    start("new", "3");
-    await until(() => /== heavy slot 3\/3/.test(out.new ?? ""));
-    // With three slots busy the next new run waits behind the old one (FIFO for every slot it could take).
-    start("later", "3");
-    await until(() => /number 2 in line/.test(out.later ?? ""));
-    assert.doesNotMatch(out.later ?? "", /TOOK/);
+    start("new", "experiment");
+    await until(() => /== heavy slot 3\/4 \(experiment line\)/.test(out.new ?? ""));
+    start("later", "experiment");
+    await until(() => /number 2 by arrival/.test(out.later ?? ""));
+    assert.doesNotMatch(out.later ?? "", /TOOK/, "slot 4 is the gates'");
   } finally {
     for (const child of children) child.kill("SIGKILL");
+    rmSync(base, { recursive: true, force: true });
+  }
+});
+
+test("the gate line: a gate runs at once on the slot kept for gates while experiments fill the rest, and goes before waiting experiments", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+  const base = mkdtempSync(join(tmpdir(), "fls-gate-"));
+  const children: ChildProcess[] = [];
+  const out: Record<string, string> = {};
+  const until = async (check: () => boolean) => { for (const end = Date.now() + CAP_MS; !check() && Date.now() < end;) await pause(100); assert.ok(check()); };
+  const start = (run: string, cls: string) => {
+    const child = spawn("bash", ["-c", `. ${JSON.stringify(helper)}; heavy_take_slot ${JSON.stringify(base)} ${run} "test" ${cls}; echo TOOK
+while [ ! -e ${JSON.stringify(join(base, `release-${run}`))} ]; do sleep 0.2; done`],
+      { env: { ...process.env, HEAVY_SLOTS: "3", HEAVY_POLL_S: "1" }, stdio: ["ignore", "pipe", "pipe"] });
+    child.stdout!.on("data", chunk => { out[run] = (out[run] ?? "") + chunk; });
+    children.push(child);
+  };
+  try {
+    start("exp1", "experiment"); await until(() => /heavy slot 1\/3 \(experiment line\)/.test(out.exp1 ?? ""));
+    start("exp2", "experiment"); await until(() => /heavy slot 2\/3 \(experiment line\)/.test(out.exp2 ?? ""));
+    start("exp3", "experiment"); await until(() => /experiment line: slots 1-2, slot 3 kept for gates\): number 1 by arrival/.test(out.exp3 ?? ""));
+    start("gate1", "gate"); await until(() => /heavy slot 3\/3 \(gate line\)/.test(out.gate1 ?? ""));
+    start("gate2", "gate"); await until(() => /gate line, every slot busy\): number 1 among gates/.test(out.gate2 ?? ""));
+    await until(() => /1 gate\(s\) go first/.test(out.exp3 ?? ""));
+    writeFileSync(join(base, "release-exp1"), "");           // slot 1 frees: the waiting gate takes it, not the experiment
+    await until(() => /heavy slot 1\/3 \(gate line\)/.test(out.gate2 ?? ""));
+    assert.doesNotMatch(out.exp3 ?? "", /TOOK/);
+    writeFileSync(join(base, "release-exp2"), "");           // no gate waits now: the experiment takes slot 2
+    await until(() => /heavy slot 2\/3 \(experiment line\)/.test(out.exp3 ?? ""));
+  } finally {
+    for (const run of ["exp1", "exp2", "exp3", "gate1", "gate2"]) writeFileSync(join(base, `release-${run}`), "");
+    for (const child of children) if (child.exitCode === null) child.kill("SIGKILL");
+    rmSync(base, { recursive: true, force: true });
+  }
+});
+
+test("the experiment line takes turns by session: one running per session, and the session served longest ago goes next", { skip: !hasFlock && "needs flock (Linux)" }, async () => {
+  const base = mkdtempSync(join(tmpdir(), "fls-fair-"));
+  const children: ChildProcess[] = [];
+  const out: Record<string, string> = {};
+  const until = async (check: () => boolean) => { for (const end = Date.now() + CAP_MS; !check() && Date.now() < end;) await pause(100); assert.ok(check()); };
+  const start = (run: string) => {
+    const child = spawn("bash", ["-c", `. ${JSON.stringify(helper)}; heavy_take_slot ${JSON.stringify(base)} ${run} "test" experiment; echo TOOK
+while [ ! -e ${JSON.stringify(join(base, `release-${run}`))} ]; do sleep 0.2; done`],
+      { env: { ...process.env, HEAVY_SLOTS: "3", HEAVY_POLL_S: "1" }, stdio: ["ignore", "pipe", "pipe"] });
+    child.stdout!.on("data", chunk => { out[run] = (out[run] ?? "") + chunk; });
+    children.push(child);
+  };
+  const runs = ["engineB-a", "engineB-b", "engine-guard", "render-x", "astra-y"];
+  try {
+    start("engineB-a"); await until(() => /heavy slot 1\/3 \(experiment line\)/.test(out["engineB-a"] ?? ""));
+    // Slot 2 is free, but engineB already runs one: its second run waits; engine's guardrail, arriving later, takes slot 2.
+    start("engineB-b"); await until(() => /engineB already has one running/.test(out["engineB-b"] ?? ""));
+    start("engine-guard"); await until(() => /heavy slot 2\/3 \(experiment line\)/.test(out["engine-guard"] ?? ""));
+    assert.doesNotMatch(out["engineB-b"] ?? "", /TOOK/);
+    // render arrives before astra, but render was served just now and astra never: astra goes first.
+    mkdirSync(join(base, "_slots/served"), { recursive: true }); writeFileSync(join(base, "_slots/served/render"), "");
+    start("render-x"); await until(() => /number 2 by arrival/.test(out["render-x"] ?? ""));
+    start("astra-y"); await until(() => /next: astra/.test(out["astra-y"] ?? ""));
+    writeFileSync(join(base, "release-engine-guard"), "");     // slot 2 frees
+    await until(() => /heavy slot 2\/3/.test(out["astra-y"] ?? ""));
+    assert.doesNotMatch(out["render-x"] ?? "", /TOOK/);
+    assert.doesNotMatch(out["engineB-b"] ?? "", /TOOK/, "engineB still has one running");
+  } finally {
+    for (const run of runs) writeFileSync(join(base, `release-${run}`), "");
+    for (const child of children) if (child.exitCode === null) child.kill("SIGKILL");
     rmSync(base, { recursive: true, force: true });
   }
 });
