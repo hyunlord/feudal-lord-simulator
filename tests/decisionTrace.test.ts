@@ -133,3 +133,42 @@ test("§6 in lord mode the heir takes the house the day the lord dies, and the h
   const head = state.persons!.people.find(person => person.role === "head" && person.householdId === "manor")!;
   assert.equal(head.id, record!.params?.heirId);
 });
+
+test("§6 a market charter opens the market to a lord-mode hamlet (the town may build it); elsewhere the era decides", async () => {
+  const { isBuildingOpen } = await import("../src/world/placement");
+  const hamlet = lordGame();
+  assert.equal(isBuildingOpen(hamlet, "market"), false, "no charter yet");
+  const chartered = { ...hamlet, politics: { ...hamlet.politics!, rights: [{ id: "market_charter", holder: "merchants" as const, grantedTick: 0, petitionId: "p", stallFeePermille: 750 }] } };
+  assert.equal(isBuildingOpen(chartered, "market"), true);
+  const { agency: _agency, ...sandbox } = chartered;
+  assert.equal(isBuildingOpen(sandbox as GameState, "market"), false, "outside lord mode the era decides");
+});
+
+test("§6 the treasury's change by estate and kind, and whether the town's money was settled in the span", async () => {
+  const { treasuryBreakdown } = await import("../src/engine/treasuryReads");
+  const { settlementIn } = await import("../src/ledger/ledger");
+  let state = run(lordGame(), 10);
+  const posted = postLedgerEntries(state, [
+    { account: "cash", category: "estate_income", amount: 500, sourceRefs: [{ type: "actor", id: "estate:estate-neighbour-3" }, { type: "actor", id: "person:p1" }] },
+    { account: "cash", category: "estate_income", amount: 20, sourceRefs: [{ type: "actor", id: "estate:estate-home" }, { type: "claim", id: "estate-petition-1", detail: "merchet" }] },
+    { account: "cash", category: "marriage_portion", amount: 240, sourceRefs: [{ type: "actor", id: "negotiation-1" }] },
+  ]);
+  state = { ...state, ledger: posted.ledger, treasuryCoin: posted.treasuryCoin };
+  const breakdown = treasuryBreakdown(state, 0, state.tick + 1);
+  const row = (estate: string, kind: string) => breakdown.rows.find(entry => entry.estate === estate && entry.kind === kind);
+  assert.equal(row("estate-neighbour-3", "rents_dues")?.income, 500);
+  assert.equal(row("estate-home", "petitions")?.income, 20);
+  assert.equal(row("lord", "marriage")?.income, 240);
+  assert.equal(settlementIn(0, 1000), false, "the town settles at 2,400: the first season has none");
+  assert.equal(settlementIn(2000, 3000), true);
+});
+
+test("§6 a dearth's preparedness and weak points read now; its arrival and outcome are written with the decisions behind them", async () => {
+  const { crisisReview, preparedness } = await import("../src/engine/crisisReads");
+  const state = run(lordGame(), 10);
+  const now = preparedness(state);
+  assert.equal(now.weakPoints.includes("no_granary"), now.granaries === 0);
+  assert.equal(now.weakPoints.includes("no_market"), now.markets === 0);
+  assert.equal(now.weakPoints.includes("food_under_a_season"), now.foodDays !== null && now.foodDays < 90);
+  assert.deepEqual(crisisReview(state).past, []);
+});

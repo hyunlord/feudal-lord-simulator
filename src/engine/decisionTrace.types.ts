@@ -34,7 +34,7 @@ export interface TracedDecision {
 
 /** What followed (the key the screens word, `HistoryBecause.key`). */
 export const CONSEQUENCE_KEYS = ["faction_act", "households_left", "households_arrived", "suit_turned", "marriage_turned", "promise_made", "promise_kept",
-  "promise_broken", "project_started", "goods_delivered", "audit", "estate_mood", "right_income"] as const;
+  "promise_broken", "project_started", "goods_delivered", "audit", "estate_mood", "right_income", "crisis_prepared", "crisis_outcome"] as const;
 export type ConsequenceKey = (typeof CONSEQUENCE_KEYS)[number];
 
 /** §3: a faction's act on crossing a threshold (for the once-a-year and once-a-decade limits). */

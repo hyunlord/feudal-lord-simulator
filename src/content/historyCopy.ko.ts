@@ -170,8 +170,15 @@ const CONSEQUENCE_WORDS: Readonly<Record<string, (params: P) => string>> = {
   goods_delivered: params => `목재 ${n(params, "brought")}단이 들어왔다`,
   audit: () => "영지 감사가 열렸다",
   estate_mood: () => "영지 사람들의 마음이 달라졌다",
+  crisis_outcome: params => n(params, "avoided") === 1
+    ? `흉년이 지나갔다 — 굶어 죽거나 떠난 집 없음(${CRISIS_REASONS[s(params, "reason")] ?? s(params, "reason")})`
+    : `흉년이 지나갔다 — 굶주림으로 ${n(params, "deaths")}명이 죽고 ${n(params, "departures")}가구가 떠났다`,
   right_income: params => `얻은 권리에서 첫 수입 ${moneyWords(n(params, "income"))}${josa(moneyWords(n(params, "income")), "이", "가")} 들어왔다`,
 };
+/** DEC-TRACE §6: why a dearth did no harm, and the weak points a town met it with. */
+const CRISIS_REASONS: Readonly<Record<string, string>> = { stores: "곡식을 쌓아 둔 덕", relief: "영주의 구휼 덕", weak: "흉년이 약했다", damage: "" };
+const WEAK_POINTS: Readonly<Record<string, string>> = { no_granary: "곡창 없음", food_under_a_season: "식량이 한 철도 안 됨", households_short: "이미 굶는 집", no_market: "곡식을 살 장터 없음" };
+
 /** DEC-TRACE §3: a faction's act. */
 const FACTION_ACT_WORDS: Readonly<Record<string, string>> = {
   merchant_invest: "좌판과 거래에 돈을 더 들였다", merchant_settle: "상인 가구들이 들어왔다", merchant_withdraw: "좌판에서 돈을 거두었다", merchant_leave: "상인 가구들이 떠났다",
@@ -185,6 +192,7 @@ const FACTION_ACT_WORDS: Readonly<Record<string, string>> = {
 
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
   "house.succession": params => `${n(params, "died") === 1 ? `영주 ${s(params, "deceased")}${josa(s(params, "deceased"), "이", "가")} ${n(params, "deadAge")}살에 죽고, ` : ""}${KIN_WORDS[s(params, "kin")] ?? "친족"} ${s(params, "heir")}(${n(params, "heirAge")}살)이 가문을 이었다`,
+  "crisis.arrived": params => `흉년이 닥쳤다 — 쌓인 식량 ${n(params, "foodDays") < 0 ? "알 수 없음" : `${n(params, "foodDays")}일분`}, 곡창 ${n(params, "granaries")}채${s(params, "weakPoints") === "" ? "" : `; 약점: ${s(params, "weakPoints").split(",").map(point => WEAK_POINTS[point] ?? point).join(", ")}`}`,
   "decision.card": params => CARD_COMMAND[s(params, "command")] ?? "영주가 결정했다",
   "decision.steward": params => `청지기가 ${STANDING_WORDS[s(params, "policy")] ?? STANDING_WORDS.customary} 처리했다`,
   "decision.lapsed": () => "답하지 않은 채 기한이 지났다",

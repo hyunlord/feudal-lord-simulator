@@ -19,6 +19,9 @@ import type { FactionMemory } from "./faction.types";
 import { appendHistoryRecords, type HistoryDraft } from "./history";
 import type { ActorRef, HistoryBecause } from "./history.types";
 import type { ConsequenceKey, TracedDecision, TracedDecisionKind, TraceState } from "./decisionTrace.types";
+import { CRISIS_RESERVE_DAYS } from "../content/crisisConfig";
+import { preparedness } from "./crisisReads";
+import { stateCalendar } from "./scenarioState";
 
 const YEAR = BALANCE.TICKS_PER_YEAR;
 /** A decision's targets stay live this long (the user's gate: a consequence within three years). */
@@ -88,6 +91,9 @@ export function changedTargets(before: GameState, after: GameState): string[] {
     const id = right.id.split("@")[0]!;
     if (!rights.has(right.id) && GRANT_PIECE[id] !== undefined) targets.add(`right:${id}`);
   }
+  // A crisis answered (the famine's response): its outcome follows from it.
+  const events = new Map((before.events?.records ?? []).map(record => [record.id, record] as const));
+  for (const record of after.events?.records ?? []) if (record.response !== undefined && events.get(record.id)?.response === undefined) targets.add(`event:${record.id}`);
   const guild = (state: GameState) => state.politics?.petitions.find(petition => petition.defId === GUILD_CHARTER_PETITION_ID)?.response;
   if (guild(before) !== guild(after) && guild(after) !== undefined) targets.add("guild");
   return [...targets].sort();
@@ -379,6 +385,7 @@ function consequences(before: GameState, after: GameState): GameState {
     const latest = liveDecisionsOn(traceOf(next), "timber", next.tick).at(-1);
     if (latest !== undefined) next = writeConsequence(next, "goods_delivered", "timber", [latest.id], false, { brought: (before.timberOrder ?? 0) - (after.timberOrder ?? 0) });
   }
+  next = crises(before, after, next);
   // Households gone this tick for a decision's reason: the refused guild's weavers, the war tax's flight.
   const gone = after.houses.filter((house, index) => house.abandonedTick === after.tick && before.houses[index]?.abandonedTick !== after.tick).length;
   if (gone > 0) {
@@ -390,6 +397,51 @@ function consequences(before: GameState, after: GameState): GameState {
   }
   return next;
 }
+
+/** The decisions of the last two years that prepared for a dearth (stores and granaries, the policy, timber). */
+const PREPARES = /^(subsidy:(granary|storehouse|mill|farmstead|wheat_farm)|policy|timber)$/;
+
+/**
+ * DEC-TRACE §6: a dearth's arrival (the preparedness then, with the decisions that prepared) and its outcome (the damage,
+ * or why it was avoided — the stores, the relief, or a weak dearth), with the lord's answer to it first.
+ */
+function crises(before: GameState, after: GameState, state: GameState): GameState {
+  let next = state;
+  const known = new Map((before.events?.records ?? []).map(record => [record.id, record] as const));
+  for (const record of after.events?.records ?? []) {
+    if (record.kind !== "dearth") continue;
+    const old = known.get(record.id);
+    if (old === undefined) {
+      const prep = preparedness(next);
+      const prepared = traceOf(next).decisions.filter(decision => next.tick - decision.tick <= 2 * YEAR && decision.targets.some(target => PREPARES.test(target))).map(decision => decision.id);
+      next = appendHistoryRecords(next, [{ tick: next.tick, kind: "event", template: "crisis.arrived", subject: TOWN, severity: 2,
+        params: { eventId: record.id, foodDays: prep.foodDays ?? -1, granaries: prep.granaries, markets: prep.markets, shortHouseholds: prep.shortHouseholds,
+          weakPoints: prep.weakPoints.join(","), policy: prep.policy ?? "" },
+        ...(prepared.length === 0 ? {} : { because: becauseOf(prepared, "crisis_prepared", true) }) }]);
+    } else if (old.endTick === undefined && record.endTick !== undefined) {
+      const arrived = next.history?.records.find(entry => entry.template === "crisis.arrived" && entry.params?.eventId === record.id);
+      const fromYear = scenarioYear(next, record.arrivalTick), toYear = scenarioYear(next, record.endTick);
+      const deaths = (next.persons?.past ?? []).filter(person => (person.deathCause === "famine" || person.deathCause === "famine_year")
+        && (person.deathYear ?? -1) >= fromYear && (person.deathYear ?? -1) <= toYear).length;
+      const departures = record.losses.departures;
+      const drop = (record.populationAtArrival ?? 0) - (record.populationAtEnd ?? record.populationAtArrival ?? 0);
+      const foodDays = Number(arrived?.params?.foodDays ?? -1);
+      const avoided = deaths === 0 && departures === 0;
+      const reason = !avoided ? "damage" : foodDays >= CRISIS_RESERVE_DAYS ? "stores" : record.response?.choice === "relief" ? "relief" : "weak";
+      const answered = liveDecisionsOn(traceOf(next), `event:${record.id}`, next.tick).map(decision => decision.id);
+      const prepared = (arrived?.because ?? []).map(entry => entry.decisionId);
+      const causes = [...answered, ...prepared.filter(id => !answered.includes(id))];
+      next = writeConsequence(next, "crisis_outcome", `event:${record.id}`, causes, prepared.length > 0 || answered.length === 0,
+        { eventId: record.id, deaths, departures, populationDrop: drop, harvestLost: record.losses.harvestLost, avoided: avoided ? 1 : 0, reason });
+      // A dearth no decision touched still gets its line (A4: the reason shown, even when it was no one's).
+      if (causes.length === 0) next = appendHistoryRecords(next, [{ tick: next.tick, kind: "event", template: "consequence", subject: TOWN, severity: 1,
+        params: { key: "crisis_outcome", target: `event:${record.id}`, eventId: record.id, deaths, departures, populationDrop: drop, harvestLost: record.losses.harvestLost, avoided: avoided ? 1 : 0, reason } }]);
+    }
+  }
+  return next;
+}
+
+const scenarioYear = (state: GameState, tick: number) => stateCalendar({ ...state, tick }).year;
 
 /** P-T6: the thread keeps ten years of decisions and acts (their records stay in the history). */
 function prune(state: GameState): GameState {
