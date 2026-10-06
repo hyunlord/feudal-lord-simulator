@@ -1,3 +1,4 @@
+- **RB-ERA-SIGNS 크기 가드 복구**: 간판·시대별 본체·겹그림 그리기를 `buildingAppearance.ts`로 그대로 분리했다. `drawBuildings.ts` 164줄(순수 156), 새 모듈 136줄(순수 124). 두 파일 모두 기존 250줄 가드를 적용하며 그림·순서·좌표·입력은 바꾸지 않았다.
 - **Engine B LM-E9c 요청 전달**: 저장 확장 슬롯·실제 사실 생산·렌더 EVA-AUTO 총량 계약 요청4건을 `docs/requests/engine-B-*.md`에 게시한다. 구현 ae26ab28은 별도 작업 가지이며 분포·해시·게시 관문은 미완료다.
 - **RB-LANDMARK-DATA 준비 완료**: `1b68f4dd` 랜드마크 44장·계절 22쌍을 원본 해시·피벗·발판과 함께 정리했다. 설치 0장. 현재 영주관 3×3을 반영했고 성장 단계·확장 터·다리/문 통행 연결은 [엔진 요청서](requests/landmark-growth/README.md)에 남겼다.
 - **RB-ERA-SIGNS 완료**: 본선 포함 구현 `f749fecc`. 간판 8장을 네 L2 집 본체에 직업·시대별로 붙였다. DGX 변경 시험 1,478개·기하 80조건 실패 0, 실제 전후 18쌍 확인. 문양은 작아 독립 직업 판독 단서로 보지 않는다. [보고서](verification/era-signs/README.md).
