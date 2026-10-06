@@ -32,3 +32,16 @@ LM-R2(협상·약속 장부·영지 포트폴리오·소송·혼인 진행) 화�
 
 ## 나중에 (LM-R2를 막지 않음)
 이웃 18가문(LM-E10, 지역 지도 전체용), 지역 길 연결(실험 지역 길·건넘), 청지기 기질 셋 밖의 성향 열거(영주 부품 성향 그림 넷), 청지기 "직책"(주의력 까닭).
+
+## 엔진 답 ① (LM-R2-E, 가지 `claude/lmr2-e`, 저장 v51)
+- **이야기 "봤음"**: 요청대로다.
+  - 상태 `GameState.seen?.marks`, 명령 `{ type: "mark_story_seen", id, how }`, 읽기 `storySeen(state, id)`(`src/engine/storySeen.ts`).
+  - 같은 표시를 다시 하면 같은 상태 객체를 돌려준다. 모르는 `how`, 빈 id, 128자 넘는 id는 무시한다.
+  - 쓸 때마다 두 해(8,000틱) 넘은 표시를 버리고 256개까지 둔다. 결정이 아니고(`DECISION_KIND_BY_COMMAND` 밖), 규칙은 읽지 않는다(시험: 300틱 동안 표시 유무와 상관없이 같은 상태).
+  - **저장은 v51이다.** v50은 MANOR-1(영주관 3×3·가문 하나)이 썼다. `v50ToV51`은 판만 올린다.
+- **이웃 가문 문장**: 이웃 영주 가문 이름 여덟(`NEIGHBOUR_SURNAMES`)마다 정확한 문장(blazon)을 데이터로 두었다. seed로 만들지 않는다.
+  - `src/content/neighbourArms.ts`의 `neighbourArms(name)` → `{ field, ordinary?, charges?, en }`. 한국어 읽기는 `NEIGHBOUR_ARMS_KO`(`neighbourArmsCopy.ko.ts`).
+  - 늙은 영주 가문(`estate-neighbour-3`의 `house.name`)을 포함해, 영지·세력의 이웃 가문 이름으로 찾는다.
+  - 규약(neighbor-world SOURCES): 담비 없음(백작·왕실만), 왕실 조합 없음(붉은 바탕 금 사자, 청색 바탕 금 백합), 색과 금속의 대비. 모두 창작 도안이다.
+  - 그림으로 그리는 법(조합 표)은 렌더 몫이다. 이웃 세계 16가문(LM-E10)이 들어오면 그 문장 표로 바뀐다.
+- ②·③·④는 이어서 한다(사용자 지시: ① 먼저).
