@@ -1,11 +1,10 @@
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../../content/buildingConfig";
-import { SCENARIO_COPY } from "../../../content/scenario/scenarioCopy.ko";
 import {
   AGENCY_WEEK_TICKS, builderOfKind, CHARTER_HOLD_WEEKS, OPEN_SITES_MAX, OPPORTUNITY_KINDS, policyWeight, START_SCORE, SUBSIDY_POINTS_PER_10D,
 } from "../../../content/townAgencyConfig";
 import { isBuildingConstructionSite } from "../../../economy/constructionSiteAccessors";
 import type { GameState } from "../../../engine/engine.types";
-import { stateCalendar } from "../../../engine/scenarioState";
+import { calendarLabel } from "../../../engine/scenarioState";
 import { lordMode, lordRequests } from "../../../engine/townAgency";
 import type { EstatePolicy } from "../../../engine/townAgency.types";
 import { moneyFull } from "../../money.ko";
@@ -42,10 +41,7 @@ function keysOf(need: TownNeed): Readonly<{ what: string; policy: string; name: 
   }
 }
 
-const when = (state: GameState, tick: number): string => {
-  const date = stateCalendar({ ...state, tick });
-  return `${date.year}년 ${SCENARIO_COPY.seasons[date.season] ?? ""}`;
-};
+const when = (state: GameState, tick: number): string => calendarLabel({ ...state, tick });
 
 /** What the town is doing about the need now, from its own state; null outside lord mode. */
 export function townStatus(state: GameState, need: TownNeed): string | null {

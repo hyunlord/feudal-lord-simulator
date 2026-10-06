@@ -1,12 +1,11 @@
 import { BUILDING_CONFIG_BY_KIND, type BuildingKind } from "../../../content/buildingConfig";
 import { V4_COPY } from "../../../content/registry/v4Copy.generated";
-import { SCENARIO_COPY } from "../../../content/scenario/scenarioCopy.ko";
 import type { GameState } from "../../../engine/engine.types";
 import type { HistoryRecord } from "../../../engine/history.types";
 import { registryOf } from "../../../engine/registry";
 import type { RegistryOccurrence } from "../../../engine/registry.types";
 import { v4Entry, type V4Entry } from "../../../engine/registryV4";
-import { stateCalendar } from "../../../engine/scenarioState";
+import { calendarLabel } from "../../../engine/scenarioState";
 import { initialAgency, lordMode } from "../../../engine/townAgency";
 import type { EstatePolicy, ReasonName } from "../../../engine/townAgency.types";
 import type { LedgerEntry } from "../../../ledger/ledger.types";
@@ -41,10 +40,7 @@ function kindOf(entry: V4Entry): Kind | null {
   return KIND_ORDER.find(kind => kinds.has(kind)) ?? null;
 }
 
-const when = (state: GameState, tick: number): string => {
-  const date = stateCalendar({ ...state, tick });
-  return `${date.year}년 ${SCENARIO_COPY.seasons[date.season] ?? ""}`;
-};
+const when = (state: GameState, tick: number): string => calendarLabel({ ...state, tick });
 
 type Last = Readonly<{ tick: number; what: string; rate: number | null; decision: HistoryRecord | null }>;
 
