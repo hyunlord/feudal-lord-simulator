@@ -8,10 +8,10 @@ export type Wave42StageMeta = {
   readonly pivot: ArtPoint; readonly ports?: LandStagePorts;
 };
 
-/** Compatibility view only: the validated JSON catalog owns every image and geometry value. */
+/** NAT-5 compatibility view of tree, fallow and path art; later yard families have their own consumers. */
 export const WAVE42_STAGES: Readonly<Record<string, Wave42StageMeta>> = Object.freeze(Object.fromEntries(
   ART_REGISTRY.entries('land-stage').flatMap(entry => {
-    if (entry.kind !== 'land-stage' || !entry.image.url.startsWith('assets/wave42/')) return [];
+    if (entry.kind !== 'land-stage' || !['tree', 'fallow', 'path'].includes(entry.family) || !entry.image.url.startsWith('assets/wave42/')) return [];
     return [[entry.id, Object.freeze({
       url: entry.image.url,
       folder: entry.image.url.split('/')[2] ?? '',
