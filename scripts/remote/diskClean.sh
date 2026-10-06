@@ -21,14 +21,18 @@
 # input states — or another user's file) is left whole, by every rule: rm -rf would delete what it can and leave a
 # broken folder (2026-10-06: astra-phase2-final-geometry-fd68f12 kept its 0555 state copies, lost its .remote/exit-code
 # and could never age again; its "허가 거부" lines landed in the log of the render run that cleaned). Such a folder gets
-# one line in the clean's own log DC_LOG (_logs/disk-clean.log), once, and nothing in the run's log. DC_FIX_READONLY=1:
-# when every part is this user's, write permission is restored (u+w) first and the folder goes as usual.
+# one line in the clean's own log DC_LOG (_logs/disk-clean.log), once, and nothing in the run's log.
+# DC_FIX_READONLY (1 by default since 2026-10-06, decision RR15b; 0 turns it off): write permission is restored (u+w)
+# first and the folder goes as usual — but only for a run folder that finished DC_FIX_HOURS (24) or more hours ago,
+# holds no lock, has no process working in it and is wholly this user's. Anything else is still left whole.
 DC_RUN_HOURS=${DC_RUN_HOURS:-24}
 DC_RUNS_CAP_GB=${DC_RUNS_CAP_GB:-250}
 DC_KEPT_DAYS=${DC_KEPT_DAYS:-3}
 DC_LOW_GB=${DC_LOW_GB:-300}
 DC_TRUNK=${DC_TRUNK:-codex/phase15-organic-ground}
 DC_LOG=${DC_LOG:-$BASE/_logs/disk-clean.log}
+DC_FIX_READONLY=${DC_FIX_READONLY:-1}
+DC_FIX_HOURS=${DC_FIX_HOURS:-24}
 DC_TMP=${DC_TMP:-/tmp}
 DC_TSX_DAYS=${DC_TSX_DAYS:-3}
 
@@ -49,16 +53,29 @@ dc__mb() { du -sm "$1" 2> /dev/null | cut -f1; }
 dc__removable() { # <dir> <label>
   local dir=$1 label=$2 uid part mark
   uid=$(id -u)
-  if [ "${DC_FIX_READONLY:-0}" = 1 ] && [ -z "$(find "$dir" ! -user "$uid" -print -quit 2> /dev/null)" ]; then chmod -R u+w "$dir" 2> /dev/null; fi
+  dc__fixable "$dir" "$label" && chmod -R u+w "$dir" 2> /dev/null
   part=$(find "$dir" \( \( -type d ! -writable \) -o ! -user "$uid" \) -print -quit 2> /dev/null)
   [ -z "$part" ] && return 0
   mark=$BASE/_logs/disk-clean.left/$(printf '%s' "$label" | tr '/' '_')
   if [ ! -e "$mark" ]; then
     mkdir -p "${mark%/*}" 2> /dev/null && : > "$mark"
-    printf '%s left %s whole: %s is not writable by %s (a read-only copy, or a file of another user; DC_FIX_READONLY=1 restores u+w when all of it is ours)\n' \
+    printf '%s left %s whole: %s is not writable by %s (a read-only copy, or a file of another user; write permission is restored only for a run folder finished ${DC_FIX_HOURS} h+ ago, unlocked, unused and wholly ours)\n' \
       "$(date '+%F %T')" "$label" "${part#"$dir"/}" "$(id -un)" >> "$DC_LOG" 2> /dev/null
   fi
   return 1
+}
+# Write permission may be restored (u+w) only for a run folder (not _clones/_kept//tmp) that finished DC_FIX_HOURS or
+# more hours ago (its .remote/exit-code; a folder without one never qualifies), holds no lock, has no process working
+# in it, and has no file of another user. The callers have checked lock and use already; checked again here because a
+# chmod must never touch a folder a run still owns.
+dc__fixable() { # <dir> <label>
+  local dir=$1 name=$2 age
+  [ "$DC_FIX_READONLY" = 1 ] || return 1
+  case "$name" in */*|_*) return 1 ;; esac
+  age=$(dc__age_h "$dir"); [ "$age" -ge "$DC_FIX_HOURS" ] || return 1
+  dc__locked "$name" && return 1
+  dc__tmp_busy "$dir" && return 1
+  [ -z "$(find "$dir" ! -user "$(id -u)" -print -quit 2> /dev/null)" ]
 }
 # The folder went: forget that it was left once.
 dc__gone() { rm -f "$BASE/_logs/disk-clean.left/$(printf '%s' "$1" | tr '/' '_')" 2> /dev/null; }
