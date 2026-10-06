@@ -759,6 +759,9 @@ S0 지시서가 설계서 14절의 기준선 교체보다 우선한다. 이번 s
 | RCV-6 | **굶는 가구가 판단 다시 쓰기 열쇠에 들어간다**(B3): 다 찬 도시의 TA-13 열쇠에 "식량이 모자란 가구 수" | 확정(RECOVER-1) | 2026-10-06 | RC-7 |
 | RCV-7 | **렌더 파일을 엔진이 예외로 갱신 — 렌더가 인계**: v4.1이 `ck_evt_011`을 풀어 사건 그림 71장. `scripts/installEventArt.ts`를 그대로 다시 돌려 `docs/provenance/assets.csv`에 011 행을 더하고, `tests/eventArtCard.test.ts`의 기대값 둘(011 막힘 해제, 71)만 고쳤다. 스크립트·시험 논리는 그대로 | 사용자 판정(2026-10-06) | 2026-10-06 | [RECOVER-1 보고서](../verification/recover-1/REPORT.md) |
 | RCV-8 | **확장성 원칙을 이번 코드부터**: 종류는 데이터 줄(`INPUT_PULL`·`LORD_INTAKE_CAPS`), 코어는 배경 단어를 쓰지 않는다. 옛 LB-7 고리(샌드박스)는 그대로 | 사용자 알림(2026-10-06, 확장성 설계) | 2026-10-06 | RC-5·RC-6 |
+| LMR2E-1 | **이야기 "봤음"은 저장 데이터**(렌더 요청 ①): `GameState.seen.marks`(id·처음 틱·opened·dismissed), 명령 `mark_story_seen`, 읽기 `storySeen`. 결정이 아니고 규칙은 읽지 않는다. 두 해·256개를 남긴다. 저장 v51 — v50은 MANOR-1이 써서 요청서의 v50 대신 v51. 고정값 재기록: `fixtures/saves/v51`(v50에서 13개)와 `src/save/schemaFingerprint.v51.json` — 저장 형식 버전이 올라서 | 사용자 요청(2026-10-06), 렌더 요청 | 2026-10-06 | [LM-R2-E 보고서](../verification/lmr2-e/REPORT.md) |
+| LMR2E-2 | **이웃 가문 문장은 정확한 blazon 데이터**(seed가 아님, neighbor-world NF02): 이웃 영주 성 여덟마다 하나(`neighbourArms.ts`). 담비는 백작·왕실만, 왕실 조합 금지(붉은 바탕 금 사자, 청색 바탕 금 백합), 색과 금속의 대비. 그림 조합은 렌더 몫. 이웃 세계 16가문(LM-E10)이 오면 그 문장으로 | 사용자 지시(2026-10-06) | 2026-10-06 | 같은 보고서 |
+| LMR2E-3 | **할 수 있는 일·거절 까닭은 엔진 읽기, 명령도 같은 함수로 거절**: `suitActions`·`keepPromiseRefusal`·`answerCounterRefusal`·`willChangeRefusal`·`estatePetitionEffect`·`auditAnswerEffect`. 영주가 원고가 아닌 소송은 읽기 null(보여 주기만). 화면은 비용·문턱을 베끼지 않는다 | 렌더 요청(2026-10-06) | 2026-10-06 | 같은 보고서 |
 
 ## 렌더 B 계절 그림 설치
 

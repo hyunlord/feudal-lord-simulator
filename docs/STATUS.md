@@ -845,7 +845,8 @@
 
 - **RECOVER-1 — 완료, 본선 병합**(MANOR-1·v4.1과 함께, [보고서](verification/recover-1/REPORT.md), 명세 [회복](design/recovery.md) RC-1~7, 결정 RCV-1~8): 영주 모드 도시가 흑사병 뒤 회복한다(10년 뒤 84~93 %, 붕괴 0). 이주가 빈집·일손 부족을 따라 오고, 방앗간이 밀을 당기고, 곡창의 보리는 40 %까지.
 - **MANOR-1 — 완료, 본선 병합**([보고서](verification/manor-1/REPORT.md), 결정 MNR-1~5): 영주관 3×3, 가문 하나(기본 드 해버럴), 저장 v50, 새 기준선 `baseline-11205c9`. 진단은 [도시 성장](verification/city-growth/REPORT.md).
-- **엔진 다음**: LM-R2-E(① "봤음" 기록 저장 v51·이웃 가문 문장 먼저) → EXT-1~3b와 LM-E9c 번갈아 → C1+C2·B1·A4·C3·C4는 사용자가 정함. LM-E10(이웃 16가문·가문 재정, NW09·NW11·채무).
+- **LM-R2-E — 완료, 본선 병합**([보고서](verification/lmr2-e/REPORT.md), 결정 LMR2E-1~3): 이야기 "봤음" 저장(v51), 이웃 가문 문장 여덟, 소송·약속·역제안·청원·감사·유언의 할 수 있는 일과 거절 까닭 읽기, 단어표. v4.1-senders(LME9B-10)로 보류 셋 켜짐.
+- **엔진 다음**: EXT-1 → EXT-2(달력·화폐·시작·끝 연도·시대 구분, 박힌 연도 목록) → EXT-3 → EXT-3b와 LM-E9c 번갈아 → C1+C2·B1·A4·C3·C4는 사용자가 정함. 긴 판 표(1300→1600) 보고 대기. LM-E10(이웃 16가문·가문 재정).
 - **엔진 2장 작업(사용자 지시 순서, C4는 판정으로 뒤로)**: FAIL-3 완료 → F2-A 완료 → FACTION-0 완료 → FIX-5 완료 → C4 완료. 다음 엔진 후보는 관계를 읽는 규칙(RIGHTS)이다. 작업마다 본선 병합·브랜치 삭제.
 - **UX-1**: FIX-1이 남긴 화면 쪽 일(✗/경고 표시, 첫 화면 일시정지 등 UX-0 원인 A·D~H). MOVE-1의 먼 줌 표현 워커 그림(역할 표)도 렌더 몫이다.
 - **C4 가내 생산**: C3 슬롯(`householdSlots`)·`content/crafts`·`processDelivery`에 첫 제품과 시장 입고를 붙인다([C3 보고서](verification/c3-labour/REPORT.md) "C4에 넘길 것").
