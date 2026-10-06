@@ -225,6 +225,28 @@
             "scale": 1
           }
         }
+      ],
+      "propVariants": [
+        {
+          "slot": "work_breadbasket",
+          "propId": "pilot2_basket"
+        },
+        {
+          "slot": "work_coinpurse",
+          "propId": "pilot2_purse"
+        },
+        {
+          "slot": "work_seedbag",
+          "propId": "pilot2_sack"
+        },
+        {
+          "slot": "elder",
+          "propId": "pilot2_staff"
+        },
+        {
+          "slot": "marketgoer",
+          "propId": "pilot2_purse"
+        }
       ]
     },
     {
@@ -440,6 +462,28 @@
             "y": 0,
             "scale": 1
           }
+        }
+      ],
+      "propVariants": [
+        {
+          "slot": "work_breadbasket",
+          "propId": "pilot2_basket"
+        },
+        {
+          "slot": "work_coinpurse",
+          "propId": "pilot2_purse"
+        },
+        {
+          "slot": "work_seedbag",
+          "propId": "pilot2_sack"
+        },
+        {
+          "slot": "elder",
+          "propId": "pilot2_staff"
+        },
+        {
+          "slot": "marketgoer",
+          "propId": "pilot2_purse"
         }
       ]
     },
@@ -657,6 +701,28 @@
             "scale": 1
           }
         }
+      ],
+      "propVariants": [
+        {
+          "slot": "work_breadbasket",
+          "propId": "pilot2_basket"
+        },
+        {
+          "slot": "work_coinpurse",
+          "propId": "pilot2_purse"
+        },
+        {
+          "slot": "work_seedbag",
+          "propId": "pilot2_sack"
+        },
+        {
+          "slot": "elder",
+          "propId": "pilot2_staff"
+        },
+        {
+          "slot": "marketgoer",
+          "propId": "pilot2_purse"
+        }
       ]
     },
     {
@@ -872,6 +938,28 @@
             "y": 0,
             "scale": 1
           }
+        }
+      ],
+      "propVariants": [
+        {
+          "slot": "work_breadbasket",
+          "propId": "pilot2_basket"
+        },
+        {
+          "slot": "work_coinpurse",
+          "propId": "pilot2_purse"
+        },
+        {
+          "slot": "work_seedbag",
+          "propId": "pilot2_sack"
+        },
+        {
+          "slot": "elder",
+          "propId": "pilot2_staff"
+        },
+        {
+          "slot": "marketgoer",
+          "propId": "pilot2_purse"
         }
       ]
     }
@@ -1510,5 +1598,6 @@
       ],
       "c2paRemoved": false
     }
-  ]
+  ],
+  "packId": "core"
 }

@@ -5,7 +5,7 @@ import { resourceEntry } from "../content/resourceCatalog";
 import { stateCalendar, type CalendarDate } from "../engine/scenarioState";
 import { householdMembers, type MemberSex } from "../population/householdMembers";
 import { boundaryHash, hashNumbers } from "../world/boundary/boundaryGeometry";
-import { walkerSheetManifest, type walkerCloakManifest, type walkerPropManifest } from "./walkerSheetManifest.generated";
+import { walkerSheetManifest, type walkerCloakManifest, type WalkerSheet } from "./walkerArtManifest";
 
 // V2 walker looks (spec docs/design/walker-composer.md WC-1..WC-5): which sheet, sex, trade item and cloak a walker
 // wears. Pure and derived from the saved state (nothing saved): the same state gives the same looks, before and after
@@ -16,10 +16,10 @@ import { walkerSheetManifest, type walkerCloakManifest, type walkerPropManifest 
 //  - Sheet (WC-2, WC-3): one weighted draw over the sheets of the occupation's class bands for that sex (plus the
 //    occupation's own legacy sheet for men); no near rejection, see walkerLook.
 
-export type WalkerSheet = typeof walkerSheetManifest[number];
+export type { WalkerSheet } from "./walkerArtManifest";
 export type WalkerSheetId = WalkerSheet["id"];
 export type WalkerClassBand = WalkerSheet["classBand"];
-export type WalkerPropKind = keyof typeof walkerPropManifest;
+export type WalkerPropKind = string;
 /** Winter cloaks: men's and women's (Wave 5a) and the merchant's (Wave 4e, merchant template bodies only). */
 export type WalkerCloakKind = keyof typeof walkerCloakManifest;
 export type WalkerOccupation = "builder" | "farmer" | "logger" | "quarryman" | "carter" | "coin_carter" | "distributor"
@@ -142,10 +142,11 @@ export function walkerLook(state: Pick<GameState, "houses" | "seed">, walker: Wa
   let pick = (boundaryHash(key, state.seed, SALT.sheet) / 2 ** 32) * total;
   const chosen = pool.find(entry => (pick -= entry.weight) < 0) ?? pool[pool.length - 1]!;
   const band = walkerSheet(chosen.sheetId).classBand;
-  const pilotProp = chosen.sheetId.startsWith("wk_reskin_P") && (boundaryHash(key, state.seed, SALT.trinket) & 1) === 0;
+  const variants = walkerSheet(chosen.sheetId).propVariants ?? [];
+  const pilotProp = variants.length > 0 && (boundaryHash(key, state.seed, SALT.trinket) & 1) === 0;
   // Personal possessions on actual resident trips; neither implies a payment or a new occupation.
-  const trinket = pilotProp && member?.ageBand === "elder" ? "pilot2_staff"
-    : pilotProp && occupation === "marketgoer" ? "pilot2_purse" : trinketFor(band, key, state.seed);
+  const trinketSlot = member?.ageBand === "elder" ? "elder" : occupation;
+  const trinket = (pilotProp ? variants.find(variant => variant.slot === trinketSlot)?.propId : null) ?? trinketFor(band, key, state.seed);
   return { sheetId: chosen.sheetId, band, occupation, sex, trinket, pilotProp };
 }
 
@@ -168,17 +169,13 @@ export function walkerHeldProp(look: WalkerLook, walker: Walker, siteStage: numb
   // field hand's plough (first half of spring), seed bag (second half) and sickle (autumn harvest, Wave 6).
   const prop = workProp(look.occupation, date);
   if (prop !== null) {
-    return look.pilotProp ? PILOT_WORK_PROPS[prop] ?? prop : prop;
+    return look.pilotProp ? walkerSheet(look.sheetId).propVariants?.find(variant => variant.slot === prop)?.propId ?? prop : prop;
   }
   if (walker.cargo !== null) return walker.cargo.resource === "bread" ? "loaf" : null;
   if (look.occupation === "builder") return "tool_hammer";
   if (look.occupation === "logger") return "tool_axe";
   return look.trinket;
 }
-
-const PILOT_WORK_PROPS: Readonly<Partial<Record<WalkerPropKind, WalkerPropKind>>> = {
-  work_breadbasket: "pilot2_basket", work_coinpurse: "pilot2_purse", work_seedbag: "pilot2_sack",
-};
 
 function workProp(occupation: WalkerOccupation, date: Pick<CalendarDate, "season" | "dayOfYear"> | null): WalkerPropKind | null {
   if (occupation === "distributor") return "work_breadbasket";

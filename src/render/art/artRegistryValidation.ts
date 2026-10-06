@@ -5,6 +5,7 @@ import { validateRegionTextures } from './regionTextureValidation';
 import { validateLandDecals } from './landDecalValidation';
 import { validateFieldTextures } from './fieldTextureValidation';
 import { validateSeasonVariants } from './seasonVariantValidation';
+import { validateWalkerArt } from './walkerArtValidation';
 import type { ArtBundle, ArtPoint, ArtRect } from './artContract';
 import type { ArtSchemaIssue } from './schemaValidation';
 
@@ -12,6 +13,7 @@ import type { ArtSchemaIssue } from './schemaValidation';
 export function validateRegistryData(bundles: readonly ArtBundle[]): readonly ArtSchemaIssue[] {
   const issues: ArtSchemaIssue[] = [...validateNature(bundles), ...validateSeasonVariants(bundles), ...validateFieldTextures(bundles), ...validateLandDecals(bundles), ...validateSeasonalGround(bundles), ...validateRegionTextures(bundles), ...validateWeatherShadows(bundles)];
   const identities = new Set<string>();
+  issues.push(...validateWalkerArt(bundles));
   const entries = bundles.flatMap(bundle => bundle.entries);
   const byId = new Map(entries.map(entry => [entry.id, entry]));
   const report = (path: string, message: string): void => { issues.push({ path, message }); };

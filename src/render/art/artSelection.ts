@@ -11,6 +11,8 @@ export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string
   'state-overlay': { bodyId: text, layer: text, season: text, vacant: { type: 'boolean', unit: 'boolean' }, ageYears: number('engine-year'), wealth: number('engine-wealth'), era: text },
   'ground-prop': { baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text, role: text, group: text },
   'walker-cargo': { role: text, cargoKind: text, facing: text, frame: number('frame-index') },
+  'walker-body': { bodyId: text, classBand: text, sex: text },
+  'walker-held-prop': { propId: text, facing: text },
   'land-stage': { family: text, stage: text, season: text, layout: text, connectionMask: number('connection-mask'), ageYears: number('engine-year'), stageProgress: number('stage-fraction'), parity: number('cell-hash-modulo-2'), plot: { type: 'boolean', unit: 'boolean' } },
   landmark: { family: text, growthStage: text, season: text },
   'event-scene': { eventId: text, group: text, placement: text, season: text, active: { type: 'boolean', unit: 'boolean' } },

@@ -1,5 +1,5 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
-export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
+export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo' | 'walker-body' | 'walker-held-prop'
   | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
@@ -22,6 +22,31 @@ export type ArtFrame = { readonly sourceRect: ArtRect; readonly pivot: ArtPoint;
 export type ArtSeason = 'spring' | 'summer' | 'autumn' | 'winter';
 export type ArtFacing = 'n' | 'ne' | 'e' | 'se' | 's' | 'sw' | 'w' | 'nw';
 type EntryBase = { readonly id: string; readonly image: ArtImage; readonly provenance: ArtProvenance };
+export type WalkerArtDirection = 'NE' | 'SE' | 'SW' | 'NW';
+export type WalkerBodyFrame = {
+  readonly direction: WalkerArtDirection; readonly gaitFrame: 0 | 1;
+  readonly foot: ArtPoint; readonly figureHeight: number;
+  readonly hands: { readonly left: ArtPoint; readonly right: ArtPoint };
+  readonly cloakRegistration?: ArtPoint & { readonly scale: number };
+};
+/** The existing composer reads four columns and two gait rows in 74px cell coordinates. */
+export type WalkerBodyRegistration = {
+  readonly classBand: string; readonly sex: 'male' | 'female'; readonly occupationTags: readonly string[];
+  readonly legacy: false; readonly holdsTool: boolean; readonly template: string; readonly season: 'all';
+  readonly directionOrder: readonly WalkerArtDirection[];
+  readonly cloak: 'male' | 'female' | 'merchant' | null; readonly cloakPoke: number | null;
+  readonly frames: readonly WalkerBodyFrame[];
+  /** Existing task/trinket slot -> a directional prop family. Selection policy stays with the consumer. */
+  readonly propVariants: readonly { readonly slot: string; readonly propId: string }[];
+};
+export type WalkerBodyEntry = EntryBase & {
+  readonly kind: 'walker-body'; readonly allowMirror: false; readonly registration: WalkerBodyRegistration;
+};
+export type WalkerHeldPropEntry = EntryBase & {
+  readonly kind: 'walker-held-prop'; readonly allowMirror: false; readonly propId: string;
+  readonly direction: WalkerArtDirection; readonly anchor: ArtPoint; readonly role: string;
+  readonly scale: number; readonly referenceFigureHeight?: number; readonly opaqueBounds: ArtRect;
+};
 type WorldEntry = EntryBase & { readonly geometry: ArtGeometry; readonly season?: ArtSeason; readonly facing?: ArtFacing };
 export type BuildingBodyEntry = WorldEntry & {
   readonly kind: 'building-body'; readonly buildingKinds: readonly string[];
@@ -132,7 +157,7 @@ export type WeatherShadowEntry = EntryBase & {
 export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEntry;
 export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
 export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
-export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
+export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | WalkerBodyEntry | WalkerHeldPropEntry | LandStageEntry
   | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =

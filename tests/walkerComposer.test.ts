@@ -9,7 +9,7 @@ import type { GameState } from "../src/engine/engine.types";
 import { decodeSave, encodeSave } from "../src/save/saveCodec";
 import { PROP_SCALE, WALKER_CELL, WALKER_COMPOSED_CELL, WALKER_PAD, rightHand } from "../src/render/walkerComposer";
 import { walkerCloak, walkerHeldProp, walkerLook, walkerLooks, walkerSheet } from "../src/render/walkerLook";
-import { walkerCloakManifest, walkerPropManifest, walkerSheetManifest } from "../src/render/walkerSheetManifest.generated";
+import { walkerCloakManifest, walkerPropManifest, walkerSheetManifest } from "../src/render/walkerArtManifest";
 
 // V2 walker composer (docs/design/walker-composer.md), on the C3 seed 2 city run to its first summer / winter sample
 // (docs/verification/v2-walkers/scene, scripts/walkerLookEvidence.ts).
@@ -210,7 +210,8 @@ test("Given the staff registration When its scale is applied to each pilot frame
   // Given: the staff's registered reference height and the four actual final body sheets.
   const sheets = walkerSheetManifest.filter(sheet => sheet.url.startsWith("assets/walker-pilot2/"));
   for (const sheet of sheets) for (const frame of sheet.frames) {
-    const entry = walkerPropManifest.pilot2_staff[frame.direction];
+    const entry = walkerPropManifest.pilot2_staff?.[frame.direction];
+    assert.ok(entry && entry.scale !== undefined && entry.referenceFigureHeight !== undefined && entry.opaqueBounds);
     // When: the composer normalizes this prop by this frame's figure height.
     const scale = entry.scale * frame.figureHeight / entry.referenceFigureHeight;
     const hand = rightHand(frame);

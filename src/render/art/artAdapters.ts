@@ -18,6 +18,7 @@ export type ArtPlacement =
   | { readonly type: 'weather-shadow-source'; readonly entry: Extract<ArtEntry, { readonly kind: 'weather-shadow' }> }
   | { readonly type: 'texture-source'; readonly entry: Extract<ArtEntry, { readonly kind: 'ground-texture' }> }
   | { readonly type: 'image-substitution'; readonly entry: Extract<ArtEntry, { readonly kind: 'season-variant' }> }
+  | { readonly type: 'walker-composition-source'; readonly entry: Extract<ArtEntry, { readonly kind: 'walker-body' | 'walker-held-prop' }> }
   | { readonly type: 'ui-handoff'; readonly entry: Extract<ArtEntry, { readonly kind: 'event-illustration' | 'portrait' | 'regional-map' }> };
 
 /** Half-open frame durations, looping only the frames actually authored in the contract. */
@@ -54,6 +55,7 @@ export function createArtAdapters(registry: ArtRegistry, environment?: ArtImageE
       case 'weather-shadow': return { type: 'weather-shadow-source', entry };
       case 'ground-texture': return { type: 'texture-source', entry };
       case 'season-variant': return { type: 'image-substitution', entry };
+      case 'walker-body': case 'walker-held-prop': return { type: 'walker-composition-source', entry };
       case 'event-illustration': case 'portrait': case 'regional-map':
         return { type: 'ui-handoff', entry: { ...entry, image: { ...entry.image, url: assetUrlForBase(entry.image.url, environment?.baseUrl ?? import.meta.env?.BASE_URL ?? '/') } } };
       case 'state-overlay': {
