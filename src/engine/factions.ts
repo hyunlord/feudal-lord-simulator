@@ -34,9 +34,10 @@ import { hashSeed } from "./prng";
 import { WAR_BALANCE } from "../content/warConfig";
 import { HEIR_BY_RESPONSE, HEIR_CHOICE_PETITION_ID, LEGACY_BALANCE, LEGACY_CHOICE_PETITION_ID, LEGACY_PETITION_IDS, LEGACY_RELATIONS, type LegacyPetitionId } from "../content/legacyConfig";
 import { BOROUGH_CHARTER_PETITION_ID, REORGANISATION_EVENT_RELATIONS, REORGANISATION_PETITION_IDS, REORGANISATION_RELATIONS, type ReorganisationPetitionId } from "../content/reorganisationConfig";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
-const YEAR = 4 * SEASON;
+const YEAR = SEASONS_PER_YEAR * SEASON;
 const clamp = (value: number) => Math.max(-100, Math.min(100, value));
 
 export function factionsOf(state: Pick<GameState, "factions">): FactionState | undefined {
@@ -262,7 +263,6 @@ function withLeaderFaces(state: GameState): GameState {
 }
 
 const DEPOSED_TAG = "deposed";
-const SEASONS_PER_YEAR = YEAR / SEASON;
 
 /** FIX-11 (item 7): the reigning king's deposition — he keeps his life (tagged deposed), his successor takes the crown. */
 function deposeKing(state: GameState, current: FactionState, year: number): FactionState {

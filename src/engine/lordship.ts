@@ -24,10 +24,11 @@ import { lordHouseHeraldrySeed, lordHouseName, lordshipOf, rightHeld, rightPrese
 import { HEIR_CANDIDATE_TAG, ageOf, currentYear, manorLord } from "./persons";
 import { MANOR_HOUSEHOLD, type Person } from "./persons.types";
 import type { PetitionRecord } from "./politics.types";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const SAMPLE = PRESSURE_BALANCE.sampleTicks;
-const YEAR = 4 * SEASON;
+const YEAR = SEASONS_PER_YEAR * SEASON;
 /** FIX-11: a lord under this age is in wardship. */
 const WARDSHIP_AGE_YEARS = 21;
 

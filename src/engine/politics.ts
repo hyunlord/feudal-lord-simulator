@@ -58,6 +58,7 @@ import { answerReorganisationPetition } from "./reorganisation";
 import { answerLegacyPetition, legacyChronicleStats } from "./legacy";
 import { PLAGUE_BALANCE } from "../content/plagueConfig";
 import { housingLotCount } from "../population/housing";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 const SAMPLE = 50;
 
@@ -157,8 +158,8 @@ function stepFamineResponse(state: GameState, record: EventRecord): GameState {
 /** FC-3: the season a petition arrives in (absolute season index), picked by the seed in its years. */
 export function petitionSeason(state: Pick<GameState, "seed" | "scenarioId">, def: PetitionDef): number {
   const startYear = scenarioOf(state).startYear;
-  const seasons = (def.toYear - def.fromYear + 1) * 4;
-  return (def.fromYear - startYear) * 4 + hashSeed(state.seed, `petition:${def.id}`) % Math.max(1, seasons - 4);
+  const seasons = (def.toYear - def.fromYear + 1) * SEASONS_PER_YEAR;
+  return (def.fromYear - startYear) * SEASONS_PER_YEAR + hashSeed(state.seed, `petition:${def.id}`) % Math.max(1, seasons - SEASONS_PER_YEAR);
 }
 
 function petitionDef(record: PetitionRecord): PetitionDef | undefined {

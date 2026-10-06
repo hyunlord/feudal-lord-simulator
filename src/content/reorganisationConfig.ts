@@ -5,6 +5,7 @@
  * fractions, pennies for money) and a hypothesis (decision RG3), to be tuned after play.
  */
 import type { PetitionDef } from "./chapterConfig";
+import { packChapter } from "./packSettings";
 
 /** RG-1: a scenario that lists this id in `activeEvents` has the reorganisation. */
 export const REORGANISATION_SEQUENCE_ID = "reorganisation_1362";
@@ -77,7 +78,7 @@ export const REORGANISATION_BALANCE = {
   backlashFloor: 30,
 
   /** RG-10: chapter 4 ends at the latest in the spring of this year. */
-  chapterEndYear: 1400,
+  chapterEndYear: packChapter(4).toYear,
 
   /** RG-5 the guild: the cloth buildings' working time with it (permille), the weaving time after a refusal, the households that leave. */
   guildTicksPermille: 750,

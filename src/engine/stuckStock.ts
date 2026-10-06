@@ -20,8 +20,9 @@ import { isStorableResource } from "../content/resourceConfig";
 import type { GameState } from "./engine.types";
 import { buildingHasRequiredRoadAccess } from "./roadAccess";
 import { acceptsResource, availableSpace, storageIntakeSpace } from "../economy/storage";
+import { DAYS_PER_YEAR } from "../content/packSettings";
 
-const TICKS_PER_DAY = BALANCE.TICKS_PER_YEAR / 360;
+const TICKS_PER_DAY = BALANCE.TICKS_PER_YEAR / DAYS_PER_YEAR;
 /** SK-3: how often the since-ticks are brought up to date (about nine days). */
 export const STUCK_STOCK_CHECK_TICKS = 100;
 /** SK-1: stock at this share (‰) of what the building holds counts as piled up. */

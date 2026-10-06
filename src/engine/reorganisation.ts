@@ -42,9 +42,10 @@ import { legacyClothPermille } from "./legacy";
 import type { ChapterFiveStart, GuildRecord, ReorganisationState, ReorganisationStep, RevoltPressure } from "./reorganisation.types";
 import { calendar, scenarioOf } from "./scenarioState";
 import { abandonHouse } from "./seasonPressure";
+import { SEASON_TICKS, YEAR_TICKS, tickOfSeason } from "../content/packSettings";
 
-const SEASON = 1000;
-const YEAR = 4000;
+const SEASON = SEASON_TICKS;
+const YEAR = YEAR_TICKS;
 const B = REORGANISATION_BALANCE;
 const TOWN_ACTOR: SourceRef = { type: "actor", id: "town" };
 /** RG-3 / RG-5: the cloth buildings the guild speeds (the spinning is the households'). */
@@ -61,7 +62,7 @@ export function reorganisationActive(state: Pick<GameState, "scenarioId">): bool
 
 const yearOf = (state: Pick<GameState, "scenarioId">, tick: number) => calendar(tick, scenarioOf(state).startYear).year;
 /** The tick of `year`'s season `season` (0 spring … 3 winter). */
-const seasonOf = (state: Pick<GameState, "scenarioId">, year: number, season = 0) => (year - scenarioOf(state).startYear) * YEAR + season * SEASON;
+const seasonOf = (state: Pick<GameState, "scenarioId">, year: number, season = 0) => tickOfSeason(year, season, scenarioOf(state).startYear);
 
 // --- RG-3 / RG-5 / RG-7 / RG-8 / RG-9: what the rest of the rules read ---------------------------------------------
 

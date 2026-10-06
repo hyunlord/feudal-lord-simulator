@@ -44,9 +44,10 @@ import { ADULT_AGE, ageOf, currentYear, inTown, manorLord, offerHeirs, personDis
 import { lineageGenerations } from "./personsApi";
 import type { PetitionRecord } from "./politics.types";
 import { calendar, scenarioOf } from "./scenarioState";
+import { SEASON_TICKS, YEAR_TICKS, tickOfSeason } from "../content/packSettings";
 
-const SEASON = 1000;
-const YEAR = 4000;
+const SEASON = SEASON_TICKS;
+const YEAR = YEAR_TICKS;
 const B = LEGACY_BALANCE;
 /** FIX-11: a lord under this age is in wardship. */
 const WARDSHIP_AGE = 21;
@@ -62,7 +63,7 @@ export function legacyActive(state: Pick<GameState, "scenarioId">): boolean {
 }
 
 /** The tick of `year`'s season `season` (0 spring … 3 winter). */
-const seasonOf = (state: Pick<GameState, "scenarioId">, year: number, season = 0) => (year - scenarioOf(state).startYear) * YEAR + season * SEASON;
+const seasonOf = (state: Pick<GameState, "scenarioId">, year: number, season = 0) => tickOfSeason(year, season, scenarioOf(state).startYear);
 const yearOf = (state: Pick<GameState, "scenarioId">, tick: number) => calendar(tick, scenarioOf(state).startYear).year;
 const lastMarketTick = (state: Pick<GameState, "scenarioId">) => seasonOf(state, B.lastMarketYear, B.lastMarketSeason);
 

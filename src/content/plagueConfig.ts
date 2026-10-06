@@ -5,6 +5,7 @@
  * pennies for money); times count seasons from the era's first season (spring 1348 for a town that is there).
  */
 import type { PetitionDef } from "./chapterConfig";
+import { packChapter } from "./packSettings";
 
 export const PLAGUE_ERA_ID = "collapse";
 /** PL-1: a scenario that lists this id in `activeEvents` has the Black Death. */
@@ -92,9 +93,9 @@ export const PLAGUE_BALANCE = {
    * PL-10 chapter 3 ends (campaign) at the first season from the spring of `chapterEndFromYear` whose people are at least
    * `resettledPermille` of those at the arrival (the resettlement done), else in the spring of `chapterEndYear`.
    */
-  chapterEndFromYear: 1362,
+  chapterEndFromYear: packChapter(4).fromYear,
   resettledPermille: 700,
-  chapterEndYear: 1364,
+  chapterEndYear: packChapter(3).toYear,
 } as const;
 
 const NO_RIGHT = { right: null, stallFeePermille: 1000 } as const;

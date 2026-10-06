@@ -1,3 +1,5 @@
+import { CORE_PACK_SETTINGS } from "./packSettings";
+
 export const BALANCE = {
   /**
    * FIX-13 (the user's decision A, LM5-4): ten ticks a second at 1x (a year 400 s, a season 100 s, a carter 1.4 tiles
@@ -32,7 +34,7 @@ export const BALANCE = {
    * Provisional (C1c): four 1,000-tick seasons, so autoplay's 24-lot victories (280–630k ticks) land in about
    * 1370–1460 from a 1300 start. Derived only (no state field); tune after player timing.
    */
-  TICKS_PER_YEAR: 4000,
+  TICKS_PER_YEAR: CORE_PACK_SETTINGS.calendar.ticksPerYear,
 } as const;
 
 /**

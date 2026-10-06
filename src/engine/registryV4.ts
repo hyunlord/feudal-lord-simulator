@@ -21,9 +21,10 @@ import { stateCalendar } from "./scenarioState";
 import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules, stewardshipOf } from "./stewardship";
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
+import { SEASON_TICKS, YEAR_TICKS } from "../content/packSettings";
 
-const SEASON = 1_000;
-const YEAR = 4_000;
+const SEASON = SEASON_TICKS;
+const YEAR = YEAR_TICKS;
 /** ER-15: the most target combinations tried for one entry in one draw (beyond it the entry waits for a later season). */
 const MAX_COMBINATIONS = 64;
 

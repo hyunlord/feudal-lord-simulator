@@ -21,9 +21,10 @@ import { ageBandOf, ageOf, currentYear, seasonDeathPermille, weightedName } from
 import type { Person } from "./persons.types";
 import { choosePortraitIdentity } from "./portraits";
 import { hashSeed } from "./prng";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
-const YEAR = 4 * SEASON;
+const YEAR = SEASONS_PER_YEAR * SEASON;
 
 /** ES-1: the town's ruling house, as a holder. */
 export const LORD: HolderId = "lord";

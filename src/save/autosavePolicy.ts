@@ -1,5 +1,6 @@
 import { BALANCE } from "../content/balanceConfig";
 import type { GameState } from "../engine/engine.types";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 export const AUTOSAVE_INTERVAL_MS = 60_000;
 /**
@@ -36,7 +37,7 @@ export function shouldAutosave(input: {
 
 /** The tick crossed into another season (the calendar's quarter of `BALANCE.TICKS_PER_YEAR`). */
 export function seasonTurned(previous: Pick<GameState, "tick">, next: Pick<GameState, "tick">): boolean {
-  return Math.floor((previous.tick * 4) / BALANCE.TICKS_PER_YEAR) !== Math.floor((next.tick * 4) / BALANCE.TICKS_PER_YEAR);
+  return Math.floor((previous.tick * SEASONS_PER_YEAR) / BALANCE.TICKS_PER_YEAR) !== Math.floor((next.tick * SEASONS_PER_YEAR) / BALANCE.TICKS_PER_YEAR);
 }
 
 /** How long a save asked for now waits: until `AUTOSAVE_SEASON_GAP_MS` after the last season turn (never for a manual or hidden-tab save). */

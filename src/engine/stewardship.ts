@@ -31,9 +31,10 @@ import type {
   AuditRecord, EstateOversight, EstatePetition, EstatePetitionKind, ExceptionRules, OversightMode, OversightView, QuarterSummary, StewardDisposition,
   StewardRecord, StewardshipState,
 } from "./stewardship.types";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
-const YEAR = 4 * SEASON;
+const YEAR = SEASONS_PER_YEAR * SEASON;
 const DISPOSITIONS: readonly StewardDisposition[] = ["merchant", "peasant", "greedy"];
 const PETITION_ORDER: readonly EstatePetitionKind[] = ["rent_relief", "market_dues", "repair", "common_dispute", "charter_request", "marriage_licence"];
 

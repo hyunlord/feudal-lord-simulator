@@ -27,9 +27,9 @@ import { stateCalendar } from "./scenarioState";
 import { STUCK_STOCK_CHECK_TICKS, stuckStock } from "./stuckStock";
 import { townCentre } from "./townAgency";
 import type { ChainState, TradeCause, TradeHousehold, TradeReason, TradeState } from "./trades.types";
+import { DAYS_PER_SEASON, DAYS_PER_YEAR, SEASONS_PER_YEAR, SEASON_TICKS, YEAR_TICKS } from "../content/packSettings";
 
-const SEASON = 1_000;
-const DAYS_PER_SEASON = 90;
+const SEASON = SEASON_TICKS;
 const MAX_QUITS = 40;
 /** TR-7: the food the carters may carry out only above the reserve days (wheat and bread). */
 const FOOD_RESOURCES: ReadonlySet<string> = new Set(["wheat", "bread"]);
@@ -498,7 +498,7 @@ export function haulStuckStock(state: GameState, trades: TradeState): { readonly
     const full = stuck.filter(entry => entry.reason === "receiver_full")
       .sort((left, right) => right.amount - left.amount || left.buildingId.localeCompare(right.buildingId));
     const reserveTicks = foodReserveTicks(state);
-    const foodDays = reserveTicks === null ? Infinity : reserveTicks * 360 / BALANCE.TICKS_PER_YEAR;
+    const foodDays = reserveTicks === null ? Infinity : reserveTicks * DAYS_PER_YEAR / BALANCE.TICKS_PER_YEAR;
     const foodMayLeave = foodDays > TRADE_BALANCE.carryOutFoodDays && foodPricePermille(state, state.tick) < TRADE_BALANCE.carryOutDearthPricePermille;
     const above = new Map<string, number>();
     for (const entry of full) {
@@ -540,11 +540,11 @@ export function advanceTrades(state: GameState): GameState {
   if (seasonStart) {
     const facts = townFacts(next);
     const year = stateCalendar(state).year;
-    const seasonIndex = Math.floor((state.tick % 4_000) / SEASON);
+    const seasonIndex = Math.floor((state.tick % YEAR_TICKS) / SEASON);
     // The season just ended is the one produced (seasonIndex − 1); a household lost with its house leaves the trades.
     const lived = new Set(facts.plots.keys());
     if (trades.households.some(household => !lived.has(household.houseId))) trades = { ...trades, households: trades.households.filter(household => lived.has(household.houseId)) };
-    trades = produceSeason(next, trades, facts, (seasonIndex + 3) % 4);
+    trades = produceSeason(next, trades, facts, (seasonIndex + SEASONS_PER_YEAR - 1) % SEASONS_PER_YEAR);
     trades = chooseTrades(next, trades, facts, year);
     trades = nameStreets(trades, facts, state.tick);
   }

@@ -7,6 +7,7 @@ import { WAR_ERA_EFFECTS, WAR_SEQUENCE_ID } from "../warConfig";
 import { MAP_ARCHETYPES } from "./archetypes";
 import { SCENARIO_COPY } from "./scenarioCopy.ko";
 import type { ArchetypeDef, EraDef, ObjectiveDef, ScenarioDef, StageDef } from "./types";
+import { PACK_CALENDAR, packEraYear } from "../packSettings";
 
 /** Settlement stages shared by both core scenarios. Values reproduce the pre-B2 proclamation rules. */
 const STAGES: readonly StageDef[] = [
@@ -40,16 +41,16 @@ const STAGES: readonly StageDef[] = [
  * it (a granary, 12 lots, a market), at most five years. F0-C1 (FC-1): its effects are the Great Famine's.
  */
 const ERAS: readonly EraDef[] = [
-  { id: "saturation", name: SCENARIO_COPY.eras.saturation, enterWhen: { yearAtLeast: 1300 }, effects: [] },
-  { id: "famine", name: SCENARIO_COPY.eras.famine, enterWhen: { yearAtLeast: 1315, maxDelayYears: 5, state: { all: [
+  { id: "saturation", name: SCENARIO_COPY.eras.saturation, enterWhen: { yearAtLeast: packEraYear("saturation") }, effects: [] },
+  { id: "famine", name: SCENARIO_COPY.eras.famine, enterWhen: { yearAtLeast: packEraYear("famine"), maxDelayYears: 5, state: { all: [
     { kind: "building_count_at_least", building: "granary", value: 1 },
     { kind: "housing_lots_at_least", value: 12 },
     { kind: "building_count_at_least", building: "market", value: 1 },
   ] } }, effects: GREAT_FAMINE_EFFECTS },
   // F2-A (WR-1): the War era brings the royal messenger and what follows (`war.ts`).
-  { id: "war", name: SCENARIO_COPY.eras.war, enterWhen: { yearAtLeast: 1337 }, effects: WAR_ERA_EFFECTS },
-  { id: "collapse", name: SCENARIO_COPY.eras.collapse, enterWhen: { yearAtLeast: 1348 }, effects: [] },
-  { id: "specialisation", name: SCENARIO_COPY.eras.specialisation, enterWhen: { yearAtLeast: 1380 }, effects: [] },
+  { id: "war", name: SCENARIO_COPY.eras.war, enterWhen: { yearAtLeast: packEraYear("war") }, effects: WAR_ERA_EFFECTS },
+  { id: "collapse", name: SCENARIO_COPY.eras.collapse, enterWhen: { yearAtLeast: packEraYear("collapse") }, effects: [] },
+  { id: "specialisation", name: SCENARIO_COPY.eras.specialisation, enterWhen: { yearAtLeast: packEraYear("specialisation") }, effects: [] },
 ];
 
 const OBJECTIVES: readonly ObjectiveDef[] = [
@@ -97,7 +98,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     id: "core:campaign_market_town",
     name: SCENARIO_COPY.scenarios.campaign_market_town,
     mode: "campaign",
-    startYear: 1300,
+    startYear: PACK_CALENDAR.startYear,
     archetype: "core:open_field",
     stages: STAGES,
     eras: ERAS,
@@ -117,7 +118,7 @@ export const CORE_SCENARIOS: readonly ScenarioDef[] = [
     id: "core:sandbox",
     name: SCENARIO_COPY.scenarios.sandbox,
     mode: "sandbox",
-    startYear: 1300,
+    startYear: PACK_CALENDAR.startYear,
     archetype: "core:open_field",
     stages: STAGES,
     eras: ERAS,
@@ -140,7 +141,7 @@ export const LORD_SLICE_SCENARIO: ScenarioDef = {
   id: LORD_SLICE_SCENARIO_ID,
   name: SCENARIO_COPY.scenarios.lord_slice,
   mode: "sandbox",
-  startYear: 1300,
+  startYear: PACK_CALENDAR.startYear,
   archetype: "core:open_field",
   stages: STAGES,
   eras: ERAS,

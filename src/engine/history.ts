@@ -58,6 +58,7 @@ import { applyFactionRecords, factionChanges, factionOfPetitioner } from "./fact
 import { registryEntryData } from "../content/registry/registryEntries";
 import { finishedDrainage } from "./drainage";
 import { WAR_PETITION_IDS } from "../content/warConfig";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
 const TOWN: ActorRef = { type: "town", id: "town" };
@@ -498,7 +499,7 @@ export const FOLD_AFTER_SEASONS = 8;
 export const ROLLUP_TEMPLATE = "ledger.rollup";
 /** HL-10: everyday records that are never folded (a household moving into a house, a household forming). */
 const PERMANENT_EVERYDAY: ReadonlySet<string> = new Set(["person.move_in", "person.resettled", "person.married"]);
-const YEAR = 4 * SEASON;
+const YEAR = SEASONS_PER_YEAR * SEASON;
 
 /** HL-10: a record folded into its season's summary once old enough — everyday (severity 0), not kept for good. */
 export function foldableRecord(record: HistoryRecord): boolean {

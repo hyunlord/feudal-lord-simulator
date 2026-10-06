@@ -11,6 +11,7 @@ import { settlementMetrics } from "./settlementMetrics";
 import { housingLotCount } from "../population/housing";
 import type { HistoricalEraEntry } from "./season.types";
 import type { SettlementMetrics } from "./settlement.types";
+import { DAYS_PER_YEAR, SEASONS_PER_YEAR } from "../content/packSettings";
 
 const ERA_STAGE = { hamlet: "village", palisade: "market_town", stone_town: "fortified_town" } as const satisfies Record<Era, StageId>;
 
@@ -70,8 +71,8 @@ export function calendar(tick: number, startYear: number, ticksPerYear: number =
   const inYear = whole - yearOffset * ticksPerYear;
   return {
     year: startYear + yearOffset,
-    season: Math.floor((inYear * 4) / ticksPerYear) as 0 | 1 | 2 | 3,
-    dayOfYear: Math.floor((inYear * 360) / ticksPerYear) + 1,
+    season: Math.floor((inYear * SEASONS_PER_YEAR) / ticksPerYear) as 0 | 1 | 2 | 3,
+    dayOfYear: Math.floor((inYear * DAYS_PER_YEAR) / ticksPerYear) + 1,
   };
 }
 

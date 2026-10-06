@@ -5,6 +5,7 @@
  * campaign's ending. Values are integers (permille for fractions, pennies for money) and a hypothesis (decision LG1).
  */
 import type { PetitionDef, PetitionResponse } from "./chapterConfig";
+import { PACK_CALENDAR } from "./packSettings";
 
 /** LG-1: a scenario that lists this id in `activeEvents` has chapter 5's sequence. */
 export const LEGACY_SEQUENCE_ID = "legacy_1400";
@@ -75,8 +76,8 @@ export const LEGACY_BALANCE = {
   departureAfterCharter: 2,
   legacyAfterDeparture: 8,
   /** LG-1 / LG-8: the last market day, the campaign's end (year, in-year season: 0 spring … 3 winter). */
-  lastMarketYear: 1450,
-  lastMarketSeason: 1,
+  lastMarketYear: PACK_CALENDAR.end.year,
+  lastMarketSeason: PACK_CALENDAR.end.season,
 
   /** LG-2: a sealed charter — the town's one-off fine, the fee farm from then, the Crown's confirmation after a petition. */
   charterFine: 300,

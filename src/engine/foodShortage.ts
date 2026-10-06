@@ -16,8 +16,8 @@ import { boundWheatOf } from "../population/foodReserve";
 import { houseIsStarving } from "../population/houseFood";
 import type { GameState } from "./engine.types";
 import { famineShortHouses } from "./eventSchedule";
+import { DAYS_PER_YEAR } from "../content/packSettings";
 
-const DAYS_PER_YEAR = 360;
 
 type ShortageWorld = Pick<GameState, "events" | "houses" | "tick" | "seed" | "scenarioId">;
 

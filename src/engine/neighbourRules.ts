@@ -11,8 +11,9 @@ import { estatesOf, LORD, raiseClaim } from "./estates";
 import { addSuitEvidence, enforcePossession, fileSuit } from "./estateSuits";
 import { hashSeed } from "./prng";
 import { stateCalendar } from "./scenarioState";
+import { YEAR_TICKS } from "../content/packSettings";
 
-const YEAR = 4_000;
+const YEAR = YEAR_TICKS;
 
 /** ER-21: the head of a neighbour house — in the estates' people or the town's persons. */
 function houseHead(state: GameState, personId: string) {

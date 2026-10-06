@@ -6,6 +6,7 @@
  */
 import type { EffectSpec } from "../contracts";
 import type { PetitionDef } from "./chapterConfig";
+import { packChapter } from "./packSettings";
 
 export const WAR_ERA_ID = "war";
 /** WR-1: a scenario that lists this id in `activeEvents` has the war of 1337. */
@@ -89,7 +90,7 @@ export const WAR_BALANCE = {
   murageTollPermille: 2000,
   marketExpansionPermille: 2000,
   /** WR-9 chapter 2 ends by the spring of 1348 whatever the wall's state. */
-  chapterEndYear: 1348,
+  chapterEndYear: packChapter(3).fromYear,
 } as const;
 
 /** WR-1: the War era's effects (B1 pipe, data only: the town has no wool trade until C4, decision WR3). */

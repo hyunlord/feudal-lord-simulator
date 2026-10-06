@@ -22,6 +22,7 @@ import type { Estate } from "./estates.types";
 import { lordshipOf } from "./lordshipState";
 import { currentYear } from "./persons";
 import { hashSeed } from "./prng";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 export const EMPTY_DIPLOMACY: DiplomacyState = { negotiations: [], promises: [], relations: {}, nextNegotiation: 1, nextPromise: 1 };
 
@@ -125,7 +126,7 @@ export function materialCeiling(state: GameState, proposer: string, counterpart:
 
 /** FIX-12 (item 1): the ledger categories an estate's year is paid in (its pieces' incomes: rent, stall fees, tolls, the mill). */
 const ESTATE_INCOME = new Set(Object.values(PIECE_INCOME_CATEGORIES).flat());
-const YEAR = 4 * PRESSURE_BALANCE.seasonTicks;
+const YEAR = SEASONS_PER_YEAR * PRESSURE_BALANCE.seasonTicks;
 
 /**
  * FIX-12 (item 1, NG-5a) API: the most a year's debt instalment may be — a quarter of the year the lord's estates paid

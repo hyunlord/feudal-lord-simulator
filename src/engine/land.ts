@@ -15,9 +15,10 @@ import {
 import { arableLayouts, stripTending } from "../zones/arableFields";
 import { zonesOf } from "../zones/zoneEdits";
 import type { ForestHarvest, GameState } from "./engine.types";
+import { SEASONS_PER_YEAR } from "../content/packSettings";
 
 const SEASON = PRESSURE_BALANCE.seasonTicks;
-const YEAR = 4 * SEASON;
+const YEAR = SEASONS_PER_YEAR * SEASON;
 
 /** LG-3: the land's own state (absent until its first season). Cells are row-major indexes; pairs are [cell, value]. */
 export interface LandState {

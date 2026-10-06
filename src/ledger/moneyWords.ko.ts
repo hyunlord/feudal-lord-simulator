@@ -1,11 +1,13 @@
+import { currencyUnitValue } from "../content/packSettings";
 // QA (render handoff from UI-AUDIT-1): the engine's own lines (the ledger history, the chronicle export, the money
 // rules, the era console's income) write money as the screens do — English money, £1 = 20s = 240d — not as a penny
 // count. The same rule as the screens' `src/ui/money.ko.ts` (the short form: pounds and shillings from £1 up, the pence
 // dropped toward zero; shillings and pence under £1; "0d" for nothing); the engine cannot import the UI, so the short
 // form and its sign are here, and `tests/moneyWords.test.ts` keeps the two the same.
 
-const PENCE_PER_SHILLING = 12;
-const PENCE_PER_POUND = 240;
+// EXT-2: the units' values are the pack's money settings.
+const PENCE_PER_SHILLING = currencyUnitValue("shilling");
+const PENCE_PER_POUND = currencyUnitValue("pound");
 const grouped = (count: number): string => String(count).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 /** "£160 3s" from £1 up, "3s 4d" / "7d" under it, "−£3 4s" below zero, "—" for no number. */

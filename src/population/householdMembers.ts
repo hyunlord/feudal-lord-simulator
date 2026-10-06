@@ -1,6 +1,7 @@
 import { BALANCE } from "../content/balanceConfig";
 import { scenarioById } from "../content/scenario/registry";
 import type { House, HouseholdMembers } from "./population.types";
+import { yearIndexOf } from "../content/packSettings";
 
 export type MemberSex = "female" | "male";
 export type MemberAgeBand = "child" | "adult" | "elder";
@@ -102,7 +103,7 @@ export function householdMembers(state: { readonly houses: readonly House[]; rea
   const members = state.houses.find(house => house.buildingId === houseId)?.members;
   if (members === undefined) return null;
   if (state.persons !== undefined && state.tick !== undefined) {
-    const year = scenarioById(state.scenarioId as never).startYear + Math.floor(state.tick / BALANCE.TICKS_PER_YEAR);
+    const year = scenarioById(state.scenarioId as never).startYear + yearIndexOf(state.tick);
     const people = state.persons.people.filter(person => person.householdId === houseId)
       .sort((a, b) => ROLE_ORDER.indexOf(a.role as never) - ROLE_ORDER.indexOf(b.role as never) || a.birthYear - b.birthYear || a.id.localeCompare(b.id));
     return {

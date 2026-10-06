@@ -23,9 +23,10 @@ import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode,
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
 import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry } from "./registryV4";
+import { SEASON_TICKS, YEAR_TICKS } from "../content/packSettings";
 
-const SEASON = 1_000;
-const YEAR = 4_000;
+const SEASON = SEASON_TICKS;
+const YEAR = YEAR_TICKS;
 /** ER-3 (the drafts' proposal): new events at most one a season and two a year. */
 export const REGISTRY_EVENTS_PER_SEASON = 1;
 export const REGISTRY_EVENTS_PER_YEAR = 2;

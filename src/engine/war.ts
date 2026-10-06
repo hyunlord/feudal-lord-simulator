@@ -40,8 +40,9 @@ import { calendar, scenarioOf } from "./scenarioState";
 import { takeFleece, woolInKindSplit } from "./pastureWool";
 import { abandonHouse } from "./seasonPressure";
 import type { Conscripts, RaidLosses, WarState, WarStep } from "./war.types";
+import { SEASON_TICKS } from "../content/packSettings";
 
-const SEASON = 1000;
+const SEASON = SEASON_TICKS;
 const CROWN: SourceRef = { type: "actor", id: "crown" };
 
 export function warOf(state: Pick<GameState, "war">): WarState | undefined {

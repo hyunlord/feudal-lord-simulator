@@ -6,6 +6,7 @@ import { PLAGUE_PETITION_DEFS } from "./plagueConfig";
 import { LEGACY_PETITION_DEFS } from "./legacyConfig";
 import { REORGANISATION_PETITION_DEFS } from "./reorganisationConfig";
 import { WAR_PETITION_DEFS } from "./warConfig";
+import { packChapter } from "./packSettings";
 
 /** FC-2: the lord's answer to the Great Famine. */
 export type FamineResponseChoice = "relief" | "price_control" | "laissez_faire" | "speculation";
@@ -123,35 +124,35 @@ export const CAMPAIGN_CHAPTERS = 5;
 /** FAIL-3 (FL-8): chapter 2 of the campaign, the same town from the end of chapter 1 (counted from 1318 at the earliest). */
 export const CHAPTER_TWO = {
   chapter: 2,
-  fromYear: 1318,
-  toYear: 1347,
+  fromYear: packChapter(2).fromYear,
+  toYear: packChapter(2).toYear,
 } as const;
 
 /** F3-A (PL-10): chapter 3 of the campaign, the Black Death (from chapter 2's end, 1348 at the latest). */
 export const CHAPTER_THREE = {
   chapter: 3,
-  fromYear: 1348,
-  toYear: 1364,
+  fromYear: packChapter(3).fromYear,
+  toYear: packChapter(3).toYear,
 } as const;
 
 /** F4-A (RG-10): chapter 4 of the campaign, the reorganisation (from chapter 3's end, 1400 at the latest). */
 export const CHAPTER_FOUR = {
   chapter: 4,
-  fromYear: 1362,
-  toYear: 1400,
+  fromYear: packChapter(4).fromYear,
+  toYear: packChapter(4).toYear,
 } as const;
 
 /** F5-A (LG-1, LG-8): chapter 5 of the campaign, autonomy and legacy (from chapter 4's end to the last market day of 1450). */
 export const CHAPTER_FIVE = {
   chapter: 5,
-  fromYear: 1382,
-  toYear: 1450,
+  fromYear: packChapter(5).fromYear,
+  toYear: packChapter(5).toYear,
 } as const;
 
 export const CHAPTER_ONE = {
   chapter: 1,
-  fromYear: 1300,
-  toYear: 1318,
+  fromYear: packChapter(1).fromYear,
+  toYear: packChapter(1).toYear,
   survivalPermille: 600,
   /** The chronicle quotes this many of the player's decisions. */
   quotedDecisions: 3,

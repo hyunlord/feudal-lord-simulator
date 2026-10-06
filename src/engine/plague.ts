@@ -44,9 +44,9 @@ import type { PetitionRecord } from "./politics.types";
 import { hashSeed } from "./prng";
 import { calendar, scenarioOf } from "./scenarioState";
 import { abandonHouse } from "./seasonPressure";
+import { SEASON_TICKS, tickOfSeason } from "../content/packSettings";
 
-const SEASON = 1000;
-const YEAR = 4000;
+const SEASON = SEASON_TICKS;
 const MANOR = "manor";
 const PARISH: SourceRef = { type: "actor", id: "parish" };
 const CHURCH_KINDS = new Set(["church", "chapel"]);
@@ -71,7 +71,7 @@ export function arrivalSeasonOffset(state: Pick<GameState, "scenarioId" | "arche
 
 const yearOf = (state: Pick<GameState, "scenarioId">, tick: number) => calendar(tick, scenarioOf(state).startYear).year;
 /** The spring (first) tick of `year`. */
-const springOf = (state: Pick<GameState, "scenarioId">, year: number) => (year - scenarioOf(state).startYear) * YEAR;
+const springOf = (state: Pick<GameState, "scenarioId">, year: number) => tickOfSeason(year, 0, scenarioOf(state).startYear);
 
 /** PL-2: a pestilence still raging at `tick` (its last season's death day not yet passed). */
 function raging(pestilence: Pestilence | undefined, tick: number): pestilence is Pestilence {
