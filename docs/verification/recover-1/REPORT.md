@@ -1,6 +1,6 @@
 # RECOVER-1 보고서 — 얇은 빵 비축 → 충격 → 회복 못 함, 덫 고치기
 
-@@VERDICT@@
+관문: 통과 — v4.1+MANOR-1 위에서 seed 1~3 125년 판: 흑사병 최저 뒤 10년 회복 88·84·93 %(20년 뒤 1336 수준), 1338 빵 비축 809·710·935, 붕괴 0(1336의 절반 아래인 해 0, 수리 전 seed 2 82해·seed 3 65해). 가드레일 해시 불변.
 
 - **지시**: 사용자 지시(2026-10-06). 진단 [도시 성장](../city-growth/REPORT.md)의 덫을 고친다. v4.1·MANOR-1은 이 위에 함께 병합한다.
   - ① A2·A3·B3.
@@ -12,9 +12,9 @@
 
 ## 실행 위치
 - **DGX**:
-  - 관문 판 `engine-RECOVER1-gate1-6fbf68b`, 관문 재확인 @@GATE2@@.
+  - 관문 판 `engine-RECOVER1-gate1-6fbf68b`(증빙 `runs/gate1-*.json`), 관문 재확인 `engine-RECOVER1-gate2-ee5ae2a`(최종 머리, 세 seed 모두 첫 판과 바이트가 같음).
   - 측정 `engine-RECOVER1-mill-60eba7a`(이 가지)·`engine-RECOVER1-millT-e3f1cd1`(본선)·`engine-RECOVER1-gran-f13940e`(곡창 내용).
-  - 전체 회귀 @@TEST@@, 가드레일 `engine-RECOVER1-guard-f88e5bc` 1회차·@@GUARD2@@, 깨끗한 클론 @@CLONE@@.
+  - 전체 회귀 5,054/5,054 — DGX(깨끗한 클론 `ee5ae2a`, `engine-RECOVER1-clone-ee5ae2a`), 가드레일 `engine-RECOVER1-guard-f88e5bc` 1회차·`engine-RECOVER1-guard2-ee5ae2a`(`ee5ae2a`) 5/5, 끝 상태 해시 다섯이 `baseline-11205c9`와 같음, 사람 경로 12/12, 깨끗한 클론 5,054/5,054·build — DGX `ee5ae2a`(`engine-RECOVER1-clone-ee5ae2a`).
 - **Mac**: 시나리오 시험(`recovery` 5/5, `millPull` 3/3, `granaryRules` 2/2, `townAgencyWalkReuse` 6/6)과 관련 기존 시험, typecheck.
 
 ## 무엇을 깔았나 (모두 영주 모드만, RC-1)
@@ -91,7 +91,7 @@ DGX, 2,000틱. 수리 전은 v4.1+MANOR-1이고, 본선은 LM-E9b다.
 
 ## 가드레일 — 샌드박스·캠페인 불변
 - 1회차 `engine-RECOVER1-guard-f88e5bc`(`f88e5bc`): 5/5이고, 다섯 seed의 끝 상태 해시가 `baseline-11205c9`(MANOR-1)와 같다. 사람 경로 12/12.
-- 2회차(데이터 줄로 바꾼 뒤 최종 머리): @@GUARD2@@
+- 2회차(데이터 줄로 바꾼 뒤 최종 머리): `engine-RECOVER1-guard2-ee5ae2a`(`ee5ae2a`) 5/5, 끝 상태 해시 다섯이 `baseline-11205c9`와 같음, 사람 경로 12/12
 - 새 기준선은 없다.
 
 ## 렌더 파일 예외(사용자 판정 2026-10-06)
@@ -105,8 +105,8 @@ DGX, 2,000틱. 수리 전은 v4.1+MANOR-1이고, 본선은 LM-E9b다.
 - 실제로는 50틱마다 한 채이고, 도시 비축이 한 계절을 버틸 때만이다. 막는 것은 속도가 아니라 비축 문이다. 보고서를 고쳤다.
 
 ## 필수 조건
-- 전체 회귀: @@TEST@@
-- 깨끗한 클론: @@CLONE@@
+- 전체 회귀: 5,054/5,054 — DGX(깨끗한 클론 `ee5ae2a`, `engine-RECOVER1-clone-ee5ae2a`)
+- 깨끗한 클론: 5,054/5,054·build — DGX `ee5ae2a`(`engine-RECOVER1-clone-ee5ae2a`)
 - ui-geometry: UI 입력 해시가 본선과 같다(`027a4ca6…`) — 재지 않음.
 - typecheck — Mac.
 
@@ -117,4 +117,6 @@ DGX, 2,000틱. 수리 전은 v4.1+MANOR-1이고, 본선은 LM-E9b다.
 - 보리 과잉(가마 7곳 대 양조), 비상 식량 메모.
 
 ## 소요 시간
-@@TIMES@@
+- 시작: 10-06 00:32 KST(RECOVER-1 가지, 진단 가지와 v4.1을 합침).
+- 병합: 10-06 14시 무렵 KST.
+- DGX: 측정 셋, 관문 판 둘(각 약 2시간 반, 대기 줄 포함), 회귀 2회, 가드레일 2회, 클론.
