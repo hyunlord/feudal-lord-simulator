@@ -133,6 +133,13 @@ export type Evaluation = {
   readonly expectMissed: boolean;
 };
 
+/** In the page: resolves once the document's web fonts have loaded (a font that arrives late widens text after a
+ * measure taken without it; REMOTE review 2026-10-07). The audit bounds the wait. */
+export async function surfaceFontsLoaded(): Promise<number> {
+  await document.fonts.ready;
+  return document.fonts.size;
+}
+
 /** In the page: everything evaluateSurface needs, for the first visible match of `spec.root`. */
 export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
   const viewport = { w: window.innerWidth, h: window.innerHeight };
@@ -217,13 +224,21 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
       else if (style.overflowX !== "visible" || style.overflowY !== "visible") {
         const padding = paddingBox(container, style);
         const ellipsis = style.textOverflow === "ellipsis" || (style.getPropertyValue("-webkit-line-clamp") || "none") !== "none";
+        const sx = scrolls(style.overflowX); const sy = scrolls(style.overflowY);
+        // What cuts a text for good (hardBox). Along an axis that does not scroll, this box's own cut and every outer
+        // one count. Along an axis that scrolls, what an outer box clips is the scroller's view and scrolling reaches it
+        // (LR2-D5: the side panel around the scrolled lord screen is no cut of the map's labels) — but only while the
+        // scroller's own view lies inside the outer cut: a scroller the outer box cuts (one with no size limit grows
+        // with its content inside an overflow-hidden panel and never scrolls) can never show its far end, so the outer
+        // cut keeps counting there. REMOTE review 2026-10-07: the first LR2-D5 rule reset both axes at any scroller and
+        // missed an overflow-x:hidden cut beside an overflow-y:auto scroll and a scroller cut by its panel.
+        const fits = (a: "l" | "t", b: "r" | "b") => padding[a] >= outer.hardBox[a] - 1 && padding[b] <= outer.hardBox[b] + 1;
+        let hardBox = cut(outer.hardBox, padding, style.overflowX !== "visible" && !sx, style.overflowY !== "visible" && !sy);
+        if (sx && fits("l", "r")) hardBox = { ...hardBox, l: everywhere.l, r: everywhere.r };
+        if (sy && fits("t", "b")) hardBox = { ...hardBox, t: everywhere.t, b: everywhere.b };
         region = { box: cut(outer.box, padding, style.overflowX !== "visible", style.overflowY !== "visible"),
-          clipper: { path: path(container), scroll: scrolls(style.overflowX) || scrolls(style.overflowY), ellipsis },
-          scrollBox: cut(outer.scrollBox, padding, scrolls(style.overflowX), scrolls(style.overflowY)),
-          // Only the clippers inside the nearest scroller cut for good: what an outer box clips is the scroller's view,
-          // and scrolling reaches it (the side panel around the scrolled lord screen is no cut of the map's labels).
-          hardBox: scrolls(style.overflowX) || scrolls(style.overflowY) ? everywhere
-            : cut(outer.hardBox, padding, style.overflowX !== "visible", style.overflowY !== "visible") };
+          clipper: { path: path(container), scroll: sx || sy, ellipsis },
+          scrollBox: cut(outer.scrollBox, padding, sx, sy), hardBox };
       }
     }
     regions.set(container, region); return region;
