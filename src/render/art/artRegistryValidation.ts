@@ -57,7 +57,7 @@ export function validateRegistryData(bundles: readonly ArtBundle[]): readonly Ar
         if (!finiteScaled(Object.values(point))) report(at, 'Scaled port overflows');
       }
     }
-    if (entry.kind === 'ground-prop' && entry.placement !== 'land' && entry.placement !== 'seasonal-ground' && entry.placement !== 'nature-ground' && entry.placement !== 'spring-context' && entry.wealthRange && entry.wealthRange.min !== undefined && entry.wealthRange.max !== undefined && entry.wealthRange.min >= entry.wealthRange.max) report(at, 'Wealth range requires min < max');
+    if (entry.kind === 'ground-prop' && entry.placement !== 'land' && entry.placement !== 'seasonal-ground' && entry.placement !== 'nature-ground' && entry.placement !== 'spring-context' && entry.placement !== 'farm-prop' && entry.wealthRange && entry.wealthRange.min !== undefined && entry.wealthRange.max !== undefined && entry.wealthRange.min >= entry.wealthRange.max) report(at, 'Wealth range requires min < max');
     if (entry.kind === 'building-attachment') {
       const mountedBodies = new Set<string>();
       for (const mount of entry.mounts) {

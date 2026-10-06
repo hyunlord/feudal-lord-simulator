@@ -64,7 +64,11 @@ export type SpringWorldEntry = EntryBase & {
   readonly season: 'spring'; readonly group: string; readonly geometry: ArtGeometry;
   readonly opacity: number; readonly minZoom: number;
 };
-export type GroundPropEntry = SpringWorldEntry | HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
+export type FarmGroundPropEntry = EntryBase & {
+  readonly kind: 'ground-prop'; readonly placement: 'farm-prop'; readonly baseId: string;
+  readonly staticCluster: true; readonly animation: false; readonly geometry: ArtGeometry;
+};
+export type GroundPropEntry = FarmGroundPropEntry | SpringWorldEntry | HouseholdGroundPropEntry | LandGroundPropEntry | SeasonalGroundPropEntry | NatureGroundEntry;
 export type WalkerCargoEntry = EntryBase & {
   readonly kind: 'walker-cargo'; readonly cargoKinds: readonly string[];
   readonly frames: readonly ArtFrame[]; readonly facing: ArtFacing; readonly scale: number; readonly allowMirror: false;
