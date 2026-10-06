@@ -27,16 +27,16 @@ good=$(cat "$ST/last-good" 2> /dev/null || true)
 
 # A run folder of <sha> from the mirror, launched like run.sh does (its lock is held until the launch so no clean can
 # take the half-made folder). Prints the run's name.
-launch() { # <label> <sha> <command ...>
-  local label=$1 sha=$2; shift 2
+launch() { # <label> <sha> <gate|experiment> <command ...>
+  local label=$1 sha=$2 class=$3; shift 3
   local run="$label-${sha:0:7}" dir
   dir=$BASE/$run
   exec 8> "$BASE/_locks/$run.lock"; flock 8
   rm -rf "$dir"; mkdir -p "$dir/.remote-in"
   git -C "$MIRROR" archive "$sha" | tar -x -C "$dir"
   git -C "$MIRROR" ls-tree -r --name-only "$sha" > "$dir/.remote-in/in-files.txt"
-  { printf 'RUN=%q\nLABEL=%q\nSHORT_SHA=%q\nFULL_SHA=%q\nDIRTY=0\nSLOT=heavy\nBRANCH=%q\nMAC_HOST=dgx-timer\nKEEP_RUN=1\n' \
-      "$run" "$label" "${sha:0:7}" "$sha" "$TRUNK"
+  { printf 'RUN=%q\nLABEL=%q\nSHORT_SHA=%q\nFULL_SHA=%q\nDIRTY=0\nSLOT=heavy\nBRANCH=%q\nMAC_HOST=dgx-timer\nKEEP_RUN=1\nRUN_CLASS=%q\n' \
+      "$run" "$label" "${sha:0:7}" "$sha" "$TRUNK" "$class"
     printf 'CMD=%q\n' "$(printf '%q ' "$@")"; } > "$dir/.remote-in/meta.env"
   bash "$dir/scripts/remote/remote-exec.sh" launch "$run" > /dev/null
   old "$dir"
@@ -49,7 +49,9 @@ launch() { # <label> <sha> <command ...>
 old() { touch -d "2 days ago" "$1" 2> /dev/null; }
 wait_run() { while [ ! -f "$BASE/$1/.remote/exit-code" ]; do old "$BASE/$1"; sleep 120; done; old "$BASE/$1"; cat "$BASE/$1/.remote/exit-code"; }
 
-run=$(launch trunk-CLONE "$head" bash scripts/remote/tasks.sh clone-check)
+# The clone is long: the experiment line. The bisect that names a breaking commit is short and every session waits
+# on a broken trunk: the gate line (decision RR20).
+run=$(launch trunk-CLONE "$head" experiment bash scripts/remote/tasks.sh clone-check)
 log "trunk clone ${head:0:8}: $run started (last good ${good:0:8})"
 rc=$(wait_run "$run")
 echo "$head" > "$ST/last-checked"
@@ -74,7 +76,7 @@ case "$step" in
 esac
 culprit="(not bisected)"
 if [ -n "$good" ] && [ ${#check[@]} -gt 0 ] && { [ "$step" != test ] || [ -n "$files" ]; }; then
-  brun=$(launch trunk-BISECT "$head" bash scripts/remote/tasks.sh trunk-bisect "$good" "$head" -- "${check[@]}")
+  brun=$(launch trunk-BISECT "$head" gate bash scripts/remote/tasks.sh trunk-bisect "$good" "$head" -- "${check[@]}")
   log "trunk clone ${head:0:8}: $step failed ($files); bisecting ${good:0:8}..${head:0:8} in $brun"
   wait_run "$brun" > /dev/null
   culprit=$(cat "$BASE/$brun/.remote/bisect.txt" 2> /dev/null || echo "(bisect gave no answer: see $brun)")
