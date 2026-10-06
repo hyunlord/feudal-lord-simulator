@@ -91,7 +91,7 @@ case "${1:-}" in
   ""|-h|--help) sed -n '2,24p' "$0"; exit 0 ;;
   --status)
     rsh "systemctl --user list-units 'fls-run-*' --no-pager --no-legend; systemctl --user status fls-runs.slice --no-pager 2>/dev/null | sed -n '1,8p'; ls -1t $RROOT | grep -v '^_'; echo '== kept:'; ls -1t $RROOT/_kept 2>/dev/null
-      echo '== heavy slots (at most 3 at once, or the number in _slots/max; the last is kept for the gate line):'; for f in $RROOT/_slots/heavy.*.lock; do [ -e \"\$f\" ] && ! flock -n \"\$f\" true && tr '\\t' ' ' < \"\${f%.lock}.info\"; done; echo '== gate line:'; ls -1 $RROOT/_slots/queue-gate 2>/dev/null | sed 's/^[0-9]*-//'; echo '== experiment line:'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//'"
+      echo '== heavy slots (at most 3 at once, or the number in _slots/max; the last is kept for the gate line):'; for f in $RROOT/_slots/heavy.*.lock; do [ -e \"\$f\" ] && ! flock -n \"\$f\" true && tr '\\t' ' ' < \"\${f%.lock}.info\"; done; echo '== gate line:'; ls -1 $RROOT/_slots/queue-gate 2>/dev/null | sed 's/^[0-9]*-//'; echo '== experiment line:'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//'; echo '== experiment line by session (waiting · served last):'; ls -1 $RROOT/_slots/queue 2>/dev/null | sed 's/^[0-9]*-//; s/-.*//' | sort | uniq -c | while read n s; do echo \"   \$s \$n waiting · served \$(date -r $RROOT/_slots/served/\$s +%H:%M 2>/dev/null || echo never)\"; done"
     exit 0 ;;
   --release) [ -n "${2:-}" ] || die "--release <run>"
     rsh "rm -rf $RROOT/_kept/${2:?}; rm -f $RROOT/${2:?}/.remote/keep"; echo "remote: released $2"; exit 0 ;;
