@@ -82,6 +82,10 @@ export const LORD_OUTCOME_COPY = {
   promiseByLord: (term: string, date: string) => `약속 장부에 오릅니다: ${term}, ${date}까지 지켜야 합니다.`,
   promisesByLord: (term: string, count: number, first: string, last: string) => `약속 장부에 오릅니다: ${term} ${count}번, ${first}부터 ${last}까지.`,
   promiseToLord: (who: string, term: string, date: string) => `${subject(who)} 약속합니다: ${term}, ${date}까지.`,
+  // who remembers a promise the answer makes
+  holdsWord: "영주의 약속을 받아 둡니다",
+  witnesses: "약속의 증인으로 지켜봅니다",
+  gaveWord: "영주에게 약속했습니다",
   stake: (who: string, relation: number, witnesses: string | null) =>
     `어기면 ${withWord(who)}의 관계가 ${relation} 나빠집니다.${witnesses === null ? "" : ` 증인(${witnesses})도 기억합니다.`}`,
   term: (what: string, kind: string, perYear: string, years: number) => `${what} ${kind}: 해마다 ${perYear}, ${years}년 동안 이어집니다.`,

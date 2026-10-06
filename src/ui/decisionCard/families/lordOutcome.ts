@@ -187,6 +187,27 @@ function actualLines(after: GameState, records: readonly HistoryRecord[]): strin
   });
 }
 
+/** Who remembers a promise the answer makes: the one the lord's word is given to, its witnesses, the one who gives the
+ * lord their word (the promise ledger's own records; a breach's cost is in "later"). */
+function promiseRememberers(before: GameState, after: GameState): Rememberer[] {
+  const known = new Set(diplomacyOf(before).promises.map(record => record.id));
+  const out: Rememberer[] = [];
+  const seen = new Set<string>();
+  const add = (holder: string, how: string) => { const who = holderName(after, holder); if (seen.has(who)) return; seen.add(who); out.push({ who, how, delta: 0 }); };
+  for (const record of diplomacyOf(after).promises) {
+    if (known.has(record.id)) continue;
+    if (record.promisor === "lord") { add(record.promisee, COPY.holdsWord); for (const witness of record.witnesses) add(witness, COPY.witnesses); }
+    else add(record.promisor, COPY.gaveWord);
+  }
+  return out;
+}
+
+/** One line per who: a relation move first, then a promise's role. */
+const dedupe = (entries: readonly Rememberer[]): Rememberer[] => {
+  const seen = new Set<string>();
+  return entries.filter(entry => { if (seen.has(entry.who)) return false; seen.add(entry.who); return true; });
+};
+
 function houseMoves(before: GameState, after: GameState): Rememberer[] {
   const [was, now] = [diplomacyOf(before).relations, diplomacyOf(after).relations];
   return Object.entries(now).flatMap(([id, value]) => {
@@ -224,6 +245,6 @@ export function lordOutcome(before: GameState, after: GameState): LordOutcome {
     now: [money(treasuryBalance(after) - treasuryBalance(before)), ...conditionLines(before, after), ...claimLines(before, after), ...suitLines(before, after),
       ...promises.now, ...stewardLines(before, after), ...dropped, ...quoted],
     later: [...promises.later, ...termLines(before, after), ...actualLines(after, records)],
-    remembers: [...remembersOf(before, after), ...houseMoves(before, after), ...goodwillMoves(before, after)],
+    remembers: dedupe([...remembersOf(before, after), ...houseMoves(before, after), ...goodwillMoves(before, after), ...promiseRememberers(before, after)]),
   };
 }
