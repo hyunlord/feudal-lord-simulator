@@ -16,7 +16,8 @@ import { fileSuit } from "../src/engine/estateSuits";
 import { advanceRegistry, applyChoice, enabledChoices, entryProblem, initialRegistry, registryLoad, registryOf } from "../src/engine/registry";
 import { DEFAULT_PLAYER_HOUSE } from "../src/content/lordshipConfig";
 import { armsHeraldrySeed, lordHouse } from "../src/engine/lordshipState";
-import { advanceStewardship, answerEstatePetition, lordEstatePetitions, precedentReport, setExceptionRules, stewardshipOf } from "../src/engine/stewardship";
+import { advanceStewardship, lordEstatePetitions, precedentReport, setExceptionRules, setStandingPolicy, stewardshipOf } from "../src/engine/stewardship";
+import { HOME_PETITION_CUSTOM } from "../src/content/stewardPolicyConfig";
 import { initialAgency } from "../src/engine/townAgency";
 import { HISTORY_TEMPLATES } from "../src/content/historyCopy.ko";
 import { decodeSave } from "../src/save/saveCodec";
@@ -81,41 +82,40 @@ test("ER-5 the home petitions are registry entries in FIX-14's order and chance"
   assert.ok(HOME_PETITION_ENTRIES.every(item => item.generator === "home_cycle" && item.precedent && entryProblem(item) === null));
 });
 
-test("ER-6 a home petition of a kind the lord answered before is answered by precedent; the exceptions bring it up again", () => {
-  // Play home seasons with the lord granting each petition, until a kind comes round again.
+test("DEC-TRACE §1 (GP-7, P-T3) the home petitions are the steward's from the first, by the lord's standing policy; none is forced on the lord; his setting or the old switch brings them up", () => {
   const opening = (): GameState => { const town = newGameState({ scenarioId: LORD_SLICE_SCENARIO_ID, seed: 1 })!; return { ...town, estates: estatesOf(town), tick: 4000 }; };
-  let state: GameState = opening();
-  const kinds = new Set<string>();
-  let precedent = null as null | { kind: string; status: string };
-  for (let season = 0; season < 80 && precedent === null; season += 1) {
-    state = advanceStewardship({ ...state, tick: state.tick + 1000 });
-    for (const petition of lordEstatePetitions(state)) { kinds.add(petition.kind); state = answerEstatePetition(state, petition.id, true); }
-    const found = stewardshipOf(state).petitions.find(petition => petition.precedent === true && petition.estateId === "estate-home");
-    if (found !== undefined) precedent = { kind: found.kind, status: found.status };
+  const play = (start: GameState, seasons: number, each?: (state: GameState) => GameState): GameState => {
+    let state = start;
+    for (let season = 0; season < seasons; season += 1) {
+      state = advanceStewardship({ ...state, tick: state.tick + 1000 });
+      if (each !== undefined) state = each(state);
+    }
+    return state;
+  };
+  // Twelve years: no home petition comes to the lord (no winter one forced: FX14-1 gone), each the steward's as custom has it.
+  const state = play(opening(), 48);
+  const homes = stewardshipOf(state).petitions.filter(petition => petition.estateId === "estate-home");
+  assert.ok(homes.length >= 12, "petitions came");
+  assert.equal(lordEstatePetitions(state).length, 0);
+  for (const petition of homes) {
+    assert.equal(petition.decidedBy, "steward", petition.id);
+    assert.equal(petition.policy, "customary");
+    assert.equal(petition.status, HOME_PETITION_CUSTOM[petition.kind as keyof typeof HOME_PETITION_CUSTOM] ? "granted" : "refused", `${petition.kind}: the custom`);
   }
-  assert.ok(precedent !== null, "a kind came round and the steward answered it");
-  assert.ok(kinds.has(precedent!.kind), "the lord had answered that kind");
-  assert.equal(precedent!.status, "granted", "as the lord did");
-  // The user's rule: the lord's same answer twice before the first precedent; never the year's first home petition.
-  const homesNow = stewardshipOf(state).petitions.filter(petition => petition.estateId === "estate-home");
-  const first = homesNow.find(petition => petition.precedent === true)!;
-  assert.ok(homesNow.filter(petition => petition.kind === first.kind && petition.decidedBy === "lord" && petition.tick < first.tick).length >= 2, "two answers by the lord first");
-  for (const petition of homesNow.filter(entry => entry.precedent === true)) {
-    const year = Math.floor(petition.tick / 4000);
-    assert.ok(homesNow.some(earlier => Math.floor(earlier.tick / 4000) === year && earlier.tick < petition.tick && earlier.precedent !== true), "not the year's first");
-  }
-  // The season report lists it.
+  // The season report lists them, and the history words them as the steward's.
+  const first = homes[0]!;
   assert.ok(precedentReport({ ...state, tick: (Math.floor(first.tick / 1000) + 1) * 1000 }).some(petition => petition.id === first.id));
-  assert.match(HISTORY_TEMPLATES["manor.petition_precedent"]!({ kind: precedent!.kind, granted: 1, amount: 0 }), /^청지기가 선례대로 /);
-  // With "bring recurring kinds up", none is answered by precedent.
-  // (The lord sets his exceptions once there is a stewardship — after the first home petition.)
-  let recurring: GameState = opening();
-  for (let season = 0; season < 80; season += 1) {
-    recurring = advanceStewardship({ ...recurring, tick: recurring.tick + 1000 });
-    if (recurring.stewardship !== undefined && stewardshipOf(recurring).rules.recurring !== true) recurring = setExceptionRules(recurring, { ...stewardshipOf(recurring).rules, recurring: true });
-    for (const petition of lordEstatePetitions(recurring)) recurring = answerEstatePetition(recurring, petition.id, true);
-  }
-  assert.equal(stewardshipOf(recurring).petitions.filter(petition => petition.precedent === true && petition.estateId === "estate-home").length, 0);
+  assert.match(HISTORY_TEMPLATES["manor.petition_steward"]!({ kind: first.kind, granted: 1, amount: 0, policy: "customary" }), /^청지기가 관습대로 /);
+  // "Lightly" grants a kind custom refuses; "bring it to me" brings it to the lord.
+  const lenient = play(setStandingPolicy(opening(), "heriot", "lenient"), 48);
+  const heriots = stewardshipOf(lenient).petitions.filter(petition => petition.kind === "heriot");
+  assert.ok(heriots.length > 0 && heriots.every(petition => petition.status === "granted" && petition.policy === "lenient"));
+  const kept = play(setStandingPolicy(opening(), "heriot", "lord"), 48);
+  assert.ok(stewardshipOf(kept).petitions.filter(petition => petition.kind === "heriot").every(petition => petition.decidedBy !== "steward"), "the lord's");
+  assert.ok(stewardshipOf(kept).petitions.filter(petition => petition.kind !== "heriot" && petition.estateId === "estate-home").every(petition => petition.decidedBy === "steward"));
+  // The old switch "bring recurring kinds up" brings them all.
+  const recurring = play(opening(), 48, next => next.stewardship !== undefined && stewardshipOf(next).rules.recurring !== true ? setExceptionRules(next, { ...stewardshipOf(next).rules, recurring: true }) : next);
+  assert.equal(stewardshipOf(recurring).petitions.filter(petition => petition.estateId === "estate-home" && petition.decidedBy === "steward" && petition.tick > 8000).length, 0);
 });
 
 test("ER-7 an instalment plan pays each year (arrears for what the cash cannot cover) and ends at its term; a dues remission waives and restores the dues", () => {

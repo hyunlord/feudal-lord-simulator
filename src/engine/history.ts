@@ -1038,10 +1038,12 @@ function stewardshipDrafts(before: GameState, after: GameState): Draft[] {
     // FIX-14 (SW-11): the home estate's petitions come to the lord himself; an answer (or the wait) moves its factions.
     if (petition.estateId === HOME_ESTATE_ID) {
       // LM-E9 (ER-6): a home petition the steward answered by precedent comes already settled — its line, then its factions.
-      const byPrecedent = old === undefined && petition.precedent === true && petition.status !== "open";
-      if (old === undefined && !byPrecedent) line("manor.petition", { kind: petition.kind, amount: petition.amount, party: petition.party ?? "", rights: petition.rights ? 1 : 0 }, 1);
-      else if (byPrecedent || (old !== undefined && old.status === "open" && petition.status !== "open")) {
-        if (byPrecedent) line("manor.petition_precedent", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
+      // DEC-TRACE §1 (P-T3): so does one he answered by the lord's standing policy.
+      const bySteward = old === undefined && petition.decidedBy === "steward" && petition.status !== "open";
+      if (old === undefined && !bySteward) line("manor.petition", { kind: petition.kind, amount: petition.amount, party: petition.party ?? "", rights: petition.rights ? 1 : 0 }, 1);
+      else if (bySteward || (old !== undefined && old.status === "open" && petition.status !== "open")) {
+        if (bySteward && petition.precedent === true) line("manor.petition_precedent", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 0);
+        else if (bySteward) line("manor.petition_steward", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount, policy: petition.policy ?? "customary" }, 0);
         else line(petition.status === "lapsed" ? "manor.petition_lapsed" : "manor.petition_answered", { kind: petition.kind, granted: petition.status === "granted" ? 1 : 0, amount: petition.amount }, 1);
         const table = HOME_PETITION_KINDS[petition.kind as HomePetitionKind][petition.status === "granted" ? "grant" : "refuse"].factions;
         for (const [key, delta] of Object.entries(table)) {
