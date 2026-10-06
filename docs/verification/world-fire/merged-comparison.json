@@ -1,0 +1,89 @@
+{
+  "before": "9a48931d5ffb3e46f6f50241c0e6489c227705a6",
+  "after": "b3a7484d7c9502faffb57e079a76c3367d2d0f40",
+  "rows": [
+    {
+      "name": "summer-dry-z1",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png"
+      ],
+      "motionFrames": 0
+    },
+    {
+      "name": "summer-doused-z0.6",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png",
+        "/assets/world-events/bucket-brigade-summer.png"
+      ],
+      "motionFrames": 0
+    },
+    {
+      "name": "summer-doused-z1",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png",
+        "/assets/world-events/bucket-brigade-summer.png"
+      ],
+      "motionFrames": 0
+    },
+    {
+      "name": "summer-doused-z1.4",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png",
+        "/assets/world-events/bucket-brigade-summer.png"
+      ],
+      "motionFrames": 8
+    },
+    {
+      "name": "summer-out-z1",
+      "sameSaveStateCamera": true,
+      "paths": [],
+      "motionFrames": 0
+    },
+    {
+      "name": "winter-dry-z1",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png"
+      ],
+      "motionFrames": 0
+    },
+    {
+      "name": "winter-doused-z0.6",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png",
+        "/assets/world-events/bucket-brigade-winter.png"
+      ],
+      "motionFrames": 0
+    },
+    {
+      "name": "winter-doused-z1",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png",
+        "/assets/world-events/bucket-brigade-winter.png"
+      ],
+      "motionFrames": 0
+    },
+    {
+      "name": "winter-doused-z1.4",
+      "sameSaveStateCamera": true,
+      "paths": [
+        "/assets/world-events/fire-flicker-all.png",
+        "/assets/world-events/bucket-brigade-winter.png"
+      ],
+      "motionFrames": 8
+    },
+    {
+      "name": "winter-out-z1",
+      "sameSaveStateCamera": true,
+      "paths": [],
+      "motionFrames": 0
+    }
+  ],
+  "visualReview": "separate human-readable report; draw-call evidence alone is not visual approval"
+}

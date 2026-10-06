@@ -14,7 +14,7 @@ export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string
   'walker-cargo': { role: text, cargoKind: text, facing: text, frame: number('frame-index') },
   'land-stage': { family: text, stage: text, season: text, layout: text, connectionMask: number('connection-mask'), ageYears: number('engine-year'), stageProgress: number('stage-fraction'), parity: number('cell-hash-modulo-2'), plot: { type: 'boolean', unit: 'boolean' } },
   landmark: { family: text, growthStage: text, season: text },
-  'event-scene': { eventId: text, group: text, placement: text, active: { type: 'boolean', unit: 'boolean' } },
+  'event-scene': { eventId: text, group: text, placement: text, season: text, active: { type: 'boolean', unit: 'boolean' } },
   'event-illustration': { eventId: text },
   portrait: { personId: text, pool: text, lineage: text, ageStage: text, era: text },
   'weather-shadow': { weather: text },

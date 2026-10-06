@@ -101,6 +101,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 ## B′. 렌더 B — Astra (결정 FND-2, 2026-10-04 출범)
 
 - [ ] **RB-HANDCART 손수레 1장**: 제품 `62e4a720`, 실제 운반자 연결·전후 16쌍 확인. NE 접점 가림·남성 손 잔차 3.43 세계 px·작은 줌 판독 한계 유지. 최종 변경 시험·clean 입력 기하·병합 검사·본선 게시 미완료. [보고서](../verification/handcart/README.md).
+- [x] **RB-WORLD-FIRE 화재 연출3장**: 구현 `74fe1398`·가림 수정 `ee3f0249`. 실제 여름·겨울 전후10쌍·기하80조건 실패0. 크기 가드는 cf0ffec7에서 큐 병합을 분리해 유지. 최종 게시 영수증은 보고ZIP. [보고서](../verification/world-fire/README.md).
 - [x] **RB-LANDMARK-DATA 자료 준비**: `1b68f4dd` 확정 원본32장과 교정12장, 44장·22계절쌍을 정리했다. 변경 시험3개 통과. 설치0장, 엔진 성장·점유 사실은 [요청서](../requests/landmark-growth/README.md)로 넘긴다. LANDMARK-GROW 전체는 미완료.
 - [x] **RB-ERA-SIGNS 간판 8장**: 본선 포함 구현 `f749fecc`. 네 L2 본체에 실제 직업·달력으로 작은 벽 간판을 붙였다. 변경 시험 1,478개·기하 80조건 실패 0·전후 18쌍 확인. 문양 판독 한계와 미등록 본체 제외를 [보고서](../verification/era-signs/README.md)에 적었다.
 - [x] **RB-ERA-SIGNS 크기 가드 복구**: `f749fecc` 뒤 커진 세계 그리기를 본체·간판 모듈로 분리했다. `drawBuildings.ts` 순수 156줄, 새 모듈 124줄이며 양쪽에 기존 250줄 가드를 유지한다. 화면 동작은 그대로다.
@@ -152,6 +153,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - [x] 관문 줄이기: 올리기 전 check:merge + test:changed + 바뀐 줄 기하 감사, 본선 묶음 클론(3~4시간·bisect·run.sh 알림), 무거운 칸 3, 가드레일 2회째 생략, 기다리는 동안 다음 일(결정 RR16~RR19) — 본선 `eeccc92a` · `6b52f281`
 - [x] 게임 원칙 v0.3: P-T1·P-T3 정정, P-D5, 결정 GP-7(FIX-14 빈 해 관문 대체), 엔진 절 GP7-ENGINE — 본선 `d499935d`
 - [x] 관문 줄과 실험 줄(`--gate`/`--experiment`, 마지막 칸은 관문 몫, 결정 RR20) — 본선 `81c28025`
+- [x] 실험 줄을 세션이 돌아가며·세션마다 하나(RR21), `--status` 세션별 수, 감사·관문 규칙 변경은 REMOTE 검토(RR22) — 본선 `8de36eba`
 - [ ] 전체 시험 여러 갈래(testShards) 측정과 클론에 쓰기 — 본선 ``
 - [x] 성능 추이 자동 갱신(병합 뒤 훅, 결정 RR4) — 본선 `31554791`
 ### 운영 규칙(확인용)
