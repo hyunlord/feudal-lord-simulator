@@ -79,7 +79,7 @@ test("Given Stone Town When reading civic building config Then church and keep h
 
   // Then
   assert.deepEqual(church, {
-    kind: "church",
+    kind: "church", builderTicks: 900,
     name: "교회",
     width: 2,
     height: 2,
@@ -92,7 +92,7 @@ test("Given Stone Town When reading civic building config Then church and keep h
     serviceRadius: 12,
   });
   assert.deepEqual(keep, {
-    kind: "keep",
+    kind: "keep", builderTicks: 1200,
     name: "성채",
     width: 2,
     height: 2,
