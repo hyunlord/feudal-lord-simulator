@@ -147,7 +147,7 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - [x] 확장성 설계 확정(EXT-0): extensibility.md 반입·foundation 2부 링크, 결정 EXT-D1~D3, 헌장·AGENTS·CLAUDE 원칙 한 줄, 로드맵 EXT 줄, 엔진 절 EXT-1~3b·6 — 본선 `553c937e`
 - [x] 게임 원칙 확정: game-principles.md 반입(정본), 헌장·foundation 링크와 정체성↔대전제 대응, 지시서 관련 원칙·보고서 원칙 점검 칸, 결정 GP-1~6 — 본선 `6b67fa98`
 - [x] 관문 줄이기: 올리기 전 check:merge + test:changed + 바뀐 줄 기하 감사, 본선 묶음 클론(3~4시간·bisect·run.sh 알림), 무거운 칸 3, 가드레일 2회째 생략, 기다리는 동안 다음 일(결정 RR16~RR19) — 본선 `eeccc92a` · `6b52f281`
-- [ ] 게임 원칙 v0.3: P-T1·P-T3 정정, P-D5, 결정 GP-7(FIX-14 빈 해 관문 대체), 엔진 절 GP7-ENGINE — 본선 ``
+- [x] 게임 원칙 v0.3: P-T1·P-T3 정정, P-D5, 결정 GP-7(FIX-14 빈 해 관문 대체), 엔진 절 GP7-ENGINE — 본선 `d499935d`
 - [ ] 전체 시험 여러 갈래(testShards) 측정과 클론에 쓰기 — 본선 ``
 - [x] 성능 추이 자동 갱신(병합 뒤 훅, 결정 RR4) — 본선 `31554791`
 ### 운영 규칙(확인용)
