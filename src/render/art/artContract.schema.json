@@ -821,6 +821,53 @@
             "season"
           ],
           "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "image": {
+              "$ref": "#/$defs/image"
+            },
+            "provenance": {
+              "$ref": "#/$defs/provenance"
+            },
+            "geometry": {
+              "$ref": "#/$defs/geometry"
+            },
+            "kind": {
+              "const": "ground-prop"
+            },
+            "placement": {
+              "const": "stock-pile"
+            },
+            "resource": {
+              "type": "string",
+              "minLength": 1
+            },
+            "season": {
+              "enum": [
+                "spring",
+                "summer",
+                "autumn",
+                "winter"
+              ]
+            }
+          },
+          "required": [
+            "id",
+            "image",
+            "provenance",
+            "geometry",
+            "kind",
+            "placement",
+            "resource",
+            "season"
+          ],
+          "additionalProperties": false
         }
       ]
     },

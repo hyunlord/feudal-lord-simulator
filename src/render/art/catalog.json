@@ -18840,5 +18840,204 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave42-log-stockpiles",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "core-log-stack-a-summer",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "summer",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_a_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_a_summer.png",
+          "sourceSha256": "939aa30123e143d42d851afbb298f66a9bd446505fd7fc737812700cd79a0af8",
+          "runtimeSha256": "939aa30123e143d42d851afbb298f66a9bd446505fd7fc737812700cd79a0af8"
+        }
+      },
+      {
+        "id": "core-log-stack-b-summer",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "summer",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_b_summer.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_b_summer.png",
+          "sourceSha256": "71106370e1adc23619df0cc77016a8c7e36e271c205183658489f48ef087fd3a",
+          "runtimeSha256": "71106370e1adc23619df0cc77016a8c7e36e271c205183658489f48ef087fd3a"
+        }
+      },
+      {
+        "id": "core-log-stack-a-winter",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "winter",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_a_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_a_winter.png",
+          "sourceSha256": "b760e7f60afcdc7fe88326f14a731ac7b1d7257c7f6a3a415da88e30408d90a2",
+          "runtimeSha256": "b760e7f60afcdc7fe88326f14a731ac7b1d7257c7f6a3a415da88e30408d90a2"
+        }
+      },
+      {
+        "id": "core-log-stack-b-winter",
+        "kind": "ground-prop",
+        "placement": "stock-pile",
+        "resource": "logs",
+        "season": "winter",
+        "image": {
+          "url": "assets/wave42/regrowth/log_stack_b_winter.png",
+          "width": 128,
+          "height": 128
+        },
+        "geometry": {
+          "pivot": {
+            "x": 64,
+            "y": 108
+          },
+          "scale": 0.3,
+          "allowMirror": false
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave42/candidates-20261002/assets/regrowth/log_stack_b_winter.png",
+          "sourceSha256": "a04e37fc95bbc6e4ccad48b5eb02d5c778e41b7d255156f25efbd18c22d42a55",
+          "runtimeSha256": "a04e37fc95bbc6e4ccad48b5eb02d5c778e41b7d255156f25efbd18c22d42a55"
+        }
+      }
+    ],
+    "rules": [
+      {
+        "id": "core-log-stock-summer",
+        "kind": "ground-prop",
+        "slot": "stock-pile",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "stock-pile"
+          },
+          {
+            "field": "buildingKind",
+            "op": "in",
+            "values": [
+              "logging_camp",
+              "sawmill"
+            ]
+          },
+          {
+            "field": "resource",
+            "op": "eq",
+            "value": "logs"
+          },
+          {
+            "field": "season",
+            "op": "in",
+            "values": [
+              "spring",
+              "summer",
+              "autumn"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core-log-stack-a-summer",
+            "weight": 1
+          },
+          {
+            "assetId": "core-log-stack-b-summer",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "core-log-stock-winter",
+        "kind": "ground-prop",
+        "slot": "stock-pile",
+        "priority": 0,
+        "conditions": [
+          {
+            "field": "placement",
+            "op": "eq",
+            "value": "stock-pile"
+          },
+          {
+            "field": "buildingKind",
+            "op": "in",
+            "values": [
+              "logging_camp",
+              "sawmill"
+            ]
+          },
+          {
+            "field": "resource",
+            "op": "eq",
+            "value": "logs"
+          },
+          {
+            "field": "season",
+            "op": "in",
+            "values": [
+              "winter"
+            ]
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "core-log-stack-a-winter",
+            "weight": 1
+          },
+          {
+            "assetId": "core-log-stack-b-winter",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]
