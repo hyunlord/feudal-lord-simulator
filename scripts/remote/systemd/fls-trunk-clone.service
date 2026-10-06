@@ -1,0 +1,11 @@
+# The trunk's bundled clean clone (scripts/remote/trunkClone.sh). Installed on the DGX as a user unit:
+#   cp scripts/remote/systemd/fls-trunk-clone.* ~/.config/systemd/user/ && systemctl --user daemon-reload \
+#     && systemctl --user enable --now fls-trunk-clone.timer
+# It runs the trunk's own copy of trunkClone.sh (read from the mirror), so a change to the script needs no reinstall.
+[Unit]
+Description=Feudal Lord Simulator: the trunk's bundled clean clone (every 3-4 hours)
+
+[Service]
+Type=oneshot
+TimeoutStartSec=infinity
+ExecStart=/bin/bash -c 'B=$HOME/fls-runs; mkdir -p $B/_trunk $B/_locks; ( flock 7; git -C $B/_cache/repo.git fetch -q --prune origin ) 7>$B/_locks/repo-mirror.lock; git -C $B/_cache/repo.git show refs/heads/codex/phase15-organic-ground:scripts/remote/trunkClone.sh > $B/_trunk/trunkClone.sh && exec bash $B/_trunk/trunkClone.sh'
