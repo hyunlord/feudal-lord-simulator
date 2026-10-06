@@ -1676,6 +1676,9 @@
         },
         {
           "$ref": "#/$defs/building-attachment"
+        },
+        {
+          "$ref": "#/$defs/walker-transport"
         }
       ]
     },
@@ -1703,7 +1706,8 @@
             "ground-texture",
             "weather-shadow",
             "weather-particle",
-            "building-attachment"
+            "building-attachment",
+            "walker-transport"
           ]
         },
         "slot": {
@@ -2273,6 +2277,118 @@
         "occupations",
         "minZoom",
         "mounts"
+      ],
+      "additionalProperties": false
+    },
+    "walker-transport": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "const": "walker-transport"
+        },
+        "group": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "facing": {
+          "enum": [
+            "ne",
+            "se",
+            "sw",
+            "nw"
+          ]
+        },
+        "frameSelection": {
+          "const": "gait"
+        },
+        "scale": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "referenceFigureHeight": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "allowMirror": {
+          "const": false
+        },
+        "mountOffset": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number"
+            },
+            "y": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "x",
+            "y"
+          ],
+          "additionalProperties": false
+        },
+        "payloadAnchor": {
+          "$ref": "#/$defs/point"
+        },
+        "payloadWidth": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "frames": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "properties": {
+              "gaitFrame": {
+                "enum": [
+                  0,
+                  1
+                ]
+              },
+              "sourceRect": {
+                "$ref": "#/$defs/rect"
+              },
+              "pivot": {
+                "$ref": "#/$defs/point"
+              }
+            },
+            "required": [
+              "gaitFrame",
+              "sourceRect",
+              "pivot"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "group",
+        "image",
+        "provenance",
+        "facing",
+        "frameSelection",
+        "scale",
+        "referenceFigureHeight",
+        "allowMirror",
+        "mountOffset",
+        "payloadAnchor",
+        "payloadWidth",
+        "frames"
       ],
       "additionalProperties": false
     }

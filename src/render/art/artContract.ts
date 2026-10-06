@@ -1,5 +1,5 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
-export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
+export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo' | 'walker-transport'
   | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
@@ -72,6 +72,15 @@ export type WalkerCargoEntry = EntryBase & {
   | { readonly role: 'cargo'; readonly attachment: { readonly anchor: 'grip'; readonly pivot: ArtPoint } }
   | { readonly role: 'walker'; readonly attachment: { readonly anchor: 'foot'; readonly pivot: ArtPoint } }
 );
+export type WalkerTransportEntry = EntryBase & {
+  readonly kind: 'walker-transport'; readonly group: string; readonly facing: 'ne' | 'se' | 'sw' | 'nw';
+  readonly frameSelection: 'gait'; readonly scale: number; readonly referenceFigureHeight: number; readonly allowMirror: false;
+  /** World offset from actor foot at referenceFigureHeight, independent of body step lift. */
+  readonly mountOffset: ArtPoint;
+  /** Cell-local cargo contact and useful cargo width, independent of transparent canvas padding. */
+  readonly payloadAnchor: ArtPoint; readonly payloadWidth: number;
+  readonly frames: readonly { readonly gaitFrame: 0 | 1; readonly sourceRect: ArtRect; readonly pivot: ArtPoint }[];
+};
 /** Source-pixel endpoints; connectivity masks are selector facts, never port coordinates. */
 export type LandStagePorts = {
   readonly SW?: ArtPoint; readonly NW?: ArtPoint; readonly SE?: ArtPoint; readonly NE?: ArtPoint;
@@ -132,7 +141,7 @@ export type WeatherShadowEntry = EntryBase & {
 export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEntry;
 export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
 export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
-export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
+export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | WalkerTransportEntry | LandStageEntry
   | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =

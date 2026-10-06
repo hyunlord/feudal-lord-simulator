@@ -18840,5 +18840,342 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "bundleId": "core-wave13-handcart",
+    "packId": "core",
+    "entries": [
+      {
+        "id": "wave13:handcart-ne",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "ne",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": 0.5618241042345318,
+          "y": -8.860195439739414
+        },
+        "payloadAnchor": {
+          "x": 39.5,
+          "y": 36.5
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 0,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 72.5,
+              "y": 10.5
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 0,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 72.5,
+              "y": 10.5
+            }
+          }
+        ]
+      },
+      {
+        "id": "wave13:handcart-se",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "se",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": -0.059863945578236155,
+          "y": -8.668869452542921
+        },
+        "payloadAnchor": {
+          "x": 43.25,
+          "y": 31
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 96,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 70,
+              "y": 63
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 96,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 70,
+              "y": 63
+            }
+          }
+        ]
+      },
+      {
+        "id": "wave13:handcart-sw",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "sw",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": -0.373789924267367,
+          "y": -8.95647020085611
+        },
+        "payloadAnchor": {
+          "x": 47.75,
+          "y": 32.25
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 192,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 25.5,
+              "y": 63
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 192,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 25.5,
+              "y": 63
+            }
+          }
+        ]
+      },
+      {
+        "id": "wave13:handcart-nw",
+        "kind": "walker-transport",
+        "group": "handcart",
+        "facing": "nw",
+        "image": {
+          "url": "assets/wave13/cart/handcart_body-v2.png",
+          "width": 384,
+          "height": 148
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave13/candidates-v1/assets/cart/handcart_body-v2.png",
+          "sourceSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e",
+          "runtimeSha256": "011ee80d3ddffe910f0c9e914cb56b0fdfd5fbacc1a4a030075ae3cabb3fff6e"
+        },
+        "frameSelection": "gait",
+        "scale": 0.247887323943662,
+        "referenceFigureHeight": 17.6,
+        "allowMirror": false,
+        "mountOffset": {
+          "x": -0.9481578516456501,
+          "y": -8.71498280661536
+        },
+        "payloadAnchor": {
+          "x": 56.75,
+          "y": 36
+        },
+        "payloadWidth": 39.050000000000004,
+        "frames": [
+          {
+            "gaitFrame": 0,
+            "sourceRect": {
+              "x": 288,
+              "y": 0,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 23,
+              "y": 9.5
+            }
+          },
+          {
+            "gaitFrame": 1,
+            "sourceRect": {
+              "x": 288,
+              "y": 74,
+              "width": 96,
+              "height": 74
+            },
+            "pivot": {
+              "x": 23,
+              "y": 9.5
+            }
+          }
+        ]
+      }
+    ],
+    "rules": [
+      {
+        "id": "wave13:handcart-ne-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "ne"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-ne",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:handcart-se-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "se"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-se",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:handcart-sw-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "sw"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-sw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      },
+      {
+        "id": "wave13:handcart-nw-rule",
+        "kind": "walker-transport",
+        "slot": "walker-handcart",
+        "priority": 0,
+        "conditions": [
+          {
+            "op": "eq",
+            "field": "group",
+            "value": "handcart"
+          },
+          {
+            "op": "eq",
+            "field": "facing",
+            "value": "nw"
+          }
+        ],
+        "variants": [
+          {
+            "assetId": "wave13:handcart-nw",
+            "weight": 1
+          }
+        ],
+        "fallback": "none"
+      }
+    ]
   }
 ]
