@@ -52,6 +52,9 @@ export type Item = {
   readonly wholeLines?: readonly Box[];
   /** A scrolling clipper cuts it (part of it is scrolled out: reachable, and the paint pass does not judge it). */
   readonly scrollCut?: boolean;
+  /** Text: the part the clippers that do not scroll leave (LM-R2: a label in an overflow-hidden map inside a scrolled
+   * screen is cut there by the scroll, which is reachable; only these clippers cut it for good). Absent: `rect`. */
+  readonly hardRect?: Box | null;
   /** Text: the content box of the block its lines are laid out in (`snapLine`). */
   readonly block?: Box;
   /** Indices (into items) of the controls this item is inside. */
@@ -185,7 +188,7 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
 
   // The region the children of `container` can show in (null: they do not show), with the innermost clipper, and the
   // part of it the scrolling clippers alone leave (what is cut there is scrolled out, and reachable).
-  type Region = { readonly box: Box; readonly clipper: Clipper | null; readonly scrollBox: Box } | null;
+  type Region = { readonly box: Box; readonly clipper: Clipper | null; readonly scrollBox: Box; readonly hardBox: Box } | null;
   const regions = new Map<Element, Region>();
   const everywhere = { l: -1e9, t: -1e9, r: 1e9, b: 1e9 };
   const cut = (a: Box, b: Box, x: boolean, y: boolean) => ({ l: x ? Math.max(a.l, b.l) : a.l, r: x ? Math.min(a.r, b.r) : a.r, t: y ? Math.max(a.t, b.t) : a.t, b: y ? Math.min(a.b, b.b) : a.b });
@@ -202,7 +205,7 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
       box = cut(box, paddingBox(node, style), x, y);
       clipper ??= { path: pathOf(node), scroll: true, ellipsis: false };
     }
-    return { box, clipper, scrollBox: box };
+    return { box, clipper, scrollBox: box, hardBox: everywhere };
   })();
   const regionFor = (container: Element): Region => {
     const cached = regions.get(container); if (cached !== undefined) return cached;
@@ -216,7 +219,8 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
         const ellipsis = style.textOverflow === "ellipsis" || (style.getPropertyValue("-webkit-line-clamp") || "none") !== "none";
         region = { box: cut(outer.box, padding, style.overflowX !== "visible", style.overflowY !== "visible"),
           clipper: { path: path(container), scroll: scrolls(style.overflowX) || scrolls(style.overflowY), ellipsis },
-          scrollBox: cut(outer.scrollBox, padding, scrolls(style.overflowX), scrolls(style.overflowY)) };
+          scrollBox: cut(outer.scrollBox, padding, scrolls(style.overflowX), scrolls(style.overflowY)),
+          hardBox: cut(outer.hardBox, padding, style.overflowX !== "visible" && !scrolls(style.overflowX), style.overflowY !== "visible" && !scrolls(style.overflowY)) };
       }
     }
     regions.set(container, region); return region;
@@ -298,7 +302,8 @@ export async function collectSurface(spec: MeasureSpec): Promise<Collected> {
     const visibleLines = lines.map(line => visiblePart(line, region)).filter((line): line is Box => line !== null);
     const wholeLines = lines.filter(line => !scrollCut(line, region)).map(line => visiblePart(line, region)).filter((line): line is Box => line !== null);
     items.push({ kind: "text", path: path(parent), text: text.slice(0, 40), rect: visiblePart(full, region), full, clipper: region.clipper, slot: inSlot(parent),
-      lines: visibleLines, wholeLines, scrollCut: scrollCut(full, region), block, inControls: controlsAround(parent), within: around(parent, itemIndex) });
+      lines: visibleLines, wholeLines, scrollCut: scrollCut(full, region), hardRect: visiblePart(full, { ...region, box: region.hardBox }), block,
+      inControls: controlsAround(parent), within: around(parent, itemIndex) });
   }
 
   // The measured root, for the audit's second capture (scripts/uiGeometryAudit.mjs takes the attribute off again).
@@ -519,7 +524,8 @@ export function evaluateSurface(collected: Collected, spec: MeasureSpec): Evalua
   for (const scroller of collected.scrollers ?? []) if (!scroller.allowed) fail("overflow", `a part scrolls (${scroller.axis})`, scroller.path, scroller.over, null);
   for (const item of items) {
     if (item.kind !== "text" || item.clipper === null || item.clipper.scroll || item.clipper.ellipsis) continue;
-    const shownBox = item.rect;
+    // Only what the clippers that do not scroll cut (a part scrolled out of an outer scroller is reachable).
+    const shownBox = item.hardRect !== undefined ? item.hardRect : item.rect;
     const cutBy = shownBox === null ? Math.max(item.full.r - item.full.l, item.full.b - item.full.t) : Math.max(shownBox.l - item.full.l, item.full.r - shownBox.r, shownBox.t - item.full.t, item.full.b - shownBox.b);
     if (cutBy > 1) fail("overflow", `text clipped by ${item.clipper.path} without an ellipsis`, item.path, cutBy, item.full, item.text);
   }

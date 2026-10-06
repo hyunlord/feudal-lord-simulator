@@ -4,7 +4,7 @@ import { useLayoutEffect, type RefObject } from "react";
 // (data-label-side), but a marker near an edge (or a long name) can still put it past the map's edge, where the map
 // clips it (geometry audit: text clipped by the map). After layout, each label that crosses the bounds — the canvas,
 // and at fit zoom also the map's own box — is nudged back inside (--label-nudge-x / -y, CSS px). Measured again when
-// the map's size changes and whenever `deps` change (the estates, the zoom, the picture).
+// the map or a label changes size (the web font arrives after the first layout), and whenever `deps` change.
 
 export function useLabelsInside(map: RefObject<HTMLElement | null>, canvas: RefObject<HTMLElement | null>, fit: boolean, deps: readonly unknown[]): void {
   useLayoutEffect(() => {
@@ -28,10 +28,15 @@ export function useLabelsInside(map: RefObject<HTMLElement | null>, canvas: RefO
       }
     };
     place();
-    if (typeof ResizeObserver === "undefined") return;
+    // The web font comes after the first layout and widens the labels: measure again then, and whenever a label or the
+    // map changes size (a chosen label is bold).
+    let live = true;
+    void document.fonts?.ready.then(() => { if (live) place(); });
+    if (typeof ResizeObserver === "undefined") return () => { live = false; };
     const watch = new ResizeObserver(place);
     watch.observe(box);
-    return () => watch.disconnect();
+    for (const label of area.querySelectorAll<HTMLElement>(".lord-region-label")) watch.observe(label);
+    return () => { live = false; watch.disconnect(); };
   // why: the caller names what moves the labels (estates, zoom, picture); the refs are stable
   }, [fit, ...deps]); // eslint-disable-line react-hooks/exhaustive-deps
 }
