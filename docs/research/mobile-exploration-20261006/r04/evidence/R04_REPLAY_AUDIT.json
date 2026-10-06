@@ -1,0 +1,23 @@
+{
+  "scope": "Three preselected already-evaluated matches; not all-match replay",
+  "evidence": [
+    {
+      "index": 0,
+      "id": "duel:agriculture/trade:river:101:48:0",
+      "sourceHash": "3b40f466ab6adc1d88df07b5a585270fe8b0fa322c0fcbc5e637f67d3d36d100",
+      "exactCompactStateEqual": true
+    },
+    {
+      "index": 5940,
+      "id": "duel:military/diplomacy:river:101:48:0",
+      "sourceHash": "3b40f466ab6adc1d88df07b5a585270fe8b0fa322c0fcbc5e637f67d3d36d100",
+      "exactCompactStateEqual": true
+    },
+    {
+      "index": 11879,
+      "id": "duel:craft+scholarship/agriculture+diplomacy:marsh:106:144:1",
+      "sourceHash": "3b40f466ab6adc1d88df07b5a585270fe8b0fa322c0fcbc5e637f67d3d36d100",
+      "exactCompactStateEqual": true
+    }
+  ]
+}

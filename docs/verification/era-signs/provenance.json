@@ -1,0 +1,544 @@
+{
+  "head": "f749feccc72274b7ffeacce67541aabf3dec6622",
+  "scope": "Eight sign PNGs only; untracked provenance preparation; tracked ledgers unchanged",
+  "generatedAt": "2026-10-06T05:59:47.321Z",
+  "count": 8,
+  "summary": {
+    "decodedIdentical": 8,
+    "byteIdentical": 8,
+    "caBXRemoved": 0,
+    "sourceMinusCaBXEqualsRuntime": true
+  },
+  "csvColumns": [
+    "assetId",
+    "version",
+    "runtimePath",
+    "runtimeSha256",
+    "sourcePath",
+    "sourceSha256",
+    "tool",
+    "model",
+    "generatedAt",
+    "prompt",
+    "referenceInputs",
+    "seed",
+    "candidates",
+    "manualEdits",
+    "artBible",
+    "historicalProfile",
+    "owner",
+    "usedIn",
+    "status",
+    "notes"
+  ],
+  "rows": [
+    {
+      "assetId": "core:era-signs/sign_bread_1300",
+      "id": "sign_bread_1300",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_bread_1300.png",
+      "runtimePath": "public/assets/era-signs/sign_bread_1300.png",
+      "sourceSha256": "b903ea47e160881db838fa32656a0015be3decd82150a1654b9c83e9e361c933",
+      "runtimeSha256": "b903ea47e160881db838fa32656a0015be3decd82150a1654b9c83e9e361c933",
+      "sourceBytes": 17221,
+      "runtimeBytes": 17221,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "5987f15ad5e3c329dd87930af1c29c1bc303d5f98dcd095da40eb5410b1e8c29",
+      "runtimeDecodedPixelSha256": "5987f15ad5e3c329dd87930af1c29c1bc303d5f98dcd095da40eb5410b1e8c29",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_bread_1300",
+        "prompt": "Use case: historical-scene. Create ONE complete finished medieval baker's hanging trade sign sprite for a southern English market town circa 1300. Isolated on genuine transparent background, no scene, no text, no letters. Reference image provides only warm oak/ochre handpainted material style; do not copy its tiny basket layout. A simple small square oak board hanging by two short dark iron loops from a modest horizontal oak wall bracket. The board bears one plainly painted round loaf, muted wheat cream, no lettering. Near-front three-quarter isometric view, 2:1 ground axes, vertical upright. Soft painterly game art, warm brown oak #825C3D, no black outline, subdued upper-left illumination. Square canvas, whole bracket and sign within central 70% of canvas, ample transparent margins. Board centered under bracket, wall fixing at x25% y25%, top bracket y25%; lowest board y78%. Flat cream loaf emblem is clearly distinct from a physical basket. No modern branding, no decorative frame, no ground shadow. This is finished complete art, not components. Output square RGBA.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-bdb352fa-72d5-40d5-9e33-50a43714e70a.png",
+        "recordedRawSha256": "7e99e20310d5c8618c1d59ba763aa4acb75177101a6b31b2538d932fbd18876e",
+        "rawExistsNow": true,
+        "rawSha256Now": "7e99e20310d5c8618c1d59ba763aa4acb75177101a6b31b2538d932fbd18876e",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Wave36 material/concept reference; not reused as sign pixels",
+            "path": "assets-inbox/experiments/wave36-building-kit-pilot-20260930/assets/sign_bread.png",
+            "recordedSha256": "0fa7ff7fb44797918868c6e7dbba54a14c86675befa7c1511b7e9552e0e37f7a",
+            "currentExists": true,
+            "currentSha256": "0fa7ff7fb44797918868c6e7dbba54a14c86675befa7c1511b7e9552e0e37f7a"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    },
+    {
+      "assetId": "core:era-signs/sign_bread_1420",
+      "id": "sign_bread_1420",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_bread_1420.png",
+      "runtimePath": "public/assets/era-signs/sign_bread_1420.png",
+      "sourceSha256": "cce66fea6b6e21403a1bbf65d67f3a6a1493dcac1d91750a8702f9de24ce35c8",
+      "runtimeSha256": "cce66fea6b6e21403a1bbf65d67f3a6a1493dcac1d91750a8702f9de24ce35c8",
+      "sourceBytes": 17366,
+      "runtimeBytes": 17366,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "885d08ff0a8ce43d65728e3c051f123e6f52ae1270cdffec043703eb1dc154bb",
+      "runtimeDecodedPixelSha256": "885d08ff0a8ce43d65728e3c051f123e6f52ae1270cdffec043703eb1dc154bb",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_bread_1420",
+        "prompt": "Use case: precise-object-edit. Edit this complete baker trade sign into its 1420 southern English version. Preserve EXACT camera, canvas, wood bracket, iron loops, silhouette, all outer edges, board position and size, transparent margin, and fixing anchor. Change only face finish: a refined low-relief round loaf carved into board, surrounded by one shallow incised oak border, and restrained faded red ochre paint within the loaf carving. Keep warm oak brown, upper-left light, soft painted texture. No words, numerals, heraldic date or lettering. No gilding, no new ornament outside silhouette, no silhouette expansion, no border added outside board. Whole finished sprite, transparent RGBA.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-2ca740b4-f210-447a-8571-3e4528998f89.png",
+        "recordedRawSha256": "2c18f2e0ca318d39e04fb8060d04c3e1cd5dc7c86a0a76e20fd45da7627c5130",
+        "rawExistsNow": true,
+        "rawSha256Now": "2c18f2e0ca318d39e04fb8060d04c3e1cd5dc7c86a0a76e20fd45da7627c5130",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Corresponding 1300 complete generated painting; explicit QA lineage",
+            "recordId": "sign_bread_1300",
+            "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-bdb352fa-72d5-40d5-9e33-50a43714e70a.png",
+            "recordedRawSha256": "7e99e20310d5c8618c1d59ba763aa4acb75177101a6b31b2538d932fbd18876e"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    },
+    {
+      "assetId": "core:era-signs/sign_ale_1300",
+      "id": "sign_ale_1300",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_ale_1300.png",
+      "runtimePath": "public/assets/era-signs/sign_ale_1300.png",
+      "sourceSha256": "bdfb559fb7fe2569b99d1d1b20703d246ec3cb38ca14516a1902dcd0a040d374",
+      "runtimeSha256": "bdfb559fb7fe2569b99d1d1b20703d246ec3cb38ca14516a1902dcd0a040d374",
+      "sourceBytes": 9503,
+      "runtimeBytes": 9503,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "f69432abcf5e8586080bcccc3f9633d462edc03567757807796252302f284bb9",
+      "runtimeDecodedPixelSha256": "f69432abcf5e8586080bcccc3f9633d462edc03567757807796252302f284bb9",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_ale_1300",
+        "prompt": "Use case: historical-scene. Create ONE complete medieval alehouse trade marker for southern England circa 1300. Genuine transparent square RGBA. An ale-stake: plain warm oak horizontal projecting pole and short wall fixing, with a tied bunch of leafy green branches suspended from its outer end. No board, no barrel, no bottle, no hops, no flower cones, no lettering. Project reference image shows the actual ale-stake concept and warm painterly material style. Enlarge into complete readable finished sprite retaining a modest functional silhouette. Three-quarter isometric 2:1 view, upright wall fixing left, leafy bunch on right. Muted natural green leaves, warm brown oak #825C3D, hemp binding, soft handpainted game art with no black outlines, light from upper left, no ground shadow. Keep entire object inside central70% square, fixing at25%25%, lowest leaves78%. No background or wall, no loose components.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-dc2d4ef2-0a48-496d-a9fb-9e96c6dc1d03.png",
+        "recordedRawSha256": "821705c0808d50fccc37a3d80194237ddb6016d26521e8af3c4f72ad2357f865",
+        "rawExistsNow": true,
+        "rawSha256Now": "821705c0808d50fccc37a3d80194237ddb6016d26521e8af3c4f72ad2357f865",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Wave36 material/concept reference; not reused as sign pixels",
+            "path": "assets-inbox/experiments/wave36-building-kit-pilot-20260930/assets/sign_ale.png",
+            "recordedSha256": "d5dc189eb3e5eefc1de5bc57a82c12bfa1dfa69da7a978d4cdfa7c1a6602e076",
+            "currentExists": true,
+            "currentSha256": "d5dc189eb3e5eefc1de5bc57a82c12bfa1dfa69da7a978d4cdfa7c1a6602e076"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    },
+    {
+      "assetId": "core:era-signs/sign_ale_1420",
+      "id": "sign_ale_1420",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_ale_1420.png",
+      "runtimePath": "public/assets/era-signs/sign_ale_1420.png",
+      "sourceSha256": "d78a836910215ff19d41f7a8108726eedb2fbbfc9fb10154289daf4160891801",
+      "runtimeSha256": "d78a836910215ff19d41f7a8108726eedb2fbbfc9fb10154289daf4160891801",
+      "sourceBytes": 9809,
+      "runtimeBytes": 9809,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "be737eb8e1561107836119e1d93317f304d69d639a7dff33ded15820942c4cb8",
+      "runtimeDecodedPixelSha256": "be737eb8e1561107836119e1d93317f304d69d639a7dff33ded15820942c4cb8",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_ale_1420",
+        "prompt": "Use case: precise-object-edit. Southern English alehouse marker circa1420, complete finished version of this exact ale-stake. Preserve exact canvas, all outside silhouette edges, leaf bunch shape, wall fixing, bracket placement and camera. Maintain leafy branch bunch with hemp tie, absolutely no hops. Change only inside bracket surfaces: better smoothed warm oak joinery, a discreet hand-forged iron strap around the existing wood joint, and restrained dark red ochre protective paint on the middle face of the pole. Keep identical leaf shapes and greens, same old-fashioned branch trade marker, no extra board or symbols. Modest improvement from prosperous recommission, not an invented medieval technology. Soft painterly light upper left, no black outlines, transparent RGBA. No text, letters, dates, numbers, logo.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-f33d9e20-3757-430a-8c64-3b83da222410.png",
+        "recordedRawSha256": "180ac9d0a3088e81741c27d531eefeaf3148117fa35aeb664dc991ad86944075",
+        "rawExistsNow": true,
+        "rawSha256Now": "180ac9d0a3088e81741c27d531eefeaf3148117fa35aeb664dc991ad86944075",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Corresponding 1300 complete generated painting; explicit QA lineage",
+            "recordId": "sign_ale_1300",
+            "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-dc2d4ef2-0a48-496d-a9fb-9e96c6dc1d03.png",
+            "recordedRawSha256": "821705c0808d50fccc37a3d80194237ddb6016d26521e8af3c4f72ad2357f865"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    },
+    {
+      "assetId": "core:era-signs/sign_smith_1300",
+      "id": "sign_smith_1300",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_smith_1300.png",
+      "runtimePath": "public/assets/era-signs/sign_smith_1300.png",
+      "sourceSha256": "75a0d289d704eb6f28e90ddbaff7e80405975a84cf49f8971e0a231c3fdaecb2",
+      "runtimeSha256": "75a0d289d704eb6f28e90ddbaff7e80405975a84cf49f8971e0a231c3fdaecb2",
+      "sourceBytes": 25206,
+      "runtimeBytes": 25206,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "98cb953598903b967b66e2a59399746ae5d8c40f0a78ec05d7e94c8919b610ca",
+      "runtimeDecodedPixelSha256": "98cb953598903b967b66e2a59399746ae5d8c40f0a78ec05d7e94c8919b610ca",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_smith_1300",
+        "prompt": "Use case: precise-object-edit. Create a complete southern English blacksmith hanging trade sign circa1300 using the first image as exact structure, camera, style and composition reference. Preserve square canvas, wall bracket, loops, board silhouette and warm oak. Replace only loaf emblem with one simple side-view hand-forged iron horseshoe and a small diagonal hammer painted flat in dull charcoal and ochre. No modern tools, no lettering, no brand, no anvil ornament outside sign. Same soft painterly material, upperleft light, transparent background. Whole finished sign, not separated pieces. Face is rough oak, simple utilitarian paint, no carved border.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-296a798f-af4e-430b-8b52-5fd1519d168f.png",
+        "recordedRawSha256": "5f89a85592506d208a1e3bdc5f2ec856500c0e5a9faccb68a6e311b248680f01",
+        "rawExistsNow": true,
+        "rawSha256Now": "5f89a85592506d208a1e3bdc5f2ec856500c0e5a9faccb68a6e311b248680f01",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Wave36 material/concept reference; not reused as sign pixels",
+            "path": "assets-inbox/experiments/wave36-building-kit-pilot-20260930/assets/sign_smith.png",
+            "recordedSha256": "31c9620dc9e63f2829ed67230600d4a05ab5ef78969f763baebf4cd00c7b939a",
+            "currentExists": true,
+            "currentSha256": "31c9620dc9e63f2829ed67230600d4a05ab5ef78969f763baebf4cd00c7b939a"
+          },
+          {
+            "description": "Generated bread1300 structure reference per QA",
+            "recordId": "sign_bread_1300",
+            "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-bdb352fa-72d5-40d5-9e33-50a43714e70a.png",
+            "recordedRawSha256": "7e99e20310d5c8618c1d59ba763aa4acb75177101a6b31b2538d932fbd18876e"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    },
+    {
+      "assetId": "core:era-signs/sign_smith_1420",
+      "id": "sign_smith_1420",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_smith_1420.png",
+      "runtimePath": "public/assets/era-signs/sign_smith_1420.png",
+      "sourceSha256": "9fe4c7a74e891c65f25be849cd3e68443c3c59d54678b667313670e657221bd9",
+      "runtimeSha256": "9fe4c7a74e891c65f25be849cd3e68443c3c59d54678b667313670e657221bd9",
+      "sourceBytes": 25707,
+      "runtimeBytes": 25707,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "cbb8a031f065d70d8297753d5817a2b2813d35e7f524faae55baac28e449f2f9",
+      "runtimeDecodedPixelSha256": "cbb8a031f065d70d8297753d5817a2b2813d35e7f524faae55baac28e449f2f9",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_smith_1420",
+        "prompt": "Use case: precise-object-edit. Edit exact complete blacksmith hanging trade sign into 1420 southern English workshop version. Preserve canvas, silhouette and bracket, loops and fixing anchor, board dimensions, camera and lighting. Only improve face into restrained low-relief carved horseshoe and hammer emblem with faded red ochre field behind it and a shallow incised inner rectangular oak border. Same recognizable horseshoe and diagonal hammer, no modern tooling. Keep oak brown muted, no gilding, no fancy outside ornament. No text letters numbers logos. Transparent square RGBA, soft painterly style upper-leftlight, no black cartoonoutline. Entire sign finished not parts.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-dd0c82f6-fd32-4576-bd47-df479e502bf1.png",
+        "recordedRawSha256": "360f0727bdd4078df3bb42836588de76864cdb30c04af59a95cfb65ff8c929c4",
+        "rawExistsNow": true,
+        "rawSha256Now": "360f0727bdd4078df3bb42836588de76864cdb30c04af59a95cfb65ff8c929c4",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Corresponding 1300 complete generated painting; explicit QA lineage",
+            "recordId": "sign_smith_1300",
+            "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-296a798f-af4e-430b-8b52-5fd1519d168f.png",
+            "recordedRawSha256": "5f89a85592506d208a1e3bdc5f2ec856500c0e5a9faccb68a6e311b248680f01"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    },
+    {
+      "assetId": "core:era-signs/sign_textile_1300",
+      "id": "sign_textile_1300",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_textile_1300.png",
+      "runtimePath": "public/assets/era-signs/sign_textile_1300.png",
+      "sourceSha256": "fec38b0a880208f4d450b151a50e12f52ea3524ce8f79318abef953ad19e0f0e",
+      "runtimeSha256": "fec38b0a880208f4d450b151a50e12f52ea3524ce8f79318abef953ad19e0f0e",
+      "sourceBytes": 23858,
+      "runtimeBytes": 23858,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "7b13c6967868ebfc9d390f79f6fc00755249222d76775db86c0539c54ea81a61",
+      "runtimeDecodedPixelSha256": "7b13c6967868ebfc9d390f79f6fc00755249222d76775db86c0539c54ea81a61",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_textile_1300",
+        "prompt": "Use case: precise-object-edit. Create ONE complete southern English cloth merchant hanging trade sign circa1300. First reference supplies exact warm oak sign structure and painterly appearance; second reference the folded cloth motif only. Retain hanging square oak board with two iron loops and wooden projecting wall bracket, ample transparent square canvas. Replace bread emblem with a simple flat painted roll of offwhite undyed wool cloth, tied with a thin ochre cord, no letters. Cloth does not hang outside sign; emblem painted on board. No scissors, modern yarnspools, industrial equipment or modern patterns. Soft handpainted wood medium with upper-left illumination, no black outlines, warm oak #825C3D. Plain rough board no carvedborder. Full isolated transparent RGBA complete sprite.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-7d0ee5f3-666a-40af-8fb4-b1fc1aa12fb2.png",
+        "recordedRawSha256": "ad4c6282216b110efd86947d1b8cc425bf831be5203f10581d59acb243b5e856",
+        "rawExistsNow": true,
+        "rawSha256Now": "ad4c6282216b110efd86947d1b8cc425bf831be5203f10581d59acb243b5e856",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Wave36 material/concept reference; not reused as sign pixels",
+            "path": "assets-inbox/experiments/wave36-building-kit-pilot-20260930/assets/sign_textile.png",
+            "recordedSha256": "074d31f3c67cb2a1b8d8d6a2615fb2cd2a4de4bd9bc1dbfd5075b0d2dc34c28a",
+            "currentExists": true,
+            "currentSha256": "074d31f3c67cb2a1b8d8d6a2615fb2cd2a4de4bd9bc1dbfd5075b0d2dc34c28a"
+          },
+          {
+            "description": "Generated bread1300 structure reference per QA",
+            "recordId": "sign_bread_1300",
+            "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-bdb352fa-72d5-40d5-9e33-50a43714e70a.png",
+            "recordedRawSha256": "7e99e20310d5c8618c1d59ba763aa4acb75177101a6b31b2538d932fbd18876e"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    },
+    {
+      "assetId": "core:era-signs/sign_textile_1420",
+      "id": "sign_textile_1420",
+      "sourcePath": "assets-inbox/era-pilot/candidates-20261003/assets/signs/sign_textile_1420.png",
+      "runtimePath": "public/assets/era-signs/sign_textile_1420.png",
+      "sourceSha256": "149fa56124d201c1bfb13c106f2201798f1cd14621ffe4dc66b1e161e3d8e0a1",
+      "runtimeSha256": "149fa56124d201c1bfb13c106f2201798f1cd14621ffe4dc66b1e161e3d8e0a1",
+      "sourceBytes": 24007,
+      "runtimeBytes": 24007,
+      "width": 137,
+      "height": 137,
+      "decodedFormat": "RGBA8",
+      "decodedPixelSha256": "813d60692a443d6de4e69f6919684f115a8b4c7dd34377fe7b29cd6caf5ee4f4",
+      "runtimeDecodedPixelSha256": "813d60692a443d6de4e69f6919684f115a8b4c7dd34377fe7b29cd6caf5ee4f4",
+      "decodedPixelsIdentical": true,
+      "sourceChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "runtimeChunks": [
+        "IHDR",
+        "sRGB",
+        "eXIf",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "crcVerified": true,
+      "caBXChunksRemoved": 0,
+      "sourceMinusCaBXEqualsRuntime": true,
+      "byteIdentical": true,
+      "lineage": {
+        "recordFile": "assets-inbox/era-pilot/candidates-20261003/records/signs/generation.json",
+        "recordId": "sign_textile_1420",
+        "prompt": "Use case: precise-object-edit. Edit this exact finished English cloth merchant sign into1420 version: preserve exact outer silhouette, canvas, bracket, wall fixing, loops, board position and camera. Only refine board face: same cloth roll as a shallow carved painted emblem, one roll face dyed muted madder red, other muted natural cream; a restrained shallow incised inner rectangular oak border. No new objects, no modern sewing tools, no lettering, numbers or brands, no gilding. Keep warm oak tones, soft handpainted upper-left illumination, transparentRGBA. Modest richer finish of a recommissioned board, not a claim dyed cloth invented in1420. Full finished sign, not a layer kit.",
+        "tool": "image_gen.imagegen",
+        "model": null,
+        "generatedAt": null,
+        "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-b7ae8681-8a3e-4855-8195-a4f2dedc65fc.png",
+        "recordedRawSha256": "bdc01473eefd06a60c6d635cf9552a7434279ec48168892777ba628a2bcf1df9",
+        "rawExistsNow": true,
+        "rawSha256Now": "bdc01473eefd06a60c6d635cf9552a7434279ec48168892777ba628a2bcf1df9",
+        "outputHashMatches": true,
+        "referenceInputs": [
+          {
+            "description": "Corresponding 1300 complete generated painting; explicit QA lineage",
+            "recordId": "sign_textile_1300",
+            "recordedRawPath": "/Users/rexxa/Library/Application Support/orca/codex-accounts/54be5844-95fd-4c46-925c-75327ccd186a/home/generated_images/01a0fd42-0109-7763-9611-bb79edcd7048/exec-7d0ee5f3-666a-40af-8fb4-b1fc1aa12fb2.png",
+            "recordedRawSha256": "ad4c6282216b110efd86947d1b8cc425bf831be5203f10581d59acb243b5e856"
+          }
+        ]
+      },
+      "limits": [
+        "Generation model and exact generation timestamp are not recorded; folder date is not treated as generation date.",
+        "Original downscale 1280 to137 via sips is recorded in signs/QA.md; not re-executed here.",
+        "Mount quality, readability, occlusion and actual draw requests require runtime capture; this is byte/pixel/provenance verification."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,457 @@
+{
+  "time": "2026-10-06T05:22:20.552Z",
+  "results": [
+    {
+      "width": 375,
+      "checks": [
+        {
+          "name": "policy",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "town",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "growth-reason",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "battle",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "battle-reason",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "evening-battle",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "restored",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "contract",
+          "viewport": 375,
+          "document": 375
+        },
+        {
+          "name": "compare",
+          "viewport": 375,
+          "document": 375
+        }
+      ],
+      "appearanceRecordingIdentical": true,
+      "appearanceBattleIdentical": true,
+      "restoreRecordingIdentical": true,
+      "restoreBattleIdentical": true,
+      "sideBySide": false,
+      "boxes": [
+        {
+          "x": 16,
+          "y": 214.5625,
+          "width": 343
+        },
+        {
+          "x": 16,
+          "y": 819.53125,
+          "width": 343
+        },
+        {
+          "x": 16,
+          "y": 1424.5,
+          "width": 343
+        }
+      ],
+      "consoleErrors": [],
+      "recording": {
+        "version": "growth-1",
+        "identity": {
+          "format": 1,
+          "sourceHash": "ef5f2dfdd1d29d6b307f0f463e43fce332270337045917accf71bf244caf8007",
+          "rulesHash": "46703da6f64d12b00dcbe1912f595aba62069a80bae7134d32c138e9d845c52a",
+          "contentHash": "7431a139e7d72f6eb5d07052aa8cafb0ff5c94bcbaa07ae46e1c90ec8f9fd60f"
+        },
+        "initialStateHash": "19cfec66ed7b018697b9139e125ce3776d22edf461d08d6299abb9ae8940c437",
+        "seed": 1,
+        "terrain": "river",
+        "commands": [
+          {
+            "kind": "policy",
+            "policy": {
+              "agriculture": 0,
+              "trade": 50,
+              "craft": 0,
+              "military": 0,
+              "faith": 0,
+              "scholarship": 0,
+              "maritime": 50,
+              "diplomacy": 0
+            }
+          },
+          {
+            "kind": "advance",
+            "steps": 12
+          },
+          {
+            "kind": "battle",
+            "mode": "raid",
+            "entry": "north",
+            "defending": false
+          }
+        ],
+        "inputHash": "0d620ade56f49199ff2ee4e645b4b46f23a82a66abaee3192b1d1ba533dd114c",
+        "resultHash": "6ac181805d024f761a776abee59344c3d35ef404c2b1f7f2ca05658139387d7e"
+      },
+      "contractText": "조건을 만들면, 주민이 도시를 만듭니다\n\n저마다의 영지\n\n로컬 탐사 시제품 · 시간 압축 · 같은 seed 1\n\n가상 이웃도 같은 시작 재고와 규칙으로 자랍니다. 이 화면은 로컬 스냅샷 전투이며 서버 연결은 없습니다.\n\n강 건너 영지\n주민\n25\n정산일\n12\n식량\n336\n자재\n42\n공구\n11\n은화\n236\n서로 필요한 것을 교환하기\n\n재고와 운송료를 비교해 양쪽 모두 이익인 교환을 찾습니다. 상대가 거절할 수 있습니다.\n\n교역·불가침 제안하루 진행 · 계약 정산\n출정 목적과 입구\n\n주민 일부를 소집하고 식량·공구를 씁니다. 소집된 생존자는 다음 정산에 생산하지 못합니다. 약탈은 보호 재고를 제외한 10%와 운반량 중 작은 한도로 제한됩니다.\n\n한정 약탈\n관문 공성\n북쪽 길\n동쪽 길\n남쪽 길\n서쪽 길\n출정 · 결과 보기\n이웃의 습격을 방어\n어떤 길을 거쳐 돌아왔나\n\n창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다\n\n이동·접촉 62단계 · 출정 6명 · 공격 손실 0명 · 방어 손실 2명\n\n운반한 재고: 식량 12 · 자재 0 · 공구 0 · 은화 0\n\n경로와 노출 기록\n\n지금은 교역 조건을 맞추지 못했습니다 (양쪽 모두 이익인 교환을 찾지 못했습니다).\n\n지도 색감: 기본\n\n무료 외형 미리보기 · 지도 색감만 바뀝니다. 비교 화면은 기본 색감입니다.\n\n기록 저장\n저장 기록 이어하기\n영지\n방침\n이웃"
+    },
+    {
+      "width": 390,
+      "checks": [
+        {
+          "name": "policy",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "town",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "growth-reason",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "battle",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "battle-reason",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "evening-battle",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "restored",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "contract",
+          "viewport": 390,
+          "document": 390
+        },
+        {
+          "name": "compare",
+          "viewport": 390,
+          "document": 390
+        }
+      ],
+      "appearanceRecordingIdentical": true,
+      "appearanceBattleIdentical": true,
+      "restoreRecordingIdentical": true,
+      "restoreBattleIdentical": true,
+      "sideBySide": false,
+      "boxes": [
+        {
+          "x": 16,
+          "y": 214.5625,
+          "width": 358
+        },
+        {
+          "x": 16,
+          "y": 834.53125,
+          "width": 358
+        },
+        {
+          "x": 16,
+          "y": 1454.5,
+          "width": 358
+        }
+      ],
+      "consoleErrors": [],
+      "recording": {
+        "version": "growth-1",
+        "identity": {
+          "format": 1,
+          "sourceHash": "ef5f2dfdd1d29d6b307f0f463e43fce332270337045917accf71bf244caf8007",
+          "rulesHash": "46703da6f64d12b00dcbe1912f595aba62069a80bae7134d32c138e9d845c52a",
+          "contentHash": "7431a139e7d72f6eb5d07052aa8cafb0ff5c94bcbaa07ae46e1c90ec8f9fd60f"
+        },
+        "initialStateHash": "19cfec66ed7b018697b9139e125ce3776d22edf461d08d6299abb9ae8940c437",
+        "seed": 1,
+        "terrain": "river",
+        "commands": [
+          {
+            "kind": "policy",
+            "policy": {
+              "agriculture": 0,
+              "trade": 50,
+              "craft": 0,
+              "military": 0,
+              "faith": 0,
+              "scholarship": 0,
+              "maritime": 50,
+              "diplomacy": 0
+            }
+          },
+          {
+            "kind": "advance",
+            "steps": 12
+          },
+          {
+            "kind": "battle",
+            "mode": "raid",
+            "entry": "north",
+            "defending": false
+          }
+        ],
+        "inputHash": "0d620ade56f49199ff2ee4e645b4b46f23a82a66abaee3192b1d1ba533dd114c",
+        "resultHash": "6ac181805d024f761a776abee59344c3d35ef404c2b1f7f2ca05658139387d7e"
+      },
+      "contractText": "조건을 만들면, 주민이 도시를 만듭니다\n\n저마다의 영지\n\n로컬 탐사 시제품 · 시간 압축 · 같은 seed 1\n\n가상 이웃도 같은 시작 재고와 규칙으로 자랍니다. 이 화면은 로컬 스냅샷 전투이며 서버 연결은 없습니다.\n\n강 건너 영지\n주민\n25\n정산일\n12\n식량\n336\n자재\n42\n공구\n11\n은화\n236\n서로 필요한 것을 교환하기\n\n재고와 운송료를 비교해 양쪽 모두 이익인 교환을 찾습니다. 상대가 거절할 수 있습니다.\n\n교역·불가침 제안하루 진행 · 계약 정산\n출정 목적과 입구\n\n주민 일부를 소집하고 식량·공구를 씁니다. 소집된 생존자는 다음 정산에 생산하지 못합니다. 약탈은 보호 재고를 제외한 10%와 운반량 중 작은 한도로 제한됩니다.\n\n한정 약탈\n관문 공성\n북쪽 길\n동쪽 길\n남쪽 길\n서쪽 길\n출정 · 결과 보기\n이웃의 습격을 방어\n어떤 길을 거쳐 돌아왔나\n\n창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다\n\n이동·접촉 62단계 · 출정 6명 · 공격 손실 0명 · 방어 손실 2명\n\n운반한 재고: 식량 12 · 자재 0 · 공구 0 · 은화 0\n\n경로와 노출 기록\n\n지금은 교역 조건을 맞추지 못했습니다 (양쪽 모두 이익인 교환을 찾지 못했습니다).\n\n지도 색감: 기본\n\n무료 외형 미리보기 · 지도 색감만 바뀝니다. 비교 화면은 기본 색감입니다.\n\n기록 저장\n저장 기록 이어하기\n영지\n방침\n이웃"
+    },
+    {
+      "width": 768,
+      "checks": [
+        {
+          "name": "policy",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "town",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "growth-reason",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "battle",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "battle-reason",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "evening-battle",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "restored",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "contract",
+          "viewport": 768,
+          "document": 768
+        },
+        {
+          "name": "compare",
+          "viewport": 768,
+          "document": 768
+        }
+      ],
+      "appearanceRecordingIdentical": true,
+      "appearanceBattleIdentical": true,
+      "restoreRecordingIdentical": true,
+      "restoreBattleIdentical": true,
+      "sideBySide": true,
+      "boxes": [
+        {
+          "x": 16,
+          "y": 189.765625,
+          "width": 229.328125
+        },
+        {
+          "x": 269.328125,
+          "y": 189.765625,
+          "width": 229.328125
+        },
+        {
+          "x": 522.65625,
+          "y": 189.765625,
+          "width": 229.328125
+        }
+      ],
+      "consoleErrors": [],
+      "recording": {
+        "version": "growth-1",
+        "identity": {
+          "format": 1,
+          "sourceHash": "ef5f2dfdd1d29d6b307f0f463e43fce332270337045917accf71bf244caf8007",
+          "rulesHash": "46703da6f64d12b00dcbe1912f595aba62069a80bae7134d32c138e9d845c52a",
+          "contentHash": "7431a139e7d72f6eb5d07052aa8cafb0ff5c94bcbaa07ae46e1c90ec8f9fd60f"
+        },
+        "initialStateHash": "19cfec66ed7b018697b9139e125ce3776d22edf461d08d6299abb9ae8940c437",
+        "seed": 1,
+        "terrain": "river",
+        "commands": [
+          {
+            "kind": "policy",
+            "policy": {
+              "agriculture": 0,
+              "trade": 50,
+              "craft": 0,
+              "military": 0,
+              "faith": 0,
+              "scholarship": 0,
+              "maritime": 50,
+              "diplomacy": 0
+            }
+          },
+          {
+            "kind": "advance",
+            "steps": 12
+          },
+          {
+            "kind": "battle",
+            "mode": "raid",
+            "entry": "north",
+            "defending": false
+          }
+        ],
+        "inputHash": "0d620ade56f49199ff2ee4e645b4b46f23a82a66abaee3192b1d1ba533dd114c",
+        "resultHash": "6ac181805d024f761a776abee59344c3d35ef404c2b1f7f2ca05658139387d7e"
+      },
+      "contractText": "조건을 만들면, 주민이 도시를 만듭니다\n\n저마다의 영지\n\n로컬 탐사 시제품 · 시간 압축 · 같은 seed 1\n\n가상 이웃도 같은 시작 재고와 규칙으로 자랍니다. 이 화면은 로컬 스냅샷 전투이며 서버 연결은 없습니다.\n\n강 건너 영지\n주민\n25\n정산일\n12\n식량\n336\n자재\n42\n공구\n11\n은화\n236\n서로 필요한 것을 교환하기\n\n재고와 운송료를 비교해 양쪽 모두 이익인 교환을 찾습니다. 상대가 거절할 수 있습니다.\n\n교역·불가침 제안하루 진행 · 계약 정산\n출정 목적과 입구\n\n주민 일부를 소집하고 식량·공구를 씁니다. 소집된 생존자는 다음 정산에 생산하지 못합니다. 약탈은 보호 재고를 제외한 10%와 운반량 중 작은 한도로 제한됩니다.\n\n한정 약탈\n관문 공성\n북쪽 길\n동쪽 길\n남쪽 길\n서쪽 길\n출정 · 결과 보기\n이웃의 습격을 방어\n어떤 길을 거쳐 돌아왔나\n\n창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다\n\n이동·접촉 62단계 · 출정 6명 · 공격 손실 0명 · 방어 손실 2명\n\n운반한 재고: 식량 12 · 자재 0 · 공구 0 · 은화 0\n\n경로와 노출 기록\n\n지금은 교역 조건을 맞추지 못했습니다 (양쪽 모두 이익인 교환을 찾지 못했습니다).\n\n지도 색감: 기본\n\n무료 외형 미리보기 · 지도 색감만 바뀝니다. 비교 화면은 기본 색감입니다.\n\n기록 저장\n저장 기록 이어하기\n영지\n방침\n이웃"
+    },
+    {
+      "width": 1280,
+      "checks": [
+        {
+          "name": "policy",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "town",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "growth-reason",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "battle",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "battle-reason",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "evening-battle",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "restored",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "contract",
+          "viewport": 1280,
+          "document": 1280
+        },
+        {
+          "name": "compare",
+          "viewport": 1280,
+          "document": 1280
+        }
+      ],
+      "appearanceRecordingIdentical": true,
+      "appearanceBattleIdentical": true,
+      "restoreRecordingIdentical": true,
+      "restoreBattleIdentical": true,
+      "sideBySide": true,
+      "boxes": [
+        {
+          "x": 16,
+          "y": 189.765625,
+          "width": 400
+        },
+        {
+          "x": 440,
+          "y": 189.765625,
+          "width": 400
+        },
+        {
+          "x": 864,
+          "y": 189.765625,
+          "width": 400
+        }
+      ],
+      "consoleErrors": [],
+      "recording": {
+        "version": "growth-1",
+        "identity": {
+          "format": 1,
+          "sourceHash": "ef5f2dfdd1d29d6b307f0f463e43fce332270337045917accf71bf244caf8007",
+          "rulesHash": "46703da6f64d12b00dcbe1912f595aba62069a80bae7134d32c138e9d845c52a",
+          "contentHash": "7431a139e7d72f6eb5d07052aa8cafb0ff5c94bcbaa07ae46e1c90ec8f9fd60f"
+        },
+        "initialStateHash": "19cfec66ed7b018697b9139e125ce3776d22edf461d08d6299abb9ae8940c437",
+        "seed": 1,
+        "terrain": "river",
+        "commands": [
+          {
+            "kind": "policy",
+            "policy": {
+              "agriculture": 0,
+              "trade": 50,
+              "craft": 0,
+              "military": 0,
+              "faith": 0,
+              "scholarship": 0,
+              "maritime": 50,
+              "diplomacy": 0
+            }
+          },
+          {
+            "kind": "advance",
+            "steps": 12
+          },
+          {
+            "kind": "battle",
+            "mode": "raid",
+            "entry": "north",
+            "defending": false
+          }
+        ],
+        "inputHash": "0d620ade56f49199ff2ee4e645b4b46f23a82a66abaee3192b1d1ba533dd114c",
+        "resultHash": "6ac181805d024f761a776abee59344c3d35ef404c2b1f7f2ca05658139387d7e"
+      },
+      "contractText": "조건을 만들면, 주민이 도시를 만듭니다\n\n저마다의 영지\n\n로컬 탐사 시제품 · 시간 압축 · 같은 seed 1\n\n가상 이웃도 같은 시작 재고와 규칙으로 자랍니다. 이 화면은 로컬 스냅샷 전투이며 서버 연결은 없습니다.\n\n강 건너 영지\n주민\n25\n정산일\n12\n식량\n336\n자재\n42\n공구\n11\n은화\n236\n서로 필요한 것을 교환하기\n\n재고와 운송료를 비교해 양쪽 모두 이익인 교환을 찾습니다. 상대가 거절할 수 있습니다.\n\n교역·불가침 제안하루 진행 · 계약 정산\n출정 목적과 입구\n\n주민 일부를 소집하고 식량·공구를 씁니다. 소집된 생존자는 다음 정산에 생산하지 못합니다. 약탈은 보호 재고를 제외한 10%와 운반량 중 작은 한도로 제한됩니다.\n\n한정 약탈\n관문 공성\n북쪽 길\n동쪽 길\n남쪽 길\n서쪽 길\n출정 · 결과 보기\n이웃의 습격을 방어\n어떤 길을 거쳐 돌아왔나\n\n창고에 도달해 보호 재고를 제외한 한정 전리품을 운반했습니다\n\n이동·접촉 62단계 · 출정 6명 · 공격 손실 0명 · 방어 손실 2명\n\n운반한 재고: 식량 12 · 자재 0 · 공구 0 · 은화 0\n\n경로와 노출 기록\n\n지금은 교역 조건을 맞추지 못했습니다 (양쪽 모두 이익인 교환을 찾지 못했습니다).\n\n지도 색감: 기본\n\n무료 외형 미리보기 · 지도 색감만 바뀝니다. 비교 화면은 기본 색감입니다.\n\n기록 저장\n저장 기록 이어하기\n영지\n방침\n이웃"
+    }
+  ]
+}

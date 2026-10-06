@@ -1,5 +1,5 @@
 /** Authored data only. Schema checks structure; registry checks references and geometry bounds. */
-export type ArtKind = 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
+export type ArtKind = 'building-attachment' | 'building-body' | 'state-overlay' | 'ground-prop' | 'walker-cargo'
   | 'land-stage' | 'landmark' | 'event-scene' | 'event-illustration' | 'portrait' | 'regional-map' | 'season-variant' | 'ground-texture' | 'weather-shadow' | 'weather-particle';
 export type ArtPoint = { readonly x: number; readonly y: number };
 export type ArtRect = ArtPoint & { readonly width: number; readonly height: number };
@@ -26,6 +26,12 @@ type WorldEntry = EntryBase & { readonly geometry: ArtGeometry; readonly season?
 export type BuildingBodyEntry = WorldEntry & {
   readonly kind: 'building-body'; readonly buildingKinds: readonly string[];
   readonly levels: readonly number[]; readonly variantId: string;
+};
+export type BuildingAttachmentEntry = WorldEntry & {
+  readonly kind: 'building-attachment'; readonly role: string;
+  readonly occupations: readonly string[]; readonly minZoom: number;
+  /** Source-body pixels, registered against each actual target painting. */
+  readonly mounts: readonly { readonly bodyId: string; readonly point: ArtPoint }[];
 };
 export type StateOverlayEntry = WorldEntry & {
   readonly kind: 'state-overlay'; readonly targetBodyIds: readonly string[];
@@ -126,7 +132,7 @@ export type WeatherShadowEntry = EntryBase & {
 export type GroundTextureEntry = FieldGroundTextureEntry | RegionGroundTextureEntry;
 export function isFieldTexture(entry: ArtEntry): entry is FieldGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'x'; }
 export function isRegionTexture(entry: ArtEntry): entry is RegionGroundTextureEntry { return entry.kind === 'ground-texture' && entry.mapping.repeat === 'xy'; }
-export type ArtEntry = BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
+export type ArtEntry = BuildingAttachmentEntry | BuildingBodyEntry | StateOverlayEntry | GroundPropEntry | WalkerCargoEntry | LandStageEntry
   | LandmarkEntry | EventSceneEntry | EventIllustrationEntry | PortraitEntry | RegionalMapEntry | SeasonVariantEntry | GroundTextureEntry | WeatherShadowEntry | WeatherParticleEntry;
 export type ArtScalar = string | number | boolean;
 export type ArtCondition =
@@ -141,5 +147,7 @@ export type ArtRule = {
 };
 export type ArtBundle = {
   readonly schemaVersion: 1; readonly bundleId: string;
+  /** Legacy omission denotes core ownership; not a save-pack selection mechanism. */
+  readonly packId?: string;
   readonly entries: readonly ArtEntry[]; readonly rules: readonly ArtRule[];
 };

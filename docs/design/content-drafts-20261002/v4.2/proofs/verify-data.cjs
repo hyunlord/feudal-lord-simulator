@@ -1,0 +1,10 @@
+const fs=require('fs'),path=require('path'),assert=require('assert/strict'),crypto=require('crypto');
+const p=path.resolve(__dirname,'..'),read=f=>JSON.parse(fs.readFileSync(path.join(p,f),'utf8'));
+const events=read('events-v4.2.json'),reg=read('registry-v4.2.json'),audit=read('EVENT_AUDIT.json'),base=read('records/canonical-input.json'),br=read('records/registry-input.json'),enabled=read('proofs/enabled.json');
+assert.equal(events.length,30);assert.equal(audit.length,86);assert.equal(new Set(audit.map(e=>e.id)).size,86);assert.deepEqual(audit.map(e=>e.id).sort(),enabled.slice().sort());assert.deepEqual(events.map(e=>e.id),reg.entries.map(e=>e.id));
+assert.equal(audit.filter(e=>e.verdict==='hold').length,38);assert.equal(audit.filter(e=>e.verdict==='keep').length,18);assert.equal(audit.reduce((n,e)=>n+e.choiceAudit.length,0),270);
+const merged=base.map(e=>events.find(c=>c.id===e.id)??e);assert.equal(merged.length,215);
+for(const e of events){const old=base.find(x=>x.id===e.id);assert.notDeepEqual(e,old);assert.deepEqual(e.history,old.history);assert.deepEqual(e.years,old.years);assert.deepEqual(e.recurrence,old.recurrence);assert.deepEqual(e.choices.map(c=>c.id),reg.entries.find(r=>r.id===e.id).choices.map(c=>c.id));const row=audit.find(r=>r.id===e.id);assert.equal(row.verdict,'revise');for(const c of e.choices){const ca=row.choiceAudit.find(x=>x.id===c.id);assert.equal(ca.after.label,c.label);assert.equal(ca.after.tradeoff,c.tradeoff);}}
+const semantic=r=>Object.fromEntries(Object.entries(r).filter(([k])=>!['sourceRevision','contentRef'].includes(k)));
+const changed=reg.entries.filter(r=>JSON.stringify(semantic(r))!==JSON.stringify(semantic(br.find(x=>x.id===r.id)))).map(r=>r.id);assert.deepEqual(changed,['ck_evt_150','ck_evt_163','ck_evt_165','ck_evt_206','ck_evt_209']);
+const out={pass:true,enabled:86,choices:270,delta:30,hold:38,keep:18,merged:215,executableChanges:changed,historyAndRecurrencePreserved:true,unmodifiedEventsPreserved:185,deltaSha256:crypto.createHash('sha256').update(fs.readFileSync(path.join(p,'events-v4.2.json'))).digest('hex')};console.log(JSON.stringify(out,null,2));

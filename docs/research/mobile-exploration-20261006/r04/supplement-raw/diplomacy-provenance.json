@@ -1,0 +1,82 @@
+{
+  "format": 1,
+  "kind": "diplomacy",
+  "sourceHash": "4d2b139cc08ea0618e64442abd6d782dbc71e25b27d9a2e309d1ef208082762a",
+  "sourceFiles": [
+    {
+      "path": "league/compact.ts",
+      "sha256": "087cf50bbba7ada4a3a0c877329b7accd14e98340c08a6ced0ee8842a8ac170a"
+    },
+    {
+      "path": "league/game.ts",
+      "sha256": "c0bc7209569c828133d20b338190b7cce1a7a2980d46cfc65dce837a6e183c00"
+    },
+    {
+      "path": "league/schedule.ts",
+      "sha256": "4d79dcad93c9b6b537aaa475a4b9913f7e53e08f7b75b56b5a0668ab387826e0"
+    },
+    {
+      "path": "league/strategies.ts",
+      "sha256": "fd444f4643cd28ae028ea4a840ecf879fb842fc8f2a8da1ee5e315ae6553958a"
+    },
+    {
+      "path": "league/supplement-data.ts",
+      "sha256": "d14897d0f52c2926caa902e991c938a6cb6e7da215ba25c5ffc9eb671c1fc780"
+    },
+    {
+      "path": "league/supplement-geometry.ts",
+      "sha256": "b8412d6f7e4c0d72a0adbb63fe7a238b1f254564d5d059282e5fb287f7c8636b"
+    },
+    {
+      "path": "league/supplement.ts",
+      "sha256": "5c684ac873ce9dd61153de234ea0897cf4232a90a3da1b9056b07a002d43ac85"
+    },
+    {
+      "path": "model/battle.ts",
+      "sha256": "1910ac80e7e61934eae4c5beec5bb160ec141e37a3f6a7a3605cc14da6f12931"
+    },
+    {
+      "path": "model/battle.types.ts",
+      "sha256": "ae1297c09305c981e92fe55cb6697a03f63e190217a12e0c49cbea4f8c92ebd9"
+    },
+    {
+      "path": "model/contracts.ts",
+      "sha256": "743f5b5df7748f8758c537025cf1c64673030c4bad9193cad344749ac57a56f3"
+    },
+    {
+      "path": "model/contracts.types.ts",
+      "sha256": "b85d8f12b4c024424024ab3931cb806eb7f67610b7851504d7df52f181076e4e"
+    },
+    {
+      "path": "model/economy.ts",
+      "sha256": "79096e05daacd8fbbcdca5445725b491d129b57c6e72ee1172642bc782bcb204"
+    },
+    {
+      "path": "model/index.ts",
+      "sha256": "6fb832c155b25a8eb4db52d14c9fc4801ecfbca7d79a3bdef25a25e8beba8a7b"
+    },
+    {
+      "path": "model/pathfinding.ts",
+      "sha256": "208e92edb059b0a13ee3d8d7b76fdd7896a3b5535de736e2180ed74fcce05162"
+    },
+    {
+      "path": "model/random.ts",
+      "sha256": "f47c97f0c7e9fd221a5167c7b04e383a157ae18e76e645465fc5ed05c69fc879"
+    },
+    {
+      "path": "model/rules.ts",
+      "sha256": "55acc4426c12548d236c8b170a5a73fe3019b448812f9cda8a1828ba87a4f085"
+    },
+    {
+      "path": "model/terrain.ts",
+      "sha256": "5242a4cb72f91200c62631b1899fb97095355dfaf2a0959b01281903ec2346c5"
+    },
+    {
+      "path": "model/types.ts",
+      "sha256": "15d44f156eaa6d3a334832ca854abfa1c40efd6108b42dbd16ebecd42d6356f0"
+    }
+  ],
+  "scheduleHash": "07b9a680ddfe427228aefe23b423c84c3dd53294e52c344a88b68344f98438ab",
+  "total": 400,
+  "ruleVersion": "growth-1"
+}
