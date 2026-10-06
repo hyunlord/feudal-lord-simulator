@@ -24,6 +24,9 @@ import { registryOfferView } from "../registryCardModel";
 import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../lord/decisions/DecisionCards";
 import { auditDecisionView, marriageDecisionView, offMapPetitionView } from "../lord/decisions/decisionCardsModel";
 import type { LordScreenId } from "../lord/screen/lordScreenTypes";
+import { houseChangeView } from "../results/houseChange";
+import { HouseChangeCard, YearReviewCard } from "../results/ResultCards";
+import { lastYearReview } from "../results/yearReview";
 import { stewardshipOf } from "../../engine/stewardship";
 import { Button } from "../kit";
 import { ChronicleBook } from "../legacy/ChronicleBook";
@@ -93,9 +96,12 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const marriage = top === "marriage_decision" ? marriageDecisionView(state) : null;
   const audit = top === "audit_decision" ? auditDecisionView(state) : null;
   const offMap = top === "estate_petition_offmap" ? offMapPetitionView(state) : null;
+  // DEC-CARD: the year just ended ("올해 당신의 결정이 바꾼 것"); (lord mode, A3) the season's change in the lord's house.
+  const yearView = top === "year_review" ? lastYearReview(state) : null;
+  const house = top === "house_change" ? houseChangeView(state) : null;
   const lordGone = (top === "estate_petition" && homeView === null) || (top === "precedent" && precedent === null) || (top === "lord_request" && request === null)
     || (top === "registry_offer" && offer === null) || (top === "marriage_decision" && marriage === null) || (top === "audit_decision" && audit === null)
-    || (top === "estate_petition_offmap" && offMap === null);
+    || (top === "estate_petition_offmap" && offMap === null) || (top === "house_change" && house === null);
   const setRecurring = (recurring: boolean) => dispatch({ type: "set_exception_rules", rules: { ...stewardshipOf(state).rules, recurring } });
   const endingWritten = top === "history" && state.legacy?.ending !== undefined;
   // A decision modal whose question went away (answered elsewhere, or the famine moved on) closes itself.
@@ -131,6 +137,10 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       onAnswer={choice => { dispatch({ type: "answer_audit", auditId: audit.auditId, choice }); sendUi({ type: "pop_modal" }); }} />}
     {offMap === null ? null : <OffMapPetitionModal view={offMap} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={grant => { dispatch({ type: "answer_estate_petition", petitionId: offMap.petitionId, grant }); sendUi({ type: "pop_modal" }); }} />}
+    {yearView === null ? null : <YearReviewCard view={yearView} onContinue={() => sendUi({ type: "pop_modal" })}
+      onChronicle={() => sendUi({ type: "push_modal", modal: "history" })} />}
+    {house === null ? null : <HouseChangeCard view={house} onContinue={() => sendUi({ type: "pop_modal" })}
+      onNext={next => { sendUi({ type: "pop_modal" }); if (next.kind === "screen") onOpenLord?.(next.screen, next.focus); else onPerson(next.personId); }} />}
     {chronicle === null ? null : <ChroniclePage view={chronicle} onKeepPlaying={() => sendUi({ type: "pop_modal" })}
       // UI-10 (LG-8): chapter 5's end is the campaign's — its page leads to the legacy verdict, not to a chapter 6.
       {...(chronicle.chapter === CHAPTER_FIVE.chapter ? { nextLabel: LEGACY_SCREEN_COPY.toVerdict } : {})}

@@ -8,6 +8,8 @@ import { homePetitionView, lordRequestView, precedentView, type LordRequestView 
 import { lordMomentBeats } from "./lordMomentBeats";
 import { REGISTRY_CARD_COPY } from "./registryCardCopy.ko";
 import { registryHeadline } from "./registryCardModel";
+import { houseChangeViews, houseRecordIds } from "./results/houseChange";
+import { RESULTS_COPY } from "./results/resultsCopy.ko";
 import type { StoryIllustration } from "./storyArt";
 
 // LM-R1 (petitions): the lord's cards as story beats (lord mode only), so each comes the way the political petitions
@@ -29,6 +31,15 @@ export const requestArt = (kind: LordRequestView["kind"]): StoryIllustration | n
 
 /** The will-change attempt's Wave 40 moment (lordMomentBeats `marriage.will_change`). */
 const WILL_MOMENT = "moment_attempted_will_change" as const;
+
+/**
+ * DEC-CARD (Astra A3): the season's changes in the lord's house (results/houseChange.ts), one beat each — a death, a new
+ * house, an inheritance, a wardship. storyBeats puts them before every petition; the chip opens the house card.
+ */
+export function houseBeats(state: GameState): readonly StoryBeat[] {
+  return houseChangeViews(state).map(view => ({ id: `house:${view.id}`, kind: "house_change", illustration: view.illustration, tile: seatTile(state),
+    decision: "house_change", openLabel: RESULTS_COPY.house.openLabel, title: view.title, line: view.happened.join(" "), facts: [view.heir], advice: RESULTS_COPY.house.advice }));
+}
 
 export function lordBeats(state: GameState): readonly StoryBeat[] {
   if (!lordMode(state)) return [];
@@ -70,8 +81,10 @@ export function lordBeats(state: GameState): readonly StoryBeat[] {
     beats.push({ id: `estate-petition:${offMap.petitionId}`, kind: "lord_decision", illustration: null, tile: null, decision: "estate_petition_offmap",
       title: offMap.title, line: offMap.line, facts: offMap.why === "" ? [offMap.waits] : [offMap.waits, offMap.why], advice: DECISION_CARDS_COPY.petitionAdvice });
   }
-  // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record.
-  const moments = lordMomentBeats(state, seatTile(state));
+  // EVENT-ART: the season's ledger moments (Wave 40), one beat per history record. DEC-CARD (A3): a house change's moments
+  // (the inheritance, the wardship) are its house card's picture, not chips of their own — one chip stands for the event.
+  const folded = houseRecordIds(state);
+  const moments = lordMomentBeats(state, seatTile(state)).filter(beat => !folded.has(beat.id.slice("lord-moment:".length)));
   beats.push(...(marriage?.kind === "will_change" ? moments.filter(beat => beat.illustration !== WILL_MOMENT) : moments));
   return beats;
 }

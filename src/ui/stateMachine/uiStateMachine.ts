@@ -30,7 +30,10 @@ export type UiModal = "pause_menu" | "event" | "season_ledger" | "decision" | "p
   /** EVENT-ART (lord mode): the registry's event card. */
   | "registry_offer"
   /** LM-R2 (lord mode): the father's will to answer, an audit's finding, an off-map estate's petition (the lead wires them). */
-  | "marriage_decision" | "audit_decision" | "estate_petition_offmap";
+  | "marriage_decision" | "audit_decision" | "estate_petition_offmap"
+  /** DEC-CARD: the year's card ("올해 당신의 결정이 바꾼 것") at the first tick of the next year; (lord mode, Astra A3) a
+   * change in the lord's house — a death, a new house, an inheritance, a wardship — before the petitions. */
+  | "year_review" | "house_change";
 export type UiState = Readonly<{ mode: UiMode; modals: readonly { readonly modal: UiModal; readonly under: UiMode }[]; hudHidden: boolean }>;
 export type UiEvent =
   | { readonly type: "open_build" } | { readonly type: "toggle_build" }

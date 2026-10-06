@@ -143,6 +143,11 @@ const PETITION = {
   // QA-034: the title, the request, every answer and the later button are shown and painted (not under the frame layer).
   requires: ["h2", ".petition-body > p:not(.petition-who)", ".petition-option", ".story-modal-later"],
 } as const;
+/** DEC-CARD (result side): the year's card and the house card — the petition frame's layer, the body scrolling inside. */
+const RESULTS_CARD = {
+  frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".petition-body"],
+  siblingsNoOverlap: [".results-card-part", ".results-card-actions"],
+} as const;
 const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body", scrollParts: [".legacy-book-page"],
   scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=20000" } } as const;
 /** A chapter's end page opens by itself after the story's delay; the delay must outlast the page load, or openScene's
@@ -316,6 +321,14 @@ export const SURFACES: readonly SurfaceRow[] = [
     frameSlots: [".season-ledger-scenes"], scene: { kind: "state", set: "ui5", name: "carrying", tile: "house", zoom: 1.4, query: QUIET, run: true },
     open: [{ key: "Digit3" }, { wait: ".season-ledger-card", timeout: 90_000 }, { pause: 900 }], requires: ["h2", ".season-ledger-line", ".season-ledger-resume"],
     data: "the carter town's season close" },
+  // DEC-CARD (result side): the year's card (src/ui/results/ResultCards.tsx) — the hook opens it at the next year's first
+  // tick it sees, so the scene runs the 1302 town over its year's turn (120 ticks, at 10×); the winter's season card first.
+  { id: "modal.year-review", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.year-review",
+    scene: { kind: "state", set: "ui5", name: "aging-eve", tile: "house", zoom: 1.1, query: "&story-delay=1500", run: true },
+    open: [{ key: "Digit0" }, { wait: ".season-ledger-resume, .results-card.year-review", timeout: 90_000 }, { click: ".season-ledger-resume", optional: true },
+      { wait: ".results-card.year-review", timeout: 60_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-part h3", ".results-card-part li", ".results-card-chronicle", ".results-card-continue"],
+    data: "1302's card at 1303's first tick: its decisions (or none), the factions' moves, the town's people and money" },
   { id: "modal.famine", root: ".story-modal.famine-decision", frame: "flat", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
     open: [{ story: ".famine-decision" }, { pause: 800 }], scroll: "y", siblingsNoOverlap: [".famine-option", ".story-modal-later"], requires: ["h2", ".famine-option", ".story-modal-later"],
     data: "chapter 1's famine decision" },
@@ -444,6 +457,21 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.lord-card[data-lord-request]", frameSlots: [],
     requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".story-modal-later"],
     scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }], data: "the town's request (a proclamation waiting)" },
+  // DEC-CARD (Astra A3): a change in the lord's house as one card before the petitions (src/ui/results/ResultCards.tsx), on
+  // the real states that hold one: the lord's wardship begun on the tick the boundary dispute came, the lord dead (1304),
+  // the neighbour's estate inherited through the wife (its title, possession and the debts promised with it).
+  { id: "modal.house-change.wardship", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='wardship_begun']",
+    scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ wait: ".results-card.house-change", timeout: 60_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
+    data: "a minor lord's wardship begun (Wave 40 13): who, the guardian, no right changed, his card as the next act — before the boundary dispute's card" },
+  { id: "modal.house-change.lord-died", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='lord_died']",
+    scene: petitionScene("petitions", "home-pannage", 3000), open: [{ wait: ".results-card.house-change", timeout: 60_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".results-card-continue"],
+    data: "the lord's death (no picture): his name and age, who leads the house now" },
+  { id: "modal.house-change.inherited", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='inherited']",
+    scene: petitionScene("moments", "inheritance_fealty", 3000), open: [{ wait: ".results-card.house-change", timeout: 60_000 }, { pause: 600 }],
+    requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
+    data: "the neighbour's estate inherited (Wave 40 08): the old lord's death, the title and possession, five debts promised, the estates screen as the next act" },
   // EVENT-ART: the registry's event card (src/ui/hud/RegistryCard.tsx) on scripts/eventArtStates.ts's states — the lord's
   // slice played by the lord bot to the first content canon v4 offer the registry draws, and to the first whose card has a
   // hold (ER-19: its cost under its tradeoff); it opens by itself after the world, as a petition does. The picture is not
