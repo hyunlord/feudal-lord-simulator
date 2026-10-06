@@ -1,0 +1,99 @@
+{
+  "head": "9181ce03394f8be064c131d1ddfae121249e9694",
+  "repo": "https://github.com/hyunlord/feudal-lord-simulator",
+  "branch": "codex/phase15-organic-ground",
+  "files": [
+    {
+      "path": "scripts/registryCanon.ts",
+      "sha256": "bfe3557d83b2266548f7ce1e91e35315a375e7a9b64fb5377dd3b9d7fb567840"
+    },
+    {
+      "path": "scripts/buildRegistryV4.ts",
+      "sha256": "8480a6c39ae896d06d0d3672224202730419f20f6d93b3f2ff74ab0095988603"
+    },
+    {
+      "path": "src/engine/registryV4.ts",
+      "sha256": "ce9ef46f57b2b2e73868b908fbf0e251ff67197f6cca95906539516f3d083eba"
+    },
+    {
+      "path": "src/ui/registryCardModel.ts",
+      "sha256": "f83e12a8e893f1c06c719c777fc396911cade92b756a863f4dd6797cc7799a55"
+    },
+    {
+      "path": "src/engine/timberTrade.ts",
+      "sha256": "0983dcbf2ba146f186845e3f22bc6c764162c2b90c5d7b69ab14e6f8972905ca"
+    },
+    {
+      "path": "src/engine/stewardship.ts",
+      "sha256": "41e78097e576aaa5a6df93a9662292e53a45f7d09ce695ca04518518c9a7a212"
+    },
+    {
+      "path": "src/engine/estateSuits.ts",
+      "sha256": "da874ca02d90d42f610d3799964513198dcede76aeef0181abc98fbdc8c5ff80"
+    },
+    {
+      "path": "src/engine/marriage.ts",
+      "sha256": "181b1c50f543c3bdbe66adff77b4710ea689cda5f99c5dbbb9f73e6411eeb99a"
+    },
+    {
+      "path": "src/engine/townAgency.ts",
+      "sha256": "7381693b6ba65d9641350185a02846d711bc232f0696ebaf804bc1dfa2cc3591"
+    },
+    {
+      "path": "src/content/registry/v4Entries.generated.ts",
+      "sha256": "4e50328a9a3751bccf4b49c499d29f32dd914c1db67bd34ae84c9c710526c734"
+    },
+    {
+      "path": "src/content/registry/v4Copy.generated.ts",
+      "sha256": "a85252e98d9b50de47b53a7ad3aa67cf7160b9bdc1cd7b1c59bfb715f606d145"
+    },
+    {
+      "path": "docs/verification/lm-e9b/REPORT.md",
+      "sha256": "cf296c3b4dd73cf0903f8d438b7a91e753595552f3415b151b6c633c50afd274"
+    },
+    {
+      "path": "docs/design/glossary.md",
+      "sha256": "878f3529cf0157a9e6cb17cb20648dbb246975b72e12c5fd985cafad68c5e181"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4/events-v4.json",
+      "sha256": "2f09e1cc292d9c80ecab686026f05ab647129f0d12b8c9d260dea19299f1dfcb"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4/registry-v4.json",
+      "sha256": "5a48d22cb53bb2e9f63c28104ed2d16a32a873064e22e3d253521d85b99c227c"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4/events-v4.schema.json",
+      "sha256": "1fa3eff965beb8ad7d59584ed1c04d6922c97109a9a604f966c4a94a39270897"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4/registry-v4.schema.json",
+      "sha256": "0da1604119ae91a23e10398c080a57150f23002030da6791ac6e5010e3434af2"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4.1/events-v4.1.json",
+      "sha256": "fce914fe651dd22000ff33d6975e8fb7ad8ed9479cce062b89e21054ff619ab1"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4.1/registry-v4.1.json",
+      "sha256": "886860c9f182707ccf7ad4c5dae1a17781791d884c581df84a0511e844bdd503"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4.1/events-v4.1.schema.json",
+      "sha256": "e0f75ac20b06494f04c9e4dc0dce0125c39a6fcc277d1b576cc52cde5dd2d6d9"
+    },
+    {
+      "path": "docs/design/content-drafts-20261002/v4.1/registry-v4.1.schema.json",
+      "sha256": "434024053c413a732b215a5ce90b47b2b4adfb8632d575d151beba57c1ca36bd"
+    },
+    {
+      "path": "src/engine/history.ts",
+      "sha256": "a943d0ca97257eff5f6c8b296a247dd37061599da2aa6ed35e8bc4fbb8816bcb"
+    },
+    {
+      "path": "docs/design/game-principles.md",
+      "sha256": "f6e028489e4f5f8afb2775f83ec73692ba89d9604e835dc3ee9f8154d0a0065a"
+    }
+  ]
+}
