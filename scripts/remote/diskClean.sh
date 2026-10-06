@@ -86,6 +86,7 @@ dc__remove_run() { # <name> <why>
 
 # One clean at a time (two runs finishing together would pack the same _kept/ folder): a second one skips.
 clean_disk() {
+  mkdir -p "${DC_LOG%/*}" 2> /dev/null   # the clean's own log (rm's errors go there: a redirection to a missing folder would skip the rm)
   ( flock -n 8 || { echo "== disk: another clean is going; skipped ($1)"; exit 0; }; dc__clean "$@" ) 8> "$BASE/_locks/disk-clean.lock"
 }
 
