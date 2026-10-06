@@ -9,6 +9,7 @@ import { stateCalendar } from "../engine/scenarioState";
 import { wetSummer } from "../render/wetSummer";
 import { beaconSpot, raidQuaySpot } from "../render/warWorldProps";
 import { EVENT_STORY_COPY } from "./eventStoryCopy.ko";
+import { lordForecastLine, withLordAdvice } from "./lord/advice/lordBeatAdvice";
 import { SCENARIO_COPY } from "../content/scenario/scenarioCopy.ko";
 import { reorganisationOf } from "../engine/reorganisation";
 import { CHURCH_REBUILDING_PETITION_ID, GUILD_DISPUTE_PETITION_ID, LEGACY_BALANCE, type LegacyInterludeId, type LegacyStepId } from "../content/legacyConfig";
@@ -179,7 +180,8 @@ export function storyBeats(state: GameState): readonly StoryBeat[] {
     if (!building && state.tick - since < 3 * SEASON) beats.push({ id: "palisade", kind: "palisade", illustration: "event_palisade", tile: null, decision: null,
       title: copy.palisade.title, line: copy.palisade.line, advice: copy.palisade.advice, facts: [] });
   }
-  return beats;
+  // DEC-CARD A1: in lord mode the town builds — the [조언] that asks to build says the lord's levers instead.
+  return withLordAdvice(state, beats);
 }
 
 /** UI-6: the war demands' scenes on their chips (the decision card itself shows the Wave 17 decision picture). */
@@ -522,7 +524,8 @@ export function forecastStewardLine(state: GameState): { readonly key: string; r
   const entry = eventForecast(state).find(candidate => candidate.stage === "rumour" || candidate.stage === "sign");
   if (entry === undefined) return null;
   const lines = EVENT_STORY_COPY.steward;
-  const text = entry.kind === "fire" ? lines.fire(entry.stage === "sign") : entry.defId === GREAT_FAMINE_EVENT_ID ? lines.famine(entry.stage === "sign") : lines.dearth(entry.stage === "sign");
+  const which = entry.kind === "fire" ? "fire" : entry.defId === GREAT_FAMINE_EVENT_ID ? "famine" : "dearth";
+  const text = lordForecastLine(state, which, entry.stage === "sign") ?? lines[which](entry.stage === "sign");
   return { key: `forecast:${entry.id}:${entry.stage}`, text };
 }
 

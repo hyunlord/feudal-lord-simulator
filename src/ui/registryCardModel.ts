@@ -19,6 +19,7 @@ import { treasuryBalance } from "../ledger/ledger";
 import { eventArtFor, type EventArtId } from "./eventArt";
 import { calendarDays } from "./gameTimeCopy.ko";
 import { courtLine } from "./lordCardsModel";
+import { sinceLastAnswer, type SinceLastView } from "./lord/since/sinceLastModel";
 import { BINDING_WORDS, PIECE_WORDS, REGISTRY_CARD_COPY, SUIT_STAGE_WORDS, type ShutReason } from "./registryCardCopy.ko";
 
 // EVENT-ART: the registry event card (lord mode only, `lordMode`) — an offer the registry made from the content canon v4
@@ -46,6 +47,8 @@ export type RegistryOfferView = Readonly<{
   choices: readonly RegistryChoiceView[];
   /** What an unanswered offer does at its deadline. */
   lapse: string;
+  /** DEC-CARD A4: what came of the lord's last answer of the same kind (a recurring rate or policy card), or null. */
+  since: SinceLastView | null;
 }>;
 export type RegistryCard = Readonly<{ occurrence: RegistryOccurrence; entry: V4Entry }>;
 
@@ -188,7 +191,8 @@ export function registryCardView(state: GameState, card: RegistryCard): Registry
     return [{ id: choice.id, label, enabled, hold, line: words?.tradeoff ?? REGISTRY_CARD_COPY.noTradeoff, cost: hold ? holdWords(state, cost!) : null,
       treasury: treasuryBalance(after) - before }];
   });
-  return { ...headline(state, card), court: courtLine(state), from: sender(state, entry.id), why: registryWhy(state, card), choices, lapse: REGISTRY_CARD_COPY.lapse };
+  return { ...headline(state, card), court: courtLine(state), from: sender(state, entry.id), why: registryWhy(state, card), choices, lapse: REGISTRY_CARD_COPY.lapse,
+    since: sinceLastAnswer(state, entry.id, occurrence.id) };
 }
 
 /** The first registry offer waiting for the lord as its card shows it, or null (none, or not lord mode). */

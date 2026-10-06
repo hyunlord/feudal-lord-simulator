@@ -1,0 +1,20 @@
+/* DEC-CARD (Astra's lord-mode play): lord mode only — the status pill's "내 도시로" cell (A2), the stock tab's treasury
+   by estate (A5) and the registry card's "지난번 같은 일 이후" block (A4). Text ≥ 12 px. Imported once from src/main.tsx. */
+.app-shell .status-pill-town { white-space: nowrap; }
+
+.app-shell .treasury-estates { display: grid; gap: 6px; margin: 4px 0 10px; color: var(--palette-ink); }
+.app-shell .treasury-estates h3 { margin: 0; font-size: 14px; line-height: 1.3; }
+.app-shell .treasury-estates p { margin: 0; }
+.app-shell .treasury-estates ul { margin: 0; padding: 0; list-style: none; }
+.app-shell .treasury-estates-window, .app-shell .treasury-estates-note, .app-shell .treasury-estates-line { font-size: 12px; line-height: 1.45; color: var(--palette-ink-muted); word-break: keep-all; overflow-wrap: anywhere; }
+.app-shell .treasury-estates-list { display: grid; gap: 8px; }
+.app-shell .treasury-estates-list > li { display: grid; gap: 3px; padding-top: 6px; border-top: 1px solid var(--palette-parchment-dark); }
+.app-shell .treasury-estates-head { display: flex; justify-content: space-between; gap: 8px; font-size: 13px; line-height: 1.4; }
+.app-shell .treasury-estates-list > li > ul { display: grid; gap: 2px; }
+.app-shell .treasury-estates-list > li > ul > li { display: grid; gap: 1px; font-size: 13px; line-height: 1.4; }
+.app-shell .treasury-estates-parts { font-size: 12px; line-height: 1.4; color: var(--palette-ink-muted); word-break: keep-all; overflow-wrap: anywhere; }
+
+.app-shell .since-last { display: grid; gap: 3px; margin: 6px 0; padding: 6px 8px; border-left: 3px solid var(--palette-parchment-dark); }
+.app-shell .since-last h3 { margin: 0; font-size: 13px; line-height: 1.35; }
+.app-shell .since-last ul { margin: 0; padding: 0 0 0 16px; }
+.app-shell .since-last li { font-size: 13px; line-height: 1.45; word-break: keep-all; overflow-wrap: anywhere; }

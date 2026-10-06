@@ -5,6 +5,7 @@ import { LORD_CARDS_COPY } from "../lordCardsCopy.ko";
 import { REGISTRY_CARD_COPY } from "../registryCardCopy.ko";
 import type { RegistryOfferView } from "../registryCardModel";
 import { Frame } from "./LordCards";
+import { SinceLast } from "../lord/since/SinceLast";
 
 // EVENT-ART: the registry's event card (lord mode only; a state machine modal: time stops while it is up). It wears the
 // petition card's Wave 8 frame as LM-R1's lord cards do; the event picture is shown whole (16:9, contain) beside the
@@ -38,6 +39,7 @@ export function RegistryOfferModal({ view, onAnswer, onLater }: {
         <h3>{REGISTRY_CARD_COPY.whyHeading}</h3>
         <ul>{view.why.map((line, index) => <li key={index}>{line}</li>)}</ul>
       </section>
+      <SinceLast view={view.since} />
       <ol className="petition-options registry-card-options">
         {view.choices.map(choice => (
           <li key={choice.id}>
