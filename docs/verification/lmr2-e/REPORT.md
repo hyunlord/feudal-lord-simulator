@@ -7,7 +7,7 @@
 
 ## 실행 위치
 - **Mac**: 시나리오 시험(`storySeen` 3/3, `neighbourArms` 3/3, `suitActions` 2/2, `negotiation` 14/14, `stewardship` 10/10, `registryCanon` 4/4, `registryV4` 8/8), typecheck, 저장 고정본·지문 생성.
-- **DGX**: 바뀐 것에 걸린 시험(`npm run test:changed`, RR16) @@CHANGED@@.
+- **DGX**: 바뀐 것에 걸린 시험(`npm run test:changed`, RR16) 3,939/3,939 — DGX `fc7b197`(`engine-LMR2E-changed-fc7b197`, 가벼운 칸, 본선 3841159b를 합친 머리).
 
 ## 무엇을 깔았나
 - **① 이야기 "봤음"**: `GameState.seen.marks`, 명령 `mark_story_seen`(seen·opened·dismissed), 읽기 `storySeen`.
@@ -26,7 +26,7 @@
   - 세 보류가 관계 −2의 대가로 켜진다. 대가 없는 보류는 003·046 둘만 남는다. 합친 건수는 215 그대로다.
 
 ## 필수 조건
-- 바뀐 것에 걸린 시험: @@CHANGED@@
+- 바뀐 것에 걸린 시험: 3,939/3,939 — DGX `fc7b197`(`engine-LMR2E-changed-fc7b197`, 가벼운 칸, 본선 3841159b를 합친 머리)
 - typecheck — Mac. ui-geometry: 화면 파일을 바꾸지 않았다(렌더 요청서만).
 
 ## 다음 후보
