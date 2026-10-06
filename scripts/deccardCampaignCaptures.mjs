@@ -63,12 +63,21 @@ const read = (page, selector) => page.evaluate(sel => {
       inside: box.left >= 0 && box.top >= 0 && box.right <= innerWidth && box.bottom <= innerHeight },
   };
 }, selector);
+/** As a player (and the geometry audit's `story` step): the card by itself, else the waiting chips in turn — another
+ * decision put off, a card that offers none closed. */
 const waitCard = async (page, selector) => {
-  for (let waited = 0; waited < 45_000; waited += 500) {
-    if (await page.locator(`${selector} >> visible=true`).count() > 0) return true;
-    await page.waitForTimeout(500);
+  const shown = item => `${item} >> visible=true`;
+  const wanted = () => page.locator(shown(selector)).count().then(count => count > 0);
+  if (await page.locator(shown(selector)).first().waitFor({ timeout: 10_000 }).then(() => true, () => false)) return true;
+  await page.locator(shown('.event-chip')).first().waitFor({ timeout: 30_000 }).catch(() => undefined);
+  for (let chip = 0; chip < 8 && !await wanted(); chip += 1) {
+    if (await page.locator(shown('.story-modal')).count() > 0) { await page.locator(shown('.story-modal-later')).first().click({ timeout: 5_000 }).catch(() => undefined); await page.waitForTimeout(500); }
+    if (await page.locator(shown('.event-chip')).count() === 0) break;
+    await page.locator(shown('.event-chip')).nth(chip % Math.max(1, await page.locator(shown('.event-chip')).count())).click({ timeout: 5_000 }).catch(() => undefined); await page.waitForTimeout(600);
+    if (await page.locator(shown('.event-card-decide')).count() > 0) { await page.locator(shown('.event-card-decide')).first().click({ timeout: 5_000 }).catch(() => undefined); await page.waitForTimeout(900); continue; }
+    await page.locator(shown('.event-card-actions > button:last-child')).first().click({ timeout: 5_000 }).catch(() => undefined); await page.waitForTimeout(500);
   }
-  return false;
+  return page.locator(shown(selector)).first().waitFor({ timeout: 30_000 }).then(() => true, () => false);
 };
 
 const rows = {}; let bytes = 0;

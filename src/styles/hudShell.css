@@ -569,6 +569,9 @@
 .petition-people { display: grid; gap: 4px; min-width: 0; }
 .petition-people h3 { display: flex; gap: 6px; align-items: center; margin: 0; font-size: 13px; }
 .petition-people .person-list { margin: 0; }
+/* DEC-CARD: on the heavy card the senders sit in a row above the answers, each chip as wide as its name. */
+.decision-card .petition-people .person-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.decision-card .petition-people .person-list .person-chip { width: auto; }
 /* UI-6: the Crown's writ — the hanging wax seal with the Crown's arms on its disc. */
 /* UI-6b: the Wave 8 petition frame's roundel — its centre at (68, 110) of the corner slice, drawn at half size (34, 55),
    placed from the card's outer edge over its border (kind `petition`). */
