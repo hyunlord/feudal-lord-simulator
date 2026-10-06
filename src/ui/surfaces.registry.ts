@@ -524,6 +524,13 @@ export const SURFACES: readonly SurfaceRow[] = [
   // Playtest 2026-10-02 #5: the food cell's breakdown under the pill (total, milling, carrying, access, hunger).
   { id: "hud.food-breakdown", root: ".food-breakdown", frame: "css", scene: TOWN, open: [{ click: ".status-pill-cell[data-food-days]" }, { pause: 500 }],
     requires: [".food-breakdown-row", ".food-breakdown-ledger"], data: "the town's food split five ways, the ledger and close buttons" },
+  // DEC-CARD A2: lord mode's pill ends with "내 도시로" (the camera to the town's seat); A5: the stock tab under the
+  // treasury line shows the treasury by estate (rent, taxes, contracts, spending), lord mode only.
+  { id: "hud.status-pill.lord", root: ".status-pill", frame: "css", scene: LORD_TOWN, open: [], requires: [".status-pill-town"],
+    data: "the lord's slice: date, population, food, coin and the way back to town" },
+  { id: "slot.ledger.stock-lord", root: ".slot-panel.ledger-drawer", frame: "css", scene: LORD_TOWN, open: [LEDGER, { pause: 600 }], scroll: "y",
+    scrollParts: [".ledger-matrix-scroll"], requires: [".treasury-estates h3", ".treasury-estates-list > li", ".treasury-estates-note"],
+    data: "the lord's slice stock tab: the treasury by estate under the treasury line, then the stocks" },
   // Lord mode's command pins in the build drawer's place, on the receipt's lord-mode state (scripts/lmr1LordStates.ts).
   { id: "hud.command-pins", root: ".command-pins", frame: "css", scene: LORD_TOWN, numbers: false, open: [{ click: "[data-dock='build']" }, { pause: 500 }],
     requires: [".command-pin"], data: "the lord's public work (the keep, locked until the fortified town) and encouragement-zone pins" },

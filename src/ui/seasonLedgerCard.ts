@@ -17,6 +17,7 @@ import { townAle } from "../engine/ale";
 import { townAleView } from "./townAleModel";
 import { townCloth } from "../engine/cloth";
 import { townClothView } from "./townClothModel";
+import { lordSeasonHint } from "./lord/advice/lordAdvice";
 
 // UI-3 season ledger card (FP-1): the latest closed season, its three biggest changes as the scroll's three scenes
 // (UI-4b: from the history ledger, as Wave 19 scene icons, seasonLedgerScenes.ts), money, population and stock beside
@@ -143,7 +144,9 @@ export function seasonLedgerCardModel(state: Pick<GameState, "seasons" | "scenar
     // UX-0b: "큰 일 없이 지나간 계절입니다" only for a calm season (the audit read it beside "인구 줄음 −62%").
     events: events.length > 0 ? events : ledger.popDelta < 0 ? [SEASON_LEDGER_COPY.populationFell(-ledger.popDelta)]
       : scenes.some(scene => TROUBLE.has(scene.id)) ? [] : [SEASON_LEDGER_COPY.quiet],
-    hint: ledger.nextObjectiveHint === null ? null : { text: hintText(ledger), category: HINT_CATEGORY[ledger.nextObjectiveHint] },
+    // DEC-CARD A1: in lord mode the hint says who builds it and the lord's lever (the town builds, not the lord).
+    hint: ledger.nextObjectiveHint === null ? null : { text: (isWorld(state) ? lordSeasonHint(state, ledger.nextObjectiveHint, hintText(ledger), ledger.foodNeeds) : null) ?? hintText(ledger),
+      category: HINT_CATEGORY[ledger.nextObjectiveHint] },
     drink: held ? drink : [],
     drinkLine: held ? SEASON_LEDGER_COPY.heldNow(drink.map(item => SEASON_LEDGER_COPY.held(item.name, item.amount))) : null,
     aleLines: ale === null || ale.closedSeason === null ? [] : [ale.closedSeason, ale.served],

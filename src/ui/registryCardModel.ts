@@ -23,6 +23,7 @@ import { lordOutcome } from "./decisionCard/families/lordOutcome";
 import { afterAnswer } from "./decisionCard/remembers";
 import { courtLine } from "./lordCardsModel";
 import { perState } from "./perState";
+import { sinceLastAnswer, type SinceLastView } from "./lord/since/sinceLastModel";
 import { BINDING_WORDS, PIECE_WORDS, REGISTRY_CARD_COPY, SUIT_STAGE_WORDS, type ShutReason } from "./registryCardCopy.ko";
 
 // EVENT-ART: the registry event card (lord mode only, `lordMode`) — an offer the registry made from the content canon v4
@@ -54,6 +55,8 @@ export type RegistryOfferView = Readonly<{
   lapse: string;
   /** DEC-CARD: the offer in the heavy card's layout. */
   card: DecisionCardView;
+  /** DEC-CARD A4: what came of the lord's last answer of the same kind (a recurring rate or policy card), or null. */
+  since: SinceLastView | null;
 }>;
 export type RegistryCard = Readonly<{ occurrence: RegistryOccurrence; entry: V4Entry }>;
 
@@ -225,7 +228,8 @@ export function registryCardView(state: GameState, card: RegistryCard): Registry
     card: { family: "registry_offer", subjectId: occurrence.id, title: head.title, court: courtLine(state), from, situation: head.body,
       stake: registryStake(state, card) ?? REGISTRY_CARD_COPY.stakeSender(...senderParts(state, entry.id)),
       deadline: REGISTRY_CARD_COPY.deadline(calendarDays(occurrence.deadline - state.tick), end.year, SCENARIO_COPY.seasons[end.season] ?? ""), illustration: head.art,
-      choices: rows.map(row => row.answer) } };
+      choices: rows.map(row => row.answer) },
+    since: sinceLastAnswer(state, entry.id, occurrence.id) };
 }
 
 /** The first registry offer waiting for the lord as its card shows it, or null (none, or not lord mode). Once per state
