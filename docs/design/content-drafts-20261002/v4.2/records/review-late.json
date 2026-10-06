@@ -1,0 +1,3843 @@
+[
+  {
+    "id": "ck_evt_161",
+    "title": "봄비 전에 남겨 둘 마른 자리",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "곡창·농장 장려금과 정책 점수만 바뀌며, 젖을 곡물이나 저장 공간의 실물 결과가 없다. 특정 사업 착수·저장 용량 결과에 연결되기 전 보류.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_project_subsidy {\"kind\":\"granary\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "곡창 사업에 24d를 건다",
+        "lose": "저장·배급 거점에 돈을 약속하고 농사 거점 지원은 뒤로 둔다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_project_subsidy {\"kind\":\"farmstead\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "헛간 사업에 24d를 건다",
+        "lose": "농사 거점의 조건을 돕고 저장 여력 문제는 남긴다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "안정 방침으로 기본 생산과 저장을 함께 우선한다",
+        "lose": "특정 사업 약속 없이 가중치를 옮기고 장터 성장의 상대 점수를 낮춘다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_162",
+    "title": "마른 여름에 두 물통",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "물 없는 집의 물 접근성은 그대로다. 우물 장려금·성장 방침·주거 장려금 철회는 물 공급의 서로 다른 해결책이 아니다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_project_subsidy {\"kind\":\"well\",\"amount\":32,\"amountCandidateRange\":[32,32]}",
+        "protect": "우물 사업에 32d를 건다",
+        "lose": "물 공급 사업 조건을 돕되 가뭄·질병 확률을 직접 낮추지 않는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "성장 방침으로 집과 우물 모두에 무게를 둔다",
+        "lose": "주택 증가도 함께 유리해져 물 수요가 더 커질 수 있다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_project_subsidy {\"kind\":\"house\",\"amount\":0,\"amountCandidateRange\":[0,0]}",
+        "protect": "주거 장려금을 철회한다",
+        "lose": "신규 주거 지급 약속을 줄여 물 공급을 기다리지만 이미 진행 중인 집은 중단시키지 않는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_163",
+    "title": "바람철 앞의 얇은 지붕",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "미입고 주문 잔량. 실제 거래일에 가용 현금으로 매입되어 영주 목재 재고와 지출 기록이 변한다.",
+    "cardDilemma": "확보할 목재와 앞으로 쓸 현금을 맞바꾼다. 취소는 대금을 아끼지만 미입고 물자를 포기한다.",
+    "reason": "제재소·시장 장려금 대신 실제 주문 잔량 6/2/0을 비교하도록 보강. 수리 보장 없이 물자 확보와 현금의 대가를 명시.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "order_timber {\"amount\":6,\"orderUnits\":[6,6],\"pricePerUnitD\":[18,27],\"maximumTotalCostD\":[108,162],\"immediateCashDeltaD\":[0,0]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "b",
+        "effect": "set_project_subsidy {\"kind\":\"sawmill\",\"amount\":28,\"amountCandidateRange\":[28,28]}",
+        "protect": "제재소 사업에 28d를 약속한다",
+        "lose": "국지 생산 사업의 조건을 돕지만 바람철 전 완공은 보장하지 않는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_project_subsidy {\"kind\":\"market\",\"amount\":0,\"amountCandidateRange\":[0,0]}",
+        "protect": "기존 시장 장려금을 거둔다",
+        "lose": "새 시장 사업 지급 약속을 줄여 금고 여력을 남기지만 목재를 늘리지는 않는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      }
+    ],
+    "event": {
+      "number": 163,
+      "id": "ck_evt_163",
+      "category": "자연",
+      "period": "1300–1450",
+      "years": [
+        1300,
+        1450
+      ],
+      "conditions": {
+        "land": "지형을 임의 상태 필드로 만들지 않는다. 별도 unsupportedFilters가 있으면 장면을 차단한다.",
+        "population": "state.population >= 1 및 영주 모드 agency 존재. 세부 실제 대상 조건은 sidecar에 명시.",
+        "rights": "권리 소송 선택은 실제 영주 소송과 청구권을 바인딩한다. 권원·점유를 같은 뜻으로 쓰지 않는다.",
+        "relations": "임의 마음 증감 효과 없음. 현행 핸들러의 후처리만 따른다.",
+        "season": "stateCalendar(state).season ∈ [2].",
+        "state": "ck_evt_163의 registry-additions.json 조건 AST와 선택별 조건을 따른다. 예방 요청·이해당사자 발언은 가공 청원이다. 날씨 피해·치료·즉시 건설을 실제 상태로 단정하지 않는다."
+      },
+      "sender": {
+        "faction": "도시 공동체",
+        "role": "목수"
+      },
+      "title": "바람철 앞의 얇은 지붕",
+      "body": "바람철을 앞두고 목수가 목재를 미리 사 둘지 묻습니다. 여섯 단을 잡아 두면 더 많은 자재를 받을 수 있지만, 그만큼 앞으로 쓸 돈도 늘어납니다. 두 단만 받거나 미입고 주문을 거두어 금고를 아낄 수도 있습니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "남은 목재 주문을 6단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 6,
+                "orderUnits": [
+                  6,
+                  6
+                ],
+                "pricePerUnitD": [
+                  18,
+                  27
+                ],
+                "maximumTotalCostD": [
+                  108,
+                  162
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+              "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 108–162d. 거래일마다 목재가 들어오는 만큼 돈을 내므로 다른 지출에 쓸 몫이 줄어든다.",
+          "ledger": "목재 주문 잔량 6단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 6단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "남은 목재 주문을 2단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 2,
+                "orderUnits": [
+                  2,
+                  2
+                ],
+                "pricePerUnitD": [
+                  18,
+                  27
+                ],
+                "maximumTotalCostD": [
+                  36,
+                  54
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+              "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 36–54d. 여섯 단보다 지출은 작지만 들어올 자재도 네 단 적다.",
+          "ledger": "목재 주문 잔량 2단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 2단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "미입고 목재 주문을 취소한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 0,
+                "orderUnits": [
+                  0,
+                  0
+                ],
+                "pricePerUnitD": [
+                  18,
+                  27
+                ],
+                "maximumTotalCostD": [
+                  0,
+                  0
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+              "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "앞으로 이 주문에 쓸 돈을 지키지만, 아직 오지 않은 목재도 포기한다. 이미 받은 물자는 돌려주지 않는다.",
+          "ledger": "미입고 목재 주문 취소. 기존 물자·지출 유지.",
+          "chronicle": "도착하지 않은 목재의 주문을 거두었다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": false,
+        "cooldownYears": [
+          0,
+          0
+        ],
+        "steward": "새 등록기 사건의 자동 선례는 미지원. set_exception_rules가 있는 선택만 지도 밖 기존 청원 선례 규칙을 바꾼다. 홈 선례 처리로 주장하지 않는다.",
+        "exclusions": "캠페인당 한 번만. 새 인스턴스·설정 왕복으로 같은 생활 문제 재발동 금지. 기존 장 사건·청원과 동시 노출 억제.",
+        "variantGroup": "steward.faction_nature.163"
+      },
+      "illustration": "바람철 앞에 목수가 얇은 지붕 아래 들보를 살피고 목재 견본을 내민다.",
+      "history": {
+        "sourceIds": [
+          "CS01"
+        ],
+        "basis": "수선용 목재 이용 관행에 기댄 예방 요청. 실제 폭풍 피해 사건과는 다르다.",
+        "inference": "인물·대화·세력의 요구·갈등·결정 조합은 창작이다. 엔진의 숫자와 지급 주기는 게임 추정이며 사료 가격·확률이 아니다.",
+        "limits": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외. 시기·지역이 다른 내용은 배경 비교만 하며 이 가공도시의 실제 발생 증거가 아니다.",
+        "sources": [
+          {
+            "id": "CS01",
+            "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+            "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "분리 작성한 미설치 사건 초안",
+        "requirements": "등록기 조건 평가·선택 바인딩·사후 재검사·중복 억제·원장/연대기 문구 어댑터가 필요하다. enabledInEngine=false. 원고의 예방적 발언을 엔진의 날씨·질병 진단으로 바꾸지 않는다.",
+        "choiceDesignNote": "숫자만 다른 선택보다 대상 사업·감독 시간·지속 부담·약속 철회·물자 주문의 대가를 비교한다. 같은 설정값이면 해당 선택 비활성.",
+        "classificationNote": "장 사건을 다시 발생시키지 않는다. 역사적으로 구체적인 기존 사건과 겹치면 변형 문구로 합쳐야 한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    },
+    "registry": {
+      "id": "ck_evt_163",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.json#ck_evt_163",
+      "sourceRevision": "v4",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "seasonIndices": [
+          2
+        ],
+        "windowRationale": "바람철 지붕 수선 준비는 매 시대 가능한 예방 청원이므로 확대.가을 계절과 목재 주문의 실제 조건 유지. authoredYears·eligibilityYears 모두 v4 후보창이다. A 원래 창은 decisions.oldYears에 보존한다.",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450
+      },
+      "bindings": {},
+      "conditions": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "field": "selectors.stateCalendar.year"
+              },
+              "op": "gte",
+              "right": {
+                "literal": 1300
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "field": "selectors.stateCalendar.year"
+              },
+              "op": "lte",
+              "right": {
+                "literal": 1450
+              }
+            }
+          },
+          {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "call": "stateCalendar",
+                    "args": [
+                      {
+                        "field": "state"
+                      }
+                    ]
+                  },
+                  "op": "has_year_inclusive",
+                  "right": {
+                    "literal": [
+                      1300,
+                      1450
+                    ]
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "selectors.stateCalendar.season"
+                  },
+                  "op": "in",
+                  "right": {
+                    "literal": [
+                      2
+                    ]
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "state.agency"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.population"
+                  },
+                  "op": "gte",
+                  "right": {
+                    "literal": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 6
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 6
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "timberTradePoint",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": null
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 162
+                    }
+                  }
+                }
+              ]
+            },
+            "revalidate": true,
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "fixed_authored_candidate"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 2
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 2
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "timberTradePoint",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": null
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 54
+                    }
+                  }
+                }
+              ]
+            },
+            "revalidate": true,
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "fixed_authored_candidate"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 0
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "revalidate": true,
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "fixed_authored_candidate"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 60,
+        "chancePermille": 150,
+        "budget": "global_new_events_max_2_year_1_season"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "requireActualContextChange": true,
+        "reason": "새 생활 맥락 판정의 런타임 검증 전에는 반복 노출하지 않는다."
+      },
+      "dedup": {
+        "contractRef": "dedup-contract.json",
+        "groupRef": "fn.roof_repair_materials.v2"
+      },
+      "bindingStatus": "spec_requires_runtime_evaluator"
+    }
+  },
+  {
+    "id": "ck_evt_164",
+    "title": "서리 전에 거둘 것과 빻을 것",
+    "verdict": "hold",
+    "effectClass": "concrete",
+    "visibleResult": "일부 주문·좌판 배율은 실제로 변하지만 사건이 제시한 대상 문제는 해결하지 않는다.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "제분 대기나 곡물 처리량을 바꾸지 않는 장려금 두 개에 좌판세를 붙였다. 어느 선택도 서리 전 수확·제분 문제를 직접 다루지 못한다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_project_subsidy {\"kind\":\"mill\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "곡물 방앗간 사업에 24d를 건다",
+        "lose": "밀을 처리할 일터에 돈을 약속하고 농사 거점 지원은 뒤로 둔다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_project_subsidy {\"kind\":\"farmstead\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "헛간 사업에 24d를 건다",
+        "lose": "농사 거점을 돕되 쌓인 밀의 처리 문제는 남긴다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_market_dues {\"permille\":850}",
+        "protect": "시장 세입 조건",
+        "lose": "좌판 부담 및 상업 사업의 상대 매력",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_165",
+    "title": "눈길에 앞서 올린 주문",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "미입고 주문 잔량. 실제 거래일에 가용 현금으로 매입되어 영주 목재 재고와 지출 기록이 변한다.",
+    "cardDilemma": "확보할 목재와 앞으로 쓸 현금을 맞바꾼다. 취소는 대금을 아끼지만 미입고 물자를 포기한다.",
+    "reason": "착수 불확실한 제재소·창고 장려금을 제거하고 실제 목재 주문 12/0/6으로 선택의 결과를 통일. 선결제·겨울 지연을 암시하지 않음.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "order_timber {\"amount\":12,\"orderUnits\":[12,12],\"pricePerUnitD\":[18,27],\"maximumTotalCostD\":[216,324],\"immediateCashDeltaD\":[0,0]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "b",
+        "effect": "order_timber {\"amount\":0,\"orderUnits\":[0,0],\"pricePerUnitD\":[18,27],\"maximumTotalCostD\":[0,0],\"immediateCashDeltaD\":[0,0]}; set_project_subsidy {\"kind\":\"sawmill\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "c",
+        "effect": "set_project_subsidy {\"kind\":\"storehouse\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "창고 사업에 24d를 건다",
+        "lose": "저장 기반을 돕지만 현재 주문을 취소하지 않으므로 두 지출 경로가 겹칠 수 있다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      }
+    ],
+    "event": {
+      "number": 165,
+      "id": "ck_evt_165",
+      "category": "자연",
+      "period": "1300–1450",
+      "years": [
+        1300,
+        1450
+      ],
+      "conditions": {
+        "land": "지형을 임의 상태 필드로 만들지 않는다. 별도 unsupportedFilters가 있으면 장면을 차단한다.",
+        "population": "state.population >= 1 및 영주 모드 agency 존재. 세부 실제 대상 조건은 sidecar에 명시.",
+        "rights": "권리 소송 선택은 실제 영주 소송과 청구권을 바인딩한다. 권원·점유를 같은 뜻으로 쓰지 않는다.",
+        "relations": "임의 마음 증감 효과 없음. 현행 핸들러의 후처리만 따른다.",
+        "season": "stateCalendar(state).season ∈ [2,3].",
+        "state": "ck_evt_165의 registry-additions.json 조건 AST와 선택별 조건을 따른다. 예방 요청·이해당사자 발언은 가공 청원이다. 날씨 피해·치료·즉시 건설을 실제 상태로 단정하지 않는다."
+      },
+      "sender": {
+        "faction": "도시 공동체",
+        "role": "목재를 기다리는 수레꾼"
+      },
+      "title": "눈길에 앞서 올린 주문",
+      "body": "겨울을 앞두고 목재 주문을 다시 정하려 합니다. 열두 단을 받으면 더 많은 자재를 갖추는 대신 대금을 여러 거래일에 걸쳐 냅니다. 여섯 단으로 정해 지출을 줄일지, 미입고 주문을 취소하고 다른 일에 쓸 돈을 지킬지 골라야 합니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "남은 목재 주문을 12단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 12,
+                "orderUnits": [
+                  12,
+                  12
+                ],
+                "pricePerUnitD": [
+                  18,
+                  27
+                ],
+                "maximumTotalCostD": [
+                  216,
+                  324
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+              "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 216–324d. 거래일마다 목재가 들어오는 만큼 돈을 내므로 다른 지출에 쓸 몫이 줄어든다.",
+          "ledger": "목재 주문 잔량 12단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 12단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "미입고 목재 주문을 취소한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 0,
+                "orderUnits": [
+                  0,
+                  0
+                ],
+                "pricePerUnitD": [
+                  18,
+                  27
+                ],
+                "maximumTotalCostD": [
+                  0,
+                  0
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+              "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "앞으로 이 주문에 쓸 돈을 지키지만, 아직 오지 않은 목재도 포기한다. 이미 받은 물자는 돌려주지 않는다.",
+          "ledger": "미입고 목재 주문 취소. 기존 물자·지출 유지.",
+          "chronicle": "도착하지 않은 목재의 주문을 거두었다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "남은 목재 주문을 6단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 6,
+                "orderUnits": [
+                  6,
+                  6
+                ],
+                "pricePerUnitD": [
+                  18,
+                  27
+                ],
+                "maximumTotalCostD": [
+                  108,
+                  162
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "명시한 수치는 [x,x]의 고정 편집값이며 게임 추정이다. 변경 효과는 기존 핸들러만 실행하며 결과 수치를 재가산하지 않는다.",
+              "preconditions": "선택 직전 실제 상태·대상·비용·값 변경 여부를 재검사한다. AST sidecar를 따른다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 108–162d. 열두 단보다 지출과 확보 물량을 함께 줄인다.",
+          "ledger": "목재 주문 잔량 6단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 6단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": false,
+        "cooldownYears": [
+          0,
+          0
+        ],
+        "steward": "새 등록기 사건의 자동 선례는 미지원. set_exception_rules가 있는 선택만 지도 밖 기존 청원 선례 규칙을 바꾼다. 홈 선례 처리로 주장하지 않는다.",
+        "exclusions": "캠페인당 한 번만. 새 인스턴스·설정 왕복으로 같은 생활 문제 재발동 금지. 기존 장 사건·청원과 동시 노출 억제.",
+        "variantGroup": "steward.faction_nature.165"
+      },
+      "illustration": "눈 오기 전 장날에 목재 주문 장부와 빈 수레를 놓고 수레꾼이 상인과 의논한다.",
+      "history": {
+        "sourceIds": [
+          "CS01"
+        ],
+        "basis": "수선·연료용 나무 이용의 구별에 기대되 눈길 운송 지연은 엔진 효과로 주장하지 않는다.",
+        "inference": "인물·대화·세력의 요구·갈등·결정 조합은 창작이다. 엔진의 숫자와 지급 주기는 게임 추정이며 사료 가격·확률이 아니다.",
+        "limits": "북부 특유 제도와 후대 사례를 남부 1300–1450의 동일 관습으로 일반화하지 않는다. 특히 cattle-gate 환산과 general fine은 이번 확장 근거에서 제외. 시기·지역이 다른 내용은 배경 비교만 하며 이 가공도시의 실제 발생 증거가 아니다.",
+        "sources": [
+          {
+            "id": "CS01",
+            "title": "Lancaster University, Cumbrian Manorial Records Glossary",
+            "url": "https://www.lancaster.ac.uk/fass/projects/manorialrecords/glossary/index.htm"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "분리 작성한 미설치 사건 초안",
+        "requirements": "등록기 조건 평가·선택 바인딩·사후 재검사·중복 억제·원장/연대기 문구 어댑터가 필요하다. enabledInEngine=false. 원고의 예방적 발언을 엔진의 날씨·질병 진단으로 바꾸지 않는다.",
+        "choiceDesignNote": "숫자만 다른 선택보다 대상 사업·감독 시간·지속 부담·약속 철회·물자 주문의 대가를 비교한다. 같은 설정값이면 해당 선택 비활성.",
+        "classificationNote": "장 사건을 다시 발생시키지 않는다. 역사적으로 구체적인 기존 사건과 겹치면 변형 문구로 합쳐야 한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    },
+    "registry": {
+      "id": "ck_evt_165",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.json#ck_evt_165",
+      "sourceRevision": "v4",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "seasonIndices": [
+          2,
+          3
+        ],
+        "windowRationale": "눈길 전에 목재 주문량과 생산시설을 비교하는 예방 요청이므로 확대.가을·겨울 계절은 유지. authoredYears·eligibilityYears 모두 v4 후보창이다. A 원래 창은 decisions.oldYears에 보존한다.",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450
+      },
+      "bindings": {},
+      "conditions": {
+        "all": [
+          {
+            "compare": {
+              "left": {
+                "field": "selectors.stateCalendar.year"
+              },
+              "op": "gte",
+              "right": {
+                "literal": 1300
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "field": "selectors.stateCalendar.year"
+              },
+              "op": "lte",
+              "right": {
+                "literal": 1450
+              }
+            }
+          },
+          {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "call": "stateCalendar",
+                    "args": [
+                      {
+                        "field": "state"
+                      }
+                    ]
+                  },
+                  "op": "has_year_inclusive",
+                  "right": {
+                    "literal": [
+                      1300,
+                      1450
+                    ]
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "selectors.stateCalendar.season"
+                  },
+                  "op": "in",
+                  "right": {
+                    "literal": [
+                      2,
+                      3
+                    ]
+                  }
+                }
+              },
+              {
+                "exists": {
+                  "field": "state.agency"
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "state.population"
+                  },
+                  "op": "gte",
+                  "right": {
+                    "literal": 1
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 12
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 12
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "timberTradePoint",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": null
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 324
+                    }
+                  }
+                }
+              ]
+            },
+            "revalidate": true,
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "fixed_authored_candidate"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 0
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "revalidate": true,
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "fixed_authored_candidate"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 6
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 6
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "call": "timberTradePoint",
+                      "args": [
+                        {
+                          "field": "state"
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": null
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 162
+                    }
+                  }
+                }
+              ]
+            },
+            "revalidate": true,
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "fixed_authored_candidate"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 8,
+        "weight": 60,
+        "chancePermille": 150,
+        "budget": "global_new_events_max_2_year_1_season"
+      },
+      "recurrence": {
+        "mode": "once_per_campaign",
+        "requireActualContextChange": true,
+        "reason": "새 생활 맥락 판정의 런타임 검증 전에는 반복 노출하지 않는다."
+      },
+      "dedup": {
+        "contractRef": "dedup-contract.json",
+        "groupRef": "fn.timber_order_reconsideration.v2"
+      },
+      "bindingStatus": "spec_requires_runtime_evaluator"
+    }
+  },
+  {
+    "id": "ck_evt_171",
+    "title": "추위가 먼저 온다는 말",
+    "verdict": "hold",
+    "effectClass": "concrete",
+    "visibleResult": "일부 주문·좌판 배율은 실제로 변하지만 사건이 제시한 대상 문제는 해결하지 않는다.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "추위는 실제 조건이 아니며 목재 주문 축소 외 두 선택은 정책·장려금이다. 겨울 생존의 대가처럼 보이나 난방·식량 결과가 없고 165와 자재 선택도 겹친다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "order_timber {\"amount\":4,\"orderUnits\":[4,4],\"pricePerUnitD\":[18,27],\"maximumTotalCostD\":[72,108],\"immediateCashDeltaD\":[0,0]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "안정 방침으로 곡창·농사 거점을 우선한다",
+        "lose": "수입·장터 성장의 상대 점수를 낮추며 추위 자체를 완화하지 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_project_subsidy {\"kind\":\"storehouse\",\"amount\":20,\"amountCandidateRange\":[20,20]}",
+        "protect": "창고 사업 장려금 20d를 건다",
+        "lose": "저장 기반에 지출 약속을 걸지만 난방 연료 배급으로 계산하지 않는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_173",
+    "title": "마른 겨울의 석재 주문",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "석재 주문이라는 제목과 달리 석재를 주문하는 선택이 전혀 없다. 사업 장려금의 설정·철회만으로 돌이나 공사 진척이 생기지 않는다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_project_subsidy {\"kind\":\"masonry\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "석공소 사업에 24d를 건다",
+        "lose": "가공 사업 조건에 약속하고 원석 공급은 그대로다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_project_subsidy {\"kind\":\"quarry\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "채석장 사업에 24d를 건다",
+        "lose": "원석 공급의 조건에 약속하고 가공 부족은 남긴다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_project_subsidy {\"kind\":\"masonry\",\"amount\":0,\"amountCandidateRange\":[0,0]}",
+        "protect": "석공소 장려금을 거둔다",
+        "lose": "새 가공 사업 지급 약속을 줄이지만 이미 시작한 공사는 멈추지 않는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_174",
+    "title": "빙판 소식과 방문 감사",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "특정 영지의 감사 방식·직접 감독 변경, 다음 결산에서 감사 기록과 업무 부담.",
+    "cardDilemma": "숨긴 몫을 알아낼 기회와 영주의 다른 업무 여력 사이의 선택.",
+    "reason": "실제 영지 감사·감독 변화는 유지. 겨울길 불안 대신 다음 결산에서 정보와 업무 여력을 맞바꾸는 이유를 카드 앞에 제시.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_audit_mode {\"estateId\":\"$estate.id\",\"mode\":\"accounts\"}",
+        "protect": "영주의 다른 업무 여력",
+        "lose": "방문 감사의 추가 발견 가능성",
+        "visible": "해당 영지의 다음 정기 감사 방식·감사 기록. 즉시 적발 아님"
+      },
+      {
+        "id": "b",
+        "effect": "set_audit_mode {\"estateId\":\"$estate.id\",\"mode\":\"visit\"}",
+        "protect": "감사에서 숨긴 몫을 발견할 가능성",
+        "lose": "방문 뒤 1년의 업무 여력",
+        "visible": "해당 영지의 다음 정기 감사 방식·감사 기록. 즉시 적발 아님"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_oversight {\"estateId\":\"$estate.id\",\"mode\":\"direct\",\"stewardId\":\"$currentSteward.personId\"}",
+        "protect": "해당 영지 감독을 영주 손에 둠",
+        "lose": "영주의 관리 여력",
+        "visible": "해당 영지 직접 감독 전환. 과거 횡령 회수 아님"
+      }
+    ],
+    "event": {
+      "number": 174,
+      "id": "ck_evt_174",
+      "category": "자연",
+      "period": "1382–1450",
+      "years": [
+        1430,
+        1439
+      ],
+      "conditions": {
+        "land": "지형을 임의 상태 필드로 만들지 않는다. 별도 unsupportedFilters가 있으면 장면을 차단한다.",
+        "population": "state.population >= 1 및 영주 모드 agency 존재. 세부 실제 대상 조건은 sidecar에 명시.",
+        "rights": "권리 소송 선택은 실제 영주 소송과 청구권을 바인딩한다. 권원·점유를 같은 뜻으로 쓰지 않는다.",
+        "relations": "임의 마음 증감 효과 없음. 현행 핸들러의 후처리만 따른다.",
+        "season": "stateCalendar(state).season ∈ [3].",
+        "state": "ck_evt_174의 registry-additions.json 조건 AST와 선택별 조건을 따른다. 예방 요청·이해당사자 발언은 가공 청원이다. 날씨 피해·치료·즉시 건설을 실제 상태로 단정하지 않는다. 겨울에도 다음 결산의 감사 방식만 설정한다. 현재 방식과 같은 선택은 비활성이고, 다른 감사 방식과 직접 감독의 두 선택을 비교한다."
+      },
+      "sender": {
+        "faction": "위임 영지 주민",
+        "role": "지도 밖 영지 청지기"
+      },
+      "title": "빙판 소식과 방문 감사",
+      "body": "청지기는 다음 미카엘마스 결산을 장부만 보내 마치자고 합니다. 직접 찾아가면 숨긴 몫을 알아낼 가능성이 높아지지만 다른 영지를 돌볼 여력이 줄어듭니다. 아예 이 영지의 감독을 맡아 청지기에게 남겨 둔 일을 되가져올 수도 있습니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "장부로 살피고 다른 업무 여력을 남긴다",
+          "effects": [
+            {
+              "catalogKey": "audit.mode",
+              "operation": "set_audit_mode",
+              "parameters": {
+                "estateId": "$estate.id",
+                "mode": "accounts"
+              },
+              "rangeNote": "발견 판정 기준 [300,300]‰+(100−청지기 능력)×[3,3]‰; 즉시 지출0.",
+              "preconditions": "실제 보유 지도 밖 영지 oversight 존재. 다음 미카엘마스 이전.",
+              "limits": "다음 정기 감사 방식 설정. 적발 보장 없음. 기준1000‰ 초과 시 해시 판정상 항상 발견.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/stewardship.ts:431",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/stewardship.ts#L431"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "다음 결산부터 장부 감사로 이어 간다. 방문의 업무 부담을 피하는 대신 숨긴 몫을 더 잘 찾아낼 기회를 포기한다.",
+          "ledger": "빙판 소식과 방문 감사: 다음 감사를 장부 방식으로 정했다.",
+          "chronicle": "다음 감사를 장부 방식으로 정했다.",
+          "costAxes": [
+            "time",
+            "attention",
+            "money"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "방문 감사로 바꾸어 숨긴 몫을 살핀다",
+          "effects": [
+            {
+              "catalogKey": "audit.mode",
+              "operation": "set_audit_mode",
+              "parameters": {
+                "estateId": "$estate.id",
+                "mode": "visit"
+              },
+              "rangeNote": "발견 기준 [850,850]‰+(100−능력)×[3,3]‰; 실제 방문 이후1년간 attention 용량 −[1,1].",
+              "preconditions": "동일 oversight. 실제 다음 미카엘마스 감사가 도래해야 방문 부담 발생.",
+              "limits": "설정 즉시 비용·적발 없음. 길 사고·수송비를 임의 추가하지 않는다. 일회성 예약이 아닌 지속 설정. 이후 매년 감사에도 visit가 유지되므로 accounts로 재설정하지 않으면 업무 용량 차감의1년 기한이 매년 갱신된다. 방문 사유 가중치는 −1이지만 관리 용량은 최소1로 고정되므로 실제 추가 용량 감소는0~1이다. 이미 방문 차감이 있으면 새로 중첩하지 않고 기간을 갱신한다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/stewardship.ts:431",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/stewardship.ts#L431"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "다음 결산의 발견 가능성을 높인다. 실제 방문 뒤 1년간 업무 여력이 줄며, 방식을 바꾸지 않으면 해마다 방문한다.",
+          "ledger": "빙판 소식과 방문 감사: 다음 감사를 방문 방식으로 정했다.",
+          "chronicle": "다음 감사를 방문 방식으로 정했다.",
+          "costAxes": [
+            "time",
+            "attention",
+            "money"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "이 영지를 직접 감독하고 관리 부담을 맡는다",
+          "effects": [
+            {
+              "catalogKey": "steward.appoint",
+              "operation": "set_estate_oversight",
+              "parameters": {
+                "estateId": "$estate.id",
+                "mode": "direct",
+                "stewardId": "$currentSteward.personId"
+              },
+              "rangeNote": "현행 고정값은 [x,x]. 임의 입력 금액·비율 범위는 게임 추정이며 사료 가격이 아니다.",
+              "preconditions": "heldOffMapEstates(state)에 포함된 영지의 stewardship.oversight.mode=\"steward\", auditMode=\"accounts\"이며 현 stewardship.stewards 담당의 status=\"serving\"이고 estates.people의 해당 인물이 alive=true. attention(state).load=attention(state).capacity이고 capacity>=2. state.tick<nextMichaelmas(state.tick), visitTick이 없거나 state.tick-visitTick>=4000. 실제 횡령은 아직 판정되지 않았으며 보고는 가공 서사다. 두 선택 모두 현재 값과 달라지는 명령만 실행한다.",
+              "limits": "현 수입관리인의 과거 kept/errors는 지우지 않는다. 감독 모드만 바뀌고 즉시 회수하지 않는다. auditMode는 accounts인 채 유지된다. 같은 accounts 값을 다시 설정하는 두 번째 명령은 실행하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/stewardship.ts:371",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/5ad4b8340b2ca14bfe99fb3e17b950e2cb064e0b/src/engine/stewardship.ts#L371"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "영지의 감독을 청지기에게서 가져오지만 영주의 관리 부담이 늘어난다. 지난 결산에서 빠진 돈을 돌려받는 결정은 아니다.",
+          "ledger": "빙판 소식과 방문 감사: 해당 영지를 직접 감독으로 돌렸다.",
+          "chronicle": "해당 영지를 직접 감독으로 돌렸다.",
+          "costAxes": [
+            "attention",
+            "time",
+            "information",
+            "delegation"
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": false,
+        "cooldownYears": [
+          0,
+          0
+        ],
+        "steward": "새 등록기 사건의 자동 선례는 미지원. set_exception_rules가 있는 선택만 지도 밖 기존 청원 선례 규칙을 바꾼다. 홈 선례 처리로 주장하지 않는다.",
+        "exclusions": "캠페인당 한 번만. 새 인스턴스·설정 왕복으로 같은 생활 문제 재발동 금지. 기존 장 사건·청원과 동시 노출 억제.",
+        "variantGroup": "steward.faction_nature.174"
+      },
+      "illustration": "겨울길 쪽에 세운 말과 실내의 장부 탁자 사이에서 감사 방문 여부를 논의한다.",
+      "history": {
+        "sourceIds": [
+          "CS11"
+        ],
+        "basis": "1430년대 기후 연구는 배경, 특정 길의 결빙은 가공 미확인 보고.",
+        "inference": "인물·대화·세력의 요구·갈등·결정 조합은 창작이다. 엔진의 숫자와 지급 주기는 게임 추정이며 사료 가격·확률이 아니다.",
+        "limits": "논문 전체·모델 재분석 아님. 유럽 평균에서 특정 잉글랜드 마을의 정확한 결빙일·수확률을 만들지 않는다. 시기·지역이 다른 내용은 배경 비교만 하며 이 가공도시의 실제 발생 증거가 아니다.",
+        "sources": [
+          {
+            "id": "CS11",
+            "title": "Camenisch et al., The 1430s: a cold period... Kent Academic Repository",
+            "url": "https://kar.kent.ac.uk/60707/"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "분리 작성한 미설치 사건 초안",
+        "requirements": "등록기 조건 평가·선택 바인딩·사후 재검사·중복 억제·원장/연대기 문구 어댑터가 필요하다. enabledInEngine=false. 원고의 예방적 발언을 엔진의 날씨·질병 진단으로 바꾸지 않는다.",
+        "choiceDesignNote": "숫자만 다른 선택보다 대상 사업·감독 시간·지속 부담·약속 철회·물자 주문의 대가를 비교한다. 같은 설정값이면 해당 선택 비활성.",
+        "classificationNote": "장 사건을 다시 발생시키지 않는다. 역사적으로 구체적인 기존 사건과 겹치면 변형 문구로 합쳐야 한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    }
+  },
+  {
+    "id": "ck_evt_179",
+    "title": "두 사업에 남은 장려금",
+    "verdict": "hold",
+    "effectClass": "concrete",
+    "visibleResult": "일부 주문·좌판 배율은 실제로 변하지만 사건이 제시한 대상 문제는 해결하지 않는다.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "서로 배타적인 두 사업 결정처럼 제시하지만 장려금 하나의 철회가 다른 사업 착수로 연결되지 않는다. 좌판세 인상도 특정 건물 결과를 만들지 않는다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_project_subsidy {\"kind\":\"market\",\"amount\":0,\"amountCandidateRange\":[0,0]}",
+        "protect": "시장 장려금부터 거둔다",
+        "lose": "시장 사업의 미래 지급 약속을 줄이고 직조공 집의 약속은 남긴다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_project_subsidy {\"kind\":\"weaver_house\",\"amount\":0,\"amountCandidateRange\":[0,0]}",
+        "protect": "직조 장려금부터 거둔다",
+        "lose": "생산 사업의 미래 지원을 줄여 다른 종류의 지급 여력을 남긴다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_market_dues {\"permille\":1150}",
+        "protect": "시장 세입 조건",
+        "lose": "좌판 부담 및 상업 사업의 상대 매력",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_180",
+    "title": "비가 그친 뒤에도 남은 먼 길",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "비와 먼 물길을 제시하나 우물·길·가구의 접근성은 그대로다. 장려금·정책 변경으로 이를 해결했다고 읽힐 위험이 크다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_project_subsidy {\"kind\":\"well\",\"amount\":24,\"amountCandidateRange\":[24,24]}",
+        "protect": "우물 사업에 24d를 건다",
+        "lose": "특정 집 옆 건설을 보장하지 않고 사업의 조건만 돕는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"defence\"}",
+        "protect": "방어 방침으로 길과 물자 기반을 우선한다",
+        "lose": "도로 사업은 유리해지나 우물·주택의 상대 우선도는 달라진다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_project_subsidy {\"kind\":\"house\",\"amount\":0,\"amountCandidateRange\":[0,0]}; set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "주거 장려금을 철회하고 안정 방침으로 돌린다",
+        "lose": "정착 확장의 지원을 줄이고 물·식량 기반을 우선해 성장 속도를 양보한다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_201",
+    "title": "이번 철 좌판의 몫",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "도시 전체 좌판세의 지속 설정. 장날 수입 기준에 적용되며 개별 가구 지급은 없음.",
+    "cardDilemma": "모든 좌판의 부담을 덜면 영주의 세입 조건을 양보한다. 세입을 늘리면 같은 시장 전체에 부담이 간다.",
+    "reason": "지속되는 실제 도시 전체 좌판세 설정은 유지. 특정 직물·가문 특혜나 임시 감면으로 읽히지 않게 범위·지속성과 세입/부담의 대가를 전면화.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_market_dues {\"duesPermille\":[250,2000],\"previousPermille\":[250,2000]}",
+        "protect": "좌판의 부담 완화",
+        "lose": "거래당 영주 수입 조건",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      },
+      {
+        "id": "b",
+        "effect": "set_market_dues {\"duesPermille\":[250,2000],\"previousPermille\":[250,2000]}",
+        "protect": "시장 세입 조건",
+        "lose": "좌판 부담 및 상업 사업의 상대 매력",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      },
+      {
+        "id": "c",
+        "effect": "registry_hold {\"townRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ],
+    "event": {
+      "number": 201,
+      "id": "ck_evt_201",
+      "category": "도시",
+      "period": "1300–1380",
+      "years": [
+        1300,
+        1380
+      ],
+      "conditions": {
+        "land": "땅 종류 제한 없음.",
+        "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+        "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+        "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+        "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+        "state": "가동 중인 시장이 있는 새 계절. 도시 전체 좌판 부담을 논의하며 특정 통행세 분쟁의 발생을 가정하지 않는다."
+      },
+      "sender": {
+        "faction": "도시 공동체",
+        "role": "도시 공동체의 대표"
+      },
+      "title": "이번 철 좌판의 몫",
+      "body": "도시 공동체가 이번 철 좌판세를 다시 정해 달라고 합니다. 부담을 낮추면 장사꾼이 낼 몫과 영주의 세입 조건이 함께 내려갑니다. 금고 몫을 늘리면 모든 좌판이 더 무거운 기준을 감수합니다. 한 철만의 감면이 아니라, 다시 바꿀 때까지 이어질 기준입니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "모든 좌판의 부담을 낮추고 세입 몫을 양보한다",
+          "tradeoff": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+          "ledger": "전체 시장 좌판세 인하. 새 비율은 선택 당시 묶인 값.",
+          "chronicle": "시장에 내는 부담은 낮아졌고 영주는 세입 일부를 양보했다.",
+          "costAxes": [
+            "money",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "market_dues",
+              "operation": "set_market_dues",
+              "parameters": {
+                "duesPermille": [
+                  250,
+                  2000
+                ],
+                "previousPermille": [
+                  250,
+                  2000
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/townAgency.ts:95",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "모든 좌판에서 더 거두어 세입 조건을 높인다",
+          "tradeoff": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+          "ledger": "전체 시장 좌판세 인상. 새 비율은 선택 당시 묶인 값.",
+          "chronicle": "시장에 내는 부담은 높아졌고 장사꾼들은 몫을 더 내게 되었다.",
+          "costAxes": [
+            "money",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "market_dues",
+              "operation": "set_market_dues",
+              "parameters": {
+                "duesPermille": [
+                  250,
+                  2000
+                ],
+                "previousPermille": [
+                  250,
+                  2000
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/townAgency.ts:95",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "현행을 지키고 대표의 불만을 감수한다",
+          "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+          "ledger": "답변 보류: 도시 공동체 관계 −2.",
+          "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+          "costAxes": [
+            "relation",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "no_op",
+              "operation": "registry_hold",
+              "parameters": {
+                "townRelationDelta": [
+                  -2,
+                  -2
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/registryV4.ts:173",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": true,
+        "cooldownYears": [
+          1,
+          1
+        ],
+        "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+        "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+        "variantGroup": "v41.T1"
+      },
+      "illustration": "장터 골목의 접힌 좌판 천을 펴는 주민과 바구니를 내려놓는 행상. 앞쪽에는 작은 동전 접시를 든 징수자. 문서 없음.",
+      "history": {
+        "sourceIds": [
+          "H41-GUILD"
+        ],
+        "basis": "길드 규약의 거래 부담·면제와 도시 내 협상 관행.",
+        "inference": "실제 계절과 시장에 묶은 가공 좌판세 협의.",
+        "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다.",
+        "sources": [
+          {
+            "id": "H41-GUILD",
+            "title": "Southampton Guild Organization, 14th Century",
+            "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+        "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    }
+  },
+  {
+    "id": "ck_evt_202",
+    "title": "한 집의 빈 식탁이 묻는 일",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "빈 식탁에 대응하는 선택이 전부 도시 사업 가중치다. 해당 집의 식량·이주·구호 결과가 없고 일반 정책 메뉴를 반복한다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"townRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_203",
+    "title": "빈손으로 기다리는 일꾼은 드물다",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "품삯·반란 뒤 노동 갈등을 제시하지만 임금·일꾼 배치·노동 의무는 변하지 않는다. 정책 세 갈래로는 사건 고유의 손익이 성립하지 않는다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"townRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_204",
+    "title": "직물 꾸러미가 놓인 장터",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "도시 전체 좌판세의 지속 설정. 장날 수입 기준에 적용되며 개별 가구 지급은 없음.",
+    "cardDilemma": "모든 좌판의 부담을 덜면 영주의 세입 조건을 양보한다. 세입을 늘리면 같은 시장 전체에 부담이 간다.",
+    "reason": "지속되는 실제 도시 전체 좌판세 설정은 유지. 특정 직물·가문 특혜나 임시 감면으로 읽히지 않게 범위·지속성과 세입/부담의 대가를 전면화.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_market_dues {\"duesPermille\":[250,2000],\"previousPermille\":[250,2000]}",
+        "protect": "좌판의 부담 완화",
+        "lose": "거래당 영주 수입 조건",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      },
+      {
+        "id": "b",
+        "effect": "set_market_dues {\"duesPermille\":[250,2000],\"previousPermille\":[250,2000]}",
+        "protect": "시장 세입 조건",
+        "lose": "좌판 부담 및 상업 사업의 상대 매력",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      },
+      {
+        "id": "c",
+        "effect": "registry_hold {\"townRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ],
+    "event": {
+      "number": 204,
+      "id": "ck_evt_204",
+      "category": "도시",
+      "period": "1381–1450",
+      "years": [
+        1381,
+        1450
+      ],
+      "conditions": {
+        "land": "땅 종류 제한 없음.",
+        "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+        "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+        "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+        "season": "계절 인덱스 2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+        "state": "가동 시장과 실제 직물 시설이 있는 가을·겨울. 원모 수출량·불황 상태를 새로 만들지 않는다."
+      },
+      "sender": {
+        "faction": "도시 공동체",
+        "role": "도시 공동체의 대표"
+      },
+      "title": "직물 꾸러미가 놓인 장터",
+      "body": "직물을 다루는 이들이 좌판 부담을 낮춰 달라고 합니다. 천을 파는 이들을 돕자면 다른 물건의 좌판에도 같은 낮은 기준을 적용해야 합니다. 영주의 세입 몫을 지킬지, 도시 전체의 장사 부담을 덜지 정해야 합니다. 새 기준은 다음에 고칠 때까지 이어집니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "모든 좌판의 부담을 낮추고 세입 몫을 양보한다",
+          "tradeoff": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+          "ledger": "전체 시장 좌판세 인하. 새 비율은 선택 당시 묶인 값.",
+          "chronicle": "시장에 내는 부담은 낮아졌고 영주는 세입 일부를 양보했다.",
+          "costAxes": [
+            "money",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "market_dues",
+              "operation": "set_market_dues",
+              "parameters": {
+                "duesPermille": [
+                  250,
+                  2000
+                ],
+                "previousPermille": [
+                  250,
+                  2000
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/townAgency.ts:95",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "모든 좌판에서 더 거두어 세입 조건을 높인다",
+          "tradeoff": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+          "ledger": "전체 시장 좌판세 인상. 새 비율은 선택 당시 묶인 값.",
+          "chronicle": "시장에 내는 부담은 높아졌고 장사꾼들은 몫을 더 내게 되었다.",
+          "costAxes": [
+            "money",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "market_dues",
+              "operation": "set_market_dues",
+              "parameters": {
+                "duesPermille": [
+                  250,
+                  2000
+                ],
+                "previousPermille": [
+                  250,
+                  2000
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/townAgency.ts:95",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "현행을 지키고 대표의 불만을 감수한다",
+          "tradeoff": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+          "ledger": "답변 보류: 도시 공동체 관계 −2.",
+          "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+          "costAxes": [
+            "relation",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "no_op",
+              "operation": "registry_hold",
+              "parameters": {
+                "townRelationDelta": [
+                  -2,
+                  -2
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/registryV4.ts:173",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": true,
+        "cooldownYears": [
+          1,
+          1
+        ],
+        "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+        "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+        "variantGroup": "v41.T4"
+      },
+      "illustration": "양모 자루와 접은 직물 꾸러미가 갈라져 놓인 장터. 천을 펼쳐 보이는 상인 옆으로 징수자가 걸어간다. 가을·겨울 양쪽에 맞게 잎 진 나무를 멀리 보이고 세율 글자는 없다.",
+      "history": {
+        "sourceIds": [
+          "H41-WOOL",
+          "H41-CUSTOMS"
+        ],
+        "basis": "14세기 후반 이후 원모와 가공 직물 교역 구조 변화.",
+        "inference": "실제 직물 시설이 있는 도시의 계절별 시장 부담으로 각색한다.",
+        "limits": "특정 가상도시의 매년 수요나 가격을 역사적 필연으로 지정하지 않는다. 정량 배율은 재사용하지 않는다. 시장 좌판세와 왕실 수출관세를 같은 세목으로 쓰지 않는다. 이 자료만으로 특정 해 불황을 단정하지 않는다.",
+        "sources": [
+          {
+            "id": "H41-WOOL",
+            "title": "Henry V and the crossing to France: reconstructing naval operations for the Agincourt campaign, 1415",
+            "url": "https://www.tandfonline.com/doi/full/10.1080/03044181.2016.1236503"
+          },
+          {
+            "id": "H41-CUSTOMS",
+            "title": "Medieval customs’ accounts",
+            "url": "https://www.nationalarchives.gov.uk/help-with-your-research/research-guides/medieval-customs-accounts/"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+        "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    }
+  },
+  {
+    "id": "ck_evt_205",
+    "title": "물통 줄 끝의 두 집",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "실제 물 부족 두 집은 바인딩되지만 우물 장려금도 그 집 물 접근성을 보장하지 않는다. 특정 우물 착수·물 공급 결과를 기존 명령으로 확정할 수 없어 보류.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_project_subsidy {\"kind\":\"well\",\"amount\":24}",
+        "protect": "우물 사업에 24d 장려금을 건다",
+        "lose": "우물 사업에 쓸 공고 예산을 약속해 다른 지원의 여유를 줄인다. 실제 사업 시작 전에는 물도 돈도 지급되지 않는다.",
+        "visible": "장려금 설정·철회만. 특정 건물·사람·기반 시설 변화 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"townRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_206",
+    "title": "불길 뒤에 남은 서까래",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "미입고 주문 잔량. 실제 거래일에 가용 현금으로 매입되어 영주 목재 재고와 지출 기록이 변한다.",
+    "cardDilemma": "확보할 목재와 앞으로 쓸 현금을 맞바꾼다. 취소는 대금을 아끼지만 미입고 물자를 포기한다.",
+    "reason": "목재와 무관한 안정 방침을 실제 미입고 주문 취소로 교체. 주문 유지의 관계 대가와 매입·취소의 자재 대가를 분리. 화재 집 복구·특정 공사 우선 배정은 주장하지 않음.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "order_timber {\"amount\":10,\"pricePerUnitD\":[18,18],\"maximumTotalCostD\":[180,180]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "b",
+        "effect": "order_timber {\"amount\":4,\"pricePerUnitD\":[18,18],\"maximumTotalCostD\":[72,72]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"commonsFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ],
+    "event": {
+      "number": 206,
+      "id": "ck_evt_206",
+      "category": "자연",
+      "period": "1300–1450",
+      "years": [
+        1300,
+        1450
+      ],
+      "conditions": {
+        "land": "땅 종류 제한 없음.",
+        "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+        "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+        "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+        "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+        "state": "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+      },
+      "sender": {
+        "faction": "농민 공동체",
+        "role": "농민 공동체의 대표"
+      },
+      "title": "불길 뒤에 남은 서까래",
+      "body": "불이 난 뒤 주민들은 마을의 목재를 얼마나 사 둘지 묻습니다. 열 단을 받으면 재료를 넉넉히 갖추지만 대금도 커집니다. 네 단만 받거나 아직 오지 않은 주문을 거두어 금고를 지킬 수도 있습니다. 사들인 목재는 영주의 목재 재고에 쌓이며, 어느 집에 쓸지는 따로 정해질 일입니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "남은 목재 주문을 10단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 10,
+                "orderUnits": [
+                  10,
+                  10
+                ],
+                "pricePerUnitD": [
+                  18,
+                  18
+                ],
+                "maximumTotalCostD": [
+                  180,
+                  180
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 180d. 거래일마다 목재가 들어오는 만큼 돈을 내므로 다른 지출에 쓸 몫이 줄어든다.",
+          "ledger": "목재 주문 잔량 10단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 10단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "남은 목재 주문을 4단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 4,
+                "orderUnits": [
+                  4,
+                  4
+                ],
+                "pricePerUnitD": [
+                  18,
+                  18
+                ],
+                "maximumTotalCostD": [
+                  72,
+                  72
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 72d. 열 단 주문보다 108d를 덜 쓰지만 자재도 여섯 단 적게 들어온다.",
+          "ledger": "목재 주문 잔량 4단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 4단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "미입고 목재 주문을 취소한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 0,
+                "orderUnits": [
+                  0,
+                  0
+                ],
+                "pricePerUnitD": [
+                  18,
+                  18
+                ],
+                "maximumTotalCostD": [
+                  0,
+                  0
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "앞으로 이 주문에 쓸 돈을 지키지만, 아직 오지 않은 목재도 포기한다. 이미 받은 물자는 돌려주지 않는다.",
+          "ledger": "미입고 목재 주문 취소. 기존 물자·지출 유지.",
+          "chronicle": "도착하지 않은 목재의 주문을 거두었다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "주문을 그대로 두고 공동체의 불만을 감수한다",
+          "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+          "ledger": "답변 보류: 농민 공동체 관계 −2.",
+          "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+          "costAxes": [
+            "relation",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "no_op",
+              "operation": "registry_hold",
+              "parameters": {
+                "commonsFactionRelationDelta": [
+                  -2,
+                  -2
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/registryV4.ts:173",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": true,
+        "cooldownYears": [
+          0,
+          0
+        ],
+        "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+        "exclusions": "동일 사건 ID에서 동일 맥락(bound.event.id)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+        "variantGroup": "v41.N1"
+      },
+      "illustration": "검게 탄 지붕 부재 곁에서 쓸 수 있는 서까래를 골라 쌓는 주민들. 불타는 사람·시신·문서 없음.",
+      "history": {
+        "sourceIds": [
+          "H41-FIRE"
+        ],
+        "basis": "중세 화재 위험과 건축 유지 책임의 선례.",
+        "inference": "실제 fire 사건 뒤 수선 자원 준비를 묻는 가공 청원이다.",
+        "limits": "런던의 초가지붕 금지를 모든 농촌에 적용하지 않는다. 소방차·보험금·1666년 조치를 사용하지 않는다.",
+        "sources": [
+          {
+            "id": "H41-FIRE",
+            "title": "History of Building Regulations in the British Isles",
+            "url": "https://www.buildinghistory.org/regulations.shtml"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+        "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    },
+    "registry": {
+      "id": "ck_evt_206",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_206",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1450,
+        "seasonIndices": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1450
+        ],
+        "eligibilityYears": [
+          1300,
+          1450
+        ],
+        "windowRationale": "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 0,
+        "weight": 100,
+        "chancePermille": 1000,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 0,
+        "cooldownSeasonsMaximum": 0,
+        "contextFields": [
+          "bound.event.id"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.N1",
+        "semanticFields": [
+          "bound.event.id"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 10
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 10
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 4
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 4
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 0
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "실제 화재 발생 ID, 도래 후 두 해 이내. 목재 주문은 일반 재고이고 소실주택 자동 복구가 아니다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "event": {
+          "from": {
+            "field": "state.events.records"
+          },
+          "where": {
+            "all": [
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.kind"
+                  },
+                  "op": "eq",
+                  "right": {
+                    "literal": "fire"
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "field": "item.arrivalTick"
+                  },
+                  "op": "lte",
+                  "right": {
+                    "field": "state.tick"
+                  }
+                }
+              },
+              {
+                "compare": {
+                  "left": {
+                    "operation": "subtract",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "field": "item.arrivalTick"
+                      }
+                    ]
+                  },
+                  "op": "lte",
+                  "right": {
+                    "literal": 8000
+                  }
+                }
+              }
+            ]
+          },
+          "order": [
+            {
+              "field": "arrivalTick",
+              "direction": "desc"
+            },
+            {
+              "field": "id",
+              "direction": "asc"
+            }
+          ],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    }
+  },
+  {
+    "id": "ck_evt_207",
+    "title": "겨울 문턱의 빈 바구니",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "겨울 굶주린 집을 발동 맥락으로 쓰지만 식량을 주거나 살림을 바꾸는 명령이 없다. 정책 선택과 관계 대가만 남는다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"commonsFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_208",
+    "title": "수확철에 남지 않는 일손",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "밭 일손이 모자란 맥락과 선택 결과가 분리되어 있다. 수확 노동 배치·임금·생산량의 변화를 만들 수 없는 정책 선택이다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"defence\"}",
+        "protect": "길과 비축·방비를 앞세운다",
+        "lose": "도로·창고·방어 사업을 앞세우지만 주택 쪽은 뒤로 둔다. 징병이나 원정 물자 인도는 실행하지 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"commonsFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_209",
+    "title": "공사장 빈 목재 받침대",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "미입고 주문 잔량. 실제 거래일에 가용 현금으로 매입되어 영주 목재 재고와 지출 기록이 변한다.",
+    "cardDilemma": "확보할 목재와 앞으로 쓸 현금을 맞바꾼다. 취소는 대금을 아끼지만 미입고 물자를 포기한다.",
+    "reason": "목재와 무관한 안정 방침을 실제 미입고 주문 취소로 교체. 주문 유지의 관계 대가와 매입·취소의 자재 대가를 분리. 화재 집 복구·특정 공사 우선 배정은 주장하지 않음.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "order_timber {\"amount\":10,\"pricePerUnitD\":[18,18],\"maximumTotalCostD\":[180,180]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "b",
+        "effect": "order_timber {\"amount\":4,\"pricePerUnitD\":[18,18],\"maximumTotalCostD\":[72,72]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"commonsFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ],
+    "event": {
+      "number": 209,
+      "id": "ck_evt_209",
+      "category": "도시",
+      "period": "1300–1414",
+      "years": [
+        1300,
+        1414
+      ],
+      "conditions": {
+        "land": "땅 종류 제한 없음.",
+        "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+        "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+        "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+        "season": "계절 인덱스 0,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+        "state": "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+      },
+      "sender": {
+        "faction": "농민 공동체",
+        "role": "농민 공동체의 대표"
+      },
+      "title": "공사장 빈 목재 받침대",
+      "body": "공사장에 납품할 목재가 모자랍니다. 주민들은 열 단을 사서 자재를 넉넉히 갖출지, 네 단만 받아 다른 지출의 여지를 남길지 묻습니다. 아직 오지 않은 주문을 취소하면 대금은 아끼지만 그 목재도 들어오지 않습니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "남은 목재 주문을 10단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 10,
+                "orderUnits": [
+                  10,
+                  10
+                ],
+                "pricePerUnitD": [
+                  18,
+                  18
+                ],
+                "maximumTotalCostD": [
+                  180,
+                  180
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 180d. 거래일마다 목재가 들어오는 만큼 돈을 내므로 다른 지출에 쓸 몫이 줄어든다.",
+          "ledger": "목재 주문 잔량 10단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 10단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "b",
+          "label": "남은 목재 주문을 4단으로 정한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 4,
+                "orderUnits": [
+                  4,
+                  4
+                ],
+                "pricePerUnitD": [
+                  18,
+                  18
+                ],
+                "maximumTotalCostD": [
+                  72,
+                  72
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "전량 매입 시 72d. 열 단 주문보다 108d를 덜 쓰지만 자재도 여섯 단 적게 들어온다.",
+          "ledger": "목재 주문 잔량 4단으로 설정. 대금은 실제 매입 때 지급.",
+          "chronicle": "남은 목재 주문을 4단으로 정했다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "c",
+          "label": "미입고 목재 주문을 취소한다",
+          "effects": [
+            {
+              "catalogKey": "timber.order",
+              "operation": "order_timber",
+              "parameters": {
+                "amount": 0,
+                "orderUnits": [
+                  0,
+                  0
+                ],
+                "pricePerUnitD": [
+                  18,
+                  18
+                ],
+                "maximumTotalCostD": [
+                  0,
+                  0
+                ],
+                "immediateCashDeltaD": [
+                  0,
+                  0
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "기존 미입고 주문 잔량을 대체하며 추가 주문이 아니다. 0은 미입고 주문 취소다. 이미 산 목재·지출은 되돌리지 않는다. 실제 거래일의 가용 금고와 거래 지점에 따라 매입하며 특정 수리·공사에 배정하지 않는다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/timberTrade.ts:19",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/timberTrade.ts#L19"
+                }
+              ]
+            }
+          ],
+          "tradeoff": "앞으로 이 주문에 쓸 돈을 지키지만, 아직 오지 않은 목재도 포기한다. 이미 받은 물자는 돌려주지 않는다.",
+          "ledger": "미입고 목재 주문 취소. 기존 물자·지출 유지.",
+          "chronicle": "도착하지 않은 목재의 주문을 거두었다.",
+          "costAxes": [
+            "cash",
+            "material",
+            "time"
+          ]
+        },
+        {
+          "id": "d",
+          "label": "주문을 그대로 두고 공동체의 불만을 감수한다",
+          "tradeoff": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+          "ledger": "답변 보류: 농민 공동체 관계 −2.",
+          "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+          "costAxes": [
+            "relation",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "no_op",
+              "operation": "registry_hold",
+              "parameters": {
+                "commonsFactionRelationDelta": [
+                  -2,
+                  -2
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/registryV4.ts:173",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": true,
+        "cooldownYears": [
+          1,
+          1
+        ],
+        "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+        "exclusions": "동일 사건 ID에서 동일 맥락(bound.seasonContext)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+        "variantGroup": "v41.N4"
+      },
+      "illustration": "잎 없는 가지 아래 덜 얹힌 지붕과 빈 목재 받침대. 목수가 기존 부재 위에 천을 덮고 수레가 들어올 길을 바라본다. 홍수·폭풍 피해를 암시하지 않는다.",
+      "history": {
+        "sourceIds": [
+          "H41-TIMBER"
+        ],
+        "basis": "1393–1401 웨스트민스터 홀 지붕 목재의 조달·사전 가공·수레와 바지선 운송 사례를 자재 도착 대기 장면의 참고로 삼았다.",
+        "inference": "왕실 대공사와 작은 도시 공사는 규모가 다르다. 운송과 조달이 필요한 목재 건축이라는 넓은 관행만 참고했으며 실제 부족은 게임 공사 상태에서 읽는다.",
+        "limits": "왕실 대공사의 규모를 일반 집에 옮기지 않는다. 이 자료는 당시 전국 목재 부족이나 가격 폭등의 근거가 아니다. 209의 부족·대기는 실제 게임 재고 상태에 따른 창작이며 역사적 특정 부족 사태로 단정하지 않는다.",
+        "sources": [
+          {
+            "id": "H41-TIMBER",
+            "title": "The hammer-beam roof",
+            "url": "https://www.parliament.uk/about/living-heritage/building/palace/westminsterhall/architecture/the-hammer-beam-roof-/"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+        "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    },
+    "registry": {
+      "id": "ck_evt_209",
+      "contentClass": "new_event_draft",
+      "contentRef": "events-v4.1.json#ck_evt_209",
+      "sourceRevision": "v4.1",
+      "enabledInEngine": false,
+      "calendar": {
+        "source": "stateCalendar(state)",
+        "yearMinInclusive": 1300,
+        "yearMaxInclusive": 1414,
+        "seasonIndices": [
+          0,
+          3
+        ],
+        "authoredYears": [
+          1300,
+          1414
+        ],
+        "eligibilityYears": [
+          1300,
+          1414
+        ],
+        "windowRationale": "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+      },
+      "conditionBinding": {
+        "status": "verified_against_lm_e9b_snapshot",
+        "sourceConditions": {
+          "land": "땅 종류 제한 없음.",
+          "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+          "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+          "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+          "season": "계절 인덱스 0,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+          "state": "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+        },
+        "missingField": "false",
+        "executionLanguage": "registryDsl",
+        "revalidateAtChoice": true,
+        "onUnsupported": "block_entry"
+      },
+      "frequency": {
+        "mode": "seasonal_candidate",
+        "maxPerYear": 1,
+        "minGapSeasons": 4,
+        "weight": 100,
+        "chancePermille": 140,
+        "budget": "new_content"
+      },
+      "recurrence": {
+        "mode": "new_context_only",
+        "cooldownSeasonsMinimum": 4,
+        "cooldownSeasonsMaximum": 4,
+        "contextFields": [
+          "bound.seasonContext"
+        ],
+        "requireActualContextChange": true
+      },
+      "dedup": {
+        "group": "v41.N4",
+        "semanticFields": [
+          "bound.seasonContext"
+        ],
+        "suppressWhileBoundOpen": true,
+        "existingDefinitionReissue": false
+      },
+      "choices": [
+        {
+          "id": "a",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 10
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 10
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "b",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 4
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 4
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "count",
+                      "args": [
+                        {
+                          "call": "completedMarkets",
+                          "args": [
+                            {
+                              "field": "state.buildings"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "op": "gt",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                },
+                {
+                  "compare": {
+                    "left": {
+                      "field": "state.treasuryCoin"
+                    },
+                    "op": "gte",
+                    "right": {
+                      "literal": 18
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "c",
+          "commands": [
+            {
+              "type": "order_timber",
+              "args": {
+                "amount": 0
+              },
+              "sourceEffectIndex": 0,
+              "expectedEffectsOwner": "existing_engine_handler"
+            }
+          ],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": [
+                {
+                  "compare": {
+                    "left": {
+                      "operation": "coalesce",
+                      "args": [
+                        {
+                          "field": "state.timberOrder"
+                        },
+                        {
+                          "literal": 0
+                        }
+                      ]
+                    },
+                    "op": "neq",
+                    "right": {
+                      "literal": 0
+                    }
+                  }
+                }
+              ]
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": false,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        },
+        {
+          "id": "d",
+          "commands": [],
+          "execution": "existing_handler_after_binding",
+          "conditions": {
+            "sourcePreconditions": [
+              "봄·겨울 실제 공사장의 목재 납품 부족 합계가 양수. 폭풍·홍수·붕괴 발생을 가정하지 않는다."
+            ],
+            "revalidate": true,
+            "ast": {
+              "all": []
+            },
+            "bindingFailures": "disable_choice",
+            "unsupportedSelectors": []
+          },
+          "automaticObservations": [],
+          "noOpIsConsequential": true,
+          "rangeInputPolicy": "resolve_once_per_occurrence_shared_across_choices"
+        }
+      ],
+      "minimumEnabledConsequentialChoices": 2,
+      "bindingStatus": "uses_existing_lm_e9b_binding_dsl",
+      "bindings": {
+        "seasonContext": {
+          "from": {
+            "map": {
+              "from": {
+                "literal": [
+                  0
+                ]
+              },
+              "as": "singleton",
+              "value": {
+                "operation": "floor",
+                "args": [
+                  {
+                    "operation": "divide",
+                    "args": [
+                      {
+                        "field": "state.tick"
+                      },
+                      {
+                        "literal": 1000
+                      }
+                    ]
+                  }
+                ]
+              }
+            }
+          },
+          "where": {
+            "all": []
+          },
+          "order": [],
+          "select": "first",
+          "missing": "invalidate",
+          "sideEffects": "none"
+        }
+      },
+      "conditions": {
+        "all": [
+          {
+            "exists": {
+              "field": "state.agency"
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "call": "waitingTimberNeed",
+                "args": [
+                  {
+                    "field": "state"
+                  }
+                ]
+              },
+              "op": "gt",
+              "right": {
+                "literal": 0
+              }
+            }
+          },
+          {
+            "compare": {
+              "left": {
+                "operation": "count",
+                "args": [
+                  {
+                    "filter": {
+                      "from": {
+                        "field": "state.events.records"
+                      },
+                      "as": "fire",
+                      "where": {
+                        "all": [
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "fire.kind"
+                              },
+                              "op": "eq",
+                              "right": {
+                                "literal": "fire"
+                              }
+                            }
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "field": "fire.arrivalTick"
+                              },
+                              "op": "lte",
+                              "right": {
+                                "field": "state.tick"
+                              }
+                            }
+                          },
+                          {
+                            "compare": {
+                              "left": {
+                                "operation": "subtract",
+                                "args": [
+                                  {
+                                    "field": "state.tick"
+                                  },
+                                  {
+                                    "field": "fire.arrivalTick"
+                                  }
+                                ]
+                              },
+                              "op": "lte",
+                              "right": {
+                                "literal": 8000
+                              }
+                            }
+                          }
+                        ]
+                      }
+                    }
+                  }
+                ]
+              },
+              "op": "eq",
+              "right": {
+                "literal": 0
+              }
+            }
+          }
+        ]
+      },
+      "unsupportedFilters": [],
+      "unsupportedSelectors": [],
+      "bindingResolution": {
+        "mode": "dependency_order",
+        "multipleMatches": "stable_first_after_required_predicates",
+        "missing": "block_entry_unless_requiredForChoices",
+        "cycles": "validation_error",
+        "aliasesAreNotGameStateFields": true,
+        "choiceScopedMissing": {
+          "marker": "requiredForChoices",
+          "precedence": "overrides query.missing=invalidate and entry default",
+          "onMissing": "disable_only_listed_choices",
+          "dependencyFailure": "propagate to dependent binding scopes; any required entry binding failure blocks entry",
+          "afterChoiceFiltering": "require minimumEnabledConsequentialChoices; no automatic execution"
+        }
+      }
+    }
+  },
+  {
+    "id": "ck_evt_210",
+    "title": "곡식이 귀해진 뒤의 순서",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "실제 dearth 발생을 읽어도 구호·식량 구매·배분이 없다. 일반 정책 세 갈래를 흉년의 대응으로 제시하므로 보류.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"commonsFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_211",
+    "title": "상인 가문 대표와 처음 정할 몫",
+    "verdict": "revise",
+    "effectClass": "concrete",
+    "visibleResult": "도시 전체 좌판세의 지속 설정. 장날 수입 기준에 적용되며 개별 가구 지급은 없음.",
+    "cardDilemma": "모든 좌판의 부담을 덜면 영주의 세입 조건을 양보한다. 세입을 늘리면 같은 시장 전체에 부담이 간다.",
+    "reason": "지속되는 실제 도시 전체 좌판세 설정은 유지. 특정 직물·가문 특혜나 임시 감면으로 읽히지 않게 범위·지속성과 세입/부담의 대가를 전면화.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_market_dues {\"duesPermille\":[250,2000],\"previousPermille\":[250,2000]}",
+        "protect": "좌판의 부담 완화",
+        "lose": "거래당 영주 수입 조건",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      },
+      {
+        "id": "b",
+        "effect": "set_market_dues {\"duesPermille\":[250,2000],\"previousPermille\":[250,2000]}",
+        "protect": "시장 세입 조건",
+        "lose": "좌판 부담 및 상업 사업의 상대 매력",
+        "visible": "도시 전체 좌판세 배율. 단순 일회성 돈 증감은 아니나 개별 가구 소득·거래량 증가는 보장되지 않음"
+      },
+      {
+        "id": "c",
+        "effect": "registry_hold {\"merchantHouse1Delta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 첫째 상인 가문 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ],
+    "event": {
+      "number": 211,
+      "id": "ck_evt_211",
+      "category": "세력",
+      "period": "1300–1450",
+      "years": [
+        1300,
+        1450
+      ],
+      "conditions": {
+        "land": "땅 종류 제한 없음.",
+        "population": "실제 상태 조건을 사용하며 새 인구 하한을 임의로 추가하지 않는다.",
+        "rights": "기존 명령의 권리 검사를 우회하지 않는다.",
+        "relations": "실제 보내는 세력과 묶인 대상만 사용한다.",
+        "season": "계절 인덱스 0,1,2,3 (0 봄, 1 여름, 2 가을, 3 겨울).",
+        "state": "첫째 상인 가문의 실제 현 수장과 첫 시장 협의. 처음 관측한 수장을 방금 취임했다고 단정하지 않는다."
+      },
+      "sender": {
+        "faction": "첫째 상인 가문",
+        "role": "상인 가문의 대표"
+      },
+      "title": "상인 가문 대표와 처음 정할 몫",
+      "body": "상인 가문의 현 대표가 첫 협의에서 좌판 부담을 묻습니다. 이 가문의 부탁을 받아도 낮은 기준은 도시의 모든 좌판에 적용됩니다. 장사 부담을 덜며 영주의 세입 몫을 양보할지, 더 거두어 금고를 받칠지 정해야 합니다. 이 자리에서 정한 기준은 다음에 바꿀 때까지 이어집니다.",
+      "choices": [
+        {
+          "id": "a",
+          "label": "모든 좌판의 부담을 낮추고 세입 몫을 양보한다",
+          "tradeoff": "도시 전체 좌판세를 최대 100‰ 낮추어 장사 부담을 덜지만 거래당 영주 수입 조건도 낮아진다.",
+          "ledger": "전체 시장 좌판세 인하. 새 비율은 선택 당시 묶인 값.",
+          "chronicle": "시장에 내는 부담은 낮아졌고 영주는 세입 일부를 양보했다.",
+          "costAxes": [
+            "money",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "market_dues",
+              "operation": "set_market_dues",
+              "parameters": {
+                "duesPermille": [
+                  250,
+                  2000
+                ],
+                "previousPermille": [
+                  250,
+                  2000
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/townAgency.ts:95",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "b",
+          "label": "모든 좌판에서 더 거두어 세입 조건을 높인다",
+          "tradeoff": "도시 전체 좌판세를 최대 100‰ 높여 세입 조건을 구하지만 상업 사업의 부담을 높인다.",
+          "ledger": "전체 시장 좌판세 인상. 새 비율은 선택 당시 묶인 값.",
+          "chronicle": "시장에 내는 부담은 높아졌고 장사꾼들은 몫을 더 내게 되었다.",
+          "costAxes": [
+            "money",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "market_dues",
+              "operation": "set_market_dues",
+              "parameters": {
+                "duesPermille": [
+                  250,
+                  2000
+                ],
+                "previousPermille": [
+                  250,
+                  2000
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "현재값에서 100‰를 빼되 최저250, 또는 100‰를 더하되 최고2000. bound.lowerDues/higherDues를 공유해 확정한다. 통행세·수출관세가 아닌 도시 전체 좌판세. 영구 설정이며 임시 감면이나 가구별 면제가 아니다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/townAgency.ts:95",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/townAgency.ts#L95"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "c",
+          "label": "현행을 지키고 대표의 불만을 감수한다",
+          "tradeoff": "현행을 유지하지만 응답을 기다리는 첫째 상인 가문 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+          "ledger": "답변 보류: 첫째 상인 가문 관계 −2.",
+          "chronicle": "부탁을 미룬 영주에게 대표는 서운함을 남겼다.",
+          "costAxes": [
+            "relation",
+            "opportunity"
+          ],
+          "effects": [
+            {
+              "catalogKey": "no_op",
+              "operation": "registry_hold",
+              "parameters": {
+                "merchantHouse1Delta": [
+                  -2,
+                  -2
+                ]
+              },
+              "rangeNote": "수치는 기존 게임 규칙 또는 편집 입력값이다. 사료 가격·역사적 세율로 제시하지 않는다.",
+              "preconditions": "카드 대상과 조건을 답변 직전에 다시 검사한다. 현재값과 같은 명령은 유효한 변화 선택에서 제외한다.",
+              "limits": "명령 배열은 비어 있고 기존 R3 applyHold가 한 번만 관계 대가를 기록한다. 관계 하한에서는 실효 대가가 없어 선택이 숨겨질 수 있다.",
+              "codeReferences": [
+                {
+                  "ref": "src/engine/registryV4.ts:173",
+                  "url": "https://github.com/hyunlord/feudal-lord-simulator/blob/813b31f0d0e4eacb0e12c58d45cf4719e12dec94/src/engine/registryV4.ts#L173"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "recurrence": {
+        "allowed": true,
+        "cooldownYears": [
+          0,
+          0
+        ],
+        "steward": "이 등록기 사건의 자동 선례 처리 없음. 영주가 판단한다.",
+        "exclusions": "동일 사건 ID에서 동일 맥락(bound.faction.id, bound.faction.leaderId)은 과거 답변을 포함하여 한 번. 설정 왕복만으로 재발동하지 않는다.",
+        "variantGroup": "v41.F1"
+      },
+      "illustration": "가문 대표가 직물 꾸러미를 실은 수레 옆에서 시장의 동전 접시를 가리킨다. 징수자와 마주 서며 문서 탁자 없음.",
+      "history": {
+        "sourceIds": [
+          "H41-GUILD"
+        ],
+        "basis": "상업 조직의 대표와 거래 부담 협상의 선례.",
+        "inference": "실제 상인 가문 대표 ID마다 한 번 협의하는 게임용 창작이다.",
+        "limits": "사우샘프턴 규약을 모든 남부 시장도시의 동일 법률로 단정하지 않는다.",
+        "sources": [
+          {
+            "id": "H41-GUILD",
+            "title": "Southampton Guild Organization, 14th Century",
+            "url": "https://sourcebooks.web.fordham.edu/source/guild-sthhmptn.asp"
+          }
+        ]
+      },
+      "integration": {
+        "mode": "v4.1 추가·수정분. 외부 콘텐츠이며 아직 게임에 설치하지 않음.",
+        "requirements": "events와registry를 ID로 v4에 병합하고 기존 생성기로 생성. LM-E9b R1~R4 기존 읽기·명령만 사용. R5 새 효과 없음. minimumEnabledConsequentialChoices=2를 유지한다."
+      },
+      "newEffectLinks": [],
+      "contentClass": "new_event_draft"
+    }
+  },
+  {
+    "id": "ck_evt_212",
+    "title": "일손을 두고 대표가 다시 온 여름",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "실제 공동체 대표와 계절은 존재하지만 노동 배치나 의무를 협상하지 못한다. 정책 메뉴 재노출과 관계 페널티로만 반복된다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"commonsFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 농민 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_213",
+    "title": "랭커스터 왕실 아래의 옛 권리",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "옛 권리 확인이라는 핵심 대상에 아무 변화가 없다. 왕실 대표는 실제지만 특허장·의무·권리 확인 명령 없이 방침 세 가지를 고르는 사건은 보류.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"defence\"}",
+        "protect": "길과 비축·방비를 앞세운다",
+        "lose": "도로·창고·방어 사업을 앞세우지만 주택 쪽은 뒤로 둔다. 징병이나 원정 물자 인도는 실행하지 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"crownFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 왕실 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_214",
+    "title": "프랑스 원정과 마을의 들보",
+    "verdict": "hold",
+    "effectClass": "concrete",
+    "visibleResult": "일부 주문·좌판 배율은 실제로 변하지만 사건이 제시한 대상 문제는 해결하지 않는다.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "목재 주문은 실제 일반 재고를 늘릴 수 있으나 원정 징발·왕실 기여·지방 공사 간 배분은 없다. 왕실에 무엇을 내주고 무엇을 지키는지 성립하지 않아 자재 카드로 중복 재포장하지 않고 보류.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"defence\"}",
+        "protect": "길과 비축·방비를 앞세운다",
+        "lose": "도로·창고·방어 사업을 앞세우지만 주택 쪽은 뒤로 둔다. 징병이나 원정 물자 인도는 실행하지 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "order_timber {\"amount\":8,\"pricePerUnitD\":[18,18],\"maximumTotalCostD\":[144,144]}",
+        "protect": "목재 확보 또는 앞으로 쓸 현금",
+        "lose": "목재를 더 사면 향후 매입 현금, 주문을 줄이면 확보할 목재",
+        "visible": "주문 잔량 변경, 거래일 실제 매입 시 영주 목재 재고·지출 기록. 특정 집 수리 아님"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"crownFactionRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 왕실 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  },
+  {
+    "id": "ck_evt_215",
+    "title": "겨울 장터를 누가 먼저 도울까",
+    "verdict": "hold",
+    "effectClass": "indirect",
+    "visibleResult": "정책·장려금 설정과 보류 관계 대가. 사건 대상의 사람·땅·건물·권리 결과 없음.",
+    "cardDilemma": "사업·방침 이름 간 선호는 보이나 사건 대상에게 무엇을 지키고 잃는지는 부족하다.",
+    "reason": "겨울 시장은 발동 배경뿐이다. 상인·좌판·장날·구호 대상은 그대로이고 도시 사업 가중치만 달라진다.",
+    "choiceAudit": [
+      {
+        "id": "a",
+        "effect": "set_estate_policy {\"policy\":\"stability\"}",
+        "protect": "먹거리와 물의 안정을 앞세운다",
+        "lose": "곡창·우물·농사 사업의 조건을 앞세우고 시장 사업의 상대 점수를 낮춘다. 당장 식량을 나눠 주는 것은 아니다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "b",
+        "effect": "set_estate_policy {\"policy\":\"growth\"}",
+        "protect": "주택과 시장의 성장을 앞세운다",
+        "lose": "주택과 시장 사업을 상대적으로 앞세우는 대신 저장·식량 사업의 안정 방침 우대를 포기한다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "c",
+        "effect": "set_estate_policy {\"policy\":\"revenue\"}",
+        "protect": "장터와 생산의 수입을 앞세운다",
+        "lose": "시장·직물 사업 쪽으로 무게를 옮기지만 주택 사업의 상대 점수는 낮아진다. 즉시 세금이 들어오지는 않는다.",
+        "visible": "사업 점수 가중치만 변경. 사건 대상의 직접 결과 없음"
+      },
+      {
+        "id": "d",
+        "effect": "registry_hold {\"townRelationDelta\":[-2,-2]}",
+        "protect": "현행 주문·부담·방침",
+        "lose": "현행을 유지하지만 응답을 기다리는 도시 공동체 측과의 관계가 2 내려간다. 같은 맥락의 새 카드는 만들지 않는다.",
+        "visible": "발신 세력 관계 대가만; 별도 세계 결과 없음"
+      }
+    ]
+  }
+]

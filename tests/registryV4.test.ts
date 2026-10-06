@@ -35,9 +35,9 @@ function suing(claims: number): GameState {
   return state;
 }
 
-test("ER-13, ER-18 the canon v4 loads: 200 entries, each running or blocked with its reason; every new event has its words", () => {
+test("ER-13, ER-18 the canon v4 + v4.1 loads: 215 entries, each running or blocked with its reason; every new event has its words", () => {
   const support = registryV4Support();
-  assert.equal(support.length, 200);
+  assert.equal(support.length, 215);
   assert.ok(support.every(entry => entry.runs ? entry.reason === null : entry.reason !== null), "a blocked entry says why");
   assert.equal(support.filter(entry => entry.reason?.startsWith("unsupported filter") === true).length, 111, "the canon's own blocks (R5)");
   assert.ok(support.filter(entry => entry.runs).length >= 60);

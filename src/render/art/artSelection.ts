@@ -6,6 +6,7 @@ const text = { type: 'string', unit: 'identifier' } as const;
 const number = (unit: string): ArtContextField => ({ type: 'number', unit });
 /** Closed adapter facts: no arbitrary GameState paths and no engine state invention. */
 export const ART_CONTEXT_FIELDS: Readonly<Record<ArtKind, Readonly<Record<string, ArtContextField>>>> = Object.freeze({
+  'building-attachment': { bodyId: text, occupation: text, calendarYear: number('calendar-year'), season: text, role: text },
   'building-body': { buildingKind: text, level: number('level'), season: text, calendarYear: number('calendar-year'), lot: text, eligible: { type: 'boolean', unit: 'boolean' } },
   'state-overlay': { bodyId: text, layer: text, season: text, vacant: { type: 'boolean', unit: 'boolean' }, ageYears: number('engine-year'), wealth: number('engine-wealth'), era: text },
   'ground-prop': { baseId: text, archetype: text, occupation: text, wealth: number('engine-wealth'), season: text, placement: text, role: text, group: text },

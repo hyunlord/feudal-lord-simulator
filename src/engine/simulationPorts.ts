@@ -1,3 +1,4 @@
+import type { IntakeRules } from "../economy/storage";
 import { eligibleRoamingExits } from './distributorAccess';
 import { bestHouseDemand, compareHouseDemand } from '../agents/roamingDemand';
 import { buildingFootprint } from '../geometry/buildingFootprint';
@@ -59,8 +60,9 @@ function stateWithCache(
   return { ...state, pathCache };
 }
 
-export function createDeliveryInventoryPort(): DeliveryInventoryPort {
+export function createDeliveryInventoryPort(intakeRules?: IntakeRules): DeliveryInventoryPort {
   return {
+    ...(intakeRules === undefined ? {} : { intakeRules }),
     availableSpace: (building) =>
       availableSpace(building, BUILDING_CONFIG_BY_KIND[building.kind]),
     reserveSpace: reserve,

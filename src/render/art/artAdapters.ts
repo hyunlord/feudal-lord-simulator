@@ -86,7 +86,7 @@ export function createArtAdapters(registry: ArtRegistry, environment?: ArtImageE
         return blit(entry.geometry.crop ?? { x: 0, y: 0, width: entry.image.width, height: entry.image.height },
           { anchor: input.at, pivot: { x: entry.geometry.pivot.x - (entry.geometry.crop?.x ?? 0), y: entry.geometry.pivot.y - (entry.geometry.crop?.y ?? 0) }, scale: entry.geometry.scale });
       }
-      case 'building-body': case 'ground-prop': case 'landmark':
+      case 'building-attachment': case 'building-body': case 'ground-prop': case 'landmark':
         return blit(entry.geometry.crop ?? { x: 0, y: 0, width: entry.image.width, height: entry.image.height },
           { anchor: input.at, pivot: { x: entry.geometry.pivot.x - (entry.geometry.crop?.x ?? 0), y: entry.geometry.pivot.y - (entry.geometry.crop?.y ?? 0) }, scale: entry.geometry.scale });
       default: return unreachable(entry);

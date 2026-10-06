@@ -1,4 +1,6 @@
+import { calendarProgress } from './calendarProgress';
 import type { ContractHouseDraw } from './art/contractHouseArt';
+import { buildingAttachmentArt } from './art/buildingAttachmentArt';
 import { outlinesOccludingBuilding } from "./selectionOcclusion";
 import { drawBuildingContactShadowV2 } from "./buildingContactShadow";
 import { boundaryV2Enabled } from "./renderBoundaryFlag";
@@ -92,7 +94,7 @@ export function drawBuildings(
     } else if (item.kind === "zone_prop") {
       if ((input.viewMode ?? "normal") === "normal") drawZoneProp(context, item.prop, season);
     } else if (item.kind === "farm_prop") {
-      if ((input.viewMode ?? "normal") === "normal") drawFarmProp(context, item.prop);
+      if ((input.viewMode ?? "normal") === "normal") drawFarmProp(context, item.prop, { state: input.state, season: calendarProgress(input.state).season, zoom: input.zoom });
     } else if (item.kind === "building") {
       drawBuilding(context, input, item.building, spriteOptions);
     }
@@ -126,6 +128,9 @@ function drawBuilding(
   // boards are a state), without the door piles and story props (a speck there; the piles were ~0.37 ms a frame in
   // the 1380 town at zoom 0.6, 5x: CPU profile, 20 ms/s at ~55 frames/s).
   const detail = renderDetailLevel(input.zoom); if (detail !== "blocks") drawBuildingOverlays(context, input.state, building, detail === "full", contract);
+  if ((input.viewMode ?? 'normal') === 'normal' && contract !== null) {
+    buildingAttachmentArt.draw(context, { state: input.state, building, drawn: contract, zoom: input.zoom });
+  }
 }
 
 function drawBuildingDetail(

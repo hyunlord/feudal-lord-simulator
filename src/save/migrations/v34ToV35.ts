@@ -12,5 +12,5 @@ export function migrateV34ToV35(input: unknown): unknown {
   if (typeof input !== "object" || input === null) throw new TypeError("Schema v34 save must be an envelope object");
   const envelope = input as { readonly state?: unknown };
   if (typeof envelope.state !== "object" || envelope.state === null) throw new TypeError("Schema v34 save has no state");
-  return { ...envelope, schemaVersion: 35, state: placeManorSite(envelope.state as GameState) };
+  return { ...envelope, schemaVersion: 35, state: placeManorSite(envelope.state as GameState, { width: 2, height: 2 }) };
 }

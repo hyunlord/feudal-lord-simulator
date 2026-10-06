@@ -1,0 +1,565 @@
+{
+ "seed": 3,
+ "fromYear": 1356,
+ "span": 2000,
+ "year": 1356,
+ "carters": 2,
+ "tradeCounts": [
+  [
+   "carter",
+   2
+  ],
+  [
+   "baker",
+   2
+  ],
+  [
+   "butcher",
+   2
+  ],
+  [
+   "shoemaker",
+   3
+  ],
+  [
+   "brewer",
+   3
+  ],
+  [
+   "tanner",
+   1
+  ],
+  [
+   "innkeeper",
+   1
+  ],
+  [
+   "merchant",
+   2
+  ],
+  [
+   "cooper",
+   1
+  ],
+  [
+   "tailor",
+   2
+  ],
+  [
+   "carpenter",
+   2
+  ],
+  [
+   "wheelwright",
+   1
+  ],
+  [
+   "miller",
+   1
+  ],
+  [
+   "smith",
+   1
+  ]
+ ],
+ "haulage": {
+  "season": 0,
+  "last": 160
+ },
+ "stuck": [
+  {
+   "kind": "logging_camp",
+   "resource": "logs",
+   "amount": 18,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "farmstead",
+   "resource": "wheat",
+   "amount": 530,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 17,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 14,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 13,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "logging_camp",
+   "resource": "logs",
+   "amount": 6,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "logging_camp",
+   "resource": "logs",
+   "amount": 8,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 17,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "logging_camp",
+   "resource": "logs",
+   "amount": 10,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "farmstead",
+   "resource": "wheat",
+   "amount": 964,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 5,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "logging_camp",
+   "resource": "logs",
+   "amount": 17,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 18,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "farmstead",
+   "resource": "wheat",
+   "amount": 898,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "farmstead",
+   "resource": "barley",
+   "amount": 946,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 19,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "farmstead",
+   "resource": "wheat",
+   "amount": 397,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 18,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "malt_kiln",
+   "resource": "malt",
+   "amount": 18,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 18,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "malt_kiln",
+   "resource": "malt",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "malt_kiln",
+   "resource": "malt",
+   "amount": 20,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "masonry",
+   "resource": "stone",
+   "amount": 17,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 14,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 14,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "quarry",
+   "resource": "stone_raw",
+   "amount": 20,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "malt_kiln",
+   "resource": "malt",
+   "amount": 20,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "malt_kiln",
+   "resource": "malt",
+   "amount": 20,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "sawmill",
+   "resource": "timber",
+   "amount": 18,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "malt_kiln",
+   "resource": "malt",
+   "amount": 20,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "malt_kiln",
+   "resource": "malt",
+   "amount": 20,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "farmstead",
+   "resource": "wheat",
+   "amount": 968,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 12,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "mill",
+   "resource": "bread",
+   "amount": 16,
+   "reason": "receiver_full"
+  },
+  {
+   "kind": "farmstead",
+   "resource": "wheat",
+   "amount": 917,
+   "reason": "receiver_full"
+  }
+ ],
+ "barns": [
+  {
+   "id": "construction-site-000001",
+   "wheat": 530,
+   "reserved": 0,
+   "workers": 4
+  },
+  {
+   "id": "construction-site-000033",
+   "wheat": 0,
+   "reserved": 0,
+   "workers": 4
+  },
+  {
+   "id": "construction-site-000042",
+   "wheat": 964,
+   "reserved": 0,
+   "workers": 4
+  },
+  {
+   "id": "construction-site-000052",
+   "wheat": 898,
+   "reserved": 0,
+   "workers": 4
+  },
+  {
+   "id": "construction-site-000055",
+   "wheat": 0,
+   "reserved": 0,
+   "workers": 4
+  },
+  {
+   "id": "construction-site-000057",
+   "wheat": 0,
+   "reserved": 0,
+   "workers": 4
+  },
+  {
+   "id": "construction-site-000058",
+   "wheat": 397,
+   "reserved": 0,
+   "workers": 4
+  },
+  {
+   "id": "construction-site-000083",
+   "wheat": 968,
+   "reserved": 0,
+   "workers": 4
+  }
+ ],
+ "granaryWheat": 12,
+ "breadChange": -18,
+ "mills": [
+  {
+   "id": "construction-site-000002",
+   "starvedShare": 481,
+   "blockedShare": 88,
+   "meanWheat": 4,
+   "trips": 17,
+   "meanTrip": 232,
+   "meanPath": 17
+  },
+  {
+   "id": "construction-site-000013",
+   "starvedShare": 414,
+   "blockedShare": 265,
+   "meanWheat": 5,
+   "trips": 12,
+   "meanTrip": 363,
+   "meanPath": 26
+  },
+  {
+   "id": "construction-site-000021",
+   "starvedShare": 35,
+   "blockedShare": 354,
+   "meanWheat": 7,
+   "trips": 18,
+   "meanTrip": 186,
+   "meanPath": 14
+  },
+  {
+   "id": "construction-site-000022",
+   "starvedShare": 10,
+   "blockedShare": 404,
+   "meanWheat": 9,
+   "trips": 21,
+   "meanTrip": 167,
+   "meanPath": 13
+  },
+  {
+   "id": "construction-site-000043",
+   "starvedShare": 354,
+   "blockedShare": 404,
+   "meanWheat": 7,
+   "trips": 12,
+   "meanTrip": 302,
+   "meanPath": 22
+  },
+  {
+   "id": "construction-site-000048",
+   "starvedShare": 0,
+   "blockedShare": 685,
+   "meanWheat": 12,
+   "trips": 16,
+   "meanTrip": 171,
+   "meanPath": 13
+  },
+  {
+   "id": "construction-site-000049",
+   "starvedShare": 0,
+   "blockedShare": 880,
+   "meanWheat": 13,
+   "trips": 4,
+   "meanTrip": 577,
+   "meanPath": 41
+  },
+  {
+   "id": "construction-site-000068",
+   "starvedShare": 0,
+   "blockedShare": 850,
+   "meanWheat": 11,
+   "trips": 9,
+   "meanTrip": 317,
+   "meanPath": 23
+  },
+  {
+   "id": "construction-site-000078",
+   "starvedShare": 150,
+   "blockedShare": 671,
+   "meanWheat": 8,
+   "trips": 9,
+   "meanTrip": 425,
+   "meanPath": 31
+  },
+  {
+   "id": "construction-site-000081",
+   "starvedShare": 0,
+   "blockedShare": 565,
+   "meanWheat": 11,
+   "trips": 21,
+   "meanTrip": 126,
+   "meanPath": 10
+  },
+  {
+   "id": "construction-site-000084",
+   "starvedShare": 42,
+   "blockedShare": 809,
+   "meanWheat": 8,
+   "trips": 7,
+   "meanTrip": 446,
+   "meanPath": 32
+  },
+  {
+   "id": "construction-site-000085",
+   "starvedShare": 0,
+   "blockedShare": 581,
+   "meanWheat": 11,
+   "trips": 18,
+   "meanTrip": 155,
+   "meanPath": 12
+  },
+  {
+   "id": "construction-site-000088",
+   "starvedShare": 5,
+   "blockedShare": 550,
+   "meanWheat": 11,
+   "trips": 16,
+   "meanTrip": 166,
+   "meanPath": 13
+  },
+  {
+   "id": "construction-site-000092",
+   "starvedShare": 0,
+   "blockedShare": 820,
+   "meanWheat": 14,
+   "trips": 10,
+   "meanTrip": 206,
+   "meanPath": 15
+  }
+ ],
+ "tripsByKind": {
+  "mill:deliver:bread:main": {
+   "n": 88,
+   "mean": 303
+  },
+  "mill:fetch:wheat:intake": {
+   "n": 102,
+   "mean": 168
+  },
+  "granary:deliver:wheat:push": {
+   "n": 25,
+   "mean": 122
+  },
+  "sawmill:deliver:timber:main": {
+   "n": 16,
+   "mean": 627
+  },
+  "sawmill:fetch:logs:main": {
+   "n": 20,
+   "mean": 402
+  },
+  "farmstead:deliver:wheat:main": {
+   "n": 28,
+   "mean": 368
+  },
+  "logging_camp:deliver:logs:main": {
+   "n": 15,
+   "mean": 633
+  },
+  "masonry:fetch:stone_raw:main": {
+   "n": 5,
+   "mean": 318
+  },
+  "masonry:deliver:stone:main": {
+   "n": 4,
+   "mean": 16
+  },
+  "quarry:deliver:stone_raw:main": {
+   "n": 2,
+   "mean": 758
+  },
+  "malt_kiln:deliver:malt:main": {
+   "n": 5,
+   "mean": 744
+  },
+  "malt_kiln:fetch:barley:main": {
+   "n": 6,
+   "mean": 213
+  }
+ }
+}

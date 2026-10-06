@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "roofSnow": {
-    "start": 0.12,
-    "end": 0.75,
-    "jitter": 0.1
+    "start": 0.02,
+    "end": 0.34,
+    "jitter": 0.06
   },
   "springMelt": {
     "start": 0,
@@ -26,13 +26,13 @@
     "jitter": 0
   },
   "treeBare": {
-    "start": 0,
-    "end": 0.2,
+    "start": -0.12,
+    "end": 0.08,
     "jitter": 0
   },
   "treeSnow": {
-    "start": 0.22,
-    "end": 0.65,
+    "start": 0.1,
+    "end": 0.3,
     "jitter": 0
   },
   "winterStages": {
@@ -67,9 +67,9 @@
     "jitter": 0.1
   },
   "fenceSnow": {
-    "start": 0.2,
-    "end": 0.85,
-    "jitter": 0.12
+    "start": 0.08,
+    "end": 0.36,
+    "jitter": 0.06
   },
   "snowWeather": {
     "cell": 64,

@@ -1,0 +1,41 @@
+{
+  "status": "actual-scene-reviewed",
+  "mounts": [
+    {
+      "bodyId": "wave20/house_l2_1350_a-v2",
+      "point": {
+        "x": 65,
+        "y": 92
+      }
+    },
+    {
+      "bodyId": "wave20/house_l2_1350_b-v2",
+      "point": {
+        "x": 65,
+        "y": 92
+      }
+    },
+    {
+      "bodyId": "wave20/house_l2_1400_a-v2",
+      "point": {
+        "x": 67,
+        "y": 91
+      }
+    },
+    {
+      "bodyId": "wave20/house_l2_1400_b-v2",
+      "point": {
+        "x": 67,
+        "y": 91
+      }
+    }
+  ],
+  "signPivot": {
+    "x": 27,
+    "y": 27
+  },
+  "interpretation": "top of bracket against facade beam, not ground contact",
+  "scale": 0.075,
+  "unsupported": "unregistered legacy, compound, non-L2 bodies retain their original ground props",
+  "observation": "All eight artworks appear as small wall-mounted marks at zoom >=1; no obvious floating gap. Trade emblems and era workmanship are not reliably readable at gameplay scale. Existing ground props remain the occupation cue."
+}

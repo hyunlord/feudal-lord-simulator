@@ -14,7 +14,7 @@ export const STARTING_HOUSE_ID = "house-46-40-0";
 export const OPENING_VILLAGE_STARVATION_GRACE_TICKS = 6_000;
 
 // FIX-11 (11, MH-1): the manor house's wanted site, north-west of the opening village (ten tiles west and four north of
-// the first cottage); it takes the nearest free grass 2×2 to it.
+// the first cottage); it takes the nearest free grass footprint (3×3 from MANOR-1) to it.
 export const MANOR_HOUSE_TX = 36;
 export const MANOR_HOUSE_TY = 36;
 export const MANOR_HOUSE_ID = "manor-house-36-36-0";
@@ -174,24 +174,43 @@ export function withOpeningVillageServices<State extends GameState>(state: State
   }) };
 }
 
+/** A manor house's footprint (tiles); the building config's, or 2×2 for the v35 migration (saves before MANOR-1). */
+export interface ManorFootprint { readonly width: number; readonly height: number }
+
+/** MH-1: the footprint's tiles are grass, unzoned, inside the map's margin, and none is a building's or a road. */
+function manorFootprintFree(state: GameState, zoned: ReadonlySet<number>, tx: number, ty: number, size: ManorFootprint, ownId?: string): boolean {
+  for (let dy = 0; dy < size.height; dy += 1) for (let dx = 0; dx < size.width; dx += 1) {
+    const index = (ty + dy) * state.width + tx + dx;
+    const tile = state.tiles[index];
+    if (tile === undefined || tile.terrain !== "grass" || zoned.has(index) || tile.hasRoad) return false;
+    if (tile.buildingId !== null && tile.buildingId !== ownId) return false;
+    if (tx + dx < MANOR_MAP_MARGIN || ty + dy < MANOR_MAP_MARGIN || tx + dx >= state.width - MANOR_MAP_MARGIN || ty + dy >= state.height - MANOR_MAP_MARGIN) return false;
+  }
+  return true;
+}
+
+function withManorAt<State extends GameState>(state: State, tx: number, ty: number, size: ManorFootprint): State {
+  const id = `manor-house-${tx}-${ty}-0`;
+  const manor: Building = { id, kind: "manor_house", tx, ty, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
+  const tiles = state.tiles.map(tile =>
+    tile.tx >= tx && tile.tx < tx + size.width && tile.ty >= ty && tile.ty < ty + size.height ? { ...tile, buildingId: id } : tile);
+  return { ...state, buildings: [...state.buildings, manor], tiles };
+}
+
 /**
  * FIX-11 (11, MH-1, MH-2): gives a town its manor house — a new map (every land, every opening) and a save from before
- * FIX-11 (the v35 migration). The free 2×2 nearest to ten tiles west and four north of the first cottage (the opening
- * village's north-west, (36,36) on the default opening), within sixteen tiles of it — free means grass and no painted
- * zone, with no building or road within five tiles. A town with no free 2×2 left keeps no manor house (the family then shows as "시골 장원", UI10-D2).
+ * FIX-11 (the v35 migration). The free footprint (3×3 from MANOR-1; the v35 migration's 2×2) nearest to ten tiles west
+ * and four north of the first cottage (the opening village's north-west, (36,36) on the default opening), within sixteen
+ * tiles of it — free means grass and no painted zone, with no building or road within five tiles. A town with no free
+ * footprint left keeps no manor house (the family then shows as "시골 장원", UI10-D2).
  * Pure: returns a new state.
  */
-export function placeManorSite<State extends GameState>(state: State): State {
+export function placeManorSite<State extends GameState>(state: State, size: ManorFootprint = BUILDING_CONFIG_BY_KIND.manor_house): State {
   if (state.buildings.some(building => building.kind === "manor_house")) return state;
-  const def = BUILDING_CONFIG_BY_KIND.manor_house;
+  const def = size;
   const zoned = new Set(zonesOf(state).flatMap(zone => zone.membership));
   const free = (tx: number, ty: number): boolean => {
-    for (let dy = 0; dy < def.height; dy += 1) for (let dx = 0; dx < def.width; dx += 1) {
-      const index = (ty + dy) * state.width + tx + dx;
-      const tile = state.tiles[index];
-      if (tile === undefined || tile.terrain !== "grass" || zoned.has(index)) return false;
-      if (tx + dx < MANOR_MAP_MARGIN || ty + dy < MANOR_MAP_MARGIN || tx + dx >= state.width - MANOR_MAP_MARGIN || ty + dy >= state.height - MANOR_MAP_MARGIN) return false;
-    }
+    if (!manorFootprintFree(state, zoned, tx, ty, def)) return false;
     // MH-1: clear of the village by MANOR_CLEARANCE tiles, so the living core's wall (margin 2–3) and its roads keep
     // their room; the town grows up to it later.
     for (let y = ty - MANOR_CLEARANCE; y < ty + def.height + MANOR_CLEARANCE; y += 1) {
@@ -218,11 +237,46 @@ export function placeManorSite<State extends GameState>(state: State): State {
   }
   const site = sites.sort((left, right) => left.distance - right.distance || left.ty - right.ty || left.tx - right.tx)[0];
   if (site === undefined) return state;
-  const id = `manor-house-${site.tx}-${site.ty}-0`;
-  const manor: Building = { id, kind: "manor_house", tx: site.tx, ty: site.ty, workers: 0, inventory: {}, reserved: {}, stockReserved: {}, productionProgress: 0 };
-  const tiles = state.tiles.map(tile =>
-    tile.tx >= site.tx && tile.tx < site.tx + def.width && tile.ty >= site.ty && tile.ty < site.ty + def.height ? { ...tile, buildingId: id } : tile);
-  return { ...state, buildings: [...state.buildings, manor], tiles };
+  return withManorAt(state, site.tx, site.ty, def);
+}
+
+/**
+ * MANOR-1 (MH-5): a save's 2×2 manor house (before v50) becomes 3×3. In place first — the 3×3 holding the old 2×2 whose
+ * new tiles are free (grass, unzoned, no building or road; the town lives around it, so no clearance), the old corner
+ * first, then the corner one tile west, north, north-west. Else the house moves to the free 3×3 a new map would take
+ * (`placeManorSite`, five tiles clear), else to the nearest free 3×3 within the search reach with no clearance, else the
+ * town keeps no manor house (as a town with no room did before, "시골 장원"). A 3×3 manor house, or none, stays as it is.
+ * Pure: returns a new state.
+ */
+export function growManorHouse<State extends GameState>(state: State): State {
+  const manor = state.buildings.find(building => building.kind === "manor_house");
+  if (manor === undefined) return state;
+  const def = BUILDING_CONFIG_BY_KIND.manor_house;
+  if (state.tiles.filter(tile => tile.buildingId === manor.id).length === def.width * def.height) return state;
+  const zoned = new Set(zonesOf(state).flatMap(zone => zone.membership));
+  for (const [dx, dy] of [[0, 0], [-1, 0], [0, -1], [-1, -1]] as const) {
+    if (!manorFootprintFree(state, zoned, manor.tx + dx, manor.ty + dy, def, manor.id)) continue;
+    if (dx === 0 && dy === 0) {
+      const tiles = state.tiles.map(tile => tile.tx >= manor.tx && tile.tx < manor.tx + def.width && tile.ty >= manor.ty && tile.ty < manor.ty + def.height
+        ? { ...tile, buildingId: manor.id } : tile);
+      return { ...state, tiles };
+    }
+    const without = { ...state, buildings: state.buildings.filter(building => building.id !== manor.id),
+      tiles: state.tiles.map(tile => tile.buildingId === manor.id ? { ...tile, buildingId: null } : tile) };
+    return withManorAt(without, manor.tx + dx, manor.ty + dy, def);
+  }
+  const without: State = { ...state, buildings: state.buildings.filter(building => building.id !== manor.id),
+    tiles: state.tiles.map(tile => tile.buildingId === manor.id ? { ...tile, buildingId: null } : tile) };
+  const placed = placeManorSite(without);
+  if (placed !== without) return placed;
+  const nearest = [] as { tx: number; ty: number; distance: number }[];
+  for (let ty = Math.max(0, manor.ty - MANOR_SEARCH_REACH); ty <= manor.ty + MANOR_SEARCH_REACH; ty += 1) {
+    for (let tx = Math.max(0, manor.tx - MANOR_SEARCH_REACH); tx <= manor.tx + MANOR_SEARCH_REACH; tx += 1) {
+      if (manorFootprintFree(without, zoned, tx, ty, def)) nearest.push({ tx, ty, distance: (tx - manor.tx) ** 2 + (ty - manor.ty) ** 2 });
+    }
+  }
+  const site = nearest.sort((left, right) => left.distance - right.distance || left.ty - right.ty || left.tx - right.tx)[0];
+  return site === undefined ? without : withManorAt(without, site.tx, site.ty, def);
 }
 
 /**

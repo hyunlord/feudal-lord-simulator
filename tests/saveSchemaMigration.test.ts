@@ -11,6 +11,11 @@ import { decodeSave } from "../src/save/saveCodec";
 import { SAVE_SCHEMA_VERSION } from "../src/save/saveTypes";
 import { canonicalStateHash } from "../scripts/verifySaveDeterminism";
 import { placeManorSite } from "../src/state/openingVillage";
+import { migrateV49ToV50 } from "../src/save/migrations/v49ToV50";
+import type { GameState } from "../src/engine/engine.types";
+
+// MANOR-1: v49 -> v50 makes the v35 2×2 manor house 3×3 (MH-5) and writes the lordship the save had not yet written (HOUSE-1).
+const v50 = (state: GameState) => (migrateV49ToV50({ state }) as { state: GameState }).state;
 
 test("schema v1 reaches the latest schema without inventing timber observation history", () => {
   const bytes = new Uint8Array(readFileSync("fixtures/saves/v1/population-176.save.json"));
@@ -23,10 +28,10 @@ test("schema v1 reaches the latest schema without inventing timber observation h
   // v6 -> v7 swaps the income window for a ledger holding the opening balance (spec L-9).
   const { coinLedger: _coinLedger, ...originalRest } = original.state;
   // v9 -> v10 turns its wheat farms into arable fields and farmsteads (spec AF-12); v10 -> v11 adds households (LB-10); v11 -> v12 opens the season and enters the due eras (FP-1, FP-5).
-  // FIX-11: v34 -> v35 gives the town its manor house (MH-2).
-  assert.deepEqual(envelope.state, placeManorSite(migrateStateV15ToV16(migrateStateV11ToV12(migrateStateV10ToV11(migrateStateV9ToV10({ ...originalRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
+  // FIX-11: v34 -> v35 gives the town its manor house (MH-2, 2×2), then v50.
+  assert.deepEqual(envelope.state, v50(placeManorSite(migrateStateV15ToV16(migrateStateV11ToV12(migrateStateV10ToV11(migrateStateV9ToV10({ ...originalRest, scenarioId: "core:campaign_market_town", zones: [], nextZoneOrdinal: 1,
     ledger: { entries: [{ id: "ledger-000001", tick: original.state.tick, account: "cash", category: "opening_balance", amount: original.state.treasuryCoin,
-    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } }))))));
+    sourceRefs: [{ type: "scenario", id: "core:campaign_market_town", detail: "save_v6" }] }], rollups: [], nextEntryOrdinal: 2 } })))), { width: 2, height: 2 })));
   const next = advanceTick({ ...envelope.state, wallConstructionPriority: "balanced",
     wallConstructionReserve: { resource: "timber", sources: [], proclaimedTick: envelope.state.tick } });
   assert.equal(next.timberProductionWindow?.availableTimber, placementSpendableResource(next, "timber"));

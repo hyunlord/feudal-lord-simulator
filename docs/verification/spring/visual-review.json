@@ -1,0 +1,1450 @@
+{
+  "reviewer": "spring_original_visual",
+  "afterHead": "3929f8bdcce5d514df7ab543d34cfa78879ea021",
+  "run": "astra-SPRING-after-bankfix-3929f8b",
+  "scope": "20 PNGs directly opened: 12 after, 8 before; four views only. Not review of all 49 frames.",
+  "preliminaryCopy": true,
+  "officialFetchHashParity": "Parent reported official fetch completed and all 148 preview files hash-matched; this reviewer independently hashes only the 20 inspected PNGs.",
+  "provenance": {
+    "source": "fixtures/perf-gate/ch4-1380.save.json.gz",
+    "sourceSHA256": "4b3fb4ef1aa1be2e381e4fe572bab295cf8adb9c6fd42002fc19b6e94ad742ff",
+    "sourceTick": 320000,
+    "classification": "prepared-state-from-authentic-save",
+    "overrides": [
+      "production paintZone orchard on empty grass",
+      "seasonal tick offset 400; no simulation advanced"
+    ],
+    "orchardStroke": {
+      "tool": "polygon",
+      "points": [
+        {
+          "x": 12,
+          "y": 24
+        },
+        {
+          "x": 18,
+          "y": 24
+        },
+        {
+          "x": 18,
+          "y": 30
+        },
+        {
+          "x": 12,
+          "y": 30
+        }
+      ]
+    },
+    "orchardCells": [
+      1548,
+      1549,
+      1550,
+      1551,
+      1552,
+      1553,
+      1612,
+      1613,
+      1614,
+      1615,
+      1616,
+      1617,
+      1676,
+      1677,
+      1678,
+      1679,
+      1680,
+      1681,
+      1740,
+      1741,
+      1742,
+      1743,
+      1744,
+      1745,
+      1804,
+      1805,
+      1806,
+      1807,
+      1808,
+      1809,
+      1868,
+      1869,
+      1870,
+      1871,
+      1872,
+      1873
+    ],
+    "pastureZone": "zone-000007"
+  },
+  "pairIdentity": [
+    {
+      "scene": "pasture",
+      "zoom": 1,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    },
+    {
+      "scene": "pasture",
+      "zoom": 0.6,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    },
+    {
+      "scene": "orchard",
+      "zoom": 1,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    },
+    {
+      "scene": "orchard",
+      "zoom": 0.6,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    },
+    {
+      "scene": "yard",
+      "zoom": 1,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    },
+    {
+      "scene": "yard",
+      "zoom": 0.6,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    },
+    {
+      "scene": "hedge",
+      "zoom": 1,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    },
+    {
+      "scene": "hedge",
+      "zoom": 0.6,
+      "equal": {
+        "saveSHA256": true,
+        "stateSHA256": true,
+        "presentedStateSHA256": true,
+        "tick": true,
+        "tile": true,
+        "zoom": true
+      }
+    }
+  ],
+  "findings": [
+    {
+      "asset": "ewe A/B",
+      "verdict": "visible, scale plausible; variant identity uses source-coordinate mapping",
+      "evidence": "spring-pasture z1: B at rect (371,274.16,23,17.25), A at (598,291.60,23,17.25). Both contain visible cream sheep pixels; A is lower/head-down, B more upright. At z1.4 the silhouettes are clearer. At z0.6 they remain tiny animal marks, not reliably distinguishable by variant unaided.",
+      "occlusion": "Selected A/B examples unobscured on pasture; other sheep by shrubs overlap naturally.",
+      "limit": "Not a blind species/variant recognition score; 23px is telemetry canvas width, not opaque body size."
+    },
+    {
+      "asset": "cherry",
+      "verdict": "visible, scale plausible",
+      "evidence": "spring-orchard z1 source rect (682.5,295.35,43,43) coincides with the pink blossom tree on north-east edge. It differs from surrounding pale orchard trees and is visible before/after. z1.4 branches/trunk read; z0.6 pink crown remains but species cannot be certified by pixels alone.",
+      "occlusion": "No floating ground contact or foreground-order break apparent in inspected examples."
+    },
+    {
+      "asset": "hawthorn",
+      "verdict": "visible flowering hedgerow replacement; final source propagation incomplete",
+      "evidence": "Before/after spring-hedge and pasture z1 and z0.6 show formerly brown-green pasture boundaries acquiring continuous white flower flecks. z1.4 follows the same perimeter and remains below nearby adults and shrubs. Explicit z1 hedge route: northwest zigzag approximately (200,410)→(390,310)→(580,410), southern boundary (320,600)→(540,705). White blossom clusters are visibly added relative to BEFORE.",
+      "limit": "No hawthorn final deviceDestinationRect in sourceProvenance.records. Legacy draw records show source crops into intermediate 64x64 canvas, not final viewport. Do not count raw duplicate legacy draw counts as visible instances. Visual flowering-boundary outcome established, exact source attribution needs consumer/cache-chain evidence. Parent identified drawSpringHedge as spring replacement of hedgerow_a/b, not a wooden-fence overlay. This reviewer did not inspect that code."
+    },
+    {
+      "asset": "laundry",
+      "verdict": "unverified in this slice",
+      "evidence": "spring-yard z1,z0.6,z1.4 are dense urban views. No new laundry source appears in sourceProvenance and no 27.5-world-pixel laundry sprite can be positively located by pixels.",
+      "limit": "Large blue cloth frames at right in z0.6 already exist in BEFORE, so they are not proof of new laundry. Parent owns sparse-laundry supplemental review."
+    }
+  ],
+  "inspectedFiles": [
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-pasture-z1-000.png",
+      "sha256": "fde3157103fc602e5a1637bab43b9d67fea71148cf15862ab772313a061bb87c",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-pasture-z0.6-000.png",
+      "sha256": "402914aa83104e69fa52c7567afe0ffb2799b75225cd7c618f9479f3a657d915",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-pasture-z1.4-000.png",
+      "sha256": "4697691026c6208155fedf167dea94cf1696760701f79890ee373fd25f9b65c5",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-orchard-z1-000.png",
+      "sha256": "af4fa0b5ac2e2620d3704b6a76a86808a755588832947a4d345471c1c901e9b2",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-orchard-z0.6-000.png",
+      "sha256": "95af4605e890b83ae8001fced988d74d98439bd5c56bd63333f7a30782899cd6",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-orchard-z1.4-000.png",
+      "sha256": "1095c6379796bb55080f4174e6f7d1b6c7a2526f272305ba721143646e0c98f0",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-yard-z1-000.png",
+      "sha256": "0de7cdd2ecb2af81247be63b71985f31c1158492ae1a18a8815564b519182580",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-yard-z0.6-000.png",
+      "sha256": "897e2a7b617bf4778de6f75f3eb2b93c6a98603a459db442629d78c69b284a54",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-yard-z1.4-000.png",
+      "sha256": "10eee8d125e68646e5a28fb215b2bc9ddd8398973587b1d9b9fd139ec410e1ca",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-hedge-z1-000.png",
+      "sha256": "37b53a0b59333daf1cf6d4ae225acc419c34f976fb9014e5b9ca0764f52a61d6",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-hedge-z0.6-000.png",
+      "sha256": "a540b32ef1737c4ed41e3c310c5c6beec8cd82b98a85efc104507b295dc7cd86",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "after",
+      "path": "/tmp/astra-spring-original-live-preview/spring-hedge-z1.4-000.png",
+      "sha256": "47166d259128e77a81c3daaa5965eefc146f909fdff6f943159787f3577b666f",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-pasture-z1-000.png",
+      "sha256": "c1a2e89adc843f84917b41361aac9ab69de75e4fd5f6c65a04ce1f2ca16639e2",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-pasture-z0.6-000.png",
+      "sha256": "1c0d291ac964eb89f6e69e3c5c86f41fd4436eb8bb662a58d3f1793672829760",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-orchard-z1-000.png",
+      "sha256": "97179f75683580e88d4de605504799dcbdfc5b39fc6ade7a247af0b8c725efd9",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-orchard-z0.6-000.png",
+      "sha256": "5fee363de107cf8b21b6e43e1befe82b6773645891dbe59c11cdaf82f658a8b7",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-yard-z1-000.png",
+      "sha256": "1f5fb5dac71cee308a85a686ab55ac5b89ba08862d5410d13f8caf9d9a0bfa98",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-yard-z0.6-000.png",
+      "sha256": "02261ba62bc1fe8982fa04986bf631acf668f1320ff6f8fadc5a14f860977bce",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-hedge-z1-000.png",
+      "sha256": "1f30c47b1f22d3db38efffb27b9902fb26498ec33c27b5e4ce240509c60218d8",
+      "inspection": "opened directly with view_image at original 1280x800"
+    },
+    {
+      "side": "before",
+      "path": "/tmp/astra-spring-before-2e03/output/rb-spring-before/spring-hedge-z0.6-000.png",
+      "sha256": "a90d4376cdae4c4fa9e8c6f2f1537151628eae4fd5e910654ece3bb46d4a1c2d",
+      "inspection": "opened directly with view_image at original 1280x800"
+    }
+  ],
+  "telemetry": [
+    {
+      "view": "spring-pasture",
+      "zoom": 1,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 371,
+            "y": 274.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 598,
+            "y": 291.6015625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 595,
+            "y": 418.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 982,
+            "y": 418.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 438,
+            "y": 467.6015625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-pasture",
+      "zoom": 0.6,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/orchard/orchard_cherry_spring.png",
+          "deviceDestinationRect": {
+            "x": 703.8999796509743,
+            "y": 49.21093881968409,
+            "width": 25.80000102519989,
+            "height": 25.80000102519989
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 478.5999706983566,
+            "y": 324.4984497586265,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 614.7999761104584,
+            "y": 334.9609501743689,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 612.9999760389328,
+            "y": 410.89845319185406,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 845.1999852657318,
+            "y": 410.89845319185406,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 518.7999722957611,
+            "y": 440.5609543705359,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-pasture",
+      "zoom": 1.4,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 263.3999682664871,
+            "y": 223.82961420621723,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 581.1999628543854,
+            "y": 248.24211379047483,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 576.999962925911,
+            "y": 425.4296107729897,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 1118.799953699112,
+            "y": 425.4296107729897,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 357.19996666908264,
+            "y": 494.64210959430784,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-hedge",
+      "zoom": 1,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/orchard/orchard_cherry_spring.png",
+          "deviceDestinationRect": {
+            "x": 682.5,
+            "y": -56.6484375,
+            "width": 43,
+            "height": 43
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 307,
+            "y": 402.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 534,
+            "y": 419.6015625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 531,
+            "y": 546.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 918,
+            "y": 546.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 374,
+            "y": 595.6015625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-hedge",
+      "zoom": 0.6,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/orchard/orchard_cherry_spring.png",
+          "deviceDestinationRect": {
+            "x": 665.500016272068,
+            "y": 126.01095713023096,
+            "width": 25.80000102519989,
+            "height": 25.80000102519989
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 440.2000073194504,
+            "y": 401.2984680691734,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 576.4000127315521,
+            "y": 411.7609684849158,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 574.6000126600266,
+            "y": 487.69847150240093,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 806.8000218868256,
+            "y": 487.69847150240093,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 480.40000891685486,
+            "y": 517.3609726810828,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-hedge",
+      "zoom": 1.4,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 173.79999268054962,
+            "y": 403.02968744840473,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 491.5999872684479,
+            "y": 427.44218703266233,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 487.39998733997345,
+            "y": 604.6296840151772,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 1029.1999781131744,
+            "y": 604.6296840151772,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 267.59999108314514,
+            "y": 673.8421828364953,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-orchard",
+      "zoom": 1,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/orchard/orchard_cherry_spring.png",
+          "deviceDestinationRect": {
+            "x": 682.5,
+            "y": 295.3515625,
+            "width": 43,
+            "height": 43
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 307,
+            "y": 754.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 534,
+            "y": 771.6015625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-orchard",
+      "zoom": 0.6,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/orchard/orchard_cherry_spring.png",
+          "deviceDestinationRect": {
+            "x": 665.500016272068,
+            "y": 337.2109509790316,
+            "width": 25.80000102519989,
+            "height": 25.80000102519989
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 440.2000073194504,
+            "y": 612.498461917974,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 576.4000127315521,
+            "y": 622.9609623337165,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 574.6000126600266,
+            "y": 698.8984653512016,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 806.8000218868256,
+            "y": 698.8984653512016,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 480.40000891685486,
+            "y": 728.5609665298834,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-orchard",
+      "zoom": 1.4,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/orchard/orchard_cherry_spring.png",
+          "deviceDestinationRect": {
+            "x": 699.499983727932,
+            "y": 253.4921861803159,
+            "width": 60.19999897480011,
+            "height": 60.19999897480011
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 173.79999268054962,
+            "y": 895.8296752413735,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-yard",
+      "zoom": 1,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": -74,
+            "y": 147.6015625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 310,
+            "y": 274.1640625,
+            "width": 23,
+            "height": 17.25
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            475,
+            0,
+            37,
+            64,
+            0,
+            0,
+            37,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            0,
+            0,
+            27,
+            64,
+            0,
+            0,
+            27,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            245,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-yard",
+      "zoom": 0.6,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/orchard/orchard_cherry_spring.png",
+          "deviceDestinationRect": {
+            "x": 300.69999796152115,
+            "y": -37.18905507680029,
+            "width": 25.80000102519989,
+            "height": 25.80000102519989
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 75.3999890089035,
+            "y": 238.09845586214215,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 211.59999442100525,
+            "y": 248.56095627788454,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 209.79999434947968,
+            "y": 324.4984592953697,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 442.0000035762787,
+            "y": 324.4984592953697,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        },
+        {
+          "source": "wave43/props/ewe_lamb_a_spring.png",
+          "deviceDestinationRect": {
+            "x": 115.59999060630798,
+            "y": 354.16096047405154,
+            "width": 13.800000548362732,
+            "height": 10.350000411272049
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            111,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            437,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            47,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    },
+    {
+      "view": "spring-yard",
+      "zoom": 1.4,
+      "deduplicatedSourceAndDestination": [
+        {
+          "source": "wave43/props/ewe_lamb_b_spring.png",
+          "deviceDestinationRect": {
+            "x": 177.9999964237213,
+            "y": 223.8296351870522,
+            "width": 32.19999945163727,
+            "height": 24.14999958872795
+          },
+          "alpha": 1
+        }
+      ],
+      "deduplicatedLegacyDraws": [
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            137,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            219,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        },
+        {
+          "url": "http://127.0.0.1:4302/assets/wave43/props/hawthorn_blossom_strip_spring.png",
+          "args": [
+            264,
+            0,
+            64,
+            64,
+            0,
+            0,
+            64,
+            64
+          ]
+        }
+      ],
+      "sourceProvenanceErrors": [],
+      "telemetryErrors": []
+    }
+  ],
+  "limits": [
+    "Prepared state from authentic chapter-4 save, production orchard zone and tick-offset 400; no simulation advancement.",
+    "Static screenshots do not establish animation or temporal stability.",
+    "No blanket approval or installation-complete claim."
+  ]
+}

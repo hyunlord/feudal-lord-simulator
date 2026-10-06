@@ -11,6 +11,7 @@ import {
   type ResourceType,
   type StorableResourceType,
 } from "../content/resourceConfig";
+import type { IntakeCap } from "../content/recoveryConfig";
 import type { Building } from "./economy.types";
 
 export interface StockReservation {
@@ -56,10 +57,21 @@ export function storageUsage(building: Building): StorageUsage {
   };
 }
 
+/** RECOVER-1 (RC-6): intake rules beyond the stores' own — lord mode's caps (data: `LORD_INTAKE_CAPS`). */
+export interface IntakeRules {
+  readonly caps?: readonly IntakeCap[];
+}
+
 function rawIntakeUsage(
   building: Building,
   resource: StorableResourceType,
+  rules?: IntakeRules,
 ): { readonly used: number; readonly capacity: number } | null {
+  const cap = rules?.caps?.find(line => line.store === building.kind && line.resource === resource);
+  if (cap !== undefined) {
+    const room = BUILDING_CONFIG_BY_KIND[building.kind].storageCapacity;
+    return { used: amountOf(building.inventory, resource) + amountOf(building.reserved, resource), capacity: Math.floor(room * cap.permille / 1000) };
+  }
   const limited: readonly StorableResourceType[] = building.kind === "granary" && resource === "wheat"
     ? ["wheat"]
     : building.kind === "storehouse" && (resource === "logs" || resource === "stone_raw")
@@ -77,10 +89,11 @@ function rawIntakeUsage(
 export function storageIntakeUsage(
   building: Building,
   resource: StorableResourceType,
+  rules?: IntakeRules,
 ): { readonly used: number; readonly capacity: number } {
   const usage = storageUsage(building);
   const physical = { used: usage.used + usage.incoming, capacity: usage.capacity };
-  const raw = rawIntakeUsage(building, resource);
+  const raw = rawIntakeUsage(building, resource, rules);
   return raw !== null && Math.max(0, raw.capacity - raw.used) < Math.max(0, physical.capacity - physical.used)
     ? { used: Math.min(raw.used, raw.capacity), capacity: raw.capacity }
     : physical;
@@ -90,8 +103,9 @@ export function storageIntakeSpace(
   building: Building,
   resource: StorableResourceType,
   freeSpace: number,
+  rules?: IntakeRules,
 ): number {
-  const raw = rawIntakeUsage(building, resource);
+  const raw = rawIntakeUsage(building, resource, rules);
   return raw === null ? freeSpace : Math.min(freeSpace, Math.max(0, raw.capacity - raw.used));
 }
 

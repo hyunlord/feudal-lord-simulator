@@ -2,7 +2,7 @@
  * FAIL-3 lordship accessors (spec docs/design/failure-ladder-campaign.md FL-1, FL-2, FL-7): the lord's house, the rights
  * still held and the title. Pure reads of the state; the ladder's steps are in `lordship.ts`.
  */
-import { LORD_HOUSE_NAMES, LORD_RIGHT_IDS, TITLE_RANKS, type LordRightId, type LordTitleRank } from "../content/lordshipConfig";
+import { DEFAULT_PLAYER_HOUSE, LORD_HOUSE_NAMES, LORD_RIGHT_IDS, TITLE_RANKS, type LordRightId, type LordTitleRank } from "../content/lordshipConfig";
 import type { GameState } from "./engine.types";
 import type { LordHouse, LordRightHolder, LordshipState } from "./lordship.types";
 import { hashSeed } from "./prng";
@@ -10,25 +10,50 @@ import { scenarioOf } from "./scenarioState";
 import { builtGatePointIds } from "./tollCrossings";
 import { lordPossesses, lordRightsLost } from "./estates";
 
-/** FL-7: the house's name, by seed and order (a new house never takes the name of the one before it). */
-export function lordHouseName(seed: number, order: number): string {
+/**
+ * FL-7: a later house's name, by seed and order — never the name of the house before it. MANOR-1 (HOUSE-1): the first
+ * house is the player's (`playerLordHouse`), not by seed.
+ */
+export function lordHouseName(seed: number, order: number, previous: string): string {
   const index = hashSeed(seed, `lord-house:${order}`) % LORD_HOUSE_NAMES.length;
-  const previous = order > 1 ? LORD_HOUSE_NAMES.indexOf(lordHouseName(seed, order - 1) as (typeof LORD_HOUSE_NAMES)[number]) : -1;
-  return LORD_HOUSE_NAMES[index === previous ? (index + 1) % LORD_HOUSE_NAMES.length : index]!;
+  return LORD_HOUSE_NAMES[LORD_HOUSE_NAMES[index] === previous ? (index + 1) % LORD_HOUSE_NAMES.length : index]!;
 }
 
-/** FL-7: the first house's arms are the game seed's (as the screens drew them before FAIL-3); a later house's its own. */
+/**
+ * FL-7: a house's arms by seed and order — a later house's; the first house's are the player's default house's
+ * (MANOR-1, HOUSE-1). A chosen house's arms are on the house itself (`lordHouseByOrder`).
+ */
 export function lordHouseHeraldrySeed(seed: number, order: number): number {
-  return order === 1 ? seed : hashSeed(seed, `lord-arms:${order}`);
+  return order === 1 ? armsHeraldrySeed(DEFAULT_PLAYER_HOUSE.arms) : hashSeed(seed, `lord-arms:${order}`);
 }
 
-export function firstLordHouse(state: Pick<GameState, "seed">): LordHouse {
-  return { order: 1, name: lordHouseName(state.seed, 1), heraldrySeed: lordHouseHeraldrySeed(state.seed, 1), since: 0 };
+/**
+ * MANOR-1 (HOUSE-1): the seed the arms with this id are drawn from — the screens draw the player's arms (the house
+ * chooser's and the lordship's alike) as `armsRecipe(armsHeraldrySeed(arms), MANOR_HOUSEHOLD)`.
+ */
+export function armsHeraldrySeed(arms: string): number {
+  return hashSeed(0, `player-arms:${arms}`);
+}
+
+/** MANOR-1 (HOUSE-1): the player's house as the lord's first house — the new game's choice, "de Haverel" by default. */
+export function playerLordHouse(house: { readonly name: string; readonly arms: string } = DEFAULT_PLAYER_HOUSE): LordHouse {
+  return { order: 1, name: house.name, arms: house.arms, heraldrySeed: armsHeraldrySeed(house.arms), since: 0 };
+}
+
+/** The first house of a game whose lordship is not yet written: the player's default house (MANOR-1, HOUSE-1). */
+export function firstLordHouse(_state: Pick<GameState, "seed">): LordHouse {
+  return playerLordHouse();
 }
 
 /** The lordship, or the one a game opens with (the first house, every right held, no decline). */
 export function lordshipOf(state: Pick<GameState, "lordship" | "seed">): LordshipState {
   return state.lordship ?? { house: firstLordHouse(state), pastHouses: [], titleDemoted: false, decline: null };
+}
+
+/** MANOR-1 API: the lord's house of this order (the ruling one or a past one), if the game has had it. */
+export function lordHouseByOrder(state: Pick<GameState, "lordship" | "seed">, order: number): LordHouse | undefined {
+  const lordship = lordshipOf(state);
+  return [lordship.house, ...lordship.pastHouses].find(house => house.order === order);
 }
 
 /** FL-7 API: the ruling house (name, arms seed, since). */

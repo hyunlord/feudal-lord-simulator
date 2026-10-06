@@ -1,3 +1,4 @@
+import { withSpringWorldProps } from "./springWorldProps";
 import type { Walker } from "../agents/walker.types";
 import type { GameState } from "../engine/engine.types";
 import type { Tile } from "../world/world.types";
@@ -8,8 +9,7 @@ import {
   type ObjectRenderItem,
   type RenderQueueItem,
 } from "./objectRenderOrder";
-import type { TileRange } from "./renderVisibility";
-import { tileIsVisibleInRange } from "./renderVisibility";
+import { tileIsVisibleInRange, type TileRange } from "./renderVisibility";
 import { walkerVisualAnchor } from "./walkerAnchor";
 import type { ZoneLayer } from "./zoneLayer";
 import { groundBoundaryScene } from "./groundBoundaryScene";
@@ -48,7 +48,7 @@ export const objectRenderItemsForFrame = (
   input: ObjectRenderFrameInput,
 ): readonly RenderQueueItem[] => {
   const baseItems = withDoorSigns(withLandFallow(withAlehouseCrowd(withCountryside(withVillageLife(withWarProps(withReorgProps(withPlagueProps(withFarmProps(withYardHurdles(withZoneProps(staticObjectRenderItemsForFrame(input), input), input), input), input.state, input.range), input.state, input.range), input), input), input.state, input.range), input.state, input.range), input.state, input.range), input.state, input.range); // + INSTALL-28, UI-8, UI-9, NAT-2 alehouse crowd, NAT-5 fallow, LM-R1 door signs
-  const staticItems = withTradeWorldProps(baseItems, input.state, input.range);
+  const staticItems = withSpringWorldProps(withTradeWorldProps(baseItems, input.state, input.range), input.state, input.range);
   const walkerItems = walkerRenderItemsForFrame(input.renderWalkers ?? input.state.walkers, input.range);
   return walkerItems.length === 0 ? staticItems : mergeObjectRenderItems(staticItems, walkerItems);
 };

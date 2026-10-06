@@ -427,8 +427,9 @@ export const BUILDING_CONFIG_BY_KIND: Record<BuildingKind, BuildingDefinition> =
     production: { output: "finished_cloth", input: "dyed_cloth", inputPerOutput: 1, ticksPerOutput: 80, outputHoldLimit: 10 }, storageCapacity: 30, serviceRadius: 0,
   },
   // FIX-11 (11): the manor house — the lord's household. Pre-placed at map generation; not in build menu, not buildable or demolishable by player or bot.
+  // MANOR-1: 3×3, the village's biggest house (its art is drawn for 3×3; 2×2 before save v50).
   manor_house: {
-    kind: "manor_house", name: BUILDING_COPY.manor_house.name, width: 2, height: 2,
+    kind: "manor_house", name: BUILDING_COPY.manor_house.name, width: 3, height: 3,
     workersRequired: 0, buildCost: {},
     requiresAdjacentTerrain: null, requiresRoad: false,
     production: null, storageCapacity: 0, serviceRadius: 0,
