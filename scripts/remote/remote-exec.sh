@@ -199,7 +199,7 @@ done
 echo "== node_modules: $NM_CACHE ($NM_KEY)"
 PREPARE_S=$(elapsed "$T_START")
 
-# 4. Heavy slots: at most HEAVY_SLOTS (2) heavy runs at once across all sessions; the others wait in line
+# 4. Heavy slots: at most HEAVY_SLOTS (3) heavy runs at once across all sessions; the others wait in line
 #    (scripts/remote/heavySlots.sh). run.sh marks a run heavy (SLOT=heavy; the old SLOT=guardrail is the same).
 T_WAIT=$(date +%s.%N)
 case "$SLOT" in

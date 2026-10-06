@@ -16,6 +16,7 @@
 #                dev-server transform) and the cached UI state folders: docs/verification/uiaudit1/geometry/<run>/ and
 #                the committed summary docs/verification/uiaudit1/geometry.json come back into the tree
 #   clone-check                                              fresh clone of the commit (+LFS), npm ci, typecheck, test, build
+#   trunk-bisect <good> <bad> -- <command ...>               first commit in good..bad where the command fails (trunkClone.sh)
 #   trend        [--commits sha,...] [--rounds 3] [--seconds 45]
 #                                                            per-commit noise-resistant metrics (scripts/perf/trendRun.ts)
 #                                                            into ~/fls-runs/_trend/<sha>.json and .remote/trend/
@@ -193,6 +194,27 @@ ui-geometry)
   tail -n 3 "$OUT/ui-geometry/audit.log" | tee "$OUT/summary.txt"
   [ -f "$out/geometry.md" ] && sed -n '1,4p' "$out/geometry.md" | tee -a "$OUT/summary.txt"
   exit $rc
+  ;;
+
+trunk-bisect)
+  # Called by scripts/remote/trunkClone.sh when the trunk's bundled clone fails: the first commit between the last
+  # passing trunk and this one where <command> fails (git bisect, merges included). A commit whose package-lock.json
+  # differs from this run's is skipped (125) rather than installed. Writes .remote/bisect.txt: "<sha> <subject> (<author>)".
+  good=${1:?good}; bad=${2:?bad}; shift 2; [ "${1:-}" = -- ] && shift
+  [ $# -gt 0 ] || { echo "trunk-bisect: no command"; exit 2; }
+  wt=$PWD/.remote/bisect-tree; rm -rf "$wt"; git worktree prune
+  git worktree add -q --detach "$wt" "$bad" || exit 2
+  ln -s "$PWD/node_modules" "$wt/node_modules"
+  printf '%s\n' '#!/usr/bin/env bash' \
+    "cmp -s '$PWD/package-lock.json' package-lock.json || exit 125" \
+    "\"\$@\" > '$OUT/bisect-'\$(git rev-parse --short HEAD)'.log' 2>&1 || exit 1" > "$OUT/bisect-step.sh"
+  chmod +x "$OUT/bisect-step.sh"
+  ( cd "$wt" && git bisect start "$bad" "$good" > /dev/null && git bisect run "$OUT/bisect-step.sh" "$@" ) > "$OUT/bisect.log" 2>&1
+  first=$(grep -oE '^[0-9a-f]{40} is the first bad commit' "$OUT/bisect.log" | cut -c1-40)
+  (cd "$wt" && git bisect reset -q 2> /dev/null); git worktree remove --force "$wt" 2> /dev/null
+  if [ -n "$first" ]; then git log -1 --format='%h %s (%an)' "$first" | cut -c1-200 > "$OUT/bisect.txt"
+  else echo "(git bisect found no single commit: see bisect.log)" > "$OUT/bisect.txt"; fi
+  cat "$OUT/bisect.txt"
   ;;
 
 clone-check)
