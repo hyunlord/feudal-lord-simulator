@@ -59,7 +59,8 @@ test('active fire cannot select a contract painting', () => {
   assert.equal(art.select({ ...input, state: { ...state, events } }), null);
 });
 
-test('body and required overlay load atomically and share exact source and destination rectangles', async () => {
+for (const winterOffset of [150, 400]) {
+test(`body and required overlay load atomically and share exact rectangles at winter offset ${winterOffset}`, async () => {
   resetSeasonBlendForTest();
   const snowBundle: ArtBundle = { ...bundle, entries: [...bundle.entries, {
     id: 'snow', kind: 'state-overlay', image: body.image, provenance: body.provenance, geometry,
@@ -72,7 +73,7 @@ test('body and required overlay load atomically and share exact source and desti
     Object.assign(image, { naturalWidth: 64, naturalHeight: 64, onload: null, onerror: null, decode: () => Promise.resolve() });
     images.push(image); return image;
   } });
-  const winter = { ...input, state: { ...state, tick: state.tick + BALANCE.TICKS_PER_YEAR * 0.75 + 400 } };
+  const winter = { ...input, state: { ...state, tick: state.tick + BALANCE.TICKS_PER_YEAR * 0.75 + winterOffset } };
   const calls: unknown[][] = [];
   const alphas: number[] = [];
   const context = { globalAlpha: 0.8, imageSmoothingEnabled: false, save: () => undefined, restore: () => undefined,
@@ -93,7 +94,8 @@ test('body and required overlay load atomically and share exact source and desti
   assert.equal(art.drawLayers(context, drawn), true);
   assert.equal(calls.length, 2);
   assert.equal(alphas[0], 0.8);
-  assert.ok(alphas[1] !== undefined && alphas[1] > 0 && alphas[1] < 0.8);
+  if (winterOffset === 150) assert.ok(alphas[1] !== undefined && alphas[1] > 0 && alphas[1] < 0.8);
+  else assert.equal(alphas[1], 0.8, 'midwinter snow is fully accumulated and still respects caller alpha');
   assert.equal(context.globalAlpha, 0.8);
   assert.deepEqual(calls[0]?.slice(1), calls[1]?.slice(1));
   const center = tileToScreen(building.tx, building.ty);
@@ -101,6 +103,7 @@ test('body and required overlay load atomically and share exact source and desti
   assert.equal(Object.isFrozen(drawn), true);
   assert.equal(Object.isFrozen(drawn.body.targetRect), true);
 });
+}
 
 
 test('partial state and ale-stake houses never acquire a fabricated contract context', () => {

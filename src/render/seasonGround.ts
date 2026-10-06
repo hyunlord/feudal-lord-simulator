@@ -1,6 +1,7 @@
 import type { Tile } from "../world/world.types";
 import { TILE_H, TILE_W, tileToScreen } from "./iso";
 import { seasonArtReadiness, seasonImage, seasonVariant, seasonVariants, type SeasonIndex, type SeasonKey } from "./seasonArt";
+import { springGrassChunkToken, springGrassImage, type SpringGroundState } from './springGrass';
 
 // INSTALL-15 seasonal ground in the V2 ground chunks: autumn and winter lay the Wave 15 grass fill (world-aligned,
 // 256x128 source = 2x2 tiles, like the zone floors) over the grass diamonds, before the forest, water, zones and
@@ -17,14 +18,14 @@ const chunkKeys = new Map<SeasonIndex, readonly SeasonKey[]>();
  * keys), else the season and its chunk art's readiness. It is left out of the deferKey, so a season change may be
  * spread over a few frames like a zone edit (groundChunkCache header (b)).
  */
-export function seasonChunkToken(season: SeasonIndex): string {
+export function seasonChunkToken(season: SeasonIndex, state?: SpringGroundState): string {
   if (season === 1) return "";
   let keys = chunkKeys.get(season);
   if (keys === undefined) {
     keys = seasonVariants(season).filter(key => CHUNK_BASES.has(baseOfVariant(key)));
     chunkKeys.set(season, keys);
   }
-  return `|s${season}:${seasonArtReadiness(keys)}`;
+  return `|s${season}:${seasonArtReadiness(keys)}` + springGrassChunkToken(state, season);
 }
 
 function baseOfVariant(key: SeasonKey): string {
@@ -34,9 +35,9 @@ function baseOfVariant(key: SeasonKey): string {
 
 const patterns = new WeakMap<CanvasRenderingContext2D, Map<CanvasImageSource, CanvasPattern | null>>();
 
-export function drawSeasonGrass(context: CanvasRenderingContext2D, tiles: readonly Tile[], season: SeasonIndex): void {
+export function drawSeasonGrass(context: CanvasRenderingContext2D, tiles: readonly Tile[], season: SeasonIndex, state?: SpringGroundState): void {
   const variant = seasonVariant("grass", season);
-  const image = variant === null ? null : seasonImage(variant);
+  const image = springGrassImage(state, season) ?? (variant === null ? null : seasonImage(variant));
   if (image === null || typeof context.createPattern !== "function") return;
   let map = patterns.get(context);
   if (map === undefined) { map = new Map(); patterns.set(context, map); }

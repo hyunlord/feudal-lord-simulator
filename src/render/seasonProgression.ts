@@ -31,14 +31,17 @@ export function parseProgressionProfiles(value: unknown): ProgressionProfiles | 
     const item: unknown = Reflect.get(value, key);
     if (typeof item !== 'object' || item === null || !('start' in item) || !('end' in item) || !('jitter' in item)) return null;
     const { start, end, jitter } = item;
+    // Leaf-fall is winter-relative: a negative start reaches back into late autumn.
+    const earliest = key === 'treeBare' ? -1 : 0;
     if (typeof start !== 'number' || typeof end !== 'number' || typeof jitter !== 'number' ||
-      !Number.isFinite(start + end + jitter) || start < 0 || end > 1 || end <= start || jitter < 0 || jitter >= end - start) return null;
+      !Number.isFinite(start + end + jitter) || start < earliest || end < 0 || end > 1 || end <= start || jitter < 0 || jitter >= end - start) return null;
     return { start, end, jitter };
   };
   const roofSnow = read('roofSnow'), springMelt = read('springMelt'), treeSpring = read('treeSpring'), treeSummer = read('treeSummer');
   const treeAutumn = read('treeAutumn'), treeBare = read('treeBare'), treeSnow = read('treeSnow');
   const firstFrost = read('firstFrost'), fenceSnow = read('fenceSnow');
-  if (!firstFrost || !fenceSnow || !roofSnow || !springMelt || !treeSpring || !treeSummer || !treeAutumn || !treeBare || !treeSnow || treeBare.end > treeSnow.start) return null;
+  if (!firstFrost || !fenceSnow || !roofSnow || !springMelt || !treeSpring || !treeSummer || !treeAutumn || !treeBare || !treeSnow ||
+    treeBare.end > treeSnow.start || treeBare.start + 1 < treeAutumn.end) return null;
   return { schemaVersion: 1, winterStages, roofSnow, springMelt, treeSpring, treeSummer, treeAutumn, treeBare, treeSnow, firstFrost, fenceSnow };
 }
 const PROFILES = parseProgressionProfiles(profiles);
@@ -69,11 +72,11 @@ export function roofSnowAlpha(state: Pick<GameState, 'tick' | 'scenarioId'>, bui
 export function treeProgression(progress: CalendarProgress, identity: string, firstYear = false): { readonly season: 0 | 1 | 2 | 3; readonly snowy: boolean } {
   if (PROFILES === null || firstYear && progress.season === 0) return { season: progress.season, snowy: progress.season === 3 };
   const phase = objectPhase(identity, 'tree');
-  const changed = (window: Window) => progress.fraction >= window.start + phase * (window.end - window.start);
+  const changed = (window: Window, fraction = progress.fraction) => fraction >= window.start + phase * (window.end - window.start);
   switch (progress.season) {
     case 0: return { season: changed(PROFILES.treeSpring) ? 0 : 3, snowy: !changed(PROFILES.springMelt) };
     case 1: return { season: changed(PROFILES.treeSummer) ? 1 : 0, snowy: false };
-    case 2: return { season: changed(PROFILES.treeAutumn) ? 2 : 1, snowy: false };
+    case 2: return { season: changed(PROFILES.treeBare, progress.fraction - 1) ? 3 : changed(PROFILES.treeAutumn) ? 2 : 1, snowy: false };
     case 3: return { season: changed(PROFILES.treeBare) ? 3 : 2, snowy: changed(PROFILES.treeSnow) };
   }
 }

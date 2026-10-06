@@ -17,7 +17,7 @@ import { roofSnowAlpha, treeProgression, parseProgressionProfiles } from '../src
 import profiles from '../src/render/seasonProgression.json';
 
 test('same saved tick and identity reconstruct snow without wall-clock or seen-season state', () => {
-  const state = { tick: 3400 }; const roof = { id: 'roof-a', tx: 10, ty: 12 };
+  const state = { tick: 3200 }; const roof = { id: 'roof-a', tx: 10, ty: 12 };
   const first = roofSnowAlpha(state, roof);
   resetSeasonBlendForTest();
   assert.equal(roofSnowAlpha(JSON.parse(JSON.stringify(state)), roof), first);
@@ -25,7 +25,7 @@ test('same saved tick and identity reconstruct snow without wall-clock or seen-s
 });
 test('neighbouring roofs vary but monotonically accumulate until full winter snow', () => {
   const roofs = Array.from({ length: 10 }, (_, i) => ({ id: `roof-${i}`, tx: i, ty: 8 }));
-  assert.ok(new Set(roofs.map(roof => roofSnowAlpha({ tick: 3400 }, roof))).size > 1);
+  assert.ok(new Set(roofs.map(roof => roofSnowAlpha({ tick: 3200 }, roof))).size > 1);
   for (const roof of roofs) {
     const values = [3000, 3200, 3400, 3600, 3800].map(tick => roofSnowAlpha({ tick }, roof));
     assert.equal(values[0], 0); assert.equal(values[4], 1);
@@ -95,4 +95,25 @@ test('winter stages reject incomplete, array and unknown-base contracts atomical
 });
 test('the first spring tree never borrows a prior winter picture', () => {
   assert.deepEqual(treeProgression(calendarProgress({ tick: 1 }), 'tree-oak-1', true), { season: 0, snowy: false });
+});
+
+test('all roofs are fully accumulated by midwinter, including the reported 1305 save tick', () => {
+  for (const tick of [3340, 23450]) for (let index = 0; index < 1000; index += 1) {
+    assert.equal(roofSnowAlpha({ tick }, { id: `roof-${index}`, tx: index % 64, ty: Math.floor(index / 64) }), 1);
+  }
+});
+test('leaf fall spans late autumn and early winter but every tree is bare before midwinter', () => {
+  const identities = Array.from({ length: 1000 }, (_, index) => `tree-${index}`);
+  const count = (tick: number) => identities.filter(id => treeProgression(calendarProgress({ tick }), id).season === 3).length;
+  assert.equal(count(2800), 0);
+  assert.ok(count(2920) > 0 && count(2920) < identities.length);
+  assert.ok(count(3000) > count(2920) && count(3000) < identities.length);
+  assert.equal(count(3080), identities.length);
+  assert.equal(count(23450), identities.length);
+  for (const id of identities) assert.equal(treeProgression(calendarProgress({ tick: 3340 }), id).snowy, true);
+});
+test('only leaf-fall may begin before the winter boundary and autumn colour precedes leaf-fall', () => {
+  assert.notEqual(parseProgressionProfiles({ ...profiles, treeBare: { start: -0.12, end: 0.08, jitter: 0 } }), null);
+  assert.equal(parseProgressionProfiles({ ...profiles, roofSnow: { start: -0.12, end: 0.3, jitter: 0 } }), null);
+  assert.equal(parseProgressionProfiles({ ...profiles, treeBare: { start: -0.8, end: 0.08, jitter: 0 } }), null);
 });

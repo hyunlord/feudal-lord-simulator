@@ -1,3 +1,4 @@
+import { drawSpringWorldProp } from "./springWorldProps";
 import { unitEdgeKey } from "../world/boundary/wallBaseline";
 import { causeBuildingAlpha } from "./causeMapOverlay";
 import type { GameState } from "../engine/engine.types";
@@ -116,6 +117,10 @@ export function drawObjectRenderItems(
     }
     if (item.kind === "countryside") { // INSTALL-28 hedges, baulks, dry-stone walls and point props outside the walls
       if (viewMode === "normal") drawCountrysideItem(context, item, input.state, input.zoom);
+      continue;
+    }
+    if (item.kind === "spring_prop") {
+      if (viewMode === "normal") drawSpringWorldProp(context, item.prop, input.zoom);
       continue;
     }
     if (item.kind === "trade_prop") {

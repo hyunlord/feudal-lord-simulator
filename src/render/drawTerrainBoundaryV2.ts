@@ -139,7 +139,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   const season = seasonOf(input.state);
   const next = input.state.tick % SEASON_TICKS >= SEASON_TICKS - STAGE_TICKS ? ((season + 1) % 4) as SeasonIndex : null;
   const fieldTextures = prepareArableFieldTextures(cropStates, next === null ? [season] : [season, next]);
-  const seasonToken = seasonChunkToken(season);
+  const seasonToken = seasonChunkToken(season, input.state);
   const fade = { token: `s${season}`, ms: seasonFadeMs() };
   const land = landGroundOf(input.state);
   const landToken = (plan: GroundChunkPlan, at: SeasonIndex): string => (land === null ? "" : landChunkToken(land, plan, scene.shore, at)) + rockChunkToken(rockGroundOf(input.state), plan);
@@ -163,7 +163,7 @@ export function drawTerrainBoundaryV2(context: CanvasRenderingContext2D, input: 
   // while the canvas budget has room, so at its moment in the turn a chunk only swaps (groundChunkCache header (d);
   // SMOOTH-2R: at every speed). Same keys as the turn's requests will carry.
   if (next !== null) {
-    const nextToken = seasonChunkToken(next);
+    const nextToken = seasonChunkToken(next, input.state);
     const nextFade = { token: `s${next}`, ms: fade.ms };
     scheduleStaging(context, cache, visible.flatMap(plan => [
       { request: { ...groundRequest(plan), contentKey: `${plan.groundKey}|${groundReadiness(plan, next)}${landToken(plan, next)}${nextToken}|${zoom.toFixed(2)}${scaleKey}`, fade: nextFade },
@@ -204,7 +204,7 @@ function drawGroundChunk(
   // Forest, water and (NAT-5) rock tiles are laid as grass, season grass too; their smoothed outlines paint over them.
   const laid = tiles.map(groundTileAs);
   for (const tile of laid) parts.drawGroundDiamond(context, tile, input.state.seed, input.terrainPatterns);
-  if (season !== 1) drawSeasonGrass(context, laid, season);
+  if (season !== 1) drawSeasonGrass(context, laid, season, input.state);
   const bounds = chunkTileBounds(plan.cx, plan.cy);
   const diamond = chunkDiamond(plan);
   const box = { left: diamond[3].x - 4, top: diamond[0].y - 4, right: diamond[1].x + 4, bottom: diamond[2].y + 4 };
