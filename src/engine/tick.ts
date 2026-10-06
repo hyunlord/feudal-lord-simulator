@@ -1,3 +1,5 @@
+import { advanceFactionActs } from "./factionActs";
+import { advanceTrace } from "./decisionTrace";
 import { lordIntakeRules } from "./recovery";
 import { advanceStuckStock } from "./stuckStock";
 import { advanceTownAgency } from "./townAgency";
@@ -297,7 +299,7 @@ export function advanceTick(state: GameState): GameState {
   // LM-E5 (LG-3): then the land's own changes (footfall, footpaths, fallow, regrowth).
   // LM-E6a (TR-4…TR-8): lord mode's trades after the town agency — the season's trades and the carters' haulage.
   // LM-E9 (ER-3, ER-7): then the registry's season — terms at the year's turn, lapses, the season's offer.
-  return advanceHistory(state, advanceRegistry(advanceTrades(advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
+  return advanceTrace(state, advanceHistory(state, advanceFactionActs(advanceRegistry(advanceTrades(advanceTownAgency(advanceStuckStock(updateSettlementProgress(refreshMaterialResult(refreshFoodObservation(completeEligibleConstruction(
     advanceWarTick(advanceLand(advanceStewardship(advanceDiplomacy(advanceSuits(advanceNeighbourRules(advanceEstates(advanceLordship(advancePolitics(advancePersons(advancePalisadeExpansion(advanceEvents(advanceZoneSettlement(advanceSeasons(settleMoneyPeriod(recordStarvation(state, advanceTimberTrade(advanceSimulationSubstep({ ...state, wallTick: state.wallTick + 1 })))))))))))))))))),
-  )))))))));
+  )))))))))));
 }

@@ -5,6 +5,7 @@
  * disposition, keeps its accounts — and may keep some of them back; the lord's exceptions bring some petitions to him;
  * at Michaelmas the accounts are audited (by letter or by a visit, which costs the lord's attention elsewhere).
  */
+import type { StewardStance } from "../content/stewardPolicyConfig";
 import type { HolderId } from "./estates.types";
 
 /** SW-3: how a steward leans — the merchants' friend, the tenants' friend, or his own. */
@@ -62,8 +63,10 @@ export interface EstatePetition {
   readonly escalated?: "amount" | "rights" | "marriage" | "direct";
   /** FIX-14 (SW-11): the other side a home petition sets the lord's men against (a neighbour house's faction). */
   readonly party?: string;
-  /** FIX-14 (SW-12): the steward answered it as the lord answered the same kind before (no longer brought up). */
+  /** FIX-14 (SW-12): the steward answered it as the lord answered the same kind before (saves before v52; DEC-TRACE replaced it with `stance`). */
   readonly precedent?: true;
+  /** DEC-TRACE §1 (save v52): the steward answered it by the lord's standing policy for its kind. */
+  readonly stance?: StewardStance;
 }
 
 /** SW-5: the lord's exceptions — what a steward must bring to him (£5 or more, a right changed, a marriage). */
@@ -130,6 +133,8 @@ export interface StewardshipState {
   readonly summaries: readonly QuarterSummary[];
   readonly audits: readonly AuditRecord[];
   readonly rules: ExceptionRules;
+  /** DEC-TRACE §1 (save v52): the lord's standing policy by kind of small matter (a home petition's kind, `sender:<faction>`); unset = custom. */
+  readonly policies?: Readonly<Record<string, StewardStance>>;
   /** SW-1: the tick of the lord's last audit visit (his attention is less for a year after). */
   readonly visitTick?: number;
   readonly nextPetition: number;

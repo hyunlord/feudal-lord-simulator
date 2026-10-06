@@ -75,9 +75,11 @@ export const V4_COMMANDS: Readonly<Record<string, Dispatch>> = {
   file_suit: { run: (state, args) => (estatesOf(state).claims.find(claim => claim.id === args.claimId)?.claimant === LORD ? fileSuit(state, str(args.claimId)) : state),
     did: (after, _, args) => estatesOf(after).suits.some(suit => suit.claimId === args.claimId) },
   add_suit_evidence: { run: (state, args) => (lordSuit(state, args.suitId) ? addSuitEvidence(state, str(args.suitId), args.evidence as Parameters<typeof addSuitEvidence>[2]) : state),
-    did: (after, _, args) => {
+    did: (after, before, args) => {
       const suit = estatesOf(after).suits.find(entry => entry.id === args.suitId);
-      return estatesOf(after).claims.find(claim => claim.id === suit?.claimId)?.evidence.some(entry => entry.kind === args.evidence) === true;
+      // DEC-TRACE (P-D1): the evidence is new — a choice that hands in what the court already has does nothing.
+      const has = (state: GameState) => estatesOf(state).claims.find(claim => claim.id === suit?.claimId)?.evidence.filter(entry => entry.kind === args.evidence).length ?? 0;
+      return has(after) > has(before);
     } },
   seek_suit_patron: { run: (state, args) => (lordSuit(state, args.suitId) ? seekSuitPatron(state, str(args.suitId), str(args.factionId)) : state),
     did: (after, _, args) => estatesOf(after).suits.find(suit => suit.id === args.suitId)?.patron === args.factionId },
@@ -152,6 +154,9 @@ export function runCommands(state: GameState, commands: readonly V4Command[], sc
 // --- ER-19 holds (R3) -------------------------------------------------------------------------------------------------------
 
 /** ER-19: what holding costs on this entry — its claim weakens, its promise or negotiation runs on, or its sender's relation falls (null: no cost, the hold is hidden). */
+/** DEC-TRACE: the faction an entry's sender speaks for (the canon's sender role), or undefined. */
+export const v4SenderFaction = (entryId: string): string | undefined => V4_SENDER_FACTION[V4_COPY[entryId]?.senderFaction ?? ""];
+
 export type HoldCost = { readonly kind: "claim" } | { readonly kind: "deadline"; readonly binding: string } | { readonly kind: "relation"; readonly faction: string };
 export function holdCost(entry: V4Entry): HoldCost | null {
   const names = Object.keys(entry.bindings);

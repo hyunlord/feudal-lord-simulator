@@ -14,10 +14,12 @@ import {
   HOME_PETITION_KINDS,
 } from "../content/stewardshipConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
-import { HOME_PETITION_ENTRIES, HOME_PETITION_ENTRY_PREFIX, homeCycleKinds } from "../content/registry/homePetitions";
+import { DEFAULT_STEWARD_STANCE, HOME_PETITION_CUSTOM, STEWARD_STANCES, type StewardStance } from "../content/stewardPolicyConfig";
+import { HOME_PETITION_ENTRIES, homeCycleKinds } from "../content/registry/homePetitions";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { MALE_GIVEN_NAMES, TOPOGRAPHIC_SURNAMES } from "../content/personNames";
 import { postLedgerEntries } from "../ledger/ledger";
+import { largeSumLine, stewardStance } from "./decisionLayer";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
 import type { Estate } from "./estates.types";
@@ -186,12 +188,11 @@ function petitionEffect(petition: Pick<EstatePetition, "kind" | "amount">, grant
 
 /**
  * FIX-14 (SW-11): the home estate's season in lord mode — its petitions past their deadline lapse (refused, the wait
- * remembered), and one comes to the lord himself with the season's chance, in winter always when none came that year.
- * The kinds come in cycles of twelve, each cycle in its own order from the seed.
+ * remembered), and one comes with the season's chance. The kinds come in cycles of twelve, each cycle in its own order
+ * from the seed.
  * LM-E9 (ER-5): the kinds, their base order and the chance are the registry's home entries (`homePetitions.ts`); the
  * draws keep their names, so the petitions are the same.
- * LM-E9 (ER-6, NE10): a kind the lord has answered before the steward answers as he did ("선례대로"), unless the
- * lord's exceptions bring it up (recurring, or the amount, rights or marriage rule).
+ * DEC-TRACE §1 (GP-7): the steward answers it by the lord's standing policy for the kind; see below.
  */
 function homePetitionSeason(state: GameState): GameState {
   if (state.agency === undefined) return state;
@@ -199,12 +200,10 @@ function homePetitionSeason(state: GameState): GameState {
   const lapsed = stewardship.petitions.filter(petition => petition.estateId === HOME_ESTATE_ID && petition.status === "open" && state.tick > petition.deadline);
   if (lapsed.length > 0) stewardship = { ...stewardship, petitions: stewardship.petitions.map(petition => lapsed.includes(petition) ? { ...petition, status: "lapsed" as const } : petition) };
   const homes = stewardship.petitions.filter(petition => petition.estateId === HOME_ESTATE_ID);
-  const year = Math.floor(state.tick / YEAR);
-  const winter = Math.floor((state.tick % YEAR) / SEASON) === 3;
   const kinds = homeCycleKinds();
   const chance = HOME_PETITION_ENTRIES[0]?.frequency.chancePermille ?? 0;
-  const comes = hashSeed(state.seed, "home-petition", state.tick) % 1000 < chance
-    || (winter && !homes.some(petition => Math.floor(petition.tick / YEAR) === year));
+  // DEC-TRACE §1 (GP-7): a home petition comes by its season's chance only — no winter petition forced on the lord (FX14-1 gone).
+  const comes = hashSeed(state.seed, "home-petition", state.tick) % 1000 < chance;
   if (!comes) return lapsed.length === 0 ? state : withStewardship(state, stewardship);
   const cycle = Math.floor(homes.length / kinds.length);
   const order = [...kinds].sort((a, b) => hashSeed(state.seed, `home-petition-order:${a}`, cycle) - hashSeed(state.seed, `home-petition-order:${b}`, cycle) || a.localeCompare(b));
@@ -214,22 +213,20 @@ function homePetitionSeason(state: GameState): GameState {
   const petition: EstatePetition = { id: `estate-petition-${stewardship.nextPetition}`, estateId: HOME_ESTATE_ID, kind, group: def.group, amount,
     rights: def.rights === true, marriage: def.marriage === true, tick: state.tick, deadline: state.tick + PETITION_ANSWER_TICKS, status: "open", escalated: "direct",
     ...(def.party === true ? { party: hashSeed(state.seed, "home-petition-party", state.tick) % 2 === 0 ? "neighbour_1" : "neighbour_2" } : {}) };
-  const entry = HOME_PETITION_ENTRIES.find(candidate => candidate.id === `${HOME_PETITION_ENTRY_PREFIX}${kind}`);
-  const rules = stewardship.rules;
-  // ER-6 (the user's decision 2026-10-03): a precedent is the lord's same answer to the kind twice running; and the year's
-  // first home petition always comes to the lord (a year is never without his decision).
-  const lordAnswers = homes.filter(earlier => earlier.kind === kind && earlier.decidedBy === "lord" && (earlier.status === "granted" || earlier.status === "refused"));
-  const [last, before] = [lordAnswers.at(-1), lordAnswers.at(-2)];
-  const settled = last !== undefined && before !== undefined && last.status === before.status ? last : undefined;
-  const firstOfYear = !homes.some(earlier => Math.floor(earlier.tick / YEAR) === year && earlier.precedent !== true);
-  const precedent = entry?.precedent !== true || rules.recurring === true || exceptionMatch(rules, petition) !== null || firstOfYear ? undefined : settled;
-  if (precedent === undefined) {
-    return withStewardship(state, { ...stewardship, petitions: [...stewardship.petitions, petition], nextPetition: stewardship.nextPetition + 1 });
+  // DEC-TRACE §1 (P-T3, P-D5): small matters are the steward's from the first, by the lord's standing policy for the kind
+  // (LM9-3's "the same answer twice" gone). It comes to the lord only when he keeps the kind (`lord`, or the old switch
+  // "bring them all up", `recurring`), or when its sum is large (a tenth of the estate's year of income, a pound at
+  // least). The exceptions (SW-5: a sum, a right, a marriage) are the off-map estates': a tenant's merchet or bounds is
+  // not the lord's marriage or right (P-D5).
+  const stance = stewardStance(state, kind);
+  const large = petition.amount >= largeSumLine(state);
+  if (stance === "lord" || stewardship.rules.recurring === true || large) {
+    const escalated = large ? "amount" as const : "direct" as const;
+    return withStewardship(state, { ...stewardship, petitions: [...stewardship.petitions, { ...petition, escalated }], nextPetition: stewardship.nextPetition + 1 });
   }
-  // ER-6: answered by precedent — the same treasury line as the lord's answer (the factions move through the ledger).
-  const grant = precedent.status === "granted";
+  const grant = stance === "lenient" ? true : stance === "strict" ? false : HOME_PETITION_CUSTOM[kind];
   const { escalated: _escalated, ...rest } = petition;
-  const answered: EstatePetition = { ...rest, status: grant ? "granted" : "refused", decidedBy: "steward", precedent: true };
+  const answered: EstatePetition = { ...rest, status: grant ? "granted" : "refused", decidedBy: "steward", stance };
   let next: GameState = state;
   const income = petitionEffect(answered, grant, false).income;
   if (income !== 0) {
@@ -302,22 +299,25 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   const def = PETITION_KINDS[kind];
   const base = Math.round(estatesOf(next).estates.find(entry => entry.id === estate.id)!.annualValue / 4);
   const size = def.size[0] + hashSeed(state.seed, "estate-petition-size", number, state.tick) % (def.size[1] - def.size[0] + 1);
-  const matched = oversight.mode === "direct" ? "direct" as const : exceptionMatch(stewardship.rules, { amount: Math.round(base * size / 1000), rights: def.rights === true, marriage: def.marriage === true });
-  // FIX-14 (SW-12): a delegated estate's petition of a kind the lord has answered there before — the steward answers it
-  // as he did (the precedent), unless the lord's exceptions bring recurring ones up again.
-  const precedent = matched === null || matched === "direct" || stewardship.rules.recurring === true ? undefined
-    : [...stewardship.petitions].reverse().find(entry => entry.estateId === estate.id && entry.kind === kind && entry.decidedBy === "lord" && (entry.status === "granted" || entry.status === "refused"));
-  const rule = precedent === undefined ? matched : null;
+  const amount = Math.round(base * size / 1000);
+  // DEC-TRACE §1 (P-T3, P-D5): a delegated estate's steward answers by the lord's standing policy for the kind (as custom
+  // has it: his own disposition's answer); it comes to the lord when the lord keeps the kind, when his exceptions ask,
+  // or when the sum is large. LM9-3's precedent (the lord's earlier answer to the same kind) is gone.
+  const stance = stewardStance(state, kind);
+  const matched = oversight.mode === "direct" ? "direct" as const
+    : exceptionMatch(stewardship.rules, { amount, rights: def.rights === true, marriage: def.marriage === true })
+      ?? (stance === "lord" ? "direct" as const : amount >= largeSumLine(state) ? "amount" as const : null);
+  const rule = matched;
   const petition: EstatePetition = { id: `estate-petition-${stewardship.nextPetition}`, estateId: estate.id, kind, group: def.group, amount: Math.round(base * size / 1000),
     rights: def.rights === true, marriage: def.marriage === true, tick: state.tick, deadline: state.tick + PETITION_ANSWER_TICKS + (overloaded ? OVERLOAD_PETITION_DELAY : 0),
     status: "open", ...(rule === null ? {} : { escalated: rule, ...(overloaded ? { reachesLord: state.tick + OVERLOAD_PETITION_DELAY } : {}) }) };
   let answered = petition;
   if (rule === null) {
-    const grant = precedent !== undefined ? precedent.status === "granted" : STEWARD_ANSWERS[record.disposition][kind];
+    const grant = stance === "lenient" ? true : stance === "strict" ? false : STEWARD_ANSWERS[record.disposition][kind];
     const effect = petitionEffect(petition, grant, record.disposition === "greedy");
     incomeDelta += effect.income; tenants += effect.tenants; merchants += effect.merchants; keptExtra += effect.kept;
     if (effect.neglect) next = neglectEstate(next, estate.id);
-    answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward", ...(precedent === undefined ? {} : { precedent: true as const }) };
+    answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward", stance };
   } else if (overloaded) {
     // An overloaded lord's estate: the petition waits a season before it reaches him.
     if (petition.group === "tenants") tenants -= OVERLOAD_WAIT_RELATION; else merchants -= OVERLOAD_WAIT_RELATION;
@@ -438,7 +438,15 @@ export function lordEstatePetitions(state: GameState): readonly EstatePetition[]
  * the steward answered by precedent in a season (by default the season just closed, as the season report shows it).
  */
 export function precedentReport(state: GameState, startTick = Math.max(0, (Math.floor(state.tick / SEASON) - 1) * SEASON), endTick = startTick + SEASON): readonly EstatePetition[] {
-  return stewardshipOf(state).petitions.filter(petition => petition.precedent === true && petition.tick >= startTick && petition.tick < endTick);
+  return stewardshipOf(state).petitions.filter(petition => (petition.precedent === true || petition.stance !== undefined) && petition.tick >= startTick && petition.tick < endTick);
+}
+
+/** DEC-TRACE §1 API: the lord's standing policy for a kind of small matter (a home petition's kind, or `sender:<faction>`). */
+export function setStewardPolicy(state: GameState, key: string, stance: StewardStance): GameState {
+  if (state.agency === undefined || !STEWARD_STANCES.includes(stance)) return state;
+  const stewardship = stewardshipOf(state);
+  if ((stewardship.policies?.[key] ?? DEFAULT_STEWARD_STANCE) === stance) return state;
+  return withStewardship(state, { ...stewardship, policies: { ...(stewardship.policies ?? {}), [key]: stance } });
 }
 
 /** SW-4 API: the lord answers an estate's petition (its effect falls on the estate's goodwill and the treasury now). */

@@ -121,9 +121,10 @@ function stewardshipMoves(state: GameState): LordBotCommand[] {
   const moves: LordBotCommand[] = [];
   const rules = stewardship.rules;
   // The exceptions matter once an estate is held off the map (FIX-14: the home petitions bring the stewardship earlier).
-  if (stewardship.oversight.length > 0 && (rules.amountAtLeast !== 240 || !rules.rights || !rules.marriage)) {
-    // LM-E9: the lord's "bring recurring kinds up" stays as he set it (ER-6).
-    moves.push({ kind: "oversight", command: { type: "set_exception_rules", rules: { amountAtLeast: 240, rights: true, marriage: true, ...(rules.recurring === true ? { recurring: true } : {}) } } });
+  // DEC-TRACE §1 (P-D5): only the heavy are brought up — an estate's rights (a charter); large sums come by themselves
+  // (the large-sum line), a tenant's marriage licence is the steward's.
+  if (stewardship.oversight.length > 0 && (rules.amountAtLeast !== null || !rules.rights || rules.marriage)) {
+    moves.push({ kind: "oversight", command: { type: "set_exception_rules", rules: { amountAtLeast: null, rights: true, marriage: false, ...(rules.recurring === true ? { recurring: true } : {}) } } });
   }
   for (const oversight of stewardship.oversight) {
     if (oversight.mode === "direct") {

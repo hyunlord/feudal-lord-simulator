@@ -22,7 +22,10 @@ import { stateCalendar } from "./scenarioState";
 import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode, setEstateOversight, setExceptionRules, stewardshipOf } from "./stewardship";
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
-import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry } from "./registryV4";
+import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry, v4SenderFaction } from "./registryV4";
+import { stewardPick, stewardStance, weighOffer } from "./decisionLayer";
+import type { DecisionWeight } from "../content/stewardPolicyConfig";
+import { DECISION_RELATION } from "../content/decisionRelationConfig";
 
 const SEASON = 1_000;
 const YEAR = 4_000;
@@ -413,7 +416,32 @@ function offerV4Season(state: GameState): GameState {
   const offer: RegistryOccurrence = { id: `registry:${chosen.entry.id}:${chosen.key}:${index}`, entryId: chosen.entry.id, boundId: Object.values(bound)[0] ?? "",
     offeredTick: state.tick, deadline: state.tick + REGISTRY_ANSWER_TICKS, status: "offered",
     receipt: { draw: chosen.draw, chancePermille: chosen.entry.frequency.chancePermille, conditions: [] }, source: "v4", bound, key: chosen.key, context: chosen.context };
-  return { ...state, registry: { ...registry, occurrences: [...registry.occurrences, offer].slice(-MAX_OCCURRENCES_KEPT) } };
+  return layerOffer({ ...state, registry: { ...registry, occurrences: [...registry.occurrences, offer].slice(-MAX_OCCURRENCES_KEPT) } }, offer);
+}
+
+/**
+ * DEC-TRACE §1 (P-D5, P-T3): a new offer weighed. One with a weight (rights, land, marriage, inheritance, wardship, a
+ * large sum, a promise of years, a rupture, a crisis) stays with the lord, its weights recorded; one without is the
+ * steward's, answered now by the lord's standing policy for its sender (`sender:<faction>`; unless that policy is "bring
+ * it to me").
+ */
+function layerOffer(state: GameState, offer: RegistryOccurrence): GameState {
+  const weighed = weighOffer(state, offer);
+  if (weighed === null) return state;
+  if (weighed.weights.length > 0) return settleWeights(state, offer.id, weighed.weights);
+  const stance = stewardStance(state, `sender:${v4SenderFaction(offer.entryId) ?? "none"}`);
+  const pick = stewardPick(stance, weighed.choices);
+  if (pick === null) return settleWeights(state, offer.id, []);
+  const answered = answerV4Offer(state, offer, pick);
+  const settled = registryOf(answered).occurrences.find(entry => entry.id === offer.id);
+  if (settled === undefined || settled.status !== "answered") return settleWeights(state, offer.id, []);
+  return { ...answered, registry: { ...registryOf(answered), occurrences: registryOf(answered).occurrences.map(entry => entry.id === offer.id
+    ? { ...entry, weights: [], decidedBy: "steward" as const, stance } : entry) } };
+}
+
+function settleWeights(state: GameState, occurrenceId: string, weights: readonly DecisionWeight[]): GameState {
+  const registry = registryOf(state);
+  return { ...state, registry: { ...registry, occurrences: registry.occurrences.map(entry => entry.id === occurrenceId ? { ...entry, weights } : entry) } };
 }
 
 function offerSeason(state: GameState): GameState {
@@ -477,7 +505,24 @@ function answerV4Offer(state: GameState, occurrence: RegistryOccurrence, choiceI
     return held === null ? state : settleOccurrence(held.state, occurrence.id, { status: "answered", choiceId, hold: held.hold });
   }
   const applied = runCommands(state, choice.commands, { state, bound, vars: {} });
-  return applied === null ? state : settleOccurrence(applied, occurrence.id, { status: "answered", choiceId });
+  if (applied === null) return state;
+  const side = sideTaken(state, occurrence, choiceId);
+  return settleOccurrence(applied, occurrence.id, { status: "answered", choiceId, ...(side === null ? {} : { side }) });
+}
+
+/**
+ * DEC-TRACE §3 (A6): the side an answer took, for its sender's mind (lord mode) — the most given of the acting choices
+ * pleases the sender, the least given displeases it, one between moves nothing (null when no faction or no difference).
+ */
+function sideTaken(state: GameState, occurrence: RegistryOccurrence, choiceId: string): { readonly faction: string; readonly delta: number } | null {
+  const faction = v4SenderFaction(occurrence.entryId);
+  if (state.agency === undefined || faction === undefined) return null;
+  const acting = (weighOffer(state, occurrence)?.choices ?? []).filter(choice => choice.commands.length > 0);
+  const chosen = acting.find(choice => choice.id === choiceId);
+  if (chosen === undefined || acting.length < 2) return null;
+  const most = Math.max(...acting.map(choice => choice.spend)), least = Math.min(...acting.map(choice => choice.spend));
+  const delta = most === least ? 0 : chosen.spend === most ? DECISION_RELATION.registrySide : chosen.spend === least ? -DECISION_RELATION.registrySide : 0;
+  return delta === 0 ? null : { faction, delta };
 }
 
 /** ER-4 API: the lord answers an offer — rechecked now, applied whole or not at all; a second answer is refused. */

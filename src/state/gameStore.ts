@@ -26,7 +26,8 @@ import { recordDecision } from "../engine/history";
 import { markChapterPageSeen } from "../engine/politics";
 import { markStorySeen } from "../engine/storySeen";
 import { answerCounter, answerWillChange, keepPromise, proposeMarriage } from "../engine/marriage";
-import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules } from "../engine/stewardship";
+import { traceCommand } from "../engine/decisionTrace";
+import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules, setStewardPolicy } from "../engine/stewardship";
 import { answerRegistryOffer } from "../engine/registry";
 import { estatesOf, LORD } from "../engine/estates";
 import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "../engine/estateSuits";
@@ -117,7 +118,9 @@ function assertNever(action: never): never {
 
 export function gameReducer(state: GameState, action: GameAction): GameState {
   // F0-C2 (HL-2 ①): a command that changed the state is a decision in the history ledger.
-  const next = recordDecision(state, reduceGameAction(state, action), action as unknown as { readonly type: string } & Readonly<Record<string, unknown>>);
+  const command = action as unknown as { readonly type: string } & Readonly<Record<string, unknown>>;
+  // DEC-TRACE §2: in lord mode, the decision's thread (what it touched, for the consequences that follow).
+  const next = traceCommand(state, recordDecision(state, reduceGameAction(state, action), command), command);
   if (action.foodTransient === undefined || state.settlement?.outcome === "abandoned") return next;
   const { autoplayFoodTransientConfirmation: _confirmation, ...rest } = next;
   return action.foodTransient === null ? rest : { ...rest, autoplayFoodTransientConfirmation: action.foodTransient };
@@ -158,6 +161,7 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "answer_will_change": return answerWillChange(state, action.choice);
     case "set_estate_oversight": return setEstateOversight(state, action.estateId, action.mode, action.stewardId);
     case "set_exception_rules": return setExceptionRules(state, action.rules);
+    case "set_steward_policy": return setStewardPolicy(state, action.key, action.stance);
     case "answer_estate_petition": return answerEstatePetition(state, action.petitionId, action.grant);
     case "answer_registry_offer": return answerRegistryOffer(state, action.occurrenceId, action.choiceId);
     case "set_audit_mode": return setAuditMode(state, action.estateId, action.mode);

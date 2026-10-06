@@ -15,6 +15,7 @@
  * - HL-10 (HIST-1): at each season's close, everyday records eight seasons old fold into one summary per season, and
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
+import { DECISION_RELATION, NEIGHBOUR_FACTION_BY_ESTATE, POLICY_RELATION, SUBSIDY_FACTION } from "../content/decisionRelationConfig";
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
 import { HOME_PETITION_KINDS, PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
@@ -95,7 +96,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   set_estate_policy: "estate_policy", set_project_subsidy: "project_subsidy", set_market_dues: "market_dues",
   file_suit: "lawsuit", add_suit_evidence: "lawsuit", seek_suit_patron: "lawsuit", enforce_possession: "lawsuit",
   propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
-  set_estate_oversight: "stewardship", set_exception_rules: "stewardship", answer_estate_petition: "stewardship", set_audit_mode: "stewardship", answer_audit: "stewardship",
+  set_estate_oversight: "stewardship", set_exception_rules: "stewardship", set_steward_policy: "stewardship", answer_estate_petition: "stewardship", set_audit_mode: "stewardship", answer_audit: "stewardship",
   answer_registry_offer: "registry",
 };
 
@@ -227,6 +228,8 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
     : kind === "stewardship" ? stewardshipDrafts(before, reduced) : kind === "registry" ? [...registryDrafts(before, reduced), ...stewardshipDrafts(before, reduced), ...estateDrafts(before, reduced),
       // LM-E9b (ER-16): a v4 answer may also offer a marriage, keep a promise or set the town's terms.
       ...diplomacyDrafts(before, reduced), ...agencyDrafts(before, reduced)] : [];
+  // DEC-TRACE §3 (A6): the minds the lord's own command costs or wins (the big kinds' come with their decision below).
+  if (!BIG_DECISION_KINDS.includes(kind)) lines.push(...decisionRelationDrafts(before, reduced, command));
   // FIX-14: a command's own lines may move factions (an estate petition answered, a steward punished): applied with them.
   const after = lines.length === 0 ? reduced : withFactionRecords(reduced, historyOf(reduced), append(historyOf(reduced), lines));
   // LM-E1b (TA-6 ②): a subsidy refused is no decision; the ledger keeps its reason as an event.
@@ -266,7 +269,53 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
     ...(place === undefined ? {} : { place: { tx: place.tx, ty: place.ty, buildingId: place.id } }), decision, severity: 1 }, ...lordshipDrafts(before, after),
     // F5-A (LG-2…LG-5): what a chapter-5 answer did at once (the heir seated, the Crown paid, the charter sealed).
     // FIX-9: and a chapter-4 answer's (the guild founded).
-    ...reorganisationDrafts(before, after), ...legacyDrafts(before, after), ...factionDrafts(before, after)]));
+    ...reorganisationDrafts(before, after), ...legacyDrafts(before, after), ...factionDrafts(before, after), ...decisionRelationDrafts(before, after, command)]));
+}
+
+function relationDraft(after: GameState, factionId: string, delta: number, reason: string): Draft[] {
+  const faction = after.factions?.factions.find(entry => entry.id === factionId);
+  if (faction === undefined || delta === 0) return [];
+  return [{ tick: after.tick, kind: "faction", template: "faction.relation", subject: { type: "faction", id: faction.id }, severity: 1,
+    params: { faction: faction.id, name: faction.name, delta, reason, relation: Math.max(-100, Math.min(100, faction.relation + delta)) } }];
+}
+
+/**
+ * DEC-TRACE §3 (A6): what the lord's own settings cost or win in lord mode — the dues with the merchant houses, a
+ * subsidy with the faction its kind serves, the estate policy with the factions it favours or burdens. The reason is
+ * the decision's own key (`set_market_dues:<permille>`, …), so the thread ties the memory to it.
+ */
+function decisionRelationDrafts(before: GameState, after: GameState, command: { readonly type: string } & Readonly<Record<string, unknown>>): Draft[] {
+  if (after.agency === undefined || before.agency === undefined) return [];
+  if (command.type === "set_market_dues" && after.agency.duesPermille !== before.agency.duesPermille) {
+    const raw = Math.round((before.agency.duesPermille - after.agency.duesPermille) / 100 * DECISION_RELATION.duesPer100Permille);
+    const delta = Math.max(-DECISION_RELATION.duesCap, Math.min(DECISION_RELATION.duesCap, raw));
+    const reason = `set_market_dues:${after.agency.duesPermille}`;
+    return [...relationDraft(after, "merchant_house_1", delta, reason), ...relationDraft(after, "merchant_house_2", delta, reason)];
+  }
+  if (command.type === "set_project_subsidy") {
+    const kind = String(command.kind);
+    const was = before.agency.subsidies.find(subsidy => subsidy.kind === kind)?.amount ?? 0;
+    const now = after.agency.subsidies.find(subsidy => subsidy.kind === kind)?.amount ?? 0;
+    if (was === now) return [];
+    return relationDraft(after, SUBSIDY_FACTION[kind] ?? "town", now > was ? DECISION_RELATION.subsidy : -DECISION_RELATION.subsidy, `set_project_subsidy:${kind}`);
+  }
+  if (command.type === "file_suit" || command.type === "enforce_possession") {
+    const suitId = command.type === "file_suit" ? (after.estates?.suits ?? []).find(suit => suit.claimId === command.claimId)?.id : String(command.suitId);
+    const suit = (after.estates?.suits ?? []).find(entry => entry.id === suitId);
+    const faction = suit === undefined || suit.plaintiff !== "lord" ? undefined : NEIGHBOUR_FACTION_BY_ESTATE[suit.estateId];
+    if (faction === undefined) return [];
+    const delta = command.type === "file_suit" ? -DECISION_RELATION.suitFiled : -DECISION_RELATION.enforcement;
+    return relationDraft(after, faction, delta, `${command.type}:${command.type === "file_suit" ? String(command.claimId) : suit!.id}`);
+  }
+  if (command.type === "set_estate_policy" && after.agency.policy !== before.agency.policy) {
+    return Object.entries(POLICY_RELATION[after.agency.policy]).flatMap(([factionId, delta]) => relationDraft(after, factionId, delta, `set_estate_policy:${after.agency!.policy}`));
+  }
+  return [];
+}
+
+/** DEC-TRACE §3 (A6): a v4 event's sender remembers the side the lord (or his steward) took (`RegistryOccurrence.side`). */
+function registrySideDrafts(after: GameState, occurrence: import("./registry.types").RegistryOccurrence): Draft[] {
+  return occurrence.side === undefined ? [] : relationDraft(after, occurrence.side.faction, occurrence.side.delta, `registry:${occurrence.entryId}:${occurrence.choiceId ?? ""}`);
 }
 
 /** FACTION-0 (FX-4): a faction's relation moved — one record each, the faction's memory. */
@@ -1137,9 +1186,9 @@ function registryDrafts(before: GameState, after: GameState): Draft[] {
     if (old === undefined) {
       drafts.push({ tick: after.tick, kind: "event", template: "registry.offered", subject: TOWN, severity: 1,
         params: { entry: occurrence.entryId, bound: occurrence.boundId, draw: occurrence.receipt.draw, chance: occurrence.receipt.chancePermille } });
-      continue;
-    }
-    if (old.status !== "offered" || occurrence.status === "offered") continue;
+      // DEC-TRACE §1: the steward's answer comes the same tick it is offered (its answer and a hold's cost follow).
+      if (occurrence.status === "offered") continue;
+    } else if (old.status !== "offered" || occurrence.status === "offered") continue;
     drafts.push({ tick: after.tick, kind: "event", template: occurrence.status === "answered" ? "registry.answered" : occurrence.status === "lapsed" ? "registry.lapsed" : "registry.invalid",
       subject: TOWN, severity: 1, params: { entry: occurrence.entryId, choice: occurrence.choiceId ?? "" } });
     // ER-19 (R3): a v4 hold's cost to its sender's relation.
@@ -1149,6 +1198,7 @@ function registryDrafts(before: GameState, after: GameState): Draft[] {
         params: { faction: holdFaction.id, name: holdFaction.name, delta: occurrence.hold.delta, reason: `registry:${occurrence.entryId}:${occurrence.choiceId ?? ""}`,
           relation: Math.max(-100, Math.min(100, holdFaction.relation + occurrence.hold.delta)) } });
     }
+    drafts.push(...registrySideDrafts(after, occurrence));
     const choice = registryEntryData(occurrence.entryId)?.choices.find(candidate => candidate.id === occurrence.choiceId);
     for (const effect of choice?.effects ?? []) {
       if (effect.command !== "faction_relation") continue;
