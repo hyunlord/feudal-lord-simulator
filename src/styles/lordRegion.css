@@ -10,8 +10,10 @@
 }
 .app-shell .lord-region-zooms { display: flex; flex-wrap: wrap; gap: 6px; }
 .app-shell .lord-region-zoom { min-height: 44px; font-size: 13px; }
+/* Fitted, the map clips with overflow: clip, not hidden: a hidden box is still a scroll container, and focusing a marker
+   near its bottom scrolled the canvas up inside it (the top labels then sat wholly outside the map). Zoomed, it scrolls. */
 .app-shell .lord-region-map {
-  position: relative; overflow: hidden; border: 1px solid var(--palette-earth-dark); border-radius: 2px;
+  position: relative; overflow: hidden; overflow: clip; border: 1px solid var(--palette-earth-dark); border-radius: 2px;
   background: var(--palette-parchment-dark); overscroll-behavior: contain;
 }
 .app-shell .lord-region[data-region-zoom="half"] .lord-region-map,
