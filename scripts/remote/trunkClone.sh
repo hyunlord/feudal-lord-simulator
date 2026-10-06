@@ -39,10 +39,15 @@ launch() { # <label> <sha> <command ...>
       "$run" "$label" "${sha:0:7}" "$sha" "$TRUNK"
     printf 'CMD=%q\n' "$(printf '%q ' "$@")"; } > "$dir/.remote-in/meta.env"
   bash "$dir/scripts/remote/remote-exec.sh" launch "$run" > /dev/null
+  old "$dir"
   exec 8>&-
   echo "$run"
 }
-wait_run() { while [ ! -f "$BASE/$1/.remote/exit-code" ]; do sleep 120; done; cat "$BASE/$1/.remote/exit-code"; }
+# A trunk run folder is made with `git archive`: its LFS files are pointers. As the newest folder it would be the copy
+# source of the next session's upload (run.sh --copy-dest), and every LFS file would cross the network again (62 min for
+# one upload, 2026-10-06). So it is kept looking old while it runs; run.sh also skips trunk-* folders.
+old() { touch -d "2 days ago" "$1" 2> /dev/null; }
+wait_run() { while [ ! -f "$BASE/$1/.remote/exit-code" ]; do old "$BASE/$1"; sleep 120; done; old "$BASE/$1"; cat "$BASE/$1/.remote/exit-code"; }
 
 run=$(launch trunk-CLONE "$head" bash scripts/remote/tasks.sh clone-check)
 log "trunk clone ${head:0:8}: $run started (last good ${good:0:8})"

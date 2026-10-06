@@ -1,0 +1,2250 @@
+{
+  "format": "landmark-growth-preparation-v1",
+  "status": "preparation-only-not-installed",
+  "sourceHead": "12e3f570f1c9ba812d3c6d20dc18eb7c5fca5141",
+  "manifest": "assets-inbox/landmarks/rework-20261003/records/manifest.csv",
+  "rules": [],
+  "unmetConditions": [
+    "Engine-owned persistent stage and entity identity contract",
+    "Engine-approved expansion and occupancy footprints",
+    "Engine selection facts; no stage inferred from year, chapter or wealth",
+    "Bridge span and axis fit; gate traversal and portal fit",
+    "Runtime C2PA-stripped copies and runtime hashes",
+    "Runtime registration, loaders, draw consumers and remote visual verification"
+  ],
+  "entries": [
+    {
+      "id": "church_s01_summer",
+      "family": "church",
+      "growthStage": "1",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s01_summer.png",
+        "sha256": "9286fc5eb4f84694e3a9d5749dcf5403164d43072c7d41e43ae69d102772006b",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 1,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_core",
+        "anchorKind": "entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "church_s01_winter",
+      "family": "church",
+      "growthStage": "1",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s01_winter.png",
+        "sha256": "ea28748f1b77ba1b96229d1480c8437c632c987fb8175aaaa91a18e38be54c2b",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 1,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_core",
+        "anchorKind": "entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "church_s02_summer",
+      "family": "church",
+      "growthStage": "2",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s02_summer.png",
+        "sha256": "474fda6f2504049c8b9da07831a62f0bb03018e9072628640111de50cbcfb0b9",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 1,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_core_stone_rebuild",
+        "anchorKind": "entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "church_s02_winter",
+      "family": "church",
+      "growthStage": "2",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s02_winter.png",
+        "sha256": "f9560b627a7b23ac60bf3b78abe4c498c02e4ba622427a1dab0d0cff0ff473b0",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 1,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_core_stone_rebuild",
+        "anchorKind": "entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "church_s03_summer",
+      "family": "church",
+      "growthStage": "3",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s03_summer.png",
+        "sha256": "709d45f7f85e888959a66e19cb217519f52401bcc29aca0ab1cab1d39a43b007",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 2,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "west_tower_addition",
+        "anchorKind": "west_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "church_s03_winter",
+      "family": "church",
+      "growthStage": "3",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s03_winter.png",
+        "sha256": "2a616583c1f8668f0198b8f1322baa8b5efeaae31f7edd2245072be865b86e5d",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 2,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "west_tower_addition",
+        "anchorKind": "west_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "church_s04_summer",
+      "family": "church",
+      "growthStage": "4",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s04_summer.png",
+        "sha256": "82572145d7e1ea165dd2ff4de59ddd5d067b4913e5f58812c81f55fdee079368",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "south_aisle_and_chancel",
+        "anchorKind": "west_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "church_s04_winter",
+      "family": "church",
+      "growthStage": "4",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/church_s04_winter.png",
+        "sha256": "2af6beb1bfe80bba433a820a7f0bd4a07ff83eb17a0682003eb5182ea63f754a",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "south_aisle_and_chancel",
+        "anchorKind": "west_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "chapel",
+          "church"
+        ],
+        "currentFootprints": {
+          "chapel": [
+            1,
+            1
+          ],
+          "church": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "relatedState": "legacy.naveRebuilt; not connected to landmark growth",
+        "source": "src/content/buildingConfig.ts:200,353; src/engine/legacy.ts:200"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "market_s01_summer",
+      "family": "market",
+      "growthStage": "1",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/market_s01_summer.png",
+        "sha256": "b66388432d186cb580fb834817fd18d85190fc8dd6867c1995fec43a883fcc1c",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 2,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "reserved_market_ground",
+        "anchorKind": "cross_site_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "market"
+        ],
+        "currentFootprints": {
+          "market": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:340"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "market_s01_winter",
+      "family": "market",
+      "growthStage": "1",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/market_s01_winter.png",
+        "sha256": "99e7e28a7857d5192c9e022635414b0b7496ad33d5262fc90c392b43c33fda4d",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 2,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "reserved_market_ground",
+        "anchorKind": "cross_site_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "market"
+        ],
+        "currentFootprints": {
+          "market": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:340"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "market_s02_summer",
+      "family": "market",
+      "growthStage": "2",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/market_s02_summer.png",
+        "sha256": "6457e0237fbbb00b33851cf47f16629392fdc932da72e9c3e0a020b47ea57da0",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 2,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "cross_on_same_plot",
+        "anchorKind": "cross_base_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "market"
+        ],
+        "currentFootprints": {
+          "market": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:340"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "market_s02_winter",
+      "family": "market",
+      "growthStage": "2",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/market_s02_winter.png",
+        "sha256": "590a87c7b56b69a6973537a9cbd828878a78dab0bb9cf11d6e7de3917c32986c",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 2,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "cross_on_same_plot",
+        "anchorKind": "cross_base_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "market"
+        ],
+        "currentFootprints": {
+          "market": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:340"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "market_s03_summer",
+      "family": "market",
+      "growthStage": "3",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/market_s03_summer.png",
+        "sha256": "04922934e977cf27cabe990aaf31962018f80f60ac1e39788b55a81403638cf9",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 5,
+          "depth": 4
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "hall_behind_cross_and_enlarged_civic_plinth",
+        "anchorKind": "cross_base_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "market"
+        ],
+        "currentFootprints": {
+          "market": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:340"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "market_s03_winter",
+      "family": "market",
+      "growthStage": "3",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/market_s03_winter.png",
+        "sha256": "9eee56f9c615f09942d6d19520b78f3f618dea2296f90618e6adff56dbb0c000",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 5,
+          "depth": 4
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "hall_behind_cross_and_enlarged_civic_plinth",
+        "anchorKind": "cross_base_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "market"
+        ],
+        "currentFootprints": {
+          "market": [
+            2,
+            2
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:340"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "gate_s01_summer",
+      "family": "gate",
+      "growthStage": "1",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/gate_s01_summer.png",
+        "sha256": "82ca4e2eee5eb253a1489181a8941e32b1e0a89ff08c44ec72b50a3c9d63c945",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 1
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_passage",
+        "anchorKind": "portal_ground_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "wall gate",
+        "buildingKinds": [],
+        "currentStates": [
+          "timber",
+          "stone"
+        ],
+        "growthStageField": null,
+        "source": "src/render/gateArtRenderer.ts:65-68"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "gate_s01_winter",
+      "family": "gate",
+      "growthStage": "1",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/gate_s01_winter.png",
+        "sha256": "d9050bfc5f0b64a00c8a49dcce440ff7856ed9c88e407945e643e1e26c7e6b44",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 1
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_passage",
+        "anchorKind": "portal_ground_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "wall gate",
+        "buildingKinds": [],
+        "currentStates": [
+          "timber",
+          "stone"
+        ],
+        "growthStageField": null,
+        "source": "src/render/gateArtRenderer.ts:65-68"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "gate_s02_summer",
+      "family": "gate",
+      "growthStage": "2",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/gate_s02_summer.png",
+        "sha256": "b1fc8133b706b65558148847ce85db9e20e7a77368e51253852d59562f836060",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "guardroom_depth",
+        "anchorKind": "portal_ground_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "wall gate",
+        "buildingKinds": [],
+        "currentStates": [
+          "timber",
+          "stone"
+        ],
+        "growthStageField": null,
+        "source": "src/render/gateArtRenderer.ts:65-68"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "gate_s02_winter",
+      "family": "gate",
+      "growthStage": "2",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/gate_s02_winter.png",
+        "sha256": "ee882c9268c29af9805e3ee99a7b3ff5bedc22831246d6fe9d3626338d01d040",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "guardroom_depth",
+        "anchorKind": "portal_ground_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "wall gate",
+        "buildingKinds": [],
+        "currentStates": [
+          "timber",
+          "stone"
+        ],
+        "growthStageField": null,
+        "source": "src/render/gateArtRenderer.ts:65-68"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "gate_s03_summer",
+      "family": "gate",
+      "growthStage": "3",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/gate_s03_summer.png",
+        "sha256": "3dfe2c359898a40b8838ce7b002b0bedd7b584140a22e84dce2f62ee508d60a6",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "upper_chamber_and_stair_turret",
+        "anchorKind": "portal_ground_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "wall gate",
+        "buildingKinds": [],
+        "currentStates": [
+          "timber",
+          "stone"
+        ],
+        "growthStageField": null,
+        "source": "src/render/gateArtRenderer.ts:65-68"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "gate_s03_winter",
+      "family": "gate",
+      "growthStage": "3",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/gate_s03_winter.png",
+        "sha256": "9e2d0e27d622e7a88884def27c8634c5a94ee051b1f772bbfb0f47ddae4948ba",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "upper_chamber_and_stair_turret",
+        "anchorKind": "portal_ground_center",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "wall gate",
+        "buildingKinds": [],
+        "currentStates": [
+          "timber",
+          "stone"
+        ],
+        "growthStageField": null,
+        "source": "src/render/gateArtRenderer.ts:65-68"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "bridge_s01_summer",
+      "family": "bridge",
+      "growthStage": "1",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/bridge_s01_summer.png",
+        "sha256": "23aa12a57e9cbc3ec53abaa05c54f766196153a2b9af80103ec96dfd4660a4e2",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 1
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_abutments",
+        "anchorKind": "deck_midpoint",
+        "registeredLongAxisDeg": 26.565051177,
+        "waterSpanCells": 3,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "BridgeSpan",
+        "buildingKinds": [],
+        "currentFields": [
+          "axis",
+          "water",
+          "banks"
+        ],
+        "maximumWaterCells": 8,
+        "growthStageField": null,
+        "source": "src/world/bridges.ts:4,27-54"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "bridge_s01_winter",
+      "family": "bridge",
+      "growthStage": "1",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/bridge_s01_winter.png",
+        "sha256": "0eba6fb7e801762bfd91b6e26a40e603d0ffaf6971a9c96711384962f6630e3d",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 1
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "same_abutments",
+        "anchorKind": "deck_midpoint",
+        "registeredLongAxisDeg": 26.565051177,
+        "waterSpanCells": 3,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "BridgeSpan",
+        "buildingKinds": [],
+        "currentFields": [
+          "axis",
+          "water",
+          "banks"
+        ],
+        "maximumWaterCells": 8,
+        "growthStageField": null,
+        "source": "src/world/bridges.ts:4,27-54"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "bridge_s02_summer",
+      "family": "bridge",
+      "growthStage": "2",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/bridge_s02_summer.png",
+        "sha256": "bc954ff1ccb7d148d19d78953da06a4b6270bdb5a1fe68cd77bd1406adbae73f",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 1
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "stone_rebuild_same_span",
+        "anchorKind": "deck_midpoint",
+        "registeredLongAxisDeg": 26.565051177,
+        "waterSpanCells": 3,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "BridgeSpan",
+        "buildingKinds": [],
+        "currentFields": [
+          "axis",
+          "water",
+          "banks"
+        ],
+        "maximumWaterCells": 8,
+        "growthStageField": null,
+        "source": "src/world/bridges.ts:4,27-54"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "bridge_s02_winter",
+      "family": "bridge",
+      "growthStage": "2",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/bridge_s02_winter.png",
+        "sha256": "bf8c484e613c6d64f0c2fabcab88e0c38bf7ebb1be80347672ea7e1c04cff9ab",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 1
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "stone_rebuild_same_span",
+        "anchorKind": "deck_midpoint",
+        "registeredLongAxisDeg": 26.565051177,
+        "waterSpanCells": 3,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "BridgeSpan",
+        "buildingKinds": [],
+        "currentFields": [
+          "axis",
+          "water",
+          "banks"
+        ],
+        "maximumWaterCells": 8,
+        "growthStageField": null,
+        "source": "src/world/bridges.ts:4,27-54"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "bridge_s03_summer",
+      "family": "bridge",
+      "growthStage": "3",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/bridge_s03_summer.png",
+        "sha256": "e2920f0b777780ec63fe9e059ed3f7645c533b9aa4a3ed654a3530c3453a6f84",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "approach_chapel_side_reserve",
+        "anchorKind": "deck_midpoint",
+        "registeredLongAxisDeg": 26.565051177,
+        "waterSpanCells": 3,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "BridgeSpan",
+        "buildingKinds": [],
+        "currentFields": [
+          "axis",
+          "water",
+          "banks"
+        ],
+        "maximumWaterCells": 8,
+        "growthStageField": null,
+        "source": "src/world/bridges.ts:4,27-54"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "bridge_s03_winter",
+      "family": "bridge",
+      "growthStage": "3",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/bridge_s03_winter.png",
+        "sha256": "9eac72f5c30c22f6d63933433575d069a50169500c73f144c4e035ffc74a9980",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "approach_chapel_side_reserve",
+        "anchorKind": "deck_midpoint",
+        "registeredLongAxisDeg": 26.565051177,
+        "waterSpanCells": 3,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "BridgeSpan",
+        "buildingKinds": [],
+        "currentFields": [
+          "axis",
+          "water",
+          "banks"
+        ],
+        "maximumWaterCells": 8,
+        "growthStageField": null,
+        "source": "src/world/bridges.ts:4,27-54"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "manor_s01_summer",
+      "family": "manor",
+      "growthStage": "1",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/manor_s01_summer.png",
+        "sha256": "1d9e3d07eb177f021a5ef87eabad8b4badfac494a5cf830e38d20e5eb767c447",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "main_hall_core",
+        "anchorKind": "hall_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "manor_house"
+        ],
+        "currentFootprints": {
+          "manor_house": [
+            3,
+            3
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:429-435",
+        "warning": "Historical ENGINE_MAP 2x2 is stale; MANOR-1 uses 3x3."
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "manor_s01_winter",
+      "family": "manor",
+      "growthStage": "1",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/manor_s01_winter.png",
+        "sha256": "613059eb17828db2d3ddc60cfbb5065d310f50bb5025260bc9fb8c3474fcf4cf",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "main_hall_core",
+        "anchorKind": "hall_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "manor_house"
+        ],
+        "currentFootprints": {
+          "manor_house": [
+            3,
+            3
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:429-435",
+        "warning": "Historical ENGINE_MAP 2x2 is stale; MANOR-1 uses 3x3."
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "manor_s02_summer",
+      "family": "manor",
+      "growthStage": "2",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/manor_s02_summer.png",
+        "sha256": "cb80bab5270b010c16726d13e7edf72d69b04a2869a70c8d559b3b73f7251ba0",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "rear_right_kitchen",
+        "anchorKind": "hall_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "manor_house"
+        ],
+        "currentFootprints": {
+          "manor_house": [
+            3,
+            3
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:429-435",
+        "warning": "Historical ENGINE_MAP 2x2 is stale; MANOR-1 uses 3x3."
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "manor_s02_winter",
+      "family": "manor",
+      "growthStage": "2",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/manor_s02_winter.png",
+        "sha256": "5915337dfadfa37742199bad6aa668859a96c7ec7a615b39dd9d84f7b404767a",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "rear_right_kitchen",
+        "anchorKind": "hall_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "manor_house"
+        ],
+        "currentFootprints": {
+          "manor_house": [
+            3,
+            3
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:429-435",
+        "warning": "Historical ENGINE_MAP 2x2 is stale; MANOR-1 uses 3x3."
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "manor_s03_summer",
+      "family": "manor",
+      "growthStage": "3",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/manor_s03_summer.png",
+        "sha256": "acc77614507c6bb735f3716146adf95aa86fd59305816771fe51a946a7ad94f3",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 6,
+          "depth": 5
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "courtyard_gate_and_moat_all_sides",
+        "anchorKind": "hall_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "manor_house"
+        ],
+        "currentFootprints": {
+          "manor_house": [
+            3,
+            3
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:429-435",
+        "warning": "Historical ENGINE_MAP 2x2 is stale; MANOR-1 uses 3x3."
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "manor_s03_winter",
+      "family": "manor",
+      "growthStage": "3",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/manor_s03_winter.png",
+        "sha256": "f28cebb89bc16d9f07054f97ad100a301959605804d4b7f0083e446b2917fc00",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 6,
+          "depth": 5
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "courtyard_gate_and_moat_all_sides",
+        "anchorKind": "hall_entry_threshold",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "Building",
+        "buildingKinds": [
+          "manor_house"
+        ],
+        "currentFootprints": {
+          "manor_house": [
+            3,
+            3
+          ]
+        },
+        "growthStageField": null,
+        "source": "src/content/buildingConfig.ts:429-435",
+        "warning": "Historical ENGINE_MAP 2x2 is stale; MANOR-1 uses 3x3."
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "guildhall_s01_summer",
+      "family": "guildhall",
+      "growthStage": "1",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/guildhall_s01_summer.png",
+        "sha256": "589cc759670b8619d02b284a5e7c5165a3e04bd023f84c3ea20db6bcd6757ab9",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "core_meeting_hall",
+        "anchorKind": "porch_entry_threshold",
+        "registeredLongAxisDeg": -26.565051177,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "ReorgPropKind",
+        "buildingKinds": [],
+        "currentFootprint": [
+          3,
+          2
+        ],
+        "currentStates": [
+          "guild absent",
+          "guild present"
+        ],
+        "growthStageField": null,
+        "source": "src/render/reorgWorldProps.ts:18-40"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "guildhall_s01_winter",
+      "family": "guildhall",
+      "growthStage": "1",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/guildhall_s01_winter.png",
+        "sha256": "4c1844d631a456bd43732ac84102b60fa7be9464c3cae7fd6913ec1d1d3584b7",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "core_meeting_hall",
+        "anchorKind": "porch_entry_threshold",
+        "registeredLongAxisDeg": -26.565051177,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "ReorgPropKind",
+        "buildingKinds": [],
+        "currentFootprint": [
+          3,
+          2
+        ],
+        "currentStates": [
+          "guild absent",
+          "guild present"
+        ],
+        "growthStageField": null,
+        "source": "src/render/reorgWorldProps.ts:18-40"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "guildhall_s02_summer",
+      "family": "guildhall",
+      "growthStage": "2",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/guildhall_s02_summer.png",
+        "sha256": "344b6240ccfa3b35cbdcde5598b83bcae30d0ae9c5041247baf3b10a305a6898",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "vertical_storey_only",
+        "anchorKind": "porch_entry_threshold",
+        "registeredLongAxisDeg": -26.565051177,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "ReorgPropKind",
+        "buildingKinds": [],
+        "currentFootprint": [
+          3,
+          2
+        ],
+        "currentStates": [
+          "guild absent",
+          "guild present"
+        ],
+        "growthStageField": null,
+        "source": "src/render/reorgWorldProps.ts:18-40"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "guildhall_s02_winter",
+      "family": "guildhall",
+      "growthStage": "2",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/guildhall_s02_winter.png",
+        "sha256": "fe34cbb97da5b4fb3bb3ef070ae6ed7373db42e29becc55a5cee659cd78589f7",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "vertical_storey_only",
+        "anchorKind": "porch_entry_threshold",
+        "registeredLongAxisDeg": -26.565051177,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "ReorgPropKind",
+        "buildingKinds": [],
+        "currentFootprint": [
+          3,
+          2
+        ],
+        "currentStates": [
+          "guild absent",
+          "guild present"
+        ],
+        "growthStageField": null,
+        "source": "src/render/reorgWorldProps.ts:18-40"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "guildhall_s03_summer",
+      "family": "guildhall",
+      "growthStage": "3",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/guildhall_s03_summer.png",
+        "sha256": "ce1d32c6c8656fed3ff0cf889e86f2fed3f49bb18321a59ee50b75b78ca79d82",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "rear_right_archive_wing",
+        "anchorKind": "porch_entry_threshold",
+        "registeredLongAxisDeg": -26.565051177,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "ReorgPropKind",
+        "buildingKinds": [],
+        "currentFootprint": [
+          3,
+          2
+        ],
+        "currentStates": [
+          "guild absent",
+          "guild present"
+        ],
+        "growthStageField": null,
+        "source": "src/render/reorgWorldProps.ts:18-40"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "guildhall_s03_winter",
+      "family": "guildhall",
+      "growthStage": "3",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/rework-20261003/assets/guildhall_s03_winter.png",
+        "sha256": "5083c89a6182a1e2b783631e42d3684d82a6ad081d4612203c7392de40021717",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "rework-20261003",
+        "revision": "v2_geometry"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "rear_right_archive_wing",
+        "anchorKind": "porch_entry_threshold",
+        "registeredLongAxisDeg": -26.565051177,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/transforms.json"
+      },
+      "engineMapping": {
+        "entity": "ReorgPropKind",
+        "buildingKinds": [],
+        "currentFootprint": [
+          3,
+          2
+        ],
+        "currentStates": [
+          "guild absent",
+          "guild present"
+        ],
+        "growthStageField": null,
+        "source": "src/render/reorgWorldProps.ts:18-40"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "inn_s01_summer",
+      "family": "inn",
+      "growthStage": "1",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/inn_s01_summer.png",
+        "sha256": "67c0f1c8454baafccecb8cb3bd5cff685aff6e0081672ce5907f1d74d88fca03",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "core_hostelry",
+        "anchorKind": "entry_beside_horse_passage",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "house L4 visual variant",
+        "buildingKinds": [
+          "house"
+        ],
+        "variantId": "inn",
+        "growthStageField": null,
+        "source": "src/render/buildingVariantManifest.ts:182-185"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "inn_s01_winter",
+      "family": "inn",
+      "growthStage": "1",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/inn_s01_winter.png",
+        "sha256": "cf29fda9665133d6665e0b5c7dc4354725257c0e09191ae0dfa19ea0f8994a21",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 3,
+          "depth": 2
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "core_hostelry",
+        "anchorKind": "entry_beside_horse_passage",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "house L4 visual variant",
+        "buildingKinds": [
+          "house"
+        ],
+        "variantId": "inn",
+        "growthStageField": null,
+        "source": "src/render/buildingVariantManifest.ts:182-185"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "inn_s02_summer",
+      "family": "inn",
+      "growthStage": "2",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/inn_s02_summer.png",
+        "sha256": "9734d59f0e9f25cb988243fa974c257e9c0dfff7e755e322e2bcb7e5a9ea8f6a",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "rear_lodging_wing",
+        "anchorKind": "entry_beside_horse_passage",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "house L4 visual variant",
+        "buildingKinds": [
+          "house"
+        ],
+        "variantId": "inn",
+        "growthStageField": null,
+        "source": "src/render/buildingVariantManifest.ts:182-185"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "inn_s02_winter",
+      "family": "inn",
+      "growthStage": "2",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/inn_s02_winter.png",
+        "sha256": "83f1e63b9dc7d1ebda895f2933dd3ab693aaa4c3e9209c86014efc8d0a395814",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 4,
+          "depth": 3
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "rear_lodging_wing",
+        "anchorKind": "entry_beside_horse_passage",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "house L4 visual variant",
+        "buildingKinds": [
+          "house"
+        ],
+        "variantId": "inn",
+        "growthStageField": null,
+        "source": "src/render/buildingVariantManifest.ts:182-185"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "inn_s03_summer",
+      "family": "inn",
+      "growthStage": "3",
+      "season": "summer",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/inn_s03_summer.png",
+        "sha256": "7e2808fa1d3f970b77e5ecd9953ab905d66253053806e22123d7c76eae20acf0",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 6,
+          "depth": 5
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "courtyard_gallery_and_stables",
+        "anchorKind": "entry_beside_horse_passage",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "house L4 visual variant",
+        "buildingKinds": [
+          "house"
+        ],
+        "variantId": "inn",
+        "growthStageField": null,
+        "source": "src/render/buildingVariantManifest.ts:182-185"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    },
+    {
+      "id": "inn_s03_winter",
+      "family": "inn",
+      "growthStage": "3",
+      "season": "winter",
+      "source": {
+        "inboxFile": "assets-inbox/landmarks/candidates-20261003/assets/inn_s03_winter.png",
+        "sha256": "9a3efc167ade70eb40f2cc3516dcc69de5efe816b610283c75d1d90b223d9584",
+        "ledgerStatus": "confirmed",
+        "canonicalBatch": "candidates-20261003",
+        "revision": "v1_approved_unchanged"
+      },
+      "imageDimensions": {
+        "width": 2048,
+        "height": 2048
+      },
+      "geometry": {
+        "pivot": {
+          "x": 768,
+          "y": 1536
+        },
+        "scale": 0.25,
+        "sourceFootprint": {
+          "width": 6,
+          "depth": 5
+        }
+      },
+      "sourceRegistration": {
+        "expansionRule": "courtyard_gallery_and_stables",
+        "anchorKind": "entry_beside_horse_passage",
+        "registeredLongAxisDeg": null,
+        "waterSpanCells": null,
+        "record": "assets-inbox/landmarks/rework-20261003/records/baseline-hashes.json"
+      },
+      "engineMapping": {
+        "entity": "house L4 visual variant",
+        "buildingKinds": [
+          "house"
+        ],
+        "variantId": "inn",
+        "growthStageField": null,
+        "source": "src/render/buildingVariantManifest.ts:182-185"
+      },
+      "engineFootprintApproval": "unresolved",
+      "runtimeAsset": null
+    }
+  ],
+  "packId": "core"
+}

@@ -170,7 +170,7 @@ for _ in $(seq 1 300); do grep -q 'LOCKED\|BUSY' "$TMP/lock.out" 2>/dev/null && 
 grep -q BUSY "$TMP/lock.out" && die "$RUN is already running on the DGX (scripts/remote/run.sh --attach $RUN)"
 grep -q LOCKED "$TMP/lock.out" || die "could not lock $RUN on the DGX: $(tail -1 "$TMP/lock.out")"
 state=$(rsh "mkdir -p $RROOT/$RUN/.remote-in && \
-  ls -1dt $RROOT/*/ 2>/dev/null | sed 's#/\$##; s#.*/##' | grep -v '^_' | grep -vx '$RUN' | head -1 | sed 's/^/PREV=/'; \
+  ls -1dt $RROOT/*/ 2>/dev/null | sed 's#/\$##; s#.*/##' | grep -v '^_' | grep -v '^trunk-' | grep -vx '$RUN' | head -1 | sed 's/^/PREV=/'; \
   { sed 's/^/TRUNK=/' $RROOT/_trunk/status 2>/dev/null || true; }")
 PREV=$(printf '%s\n' "$state" | sed -n 's/^PREV=//p')
 # The trunk's bundled clean clone (scripts/remote/trunkClone.sh) failed: every run says so until a later trunk passes.

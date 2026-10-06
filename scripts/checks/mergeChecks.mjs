@@ -24,8 +24,10 @@
 // 11. evidence    scripts/checks/evidenceSize.mjs    every docs/verification/<task>/ folder the range touches holds
 //                                                    at most 3 MB (2^20) at <head>, replay captures and the committed
 //                                                    ui-geometry results and perf-trend page not counted (rule 1, RR10)
+// 12. tested      scripts/checks/testedChanges.mjs   the tests the range picks (changedTests.mjs) ran and passed on this
+//                                                    exact content: a test:changed record of <head>'s tree (RR16)
 // The layer rule (simulation folders do not import src/ui or src/render) is an ESLint rule: tools/eslint/layers.mjs.
-// 1, 2, 5, 6, 8, 9 and 11 read git objects. 3, 4 and 7 need files: they run in this checkout when it is at <head> with no tracked
+// 1, 2, 5, 6, 8, 9 and 11 read git objects. 3, 4, 7 and 12 need files: they run in this checkout when it is at <head> with no tracked
 // changes, otherwise in a temporary worktree of <head> (LFS files left as pointers) that borrows node_modules; step 7
 // checks out there only the received PNGs the build turns into web derivatives (git lfs checkout, from the local store).
 import { execFileSync, spawnSync } from 'node:child_process';
@@ -44,6 +46,7 @@ import { checkUiGeometry, formatOverrideCount, formatUiGeometryResult, logWarnOv
 import { checkTrendLag, formatTrendLag, logTrendLag } from './trendLag.mjs';
 import { checkDecisionIds, formatDecisionIdResult } from './decisionIds.mjs';
 import { checkEvidenceSize, formatEvidenceResult } from './evidenceSize.mjs';
+import { checkTestedChanges, formatTestedChanges } from './testedChanges.mjs';
 
 const CODE = /\.(ts|tsx|js|jsx|mjs|cjs)$/;
 const ESLINT_DIR = 'tools/eslint';
@@ -92,6 +95,8 @@ try {
   report(...eslintStep(work));
   report(...typecheckStep(work));
   report(...budgetStep(work));
+  const tested = checkTestedChanges({ top, work, base, head });
+  report('tested', tested.ok, formatTestedChanges(tested));
 } finally {
   if (temporary !== null) {
     spawnSync('git', ['worktree', 'remove', '--force', temporary], { stdio: 'ignore' });
