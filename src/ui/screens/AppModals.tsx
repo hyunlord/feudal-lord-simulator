@@ -10,14 +10,15 @@ import { AudioControls } from "../AudioControls";
 import type { BuildCategory } from "../buildMenuPresentation";
 import { ChronicleScreen } from "../chronicle/ChronicleScreen";
 import { chronicleView } from "../chronicleModel";
-import { famineDecisionView, petitionDecisionView } from "../decisionModels";
 import { PauseMenu } from "../hud/HudShell";
 import { SeasonLedgerCard } from "../hud/SeasonLedgerCard";
 import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } from "../hud/StoryModals";
 import { LordRequestModal, PrecedentModal, RecurringSwitch } from "../hud/LordCards";
 import { DecisionCard } from "../decisionCard/DecisionCard";
+import { famineCard } from "../decisionCard/families/famineCard";
 import { homePetitionCard } from "../decisionCard/families/homePetitionCard";
 import { lordRequestCard } from "../decisionCard/families/lordRequestCard";
+import { petitionCard } from "../decisionCard/families/petitionCard";
 import { homePetitionView, lordRequestView, precedentView } from "../lordCardsModel";
 import { RegistryOfferModal } from "../hud/RegistryCard";
 import { registryOfferView } from "../registryCardModel";
@@ -78,8 +79,9 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const idleStateRef = useRef<GameState | null>(null);
   const state = useGameUiSelector(top !== null ? presentedState : (current: GameState) => (idleStateRef.current ??= presentedState(current)));
   const seasonCard = top === "season_ledger" ? seasonLedgerCardModel(state) : null;
-  const famineView = top === "decision" ? famineDecisionView(state) : null;
-  const petitionView = top === "petition" ? petitionDecisionView(state) : null;
+  // DEC-CARD: the famine and every political petition in the heavy card's layout (each answer run on the state).
+  const famineView = top === "decision" ? famineCard(state) : null;
+  const petitionView = top === "petition" ? petitionCard(state) : null;
   const chronicle = top === "chronicle" ? chronicleView(state) : null;
   const personCard = top === "person_card" && personCardId !== null ? personCardView(state, personCardId) : null;
   const legacyView = top === "legacy_ending" ? legacyVerdictView(state) : null;

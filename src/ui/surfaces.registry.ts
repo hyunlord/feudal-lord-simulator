@@ -151,6 +151,13 @@ const RESULTS_CARD = {
   frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".petition-body"],
   siblingsNoOverlap: [".results-card-part", ".results-card-actions"],
 } as const;
+/** DEC-CARD: the famine and the political petitions in the heavy decision card (the petition frame; the situation, the
+ * stake, the deadline, then the answers as a grid, each with now / later / who remembers). Its body scrolls past the view. */
+const DECISION_CARD = {
+  ...PETITION, root: ".story-modal.petition-card.decision-card.petition-decision", scrollParts: [".decision-card-body"],
+  siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+  requires: ["h2", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
+} as const;
 const BOOK = { root: ".chronicle-page.legacy-book", frame: "layer", frameLayer: ".chronicle-frame", contentSlot: ".legacy-book-body", scrollParts: [".legacy-book-page"],
   scene: { kind: "state", set: "ui10", name: "chapter5-end", tile: "house", zoom: 1.1, query: "&story-delay=20000" } } as const;
 /** A chapter's end page opens by itself after the story's delay; the delay must outlast the page load, or openScene's
@@ -332,22 +339,22 @@ export const SURFACES: readonly SurfaceRow[] = [
       { wait: ".results-card.year-review", timeout: 60_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-part h3", ".results-card-part li", ".results-card-chronicle", ".results-card-continue"],
     data: "1302's card at 1303's first tick: its decisions (or none), the factions' moves, the town's people and money" },
-  { id: "modal.famine", root: ".story-modal.famine-decision", frame: "flat", scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
-    open: [{ story: ".famine-decision" }, { pause: 800 }], scroll: "y", siblingsNoOverlap: [".famine-option", ".story-modal-later"], requires: ["h2", ".famine-option", ".story-modal-later"],
-    data: "chapter 1's famine decision" },
-  { id: "modal.petition.ch1", ...PETITION, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
-  { id: "modal.petition.ch2-war", ...PETITION, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
-  { id: "modal.petition.ch4-reorg", ...PETITION, scene: petitionScene("ui9", "borough_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough charter" },
-  { id: "modal.petition.ch5-legacy", ...PETITION, scene: petitionScene("ui10", "borough_autonomy", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough's autonomy (legacy)" },
-  { id: "modal.petition.heir", ...PETITION, scene: petitionScene("ui10-extra", "heir_choice", 0), open: [{ story: ".petition-card[data-def='heir_choice']" }, { pause: 600 }],
+  { id: "modal.famine", ...DECISION_CARD, root: ".story-modal.petition-card.decision-card.famine-decision", frameSlots: [],
+    scene: { kind: "state", set: "ui5", name: "famine-arrival", tile: "house", zoom: 1.1, query: "&story-delay=5000" },
+    open: [{ story: ".famine-decision" }, { pause: 800 }], data: "chapter 1's famine decision (DEC-CARD: four answers, the steward beside the stake)" },
+  { id: "modal.petition.ch1", ...DECISION_CARD, scene: petitionScene("ui5", "petition-open", 5000), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 1's petition" },
+  { id: "modal.petition.ch2-war", ...DECISION_CARD, scene: petitionScene("ui6", "wool_payment", 5000), open: [{ story: ".petition-card" }, { pause: 700 }], data: "the Crown's writ (war)" },
+  { id: "modal.petition.ch4-reorg", ...DECISION_CARD, scene: petitionScene("ui9", "borough_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough charter" },
+  { id: "modal.petition.ch5-legacy", ...DECISION_CARD, scene: petitionScene("ui10", "borough_autonomy", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the borough's autonomy (legacy)" },
+  { id: "modal.petition.heir", ...DECISION_CARD, scene: petitionScene("ui10-extra", "heir_choice", 0), open: [{ story: ".petition-card[data-def='heir_choice']" }, { pause: 600 }],
     expect: ".petition-heir", data: "the heir's card with three candidates" },
   // QA-034: every chapter's decision cards (the frame layer covered all of them on 3acc04ff).
-  { id: "modal.petition.ch3-plague", ...PETITION, scene: petitionScene("ui8", "cash_rent", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 3's cash rent" },
-  { id: "modal.petition.ch4-guild", ...PETITION, scene: petitionScene("ui9", "guild_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 4's guild charter" },
-  { id: "modal.petition.ch5-royal-tax", ...PETITION, scene: petitionScene("ui10", "royal_tax", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the Crown's tax, 1384 (QA-034)" },
-  { id: "modal.petition.ch5-legacy-choice", ...PETITION, scene: petitionScene("ui10", "legacy_choice", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the legacy choice" },
-  { id: "modal.petition.interlude-guild", ...PETITION, scene: petitionScene("ui10", "guild_dispute", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's guild dispute" },
-  { id: "modal.petition.interlude-church", ...PETITION, scene: petitionScene("ui10", "church_rebuilding", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's church rebuilding" },
+  { id: "modal.petition.ch3-plague", ...DECISION_CARD, scene: petitionScene("ui8", "cash_rent", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 3's cash rent" },
+  { id: "modal.petition.ch4-guild", ...DECISION_CARD, scene: petitionScene("ui9", "guild_charter", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "chapter 4's guild charter" },
+  { id: "modal.petition.ch5-royal-tax", ...DECISION_CARD, scene: petitionScene("ui10", "royal_tax", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the Crown's tax, 1384 (QA-034)" },
+  { id: "modal.petition.ch5-legacy-choice", ...DECISION_CARD, scene: petitionScene("ui10", "legacy_choice", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the legacy choice" },
+  { id: "modal.petition.interlude-guild", ...DECISION_CARD, scene: petitionScene("ui10", "guild_dispute", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's guild dispute" },
+  { id: "modal.petition.interlude-church", ...DECISION_CARD, scene: petitionScene("ui10", "church_rebuilding", 0), open: [{ story: ".petition-card" }, { pause: 600 }], data: "the interlude's church rebuilding" },
   { id: "modal.chapter-page.ch1", ...CHAPTER_PAGE, scene: chapterScene("ui5", "chapter-end"), data: "chapter 1's end page" },
   { id: "modal.chapter-page.ch2", ...CHAPTER_PAGE, scene: chapterScene("ui6", "chapter2-end"), data: "chapter 2's end page" },
   { id: "modal.chapter-page.ch3", ...CHAPTER_PAGE, scene: chapterScene("ui8", "chapter3-end"), data: "chapter 3's end page" },

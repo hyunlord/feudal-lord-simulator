@@ -9,7 +9,7 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { MARKET_CHARTER_PETITION_ID, PETITION_DEFS, RESTORE_RIGHT_PETITION_ID } from "../src/content/chapterConfig";
+import { MARKET_CHARTER_PETITION_ID, PETITION_DEFS, RESTORE_RIGHT_PETITION_ID, type PetitionResponse } from "../src/content/chapterConfig";
 import {
   BOROUGH_AUTONOMY_PETITION_ID,
   CHURCH_REBUILDING_PETITION_ID,
@@ -26,13 +26,14 @@ import { PLAGUE_PETITION_IDS } from "../src/content/plagueConfig";
 import { REORGANISATION_PETITION_IDS } from "../src/content/reorganisationConfig";
 import { WAR_PETITION_IDS } from "../src/content/warConfig";
 import type { GameState } from "../src/engine/engine.types";
-import { heirCandidates, legacyDecisionForecast } from "../src/engine/legacy";
+import { heirCandidates, legacyDecisionForecast, legacyScores } from "../src/engine/legacy";
 import { personDisplayName } from "../src/engine/persons";
 import { treasuryBalance } from "../src/ledger/ledger";
 import { LEDGER_ACTOR_LABELS, LEDGER_CATEGORY_LABELS } from "../src/ledger/ledgerCopy.ko";
 import { factionPageView, factionRows } from "../src/ui/chronicle/factionTabModel";
 import { DECISION_COPY } from "../src/ui/decisionCopy.ko";
 import { petitionDecisionView } from "../src/ui/decisionModels";
+import { petitionCard } from "../src/ui/decisionCard/families/petitionCard";
 import { PetitionModal } from "../src/ui/hud/StoryModals";
 import { isPetitionDefId, petitionArtOf, petitionPresentation, type PetitionDefId } from "../src/ui/petitionPresentation";
 import { at, legacyTown } from "./helpers/legacyTown";
@@ -41,6 +42,17 @@ import { moneyFull, moneyObject, moneyShort } from "../src/ui/money.ko";
 
 const states = ui10Course;
 const view = (state: GameState) => petitionDecisionView(state)!;
+// DEC-CARD: what each answer does is the heavy card's (the answer run on the state); who remembers it, the engine's moves.
+const choiceOf = (state: GameState, response: string) => petitionCard(state)!.card.choices.find(choice => choice.id === response)!;
+const said = (choice: ReturnType<typeof choiceOf>) => [...choice.now, ...choice.later].join(" ");
+const deltas = (choice: ReturnType<typeof choiceOf>) => choice.remembers.map(entry => entry.delta).sort((a, b) => a - b);
+/** The relation moves the answer itself makes (the factions after it, against before). */
+const moves = (state: GameState, defId: string, response: PetitionResponse) => {
+  const after = answer(state, defId, response);
+  return after.factions!.factions.map(faction => faction.relation - state.factions!.factions.find(entry => entry.id === faction.id)!.relation)
+    .filter(delta => delta !== 0).sort((a, b) => a - b);
+};
+const subject = (printed: string) => `${printed}${printed.endsWith("s") ? "이" : "가"}`;
 const LATIN = /[A-Za-z]{2,}|undefined|NaN/;
 
 test("UI-10: every petition kind the engine can raise has its own card; chapter 5's and the interlude's each their own picture, none the market's", () => {
@@ -68,12 +80,16 @@ test("UI-10 (LG-4): the Crown's tax card — two answers, the tenth in pence, th
   // COPY-1r (CA-005, CA-052): the sums asked in full, the ratio written "10%".
   assert.ok(card.presentation.demand.includes(moneyFull(due)) && card.presentation.demand.includes("10%"), card.presentation.demand);
   const [pay, plead] = card.options;
-  assert.match(pay!.line, new RegExp(`금고에서 ${moneyFull(due)} · 관계 국왕 \\+10 · 도시 −5$`));
-  assert.match(plead!.line, new RegExp(`국왕 확인금 ${moneyFull(B.confirmationFine)} · 관계 국왕 −15 · 도시 \\+5$`));
+  assert.ok(said(choiceOf(envoy, "accept")).includes(`금고에서 ${subject(moneyFull(due))} 나갑니다`), said(choiceOf(envoy, "accept")));
+  assert.ok(said(choiceOf(envoy, "refuse")).includes(`국왕 확인금 ${moneyObject(B.confirmationFine)} 냅니다`));
+  assert.deepEqual(deltas(choiceOf(envoy, "accept")), [-5, 10], "the Crown +10, the town −5");
+  assert.deepEqual(deltas(choiceOf(envoy, "refuse")), [-15, 5]);
+  for (const response of ["accept", "refuse"] as const) assert.deepEqual(deltas(choiceOf(envoy, response)), moves(envoy, ROYAL_TAX_PETITION_ID, response));
   for (const option of card.options) {
     assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(envoy) }, { treasury: legacyDecisionForecast(envoy, ROYAL_TAX_PETITION_ID, option.choice) }));
-    assert.doesNotMatch(option.line, LATIN);
+    assert.doesNotMatch(said(choiceOf(envoy, option.choice)), LATIN);
   }
+  assert.ok(pay !== undefined && plead !== undefined);
   assert.equal(card.presentation.from?.writ, true, "the Crown's writ");
 });
 
@@ -83,16 +99,22 @@ test("UI-10 (LG-13): the interlude's two cards — the Wave 33 pictures, the gui
   assert.equal(quarrelCard.presentation.defId, GUILD_DISPUTE_PETITION_ID);
   assert.deepEqual(quarrelCard.presentation.art, { sheet: "wave33", id: "interlude_guild_dispute" });
   assert.deepEqual(quarrelCard.options.map(option => option.choice), ["accept", "refuse"]);
-  assert.deepEqual(quarrelCard.options.map(option => option.line), ["길드 편을 듭니다 · 돈은 들지 않음 · 관계 도시 +10 · 상인 −10", "상인 편을 듭니다 · 돈은 들지 않음 · 관계 상인 +10 · 도시 −10"]);
+  assert.deepEqual(["accept", "refuse"].map(response => choiceOf(quarrel, response).now[0]), ["길드 편을 듭니다. 돈은 들지 않습니다.", "상인 가문 편을 듭니다. 돈은 들지 않습니다."]);
+  for (const response of ["accept", "refuse"] as const) assert.deepEqual(deltas(choiceOf(quarrel, response)), [-10, 10]);
   assert.equal(quarrelCard.options[0]!.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(quarrel) }, { treasury: treasuryBalance(quarrel) }));
   const card = view(nave);
   assert.equal(card.presentation.defId, CHURCH_REBUILDING_PETITION_ID);
   assert.deepEqual(card.presentation.art, { sheet: "wave33", id: "interlude_church_rebuilding" });
   assert.ok(card.presentation.demand.includes(moneyShort(B.churchRebuildingCost)));
-  assert.match(card.options[0]!.line, new RegExp(`금고에서 ${moneyShort(B.churchRebuildingCost)} · 교회 유산 점수 \\+${B.score.church.rebuilt} · 관계 주교 \\+10$`));
-  assert.match(card.options[1]!.line, /증축을 미룹니다 · 돈은 들지 않음 · 관계 주교 −10$/);
+  assert.ok(said(choiceOf(nave, "accept")).includes(`금고에서 ${subject(moneyFull(B.churchRebuildingCost))} 나갑니다`), said(choiceOf(nave, "accept")));
+  // The nave's points and the bishop's warmer relation, as the engine scores the answer (LG-7).
+  const church = legacyScores(answer(nave, CHURCH_REBUILDING_PETITION_ID, "accept")).church - legacyScores(nave).church;
+  assert.ok(church >= B.score.church.rebuilt && said(choiceOf(nave, "accept")).includes(`교회 유산 점수가 ${church} 오릅니다`), said(choiceOf(nave, "accept")));
+  assert.deepEqual(deltas(choiceOf(nave, "accept")), [10]);
+  assert.match(choiceOf(nave, "refuse").now[0]!, /^증축을 미룹니다. 돈은 들지 않습니다.$/);
+  assert.deepEqual(deltas(choiceOf(nave, "refuse")), [-10]);
   assert.equal(card.options[0]!.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(nave) }, { treasury: treasuryBalance(nave) - B.churchRebuildingCost }));
-  for (const option of card.options) assert.doesNotMatch(option.line, LATIN);
+  for (const option of card.options) assert.doesNotMatch(said(choiceOf(nave, option.choice)), LATIN);
 });
 
 test("UI-10 (LG-3): the heir's card — only the answers the record allows, each with its candidate's portrait, relation, age, lineage, likeness and records", () => {
@@ -108,9 +130,11 @@ test("UI-10 (LG-3): the heir's card — only the answers the record allows, each
     assert.ok(option.heir!.who.includes(`${candidate.age}살`), option.heir!.who);
     assert.ok(option.heir!.records.startsWith(`${candidate.birthYear}년생`) && option.heir!.records.endsWith(`원장 기록 ${candidate.records}건`), option.heir!.records);
     assert.ok(option.heir!.portraitId.length > 0);
-    assert.match(option.line, new RegExp(`상속세 ${moneyShort(B.relief[({ accept: "eldest_son", accept_with_price: "daughter_husband", refuse: "nephew" } as const)[option.choice]])}`));
+    assert.ok(said(choiceOf(heir, option.choice)).includes(`금고에서 ${subject(moneyFull(B.relief[({ accept: "eldest_son", accept_with_price: "daughter_husband", refuse: "nephew" } as const)[option.choice]]))} 나갑니다`));
+    assert.ok(choiceOf(heir, option.choice).now[0]!.includes(option.heir!.name), "the heir by name");
+    assert.deepEqual(deltas(choiceOf(heir, option.choice)), moves(heir, HEIR_CHOICE_PETITION_ID, option.choice));
     assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(heir) }, { treasury: legacyDecisionForecast(heir, HEIR_CHOICE_PETITION_ID, option.choice) }));
-    for (const line of [option.line, option.heir!.who, option.heir!.lineage, option.heir!.resemblance, option.heir!.records]) assert.doesNotMatch(line, LATIN);
+    for (const line of [said(choiceOf(heir, option.choice)), option.heir!.who, option.heir!.lineage, option.heir!.resemblance, option.heir!.records]) assert.doesNotMatch(line, LATIN);
   }
   const [son, husband, nephew] = card.options.map(option => option.heir!);
   // COPY-1r (CA-012): the candidates are described by the lord, whatever his age.
@@ -128,7 +152,7 @@ test("UI-10 (LG-3): the heir's card — only the answers the record allows, each
   assert.deepEqual(own.options.map(option => option.choice), ["refuse"]);
   assert.equal(own.options[0]!.label, "먼 친척에게 잇게 한다");
   assert.equal(own.options[0]!.heir?.lineage, "가문의 먼 친척");
-  assert.match(own.options[0]!.line, /^가문의 먼 친척이 가장이 됩니다/);
+  assert.match(choiceOf(ownHeir, "refuse").now[0]!, /^가문의 먼 친척 .+ 영주관의 가장이 됩니다/);
 });
 
 test("UI-10 (LG-2): the charter's card — the rights, the fine, the fee farm, the Crown's confirmation after the petition, the backlash of a refusal", () => {
@@ -138,16 +162,21 @@ test("UI-10 (LG-2): the charter's card — the rights, the fine, the fee farm, t
   assert.deepEqual(card.presentation.art, { sheet: "wave21", id: "ch5_decision_autonomy" });
   assert.deepEqual(card.options.map(option => option.choice), ["accept", "refuse"]);
   const [seal, refuse] = card.options;
-  assert.match(seal!.line, new RegExp(`특허값 ${moneyObject(B.charterFine)} 냄 · 도시의 연납금 해마다 ${moneyShort(B.feeFarm)} · 영주가 국왕 확인금 ${moneyObject(B.confirmationFine)} 냄`));
-  assert.match(seal!.line, /관계 도시 \+25 · 상인 \+15 · 백작 −15 · 국왕 \+5$/);
-  assert.match(refuse!.line, /도시의 반발 \d+ · 연납금은 그대로 · 가문은 영주관에 남음 · 관계 도시 −25 · 상인 −15 · 평민 −5 · 백작 \+10$/);
-  const backlash = Number(/도시의 반발 (\d+)/.exec(refuse!.line)![1]);
-  assert.equal(backlash, answer(charter, BOROUGH_AUTONOMY_PETITION_ID, "refuse").legacy!.backlash, "the refusal's backlash as the engine sets it");
+  // The town pays the charter's fine and the lord the Crown's confirmation (the tax was petitioned): the treasury's net, as the engine posts it.
+  const net = treasuryBalance(answer(charter, BOROUGH_AUTONOMY_PETITION_ID, "accept")) - treasuryBalance(charter);
+  assert.equal(net, B.charterFine - B.confirmationFine);
+  assert.ok(said(choiceOf(charter, "accept")).includes(`금고에 ${subject(moneyFull(net))} 들어옵니다`), said(choiceOf(charter, "accept")));
+  assert.ok(said(choiceOf(charter, "accept")).includes(`도시의 연납금은 해마다 ${moneyShort(B.feeFarm)}입니다`));
+  assert.deepEqual(deltas(choiceOf(charter, "accept")), [-15, 5, 15, 25]);
+  assert.deepEqual(deltas(choiceOf(charter, "refuse")), [-25, -15, -5, 10]);
+  const backlash = answer(charter, BOROUGH_AUTONOMY_PETITION_ID, "refuse").legacy!.backlash;
+  assert.ok(said(choiceOf(charter, "refuse")).includes(`도시의 반발이 ${backlash}까지 오릅니다`), "the refusal's backlash as the engine sets it");
+  assert.ok(seal !== undefined && refuse !== undefined);
   const mayor = charter.legacy!.mayorCandidateId;
   if (mayor !== null) assert.ok(card.presentation.demand.includes("시장 후보는"));
   for (const option of card.options) {
     assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(charter) }, { treasury: legacyDecisionForecast(charter, BOROUGH_AUTONOMY_PETITION_ID, option.choice) }));
-    assert.doesNotMatch(option.line, LATIN);
+    assert.doesNotMatch(said(choiceOf(charter, option.choice)), LATIN);
   }
 });
 
@@ -157,11 +186,12 @@ test("UI-10 (LG-5): the legacy's card — three answers, the endowment the treas
   assert.equal(card.presentation.defId, LEGACY_CHOICE_PETITION_ID);
   assert.deepEqual(card.options.map(option => option.choice), ["accept", "accept_with_price", "refuse"]);
   const spent = Math.min(B.endowment, Math.max(0, treasuryBalance(legacy)));
-  assert.deepEqual(card.options.map(option => option.line), [
-    `길드홀과 시청을 남깁니다 · 금고에서 ${moneyShort(spent)} · 도시 유산 점수 +${B.legacyPoints} · 관계 도시 +10`,
-    `영주관·문장·혈통 기록을 남깁니다 · 금고에서 ${moneyShort(spent)} · 가문 유산 점수 +${B.legacyPoints} · 관계 백작 +5`,
-    `교회 증축과 기도처를 남깁니다 · 금고에서 ${moneyShort(spent)} · 교회 유산 점수 +${B.legacyPoints} · 관계 주교 +15`,
-  ]);
+  assert.deepEqual(card.options.map(option => choiceOf(legacy, option.choice).now[0]), ["길드홀과 시청을 남깁니다.", "영주관·문장·혈통 기록을 남깁니다.", "교회 증축과 기도처를 남깁니다."]);
+  for (const [response, axis, delta] of [["accept", "도시", 10], ["accept_with_price", "가문", 5], ["refuse", "교회", 15]] as const) {
+    const choice = choiceOf(legacy, response);
+    assert.ok(said(choice).includes(`금고에서 ${subject(moneyFull(spent))} 나갑니다`) && said(choice).includes(`${axis} 유산 점수가 `), said(choice));
+    assert.deepEqual(deltas(choice), [delta]);
+  }
   for (const option of card.options) assert.equal(option.predicted, DECISION_COPY.predicted({ treasury: treasuryBalance(legacy) }, { treasury: legacyDecisionForecast(legacy, LEGACY_CHOICE_PETITION_ID, option.choice) }));
 });
 
@@ -190,12 +220,12 @@ test("UI-10: the cards render — the heir's answers each with its candidate, th
   const { heir, nave } = states();
   const noop = () => undefined;
   const card = view(heir);
-  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: card, onRespond: noop, onLater: noop }));
+  const markup = renderToStaticMarkup(createElement(PetitionModal, { view: petitionCard(heir)!, onRespond: noop, onLater: noop }));
   assert.equal((markup.match(/class="petition-heir"/g) ?? []).length, 3);
   for (const option of card.options) assert.ok(markup.includes(`data-person="${option.heir!.personId}"`) && markup.includes(option.heir!.resemblance));
   assert.ok(markup.includes("ch5_decision_heir_choice"), "the Wave 21 card");
   assert.doesNotMatch(markup, / title="/);
-  const interlude = renderToStaticMarkup(createElement(PetitionModal, { view: view(nave), onRespond: noop, onLater: noop }));
+  const interlude = renderToStaticMarkup(createElement(PetitionModal, { view: petitionCard(nave)!, onRespond: noop, onLater: noop }));
   assert.ok(interlude.includes("interlude_church_rebuilding") && !interlude.includes("event_market_petition"));
   assert.doesNotMatch(interlude, /petition-heir/);
 });

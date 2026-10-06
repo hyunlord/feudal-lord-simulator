@@ -18,5 +18,5 @@ export const DECISION_CARD_COPY = {
   /** Each answer's button (its title is the answer; the button's label for assistive tech names it). */
   choose: "이렇게 정한다",
   later_: "나중에 정한다",
-  feels: (delta: number) => `${feeling(delta)} (관계 ${delta > 0 ? "+" : ""}${delta})`,
+  feels: (delta: number) => `${feeling(delta)} (관계 ${delta > 0 ? "+" : "−"}${Math.abs(delta)})`,
 } as const;
