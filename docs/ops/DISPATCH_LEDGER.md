@@ -130,8 +130,8 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - [x] DGX 무거운 실행 동시 상한 2와 줄, 둘째 포트를 범위 안에서(결정 RR14), devServerStop 시험을 부하와 무관하게(RR9) — 본선 `9e78cb7b`
 - [x] DGX 디스크: 상위 사용 확인, 정리 규칙(끝난 폴더 하루·용량 상한·_kept 압축·클론·LFS 공유), 무거운 실행 전 정리, 그날 225 → 704 GB(결정 RR15) — 본선 `2a1d1aa0`
 - [x] DGX `/tmp`의 게임 잔여물(끝난 perf:ab·추이 소스 트리 `fls-src-*`, 3일 안 읽은 tsx 캐시)을 RR15 정리에 — 본선 `231aa17c`
-- [ ] 확장성 설계 확정(EXT-0): extensibility.md 반입·foundation 2부 링크, 결정 EXT-D1~D3, 헌장·AGENTS·CLAUDE 원칙 한 줄, 로드맵 EXT 줄, 엔진 절 EXT-1~3b·6 — 본선 ``
-- [ ] 게임 원칙 확정: game-principles.md 반입(정본), 헌장·foundation 링크와 정체성↔대전제 대응, 지시서 관련 원칙·보고서 원칙 점검 칸, 결정 GP-1~6 — 본선 ``
+- [x] 확장성 설계 확정(EXT-0): extensibility.md 반입·foundation 2부 링크, 결정 EXT-D1~D3, 헌장·AGENTS·CLAUDE 원칙 한 줄, 로드맵 EXT 줄, 엔진 절 EXT-1~3b·6 — 본선 `553c937e`
+- [x] 게임 원칙 확정: game-principles.md 반입(정본), 헌장·foundation 링크와 정체성↔대전제 대응, 지시서 관련 원칙·보고서 원칙 점검 칸, 결정 GP-1~6 — 본선 `6b67fa98`
 - [x] 성능 추이 자동 갱신(병합 뒤 훅, 결정 RR4) — 본선 `31554791`
 ### 운영 규칙(확인용)
 추이 판정 지표 넷(할당·GC/분·캔버스/초·GC 뒤 힙), 의심 → A-B 자동(95% t 폭) → 나빠짐은 두 번 확정, 실행 폴더 잠금, 푸시 훅 분리, 결정 ID 중복 실패, settings.local.json 규칙, 무거운 검증 Mac 금지.
