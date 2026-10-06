@@ -152,7 +152,8 @@ function composedCell(sheetId: WalkerSheetId, prop: WalkerPropKind | null, cloak
     // scale there (shoulder bag, hand basket / bucket / plough, waist purse); the older props go to the right hand.
     const placed = "walkerPoint" in entry;
     const hand = placed ? entry.walkerPoint : rightHand(frame);
-    const scale = placed ? 1 : PROP_SCALE;
+    const scale = placed ? 1 : "referenceFigureHeight" in entry
+      ? entry.scale * frame.figureHeight / entry.referenceFigureHeight : PROP_SCALE;
     const size = 32 * scale;
     drawCroppedWorldSprite(context, images.props[direction]!, { x: ("cell" in entry ? entry.cell : 0) * 32, y: 0, width: 32, height: 32 },
       { x: WALKER_PAD + hand.x - entry.anchor.x * scale, y: WALKER_PAD + hand.y - entry.anchor.y * scale, width: size, height: size }, false, true);

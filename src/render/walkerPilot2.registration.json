@@ -1,0 +1,1514 @@
+{
+  "task": "RB-WALKER-PILOT2",
+  "registrationMethod": {
+    "foot": "Midpoint of lowest final-cell alpha >=128 row; independent of lower-band centroid in delivery spec.",
+    "height": "Lowest minus first final-cell alpha >=128 row plus one.",
+    "hands": "Visible final-raster hand centres manually inspected on coordinate grids; 1px uncertainty.",
+    "grips": "Source prop-anchors.json; all sixteen final PNGs visually inspected.",
+    "runtimeBytes": "Identical to preserved final source PNG; no C2PA chunks present.",
+    "visualStatus": "Contacts and winter cloak calibration pending; numeric contact is not pixel-contact proof.",
+    "cloak": "Each of 32 final body/cloak raster combinations inspected. Native 74px overlay registration (x0,y0,scale1) retained; browser zoom/contact review remains pending.",
+    "staffScale": "2 * frame.figureHeight / 61 native body-cell pixels per prop pixel, fixing the 28px opaque shaft at 16.1574 world px for a 17.6px human. Held personal staff; ground contact is not a simulation claim."
+  },
+  "sheets": [
+    {
+      "id": "wk_reskin_P1_merchant_m",
+      "url": "assets/walker-pilot2/workers/wk_reskin_P1_merchant_m-v1.png",
+      "width": 296,
+      "height": 148,
+      "sha256": "a2da7289cd03557a573f65c713405ab14eef5ccee86ffa0d874c6e3827449378",
+      "classBand": "merchant",
+      "sex": "male",
+      "occupationTags": [],
+      "legacy": false,
+      "holdsTool": false,
+      "template": "pilot2_P1",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "merchant",
+      "cloakPoke": null,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.0,
+            "y": 68.0
+          },
+          "figureHeight": 67.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 36
+            },
+            "right": {
+              "x": 52,
+              "y": 33
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 45.5,
+            "y": 69.0
+          },
+          "figureHeight": 68.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 39
+            },
+            "right": {
+              "x": 50,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 26.5,
+            "y": 69.0
+          },
+          "figureHeight": 68.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 36
+            },
+            "right": {
+              "x": 50,
+              "y": 39
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 42.0,
+            "y": 68.0
+          },
+          "figureHeight": 67.0,
+          "hands": {
+            "left": {
+              "x": 21,
+              "y": 33
+            },
+            "right": {
+              "x": 47,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 30.5,
+            "y": 67.0
+          },
+          "figureHeight": 66.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 36
+            },
+            "right": {
+              "x": 53,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 47.0,
+            "y": 68.0
+          },
+          "figureHeight": 67.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 40
+            },
+            "right": {
+              "x": 49,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 26.5,
+            "y": 68.0
+          },
+          "figureHeight": 67.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 36
+            },
+            "right": {
+              "x": 49,
+              "y": 40
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 44.0,
+            "y": 67.0
+          },
+          "figureHeight": 66.0,
+          "hands": {
+            "left": {
+              "x": 22,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 37
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "wk_reskin_P4_labour_m",
+      "url": "assets/walker-pilot2/workers/wk_reskin_P4_labour_m-v1.png",
+      "width": 296,
+      "height": 148,
+      "sha256": "ab0ddd1a4702bc58d6aeb075f29ca61640d3fb90ace5c38f24c7197481e760cb",
+      "classBand": "labor",
+      "sex": "male",
+      "occupationTags": [],
+      "legacy": false,
+      "holdsTool": false,
+      "template": "pilot2_P4",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "male",
+      "cloakPoke": null,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 41.5,
+            "y": 66.0
+          },
+          "figureHeight": 64.0,
+          "hands": {
+            "left": {
+              "x": 34,
+              "y": 36
+            },
+            "right": {
+              "x": 58,
+              "y": 35
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 45.5,
+            "y": 67.0
+          },
+          "figureHeight": 65.0,
+          "hands": {
+            "left": {
+              "x": 25,
+              "y": 39
+            },
+            "right": {
+              "x": 47,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 29.0,
+            "y": 67.0
+          },
+          "figureHeight": 65.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 35
+            },
+            "right": {
+              "x": 48,
+              "y": 38
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 32.0,
+            "y": 67.0
+          },
+          "figureHeight": 65.0,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 38
+            },
+            "right": {
+              "x": 39,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 39.5,
+            "y": 66.0
+          },
+          "figureHeight": 65.0,
+          "hands": {
+            "left": {
+              "x": 33,
+              "y": 35
+            },
+            "right": {
+              "x": 59,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 46.0,
+            "y": 66.0
+          },
+          "figureHeight": 65.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 37
+            },
+            "right": {
+              "x": 50,
+              "y": 35
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.5,
+            "y": 66.0
+          },
+          "figureHeight": 64.0,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 36
+            },
+            "right": {
+              "x": 48,
+              "y": 37
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 32.0,
+            "y": 66.0
+          },
+          "figureHeight": 64.0,
+          "hands": {
+            "left": {
+              "x": 15,
+              "y": 35
+            },
+            "right": {
+              "x": 39,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "wk_reskin_P5_labour_f",
+      "url": "assets/walker-pilot2/workers/wk_reskin_P5_labour_f-v1.png",
+      "width": 296,
+      "height": 148,
+      "sha256": "13d1db89dcedcdda9265e1c262de214f9adaf2cd85754e86af39dd9eca4a7da8",
+      "classBand": "labor",
+      "sex": "female",
+      "occupationTags": [],
+      "legacy": false,
+      "holdsTool": false,
+      "template": "pilot2_P5",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "female",
+      "cloakPoke": null,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.5,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 31,
+              "y": 34
+            },
+            "right": {
+              "x": 51,
+              "y": 39
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.5,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 39
+            },
+            "right": {
+              "x": 48,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.5,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 39
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 37.5,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 39
+            },
+            "right": {
+              "x": 41,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.5,
+            "y": 64.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 31,
+              "y": 34
+            },
+            "right": {
+              "x": 51,
+              "y": 38
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 44.5,
+            "y": 63.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 36
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.0,
+            "y": 63.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 33
+            },
+            "right": {
+              "x": 46,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 64.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 39
+            },
+            "right": {
+              "x": 41,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        }
+      ]
+    },
+    {
+      "id": "wk_reskin_P6_widow_f",
+      "url": "assets/walker-pilot2/workers/wk_reskin_P6_widow_f-v1.png",
+      "width": 296,
+      "height": 148,
+      "sha256": "ea509af5d0c082fd7e255ccfb6bce823c34cb5f632d45b3a7f9822aa15c87a79",
+      "classBand": "elder",
+      "sex": "female",
+      "occupationTags": [],
+      "legacy": false,
+      "holdsTool": false,
+      "template": "pilot2_P6",
+      "season": "all",
+      "directionOrder": [
+        "NE",
+        "SE",
+        "SW",
+        "NW"
+      ],
+      "cloak": "female",
+      "cloakPoke": null,
+      "frames": [
+        {
+          "direction": "NE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 34.5,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 31,
+              "y": 34
+            },
+            "right": {
+              "x": 51,
+              "y": 39
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 43.5,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 26,
+              "y": 39
+            },
+            "right": {
+              "x": 48,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 30.5,
+            "y": 66.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 35
+            },
+            "right": {
+              "x": 49,
+              "y": 39
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 0,
+          "foot": {
+            "x": 37.5,
+            "y": 66.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 39
+            },
+            "right": {
+              "x": 41,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 33.5,
+            "y": 64.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 31,
+              "y": 34
+            },
+            "right": {
+              "x": 51,
+              "y": 38
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SE",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 44.5,
+            "y": 63.0
+          },
+          "figureHeight": 61.0,
+          "hands": {
+            "left": {
+              "x": 27,
+              "y": 36
+            },
+            "right": {
+              "x": 49,
+              "y": 33
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "SW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 28.0,
+            "y": 63.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 24,
+              "y": 33
+            },
+            "right": {
+              "x": 46,
+              "y": 36
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        },
+        {
+          "direction": "NW",
+          "gaitFrame": 1,
+          "foot": {
+            "x": 40.0,
+            "y": 64.0
+          },
+          "figureHeight": 60.0,
+          "hands": {
+            "left": {
+              "x": 23,
+              "y": 38
+            },
+            "right": {
+              "x": 41,
+              "y": 34
+            }
+          },
+          "cloakRegistration": {
+            "x": 0,
+            "y": 0,
+            "scale": 1
+          }
+        }
+      ]
+    }
+  ],
+  "props": {
+    "pilot2_purse": {
+      "NE": {
+        "url": "assets/walker-pilot2/props/held_purse_NE-v1.png",
+        "anchor": {
+          "x": 14.57,
+          "y": 10.12
+        },
+        "role": "hand grip",
+        "sha256": "44ad2ec1bc716e5e10966ad1f86d3100bc269d495d7e3e5ec6ce0717faf67d4e",
+        "opaqueBounds": {
+          "x": 10,
+          "y": 9,
+          "width": 12,
+          "height": 14
+        }
+      },
+      "SE": {
+        "url": "assets/walker-pilot2/props/held_purse_SE-v1.png",
+        "anchor": {
+          "x": 16.77,
+          "y": 10.12
+        },
+        "role": "hand grip",
+        "sha256": "ece6789eeca0bb90f9c894404f0340df5d9eab9b1d9e869d2e4daac6a0997920",
+        "opaqueBounds": {
+          "x": 11,
+          "y": 9,
+          "width": 10,
+          "height": 14
+        }
+      },
+      "SW": {
+        "url": "assets/walker-pilot2/props/held_purse_SW-v1.png",
+        "anchor": {
+          "x": 14.64,
+          "y": 10.12
+        },
+        "role": "hand grip",
+        "sha256": "0b1c7502e90cd8f3759b73e5a14532f9e4edade1c98a7d2b090896bec8b2202f",
+        "opaqueBounds": {
+          "x": 10,
+          "y": 9,
+          "width": 12,
+          "height": 14
+        }
+      },
+      "NW": {
+        "url": "assets/walker-pilot2/props/held_purse_NW-v1.png",
+        "anchor": {
+          "x": 16.6,
+          "y": 10.12
+        },
+        "role": "hand grip",
+        "sha256": "f5cdd925dc94aac357425aa1d11d2c8d730137dbf77ade8a8d199860077f81a4",
+        "opaqueBounds": {
+          "x": 10,
+          "y": 9,
+          "width": 12,
+          "height": 14
+        }
+      }
+    },
+    "pilot2_sack": {
+      "NE": {
+        "url": "assets/walker-pilot2/props/held_sack_NE-v1.png",
+        "anchor": {
+          "x": 15.79,
+          "y": 12.4
+        },
+        "role": "hand grip",
+        "sha256": "7a143bb6934f6f3c482fa11466183d1073618a3d5ec40d4fd663c6a09e7f4522",
+        "opaqueBounds": {
+          "x": 8,
+          "y": 6,
+          "width": 16,
+          "height": 20
+        }
+      },
+      "SE": {
+        "url": "assets/walker-pilot2/props/held_sack_SE-v1.png",
+        "anchor": {
+          "x": 16.26,
+          "y": 12.4
+        },
+        "role": "hand grip",
+        "sha256": "332fff589a8f3cc555263279698d8aa5c3b8ddeddc99a322be4609e1d2a8e37b",
+        "opaqueBounds": {
+          "x": 9,
+          "y": 6,
+          "width": 14,
+          "height": 20
+        }
+      },
+      "SW": {
+        "url": "assets/walker-pilot2/props/held_sack_SW-v1.png",
+        "anchor": {
+          "x": 14.59,
+          "y": 12.4
+        },
+        "role": "hand grip",
+        "sha256": "ada51d56cde38426b30c49850b818b2f66201ad897db2102d36f4212b964aeb0",
+        "opaqueBounds": {
+          "x": 9,
+          "y": 6,
+          "width": 14,
+          "height": 20
+        }
+      },
+      "NW": {
+        "url": "assets/walker-pilot2/props/held_sack_NW-v1.png",
+        "anchor": {
+          "x": 14.65,
+          "y": 12.4
+        },
+        "role": "hand grip",
+        "sha256": "1bb088bc33e89892fd97ab8c62831ab14eb1ce79e996c981acdd8785b12637d8",
+        "opaqueBounds": {
+          "x": 9,
+          "y": 6,
+          "width": 14,
+          "height": 20
+        }
+      }
+    },
+    "pilot2_basket": {
+      "NE": {
+        "url": "assets/walker-pilot2/props/held_basket_NE-v1.png",
+        "anchor": {
+          "x": 16.27,
+          "y": 6.9
+        },
+        "role": "hand grip",
+        "sha256": "5caa0f122a6340d5aab85c1373e0c806210c1e478eff90b2265c59bd2268f1c9",
+        "opaqueBounds": {
+          "x": 7,
+          "y": 6,
+          "width": 18,
+          "height": 20
+        }
+      },
+      "SE": {
+        "url": "assets/walker-pilot2/props/held_basket_SE-v1.png",
+        "anchor": {
+          "x": 15.59,
+          "y": 6.9
+        },
+        "role": "hand grip",
+        "sha256": "3b3a73ae6d6c35dac5906a5c1636c89ec8de13cbc311516d9f62c4005a6c8e00",
+        "opaqueBounds": {
+          "x": 8,
+          "y": 6,
+          "width": 16,
+          "height": 20
+        }
+      },
+      "SW": {
+        "url": "assets/walker-pilot2/props/held_basket_SW-v1.png",
+        "anchor": {
+          "x": 16.06,
+          "y": 6.9
+        },
+        "role": "hand grip",
+        "sha256": "f4c603e6147214b3d18bc9066d1e7b74d2fef4b71c860ccfa0837b352385a1c5",
+        "opaqueBounds": {
+          "x": 8,
+          "y": 6,
+          "width": 16,
+          "height": 20
+        }
+      },
+      "NW": {
+        "url": "assets/walker-pilot2/props/held_basket_NW-v1.png",
+        "anchor": {
+          "x": 15.5,
+          "y": 6.9
+        },
+        "role": "hand grip",
+        "sha256": "61ba99dc4f0125da2f98eba493505321e9106e411a305d0509164b30585615b1",
+        "opaqueBounds": {
+          "x": 8,
+          "y": 6,
+          "width": 16,
+          "height": 20
+        }
+      }
+    },
+    "pilot2_staff": {
+      "NE": {
+        "url": "assets/walker-pilot2/props/held_staff_NE-v1.png",
+        "anchor": {
+          "x": 15.4,
+          "y": 16
+        },
+        "role": "hand grip",
+        "sha256": "e654121218d3390e8b09ac28b30360320bb4bd93bf1c1c7659a0e9fff0ec57f6",
+        "scale": 2,
+        "referenceFigureHeight": 61,
+        "opaqueBounds": {
+          "x": 11,
+          "y": 2,
+          "width": 10,
+          "height": 28
+        }
+      },
+      "SE": {
+        "url": "assets/walker-pilot2/props/held_staff_SE-v1.png",
+        "anchor": {
+          "x": 15.4,
+          "y": 16
+        },
+        "role": "hand grip",
+        "sha256": "c55421365b9e9c3748c374a9ee97acbf828d589a6d9b93196860ec6e30f123d6",
+        "scale": 2,
+        "referenceFigureHeight": 61,
+        "opaqueBounds": {
+          "x": 11,
+          "y": 2,
+          "width": 10,
+          "height": 28
+        }
+      },
+      "SW": {
+        "url": "assets/walker-pilot2/props/held_staff_SW-v1.png",
+        "anchor": {
+          "x": 15.4,
+          "y": 16
+        },
+        "role": "hand grip",
+        "sha256": "fc49cf1abb510a737750b7b13e4e1b26d547e897772bb03e5babe3b27b0d40fc",
+        "scale": 2,
+        "referenceFigureHeight": 61,
+        "opaqueBounds": {
+          "x": 11,
+          "y": 2,
+          "width": 10,
+          "height": 28
+        }
+      },
+      "NW": {
+        "url": "assets/walker-pilot2/props/held_staff_NW-v1.png",
+        "anchor": {
+          "x": 15.5,
+          "y": 16
+        },
+        "role": "hand grip",
+        "sha256": "5411c7d3489b8897065607b2a76048804fcce36dbde0c19da202677e5a5b97b7",
+        "scale": 2,
+        "referenceFigureHeight": 61,
+        "opaqueBounds": {
+          "x": 11,
+          "y": 2,
+          "width": 10,
+          "height": 28
+        }
+      }
+    }
+  },
+  "provenance": [
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_basket_NE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_basket_NE-v1.png",
+      "sourceSha256": "5caa0f122a6340d5aab85c1373e0c806210c1e478eff90b2265c59bd2268f1c9",
+      "runtimeSha256": "5caa0f122a6340d5aab85c1373e0c806210c1e478eff90b2265c59bd2268f1c9",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_basket_NW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_basket_NW-v1.png",
+      "sourceSha256": "61ba99dc4f0125da2f98eba493505321e9106e411a305d0509164b30585615b1",
+      "runtimeSha256": "61ba99dc4f0125da2f98eba493505321e9106e411a305d0509164b30585615b1",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_basket_SE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_basket_SE-v1.png",
+      "sourceSha256": "3b3a73ae6d6c35dac5906a5c1636c89ec8de13cbc311516d9f62c4005a6c8e00",
+      "runtimeSha256": "3b3a73ae6d6c35dac5906a5c1636c89ec8de13cbc311516d9f62c4005a6c8e00",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_basket_SW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_basket_SW-v1.png",
+      "sourceSha256": "f4c603e6147214b3d18bc9066d1e7b74d2fef4b71c860ccfa0837b352385a1c5",
+      "runtimeSha256": "f4c603e6147214b3d18bc9066d1e7b74d2fef4b71c860ccfa0837b352385a1c5",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_purse_NE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_purse_NE-v1.png",
+      "sourceSha256": "44ad2ec1bc716e5e10966ad1f86d3100bc269d495d7e3e5ec6ce0717faf67d4e",
+      "runtimeSha256": "44ad2ec1bc716e5e10966ad1f86d3100bc269d495d7e3e5ec6ce0717faf67d4e",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_purse_NW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_purse_NW-v1.png",
+      "sourceSha256": "f5cdd925dc94aac357425aa1d11d2c8d730137dbf77ade8a8d199860077f81a4",
+      "runtimeSha256": "f5cdd925dc94aac357425aa1d11d2c8d730137dbf77ade8a8d199860077f81a4",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_purse_SE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_purse_SE-v1.png",
+      "sourceSha256": "ece6789eeca0bb90f9c894404f0340df5d9eab9b1d9e869d2e4daac6a0997920",
+      "runtimeSha256": "ece6789eeca0bb90f9c894404f0340df5d9eab9b1d9e869d2e4daac6a0997920",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_purse_SW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_purse_SW-v1.png",
+      "sourceSha256": "0b1c7502e90cd8f3759b73e5a14532f9e4edade1c98a7d2b090896bec8b2202f",
+      "runtimeSha256": "0b1c7502e90cd8f3759b73e5a14532f9e4edade1c98a7d2b090896bec8b2202f",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_sack_NE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_sack_NE-v1.png",
+      "sourceSha256": "7a143bb6934f6f3c482fa11466183d1073618a3d5ec40d4fd663c6a09e7f4522",
+      "runtimeSha256": "7a143bb6934f6f3c482fa11466183d1073618a3d5ec40d4fd663c6a09e7f4522",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_sack_NW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_sack_NW-v1.png",
+      "sourceSha256": "1bb088bc33e89892fd97ab8c62831ab14eb1ce79e996c981acdd8785b12637d8",
+      "runtimeSha256": "1bb088bc33e89892fd97ab8c62831ab14eb1ce79e996c981acdd8785b12637d8",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_sack_SE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_sack_SE-v1.png",
+      "sourceSha256": "332fff589a8f3cc555263279698d8aa5c3b8ddeddc99a322be4609e1d2a8e37b",
+      "runtimeSha256": "332fff589a8f3cc555263279698d8aa5c3b8ddeddc99a322be4609e1d2a8e37b",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_sack_SW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_sack_SW-v1.png",
+      "sourceSha256": "ada51d56cde38426b30c49850b818b2f66201ad897db2102d36f4212b964aeb0",
+      "runtimeSha256": "ada51d56cde38426b30c49850b818b2f66201ad897db2102d36f4212b964aeb0",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_staff_NE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_staff_NE-v1.png",
+      "sourceSha256": "e654121218d3390e8b09ac28b30360320bb4bd93bf1c1c7659a0e9fff0ec57f6",
+      "runtimeSha256": "e654121218d3390e8b09ac28b30360320bb4bd93bf1c1c7659a0e9fff0ec57f6",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_staff_NW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_staff_NW-v1.png",
+      "sourceSha256": "5411c7d3489b8897065607b2a76048804fcce36dbde0c19da202677e5a5b97b7",
+      "runtimeSha256": "5411c7d3489b8897065607b2a76048804fcce36dbde0c19da202677e5a5b97b7",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_staff_SE-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_staff_SE-v1.png",
+      "sourceSha256": "c55421365b9e9c3748c374a9ee97acbf828d589a6d9b93196860ec6e30f123d6",
+      "runtimeSha256": "c55421365b9e9c3748c374a9ee97acbf828d589a6d9b93196860ec6e30f123d6",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/props/held_staff_SW-v1.png",
+      "runtime": "public/assets/walker-pilot2/props/held_staff_SW-v1.png",
+      "sourceSha256": "fc49cf1abb510a737750b7b13e4e1b26d547e897772bb03e5babe3b27b0d40fc",
+      "runtimeSha256": "fc49cf1abb510a737750b7b13e4e1b26d547e897772bb03e5babe3b27b0d40fc",
+      "dimensions": [
+        32,
+        32
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/workers/wk_reskin_P1_merchant_m-v1.png",
+      "runtime": "public/assets/walker-pilot2/workers/wk_reskin_P1_merchant_m-v1.png",
+      "sourceSha256": "a2da7289cd03557a573f65c713405ab14eef5ccee86ffa0d874c6e3827449378",
+      "runtimeSha256": "a2da7289cd03557a573f65c713405ab14eef5ccee86ffa0d874c6e3827449378",
+      "dimensions": [
+        296,
+        148
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/workers/wk_reskin_P4_labour_m-v1.png",
+      "runtime": "public/assets/walker-pilot2/workers/wk_reskin_P4_labour_m-v1.png",
+      "sourceSha256": "ab0ddd1a4702bc58d6aeb075f29ca61640d3fb90ace5c38f24c7197481e760cb",
+      "runtimeSha256": "ab0ddd1a4702bc58d6aeb075f29ca61640d3fb90ace5c38f24c7197481e760cb",
+      "dimensions": [
+        296,
+        148
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/workers/wk_reskin_P5_labour_f-v1.png",
+      "runtime": "public/assets/walker-pilot2/workers/wk_reskin_P5_labour_f-v1.png",
+      "sourceSha256": "13d1db89dcedcdda9265e1c262de214f9adaf2cd85754e86af39dd9eca4a7da8",
+      "runtimeSha256": "13d1db89dcedcdda9265e1c262de214f9adaf2cd85754e86af39dd9eca4a7da8",
+      "dimensions": [
+        296,
+        148
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    },
+    {
+      "source": "assets-inbox/walker-pilot2/candidates-v1/assets/workers/wk_reskin_P6_widow_f-v1.png",
+      "runtime": "public/assets/walker-pilot2/workers/wk_reskin_P6_widow_f-v1.png",
+      "sourceSha256": "ea509af5d0c082fd7e255ccfb6bce823c34cb5f632d45b3a7f9822aa15c87a79",
+      "runtimeSha256": "ea509af5d0c082fd7e255ccfb6bce823c34cb5f632d45b3a7f9822aa15c87a79",
+      "dimensions": [
+        296,
+        148
+      ],
+      "chunks": [
+        "IHDR",
+        "sBIT",
+        "sRGB",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IDAT",
+        "IEND"
+      ],
+      "c2paRemoved": false
+    }
+  ]
+}
