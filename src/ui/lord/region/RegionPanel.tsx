@@ -8,6 +8,7 @@ import type { LordNavGate, LordPanelProps } from "../screen/lordScreenTypes";
 import { flagArtId, REGION_PART_IDS, siteArtId, useRegionMap } from "./regionArt";
 import { REGION_COPY as COPY } from "./regionCopy.ko";
 import { MAP_WIDTH, MARKER_SCALE, markerLayout, REGION_ZOOMS, regionChosen, regionEstates, type RegionEstateView, type RegionFlag, type RegionZoom } from "./regionModel";
+import { useLabelsInside } from "./useLabelsInside";
 
 // LM-R2 (region area): the lord screen's 지역 — one region map (the user's decision, 2026-10-06: lord-components-region's
 // map_region, the approved single map; the five-land atlas and its 18 neighbours wait for LM-E10). On it the home estate
@@ -73,6 +74,8 @@ export function RegionPanel({ state, focus, onOpen }: LordPanelProps): ReactElem
   const size = map.entry?.coordinateSpace ?? { width: 1600, height: 1000 };
   const scroller = useRef<HTMLDivElement | null>(null);
   const chosenLine = useRef<HTMLElement | null>(null);
+  const canvas = useRef<HTMLDivElement | null>(null);
+  useLabelsInside(scroller, canvas, zoom === "fit", [estates, zoom, map.url, chosen]);
   // A press on the map shows the chosen estate's line (it sits under the map; the screen scrolls only as far as needed).
   const choose = (estateId: string) => { setChosen(estateId); requestAnimationFrame(() => chosenLine.current?.scrollIntoView({ block: "nearest" })); };
   // A zoom keeps the chosen estate (or the home) in the middle of the map's view.
@@ -94,7 +97,7 @@ export function RegionPanel({ state, focus, onOpen }: LordPanelProps): ReactElem
           aria-pressed={zoom === step} onPress={() => setZoom(step)}>{COPY.zooms[step]}</Button>)}
       </div>
       <div className="lord-region-map" ref={scroller} role="group" aria-label={COPY.map} data-region-map={map.url === null ? "plain" : "art"}>
-        <div className="lord-region-canvas" style={{ width: zoom === "fit" ? "100%" : MAP_WIDTH[zoom], aspectRatio: `${size.width} / ${size.height}`,
+        <div className="lord-region-canvas" ref={canvas} style={{ width: zoom === "fit" ? "100%" : MAP_WIDTH[zoom], aspectRatio: `${size.width} / ${size.height}`,
           backgroundImage: map.url === null ? undefined : `url("${map.url}")` }}>
           {placed.map(view => <Marker key={view.estateId} view={view} scale={MARKER_SCALE[zoom]} chosen={chosen === view.estateId} parts={parts} size={size} onChoose={choose} />)}
         </div>

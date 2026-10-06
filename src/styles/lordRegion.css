@@ -33,10 +33,12 @@
    the map's middle by data-label-side, so a long name stays on the map. */
 .app-shell .lord-region-label {
   position: absolute; top: 100%; width: max-content; max-width: 10em; white-space: normal; overflow-wrap: anywhere;
+  /* useLabelsInside nudges a label back onto the map (px); the side rule sets --label-x. */
+  translate: calc(var(--label-x, 0%) + var(--label-nudge-x, 0px)) var(--label-nudge-y, 0px);
   margin-top: 2px; padding: 1px 6px; font-size: 12px; line-height: 1.4; color: var(--palette-ink);
   background: var(--palette-vellum); border: 1px solid var(--palette-earth); border-radius: 2px;
 }
-.app-shell .lord-region-label[data-label-side="centre"] { left: 50%; translate: -50% 0; text-align: center; }
+.app-shell .lord-region-label[data-label-side="centre"] { left: 50%; --label-x: -50%; text-align: center; }
 .app-shell .lord-region-label[data-label-side="start"] { left: 0; text-align: start; }
 .app-shell .lord-region-label[data-label-side="end"] { right: 0; text-align: end; }
 .app-shell .lord-region-site[aria-pressed="true"] .lord-region-label {
