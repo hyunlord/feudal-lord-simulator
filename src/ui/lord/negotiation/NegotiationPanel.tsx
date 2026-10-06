@@ -1,5 +1,6 @@
 import { useMemo, useState, type ReactElement } from "react";
 import type { GameState } from "../../../engine/engine.types";
+import { DECISION_CARD_COPY as CARD } from "../../decisionCard/decisionCardCopy.ko";
 import { Button } from "../../kit";
 import { lordPortraitStyle } from "../screen/lordPortrait";
 import type { LordNavGate, LordPanelProps } from "../screen/lordScreenTypes";
@@ -166,6 +167,35 @@ function DraftScreen({ view, parts, dispatch, setDraft }: {
   );
 }
 
+/** DEC-CARD: one part of an answer (now / later / who remembers), in the heavy cards' words and classes. */
+function Part({ heading, lines, empty }: { readonly heading: string; readonly lines: readonly string[]; readonly empty: string }): ReactElement {
+  return (
+    <div className="decision-card-part">
+      <span className="decision-card-part-head">{heading}</span>
+      {lines.length === 0 ? <span className="decision-card-none">{empty}</span> : <ul>{lines.map(line => <li key={line}>{line}</li>)}</ul>}
+    </div>
+  );
+}
+
+/** DEC-CARD: what each answer to the counter does (the engine's run of `answer_counter`), and what silence means. */
+function Outlook({ view }: { readonly view: CounterView }): ReactElement {
+  return (
+    <section className="lord-neg-outlook" aria-label={COPY.outlookHeading}>
+      <p className="lord-neg-note">{view.silence}</p>
+      <ol className="lord-neg-outlook-answers">
+        {view.outlook.map(answer => (
+          <li key={answer.id} className="lord-neg-outlook-answer" data-answer-outlook={answer.id}>
+            <h5>{answer.label}</h5>
+            <Part heading={CARD.now} lines={answer.now} empty={CARD.nothingLater} />
+            <Part heading={CARD.later} lines={answer.later} empty={CARD.nothingLater} />
+            <Part heading={CARD.remembers} lines={answer.remembers} empty={CARD.nobodyRemembers} />
+          </li>
+        ))}
+      </ol>
+    </section>
+  );
+}
+
 function CounterScreen({ view, parts, dispatch }: { readonly view: CounterView; readonly parts: Parts; readonly dispatch: LordPanelProps["dispatch"] }): ReactElement {
   // A press names the answer, the game dispatches it (B9 R4).
   const answer = (accept: boolean) => dispatch({ type: "answer_counter", negotiationId: view.negotiationId, accept });
@@ -180,6 +210,7 @@ function CounterScreen({ view, parts, dispatch }: { readonly view: CounterView; 
         <Acceptance parts={parts} view={view.preview} />
         <p className="lord-neg-note">{view.offered}</p>
         <p className="lord-neg-deadline">{view.deadline}</p>
+        <Outlook view={view} />
         <div className="lord-neg-actions lord-neg-answers">
           <Button type="button" className="lord-neg-accept" data-answer-counter="accept" aria-label={COPY.acceptLabel} disabled={!view.canAccept}
             onPress={() => answer(true)}>{COPY.accept}</Button>

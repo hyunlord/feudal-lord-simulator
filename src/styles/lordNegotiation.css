@@ -69,6 +69,14 @@
 .app-shell .lord-neg-actions > .ui-btn { min-height: 44px; }
 .app-shell .lord-neg-actions > .lord-neg-refusal { flex: 1 1 200px; }
 .app-shell .lord-neg-deadline { font-size: 13px; font-weight: 600; }
+/* DEC-CARD: each answer to the counter — now / later / who remembers (the heavy cards' parts, decisionCard.css), side by
+   side while each can be 220 px wide. */
+.app-shell .lord-neg-outlook { display: grid; gap: 6px; }
+.app-shell .lord-neg-outlook-answers { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+.app-shell .lord-neg-outlook-answer { display: grid; align-content: start; gap: 6px; padding: 8px; min-width: 0;
+  border: 1px solid var(--palette-earth); border-radius: 2px; background: var(--palette-vellum); }
+.app-shell .lord-neg-outlook-answer > h5 { margin: 0; font-size: 14px; color: var(--palette-ink); }
+.app-shell .lord-neg .lord-neg-outlook-answer .decision-card-part ul { margin: 2px 0 0; padding-left: 16px; list-style: disc; }
 
 /* The marriage's progress: the stage, the events as they fell, the facts, what is due. */
 .app-shell .lord-neg-timeline { display: grid; gap: 6px; }

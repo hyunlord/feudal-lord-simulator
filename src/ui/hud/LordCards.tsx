@@ -1,11 +1,11 @@
-import { DECISION_COPY } from "../decisionCopy.ko";
+import { DecisionCard } from "../decisionCard/DecisionCard";
+import type { DecisionCardView } from "../decisionCard/decisionCardTypes";
 import { EmblemImage, type EmblemSpec } from "../heraldry/EmblemImage";
 import { Button } from "../kit";
 import { LORD_CARDS_COPY } from "../lordCardsCopy.ko";
 import type { LordRequestView, PrecedentView } from "../lordCardsModel";
-import { storyArtStyle, type StoryIllustration } from "../storyArt";
 import { wave44ImageStyle, type Wave44ImageId } from "../wave44Art";
-import { wave8FrameLayerStyle, wave8ImageStyle } from "../wave8Art";
+import { wave8FrameLayerStyle } from "../wave8Art";
 
 // LM-R1 (petitions) the lord's cards (lord mode only; state machine modals: time stops while one is up). They wear the
 // petition card's Wave 8 frame and body as the political petitions do; the Wave 44 picture is shown whole (16:9), the
@@ -61,25 +61,9 @@ export function PrecedentModal({ view, onRecurring, onClose }: {
   );
 }
 
-export function LordRequestModal({ view, art, onGrant, onLater }: {
-  readonly view: LordRequestView; readonly art: StoryIllustration | null; readonly onGrant: () => void; readonly onLater: () => void;
+/** DEC-CARD: the town's request in the heavy card's layout (src/ui/decisionCard/families/lordRequestCard.ts). */
+export function LordRequestModal({ view, card, onGrant, onLater }: {
+  readonly view: LordRequestView; readonly card: DecisionCardView; readonly onGrant: () => void; readonly onLater: () => void;
 }) {
-  return (
-    <Frame label={view.title} data={{ "data-lord-request": view.kind, "data-answers": "1" }}>
-      <p className="lord-card-court">{view.court}</p>
-      {art === null ? null : <div className="petition-scene"><div className="story-modal-art" aria-hidden="true" style={storyArtStyle(art, 300)} /></div>}
-      <p className="lord-card-kicker">{LORD_CARDS_COPY.requestFrom}{view.more === "" ? "" : ` · ${view.more}`}</p>
-      <h2>{view.title}</h2>
-      <p>{view.demand}</p>
-      <ol className="petition-options">
-        <li>
-          <Button type="button" className="petition-option" data-grant="true" aria-label={DECISION_COPY.choose(view.grant)} onPress={() => onGrant()} variant="primary">
-            <span className="petition-seal" aria-hidden="true" style={wave8ImageStyle("seal_petition_accept", 44)} />
-            <strong>{view.grant}</strong>
-          </Button>
-        </li>
-      </ol>
-      <Button type="button" className="story-modal-later" onPress={() => onLater()} variant="secondary">{DECISION_COPY.later}</Button>
-    </Frame>
-  );
+  return <DecisionCard view={card} className="lord-card" data={{ "data-lord-request": view.kind }} onChoose={() => onGrant()} onLater={onLater} />;
 }

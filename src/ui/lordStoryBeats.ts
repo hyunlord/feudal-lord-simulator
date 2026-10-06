@@ -1,4 +1,5 @@
 import type { GameState } from "../engine/engine.types";
+import { buildingFootprint } from "../geometry/buildingFootprint";
 import { lordMode } from "../engine/townAgency";
 import type { StoryBeat } from "./eventStory";
 import { DECISION_CARDS_COPY } from "./lord/decisions/decisionCardsCopy.ko";
@@ -15,10 +16,13 @@ import type { StoryIllustration } from "./storyArt";
 // also opens its card once by itself (useStoryPresentation), as a political petition does. EVENT-ART: a registry offer
 // (an event entry) the same way, with its picture on the chip (none when the entry has no picture).
 
-/** The manor house (the lord's seat, where his court sits), else the keep: where [위치로] looks. */
+/** The manor house (the lord's seat, where his court sits), else the keep: where [위치로] looks — the middle tile of its
+ * footprint (MANOR-1: the manor is 3 × 3, so its top-left tile is one off its middle). */
 function seatTile(state: GameState) {
   const seat = state.buildings.find(building => building.kind === "manor_house") ?? state.buildings.find(building => building.kind === "keep");
-  return seat === undefined ? null : { tx: seat.tx, ty: seat.ty };
+  if (seat === undefined) return null;
+  const size = buildingFootprint(seat);
+  return { tx: seat.tx + Math.floor((size.width - 1) / 2), ty: seat.ty + Math.floor((size.height - 1) / 2) };
 }
 
 /** The town's requests' chip pictures: the market town's proclamation and the palisade's (Wave 16); timber has none. */

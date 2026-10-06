@@ -17,8 +17,8 @@ import { ChapterTwoPreview, ChroniclePage, FamineDecisionModal, PetitionModal } 
 import { LordRequestModal, PrecedentModal, RecurringSwitch } from "../hud/LordCards";
 import { DecisionCard } from "../decisionCard/DecisionCard";
 import { homePetitionCard } from "../decisionCard/families/homePetitionCard";
+import { lordRequestCard } from "../decisionCard/families/lordRequestCard";
 import { homePetitionView, lordRequestView, precedentView } from "../lordCardsModel";
-import { requestArt } from "../lordStoryBeats";
 import { RegistryOfferModal } from "../hud/RegistryCard";
 import { registryOfferView } from "../registryCardModel";
 import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../lord/decisions/DecisionCards";
@@ -87,6 +87,8 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
   const precedent = top === "precedent" ? precedentView(state) : null;
   const asked = top === "lord_request" ? lordRequestView(state) : null;
   const request = asked?.command === null ? null : asked;
+  // DEC-CARD: the town's request in the heavy card's layout (its grant run on the state: what it opens, the actual to come).
+  const requestCard = request === null ? null : lordRequestCard(state);
   // EVENT-ART: the registry's event card; it goes when its offer is answered, lapsed or invalid (no open offer left).
   const offer = top === "registry_offer" ? registryOfferView(state) : null;
   // LM-R2: the father's will or the contested inheritance, an audit's finding, an off-map estate's petition.
@@ -120,7 +122,7 @@ export function AppModals({ ui, sendUi, personCardId, chroniclePersonId, onChron
       extra={<RecurringSwitch on={homeView.recurring} onToggle={setRecurring} />} onLater={() => sendUi({ type: "pop_modal" })}
       onChoose={choice => { dispatch({ type: "answer_estate_petition", petitionId: homeView.petitionId, grant: choice === "grant" }); sendUi({ type: "pop_modal" }); }} />}
     {precedent === null ? null : <PrecedentModal view={precedent} onRecurring={setRecurring} onClose={() => sendUi({ type: "pop_modal" })} />}
-    {request === null ? null : <LordRequestModal view={request} art={requestArt(request.kind)} onLater={() => sendUi({ type: "pop_modal" })}
+    {request === null || requestCard === null ? null : <LordRequestModal view={request} card={requestCard} onLater={() => sendUi({ type: "pop_modal" })}
       onGrant={() => { if (request.command !== null) dispatch(request.command); sendUi({ type: "pop_modal" }); }} />}
     {offer === null ? null : <RegistryOfferModal view={offer} onLater={() => sendUi({ type: "pop_modal" })}
       onAnswer={choiceId => { dispatch({ type: "answer_registry_offer", occurrenceId: offer.occurrenceId, choiceId }); sendUi({ type: "pop_modal" }); }} />}

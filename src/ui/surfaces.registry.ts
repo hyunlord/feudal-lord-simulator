@@ -441,23 +441,25 @@ export const SURFACES: readonly SurfaceRow[] = [
   { id: "modal.lord.precedent", ...PETITION, root: ".story-modal.petition-card.lord-card[data-precedent]", frameSlots: [], siblingsNoOverlap: [".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".lord-card-court", ".lord-card-precedents li", ".lord-card-recurring", ".story-modal-later"],
     scene: petitionScene("petitions", "precedent", 1500), open: [{ story: ".lord-card[data-precedent]" }, { pause: 600 }], data: "the steward's answers by precedent (Wave 44 13)" },
-  { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.lord-card[data-lord-request]", frameSlots: [],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".petition-option", ".story-modal-later"],
-    scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }], data: "the town's request (a proclamation waiting)" },
+  { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-lord-request]", frameSlots: [],
+    siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
+    scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }],
+    data: "the town's request (a proclamation waiting) in the DEC-CARD layout: the grant's now (the works it opens) and later (the actual's day)" },
   // EVENT-ART: the registry's event card (src/ui/hud/RegistryCard.tsx) on scripts/eventArtStates.ts's states — the lord's
   // slice played by the lord bot to the first content canon v4 offer the registry draws, and to the first whose card has a
   // hold (ER-19: its cost under its tradeoff); it opens by itself after the world, as a petition does. The picture is not
   // a required element (as above).
-  { id: "modal.lord.registry", ...PETITION, root: ".story-modal.petition-card.lord-card[data-registry-offer]", frameSlots: [],
-    siblingsNoOverlap: [".petition-option", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".registry-card-why li", ".petition-option", ".lord-card-forecast", ".lord-card-precedent", ".story-modal-later"],
+  { id: "modal.lord.registry", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+    siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
-    data: "the first v4 offer the registry drew in the lord's slice: its why, each answer's tradeoff" },
-  { id: "modal.lord.registry-hold", ...PETITION, root: ".story-modal.petition-card.lord-card[data-registry-offer]", frameSlots: [],
-    siblingsNoOverlap: [".petition-option", ".story-modal-later"],
-    requires: ["h2", ".lord-card-court", ".petition-body > h2 + p", ".registry-card-why li", ".petition-option", ".lord-card-forecast", ".registry-card-hold", ".story-modal-later"],
+    data: "the first v4 offer the registry drew in the lord's slice (DEC-CARD layout): its why, each answer's tradeoff, now / later / who remembers, the shut one with why" },
+  { id: "modal.lord.registry-hold", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+    siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
+    requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer-hold", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
-    data: "the first v4 offer with a hold the lord can choose: the hold's cost in words under its tradeoff" },
+    data: "the first v4 offer with a hold the lord can choose (DEC-CARD layout): the hold's cost as the engine's run shows it (the claim weakened)" },
   // LM-R1 receipt: lord mode's "왜 여기?" receipt beside a selected building's card, and the ledger drawer's lord tab
   // (scripts/lmr1LordStates.ts: the lord's slice with the stability policy, dues 80% and a 10d farmstead subsidy).
   { id: "map.selection.lord-farmstead", root: ".diagnostic-card", frame: "css", scene: LORD_TOWN, open: [LORD_PICK], scroll: "y",

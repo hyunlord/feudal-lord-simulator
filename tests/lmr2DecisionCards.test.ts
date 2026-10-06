@@ -19,6 +19,12 @@ import { PortfolioPanel } from "../src/ui/lord/estates/PortfolioPanel";
 import { decidingId } from "../src/ui/lord/screen/DecideButton";
 import type { LordDecisionModal } from "../src/ui/lord/screen/lordScreenTypes";
 import { lordBeats } from "../src/ui/lordStoryBeats";
+import type { DecisionCardView } from "../src/ui/decisionCard/decisionCardTypes";
+import { lordOutcome } from "../src/ui/decisionCard/families/lordOutcome";
+import { afterAnswer } from "../src/ui/decisionCard/remembers";
+import { AuditDecisionModal, MarriageDecisionModal, OffMapPetitionModal } from "../src/ui/lord/decisions/DecisionCards";
+import { gameReducer } from "../src/state/gameStore";
+import type { GameAction } from "../src/state/gameStore.types";
 
 // LM-R2: the lord's decision cards (the father's will, the contested inheritance, an audit's finding, an off-map
 // petition) on real lord2 states (scripts/lmr2States.ts; LMR2_STATES=<dir>), and nothing of them outside lord mode.
@@ -49,8 +55,8 @@ test("the will's card: three equal answers with the engine's own numbers, and on
   if (state === null) { t.skip(NO_STATES); return; }
   const view = marriageDecisionView(state);
   assert.ok(view !== null && view.kind === "will_change");
-  assert.deepEqual(view.options.map(option => option.choice), ["favour", "support_promise", "let_it_be"]);
-  const favour = view.options[0]!;
+  assert.deepEqual(view.card.choices.map(choice => choice.id), ["favour", "support_promise", "let_it_be"]);
+  const favour = view.card.choices[0]!;
   const paid = treasuryBalance(answerWillChange(state, "favour")) - treasuryBalance(state);
   assert.equal(favour.refusal === null, paid !== 0, "the favour is refused exactly when the engine refuses it");
   const beats = lordBeats(state).filter(beat => beat.decision === "marriage_decision");
@@ -76,9 +82,9 @@ test("the audit's card: punish, replace, tolerate with the engine's numbers; ans
   const view = auditDecisionView(state);
   assert.ok(view !== null);
   assert.equal(view.auditId, pendingAudits(state)[0]!.id);
-  assert.deepEqual(view.options.map(option => option.choice), ["punish", "replace", "tolerate"]);
-  for (const option of view.options) {
-    assert.equal(option.refusal === null, answerAudit(state, view.auditId, option.choice) !== state, option.choice);
+  assert.deepEqual(view.card.choices.map(choice => choice.id), ["punish", "replace", "tolerate"]);
+  for (const choice of view.card.choices) {
+    assert.equal(choice.refusal === null, answerAudit(state, view.auditId, choice.id as "punish" | "replace" | "tolerate") !== state, choice.id);
   }
   assert.equal(auditDecisionView(answerAudit(state, view.auditId, "tolerate")), null);
 });
@@ -94,7 +100,7 @@ test("an off-map estate's petition gets its card; the home estate's keep LM-R1's
     if (view === null) continue;
     seen += 1;
     assert.notEqual(view.estateId, "estate-home", name);
-    assert.deepEqual(view.options.map(option => option.grant), [true, false]);
+    assert.deepEqual(view.card.choices.map(choice => choice.id), ["grant", "refuse"]);
     assert.notEqual(offMapPetitionView(answerEstatePetition(state, view.petitionId, true))?.petitionId, view.petitionId, `${name}: answered, it goes`);
   }
   t.diagnostic(`${seen} of ${found.length} lord2 states hold an off-map petition`);
@@ -115,4 +121,75 @@ test("from the 영지 screen, the first waiting audit and petition open their ca
     else assert.doesNotMatch(html, new RegExp(`data-decide-id="${petition.id}"`), `${petition.id}: behind another`);
   }
   assert.doesNotMatch(render(), /data-decide=/, "no way to a card without the host's onDecide");
+});
+
+// DEC-CARD: each card is the heavy decision card — what is happening, what is at stake, until when, and each answer's
+// now / later / who remembers, the engine's own (the command run on the state, put in words by lordOutcome).
+const ACTION: Readonly<Record<string, (state: GameState, id: string) => GameAction>> = {
+  will_change: (_state, id) => ({ type: "answer_will_change", choice: id as "favour" | "support_promise" | "let_it_be" }),
+  audit: (state, id) => ({ type: "answer_audit", auditId: pendingAudits(state)[0]!.id, choice: id as "punish" | "replace" | "tolerate" }),
+  estate_petition_offmap: (state, id) => ({ type: "answer_estate_petition", petitionId: openOffMapPetitions(state)[0]!.id, grant: id === "grant" }),
+};
+
+function cardsOf(state: GameState): readonly { readonly card: DecisionCardView; readonly markup: string }[] {
+  const shown: { card: DecisionCardView; markup: string }[] = [];
+  const marriage = marriageDecisionView(state);
+  if (marriage !== null) shown.push({ card: marriage.card, markup: renderToStaticMarkup(createElement(MarriageDecisionModal, { view: marriage, onAnswer: () => undefined, onOpenSuit: () => undefined, onLater: () => undefined })) });
+  const audit = auditDecisionView(state);
+  if (audit !== null) shown.push({ card: audit.card, markup: renderToStaticMarkup(createElement(AuditDecisionModal, { view: audit, onAnswer: () => undefined, onLater: () => undefined })) });
+  const offMap = offMapPetitionView(state);
+  if (offMap !== null) shown.push({ card: offMap.card, markup: renderToStaticMarkup(createElement(OffMapPetitionModal, { view: offMap, onAnswer: () => undefined, onLater: () => undefined })) });
+  return shown;
+}
+
+test("DEC-CARD: the will, the audit and the off-map petition say what is happening, what is at stake, and each answer's now / later / who remembers — the engine's own", t => {
+  const found = ["will-change", "audit-pending", "inherited", "promises"].map(name => ({ name, state: lord2(name) })).filter((entry): entry is { name: string; state: GameState } => entry.state !== null);
+  if (found.length === 0) { t.skip(NO_STATES); return; }
+  const families = new Set<string>();
+  for (const { name, state } of found) {
+    for (const { card, markup } of cardsOf(state)) {
+      families.add(card.family);
+      assert.ok(card.situation !== "" && card.stake !== "" && card.deadline !== null, `${name} ${card.family}`);
+      for (const choice of card.choices) {
+        const after = afterAnswer(state, ACTION[card.family]!(state, choice.id));
+        assert.equal(choice.refusal === null, after !== null, `${name} ${card.family} ${choice.id}: shut exactly when the engine refuses it`);
+        if (after === null) continue;
+        const outcome = lordOutcome(state, after);
+        assert.ok(outcome.now.every(line => choice.now.includes(line)), `${name} ${choice.id}: the run's now`);
+        assert.ok(outcome.later.every(line => choice.later.includes(line)), `${name} ${choice.id}: the run's later`);
+        assert.deepEqual(choice.remembers, outcome.remembers, `${name} ${choice.id}`);
+        assert.ok(choice.now.length > 0, `${name} ${choice.id}: at least the treasury's line`);
+      }
+      for (const part of ["무슨 일인가", "걸린 것", "지금", "나중에", "기억하는 이"]) assert.ok(markup.includes(part), `${name} ${card.family}: ${part}`);
+      assert.match(markup, /class="story-modal petition-card decision-card lord-card"/);
+      assert.doesNotMatch(markup, /ui-btn--primary/, "equal answers, all secondary (LR1-D2)");
+      assert.doesNotMatch(markup, /\stitle="/);
+    }
+  }
+  t.diagnostic(`families: ${[...families].join(", ")}`);
+  const will = lord2("will-change");
+  if (will !== null) {
+    const card = marriageDecisionView(will)!.card;
+    const support = card.choices.find(choice => choice.id === "support_promise")!;
+    const made = diplomacyOf(gameReducer(will, { type: "answer_will_change", choice: "support_promise" })).promises.at(-1)!;
+    assert.ok(support.later.some(line => line.includes(String(made.stake.relation)) && line.includes("증인")), "the promise's stake and witnesses");
+    const letBe = card.choices.find(choice => choice.id === "let_it_be")!;
+    assert.ok(letBe.now.some(line => line.includes("청구를 냅니다")), "the rival's claim");
+  }
+  const audit = lord2("audit-pending");
+  if (audit !== null) {
+    const punish = auditDecisionView(audit)!.card.choices.find(choice => choice.id === "punish")!;
+    assert.ok(punish.remembers.some(entry => entry.delta < 0), "the punished steward's faction remembers it");
+  }
+});
+
+test("DEC-CARD: the contested inheritance keeps its one primary act, the way to the suit, and no answer of its own", t => {
+  const state = lord2("contested");
+  if (state === null) { t.skip(NO_STATES); return; }
+  const view = marriageDecisionView(state)!;
+  assert.equal(view.card.choices.length, 0);
+  const markup = renderToStaticMarkup(createElement(MarriageDecisionModal, { view, onAnswer: () => undefined, onOpenSuit: () => undefined, onLater: () => undefined }));
+  assert.equal((markup.match(/ui-btn--primary/g) ?? []).length, 1);
+  assert.match(markup, /class="lord-decision-open[^"]*ui-btn--primary/);
+  for (const part of ["무슨 일인가", "걸린 것"]) assert.ok(markup.includes(part), part);
 });

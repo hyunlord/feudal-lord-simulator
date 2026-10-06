@@ -1,43 +1,57 @@
 import { HOME_ESTATE_ID } from "../../../content/estateConfig";
+import { factionDisplayName } from "../../../content/factionCopy.ko";
 import { GENTRY_NAMES_KO } from "../../../content/gentryNames";
 import type { GameState } from "../../../engine/engine.types";
 import { estatesOf, LORD } from "../../../engine/estates";
-import { answerWillChange, marriageDecisionDue } from "../../../engine/marriage";
+import { faction } from "../../../engine/factions";
+import { marriageDecisionDue } from "../../../engine/marriage";
 import { diplomacyOf } from "../../../engine/negotiation";
 import { personDisplayName } from "../../../engine/persons";
 import type { Person } from "../../../engine/persons.types";
-import { answerAudit, answerEstatePetition, lordEstatePetitions, pendingAudits, stewardshipOf } from "../../../engine/stewardship";
+import { lordEstatePetitions, pendingAudits, stewardshipOf } from "../../../engine/stewardship";
 import type { EstatePetition } from "../../../engine/stewardship.types";
 import { lordMode } from "../../../engine/townAgency";
-import { treasuryBalance } from "../../../ledger/ledger";
+import type { GameAction } from "../../../state/gameStore.types";
+import type { DecisionCardView, DecisionChoiceView } from "../../decisionCard/decisionCardTypes";
+import { lordOutcome } from "../../decisionCard/families/lordOutcome";
+import { LORD_OUTCOME_COPY as OUTCOME } from "../../decisionCard/families/lordOutcomeCopy.ko";
+import { afterAnswer } from "../../decisionCard/remembers";
 import { calendarDays } from "../../gameTimeCopy.ko";
 import { courtLine } from "../../lordCardsModel";
 import { perState } from "../../perState";
+import { ESTATES_COPY } from "../estates/estatesCopy.ko";
 import { DECISION_CARDS_COPY as COPY, OFFMAP_PETITION_COPY } from "./decisionCardsCopy.ko";
 
 // LM-R2 (lord mode) the lord's decision cards as view models: the father's new will and the contested inheritance
 // (NG-8 `marriageDecisionDue`), a Michaelmas audit's finding (SW-6 `pendingAudits`) and an off-map estate's petition
-// (SW-4 `lordEstatePetitions`, the home estate's are LM-R1's card). Each answer's numbers and refusal come from a dry
-// run of the engine's own command on the state (it is pure: the same state back means the engine refuses it), so no
-// rule, cost or threshold is copied here. Engine request docs/requests/engine-lmr2-seen-and-reads.md §2 asks for the
+// (SW-4 `lordEstatePetitions`, the home estate's are LM-R1's card). DEC-CARD: each is the heavy decision card
+// (src/ui/decisionCard/): the situation, the stake, the deadline and what silence means, and each answer's now / later /
+// who remembers from the engine's own command run on the state (gameReducer is pure: the same state back means the
+// engine refuses it; lordOutcome puts the difference in words), so no rule, cost or threshold is copied here. Engine request docs/requests/engine-lmr2-seen-and-reads.md §2 asks for the
 // same as read models (`estatePetitionEffect`, `auditAnswerEffect`, `willChangeRefusal`); they would replace the runs.
 // The runs happen only for a card that is up, once per state (`perState`: AppModals re-renders on clock and UI events
 // while a card is up); the chips read the heads, which run nothing.
 
-export type DecisionOption<T extends string> = Readonly<{ choice: T; label: string; line: string; refusal: string | null }>;
+/** A card's answer in the heavy layout: its command's value, its label, and its now / later / who remembers. */
+type Choice = DecisionChoiceView;
 
-export type WillChangeView = Readonly<{ kind: "will_change"; estate: string; court: string; title: string; line: string;
-  options: readonly DecisionOption<"favour" | "support_promise" | "let_it_be">[] }>;
-export type ContestedView = Readonly<{ kind: "contested"; estate: string; court: string; title: string; line: string; suit: string;
+export type WillChangeView = Readonly<{ kind: "will_change"; estate: string; card: DecisionCardView }>;
+export type ContestedView = Readonly<{ kind: "contested"; estate: string; suit: string;
   /** What the ledger screen opens on: the lord's suit on the claim, else the claim itself. */
-  focus: string }>;
+  focus: string; card: DecisionCardView }>;
 export type MarriageDecisionView = WillChangeView | ContestedView;
 
-export type AuditDecisionView = Readonly<{ auditId: string; estateId: string; court: string; kicker: string; title: string; line: string;
-  waits: string; options: readonly DecisionOption<"punish" | "replace" | "tolerate">[] }>;
+export type AuditDecisionView = AuditDecisionHead & Readonly<{ card: DecisionCardView }>;
+export type OffMapPetitionView = OffMapPetitionHead & Readonly<{ card: DecisionCardView }>;
 
-export type OffMapPetitionView = Readonly<{ petitionId: string; estateId: string; kind: EstatePetition["kind"]; court: string; kicker: string;
-  title: string; line: string; why: string; waits: string; options: readonly (DecisionOption<"grant" | "refuse"> & { readonly grant: boolean })[] }>;
+/** One answer: the engine's command run on the state (`afterAnswer`, gameReducer), its outcome in words, or shut with why. */
+function answer(state: GameState, id: string, label: string, action: GameAction, refused: string,
+  extra: { readonly now?: readonly string[]; readonly later?: readonly string[] } = {}): Choice {
+  const after = afterAnswer(state, action);
+  if (after === null) return { id, label, now: [], later: [], remembers: [], refusal: refused };
+  const outcome = lordOutcome(state, after);
+  return { id, label, now: [...extra.now ?? [], ...outcome.now], later: [...outcome.later, ...extra.later ?? []], remembers: outcome.remembers, refusal: null };
+}
 
 /** An estate by its house's Korean reading ("드 헤로넬 영지"), as the registry card names it (GENTRY_NAMES_KO). */
 const estateName = (state: GameState, estateId: string) => {
@@ -48,6 +62,11 @@ const estateName = (state: GameState, estateId: string) => {
 function personOf(state: GameState, id: string): Person | undefined {
   return estatesOf(state).people.find(person => person.id === id) ?? state.persons?.people.find(person => person.id === id);
 }
+
+const factionName = (state: GameState, id: string): string => {
+  const view = faction(state, id as Parameters<typeof faction>[1]);
+  return view === undefined ? id : factionDisplayName(view.id, view.name);
+};
 
 const holderName = (state: GameState, holder: string | undefined): string => {
   const person = holder?.startsWith("person:") === true ? personOf(state, holder.slice("person:".length)) : undefined;
@@ -70,26 +89,26 @@ export function marriageDecisionHead(state: GameState): MarriageDecisionHead | n
     suit: suit === undefined ? COPY.contestNoSuit : COPY.contestSuit(COPY.suitStage[suit.stage] ?? suit.stage), focus: suit?.id ?? plan.claimId };
 }
 
+/** A claim's strength by its id, or null. */
+const claimStrength = (state: GameState, claimId: string | undefined) =>
+  claimId === undefined ? null : estatesOf(state).claims.find(claim => claim.id === claimId)?.strength ?? null;
+
 /** The father's will to answer, or the inheritance contested (its suit), as the lord's card shows it; null: neither. */
 export const marriageDecisionView = perState((state: GameState): MarriageDecisionView | null => {
   const head = marriageDecisionHead(state);
   if (head === null) return null;
-  const { estate, title, line } = head;
-  if (head.kind === "contested") return { kind: "contested", estate, court: courtLine(state), title, line, suit: head.suit, focus: head.focus };
-  const option = (choice: "favour" | "support_promise" | "let_it_be", label: string, describe: (after: GameState) => string) => {
-    const after = answerWillChange(state, choice);
-    const refused = after === state;
-    return { choice, label, line: refused ? "" : describe(after), refusal: refused ? (choice === "favour" ? COPY.refusedTreasury : COPY.refusedNow) : null };
-  };
-  const newPromise = (after: GameState) => diplomacyOf(after).promises.find(entry => !diplomacyOf(state).promises.some(old => old.id === entry.id));
-  return {
-    kind: "will_change", estate, court: courtLine(state), title, line,
-    options: [
-      option("favour", COPY.willFavour, after => COPY.willFavourLine(treasuryBalance(after) - treasuryBalance(state))),
-      option("support_promise", COPY.willSupport, after => COPY.willSupportLine(calendarDays((newPromise(after)?.deadline ?? state.tick) - state.tick))),
-      option("let_it_be", COPY.willLetBe, () => COPY.willLetBeLine),
-    ],
-  };
+  const { estate, title } = head;
+  const base = { family: head.kind, subjectId: head.claimId, title, court: courtLine(state), illustration: null };
+  if (head.kind === "contested") {
+    const rival = estatesOf(state).claims.find(claim => claim.estateId === diplomacyOf(state).marriage?.estateId && claim.claimant === diplomacyOf(state).marriage?.rival);
+    return { kind: "contested", estate, suit: head.suit, focus: head.focus, card: { ...base, from: head.suit, situation: head.line,
+      stake: COPY.contestStake(estate, claimStrength(state, head.claimId), rival?.strength ?? null), deadline: null, choices: [] } };
+  }
+  const choice = (id: "favour" | "support_promise" | "let_it_be", label: string, later: readonly string[] = []) =>
+    answer(state, id, label, { type: "answer_will_change", choice: id }, id === "favour" ? COPY.refusedTreasury : COPY.refusedNow, { later });
+  return { kind: "will_change", estate, card: { ...base, from: COPY.willFrom(estate), situation: COPY.willSituation(estate),
+    stake: COPY.willStake(estate, claimStrength(state, head.claimId) ?? 0), deadline: COPY.willDeadline,
+    choices: [choice("favour", COPY.willFavour), choice("support_promise", COPY.willSupport), choice("let_it_be", COPY.willLetBe, [COPY.willLetBeLater])] } };
 });
 
 export type AuditDecisionHead = Readonly<{ auditId: string; estateId: string; kicker: string; title: string; line: string; waits: string }>;
@@ -112,21 +131,16 @@ export const auditDecisionView = perState((state: GameState): AuditDecisionView 
   const head = auditDecisionHead(state);
   if (head === null) return null;
   const audit = pendingAudits(state)[0]!;
-  const before = stewardshipOf(state);
-  const option = (choice: "punish" | "replace" | "tolerate", label: string): DecisionOption<typeof choice> => {
-    const after = answerAudit(state, audit.id, choice);
-    if (after === state) return { choice, label, line: "", refusal: choice === "tolerate" ? COPY.refusedNow : COPY.auditNoSuccessor };
-    if (choice === "tolerate") {
-      const loyalty = (stewardshipOf(after).stewards.find(entry => entry.personId === audit.stewardId)?.loyalty ?? 0)
-        - (before.stewards.find(entry => entry.personId === audit.stewardId)?.loyalty ?? 0);
-      return { choice, label, line: COPY.auditStays(loyalty), refusal: null };
-    }
-    const successorId = stewardshipOf(after).oversight.find(entry => entry.estateId === audit.estateId)?.stewardId;
-    const successor = successorId === undefined ? undefined : personOf(state, successorId);
-    const recovered = COPY.auditRecovered(treasuryBalance(after) - treasuryBalance(state));
-    return { choice, label, line: successor === undefined ? recovered : `${recovered} · ${COPY.auditSuccessor(personDisplayName(successor))}`, refusal: null };
-  };
-  return { ...head, court: courtLine(state), options: [option("punish", COPY.auditPunish), option("replace", COPY.auditReplace), option("tolerate", COPY.auditTolerate)] };
+  const steward = stewardshipOf(state).stewards.find(entry => entry.personId === audit.stewardId);
+  const person = personOf(state, audit.stewardId);
+  const name = person === undefined ? COPY.rivalUnknown : personDisplayName(person);
+  const connection = steward?.connection === null || steward?.connection === undefined ? null : factionName(state, steward.connection);
+  const choice = (id: "punish" | "replace" | "tolerate", label: string) => answer(state, id, label, { type: "answer_audit", auditId: audit.id, choice: id },
+    id === "tolerate" ? COPY.refusedNow : COPY.auditNoSuccessor, id === "tolerate" ? { now: [OUTCOME.stewardStays(name)] } : {});
+  return { ...head, card: { family: "audit", subjectId: audit.id, title: head.title, court: courtLine(state), from: head.kicker, situation: head.line,
+    stake: COPY.auditStake(estateName(state, audit.estateId), name, steward === undefined ? "" : ESTATES_COPY.dispositions[steward.disposition], connection),
+    deadline: COPY.auditDeadline(calendarDays(audit.deadline - state.tick)), illustration: null,
+    choices: [choice("punish", COPY.auditPunish), choice("replace", COPY.auditReplace), choice("tolerate", COPY.auditTolerate)] } };
 });
 
 /** The off-map estates' petitions waiting for the lord and still answerable (the home estate's have their own card; one past
@@ -156,22 +170,12 @@ export function offMapPetitionHead(state: GameState): OffMapPetitionHead | null 
 export const offMapPetitionView = perState((state: GameState): OffMapPetitionView | null => {
   const head = offMapPetitionHead(state);
   if (head === null) return null;
+  const petition = openOffMapPetitions(state)[0]!;
   const copy = OFFMAP_PETITION_COPY[head.kind as keyof typeof OFFMAP_PETITION_COPY];
-  const oversight = (from: GameState) => stewardshipOf(from).oversight.find(entry => entry.estateId === head.estateId);
-  const value = (from: GameState) => estatesOf(from).estates.find(entry => entry.id === head.estateId)?.annualValue ?? 0;
-  const option = (grant: boolean) => {
-    const choice = grant ? "grant" as const : "refuse" as const;
-    const label = grant ? copy.grant : copy.refuse;
-    const after = answerEstatePetition(state, head.petitionId, grant);
-    if (after === state) return { choice, grant, label, line: "", refusal: COPY.refusedNow };
-    const parts = [COPY.treasury(treasuryBalance(after) - treasuryBalance(state))];
-    const [was, now] = [oversight(state), oversight(after)];
-    if (was !== undefined && now !== undefined) {
-      if (now.tenants !== was.tenants) parts.push(COPY.goodwill("tenants", now.tenants - was.tenants));
-      if (now.merchants !== was.merchants) parts.push(COPY.goodwill("merchants", now.merchants - was.merchants));
-    }
-    if (value(after) < value(state)) parts.push(COPY.valueDrop);
-    return { choice, grant, label, line: parts.join(" · "), refusal: null };
-  };
-  return { ...head, court: courtLine(state), options: [option(true), option(false)] };
+  const goodwill = stewardshipOf(state).oversight.find(entry => entry.estateId === head.estateId)?.[petition.group] ?? 0;
+  const choice = (grant: boolean) => answer(state, grant ? "grant" : "refuse", grant ? copy.grant : copy.refuse,
+    { type: "answer_estate_petition", petitionId: head.petitionId, grant }, COPY.refusedNow);
+  return { ...head, card: { family: "estate_petition_offmap", subjectId: head.petitionId, title: head.title, court: courtLine(state), from: head.kicker,
+    situation: head.why === "" ? head.line : `${head.line} ${head.why}.`, stake: COPY.petitionStake(estateName(state, head.estateId), petition.group, goodwill),
+    deadline: COPY.petitionDeadline(calendarDays(petition.deadline - state.tick)), illustration: null, choices: [choice(true), choice(false)] } };
 });

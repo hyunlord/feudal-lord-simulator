@@ -1,10 +1,10 @@
 import type { EstatePetition, EstatePetitionKind } from "../../../engine/stewardship.types";
-import { moneyFullDelta, moneyShort } from "../../money.ko";
+import { moneyShort } from "../../money.ko";
 
 // LM-R2 (lord mode) the lord's decision cards: the father's new will (NG-8 `answer_will_change`), the contested
 // inheritance (answered by the suit), a Michaelmas audit's finding (SW-6 `answer_audit`) and an off-map estate's
 // petition (SW-4 `answer_estate_petition`). Words follow docs/design/glossary.md (청지기, 영지, 소작인); the lord's
-// answers are his act ("~한다"); each answer's numbers are the engine's own (a dry run of the command).
+// answers are his act ("~한다"); each answer's lines are the engine's own (the command run on the state, lordOutcome.ts).
 
 /** The particle after a Korean word: the first form after a final consonant (받침), the second after a vowel. */
 const josa = (word: string, withFinal: string, without: string) => { const code = word.charCodeAt(word.length - 1) - 0xac00; return code >= 0 && code <= 11171 && code % 28 !== 0 ? withFinal : without; };
@@ -33,14 +33,10 @@ export const DECISION_CARDS_COPY = {
   estate: (house: string | null) => house === null ? "이웃 영지" : `${house} 영지`,
   // The father's will (NG-8).
   willTitle: "늙은 영주의 새 유언",
-  willKicker: "혼인 상대 가문",
   willLine: (estate: string) => `${estate}의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다. 한 철 안에 답하지 않으면 새 유언이 그대로 섭니다.`,
   willFavour: "호의를 보낸다",
-  willFavourLine: (pennies: number) => `금고 ${moneyFullDelta(pennies)} · 새 유언을 거둡니다`,
   willSupport: "지원을 약속한다",
-  willSupportLine: (days: number) => `약속 장부에 정치적 지원 약속이 오릅니다(${days}일 안에 지킴) · 새 유언을 거둡니다`,
   willLetBe: "그대로 둔다",
-  willLetBeLine: "조카가 유언을 근거로 청구를 얻습니다. 늙은 영주가 죽으면 소송으로 다툽니다",
   willAdvice: "한 철 안에 답하지 않으면 그대로 둔 것으로 칩니다.",
   refusedTreasury: "금고가 모자랍니다",
   refusedNow: "지금은 할 수 없습니다",
@@ -59,20 +55,29 @@ export const DECISION_CARDS_COPY = {
     `${estate}의 감사에서 청지기 ${steward}의 장부에 드러난 것: ${[kept > 0 ? `빼돌린 돈 ${moneyShort(kept)}` : "", errors > 0 ? `오류 ${moneyShort(errors)}` : ""].filter(part => part !== "").join(" · ")}.`,
   auditAdvice: "한 철 안에 답하지 않으면 눈감아 준 것으로 칩니다.",
   auditPunish: "벌한다", auditReplace: "갈아 치운다", auditTolerate: "눈감아 준다",
-  auditRecovered: (pennies: number) => pennies === 0 ? "되찾는 돈 없음" : `되찾는 돈 ${moneyFullDelta(pennies)}`,
-  auditSuccessor: (name: string) => `${name}${josa(name, "이", "가")} 뒤를 맡음`,
-  auditStays: (loyalty: number) => `청지기가 남음 · 충성 ${loyalty >= 0 ? "+" : ""}${loyalty}`,
   auditNoSuccessor: "뒤를 맡을 사람이 없습니다",
   // An off-map estate's petition (SW-4).
   petitionKicker: (estate: string) => `${estate}의 청원`,
   petitionLine: (estate: string, group: EstatePetition["group"], title: string, amount: number) =>
     `${estate}의 ${GROUP[group]}${josa(GROUP[group], "이", "가")} ${title}${josa(title, "을", "를")} 청합니다. 걸린 돈은 ${moneyShort(amount)}입니다.`,
   petitionWhy: (escalated: EstatePetition["escalated"]) => escalated === undefined ? "" : ESCALATED[escalated],
-  treasury: (pennies: number) => pennies === 0 ? "금고 변화 없음" : `금고 ${moneyFullDelta(pennies)}`,
-  goodwill: (group: EstatePetition["group"], delta: number) => `${GROUP[group]} 호감 ${delta >= 0 ? "+" : ""}${delta}`,
-  valueDrop: "영지 가치가 떨어짐",
   petitionAdvice: "답을 기다리는 동안 답하지 않으면 청원은 기각된 것으로 칩니다.",
   waits: (days: number) => `답을 기다림 · ${days}일 남음`,
-  later: "나중에",
   close: "닫기",
+  // DEC-CARD: the heavy card's situation, stake and deadline for each of these cards (each answer's lines are the
+  // engine's, src/ui/decisionCard/families/lordOutcome.ts).
+  willFrom: (estate: string) => `혼인 상대 가문 · ${estate}`,
+  willSituation: (estate: string) => `${estate}의 늙은 영주가 병석에서 유언을 고치려 합니다. 영지를 조카에게 남기는 유언입니다.`,
+  willStake: (estate: string, strength: number) =>
+    `${estate} 전체가 걸려 있습니다. 혼인으로 얻은 영주의 상속 청구(힘 ${strength})가 새 유언에 밀릴 수 있습니다.`,
+  willDeadline: "한 철 안에 답해야 합니다. 답하지 않으면 새 유언이 그대로 서고, 그대로 둔 것으로 칩니다.",
+  willLetBeLater: "늙은 영주가 죽으면 조카가 영지를 차지하고, 영주는 소송으로 다투게 됩니다.",
+  contestStake: (estate: string, ours: number | null, theirs: number | null) =>
+    `${estate} 전체가 걸려 있습니다.${ours === null ? "" : ` 영주의 청구 힘 ${ours}`}${theirs === null ? "" : `${ours === null ? " " : ", "}상대의 청구 힘 ${theirs}`}${ours === null && theirs === null ? "" : "."}`,
+  auditStake: (estate: string, steward: string, disposition: string, faction: string | null) =>
+    `${estate}의 장부와, 그 영지를 누구에게 맡길지가 걸려 있습니다. 청지기 ${steward}${josa(steward, "은", "는")} ${disposition} 성향${faction === null ? "입니다" : `이고 ${faction} 쪽 사람입니다`}.`,
+  auditDeadline: (days: number) => `${days}일 안에 답해야 합니다. 답하지 않으면 눈감아 준 것으로 칩니다.`,
+  petitionStake: (estate: string, group: EstatePetition["group"], goodwill: number) =>
+    `${estate} ${GROUP[group]}의 마음(지금 호감 ${goodwill})과 영지의 수입이 걸려 있습니다.`,
+  petitionDeadline: (days: number) => `${days}일 안에 답해야 합니다. 답하지 않으면 기각한 것으로 칩니다.`,
 } as const;

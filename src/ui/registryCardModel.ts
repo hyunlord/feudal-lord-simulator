@@ -12,13 +12,17 @@ import type { Person } from "../engine/persons.types";
 import { offerChoices, openRegistryOffers } from "../engine/registry";
 import type { RegistryOccurrence } from "../engine/registry.types";
 import { holds, type Scope } from "../engine/registryDsl";
-import { bindEntry, holdCost, registryV4Support, runCommands, v4Entry, type HoldCost, type V4Choice, type V4Entry } from "../engine/registryV4";
+import { bindEntry, holdCost, registryV4Support, v4Entry, type HoldCost, type V4Choice, type V4Entry } from "../engine/registryV4";
 import { stateCalendar } from "../engine/scenarioState";
 import { lordMode } from "../engine/townAgency";
 import { treasuryBalance } from "../ledger/ledger";
 import { eventArtFor, type EventArtId } from "./eventArt";
 import { calendarDays } from "./gameTimeCopy.ko";
+import type { DecisionCardView, DecisionChoiceView } from "./decisionCard/decisionCardTypes";
+import { lordOutcome } from "./decisionCard/families/lordOutcome";
+import { afterAnswer } from "./decisionCard/remembers";
 import { courtLine } from "./lordCardsModel";
+import { perState } from "./perState";
 import { BINDING_WORDS, PIECE_WORDS, REGISTRY_CARD_COPY, SUIT_STAGE_WORDS, type ShutReason } from "./registryCardCopy.ko";
 
 // EVENT-ART: the registry event card (lord mode only, `lordMode`) — an offer the registry made from the content canon v4
@@ -26,7 +30,9 @@ import { BINDING_WORDS, PIECE_WORDS, REGISTRY_CARD_COPY, SUIT_STAGE_WORDS, type 
 // deadline). Home petitions (ER-5) have their own card (LM-R1), never this one. Everything on it is the engine's: the
 // canon's words (V4_COPY), what the offer is bound to and its draw (why it came), the choices the engine would carry
 // out now (`offerChoices`; each other one shut with why), what a hold costs (ER-19 `holdCost`) and the deadline. The
-// answer is `answer_registry_offer`, applied whole or not at all.
+// answer is `answer_registry_offer`, applied whole or not at all. DEC-CARD: the card is the heavy decision card — the
+// canon's body as what is happening, the bound targets as what is at stake, and each answer's now / later / who
+// remembers from `answer_registry_offer` run on the state (lordOutcome), the canon's tradeoff first.
 
 export type RegistryChoiceView = Readonly<{
   id: string; label: string; enabled: boolean;
@@ -46,6 +52,8 @@ export type RegistryOfferView = Readonly<{
   choices: readonly RegistryChoiceView[];
   /** What an unanswered offer does at its deadline. */
   lapse: string;
+  /** DEC-CARD: the offer in the heavy card's layout. */
+  card: DecisionCardView;
 }>;
 export type RegistryCard = Readonly<{ occurrence: RegistryOccurrence; entry: V4Entry }>;
 
@@ -83,6 +91,16 @@ function itemName(state: GameState, value: unknown): string | null {
   if (typeof item.claimId === "string" && typeof item.stage === "string") return REGISTRY_CARD_COPY.suit(pieceWord(item.pieceId) ?? REGISTRY_CARD_COPY.wholeEstate, SUIT_STAGE_WORDS[item.stage] ?? null);
   if (typeof item.kind === "string" && typeof item.titleHolder === "string") return PIECE_WORDS[item.kind] ?? null;
   return null;
+}
+
+/** What is at stake: the targets the offer is bound to, by name ("청구(어업권)"); with none, the sender's faction, or null. */
+function registryStake(state: GameState, { occurrence, entry }: RegistryCard): string | null {
+  const bound = bindEntry(state, entry, occurrence.bound);
+  const items = Object.keys(occurrence.bound ?? {}).flatMap(name => {
+    const what = Object.hasOwn(BINDING_WORDS, name) ? BINDING_WORDS[name] : REGISTRY_CARD_COPY.boundUnknown;
+    return what === null || what === undefined ? [] : [REGISTRY_CARD_COPY.stakeItem(what, bound === null ? null : itemName(state, bound[name]))];
+  });
+  return items.length === 0 ? null : REGISTRY_CARD_COPY.stake([...new Set(items)]);
 }
 
 /** ER-3, ER-15: why it came — the conditions held, what the offer is bound to (by name where it has one), a one-shot entry, the draw. */
@@ -144,13 +162,14 @@ function holdWords(state: GameState, cost: HoldCost): string {
 }
 
 /** Who sends it: the canon's sender, and the faction it speaks for (by the town's own name when it is one of the town's). */
-function sender(state: GameState, entryId: string): string {
+function senderParts(state: GameState, entryId: string): readonly [string, string | null] {
   const copy = V4_COPY[entryId];
-  if (copy === undefined) return REGISTRY_CARD_COPY.from("", null);
+  if (copy === undefined) return ["", null];
   const id = V4_SENDER_FACTION[copy.senderFaction];
   const named = id === undefined ? undefined : faction(state, id as Parameters<typeof faction>[1]);
-  return REGISTRY_CARD_COPY.from(copy.sender, named === undefined ? copy.senderFaction || null : factionDisplayName(named.id, named.name));
+  return [copy.sender, named === undefined ? copy.senderFaction || null : factionDisplayName(named.id, named.name)];
 }
+const sender = (state: GameState, entryId: string) => REGISTRY_CARD_COPY.from(...senderParts(state, entryId));
 
 export type RegistryHeadline = Pick<RegistryOfferView, "occurrenceId" | "entryId" | "art" | "title" | "body" | "waits">;
 
@@ -168,7 +187,7 @@ export function registryHeadline(state: GameState): RegistryHeadline | null {
   return card === undefined ? null : headline(state, card);
 }
 
-/** One offer as its card shows it. */
+/** One offer as its card shows it: each answer the engine would carry out is run on the state (`answer_registry_offer`). */
 export function registryCardView(state: GameState, card: RegistryCard): RegistryOfferView {
   const { occurrence, entry } = card;
   const copy = V4_COPY[entry.id];
@@ -176,23 +195,43 @@ export function registryCardView(state: GameState, card: RegistryCard): Registry
   const offered = new Set(offerChoices(state, occurrence));
   const cost = holdCost(entry);
   const before = treasuryBalance(state);
-  const choices = entry.choices.flatMap((choice, index): RegistryChoiceView[] => {
+  const rows = entry.choices.flatMap((choice, index): (RegistryChoiceView & { readonly answer: DecisionChoiceView })[] => {
     const hold = choice.commands.length === 0;
     const enabled = offered.has(choice.id);
     // ER-19 (the user's decision): a hold that costs nothing now is not a choice — it is not shown.
     if (hold && (!enabled || cost === null)) return [];
     const words = copy?.choices[choice.id];
     const label = words?.label ?? REGISTRY_CARD_COPY.choice(index + 1);
-    if (!enabled) return [{ id: choice.id, label, enabled, hold, line: REGISTRY_CARD_COPY.shut(shutReason(state, entry, choice, bound)), cost: null, treasury: null }];
-    const after = hold || bound === null ? state : runCommands(state, choice.commands, { state, bound, vars: {} }) ?? state;
-    return [{ id: choice.id, label, enabled, hold, line: words?.tradeoff ?? REGISTRY_CARD_COPY.noTradeoff, cost: hold ? holdWords(state, cost!) : null,
-      treasury: treasuryBalance(after) - before }];
+    if (!enabled) {
+      const line = REGISTRY_CARD_COPY.shut(shutReason(state, entry, choice, bound));
+      return [{ id: choice.id, label, enabled, hold, line, cost: null, treasury: null, answer: { id: choice.id, label, now: [], later: [], remembers: [], refusal: line } }];
+    }
+    const after = afterAnswer(state, { type: "answer_registry_offer", occurrenceId: occurrence.id, choiceId: choice.id });
+    const tradeoff = words?.tradeoff ?? REGISTRY_CARD_COPY.noTradeoff;
+    const outcome = after === null ? null : lordOutcome(state, after);
+    // A hold whose cost is a deadline running on: what the deadline does is the engine's lapse, said in words (the claim's
+    // and the relation's costs are in the run's own lines).
+    const holdLater = hold && cost?.kind === "deadline" ? [holdWords(state, cost)] : [];
+    return [{ id: choice.id, label, enabled, hold, line: tradeoff, cost: hold ? holdWords(state, cost!) : null,
+      treasury: after === null ? 0 : treasuryBalance(after) - before,
+      answer: { id: choice.id, label, now: [tradeoff, ...outcome?.now ?? []], later: [...holdLater, ...outcome?.later ?? []], remembers: outcome?.remembers ?? [],
+        refusal: after === null ? REGISTRY_CARD_COPY.shut({ kind: "refused" }) : null } }];
   });
-  return { ...headline(state, card), court: courtLine(state), from: sender(state, entry.id), why: registryWhy(state, card), choices, lapse: REGISTRY_CARD_COPY.lapse };
+  const head = headline(state, card);
+  const from = sender(state, entry.id);
+  const end = stateCalendar({ ...state, tick: occurrence.deadline });
+  const choices = rows.map(({ answer: _answer, ...row }) => row);
+  return { ...head, court: courtLine(state), from, why: registryWhy(state, card), choices, lapse: REGISTRY_CARD_COPY.lapse,
+    card: { family: "registry_offer", subjectId: occurrence.id, title: head.title, court: courtLine(state), from, situation: head.body,
+      stake: registryStake(state, card) ?? REGISTRY_CARD_COPY.stakeSender(...senderParts(state, entry.id)),
+      deadline: REGISTRY_CARD_COPY.deadline(calendarDays(occurrence.deadline - state.tick), end.year, SCENARIO_COPY.seasons[end.season] ?? ""), illustration: head.art,
+      choices: rows.map(row => row.answer) } };
 }
 
-/** The first registry offer waiting for the lord as its card shows it, or null (none, or not lord mode). */
-export function registryOfferView(state: GameState): RegistryOfferView | null {
+/** The first registry offer waiting for the lord as its card shows it, or null (none, or not lord mode). Once per state
+ * (`perState`): it runs each answer on the state, and AppModals re-renders on clock and UI events while the card is up;
+ * the chip reads `registryHeadline`, which runs nothing. */
+export const registryOfferView = perState((state: GameState): RegistryOfferView | null => {
   const card = openRegistryCards(state)[0];
   return card === undefined ? null : registryCardView(state, card);
-}
+});
