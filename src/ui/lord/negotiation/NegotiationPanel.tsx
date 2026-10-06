@@ -167,6 +167,8 @@ function DraftScreen({ view, parts, dispatch, setDraft }: {
 }
 
 function CounterScreen({ view, parts, dispatch }: { readonly view: CounterView; readonly parts: Parts; readonly dispatch: LordPanelProps["dispatch"] }): ReactElement {
+  // A press names the answer, the game dispatches it (B9 R4).
+  const answer = (accept: boolean) => dispatch({ type: "answer_counter", negotiationId: view.negotiationId, accept });
   const rows = (side: "ours" | "theirs") => view.rows.filter(row => row.side === side).map(row => <Row key={row.kind} parts={parts} row={row} mark={row.mark}
     extra={row.change === null ? null : <span className="lord-neg-row-change"><span className="lord-neg-row-mark">{row.markWord}</span> {row.change}</span>} />);
   const shut = !view.canAccept || !view.canRefuse;
@@ -180,9 +182,9 @@ function CounterScreen({ view, parts, dispatch }: { readonly view: CounterView; 
         <p className="lord-neg-deadline">{view.deadline}</p>
         <div className="lord-neg-actions lord-neg-answers">
           <Button type="button" className="lord-neg-accept" data-answer-counter="accept" aria-label={COPY.acceptLabel} disabled={!view.canAccept}
-            onPress={() => dispatch({ type: "answer_counter", negotiationId: view.negotiationId, accept: true })}>{COPY.accept}</Button>
+            onPress={() => answer(true)}>{COPY.accept}</Button>
           <Button type="button" className="lord-neg-refuse" data-answer-counter="refuse" aria-label={COPY.refuseLabel} disabled={!view.canRefuse}
-            onPress={() => dispatch({ type: "answer_counter", negotiationId: view.negotiationId, accept: false })}>{COPY.refuse}</Button>
+            onPress={() => answer(false)}>{COPY.refuse}</Button>
           {shut ? <p className="lord-neg-refusal">{COPY.cannotNow}</p> : null}
         </div>
       </Treaty>

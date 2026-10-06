@@ -5,6 +5,7 @@ import type { LordNavGate, LordPanelProps } from "../screen/lordScreenTypes";
 import { useUiParts } from "../uiPartArt";
 import { LORD_LEDGER_COPY as COPY } from "./ledgerCopy.ko";
 import { ledgerView, PROMISE_MARK, type PromiseRow, type Shut, type SuitRow } from "./ledgerModel";
+import type { GameAction } from "../../../state/gameStore.types";
 
 // LM-R2 (ledger area): the lord screen's 약속·소송 — the promise ledger (an open book: the promises to keep on the left
 // page, the kept and broken on the right, the spine between them 24 px wide), the registry's timed terms, and the suit
@@ -56,6 +57,8 @@ function PromiseItem({ row, parts, onKeep }: { readonly row: PromiseRow; readonl
 }
 
 function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly parts: Parts; readonly dispatch: LordPanelProps["dispatch"] }) {
+  // The lord's commands as the other lord screens send them: a press names the command, the game dispatches it (B9 R4).
+  const command = (action: GameAction) => dispatch(action);
   const track = parts.frame(LEDGER_PARTS.track);
   const evidence = row.evidence ?? [];
   const bringable = evidence.some(entry => entry.bring?.enabled === true);
@@ -77,7 +80,7 @@ function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly pa
             <span className="lord-ledger-option-name">{entry.label}</span>
             {entry.given !== null ? <span className="lord-ledger-option-note" data-given="true">{entry.given}</span>
               : <Button type="button" className="lord-ledger-bring" data-bring={entry.kind} variant="secondary" size="md" disabled={entry.bring?.enabled !== true}
-                aria-label={COPY.evidenceLabel(entry.label)} onPress={() => { if (entry.bring?.enabled === true) dispatch({ type: "add_suit_evidence", suitId: row.id, evidence: entry.kind }); }}>
+                aria-label={COPY.evidenceLabel(entry.label)} onPress={() => { if (entry.bring?.enabled === true) command({ type: "add_suit_evidence", suitId: row.id, evidence: entry.kind }); }}>
                 {COPY.evidenceBring}</Button>}
           </li>)}
         </ul>
@@ -91,7 +94,7 @@ function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly pa
             {row.patron.options.map(option => <li key={option.factionId} data-patron={option.factionId}>
               <span className="lord-ledger-option-name">{option.name}</span><span className="lord-ledger-option-note">{option.relation}</span>
               <Button type="button" className="lord-ledger-patron" data-seek={option.factionId} variant="secondary" size="md" aria-label={COPY.patronLabel(option.name)}
-                onPress={() => dispatch({ type: "seek_suit_patron", suitId: row.id, factionId: option.factionId })}>{COPY.patronSeek}</Button>
+                onPress={() => command({ type: "seek_suit_patron", suitId: row.id, factionId: option.factionId })}>{COPY.patronSeek}</Button>
             </li>)}
           </ul>}
       </div>}
@@ -100,7 +103,7 @@ function SuitItem({ row, parts, dispatch }: { readonly row: SuitRow; readonly pa
         {row.enforce.lines.map(line => <p key={line} className="lord-ledger-line">{line}</p>)}
         {row.enforce.button === null ? null : <div className="lord-ledger-action">
           <Button type="button" className="lord-ledger-enforce" data-enforce={row.id} variant="secondary" size="md" disabled={!row.enforce.button.enabled}
-            aria-label={COPY.enforceLabel(row.what)} onPress={() => { if (row.enforce?.button?.enabled === true) dispatch({ type: "enforce_possession", suitId: row.id }); }}>
+            aria-label={COPY.enforceLabel(row.what)} onPress={() => { if (row.enforce?.button?.enabled === true) command({ type: "enforce_possession", suitId: row.id }); }}>
             {COPY.enforce}</Button>
           <ShutLine shut={row.enforce.button} />
         </div>}
@@ -124,6 +127,7 @@ export function LedgerPanel({ state, dispatch, focus }: LordPanelProps): ReactEl
   const book = parts.frame(LEDGER_PARTS.book);
   const spine = parts.image(LEDGER_PARTS.spine, 24);
   const keep = (promiseId: string) => dispatch({ type: "keep_promise", promiseId });
+  const fileSuit = (claimId: string) => dispatch({ type: "file_suit", claimId });
   return (
     <section ref={root} className="lord-ledger" aria-label={COPY.regionLabel}>
       <section className="lord-ledger-section" data-section="promises">
@@ -161,7 +165,7 @@ export function LedgerPanel({ state, dispatch, focus }: LordPanelProps): ReactEl
             <div className="lord-ledger-claim-body"><p className="lord-ledger-suit-title">{claim.what}</p><p className="lord-ledger-line">{claim.line}</p></div>
             <div className="lord-ledger-action">
               <Button type="button" className="lord-ledger-file" data-file={claim.id} variant="secondary" size="md" disabled={claim.refusal !== null}
-                aria-label={COPY.fileSuitLabel(claim.what)} onPress={() => { if (claim.refusal === null) dispatch({ type: "file_suit", claimId: claim.id }); }}>{COPY.fileSuit}</Button>
+                aria-label={COPY.fileSuitLabel(claim.what)} onPress={() => { if (claim.refusal === null) fileSuit(claim.id); }}>{COPY.fileSuit}</Button>
               {claim.refusal === null ? null : <span className="lord-ledger-shut" role="status" data-refusal="true">{claim.refusal}</span>}
             </div>
           </li>)}</ul>}
