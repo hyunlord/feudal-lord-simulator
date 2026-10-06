@@ -58,6 +58,21 @@ export function validateRegistryData(bundles: readonly ArtBundle[]): readonly Ar
       }
     }
     if (entry.kind === 'ground-prop' && entry.placement !== 'land' && entry.placement !== 'seasonal-ground' && entry.placement !== 'nature-ground' && entry.placement !== 'spring-context' && entry.wealthRange && entry.wealthRange.min !== undefined && entry.wealthRange.max !== undefined && entry.wealthRange.min >= entry.wealthRange.max) report(at, 'Wealth range requires min < max');
+    if (entry.kind === 'building-attachment') {
+      const mountedBodies = new Set<string>();
+      for (const mount of entry.mounts) {
+        if (mountedBodies.has(mount.bodyId)) report(at, `Duplicate attachment mount for ${mount.bodyId}`);
+        mountedBodies.add(mount.bodyId);
+        const body = byId.get(mount.bodyId);
+        if (!body || (body.kind !== 'building-body' && body.kind !== 'landmark')) {
+          report(at, `Missing body or landmark mount target ${mount.bodyId}`); continue;
+        }
+        const crop = body.geometry.crop ?? { x: 0, y: 0, width: body.image.width, height: body.image.height };
+        if (!pointFits(mount.point, body.image) || mount.point.x < crop.x || mount.point.y < crop.y
+          || mount.point.x > crop.x + crop.width || mount.point.y > crop.y + crop.height) report(at, `Attachment mount is outside target crop ${mount.bodyId}`);
+        if (!Object.values(mount.point).every(value => Number.isFinite(value * body.geometry.scale))) report(at, 'Scaled attachment mount overflows');
+      }
+    }
     if (entry.kind === 'state-overlay') for (const id of entry.targetBodyIds) {
       const body = byId.get(id);
       if (!body || (body.kind !== 'building-body' && body.kind !== 'landmark')) { report(at, `Missing body or landmark target ${id}`); continue; }

@@ -22,6 +22,10 @@
         "$ref": "#/$defs/rule"
       },
       "minItems": 0
+    },
+    "packId": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "required": [
@@ -1669,6 +1673,9 @@
         },
         {
           "$ref": "#/$defs/weather-particle"
+        },
+        {
+          "$ref": "#/$defs/building-attachment"
         }
       ]
     },
@@ -1695,7 +1702,8 @@
             "season-variant",
             "ground-texture",
             "weather-shadow",
-            "weather-particle"
+            "weather-particle",
+            "building-attachment"
           ]
         },
         "slot": {
@@ -2172,6 +2180,99 @@
         "kind",
         "role",
         "frames"
+      ],
+      "additionalProperties": false
+    },
+    "building-attachment": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "image": {
+          "$ref": "#/$defs/image"
+        },
+        "provenance": {
+          "$ref": "#/$defs/provenance"
+        },
+        "geometry": {
+          "$ref": "#/$defs/geometry"
+        },
+        "season": {
+          "type": "string",
+          "enum": [
+            "spring",
+            "summer",
+            "autumn",
+            "winter"
+          ]
+        },
+        "facing": {
+          "type": "string",
+          "enum": [
+            "n",
+            "ne",
+            "e",
+            "se",
+            "s",
+            "sw",
+            "w",
+            "nw"
+          ]
+        },
+        "kind": {
+          "const": "building-attachment"
+        },
+        "role": {
+          "type": "string",
+          "minLength": 1
+        },
+        "occupations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "minZoom": {
+          "type": "number",
+          "minimum": 0
+        },
+        "mounts": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "bodyId": {
+                "type": "string",
+                "minLength": 1
+              },
+              "point": {
+                "$ref": "#/$defs/point"
+              }
+            },
+            "required": [
+              "bodyId",
+              "point"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "id",
+        "image",
+        "provenance",
+        "kind",
+        "geometry",
+        "role",
+        "occupations",
+        "minZoom",
+        "mounts"
       ],
       "additionalProperties": false
     }
