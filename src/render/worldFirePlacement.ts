@@ -48,6 +48,8 @@ export function worldFireBrigadeAnchor(state: GameState, building: Building, ent
   const well = state.buildings.filter(candidate => candidate.kind === 'well').sort((a, b) => distance(a) - distance(b) || a.id.localeCompare(b.id))[0];
   if (well === undefined) return null;
   const dx = well.tx - building.tx, dy = well.ty - building.ty;
+  const size = buildingFootprint(building);
+  const frontDepth = building.tx + size.width + building.ty + size.height;
   const candidates: TileCoordinate[] = [];
   for (let y = -4; y <= 4; y++) for (let x = -4; x <= 4; x++) {
     if (Math.abs(x) + Math.abs(y) < 2 || Math.abs(x) + Math.abs(y) > 5 || x * dx + y * dy <= 0) continue;
@@ -56,6 +58,8 @@ export function worldFireBrigadeAnchor(state: GameState, building: Building, ent
   candidates.sort((a, b) => distance(a) - distance(b) || Math.abs(a.tx - well.tx) + Math.abs(a.ty - well.ty) - Math.abs(b.tx - well.tx) - Math.abs(b.ty - well.ty) || a.ty - b.ty || a.tx - b.tx);
   const tiles = tileLookup ?? new Map(state.tiles.map(tile => [key(tile), tile]));
   for (const point of candidates) {
+    // Ground clearance alone allowed the entire group to disappear behind the burning roof.
+    if (point.tx + point.ty < frontDepth) continue;
     const cells = worldFireSupport(entry, point);
     if (cells.some(cell => {
       const tile = tiles.get(key(cell));

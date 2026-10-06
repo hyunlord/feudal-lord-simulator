@@ -9,6 +9,7 @@ import { worldFireProps, withWorldFireProps, worldFireBrigadeIds } from '../src/
 import { worldFireBrigadeAnchor, worldFireReserved, worldFireSupport } from '../src/render/worldFirePlacement';
 import { DEFAULT_GAME_STATE } from '../src/state/gameStore';
 import { tileToScreen } from '../src/render/iso';
+import { buildingFootprint } from '../src/geometry/buildingFootprint';
 
 const home = DEFAULT_GAME_STATE.buildings.find(building => building.kind === 'house');
 assert.ok(home);
@@ -137,4 +138,14 @@ test('only actual visible brigade queue receipts suppress legacy buckets; crops 
   assert.equal(worldFireBrigadeIds(queue.filter(item => item.kind !== 'world_fire' || item.prop.role !== 'bucket-brigade')), undefined);
   const zones = [{ id: 'field', kind: 'arable' as const, strokes: [], createdOrdinal: 0, membership: state.tiles.map((_, index) => index) }];
   assert.equal(worldFireProps({ ...state, zones }, ready).filter(prop => prop.role === 'bucket-brigade').length, 0);
+});
+
+test('a well behind the burning house cannot hide the brigade behind its roof', () => {
+  const state = fixture();
+  state.buildings[1] = { ...state.buildings[1]!, tx: house.tx - 4, ty: house.ty };
+  const group = worldFireProps(state, ready).find(prop => prop.role === 'bucket-brigade');
+  assert.ok(group);
+  const size = buildingFootprint(house);
+  const front = tileToScreen(house.tx + size.width, house.ty + size.height);
+  assert.ok(tileToScreen(group.tx, group.ty).sy >= front.sy, 'whole brigade anchor must be in front of the burning building');
 });
