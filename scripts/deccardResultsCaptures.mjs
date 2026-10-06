@@ -45,16 +45,18 @@ const measure = (page, selector) => page.evaluate(sel => {
 const shoot = async (page, name) => { const path = join(out, `${name}.jpg`); await page.screenshot({ path, type: 'jpeg', quality: QUALITY }); return statSync(path).size; };
 /** Shown whole, text 12 px or more, its primaries as expected (the cards one; the actual's story card none: no decision). */
 const ok = row => row.card !== null && row.card.smallestText >= 12 && row.card.box.inside && row.card.primary === (row.primaries ?? 1);
-const rows = {}; let bytes = 0;
+const rows = {}; let bytes = 0; const errors = [];
 const report = (name, row, extra = true) => { row.pass = ok(row) && extra; rows[name] = row; console.log(`${row.pass ? 'ok ' : 'BAD'} ${name}: ${JSON.stringify({ ...row, card: row.card === null ? null : { ...row.card, text: undefined } })}`); };
 
 // 1–3. The house cards.
 for (const [name, dir, file, kind] of [['house-wardship', flags.petitions, 'home-boundary_dispute', 'wardship_begun'], ['house-lord-died', flags.petitions, 'home-pannage', 'lord_died'],
   ['house-inherited', flags.moments, 'inheritance_fealty', 'inherited']]) {
   const state = scene(dir, file);
-  const { context, page } = await open(state);
+  // The house card opens first of the scene's cards: the delay outlasts the load (openScene's opening Escape would close it).
+  const { context, page } = await open(state, { query: '&story-delay=20000' });
+  page.on('pageerror', error => errors.push(`${name}: ${String(error).slice(0, 300)}`));
   const selector = `.results-card.house-change[data-house-change="${kind}"]`;
-  const opened = await page.locator(`${selector} >> visible=true`).first().waitFor({ timeout: 30_000 }).then(() => true, () => false);
+  const opened = await page.locator(`${selector} >> visible=true`).first().waitFor({ timeout: 60_000 }).then(() => true, () => false);
   const petitionFirst = await visible(page, '.lord-card[data-home-petition]');
   const row = { state: file, opened, petitionFirst, card: opened ? await measure(page, selector) : null };
   if (opened) { row.bytes = await shoot(page, name); bytes += row.bytes; }
@@ -116,7 +118,8 @@ for (const [name, dir, file] of [['year-lord', flags.results, 'year-eve'], ['yea
 }
 
 await browser.close();
-writeFileSync(join(out, 'results.json'), JSON.stringify({ rows, bytes }, null, 1));
+writeFileSync(join(out, 'results.json'), JSON.stringify({ rows, bytes, errors }, null, 1));
+if (errors.length > 0) console.log(`page errors: ${errors.join(' | ')}`);
 const failed = Object.entries(rows).filter(([, row]) => !row.pass).map(([name]) => name);
 console.log(`captures ${Object.keys(rows).length}, ${Math.round(bytes / 1024)} KB${failed.length === 0 ? '' : `; BAD ${failed.join(', ')}`}`);
 process.exit(failed.length === 0 ? 0 : 1);

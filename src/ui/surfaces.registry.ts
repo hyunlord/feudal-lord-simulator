@@ -143,6 +143,9 @@ const PETITION = {
   // QA-034: the title, the request, every answer and the later button are shown and painted (not under the frame layer).
   requires: ["h2", ".petition-body > p:not(.petition-who)", ".petition-option", ".story-modal-later"],
 } as const;
+/** DEC-CARD (A3): the house card opens first of the scene's cards; the delay outlasts the page load (as CHAPTER_DELAY's
+ * does), or openScene's opening Escape closes it as it opens and the petition behind it comes instead. */
+const HOUSE_DELAY = 20_000;
 /** DEC-CARD (result side): the year's card and the house card — the petition frame's layer, the body scrolling inside. */
 const RESULTS_CARD = {
   frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".petition-body"],
@@ -461,15 +464,15 @@ export const SURFACES: readonly SurfaceRow[] = [
   // the real states that hold one: the lord's wardship begun on the tick the boundary dispute came, the lord dead (1304),
   // the neighbour's estate inherited through the wife (its title, possession and the debts promised with it).
   { id: "modal.house-change.wardship", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='wardship_begun']",
-    scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ wait: ".results-card.house-change", timeout: 60_000 }, { pause: 600 }],
+    scene: petitionScene("petitions", "home-boundary_dispute", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
     data: "a minor lord's wardship begun (Wave 40 13): who, the guardian, no right changed, his card as the next act — before the boundary dispute's card" },
   { id: "modal.house-change.lord-died", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='lord_died']",
-    scene: petitionScene("petitions", "home-pannage", 3000), open: [{ wait: ".results-card.house-change", timeout: 60_000 }, { pause: 600 }],
+    scene: petitionScene("petitions", "home-pannage", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".results-card-continue"],
     data: "the lord's death (no picture): his name and age, who leads the house now" },
   { id: "modal.house-change.inherited", ...RESULTS_CARD, root: ".story-modal.petition-card.results-card.house-change[data-house-change='inherited']",
-    scene: petitionScene("moments", "inheritance_fealty", 3000), open: [{ wait: ".results-card.house-change", timeout: 60_000 }, { pause: 600 }],
+    scene: petitionScene("moments", "inheritance_fealty", HOUSE_DELAY), open: [{ wait: ".results-card.house-change", timeout: 90_000 }, { pause: 600 }],
     requires: ["h2", ".results-card-court", ".house-change-heir", ".results-card-part li", ".house-change-next", ".results-card-continue"],
     data: "the neighbour's estate inherited (Wave 40 08): the old lord's death, the title and possession, five debts promised, the estates screen as the next act" },
   // EVENT-ART: the registry's event card (src/ui/hud/RegistryCard.tsx) on scripts/eventArtStates.ts's states — the lord's
