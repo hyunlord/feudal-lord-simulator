@@ -24,8 +24,8 @@ mkdirSync(out, { recursive: true });
 const chromium = await loadChromium();
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 let bytes = 0;
-/** The whole 1280 × 800 view with the card up (the town dimmed under it), a small JPEG (eight of them stay under 600 KB). */
-const shoot = async (page, name) => { const path = join(out, `${name}.jpg`); await page.screenshot({ path, type: 'jpeg', quality: 40 }); const size = statSync(path).size; bytes += size; return size; };
+/** The whole 1280 × 800 view with the card up (the town dimmed under it), a small JPEG (the eight stay under 600 KB). */
+const shoot = async (page, name) => { const path = join(out, `${name}.jpg`); await page.screenshot({ path, type: 'jpeg', quality: 30 }); const size = statSync(path).size; bytes += size; return size; };
 const open = (state, delay) => openScene(browser, { state, tile: seatTile(state), baseUrl: url, run: false, initScript: INIT, width: 1280, height: 800,
   query: `&story-delay=${delay}`, loadTimeout: 90_000, zoom: 1.1 });
 
