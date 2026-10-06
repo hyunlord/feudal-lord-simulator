@@ -25,8 +25,9 @@ scripts/remote/run.sh <label> [--heavy|--light] [--detach] [--keep] -- <아무 �
   - 결과를 저장소에 옮긴 뒤 `scripts/remote/run.sh --release <run>`으로 놓아준다.
   - 까닭: FIX-10 때 습지 seed 1 캠페인의 결과를 정리가 지워 잃었다(2026-09-30).
 - **올리기 전 검증과 본선 묶음 클론**(2026-10-06, 사용자 지시 — 모든 세션이 몇 시간씩 줄을 섰다):
-  - 본선에 올리기 전에는 `check:merge`(푸시 훅이 돈다) + **바뀐 파일에 걸린 시험**(`npm run test:changed -- --run`; 많으면 `scripts/remote/run.sh <label> --light -- npm run -s test:changed -- --run`) + 화면을 바꿨으면 **바뀐 줄의 기하 감사**(`--task ui-geometry --only <바뀐 줄>`)만 한다.
+  - 본선에 올리기 전에는 `check:merge`(푸시 훅이 돈다) + **바뀐 파일에 걸린 시험**(`npm run test:changed`; 많으면 `scripts/remote/run.sh <label> --light -- npm run -s test:changed`) + 화면을 바꿨으면 **바뀐 줄의 기하 감사**(`--task ui-geometry --only <바뀐 줄>`)만 한다.
     - `test:changed`(`scripts/checks/changedTests.mjs`): 본선과의 공통 조상 이후 바뀐 파일(작업 트리 포함)에 대해, 바뀐 시험 파일, 바뀐 파일을 직접·간접으로 import하는 시험, 바뀐 데이터·문서 파일을 경로(또는 저장소에 하나뿐인 이름)로 부르는 시험을 고른다. `package-lock.json`·`tsconfig.json`·`package.json`의 의존성이 바뀌면 전부다.
+    - `npm run test:changed`는 고른 시험을 **돌리고** 결과를 기록한다(Mac `.remote-runs/test-changed/<트리>.json`, DGX는 실행의 `.remote/test-changed.json` → `.remote-runs/<run>/`). 고르기만 하려면 `-- --list`. **`check:merge`가 이 기록을 확인한다**(12단계 tested): 범위가 고른 시험이 있으면, 올리는 머리의 트리와 같은 내용에서 그 시험을 모두 돌려 통과한 기록이 있어야 푸시된다. 트리는 `git add -A`가 커밋할 내용으로 잡으므로, 본선을 합친 뒤(마지막 커밋 뒤) 돌린다. 2026-10-06 처음 판은 `--run` 없이는 고르기만 하고 exit 0이었다(정정).
   - **깨끗한 클론 전체 시험은 본선에서 묶어서**: DGX 타이머 `fls-trunk-clone`이 지난번이 끝나고 3시간 뒤(즉 3~4시간마다) `scripts/remote/trunkClone.sh`를 돈다(본선의 그 파일을 매번 읽는다). 본선 머리가 지난번과 같으면 아무것도 하지 않는다.
     - 통과하면 `~/fls-runs/_trunk/last-good`에 그 머리를 적는다.
     - 실패하면 실패한 단계(실패한 시험 파일·typecheck·build)로 지난 통과 머리부터 지금 머리까지 `git bisect`(병합 포함)를 돌려 **처음 깨진 커밋**(해시·제목·작성자)을 찾는다. 결과는 `~/fls-runs/_trunk/status`·`history.log`에 남고, **`run.sh`가 실행마다 `== TRUNK CLONE FAILED …` 한 줄로 알린다** — 그 커밋의 세션이 고치거나 되돌린다. 다음 본선 클론이 통과하면 알림이 멈춘다.
