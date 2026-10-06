@@ -160,7 +160,10 @@ test("DEC-CARD: the will, the audit and the off-map petition say what is happeni
         assert.deepEqual(choice.remembers, outcome.remembers, `${name} ${choice.id}`);
         assert.ok(choice.now.length > 0, `${name} ${choice.id}: at least the treasury's line`);
       }
-      for (const part of ["무슨 일인가", "걸린 것", "지금", "나중에", "기억하는 이"]) assert.ok(markup.includes(part), `${name} ${card.family}: ${part}`);
+      // DEC-CARD: the situation and the stake always; now / later / who remembers exactly where an open answer has lines (an empty part is left out).
+      for (const part of ["무슨 일인가", "걸린 것"]) assert.ok(markup.includes(part), `${name} ${card.family}: ${part}`);
+      const open = card.choices.filter(choice => choice.refusal === null);
+      for (const [part, has] of [["지금", open.some(c => c.now.length > 0)], ["나중에", open.some(c => c.later.length > 0)], ["기억하는 이", open.some(c => c.remembers.length > 0)]] as const) assert.equal(markup.includes(`class="decision-card-part-head">${part}</span>`), has, `${name} ${card.family}: ${part}`);
       assert.match(markup, /class="story-modal petition-card decision-card lord-card"/);
       assert.doesNotMatch(markup, /ui-btn--primary/, "equal answers, all secondary (LR1-D2)");
       assert.doesNotMatch(markup, /\stitle="/);

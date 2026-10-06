@@ -218,7 +218,10 @@ test("DEC-CARD: the town's request is the heavy card — the request's words, it
       assert.deepEqual([grant!.now, grant!.later, grant!.remembers], [outcome.now, outcome.later, outcome.remembers], request.kind);
     }
     const markup = renderToStaticMarkup(createElement(LordRequestModal, { view, card, onGrant: () => undefined, onLater: () => undefined }));
-    for (const part of ["무슨 일인가", "걸린 것", "지금", "나중에", "기억하는 이"]) assert.ok(markup.includes(part), part);
+    // DEC-CARD: the situation and the stake always; now / later / who remembers exactly where an open answer has lines (an empty part is left out).
+    for (const part of ["무슨 일인가", "걸린 것"]) assert.ok(markup.includes(part), part);
+    const open = card.choices.filter(choice => choice.refusal === null);
+    for (const [part, has] of [["지금", open.some(c => c.now.length > 0)], ["나중에", open.some(c => c.later.length > 0)], ["기억하는 이", open.some(c => c.remembers.length > 0)]] as const) assert.equal(markup.includes(`class="decision-card-part-head">${part}</span>`), has, part);
     assert.match(markup, /data-lord-request="/);
     assert.doesNotMatch(markup, /ui-btn--primary/);
   }

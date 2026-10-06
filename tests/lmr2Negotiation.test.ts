@@ -159,7 +159,10 @@ test("DEC-CARD: each answer to the counter shows its now / later / who remembers
   assert.equal(accept.later.length > 0, made.length > 0, "a promise the contract writes is said, with its deadline");
   assert.ok(accept.remembers.length > 0, "the counterpart's house remembers the contract");
   const markup = renderToStaticMarkup(createElement(NegotiationPanel, { state: sent, dispatch: () => undefined, focus: null, onOpen: () => undefined, onPerson: undefined }));
-  for (const part of ["지금", "나중에", "기억하는 이", COPY.counterSilence]) assert.ok(markup.includes(part), part);
+  // DEC-CARD: an answer's part shows exactly where it has lines (an empty part is left out); the silence line always.
+  assert.ok(markup.includes(COPY.counterSilence));
+  const answers = view.outlook;
+  for (const [part, has] of [["지금", answers.some(a => a.now.length > 0)], ["나중에", answers.some(a => a.later.length > 0)], ["기억하는 이", answers.some(a => a.remembers.length > 0)]] as const) assert.equal(markup.includes(`class="decision-card-part-head">${part}</span>`), has, part);
   assert.equal((markup.match(/data-answer-outlook="/g) ?? []).length, 2);
   assert.doesNotMatch(markup, /ui-btn--primary/, "the counter's two answers are equal choices");
 });

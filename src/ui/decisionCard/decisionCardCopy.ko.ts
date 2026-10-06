@@ -15,9 +15,8 @@ export const DECISION_CARD_COPY = {
   now: "지금",
   later: "나중에",
   remembers: "기억하는 이",
-  nobodyRemembers: "따로 기억할 사람은 없습니다",
-  nothingLater: "뒤따르는 일은 없습니다",
-  choose: (label: string) => `${label} — 이렇게 정한다`,
+  /** Each answer's button (its title is the answer; the button's label for assistive tech names it). */
+  choose: "이렇게 정한다",
   later_: "나중에 정한다",
   feels: (delta: number) => `${feeling(delta)} (관계 ${delta > 0 ? "+" : ""}${delta})`,
 } as const;

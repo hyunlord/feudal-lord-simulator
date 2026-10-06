@@ -25,7 +25,6 @@
 .decision-card-choice[data-refused="true"] { opacity: 0.75; }
 .decision-card-choice h3 { margin: 0; font-size: 15px; line-height: 1.35; word-break: keep-all; overflow-wrap: anywhere; }
 .decision-card-part ul { margin: 2px 0 0; padding-left: 16px; }
-.decision-card-part li, .decision-card-none { font-size: 13px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
-.decision-card-none { display: block; color: var(--palette-ink-light); }
+.decision-card-part li { font-size: 13px; line-height: 1.5; word-break: keep-all; overflow-wrap: anywhere; }
 .decision-card-refusal { margin: 0; font-size: 13px; line-height: 1.45; color: var(--palette-vermilion); }
 .decision-card-choose { justify-self: stretch; }

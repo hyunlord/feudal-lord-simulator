@@ -168,11 +168,12 @@ function DraftScreen({ view, parts, dispatch, setDraft }: {
 }
 
 /** DEC-CARD: one part of an answer (now / later / who remembers), in the heavy cards' words and classes. */
-function Part({ heading, lines, empty }: { readonly heading: string; readonly lines: readonly string[]; readonly empty: string }): ReactElement {
-  return (
+function Part({ heading, lines }: { readonly heading: string; readonly lines: readonly string[] }): ReactElement | null {
+  // An empty part is left out (DEC-CARD: an empty "who remembers" on every answer buried the rest).
+  return lines.length === 0 ? null : (
     <div className="decision-card-part">
       <span className="decision-card-part-head">{heading}</span>
-      {lines.length === 0 ? <span className="decision-card-none">{empty}</span> : <ul>{lines.map(line => <li key={line}>{line}</li>)}</ul>}
+      <ul>{lines.map(line => <li key={line}>{line}</li>)}</ul>
     </div>
   );
 }
@@ -186,9 +187,9 @@ function Outlook({ view }: { readonly view: CounterView }): ReactElement {
         {view.outlook.map(answer => (
           <li key={answer.id} className="lord-neg-outlook-answer" data-answer-outlook={answer.id}>
             <h5>{answer.label}</h5>
-            <Part heading={CARD.now} lines={answer.now} empty={CARD.nothingLater} />
-            <Part heading={CARD.later} lines={answer.later} empty={CARD.nothingLater} />
-            <Part heading={CARD.remembers} lines={answer.remembers} empty={CARD.nobodyRemembers} />
+            <Part heading={CARD.now} lines={answer.now} />
+            <Part heading={CARD.later} lines={answer.later} />
+            <Part heading={CARD.remembers} lines={answer.remembers} />
           </li>
         ))}
       </ol>

@@ -15,22 +15,25 @@ import type { DecisionCardView, DecisionChoiceView } from "./decisionCardTypes";
 
 const ART_WIDTH = 300;
 
-function Lines({ heading, lines, empty }: { readonly heading: string; readonly lines: readonly string[]; readonly empty: string }): ReactElement {
+function Lines({ heading, lines }: { readonly heading: string; readonly lines: readonly string[] }): ReactElement {
   return <div className="decision-card-part">
     <span className="decision-card-part-head">{heading}</span>
-    {lines.length === 0 ? <span className="decision-card-none">{empty}</span> : <ul>{lines.map(line => <li key={line}>{line}</li>)}</ul>}
+    <ul>{lines.map(line => <li key={line}>{line}</li>)}</ul>
   </div>;
 }
 
 function Choice({ choice, onChoose }: { readonly choice: DecisionChoiceView; readonly onChoose: (id: string) => void }): ReactElement {
-  return <li className="decision-card-choice" data-choice={choice.id} data-refused={choice.refusal === null ? "false" : "true"}>
+  const shut = choice.refusal !== null;
+  // A shut answer shows only why; an empty part is left out (an empty "who remembers" on every answer buried the rest).
+  return <li className="decision-card-choice" data-choice={choice.id} data-refused={shut ? "true" : "false"}>
     <h3>{choice.label}</h3>
-    <Lines heading={COPY.now} lines={choice.now} empty={COPY.nothingLater} />
-    <Lines heading={COPY.later} lines={choice.later} empty={COPY.nothingLater} />
-    <Lines heading={COPY.remembers} lines={choice.remembers.map(entry => `${entry.who}: ${entry.how}`)} empty={COPY.nobodyRemembers} />
-    {choice.refusal === null ? null : <p className="decision-card-refusal">{choice.refusal}</p>}
-    <Button type="button" className="decision-card-choose" variant="secondary" size="md" data-choose={choice.id} disabled={choice.refusal !== null}
-      aria-label={DECISION_COPY.choose(choice.label)} onPress={() => onChoose(choice.id)}>{COPY.choose(choice.label)}</Button>
+    {shut ? <p className="decision-card-refusal">{choice.refusal}</p> : <>
+      {choice.now.length === 0 ? null : <Lines heading={COPY.now} lines={choice.now} />}
+      {choice.later.length === 0 ? null : <Lines heading={COPY.later} lines={choice.later} />}
+      {choice.remembers.length === 0 ? null : <Lines heading={COPY.remembers} lines={choice.remembers.map(entry => `${entry.who}: ${entry.how}`)} />}
+    </>}
+    <Button type="button" className="decision-card-choose" variant="secondary" size="md" data-choose={choice.id} disabled={shut}
+      aria-label={DECISION_COPY.choose(choice.label)} onPress={() => onChoose(choice.id)}>{COPY.choose}</Button>
   </li>;
 }
 
