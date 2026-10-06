@@ -23,7 +23,7 @@ import { answerAudit, attention, heldOffMapEstates, pendingAudits, setAuditMode,
 import { orderTimber } from "./timberTrade";
 import { setEstatePolicy, setMarketDues, setProjectSubsidy } from "./townAgency";
 import { applyHold, bindEntry, boundIdentities, runCommands, v4Candidates, v4EnabledChoices, v4Entry, v4SenderFaction } from "./registryV4";
-import { stewardPick, stewardStance, weighOffer } from "./decisionLayer";
+import { stewardPick, standingSetting, weighOffer } from "./decisionLayer";
 import type { DecisionWeight } from "../content/stewardPolicyConfig";
 import { DECISION_RELATION } from "../content/decisionRelationConfig";
 
@@ -429,14 +429,14 @@ function layerOffer(state: GameState, offer: RegistryOccurrence): GameState {
   const weighed = weighOffer(state, offer);
   if (weighed === null) return state;
   if (weighed.weights.length > 0) return settleWeights(state, offer.id, weighed.weights);
-  const stance = stewardStance(state, `sender:${v4SenderFaction(offer.entryId) ?? "none"}`);
-  const pick = stewardPick(stance, weighed.choices);
+  const policy = standingSetting(state, `sender:${v4SenderFaction(offer.entryId) ?? "none"}`);
+  const pick = stewardPick(policy, weighed.choices);
   if (pick === null) return settleWeights(state, offer.id, []);
   const answered = answerV4Offer(state, offer, pick);
   const settled = registryOf(answered).occurrences.find(entry => entry.id === offer.id);
   if (settled === undefined || settled.status !== "answered") return settleWeights(state, offer.id, []);
   return { ...answered, registry: { ...registryOf(answered), occurrences: registryOf(answered).occurrences.map(entry => entry.id === offer.id
-    ? { ...entry, weights: [], decidedBy: "steward" as const, stance } : entry) } };
+    ? { ...entry, weights: [], decidedBy: "steward" as const, policy } : entry) } };
 }
 
 function settleWeights(state: GameState, occurrenceId: string, weights: readonly DecisionWeight[]): GameState {

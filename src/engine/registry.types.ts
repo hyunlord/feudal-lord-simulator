@@ -1,4 +1,4 @@
-import type { DecisionWeight, StewardStance } from "../content/stewardPolicyConfig";
+import type { DecisionWeight, StandingSetting } from "../content/stewardPolicyConfig";
 
 /** LM-E9 (spec docs/design/registry.md ER-3·ER-4·ER-7·ER-9·ER-12, save v47): the registry's state in lord mode. */
 
@@ -29,7 +29,7 @@ export interface RegistryOccurrence {
   readonly weights?: readonly DecisionWeight[];
   /** DEC-TRACE §1 (save v52): the steward answered it by the lord's standing policy for its sender. */
   readonly decidedBy?: "steward";
-  readonly stance?: StewardStance;
+  readonly policy?: StandingSetting;
   /** DEC-TRACE §3 (save v52): the sender's mind on the side taken — the most given of the choices pleases it, the least displeases it. */
   readonly side?: { readonly faction: string; readonly delta: number };
 }

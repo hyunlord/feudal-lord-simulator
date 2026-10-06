@@ -10,9 +10,9 @@ import type { HomePetitionKind } from "../engine/stewardship.types";
  * The lord's standing policy for a kind of small matter: as custom has it, lightly (the petitioner's side), strictly
  * (the purse's and the lord's rights' side), or "bring it to me".
  */
-export const STEWARD_STANCES = ["custom", "lenient", "strict", "lord"] as const;
-export type StewardStance = (typeof STEWARD_STANCES)[number];
-export const DEFAULT_STEWARD_STANCE: StewardStance = "custom";
+export const STANDING_SETTINGS = ["customary", "lenient", "strict", "lord"] as const;
+export type StandingSetting = (typeof STANDING_SETTINGS)[number];
+export const DEFAULT_STANDING_SETTING: StandingSetting = "customary";
 
 /**
  * The customary answer to each home petition (true: granted). Manor custom: the heriot, the wardship's profit, the

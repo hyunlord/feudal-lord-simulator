@@ -14,12 +14,12 @@ import {
   HOME_PETITION_KINDS,
 } from "../content/stewardshipConfig";
 import { PRESSURE_BALANCE } from "../content/balanceConfig";
-import { DEFAULT_STEWARD_STANCE, HOME_PETITION_CUSTOM, STEWARD_STANCES, type StewardStance } from "../content/stewardPolicyConfig";
+import { DEFAULT_STANDING_SETTING, HOME_PETITION_CUSTOM, STANDING_SETTINGS, type StandingSetting } from "../content/stewardPolicyConfig";
 import { HOME_PETITION_ENTRIES, homeCycleKinds } from "../content/registry/homePetitions";
 import { HOME_ESTATE_ID } from "../content/estateConfig";
 import { MALE_GIVEN_NAMES, TOPOGRAPHIC_SURNAMES } from "../content/personNames";
 import { postLedgerEntries } from "../ledger/ledger";
-import { largeSumLine, stewardStance } from "./decisionLayer";
+import { largeSumLine, standingSetting } from "./decisionLayer";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD } from "./estates";
 import type { Estate } from "./estates.types";
@@ -218,15 +218,15 @@ function homePetitionSeason(state: GameState): GameState {
   // "bring them all up", `recurring`), or when its sum is large (a tenth of the estate's year of income, a pound at
   // least). The exceptions (SW-5: a sum, a right, a marriage) are the off-map estates': a tenant's merchet or bounds is
   // not the lord's marriage or right (P-D5).
-  const stance = stewardStance(state, kind);
+  const policy = standingSetting(state, kind);
   const large = petition.amount >= largeSumLine(state);
-  if (stance === "lord" || stewardship.rules.recurring === true || large) {
+  if (policy === "lord" || stewardship.rules.recurring === true || large) {
     const escalated = large ? "amount" as const : "direct" as const;
     return withStewardship(state, { ...stewardship, petitions: [...stewardship.petitions, { ...petition, escalated }], nextPetition: stewardship.nextPetition + 1 });
   }
-  const grant = stance === "lenient" ? true : stance === "strict" ? false : HOME_PETITION_CUSTOM[kind];
+  const grant = policy === "lenient" ? true : policy === "strict" ? false : HOME_PETITION_CUSTOM[kind];
   const { escalated: _escalated, ...rest } = petition;
-  const answered: EstatePetition = { ...rest, status: grant ? "granted" : "refused", decidedBy: "steward", stance };
+  const answered: EstatePetition = { ...rest, status: grant ? "granted" : "refused", decidedBy: "steward", policy };
   let next: GameState = state;
   const income = petitionEffect(answered, grant, false).income;
   if (income !== 0) {
@@ -303,21 +303,21 @@ function estateSeason(state: GameState, estate: Estate): GameState {
   // DEC-TRACE §1 (P-T3, P-D5): a delegated estate's steward answers by the lord's standing policy for the kind (as custom
   // has it: his own disposition's answer); it comes to the lord when the lord keeps the kind, when his exceptions ask,
   // or when the sum is large. LM9-3's precedent (the lord's earlier answer to the same kind) is gone.
-  const stance = stewardStance(state, kind);
+  const policy = standingSetting(state, kind);
   const matched = oversight.mode === "direct" ? "direct" as const
     : exceptionMatch(stewardship.rules, { amount, rights: def.rights === true, marriage: def.marriage === true })
-      ?? (stance === "lord" ? "direct" as const : amount >= largeSumLine(state) ? "amount" as const : null);
+      ?? (policy === "lord" ? "direct" as const : amount >= largeSumLine(state) ? "amount" as const : null);
   const rule = matched;
   const petition: EstatePetition = { id: `estate-petition-${stewardship.nextPetition}`, estateId: estate.id, kind, group: def.group, amount: Math.round(base * size / 1000),
     rights: def.rights === true, marriage: def.marriage === true, tick: state.tick, deadline: state.tick + PETITION_ANSWER_TICKS + (overloaded ? OVERLOAD_PETITION_DELAY : 0),
     status: "open", ...(rule === null ? {} : { escalated: rule, ...(overloaded ? { reachesLord: state.tick + OVERLOAD_PETITION_DELAY } : {}) }) };
   let answered = petition;
   if (rule === null) {
-    const grant = stance === "lenient" ? true : stance === "strict" ? false : STEWARD_ANSWERS[record.disposition][kind];
+    const grant = policy === "lenient" ? true : policy === "strict" ? false : STEWARD_ANSWERS[record.disposition][kind];
     const effect = petitionEffect(petition, grant, record.disposition === "greedy");
     incomeDelta += effect.income; tenants += effect.tenants; merchants += effect.merchants; keptExtra += effect.kept;
     if (effect.neglect) next = neglectEstate(next, estate.id);
-    answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward", stance };
+    answered = { ...petition, status: grant ? "granted" : "refused", decidedBy: "steward", policy };
   } else if (overloaded) {
     // An overloaded lord's estate: the petition waits a season before it reaches him.
     if (petition.group === "tenants") tenants -= OVERLOAD_WAIT_RELATION; else merchants -= OVERLOAD_WAIT_RELATION;
@@ -438,15 +438,15 @@ export function lordEstatePetitions(state: GameState): readonly EstatePetition[]
  * the steward answered by precedent in a season (by default the season just closed, as the season report shows it).
  */
 export function precedentReport(state: GameState, startTick = Math.max(0, (Math.floor(state.tick / SEASON) - 1) * SEASON), endTick = startTick + SEASON): readonly EstatePetition[] {
-  return stewardshipOf(state).petitions.filter(petition => (petition.precedent === true || petition.stance !== undefined) && petition.tick >= startTick && petition.tick < endTick);
+  return stewardshipOf(state).petitions.filter(petition => (petition.precedent === true || petition.policy !== undefined) && petition.tick >= startTick && petition.tick < endTick);
 }
 
 /** DEC-TRACE §1 API: the lord's standing policy for a kind of small matter (a home petition's kind, or `sender:<faction>`). */
-export function setStewardPolicy(state: GameState, key: string, stance: StewardStance): GameState {
-  if (state.agency === undefined || !STEWARD_STANCES.includes(stance)) return state;
+export function setStandingPolicy(state: GameState, kind: string, setting: StandingSetting): GameState {
+  if (state.agency === undefined || !STANDING_SETTINGS.includes(setting)) return state;
   const stewardship = stewardshipOf(state);
-  if ((stewardship.policies?.[key] ?? DEFAULT_STEWARD_STANCE) === stance) return state;
-  return withStewardship(state, { ...stewardship, policies: { ...(stewardship.policies ?? {}), [key]: stance } });
+  if ((stewardship.standing?.[kind] ?? DEFAULT_STANDING_SETTING) === setting) return state;
+  return withStewardship(state, { ...stewardship, standing: { ...(stewardship.standing ?? {}), [kind]: setting } });
 }
 
 /** SW-4 API: the lord answers an estate's petition (its effect falls on the estate's goodwill and the treasury now). */

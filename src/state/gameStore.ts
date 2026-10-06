@@ -27,7 +27,7 @@ import { markChapterPageSeen } from "../engine/politics";
 import { markStorySeen } from "../engine/storySeen";
 import { answerCounter, answerWillChange, keepPromise, proposeMarriage } from "../engine/marriage";
 import { traceCommand } from "../engine/decisionTrace";
-import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules, setStewardPolicy } from "../engine/stewardship";
+import { answerAudit, answerEstatePetition, setAuditMode, setEstateOversight, setExceptionRules, setStandingPolicy } from "../engine/stewardship";
 import { answerRegistryOffer } from "../engine/registry";
 import { estatesOf, LORD } from "../engine/estates";
 import { addSuitEvidence, enforcePossession, fileSuit, seekSuitPatron } from "../engine/estateSuits";
@@ -161,7 +161,7 @@ function reduceGameAction(state: GameState, action: GameAction): GameState {
     case "answer_will_change": return answerWillChange(state, action.choice);
     case "set_estate_oversight": return setEstateOversight(state, action.estateId, action.mode, action.stewardId);
     case "set_exception_rules": return setExceptionRules(state, action.rules);
-    case "set_steward_policy": return setStewardPolicy(state, action.key, action.stance);
+    case "set_standing_policy": return setStandingPolicy(state, action.kind, action.setting);
     case "answer_estate_petition": return answerEstatePetition(state, action.petitionId, action.grant);
     case "answer_registry_offer": return answerRegistryOffer(state, action.occurrenceId, action.choiceId);
     case "set_audit_mode": return setAuditMode(state, action.estateId, action.mode);

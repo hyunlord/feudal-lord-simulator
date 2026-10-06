@@ -34,7 +34,7 @@ type GameCommand =
   | { readonly type: "set_estate_oversight"; readonly estateId: string; readonly mode: import("../engine/stewardship.types").OversightMode; readonly stewardId?: string }
   | { readonly type: "set_exception_rules"; readonly rules: import("../engine/stewardship.types").ExceptionRules }
   /** DEC-TRACE §1: the lord's standing policy for a kind of small matter (a home petition's kind, or `sender:<faction>`). */
-  | { readonly type: "set_steward_policy"; readonly key: string; readonly stance: import("../content/stewardPolicyConfig").StewardStance }
+  | { readonly type: "set_standing_policy"; readonly kind: string; readonly setting: import("../content/stewardPolicyConfig").StandingSetting }
   | { readonly type: "answer_estate_petition"; readonly petitionId: string; readonly grant: boolean }
   | { readonly type: "answer_registry_offer"; readonly occurrenceId: string; readonly choiceId: string }
   | { readonly type: "set_audit_mode"; readonly estateId: string; readonly mode: "accounts" | "visit" }

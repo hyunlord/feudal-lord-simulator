@@ -5,7 +5,8 @@
 //   tsx scripts/decisionTraceRun.ts <seed> [years] > run.json
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { Consequence, FactionAct, TracedDecision } from "../src/engine/decisionTrace.types";
+import type { FactionAct, TracedDecision } from "../src/engine/decisionTrace.types";
+import type { HistoryRecord } from "../src/engine/history.types";
 import { TRACE_LIVE_TICKS } from "../src/engine/decisionTrace";
 import { lordBotCommands } from "../src/engine/lordBot";
 import { stateCalendar } from "../src/engine/scenarioState";
@@ -19,12 +20,13 @@ export function decisionTraceRun(seed: number, years = 20) {
   if (state === null) throw new Error(`seed ${seed}: no game`);
   const startYear = stateCalendar(state).year;
   const decisions = new Map<string, TracedDecision>();
-  const consequences = new Map<string, Consequence>();
+  const consequences = new Map<string, HistoryRecord>();
   const acts: FactionAct[] = [];
   let seenActs = 0;
   const collect = () => {
     for (const decision of state!.trace?.decisions ?? []) decisions.set(decision.id, decision);
-    for (const consequence of state!.trace?.consequences ?? []) consequences.set(consequence.id, consequence);
+    // The consequences are the history's records with the decisions behind them (never folded).
+    for (const record of state!.history?.records ?? []) if (record.because !== undefined) consequences.set(record.id, record);
     const all = state!.trace?.acts ?? [];
     // The thread keeps ten years; acts are appended in order (ticks only grow), so the new ones are those past the last seen.
     const fresh = all.filter(entry => acts.length === 0 || entry.tick > acts.at(-1)!.tick || (entry.tick === acts.at(-1)!.tick && !acts.includes(entry)));
@@ -42,8 +44,8 @@ export function decisionTraceRun(seed: number, years = 20) {
   collect();
   const endTick = state.tick;
   const yearOf = (tick: number) => stateCalendar({ ...state!, tick }).year;
-  const after = new Map<string, Consequence[]>();
-  for (const consequence of consequences.values()) for (const id of consequence.causes) {
+  const after = new Map<string, HistoryRecord[]>();
+  for (const consequence of consequences.values()) for (const id of consequence.because!.map(entry => entry.decisionId)) {
     const decision = decisions.get(id);
     if (decision === undefined || consequence.tick - decision.tick > TRACE_LIVE_TICKS || consequence.tick < decision.tick) continue;
     after.set(id, [...(after.get(id) ?? []), consequence]);
@@ -54,7 +56,7 @@ export function decisionTraceRun(seed: number, years = 20) {
     // A decision of the last three years has not had its three years (reported apart).
     fullWindow: endTick - decision.tick >= TRACE_LIVE_TICKS,
     consequences: (after.get(decision.id) ?? []).length,
-    consequenceKinds: [...new Set((after.get(decision.id) ?? []).map(consequence => consequence.kind))],
+    consequenceKinds: [...new Set((after.get(decision.id) ?? []).map(consequence => String(consequence.params?.key ?? consequence.template)))],
   }));
   const table: Record<number, { heavyToLord: number; lord: number; steward: number; acts: number; consequences: number }> = {};
   for (let year = startYear; year < startYear + years; year += 1) table[year] = { heavyToLord: 0, lord: 0, steward: 0, acts: 0, consequences: 0 };
@@ -74,7 +76,7 @@ export function decisionTraceRun(seed: number, years = 20) {
       consequencesPerDecision: heavy.length === 0 ? null : Math.round(heavy.reduce((sum, row) => sum + row.consequences, 0) * 100 / heavy.length) / 100 },
     noConsequence: withNone.map(({ id, year, kind, source, weights, targets }) => ({ id, year, kind, source, weights, targets })),
     decisions: rows,
-    consequences: [...consequences.values()],
+    consequences: [...consequences.values()].map(record => ({ id: record.id, tick: record.tick, template: record.template, params: record.params, because: record.because })),
     relations: state.factions?.factions.map(faction => ({ id: faction.id, relation: faction.relation })) ?? [],
   };
 }

@@ -2,11 +2,11 @@
  * DEC-TRACE §1 (docs/design/dec-trace.md, P-D5, decision GP-7): the layers of decision in lord mode. A matter is heavy
  * when one of its choices carries a weight (rights, land, marriage, inheritance, wardship, a large sum, a promise of
  * years, a faction's rupture, a crisis); heavy matters come to the lord, the rest are the steward's, answered by the
- * lord's standing policy for their kind (`StewardStance`). What a choice does is measured by running it on a copy of
+ * lord's standing policy for their kind (`StandingSetting`). What a choice does is measured by running it on a copy of
  * the state (P-D4: the engine's own values, not a guess).
  */
 import {
-  COMMAND_WEIGHT, DECISION_WEIGHT_BALANCE, DEFAULT_STEWARD_STANCE, type DecisionWeight, type StewardStance,
+  COMMAND_WEIGHT, DECISION_WEIGHT_BALANCE, DEFAULT_STANDING_SETTING, type DecisionWeight, type StandingSetting,
 } from "../content/stewardPolicyConfig";
 import { BALANCE } from "../content/balanceConfig";
 import { TIMBER_TRADE_BALANCE } from "../content/timberTradeConfig";
@@ -22,8 +22,8 @@ export function largeSumLine(state: GameState): number {
 }
 
 /** The lord's standing policy for a kind of small matter (a home petition's kind, or `sender:<faction>` for an event). */
-export function stewardStance(state: Pick<GameState, "stewardship">, key: string): StewardStance {
-  return stewardshipOf(state).policies?.[key] ?? DEFAULT_STEWARD_STANCE;
+export function standingSetting(state: Pick<GameState, "stewardship">, key: string): StandingSetting {
+  return stewardshipOf(state).standing?.[key] ?? DEFAULT_STANDING_SETTING;
 }
 
 /** What one choice of an offer does, measured on a copy. */
@@ -96,12 +96,12 @@ export function weighOffer(state: GameState, occurrence: RegistryOccurrence): { 
  * the least given (the purse's side); as custom has it: the least change. A steward does not put a matter off (a hold
  * only costs): he holds only when no other choice is open. Ties go to the canon's order. Null for "bring it to me".
  */
-export function stewardPick(stance: StewardStance, choices: readonly ChoiceWeighing[]): string | null {
-  if (stance === "lord" || choices.length === 0) return null;
+export function stewardPick(setting: StandingSetting, choices: readonly ChoiceWeighing[]): string | null {
+  if (setting === "lord" || choices.length === 0) return null;
   const acting = choices.filter(choice => choice.commands.length > 0);
   const pool = acting.length > 0 ? acting : choices;
   const order = (pick: (left: ChoiceWeighing, right: ChoiceWeighing) => number) => [...pool].sort((left, right) => pick(left, right) || pool.indexOf(left) - pool.indexOf(right))[0]!.id;
-  if (stance === "lenient") return order((left, right) => right.spend - left.spend);
-  if (stance === "strict") return order((left, right) => left.spend - right.spend);
+  if (setting === "lenient") return order((left, right) => right.spend - left.spend);
+  if (setting === "strict") return order((left, right) => left.spend - right.spend);
   return order((left, right) => Math.abs(left.spend) - Math.abs(right.spend) || left.commands.length - right.commands.length);
 }

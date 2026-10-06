@@ -15,6 +15,7 @@
  * - HL-10 (HIST-1): at each season's close, everyday records eight seasons old fold into one summary per season, and
  *   128² thumbnails that old are kept only at a year's end (winter's close). Everything else stays for good.
  */
+import { V4_LIVE_ENTRIES } from "../content/registry/v4Entries.generated";
 import { DECISION_RELATION, NEIGHBOUR_FACTION_BY_ESTATE, POLICY_RELATION, SUBSIDY_FACTION } from "../content/decisionRelationConfig";
 import { WITNESS_RELATION_LOSS } from "../content/diplomacyConfig";
 import { HOME_PETITION_KINDS, PUNISH_CONNECTION_RELATION, PUNISH_RECOVERY } from "../content/stewardshipConfig";
@@ -96,7 +97,7 @@ export const DECISION_KIND_BY_COMMAND: Readonly<Record<string, DecisionKind>> = 
   set_estate_policy: "estate_policy", set_project_subsidy: "project_subsidy", set_market_dues: "market_dues",
   file_suit: "lawsuit", add_suit_evidence: "lawsuit", seek_suit_patron: "lawsuit", enforce_possession: "lawsuit",
   propose_marriage: "marriage", answer_counter: "marriage", keep_promise: "marriage", answer_will_change: "marriage",
-  set_estate_oversight: "stewardship", set_exception_rules: "stewardship", set_steward_policy: "stewardship", answer_estate_petition: "stewardship", set_audit_mode: "stewardship", answer_audit: "stewardship",
+  set_estate_oversight: "stewardship", set_exception_rules: "stewardship", set_standing_policy: "stewardship", answer_estate_petition: "stewardship", set_audit_mode: "stewardship", answer_audit: "stewardship",
   answer_registry_offer: "registry",
 };
 
@@ -111,6 +112,32 @@ function historyOf(state: Pick<GameState, "history">): HistoryState {
 }
 
 type Draft = Omit<HistoryRecord, "id">;
+export type HistoryDraft = Draft;
+
+/** DEC-TRACE: records appended by the thread of consequence (the same ledger, in order). */
+export function appendHistoryRecords(state: GameState, drafts: readonly Draft[]): GameState {
+  if (drafts.length === 0) return state;
+  return { ...state, history: append(historyOf(state), drafts) };
+}
+
+/** DEC-TRACE §1: the decision kinds a lord-mode command answers as a card, each kept as its own record. */
+const CARD_KINDS: readonly DecisionKind[] = ["lawsuit", "marriage", "stewardship", "registry", "operation"];
+
+/** What a card's command answered (its subject) and what it chose, from the command's own fields. */
+const V4_CHOICES: ReadonlyMap<string, readonly string[]> = new Map((V4_LIVE_ENTRIES as readonly { readonly id: string; readonly choices: readonly { readonly id: string }[] }[])
+  .map(entry => [entry.id, entry.choices.map(choice => choice.id)]));
+const registryV4Choices = (entryId: string): readonly string[] => V4_CHOICES.get(entryId) ?? [];
+
+function cardChoice(before: GameState, command: { readonly type: string } & Readonly<Record<string, unknown>>): { readonly subjectId: string; readonly chosen: string; readonly alternatives: readonly string[] } {
+  const field = (...names: string[]) => names.map(name => command[name]).find(value => value !== undefined);
+  const subjectId = String(field("occurrenceId", "petitionId", "auditId", "negotiationId", "promiseId", "suitId", "claimId", "estateId", "kind") ?? command.type);
+  const grant = command.grant === undefined ? undefined : command.grant === true ? "granted" : "refused";
+  const accept = command.accept === undefined ? undefined : command.accept === true ? "accepted" : "declined";
+  const chosen = String(field("choiceId", "response", "choice", "setting", "mode", "evidence", "amount") ?? grant ?? accept ?? command.type);
+  const occurrence = command.type === "answer_registry_offer" ? before.registry?.occurrences.find(entry => entry.id === command.occurrenceId) : undefined;
+  const alternatives = occurrence?.source === "v4" ? (registryV4Choices(occurrence.entryId)) : grant !== undefined ? ["granted", "refused"] : [];
+  return { subjectId, chosen, alternatives: alternatives.filter(entry => entry !== chosen) };
+}
 
 /** Appends records (and a thumbnail for the first that asks for one) to the history; returns it unchanged if none. */
 function append(history: HistoryState, drafts: readonly (Draft & { readonly thumbnail?: { state: GameState; size: 128 | 256 } })[]): HistoryState {
@@ -239,6 +266,13 @@ export function recordDecision(before: GameState, reduced: GameState, command: {
       severity: 1, params: { reason: refusal.reason, kind: refusal.kind, amount: refusal.amount, total: refusal.total, limit: refusal.limit } }]) };
   }
   const history = historyOf(after);
+  // DEC-TRACE §1: in lord mode a card's answer is its own decision record (the consequences point at its id).
+  if (!BIG_DECISION_KINDS.includes(kind) && after.agency !== undefined && CARD_KINDS.includes(kind) && (kind !== "operation" || command.type === "order_timber")) {
+    const card = cardChoice(before, command);
+    return { ...after, history: append(history, [{ tick: after.tick, kind: "decision", template: "decision.card", severity: 1, subject: TOWN,
+      params: { decisionKind: kind, command: command.type, subjectId: card.subjectId, chosen: card.chosen },
+      decision: { chosen: card.chosen, alternatives: card.alternatives, predicted: {} } }]) };
+  }
   if (!BIG_DECISION_KINDS.includes(kind)) {
     return { ...after, history: { ...history, seasonDecisions: { ...history.seasonDecisions, [kind]: (history.seasonDecisions[kind] ?? 0) + 1 } } };
   }
@@ -551,7 +585,7 @@ const YEAR = 4 * SEASON;
 
 /** HL-10: a record folded into its season's summary once old enough — everyday (severity 0), not kept for good. */
 export function foldableRecord(record: HistoryRecord): boolean {
-  return record.severity === 0 && record.decision === undefined && record.template !== ROLLUP_TEMPLATE && !PERMANENT_EVERYDAY.has(record.template);
+  return record.severity === 0 && record.decision === undefined && record.because === undefined && record.template !== ROLLUP_TEMPLATE && !PERMANENT_EVERYDAY.has(record.template);
 }
 
 /** HL-10: a thumbnail kept once old: an era's or chapter's (256²), or a year's end (winter's close). */

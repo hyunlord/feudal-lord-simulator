@@ -12,7 +12,8 @@ import { BALANCE, PRESSURE_BALANCE } from "../content/balanceConfig";
 import { houseLotArea } from "../geometry/buildingFootprint";
 import { postLedgerEntries } from "../ledger/ledger";
 import type { SourceRef } from "../contracts";
-import { addConsequence, traceOf, TRACE_LIVE_TICKS } from "./decisionTrace";
+import { becauseOf, traceOf, TRACE_LIVE_TICKS } from "./decisionTrace";
+import { appendHistoryRecords } from "./history";
 import type { FactionAct } from "./decisionTrace.types";
 import type { GameState } from "./engine.types";
 import { estatesOf, LORD, raiseClaim } from "./estates";
@@ -127,9 +128,11 @@ function act(state: GameState, faction: FactionRecord, def: FactionActDef, size:
   applied ??= applyEffect(state, faction, { effect: "treasury", sign: direction, size: "small" }, causes)!;
   const trace = traceOf(applied.state);
   const record: FactionAct = { factionId: faction.id, tick: state.tick, size, direction, act: def.id, relation: faction.relation };
-  let next: GameState = { ...applied.state, trace: { ...trace, acts: [...trace.acts, record] } };
-  next = addConsequence(next, "faction_act", `faction:${faction.id}`, causes, partial, { act: def.id, faction: faction.id, size, ...applied.detail });
-  return next;
+  const next: GameState = { ...applied.state, trace: { ...trace, acts: [...trace.acts, record] } };
+  // The act in the history: the faction's, with the decisions that turned it (none when its mind moved by other causes, A2).
+  return appendHistoryRecords(next, [{ tick: state.tick, kind: "faction", template: "faction.act", subject: { type: "faction", id: faction.id }, severity: 1,
+    params: { faction: faction.id, name: faction.name, act: def.id, size, relation: faction.relation, ...applied.detail },
+    ...(causes.length === 0 ? {} : { because: becauseOf(causes, "faction_act", partial) }) }]);
 }
 
 /** DEC-TRACE §3: the season's acts (lord mode, at a season's end), the factions in their order. */

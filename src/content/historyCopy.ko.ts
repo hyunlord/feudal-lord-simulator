@@ -145,7 +145,47 @@ const projectWord = (what: string) => what === "road" ? "길" : what.startsWith(
 /** COPY-1e (CA-050): a petition left unanswered, one sentence for every era's. */
 const unansweredLine = (params: P) => `${PETITION_SUBJECTS[s(params, "defId")] ?? s(params, "defId")}에 답하지 않았다`;
 
+/** DEC-TRACE §1: what a card's command decided (the lord's answer in lord mode). */
+const CARD_COMMAND: Readonly<Record<string, string>> = {
+  answer_registry_offer: "사건에 답했다", answer_estate_petition: "영지 청원에 답했다", file_suit: "소송을 걸었다", add_suit_evidence: "소송에 증거를 냈다",
+  seek_suit_patron: "소송 후원자를 찾았다", enforce_possession: "판결대로 점유를 집행하려 했다", propose_marriage: "혼인을 청했다", answer_counter: "혼인 역제안에 답했다",
+  keep_promise: "약속을 지켰다", answer_will_change: "유언 변경에 답했다", set_estate_oversight: "영지 감독을 정했다", set_exception_rules: "청지기 예외를 정했다",
+  set_standing_policy: "청지기의 상시 방침을 정했다", set_audit_mode: "감사 방식을 정했다", answer_audit: "감사 결과에 답했다", order_timber: "목재 주문을 정했다",
+};
+/** DEC-TRACE §1: the standing policies' words. */
+const STANDING_WORDS: Readonly<Record<string, string>> = { customary: "관습대로", lenient: "가볍게", strict: "엄하게", lord: "영주에게" };
+/** DEC-TRACE §2: what followed, in a line (the screens put "○○년 당신의 결정 때문에" before it). */
+const CONSEQUENCE_WORDS: Readonly<Record<string, (params: P) => string>> = {
+  households_left: params => `${n(params, "households")}가구가 떠났다`,
+  households_arrived: params => `${n(params, "households")}가구가 들어왔다`,
+  suit_turned: params => `소송이 다음 단계로 넘어갔다(${s(params, "stage")})`,
+  marriage_turned: () => "혼인이 한 걸음 나아갔다",
+  promise_made: () => "약속이 맺어졌다",
+  promise_kept: () => "약속이 지켜졌다",
+  promise_broken: () => "약속이 깨졌다",
+  project_started: params => `${buildingWord(s(params, "what"))} 사업이 시작되었다`,
+  goods_delivered: params => `목재 ${n(params, "brought")}단이 들어왔다`,
+  audit: () => "영지 감사가 열렸다",
+  estate_mood: () => "영지 사람들의 마음이 달라졌다",
+  right_income: params => `얻은 권리에서 첫 수입 ${moneyWords(n(params, "income"))}${josa(moneyWords(n(params, "income")), "이", "가")} 들어왔다`,
+};
+/** DEC-TRACE §3: a faction's act. */
+const FACTION_ACT_WORDS: Readonly<Record<string, string>> = {
+  merchant_invest: "좌판과 거래에 돈을 더 들였다", merchant_settle: "상인 가구들이 들어왔다", merchant_withdraw: "좌판에서 돈을 거두었다", merchant_leave: "상인 가구들이 떠났다",
+  commons_settle: "새 가구가 들어왔다", commons_flock: "여러 가구가 몰려왔다", commons_leave: "한 가구가 떠났다", commons_exodus: "여러 가구가 떠났다",
+  town_fund: "공공사업 기금을 모았다", town_works: "공공사업에 큰돈을 모았다", town_withhold: "영주에게 낼 돈을 미루었다", town_boycott: "공사와 일감을 거부했다",
+  church_gift: "영주에게 선물을 보냈다", church_endow: "교회 사업에 큰 기부를 모았다", church_demand: "수선비를 요구했다", church_penance: "속죄금을 요구했다",
+  overlord_favour: "영주의 청구를 거들었다", overlord_confirm: "영주의 권리를 확인해 주었다", overlord_aid: "원조금을 요구했다", overlord_fine: "벌금을 물렸다",
+  crown_favour: "영주의 청구를 거들었다", crown_confirm: "영주의 권리를 확인해 주었다", crown_aid: "원조금을 요구했다", crown_fine: "벌금을 물렸다",
+  neighbour_support: "영주의 청구를 거들었다", neighbour_alliance: "영주와 손을 잡았다", neighbour_claim: "영주의 땅에 청구를 냈다", neighbour_suit: "영주를 상대로 소송을 걸었다",
+};
+
 export const HISTORY_TEMPLATES: Readonly<Record<string, (params: P) => string>> = {
+  "decision.card": params => CARD_COMMAND[s(params, "command")] ?? "영주가 결정했다",
+  "decision.steward": params => `청지기가 ${STANDING_WORDS[s(params, "policy")] ?? STANDING_WORDS.customary} 처리했다`,
+  "decision.lapsed": () => "답하지 않은 채 기한이 지났다",
+  consequence: params => CONSEQUENCE_WORDS[s(params, "key")]?.(params) ?? s(params, "key"),
+  "faction.act": params => `${factionDisplayName(s(params, "faction"), s(params, "name"))}: ${FACTION_ACT_WORDS[s(params, "act")] ?? s(params, "act")}`,
   "decision.bundle": params => (BUNDLE[s(params, "decisionKind")] ?? (() => s(params, "decisionKind")))(params),
   "decision.famine_response": params => { const label = choice(s(params, "chosen")); return `대기근에 ${label}${josa(label, "을", "를")} 택했다`; },
   "decision.petition_response": params => {
