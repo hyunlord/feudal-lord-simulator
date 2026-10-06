@@ -65,7 +65,8 @@ export function drawCountrysideItem(context: CanvasRenderingContext2D, item: Cou
   const piece = item.piece;
   const progress = calendarProgress(state);
   const phase = treeProgression(progress, piece.id, progress.year === calendarProgress({ ...state, tick: 0 }).year);
-  const season = progress.season === 3 && !phase.snowy ? 2 : phase.season;
+  const bareTree = piece.family === 'oak_solitary' || piece.family === 'willow_pollard';
+  const season = !bareTree && progress.season !== 0 && phase.season === 3 && !phase.snowy ? 2 : phase.season;
   if ("salt" in piece) { drawCountryBlit(context, pieceBlit(piece, season)); return; }
   if (progress.season === 0 && drawSpringHedge(context, piece, season, zoom)) return;
   for (const blit of stripBlits(piece, season)) drawCountryBlit(context, blit);
@@ -80,7 +81,7 @@ export function drawCountryFields(context: CanvasRenderingContext2D, state: Game
   const firstYear = progress.year === calendarProgress({ ...state, tick: 0 }).year;
   for (const piece of fields) {
     const phase = treeProgression(progress, piece.id, firstYear);
-    const season = progress.season === 3 && !phase.snowy ? 2 : phase.season;
+    const season = progress.season !== 0 && phase.season === 3 && !phase.snowy ? 2 : phase.season;
     if (tileIsVisibleInRange(piece.tx, piece.ty, range)) drawCountryBlit(context, pieceBlit(piece, season));
   }
 }
