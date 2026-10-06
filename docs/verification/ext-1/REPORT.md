@@ -8,7 +8,7 @@
 ## 실행 위치
 - **DGX**:
   - 가드레일 1회차(`engine-EXT1-guard-d3a1d7b`, `d3a1d7b`): seed 1~5 통과, 해시 다섯이 기준선과 같다. 사람 경로 12/12.
-  - 바뀐 것에 걸린 시험(`npm run test:changed`, RR16): 1회차 `engine-EXT1-changed-d3a1d7b`는 4,280/4,286. 고친 뒤 2회차 `engine-EXT1-changed2-fa513b6-fa513b6`의 결과는 아래 "필수 조건"에 적는다.
+  - 바뀐 것에 걸린 시험(`npm run test:changed`, RR16): 1회차 `engine-EXT1-changed-d3a1d7b`는 4,280/4,286. 1회차 실패 6건의 원인은 하나였다. 정의를 통째로 맞춰 보던 시험이 새 칸 `builderTicks`를 몰랐고, 확장성 시험 둘이 그 실패를 넘겨받았다. 고친 뒤 2회차 `engine-EXT1-changed2-fa513b6-fa513b6`는 4,286/4,286.
 - **Mac**:
   - 시험: `contentRegistry` 4/4, `stoneTownBuildings` 5/5, `phase9Config` 5/5, `phase3Config` 7/7.
   - 확장성 시험: `buildingCatalogExtensibility` 1/1(사본에 새 건물을 넣고 tsc와 렌더 시험 17개), `resourceCatalogExtensibility` 1/1.
@@ -47,7 +47,7 @@
 - 문구 표(`*.ko.ts`)는 EXT-5(문구 키)까지 그대로 둔다.
 
 ## 필수 조건
-- 바뀐 것에 걸린 시험: (2회차 결과를 적는다) — DGX(`engine-EXT1-changed2-fa513b6-fa513b6`, 가벼운 칸)
+- 바뀐 것에 걸린 시험: 4,286/4,286 — DGX(`engine-EXT1-changed2-fa513b6-fa513b6`, 가벼운 칸, `fa513b6`)
 - typecheck — Mac. ui-geometry: 화면 파일은 바꾸지 않았다.
 
 ## 다음 후보
