@@ -207,7 +207,7 @@ case "$SLOT" in
     if [ "$(dc__free_gb)" -lt "$DC_LOW_GB" ]; then clean_disk "before the heavy run $RUN: under $DC_LOW_GB GB free" tight; fi
     # shellcheck disable=SC1091
     . "$RUN_DIR/scripts/remote/heavySlots.sh"
-    heavy_take_slot "$BASE" "$RUN" "$LABEL: ${CMD:0:120}" ;;
+    heavy_take_slot "$BASE" "$RUN" "$LABEL: ${CMD:0:120}" "${RUN_CLASS:-experiment}" ;;
 esac
 WAIT_S=$(elapsed "$T_WAIT")
 
