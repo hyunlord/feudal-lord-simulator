@@ -417,11 +417,6 @@
 .story-modal h2 { margin: 0; font-size: 20px; }
 .story-modal p { margin: 0; font-size: 14px; line-height: 1.5; }
 .story-modal-art { justify-self: center; border: 1px solid var(--palette-ink); }
-.famine-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
-.famine-option { display: grid; grid-template-columns: 132px 1fr; grid-template-rows: auto auto 1fr; gap: 2px 10px; width: 100%; min-height: 110px; padding: 6px; text-align: left; font-size: 13px; }
-.famine-option-art { grid-row: 1 / 4; border: 1px solid var(--palette-ink); }
-.famine-option strong { font-size: 16px; }
-.famine-option-predicted, .petition-predicted { font-size: 12px; font-weight: 600; }
 .story-modal-later { justify-self: end; min-height: 44px; }
 /* UI-AUDIT-1: the card is as tall as its body (at least the frame's 620 px, at most the view): the body scrolls only past
    that, and [나중에 정하기] is its last row, never over an answer. */
@@ -436,28 +431,22 @@
 .petition-options { display: grid; gap: 6px; margin: 0; padding: 0; list-style: none; }
 .petition-option { display: grid; grid-template-columns: 48px 1fr; gap: 2px 10px; width: 100%; min-height: 64px; padding: 6px; text-align: left; font-size: 13px; }
 .petition-seal { grid-row: 1 / 4; }
-/* UI-10: chapter 5's two-answer cards carry long answers (the charter's sums): the full card's height, so
-   [나중에 정하기] shows below them. */
-.petition-card[data-answers="2"]:is([data-def="borough_autonomy"], [data-def="royal_tax"], [data-def="guild_dispute"], [data-def="church_rebuilding"]) { min-height: 620px; }
 .petition-body > .story-modal-later { margin-top: 2px; }
 /* UI-10: an answer with more than three lines (the heir's card) keeps them all beside the seal. */
 .petition-option > :not(.petition-seal) { grid-column: 2; min-width: 0; }
-/* UI-10 (LG-3): the heir's card — its answers side by side (a column each, the seal beside the label, the rest under
-   them), each with the heir it names: the portrait beside the name and relation, then lineage, likeness and records. */
-/* UI-AUDIT-1: the heir's three columns take a wider card (1080 px): in the 720 px card long names and lines ran past
-   their answer (42 px sideways) and the body scrolled; a word breaks where it must (keep-all alone kept long words whole). */
-.petition-card[data-def="heir_choice"] { width: min(1080px, 96vw); min-height: min(740px, 92vh); }
-.petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); align-items: stretch; }
-.petition-card[data-def="heir_choice"] .petition-option { height: 100%; grid-template-columns: 44px minmax(0, 1fr); align-content: start; align-items: center;
+/* DEC-CARD (UI-10 LG-3): the heir's card — the candidates side by side above the answers (the card's grid of answers
+   replaced the 1080 px side-by-side card), each the portrait beside the name and relation, the answer that names them,
+   then lineage, likeness and records; a word breaks where it must. */
+.petition-heirs { display: grid; gap: 4px; min-width: 0; }
+.petition-heirs h3 { margin: 0; font-size: 13px; }
+.petition-heirs ul { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.petition-heir-answer { grid-column: 1 / -1; font-weight: 700; }
+.petition-heir { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 1px 8px; align-items: center; margin: 2px 0; font-size: 12px; line-height: 1.35;
   word-break: keep-all; overflow-wrap: anywhere; }
-.petition-card[data-def="heir_choice"] .petition-seal { grid-row: 1; }
-.petition-card[data-def="heir_choice"] .petition-option > :not(.petition-seal, strong) { grid-column: 1 / -1; }
-.petition-heir { display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 1px 8px; align-items: center; margin: 2px 0; font-size: 12px; line-height: 1.35; }
 .petition-heir .person-portrait { grid-row: 1 / 3; }
 .petition-heir-name { font-size: 13px; }
 .petition-heir-name, .petition-heir-who, .petition-heir-line { min-width: 0; overflow-wrap: anywhere; }
 .petition-heir-line { grid-column: 1 / -1; }
-@media (max-width: 700px) { .petition-card[data-def="heir_choice"] .petition-options { grid-auto-flow: row; } }
 .chronicle-page { position: relative; width: min(920px, 96vw); height: min(780px, 94vh); }
 .chronicle-frame { position: absolute; inset: 0; box-sizing: border-box; }
 .chapter-page-body { display: grid; align-content: start; gap: 6px; overflow-y: auto; color: var(--palette-ink); }
@@ -578,7 +567,7 @@
   .story-modal.petition-card { max-height: calc(100vh - 2 * var(--frame-gap)); }
 }
 .petition-people { display: grid; gap: 4px; min-width: 0; }
-.petition-people h3 { margin: 0; font-size: 13px; }
+.petition-people h3 { display: flex; gap: 6px; align-items: center; margin: 0; font-size: 13px; }
 .petition-people .person-list { margin: 0; }
 /* UI-6: the Crown's writ — the hanging wax seal with the Crown's arms on its disc. */
 /* UI-6b: the Wave 8 petition frame's roundel — its centre at (68, 110) of the corner slice, drawn at half size (34, 55),
