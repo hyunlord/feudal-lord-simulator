@@ -214,11 +214,13 @@ test("the shipped pictures follow the registry alone: every v4 entry it runs, no
   assert.deepEqual(shippedEventArtIds(EVENT_ART_IMAGES, ["ck_evt_150", "ck_evt_011", "home:heriot", "ck_evt_150"]), ["ck_evt_011", "ck_evt_150"]);
 });
 
-test("the build ships exactly those pictures, re-encoded smaller, deterministic, in their own on-demand category", () => {
+test("the build ships exactly those pictures, each re-encoded smaller and under the per-picture cap, deterministic, all in their own on-demand category", () => {
   const shipped = shippedEventArtIds(EVENT_ART_IMAGES);
   assert.deepEqual(EVENT_ART_DERIVATIVES.map(item => item.url), shipped.map(id => `assets/event-art/${id}.jpg`));
   const provenance = readFileSync("docs/provenance/assets.csv", "utf8");
-  let received = 0; let built = 0;
+  // A cap per picture, not a total: the set grows with every event the engine turns on (EVA-AUTO principle; engine B's
+  // 108 events ship 93 pictures). Each is a 960 × 540 baseline JPEG; the largest of all 200 is 172,986 bytes at q70.
+  const PER_PICTURE_BYTES = 256 * 1024;
   for (const [index, item] of EVENT_ART_DERIVATIVES.entries()) {
     assert.equal(KEYART_DERIVATIVE_BY_URL.get(item.url), item);
     assert.equal(item.format, "jpeg-reencoded");
@@ -231,12 +233,15 @@ test("the build ships exactly those pictures, re-encoded smaller, deterministic,
     const sof = bytes.indexOf(Buffer.from([0xff, 0xc0]));
     assert.deepEqual([bytes[0], bytes[1], bytes.readUInt16BE(sof + 7), bytes.readUInt16BE(sof + 5)], [0xff, 0xd8, 960, 540], `${item.id}: baseline 960 × 540`);
     assert.ok(bytes.length < source.length, `${item.id}: ${bytes.length} < ${source.length}`);
-    received += source.length; built += bytes.length;
+    assert.ok(bytes.length <= PER_PICTURE_BYTES, `${item.id}: ${bytes.length} bytes over the ${PER_PICTURE_BYTES} per-picture cap`);
   }
-  assert.ok(built < 0.7 * received && built < 10_000_000, `${built} of ${received} bytes`);
-  // distBudget: their own measured category, on demand, out of the first load's total.
+  // distBudget: their own measured category, on demand, out of the first load's total — every shipped picture.
   const config = loadBudgetConfig();
-  assert.equal(categorize("assets/event-art/ck_evt_005.jpg", config)?.category, "event_cards");
+  const onDemand = new Set(config.categories.filter(entry => (entry as { onDemand?: boolean }).onDemand === true).map(entry => entry.id));
+  for (const item of EVENT_ART_DERIVATIVES) {
+    assert.equal(categorize(item.url, config)?.category, "event_cards", item.url);
+    assert.ok(onDemand.has(categorize(item.url, config)!.category), `${item.url}: not in the first load`);
+  }
   const category = config.categories.find(entry => entry.id === "event_cards") as { budgetMB: number | null; onDemand?: boolean; name: string };
   assert.deepEqual([category.budgetMB, category.onDemand, category.name], [null, true, "사건 삽화(카드에서 불러옴)"]);
   const result = evaluateBudget([{ path: "assets/event-art/ck_evt_005.jpg", bytes: 1000 }, { path: "index.html", bytes: 10 }], config);
