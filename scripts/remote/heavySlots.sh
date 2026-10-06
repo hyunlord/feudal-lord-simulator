@@ -1,4 +1,4 @@
-# Heavy-run slots on the DGX (sourced by remote-exec.sh; bash, Linux flock): at most HEAVY_SLOTS (2) heavy runs at once
+# Heavy-run slots on the DGX (sourced by remote-exec.sh; bash, Linux flock): at most HEAVY_SLOTS (3) heavy runs at once
 # across all sessions — full regression, clean clones, the ui-geometry audit, guardrails and long campaign runs (run.sh
 # decides what is heavy). Why (2026-10-04): the render LM-R1 audit overlapping the engine FIX-17 clone did a third of its
 # work in 6.5 hours at load 23. Light runs (single test files, short probes) and the performance measurements (decision
@@ -8,7 +8,10 @@
 # waits in line, first come first served: a ticket _slots/queue/<ns>-<run> it holds locked while waiting. A ticket whose
 # lock is free and that is older than a minute belongs to a run that is gone and is removed. While waiting the run logs
 # its place in line, what holds each slot and who is ahead — at the start, whenever that changes, and every 10 minutes.
-HEAVY_SLOTS=${HEAVY_SLOTS:-2}
+# 3 since 2026-10-06 (user order: every session waited hours in line; was 2). <base>/_slots/max, when it holds a number,
+# overrides it at every check, so the DGX can change the cap without a code push.
+HEAVY_SLOTS=${HEAVY_SLOTS:-3}
+heavy__cap() { local c; read -r c 2> /dev/null < "$HEAVY_DIR/max" && [[ $c =~ ^[1-9][0-9]?$ ]] && HEAVY_SLOTS=$c; return 0; }
 HEAVY_POLL_S=${HEAVY_POLL_S:-10}
 
 # Is this lock file held by a live process? (opened for reading: never created here)
@@ -32,6 +35,7 @@ heavy_take_slot() {
   exec 6> "$ticket"
   flock -n 6 || true
   while :; do
+    heavy__cap
     [ -e "$ticket" ] || { exec 6> "$ticket"; flock -n 6 || true; }   # never dropped while held, but be safe
     now=$(date +%s)
     local ahead=()
