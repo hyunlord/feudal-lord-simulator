@@ -1,0 +1,187 @@
+{
+  "roofPolygonsManual": {
+    "main": [
+      [
+        60,
+        10
+      ],
+      [
+        106,
+        34
+      ],
+      [
+        115,
+        52
+      ],
+      [
+        91,
+        85
+      ],
+      [
+        20,
+        49
+      ]
+    ],
+    "leanTo": [
+      [
+        102,
+        83
+      ],
+      [
+        119,
+        79
+      ],
+      [
+        132,
+        91
+      ],
+      [
+        113,
+        102
+      ]
+    ]
+  },
+  "manualPointUncertaintyNative": 2,
+  "layers": {
+    "body": {
+      "alphaAnyBBox": [
+        4,
+        4,
+        147,
+        150
+      ],
+      "alphaGt32BBox": [
+        20,
+        9,
+        132,
+        140
+      ],
+      "outsideBodyAlphaGt32Pixels": 0,
+      "edgeAnyAlphaPixels": 0,
+      "wholeRegistrationOffset": [
+        0,
+        0
+      ],
+      "registrationClippedPixels": 0,
+      "mode": "RGBA",
+      "transparentPixels": 12827,
+      "partialAlphaPixels": 10236
+    },
+    "fresh": {
+      "alphaAnyBBox": [
+        18,
+        7,
+        136,
+        144
+      ],
+      "alphaGt32BBox": [
+        20,
+        9,
+        133,
+        142
+      ],
+      "outsideBodyAlphaGt32Pixels": 197,
+      "edgeAnyAlphaPixels": 0,
+      "wholeRegistrationOffset": [
+        0,
+        -1
+      ],
+      "registrationClippedPixels": 0,
+      "mode": "RGBA",
+      "transparentPixels": 13081,
+      "partialAlphaPixels": 9979
+    },
+    "weathered": {
+      "alphaAnyBBox": [
+        11,
+        5,
+        149,
+        147
+      ],
+      "alphaGt32BBox": [
+        28,
+        16,
+        128,
+        142
+      ],
+      "outsideBodyAlphaGt32Pixels": 87,
+      "edgeAnyAlphaPixels": 0,
+      "wholeRegistrationOffset": [
+        0,
+        0
+      ],
+      "registrationClippedPixels": 0,
+      "mode": "RGBA",
+      "transparentPixels": 17585,
+      "partialAlphaPixels": 5793
+    },
+    "snow": {
+      "alphaAnyBBox": [
+        25,
+        12,
+        137,
+        109
+      ],
+      "alphaGt32BBox": [
+        27,
+        14,
+        135,
+        106
+      ],
+      "outsideBodyAlphaGt32Pixels": 22,
+      "edgeAnyAlphaPixels": 0,
+      "wholeRegistrationOffset": [
+        0,
+        0
+      ],
+      "registrationClippedPixels": 0,
+      "main": {
+        "areaPixels": 3892,
+        "weightedCoveragePct": 75.49694698023094,
+        "alphaGt32CoveragePct": 78.64850976361768
+      },
+      "leanTo": {
+        "areaPixels": 392,
+        "weightedCoveragePct": 75.85434173669469,
+        "alphaGt32CoveragePct": 80.35714285714286
+      },
+      "combined": {
+        "weightedCoveragePct": 75.52964976840411,
+        "alphaGt32CoveragePct": 78.80485527544351
+      },
+      "outsideRoofDilated0Pixels": 236,
+      "outsideRoofDilated1Pixels": 127,
+      "outsideRoofDilated2Pixels": 73,
+      "outsideRoofDilated3Pixels": 39,
+      "outsideRoofDilated4Pixels": 12,
+      "outsideRoofDilated6Pixels": 0,
+      "mode": "RGBA",
+      "transparentPixels": 19403,
+      "partialAlphaPixels": 3661
+    },
+    "boarded": {
+      "alphaAnyBBox": [
+        31,
+        47,
+        128,
+        115
+      ],
+      "alphaGt32BBox": [
+        33,
+        58,
+        126,
+        113
+      ],
+      "outsideBodyAlphaGt32Pixels": 0,
+      "edgeAnyAlphaPixels": 0,
+      "wholeRegistrationOffset": [
+        0,
+        0
+      ],
+      "registrationClippedPixels": 0,
+      "mode": "RGBA",
+      "transparentPixels": 22139,
+      "partialAlphaPixels": 1078
+    }
+  }
+}

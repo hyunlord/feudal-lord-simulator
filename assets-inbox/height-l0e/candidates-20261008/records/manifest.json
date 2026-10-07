@@ -1,0 +1,163 @@
+{
+  "task": "RB-HEIGHT-L0E",
+  "status": "candidate-art-only; runtime and game-scene verification still required",
+  "canvas": [
+    153,
+    153
+  ],
+  "worldScale": 0.49957049486461247,
+  "footprint": "existing Wave26 L0e footprint contract, retained conceptually with measured residuals; not zero residual",
+  "registration": "same153canvas; freshwhole(0,-1), otherfinaloffset0; no alpha clip/warp/part assembly",
+  "assets": [
+    {
+      "kind": "body",
+      "path": "/tmp/astra-height-l0e-candidates-20261008/assets/house_l0_e-body.png",
+      "sha256": "ebe5c16e4f2dd80efd415bf9231ad7ad2867becc8d5933986331c475398f7750",
+      "size": [
+        153,
+        153
+      ],
+      "raw": "/tmp/astra-height-l0e-candidates-20261008/raw/body13.png",
+      "rawSha256": "7ea15b739d04b827db2998408c9cdfc8aa4ab6eaa00383c0fbbca5f2f30bdc6f",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "prompt": "/tmp/astra-height-l0e-candidates-20261008/prompts/body13.txt",
+      "promptSha256": "e0cc6cc3f15399bdb04c6e7b7f5206677bcd0bd6602d97fc50e4ace61144d32e",
+      "transform": {
+        "method": "ffmpeg uniform square resize once Lanczos",
+        "outputSize": [
+          153,
+          153
+        ],
+        "wholeOffset": [
+          0,
+          0
+        ],
+        "alphaClipping": false,
+        "partAssembly": false
+      }
+    },
+    {
+      "kind": "fresh",
+      "path": "/tmp/astra-height-l0e-candidates-20261008/assets/house_l0_e-fresh.png",
+      "sha256": "f8f1f8b0cda0a8629722ff5bb707bcf55db4481c06c38875af0a9b09ef4aab49",
+      "size": [
+        153,
+        153
+      ],
+      "raw": "/tmp/astra-height-l0e-candidates-20261008/raw/fresh02.png",
+      "rawSha256": "c236ffa7409c787fc6aef0f4a9c994a6066976c89890d1a19b91281d54b436d3",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "prompt": "/tmp/astra-height-l0e-candidates-20261008/prompts/fresh02.txt",
+      "promptSha256": "e76d0fec01da28ceda9554f8f8bf5c5f04bfd9a2a439295ea7e89960ccce86bc",
+      "transform": {
+        "method": "ffmpeg uniform square resize once Lanczos",
+        "outputSize": [
+          153,
+          153
+        ],
+        "wholeOffset": [
+          0,
+          -1
+        ],
+        "alphaClipping": false,
+        "partAssembly": false
+      }
+    },
+    {
+      "kind": "weathered",
+      "path": "/tmp/astra-height-l0e-candidates-20261008/assets/house_l0_e-weathered.png",
+      "sha256": "73c0c2e9694f640a3f2713b6d5261b7d50f1891c3b506144d7cdea9e8a7dc5b3",
+      "size": [
+        153,
+        153
+      ],
+      "raw": "/tmp/astra-height-l0e-candidates-20261008/raw/weathered03.png",
+      "rawSha256": "043c0596d3969d064964aed510e3c59255fb516c1bdbba8e378e0a3701b949e9",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "prompt": "/tmp/astra-height-l0e-candidates-20261008/prompts/weathered03.txt",
+      "promptSha256": "50fa22003ad4286e8355ae11a192cd7d8791cce82be6d6e07072010a7e61925e",
+      "transform": {
+        "method": "ffmpeg uniform square resize once Lanczos",
+        "outputSize": [
+          153,
+          153
+        ],
+        "wholeOffset": [
+          0,
+          0
+        ],
+        "alphaClipping": false,
+        "partAssembly": false
+      }
+    },
+    {
+      "kind": "snow",
+      "path": "/tmp/astra-height-l0e-candidates-20261008/assets/house_l0_e-snow.png",
+      "sha256": "df054a2db4b1cbb000dd7f31e4d3a014e72f2eefe079072c44cc8cc733622a94",
+      "size": [
+        153,
+        153
+      ],
+      "raw": "/tmp/astra-height-l0e-candidates-20261008/raw/snow04.png",
+      "rawSha256": "e34e6bbe214df37cbd6b767354e9d9da60d1fc7e920edd13c07eed26c361decc",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "prompt": "/tmp/astra-height-l0e-candidates-20261008/prompts/snow04.txt",
+      "promptSha256": "37131dbf6078b7e79137cee0b52ee978b43b17d273ebb6593d14fa7ef8730457",
+      "transform": {
+        "method": "ffmpeg uniform square resize once Lanczos",
+        "outputSize": [
+          153,
+          153
+        ],
+        "wholeOffset": [
+          0,
+          0
+        ],
+        "alphaClipping": false,
+        "partAssembly": false
+      }
+    },
+    {
+      "kind": "boarded",
+      "path": "/tmp/astra-height-l0e-candidates-20261008/assets/house_l0_e-boarded.png",
+      "sha256": "7ac2ae9242db55b82564d94f796f4a3b72aaa97df670b6666f627263a431b58a",
+      "size": [
+        153,
+        153
+      ],
+      "raw": "/tmp/astra-height-l0e-candidates-20261008/raw/boarded02.png",
+      "rawSha256": "5b7c3aa5dabd19e4a836d6fbfc6d1e3133d5ee1706e6d6baf05aa6646b6478a5",
+      "rawSize": [
+        1254,
+        1254
+      ],
+      "prompt": "/tmp/astra-height-l0e-candidates-20261008/prompts/boarded02.txt",
+      "promptSha256": "6853fb5746564447f699ea5f51eb7a5a980fde834ea4928ece80e8aad9995a2f",
+      "transform": {
+        "method": "ffmpeg uniform square resize once Lanczos",
+        "outputSize": [
+          153,
+          153
+        ],
+        "wholeOffset": [
+          0,
+          0
+        ],
+        "alphaClipping": false,
+        "partAssembly": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "references/house_l0_e.png": {
+    "alphaAnyBBox": [
+      14,
+      45,
+      134,
+      142
+    ],
+    "alphaGt32BBox": [
+      16,
+      48,
+      134,
+      140
+    ],
+    "alphaAnyEdgePixels": 0
+  },
+  "body04-native.png": {
+    "alphaAnyBBox": [
+      18,
+      7,
+      134,
+      143
+    ],
+    "alphaGt32BBox": [
+      20,
+      9,
+      131,
+      135
+    ],
+    "alphaAnyEdgePixels": 0
+  },
+  "body07-native.png": {
+    "alphaAnyBBox": [
+      24,
+      1,
+      141,
+      138
+    ],
+    "alphaGt32BBox": [
+      26,
+      3,
+      126,
+      132
+    ],
+    "alphaAnyEdgePixels": 0
+  },
+  "body08-native.png": {
+    "alphaAnyBBox": [
+      14,
+      31,
+      137,
+      134
+    ],
+    "alphaGt32BBox": [
+      16,
+      33,
+      135,
+      131
+    ],
+    "alphaAnyEdgePixels": 0
+  },
+  "manualGround": {
+    "original": [
+      [
+        26,
+        106
+      ],
+      [
+        89,
+        137
+      ],
+      [
+        130,
+        117
+      ]
+    ],
+    "body07": [
+      [
+        32,
+        97
+      ],
+      [
+        83,
+        128
+      ],
+      [
+        124,
+        114
+      ]
+    ],
+    "pointUncertaintyNative": 2,
+    "diagnosticWholeOffset": [
+      2,
+      6
+    ],
+    "diagnosticResiduals": [
+      8.54400374531753,
+      5.0,
+      5.0
+    ]
+  }
+}
