@@ -1,0 +1,36 @@
+{
+  "scope": "L1c/e/f fifteen runtime PNGs; five of original23 bodies cumulative",
+  "pairedCaptures": 39,
+  "originalPreinstallPairs": 27,
+  "preparedMidwinterSameBuildControlPairs": 9,
+  "normalF13000SameBuildControlPairs": 3,
+  "unpairedInitialBeforeViews": 9,
+  "verdict": "Usable with disclosed measurement and occlusion limits",
+  "observed": [
+    "Complete taller bodies preserve their individual roof/frame identities.",
+    "Fresh/weathered appearances and opaque snow/boarded layers are consumed by the actual game.",
+    "f13000 zoom3 exposes the full door and nearby normal adult.",
+    "World ground placement and camera match paired controls."
+  ],
+  "limits": [
+    "e height uncertainty interval crosses target lower bound.",
+    "f width uncertainty interval crosses target lower bound.",
+    "c ground point maximum residual1.50 world pixels.",
+    "Snow bands and weathering align rather regularly with thatch rows.",
+    "0.6 zoom does not support precise door endpoint readings.",
+    "Legacy projection was not corrected into an exact2:1 asset.",
+    "Original winterstart snow alpha0 is a negative control, not visible snow proof."
+  ],
+  "independentArtifacts": [
+    "/tmp/astra-height-doors2-before-root-review.json",
+    "/tmp/astra-height-doors2-ce-root-static-review.json",
+    "/tmp/astra-height-doors2-f-root-static-review.json",
+    "/tmp/astra-height-doors2-installed-static-root-review.json",
+    "/tmp/astra-height-doors2-pairs0-root-review.json",
+    "/tmp/astra-height-doors2-pairs1-root-review.json",
+    "/tmp/astra-height-doors2-pairs2-root-review.json",
+    "/tmp/astra-height-doors2-pairs3-root-review.json",
+    "/tmp/astra-height-doors2-pairs4-root-review.json",
+    "/tmp/astra-height-doors2-prior8-root-review.json"
+  ]
+}
