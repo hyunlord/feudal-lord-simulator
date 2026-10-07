@@ -27,3 +27,9 @@ strong 원본도 최대 alpha 175/255이며 불투명 환산 면적은 1.34~4.25
 A3·EXT-D1: 같은 세계 위치의 입자는 카메라와 줌에 따라 달라지지 않으며 그림 선택은 기존 core 카탈로그가 결정한다. A4: 실제 비 밀도 차이가 세계 좌표에서 움직인다. 과장 금지 원칙: 제한적 가시성과 영상 시청 범위·텔레메트리 실패를 공개한다. 엔진의 강수·저장 규칙, 공용 그림 로더, 다른 자연 효과는 바꾸지 않는다.
 
 원본 캡처는 `/tmp/astra-rain-band-visibility/output/rain-band/`, 이전 v1/v2는 이웃 `rain-band-v1/`·`rain-band-v2/`, 재현 하네스·원본 저장·입력 패치는 `/tmp/astra-rain-band-visibility-capture-inputs/`에 보존한다. 보고 저장소에는 바이너리를 추가하지 않고 원본 SHA와 실행 이름을 남긴다. `capture-SHA256SUMS`는 해당 원본 캡처 폴더 기준이며 이 문서 폴더의 파일 목록이 아니다.
+
+## 통합 관문 결과
+
+2026-10-08에 Wave2 본선 `cb14e11b`를 보존 병합한 제품 `f33532ab`에서 변경 시험 184파일·1,220통과·0실패·8건너뜀을 확인했다(`astra-RAIN-final-tests-f33532a`, DGX light). Mac `check:merge`도 통과했다. 해당 화면 4행 기하 `astra-RAIN-geometry-f33532a`는 80조건·실패0·미개방0으로 끝났다. 관문 결과를 담은 최종 트리의 시험과 게시 SHA는 최종 보고 ZIP의 PUBLICATION 기록으로 연결한다. 기존 영상의 rain 코드·시간/위치 소비자·wave39-nat3-world 묶음은 병합 후에도 같으며, Wave2 그림 등 최신 본선 전체를 다시 촬영했다는 뜻은 아니다.
+
+사용자가 직접 여는 원본 전후 영상4개는 `/tmp/astra-rain-band-videos-20261008-be7d64c9.zip`에 있다(118147341 bytes, SHA256 `1728b903cbf9c6519d06b1491098921170b4f6f70a21abcedcf07360a4b0bb9c`). 후보 시점의 미게시 설명은 그대로 보존하고 최종 보고에서 통합 본선 SHA를 연결한다. 영상은 재인코딩하지 않았다.
