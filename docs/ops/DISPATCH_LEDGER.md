@@ -198,3 +198,5 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - N4-D1~D5(렌더 보고 시)
 - FIX-16 결과의 사망 표·목책 비교표
 - LM-E6a 넘김 목록 → Astra 그림 의뢰로 변환
+
+- [x] **RB-WET-PATHS 여름2장**: 제품 `34ac3c3a`, WALKER 통합 `7f305b38`. modeledWetness/weatherFx 재사용·6단계 캐시·연결부 clear taper. 겨울2장은 자료만 유지. 독립15쌍PASS·통합7쌍 픽셀 관찰과 telemetry 실패 분리, 최종 게시/관문은 전달 receipt. [보고서](../verification/wet-paths/README.md).

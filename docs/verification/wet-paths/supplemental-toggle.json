@@ -1,0 +1,20 @@
+{
+  "changedPixels": 0,
+  "worldDrawsAfterSettling": 0,
+  "stateSHA": "d03805ee239d495a40895728eba85bcb61237a57c26fc3026701a2f94bb19c06",
+  "camera": {
+    "zoom": 1,
+    "lod": "full"
+  },
+  "extraRunExit": 1,
+  "unresolvedNetwork": [
+    {
+      "view": "summer-close",
+      "url": "http://127.0.0.1:4306/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED",
+      "expected": false,
+      "phase": "capture"
+    }
+  ],
+  "scope": "Supplemental draw and pixel observations only; request abort cause unconfirmed; not an overall PASS."
+}
