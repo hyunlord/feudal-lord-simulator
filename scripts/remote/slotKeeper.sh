@@ -27,6 +27,10 @@
 # when it is first in the experiment line; until then its session's turn passes to the next session.
 # Every loop it writes _slots/keeper.status (slots, both lines, the turn order, why a session waits, the open door);
 # run.sh --status and the waiting runs of this protocol print it.
+# What it cannot explain it writes as "ANOMALY:" lines to its log and to _slots/keeper-anomalies.log (user order
+# 2026-10-07: tell at once when a slot is free and nobody can go), each once: a door its run did not take in time; a run
+# in a slot the keeper did not let in (a copy that ignored the fences); and a free slot with runs that may go waiting —
+# a gate, or an experiment of a session with none running — while nobody is let in for KEEPER_STALL_S.
 # If the keeper is down its locks are free: the fences go stale, the clients remove them within a minute and every copy
 # falls back to its own rules. It runs as the user unit fls-slot-keeper (scripts/remote/systemd/), which loads the
 # trunk's copy from the mirror; every KEEPER_UPDATE_S it looks at the trunk again and, when the copy changed, executes the
@@ -41,11 +45,19 @@ TRUNK=${FLS_TRUNK:-codex/phase15-organic-ground}
 POLL=${KEEPER_POLL_S:-2}
 DOOR_S=${KEEPER_DOOR_S:-45}
 UPDATE_S=${KEEPER_UPDATE_S:-300}
+STALL_S=${KEEPER_STALL_S:-600}
 FENCE=_slotkeeper
 FRONT=0000000000000000000
 mkdir -p "$GQ" "$EQ" "$D/served" "$D/grant"
 
 log() { echo "$(date '+%F %T') $*"; }
+declare -A REPORTED=()
+anomaly() { # <key> <text>: once per key
+  [ -n "${REPORTED[$1]:-}" ] && return 0
+  REPORTED[$1]=1
+  log "ANOMALY: $2"
+  echo "$(date '+%F %T') $2" >> "$D/keeper-anomalies.log"
+}
 held() { [ -e "$1" ] && ! ( flock -n 7 ) 7< "$1"; }
 
 if [ "${KEEPER_DRY:-0}" = 1 ]; then :   # KEEPER_DRY=1: decide once from the live state, print it, touch nothing
@@ -130,7 +142,7 @@ served_at() { stat -c %Y "$D/served/$1" 2> /dev/null || echo 0; }
 # --- the rules ----------------------------------------------------------------------------------------------------
 decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
   local t run s age i=0 seen=" " head best="" best_age="" n
-  PICK=""; WHY=""; ORDER=""
+  PICK=""; WHY=""; ORDER=""; MAYGO=""
   mapfile -t GATES < <(live "$GQ")
   mapfile -t EXPS < <(live "$EQ")
   for t in "${EXPS[@]}"; do   # never served counts as oldest: 1 (0 is the door's)
@@ -143,6 +155,7 @@ decide() { # PICK (ticket) PICK_LINE PICK_SLOT, and WHY/ORDER for the status
     case "$seen" in *" $s "*) continue ;; esac
     seen+="$s "
     case "$BUSY" in *" $s "*) ORDER+="  $s waits: $run — $s has an experiment running (one at a time)"$'\n'; continue ;; esac
+    MAYGO+="$run "
     ctype "$t"
     if { [ "$CT" = fifo ] || [ "$CT" = lines ]; } && [ "$t" != "$head" ]; then
       ORDER+="  $s waits: $run — an older copy of heavySlots.sh ($CT), let in only when first in line"$'\n'; continue
@@ -196,11 +209,41 @@ door_check() { # closes the door once its run took a slot, left, or the time is 
   if [ -n "${INSLOT[$run]:-}" ]; then
     [ "$DOOR_LINE" = e ] && touch "$D/served/$s"
     log "door closed: $run took slot ${INSLOT[$run]}"
+    LET_IN=$run
   else
     if [ "$DOOR_TYPE" = turns ] && [ "$(served_at "$s")" = 0 ]; then touch -d "@${DOOR_SAVED:-1}" "$D/served/$s"; fi
-    if [ -e "$dir/$DOOR" ]; then log "door closed: $run did not take slot $DOOR_SLOT in ${DOOR_S}s"; else log "door closed: $run left the line"; fi
+    if [ -e "$dir/$DOOR" ]; then
+      log "door closed: $run did not take slot $DOOR_SLOT in ${DOOR_S}s"
+      anomaly "door:$DOOR" "the door for $run ($DOOR_TYPE copy) → slot $DOOR_SLOT was open ${DOOR_S}s and it did not take the slot (it keeps waiting; the keeper tries again)"
+    else log "door closed: $run left the line"; fi
   fi
   DOOR=""
+}
+
+# A run in a slot that the keeper did not let in (the slots seen last loop, the open door's run and the last one let in
+# are known).
+declare -A SEEN_IN=()
+SEEN_FIRST=1; LET_IN=""; STALL_SINCE=""
+watch_slots() {
+  local r
+  if [ -z "$SEEN_FIRST" ]; then
+    for r in "${!INSLOT[@]}"; do
+      [ -n "${SEEN_IN[$r]:-}" ] || [ "$r" = "$LET_IN" ] || [ "$r" = "${DOOR#*-}" ] && continue
+      anomaly "in:$r:${INSLOT[$r]}" "$r is in slot ${INSLOT[$r]} but the keeper did not let it in (a copy of heavySlots.sh that ignored the fences, or a slot taken by hand)"
+    done
+  fi
+  SEEN_FIRST=""; SEEN_IN=()
+  for r in "${!INSLOT[@]}"; do SEEN_IN[$r]=1; done
+}
+# A free slot, runs that may go, and nobody let in (checked after decide, while no door is open).
+watch_stall() {
+  local now; now=$(date +%s)
+  if [ -z "$PICK" ] && [ "${#FREE[@]}" -gt 0 ] && { [ "${#GATES[@]}" -gt 0 ] || { [ -n "$MAYGO" ] && [ "${FREE[0]}" -le "$TOP" ]; }; }; then
+    [ -n "$STALL_SINCE" ] || STALL_SINCE=$now
+    if [ $((now - STALL_SINCE)) -ge "$STALL_S" ]; then
+      anomaly "stall:$STALL_SINCE" "slot(s) ${FREE[*]} free for $(( (now - STALL_SINCE) / 60 )) min while ${GATES[*]:+gates ${GATES[*]#*-} and }${MAYGO:+experiments ${MAYGO}}wait, and nobody is let in: ${WHY:-no reason given}$(printf '%s' "$ORDER" | tr '\n' ';')"
+    fi
+  else STALL_SINCE=""; fi
 }
 
 write_status() {
@@ -216,6 +259,7 @@ write_status() {
     else echo "experiment line: empty"; fi
     if [ -n "$DOOR" ]; then echo "letting in: ${DOOR#*-} → slot $DOOR_SLOT"
     elif [ -n "$WHY" ]; then echo "nobody goes now: $WHY"; fi
+    if [ -s "$D/keeper-anomalies.log" ]; then echo "last anomaly (_slots/keeper-anomalies.log): $(tail -1 "$D/keeper-anomalies.log")"; fi
   } > "$tmp" && mv -f "$tmp" "$D/keeper.status"
 }
 
@@ -238,17 +282,19 @@ maybe_update() {
 if [ "${KEEPER_DRY:-0}" = 1 ]; then
   served_at() { stat -c %Y "$D/served/$1" 2> /dev/null || echo 1; }; touch() { :; }
   read_slots; decide; write_status() { :; }
-  D_STATUS=$(mktemp); D=$D; { echo "dry run: would let in ${PICK#*-}${PICK:+ → slot $PICK_SLOT}${WHY:+ (nobody: $WHY)}"; printf '%s' "$SLOTS_TXT"
-    for t in "${GATES[@]}"; do ctype "$t"; echo "  gate: ${t#*-} ($CT copy)"; done; printf '%s' "$ORDER"; } ; rm -f "$D_STATUS"; exit 0
+  echo "dry run: would let in ${PICK#*-}${PICK:+ → slot $PICK_SLOT}${WHY:+ (nobody: $WHY)}"; printf '%s' "$SLOTS_TXT"
+  for t in "${GATES[@]}"; do ctype "$t"; echo "  gate: ${t#*-} ($CT copy)"; done; printf '%s' "$ORDER"; exit 0
 fi
 log "slot keeper running (pid $$, poll ${POLL}s, door ${DOOR_S}s, base $BASE)"
 fences_front
 while :; do
   read_slots
+  watch_slots
   if [ -n "$DOOR" ]; then door_check; fi
   if [ -z "$DOOR" ]; then
     fences_front
     decide
+    watch_stall
     [ -n "$PICK" ] && open_door
   else
     mapfile -t GATES < <(live "$GQ"); mapfile -t EXPS < <(live "$EQ")
