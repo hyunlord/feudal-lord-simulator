@@ -1,0 +1,86 @@
+{
+  "status": "preliminary manual measurement; no registration yet",
+  "selected": "body-06-native.png",
+  "doorLeaf": {
+    "height": 46,
+    "width": 19,
+    "uncertainty": 2,
+    "sameX": 62,
+    "topY": 82,
+    "bottomY": 128,
+    "widthAtY": 104,
+    "leftX": 52,
+    "rightX": 71
+  },
+  "effectiveOpening": "Closed leaf obscures aperture. Inferred approximately leaf size; not independently measured open aperture.",
+  "originalGround": [
+    [
+      26,
+      106
+    ],
+    [
+      90,
+      138
+    ],
+    [
+      129,
+      117
+    ]
+  ],
+  "candidateGround": [
+    [
+      24,
+      110
+    ],
+    [
+      89,
+      146
+    ],
+    [
+      131,
+      125
+    ]
+  ],
+  "manualCoordinateUncertainty": 2,
+  "proposedRegistration": {
+    "rawSize": [
+      1254,
+      1254
+    ],
+    "uniformOutputImageSize": [
+      149,
+      149
+    ],
+    "outputCanvas": [
+      153,
+      153
+    ],
+    "translation": [
+      3,
+      -3
+    ],
+    "method": "wholeimage uniform resize and translation only, not yet performed"
+  },
+  "originalRoofTopY": 44,
+  "candidateRoofTopY": 6,
+  "proposedDoorAfterRegistration": {
+    "height": 44.79738562091503,
+    "width": 18.50326797385621,
+    "worldHeight": 22.379452103281395,
+    "worldWidth": 9.243686738311883
+  },
+  "proposedGround": [
+    [
+      26.372549019607842,
+      104.12418300653594
+    ],
+    [
+      89.67320261437908,
+      139.18300653594773
+    ],
+    [
+      130.5751633986928,
+      118.73202614379085
+    ]
+  ]
+}
