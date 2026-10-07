@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 1,
+  "bundleId": "ui-wave14-factions",
+  "entries": [
+    {
+      "id": "wave14.faction.panel",
+      "kind": "ui-frame",
+      "image": {
+        "url": "assets/wave14/ui-frames/frame_faction_panel-v1.png",
+        "width": 384,
+        "height": 256
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave14/candidates-v1/assets/ui-frames/frame_faction_panel-v1.png",
+        "sourceSha256": "4074792ae97fe988d1b72fce7aa41ed452373a06d13618bd9e9a373b4b128f06",
+        "runtimeSha256": "4074792ae97fe988d1b72fce7aa41ed452373a06d13618bd9e9a373b4b128f06"
+      },
+      "slice": {
+        "top": 60,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "scale": 1,
+      "contentInset": {
+        "top": 60,
+        "right": 20,
+        "bottom": 20,
+        "left": 20
+      },
+      "centre": "fill",
+      "repeat": "stretch"
+    },
+    {
+      "id": "wave14.faction.crown",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/wave14/ui-icons/icon_faction_crown-v1.png",
+        "width": 96,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave14/candidates-v1/assets/ui-icons/icon_faction_crown-v1.png",
+        "sourceSha256": "552ec988b14e97d861f406fcdbfb141bb979ea52676755d2f3e4e3e411138261",
+        "runtimeSha256": "552ec988b14e97d861f406fcdbfb141bb979ea52676755d2f3e4e3e411138261"
+      },
+      "cssWidths": [
+        24,
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "wave14.faction.church",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/wave14/ui-icons/icon_faction_church-v1.png",
+        "width": 96,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave14/candidates-v1/assets/ui-icons/icon_faction_church-v1.png",
+        "sourceSha256": "a997fcadd069364f0e7285ddf91d0a1edf1058bdf23d32acc90ab05af4aa8faf",
+        "runtimeSha256": "a997fcadd069364f0e7285ddf91d0a1edf1058bdf23d32acc90ab05af4aa8faf"
+      },
+      "cssWidths": [
+        24,
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "wave14.faction.merchant_elite",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/wave14/ui-icons/icon_faction_merchant_elite-v1.png",
+        "width": 96,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave14/candidates-v1/assets/ui-icons/icon_faction_merchant_elite-v1.png",
+        "sourceSha256": "6f060729ef4e56822db9204be5fd5075b0fb81b1aaf9021a8196bd207cbff9ad",
+        "runtimeSha256": "6f060729ef4e56822db9204be5fd5075b0fb81b1aaf9021a8196bd207cbff9ad"
+      },
+      "cssWidths": [
+        24,
+        32
+      ],
+      "derivatives": []
+    },
+    {
+      "id": "wave14.faction.commune",
+      "kind": "ui-image",
+      "image": {
+        "url": "assets/wave14/ui-icons/icon_faction_commune-v1.png",
+        "width": 96,
+        "height": 96
+      },
+      "provenance": {
+        "inboxFile": "assets-inbox/wave14/candidates-v1/assets/ui-icons/icon_faction_commune-v1.png",
+        "sourceSha256": "8fb87a3e13b603dba6bd97b2e6dcdbf36c3804b00c93600819a33c314091514d",
+        "runtimeSha256": "8fb87a3e13b603dba6bd97b2e6dcdbf36c3804b00c93600819a33c314091514d"
+      },
+      "cssWidths": [
+        24,
+        32
+      ],
+      "derivatives": []
+    }
+  ],
+  "rules": []
+}
