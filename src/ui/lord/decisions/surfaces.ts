@@ -7,7 +7,7 @@ import type { SceneRef, SurfaceRow } from "../../surfaces.registry";
 const decisionScene = (name: string): SceneRef => ({ kind: "state", set: "lord2", name, tile: "house", zoom: 1.1, query: "&story-delay=3000" });
 
 const CARD = {
-  frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body",
+  frame: "layer", frameLayer: ".petition-frame", contentSlot: ".petition-body", scrollParts: [".decision-card-body"],
   siblingsNoOverlap: [".decision-card-choice", ".lord-decision-open", ".story-modal-later"],
 } as const;
 /** DEC-CARD: the heavy decision card (src/ui/decisionCard/), its parts on every row. */

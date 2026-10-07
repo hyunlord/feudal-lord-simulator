@@ -16,7 +16,8 @@
 .decision-card-deadline { font-size: 13px; color: var(--palette-ink-light); }
 .decision-card-part-head { display: block; font-size: 12px; font-weight: 700; letter-spacing: 0.02em; color: var(--palette-ink-light); }
 .decision-card-choices {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none;
+  /* up to four answers side by side in the 960 px card (4 × 200 px + gaps fit its body at every audited view) */
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none;
 }
 .decision-card-choice {
   display: grid; grid-template-rows: auto auto auto 1fr auto auto; gap: 6px; padding: 8px; min-width: 0;

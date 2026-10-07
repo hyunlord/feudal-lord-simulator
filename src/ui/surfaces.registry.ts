@@ -452,19 +452,19 @@ export const SURFACES: readonly SurfaceRow[] = [
   // the steward's precedents and the town's request (from their chips).
   // The picture is not a required element: the content check proves paint by text and controls changing between its two
   // captures, which a picture never does (scripts/lmr1PetitionCaptures.mjs checks each picture loads at 960 × 540).
-  { id: "modal.lord.home-petition", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".lord-card-recurring", ".story-modal-later"],
     scene: petitionScene("petitions", "home-boundary_dispute", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the boundary dispute (Wave 44 01) in the DEC-CARD layout: the situation, the stake, each answer now / later / who remembers" },
-  { id: "modal.lord.home-petition.no-art", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition.no-art", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "home-chancel_repair", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "the chancel's repair (no picture)" },
-  { id: "modal.lord.home-petition.guardian", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
+  { id: "modal.lord.home-petition.guardian", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-home-petition]", frameSlots: [".petition-roundel"], siblingsNoOverlap: [".decision-card-choice", ".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "guardian", 3000), open: [{ story: ".lord-card[data-home-petition]" }, { pause: 600 }], data: "a minor lord's wardship petition (the court line with his guardian)" },
   { id: "modal.lord.precedent", ...PETITION, root: ".story-modal.petition-card.lord-card[data-precedent]", frameSlots: [], siblingsNoOverlap: [".lord-card-recurring", ".story-modal-later"],
     requires: ["h2", ".lord-card-court", ".lord-card-precedents li", ".lord-card-recurring", ".story-modal-later"],
     scene: petitionScene("petitions", "precedent", 1500), open: [{ story: ".lord-card[data-precedent]" }, { pause: 600 }], data: "the steward's answers by precedent (Wave 44 13)" },
-  { id: "modal.lord.request", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-lord-request]", frameSlots: [],
+  { id: "modal.lord.request", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-lord-request]", frameSlots: [],
     siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("petitions", "request", 1500), open: [{ story: ".lord-card[data-lord-request]" }, { pause: 600 }],
@@ -488,12 +488,12 @@ export const SURFACES: readonly SurfaceRow[] = [
   // slice played by the lord bot to the first content canon v4 offer the registry draws, and to the first whose card has a
   // hold (ER-19: its cost under its tradeoff); it opens by itself after the world, as a petition does. The picture is not
   // a required element (as above).
-  { id: "modal.lord.registry", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+  { id: "modal.lord.registry", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
     siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
     data: "the first v4 offer the registry drew in the lord's slice (DEC-CARD layout): its why, each answer's tradeoff, now / later / who remembers, the shut one with why" },
-  { id: "modal.lord.registry-hold", ...PETITION, root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
+  { id: "modal.lord.registry-hold", ...PETITION, scrollParts: [".decision-card-body"], root: ".story-modal.petition-card.decision-card.lord-card[data-registry-offer]", frameSlots: [],
     siblingsNoOverlap: [".decision-card-choice", ".story-modal-later"],
     requires: ["h2", ".decision-card-court", ".decision-card-situation", ".decision-card-stake", ".decision-card-deadline", ".registry-card-why li", ".decision-card-choice", ".decision-card-choose", ".story-modal-later"],
     scene: petitionScene("lord", "registry-offer-hold", 3000), open: [{ story: ".lord-card[data-registry-offer]" }, { pause: 600 }],
