@@ -200,3 +200,5 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 - LM-E6a 넘김 목록 → Astra 그림 의뢰로 변환
 
 - [x] **RB-WET-PATHS 여름2장**: 제품 `34ac3c3a`, WALKER 통합 `7f305b38`. modeledWetness/weatherFx 재사용·6단계 캐시·연결부 clear taper. 겨울2장은 자료만 유지. 독립15쌍PASS·통합7쌍 픽셀 관찰과 telemetry 실패 분리, 최종 게시/관문은 전달 receipt. [보고서](../verification/wet-paths/README.md).
+
+- [x] **RB-MUSTER1 과녁 공터1장**: 제품 `04f1fd7a`. 실제 징집수락14명·saved tick 250창, 동일저장 전후8쌍. 넓은 원래 초지 중심을 고정하고 점유 시 숨김; 겨울 이미지·군사시설·실제 병사는 추가하지 않음. [보고서](../verification/muster-field/README.md).
