@@ -42,3 +42,5 @@ Gallery는 원래부터 수동 준비된 저장이다. 현재 codec으로 변환
 기하 `astra-HEIGHT-ERA1-geometry-10a0eb3-10a0eb3`는 깨끗한 HEAD에서 4행·80조건 실패0을 확인했다. 이 영수증 뒤 정확한 트리의 변경 시험과 병합 검사, 본선 해시는 ZIP 최종 게시 기록을 따른다. 사전 장부 검사에서 누락된 raw 원본12행을 찾아 추가했고 native와 runtime 픽셀은 바꾸지 않았다.
 
 최종 변경 시험 첫 실행은 교체 전 원본4개의 CSV runtime 행이 남아 총수 비교1개가 실패했다(263pass/1skip/1fail). 소비 코드·manifest에서 참조가 사라진 정확4행을 retired로 분류하고 같은 SHA의 inbox 원본 경로를 기록했다. 소스 URL 참조0·실제 after draw0·inbox SHA 일치를 확인하고 미소비 public 사본4개를 제외했다. 검사/시험 규칙은 바꾸지 않았으며 실패 영수증을 ZIP에 보존한다.
+
+기하 `astra-HEIGHT-ERA1-geometry-retired-d7a3cd5`는 깨끗한 HEAD에서 4행·80조건 실패0을 확인했다. 이 영수증 뒤 정확한 트리의 변경 시험과 병합 검사, 본선 해시는 ZIP 최종 게시 기록을 따른다. 사전 장부 검사에서 누락된 raw 원본12행을 찾아 추가했고 native와 runtime 픽셀은 바꾸지 않았다.
