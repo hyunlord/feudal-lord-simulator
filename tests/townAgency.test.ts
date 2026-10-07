@@ -3,11 +3,11 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import { createGrowthOpening } from "../scripts/phase21OpeningTranslation";
-import { AGENCY_WEEK_TICKS } from "../src/content/townAgencyConfig";
+import { AGENCY_WEEK_TICKS, builderOfKind } from "../src/content/townAgencyConfig";
 import type { GameState } from "../src/engine/engine.types";
 import { advanceTick } from "../src/engine/tick";
-import { advanceTownAgency, initialAgency, lordRequests, subsidyRefusal, townProposals, whyHere } from "../src/engine/townAgency";
-import { townSiteRefusal } from "../src/engine/autoplay";
+import { advanceTownAgency, initialAgency, LORD_MODE_POLICY, lordRequests, subsidyRefusal, townProposals, whyHere } from "../src/engine/townAgency";
+import { autoplayBuildAction, townSiteRefusal } from "../src/engine/autoplay";
 import { postLedgerEntries, treasuryBalance } from "../src/ledger/ledger";
 import { gameReducer } from "../src/state/gameStore";
 import { newGameState } from "../src/state/newGame";
@@ -72,6 +72,21 @@ test("TA-3 TA-4 a proposal's score is the sum of its named reasons; the needs co
     assert.ok(proposal.planner.length > 0);
   }
   assert.ok(proposals.some(proposal => proposal.reasons.some(reason => reason.name === "need")));
+});
+
+test("DTR-15 a needed building its builder will not take up (under the start, a grudge among its reasons) falls to the community", () => {
+  const week = toWeek(lordTown(), 1);
+  // The merchants at odds with the lord and the dues at their highest: the storehouse's reasons fall under the start.
+  const sour: GameState = { ...week, agency: { ...week.agency!, duesPermille: 2_000 },
+    factions: { ...week.factions!, factions: week.factions!.factions.map(faction => faction.id.startsWith("merchant") ? { ...faction, relation: -100 } : faction) } };
+  const action = autoplayBuildAction(sour, "storehouse");
+  assert.equal(action.kind, "place_building", "a storehouse site");
+  const proposal = (state: GameState) => townProposals(state, LORD_MODE_POLICY, [{ planner: "storage", rank: 2, action }]).find(entry => entry.what === "storehouse")!;
+  assert.equal(builderOfKind("storehouse"), "merchants");
+  assert.equal(proposal(week).actor, "merchants", "taken up by its builder while the merchants are willing");
+  const fallen = proposal(sour);
+  assert.equal(fallen.actor, "community", `the merchants' grudge: the community builds it (${JSON.stringify(fallen.reasons)})`);
+  assert.ok(!fallen.reasons.some(reason => reason.name === "dues"), "the community's own reasons");
 });
 
 test("TA-5 every project started leaves a receipt and a ledger line; whyHere finds a construction site's receipt", () => {

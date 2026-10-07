@@ -338,8 +338,15 @@ export function townProposals(state: GameState, policy: AutoplayPolicy = LORD_MO
     const key = `${whatOf(action)}@${site.tx},${site.ty}`;
     if (seen.has(key)) return;
     seen.add(key);
-    const actor = actorOf(state, action);
-    const scored = reasonsOf(state, agency, action, actor, rank, stuckWheat, stuckRoads);
+    let actor = actorOf(state, action);
+    let scored = reasonsOf(state, agency, action, actor, rank, stuckWheat, stuckRoads);
+    // DEC-TRACE (DTR-15): a needed building its builder will not take up (its reasons under the start, a grudge against
+    // the lord among them) falls to the community — the merchants' grudge then shows in who builds and pays, and the
+    // town's need is not left for good (125-year runs: a needed storehouse at 31 points, the quarry behind it, never built).
+    if (rank !== null && action.kind === "place_building" && actor !== "community" && scoreOf(scored.reasons) < START_SCORE) {
+      const community = reasonsOf(state, agency, action, "community", rank, stuckWheat, stuckRoads);
+      if (scoreOf(community.reasons) > scoreOf(scored.reasons)) { actor = "community"; scored = community; }
+    }
     const base = scoreOf(scored.reasons);
     if (action.kind !== "place_building") {
       proposals.push({ actor, what: whatOf(action), planner, rank, action, tx: site.tx, ty: site.ty, reasons: scored.reasons,
