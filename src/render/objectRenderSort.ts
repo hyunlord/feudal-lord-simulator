@@ -90,6 +90,7 @@ function renderSortY(item: SortableRenderItem): number {
     case "zone_prop":
     case "farm_prop":
       return item.prop.y;
+    case "muster_field":
     case "wash_pool":
     case "world_fire":
     case "spring_prop":

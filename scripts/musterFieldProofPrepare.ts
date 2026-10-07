@@ -1,0 +1,26 @@
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
+import { loadSaveFile } from './loadSaveFile';
+import { createAutoplayTraceDriver } from './economyHarnessAutoplay';
+import { advanceTick } from '../src/engine/tick';
+import { gameReducer } from '../src/state/gameStore';
+import { encodeSave } from '../src/save/saveCodec';
+import { musterFieldProps, musterFieldAnchor } from '../src/render/musterFieldPlacement';
+import { MUSTER_FIELD_ART } from '../src/render/musterFieldArt';
+
+const source = 'docs/qa/round02/repro/saves/chapter2-before-war1336.json.gz';
+const out = 'output/muster-field'; mkdirSync(out, { recursive: true });
+let state = loadSaveFile(source);
+const startTick = state.tick, driver = createAutoplayTraceDriver();
+const write = (name: string) => writeFileSync(`${out}/${name}.save.json`, encodeSave({ state, createdAt: '2026-10-07T00:00:00.000Z', savedAt: '2026-10-07T00:00:00.000Z' }).bytes);
+while (!state.politics?.petitions.some(p => p.defId === 'levy_response' && p.response === undefined) && state.tick < startTick + 10000) state = advanceTick(driver.apply(state));
+const petition = state.politics?.petitions.find(p => p.defId === 'levy_response' && p.response === undefined);
+if (!petition) throw new Error('No natural open levy within bounded advance');
+write('before-accept');
+state = gameReducer(state, { type: 'petition_response', petitionId: petition.id, response: 'accept' });
+write('after-accept');
+const accepted = { tick: state.tick, men: state.war?.conscripts?.men, anchor: musterFieldAnchor(state, MUSTER_FIELD_ART.entry!), props: musterFieldProps(state, MUSTER_FIELD_ART.entry) };
+for (let i = 0; i < 250; i++) state = advanceTick(state);
+write('expired');
+writeFileSync(`${out}/preparation.json`, JSON.stringify({ source, sourceSHA256: createHash('sha256').update(readFileSync(source)).digest('hex'), startTick, accepted, expiredTick: state.tick, expiredProps: musterFieldProps(state, MUSTER_FIELD_ART.entry), method: 'Existing natural saved game; normal bot decisions and advanceTick until actual pending levy; one normal accept command; no field overrides.' }, null, 2));
+console.log(JSON.stringify(accepted));

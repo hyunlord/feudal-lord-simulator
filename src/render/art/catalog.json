@@ -23793,5 +23793,47 @@
         "fallback": "none"
       }
     ]
+  },
+  {
+    "schemaVersion": 1,
+    "packId": "core",
+    "bundleId": "core-muster-field",
+    "entries": [
+      {
+        "id": "world-events/muster-field",
+        "kind": "event-scene",
+        "eventIds": [
+          "levy_response"
+        ],
+        "group": "muster-field",
+        "placement": "target",
+        "duration": {
+          "mode": "while-active"
+        },
+        "image": {
+          "url": "assets/wave17/bld/muster_field-v1.png",
+          "width": 256,
+          "height": 192
+        },
+        "geometry": {
+          "pivot": {
+            "x": 128,
+            "y": 191
+          },
+          "scale": 0.5,
+          "allowMirror": false,
+          "footprint": {
+            "width": 2,
+            "height": 2
+          }
+        },
+        "provenance": {
+          "inboxFile": "assets-inbox/wave17/candidates-20260926/assets/bld/muster_field-v1.png",
+          "sourceSha256": "3780fb9436e83970ee42520a765d2bd7db05f4b019770ed7793525d5ead021c5",
+          "runtimeSha256": "3780fb9436e83970ee42520a765d2bd7db05f4b019770ed7793525d5ead021c5"
+        }
+      }
+    ],
+    "rules": []
   }
 ]

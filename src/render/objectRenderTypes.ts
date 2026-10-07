@@ -9,6 +9,7 @@ import type {
 } from "./treeLayout";
 
 export type ObjectRenderItem =
+  | { readonly kind: "muster_field"; readonly id: string; readonly prop: import("./musterFieldPlacement").MusterFieldProp; readonly depth: number; readonly anchorTx: number }
   | { readonly kind: "wash_pool"; readonly id: string; readonly prop: import("./washPoolPlacement").WashPoolProp; readonly depth: number; readonly anchorTx: number }
   | { readonly kind: "world_fire"; readonly id: string; readonly prop: import("./worldFireArt").WorldFireProp; readonly depth: number; readonly anchorTx: number }
   | { readonly kind: "spring_prop"; readonly id: string; readonly prop: import("./springWorldProps").SpringWorldProp; readonly depth: number; readonly anchorTx: number }
