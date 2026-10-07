@@ -1,0 +1,669 @@
+{
+  "scope": "Independent read-only source registration and two existing before captures, not publication approval or final-product QA",
+  "reviewed_at": "2026-10-07T21:18:39.106007+09:00",
+  "worktree": "/tmp/astra-height-final",
+  "base_head": "41761f0c99f54ee6f9bb2a7f597b7548503918cf",
+  "capture_head": "2b6d820cc4bf7f6d5e5501dc9d5908b7a267433a",
+  "coordinate_convention": "PNG origin top-left; point coordinates pixel indices; spans inclusive; alpha bboxes right/bottom exclusive; source hands/tips manual +/-2px. Screen results from captured Canvas draw args and transform, rounded 0.001px for reproducibility, not visual precision.",
+  "assets": [
+    {
+      "path": "public/assets/wave9/event/crowd_manor_gate-v1.png",
+      "sha256": "4702bfbc032f2c8d0b7ad94503fe4381704890122a64a699011997cf104939d1",
+      "canvas": [
+        192,
+        128
+      ],
+      "alpha_gt32_bbox_exclusive": [
+        2,
+        2,
+        190,
+        126
+      ]
+    },
+    {
+      "path": "public/assets/wave9/walker/wk_funeral_bearers-v1.png",
+      "sha256": "8e51b570cd335df31af90ddaff625102d4db57beb31ee04784a17f10c0dcee68",
+      "canvas": [
+        296,
+        148
+      ],
+      "alpha_gt32_bbox_exclusive": [
+        31,
+        3,
+        266,
+        143
+      ],
+      "frame_alpha_bboxes": [
+        {
+          "direction": "NE",
+          "gait": 0,
+          "bbox_exclusive": [
+            31,
+            3,
+            62,
+            68
+          ]
+        },
+        {
+          "direction": "SE",
+          "gait": 0,
+          "bbox_exclusive": [
+            22,
+            3,
+            51,
+            69
+          ]
+        },
+        {
+          "direction": "SW",
+          "gait": 0,
+          "bbox_exclusive": [
+            23,
+            3,
+            52,
+            68
+          ]
+        },
+        {
+          "direction": "NW",
+          "gait": 0,
+          "bbox_exclusive": [
+            13,
+            3,
+            44,
+            68
+          ]
+        },
+        {
+          "direction": "NE",
+          "gait": 1,
+          "bbox_exclusive": [
+            31,
+            2,
+            63,
+            68
+          ]
+        },
+        {
+          "direction": "SE",
+          "gait": 1,
+          "bbox_exclusive": [
+            23,
+            2,
+            54,
+            69
+          ]
+        },
+        {
+          "direction": "SW",
+          "gait": 1,
+          "bbox_exclusive": [
+            21,
+            3,
+            53,
+            68
+          ]
+        },
+        {
+          "direction": "NW",
+          "gait": 1,
+          "bbox_exclusive": [
+            13,
+            3,
+            44,
+            68
+          ]
+        }
+      ]
+    },
+    {
+      "path": "public/assets/wave9/prop/bier_shroud_ne-v1.png",
+      "sha256": "5726d1eb760a2fe604616766f221b10a63270c7f94a9a7a92c9d2b4974884fa7",
+      "canvas": [
+        64,
+        32
+      ],
+      "alpha_gt32_bbox_exclusive": [
+        9,
+        2,
+        54,
+        30
+      ]
+    },
+    {
+      "path": "public/assets/wave9/prop/bier_shroud_nw-v1.png",
+      "sha256": "0431d99caf69ce82867f313c214f5751f7090d698b6b36b06b32d15a39393533",
+      "canvas": [
+        64,
+        32
+      ],
+      "alpha_gt32_bbox_exclusive": [
+        10,
+        2,
+        53,
+        30
+      ]
+    }
+  ],
+  "crowd": {
+    "method": "Opened original and nearest-neighbor enlargement first, then cross-checked implementer endpoint proposal; independent visual agreement, not blinded endpoint selection. 13 painted silhouettes are not 13 engine actors.",
+    "figures": [
+      {
+        "id": "back-centre",
+        "crown": [
+          70,
+          2
+        ],
+        "sole": [
+          68,
+          43
+        ],
+        "span_inclusive": 42,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      },
+      {
+        "id": "back-left",
+        "crown": [
+          22,
+          9
+        ],
+        "sole": [
+          18,
+          52
+        ],
+        "span_inclusive": 44,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      },
+      {
+        "id": "back-woman",
+        "crown": [
+          45,
+          13
+        ],
+        "sole": [
+          44,
+          54
+        ],
+        "span_inclusive": 42,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "hem/foot silhouette; actual sole hidden"
+      },
+      {
+        "id": "left-middle",
+        "crown": [
+          14,
+          39
+        ],
+        "sole": [
+          8,
+          83
+        ],
+        "span_inclusive": 45,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      },
+      {
+        "id": "centre-middle",
+        "crown": [
+          80,
+          38
+        ],
+        "sole": [
+          80,
+          79
+        ],
+        "span_inclusive": 42,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "hem/foot silhouette; actual sole hidden"
+      },
+      {
+        "id": "left-centre",
+        "crown": [
+          53,
+          51
+        ],
+        "sole": [
+          54,
+          93
+        ],
+        "span_inclusive": 43,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      },
+      {
+        "id": "middle-right",
+        "crown": [
+          111,
+          48
+        ],
+        "sole": [
+          111,
+          90
+        ],
+        "span_inclusive": 43,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      },
+      {
+        "id": "right-centre",
+        "crown": [
+          146,
+          52
+        ],
+        "sole": [
+          147,
+          93
+        ],
+        "span_inclusive": 42,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "hem/foot silhouette; actual sole hidden"
+      },
+      {
+        "id": "far-right",
+        "crown": [
+          179,
+          51
+        ],
+        "sole": [
+          180,
+          96
+        ],
+        "span_inclusive": 46,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      },
+      {
+        "id": "front-left",
+        "crown": [
+          27,
+          64
+        ],
+        "sole": [
+          26,
+          106
+        ],
+        "span_inclusive": 43,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "hem/foot silhouette; actual sole hidden"
+      },
+      {
+        "id": "front-left-centre",
+        "crown": [
+          72,
+          78
+        ],
+        "sole": [
+          70,
+          122
+        ],
+        "span_inclusive": 45,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      },
+      {
+        "id": "front-centre",
+        "crown": [
+          97,
+          80
+        ],
+        "sole": [
+          95,
+          123
+        ],
+        "span_inclusive": 44,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "hem/foot silhouette; actual sole hidden"
+      },
+      {
+        "id": "front-right",
+        "crown": [
+          132,
+          79
+        ],
+        "sole": [
+          132,
+          125
+        ],
+        "span_inclusive": 47,
+        "endpoint_uncertainty_source_px": 2,
+        "bottom_interpretation": "lowest visible shoe/sole region; posture dependent"
+      }
+    ],
+    "native_span_range": [
+      42,
+      47
+    ],
+    "native_median": 43,
+    "baseline_scale": 0.55,
+    "baseline_world_span_range": [
+      23.1,
+      25.85
+    ],
+    "baseline_world_median": 23.65,
+    "suggested_scale_17_6_over_43": 0.4093023255813954,
+    "suggested_world_span_range": [
+      17.190697674418605,
+      19.23720930232558
+    ],
+    "occlusion": "Some crowns/shoulders overlap; five skirt silhouettes hide anatomical soles. Outer alpha/canvas extent is not person height. Repeated exposed shoes support comparable male heights."
+  },
+  "bearer": {
+    "cell": [
+      74,
+      74
+    ],
+    "pivot": [
+      37,
+      70
+    ],
+    "direction_columns": [
+      "NE",
+      "SE",
+      "SW",
+      "NW"
+    ],
+    "native_height_constant": 65,
+    "scale": 0.2707692307692308,
+    "nw_visible_crown_y": 3,
+    "nw_visible_lowest_sole_y": 67,
+    "nw_inclusive_span": 65,
+    "all_frame_alpha_height_range": [
+      65,
+      67
+    ],
+    "hands_NW0": [
+      [
+        15,
+        37
+      ],
+      [
+        41,
+        36
+      ]
+    ],
+    "hands_NW1": [
+      [
+        14,
+        35
+      ],
+      [
+        41,
+        35
+      ]
+    ],
+    "hand_uncertainty_source_px": 2,
+    "limitation": "NW frames manually registered for actual captures. NE0 was visually opened; other direction hand contacts not measured. Walking hands are not closed around an existing integrated handle."
+  },
+  "bier": {
+    "canvas": [
+      64,
+      32
+    ],
+    "pivot": [
+      32,
+      16
+    ],
+    "baseline_scale": 0.65,
+    "baseline_anchor_offset_east": [
+      10,
+      6
+    ],
+    "baseline_anchor_offset_west": [
+      -10,
+      6
+    ],
+    "tips_NE": [
+      [
+        10,
+        25
+      ],
+      [
+        16,
+        28
+      ],
+      [
+        46,
+        3
+      ],
+      [
+        52,
+        7
+      ]
+    ],
+    "tips_NW": [
+      [
+        11,
+        7
+      ],
+      [
+        16,
+        3
+      ],
+      [
+        51,
+        24
+      ],
+      [
+        45,
+        28
+      ]
+    ],
+    "tip_uncertainty_source_px": 2,
+    "scale_ratio_to_bearer": 2.4005681818181817,
+    "interpretation": "These are visible wooden terminal grip landmarks, not shroud corners or canonical rig joints. Original images contain no shared physical units, so ratio alone cannot prove correct absolute bier size."
+  },
+  "captures": [
+    {
+      "image": "output/rb-height-final-before/plague-4000-z3.jpg",
+      "image_sha256": "7b08aa25e63a5cf38f092effd3ee6d747eca409de2388c020ce230de43565a92",
+      "tick": 195644,
+      "save_sha256": "aa3310c7a6913b7d52d85fb532540f6dba739b4bdde686cb9255e0cb805e2d0a",
+      "tile": [
+        44.5,
+        38.5
+      ],
+      "zoom": 3,
+      "now_ms": 4000,
+      "direction": "NW",
+      "gait": 1,
+      "hands_local_source": [
+        [
+          14,
+          35
+        ],
+        [
+          41,
+          35
+        ]
+      ],
+      "hands_screen": [
+        [
+          595.717,
+          544.369
+        ],
+        [
+          617.649,
+          544.369
+        ]
+      ],
+      "bier_tips_screen": [
+        [
+          543.45,
+          573.25
+        ],
+        [
+          553.2,
+          565.45
+        ],
+        [
+          621.45,
+          606.4
+        ],
+        [
+          609.75,
+          614.2
+        ]
+      ],
+      "nearest_hand_tip_distance_screen_px": 47.456,
+      "nearest_hand_tip_distance_world_px": 15.819,
+      "conservative_endpoint_uncertainty_screen_px": 8,
+      "bearer_draw": {
+        "src": "http://127.0.0.1:4306/assets/wave9/walker/wk_funeral_bearers-v1.png",
+        "args": [
+          222,
+          74,
+          74,
+          74,
+          173.4482051282051,
+          1366.6461538461538,
+          20.03692307692308,
+          20.03692307692308
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          64,
+          -3584
+        ]
+      },
+      "bier_draw": {
+        "src": "http://127.0.0.1:4306/assets/wave9/prop/bier_shroud_nw-v1.png",
+        "args": [
+          0,
+          0,
+          64,
+          32,
+          152.66666666666663,
+          1381.1999999999998,
+          41.6,
+          20.8
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          64,
+          -3584
+        ]
+      }
+    },
+    {
+      "image": "output/rb-height-final-before/plague-8000-z3.jpg",
+      "image_sha256": "b270126696c3ccd7e86e46fee572cae32c0bcacefd7de5e13b569d2d0110c6e2",
+      "tick": 195644,
+      "save_sha256": "aa3310c7a6913b7d52d85fb532540f6dba739b4bdde686cb9255e0cb805e2d0a",
+      "tile": [
+        44.5,
+        38.5
+      ],
+      "zoom": 3,
+      "now_ms": 8000,
+      "direction": "NW",
+      "gait": 0,
+      "hands_local_source": [
+        [
+          15,
+          37
+        ],
+        [
+          41,
+          36
+        ]
+      ],
+      "hands_screen": [
+        [
+          388.529,
+          377.994
+        ],
+        [
+          409.649,
+          377.182
+        ]
+      ],
+      "bier_tips_screen": [
+        [
+          335.45,
+          405.25
+        ],
+        [
+          345.2,
+          397.45
+        ],
+        [
+          413.45,
+          438.4
+        ],
+        [
+          401.75,
+          446.2
+        ]
+      ],
+      "nearest_hand_tip_distance_screen_px": 47.497,
+      "nearest_hand_tip_distance_world_px": 15.832,
+      "conservative_endpoint_uncertainty_screen_px": 8,
+      "bearer_draw": {
+        "src": "http://127.0.0.1:4306/assets/wave9/walker/wk_funeral_bearers-v1.png",
+        "args": [
+          222,
+          0,
+          74,
+          74,
+          104.11487179487176,
+          1310.6461538461538,
+          20.03692307692308,
+          20.03692307692308
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          64,
+          -3584
+        ]
+      },
+      "bier_draw": {
+        "src": "http://127.0.0.1:4306/assets/wave9/prop/bier_shroud_nw-v1.png",
+        "args": [
+          0,
+          0,
+          64,
+          32,
+          83.3333333333333,
+          1325.1999999999998,
+          41.6,
+          20.8
+        ],
+        "transform": [
+          3,
+          0,
+          0,
+          3,
+          64,
+          -3584
+        ]
+      }
+    }
+  ],
+  "findings": [
+    "Crowd baseline .55 overstates visible median human height: 23.65world vs 17.6 convention. Source median43 is defensible with hem/sole uncertainty.",
+    "NW bearer native65 is supported by source crown/sole; canvas74 and whole sheet148 are invalid human-height denominators.",
+    "Both baseline zoom3 frames show about47.5screen px from a visible hand to nearest wooden tip; even +/-8 conservative endpoint uncertainty does not close the gap.",
+    "Bearer and bier appear over buildings/roofs along the current path. Two-dimensional contact gap is measurable; physical ground height, roof clearance, and route correctness are not established by these JPEGs.",
+    "No count of conscripts, mourners, or bodies is inferred from these images."
+  ],
+  "concurrency_note": "Implementation owner changed crowd call to petitionCrowdScale() during review. Baseline .55 and funeral residual findings refer to archived before captures/read baseline, not a claim about unfinished after output. No product edits by reviewer.",
+  "source_references": [
+    "src/render/storyWorldProps.ts:23-42 native walker scale and crop registration",
+    "src/render/storyWorldProps.ts:64-69 crowd and petitioner consumers; concurrently edited",
+    "src/render/wave9ArtManifest.generated.ts:19,34-35,40 source metadata",
+    "src/render/plagueWorldProps.ts:166,172-180,211-226 baseline bier and bearer drawing",
+    "output/rb-height-final-before/result.json"
+  ],
+  "graft_tool_estimated_tokens_saved": 5623346
+}

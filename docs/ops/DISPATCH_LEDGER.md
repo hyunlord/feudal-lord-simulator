@@ -201,4 +201,5 @@ UI-10 91a602a1 · SMOOTH-2R 653af2e2 · NAT-2 8ebdcf5c · UI-AUDIT-1 3acc04ff ·
 
 - [x] **RB-WET-PATHS 여름2장**: 제품 `34ac3c3a`, WALKER 통합 `7f305b38`. modeledWetness/weatherFx 재사용·6단계 캐시·연결부 clear taper. 겨울2장은 자료만 유지. 독립15쌍PASS·통합7쌍 픽셀 관찰과 telemetry 실패 분리, 최종 게시/관문은 전달 receipt. [보고서](../verification/wet-paths/README.md).
 
+- [x] **RB-HEIGHT-CROWD 청원 군중 크기**: 제품 `e75f2bab`. 기존 군중 그림 1장의 중앙 인물 높이를 23.65px에서 17.6px로 보정했다. 정상 저장 줌 1.0·0.6·3.0 전후 3쌍, 새 PNG 0장. 문·운구 전체 작업은 이 줄과 별개로 계속한다. [보고서](../verification/height-crowd/README.md).
 - [x] **RB-MUSTER1 과녁 공터1장**: 제품 `04f1fd7a`. 실제 징집수락14명·saved tick 250창, 동일저장 전후8쌍. 넓은 원래 초지 중심을 고정하고 점유 시 숨김; 겨울 이미지·군사시설·실제 병사는 추가하지 않음. [보고서](../verification/muster-field/README.md).

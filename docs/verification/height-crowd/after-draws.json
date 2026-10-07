@@ -1,0 +1,132 @@
+{
+  "head": "41761f0c99f54ee6f9bb2a7f597b7548503918cf",
+  "errors": [],
+  "networkFailures": [
+    {
+      "view": "crowd-z1",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "view": "crowd-z3",
+      "url": "http://127.0.0.1:4302/@fls-telemetry/sample",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "views": [
+    {
+      "name": "crowd-z1",
+      "tick": 25000,
+      "stateSHA256": "a525587b8ff9b4771c1094e5cc2273ad0ed0b55b062ebe3c82b610fef44584ed",
+      "saveSHA256": "e3b96ecb41364d8971a847a369c4eb9c01c7dc2413e934d5c7d550d2b2dc80a3",
+      "camera": {
+        "zoom": 1,
+        "lod": "full"
+      },
+      "zoom": 1,
+      "nowMs": 4000,
+      "uiDismissal": 2,
+      "pngSHA256": "3a30f2e7e5b7f51c1d3e08b57d7dc510c8bd4e48ea5947dc62ebf7c5712fad3a",
+      "crowdDraws": [
+        {
+          "src": "http://127.0.0.1:4302/assets/wave9/event/crowd_manor_gate-v1.png",
+          "args": [
+            0,
+            0,
+            96,
+            64,
+            245.506976744186,
+            1471.4046511627905,
+            78.58604651162791,
+            52.39069767441861
+          ],
+          "transform": [
+            1,
+            0,
+            0,
+            1,
+            384,
+            -1104
+          ]
+        }
+      ],
+      "jpegSHA256": "4895aa0c087f6d2e48669db9d7ac32ebae84d0e751e49e237bb753b77bf0fc6d"
+    },
+    {
+      "name": "crowd-z0.6",
+      "tick": 25000,
+      "stateSHA256": "a525587b8ff9b4771c1094e5cc2273ad0ed0b55b062ebe3c82b610fef44584ed",
+      "saveSHA256": "e3b96ecb41364d8971a847a369c4eb9c01c7dc2413e934d5c7d550d2b2dc80a3",
+      "camera": {
+        "zoom": 0.6,
+        "lod": "full"
+      },
+      "zoom": 0.6,
+      "nowMs": 4000,
+      "uiDismissal": 3,
+      "pngSHA256": "35c72c9aa147f129bf2e1c308c9b793c5b82c4066704d3ae079c6e413e4b7e81",
+      "crowdDraws": [
+        {
+          "src": "http://127.0.0.1:4302/assets/wave9/event/crowd_manor_gate-v1.png",
+          "args": [
+            0,
+            0,
+            48,
+            32,
+            245.506976744186,
+            1471.4046511627905,
+            78.58604651162791,
+            52.39069767441861
+          ],
+          "transform": [
+            0.6000000238418579,
+            0,
+            0,
+            0.6000000238418579,
+            486.3999938964844,
+            -502.3999938964844
+          ]
+        }
+      ],
+      "jpegSHA256": "708244f72ba53bab1714ff9312147ac88f929ffd412b2ba09ff5092be697727b"
+    },
+    {
+      "name": "crowd-z3",
+      "tick": 25000,
+      "stateSHA256": "a525587b8ff9b4771c1094e5cc2273ad0ed0b55b062ebe3c82b610fef44584ed",
+      "saveSHA256": "e3b96ecb41364d8971a847a369c4eb9c01c7dc2413e934d5c7d550d2b2dc80a3",
+      "camera": {
+        "zoom": 3,
+        "lod": "full"
+      },
+      "zoom": 3,
+      "nowMs": 4000,
+      "uiDismissal": 2,
+      "pngSHA256": "2732f585b7a95029e233fe9cc18a751b33db9be98059b108a8e5476cf4d42e21",
+      "crowdDraws": [
+        {
+          "src": "http://127.0.0.1:4302/assets/wave9/event/crowd_manor_gate-v1.png",
+          "args": [
+            0,
+            0,
+            192,
+            128,
+            245.506976744186,
+            1471.4046511627905,
+            78.58604651162791,
+            52.39069767441861
+          ],
+          "transform": [
+            3,
+            0,
+            0,
+            3,
+            -128,
+            -4112
+          ]
+        }
+      ],
+      "jpegSHA256": "e2e09b3ed67fca890cfc188393d450ab773c115a522d9731cd3a4d5fddfdc814"
+    }
+  ]
+}

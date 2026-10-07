@@ -1,0 +1,18 @@
+✔ ASSET-2 the Wave 13 cow, ox and draught horse at the batch's scale are the pasture cow's length ± 10 % (10.523917ms)
+✔ ASSET-2 the Wave 9 story walkers are drawn as tall as an ordinary walker (the composer's registered 17.6 px, FND-3), ± 10 % (5.760083ms)
+✔ each image's chapter: war props 2, plague-shut houses 3, guildhall 4, chapter-5 art 5, the rest 1 (1.167833ms)
+✔ a chapter-1 start leaves out later chapters' art; entering chapter N adds its art (0.153875ms)
+✔ the limit: the campaign's chapter being played (1 before politics), the sandbox every chapter (0.12675ms)
+✔ no art CHAPTER_ART declares for a later chapter is in the startup set before that chapter (0.363959ms)
+✔ the runtime's startup preload requests later chapters' art only once the game is in them (13.833542ms)
+✔ PLAGUE-b: plague-emptied houses take the boards that fit their painting (0.499375ms)
+✔ PLAGUE-b: chapter 3's start shows its Wave 31 opening painting; chapter 2 keeps its intro (0.955333ms)
+✔ petition group uses individual registered people, not whole-sheet height (3.688333ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 946.240458

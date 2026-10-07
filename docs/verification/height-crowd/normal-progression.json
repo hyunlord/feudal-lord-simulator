@@ -1,0 +1,29 @@
+{
+  "method": "Canonical existing normal save, unchanged engine advanceTick and standard advisor actions; stop before responding to first pending politics petition.",
+  "input": ".omo/height-final/states/winter.json",
+  "inputSHA256": "5abc3849eb3e193f42d798a569deb5afaa93072d7dde6afedede4ddac99afc61",
+  "startTick": 23450,
+  "endTick": 25000,
+  "elapsedSeconds": 11.161547374000001,
+  "petitions": [
+    {
+      "id": "market_charter@25000",
+      "defId": "market_charter",
+      "petitioner": "merchants",
+      "arrivedTick": 25000
+    }
+  ],
+  "gathering": {
+    "id": "construction-site-000009",
+    "kind": "chapel",
+    "tx": 51,
+    "ty": 41,
+    "workers": 0,
+    "inventory": {},
+    "reserved": {},
+    "stockReserved": {},
+    "productionProgress": 0
+  },
+  "actions": [],
+  "outputSHA256": "e3b96ecb41364d8971a847a369c4eb9c01c7dc2413e934d5c7d550d2b2dc80a3"
+}
